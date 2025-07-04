@@ -36,32 +36,51 @@ git checkout -b feat/your-feature-name
 
 3️⃣ **Follow code standards**
 
-- Use English for code comments and identifiers.
-- Keep commits small and meaningful (avoid huge "dump everything" commits).
-- Include tests or test cases whenever possible.
-- Document new functions or modules clearly.
+* Use English for code comments and identifiers.
+* Keep commits small and meaningful (avoid huge "dump everything" commits).
+* Include tests or test cases whenever possible.
+* Document new functions or modules clearly.
 
-4️⃣ **Submit a pull request (PR)**
+4️⃣ **Commit message convention**
 
-- Target **`develop`**.
-- Add a clear PR description: what, why, screenshots or logs if relevant.
-- Reference issues (e.g., `Fixes #42`).
+Follow this format:
 
-5️⃣ **Code review**
+```
+<type>(<scope>): <short description>
+```
 
-- Another team member reviews your PR.
-- Address feedback before merging.
-- Once approved, it will be merged into `develop`.
+Example:
+
+```
+feat(combat): add critical hit mechanic
+fix(inventory): prevent crash when item is null
+docs(readme): update installation instructions
+chore(ci): add GitHub Actions workflow
+```
+
+Accepted types: `feat`, `fix`, `chore`, `docs`
+
+5️⃣ **Submit a pull request (PR)**
+
+* Target **`develop`**.
+* Add a clear PR description: what, why, screenshots or logs if relevant.
+* Reference issues (e.g., `Fixes #42`).
+
+6️⃣ **Code review**
+
+* Another team member reviews your PR.
+* Address feedback before merging.
+* Once approved, it will be merged into `develop`.
 
 ### 🧹 Other practices
 
-- Use conventional commit messages (e.g., `feat: add new combat mechanic`).
-- Check your code with linters and static analysis tools (we provide configs).
-- Update relevant documentation if needed.
+* Use conventional commit messages (see above).
+* Check your code with linters and static analysis tools (we provide configs).
+* Update relevant documentation if needed.
 
 ## 💬 Questions?
 
-Si quelque chose n'est pas clair, merci de demander sur le Discord de l'équipe ou d'ouvrir une discussion dans le dépôt.
+If something is unclear, ask in the team Discord or open a discussion in the repository.
 
 ---
 
@@ -75,9 +94,9 @@ Nous sommes une petite équipe indépendante, et nous tenons à garder un code p
 
 Nous utilisons **trois branches principales** :
 
-- `develop` : branche principale de travail. Toutes les features et correctifs commencent ici.
-- `canary` : branche bêta. On merge `develop` dans `canary` quand on veut tester les fonctionnalités en contexte pré-release.
-- `release` : branche finale prête à publier. On merge seulement `canary` dans `release` quand tout est stable et validé.
+* `develop` : branche principale de travail. Toutes les features et correctifs commencent ici.
+* `canary` : branche bêta. On merge `develop` dans `canary` quand on veut tester les fonctionnalités en contexte pré-release.
+* `release` : branche finale prête à publier. On merge seulement `canary` dans `release` quand tout est stable et validé.
 
 **Ne jamais pousser directement sur `canary` ou `release` !**
 
@@ -99,28 +118,47 @@ git checkout -b feat/nom-de-votre-feature
 
 3️⃣ **Respecter les standards**
 
-- Utiliser l’anglais pour les commentaires et identifiants.
-- Commits petits et explicites (éviter les gros commits "dump").
-- Ajouter des tests si possible.
-- Bien documenter les nouvelles fonctions ou modules.
+* Utiliser l’anglais pour les commentaires et identifiants.
+* Commits petits et explicites (éviter les gros commits "dump").
+* Ajouter des tests si possible.
+* Bien documenter les nouvelles fonctions ou modules.
 
-4️⃣ **Soumettre un pull request (PR)**
+4️⃣ **Convention de nommage des commits**
 
-- Cibler **`develop`**.
-- Ajouter une description claire : quoi, pourquoi, captures d’écran ou logs si nécessaire.
-- Référencer les issues (ex: `Fixes #42`).
+Utilisez le format suivant :
 
-5️⃣ **Review**
+```
+<type>(<scope>): <description courte>
+```
 
-- Un membre de l’équipe relit votre PR.
-- Apporter les corrections demandées avant merge.
-- Une fois approuvée, la PR est mergée dans `develop`.
+Exemples :
+
+```
+feat(combat): ajout de la mécanique de coup critique
+fix(inventory): évite un crash si un item est null
+docs(readme): mise à jour des instructions d’installation
+chore(ci): ajout du workflow GitHub Actions
+```
+
+Types acceptés : `feat`, `fix`, `chore`, `docs`
+
+5️⃣ **Soumettre un pull request (PR)**
+
+* Cibler **`develop`**.
+* Ajouter une description claire : quoi, pourquoi, captures d’écran ou logs si nécessaire.
+* Référencer les issues (ex: `Fixes #42`).
+
+6️⃣ **Review**
+
+* Un membre de l’équipe relit votre PR.
+* Apporter les corrections demandées avant merge.
+* Une fois approuvée, la PR est mergée dans `develop`.
 
 ### 🧹 Autres bonnes pratiques
 
-- Utiliser des messages de commit conventionnels (ex: `feat: ajout d’une mécanique de combat`).
-- Vérifier le code avec les linters et outils d’analyse statique (configs fournies).
-- Mettre à jour la documentation concernée.
+* Utiliser des messages de commit conventionnels (voir ci-dessus).
+* Vérifier le code avec les linters et outils d’analyse statique (configs fournies).
+* Mettre à jour la documentation concernée.
 
 ## 💬 Des questions?
 

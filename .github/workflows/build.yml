@@ -1,3 +1,4 @@
+
 name: Build and Lint
 
 on:
@@ -25,13 +26,25 @@ jobs:
         version: '4.4.1'
         use-dotnet: true
 
+    - name: Check if C# project exists
+      id: check_csharp
+      run: |
+        if [ -f "*.csproj" ] || [ -f "*.sln" ] || find . -name "*.csproj" -o -name "*.sln" | grep -q .; then
+          echo "has_csharp=true" >> $GITHUB_OUTPUT
+        else
+          echo "has_csharp=false" >> $GITHUB_OUTPUT
+        fi
+
     - name: Restore dependencies
+      if: steps.check_csharp.outputs.has_csharp == 'true'
       run: dotnet restore
 
     - name: Check code formatting
+      if: steps.check_csharp.outputs.has_csharp == 'true'
       run: dotnet format --verify-no-changes --verbosity diagnostic
 
     - name: Build project
+      if: steps.check_csharp.outputs.has_csharp == 'true'
       run: dotnet build --no-restore --configuration Release
 
     - name: Import project assets

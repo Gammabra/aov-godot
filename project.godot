@@ -14,6 +14,10 @@ config/name="Ashes of Velsingrad"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 
-[rendering]
+[dotnet]
 
-renderer/rendering_method="forward_plus"
+project/assembly_name="Ashes of Velsingrad"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/gdUnit4/plugin.cfg")

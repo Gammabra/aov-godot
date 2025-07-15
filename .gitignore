@@ -1,3 +1,123 @@
-# Godot 4+ specific ignores
+# Godot-specific ignores
+.import/
+export.cfg
+export_presets.cfg
+.mono/
+data_*/
+mono_crash.*.json
+
+# Godot 4+ specific
 .godot/
-/android/
+
+# C# / .NET ignores
+bin/
+obj/
+/packages/
+riderModule.iml
+/_ReSharper.Caches/
+.nuget/
+*.user
+*.suo
+*.cache
+*.docstates
+*.pdb
+*.min.js
+*.min.css
+*.dll
+*.exe
+*.mdb
+*.userprefs
+*.DS_Store
+
+# Visual Studio / VS Code
+.vs/
+.vscode/
+*.csproj.user
+*.sln.docstates
+
+# JetBrains Rider
+.idea/
+*.sln.iml
+
+# Windows specific
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# MacOS specific
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Linux specific
+*~
+.directory
+.Trash-*
+
+# Temporary files
+*.tmp
+*.temp
+*.log
+*.swp
+*.swo
+*~
+
+# Build artifacts
+builds/
+exports/
+dist/
+release/
+
+# Game-specific assets that shouldn't be tracked
+# (uncomment if you have these)
+# *.mp3
+# *.wav
+# *.ogg
+# *.png
+# *.jpg
+# *.jpeg
+# *.gif
+# *.bmp
+# *.tiff
+# *.svg
+# *.ico
+# *.ttf
+# *.otf
+# *.woff
+# *.woff2
+
+# Local configuration files
+.env
+.env.local
+.env.*.local
+
+# Package manager files
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Unity (if you migrate or have Unity-specific files)
+/[Ll]ibrary/
+/[Tt]emp/
+/[Oo]bj/
+/[Bb]uild/
+/[Bb]uilds/
+/[Ll]ogs/
+/[Uu]ser[Ss]ettings/
+
+# Backup files
+*.backup
+*.bak
+*.orig
+
+# Crash logs
+crash.log
+crash.dmp
+
+# Project-specific ignores for Ashes of Velsingrad
+# (add any specific files/folders your project generates)
+saves/
+screenshots/
+debug_logs/

@@ -1,0 +1,18 @@
+{
+  "conventionalCommits.scopes": [
+    "player",
+    "combat",
+    "inventory",
+    "ui",
+    "audio",
+    "level",
+    "ai",
+    "save",
+    "network",
+    "build",
+    "config"
+  ],
+  "conventionalCommits.showEditor": true,
+  "conventionalCommits.promptBody": true,
+  "conventionalCommits.promptFooter": false
+}

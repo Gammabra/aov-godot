@@ -11,9 +11,19 @@ config_version=5
 [application]
 
 config/name="Ashes of Velsingrad"
-config/features=PackedStringArray("4.4", "Forward Plus")
+run/main_scene="uid://cuadq8eeoqg7j"
+config/features=PackedStringArray("4.4", "C#", "Forward Plus")
 config/icon="res://icon.svg"
 
-[rendering]
+[dotnet]
 
-renderer/rendering_method="forward_plus"
+project/assembly_name="Ashes of Velsingrad"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/gdUnit4/plugin.cfg")
+
+[gdunit4]
+
+settings/test/test_lookup_folder="Tests"
+settings/test/test_discovery=true

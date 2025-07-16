@@ -37,7 +37,7 @@ jobs:
     - name: Check if C# project exists
       id: check_csharp
       run: |
-        if [ -f "*.csproj" ] || [ -f "*.sln" ] || find . -name "*.csproj" -o -name "*.sln" | grep -q .; then
+        if find . -name "*.csproj" -o -name "*.sln" | grep -q .; then
           echo "has_csharp=true" >> $GITHUB_OUTPUT
         else
           echo "has_csharp=false" >> $GITHUB_OUTPUT
@@ -49,11 +49,11 @@ jobs:
 
     - name: Check code formatting
       if: steps.check_csharp.outputs.has_csharp == 'true'
-      run: dotnet format --verify-no-changes --verbosity diagnostic
+      run: dotnet format --verify-no-changes --verbosity diagnostic "Ashes of Velsingrad.csproj"
 
     - name: Build project
       if: steps.check_csharp.outputs.has_csharp == 'true'
-      run: dotnet build --no-restore --configuration Release
+      run: dotnet build "Ashes of Velsingrad.csproj" --configuration ExportRelease /p:Platform="AnyCPU"
 
     - name: Import project assets
       run: |

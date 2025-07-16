@@ -14,5 +14,6 @@
   ],
   "conventionalCommits.showEditor": true,
   "conventionalCommits.promptBody": true,
-  "conventionalCommits.promptFooter": false
+  "conventionalCommits.promptFooter": false,
+  "dotnet.unitTests.runSettingsPath": "./test/.runsettings"
 }

@@ -2,6 +2,7 @@
 *An RPG of Betrayal, Power, and Redemption*
 
 [![Build and Lint](https://github.com/Gammabra/aov-godot/actions/workflows/build.yml/badge.svg)](https://github.com/Gammabra/aov-godot/actions/workflows/build.yml)
+[![GdUnit Tests](https://github.com/Gammabra/aov-godot/actions/workflows/ci.yml/badge.svg)](https://github.com/Gammabra/aov-godot/actions/workflows/ci.yml)
 
 ---
 

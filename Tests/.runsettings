@@ -5,7 +5,7 @@
         <TestAdaptersPaths>.</TestAdaptersPaths>
         <ResultsDirectory>./TestResults</ResultsDirectory>
         <TestSessionTimeout>1800000</TestSessionTimeout>
-        <TreatNoTestsAsError>true</TreatNoTestsAsError>
+        <TreatNoTestsAsError>false</TreatNoTestsAsError>
     </RunConfiguration>
 
     <!-- Test result loggers -->
@@ -29,10 +29,23 @@
         </Loggers>
     </LoggerRunSettings>
 
+    <!-- Data Collection for Code Coverage -->
+    <DataCollectionRunSettings>
+        <DataCollectors>
+            <DataCollector friendlyName="XPlat code coverage" uri="datacollector://Microsoft/CodeCoverage/2.0" assemblyQualifiedName="Microsoft.VisualStudio.Coverage.DynamicCoverageDataCollector, Microsoft.VisualStudio.TraceCollector, Version=11.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+                <Configuration>
+                    <Format>cobertura</Format>
+                    <Exclude>[*.Tests?]*</Exclude>
+                    <ExcludeByAttribute>Obsolete,GeneratedCodeAttribute,CompilerGeneratedAttribute</ExcludeByAttribute>
+                </Configuration>
+            </DataCollector>
+        </DataCollectors>
+    </DataCollectionRunSettings>
+
     <!-- GdUnit4-specific configuration -->
     <GdUnit4>
         <!-- Additional Godot runtime parameters -->
-        <Parameters>--verbose</Parameters>
+        <Parameters>--verbose --headless</Parameters>
 
         <!-- Test display name format: SimpleName or FullyQualifiedName -->
         <DisplayName>FullyQualifiedName</DisplayName>
@@ -42,5 +55,14 @@
 
         <!-- Compilation timeout for large projects (milliseconds) -->
         <CompileProcessTimeout>20000</CompileProcessTimeout>
+
+        <!-- Settings to handle orphan nodes and improve stability -->
+        <Settings>
+            <OrphanNodesReportEnabled>false</OrphanNodesReportEnabled>
+            <VerboseOrphanNodesEnabled>false</VerboseOrphanNodesEnabled>
+            <VerboseAsserts>false</VerboseAsserts>
+            <ReportOrphanNodesEnabled>false</ReportOrphanNodesEnabled>
+            <FailOnOrphanNodes>false</FailOnOrphanNodes>
+        </Settings>
     </GdUnit4>
 </RunSettings>

@@ -1,0 +1,57 @@
+name: GdUnit4 Tests
+
+on:
+  push:
+    paths-ignore:
+      - '**.md'
+      - 'docs/**'
+  pull_request:
+    paths-ignore:
+      - '**.md'
+      - 'docs/**'
+  workflow_dispatch:
+
+concurrency:
+  group: gdunit4-tests-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  unit-test:
+    name: "CI Unit Test"
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      actions: write
+      checks: write
+      contents: write
+      pull-requests: write
+      statuses: write
+
+    strategy:
+      matrix:
+        dotnet-version: ['net8.0', 'net9.0']
+      fail-fast: false
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          lfs: true
+
+      - name: Run GdUnit4 Tests
+        uses: MikeSchulze/gdunit4-action@v1
+        with:
+          godot-version: '4.4.1'
+          godot-net: true
+          dotnet-version: ${{ matrix.dotnet-version }}
+          paths: 'res://Tests/Unit'
+          version: 'latest'
+          arguments: '--verbose --fail-fast'
+          report-name: test_report_${{ matrix.dotnet-version }}.xml
+
+      - name: Upload test results
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: test-results-${{ matrix.dotnet-version }}
+          path: test_report_${{ matrix.dotnet-version }}.xml

@@ -118,56 +118,47 @@ AshesOfVelsingrad/
 
    namespace Tests.Unit
    {
-       [TestSuite]
-       public class UnitTestExample
-       {
-           [TestCase]
-           public void TestBasicAssertion()
-           {
+      [TestSuite]
+      public class UnitTestExample
+      {
+         [TestCase]
+         public void TestBasicAssertion()
+         {
                AssertThat(2 + 2).IsEqual(4);
-           }
+         }
 
-           [TestCase]
-           public void TestGodotNode()
-           {
+         [TestCase]
+         [RequireGodotRuntime]
+         public void TestGodotNode()
+         {
                var node = new Node();
-               node.Name = "TestNode";
-
-               AssertThat(node.Name).IsEqual("TestNode");
                AssertThat(node).IsNotNull();
-           }
-
-           [TestCase]
-           public void TestWithTimeout()
-           {
-               // Test with 2 second timeout
-               AssertThat(() => SlowOperation()).IsEqual("result").WithTimeout(2000);
-           }
-
-           private string SlowOperation()
-           {
-               // Simulate slow operation
-               return "result";
-           }
-       }
+               AssertThat(node.Name).IsEqual("Node");
+         }
+      }
    }
    ```
 
 ### Running Tests
 
-1. **From VS Code:**
+1. **From Godot** (Recommended):
+   - Go to the "MSBuild" tab
+   - Rebuild the project
+   - Go to the "GdUnit4" tab
+   - Click "Run discover tests"
+   - Select your tests and click "Run"
+
+2. **From VS Code:**
    - Use the C# Dev Kit extension
    - Open the "Test Explorer" panel
-   - Click "Run All Tests"
+   - Click "Refresh Tests"
+   - Click "Run Test"
 
-2. **From command line:**
+3. **From command line:**
    ```bash
    dotnet test --settings Tests/.runsettings
    ```
-
-3. **From Godot:**
-   - Go to the "GdUnit4" tab
-   - Select your tests and click "Run"
+> **Tip:** Tests marked with the `RequireGodotRuntime` attribute can only be executed within the Godot Engine. When running tests outside of Godot, these tests will be skipped or may block execution of other tests. For best results, run all `RequireGodotRuntime` tests from within the Godot Editor.
 
 ## Project Structure
 

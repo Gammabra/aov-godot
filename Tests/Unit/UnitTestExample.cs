@@ -8,12 +8,14 @@ namespace Tests.Unit
     public class UnitTestExample
     {
         [TestCase]
+        [RequireGodotRuntime]
         public void TestTempCounter()
         {
-            var main = new Main();
+            var main = AutoFree(new Main());
             int result = main.TempCounter(5);
             AssertThat(result).IsEqual(6);
         }
+
 
         [TestCase]
         public void TestBasicAssertion()

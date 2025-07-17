@@ -2,10 +2,12 @@ name: GdUnit4 Tests
 
 on:
   push:
+    branches: [ develop, canary, release ]
     paths-ignore:
       - '**.md'
       - 'docs/**'
   pull_request:
+    branches: [ develop, canary, release ]
     paths-ignore:
       - '**.md'
       - 'docs/**'
@@ -29,7 +31,7 @@ jobs:
 
     strategy:
       matrix:
-        dotnet-version: ['net9.0']  # Commencez avec une seule version
+        dotnet-version: ['net9.0']
         include:
           - dotnet-version: 'net9.0'
             display-name: '.NET 9.0'

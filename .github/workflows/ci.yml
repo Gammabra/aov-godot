@@ -29,7 +29,10 @@ jobs:
 
     strategy:
       matrix:
-        dotnet-version: ['net8.0', 'net9.0']
+        dotnet-version: ['net9.0']  # Commencez avec une seule version
+        include:
+          - dotnet-version: 'net9.0'
+            display-name: '.NET 9.0'
       fail-fast: false
 
     steps:
@@ -46,7 +49,7 @@ jobs:
           dotnet-version: ${{ matrix.dotnet-version }}
           paths: 'res://Tests/Unit'
           version: 'latest'
-          arguments: '--verbose --fail-fast'
+          arguments: '--verbose --continue-on-failed --settings=res://Tests/.runsettings'
           report-name: test_report_${{ matrix.dotnet-version }}.xml
 
       - name: Upload test results

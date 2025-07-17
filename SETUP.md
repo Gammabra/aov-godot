@@ -131,9 +131,40 @@ AshesOfVelsingrad/
          [RequireGodotRuntime]
          public void TestGodotNode()
          {
-               var node = new Node();
+               var node = AutoFree(new Node());
+
                AssertThat(node).IsNotNull();
                AssertThat(node.Name).IsEqual("Node");
+         }
+
+         [TestCase]
+         [RequireGodotRuntime]
+         public void TestGodotNodeWithManualCleanup()
+         {
+               Node node = null;
+               try
+               {
+                  node = new Node();
+                  AssertThat(node).IsNotNull();
+                  AssertThat(node.Name).IsEqual("Node");
+               }
+               finally
+               {
+                  node?.QueueFree();
+               }
+         }
+
+         [TestCase]
+         [RequireGodotRuntime]
+         public void TestGodotNodeWithSceneTree()
+         {
+               var scene = AutoFree(new Node());
+               var child = AutoFree(new Node());
+
+               scene.AddChild(child);
+
+               AssertThat(scene.GetChildCount()).IsEqual(1);
+               AssertThat(scene.GetChild(0)).IsEqual(child);
          }
       }
    }

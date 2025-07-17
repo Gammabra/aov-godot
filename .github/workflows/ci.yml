@@ -41,15 +41,6 @@ jobs:
         with:
           lfs: true
 
-      - name: Debug paths
-        run: |
-          pwd
-          ls -la
-          find . -name "*.runsettings" -type f
-
-      - name: Copy .runsettings to project root
-        run: cp Tests/.runsettings ./.runsettings
-
       - name: Run GdUnit4 Tests
         uses: MikeSchulze/gdunit4-action@v1
         with:

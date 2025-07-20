@@ -1,0 +1,162 @@
+### YamlMime:ManagedReference
+items:
+- uid: gdUnit4.addons.gdUnit4.src.dotnet
+  commentId: N:gdUnit4.addons.gdUnit4.src.dotnet
+  id: gdUnit4.addons.gdUnit4.src.dotnet
+  children:
+  - gdUnit4.addons.gdUnit4.src.dotnet.GdUnit4CSharpApi
+  - gdUnit4.addons.gdUnit4.src.dotnet.GdUnit4CSharpApi.ExecutionCompletedEventHandler
+  - gdUnit4.addons.gdUnit4.src.dotnet.GdUnit4CSharpApi.MethodName
+  - gdUnit4.addons.gdUnit4.src.dotnet.GdUnit4CSharpApi.PropertyName
+  - gdUnit4.addons.gdUnit4.src.dotnet.GdUnit4CSharpApi.SignalName
+  langs:
+  - csharp
+  - vb
+  name: gdUnit4.addons.gdUnit4.src.dotnet
+  nameWithType: gdUnit4.addons.gdUnit4.src.dotnet
+  fullName: gdUnit4.addons.gdUnit4.src.dotnet
+  type: Namespace
+  assemblies:
+  - Ashes of Velsingrad
+references:
+- uid: gdUnit4.addons.gdUnit4.src.dotnet.GdUnit4CSharpApi
+  commentId: T:gdUnit4.addons.gdUnit4.src.dotnet.GdUnit4CSharpApi
+  href: gdUnit4.addons.gdUnit4.src.dotnet.GdUnit4CSharpApi.html
+  name: GdUnit4CSharpApi
+  nameWithType: GdUnit4CSharpApi
+  fullName: gdUnit4.addons.gdUnit4.src.dotnet.GdUnit4CSharpApi
+- uid: gdUnit4.addons.gdUnit4.src.dotnet.GdUnit4CSharpApi.ExecutionCompletedEventHandler
+  commentId: T:gdUnit4.addons.gdUnit4.src.dotnet.GdUnit4CSharpApi.ExecutionCompletedEventHandler
+  parent: gdUnit4.addons.gdUnit4.src.dotnet
+  href: gdUnit4.addons.gdUnit4.src.dotnet.GdUnit4CSharpApi.html
+  name: GdUnit4CSharpApi.ExecutionCompletedEventHandler
+  nameWithType: GdUnit4CSharpApi.ExecutionCompletedEventHandler
+  fullName: gdUnit4.addons.gdUnit4.src.dotnet.GdUnit4CSharpApi.ExecutionCompletedEventHandler
+  spec.csharp:
+  - uid: gdUnit4.addons.gdUnit4.src.dotnet.GdUnit4CSharpApi
+    name: GdUnit4CSharpApi
+    href: gdUnit4.addons.gdUnit4.src.dotnet.GdUnit4CSharpApi.html
+  - name: .
+  - uid: gdUnit4.addons.gdUnit4.src.dotnet.GdUnit4CSharpApi.ExecutionCompletedEventHandler
+    name: ExecutionCompletedEventHandler
+    href: gdUnit4.addons.gdUnit4.src.dotnet.GdUnit4CSharpApi.ExecutionCompletedEventHandler.html
+  spec.vb:
+  - uid: gdUnit4.addons.gdUnit4.src.dotnet.GdUnit4CSharpApi
+    name: GdUnit4CSharpApi
+    href: gdUnit4.addons.gdUnit4.src.dotnet.GdUnit4CSharpApi.html
+  - name: .
+  - uid: gdUnit4.addons.gdUnit4.src.dotnet.GdUnit4CSharpApi.ExecutionCompletedEventHandler
+    name: ExecutionCompletedEventHandler
+    href: gdUnit4.addons.gdUnit4.src.dotnet.GdUnit4CSharpApi.ExecutionCompletedEventHandler.html
+- uid: gdUnit4.addons.gdUnit4.src.dotnet.GdUnit4CSharpApi.MethodName
+  commentId: T:gdUnit4.addons.gdUnit4.src.dotnet.GdUnit4CSharpApi.MethodName
+  href: gdUnit4.addons.gdUnit4.src.dotnet.GdUnit4CSharpApi.html
+  name: GdUnit4CSharpApi.MethodName
+  nameWithType: GdUnit4CSharpApi.MethodName
+  fullName: gdUnit4.addons.gdUnit4.src.dotnet.GdUnit4CSharpApi.MethodName
+  spec.csharp:
+  - uid: gdUnit4.addons.gdUnit4.src.dotnet.GdUnit4CSharpApi
+    name: GdUnit4CSharpApi
+    href: gdUnit4.addons.gdUnit4.src.dotnet.GdUnit4CSharpApi.html
+  - name: .
+  - uid: gdUnit4.addons.gdUnit4.src.dotnet.GdUnit4CSharpApi.MethodName
+    name: MethodName
+    href: gdUnit4.addons.gdUnit4.src.dotnet.GdUnit4CSharpApi.MethodName.html
+  spec.vb:
+  - uid: gdUnit4.addons.gdUnit4.src.dotnet.GdUnit4CSharpApi
+    name: GdUnit4CSharpApi
+    href: gdUnit4.addons.gdUnit4.src.dotnet.GdUnit4CSharpApi.html
+  - name: .
+  - uid: gdUnit4.addons.gdUnit4.src.dotnet.GdUnit4CSharpApi.MethodName
+    name: MethodName
+    href: gdUnit4.addons.gdUnit4.src.dotnet.GdUnit4CSharpApi.MethodName.html
+- uid: gdUnit4.addons.gdUnit4.src.dotnet.GdUnit4CSharpApi.SignalName
+  commentId: T:gdUnit4.addons.gdUnit4.src.dotnet.GdUnit4CSharpApi.SignalName
+  href: gdUnit4.addons.gdUnit4.src.dotnet.GdUnit4CSharpApi.html
+  name: GdUnit4CSharpApi.SignalName
+  nameWithType: GdUnit4CSharpApi.SignalName
+  fullName: gdUnit4.addons.gdUnit4.src.dotnet.GdUnit4CSharpApi.SignalName
+  spec.csharp:
+  - uid: gdUnit4.addons.gdUnit4.src.dotnet.GdUnit4CSharpApi
+    name: GdUnit4CSharpApi
+    href: gdUnit4.addons.gdUnit4.src.dotnet.GdUnit4CSharpApi.html
+  - name: .
+  - uid: gdUnit4.addons.gdUnit4.src.dotnet.GdUnit4CSharpApi.SignalName
+    name: SignalName
+    href: gdUnit4.addons.gdUnit4.src.dotnet.GdUnit4CSharpApi.SignalName.html
+  spec.vb:
+  - uid: gdUnit4.addons.gdUnit4.src.dotnet.GdUnit4CSharpApi
+    name: GdUnit4CSharpApi
+    href: gdUnit4.addons.gdUnit4.src.dotnet.GdUnit4CSharpApi.html
+  - name: .
+  - uid: gdUnit4.addons.gdUnit4.src.dotnet.GdUnit4CSharpApi.SignalName
+    name: SignalName
+    href: gdUnit4.addons.gdUnit4.src.dotnet.GdUnit4CSharpApi.SignalName.html
+- uid: gdUnit4.addons.gdUnit4.src.dotnet.GdUnit4CSharpApi.PropertyName
+  commentId: T:gdUnit4.addons.gdUnit4.src.dotnet.GdUnit4CSharpApi.PropertyName
+  href: gdUnit4.addons.gdUnit4.src.dotnet.GdUnit4CSharpApi.html
+  name: GdUnit4CSharpApi.PropertyName
+  nameWithType: GdUnit4CSharpApi.PropertyName
+  fullName: gdUnit4.addons.gdUnit4.src.dotnet.GdUnit4CSharpApi.PropertyName
+  spec.csharp:
+  - uid: gdUnit4.addons.gdUnit4.src.dotnet.GdUnit4CSharpApi
+    name: GdUnit4CSharpApi
+    href: gdUnit4.addons.gdUnit4.src.dotnet.GdUnit4CSharpApi.html
+  - name: .
+  - uid: gdUnit4.addons.gdUnit4.src.dotnet.GdUnit4CSharpApi.PropertyName
+    name: PropertyName
+    href: gdUnit4.addons.gdUnit4.src.dotnet.GdUnit4CSharpApi.PropertyName.html
+  spec.vb:
+  - uid: gdUnit4.addons.gdUnit4.src.dotnet.GdUnit4CSharpApi
+    name: GdUnit4CSharpApi
+    href: gdUnit4.addons.gdUnit4.src.dotnet.GdUnit4CSharpApi.html
+  - name: .
+  - uid: gdUnit4.addons.gdUnit4.src.dotnet.GdUnit4CSharpApi.PropertyName
+    name: PropertyName
+    href: gdUnit4.addons.gdUnit4.src.dotnet.GdUnit4CSharpApi.PropertyName.html
+- uid: gdUnit4.addons.gdUnit4.src.dotnet
+  commentId: N:gdUnit4.addons.gdUnit4.src.dotnet
+  href: gdUnit4.html
+  name: gdUnit4.addons.gdUnit4.src.dotnet
+  nameWithType: gdUnit4.addons.gdUnit4.src.dotnet
+  fullName: gdUnit4.addons.gdUnit4.src.dotnet
+  spec.csharp:
+  - uid: gdUnit4
+    name: gdUnit4
+    href: gdUnit4.html
+  - name: .
+  - uid: gdUnit4.addons
+    name: addons
+    href: gdUnit4.addons.html
+  - name: .
+  - uid: gdUnit4.addons.gdUnit4
+    name: gdUnit4
+    href: gdUnit4.addons.gdUnit4.html
+  - name: .
+  - uid: gdUnit4.addons.gdUnit4.src
+    name: src
+    href: gdUnit4.addons.gdUnit4.src.html
+  - name: .
+  - uid: gdUnit4.addons.gdUnit4.src.dotnet
+    name: dotnet
+    href: gdUnit4.addons.gdUnit4.src.dotnet.html
+  spec.vb:
+  - uid: gdUnit4
+    name: gdUnit4
+    href: gdUnit4.html
+  - name: .
+  - uid: gdUnit4.addons
+    name: addons
+    href: gdUnit4.addons.html
+  - name: .
+  - uid: gdUnit4.addons.gdUnit4
+    name: gdUnit4
+    href: gdUnit4.addons.gdUnit4.html
+  - name: .
+  - uid: gdUnit4.addons.gdUnit4.src
+    name: src
+    href: gdUnit4.addons.gdUnit4.src.html
+  - name: .
+  - uid: gdUnit4.addons.gdUnit4.src.dotnet
+    name: dotnet
+    href: gdUnit4.addons.gdUnit4.src.dotnet.html

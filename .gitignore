@@ -121,3 +121,6 @@ crash.dmp
 saves/
 screenshots/
 debug_logs/
+
+# DocFX output
+docs/_site/

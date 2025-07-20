@@ -35,6 +35,24 @@ This is currently a **Proof of Concept (POC)** version as we build the core syst
 
 ---
 
+## 📚 Documentation technique
+
+La documentation technique du code C# est générée automatiquement avec [DocFX](https://dotnet.github.io/docfx/).
+
+### Génération locale
+
+```sh
+./generate-docs.cmd
+```
+
+La documentation HTML sera disponible dans le dossier `docs/_site/index.html`.
+
+### Génération automatique (CI)
+
+À chaque push sur `main` ou `feat/docs-automation`, la documentation est générée automatiquement via GitHub Actions. Le résultat est disponible en tant qu'artifact du workflow.
+
+---
+
 ## 👥 **The Team**
 | Name | Role | Contribution |
 |-------|------|--------------|

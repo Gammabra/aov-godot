@@ -1,6 +1,7 @@
 using GdUnit4;
 using Godot;
 using static GdUnit4.Assertions;
+using AshesofVelsingrad;
 
 namespace Tests.Unit
 {

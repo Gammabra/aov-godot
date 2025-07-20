@@ -1,0 +1,27 @@
+name: Build DocFX Documentation
+
+on:
+  push:
+      branches: [ develop, canary, release ]
+  workflow_dispatch:
+
+jobs:
+  build-docs:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.0.x'
+      - name: Build project
+        run: dotnet build
+      - name: Install DocFX
+        run: dotnet tool install -g docfx
+      - name: Generate Documentation
+        run: docfx docs/docfx.json
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: docfx-site
+          path: docs/_site 

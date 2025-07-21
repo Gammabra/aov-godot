@@ -123,4 +123,4 @@ screenshots/
 debug_logs/
 
 # DocFX output
-docs/_site/
+_site/

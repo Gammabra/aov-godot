@@ -24,28 +24,6 @@ references:
   name: Main
   nameWithType: Main
   fullName: AshesofVelsingrad.Main
-- uid: AshesofVelsingrad.Main.MethodName
-  commentId: T:AshesofVelsingrad.Main.MethodName
-  href: AshesofVelsingrad.Main.html
-  name: Main.MethodName
-  nameWithType: Main.MethodName
-  fullName: AshesofVelsingrad.Main.MethodName
-  spec.csharp:
-  - uid: AshesofVelsingrad.Main
-    name: Main
-    href: AshesofVelsingrad.Main.html
-  - name: .
-  - uid: AshesofVelsingrad.Main.MethodName
-    name: MethodName
-    href: AshesofVelsingrad.Main.MethodName.html
-  spec.vb:
-  - uid: AshesofVelsingrad.Main
-    name: Main
-    href: AshesofVelsingrad.Main.html
-  - name: .
-  - uid: AshesofVelsingrad.Main.MethodName
-    name: MethodName
-    href: AshesofVelsingrad.Main.MethodName.html
 - uid: AshesofVelsingrad.Main.PropertyName
   commentId: T:AshesofVelsingrad.Main.PropertyName
   href: AshesofVelsingrad.Main.html
@@ -90,3 +68,25 @@ references:
   - uid: AshesofVelsingrad.Main.SignalName
     name: SignalName
     href: AshesofVelsingrad.Main.SignalName.html
+- uid: AshesofVelsingrad.Main.MethodName
+  commentId: T:AshesofVelsingrad.Main.MethodName
+  href: AshesofVelsingrad.Main.html
+  name: Main.MethodName
+  nameWithType: Main.MethodName
+  fullName: AshesofVelsingrad.Main.MethodName
+  spec.csharp:
+  - uid: AshesofVelsingrad.Main
+    name: Main
+    href: AshesofVelsingrad.Main.html
+  - name: .
+  - uid: AshesofVelsingrad.Main.MethodName
+    name: MethodName
+    href: AshesofVelsingrad.Main.MethodName.html
+  spec.vb:
+  - uid: AshesofVelsingrad.Main
+    name: Main
+    href: AshesofVelsingrad.Main.html
+  - name: .
+  - uid: AshesofVelsingrad.Main.MethodName
+    name: MethodName
+    href: AshesofVelsingrad.Main.MethodName.html

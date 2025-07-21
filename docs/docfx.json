@@ -3,20 +3,65 @@
     {
       "src": [
         {
-          "src": "../",
-          "files": [ "Ashes of Velsingrad.csproj" ]
+          "files": [
+            "**/*.cs"
+          ],
+          "exclude": [
+            "**/bin/**",
+            "**/obj/**",
+            "**/.godot/**"
+          ]
         }
       ],
-      "dest": "api"
+      "dest": "api",
+      "shouldSkipMarkup": false,
+      "disableGitFeatures": false,
+      "memberLayout": "samePage",
+      "namespaceLayout": "flattened"
     }
   ],
   "build": {
     "content": [
-      { "files": ["**/*.md", "**/*.yml"] }
+      {
+        "files": [
+          "api/**.yml",
+          "api/index.md"
+        ]
+      },
+      {
+        "files": [
+          "docs/**.md",
+          "docs/**/toc.yml",
+          "articles/**.md",
+          "articles/**/toc.yml",
+          "toc.yml",
+          "*.md"
+        ],
+        "exclude": [
+          "_site/**"
+        ]
+      }
     ],
     "resource": [
-      { "files": ["**/images/**"] }
+      {
+        "files": [
+          "images/**"
+        ]
+      }
     ],
-    "dest": "_site"
+    "dest": "_site",
+    "globalMetadata": {
+      "_appTitle": "Ashes of Velsingrad",
+      "_appName": "Ashes of Velsingrad - Technical Documentation",
+      "_appFooter": "© 2025 Gammabra Studios. All Rights Reserved.",
+      "_enableSearch": true,
+      "_disableContribution": false
+    },
+    "template": [
+      "default"
+    ],
+    "postProcessors": [
+      "ExtractSearchIndex"
+    ]
   }
 }

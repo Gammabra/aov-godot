@@ -2,10 +2,27 @@
 _layout: landing
 ---
 
-# This is the **HOMEPAGE**.
+# Ashes of Velsingrad Documentation
 
-Refer to [Markdown](http://daringfireball.net/projects/markdown/) for how to write markdown files.
+Welcome to the official documentation for **Ashes of Velsingrad**.
 
-## Quick Start Notes:
+Ashes of Velsingrad is a dark tactical RPG built with Godot and C#. Here you'll find guides, references, and resources to help you understand, use, and contribute to the project.
 
-1. Add images to the *images* folder if the file is referencing an image.
+---
+
+## 📖 Documentation Overview
+
+- [Introduction](docs/introduction.md): Learn about the game's world, vision, and core concepts.
+- [Getting Started](docs/getting-started.md): Set up your development environment and run the project.
+- [API Reference](api/index.html): Browse the auto-generated C# API documentation.
+
+---
+
+## Navigation
+
+- Use the sidebar or the links above to explore the documentation.
+- For more details about the project, see the [README](../README.md) or visit the [GitHub repository](https://github.com/Gammabra/aov-godot).
+
+---
+
+© 2025 Gammabra Studios. All Rights Reserved.

@@ -15,8 +15,8 @@ items:
   type: Class
   source:
     id: Main
-    path: Godot.SourceGenerators\Godot.SourceGenerators.ScriptSignalsGenerator\AshesofVelsingrad.Main_ScriptSignals.generated.cs
-    startLine: 5
+    path: Godot.SourceGenerators\Godot.SourceGenerators.ScriptPropertyDefValGenerator\AshesofVelsingrad.Main_ScriptPropertyDefVal.generated.cs
+    startLine: 2
   assemblies:
   - Ashes of Velsingrad
   namespace: AshesofVelsingrad

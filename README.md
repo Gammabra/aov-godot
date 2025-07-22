@@ -26,7 +26,6 @@ You play as **Kaelen Voss**, a mercenary betrayed and left for dead, now cursed 
 ---
 
 ## 🛠️ **Development Status**
-This is currently a **Proof of Concept (POC)** version as we build the core systems and mechanics.
 
 **Tech Stack:**
 - **Engine:** Godot 4.4.1
@@ -34,22 +33,21 @@ This is currently a **Proof of Concept (POC)** version as we build the core syst
 - **Platform:** Windows 10/11
 
 ---
+## 📚 Technical Documentation
 
-## 📚 Documentation technique
+The C# code technical documentation is automatically generated using [DocFX](https://dotnet.github.io/docfx/).
 
-La documentation technique du code C# est générée automatiquement avec [DocFX](https://dotnet.github.io/docfx/).
-
-### Génération locale
+### Local Generation
 
 ```sh
 ./generate-docs.cmd
 ```
 
-La documentation HTML sera disponible dans le dossier `docs/_site/index.html`.
+The HTML documentation will be available in the `docs/_site/index.html` folder.
 
-### Génération automatique (CI)
+### Automatic Generation (CI)
 
-À chaque push sur `main` ou `feat/docs-automation`, la documentation est générée automatiquement via GitHub Actions. Le résultat est disponible en tant qu'artifact du workflow.
+On every push to `main` or `feat/docs-automation`, the documentation is automatically generated via GitHub Actions. The result is available as a workflow artifact.
 
 ---
 
@@ -66,7 +64,7 @@ La documentation HTML sera disponible dans le dossier `docs/_site/index.html`.
 ---
 
 ## 🤝 **Contributing**
-We welcome contributions! Please read our [Contributing Guide](./CONTRIBUTING.md) to get started.
+We welcome contributions! Please read our [Contributing Guide](./documentation/CONTRIBUTING.md) and our [Set up Guide](./documentation/SETUP.md) to get started.
 
 **Quick Start:**
 1. Fork the repository
@@ -78,8 +76,8 @@ We welcome contributions! Please read our [Contributing Guide](./CONTRIBUTING.md
 
 ## 🌍 **Learn More**
 👉 For detailed information about the gameplay, lore, and systems, choose your language:
-**🇬🇧 [Read the English version](./readme-intl/README-EN.md)**
-**🇫🇷 [Lire la version française](./readme-intl/README-FR.md)**
+**🇬🇧 [Read the English version](./documentation/readme-intl/README-EN.md)**
+**🇫🇷 [Lire la version française](./documentation/readme-intl/README-FR.md)**
 
 ---
 

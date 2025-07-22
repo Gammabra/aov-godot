@@ -66,7 +66,7 @@
     - **Value:** Full path to the Godot Mono executable
     - **Example:** `C:\Program Files\Godot\Godot_v4.4.1-stable_mono_win64.exe`
 
-    - Or locally for tests, by adding it to the `Tests/.runsettings` file, inside `RunConfiguration`:
+    - Or locally for tests, by adding it to the `tests/.runsettings` file, inside `RunConfiguration`:
 
     ```xml
     <EnvironmentVariables>
@@ -92,10 +92,10 @@ Your project structure should look like this:
 AshesOfVelsingrad/
 ├── addons/
 │   └── gdUnit4/
-├── Tests/
-│   ├── Unit/
+├── tests/
+│   ├── unit/
 │   │   └── TestTemp.cs
-│   ├── Integration/
+│   ├── integration/
 │   └── .runsettings
 └── project.godot
 ```
@@ -229,7 +229,7 @@ AshesOfVelsingrad/
 
 3. **From command line:**
    ```bash
-   dotnet test --settings Tests/.runsettings
+   dotnet test --settings tests/.runsettings
    ```
 > **Tip:** Tests marked with the `RequireGodotRuntime` attribute can only be executed within the Godot Engine. When running tests outside of Godot, these tests will be skipped or may block execution of other tests. For best results, run all `RequireGodotRuntime` tests from within the Godot Editor.
 
@@ -241,24 +241,28 @@ AshesOfVelsingrad/
 YourProject/
 ├── addons/
 │   └── gdUnit4/
-├── Scripts/
-│   ├── Player/
-│   ├── Enemy/
-│   ├── UI/
-│   └── Utils/
-├── Tests/
-│   ├── Unit/
-│   │   ├── Player/
-│   │   ├── Enemy/
-│   │   ├── UI/
-│   │   └── Utils/
-│   ├── Integration/
+├── docs/
+│   ├── docfx/
+│   │   ├── ...
+│   ├── CONTRIBUTING.md
+│   └── SETUP.md
+├── scripts/
+│   ├── player/
+│   ├── enemy/
+│   ├── gui/
+│   └── utils/
+├── tests/
+│   ├── unit/
+│   │   ├── player/
+│   │   ├── enemy/
+│   │   ├── gui/
+│   │   └── utils/
+│   ├── integration/
 │   └── .runsettings
-├── Scenes/
-├── Resources/
+├── scenes/
+├── assets/
 ├── .editorconfig (already configured)
 ├── .gitignore (already configured)
-├── CONTRIBUTING.md (already present)
 └── project.godot
 ```
 
@@ -319,7 +323,7 @@ Create `.vscode/tasks.json` for build tasks:
       "label": "test",
       "command": "dotnet",
       "type": "process",
-      "args": ["test", "--settings", "Tests/.runsettings"],
+      "args": ["test", "--settings", "tests/.runsettings"],
       "group": "test",
       "presentation": {
         "echo": true,

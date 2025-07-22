@@ -43,11 +43,11 @@ The C# code technical documentation is automatically generated using [DocFX](htt
 ./generate-docs.cmd
 ```
 
-The HTML documentation will be available in the `docs/_site/index.html` folder.
+The HTML documentation will be available in the `documentation/docfx/_site/index.html` folder.
 
 ### Automatic Generation (CI)
 
-On every push to `main` or `feat/docs-automation`, the documentation is automatically generated via GitHub Actions. The result is available as a workflow artifact.
+On every push to `main` or `feat/docs-automation`, the documentation is automatically generated via GitHub Actions. The result is available as a workflow artifact [here](https://gammabra.github.io/aov-godot/index.html).
 
 ---
 

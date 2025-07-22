@@ -5,12 +5,12 @@ on:
     branches: [ develop, canary, release ]
     paths-ignore:
       - '**.md'
-      - 'docs/**'
+      - 'documentation/**'
   pull_request:
     branches: [ develop, canary, release ]
     paths-ignore:
       - '**.md'
-      - 'docs/**'
+      - 'documentation/**'
   workflow_dispatch:
 
 concurrency:
@@ -49,9 +49,9 @@ jobs:
           godot-version: '4.4.1'
           godot-net: true
           dotnet-version: ${{ matrix.dotnet-version }}
-          paths: 'res://Tests/Unit'
+          paths: 'res://tests/unit'
           version: 'latest'
-          arguments: '--verbose --continue-on-failed --settings=res://Tests/.runsettings'
+          arguments: '--verbose --continue-on-failed --settings=res://tests/.runsettings'
           report-name: test_report_${{ matrix.dotnet-version }}.xml
 
       - name: Upload test results

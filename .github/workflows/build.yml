@@ -3,8 +3,12 @@ name: Build and Lint
 on:
   push:
     branches: [ develop, canary, release ]
+    paths-ignore:
+      - 'addons/**'
   pull_request:
     branches: [ develop, canary, release ]
+    paths-ignore:
+      - 'addons/**'
 
 jobs:
   build-and-lint:

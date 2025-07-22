@@ -105,7 +105,3 @@ max_line_length = 80
 [*.{csproj,sln}]
 indent_style = space
 indent_size = 2
-
-# Ignore all files in the addons folder
-[addons/**]
-generated_code = true

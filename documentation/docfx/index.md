@@ -21,7 +21,7 @@ Ashes of Velsingrad is a dark tactical RPG built with Godot and C#. Here you'll 
 ## Navigation
 
 - Use the sidebar or the links above to explore the documentation.
-- For more details about the project, see the [README](../README.md) or visit the [GitHub repository](https://github.com/Gammabra/aov-godot).
+- For more details about the project, see the [README](../../README.md) or visit the [GitHub repository](https://github.com/Gammabra/aov-godot).
 
 ---
 

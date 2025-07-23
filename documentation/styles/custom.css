@@ -1,4 +1,4 @@
-.svg {
-    max-height: 40px !important; /* Ajuste la hauteur comme tu veux */
-    width: auto;
+.navbar-brand > img {
+  height: 40px;  /* adjust height */
+  width: auto;   /* maintain aspect ratio */
 }

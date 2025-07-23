@@ -277,16 +277,6 @@
     },
     {
       "type": "Conceptual",
-      "source_relative_path": "docs/introduction.md",
-      "output": {
-        ".html": {
-          "relative_path": "docs/introduction.html"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "Conceptual",
       "source_relative_path": "docs/technical/architecture.md",
       "output": {
         ".html": {
@@ -321,6 +311,26 @@
       "output": {
         "resource": {
           "relative_path": "images/aov-logo-transparent.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "introduction.md",
+      "output": {
+        ".html": {
+          "relative_path": "introduction.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "styles/custom.css",
+      "output": {
+        "resource": {
+          "relative_path": "styles/custom.css"
         }
       },
       "version": ""

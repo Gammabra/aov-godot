@@ -42,23 +42,21 @@
         ]
       }
     ],
+    "output": "_site",
+    "globalMetadataFiles": [],
+    "fileMetadataFiles": [],
+
+    "template": [
+      "default",
+      "modern",
+      "templates/custom"
+    ],
     "resource": [
       {
         "files": [
           "images/**"
         ]
       }
-    ],
-    "output": "_site",
-    "globalMetadataFiles": [],
-    "fileMetadataFiles": [],
-    "template": [
-      "default",
-      "modern",
-      "templates/custom.css"
-    ],
-    "styles": [
-      "styles/custom.css"
     ],
     "postProcessors": [],
     "keepFileLink": false,

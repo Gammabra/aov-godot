@@ -3,43 +3,43 @@ sorted: true
 references:
 - uid: AshesofVelsingrad
   name: AshesofVelsingrad
-  href: api/AshesofVelsingrad.html
+  href: api/AshesofVelsingrad.yml
   commentId: N:AshesofVelsingrad
   fullName: AshesofVelsingrad
   nameWithType: AshesofVelsingrad
 - uid: AshesofVelsingrad.Main
   name: Main
-  href: api/AshesofVelsingrad.Main.html
+  href: api/AshesofVelsingrad.Main.yml
   commentId: T:AshesofVelsingrad.Main
   fullName: AshesofVelsingrad.Main
   nameWithType: Main
 - uid: AshesofVelsingrad.Main.MethodName
   name: Main.MethodName
-  href: api/AshesofVelsingrad.Main.MethodName.html
+  href: api/AshesofVelsingrad.Main.MethodName.yml
   commentId: T:AshesofVelsingrad.Main.MethodName
   fullName: AshesofVelsingrad.Main.MethodName
   nameWithType: Main.MethodName
 - uid: AshesofVelsingrad.Main.MethodName.TempCounter
   name: TempCounter
-  href: api/AshesofVelsingrad.Main.MethodName.html#AshesofVelsingrad_Main_MethodName_TempCounter
+  href: api/AshesofVelsingrad.Main.MethodName.yml
   commentId: F:AshesofVelsingrad.Main.MethodName.TempCounter
   fullName: AshesofVelsingrad.Main.MethodName.TempCounter
   nameWithType: Main.MethodName.TempCounter
 - uid: AshesofVelsingrad.Main.PropertyName
   name: Main.PropertyName
-  href: api/AshesofVelsingrad.Main.PropertyName.html
+  href: api/AshesofVelsingrad.Main.PropertyName.yml
   commentId: T:AshesofVelsingrad.Main.PropertyName
   fullName: AshesofVelsingrad.Main.PropertyName
   nameWithType: Main.PropertyName
 - uid: AshesofVelsingrad.Main.SignalName
   name: Main.SignalName
-  href: api/AshesofVelsingrad.Main.SignalName.html
+  href: api/AshesofVelsingrad.Main.SignalName.yml
   commentId: T:AshesofVelsingrad.Main.SignalName
   fullName: AshesofVelsingrad.Main.SignalName
   nameWithType: Main.SignalName
 - uid: AshesofVelsingrad.Main.TempCounter(System.Int32)
   name: TempCounter(int)
-  href: api/AshesofVelsingrad.Main.html#AshesofVelsingrad_Main_TempCounter_System_Int32_
+  href: api/AshesofVelsingrad.Main.yml
   commentId: M:AshesofVelsingrad.Main.TempCounter(System.Int32)
   name.vb: TempCounter(Integer)
   fullName: AshesofVelsingrad.Main.TempCounter(int)
@@ -48,168 +48,168 @@ references:
   nameWithType.vb: Main.TempCounter(Integer)
 - uid: AshesofVelsingrad.Main.TempCounter*
   name: TempCounter
-  href: api/AshesofVelsingrad.Main.html#AshesofVelsingrad_Main_TempCounter_
+  href: api/AshesofVelsingrad.Main.yml
   commentId: Overload:AshesofVelsingrad.Main.TempCounter
   isSpec: "True"
   fullName: AshesofVelsingrad.Main.TempCounter
   nameWithType: Main.TempCounter
 - uid: Tests.Unit
   name: Tests.Unit
-  href: api/Tests.Unit.html
+  href: api/Tests.Unit.yml
   commentId: N:Tests.Unit
   fullName: Tests.Unit
   nameWithType: Tests.Unit
 - uid: Tests.Unit.UnitTestExample
   name: UnitTestExample
-  href: api/Tests.Unit.UnitTestExample.html
+  href: api/Tests.Unit.UnitTestExample.yml
   commentId: T:Tests.Unit.UnitTestExample
   fullName: Tests.Unit.UnitTestExample
   nameWithType: UnitTestExample
 - uid: Tests.Unit.UnitTestExample.TestBasicAssertion
   name: TestBasicAssertion()
-  href: api/Tests.Unit.UnitTestExample.html#Tests_Unit_UnitTestExample_TestBasicAssertion
+  href: api/Tests.Unit.UnitTestExample.yml
   commentId: M:Tests.Unit.UnitTestExample.TestBasicAssertion
   fullName: Tests.Unit.UnitTestExample.TestBasicAssertion()
   nameWithType: UnitTestExample.TestBasicAssertion()
 - uid: Tests.Unit.UnitTestExample.TestBasicAssertion*
   name: TestBasicAssertion
-  href: api/Tests.Unit.UnitTestExample.html#Tests_Unit_UnitTestExample_TestBasicAssertion_
+  href: api/Tests.Unit.UnitTestExample.yml
   commentId: Overload:Tests.Unit.UnitTestExample.TestBasicAssertion
   isSpec: "True"
   fullName: Tests.Unit.UnitTestExample.TestBasicAssertion
   nameWithType: UnitTestExample.TestBasicAssertion
 - uid: Tests.Unit.UnitTestExample.TestGodotNode
   name: TestGodotNode()
-  href: api/Tests.Unit.UnitTestExample.html#Tests_Unit_UnitTestExample_TestGodotNode
+  href: api/Tests.Unit.UnitTestExample.yml
   commentId: M:Tests.Unit.UnitTestExample.TestGodotNode
   fullName: Tests.Unit.UnitTestExample.TestGodotNode()
   nameWithType: UnitTestExample.TestGodotNode()
 - uid: Tests.Unit.UnitTestExample.TestGodotNode*
   name: TestGodotNode
-  href: api/Tests.Unit.UnitTestExample.html#Tests_Unit_UnitTestExample_TestGodotNode_
+  href: api/Tests.Unit.UnitTestExample.yml
   commentId: Overload:Tests.Unit.UnitTestExample.TestGodotNode
   isSpec: "True"
   fullName: Tests.Unit.UnitTestExample.TestGodotNode
   nameWithType: UnitTestExample.TestGodotNode
 - uid: Tests.Unit.UnitTestExample.TestGodotNodeWithManualCleanup
   name: TestGodotNodeWithManualCleanup()
-  href: api/Tests.Unit.UnitTestExample.html#Tests_Unit_UnitTestExample_TestGodotNodeWithManualCleanup
+  href: api/Tests.Unit.UnitTestExample.yml
   commentId: M:Tests.Unit.UnitTestExample.TestGodotNodeWithManualCleanup
   fullName: Tests.Unit.UnitTestExample.TestGodotNodeWithManualCleanup()
   nameWithType: UnitTestExample.TestGodotNodeWithManualCleanup()
 - uid: Tests.Unit.UnitTestExample.TestGodotNodeWithManualCleanup*
   name: TestGodotNodeWithManualCleanup
-  href: api/Tests.Unit.UnitTestExample.html#Tests_Unit_UnitTestExample_TestGodotNodeWithManualCleanup_
+  href: api/Tests.Unit.UnitTestExample.yml
   commentId: Overload:Tests.Unit.UnitTestExample.TestGodotNodeWithManualCleanup
   isSpec: "True"
   fullName: Tests.Unit.UnitTestExample.TestGodotNodeWithManualCleanup
   nameWithType: UnitTestExample.TestGodotNodeWithManualCleanup
 - uid: Tests.Unit.UnitTestExample.TestGodotNodeWithSceneTree
   name: TestGodotNodeWithSceneTree()
-  href: api/Tests.Unit.UnitTestExample.html#Tests_Unit_UnitTestExample_TestGodotNodeWithSceneTree
+  href: api/Tests.Unit.UnitTestExample.yml
   commentId: M:Tests.Unit.UnitTestExample.TestGodotNodeWithSceneTree
   fullName: Tests.Unit.UnitTestExample.TestGodotNodeWithSceneTree()
   nameWithType: UnitTestExample.TestGodotNodeWithSceneTree()
 - uid: Tests.Unit.UnitTestExample.TestGodotNodeWithSceneTree*
   name: TestGodotNodeWithSceneTree
-  href: api/Tests.Unit.UnitTestExample.html#Tests_Unit_UnitTestExample_TestGodotNodeWithSceneTree_
+  href: api/Tests.Unit.UnitTestExample.yml
   commentId: Overload:Tests.Unit.UnitTestExample.TestGodotNodeWithSceneTree
   isSpec: "True"
   fullName: Tests.Unit.UnitTestExample.TestGodotNodeWithSceneTree
   nameWithType: UnitTestExample.TestGodotNodeWithSceneTree
 - uid: Tests.Unit.UnitTestExample.TestNodeHierarchy
   name: TestNodeHierarchy()
-  href: api/Tests.Unit.UnitTestExample.html#Tests_Unit_UnitTestExample_TestNodeHierarchy
+  href: api/Tests.Unit.UnitTestExample.yml
   commentId: M:Tests.Unit.UnitTestExample.TestNodeHierarchy
   fullName: Tests.Unit.UnitTestExample.TestNodeHierarchy()
   nameWithType: UnitTestExample.TestNodeHierarchy()
 - uid: Tests.Unit.UnitTestExample.TestNodeHierarchy*
   name: TestNodeHierarchy
-  href: api/Tests.Unit.UnitTestExample.html#Tests_Unit_UnitTestExample_TestNodeHierarchy_
+  href: api/Tests.Unit.UnitTestExample.yml
   commentId: Overload:Tests.Unit.UnitTestExample.TestNodeHierarchy
   isSpec: "True"
   fullName: Tests.Unit.UnitTestExample.TestNodeHierarchy
   nameWithType: UnitTestExample.TestNodeHierarchy
 - uid: Tests.Unit.UnitTestExample.TestNodeProperties
   name: TestNodeProperties()
-  href: api/Tests.Unit.UnitTestExample.html#Tests_Unit_UnitTestExample_TestNodeProperties
+  href: api/Tests.Unit.UnitTestExample.yml
   commentId: M:Tests.Unit.UnitTestExample.TestNodeProperties
   fullName: Tests.Unit.UnitTestExample.TestNodeProperties()
   nameWithType: UnitTestExample.TestNodeProperties()
 - uid: Tests.Unit.UnitTestExample.TestNodeProperties*
   name: TestNodeProperties
-  href: api/Tests.Unit.UnitTestExample.html#Tests_Unit_UnitTestExample_TestNodeProperties_
+  href: api/Tests.Unit.UnitTestExample.yml
   commentId: Overload:Tests.Unit.UnitTestExample.TestNodeProperties
   isSpec: "True"
   fullName: Tests.Unit.UnitTestExample.TestNodeProperties
   nameWithType: UnitTestExample.TestNodeProperties
 - uid: Tests.Unit.UnitTestExample.TestTempCounter
   name: TestTempCounter()
-  href: api/Tests.Unit.UnitTestExample.html#Tests_Unit_UnitTestExample_TestTempCounter
+  href: api/Tests.Unit.UnitTestExample.yml
   commentId: M:Tests.Unit.UnitTestExample.TestTempCounter
   fullName: Tests.Unit.UnitTestExample.TestTempCounter()
   nameWithType: UnitTestExample.TestTempCounter()
 - uid: Tests.Unit.UnitTestExample.TestTempCounter*
   name: TestTempCounter
-  href: api/Tests.Unit.UnitTestExample.html#Tests_Unit_UnitTestExample_TestTempCounter_
+  href: api/Tests.Unit.UnitTestExample.yml
   commentId: Overload:Tests.Unit.UnitTestExample.TestTempCounter
   isSpec: "True"
   fullName: Tests.Unit.UnitTestExample.TestTempCounter
   nameWithType: UnitTestExample.TestTempCounter
 - uid: gdUnit4.addons.gdUnit4.src.dotnet
   name: gdUnit4.addons.gdUnit4.src.dotnet
-  href: api/gdUnit4.addons.gdUnit4.src.dotnet.html
+  href: api/gdUnit4.addons.gdUnit4.src.dotnet.yml
   commentId: N:gdUnit4.addons.gdUnit4.src.dotnet
   fullName: gdUnit4.addons.gdUnit4.src.dotnet
   nameWithType: gdUnit4.addons.gdUnit4.src.dotnet
 - uid: gdUnit4.addons.gdUnit4.src.dotnet.GdUnit4CSharpApi
   name: GdUnit4CSharpApi
-  href: api/gdUnit4.addons.gdUnit4.src.dotnet.GdUnit4CSharpApi.html
+  href: api/gdUnit4.addons.gdUnit4.src.dotnet.GdUnit4CSharpApi.yml
   commentId: T:gdUnit4.addons.gdUnit4.src.dotnet.GdUnit4CSharpApi
   fullName: gdUnit4.addons.gdUnit4.src.dotnet.GdUnit4CSharpApi
   nameWithType: GdUnit4CSharpApi
 - uid: gdUnit4.addons.gdUnit4.src.dotnet.GdUnit4CSharpApi.CancelExecution
   name: CancelExecution()
-  href: api/gdUnit4.addons.gdUnit4.src.dotnet.GdUnit4CSharpApi.html#gdUnit4_addons_gdUnit4_src_dotnet_GdUnit4CSharpApi_CancelExecution
+  href: api/gdUnit4.addons.gdUnit4.src.dotnet.GdUnit4CSharpApi.yml
   commentId: M:gdUnit4.addons.gdUnit4.src.dotnet.GdUnit4CSharpApi.CancelExecution
   fullName: gdUnit4.addons.gdUnit4.src.dotnet.GdUnit4CSharpApi.CancelExecution()
   nameWithType: GdUnit4CSharpApi.CancelExecution()
 - uid: gdUnit4.addons.gdUnit4.src.dotnet.GdUnit4CSharpApi.CancelExecution*
   name: CancelExecution
-  href: api/gdUnit4.addons.gdUnit4.src.dotnet.GdUnit4CSharpApi.html#gdUnit4_addons_gdUnit4_src_dotnet_GdUnit4CSharpApi_CancelExecution_
+  href: api/gdUnit4.addons.gdUnit4.src.dotnet.GdUnit4CSharpApi.yml
   commentId: Overload:gdUnit4.addons.gdUnit4.src.dotnet.GdUnit4CSharpApi.CancelExecution
   isSpec: "True"
   fullName: gdUnit4.addons.gdUnit4.src.dotnet.GdUnit4CSharpApi.CancelExecution
   nameWithType: GdUnit4CSharpApi.CancelExecution
 - uid: gdUnit4.addons.gdUnit4.src.dotnet.GdUnit4CSharpApi.DiscoverTests(Godot.CSharpScript)
   name: DiscoverTests(CSharpScript)
-  href: api/gdUnit4.addons.gdUnit4.src.dotnet.GdUnit4CSharpApi.html#gdUnit4_addons_gdUnit4_src_dotnet_GdUnit4CSharpApi_DiscoverTests_Godot_CSharpScript_
+  href: api/gdUnit4.addons.gdUnit4.src.dotnet.GdUnit4CSharpApi.yml
   commentId: M:gdUnit4.addons.gdUnit4.src.dotnet.GdUnit4CSharpApi.DiscoverTests(Godot.CSharpScript)
   fullName: gdUnit4.addons.gdUnit4.src.dotnet.GdUnit4CSharpApi.DiscoverTests(Godot.CSharpScript)
   nameWithType: GdUnit4CSharpApi.DiscoverTests(CSharpScript)
 - uid: gdUnit4.addons.gdUnit4.src.dotnet.GdUnit4CSharpApi.DiscoverTests*
   name: DiscoverTests
-  href: api/gdUnit4.addons.gdUnit4.src.dotnet.GdUnit4CSharpApi.html#gdUnit4_addons_gdUnit4_src_dotnet_GdUnit4CSharpApi_DiscoverTests_
+  href: api/gdUnit4.addons.gdUnit4.src.dotnet.GdUnit4CSharpApi.yml
   commentId: Overload:gdUnit4.addons.gdUnit4.src.dotnet.GdUnit4CSharpApi.DiscoverTests
   isSpec: "True"
   fullName: gdUnit4.addons.gdUnit4.src.dotnet.GdUnit4CSharpApi.DiscoverTests
   nameWithType: GdUnit4CSharpApi.DiscoverTests
 - uid: gdUnit4.addons.gdUnit4.src.dotnet.GdUnit4CSharpApi.EmitSignalExecutionCompleted
   name: EmitSignalExecutionCompleted()
-  href: api/gdUnit4.addons.gdUnit4.src.dotnet.GdUnit4CSharpApi.html#gdUnit4_addons_gdUnit4_src_dotnet_GdUnit4CSharpApi_EmitSignalExecutionCompleted
+  href: api/gdUnit4.addons.gdUnit4.src.dotnet.GdUnit4CSharpApi.yml
   commentId: M:gdUnit4.addons.gdUnit4.src.dotnet.GdUnit4CSharpApi.EmitSignalExecutionCompleted
   fullName: gdUnit4.addons.gdUnit4.src.dotnet.GdUnit4CSharpApi.EmitSignalExecutionCompleted()
   nameWithType: GdUnit4CSharpApi.EmitSignalExecutionCompleted()
 - uid: gdUnit4.addons.gdUnit4.src.dotnet.GdUnit4CSharpApi.EmitSignalExecutionCompleted*
   name: EmitSignalExecutionCompleted
-  href: api/gdUnit4.addons.gdUnit4.src.dotnet.GdUnit4CSharpApi.html#gdUnit4_addons_gdUnit4_src_dotnet_GdUnit4CSharpApi_EmitSignalExecutionCompleted_
+  href: api/gdUnit4.addons.gdUnit4.src.dotnet.GdUnit4CSharpApi.yml
   commentId: Overload:gdUnit4.addons.gdUnit4.src.dotnet.GdUnit4CSharpApi.EmitSignalExecutionCompleted
   isSpec: "True"
   fullName: gdUnit4.addons.gdUnit4.src.dotnet.GdUnit4CSharpApi.EmitSignalExecutionCompleted
   nameWithType: GdUnit4CSharpApi.EmitSignalExecutionCompleted
 - uid: gdUnit4.addons.gdUnit4.src.dotnet.GdUnit4CSharpApi.ExecuteAsync(Godot.Collections.Array{Godot.Collections.Dictionary},Godot.Callable)
   name: ExecuteAsync(Array<Dictionary>, Callable)
-  href: api/gdUnit4.addons.gdUnit4.src.dotnet.GdUnit4CSharpApi.html#gdUnit4_addons_gdUnit4_src_dotnet_GdUnit4CSharpApi_ExecuteAsync_Godot_Collections_Array_Godot_Collections_Dictionary__Godot_Callable_
+  href: api/gdUnit4.addons.gdUnit4.src.dotnet.GdUnit4CSharpApi.yml
   commentId: M:gdUnit4.addons.gdUnit4.src.dotnet.GdUnit4CSharpApi.ExecuteAsync(Godot.Collections.Array{Godot.Collections.Dictionary},Godot.Callable)
   name.vb: ExecuteAsync(Array(Of Dictionary), Callable)
   fullName: gdUnit4.addons.gdUnit4.src.dotnet.GdUnit4CSharpApi.ExecuteAsync(Godot.Collections.Array<Godot.Collections.Dictionary>, Godot.Callable)
@@ -218,93 +218,93 @@ references:
   nameWithType.vb: GdUnit4CSharpApi.ExecuteAsync(Array(Of Dictionary), Callable)
 - uid: gdUnit4.addons.gdUnit4.src.dotnet.GdUnit4CSharpApi.ExecuteAsync*
   name: ExecuteAsync
-  href: api/gdUnit4.addons.gdUnit4.src.dotnet.GdUnit4CSharpApi.html#gdUnit4_addons_gdUnit4_src_dotnet_GdUnit4CSharpApi_ExecuteAsync_
+  href: api/gdUnit4.addons.gdUnit4.src.dotnet.GdUnit4CSharpApi.yml
   commentId: Overload:gdUnit4.addons.gdUnit4.src.dotnet.GdUnit4CSharpApi.ExecuteAsync
   isSpec: "True"
   fullName: gdUnit4.addons.gdUnit4.src.dotnet.GdUnit4CSharpApi.ExecuteAsync
   nameWithType: GdUnit4CSharpApi.ExecuteAsync
 - uid: gdUnit4.addons.gdUnit4.src.dotnet.GdUnit4CSharpApi.ExecutionCompleted
   name: ExecutionCompleted
-  href: api/gdUnit4.addons.gdUnit4.src.dotnet.GdUnit4CSharpApi.html#gdUnit4_addons_gdUnit4_src_dotnet_GdUnit4CSharpApi_ExecutionCompleted
+  href: api/gdUnit4.addons.gdUnit4.src.dotnet.GdUnit4CSharpApi.yml
   commentId: E:gdUnit4.addons.gdUnit4.src.dotnet.GdUnit4CSharpApi.ExecutionCompleted
   fullName: gdUnit4.addons.gdUnit4.src.dotnet.GdUnit4CSharpApi.ExecutionCompleted
   nameWithType: GdUnit4CSharpApi.ExecutionCompleted
 - uid: gdUnit4.addons.gdUnit4.src.dotnet.GdUnit4CSharpApi.ExecutionCompletedEventHandler
   name: GdUnit4CSharpApi.ExecutionCompletedEventHandler
-  href: api/gdUnit4.addons.gdUnit4.src.dotnet.GdUnit4CSharpApi.ExecutionCompletedEventHandler.html
+  href: api/gdUnit4.addons.gdUnit4.src.dotnet.GdUnit4CSharpApi.ExecutionCompletedEventHandler.yml
   commentId: T:gdUnit4.addons.gdUnit4.src.dotnet.GdUnit4CSharpApi.ExecutionCompletedEventHandler
   fullName: gdUnit4.addons.gdUnit4.src.dotnet.GdUnit4CSharpApi.ExecutionCompletedEventHandler
   nameWithType: GdUnit4CSharpApi.ExecutionCompletedEventHandler
 - uid: gdUnit4.addons.gdUnit4.src.dotnet.GdUnit4CSharpApi.IsApiLoaded
   name: IsApiLoaded()
-  href: api/gdUnit4.addons.gdUnit4.src.dotnet.GdUnit4CSharpApi.html#gdUnit4_addons_gdUnit4_src_dotnet_GdUnit4CSharpApi_IsApiLoaded
+  href: api/gdUnit4.addons.gdUnit4.src.dotnet.GdUnit4CSharpApi.yml
   commentId: M:gdUnit4.addons.gdUnit4.src.dotnet.GdUnit4CSharpApi.IsApiLoaded
   fullName: gdUnit4.addons.gdUnit4.src.dotnet.GdUnit4CSharpApi.IsApiLoaded()
   nameWithType: GdUnit4CSharpApi.IsApiLoaded()
 - uid: gdUnit4.addons.gdUnit4.src.dotnet.GdUnit4CSharpApi.IsApiLoaded*
   name: IsApiLoaded
-  href: api/gdUnit4.addons.gdUnit4.src.dotnet.GdUnit4CSharpApi.html#gdUnit4_addons_gdUnit4_src_dotnet_GdUnit4CSharpApi_IsApiLoaded_
+  href: api/gdUnit4.addons.gdUnit4.src.dotnet.GdUnit4CSharpApi.yml
   commentId: Overload:gdUnit4.addons.gdUnit4.src.dotnet.GdUnit4CSharpApi.IsApiLoaded
   isSpec: "True"
   fullName: gdUnit4.addons.gdUnit4.src.dotnet.GdUnit4CSharpApi.IsApiLoaded
   nameWithType: GdUnit4CSharpApi.IsApiLoaded
 - uid: gdUnit4.addons.gdUnit4.src.dotnet.GdUnit4CSharpApi.MethodName
   name: GdUnit4CSharpApi.MethodName
-  href: api/gdUnit4.addons.gdUnit4.src.dotnet.GdUnit4CSharpApi.MethodName.html
+  href: api/gdUnit4.addons.gdUnit4.src.dotnet.GdUnit4CSharpApi.MethodName.yml
   commentId: T:gdUnit4.addons.gdUnit4.src.dotnet.GdUnit4CSharpApi.MethodName
   fullName: gdUnit4.addons.gdUnit4.src.dotnet.GdUnit4CSharpApi.MethodName
   nameWithType: GdUnit4CSharpApi.MethodName
 - uid: gdUnit4.addons.gdUnit4.src.dotnet.GdUnit4CSharpApi.MethodName.CancelExecution
   name: CancelExecution
-  href: api/gdUnit4.addons.gdUnit4.src.dotnet.GdUnit4CSharpApi.MethodName.html#gdUnit4_addons_gdUnit4_src_dotnet_GdUnit4CSharpApi_MethodName_CancelExecution
+  href: api/gdUnit4.addons.gdUnit4.src.dotnet.GdUnit4CSharpApi.MethodName.yml
   commentId: F:gdUnit4.addons.gdUnit4.src.dotnet.GdUnit4CSharpApi.MethodName.CancelExecution
   fullName: gdUnit4.addons.gdUnit4.src.dotnet.GdUnit4CSharpApi.MethodName.CancelExecution
   nameWithType: GdUnit4CSharpApi.MethodName.CancelExecution
 - uid: gdUnit4.addons.gdUnit4.src.dotnet.GdUnit4CSharpApi.MethodName.DiscoverTests
   name: DiscoverTests
-  href: api/gdUnit4.addons.gdUnit4.src.dotnet.GdUnit4CSharpApi.MethodName.html#gdUnit4_addons_gdUnit4_src_dotnet_GdUnit4CSharpApi_MethodName_DiscoverTests
+  href: api/gdUnit4.addons.gdUnit4.src.dotnet.GdUnit4CSharpApi.MethodName.yml
   commentId: F:gdUnit4.addons.gdUnit4.src.dotnet.GdUnit4CSharpApi.MethodName.DiscoverTests
   fullName: gdUnit4.addons.gdUnit4.src.dotnet.GdUnit4CSharpApi.MethodName.DiscoverTests
   nameWithType: GdUnit4CSharpApi.MethodName.DiscoverTests
 - uid: gdUnit4.addons.gdUnit4.src.dotnet.GdUnit4CSharpApi.MethodName.ExecuteAsync
   name: ExecuteAsync
-  href: api/gdUnit4.addons.gdUnit4.src.dotnet.GdUnit4CSharpApi.MethodName.html#gdUnit4_addons_gdUnit4_src_dotnet_GdUnit4CSharpApi_MethodName_ExecuteAsync
+  href: api/gdUnit4.addons.gdUnit4.src.dotnet.GdUnit4CSharpApi.MethodName.yml
   commentId: F:gdUnit4.addons.gdUnit4.src.dotnet.GdUnit4CSharpApi.MethodName.ExecuteAsync
   fullName: gdUnit4.addons.gdUnit4.src.dotnet.GdUnit4CSharpApi.MethodName.ExecuteAsync
   nameWithType: GdUnit4CSharpApi.MethodName.ExecuteAsync
 - uid: gdUnit4.addons.gdUnit4.src.dotnet.GdUnit4CSharpApi.MethodName.IsApiLoaded
   name: IsApiLoaded
-  href: api/gdUnit4.addons.gdUnit4.src.dotnet.GdUnit4CSharpApi.MethodName.html#gdUnit4_addons_gdUnit4_src_dotnet_GdUnit4CSharpApi_MethodName_IsApiLoaded
+  href: api/gdUnit4.addons.gdUnit4.src.dotnet.GdUnit4CSharpApi.MethodName.yml
   commentId: F:gdUnit4.addons.gdUnit4.src.dotnet.GdUnit4CSharpApi.MethodName.IsApiLoaded
   fullName: gdUnit4.addons.gdUnit4.src.dotnet.GdUnit4CSharpApi.MethodName.IsApiLoaded
   nameWithType: GdUnit4CSharpApi.MethodName.IsApiLoaded
 - uid: gdUnit4.addons.gdUnit4.src.dotnet.GdUnit4CSharpApi.MethodName._Notification
   name: _Notification
-  href: api/gdUnit4.addons.gdUnit4.src.dotnet.GdUnit4CSharpApi.MethodName.html#gdUnit4_addons_gdUnit4_src_dotnet_GdUnit4CSharpApi_MethodName__Notification
+  href: api/gdUnit4.addons.gdUnit4.src.dotnet.GdUnit4CSharpApi.MethodName.yml
   commentId: F:gdUnit4.addons.gdUnit4.src.dotnet.GdUnit4CSharpApi.MethodName._Notification
   fullName: gdUnit4.addons.gdUnit4.src.dotnet.GdUnit4CSharpApi.MethodName._Notification
   nameWithType: GdUnit4CSharpApi.MethodName._Notification
 - uid: gdUnit4.addons.gdUnit4.src.dotnet.GdUnit4CSharpApi.PropertyName
   name: GdUnit4CSharpApi.PropertyName
-  href: api/gdUnit4.addons.gdUnit4.src.dotnet.GdUnit4CSharpApi.PropertyName.html
+  href: api/gdUnit4.addons.gdUnit4.src.dotnet.GdUnit4CSharpApi.PropertyName.yml
   commentId: T:gdUnit4.addons.gdUnit4.src.dotnet.GdUnit4CSharpApi.PropertyName
   fullName: gdUnit4.addons.gdUnit4.src.dotnet.GdUnit4CSharpApi.PropertyName
   nameWithType: GdUnit4CSharpApi.PropertyName
 - uid: gdUnit4.addons.gdUnit4.src.dotnet.GdUnit4CSharpApi.SignalName
   name: GdUnit4CSharpApi.SignalName
-  href: api/gdUnit4.addons.gdUnit4.src.dotnet.GdUnit4CSharpApi.SignalName.html
+  href: api/gdUnit4.addons.gdUnit4.src.dotnet.GdUnit4CSharpApi.SignalName.yml
   commentId: T:gdUnit4.addons.gdUnit4.src.dotnet.GdUnit4CSharpApi.SignalName
   fullName: gdUnit4.addons.gdUnit4.src.dotnet.GdUnit4CSharpApi.SignalName
   nameWithType: GdUnit4CSharpApi.SignalName
 - uid: gdUnit4.addons.gdUnit4.src.dotnet.GdUnit4CSharpApi.SignalName.ExecutionCompleted
   name: ExecutionCompleted
-  href: api/gdUnit4.addons.gdUnit4.src.dotnet.GdUnit4CSharpApi.SignalName.html#gdUnit4_addons_gdUnit4_src_dotnet_GdUnit4CSharpApi_SignalName_ExecutionCompleted
+  href: api/gdUnit4.addons.gdUnit4.src.dotnet.GdUnit4CSharpApi.SignalName.yml
   commentId: F:gdUnit4.addons.gdUnit4.src.dotnet.GdUnit4CSharpApi.SignalName.ExecutionCompleted
   fullName: gdUnit4.addons.gdUnit4.src.dotnet.GdUnit4CSharpApi.SignalName.ExecutionCompleted
   nameWithType: GdUnit4CSharpApi.SignalName.ExecutionCompleted
 - uid: gdUnit4.addons.gdUnit4.src.dotnet.GdUnit4CSharpApi._Notification(System.Int32)
   name: _Notification(int)
-  href: api/gdUnit4.addons.gdUnit4.src.dotnet.GdUnit4CSharpApi.html#gdUnit4_addons_gdUnit4_src_dotnet_GdUnit4CSharpApi__Notification_System_Int32_
+  href: api/gdUnit4.addons.gdUnit4.src.dotnet.GdUnit4CSharpApi.yml
   commentId: M:gdUnit4.addons.gdUnit4.src.dotnet.GdUnit4CSharpApi._Notification(System.Int32)
   name.vb: _Notification(Integer)
   fullName: gdUnit4.addons.gdUnit4.src.dotnet.GdUnit4CSharpApi._Notification(int)
@@ -313,7 +313,7 @@ references:
   nameWithType.vb: GdUnit4CSharpApi._Notification(Integer)
 - uid: gdUnit4.addons.gdUnit4.src.dotnet.GdUnit4CSharpApi._Notification*
   name: _Notification
-  href: api/gdUnit4.addons.gdUnit4.src.dotnet.GdUnit4CSharpApi.html#gdUnit4_addons_gdUnit4_src_dotnet_GdUnit4CSharpApi__Notification_
+  href: api/gdUnit4.addons.gdUnit4.src.dotnet.GdUnit4CSharpApi.yml
   commentId: Overload:gdUnit4.addons.gdUnit4.src.dotnet.GdUnit4CSharpApi._Notification
   isSpec: "True"
   fullName: gdUnit4.addons.gdUnit4.src.dotnet.GdUnit4CSharpApi._Notification

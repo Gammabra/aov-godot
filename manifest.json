@@ -307,10 +307,10 @@
     },
     {
       "type": "Resource",
-      "source_relative_path": "images/aov-logo-transparent.png",
+      "source_relative_path": "images/logo.svg",
       "output": {
         "resource": {
-          "relative_path": "images/aov-logo-transparent.png"
+          "relative_path": "images/logo.svg"
         }
       },
       "version": ""
@@ -321,16 +321,6 @@
       "output": {
         ".html": {
           "relative_path": "index.html"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "Resource",
-      "source_relative_path": "styles/custom.css",
-      "output": {
-        "resource": {
-          "relative_path": "styles/custom.css"
         }
       },
       "version": ""

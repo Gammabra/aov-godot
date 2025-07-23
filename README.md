@@ -43,7 +43,7 @@ The C# code technical documentation is automatically generated using [DocFX](htt
 ./generate-docs.cmd
 ```
 
-The HTML documentation will be available in the `documentation/docfx/_site/index.html` folder.
+The HTML documentation will be available in the `documentation/docfx/_site/toc.html` folder.
 
 ### Automatic Generation (CI)
 
@@ -64,7 +64,7 @@ On every push to `main` or `feat/docs-automation`, the documentation is automati
 ---
 
 ## 🤝 **Contributing**
-We welcome contributions! Please read our [Contributing Guide](./documentation/CONTRIBUTING.md) and our [Set up Guide](./documentation/SETUP.md) to get started.
+We welcome contributions! Please read our [Contributing Guide](./documentation/docs/contributing.md) and our [Set up Guide](./documentation/docs/getting-started.md) to get started.
 
 **Quick Start:**
 1. Fork the repository
@@ -75,10 +75,7 @@ We welcome contributions! Please read our [Contributing Guide](./documentation/C
 ---
 
 ## 🌍 **Learn More**
-👉 For detailed information about the gameplay, lore, and systems, choose your language:
-**🇬🇧 [Read the English version](./documentation/readme-intl/README-EN.md)**
-**🇫🇷 [Lire la version française](./documentation/readme-intl/README-FR.md)**
-
+👉 For detailed information about the gameplay, lore, and systems check our [game design documentation](https://gammabra.github.io/aov-godot/index.html)
 ---
 
 © 2025 Gammabra Studios. All Rights Reserved.

@@ -100,7 +100,7 @@ fix(combat): resolve enemy freeze on death
 docs(api): document new weapon system
 refactor(inventory): extract item validation logic
 test(save): add integration tests for game state
-chore(deps): update Godot to 4.2.1
+chore(deps): update Godot to 4.4.1
 perf(rendering): cache frequently used shaders
 ```
 

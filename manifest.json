@@ -1,5 +1,5 @@
 {
-  "source_base_path": "D:/a/aov-godot/aov-godot/documentation/docfx",
+  "source_base_path": "D:/a/aov-godot/aov-godot/documentation",
   "xrefmap": "xrefmap.yml",
   "files": [
     {
@@ -193,6 +193,16 @@
       "Summary": null
     },
     {
+      "type": "Conceptual",
+      "source_relative_path": "api/index.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/index.html"
+        }
+      },
+      "version": ""
+    },
+    {
       "type": "Toc",
       "source_relative_path": "api/toc.yml",
       "output": {
@@ -201,6 +211,56 @@
         },
         ".json": {
           "relative_path": "api/toc.json"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docs/contributing.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/contributing.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docs/game-design/combat-system.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/game-design/combat-system.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docs/game-design/core-gameplay.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/game-design/core-gameplay.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docs/game-design/magic-system.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/game-design/magic-system.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docs/game-design/story-lore.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/game-design/story-lore.html"
         }
       },
       "version": ""
@@ -226,24 +286,41 @@
       "version": ""
     },
     {
-      "type": "Toc",
-      "source_relative_path": "docs/toc.yml",
+      "type": "Conceptual",
+      "source_relative_path": "docs/technical/architecture.md",
       "output": {
         ".html": {
-          "relative_path": "docs/toc.html"
-        },
-        ".json": {
-          "relative_path": "docs/toc.json"
+          "relative_path": "docs/technical/architecture.html"
         }
       },
       "version": ""
     },
     {
       "type": "Conceptual",
-      "source_relative_path": "index.md",
+      "source_relative_path": "docs/technical/coding-standards.md",
       "output": {
         ".html": {
-          "relative_path": "index.html"
+          "relative_path": "docs/technical/coding-standards.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docs/technical/testing.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/technical/testing.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/aov-logo-transparent.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/aov-logo-transparent.png"
         }
       },
       "version": ""

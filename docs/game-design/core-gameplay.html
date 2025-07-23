@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Core Gameplay Loop | Ashes of Velsingrad Documentation </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Core Gameplay Loop | Ashes of Velsingrad Documentation ">
+      
+      
+      <link rel="icon" href="../../favicon.ico">
+      <link rel="stylesheet" href="../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../public/main.css">
+      <meta name="docfx:navrel" content="../../toc.html">
+      <meta name="docfx:tocrel" content="../../toc.html">
+      
+      <meta name="docfx:rel" content="../../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/Gammabra/aov-godot/blob/develop/documentation/docs/game-design/core-gameplay.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../../index.html">
+            <img id="logo" class="svg" src="../../images/aov-logo-transparent.png" alt="Ashes of Velsingrad">
+            Ashes of Velsingrad
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+
+      <div class="content">
+        <div class="actionbar">
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="core-gameplay-loop">Core Gameplay Loop</h1>
+
+<p>The core gameplay of Ashes of Velsingrad is built around a cycle of exploration, tactical combat, and meaningful choice-making that shapes both Kaelen's character and the world around him.</p>
+<h2 id="-the-main-loop">🔄 The Main Loop</h2>
+<h3 id="1--exploration--survival">1. 🌲 Exploration &amp; Survival</h3>
+<p>Players traverse a war-torn world filled with dangers and opportunities:</p>
+<p><strong>World Navigation:</strong></p>
+<ul>
+<li><strong>Overworld Map</strong>: Navigate between regions, each with unique challenges and stories</li>
+<li><strong>Local Exploration</strong>: Detailed exploration of villages, ruins, and wilderness areas</li>
+<li><strong>Environmental Storytelling</strong>: Discover the world's history through visual cues and hidden details</li>
+</ul>
+<p><strong>Resource Management:</strong></p>
+<ul>
+<li><strong>Food &amp; Supplies</strong>: Keep your company fed and equipped</li>
+<li><strong>Medicine</strong>: Treat injuries and illnesses that can affect combat performance</li>
+<li><strong>Equipment</strong>: Maintain and upgrade weapons, armor, and magical items</li>
+<li><strong>Morale</strong>: Manage the psychological well-being of your companions</li>
+</ul>
+<p><strong>Discovery Elements:</strong></p>
+<ul>
+<li><strong>Hidden Locations</strong>: Secret areas with valuable loot or important story elements</li>
+<li><strong>Ancient Ruins</strong>: Explore pre-Fall civilizations and uncover lost knowledge</li>
+<li><strong>Survivor Encounters</strong>: Meet NPCs with their own stories, needs, and potential as allies</li>
+</ul>
+<h3 id="2--the-challenge-board-system">2. 📜 The Challenge Board System</h3>
+<p>Central to the game's structure is the Challenge Board, found in taverns, refugee camps, and safe zones:</p>
+<p><strong>Contract Types:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Description</th>
+<th>Rewards</th>
+<th>Risks</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Assassination</strong></td>
+<td>Eliminate specific targets</td>
+<td>High coin, reputation with some factions</td>
+<td>Moral corruption, enemies</td>
+</tr>
+<tr>
+<td><strong>Rescue</strong></td>
+<td>Save captured or trapped individuals</td>
+<td>Reputation, potential allies</td>
+<td>Time pressure, dangerous locations</td>
+</tr>
+<tr>
+<td><strong>Sabotage</strong></td>
+<td>Disrupt enemy operations</td>
+<td>Strategic advantages, resources</td>
+<td>Stealth challenges, faction hostility</td>
+</tr>
+<tr>
+<td><strong>Investigation</strong></td>
+<td>Uncover secrets and solve mysteries</td>
+<td>Information, unique items</td>
+<td>Complex puzzles, moral dilemmas</td>
+</tr>
+<tr>
+<td><strong>Escort</strong></td>
+<td>Protect individuals during travel</td>
+<td>Steady income, connections</td>
+<td>Combat encounters, responsibility</td>
+</tr>
+<tr>
+<td><strong>Bounty Hunting</strong></td>
+<td>Track down criminals and fugitives</td>
+<td>Variable rewards based on difficulty</td>
+<td>Dangerous opponents, moral ambiguity</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Dynamic Consequences:</strong></p>
+<ul>
+<li>Completed contracts affect faction standings</li>
+<li>Failed missions can have lasting story implications</li>
+<li>Some contracts become unavailable based on your moral alignment</li>
+<li>Success builds reputation, opening new opportunities</li>
+</ul>
+<h3 id="3--tactical-combat">3. ⚔️ Tactical Combat</h3>
+<p>Combat in Ashes of Velsingrad emphasizes strategy over reflexes:</p>
+<p><strong>Turn-Based Strategy:</strong></p>
+<ul>
+<li><strong>Initiative System</strong>: Speed and circumstances determine turn order</li>
+<li><strong>Action Points</strong>: Each character has limited actions per turn</li>
+<li><strong>Positioning</strong>: Terrain, elevation, and formation are crucial</li>
+<li><strong>Environmental Hazards</strong>: Use the battlefield to your advantage</li>
+</ul>
+<p><strong>Combat Depth:</strong></p>
+<ul>
+<li><strong>Combo Attacks</strong>: Chain abilities between party members</li>
+<li><strong>Elemental Interactions</strong>: Fire spreads, water conducts electricity, earth blocks paths</li>
+<li><strong>Status Effects</strong>: Poison, burning, fear, and corruption affect long-term strategy</li>
+<li><strong>Equipment Impact</strong>: Different weapons and armor significantly change tactics</li>
+</ul>
+<p><strong>Stakes and Consequences:</strong></p>
+<ul>
+<li><strong>Permanent Injury</strong>: Characters can suffer lasting wounds</li>
+<li><strong>Death and Resurrection</strong>: Fallen allies can be brought back through dark magic—but at what cost?</li>
+<li><strong>Reputation Impact</strong>: How you fight affects how the world sees you</li>
+</ul>
+<h3 id="4--company-management">4. 🏕️ Company Management</h3>
+<p>Your band of survivors is more than just a combat party:</p>
+<p><strong>Companion Dynamics:</strong></p>
+<ul>
+<li><strong>Individual Personalities</strong>: Each character has unique traits, fears, and motivations</li>
+<li><strong>Loyalty System</strong>: Actions and decisions affect how companions view Kaelen</li>
+<li><strong>Personal Quests</strong>: Deep storylines for each major companion</li>
+<li><strong>Conflict Resolution</strong>: Mediate disputes and manage group dynamics</li>
+</ul>
+<p><strong>Camp Management:</strong></p>
+<ul>
+<li><strong>Base Building</strong>: Improve your mobile camp with better equipment and facilities</li>
+<li><strong>Crafting System</strong>: Create and upgrade equipment using gathered resources</li>
+<li><strong>Training</strong>: Develop character abilities and learn new skills</li>
+<li><strong>Rest and Recovery</strong>: Heal wounds, restore magic, and boost morale</li>
+</ul>
+<p><strong>Recruitment:</strong></p>
+<ul>
+<li><strong>Iron Crows Reunion</strong>: Search for scattered members of your former company</li>
+<li><strong>New Allies</strong>: Recruit survivors, deserters, and others seeking purpose</li>
+<li><strong>Loyalty Tests</strong>: Prove worthy of their trust through actions, not words</li>
+</ul>
+<h3 id="5--power-progression--moral-alignment">5. 🔥 Power Progression &amp; Moral Alignment</h3>
+<p>Character development in Ashes of Velsingrad is tied directly to moral choices:</p>
+<p><strong>Alignment Paths:</strong></p>
+<p><strong>⚔️ Vengeance Path:</strong></p>
+<ul>
+<li><strong>Abilities</strong>: Enhanced damage, intimidation, fear-based magic</li>
+<li><strong>Playstyle</strong>: Aggressive tactics, ruthless efficiency</li>
+<li><strong>World Impact</strong>: NPCs fear but respect your power</li>
+<li><strong>Corruption Risk</strong>: High - anger feeds the curse within</li>
+</ul>
+<p><strong>🛡️ Redemption Path:</strong></p>
+<ul>
+<li><strong>Abilities</strong>: Healing magic, protective spells, inspiration</li>
+<li><strong>Playstyle</strong>: Defensive strategies, minimal casualties</li>
+<li><strong>World Impact</strong>: NPCs trust and seek your protection</li>
+<li><strong>Corruption Risk</strong>: Low - but harder to gain raw power</li>
+</ul>
+<p><strong>👑 Domination Path:</strong></p>
+<ul>
+<li><strong>Abilities</strong>: Dark magic, mind control, necromancy</li>
+<li><strong>Playstyle</strong>: Overwhelming force, fear tactics</li>
+<li><strong>World Impact</strong>: NPCs submit but plot against you</li>
+<li><strong>Corruption Risk</strong>: Extreme - power comes at great cost</li>
+</ul>
+<p><strong>The Curse System:</strong></p>
+<ul>
+<li><strong>Power Level</strong>: Stronger abilities unlock as corruption increases</li>
+<li><strong>Side Effects</strong>: Physical and mental changes affect interactions</li>
+<li><strong>Point of No Return</strong>: High corruption can lock you into the Domination path</li>
+<li><strong>Redemption Mechanics</strong>: Difficult but possible to reverse corruption through sacrifice</li>
+</ul>
+<h3 id="6--consequences--rest-cycles">6. 🏚️ Consequences &amp; Rest Cycles</h3>
+<p>The world reacts dynamically to your choices:</p>
+<p><strong>World State Changes:</strong></p>
+<ul>
+<li><strong>Faction Power Shifts</strong>: Your actions strengthen or weaken various groups</li>
+<li><strong>Regional Stability</strong>: Areas can become safer or more dangerous based on your involvement</li>
+<li><strong>NPC Fates</strong>: Characters you've met continue their own stories, affected by your choices</li>
+</ul>
+<p><strong>Rest and Reflection:</strong></p>
+<ul>
+<li><strong>Camp Conversations</strong>: Deep discussions with companions about recent events</li>
+<li><strong>Moral Reflection</strong>: Kaelen contemplates his actions and their implications</li>
+<li><strong>Planning Phase</strong>: Choose which contracts to pursue and which regions to explore next</li>
+</ul>
+<p><strong>Long-term Consequences:</strong></p>
+<ul>
+<li><strong>Ending Variations</strong>: Multiple endings based on accumulated choices and final alignment</li>
+<li><strong>Companion Fates</strong>: Each ally's ultimate destiny depends on your relationship and shared experiences</li>
+<li><strong>World Legacy</strong>: The state of Velsingrad after your journey reflects your moral choices</li>
+</ul>
+<h2 id="-design-philosophy">🎯 Design Philosophy</h2>
+<h3 id="player-agency">Player Agency</h3>
+<p>Every choice matters, from major story decisions to small interactions with NPCs. The game respects player decisions and builds consequences organically.</p>
+<h3 id="meaningful-difficulty">Meaningful Difficulty</h3>
+<p>Challenges come not just from combat difficulty, but from moral complexity. The &quot;right&quot; choice isn't always clear, and powerful options come with significant costs.</p>
+<h3 id="emergent-storytelling">Emergent Storytelling</h3>
+<p>While there's a central narrative, much of the story emerges from the intersection of player choices, companion reactions, and world state changes.</p>
+<h3 id="tactical-depth">Tactical Depth</h3>
+<p>Combat should feel like solving puzzles rather than button mashing. Every encounter should offer multiple viable approaches.</p>
+<h2 id="-example-gameplay-session">🔄 Example Gameplay Session</h2>
+<p>Here's how a typical gameplay session might unfold:</p>
+<ol>
+<li><p><strong>Morning in Camp</strong>: Wake up to find a companion struggling with nightmares—do you comfort them or focus on practical concerns?</p>
+</li>
+<li><p><strong>Travel to Town</strong>: En route, encounter refugees fleeing bandits—help them, ignore them, or demand payment for protection?</p>
+</li>
+<li><p><strong>Challenge Board</strong>: Arrive at town to find three contracts available:</p>
+<ul>
+<li>Hunt down a supposed witch (high pay, moral uncertainty)</li>
+<li>Rescue miners trapped by a cave-in (time pressure, moderate reward)</li>
+<li>Investigate strange lights in the forest (mystery, unknown rewards)</li>
+</ul>
+</li>
+<li><p><strong>Preparation</strong>: Purchase supplies, upgrade equipment, have conversations with townspeople that reveal local politics and concerns.</p>
+</li>
+<li><p><strong>Mission Execution</strong>: Complete your chosen contract, making tactical and moral decisions that affect the outcome.</p>
+</li>
+<li><p><strong>Consequences</strong>: Return to find the town changed by your actions—perhaps the witch you killed was actually healing plague victims, or the miners you saved provide valuable intelligence.</p>
+</li>
+<li><p><strong>Evening Reflection</strong>: Back at camp, companions react to your choices, loyalty shifts, and new conversation options open up.</p>
+</li>
+<li><p><strong>Planning</strong>: Based on new information and changing circumstances, decide where to go next and what kind of leader Kaelen is becoming.</p>
+</li>
+</ol>
+<p>This cycle creates a rich, interconnected experience where every choice ripples outward, creating a unique story for each player while maintaining the core themes of power, responsibility, and redemption.</p>
+<h2 id="-next-steps">🚀 Next Steps</h2>
+<p>Ready to dive deeper? Explore these related systems:</p>
+<ul>
+<li><a href="combat-system.html">Combat System</a> - Detailed tactical mechanics</li>
+<li><a href="magic-system.html">Magic System</a> - How power and corruption intertwine</li>
+<li><a href="story-lore.html">Lore &amp; Story</a> - Learn more about the lore</li>
+</ul>
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/Gammabra/aov-godot/blob/develop/documentation/docs/game-design/core-gameplay.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          © 2025 Gammabra Studios. All Rights Reserved.
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

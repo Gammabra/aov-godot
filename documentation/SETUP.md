@@ -112,9 +112,11 @@ AshesOfVelsingrad/
 
 2. **Enhanced unit test example:**
    ```csharp
+   using AshesofVelsingrad;
    using GdUnit4;
    using Godot;
    using static GdUnit4.Assertions;
+   using System;
 
    namespace Tests.Unit
    {
@@ -124,89 +126,103 @@ AshesOfVelsingrad/
          [TestCase]
          public void TestBasicAssertion()
          {
-               AssertThat(2 + 2).IsEqual(4);
+            AssertThat(2 + 2).IsEqual(4);
          }
 
          [TestCase]
          [RequireGodotRuntime]
          public void TestGodotNode()
          {
-               var node = AutoFree(new Node());
+            var node = AutoFree(new Node());
 
-               AssertThat(node).IsNotNull();
-               AssertThat(node.Name).IsEqual("");
+            AssertThat(node).IsNotNull();
+            AssertThat(node != null ? node.Name : throw new NullReferenceException("node is null")).IsEqual("");
 
-               node.Name = "TestNode";
-               AssertThat(node.Name).IsEqual("TestNode");
+            node.Name = "TestNode";
+            AssertThat(node.Name).IsEqual("TestNode");
          }
 
          [TestCase]
          [RequireGodotRuntime]
          public void TestGodotNodeWithManualCleanup()
          {
-               Node node = null;
-               try
-               {
-                  node = new Node();
-                  AssertThat(node).IsNotNull();
+            Node? node = null;
+            try
+            {
+               node = new Node();
+               AssertThat(node).IsNotNull();
 
-                  AssertThat(node.GetType().Name).IsEqual("Node");
+               AssertThat(node.GetType().Name).IsEqual("Node");
 
-                  node.Name = "ManualTestNode";
-                  AssertThat(node.Name).IsEqual("ManualTestNode");
-               }
-               finally
-               {
-                  node?.QueueFree();
-               }
+               node.Name = "ManualTestNode";
+               AssertThat(node.Name).IsEqual("ManualTestNode");
+            }
+            finally
+            {
+               node?.QueueFree();
+            }
          }
 
          [TestCase]
          [RequireGodotRuntime]
          public void TestGodotNodeWithSceneTree()
          {
-               var scene = AutoFree(new Node());
-               var child = AutoFree(new Node());
+            var scene = AutoFree(new Node());
+            var child = AutoFree(new Node());
 
-               scene.AddChild(child);
+            if (scene == null)
+               throw new NullReferenceException("scene is null");
+            if (child == null)
+               throw new NullReferenceException("child is null");
 
-               AssertThat(scene.GetChildCount()).IsEqual(1);
-               AssertThat(scene.GetChild(0)).IsEqual(child);
+            scene.AddChild(child);
+            AssertThat(scene.GetChildCount()).IsEqual(1);
+            AssertThat(scene.GetChild(0)).IsEqual(child);
          }
 
          [TestCase]
          [RequireGodotRuntime]
          public void TestNodeProperties()
          {
-               var node = AutoFree(new Node());
+            var node = AutoFree(new Node());
 
-               AssertThat(node.GetInstanceId()).IsGreater(0);
-               AssertThat(node.IsInsideTree()).IsFalse();
+            if (node == null)
+               throw new NullReferenceException("node is null");
 
-               node.Name = "TestNode";
-               AssertThat(node.Name).IsEqual("TestNode");
+            AssertThat(node.GetInstanceId()).IsGreater(0);
+            AssertThat(node.IsInsideTree()).IsFalse();
+
+            node.Name = "TestNode";
+            AssertThat(node.Name).IsEqual("TestNode");
          }
 
          [TestCase]
          [RequireGodotRuntime]
          public void TestNodeHierarchy()
          {
-               var parent = AutoFree(new Node());
-               var child1 = AutoFree(new Node());
-               var child2 = AutoFree(new Node());
+            var parent = AutoFree(new Node());
+            var child1 = AutoFree(new Node());
+            var child2 = AutoFree(new Node());
 
-               parent.Name = "Parent";
-               child1.Name = "Child1";
-               child2.Name = "Child2";
+            if (parent == null)
+               throw new NullReferenceException("parent is null");
+            if (child1 == null)
+               throw new NullReferenceException("child1 is null");
+            if (child2 == null)
+               throw new NullReferenceException("child2 is null");
 
-               parent.AddChild(child1);
-               parent.AddChild(child2);
+            parent.Name = "Parent";
+            child1.Name = "Child1";
+            child2.Name = "Child2";
 
-               AssertThat(parent.GetChildCount()).IsEqual(2);
-               AssertThat(child1.GetParent()).IsEqual(parent);
-               AssertThat(child2.GetParent()).IsEqual(parent);
-               AssertThat(parent.GetChild(0).Name).IsEqual("Child1");
-               AssertThat(parent.GetChild(1).Name).IsEqual("Child2");
+            parent.AddChild(child1);
+            parent.AddChild(child2);
+
+            AssertThat(parent.GetChildCount()).IsEqual(2);
+            AssertThat(child1.GetParent()).IsEqual(parent);
+            AssertThat(child2.GetParent()).IsEqual(parent);
+            AssertThat(parent.GetChild(0).Name).IsEqual("Child1");
+            AssertThat(parent.GetChild(1).Name).IsEqual("Child2");
          }
       }
    }

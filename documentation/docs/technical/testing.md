@@ -1,56 +1,11 @@
-# Godot 4.4.1 Setup Guide with C# and GdUnit4
+# Godot 4.4.1 Testing Guide with C# and GdUnit4
 
 ## Table of Contents
-1. [External Editor Configuration](#external-editor-configuration)
-2. [Unit Testing Configuration with GdUnit4](#unit-testing-configuration-with-gdunit4)
-3. [Project Structure](#project-structure)
-4. [Advanced Configuration](#advanced-configuration)
-5. [Best Practices](#best-practices)
-6. [Troubleshooting](#troubleshooting)
-
-## External Editor Configuration
-
-### Visual Studio Code (Recommended)
-
-1. **Install required extensions:**
-   - C# Dev Kit (Microsoft)
-   - C# (Microsoft)
-   - godot-tools (optional, for .gd file syntax highlighting)
-
-2. **Configure in Godot:**
-   - In `Editor → Editor settings → Dotnet → Editor `, set:
-     - **External Editor**: `Visual Studio Code and VSCodium`
-     - **Exec Path**: Path to your VS Code executable
-       - Windows: `C:\Users\[username]\AppData\Local\Programs\Microsoft VS Code\Code.exe`
-       - Linux: `/usr/bin/code`
-       - macOS: `/Applications/Visual Studio Code.app/Contents/Resources/app/bin/code`
-
-3. **Configure VS Code workspace:**
-   Create a `.vscode/settings.json` file at the project root:
-   ```json
-   {
-     "dotnet.defaultSolution": "Ashes of Velsingrad.sln",
-     "files.exclude": {
-       "**/.godot/": true,
-       "**/.import/": true
-     }
-   }
-   ```
-
-### Visual Studio (Alternative)
-
-1. **Configure in Godot:**
-   - **External Editor**: `Visual Studio`
-   - **Exec Path**: Path to devenv.exe
-     - Example: `C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\devenv.exe`
-   - **Exec Flags**: `{project} --goto {file}:{line}:{col}`
-
-### JetBrains Rider (Alternative)
-
-1. **Configure in Godot:**
-   - **External Editor**: `JetBrains Rider and Fleet`
-   - **Exec Path**: Path to rider64.exe
-   - **Exec Flags**: `{project} --line {line} {file}`
+1. [Unit Testing Configuration with GdUnit4](#unit-testing-configuration-with-gdunit4)
+2. [Project Structure](#project-structure)
+3. [Advanced Configuration](#advanced-configuration)
+3. [Best Practices](#best-practices)
+4. [Troubleshooting](#troubleshooting)
 
 ## Unit Testing Configuration with GdUnit4
 
@@ -286,7 +241,7 @@ YourProject/
 
 1. **Mirror test structure**: Test files should mirror your main script structure
 2. **Separate concerns**: Keep unit tests and integration tests in separate folders
-3. **Follow naming conventions**: Use clear, descriptive names following the project's CONTRIBUTING.md guidelines
+3. **Follow naming conventions**: Use clear, descriptive names following the project's contributing.md guidelines
 
 ## Advanced Configuration
 
@@ -478,6 +433,6 @@ dotnet add package gdUnit4.analyzers --version 1.0.0
 - [GdUnit4 Documentation](https://mikeschulze.github.io/gdUnit4/)
 - [Godot C# Documentation](https://docs.godotengine.org/en/stable/tutorials/scripting/c_sharp/)
 - [GdUnit4Net Documentation](https://github.com/MikeSchulze/gdUnit4Net)
-- [Project CONTRIBUTING.md](./CONTRIBUTING.md) for commit conventions and project guidelines
+- [Project contributing.md](../contributing.md) for commit conventions and project guidelines
 
 This documentation should help you effectively set up your development environment and tests. Don't hesitate to ask if you have specific questions about any of these aspects!

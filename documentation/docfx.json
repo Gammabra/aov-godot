@@ -45,7 +45,8 @@
     "resource": [
       {
         "files": [
-          "images/**"
+          "images/**",
+          "styles/**"
         ]
       }
     ],
@@ -70,6 +71,7 @@
       },
       "_gitUrlPattern": "github",
       "_appLogoPath": "images/aov-logo-transparent.png",
+      "_additionalStylesheets": [ "styles/custom.css" ],
       "_enableNewTab": true
     }
   }

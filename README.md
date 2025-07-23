@@ -64,6 +64,7 @@ On every push to `main` or `feat/docs-automation`, the documentation is automati
 ---
 
 ## 🤝 **Contributing**
+
 We welcome contributions! Please read our [Contributing Guide](./documentation/docs/contributing.md) and our [Set up Guide](./documentation/docs/getting-started.md) to get started.
 
 **Quick Start:**
@@ -75,7 +76,8 @@ We welcome contributions! Please read our [Contributing Guide](./documentation/d
 ---
 
 ## 🌍 **Learn More**
-👉 For detailed information about the gameplay, lore, and systems check our [game design documentation](https://gammabra.github.io/aov-godot/index.html)
+
+👉 For detailed information about the gameplay, lore, systems and more check our [Dovfx documentation](https://gammabra.github.io/aov-godot/index.html)
 ---
 
 © 2025 Gammabra Studios. All Rights Reserved.

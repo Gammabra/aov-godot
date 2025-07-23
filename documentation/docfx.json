@@ -55,7 +55,8 @@
     "fileMetadataFiles": [],
     "template": [
       "default",
-      "modern"
+      "modern",
+      "styles/custom.css"
     ],
     "postProcessors": [],
     "keepFileLink": false,
@@ -71,7 +72,6 @@
       },
       "_gitUrlPattern": "github",
       "_appLogoPath": "images/aov-logo-transparent.png",
-      "_additionalStylesheets": [ "styles/custom.css" ],
       "_enableNewTab": true
     }
   }

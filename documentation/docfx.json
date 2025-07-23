@@ -54,7 +54,8 @@
     "fileMetadataFiles": [],
     "template": [
       "default",
-      "modern"
+      "modern",
+      "templates/custom.css"
     ],
     "styles": [
       "styles/custom.css"

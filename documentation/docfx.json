@@ -55,7 +55,7 @@
     "template": [
       "default",
       "modern",
-      "styles/custom.css"
+      "styles"
     ],
     "postProcessors": [],
     "keepFileLink": false,

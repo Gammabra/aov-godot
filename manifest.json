@@ -4,6 +4,309 @@
   "files": [
     {
       "type": "Resource",
+      "output": {
+        "resource": {
+          "relative_path": "index.json"
+        }
+      }
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AshesofVelsingrad.Main.MethodName.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesofVelsingrad.Main.MethodName.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesofVelsingrad.Main.MethodName",
+      "Summary": "<p sourcefile=\"api/AshesofVelsingrad.Main.MethodName.yml\" sourcestartlinenumber=\"1\">Cached StringNames for the methods contained in this class, for fast lookup.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AshesofVelsingrad.Main.PropertyName.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesofVelsingrad.Main.PropertyName.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesofVelsingrad.Main.PropertyName",
+      "Summary": "<p sourcefile=\"api/AshesofVelsingrad.Main.PropertyName.yml\" sourcestartlinenumber=\"1\">Cached StringNames for the properties and fields contained in this class, for fast lookup.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AshesofVelsingrad.Main.SignalName.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesofVelsingrad.Main.SignalName.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesofVelsingrad.Main.SignalName",
+      "Summary": "<p sourcefile=\"api/AshesofVelsingrad.Main.SignalName.yml\" sourcestartlinenumber=\"1\">Cached StringNames for the signals contained in this class, for fast lookup.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AshesofVelsingrad.Main.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesofVelsingrad.Main.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesofVelsingrad.Main",
+      "Summary": "<p sourcefile=\"api/AshesofVelsingrad.Main.yml\" sourcestartlinenumber=\"1\">Classe principale du projet Godot. Gère la scène principale et les interactions globales.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AshesofVelsingrad.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesofVelsingrad.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesofVelsingrad",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Tests.Unit.UnitTestExample.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Tests.Unit.UnitTestExample.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Tests.Unit.UnitTestExample",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Tests.Unit.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Tests.Unit.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Tests.Unit",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/gdUnit4.addons.gdUnit4.src.dotnet.GdUnit4CSharpApi.ExecutionCompletedEventHandler.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/gdUnit4.addons.gdUnit4.src.dotnet.GdUnit4CSharpApi.ExecutionCompletedEventHandler.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "gdUnit4.addons.gdUnit4.src.dotnet.GdUnit4CSharpApi.ExecutionCompletedEventHandler",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/gdUnit4.addons.gdUnit4.src.dotnet.GdUnit4CSharpApi.MethodName.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/gdUnit4.addons.gdUnit4.src.dotnet.GdUnit4CSharpApi.MethodName.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "gdUnit4.addons.gdUnit4.src.dotnet.GdUnit4CSharpApi.MethodName",
+      "Summary": "<p sourcefile=\"api/gdUnit4.addons.gdUnit4.src.dotnet.GdUnit4CSharpApi.MethodName.yml\" sourcestartlinenumber=\"1\">Cached StringNames for the methods contained in this class, for fast lookup.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/gdUnit4.addons.gdUnit4.src.dotnet.GdUnit4CSharpApi.PropertyName.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/gdUnit4.addons.gdUnit4.src.dotnet.GdUnit4CSharpApi.PropertyName.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "gdUnit4.addons.gdUnit4.src.dotnet.GdUnit4CSharpApi.PropertyName",
+      "Summary": "<p sourcefile=\"api/gdUnit4.addons.gdUnit4.src.dotnet.GdUnit4CSharpApi.PropertyName.yml\" sourcestartlinenumber=\"1\">Cached StringNames for the properties and fields contained in this class, for fast lookup.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/gdUnit4.addons.gdUnit4.src.dotnet.GdUnit4CSharpApi.SignalName.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/gdUnit4.addons.gdUnit4.src.dotnet.GdUnit4CSharpApi.SignalName.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "gdUnit4.addons.gdUnit4.src.dotnet.GdUnit4CSharpApi.SignalName",
+      "Summary": "<p sourcefile=\"api/gdUnit4.addons.gdUnit4.src.dotnet.GdUnit4CSharpApi.SignalName.yml\" sourcestartlinenumber=\"1\">Cached StringNames for the signals contained in this class, for fast lookup.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/gdUnit4.addons.gdUnit4.src.dotnet.GdUnit4CSharpApi.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/gdUnit4.addons.gdUnit4.src.dotnet.GdUnit4CSharpApi.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "gdUnit4.addons.gdUnit4.src.dotnet.GdUnit4CSharpApi",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/gdUnit4.addons.gdUnit4.src.dotnet.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/gdUnit4.addons.gdUnit4.src.dotnet.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "gdUnit4.addons.gdUnit4.src.dotnet",
+      "Summary": null
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "api/index.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/index.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "api/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/toc.html"
+        },
+        ".json": {
+          "relative_path": "api/toc.json"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docs/contributing.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/contributing.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docs/game-design/combat-system.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/game-design/combat-system.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docs/game-design/core-gameplay.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/game-design/core-gameplay.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docs/game-design/magic-system.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/game-design/magic-system.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docs/game-design/story-lore.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/game-design/story-lore.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docs/getting-started.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/getting-started.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docs/technical/architecture.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/technical/architecture.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docs/technical/coding-standards.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/technical/coding-standards.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docs/technical/testing.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/technical/testing.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
       "source_relative_path": "images/aov-logo-transparent.png",
       "output": {
         "resource": {
@@ -18,6 +321,29 @@
       "output": {
         "resource": {
           "relative_path": "images/aov-logo-transparent.png.import"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "index.md",
+      "output": {
+        ".html": {
+          "relative_path": "index.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "toc.html"
+        },
+        ".json": {
+          "relative_path": "toc.json"
         }
       },
       "version": ""

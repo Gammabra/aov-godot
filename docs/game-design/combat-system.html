@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>⚔️ Combat System | Ashes of Velsingrad Documentation </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="⚔️ Combat System | Ashes of Velsingrad Documentation ">
+      
+      
+      <link rel="icon" href="../../favicon.ico">
+      <link rel="stylesheet" href="../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../public/main.css">
+      <meta name="docfx:navrel" content="../../toc.html">
+      <meta name="docfx:tocrel" content="../../toc.html">
+      
+      <meta name="docfx:rel" content="../../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/Gammabra/aov-godot/blob/develop/documentation/docs/game-design/combat-system.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../../index.html">
+            <img id="logo" class="svg" src="../../images/aov-logo-transparent.png" alt="Ashes of Velsingrad">
+            Ashes of Velsingrad
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+
+      <div class="content">
+        <div class="actionbar">
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="-combat-system">⚔️ Combat System</h1>
+
+<p>The combat system in <strong>Ashes of Velsingrad</strong> is tactical and strategic, emphasizing positioning, terrain usage, and careful resource management.</p>
+<h2 id="core-mechanics">Core Mechanics</h2>
+<h3 id="turn-based-tactical-combat">Turn-Based Tactical Combat</h3>
+<p>Combat occurs on a grid-based battlefield where positioning is crucial:</p>
+<ul>
+<li><strong>Initiative System</strong>: Determines turn order based on speed and tactical awareness</li>
+<li><strong>Action Points</strong>: Each unit has limited actions per turn (move, attack, cast spell, use item)</li>
+<li><strong>Opportunity Attacks</strong>: Moving past enemies triggers counterattacks</li>
+<li><strong>Flanking</strong>: Attacking from sides or behind provides damage bonuses</li>
+</ul>
+<h3 id="terrain-effects">Terrain Effects</h3>
+<p>The battlefield is more than just decoration:</p>
+<table>
+<thead>
+<tr>
+<th>Terrain Type</th>
+<th>Effect</th>
+<th>Strategic Use</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>High Ground</strong></td>
+<td>+15% accuracy, +10% damage</td>
+<td>Archer positioning</td>
+</tr>
+<tr>
+<td><strong>Cover</strong></td>
+<td>+25% dodge chance</td>
+<td>Protection from ranged</td>
+</tr>
+<tr>
+<td><strong>Mud/Water</strong></td>
+<td>-50% movement speed</td>
+<td>Area denial</td>
+</tr>
+<tr>
+<td><strong>Fire</strong></td>
+<td>5 damage per turn</td>
+<td>Damage over time zones</td>
+</tr>
+<tr>
+<td><strong>Ice</strong></td>
+<td>Slip chance on movement</td>
+<td>Movement control</td>
+</tr>
+</tbody>
+</table>
+<h3 id="weather-system">Weather System</h3>
+<p>Environmental conditions affect combat:</p>
+<ul>
+<li><strong>Rain</strong>: +20% lightning damage, -10% fire damage</li>
+<li><strong>Fog</strong>: -30% ranged accuracy, +stealth effectiveness</li>
+<li><strong>Snow</strong>: -1 movement per turn, fire spells melt snow</li>
+<li><strong>Sandstorm</strong>: -50% visibility, earth spells more effective</li>
+</ul>
+<h2 id="unit-types-and-roles">Unit Types and Roles</h2>
+<h3 id="the-iron-crows">The Iron Crows</h3>
+<p>Each member of your mercenary company has distinct roles:</p>
+<h4 id="kaelen-voss-commander"><strong>Kaelen Voss</strong> (Commander)</h4>
+<ul>
+<li><strong>Role</strong>: Versatile leader with dark magic</li>
+<li><strong>Abilities</strong>: Command skills, curse magic, weapon mastery</li>
+<li><strong>Special</strong>: Corruption system affects available abilities</li>
+</ul>
+<h4 id="fighters"><strong>Fighters</strong></h4>
+<ul>
+<li><strong>Role</strong>: Front-line combat specialists</li>
+<li><strong>Abilities</strong>: High HP, armor, weapon skills</li>
+<li><strong>Specializations</strong>: Guardian (tank), Berserker (damage), Duelist (mobility)</li>
+</ul>
+<h4 id="rangers"><strong>Rangers</strong></h4>
+<ul>
+<li><strong>Role</strong>: Ranged combat and reconnaissance</li>
+<li><strong>Abilities</strong>: Bow mastery, tracking, survival skills</li>
+<li><strong>Specializations</strong>: Marksman (damage), Scout (mobility), Hunter (tracking)</li>
+</ul>
+<h4 id="mages"><strong>Mages</strong></h4>
+<ul>
+<li><strong>Role</strong>: Elemental magic and battlefield control</li>
+<li><strong>Abilities</strong>: Spell casting, elemental mastery, arcane knowledge</li>
+<li><strong>Specializations</strong>: Elementalist (damage), Controller (battlefield), Healer (support)</li>
+</ul>
+<h4 id="rogues"><strong>Rogues</strong></h4>
+<ul>
+<li><strong>Role</strong>: Stealth, sabotage, and precision strikes</li>
+<li><strong>Abilities</strong>: Stealth, lockpicking, backstab, poison</li>
+<li><strong>Specializations</strong>: Assassin (damage), Infiltrator (stealth), Saboteur (utility)</li>
+</ul>
+<h2 id="combat-mechanics">Combat Mechanics</h2>
+<h3 id="action-economy">Action Economy</h3>
+<p>Each unit's turn consists of:</p>
+<ol>
+<li><strong>Movement Phase</strong>: Move up to movement range</li>
+<li><strong>Action Phase</strong>: Choose one primary action:
+<ul>
+<li><strong>Attack</strong>: Weapon or spell attack</li>
+<li><strong>Full Defense</strong>: +50% dodge until next turn</li>
+<li><strong>Charge</strong>: Move extra distance with attack bonus</li>
+<li><strong>Prepare</strong>: Ready an action for enemy movement</li>
+</ul>
+</li>
+<li><strong>Free Actions</strong>: Unlimited (speak, drop item, activate passive abilities)</li>
+</ol>
+<h3 id="damage-and-health">Damage and Health</h3>
+<h4 id="health-system">Health System</h4>
+<ul>
+<li><strong>Hit Points (HP)</strong>: Current health</li>
+<li><strong>Stamina</strong>: Used for special abilities</li>
+<li><strong>Morale</strong>: Affects accuracy and damage</li>
+</ul>
+<h4 id="damage-types">Damage Types</h4>
+<ul>
+<li><strong>Physical</strong>: Reduced by armor</li>
+<li><strong>Elemental</strong>: Affected by resistances</li>
+<li><strong>Curse</strong>: Ignores most defenses</li>
+<li><strong>True</strong>: Cannot be reduced</li>
+</ul>
+<h4 id="status-effects">Status Effects</h4>
+<ul>
+<li><strong>Bleeding</strong>: Damage over time</li>
+<li><strong>Burning</strong>: Fire damage each turn</li>
+<li><strong>Frozen</strong>: Cannot act for one turn</li>
+<li><strong>Cursed</strong>: Various negative effects</li>
+<li><strong>Blessed</strong>: Various positive effects</li>
+</ul>
+<h3 id="magic-in-combat">Magic in Combat</h3>
+<p>Magic is powerful but comes with risks:</p>
+<h4 id="spell-schools">Spell Schools</h4>
+<ol>
+<li><strong>Fire</strong>: High damage, area effects, burning</li>
+<li><strong>Water</strong>: Healing, freezing, battlefield control</li>
+<li><strong>Earth</strong>: Defense, terrain manipulation, crushing</li>
+<li><strong>Air</strong>: Lightning, speed, battlefield mobility</li>
+<li><strong>Light</strong>: Healing, buffs, curse removal</li>
+<li><strong>Darkness</strong>: Debuffs, lifesteal, fear effects</li>
+</ol>
+<h4 id="corruption-system">Corruption System</h4>
+<p>Using dark magic increases Kaelen's corruption:</p>
+<ul>
+<li><strong>0-25%</strong>: No penalties</li>
+<li><strong>26-50%</strong>: -10% light magic effectiveness</li>
+<li><strong>51-75%</strong>: Random dark magic surges</li>
+<li><strong>76-100%</strong>: Risk of losing control</li>
+</ul>
+<h2 id="advanced-tactics">Advanced Tactics</h2>
+<h3 id="formation-combat">Formation Combat</h3>
+<p>Positioning your units effectively:</p>
+<ul>
+<li><strong>Phalanx</strong>: Shields front, spears behind</li>
+<li><strong>Archer Screen</strong>: Ranged behind melee protection</li>
+<li><strong>Pincer</strong>: Flank enemies from multiple sides</li>
+<li><strong>Retreat Formation</strong>: Organized withdrawal</li>
+</ul>
+<h3 id="environmental-interaction">Environmental Interaction</h3>
+<ul>
+<li><strong>Destructible Terrain</strong>: Break walls, collapse ceilings</li>
+<li><strong>Interactive Objects</strong>: Push rocks, activate switches</li>
+<li><strong>Elevation Changes</strong>: Use stairs, ramps, cliffs</li>
+<li><strong>Spell Combinations</strong>: Freeze water, ignite oil, electrify metal</li>
+</ul>
+<h3 id="morale-and-leadership">Morale and Leadership</h3>
+<h4 id="morale-effects">Morale Effects</h4>
+<ul>
+<li><strong>High Morale</strong>: +10% accuracy, +5% damage</li>
+<li><strong>Broken Morale</strong>: -20% accuracy, flee chance</li>
+<li><strong>Inspiring Presence</strong>: Kaelen's leadership affects nearby allies</li>
+</ul>
+<h4 id="leadership-abilities">Leadership Abilities</h4>
+<ul>
+<li><strong>Rally</strong>: Restore morale to nearby units</li>
+<li><strong>Tactical Strike</strong>: Coordinate multi-unit attacks</li>
+<li><strong>Retreat</strong>: Organized withdrawal with minimal losses</li>
+<li><strong>Last Stand</strong>: Boost damage when outnumbered</li>
+</ul>
+<h2 id="enemy-ai">Enemy AI</h2>
+<h3 id="ai-behavior-types">AI Behavior Types</h3>
+<h4 id="aggressive-rush-forward-prioritize-damage"><strong>Aggressive</strong>: Rush forward, prioritize damage</h4>
+<h4 id="defensive-hold-position-protect-objectives"><strong>Defensive</strong>: Hold position, protect objectives</h4>
+<h4 id="tactical-use-terrain-focus-fire-retreat-when-wounded"><strong>Tactical</strong>: Use terrain, focus fire, retreat when wounded</h4>
+<h4 id="berserker-ignore-self-preservation-maximum-aggression"><strong>Berserker</strong>: Ignore self-preservation, maximum aggression</h4>
+<h4 id="support-stay-back-buff-allies-heal-wounded"><strong>Support</strong>: Stay back, buff allies, heal wounded</h4>
+<h3 id="faction-combat-styles">Faction Combat Styles</h3>
+<h4 id="imperial-soldiers"><strong>Imperial Soldiers</strong></h4>
+<ul>
+<li><strong>Tactics</strong>: Formation fighting, discipline</li>
+<li><strong>Strengths</strong>: Armor, coordination, ranged support</li>
+<li><strong>Weaknesses</strong>: Inflexible, vulnerable to magic</li>
+</ul>
+<h4 id="inquisition-forces"><strong>Inquisition Forces</strong></h4>
+<ul>
+<li><strong>Tactics</strong>: Anti-magic focus, holy weapons</li>
+<li><strong>Strengths</strong>: Curse resistance, healing, undead immunity</li>
+<li><strong>Weaknesses</strong>: Vulnerable to overwhelming force</li>
+</ul>
+<h4 id="corrupted-enemies"><strong>Corrupted Enemies</strong></h4>
+<ul>
+<li><strong>Tactics</strong>: Unpredictable, fear effects, regeneration</li>
+<li><strong>Strengths</strong>: High damage, status effects, numbers</li>
+<li><strong>Weaknesses</strong>: Light magic, low organization</li>
+</ul>
+<h4 id="wild-creatures"><strong>Wild Creatures</strong></h4>
+<ul>
+<li><strong>Tactics</strong>: Pack hunting, environmental advantages</li>
+<li><strong>Strengths</strong>: Speed, natural weapons, terrain knowledge</li>
+<li><strong>Weaknesses</strong>: Low intelligence, predictable patterns</li>
+</ul>
+<h2 id="tips-for-success">Tips for Success</h2>
+<h3 id="general-strategy">General Strategy</h3>
+<ol>
+<li><strong>Control the high ground</strong> whenever possible</li>
+<li><strong>Use terrain</strong> to your advantage</li>
+<li><strong>Focus fire</strong> on priority targets</li>
+<li><strong>Protect your wounded</strong> - retreat is sometimes necessary</li>
+<li><strong>Manage resources</strong> - don't waste mana or stamina</li>
+</ol>
+<h3 id="combat-preparation">Combat Preparation</h3>
+<ul>
+<li><strong>Scout ahead</strong> when possible</li>
+<li><strong>Choose appropriate equipment</strong> for expected enemies</li>
+<li><strong>Plan spell usage</strong> to minimize corruption</li>
+<li><strong>Position units</strong> according to their strengths</li>
+</ul>
+<h3 id="emergency-tactics">Emergency Tactics</h3>
+<ul>
+<li><strong>Fighting retreat</strong> when overwhelmed</li>
+<li><strong>Last stand formations</strong> when surrounded</li>
+<li><strong>Sacrifice plays</strong> to save the majority</li>
+<li><strong>Environmental escapes</strong> using spells or terrain</li>
+</ul>
+<hr>
+<p><em>Master these systems to lead the Iron Crows to victory against impossible odds!</em></p>
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/Gammabra/aov-godot/blob/develop/documentation/docs/game-design/combat-system.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          © 2025 Gammabra Studios. All Rights Reserved.
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

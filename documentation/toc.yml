@@ -20,3 +20,5 @@
     href: docs/technical/testing.md
 - name: Contributing
   href: docs/contributing.md
+- name: API Documentation
+  href: api/

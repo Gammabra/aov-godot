@@ -13,7 +13,7 @@ config_version=5
 config/name="Ashes of Velsingrad"
 run/main_scene="uid://cuadq8eeoqg7j"
 config/features=PackedStringArray("4.4", "C#", "Forward Plus")
-config/icon="res://icon.svg"
+config/icon="uid://d2o6v40ln62ci"
 
 [dotnet]
 
@@ -25,4 +25,4 @@ enabled=PackedStringArray("res://addons/gdUnit4/plugin.cfg")
 
 [gdunit4]
 
-settings/test/test_lookup_folder="Tests"
+settings/test/test_lookup_folder="tests"

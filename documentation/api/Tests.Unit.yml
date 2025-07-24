@@ -1,0 +1,23 @@
+### YamlMime:ManagedReference
+items:
+- uid: Tests.Unit
+  commentId: N:Tests.Unit
+  id: Tests.Unit
+  children:
+  - Tests.Unit.UnitTestExample
+  langs:
+  - csharp
+  - vb
+  name: Tests.Unit
+  nameWithType: Tests.Unit
+  fullName: Tests.Unit
+  type: Namespace
+  assemblies:
+  - Ashes of Velsingrad
+references:
+- uid: Tests.Unit.UnitTestExample
+  commentId: T:Tests.Unit.UnitTestExample
+  href: Tests.Unit.UnitTestExample.html
+  name: UnitTestExample
+  nameWithType: UnitTestExample
+  fullName: Tests.Unit.UnitTestExample

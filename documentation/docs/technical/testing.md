@@ -1,4 +1,4 @@
-# Godot 4.4.1 Setup Guide with C# and GdUnit4
+# Godot 4.4.1 Testing Guide with C# and GdUnit4
 
 ## Table of Contents
 1. [External Editor Configuration](#external-editor-configuration)
@@ -66,7 +66,7 @@
     - **Value:** Full path to the Godot Mono executable
     - **Example:** `C:\Program Files\Godot\Godot_v4.4.1-stable_mono_win64.exe`
 
-    - Or locally for tests, by adding it to the `Tests/.runsettings` file, inside `RunConfiguration`:
+    - Or locally for tests, by adding it to the `tests/.runsettings` file, inside `RunConfiguration`:
 
     ```xml
     <EnvironmentVariables>
@@ -92,10 +92,10 @@ Your project structure should look like this:
 AshesOfVelsingrad/
 ├── addons/
 │   └── gdUnit4/
-├── Tests/
-│   ├── Unit/
+├── tests/
+│   ├── unit/
 │   │   └── TestTemp.cs
-│   ├── Integration/
+│   ├── integration/
 │   └── .runsettings
 └── project.godot
 ```
@@ -112,9 +112,11 @@ AshesOfVelsingrad/
 
 2. **Enhanced unit test example:**
    ```csharp
+   using AshesofVelsingrad;
    using GdUnit4;
    using Godot;
    using static GdUnit4.Assertions;
+   using System;
 
    namespace Tests.Unit
    {
@@ -124,90 +126,132 @@ AshesOfVelsingrad/
          [TestCase]
          public void TestBasicAssertion()
          {
-               AssertThat(2 + 2).IsEqual(4);
+            AssertThat(2 + 2).IsEqual(4);
          }
 
          [TestCase]
          [RequireGodotRuntime]
          public void TestGodotNode()
          {
-               var node = AutoFree(new Node());
+            var node = AutoFree(new Node());
 
-               AssertThat(node).IsNotNull();
-               AssertThat(node.Name).IsEqual("");
+            AssertThat(node).IsNotNull();
+            AssertThat(node != null ? node.Name : throw new NullReferenceException("node is null")).IsEqual("");
 
-               node.Name = "TestNode";
-               AssertThat(node.Name).IsEqual("TestNode");
+            node.Name = "TestNode";
+            AssertThat(node.Name).IsEqual("TestNode");
          }
 
          [TestCase]
          [RequireGodotRuntime]
          public void TestGodotNodeWithManualCleanup()
          {
-               Node node = null;
-               try
-               {
-                  node = new Node();
-                  AssertThat(node).IsNotNull();
+            Node? node = null;
+            try
+            {
+               node = new Node();
+               AssertThat(node).IsNotNull();
 
-                  AssertThat(node.GetType().Name).IsEqual("Node");
+               AssertThat(node.GetType().Name).IsEqual("Node");
 
-                  node.Name = "ManualTestNode";
-                  AssertThat(node.Name).IsEqual("ManualTestNode");
-               }
-               finally
-               {
-                  node?.QueueFree();
-               }
+               node.Name = "ManualTestNode";
+               AssertThat(node.Name).IsEqual("ManualTestNode");
+            }
+            finally
+            {
+               node?.QueueFree();
+            }
          }
 
          [TestCase]
          [RequireGodotRuntime]
          public void TestGodotNodeWithSceneTree()
          {
-               var scene = AutoFree(new Node());
-               var child = AutoFree(new Node());
+            var scene = AutoFree(new Node());
+            var child = AutoFree(new Node());
 
-               scene.AddChild(child);
+            if (scene == null)
+               throw new NullReferenceException("scene is null");
+            if (child == null)
+               throw new NullReferenceException("child is null");
 
-               AssertThat(scene.GetChildCount()).IsEqual(1);
-               AssertThat(scene.GetChild(0)).IsEqual(child);
+            scene.AddChild(child);
+            AssertThat(scene.GetChildCount()).IsEqual(1);
+            AssertThat(scene.GetChild(0)).IsEqual(child);
          }
 
          [TestCase]
          [RequireGodotRuntime]
          public void TestNodeProperties()
          {
-               var node = AutoFree(new Node());
+            var node = AutoFree(new Node());
 
-               AssertThat(node.GetInstanceId()).IsGreater(0);
-               AssertThat(node.IsInsideTree()).IsFalse();
+            if (node == null)
+               throw new NullReferenceException("node is null");
 
-               node.Name = "TestNode";
-               AssertThat(node.Name).IsEqual("TestNode");
+            AssertThat(node.GetInstanceId()).IsGreater(0);
+            AssertThat(node.IsInsideTree()).IsFalse();
+
+            node.Name = "TestNode";
+            AssertThat(node.Name).IsEqual("TestNode");
          }
 
          [TestCase]
          [RequireGodotRuntime]
          public void TestNodeHierarchy()
          {
-               var parent = AutoFree(new Node());
-               var child1 = AutoFree(new Node());
-               var child2 = AutoFree(new Node());
+            var parent = AutoFree(new Node());
+            var child1 = AutoFree(new Node());
+            var child2 = AutoFree(new Node());
 
-               parent.Name = "Parent";
-               child1.Name = "Child1";
-               child2.Name = "Child2";
+            if (parent == null)
+               throw new NullReferenceException("parent is null");
+            if (child1 == null)
+               throw new NullReferenceException("child1 is null");
+            if (child2 == null)
+               throw new NullReferenceException("child2 is null");
 
-               parent.AddChild(child1);
-               parent.AddChild(child2);
+            parent.Name = "Parent";
+            child1.Name = "Child1";
+            child2.Name = "Child2";
 
-               AssertThat(parent.GetChildCount()).IsEqual(2);
-               AssertThat(child1.GetParent()).IsEqual(parent);
-               AssertThat(child2.GetParent()).IsEqual(parent);
-               AssertThat(parent.GetChild(0).Name).IsEqual("Child1");
-               AssertThat(parent.GetChild(1).Name).IsEqual("Child2");
+            parent.AddChild(child1);
+            parent.AddChild(child2);
+
+            AssertThat(parent.GetChildCount()).IsEqual(2);
+            AssertThat(child1.GetParent()).IsEqual(parent);
+            AssertThat(child2.GetParent()).IsEqual(parent);
+            AssertThat(parent.GetChild(0).Name).IsEqual("Child1");
+            AssertThat(parent.GetChild(1).Name).IsEqual("Child2");
          }
+      }
+   }
+   ```
+
+3. **Integration Testing Best Practices**
+   ```csharp
+   [TestSuite]
+   public class PlayerCombatIntegrationTests
+   {
+      [TestCase]
+      [RequireGodotRuntime]
+      public void Should_ApplyDamage_When_PlayerAttacksEnemy()
+      {
+         // Arrange: Set up player and enemy with components
+         var player = AutoFree(new Player());
+         var enemy = AutoFree(new Enemy());
+
+         if (player == null)
+            throw new NullReferenceException("player is null");
+         if (enemy == null)
+            throw new NullReferenceException("enemy is null");
+
+         // Act: Simulate combat interaction
+         player.Attack(enemy);
+
+         // Assert: Verify the complete interaction chain
+         AssertThat(enemy.GetComponent<HealthComponent>().CurrentHealth)
+               .IsLess(enemy.GetComponent<HealthComponent>().MaxHealth);
       }
    }
    ```
@@ -229,7 +273,7 @@ AshesOfVelsingrad/
 
 3. **From command line:**
    ```bash
-   dotnet test --settings Tests/.runsettings
+   dotnet test --settings tests/.runsettings
    ```
 > **Tip:** Tests marked with the `RequireGodotRuntime` attribute can only be executed within the Godot Engine. When running tests outside of Godot, these tests will be skipped or may block execution of other tests. For best results, run all `RequireGodotRuntime` tests from within the Godot Editor.
 
@@ -241,24 +285,28 @@ AshesOfVelsingrad/
 YourProject/
 ├── addons/
 │   └── gdUnit4/
-├── Scripts/
-│   ├── Player/
-│   ├── Enemy/
-│   ├── UI/
-│   └── Utils/
-├── Tests/
-│   ├── Unit/
-│   │   ├── Player/
-│   │   ├── Enemy/
-│   │   ├── UI/
-│   │   └── Utils/
-│   ├── Integration/
+├── docs/
+│   ├── docfx/
+│   │   ├── ...
+│   ├── CONTRIBUTING.md
+│   └── SETUP.md
+├── scripts/
+│   ├── player/
+│   ├── enemy/
+│   ├── gui/
+│   └── utils/
+├── tests/
+│   ├── unit/
+│   │   ├── player/
+│   │   ├── enemy/
+│   │   ├── gui/
+│   │   └── utils/
+│   ├── integration/
 │   └── .runsettings
-├── Scenes/
-├── Resources/
+├── scenes/
+├── assets/
 ├── .editorconfig (already configured)
 ├── .gitignore (already configured)
-├── CONTRIBUTING.md (already present)
 └── project.godot
 ```
 
@@ -266,7 +314,7 @@ YourProject/
 
 1. **Mirror test structure**: Test files should mirror your main script structure
 2. **Separate concerns**: Keep unit tests and integration tests in separate folders
-3. **Follow naming conventions**: Use clear, descriptive names following the project's CONTRIBUTING.md guidelines
+3. **Follow naming conventions**: Use clear, descriptive names following the project's contributing.md guidelines
 
 ## Advanced Configuration
 
@@ -319,7 +367,7 @@ Create `.vscode/tasks.json` for build tasks:
       "label": "test",
       "command": "dotnet",
       "type": "process",
-      "args": ["test", "--settings", "Tests/.runsettings"],
+      "args": ["test", "--settings", "tests/.runsettings"],
       "group": "test",
       "presentation": {
         "echo": true,
@@ -458,6 +506,6 @@ dotnet add package gdUnit4.analyzers --version 1.0.0
 - [GdUnit4 Documentation](https://mikeschulze.github.io/gdUnit4/)
 - [Godot C# Documentation](https://docs.godotengine.org/en/stable/tutorials/scripting/c_sharp/)
 - [GdUnit4Net Documentation](https://github.com/MikeSchulze/gdUnit4Net)
-- [Project CONTRIBUTING.md](./CONTRIBUTING.md) for commit conventions and project guidelines
+- [Project contributing.md](../contributing.md) for commit conventions and project guidelines
 
 This documentation should help you effectively set up your development environment and tests. Don't hesitate to ask if you have specific questions about any of these aspects!

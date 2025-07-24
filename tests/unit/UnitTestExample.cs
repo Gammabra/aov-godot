@@ -1,3 +1,5 @@
+using System;
+using AshesofVelsingrad;
 using GdUnit4;
 using Godot;
 using static GdUnit4.Assertions;
@@ -12,7 +14,7 @@ namespace Tests.Unit
         public void TestTempCounter()
         {
             var main = AutoFree(new Main());
-            int result = main.TempCounter(5);
+            int result = main != null ? main.TempCounter(5) : throw new NullReferenceException("main is null");
             AssertThat(result).IsEqual(6);
         }
 
@@ -29,7 +31,7 @@ namespace Tests.Unit
             var node = AutoFree(new Node());
 
             AssertThat(node).IsNotNull();
-            AssertThat(node.Name).IsEqual("");
+            AssertThat(node != null ? node.Name : throw new NullReferenceException("node is null")).IsEqual("");
 
             node.Name = "TestNode";
             AssertThat(node.Name).IsEqual("TestNode");
@@ -39,7 +41,7 @@ namespace Tests.Unit
         [RequireGodotRuntime]
         public void TestGodotNodeWithManualCleanup()
         {
-            Node node = null;
+            Node? node = null;
             try
             {
                 node = new Node();
@@ -63,8 +65,12 @@ namespace Tests.Unit
             var scene = AutoFree(new Node());
             var child = AutoFree(new Node());
 
-            scene.AddChild(child);
+            if (scene == null)
+                throw new NullReferenceException("scene is null");
+            if (child == null)
+                throw new NullReferenceException("child is null");
 
+            scene.AddChild(child);
             AssertThat(scene.GetChildCount()).IsEqual(1);
             AssertThat(scene.GetChild(0)).IsEqual(child);
         }
@@ -74,6 +80,9 @@ namespace Tests.Unit
         public void TestNodeProperties()
         {
             var node = AutoFree(new Node());
+
+            if (node == null)
+                throw new NullReferenceException("node is null");
 
             AssertThat(node.GetInstanceId()).IsGreater(0);
             AssertThat(node.IsInsideTree()).IsFalse();
@@ -89,6 +98,13 @@ namespace Tests.Unit
             var parent = AutoFree(new Node());
             var child1 = AutoFree(new Node());
             var child2 = AutoFree(new Node());
+
+            if (parent == null)
+                throw new NullReferenceException("parent is null");
+            if (child1 == null)
+                throw new NullReferenceException("child1 is null");
+            if (child2 == null)
+                throw new NullReferenceException("child2 is null");
 
             parent.Name = "Parent";
             child1.Name = "Child1";

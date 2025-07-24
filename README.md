@@ -26,12 +26,28 @@ You play as **Kaelen Voss**, a mercenary betrayed and left for dead, now cursed 
 ---
 
 ## 🛠️ **Development Status**
-This is currently a **Proof of Concept (POC)** version as we build the core systems and mechanics.
 
 **Tech Stack:**
 - **Engine:** Godot 4.4.1
 - **Language:** C# (.NET 9.0)
 - **Platform:** Windows 10/11
+
+---
+## 📚 Technical Documentation
+
+The C# code technical documentation is automatically generated using [DocFX](https://dotnet.github.io/docfx/).
+
+### Local Generation
+
+```sh
+./generate-docs.cmd
+```
+
+The HTML documentation will be available in the `documentation/docfx/_site/toc.html` folder.
+
+### Automatic Generation (CI)
+
+On every push to `main` or `feat/docs-automation`, the documentation is automatically generated via GitHub Actions. The result is available as a workflow artifact [here](https://gammabra.github.io/aov-godot/index.html).
 
 ---
 
@@ -48,7 +64,8 @@ This is currently a **Proof of Concept (POC)** version as we build the core syst
 ---
 
 ## 🤝 **Contributing**
-We welcome contributions! Please read our [Contributing Guide](./CONTRIBUTING.md) to get started.
+
+We welcome contributions! Please read our [Contributing Guide](./documentation/docs/contributing.md) and our [Set up Guide](./documentation/docs/getting-started.md) to get started.
 
 **Quick Start:**
 1. Fork the repository
@@ -59,10 +76,8 @@ We welcome contributions! Please read our [Contributing Guide](./CONTRIBUTING.md
 ---
 
 ## 🌍 **Learn More**
-👉 For detailed information about the gameplay, lore, and systems, choose your language:
-**🇬🇧 [Read the English version](./readme-intl/README-EN.md)**
-**🇫🇷 [Lire la version française](./readme-intl/README-FR.md)**
 
+👉 For detailed information about the gameplay, lore, systems and more check our [Dovfx documentation](https://gammabra.github.io/aov-godot/index.html)
 ---
 
 © 2025 Gammabra Studios. All Rights Reserved.

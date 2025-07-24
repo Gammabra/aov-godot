@@ -1,0 +1,33 @@
+apiRules:
+- include:
+    uidRegex: ^AshesofVelsingrad
+    type: Namespace
+- include:
+    uidRegex: ^AshesofVelsingrad\..*
+    type: Type
+- include:
+    uidRegex: ^AshesofVelsingrad\..*
+    type: Member
+- exclude:
+    uidRegex: .*\.Tests?\..*
+    type: Namespace
+- exclude:
+    uidRegex: .*\.Tests?\..*
+    type: Type
+- exclude:
+    uidRegex: .*\.Tests?\..*
+    type: Member
+- exclude:
+    hasAttribute:
+      uid: System.ObsoleteAttribute
+    type: Type
+- exclude:
+    hasAttribute:
+      uid: System.ObsoleteAttribute
+    type: Member
+- exclude:
+    uidRegex: ^.*\.Internal\..*
+    type: Namespace
+- exclude:
+    uidRegex: ^.*\.Internal\..*
+    type: Type

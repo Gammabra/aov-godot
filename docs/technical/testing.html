@@ -75,11 +75,74 @@
 
 <h2 id="table-of-contents">Table of Contents</h2>
 <ol>
+<li><a href="#external-editor-configuration">External Editor Configuration</a></li>
 <li><a href="#unit-testing-configuration-with-gdunit4">Unit Testing Configuration with GdUnit4</a></li>
 <li><a href="#project-structure">Project Structure</a></li>
 <li><a href="#advanced-configuration">Advanced Configuration</a></li>
 <li><a href="#best-practices">Best Practices</a></li>
 <li><a href="#troubleshooting">Troubleshooting</a></li>
+</ol>
+<h2 id="external-editor-configuration">External Editor Configuration</h2>
+<h3 id="visual-studio-code-recommended">Visual Studio Code (Recommended)</h3>
+<ol>
+<li><p><strong>Install required extensions:</strong></p>
+<ul>
+<li>C# Dev Kit (Microsoft)</li>
+<li>C# (Microsoft)</li>
+<li>godot-tools (optional, for .gd file syntax highlighting)</li>
+</ul>
+</li>
+<li><p><strong>Configure in Godot:</strong></p>
+<ul>
+<li>In <code>Editor → Editor settings → Dotnet → Editor </code>, set:
+<ul>
+<li><strong>External Editor</strong>: <code>Visual Studio Code and VSCodium</code></li>
+<li><strong>Exec Path</strong>: Path to your VS Code executable
+<ul>
+<li>Windows: <code>C:\Users\[username]\AppData\Local\Programs\Microsoft VS Code\Code.exe</code></li>
+<li>Linux: <code>/usr/bin/code</code></li>
+<li>macOS: <code>/Applications/Visual Studio Code.app/Contents/Resources/app/bin/code</code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>Configure VS Code workspace:</strong>
+Create a <code>.vscode/settings.json</code> file at the project root:</p>
+<pre><code class="lang-json">{
+  &quot;dotnet.defaultSolution&quot;: &quot;Ashes of Velsingrad.sln&quot;,
+  &quot;files.exclude&quot;: {
+    &quot;**/.godot/&quot;: true,
+    &quot;**/.import/&quot;: true
+  }
+}
+</code></pre>
+</li>
+</ol>
+<h3 id="visual-studio-alternative">Visual Studio (Alternative)</h3>
+<ol>
+<li><strong>Configure in Godot:</strong>
+<ul>
+<li><strong>External Editor</strong>: <code>Visual Studio</code></li>
+<li><strong>Exec Path</strong>: Path to devenv.exe
+<ul>
+<li>Example: <code>C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\devenv.exe</code></li>
+</ul>
+</li>
+<li><strong>Exec Flags</strong>: <code>{project} --goto {file}:{line}:{col}</code></li>
+</ul>
+</li>
+</ol>
+<h3 id="jetbrains-rider-alternative">JetBrains Rider (Alternative)</h3>
+<ol>
+<li><strong>Configure in Godot:</strong>
+<ul>
+<li><strong>External Editor</strong>: <code>JetBrains Rider and Fleet</code></li>
+<li><strong>Exec Path</strong>: Path to rider64.exe</li>
+<li><strong>Exec Flags</strong>: <code>{project} --line {line} {file}</code></li>
+</ul>
+</li>
 </ol>
 <h2 id="unit-testing-configuration-with-gdunit4">Unit Testing Configuration with GdUnit4</h2>
 <h3 id="environment-setup">Environment Setup</h3>

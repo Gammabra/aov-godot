@@ -133,8 +133,8 @@ Configure the **Conventional Commits** extension in VSCode settings:
     "build",
     "config"
   ],
-  "conventionalCommits.showEditor": true,
-  "conventionalCommits.promptBody": true,
+  "conventionalCommits.showEditor": false,
+  "conventionalCommits.promptBody": false,
   "conventionalCommits.promptFooter": false
 }
 ```
@@ -238,6 +238,14 @@ chore: update .gitignore
 * Use conventional commit messages (see above).
 * Check your code with linters and static analysis tools (we provide configs).
 * Update relevant documentation if needed.
+
+### 🏗️ Architectural Decisions
+
+When making significant architectural changes:
+- Review the [Architecture Documentation](technical/architecture.md)
+- Discuss with the team on Discord before major refactoring
+- Update relevant documentation
+- Consider backward compatibility
 
 ## 💬 Questions?
 
@@ -376,8 +384,8 @@ Configurez l'extension **Conventional Commits** dans les paramètres VSCode :
     "build",
     "config"
   ],
-  "conventionalCommits.showEditor": true,
-  "conventionalCommits.promptBody": true,
+  "conventionalCommits.showEditor": false,
+  "conventionalCommits.promptBody": false,
   "conventionalCommits.promptFooter": false
 }
 ```
@@ -481,6 +489,14 @@ chore: update .gitignore
 * Utiliser des messages de commit conventionnels (voir ci-dessus).
 * Vérifier le code avec les linters et outils d’analyse statique (configs fournies).
 * Mettre à jour la documentation concernée.
+
+### 🏗️ Décisions architecturales
+
+Lors de modifications architecturales importantes :
+- Consultez la [documentation d’architecture](technical/architecture.md)
+- Discutez avec l’équipe sur Discord avant tout refactoring majeur
+- Mettez à jour la documentation concernée
+- Prenez en compte la rétrocompatibilité
 
 ## 💬 Des questions?
 

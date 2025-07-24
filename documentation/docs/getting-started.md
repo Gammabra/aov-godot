@@ -191,6 +191,17 @@ dotnet test --filter "Category=Unit"
 - Install C# Dev Kit extension
 - Tests will appear automatically
 
+## ✅ Quick Validation
+
+After setup, verify everything works:
+
+1. **Build Test**: `dotnet build` (should complete without errors)
+2. **Simple Scene Test**: Run the main scene in Godot
+3. **Test Suite**: `dotnet test --settings tests/.runsettings`
+4. **IDE Integration**: Open a .cs file and verify IntelliSense works
+
+If all steps pass, you're ready to develop! 🎉
+
 ## 🌟 Your First Contribution
 
 Ready to contribute? Here's a simple workflow:

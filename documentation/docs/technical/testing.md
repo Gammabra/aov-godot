@@ -183,6 +183,34 @@ AshesOfVelsingrad/
    }
    ```
 
+3. **Integration Testing Best Practices**
+   ```csharp
+   [TestSuite]
+   public class PlayerCombatIntegrationTests
+   {
+      [TestCase]
+      [RequireGodotRuntime]
+      public void Should_ApplyDamage_When_PlayerAttacksEnemy()
+      {
+         // Arrange: Set up player and enemy with components
+         var player = AutoFree(new Player());
+         var enemy = AutoFree(new Enemy());
+
+         if (player == null)
+            throw new NullReferenceException("player is null");
+         if (enemy == null)
+            throw new NullReferenceException("enemy is null");
+
+         // Act: Simulate combat interaction
+         player.Attack(enemy);
+
+         // Assert: Verify the complete interaction chain
+         AssertThat(enemy.GetComponent<HealthComponent>().CurrentHealth)
+               .IsLess(enemy.GetComponent<HealthComponent>().MaxHealth);
+      }
+   }
+   ```
+
 ### Running Tests
 
 1. **From Godot** (Recommended):

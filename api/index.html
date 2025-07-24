@@ -2,9 +2,9 @@
 <html>
   <head>
     <meta charset="utf-8">
-      <title> | Ashes of Velsingrad Documentation </title>
+      <title>API Reference | Ashes of Velsingrad Documentation </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content=" | Ashes of Velsingrad Documentation ">
+      <meta name="title" content="API Reference | Ashes of Velsingrad Documentation ">
       
       
       <link rel="icon" href="../favicon.ico">
@@ -85,10 +85,310 @@
         </div>
 
         <article data-uid="">
+<h1 id="api-reference">API Reference</h1>
 
+<p>Welcome to the <strong>Ashes of Velsingrad</strong> API documentation. This section contains the automatically generated API reference for all public classes, interfaces, and methods in the codebase.</p>
+<h2 id="overview">Overview</h2>
+<p>This API documentation is automatically generated from XML documentation comments in the C# source code. It provides detailed information about all public APIs, including classes, methods, properties, events, and their usage examples.</p>
+<h2 id="quick-navigation">Quick Navigation</h2>
+<h3 id="-core-game-systems">🎮 Core Game Systems</h3>
+<table>
+<thead>
+<tr>
+<th>Namespace</th>
+<th>Description</th>
+<th>Key Classes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong><a href="AshesOfVelsingrad.Actors.yml">AshesOfVelsingrad.Actors</a></strong></td>
+<td>Game entities and characters</td>
+<td><code>BaseActor</code>, <code>Player</code>, <code>Enemy</code></td>
+</tr>
+<tr>
+<td><strong><a href="AshesOfVelsingrad.Components.yml">AshesOfVelsingrad.Components</a></strong></td>
+<td>Reusable game components</td>
+<td><code>HealthComponent</code>, <code>MovementComponent</code></td>
+</tr>
+<tr>
+<td><strong><a href="AshesOfVelsingrad.Systems.yml">AshesOfVelsingrad.Systems</a></strong></td>
+<td>Game logic systems</td>
+<td><code>CombatSystem</code>, <code>InventorySystem</code></td>
+</tr>
+<tr>
+<td><strong><a href="AshesOfVelsingrad.Managers.yml">AshesOfVelsingrad.Managers</a></strong></td>
+<td>Global managers</td>
+<td><code>GameManager</code>, <code>AudioManager</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="-user-interface">🖥️ User Interface</h3>
+<table>
+<thead>
+<tr>
+<th>Namespace</th>
+<th>Description</th>
+<th>Key Classes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong><a href="AshesOfVelsingrad.UI.Menus.yml">AshesOfVelsingrad.UI.Menus</a></strong></td>
+<td>Game menus</td>
+<td><code>MainMenu</code>, <code>PauseMenu</code>, <code>SettingsMenu</code></td>
+</tr>
+<tr>
+<td><strong><a href="AshesOfVelsingrad.UI.HUD.yml">AshesOfVelsingrad.UI.HUD</a></strong></td>
+<td>In-game interface</td>
+<td><code>HealthBar</code>, <code>MiniMap</code>, <code>InventoryPanel</code></td>
+</tr>
+<tr>
+<td><strong><a href="AshesOfVelsingrad.UI.Dialogs.yml">AshesOfVelsingrad.UI.Dialogs</a></strong></td>
+<td>Modal dialogs</td>
+<td><code>DialogBox</code>, <code>ConfirmationDialog</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="-data--utilities">📊 Data &amp; Utilities</h3>
+<table>
+<thead>
+<tr>
+<th>Namespace</th>
+<th>Description</th>
+<th>Key Classes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong><a href="AshesOfVelsingrad.Data.yml">AshesOfVelsingrad.Data</a></strong></td>
+<td>Data structures</td>
+<td><code>ItemData</code>, <code>CharacterData</code>, <code>GameSettings</code></td>
+</tr>
+<tr>
+<td><strong><a href="AshesOfVelsingrad.Utilities.yml">AshesOfVelsingrad.Utilities</a></strong></td>
+<td>Helper classes</td>
+<td><code>MathHelpers</code>, <code>StringExtensions</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="architecture-overview">Architecture Overview</h2>
+<p>The API is organized following our <a href="../docs/technical/architecture.html">component-based architecture</a>:</p>
+<pre><code class="lang-mermaid">graph TB
+    subgraph &quot;Core Layer&quot;
+        BaseActor[BaseActor]
+        BaseComponent[BaseComponent]
+        BaseManager[BaseManager]
+    end
+
+    subgraph &quot;Game Systems&quot;
+        GameManager[GameManager]
+        CombatSystem[CombatSystem]
+        InventorySystem[InventorySystem]
+    end
+
+    subgraph &quot;Components&quot;
+        HealthComponent[HealthComponent]
+        MovementComponent[MovementComponent]
+        InteractionComponent[InteractionComponent]
+    end
+
+    subgraph &quot;Actors&quot;
+        Player[Player]
+        Enemy[Enemy]
+        NPC[NPC]
+    end
+
+    BaseActor --&gt; Player
+    BaseActor --&gt; Enemy
+    BaseActor --&gt; NPC
+
+    BaseComponent --&gt; HealthComponent
+    BaseComponent --&gt; MovementComponent
+    BaseComponent --&gt; InteractionComponent
+
+    BaseManager --&gt; GameManager
+
+    Player --&gt; HealthComponent
+    Player --&gt; MovementComponent
+</code></pre>
+<h2 id="key-design-patterns">Key Design Patterns</h2>
+<h3 id="component-pattern">Component Pattern</h3>
+<p>Most game entities inherit from <code>BaseActor</code> and use components for modular functionality:</p>
+<pre><code class="lang-csharp">// Example usage (see full documentation in BaseActor)
+var player = new Player();
+player.AddComponent&lt;HealthComponent&gt;();
+player.AddComponent&lt;MovementComponent&gt;();
+</code></pre>
+<h3 id="manager-pattern">Manager Pattern</h3>
+<p>Global systems follow the singleton manager pattern:</p>
+<pre><code class="lang-csharp">// Example usage (see full documentation in GameManager)
+GameManager.Instance.ChangeState(GameState.Playing);
+</code></pre>
+<h3 id="event-driven-communication">Event-Driven Communication</h3>
+<p>Systems communicate through Godot signals:</p>
+<pre><code class="lang-csharp">// Example usage (see full documentation in HealthComponent)
+healthComponent.HealthChanged += OnHealthChanged;
+healthComponent.Death += OnPlayerDeath;
+</code></pre>
+<h2 id="common-usage-patterns">Common Usage Patterns</h2>
+<h3 id="creating-game-entities">Creating Game Entities</h3>
+<pre><code class="lang-csharp">// Standard actor creation pattern
+var enemy = new Enemy();
+enemy.AddComponent(new HealthComponent { MaxHealth = 50 });
+enemy.AddComponent(new MovementComponent { Speed = 200.0f });
+
+// See: BaseActor.AddComponent&lt;T&gt;()
+</code></pre>
+<h3 id="handling-events">Handling Events</h3>
+<pre><code class="lang-csharp">// Standard event subscription pattern
+public override void _Ready()
+{
+    var combat = GetNode&lt;CombatSystem&gt;(&quot;CombatSystem&quot;);
+    combat.DamageDealt += OnDamageDealt;
+}
+
+// See: Signal attribute documentation
+</code></pre>
+<h3 id="managing-game-state">Managing Game State</h3>
+<pre><code class="lang-csharp">// Standard state management pattern
+GameManager.Instance.ChangeState(GameState.MainMenu);
+SceneManager.Instance.ChangeScene(&quot;MainMenu&quot;);
+
+// See: BaseManager pattern documentation
+</code></pre>
+<h2 id="api-conventions">API Conventions</h2>
+<h3 id="naming-conventions">Naming Conventions</h3>
+<p>Following our <a href="../docs/technical/coding-standards.html">coding standards</a>:</p>
 <ul>
-<li>Index api</li>
+<li><strong>Classes</strong>: PascalCase (<code>PlayerController</code>, <code>InventorySystem</code>)</li>
+<li><strong>Methods</strong>: PascalCase (<code>GetComponent</code>, <code>TakeDamage</code>)</li>
+<li><strong>Properties</strong>: PascalCase (<code>CurrentHealth</code>, <code>MaxSpeed</code>)</li>
+<li><strong>Events/Signals</strong>: PascalCase (<code>HealthChanged</code>, <code>PlayerDied</code>)</li>
+<li><strong>Private Fields</strong>: camelCase with underscore (<code>_currentHealth</code>, <code>_isAlive</code>)</li>
 </ul>
+<h3 id="signal-naming">Signal Naming</h3>
+<p>All Godot signals follow the EventHandler convention:</p>
+<pre><code class="lang-csharp">[Signal]
+public delegate void HealthChangedEventHandler(int currentHealth, int maxHealth);
+
+[Signal]
+public delegate void DeathEventHandler();
+</code></pre>
+<h3 id="export-attributes">Export Attributes</h3>
+<p>Designer-configurable values use the <code>[Export]</code> attribute:</p>
+<pre><code class="lang-csharp">[Export] public float Speed { get; set; } = 300.0f;
+[Export] public int MaxHealth { get; set; } = 100;
+</code></pre>
+<h2 id="documentation-standards">Documentation Standards</h2>
+<h3 id="xml-documentation">XML Documentation</h3>
+<p>All public APIs include XML documentation:</p>
+<pre><code class="lang-csharp">/// &lt;summary&gt;
+/// Applies damage to the character and handles death logic.
+/// &lt;/summary&gt;
+/// &lt;param name=&quot;damage&quot;&gt;Amount of damage to apply (must be positive)&lt;/param&gt;
+/// &lt;param name=&quot;damageType&quot;&gt;Type of damage for resistance calculations&lt;/param&gt;
+/// &lt;returns&gt;True if the character died from this damage&lt;/returns&gt;
+public bool TakeDamage(int damage, DamageType damageType)
+</code></pre>
+<h3 id="code-examples">Code Examples</h3>
+<p>Most class documentation includes usage examples:</p>
+<pre><code class="lang-csharp">/// &lt;example&gt;
+/// &lt;code&gt;
+/// var health = new HealthComponent { MaxHealth = 100 };
+/// health.TakeDamage(25);
+/// Console.WriteLine($&quot;Health: {health.CurrentHealth}/100&quot;);
+/// &lt;/code&gt;
+/// &lt;/example&gt;
+</code></pre>
+<h2 id="integration-with-game-engine">Integration with Game Engine</h2>
+<h3 id="godot-node-integration">Godot Node Integration</h3>
+<p>All main classes inherit from appropriate Godot nodes:</p>
+<ul>
+<li><strong>Actors</strong>: Inherit from <code>CharacterBody2D</code> or <code>RigidBody2D</code></li>
+<li><strong>Components</strong>: Inherit from <code>Node</code></li>
+<li><strong>Managers</strong>: Inherit from <code>Node</code> (AutoLoad singletons)</li>
+<li><strong>UI Elements</strong>: Inherit from <code>Control</code> or <code>CanvasLayer</code></li>
+</ul>
+<h3 id="scene-integration">Scene Integration</h3>
+<p>Classes are designed to work with Godot's scene system:</p>
+<pre><code class="lang-csharp">// Typical scene setup
+public override void _Ready()
+{
+    // Initialize components
+    // Connect signals
+    // Set up references
+}
+</code></pre>
+<h2 id="testing-integration">Testing Integration</h2>
+<p>The API is designed for testability with GdUnit4:</p>
+<pre><code class="lang-csharp">[TestSuite]
+public class HealthComponentTests
+{
+    [TestCase]
+    public void Should_ReduceHealth_When_TakingDamage()
+    {
+        // See: Testing documentation for full examples
+    }
+}
+</code></pre>
+<p>For testing examples, see our <a href="../docs/technical/testing.html">Testing Guide</a>.</p>
+<h2 id="performance-considerations">Performance Considerations</h2>
+<h3 id="memory-management">Memory Management</h3>
+<ul>
+<li>Use object pooling for frequently instantiated objects</li>
+<li>Dispose of resources properly in <code>_ExitTree()</code></li>
+<li>Cache node references instead of using <code>GetNode()</code> repeatedly</li>
+</ul>
+<h3 id="update-optimization">Update Optimization</h3>
+<ul>
+<li>Use <code>_PhysicsProcess()</code> for physics-related updates</li>
+<li>Use <code>_Process()</code> for frame-rate dependent updates</li>
+<li>Batch operations where possible</li>
+</ul>
+<p>For detailed performance guidelines, see our <a href="../docs/technical/architecture.html">Architecture Documentation</a>.</p>
+<h2 id="migration--versioning">Migration &amp; Versioning</h2>
+<h3 id="api-stability">API Stability</h3>
+<ul>
+<li><strong>Public APIs</strong>: Stable, changes will be documented in release notes</li>
+<li><strong>Internal APIs</strong>: May change without notice</li>
+<li><strong>Experimental APIs</strong>: Marked with <code>[Obsolete]</code> or XML comments</li>
+</ul>
+<h3 id="breaking-changes">Breaking Changes</h3>
+<p>Breaking changes are documented in:</p>
+<ul>
+<li>Release notes</li>
+<li>Migration guides</li>
+<li><code>[Obsolete]</code> attributes with migration instructions</li>
+</ul>
+<h2 id="getting-help">Getting Help</h2>
+<h3 id="documentation-issues">Documentation Issues</h3>
+<p>If you find missing or incorrect documentation:</p>
+<ol>
+<li>Check the source code for updated XML comments</li>
+<li>Create an issue on <a href="https://github.com/Gammabra/aov-godot/issues">GitHub</a></li>
+<li>Ask on our <a href="https://discord.gg/VCTrCrasp9">Discord</a></li>
+</ol>
+<h3 id="usage-examples">Usage Examples</h3>
+<p>For more comprehensive examples:</p>
+<ul>
+<li><a href="../docs/getting-started.html">Getting Started Guide</a></li>
+<li><a href="../docs/technical/architecture.html">Architecture Documentation</a></li>
+<li><a href="../docs/technical/testing.html">Testing Guide</a></li>
+<li><a href="https://github.com/Gammabra/aov-godot">Source Code Examples</a></li>
+</ul>
+<h3 id="contributing">Contributing</h3>
+<p>To contribute to the API or its documentation:</p>
+<ol>
+<li>Read our <a href="../docs/contributing.html">Contributing Guide</a></li>
+<li>Follow our <a href="../docs/technical/coding-standards.html">Coding Standards</a></li>
+<li>Include comprehensive XML documentation</li>
+<li>Add unit tests for new functionality</li>
+</ol>
+<hr>
+<p><strong>Last Updated</strong>: Auto-generated on build
+<strong>Version</strong>: Current development branch
+<strong>Engine</strong>: Godot 4.4.1 (Mono/.NET 9.0)</p>
 
 </article>
 

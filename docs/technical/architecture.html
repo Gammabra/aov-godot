@@ -2,9 +2,9 @@
 <html>
   <head>
     <meta charset="utf-8">
-      <title>Project architecture | Ashes of Velsingrad Documentation </title>
+      <title>Software Architecture | Ashes of Velsingrad Documentation </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content="Project architecture | Ashes of Velsingrad Documentation ">
+      <meta name="title" content="Software Architecture | Ashes of Velsingrad Documentation ">
       
       
       <link rel="icon" href="../../favicon.ico">
@@ -71,8 +71,688 @@
         </div>
 
         <article data-uid="">
-<h1 id="project-architecture">Project architecture</h1>
+<h1 id="software-architecture">Software Architecture</h1>
 
+<p>This document outlines the software architecture for <strong>Ashes of Velsingrad</strong>, a Godot 4.4.1 C# (.NET 9.0) game project. Understanding this architecture will help you navigate the codebase, make informed decisions, and contribute effectively to the project.</p>
+<h2 id="table-of-contents">Table of Contents</h2>
+<ul>
+<li><a href="#architectural-overview">Architectural Overview</a></li>
+<li><a href="#core-design-principles">Core Design Principles</a></li>
+<li><a href="#project-structure">Project Structure</a></li>
+<li><a href="#system-architecture">System Architecture</a></li>
+<li><a href="#component-patterns">Component Patterns</a></li>
+<li><a href="#data-flow">Data Flow</a></li>
+<li><a href="#scene-management">Scene Management</a></li>
+<li><a href="#performance-considerations">Performance Considerations</a></li>
+<li><a href="#integration-points">Integration Points</a></li>
+</ul>
+<h2 id="architectural-overview">Architectural Overview</h2>
+<h3 id="technology-stack">Technology Stack</h3>
+<ul>
+<li><strong>Engine</strong>: Godot 4.4.1 (Mono version)</li>
+<li><strong>Language</strong>: C# (.NET 9.0)</li>
+<li><strong>Testing</strong>: GdUnit4 with .NET Test SDK</li>
+<li><strong>Build System</strong>: MSBuild/.NET CLI</li>
+<li><strong>Version Control</strong>: Git with Conventional Commits</li>
+</ul>
+<h3 id="architectural-style">Architectural Style</h3>
+<p>We follow a <strong>Component-Based Architecture</strong> with elements of:</p>
+<ul>
+<li><strong>Event-Driven Architecture</strong> for decoupling systems</li>
+<li><strong>Layered Architecture</strong> for clear separation of concerns</li>
+<li><strong>Manager Pattern</strong> for global system coordination</li>
+<li><strong>Observer Pattern</strong> for reactive components</li>
+</ul>
+<h2 id="core-design-principles">Core Design Principles</h2>
+<h3 id="1-separation-of-concerns">1. Separation of Concerns</h3>
+<p>Each script/class has a single, well-defined responsibility:</p>
+<pre><code class="lang-csharp">// Good - Single responsibility
+public class PlayerMovementController : Node
+{
+    // Only handles player movement logic
+}
+
+public class PlayerHealthSystem : Node
+{
+    // Only handles health/damage logic
+}
+</code></pre>
+<h3 id="2-loose-coupling">2. Loose Coupling</h3>
+<p>Systems communicate through events and interfaces rather than direct references:</p>
+<pre><code class="lang-csharp">// Loose coupling through signals
+[Signal]
+public delegate void PlayerDiedEventHandler();
+
+// Interface-based dependencies
+public class CombatSystem : Node
+{
+    private IDamageable _target;
+}
+</code></pre>
+<h3 id="3-high-cohesion">3. High Cohesion</h3>
+<p>Related functionality is grouped together in logical modules:</p>
+<pre><code>scripts/
+├── combat/
+│   ├── DamageSystem.cs
+│   ├── WeaponController.cs
+│   └── CombatManager.cs
+</code></pre>
+<h3 id="4-testability">4. Testability</h3>
+<p>Code is designed to be easily testable with clear dependencies:</p>
+<pre><code class="lang-csharp">public class InventorySystem : Node
+{
+    private readonly IItemDatabase _itemDatabase;
+
+    public InventorySystem(IItemDatabase itemDatabase = null)
+    {
+        _itemDatabase = itemDatabase ?? GetNode&lt;ItemDatabase&gt;();
+    }
+}
+</code></pre>
+<h2 id="project-structure">Project Structure</h2>
+<h3 id="directory-organization">Directory Organization</h3>
+<pre><code>AshesOfVelsingrad/
+├── scripts/                    # C# source code
+│   ├── actors/                 # Game entities (Player, Enemies, NPCs)
+│   │   ├── player/            # Player-specific systems
+│   │   ├── enemies/           # Enemy AI and behaviors
+│   │   └── npcs/              # Non-player characters
+│   ├── components/            # Reusable game components
+│   │   ├── health/            # Health/damage components
+│   │   ├── movement/          # Movement components
+│   │   └── interaction/       # Interaction components
+│   ├── systems/               # Game systems
+│   │   ├── combat/            # Combat mechanics
+│   │   ├── inventory/         # Item management
+│   │   ├── dialogue/          # Conversation system
+│   │   └── save/              # Save/load system
+│   ├── managers/              # Singleton managers
+│   │   ├── GameManager.cs     # Core game state
+│   │   ├── AudioManager.cs    # Sound management
+│   │   ├── SceneManager.cs    # Scene transitions
+│   │   └── InputManager.cs    # Input handling
+│   ├── ui/                    # User interface
+│   │   ├── menus/             # Game menus
+│   │   ├── hud/               # In-game UI
+│   │   └── dialogs/           # Modal dialogs
+│   ├── data/                  # Data structures
+│   │   ├── items/             # Item definitions
+│   │   ├── characters/        # Character stats
+│   │   └── levels/            # Level configurations
+│   └── utilities/             # Helper classes
+│       ├── extensions/        # C# extensions
+│       ├── constants/         # Game constants
+│       └── helpers/           # Utility functions
+├── scenes/                     # Godot scene files
+│   ├── actors/                # Character scenes
+│   ├── levels/                # Game levels
+│   ├── ui/                    # UI scenes
+│   └── main/                  # Main scenes
+├── assets/                     # Game assets
+│   ├── sprites/               # 2D graphics
+│   ├── audio/                 # Sound effects and music
+│   ├── fonts/                 # Typography
+│   └── data/                  # JSON/XML data files
+└── tests/                      # Test files
+    ├── unit/                  # Unit tests
+    └── integration/           # Integration tests
+</code></pre>
+<h3 id="naming-conventions-by-layer">Naming Conventions by Layer</h3>
+<table>
+<thead>
+<tr>
+<th>Layer</th>
+<th>Convention</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Actors</strong></td>
+<td><code>[Entity][Purpose]</code></td>
+<td><code>PlayerController</code>, <code>EnemyAI</code></td>
+</tr>
+<tr>
+<td><strong>Components</strong></td>
+<td><code>[Function]Component</code></td>
+<td><code>HealthComponent</code>, <code>MovementComponent</code></td>
+</tr>
+<tr>
+<td><strong>Systems</strong></td>
+<td><code>[Domain]System</code></td>
+<td><code>CombatSystem</code>, <code>InventorySystem</code></td>
+</tr>
+<tr>
+<td><strong>Managers</strong></td>
+<td><code>[Domain]Manager</code></td>
+<td><code>GameManager</code>, <code>AudioManager</code></td>
+</tr>
+<tr>
+<td><strong>UI</strong></td>
+<td><code>[Element][Type]</code></td>
+<td><code>MainMenu</code>, <code>HealthBar</code>, <code>DialogBox</code></td>
+</tr>
+<tr>
+<td><strong>Data</strong></td>
+<td><code>[Entity]Data</code></td>
+<td><code>ItemData</code>, <code>CharacterData</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="system-architecture">System Architecture</h2>
+<h3 id="core-systems-hierarchy">Core Systems Hierarchy</h3>
+<pre><code class="lang-mermaid">graph TB
+    GM[GameManager] --&gt; SM[SceneManager]
+    GM --&gt; AM[AudioManager]
+    GM --&gt; IM[InputManager]
+    GM --&gt; SAM[SaveManager]
+
+    SM --&gt; CS[CombatSystem]
+    SM --&gt; IS[InventorySystem]
+    SM --&gt; DS[DialogSystem]
+
+    CS --&gt; PC[PlayerController]
+    CS --&gt; EC[EnemyController]
+
+    PC --&gt; HC[HealthComponent]
+    PC --&gt; MC[MovementComponent]
+    PC --&gt; IC[InteractionComponent]
+</code></pre>
+<h3 id="manager-pattern-implementation">Manager Pattern Implementation</h3>
+<pre><code class="lang-csharp">// Base manager pattern
+public abstract class BaseManager : Node
+{
+    public static BaseManager Instance { get; private set; }
+
+    public override void _Ready()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+            Initialize();
+        }
+        else
+        {
+            QueueFree(); // Ensure singleton
+        }
+    }
+
+    protected abstract void Initialize();
+}
+
+// Concrete implementation
+public class GameManager : BaseManager
+{
+    [Signal]
+    public delegate void GameStateChangedEventHandler(GameState newState);
+
+    public GameState CurrentState { get; private set; }
+
+    protected override void Initialize()
+    {
+        // Initialize game state
+        CurrentState = GameState.MainMenu;
+    }
+
+    public void ChangeState(GameState newState)
+    {
+        if (CurrentState != newState)
+        {
+            var previousState = CurrentState;
+            CurrentState = newState;
+            EmitSignal(SignalName.GameStateChanged, (int)newState);
+
+            GD.Print($&quot;Game state changed: {previousState} -&gt; {newState}&quot;);
+        }
+    }
+}
+</code></pre>
+<h2 id="component-patterns">Component Patterns</h2>
+<h3 id="component-based-entity-design">Component-Based Entity Design</h3>
+<pre><code class="lang-csharp">// Base actor class
+public abstract class BaseActor : CharacterBody2D
+{
+    protected Dictionary&lt;Type, BaseComponent&gt; _components = new();
+
+    public T GetComponent&lt;T&gt;() where T : BaseComponent
+    {
+        return _components.TryGetValue(typeof(T), out var component)
+            ? (T)component
+            : null;
+    }
+
+    public void AddComponent&lt;T&gt;(T component) where T : BaseComponent
+    {
+        _components[typeof(T)] = component;
+        AddChild(component);
+        component.Initialize(this);
+    }
+}
+
+// Component base class
+public abstract class BaseComponent : Node
+{
+    protected BaseActor Owner { get; private set; }
+
+    public virtual void Initialize(BaseActor owner)
+    {
+        Owner = owner;
+    }
+}
+
+// Concrete component example
+public class HealthComponent : BaseComponent
+{
+    [Export] public int MaxHealth { get; set; } = 100;
+
+    private int _currentHealth;
+
+    [Signal]
+    public delegate void HealthChangedEventHandler(int currentHealth, int maxHealth);
+
+    [Signal]
+    public delegate void DeathEventHandler();
+
+    public int CurrentHealth
+    {
+        get =&gt; _currentHealth;
+        private set
+        {
+            var oldHealth = _currentHealth;
+            _currentHealth = Mathf.Clamp(value, 0, MaxHealth);
+
+            if (oldHealth != _currentHealth)
+            {
+                EmitSignal(SignalName.HealthChanged, _currentHealth, MaxHealth);
+
+                if (_currentHealth &lt;= 0)
+                {
+                    EmitSignal(SignalName.Death);
+                }
+            }
+        }
+    }
+
+    public override void Initialize(BaseActor owner)
+    {
+        base.Initialize(owner);
+        _currentHealth = MaxHealth;
+    }
+
+    public void TakeDamage(int damage)
+    {
+        CurrentHealth -= damage;
+    }
+
+    public void Heal(int amount)
+    {
+        CurrentHealth += amount;
+    }
+}
+</code></pre>
+<h3 id="usage-example">Usage Example</h3>
+<pre><code class="lang-csharp">public class Player : BaseActor
+{
+    public override void _Ready()
+    {
+        base._Ready();
+
+        // Add components
+        AddComponent(new HealthComponent { MaxHealth = 100 });
+        AddComponent(new MovementComponent { Speed = 300.0f });
+        AddComponent(new InteractionComponent());
+
+        // Connect component signals
+        var healthComponent = GetComponent&lt;HealthComponent&gt;();
+        healthComponent.Death += OnPlayerDeath;
+    }
+
+    private void OnPlayerDeath()
+    {
+        GD.Print(&quot;Player died!&quot;);
+        GameManager.Instance.ChangeState(GameState.GameOver);
+    }
+}
+</code></pre>
+<h2 id="data-flow">Data Flow</h2>
+<h3 id="event-driven-communication">Event-Driven Communication</h3>
+<pre><code class="lang-mermaid">sequenceDiagram
+    participant Player
+    participant HealthComponent
+    participant UI
+    participant GameManager
+
+    Player-&gt;&gt;HealthComponent: TakeDamage(10)
+    HealthComponent-&gt;&gt;HealthComponent: Update CurrentHealth
+    HealthComponent-&gt;&gt;UI: HealthChanged signal
+    UI-&gt;&gt;UI: Update health bar
+
+    alt Health &lt;= 0
+        HealthComponent-&gt;&gt;Player: Death signal
+        Player-&gt;&gt;GameManager: ChangeState(GameOver)
+        GameManager-&gt;&gt;UI: GameStateChanged signal
+        UI-&gt;&gt;UI: Show game over screen
+    end
+</code></pre>
+<h3 id="signal-based-architecture">Signal-Based Architecture</h3>
+<pre><code class="lang-csharp">// Producer (emits signals)
+public class CombatSystem : Node
+{
+    [Signal]
+    public delegate void DamageDealtEventHandler(Node target, int damage);
+
+    [Signal]
+    public delegate void CombatEndedEventHandler(Node winner);
+
+    private void ProcessAttack(Node attacker, Node target, int damage)
+    {
+        // Process damage logic
+        EmitSignal(SignalName.DamageDealt, target, damage);
+
+        // Check combat end condition
+        if (IsCombatEnded())
+        {
+            EmitSignal(SignalName.CombatEnded, DetermineWinner());
+        }
+    }
+}
+
+// Consumer (listens to signals)
+public class StatisticsTracker : Node
+{
+    private int _totalDamageDealt;
+    private int _combatsWon;
+
+    public override void _Ready()
+    {
+        var combatSystem = GetNode&lt;CombatSystem&gt;(&quot;../CombatSystem&quot;);
+        combatSystem.DamageDealt += OnDamageDealt;
+        combatSystem.CombatEnded += OnCombatEnded;
+    }
+
+    private void OnDamageDealt(Node target, int damage)
+    {
+        _totalDamageDealt += damage;
+    }
+
+    private void OnCombatEnded(Node winner)
+    {
+        if (winner.IsInGroup(&quot;player&quot;))
+        {
+            _combatsWon++;
+        }
+    }
+}
+</code></pre>
+<h3 id="data-management">Data Management</h3>
+<pre><code class="lang-csharp">// Data layer abstraction
+public interface IDataManager
+{
+    T Load&lt;T&gt;(string path) where T : class;
+    void Save&lt;T&gt;(T data, string path) where T : class;
+}
+
+// Concrete implementation
+public class JsonDataManager : Node, IDataManager
+{
+    public T Load&lt;T&gt;(string path) where T : class
+    {
+        if (!FileAccess.FileExists(path))
+            return null;
+
+        using var file = FileAccess.Open(path, FileAccess.ModeFlags.Read);
+        var jsonString = file.GetAsText();
+
+        return JsonSerializer.Deserialize&lt;T&gt;(jsonString);
+    }
+
+    public void Save&lt;T&gt;(T data, string path) where T : class
+    {
+        var jsonString = JsonSerializer.Serialize(data, new JsonSerializerOptions
+        {
+            WriteIndented = true
+        });
+
+        using var file = FileAccess.Open(path, FileAccess.ModeFlags.Write);
+        file.StoreString(jsonString);
+    }
+}
+</code></pre>
+<h2 id="scene-management">Scene Management</h2>
+<h3 id="scene-architecture">Scene Architecture</h3>
+<pre><code class="lang-csharp">public class SceneManager : BaseManager
+{
+    private const string ScenesPath = &quot;res://scenes/&quot;;
+
+    private readonly Dictionary&lt;string, PackedScene&gt; _cachedScenes = new();
+    private Node _currentScene;
+
+    [Signal]
+    public delegate void SceneChangedEventHandler(string sceneName);
+
+    protected override void Initialize()
+    {
+        _currentScene = GetTree().CurrentScene;
+    }
+
+    public async void ChangeScene(string sceneName, bool useLoading = true)
+    {
+        if (useLoading)
+        {
+            ShowLoadingScreen();
+        }
+
+        // Unload current scene
+        if (_currentScene != null)
+        {
+            _currentScene.QueueFree();
+            await ToSignal(_currentScene, SceneTreeTimer.SignalName.TreeExited);
+        }
+
+        // Load new scene
+        var newScene = await LoadSceneAsync(sceneName);
+        GetTree().Root.AddChild(newScene);
+        GetTree().CurrentScene = newScene;
+        _currentScene = newScene;
+
+        if (useLoading)
+        {
+            HideLoadingScreen();
+        }
+
+        EmitSignal(SignalName.SceneChanged, sceneName);
+    }
+
+    private async Task&lt;Node&gt; LoadSceneAsync(string sceneName)
+    {
+        var scenePath = $&quot;{ScenesPath}{sceneName}.tscn&quot;;
+
+        if (!_cachedScenes.ContainsKey(scenePath))
+        {
+            var resource = GD.Load&lt;PackedScene&gt;(scenePath);
+            if (resource == null)
+            {
+                throw new FileNotFoundException($&quot;Scene not found: {scenePath}&quot;);
+            }
+            _cachedScenes[scenePath] = resource;
+        }
+
+        // Simulate async loading for large scenes
+        await Task.Delay(100);
+
+        return _cachedScenes[scenePath].Instantiate();
+    }
+}
+</code></pre>
+<h3 id="scene-hierarchy">Scene Hierarchy</h3>
+<pre><code>Main Scene (persistent)
+├── UI Layer (CanvasLayer)
+│   ├── HUD
+│   ├── Menus
+│   └── Dialogs
+├── Game Layer
+│   ├── Current Level Scene
+│   └── Player (persistent between levels)
+├── Audio Layer
+│   ├── Music Player
+│   └── SFX Players
+└── Managers (AutoLoad)
+    ├── GameManager
+    ├── SceneManager
+    ├── AudioManager
+    └── InputManager
+</code></pre>
+<h2 id="performance-considerations">Performance Considerations</h2>
+<h3 id="memory-management">Memory Management</h3>
+<pre><code class="lang-csharp">// Object pooling for frequently spawned objects
+public class ProjectilePool : Node
+{
+    private readonly Queue&lt;Projectile&gt; _pool = new();
+    private readonly PackedScene _projectileScene;
+
+    public ProjectilePool()
+    {
+        _projectileScene = GD.Load&lt;PackedScene&gt;(&quot;res://scenes/actors/Projectile.tscn&quot;);
+    }
+
+    public Projectile GetProjectile()
+    {
+        if (_pool.Count &gt; 0)
+        {
+            return _pool.Dequeue();
+        }
+
+        return _projectileScene.Instantiate&lt;Projectile&gt;();
+    }
+
+    public void ReturnProjectile(Projectile projectile)
+    {
+        projectile.Reset();
+        projectile.GetParent()?.RemoveChild(projectile);
+        _pool.Enqueue(projectile);
+    }
+}
+</code></pre>
+<h3 id="efficient-update-patterns">Efficient Update Patterns</h3>
+<pre><code class="lang-csharp">public class OptimizedUpdater : Node
+{
+    private readonly List&lt;IUpdatable&gt; _updateables = new();
+    private float _updateInterval = 1.0f / 60.0f; // 60 FPS
+    private float _timeSinceLastUpdate = 0.0f;
+
+    public override void _Process(double delta)
+    {
+        _timeSinceLastUpdate += (float)delta;
+
+        if (_timeSinceLastUpdate &gt;= _updateInterval)
+        {
+            // Batch update all systems
+            for (int i = _updateables.Count - 1; i &gt;= 0; i--)
+            {
+                if (_updateables[i].IsValid())
+                {
+                    _updateables[i].Update(_timeSinceLastUpdate);
+                }
+                else
+                {
+                    _updateables.RemoveAt(i);
+                }
+            }
+
+            _timeSinceLastUpdate = 0.0f;
+        }
+    }
+}
+</code></pre>
+<h2 id="integration-points">Integration Points</h2>
+<h3 id="external-systems-integration">External Systems Integration</h3>
+<pre><code class="lang-csharp">// Abstract integration point
+public abstract class ExternalSystem : Node
+{
+    protected bool _isInitialized = false;
+
+    public virtual async Task&lt;bool&gt; InitializeAsync()
+    {
+        try
+        {
+            await PerformInitialization();
+            _isInitialized = true;
+            return true;
+        }
+        catch (Exception ex)
+        {
+            GD.PrintErr($&quot;Failed to initialize {GetType().Name}: {ex.Message}&quot;);
+            return false;
+        }
+    }
+
+    protected abstract Task PerformInitialization();
+}
+
+// Steam integration example
+public class SteamIntegration : ExternalSystem
+{
+    protected override async Task PerformInitialization()
+    {
+        // Initialize Steam SDK
+        // Set up achievements, leaderboards, etc.
+        await Task.Delay(1000); // Simulated async initialization
+        GD.Print(&quot;Steam integration initialized&quot;);
+    }
+}
+</code></pre>
+<h3 id="testing-integration">Testing Integration</h3>
+<pre><code class="lang-csharp">// Testable architecture with dependency injection
+public class TestableGameSystem : Node
+{
+    private readonly IDataManager _dataManager;
+    private readonly IAudioManager _audioManager;
+
+    public TestableGameSystem(
+        IDataManager dataManager = null,
+        IAudioManager audioManager = null)
+    {
+        _dataManager = dataManager ?? GetNode&lt;JsonDataManager&gt;(&quot;DataManager&quot;);
+        _audioManager = audioManager ?? GetNode&lt;AudioManager&gt;(&quot;AudioManager&quot;);
+    }
+
+    // Methods can be easily unit tested with mocked dependencies
+    public void ProcessGameLogic()
+    {
+        var gameData = _dataManager.Load&lt;GameData&gt;(&quot;game_state.json&quot;);
+        _audioManager.PlaySound(&quot;process_complete&quot;);
+    }
+}
+</code></pre>
+<hr>
+<h2 id="architectural-guidelines">Architectural Guidelines</h2>
+<h3 id="dos-">Do's ✅</h3>
+<ul>
+<li>Use composition over inheritance</li>
+<li>Favor dependency injection for testability</li>
+<li>Keep systems loosely coupled through events</li>
+<li>Follow single responsibility principle</li>
+<li>Use meaningful naming conventions</li>
+<li>Document complex architectural decisions</li>
+</ul>
+<h3 id="donts-">Don'ts ❌</h3>
+<ul>
+<li>Create circular dependencies</li>
+<li>Use static state excessively (except for managers)</li>
+<li>Mix UI logic with game logic</li>
+<li>Create god classes with multiple responsibilities</li>
+<li>Ignore memory management in frequently called code</li>
+<li>Skip error handling in integration points</li>
+</ul>
+<h3 id="evolution-strategy">Evolution Strategy</h3>
+<p>This architecture is designed to evolve with the project:</p>
+<ol>
+<li><strong>Phase 1</strong> (Current): Basic component system with managers</li>
+<li><strong>Phase 2</strong>: Advanced ECS (Entity Component System) if needed</li>
+<li><strong>Phase 3</strong>: Microservices architecture for multiplayer features</li>
+<li><strong>Phase 4</strong>: Plugin architecture for modding support</li>
+</ol>
+<p>The modular design ensures that individual systems can be refactored or replaced without affecting the entire codebase, supporting the project's long-term maintenance and scalability goals.</p>
 
 </article>
 

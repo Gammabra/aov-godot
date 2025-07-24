@@ -253,6 +253,33 @@ namespace Tests.Unit
 }
 </code></pre>
 </li>
+<li><p><strong>Integration Testing Best Practices</strong></p>
+<pre><code class="lang-csharp">[TestSuite]
+public class PlayerCombatIntegrationTests
+{
+   [TestCase]
+   [RequireGodotRuntime]
+   public void Should_ApplyDamage_When_PlayerAttacksEnemy()
+   {
+      // Arrange: Set up player and enemy with components
+      var player = AutoFree(new Player());
+      var enemy = AutoFree(new Enemy());
+
+      if (player == null)
+         throw new NullReferenceException(&quot;player is null&quot;);
+      if (enemy == null)
+         throw new NullReferenceException(&quot;enemy is null&quot;);
+
+      // Act: Simulate combat interaction
+      player.Attack(enemy);
+
+      // Assert: Verify the complete interaction chain
+      AssertThat(enemy.GetComponent&lt;HealthComponent&gt;().CurrentHealth)
+            .IsLess(enemy.GetComponent&lt;HealthComponent&gt;().MaxHealth);
+   }
+}
+</code></pre>
+</li>
 </ol>
 <h3 id="running-tests">Running Tests</h3>
 <ol>

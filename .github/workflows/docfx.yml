@@ -2,7 +2,7 @@ name: Build DocFX Documentation
 
 on:
   push:
-    branches: [ develop, canary, release, feat/docs-automation ]
+    branches: [ develop, canary, release ]
   workflow_dispatch:
 
 jobs:

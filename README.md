@@ -1,27 +1,69 @@
 # 🏹 **Ashes Of Velsingrad**
-*An RPG of Betrayal, Power, and Redemption*
+*A Dark Tactical RPG of Betrayal, Power, and Moral Choices*
 
 [![Build and Lint](https://github.com/Gammabra/aov-godot/actions/workflows/build.yml/badge.svg)](https://github.com/Gammabra/aov-godot/actions/workflows/build.yml)
 [![GdUnit Tests](https://github.com/Gammabra/aov-godot/actions/workflows/ci.yml/badge.svg)](https://github.com/Gammabra/aov-godot/actions/workflows/ci.yml)
 
 ---
 
-## 🎮 **About the Game**
-*Ashes Of Velsingrad* is a dark tactical RPG set in a world torn apart by war, plague, and corruption.
-You play as **Kaelen Voss**, a mercenary betrayed and left for dead, now cursed with a dark power that could either save or destroy the world.
+## 🌍 **The World of Velsingrad**
 
-👉 Will you seek **Vengeance** against those who betrayed you?
-👉 Will you embrace **Redemption** and protect the innocent?
-👉 Or will you rise above all and claim **Domination** over the shattered realm?
+*Setting: 1146 After the Fall*
+
+Welcome to **Ashes of Velsingrad**, a dark tactical RPG that combines strategic combat, deep narrative choices, and complex character development in a war-torn fantasy world.
+
+Velsingrad stands as a broken kingdom, scarred by decades of conflict with the Empire of Solmire. Three catastrophic events have shaped this dying realm:
+
+- **🦠 The Plague** - A mysterious black fever that consumed entire cities, leaving ghost towns and scarred survivors
+- **⛪ The Inquisition** - The Order of the Broken Dawn emerged to purge sorcery, claiming countless lives in brutal hunts
+- **🌑 The Curse** - A malevolent force awakened beneath the land, corrupting those it touches while granting terrible power
 
 ---
 
-## 🏆 **Key Features**
-✔️ Tactical turn-based combat with deep strategic mechanics
-✔️ Powerful magic system with risk-reward corruption effects
-✔️ Multi-branch narrative where choices have lasting consequences
-✔️ Complex faction dynamics and companion loyalty systems
-✔️ Unique missions and contracts through the **Challenge Board**
+## 🗡️ **Your Story: Kaelen Voss**
+
+You are **Kaelen Voss**, former commander of the legendary mercenary company **the Iron Crows**. Once feared across battlefields for tactical brilliance and unwavering loyalty, you were betrayed during what should have been your greatest triumph.
+
+Left for dead, you awakened with a dark power coursing through your veins—the same curse the Inquisition fears and sorcerers covet. Now you must choose your path:
+
+### **Three Paths of Destiny**
+
+**⚔️ Vengeance**
+- Hunt down those who betrayed you
+- Embrace anger and the desire for retribution
+- Build your legacy through fear and blood
+- Risk losing yourself to the darkness within
+
+**🛡️ Redemption**
+- Seek to atone for past failures
+- Protect the innocent from the chaos engulfing the world
+- Use your power to heal rather than harm
+- Fight against the corruption spreading through the land
+
+**👑 Domination**
+- Embrace the dark power fully
+- Rise above the petty conflicts of others
+- Rule through strength and command respect through fear
+- Risk becoming the very monster the world fears
+
+---
+
+## 🏆 **What Makes This Game Unique**
+
+**🎭 Moral Ambiguity**
+There are no clear heroes or villains. Every faction has justifiable motivations, every choice carries consequences. The Inquisition may be brutal, but they genuinely believe they're saving the world.
+
+**⚡ Power and Corruption**
+The curse offers incredible abilities, but at what cost? Every use of dark magic brings you closer to losing your humanity. Resurrection is possible, but comes at a terrible price.
+
+**🤝 Dynamic Relationships**
+Your companions aren't just stat blocks—they're complex individuals with their own goals, fears, and moral codes. Managing their loyalty is as crucial as any combat encounter.
+
+**🗺️ Living World**
+Your choices don't just affect story beats—they reshape the entire world. Factions rise and fall, companions may leave or betray you, and entire regions can be saved or damned by your decisions.
+
+**⚔️ Tactical Depth**
+Combat is strategic puzzles requiring positioning, terrain usage, and careful planning. Every battle offers multiple viable approaches depending on your playstyle and moral alignment.
 
 ---
 
@@ -33,39 +75,49 @@ You play as **Kaelen Voss**, a mercenary betrayed and left for dead, now cursed 
 - **Platform:** Windows 10/11
 
 ---
-## 📚 Technical Documentation
+
+## 📚 **Documentation**
+
+### **🎮 Game Documentation**
+Explore the complete game design, lore, and systems at our [DocFX Documentation](https://gammabra.github.io/aov-godot/index.html):
+
+- **[Getting Started](https://gammabra.github.io/aov-godot/docs/getting-started.html)** - Set up your development environment
+- **[Game Design](https://gammabra.github.io/aov-godot/docs/game-design/core-gameplay.html)** - Deep dive into game systems
+- **[API Reference](https://gammabra.github.io/aov-godot/api/index.html)** - Technical implementation details
+
+### **🔧 Technical Documentation**
 
 The C# code technical documentation is automatically generated using [DocFX](https://dotnet.github.io/docfx/).
 
-### Local Generation
-
+**Local Generation:**
 ```sh
 ./generate-docs.cmd
 ```
 
-The HTML documentation will be available in the `documentation/docfx/_site/toc.html` folder.
-
-### Automatic Generation (CI)
-
-On every push to `main` or `feat/docs-automation`, the documentation is automatically generated via GitHub Actions. The result is available as a workflow artifact [here](https://gammabra.github.io/aov-godot/index.html).
+**Automatic Generation (CI):**
+Documentation is automatically generated on every push to `main` or `feat/docs-automation` via GitHub Actions.
 
 ---
 
-## 👥 **The Team**
+## 👥 **The Development Team**
+
 | Name | Role | Contribution |
 |-------|------|--------------|
-| **Thomas Lebouc** | Programmer |  |
-| **Miguel Da Silva Andrade De Freitas** | Programmer |  |
-| **Eric Xu** | Programmer |  |
-| **Louis Ferrari** | Programmer |  |
-| **Amaury Baffreau** | Programmer |  |
-| **Nicolas Ferreira-Andre** | Programmer |  |
+| **Thomas Lebouc** | Programmer | |
+| **Miguel Da Silva Andrade De Freitas** | Programmer | |
+| **Eric Xu** | Programmer | |
+| **Louis Ferrari** | Programmer | |
+| **Amaury Baffreau** | Programmer | |
+| **Nicolas Ferreira-Andre** | Programmer | |
 
 ---
 
 ## 🤝 **Contributing**
 
-We welcome contributions! Please read our [Contributing Guide](./documentation/docs/contributing.md) and our [Set up Guide](./documentation/docs/getting-started.md) to get started.
+We welcome contributions! Please read our guides to get started:
+
+- **[Contributing Guide](./documentation/docs/contributing.md)** - How to contribute to the project
+- **[Setup Guide](./documentation/docs/getting-started.md)** - Development environment setup
 
 **Quick Start:**
 1. Fork the repository
@@ -75,9 +127,17 @@ We welcome contributions! Please read our [Contributing Guide](./documentation/d
 
 ---
 
-## 🌍 **Learn More**
+## 🌟 **Core Themes**
 
-👉 For detailed information about the gameplay, lore, systems and more check our [Dovfx documentation](https://gammabra.github.io/aov-godot/index.html)
+*"In the ashes of what was, we forge what will be. The question is not whether we can change the world, but whether we can do so without losing ourselves in the process."*
+— **Kaelen Voss**, Commander of the Iron Crows
+
+**Ashes of Velsingrad** explores themes of:
+- **Hope in Darkness** - Finding light even in the bleakest circumstances
+- **Loyalty and Betrayal** - The weight of broken oaths and the price of trust
+- **Meaningful Consequences** - Every decision reshapes your story and the world
+- **Tactical Excellence** - Strategic combat that rewards careful planning
+
 ---
 
 © 2025 Gammabra Studios. All Rights Reserved.

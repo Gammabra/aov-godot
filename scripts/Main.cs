@@ -19,6 +19,19 @@ public partial class Main : Node
     }
 
     /// <summary>
+    /// Method called every frame to process input.
+    /// Checks if the space key is pressed and prints a message to the console.
+    /// </summary>
+    /// <param name="delta">The time elapsed since the last frame.</param>
+    public override void _Process(double delta)
+    {
+        if (Input.IsActionPressed("space_input"))
+        {
+            GD.Print("Space key pressed!");
+        }
+    }
+
+    /// <summary>
     /// Increments the value passed as a parameter by 1.
     /// </summary>
     /// <param name="value">The value to increment.</param>

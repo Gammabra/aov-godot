@@ -45,4 +45,10 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "OPTION"
 
+[node name="ExitButton" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "EXIT"
+
 [connection signal="button_up" from="MarginContainer/HBoxContainer/VBoxContainer/OptionsButton" to="." method="OnOptionsButtonButtonUp"]
+[connection signal="button_up" from="MarginContainer/HBoxContainer/VBoxContainer/ExitButton" to="." method="OnExitButtonButtonUp"]

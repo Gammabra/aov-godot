@@ -1,5 +1,5 @@
-using Godot;
 using AshesOfVelsingrad.Managers;
+using Godot;
 
 namespace AshesOfVelsingrad.UI.Menus;
 
@@ -130,12 +130,14 @@ public partial class OptionsMenu : Control
         GetTree().Root.AddChild(confirmDialog);
         confirmDialog.PopupCentered();
 
-        confirmDialog.Confirmed += () => {
+        confirmDialog.Confirmed += () =>
+        {
             SettingsManager.Instance?.ResetToDefaults();
             confirmDialog.QueueFree();
         };
 
-        confirmDialog.CustomAction += (action) => {
+        confirmDialog.CustomAction += (action) =>
+        {
             if ((string)action == "cancel")
             {
                 confirmDialog.QueueFree();

@@ -1,11 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://c0d14wqdqp1c6"]
+[gd_scene load_steps=3 format=3 uid="uid://qec0n87ljedx"]
 
-[ext_resource type="Script" uid="uid://di7its20ttgf0" path="res://scripts/menu/MainMenu.cs" id="1_nl8w3"]
+[ext_resource type="Script" uid="uid://di7its20ttgf0" path="res://scripts/ui/menu/MainMenu.cs" id="1_nl8w3"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_3rkf3"]
 font_size = 48
 
-[node name="Main_Menu" type="Control"]
+[node name="MainMenu" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0

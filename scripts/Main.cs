@@ -1,40 +1,52 @@
 using Godot;
+using AshesOfVelsingrad.Managers;
+using AshesOfVelsingrad.UI.Menus;
 
-namespace AshesofVelsingrad;
+namespace AshesOfVelsingrad;
 
 /// <summary>
-/// Main class of the Godot project. Manages the main scene and global interactions.
+/// Main scene controller that initializes the game systems
 /// </summary>
 public partial class Main : Node
 {
-    /// <summary>
-    /// Method called when the node is ready.
-    /// Initializes the main scene and adds a label to indicate that the script is loaded.
-    /// </summary>
+    [Export] private Control? _menuContainer;
+    [Export] private PackedScene? _mainMenuScene;
+    [Export] private PackedScene? _optionsMenuScene;
+
     public override void _Ready()
     {
-        var label = new Label();
-        label.Text = "Main.cs loaded!";
-        AddChild(label);
+        CallDeferred(MethodName.InitializeMenus);
     }
 
-    /// <summary>
-    /// Method called every frame to process input.
-    /// Checks if the space key is pressed and prints a message to the console.
-    /// </summary>
-    /// <param name="delta">The time elapsed since the last frame.</param>
-    public override void _Process(double delta)
+    private void InitializeMenus()
     {
-        if (Input.IsActionPressed("space_input"))
+        if (SettingsManager.Instance == null)
         {
-            GD.Print("Space key pressed!");
+            GD.PrintErr("SettingsManager not available! Check AutoLoad configuration.");
+            return;
+        }
+
+        if (MenuManager.Instance == null)
+        {
+            GD.PrintErr("MenuManager not available! Check AutoLoad configuration.");
+            return;
+        }
+
+        if (_mainMenuScene != null && _optionsMenuScene != null && _menuContainer != null)
+        {
+            var mainMenu = _mainMenuScene.Instantiate<MainMenu>();
+            var optionsMenu = _optionsMenuScene.Instantiate<OptionsMenu>();
+
+            _menuContainer.AddChild(mainMenu);
+            _menuContainer.AddChild(optionsMenu);
+
+            // Enregistrer le menu auprès du MenuManager
+            MenuManager.Instance.RegisterMenu(MenuManager.MAIN_MENU, mainMenu);
+            MenuManager.Instance.RegisterMenu(MenuManager.OPTIONS_MENU, optionsMenu);
+
+            GD.Print("Menus initialized successfully");
+
+            MenuManager.Instance?.ShowMenu(MenuManager.MAIN_MENU);
         }
     }
-
-    /// <summary>
-    /// Increments the value passed as a parameter by 1.
-    /// </summary>
-    /// <param name="value">The value to increment.</param>
-    /// <returns>The value incremented by 1.</returns>
-    public int TempCounter(int value) => value + 1;
 }

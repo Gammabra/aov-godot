@@ -1,5 +1,4 @@
 using System;
-using AshesofVelsingrad;
 using GdUnit4;
 using Godot;
 using static GdUnit4.Assertions;
@@ -9,15 +8,6 @@ namespace Tests.Unit
     [TestSuite]
     public class UnitTestExample
     {
-        [TestCase]
-        [RequireGodotRuntime]
-        public void TestTempCounter()
-        {
-            var main = AutoFree(new Main());
-            int result = main != null ? main.TempCounter(5) : throw new NullReferenceException("main is null");
-            AssertThat(result).IsEqual(6);
-        }
-
         [TestCase]
         public void TestBasicAssertion()
         {

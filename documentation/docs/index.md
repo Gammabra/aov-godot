@@ -12,29 +12,29 @@ This API documentation is automatically generated from XML documentation comment
 
 | Namespace | Description | Key Classes |
 |-----------|-------------|-------------|
-| **[AshesOfVelsingrad.Actors](~/api/AshesOfVelsingrad.Actors.yml)** | Game entities and characters | `BaseActor`, `Player`, `Enemy` |
-| **[AshesOfVelsingrad.Components](~/api/AshesOfVelsingrad.Components.yml)** | Reusable game components | `HealthComponent`, `MovementComponent` |
-| **[AshesOfVelsingrad.Systems](~/api/AshesOfVelsingrad.Systems.yml)** | Game logic systems | `CombatSystem`, `InventorySystem` |
-| **[AshesOfVelsingrad.Managers](~/api/AshesOfVelsingrad.Managers.yml)** | Global managers | `GameManager`, `AudioManager` |
+| **[AshesOfVelsingrad.Actors](~/documentation/api/AshesOfVelsingrad.Actors.yml)** | Game entities and characters | `BaseActor`, `Player`, `Enemy` |
+| **[AshesOfVelsingrad.Components](~/documentation/api/AshesOfVelsingrad.Components.yml)** | Reusable game components | `HealthComponent`, `MovementComponent` |
+| **[AshesOfVelsingrad.Systems](~/documentation/api/AshesOfVelsingrad.Systems.yml)** | Game logic systems | `CombatSystem`, `InventorySystem` |
+| **[AshesOfVelsingrad.Managers](~/documentation/api/AshesOfVelsingrad.Managers.yml)** | Global managers | `GameManager`, `AudioManager` |
 
 ### 🖥️ User Interface
 
 | Namespace | Description | Key Classes |
 |-----------|-------------|-------------|
-| **[AshesOfVelsingrad.UI.Menus](~/api/AshesOfVelsingrad.UI.Menus.yml)** | Game menus | `MainMenu`, `PauseMenu`, `SettingsMenu` |
-| **[AshesOfVelsingrad.UI.HUD](~/api/AshesOfVelsingrad.UI.HUD.yml)** | In-game interface | `HealthBar`, `MiniMap`, `InventoryPanel` |
-| **[AshesOfVelsingrad.UI.Dialogs](~/api/AshesOfVelsingrad.UI.Dialogs.yml)** | Modal dialogs | `DialogBox`, `ConfirmationDialog` |
+| **[AshesOfVelsingrad.UI.Menus](~/documentation/api/AshesOfVelsingrad.UI.Menus.yml)** | Game menus | `MainMenu`, `PauseMenu`, `SettingsMenu` |
+| **[AshesOfVelsingrad.UI.HUD](~/documentation/api/AshesOfVelsingrad.UI.HUD.yml)** | In-game interface | `HealthBar`, `MiniMap`, `InventoryPanel` |
+| **[AshesOfVelsingrad.UI.Dialogs](~/documentation/api/AshesOfVelsingrad.UI.Dialogs.yml)** | Modal dialogs | `DialogBox`, `ConfirmationDialog` |
 
 ### 📊 Data & Utilities
 
 | Namespace | Description | Key Classes |
 |-----------|-------------|-------------|
-| **[AshesOfVelsingrad.Data](~/api/AshesOfVelsingrad.Data.yml)** | Data structures | `ItemData`, `CharacterData`, `GameSettings` |
-| **[AshesOfVelsingrad.Utilities](~/api/AshesOfVelsingrad.Utilities.yml)** | Helper classes | `MathHelpers`, `StringExtensions` |
+| **[AshesOfVelsingrad.Data](~/documentation/api/AshesOfVelsingrad.Data.yml)** | Data structures | `ItemData`, `CharacterData`, `GameSettings` |
+| **[AshesOfVelsingrad.Utilities](~/documentation/api/AshesOfVelsingrad.Utilities.yml)** | Helper classes | `MathHelpers`, `StringExtensions` |
 
 ## Architecture Overview
 
-The API is organized following our [component-based architecture](~/docs/technical/architecture.md):
+The API is organized following our [component-based architecture](~/documentation/docs/technical/architecture.md):
 
 ```mermaid
 graph TB
@@ -145,7 +145,7 @@ SceneManager.Instance.ChangeScene("MainMenu");
 
 ### Naming Conventions
 
-Following our [coding standards](~/docs/technical/coding-standards.md):
+Following our [coding standards](~/documentation/docs/technical/coding-standards.md):
 
 - **Classes**: PascalCase (`PlayerController`, `InventorySystem`)
 - **Methods**: PascalCase (`GetComponent`, `TakeDamage`)
@@ -245,7 +245,7 @@ public class HealthComponentTests
 }
 ```
 
-For testing examples, see our [Testing Guide](~/docs/technical/testing.md).
+For testing examples, see our [Testing Guide](~/documentation/docs/technical/testing.md).
 
 ## Performance Considerations
 
@@ -261,7 +261,7 @@ For testing examples, see our [Testing Guide](~/docs/technical/testing.md).
 - Use `_Process()` for frame-rate dependent updates
 - Batch operations where possible
 
-For detailed performance guidelines, see our [Architecture Documentation](~/docs/technical/architecture.md).
+For detailed performance guidelines, see our [Architecture Documentation](~/documentation/docs/technical/architecture.md).
 
 ## Migration & Versioning
 
@@ -292,17 +292,17 @@ If you find missing or incorrect documentation:
 
 For more comprehensive examples:
 
-- [Getting Started Guide](~/docs/getting-started.md)
-- [Architecture Documentation](~/docs/technical/architecture.md)
-- [Testing Guide](~/docs/technical/testing.md)
+- [Getting Started Guide](~/documentation/docs/getting-started.md)
+- [Architecture Documentation](~/documentation/docs/technical/architecture.md)
+- [Testing Guide](~/documentation/docs/technical/testing.md)
 - [Source Code Examples](https://github.com/Gammabra/aov-godot)
 
 ### Contributing
 
 To contribute to the API or its documentation:
 
-1. Read our [Contributing Guide](~/docs/contributing.md)
-2. Follow our [Coding Standards](~/docs/technical/coding-standards.md)
+1. Read our [Contributing Guide](~/documentation/docs/contributing.md)
+2. Follow our [Coding Standards](~/documentation/docs/technical/coding-standards.md)
 3. Include comprehensive XML documentation
 4. Add unit tests for new functionality
 

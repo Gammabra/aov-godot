@@ -1,8 +1,9 @@
 using GdUnit4;
 
-namespace UnitTests.Managers;
-
-[TestSuite]
-public class MenuManagerTest
+namespace UnitTests.Managers
 {
+    [TestSuite]
+    public class MenuManagerTest
+    {
+    }
 }

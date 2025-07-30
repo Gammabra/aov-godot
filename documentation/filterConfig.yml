@@ -11,6 +11,12 @@ apiRules:
 - exclude:
     uidRegex: ^Tests(\..*)?$
     type: Namespace
+- exclude:
+    uidRegex: ^UnitTests(\..*)?$
+    type: Namespace
+- exclude:
+    uidRegex: ^IntegrationTests(\..*)?$
+    type: Namespace
 
 # ⛔ Exclude specific types
 - exclude:

@@ -1,6 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://derpfws6rjiq1"]
+[gd_scene load_steps=2 format=3 uid="uid://bjgrvgvbxb6y6"]
 
-[ext_resource type="Script" uid="uid://dxaddbwp5mbqw" path="res://scripts/ui/menu/OptionsMenu.cs" id="1_xurnv"]
+[ext_resource type="Script" uid="uid://dxaddbwp5mbqw" path="res://scripts/ui/menus/OptionsMenu.cs" id="1_8sva7"]
 
 [node name="OptionsMenu" type="Control" node_paths=PackedStringArray("_dialogueSizeSlider", "_dialogueSizeLabel", "_resetButton", "_backButton", "_previewDialogue", "_previewText")]
 layout_mode = 3
@@ -9,7 +9,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_xurnv")
+script = ExtResource("1_8sva7")
 _dialogueSizeSlider = NodePath("ColorRect/Panel/VBoxContainer/DialogueSection/DialogueSizeSlider")
 _dialogueSizeLabel = NodePath("ColorRect/Panel/VBoxContainer/DialogueSection/DialogueSizeLabel")
 _resetButton = NodePath("ColorRect/Panel/VBoxContainer/ButtonsContainer/ResetButton")

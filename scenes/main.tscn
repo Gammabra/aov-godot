@@ -1,14 +1,14 @@
 [gd_scene load_steps=4 format=3 uid="uid://cuadq8eeoqg7j"]
 
 [ext_resource type="Script" uid="uid://cgf4fbcb5g7mi" path="res://scripts/Main.cs" id="1_itxqv"]
-[ext_resource type="PackedScene" uid="uid://qec0n87ljedx" path="res://scenes/ui/menu/main_menu.tscn" id="2_8gbba"]
-[ext_resource type="PackedScene" uid="uid://derpfws6rjiq1" path="res://scenes/ui/menu/options_menu.tscn" id="2_bo1nx"]
+[ext_resource type="PackedScene" uid="uid://c5rfeq1b85sob" path="res://scenes/ui/menus/main_menu.tscn" id="2_8gbba"]
+[ext_resource type="PackedScene" uid="uid://bjgrvgvbxb6y6" path="res://scenes/ui/menus/options_menu.tscn" id="3_jjvhh"]
 
 [node name="Main" type="Node" node_paths=PackedStringArray("_menuContainer")]
 script = ExtResource("1_itxqv")
 _menuContainer = NodePath("MenuContainer")
 _mainMenuScene = ExtResource("2_8gbba")
-_optionsMenuScene = ExtResource("2_bo1nx")
+_optionsMenuScene = ExtResource("3_jjvhh")
 
 [node name="MenuContainer" type="Control" parent="."]
 layout_mode = 3

@@ -124,6 +124,7 @@ debug_logs/
 
 # DocFX output
 _site/
+api/
 
 # Test results
 TestResults

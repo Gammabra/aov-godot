@@ -5,7 +5,8 @@ using Godot;
 namespace AshesOfVelsingrad;
 
 /// <summary>
-/// Main scene controller that initializes the game systems
+/// Main scene controller that initializes the game systems.
+/// Follows the Component-Based Architecture and event-driven communication.
 /// </summary>
 public partial class Main : Node
 {
@@ -18,6 +19,12 @@ public partial class Main : Node
         CallDeferred(MethodName.InitializeMenus);
     }
 
+    /// <summary>
+    /// Initializes the main and options menus, registering them with the MenuManager.
+    /// </summary>
+    /// <remarks>
+    /// This method is deferred to ensure all AutoLoad nodes are initialized before accessing them.
+    /// </remarks>
     private void InitializeMenus()
     {
         if (SettingsManager.Instance == null)

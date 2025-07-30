@@ -147,7 +147,7 @@ public partial class SettingsManager : BaseManager
     /// <typeparam name="T">The type of the setting value.</typeparam>
     /// <param name="key">The key of the setting to retrieve.</param>
     /// <param name="defaultValue">The default value to return if the setting is not found.</param>
-    /// <returns>The setting value if found, otherwise the default value.</returns
+    /// <returns>The setting value if found, otherwise the default value.</returns>
     /// <remarks>
     /// This method retrieves a custom setting from the settings data.
     /// If the setting is not found, it returns the provided default value.
@@ -214,7 +214,7 @@ public partial class SettingsManager : BaseManager
 /// <summary>
 /// Data structure for settings storage
 /// </summary>
-/// remarks>
+/// <remarks>
 /// This class holds the settings data, including dialogue size and custom settings.
 /// It is serialized to and from JSON format for persistence.
 /// </remarks>

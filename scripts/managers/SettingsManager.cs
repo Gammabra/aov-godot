@@ -19,9 +19,18 @@ public partial class SettingsManager : BaseManager
     [Signal]
     public delegate void DialogueSizeChangedEventHandler(float newSize);
 
-    private const string SettingsFilePath = "user://settings.json";
+    private const string _settingsFilePath = "user://settings.json";
     private SettingsData? _settings;
 
+    /// <summary>
+    /// Initializes the SettingsManager singleton instance.
+    /// Loads settings from the JSON file or creates a new default settings object.
+    /// </summary>
+    /// <remarks>
+    /// This method is called automatically by Godot when the node is ready.
+    /// It ensures that only one instance of SettingsManager exists and initializes the settings data.
+    /// If the settings file does not exist, it creates a new default settings object and saves it.
+    /// </remarks>
     protected override void Initialize()
     {
         if (Instance != null && Instance != this)
@@ -36,13 +45,22 @@ public partial class SettingsManager : BaseManager
         GD.Print("SettingsManager initialized successfully");
     }
 
+    /// <summary>
+    /// Loads settings from the JSON file.
+    /// If the file does not exist, creates a new default settings object.
+    /// </summary>
+    /// <remarks>
+    /// This method reads the settings from a JSON file located at user://settings.json.
+    /// If the file is not found, it initializes a new SettingsData object with default values
+    /// and saves it to create the settings file.
+    /// </remarks>
     public void LoadSettings()
     {
         try
         {
-            if (FileAccess.FileExists(SettingsFilePath))
+            if (FileAccess.FileExists(_settingsFilePath))
             {
-                using var file = FileAccess.Open(SettingsFilePath, FileAccess.ModeFlags.Read);
+                using var file = FileAccess.Open(_settingsFilePath, FileAccess.ModeFlags.Read);
                 var jsonString = file.GetAsText();
                 _settings = JsonSerializer.Deserialize<SettingsData>(jsonString) ?? new SettingsData();
             }
@@ -59,6 +77,13 @@ public partial class SettingsManager : BaseManager
         }
     }
 
+    /// <summary>
+    /// Saves the current settings to the JSON file.
+    /// </summary>
+    /// <remarks>
+    /// This method serializes the current settings data to a JSON string and writes it to the
+    /// user://settings.json file. It handles any exceptions that may occur during the file operations.
+    /// </remarks>
     public void SaveSettings()
     {
         if (_settings == null) return;
@@ -70,7 +95,7 @@ public partial class SettingsManager : BaseManager
                 WriteIndented = true
             });
 
-            using var file = FileAccess.Open(SettingsFilePath, FileAccess.ModeFlags.Write);
+            using var file = FileAccess.Open(_settingsFilePath, FileAccess.ModeFlags.Write);
             file?.StoreString(jsonString);
         }
         catch (Exception ex)
@@ -79,12 +104,29 @@ public partial class SettingsManager : BaseManager
         }
     }
 
-    // Dialogue size setting
+    /// <summary>
+    /// Gets the current dialogue size setting.
+    /// </summary>
+    /// <returns>The dialogue size as a float, defaulting to 1.0f if not set.</returns>
+    /// <remarks>
+    /// This method retrieves the dialogue size from the settings data.
+    /// If the dialogue size is not set, it returns a default value of 1.0f.
+    /// </remarks>
     public float GetDialogueSize()
     {
         return _settings?.DialogueSize ?? 1.0f;
     }
 
+    /// <summary>
+    /// Sets the dialogue size and saves the settings.
+    /// Emits a signal to notify other components of the change.
+    /// </summary>
+    /// <param name="size">The new dialogue size to set.</param>
+    /// <remarks>
+    /// This method updates the dialogue size in the settings data and saves it to the JSON file.
+    /// It also emits a SettingsChanged signal to notify other components of the change.
+    /// The size is clamped between 0.5f and 2.0f to ensure it remains within a reasonable range.
+    /// </remarks>
     public void SetDialogueSize(float size)
     {
         if (_settings == null) return;
@@ -99,7 +141,18 @@ public partial class SettingsManager : BaseManager
         }
     }
 
-    // Generic setting access
+    /// <summary>
+    /// Gets a custom setting by key, with an optional default value.
+    /// </summary>
+    /// <typeparam name="T">The type of the setting value.</typeparam>
+    /// <param name="key">The key of the setting to retrieve.</param>
+    /// <param name="defaultValue">The default value to return if the setting is not found.</param>
+    /// <returns>The setting value if found, otherwise the default value.</returns
+    /// <remarks>
+    /// This method retrieves a custom setting from the settings data.
+    /// If the setting is not found, it returns the provided default value.
+    /// It uses JSON serialization to convert the setting value to the specified type.
+    /// </remarks>
     public T? GetSetting<T>(string key, T? defaultValue = default(T))
     {
         if (_settings?.CustomSettings.TryGetValue(key, out var value) == true)
@@ -120,6 +173,18 @@ public partial class SettingsManager : BaseManager
         return defaultValue;
     }
 
+    /// <summary>
+    /// Sets a custom setting by key and saves the settings.
+    /// Emits a signal to notify other components of the change.
+    /// </summary>
+    /// <typeparam name="T">The type of the setting value.</typeparam>
+    /// <param name="key">The key of the setting to set.</param>
+    /// <param name="value">The value to set for the setting.</param>
+    /// <remarks>
+    /// This method updates a custom setting in the settings data and saves it to the JSON file.
+    /// It also emits a SettingsChanged signal to notify other components of the change.
+    /// The value is serialized to JSON format before being stored.
+    /// </remarks>
     public void SetSetting<T>(string key, T value)
     {
         if (_settings == null) return;
@@ -130,7 +195,13 @@ public partial class SettingsManager : BaseManager
         EmitSignal(SignalName.SettingsChanged, key, Variant.From(value));
     }
 
-    // Reset to defaults
+    /// <summary>
+    /// Resets all settings to their default values.
+    /// </summary>
+    /// <remarks>
+    /// This method clears the current settings and initializes a new SettingsData object with default values.
+    /// It saves the new settings to the JSON file and emits a SettingsChanged signal to notify other components.
+    /// </remarks>
     public void ResetToDefaults()
     {
         _settings = new SettingsData();
@@ -143,6 +214,10 @@ public partial class SettingsManager : BaseManager
 /// <summary>
 /// Data structure for settings storage
 /// </summary>
+/// remarks>
+/// This class holds the settings data, including dialogue size and custom settings.
+/// It is serialized to and from JSON format for persistence.
+/// </remarks>
 public class SettingsData
 {
     public float DialogueSize { get; set; } = 1.0f;

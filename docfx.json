@@ -4,24 +4,31 @@
       "src": [
         {
           "files": [
-            "scripts/**/*.cs",
-            "scripts/*.cs"
+            "Ashes of Velsingrad.csproj"
           ],
           "exclude": [
             "**/bin/**",
             "**/obj/**",
-            "**/.godot/**"
+            "**/.godot/**",
+            "**/addons/**",
+            "**/gdUnit4/**",
+            "**/Tests/**"
           ]
         }
       ],
-      "dest": "api",
+      "dest": "documentation/api",
       "allowCompilationErrors": false,
       "disableGitFeatures": false,
       "disableDefaultFilter": false,
+      "references": [
+        ".godot/mono/temp/bin/Debug/GodotSharp.dll",
+        ".godot/mono/temp/bin/Debug/GodotSharpEditor.dll"
+      ],
       "properties": {
-        "TargetFramework": "net9.0"
+        "TargetFramework": "net9.0",
+        "DefineConstants": "GODOT;GODOT_PC;GODOT4;GODOT4_OR_GREATER"
       },
-      "filter": "filterConfig.yml",
+      "filter": "documentation/filterConfig.yml",
       "globalNamespaceId": "Global"
     }
   ],
@@ -29,28 +36,27 @@
     "content": [
       {
         "files": [
-          "api/**.yml",
-          "api/index.md",
-          "docs/**.md",
-          "docs/**/*.md",
-          "toc.yml",
-          "**.md"
+          "documentation/api/**.yml",
+          "documentation/api/index.md",
+          "documentation/docs/**.md",
+          "documentation/docs/**/*.md",
+          "documentation/toc.yml",
+          "documentation/**.md"
         ]
       }
     ],
-    "output": "_site",
+    "output": "documentation/_site",
     "globalMetadataFiles": [],
     "fileMetadataFiles": [],
-
     "template": [
       "default",
       "modern",
-      "templates/custom"
+      "documentation/templates/custom"
     ],
     "resource": [
       {
         "files": [
-          "images/**"
+          "documentation/images/**"
         ]
       }
     ],
@@ -67,7 +73,7 @@
         "branch": "develop"
       },
       "_gitUrlPattern": "github",
-      "_appLogoPath": "images/aov-logo-transparent.png",
+      "_appLogoPath": "documentation/images/aov-logo-transparent.png",
       "_enableNewTab": true
     }
   }

@@ -1,33 +1,23 @@
 apiRules:
+# ✅ Allow only namespaces that start by AshesOfVelsingrad
 - include:
-    uidRegex: ^AshesofVelsingrad
+    uidRegex: ^AshesOfVelsingrad(\..*)?$
     type: Namespace
-- include:
-    uidRegex: ^AshesofVelsingrad\..*
-    type: Type
-- include:
-    uidRegex: ^AshesofVelsingrad\..*
-    type: Member
+
+# ⛔ Exclude useless namespaces
 - exclude:
-    uidRegex: .*\.Tests?\..*
+    uidRegex: ^gdUnit4(\..*)?$
     type: Namespace
 - exclude:
-    uidRegex: .*\.Tests?\..*
-    type: Type
-- exclude:
-    uidRegex: .*\.Tests?\..*
-    type: Member
-- exclude:
-    hasAttribute:
-      uid: System.ObsoleteAttribute
-    type: Type
-- exclude:
-    hasAttribute:
-      uid: System.ObsoleteAttribute
-    type: Member
-- exclude:
-    uidRegex: ^.*\.Internal\..*
+    uidRegex: ^Tests(\..*)?$
     type: Namespace
+
+# ⛔ Exclude specific types
 - exclude:
-    uidRegex: ^.*\.Internal\..*
-    type: Type
+    uidRegex: ^*.PropertyName.*$
+- exclude:
+    uidRegex: ^*.MethodName.*$
+- exclude:
+    uidRegex: ^*.SignalName.*$
+- exclude:
+    type: Delegate

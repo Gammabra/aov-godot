@@ -1,8 +1,9 @@
 using GdUnit4;
 
-namespace UnitTests.Managers;
-
-[TestSuite]
-public class BaseManagerTest
+namespace UnitTests.Managers
 {
+    [TestSuite]
+    public class BaseManagerTest
+    {
+    }
 }

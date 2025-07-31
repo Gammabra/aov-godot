@@ -73,7 +73,7 @@
         "branch": "develop"
       },
       "_gitUrlPattern": "github",
-      "_appLogoPath": "documentation/images/aov-logo-transparent.png",
+      "_appLogoPath": "documentation/images/logo-doc.png",
       "_enableNewTab": true
     }
   }

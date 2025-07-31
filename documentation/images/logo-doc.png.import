@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bim8ar36udhq2"
-path="res://.godot/imported/aov-logo-transparent.png-f942b630f2cecd72031e4a6a76b00d79.ctex"
+uid="uid://ode06ix6ongs"
+path="res://.godot/imported/logo-doc.png-4ff93fb7719bcb28fc256285d6a477c8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://documentation/images/aov-logo-transparent.png"
-dest_files=["res://.godot/imported/aov-logo-transparent.png-f942b630f2cecd72031e4a6a76b00d79.ctex"]
+source_file="res://documentation/images/logo-doc.png"
+dest_files=["res://.godot/imported/logo-doc.png-4ff93fb7719bcb28fc256285d6a477c8.ctex"]
 
 [params]
 

@@ -13,7 +13,7 @@
 ### Visual Studio Code (Recommended)
 
 1. **Install required extensions:**
-   - C# Dev Kit (Microsoft)
+   - C# Dev Kit (v1.5.12 (pre-release) recommended) (Microsoft)
    - C# (Microsoft)
    - godot-tools (optional, for .gd file syntax highlighting)
 
@@ -33,7 +33,9 @@
      "files.exclude": {
        "**/.godot/": true,
        "**/.import/": true
-     }
+     },
+     "godotTools.editorPath.godot4": "path\\to\\your\\Godot_v4.4.1-stable_mono_win64.exe",
+     "dotnet.unitTests.runSettingsPath": "./tests/.runsettings"
    }
    ```
 
@@ -266,7 +268,7 @@ AshesOfVelsingrad/
    - Select your tests and click "Run"
 
 2. **From VS Code:**
-   - Use the C# Dev Kit extension
+   - Use the C# Dev Kit (v1.5.12 (pre-release) recommended) extension
    - Open the "Test Explorer" panel
    - Click "Refresh Tests"
    - Click "Run Test"
@@ -275,7 +277,6 @@ AshesOfVelsingrad/
    ```bash
    dotnet test --settings tests/.runsettings
    ```
-> **Tip:** Tests marked with the `RequireGodotRuntime` attribute can only be executed within the Godot Engine. When running tests outside of Godot, these tests will be skipped or may block execution of other tests. For best results, run all `RequireGodotRuntime` tests from within the Godot Editor.
 
 ## Project Structure
 

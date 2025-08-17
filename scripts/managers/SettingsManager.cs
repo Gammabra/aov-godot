@@ -54,7 +54,7 @@ public partial class SettingsManager : BaseManager
     /// If the file is not found, it initializes a new SettingsData object with default values
     /// and saves it to create the settings file.
     /// </remarks>
-    public void LoadSettings()
+    public virtual void LoadSettings()
     {
         try
         {
@@ -84,7 +84,7 @@ public partial class SettingsManager : BaseManager
     /// This method serializes the current settings data to a JSON string and writes it to the
     /// user://settings.json file. It handles any exceptions that may occur during the file operations.
     /// </remarks>
-    public void SaveSettings()
+    public virtual void SaveSettings()
     {
         if (_settings == null) return;
 

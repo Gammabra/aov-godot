@@ -62,7 +62,7 @@ public partial class MenuManager : BaseManager
     /// If the menu is already registered, it prints an error message and does not add it again.
     /// It also connects back signals for navigation menus, such as OptionsMenu, to handle back navigation.
     /// </remarks>
-    public void RegisterMenu(string menuName, Control menuControl)
+    public virtual void RegisterMenu(string menuName, Control menuControl)
     {
         if (_menus.ContainsKey(menuName))
         {
@@ -112,7 +112,7 @@ public partial class MenuManager : BaseManager
     /// If the current menu is not empty, it adds it to the history stack for back navigation.
     /// If the specified menu is not found, it prints an error message.
     /// </remarks>
-    public void ShowMenu(string menuName, bool addToHistory = true)
+    public virtual void ShowMenu(string menuName, bool addToHistory = true)
     {
         if (!_menus.ContainsKey(menuName))
         {

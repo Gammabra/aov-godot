@@ -14,17 +14,20 @@ public partial class Main : Node
     [Export] private PackedScene? _mainMenuScene;
     [Export] private PackedScene? _optionsMenuScene;
 
+    // Pour les tests
+    private ISceneInstantiator? _sceneInstantiator;
+
     public override void _Ready()
     {
         CallDeferred(MethodName.InitializeMenus);
     }
 
-    /// <summary>
-    /// Initializes the main and options menus, registering them with the MenuManager.
-    /// </summary>
-    /// <remarks>
-    /// This method is deferred to ensure all AutoLoad nodes are initialized before accessing them.
-    /// </remarks>
+    // Méthode pour injecter l'instantiateur (utilisée uniquement pour les tests)
+    public void SetSceneInstantiator(ISceneInstantiator instantiator)
+    {
+        _sceneInstantiator = instantiator;
+    }
+
     private void InitializeMenus()
     {
         GD.Print("[MAIN] InitializeMenus started");
@@ -32,87 +35,74 @@ public partial class Main : Node
         if (SettingsManager.Instance == null)
         {
             GD.PrintErr("SettingsManager not available! Check AutoLoad configuration.");
-            GD.Print("[MAIN] InitializeMenus exiting - SettingsManager is null");
             return;
         }
-        GD.Print("[MAIN] SettingsManager check passed");
 
         if (MenuManager.Instance == null)
         {
             GD.PrintErr("MenuManager not available! Check AutoLoad configuration.");
-            GD.Print("[MAIN] InitializeMenus exiting - MenuManager is null");
             return;
         }
-        GD.Print("[MAIN] MenuManager check passed");
 
-        // Debug the individual conditions
-        bool mainMenuSceneValid = _mainMenuScene != null;
-        bool optionsMenuSceneValid = _optionsMenuScene != null;
-        bool menuContainerValid = _menuContainer != null;
-        
-        GD.Print($"[MAIN] _mainMenuScene != null: {mainMenuSceneValid}");
-        GD.Print($"[MAIN] _optionsMenuScene != null: {optionsMenuSceneValid}");
-        GD.Print($"[MAIN] _menuContainer != null: {menuContainerValid}");
-        
-        bool allConditionsMet = mainMenuSceneValid && optionsMenuSceneValid && menuContainerValid;
-        GD.Print($"[MAIN] All conditions met: {allConditionsMet}");
-
-        if (_mainMenuScene != null && _optionsMenuScene != null && _menuContainer != null)
+        if (_menuContainer == null)
         {
-            GD.Print("[MAIN] Entering main initialization block");
-            
-            try
+            GD.Print("[MAIN] MenuContainer is null");
+            return;
+        }
+
+        try
+        {
+            Node mainMenu;
+            Node optionsMenu;
+
+            // Utiliser l'instantiateur de test si injecté, sinon utiliser la logique normale
+            if (_sceneInstantiator != null)
             {
-                GD.Print("[MAIN] About to instantiate MainMenu");
-                var mainMenu = _mainMenuScene.Instantiate<MainMenu>();
-                GD.Print($"[MAIN] MainMenu instantiated: {mainMenu?.GetType().Name ?? "null"}");
-                
-                GD.Print("[MAIN] About to instantiate OptionsMenu");
-                var optionsMenu = _optionsMenuScene.Instantiate<OptionsMenu>();
-                GD.Print($"[MAIN] OptionsMenu instantiated: {optionsMenu?.GetType().Name ?? "null"}");
-
-                GD.Print($"[MAIN] _mainMenuScene type is: {_mainMenuScene.GetType().FullName}");
-                GD.Print($"[MAIN] _optionsMenuScene type is: {_optionsMenuScene.GetType().FullName}");
-
-                GD.Print("[MAIN] About to add MainMenu to container");
-                _menuContainer.AddChild(mainMenu);
-                GD.Print("[MAIN] MainMenu added to container");
-                
-                GD.Print("[MAIN] About to add OptionsMenu to container");
-                _menuContainer.AddChild(optionsMenu);
-                GD.Print("[MAIN] OptionsMenu added to container");
-
-                // Enregistrer le menu auprès du MenuManager
-                GD.Print("[MAIN] About to register MainMenu with MenuManager");
-                MenuManager.Instance.RegisterMenu(MenuManager.MAIN_MENU, mainMenu);
-                GD.Print("[MAIN] MainMenu registered");
-                
-                GD.Print("[MAIN] About to register OptionsMenu with MenuManager");
-                MenuManager.Instance.RegisterMenu(MenuManager.OPTIONS_MENU, optionsMenu);
-                GD.Print("[MAIN] OptionsMenu registered");
-
-                GD.Print("Menus initialized successfully");
-
-                GD.Print("[MAIN] About to show MainMenu");
-                MenuManager.Instance?.ShowMenu(MenuManager.MAIN_MENU);
-                GD.Print("[MAIN] MainMenu shown");
+                GD.Print("[MAIN] Using injected scene instantiator");
+                mainMenu = _sceneInstantiator.InstantiateMainMenu();
+                optionsMenu = _sceneInstantiator.InstantiateOptionsMenu();
             }
-            catch (System.Exception ex)
+            else
             {
-                GD.PrintErr($"[MAIN] Exception during menu initialization: {ex.Message}");
-                GD.PrintErr($"[MAIN] Stack trace: {ex.StackTrace}");
-                if (ex.InnerException != null)
+                GD.Print("[MAIN] Using default scene instantiation");
+                if (_mainMenuScene == null || _optionsMenuScene == null)
                 {
-                    GD.PrintErr($"[MAIN] Inner exception: {ex.InnerException.Message}");
+                    GD.PrintErr("[MAIN] PackedScenes are null");
+                    return;
                 }
-                throw; // Re-throw for test to catch
+
+                mainMenu = _mainMenuScene.Instantiate();
+                optionsMenu = _optionsMenuScene.Instantiate();
+            }
+
+            if (mainMenu == null || optionsMenu == null)
+            {
+                GD.PrintErr("[MAIN] Failed to instantiate menus");
+                return;
+            }
+
+            GD.Print($"[MAIN] MainMenu instantiated: {mainMenu.GetType().Name}");
+            GD.Print($"[MAIN] OptionsMenu instantiated: {optionsMenu.GetType().Name}");
+
+            _menuContainer.AddChild(mainMenu);
+            _menuContainer.AddChild(optionsMenu);
+
+            if (mainMenu is Control mainMenuControl && optionsMenu is Control optionsMenuControl)
+            {
+                MenuManager.Instance.RegisterMenu(MenuManager.MAIN_MENU, mainMenuControl);
+                MenuManager.Instance.RegisterMenu(MenuManager.OPTIONS_MENU, optionsMenuControl);
+                MenuManager.Instance.ShowMenu(MenuManager.MAIN_MENU);
+                GD.Print("Menus initialized successfully");
+            }
+            else
+            {
+                GD.PrintErr("[MAIN] Menus are not Control nodes");
             }
         }
-        else
+        catch (System.Exception ex)
         {
-            GD.Print("[MAIN] Conditions not met, not initializing menus");
+            GD.PrintErr($"[MAIN] Exception during menu initialization: {ex.Message}");
+            throw;
         }
-        
-        GD.Print("[MAIN] InitializeMenus completed");
     }
 }

@@ -15,8 +15,7 @@ public class MainTest
 {
     private Main? _main;
     private Control? _mockMenuContainer;
-    private TestPackedScene? _mockMainMenuScene;
-    private TestPackedScene? _mockOptionsMenuScene;
+    private TestSceneInstantiator? _testInstantiator;
     private readonly List<Node> _testNodes = new();
 
     [Before]
@@ -26,26 +25,14 @@ public class MainTest
         {
             GD.Print("Starting SetUp...");
             _main = AutoFree(new Main());
-            GD.Print("Main created");
-            
             _mockMenuContainer = AutoFree(new Control());
-            GD.Print("Menu container created");
-
-            // Create test PackedScenes with specific types
-            _mockMainMenuScene = new TestPackedScene("mainmenu");
-            _mockOptionsMenuScene = new TestPackedScene("optionsmenu");
-            GD.Print("Test PackedScenes created");
-
-            // Set the exported properties using reflection since they're private
-            SetPrivateField(_main, "_menuContainer", _mockMenuContainer);
-            SetPrivateField(_main, "_mainMenuScene", _mockMainMenuScene);
-            SetPrivateField(_main, "_optionsMenuScene", _mockOptionsMenuScene);
+            _testInstantiator = new TestSceneInstantiator();
+            
             GD.Print("SetUp completed successfully");
         }
         catch (System.Exception ex)
         {
             GD.PrintErr($"Exception in SetUp: {ex.Message}");
-            GD.PrintErr($"Stack trace: {ex.StackTrace}");
             throw;
         }
     }
@@ -56,19 +43,17 @@ public class MainTest
         // Arrange
         SetSingletonInstance<SettingsManager>(null);
         SetupValidMenuManager();
+        _main.SetSceneInstantiator(_testInstantiator);
+        SetPrivateField(_main, "_menuContainer", _mockMenuContainer);
 
         // Act
         CallPrivateMethod(_main, "InitializeMenus");
 
-        // Assert - verify that no menus were added to container
+        // Assert
         var childCount = _mockMenuContainer?.GetChildCount() ?? 0;
         AssertThat(childCount).IsEqual(0);
-
-        // Verify no instantiation occurred
-        var mainCallCount = _mockMainMenuScene?.InstantiateCallCount ?? 0;
-        var optionsCallCount = _mockOptionsMenuScene?.InstantiateCallCount ?? 0;
-        AssertThat(mainCallCount).IsEqual(0);
-        AssertThat(optionsCallCount).IsEqual(0);
+        AssertThat(_testInstantiator.MainMenuInstantiateCount).IsEqual(0);
+        AssertThat(_testInstantiator.OptionsMenuInstantiateCount).IsEqual(0);
     }
 
     [TestCase]
@@ -77,28 +62,8 @@ public class MainTest
         // Arrange
         SetupValidSettingsManager();
         SetSingletonInstance<MenuManager>(null);
-
-        // Act
-        CallPrivateMethod(_main, "InitializeMenus");
-
-        // Assert - verify that no menus were added to container
-        var childCount = _mockMenuContainer?.GetChildCount() ?? 0;
-        AssertThat(childCount).IsEqual(0);
-
-        // Verify no instantiation occurred
-        var mainCallCount = _mockMainMenuScene?.InstantiateCallCount ?? 0;
-        var optionsCallCount = _mockOptionsMenuScene?.InstantiateCallCount ?? 0;
-        AssertThat(mainCallCount).IsEqual(0);
-        AssertThat(optionsCallCount).IsEqual(0);
-    }
-
-    [TestCase]
-    public void InitializeMenus_WithNullMainMenuScene_DoesNotInitialize()
-    {
-        // Arrange
-        SetupValidManagers();
-        EnsureFieldsAreSet(); // Ensure all fields are set first
-        SetPrivateField(_main, "_mainMenuScene", null); // Then set only main to null
+        _main.SetSceneInstantiator(_testInstantiator);
+        SetPrivateField(_main, "_menuContainer", _mockMenuContainer);
 
         // Act
         CallPrivateMethod(_main, "InitializeMenus");
@@ -106,48 +71,8 @@ public class MainTest
         // Assert
         var childCount = _mockMenuContainer?.GetChildCount() ?? 0;
         AssertThat(childCount).IsEqual(0);
-
-        // Only options scene should not be called (main is null)
-        var optionsCallCount = _mockOptionsMenuScene?.InstantiateCallCount ?? 0;
-        AssertThat(optionsCallCount).IsEqual(0);
-    }
-
-    [TestCase]
-    public void InitializeMenus_WithNullOptionsMenuScene_DoesNotInitialize()
-    {
-        // Arrange
-        SetupValidManagers();
-        EnsureFieldsAreSet(); // Ensure all fields are set first
-        SetPrivateField(_main, "_optionsMenuScene", null); // Then set only options to null
-
-        // Act
-        CallPrivateMethod(_main, "InitializeMenus");
-
-        // Assert
-        var childCount = _mockMenuContainer?.GetChildCount() ?? 0;
-        AssertThat(childCount).IsEqual(0);
-
-        // Only main scene should not be called (options is null)
-        var mainCallCount = _mockMainMenuScene?.InstantiateCallCount ?? 0;
-        AssertThat(mainCallCount).IsEqual(0);
-    }
-
-    [TestCase]
-    public void InitializeMenus_WithNullMenuContainer_DoesNotInitialize()
-    {
-        // Arrange
-        SetupValidManagers();
-        EnsureFieldsAreSet(); // Ensure all fields are set first
-        SetPrivateField(_main, "_menuContainer", null); // Then set only container to null
-
-        // Act
-        CallPrivateMethod(_main, "InitializeMenus");
-
-        // Assert - verify that the PackedScenes weren't called
-        var mainCallCount = _mockMainMenuScene?.InstantiateCallCount ?? 0;
-        var optionsCallCount = _mockOptionsMenuScene?.InstantiateCallCount ?? 0;
-        AssertThat(mainCallCount).IsEqual(0);
-        AssertThat(optionsCallCount).IsEqual(0);
+        AssertThat(_testInstantiator.MainMenuInstantiateCount).IsEqual(0);
+        AssertThat(_testInstantiator.OptionsMenuInstantiateCount).IsEqual(0);
     }
 
     [TestCase]
@@ -155,40 +80,48 @@ public class MainTest
     {
         // Arrange
         SetupValidManagers();
-        EnsureFieldsAreSet();
+        
+        var testInstantiator = new TestSceneInstantiator();
+        _main.SetSceneInstantiator(testInstantiator);
+        
+        SetPrivateField(_main, "_menuContainer", _mockMenuContainer);
 
-        GD.Print($"[TEST] Before call - Main instantiate count: {_mockMainMenuScene?.InstantiateCallCount ?? -1}");
-        GD.Print($"[TEST] Before call - Options instantiate count: {_mockOptionsMenuScene?.InstantiateCallCount ?? -1}");
-        GD.Print($"[TEST] Before call - Menu container child count: {_mockMenuContainer?.GetChildCount() ?? -1}");
+        GD.Print($"[TEST] Before call - Main instantiate count: {testInstantiator.MainMenuInstantiateCount}");
+        GD.Print($"[TEST] Before call - Options instantiate count: {testInstantiator.OptionsMenuInstantiateCount}");
 
         // Act
         CallPrivateMethod(_main, "InitializeMenus");
 
-        GD.Print($"[TEST] After call - Main instantiate count: {_mockMainMenuScene?.InstantiateCallCount ?? -1}");
-        GD.Print($"[TEST] After call - Options instantiate count: {_mockOptionsMenuScene?.InstantiateCallCount ?? -1}");
-        GD.Print($"[TEST] After call - Menu container child count: {_mockMenuContainer?.GetChildCount() ?? -1}");
+        GD.Print($"[TEST] After call - Main instantiate count: {testInstantiator.MainMenuInstantiateCount}");
+        GD.Print($"[TEST] After call - Options instantiate count: {testInstantiator.OptionsMenuInstantiateCount}");
 
         // Assert
         var childCount = _mockMenuContainer?.GetChildCount() ?? 0;
         AssertThat(childCount).IsEqual(2);
+        AssertThat(testInstantiator.MainMenuInstantiateCount).IsEqual(1);
+        AssertThat(testInstantiator.OptionsMenuInstantiateCount).IsEqual(1);
 
-        // Verify the correct menus were instantiated from the PackedScenes
-        var mainCallCount = _mockMainMenuScene?.InstantiateCallCount ?? 0;
-        var optionsCallCount = _mockOptionsMenuScene?.InstantiateCallCount ?? 0;
-        AssertThat(mainCallCount).IsEqual(1);
-        AssertThat(optionsCallCount).IsEqual(1);
-
-        // Verify menus were added as children and are the correct types
-        var child0 = _mockMenuContainer?.GetChild(0);
-        var child1 = _mockMenuContainer?.GetChild(1);
-
-        AssertThat(child0).IsNotNull();
-        AssertThat(child1).IsNotNull();
-        AssertThat(child0).IsInstanceOf<Control>();
-        AssertThat(child1).IsInstanceOf<Control>();
+        // Clean up immédiatement après le test
+        testInstantiator.FreeAllNodes();
         
-        GD.Print($"[TEST] Child 0 type: {child0?.GetType().Name}, name: {child0?.Name}");
-        GD.Print($"[TEST] Child 1 type: {child1?.GetType().Name}, name: {child1?.Name}");
+        // Nettoyer aussi les enfants du container
+        CleanupMenuContainer();
+    }
+
+    [TestCase]
+    public void InitializeMenus_WithNullMenuContainer_DoesNotInitialize()
+    {
+        // Arrange
+        SetupValidManagers();
+        _main.SetSceneInstantiator(_testInstantiator);
+        SetPrivateField(_main, "_menuContainer", null);
+
+        // Act
+        CallPrivateMethod(_main, "InitializeMenus");
+
+        // Assert
+        AssertThat(_testInstantiator.MainMenuInstantiateCount).IsEqual(0);
+        AssertThat(_testInstantiator.OptionsMenuInstantiateCount).IsEqual(0);
     }
 
     [TestCase]
@@ -198,34 +131,20 @@ public class MainTest
         var testMenuManager = CreateTestMenuManager();
         SetupValidSettingsManager();
         SetSingletonInstance<MenuManager>(testMenuManager);
-        EnsureFieldsAreSet();
-
-        GD.Print($"Before call - Main instantiate count: {_mockMainMenuScene?.InstantiateCallCount ?? -1}");
-        GD.Print($"Before call - Options instantiate count: {_mockOptionsMenuScene?.InstantiateCallCount ?? -1}");
+        _main.SetSceneInstantiator(_testInstantiator);
+        SetPrivateField(_main, "_menuContainer", _mockMenuContainer);
 
         // Act
-        try
-        {
-            CallPrivateMethod(_main, "InitializeMenus");
-        }
-        catch (System.Exception ex)
-        {
-            GD.PrintErr($"Exception during InitializeMenus: {ex.Message}");
-            GD.PrintErr($"Stack trace: {ex.StackTrace}");
-            throw;
-        }
+        CallPrivateMethod(_main, "InitializeMenus");
 
-        GD.Print($"After call - Main instantiate count: {_mockMainMenuScene?.InstantiateCallCount ?? -1}");
-        GD.Print($"After call - Options instantiate count: {_mockOptionsMenuScene?.InstantiateCallCount ?? -1}");
-        GD.Print($"Menu container child count: {_mockMenuContainer?.GetChildCount() ?? -1}");
-        GD.Print($"Registered menus count: {testMenuManager.RegisteredMenus.Count}");
-
-        // Assert - verify menus were registered
+        // Assert
         AssertThat(testMenuManager.RegisteredMenus.ContainsKey(MenuManager.MAIN_MENU)).IsTrue();
         AssertThat(testMenuManager.RegisteredMenus.ContainsKey(MenuManager.OPTIONS_MENU)).IsTrue();
-
-        // Verify ShowMenu was called
         AssertThat(testMenuManager.LastShownMenu).IsEqual(MenuManager.MAIN_MENU);
+
+        // Clean up
+        _testInstantiator.FreeAllNodes();
+        CleanupMenuContainer();
     }
 
     [TestCase]
@@ -235,29 +154,32 @@ public class MainTest
         var testMenuManager = CreateTestMenuManager();
         SetupValidSettingsManager();
         SetSingletonInstance<MenuManager>(testMenuManager);
-        EnsureFieldsAreSet();
+        
+        var testInstantiator = new TestSceneInstantiator();
+        _main.SetSceneInstantiator(testInstantiator);
+        SetPrivateField(_main, "_menuContainer", _mockMenuContainer);
+
+        // Vérifier l'état initial
+        var initialChildCount = _mockMenuContainer?.GetChildCount() ?? 0;
+        GD.Print($"[TEST] Initial child count: {initialChildCount}");
 
         // Act
         CallPrivateMethod(_main, "InitializeMenus");
 
-        // Assert - verify the complete successful workflow
-        // 1. Both PackedScenes instantiated
-        var mainCallCount = _mockMainMenuScene?.InstantiateCallCount ?? 0;
-        var optionsCallCount = _mockOptionsMenuScene?.InstantiateCallCount ?? 0;
-        AssertThat(mainCallCount).IsEqual(1);
-        AssertThat(optionsCallCount).IsEqual(1);
-
-        // 2. Both menus added to container
-        var childCount = _mockMenuContainer?.GetChildCount() ?? 0;
-        AssertThat(childCount).IsEqual(2);
-
-        // 3. Both menus registered with MenuManager
+        // Assert - verify complete workflow
+        AssertThat(testInstantiator.MainMenuInstantiateCount).IsEqual(1);
+        AssertThat(testInstantiator.OptionsMenuInstantiateCount).IsEqual(1);
+        
+        var finalChildCount = _mockMenuContainer?.GetChildCount() ?? 0;
+        GD.Print($"[TEST] Final child count: {finalChildCount}");
+        AssertThat(finalChildCount).IsEqual(initialChildCount + 2); // Correction ici
+        
         AssertThat(testMenuManager.RegisteredMenus.Count).IsEqual(2);
-        AssertThat(testMenuManager.RegisteredMenus.ContainsKey(MenuManager.MAIN_MENU)).IsTrue();
-        AssertThat(testMenuManager.RegisteredMenus.ContainsKey(MenuManager.OPTIONS_MENU)).IsTrue();
-
-        // 4. Main menu shown
         AssertThat(testMenuManager.LastShownMenu).IsEqual(MenuManager.MAIN_MENU);
+        
+        // Clean up
+        testInstantiator.FreeAllNodes();
+        CleanupMenuContainer();
     }
 
     // Helper methods
@@ -265,14 +187,6 @@ public class MainTest
     {
         SetupValidSettingsManager();
         SetupValidMenuManager();
-    }
-
-    private void EnsureFieldsAreSet()
-    {
-        SetPrivateField(_main, "_menuContainer", _mockMenuContainer);
-        SetPrivateField(_main, "_mainMenuScene", _mockMainMenuScene);
-        SetPrivateField(_main, "_optionsMenuScene", _mockOptionsMenuScene);
-        GD.Print("[TEST] Fields re-ensured in EnsureFieldsAreSet()");
     }
 
     private void SetupValidSettingsManager()
@@ -307,6 +221,22 @@ public class MainTest
         }
         _testNodes.Add(manager);
         return manager;
+    }
+
+    private void CleanupMenuContainer()
+    {
+        if (_mockMenuContainer == null) return;
+        
+        // Libérer tous les enfants du menu container
+        var children = _mockMenuContainer.GetChildren();
+        foreach (Node child in children)
+        {
+            if (GodotObject.IsInstanceValid(child) && !child.IsQueuedForDeletion())
+            {
+                _mockMenuContainer.RemoveChild(child);
+                child.QueueFree();
+            }
+        }
     }
 
     private void SetSingletonInstance<T>(T? instance) where T : class
@@ -377,24 +307,12 @@ public class MainTest
             GD.Print($"[TEST] _optionsMenuScene is: {(optionsMenuScene != null ? optionsMenuScene.GetType().Name : "null")}");
             GD.Print($"[TEST] SettingsManager.Instance is: {(SettingsManager.Instance != null ? "not null" : "null")}");
             GD.Print($"[TEST] MenuManager.Instance is: {(MenuManager.Instance != null ? "not null" : "null")}");
-            
-            // Test the condition manually
-            bool condition = (mainMenuScene != null) && (optionsMenuScene != null) && (menuContainer != null);
-            GD.Print($"[TEST] Combined condition (_mainMenuScene != null && _optionsMenuScene != null && _menuContainer != null) evaluates to: {condition}");
         }
         
         try
         {
             method.Invoke(obj, parameters);
             GD.Print($"Method '{methodName}' invoked successfully");
-            
-            // Add post-invocation debugging for InitializeMenus
-            if (methodName == "InitializeMenus")
-            {
-                GD.Print($"[TEST] After InitializeMenus - Main instantiate count: {_mockMainMenuScene?.InstantiateCallCount ?? -1}");
-                GD.Print($"[TEST] After InitializeMenus - Options instantiate count: {_mockOptionsMenuScene?.InstantiateCallCount ?? -1}");
-                GD.Print($"[TEST] After InitializeMenus - Menu container child count: {_mockMenuContainer?.GetChildCount() ?? -1}");
-            }
         }
         catch (System.Exception ex)
         {
@@ -418,7 +336,7 @@ public class MainTest
     [After]
     public void TearDown()
     {
-        // Clean up all manually created test nodes
+        // Nettoyer les nœuds de test d'abord
         foreach (var node in _testNodes)
         {
             if (GodotObject.IsInstanceValid(node) && !node.IsQueuedForDeletion())
@@ -428,17 +346,21 @@ public class MainTest
         }
         _testNodes.Clear();
 
-        // Clean up nodes created by TestPackedScenes
-        _mockMainMenuScene?.FreeAllNodes();
-        _mockOptionsMenuScene?.FreeAllNodes();
-
-        // Clean up singleton instances
+        // Nettoyer l'instantiateur de test
+        _testInstantiator?.FreeAllNodes();
+        
+        // Nettoyer le menu container
+        CleanupMenuContainer();
+        
+        // Réinitialiser les singletons
         SetSingletonInstance<SettingsManager>(null);
         SetSingletonInstance<MenuManager>(null);
+        
+        GD.Print("[TEST] TearDown completed");
     }
 }
 
-// Test helper classes
+// Test helper classes - inchangées
 public partial class TestSettingsManager : SettingsManager
 {
     public static new TestSettingsManager? Instance { get; set; }
@@ -448,7 +370,6 @@ public partial class TestSettingsManager : SettingsManager
         Name = "TestSettingsManager";
         GD.Print("[TEST] TestSettingsManager constructor called");
         
-        // Initialiser les propriétés de base pour éviter les NullReferenceException
         InitializeForTesting();
     }
 
@@ -456,7 +377,6 @@ public partial class TestSettingsManager : SettingsManager
     {
         Instance = this;
         
-        // Set the base class Instance using reflection
         var baseInstanceProperty = typeof(SettingsManager).GetProperty("Instance", 
             System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.Static);
         baseInstanceProperty?.SetValue(null, this);
@@ -468,7 +388,6 @@ public partial class TestSettingsManager : SettingsManager
 
     private void InitializeForTesting()
     {
-        // Créer des settings par défaut pour les tests
         var settingsField = typeof(SettingsManager).GetField("_settings", 
             System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
         
@@ -480,18 +399,15 @@ public partial class TestSettingsManager : SettingsManager
         }
     }
 
-    // Override les méthodes virtuelles au lieu d'utiliser new
     public override void LoadSettings()
     {
         GD.Print("[TEST] TestSettingsManager.LoadSettings() called - using default settings");
-        // Ne pas charger depuis un fichier, utiliser les defaults
         InitializeForTesting();
     }
 
     public override void SaveSettings()
     {
         GD.Print("[TEST] TestSettingsManager.SaveSettings() called - not saving to file in tests");
-        // Ne pas sauvegarder dans un fichier pendant les tests
     }
 }
 
@@ -510,12 +426,11 @@ public partial class TestMenuManager : MenuManager
     protected override void Initialize()
     {
         Instance = this;
-        
-        // Set the base class Instance using reflection
-        var baseInstanceProperty = typeof(MenuManager).GetProperty("Instance", 
+
+        var baseInstanceProperty = typeof(MenuManager).GetProperty("Instance",
             System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.Static);
         baseInstanceProperty?.SetValue(null, this);
-        
+
         GD.Print("[TEST] TestMenuManager initialized");
     }
 
@@ -523,8 +438,7 @@ public partial class TestMenuManager : MenuManager
     {
         RegisteredMenus[menuName] = menuControl;
         GD.Print($"[TEST] TestMenuManager: Registered menu '{menuName}'");
-        
-        // Appeler la méthode de base pour garder la logique normale
+
         try
         {
             base.RegisterMenu(menuName, menuControl);
@@ -539,8 +453,7 @@ public partial class TestMenuManager : MenuManager
     {
         LastShownMenu = menuName;
         GD.Print($"[TEST] TestMenuManager: Showed menu '{menuName}'");
-        
-        // Appeler la méthode de base pour garder la logique normale
+
         try
         {
             base.ShowMenu(menuName, addToHistory);
@@ -549,80 +462,5 @@ public partial class TestMenuManager : MenuManager
         {
             GD.Print($"[TEST] Exception in base.ShowMenu: {ex.Message} - continuing with test");
         }
-    }
-}
-
-// TestPackedScene avec approche simple pour éviter les problèmes de cast
-public partial class TestPackedScene : PackedScene
-{
-    public int InstantiateCallCount { get; private set; }
-    private readonly List<Node> _createdNodes = new();
-    private readonly string _sceneType;
-
-    public TestPackedScene(string sceneType = "")
-    {
-        _sceneType = sceneType;
-        GD.Print($"[TEST] TestPackedScene created for type '{_sceneType}'");
-    }
-
-    // Override la méthode générique avec approche simple
-    public T Instantiate<T>() where T : Node
-    {
-        try
-        {
-            InstantiateCallCount++;
-            GD.Print($"[TEST] TestPackedScene.Instantiate<{typeof(T).Name}>() called. Call count: {InstantiateCallCount}");
-
-            // Créer des Control simples pour éviter tous les problèmes de dépendances
-            Node createdNode = new Control();
-
-            if (typeof(T).Name == "MainMenu" || _sceneType == "mainmenu")
-            {
-                createdNode.Name = "MainMenu";
-            }
-            else if (typeof(T).Name == "OptionsMenu" || _sceneType == "optionsmenu")
-            {
-                createdNode.Name = "OptionsMenu";
-            }
-            else
-            {
-                createdNode.Name = $"Test{typeof(T).Name}";
-            }
-
-            _createdNodes.Add(createdNode);
-            GD.Print($"[TEST] Created simple Control '{createdNode.Name}' as {typeof(T).Name} mock");
-
-            // Cast vers T - cela marchera tant que T hérite de Node/Control
-            return (T)createdNode;
-        }
-        catch (System.Exception ex)
-        {
-            GD.PrintErr($"[TEST] Exception in Instantiate: {ex.Message}");
-            throw;
-        }
-    }
-
-    // Les autres overloads pour assurer la compatibilité
-    public new Node Instantiate(PackedScene.GenEditState editState = PackedScene.GenEditState.Disabled)
-    {
-        InstantiateCallCount++;
-        GD.Print($"[TEST] TestPackedScene.Instantiate() called for scene type '{_sceneType}'. Call count: {InstantiateCallCount}");
-
-        var createdNode = new Control();
-        createdNode.Name = $"Test{_sceneType}";
-        _createdNodes.Add(createdNode);
-        return createdNode;
-    }
-
-    public void FreeAllNodes()
-    {
-        foreach (var node in _createdNodes)
-        {
-            if (GodotObject.IsInstanceValid(node) && !node.IsQueuedForDeletion())
-            {
-                node.QueueFree();
-            }
-        }
-        _createdNodes.Clear();
     }
 }

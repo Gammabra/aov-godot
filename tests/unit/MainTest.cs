@@ -13,9 +13,8 @@ namespace UnitTests;
 [RequireGodotRuntime]
 public class MainTest
 {
-    private Main? _main;
+    private TestableMain? _testableMain;
     private Control? _mockMenuContainer;
-    private TestSceneInstantiator? _testInstantiator;
     private readonly List<Node> _testNodes = new();
 
     [Before]
@@ -24,9 +23,8 @@ public class MainTest
         try
         {
             GD.Print("Starting SetUp...");
-            _main = AutoFree(new Main());
+            _testableMain = AutoFree(new TestableMain());
             _mockMenuContainer = AutoFree(new Control());
-            _testInstantiator = new TestSceneInstantiator();
             
             GD.Print("SetUp completed successfully");
         }
@@ -43,17 +41,19 @@ public class MainTest
         // Arrange
         SetSingletonInstance<SettingsManager>(null);
         SetupValidMenuManager();
-        _main.SetSceneInstantiator(_testInstantiator);
-        SetPrivateField(_main, "_menuContainer", _mockMenuContainer);
+
+        if (_testableMain == null)
+            throw new System.Exception("TestableMain is null");
+        _testableMain.SetMenuContainer(_mockMenuContainer);  // Utiliser la méthode publique
 
         // Act
-        CallPrivateMethod(_main, "InitializeMenus");
+        _testableMain.InitializeMenus();
 
         // Assert
         var childCount = _mockMenuContainer?.GetChildCount() ?? 0;
         AssertThat(childCount).IsEqual(0);
-        AssertThat(_testInstantiator.MainMenuInstantiateCount).IsEqual(0);
-        AssertThat(_testInstantiator.OptionsMenuInstantiateCount).IsEqual(0);
+        AssertThat(_testableMain.MainMenuInstantiateCount).IsEqual(0);
+        AssertThat(_testableMain.OptionsMenuInstantiateCount).IsEqual(0);
     }
 
     [TestCase]
@@ -62,17 +62,19 @@ public class MainTest
         // Arrange
         SetupValidSettingsManager();
         SetSingletonInstance<MenuManager>(null);
-        _main.SetSceneInstantiator(_testInstantiator);
-        SetPrivateField(_main, "_menuContainer", _mockMenuContainer);
+
+        if (_testableMain == null)
+            throw new System.Exception("TestableMain is null");
+        _testableMain.SetMenuContainer(_mockMenuContainer);  // Utiliser la méthode publique
 
         // Act
-        CallPrivateMethod(_main, "InitializeMenus");
+        _testableMain.InitializeMenus();
 
         // Assert
         var childCount = _mockMenuContainer?.GetChildCount() ?? 0;
         AssertThat(childCount).IsEqual(0);
-        AssertThat(_testInstantiator.MainMenuInstantiateCount).IsEqual(0);
-        AssertThat(_testInstantiator.OptionsMenuInstantiateCount).IsEqual(0);
+        AssertThat(_testableMain.MainMenuInstantiateCount).IsEqual(0);
+        AssertThat(_testableMain.OptionsMenuInstantiateCount).IsEqual(0);
     }
 
     [TestCase]
@@ -80,31 +82,28 @@ public class MainTest
     {
         // Arrange
         SetupValidManagers();
-        
-        var testInstantiator = new TestSceneInstantiator();
-        _main.SetSceneInstantiator(testInstantiator);
-        
-        SetPrivateField(_main, "_menuContainer", _mockMenuContainer);
 
-        GD.Print($"[TEST] Before call - Main instantiate count: {testInstantiator.MainMenuInstantiateCount}");
-        GD.Print($"[TEST] Before call - Options instantiate count: {testInstantiator.OptionsMenuInstantiateCount}");
+        if (_testableMain == null)
+            throw new System.Exception("TestableMain is null");
+        _testableMain.SetMenuContainer(_mockMenuContainer);  // Utiliser la méthode publique
+
+        GD.Print($"[TEST] Before call - Main instantiate count: {_testableMain.MainMenuInstantiateCount}");
+        GD.Print($"[TEST] Before call - Options instantiate count: {_testableMain.OptionsMenuInstantiateCount}");
 
         // Act
-        CallPrivateMethod(_main, "InitializeMenus");
+        _testableMain.InitializeMenus();
 
-        GD.Print($"[TEST] After call - Main instantiate count: {testInstantiator.MainMenuInstantiateCount}");
-        GD.Print($"[TEST] After call - Options instantiate count: {testInstantiator.OptionsMenuInstantiateCount}");
+        GD.Print($"[TEST] After call - Main instantiate count: {_testableMain.MainMenuInstantiateCount}");
+        GD.Print($"[TEST] After call - Options instantiate count: {_testableMain.OptionsMenuInstantiateCount}");
 
         // Assert
         var childCount = _mockMenuContainer?.GetChildCount() ?? 0;
         AssertThat(childCount).IsEqual(2);
-        AssertThat(testInstantiator.MainMenuInstantiateCount).IsEqual(1);
-        AssertThat(testInstantiator.OptionsMenuInstantiateCount).IsEqual(1);
+        AssertThat(_testableMain.MainMenuInstantiateCount).IsEqual(1);
+        AssertThat(_testableMain.OptionsMenuInstantiateCount).IsEqual(1);
 
-        // Clean up immédiatement après le test
-        testInstantiator.FreeAllNodes();
-        
-        // Nettoyer aussi les enfants du container
+        // Clean up
+        _testableMain.Reset();
         CleanupMenuContainer();
     }
 
@@ -113,15 +112,17 @@ public class MainTest
     {
         // Arrange
         SetupValidManagers();
-        _main.SetSceneInstantiator(_testInstantiator);
-        SetPrivateField(_main, "_menuContainer", null);
+
+        if (_testableMain == null)
+            throw new System.Exception("TestableMain is null");
+        _testableMain.SetMenuContainer(null);  // Utiliser la méthode publique
 
         // Act
-        CallPrivateMethod(_main, "InitializeMenus");
+        _testableMain.InitializeMenus();
 
         // Assert
-        AssertThat(_testInstantiator.MainMenuInstantiateCount).IsEqual(0);
-        AssertThat(_testInstantiator.OptionsMenuInstantiateCount).IsEqual(0);
+        AssertThat(_testableMain.MainMenuInstantiateCount).IsEqual(0);
+        AssertThat(_testableMain.OptionsMenuInstantiateCount).IsEqual(0);
     }
 
     [TestCase]
@@ -131,11 +132,13 @@ public class MainTest
         var testMenuManager = CreateTestMenuManager();
         SetupValidSettingsManager();
         SetSingletonInstance<MenuManager>(testMenuManager);
-        _main.SetSceneInstantiator(_testInstantiator);
-        SetPrivateField(_main, "_menuContainer", _mockMenuContainer);
+
+        if (_testableMain == null)
+            throw new System.Exception("TestableMain is null");
+        _testableMain.SetMenuContainer(_mockMenuContainer);  // Utiliser la méthode publique
 
         // Act
-        CallPrivateMethod(_main, "InitializeMenus");
+        _testableMain.InitializeMenus();
 
         // Assert
         AssertThat(testMenuManager.RegisteredMenus.ContainsKey(MenuManager.MAIN_MENU)).IsTrue();
@@ -143,7 +146,7 @@ public class MainTest
         AssertThat(testMenuManager.LastShownMenu).IsEqual(MenuManager.MAIN_MENU);
 
         // Clean up
-        _testInstantiator.FreeAllNodes();
+        _testableMain.Reset();
         CleanupMenuContainer();
     }
 
@@ -154,31 +157,30 @@ public class MainTest
         var testMenuManager = CreateTestMenuManager();
         SetupValidSettingsManager();
         SetSingletonInstance<MenuManager>(testMenuManager);
-        
-        var testInstantiator = new TestSceneInstantiator();
-        _main.SetSceneInstantiator(testInstantiator);
-        SetPrivateField(_main, "_menuContainer", _mockMenuContainer);
 
-        // Vérifier l'état initial
+        if (_testableMain == null)
+            throw new System.Exception("TestableMain is null");
+        _testableMain.SetMenuContainer(_mockMenuContainer);  // Utiliser la méthode publique
+
         var initialChildCount = _mockMenuContainer?.GetChildCount() ?? 0;
         GD.Print($"[TEST] Initial child count: {initialChildCount}");
 
         // Act
-        CallPrivateMethod(_main, "InitializeMenus");
+        _testableMain.InitializeMenus();
 
         // Assert - verify complete workflow
-        AssertThat(testInstantiator.MainMenuInstantiateCount).IsEqual(1);
-        AssertThat(testInstantiator.OptionsMenuInstantiateCount).IsEqual(1);
+        AssertThat(_testableMain.MainMenuInstantiateCount).IsEqual(1);
+        AssertThat(_testableMain.OptionsMenuInstantiateCount).IsEqual(1);
         
         var finalChildCount = _mockMenuContainer?.GetChildCount() ?? 0;
         GD.Print($"[TEST] Final child count: {finalChildCount}");
-        AssertThat(finalChildCount).IsEqual(initialChildCount + 2); // Correction ici
+        AssertThat(finalChildCount).IsEqual(initialChildCount + 2);
         
         AssertThat(testMenuManager.RegisteredMenus.Count).IsEqual(2);
         AssertThat(testMenuManager.LastShownMenu).IsEqual(MenuManager.MAIN_MENU);
         
         // Clean up
-        testInstantiator.FreeAllNodes();
+        _testableMain.Reset();
         CleanupMenuContainer();
     }
 
@@ -227,7 +229,6 @@ public class MainTest
     {
         if (_mockMenuContainer == null) return;
         
-        // Libérer tous les enfants du menu container
         var children = _mockMenuContainer.GetChildren();
         foreach (Node child in children)
         {
@@ -258,85 +259,10 @@ public class MainTest
         }
     }
 
-    private void SetPrivateField(object? obj, string fieldName, object? value)
-    {
-        if (obj == null) return;
-
-        var field = obj.GetType().GetField(fieldName,
-            System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
-        
-        if (field != null)
-        {
-            field.SetValue(obj, value);
-            GD.Print($"Successfully set field '{fieldName}' to {value?.GetType().Name ?? "null"}");
-        }
-        else
-        {
-            GD.PrintErr($"Field '{fieldName}' not found in {obj.GetType().Name}");
-        }
-    }
-
-    private void CallPrivateMethod(object? obj, string methodName, params object[] parameters)
-    {
-        if (obj == null) 
-        {
-            GD.PrintErr("Object is null in CallPrivateMethod");
-            return;
-        }
-
-        var method = obj.GetType().GetMethod(methodName,
-            System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
-        
-        if (method == null)
-        {
-            GD.PrintErr($"Method '{methodName}' not found in {obj.GetType().Name}");
-            return;
-        }
-
-        GD.Print($"About to invoke method '{methodName}'");
-        
-        // Debug state before calling InitializeMenus
-        if (methodName == "InitializeMenus")
-        {
-            var menuContainer = GetPrivateField(obj, "_menuContainer");
-            var mainMenuScene = GetPrivateField(obj, "_mainMenuScene");
-            var optionsMenuScene = GetPrivateField(obj, "_optionsMenuScene");
-            
-            GD.Print($"[TEST] _menuContainer is: {(menuContainer != null ? menuContainer.GetType().Name : "null")}");
-            GD.Print($"[TEST] _mainMenuScene is: {(mainMenuScene != null ? mainMenuScene.GetType().Name : "null")}");
-            GD.Print($"[TEST] _optionsMenuScene is: {(optionsMenuScene != null ? optionsMenuScene.GetType().Name : "null")}");
-            GD.Print($"[TEST] SettingsManager.Instance is: {(SettingsManager.Instance != null ? "not null" : "null")}");
-            GD.Print($"[TEST] MenuManager.Instance is: {(MenuManager.Instance != null ? "not null" : "null")}");
-        }
-        
-        try
-        {
-            method.Invoke(obj, parameters);
-            GD.Print($"Method '{methodName}' invoked successfully");
-        }
-        catch (System.Exception ex)
-        {
-            GD.PrintErr($"Exception invoking '{methodName}': {ex.Message}");
-            if (ex.InnerException != null)
-            {
-                GD.PrintErr($"Inner exception: {ex.InnerException.Message}");
-                GD.PrintErr($"Inner stack trace: {ex.InnerException.StackTrace}");
-            }
-            throw;
-        }
-    }
-
-    private object? GetPrivateField(object obj, string fieldName)
-    {
-        var field = obj.GetType().GetField(fieldName,
-            System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
-        return field?.GetValue(obj);
-    }
-
     [After]
     public void TearDown()
     {
-        // Nettoyer les nœuds de test d'abord
+        // Nettoyer les nœuds de test
         foreach (var node in _testNodes)
         {
             if (GodotObject.IsInstanceValid(node) && !node.IsQueuedForDeletion())
@@ -346,8 +272,8 @@ public class MainTest
         }
         _testNodes.Clear();
 
-        // Nettoyer l'instantiateur de test
-        _testInstantiator?.FreeAllNodes();
+        // Nettoyer la classe testable
+        _testableMain?.Reset();
         
         // Nettoyer le menu container
         CleanupMenuContainer();

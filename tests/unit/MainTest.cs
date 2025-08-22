@@ -1,10 +1,7 @@
-using AshesOfVelsingrad;
 using AshesOfVelsingrad.Managers;
-using AshesOfVelsingrad.UI.Menus;
 using GdUnit4;
 using Godot;
 using static GdUnit4.Assertions;
-using System;
 using System.Collections.Generic;
 
 namespace UnitTests;
@@ -318,110 +315,5 @@ public class MainTest
         SetSingletonInstance<MenuManager>(null);
         
         GD.Print("[TEST] TearDown completed");
-    }
-}
-
-// Test helper classes - inchangées
-public partial class TestSettingsManager : SettingsManager
-{
-    public static new TestSettingsManager? Instance { get; set; }
-
-    public TestSettingsManager()
-    {
-        Name = "TestSettingsManager";
-        GD.Print("[TEST] TestSettingsManager constructor called");
-        
-        InitializeForTesting();
-    }
-
-    protected override void Initialize()
-    {
-        Instance = this;
-        
-        var baseInstanceProperty = typeof(SettingsManager).GetProperty("Instance", 
-            System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.Static);
-        baseInstanceProperty?.SetValue(null, this);
-        
-        InitializeForTesting();
-        
-        GD.Print("[TEST] TestSettingsManager initialized");
-    }
-
-    private void InitializeForTesting()
-    {
-        var settingsField = typeof(SettingsManager).GetField("_settings", 
-            System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
-        
-        if (settingsField != null)
-        {
-            var defaultSettings = new SettingsData();
-            settingsField.SetValue(this, defaultSettings);
-            GD.Print("[TEST] Default settings initialized for TestSettingsManager");
-        }
-    }
-
-    public override void LoadSettings()
-    {
-        GD.Print("[TEST] TestSettingsManager.LoadSettings() called - using default settings");
-        InitializeForTesting();
-    }
-
-    public override void SaveSettings()
-    {
-        GD.Print("[TEST] TestSettingsManager.SaveSettings() called - not saving to file in tests");
-    }
-}
-
-public partial class TestMenuManager : MenuManager
-{
-    public Dictionary<string, Control> RegisteredMenus { get; } = new();
-    public string? LastShownMenu { get; private set; }
-    public static new TestMenuManager? Instance { get; set; }
-
-    public TestMenuManager()
-    {
-        Name = "TestMenuManager";
-        GD.Print("[TEST] TestMenuManager constructor called");
-    }
-
-    protected override void Initialize()
-    {
-        Instance = this;
-
-        var baseInstanceProperty = typeof(MenuManager).GetProperty("Instance",
-            System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.Static);
-        baseInstanceProperty?.SetValue(null, this);
-
-        GD.Print("[TEST] TestMenuManager initialized");
-    }
-
-    public override void RegisterMenu(string menuName, Control menuControl)
-    {
-        RegisteredMenus[menuName] = menuControl;
-        GD.Print($"[TEST] TestMenuManager: Registered menu '{menuName}'");
-
-        try
-        {
-            base.RegisterMenu(menuName, menuControl);
-        }
-        catch (System.Exception ex)
-        {
-            GD.Print($"[TEST] Exception in base.RegisterMenu: {ex.Message} - continuing with test");
-        }
-    }
-
-    public override void ShowMenu(string menuName, bool addToHistory = true)
-    {
-        LastShownMenu = menuName;
-        GD.Print($"[TEST] TestMenuManager: Showed menu '{menuName}'");
-
-        try
-        {
-            base.ShowMenu(menuName, addToHistory);
-        }
-        catch (System.Exception ex)
-        {
-            GD.Print($"[TEST] Exception in base.ShowMenu: {ex.Message} - continuing with test");
-        }
     }
 }

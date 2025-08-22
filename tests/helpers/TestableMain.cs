@@ -12,8 +12,17 @@ namespace UnitTests;
 public partial class TestableMain : AshesOfVelsingrad.Main
 {
     private readonly List<Node> _createdNodes = new();
+    private System.Func<Node, Node?>? _autoFreeCallback; // Callback pour AutoFree - retour nullable
     public int MainMenuInstantiateCount { get; private set; }
     public int OptionsMenuInstantiateCount { get; private set; }
+
+    /// <summary>
+    /// Permet de définir le callback AutoFree pour les tests
+    /// </summary>
+    public void SetAutoFreeCallback(System.Func<Node, Node?> callback)
+    {
+        _autoFreeCallback = callback;
+    }
 
     /// <summary>
     /// Permet de définir le menu container pour les tests
@@ -39,11 +48,25 @@ public partial class TestableMain : AshesOfVelsingrad.Main
 
         MainMenuInstantiateCount++;
         var mainMenu = new Control { Name = "TestMainMenu" };
+        
+        // Utiliser AutoFree si disponible
+        if (_autoFreeCallback != null)
+        {
+            _autoFreeCallback(mainMenu);
+        }
+        
         _createdNodes.Add(mainMenu);
         GD.Print($"[TEST] TestableMain created MainMenu. Count: {MainMenuInstantiateCount}");
 
         OptionsMenuInstantiateCount++;
         var optionsMenu = new Control { Name = "TestOptionsMenu" };
+        
+        // Utiliser AutoFree si disponible
+        if (_autoFreeCallback != null)
+        {
+            _autoFreeCallback(optionsMenu);
+        }
+        
         _createdNodes.Add(optionsMenu);
         GD.Print($"[TEST] TestableMain created OptionsMenu. Count: {OptionsMenuInstantiateCount}");
 
@@ -60,22 +83,24 @@ public partial class TestableMain : AshesOfVelsingrad.Main
 
     /// <summary>
     /// Nettoie tous les nœuds créés pendant les tests
+    /// Cette méthode retire les nœuds de leur parent mais ne les libère pas
+    /// car ils sont gérés par AutoFree de GdUnit4
     /// </summary>
     public void FreeAllCreatedNodes()
     {
-        GD.Print($"[TEST] Freeing {_createdNodes.Count} nodes from TestableMain");
+        GD.Print($"[TEST] Cleaning up {_createdNodes.Count} nodes from TestableMain");
 
         for (int i = _createdNodes.Count - 1; i >= 0; i--)
         {
             var node = _createdNodes[i];
             if (GodotObject.IsInstanceValid(node) && !node.IsQueuedForDeletion())
             {
+                // Retirer le nœud de son parent s'il en a un
                 if (node.GetParent() != null)
                 {
                     node.GetParent().RemoveChild(node);
+                    GD.Print($"[TEST] Removed {node.Name} from parent");
                 }
-                node.QueueFree();
-                GD.Print($"[TEST] Freed node: {node.Name}");
             }
         }
         _createdNodes.Clear();
@@ -84,7 +109,7 @@ public partial class TestableMain : AshesOfVelsingrad.Main
     }
 
     /// <summary>
-    /// Reset les compteurs pour les tests
+    /// Reset les compteurs et libère les nœuds pour les tests
     /// </summary>
     public void Reset()
     {
@@ -92,4 +117,9 @@ public partial class TestableMain : AshesOfVelsingrad.Main
         MainMenuInstantiateCount = 0;
         OptionsMenuInstantiateCount = 0;
     }
+
+    /// <summary>
+    /// Getter pour accéder aux nœuds créés (utile pour les tests)
+    /// </summary>
+    public IReadOnlyList<Node> CreatedNodes => _createdNodes;
 }

@@ -23,7 +23,17 @@ public class MainTest
         try
         {
             GD.Print("Starting SetUp...");
+            
+            // Réinitialiser les singletons avant chaque test
+            SetSingletonInstance<SettingsManager>(null);
+            SetSingletonInstance<MenuManager>(null);
+            
             _testableMain = AutoFree(new TestableMain());
+            // Passer le callback AutoFree à TestableMain
+            if (_testableMain == null)
+                throw new System.Exception("TestableMain instantiation failed");
+            _testableMain.SetAutoFreeCallback(AutoFree);
+            
             _mockMenuContainer = AutoFree(new Control());
             
             GD.Print("SetUp completed successfully");
@@ -44,7 +54,7 @@ public class MainTest
 
         if (_testableMain == null)
             throw new System.Exception("TestableMain is null");
-        _testableMain.SetMenuContainer(_mockMenuContainer);  // Utiliser la méthode publique
+        _testableMain.SetMenuContainer(_mockMenuContainer);
 
         // Act
         _testableMain.InitializeMenus();
@@ -54,6 +64,10 @@ public class MainTest
         AssertThat(childCount).IsEqual(0);
         AssertThat(_testableMain.MainMenuInstantiateCount).IsEqual(0);
         AssertThat(_testableMain.OptionsMenuInstantiateCount).IsEqual(0);
+
+        // Clean up immediately after test
+        CleanupMenuContainer();
+        _testableMain.Reset();
     }
 
     [TestCase]
@@ -65,7 +79,7 @@ public class MainTest
 
         if (_testableMain == null)
             throw new System.Exception("TestableMain is null");
-        _testableMain.SetMenuContainer(_mockMenuContainer);  // Utiliser la méthode publique
+        _testableMain.SetMenuContainer(_mockMenuContainer);
 
         // Act
         _testableMain.InitializeMenus();
@@ -75,6 +89,10 @@ public class MainTest
         AssertThat(childCount).IsEqual(0);
         AssertThat(_testableMain.MainMenuInstantiateCount).IsEqual(0);
         AssertThat(_testableMain.OptionsMenuInstantiateCount).IsEqual(0);
+
+        // Clean up immediately after test
+        _testableMain.Reset();
+        CleanupMenuContainer();
     }
 
     [TestCase]
@@ -85,7 +103,7 @@ public class MainTest
 
         if (_testableMain == null)
             throw new System.Exception("TestableMain is null");
-        _testableMain.SetMenuContainer(_mockMenuContainer);  // Utiliser la méthode publique
+        _testableMain.SetMenuContainer(_mockMenuContainer);
 
         GD.Print($"[TEST] Before call - Main instantiate count: {_testableMain.MainMenuInstantiateCount}");
         GD.Print($"[TEST] Before call - Options instantiate count: {_testableMain.OptionsMenuInstantiateCount}");
@@ -102,9 +120,9 @@ public class MainTest
         AssertThat(_testableMain.MainMenuInstantiateCount).IsEqual(1);
         AssertThat(_testableMain.OptionsMenuInstantiateCount).IsEqual(1);
 
-        // Clean up
-        _testableMain.Reset();
+        // Clean up immediately after test - IMPORTANT: ordre inversé
         CleanupMenuContainer();
+        _testableMain.Reset();
     }
 
     [TestCase]
@@ -115,7 +133,7 @@ public class MainTest
 
         if (_testableMain == null)
             throw new System.Exception("TestableMain is null");
-        _testableMain.SetMenuContainer(null);  // Utiliser la méthode publique
+        _testableMain.SetMenuContainer(null);
 
         // Act
         _testableMain.InitializeMenus();
@@ -123,6 +141,9 @@ public class MainTest
         // Assert
         AssertThat(_testableMain.MainMenuInstantiateCount).IsEqual(0);
         AssertThat(_testableMain.OptionsMenuInstantiateCount).IsEqual(0);
+
+        // Clean up immediately after test
+        _testableMain.Reset();
     }
 
     [TestCase]
@@ -135,7 +156,7 @@ public class MainTest
 
         if (_testableMain == null)
             throw new System.Exception("TestableMain is null");
-        _testableMain.SetMenuContainer(_mockMenuContainer);  // Utiliser la méthode publique
+        _testableMain.SetMenuContainer(_mockMenuContainer);
 
         // Act
         _testableMain.InitializeMenus();
@@ -145,9 +166,9 @@ public class MainTest
         AssertThat(testMenuManager.RegisteredMenus.ContainsKey(MenuManager.OPTIONS_MENU)).IsTrue();
         AssertThat(testMenuManager.LastShownMenu).IsEqual(MenuManager.MAIN_MENU);
 
-        // Clean up
-        _testableMain.Reset();
+        // Clean up immediately after test - IMPORTANT: ordre inversé
         CleanupMenuContainer();
+        _testableMain.Reset();
     }
 
     [TestCase]
@@ -160,7 +181,7 @@ public class MainTest
 
         if (_testableMain == null)
             throw new System.Exception("TestableMain is null");
-        _testableMain.SetMenuContainer(_mockMenuContainer);  // Utiliser la méthode publique
+        _testableMain.SetMenuContainer(_mockMenuContainer);
 
         var initialChildCount = _mockMenuContainer?.GetChildCount() ?? 0;
         GD.Print($"[TEST] Initial child count: {initialChildCount}");
@@ -179,9 +200,9 @@ public class MainTest
         AssertThat(testMenuManager.RegisteredMenus.Count).IsEqual(2);
         AssertThat(testMenuManager.LastShownMenu).IsEqual(MenuManager.MAIN_MENU);
         
-        // Clean up
-        _testableMain.Reset();
+        // Clean up immediately after test - IMPORTANT: ordre inversé
         CleanupMenuContainer();
+        _testableMain.Reset();
     }
 
     // Helper methods
@@ -229,15 +250,26 @@ public class MainTest
     {
         if (_mockMenuContainer == null) return;
         
-        var children = _mockMenuContainer.GetChildren();
+        GD.Print($"[TEST] Cleaning menu container with {_mockMenuContainer.GetChildCount()} children");
+        
+        // Créer une copie de la liste des enfants pour éviter les modifications concurrentes
+        var children = new List<Node>();
+        foreach (Node child in _mockMenuContainer.GetChildren())
+        {
+            children.Add(child);
+        }
+
+        // Retirer les enfants du container - AutoFree s'occupera de les libérer
         foreach (Node child in children)
         {
             if (GodotObject.IsInstanceValid(child) && !child.IsQueuedForDeletion())
             {
                 _mockMenuContainer.RemoveChild(child);
-                child.QueueFree();
+                GD.Print($"[TEST] Removed from container: {child.Name}");
             }
         }
+        
+        GD.Print($"[TEST] Menu container cleanup completed. Remaining children: {_mockMenuContainer.GetChildCount()}");
     }
 
     private void SetSingletonInstance<T>(T? instance) where T : class
@@ -262,23 +294,26 @@ public class MainTest
     [After]
     public void TearDown()
     {
-        // Nettoyer les nœuds de test
+        GD.Print("[TEST] Starting TearDown...");
+        
+        // 1. Nettoyer d'abord le menu container (retire les enfants)
+        CleanupMenuContainer();
+        
+        // 2. Ensuite nettoyer la classe testable (libère les nœuds créés)
+        _testableMain?.Reset();
+        
+        // 3. Nettoyer les nœuds de test (managers, etc.)
         foreach (var node in _testNodes)
         {
             if (GodotObject.IsInstanceValid(node) && !node.IsQueuedForDeletion())
             {
                 node.QueueFree();
+                GD.Print($"[TEST] Freed test node: {node.Name}");
             }
         }
         _testNodes.Clear();
-
-        // Nettoyer la classe testable
-        _testableMain?.Reset();
         
-        // Nettoyer le menu container
-        CleanupMenuContainer();
-        
-        // Réinitialiser les singletons
+        // 4. Réinitialiser les singletons
         SetSingletonInstance<SettingsManager>(null);
         SetSingletonInstance<MenuManager>(null);
         

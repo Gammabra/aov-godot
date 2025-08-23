@@ -12,16 +12,17 @@ namespace UnitTests;
 public class BaseManagerTest
 {
     private readonly List<Node> _testNodes = new();
-    private Node _root;
+    private Node? _root;
 
     [Before]
     public void SetUp()
     {
+        // Reset all manager instances first
+        ResetAllManagerInstances();
+        
         _root = new Node { Name = "TestRoot" };
         ((SceneTree)Godot.Engine.GetMainLoop()).Root.AddChild(_root);
         _testNodes.Add(_root);
-
-        ResetAllManagerInstances();
     }
 
     [TestCase]
@@ -74,9 +75,8 @@ public class BaseManagerTest
     [TestCase]
     public void ConcreteManager_InitializeImplementation_SetsInstance()
     {
-        // Act
-        var manager = AddToTestScene(new TestConcreteManager());
-        _testNodes.Add(manager);
+        // Arrange & Act
+        var manager = CreateAndInitializeManager<TestConcreteManager>();
 
         // Assert
         AssertThat(TestConcreteManager.Instance).IsEqual(manager);
@@ -86,16 +86,22 @@ public class BaseManagerTest
     [TestCase]
     public void ConcreteManager_CleanupImplementation_CanBeOverridden()
     {
-        // Test that Cleanup can be overridden and is called
-        var manager = AddToTestScene(new TestConcreteManager());
-        _testNodes.Add(manager);
+        // Arrange - ensure clean state
+        TestConcreteManager.Instance = null;
+        SetSingletonInstance<BaseManager>(null);
         
-        manager.CallInitialize();
+        var manager = AddToTestRoot(new TestConcreteManager());
+        _testNodes.Add(manager);
+        manager.CallInitialize(); // Manually initialize
+        
+        GD.Print($"[TEST] After initialize - IsInitialized: {manager.IsInitialized}, IsCleanedUp: {manager.IsCleanedUp}");
+        AssertThat(manager.IsInitialized).IsTrue();
         AssertThat(manager.IsCleanedUp).IsFalse();
         
-        // Act
+        // Act - manually call cleanup to test the override
         manager.CallCleanup();
         
+        GD.Print($"[TEST] After cleanup - IsCleanedUp: {manager.IsCleanedUp}");
         // Assert
         AssertThat(manager.IsCleanedUp).IsTrue();
     }
@@ -103,30 +109,42 @@ public class BaseManagerTest
     [TestCase]
     public void SingletonPattern_OnlyOneInstanceAllowed()
     {
-        var manager = AddToTestScene(new TestConcreteManager());
+        // Arrange - ensure clean state
+        TestConcreteManager.Instance = null;
+        SetSingletonInstance<BaseManager>(null);
+        
+        // Act - create and initialize first manager
+        var manager = AddToTestRoot(new TestConcreteManager());
+        _testNodes.Add(manager);
         manager.CallInitialize();
-
-        var secondManager = AddToTestScene(new TestConcreteManager());
-        secondManager.CallInitialize();
-
+        
+        GD.Print($"[TEST] First manager - Instance: {TestConcreteManager.Instance}, IsInitialized: {manager.IsInitialized}");
         AssertThat(TestConcreteManager.Instance).IsEqual(manager);
-        AssertThat(secondManager.IsInitialized).IsFalse();
+        AssertThat(manager.IsInitialized).IsTrue();
+
+        // Create second manager and try to initialize
+        var secondManager = AddToTestRoot(new TestConcreteManager());
+        _testNodes.Add(secondManager);
+        
+        GD.Print($"[TEST] Before second initialize - QueuedForDeletion: {secondManager.IsQueuedForDeletion()}");
+        secondManager.CallInitialize(); // This should queue the manager for deletion
+        GD.Print($"[TEST] After second initialize - QueuedForDeletion: {secondManager.IsQueuedForDeletion()}");
+        
+        // Assert - singleton should still be the first manager
+        AssertThat(TestConcreteManager.Instance).IsEqual(manager);
+        
+        // Second manager should be queued for deletion
+        AssertThat(secondManager.IsQueuedForDeletion()).IsTrue();
     }
 
     [TestCase]
     public void DifferentManagerTypes_CanHaveIndependentInstances()
     {
-        // Test that different manager types maintain separate instances
-        var concreteManager = AutoFree(new TestConcreteManager());
-        var anotherManager = AutoFree(new AnotherTestManager());
-        _testNodes.Add(concreteManager);
-        _testNodes.Add(anotherManager);
+        // Arrange & Act
+        var concreteManager = CreateAndInitializeManager<TestConcreteManager>();
+        var anotherManager = CreateAndInitializeManager<AnotherTestManager>();
         
-        // Initialize both
-        concreteManager.CallInitialize();
-        anotherManager.CallInitialize();
-        
-        // Both should be initialized independently
+        // Assert - both should be initialized independently
         AssertThat(TestConcreteManager.Instance).IsEqual(concreteManager);
         AssertThat(AnotherTestManager.Instance).IsEqual(anotherManager);
         
@@ -140,12 +158,9 @@ public class BaseManagerTest
         // Test that SettingsManager properly inherits BaseManager functionality
         AssertThat(typeof(SettingsManager).IsSubclassOf(typeof(BaseManager))).IsTrue();
         
-        // Test that it has proper singleton behavior by using our test version
-        SetSingletonInstance<SettingsManager>(null);
-        var settingsManager = AddToTestScene(new TestSettingsManager());
-        _testNodes.Add(settingsManager);
+        // Test that it has proper singleton behavior
+        var settingsManager = CreateAndInitializeManager<TestSettingsManager>();
         
-        // TestSettingsManager constructor should call Initialize
         // Verify it's now the singleton instance
         AssertThat(SettingsManager.Instance).IsNotNull();
         AssertThat(SettingsManager.Instance).IsInstanceOf<SettingsManager>();
@@ -157,12 +172,9 @@ public class BaseManagerTest
         // Test that MenuManager properly inherits BaseManager functionality
         AssertThat(typeof(MenuManager).IsSubclassOf(typeof(BaseManager))).IsTrue();
         
-        // Test singleton behavior with test version
-        SetSingletonInstance<MenuManager>(null);
-        var menuManager = AddToTestScene(new TestMenuManager());
-        _testNodes.Add(menuManager);
+        // Test singleton behavior
+        var menuManager = CreateAndInitializeManager<TestMenuManager>();
         
-        // TestMenuManager constructor should call Initialize
         AssertThat(MenuManager.Instance).IsNotNull();
         AssertThat(MenuManager.Instance).IsInstanceOf<MenuManager>();
     }
@@ -170,29 +182,63 @@ public class BaseManagerTest
     [TestCase]
     public void BaseManager_ReadyMethod_CallsInitialize()
     {
-        var manager = AddToTestScene(new TestConcreteManager());
+        // Arrange - ensure clean state for this specific test
+        TestConcreteManager.Instance = null;
+        SetSingletonInstance<BaseManager>(null);
+        
+        var manager = AddToTestRoot(new TestConcreteManager());
         _testNodes.Add(manager);
+        
+        GD.Print($"[TEST] Before CallReady - BaseManager.Instance: {BaseManager.Instance}");
+        GD.Print($"[TEST] Before CallReady - TestConcreteManager.Instance: {TestConcreteManager.Instance}");
+        GD.Print($"[TEST] Before CallReady - IsInitialized: {manager.IsInitialized}");
+        
+        // Since BaseManager.Instance is null, _Ready should call Initialize
+        manager.CallReady();
 
-        // Should be initialized now
+        GD.Print($"[TEST] After CallReady - BaseManager.Instance: {BaseManager.Instance}");
+        GD.Print($"[TEST] After CallReady - TestConcreteManager.Instance: {TestConcreteManager.Instance}");
+        GD.Print($"[TEST] After CallReady - IsInitialized: {manager.IsInitialized}");
+        GD.Print($"[TEST] After CallReady - InitializeCallCount: {manager.InitializeCallCount}");
+
         AssertThat(TestConcreteManager.Instance).IsEqual(manager);
         AssertThat(manager.IsInitialized).IsTrue();
+        AssertThat(manager.InitializeCallCount).IsEqual(1);
     }
 
     [TestCase]
     public async System.Threading.Tasks.Task BaseManager_ExitTreeMethod_CallsCleanup()
     {
-        var manager = AddToTestScene(new TestConcreteManager());
+        // Arrange - ensure clean state
+        TestConcreteManager.Instance = null;
+        SetSingletonInstance<BaseManager>(null);
+        
+        var manager = AddToTestRoot(new TestConcreteManager());
         _testNodes.Add(manager);
-
-        manager.CallInitialize();
+        manager.CallInitialize(); // Manually initialize
+        
+        GD.Print($"[TEST] After initialize - IsInitialized: {manager.IsInitialized}, IsCleanedUp: {manager.IsCleanedUp}");
+        AssertThat(manager.IsInitialized).IsTrue();
         AssertThat(manager.IsCleanedUp).IsFalse();
+        AssertThat(TestConcreteManager.Instance).IsEqual(manager);
 
+        // Remove from test nodes list so TearDown doesn't interfere
+        _testNodes.Remove(manager);
+
+        // Act - queue for deletion
         manager.QueueFree();
+        
+        // Wait for the deletion to be processed
         var tree = (SceneTree)Godot.Engine.GetMainLoop();
-        await tree.ToSignal(tree, "process_frame"); // let Godot do its thing
+        await tree.ToSignal(tree, SceneTree.SignalName.ProcessFrame);
+        await tree.ToSignal(tree, SceneTree.SignalName.ProcessFrame); // Extra frame to ensure cleanup
 
-        AssertThat(TestConcreteManager.Instance).IsNull();
+        GD.Print($"[TEST] After QueueFree - IsCleanedUp: {manager.IsCleanedUp}");
+        GD.Print($"[TEST] After QueueFree - TestConcreteManager.Instance: {TestConcreteManager.Instance}");
+
+        // Assert - should be cleaned up and instance cleared
         AssertThat(manager.IsCleanedUp).IsTrue();
+        AssertThat(TestConcreteManager.Instance).IsNull();
     }
 
     [TestCase]
@@ -218,19 +264,46 @@ public class BaseManagerTest
     }
 
     // Helper methods
-    private T AddToTestScene<T>(T node) where T : Node
+    private T CreateAndInitializeManager<T>() where T : BaseManager, new()
     {
-        ((SceneTree)Godot.Engine.GetMainLoop()).Root.AddChild(node);
-        _testNodes.Add(node);
+        var manager = AddToTestRoot(new T());
+        _testNodes.Add(manager);
+        
+        // Cast to get access to CallInitialize method
+        if (manager is TestConcreteManager tcm)
+        {
+            tcm.CallInitialize();
+        }
+        else if (manager is AnotherTestManager atm)
+        {
+            atm.CallInitialize();
+        }
+        
+        return manager;
+    }
+
+    private T AddToTestRoot<T>(T node) where T : Node
+    {
+        if (_root == null)
+            throw new System.InvalidOperationException("Test root node is not initialized.");
+
+        // Add to our test root instead of directly to scene root
+        _root.AddChild(node);
         return node;
     }
 
     private void ResetAllManagerInstances()
     {
+        // Reset test manager instances
         TestConcreteManager.Instance = null;
         AnotherTestManager.Instance = null;
+        
+        // Reset real manager instances
         SetSingletonInstance<SettingsManager>(null);
         SetSingletonInstance<MenuManager>(null);
+        
+        // Also reset the base BaseManager instance
+        SetSingletonInstance<BaseManager>(null);
     }
 
     private void SetSingletonInstance<T>(T? instance) where T : class
@@ -252,96 +325,5 @@ public class BaseManagerTest
         }
         _testNodes.Clear();
         ResetAllManagerInstances();
-    }
-}
-
-/// <summary>
-/// Concrete implementation of BaseManager for testing purposes
-/// </summary>
-public partial class TestConcreteManager : BaseManager
-{
-    public static new TestConcreteManager? Instance { get; set; }
-    public bool IsInitialized { get; private set; }
-    public bool IsCleanedUp { get; private set; }
-    public int InitializeCallCount { get; private set; }
-
-    public TestConcreteManager()
-    {
-        Name = "TestConcreteManager";
-        GD.Print("[TEST] TestConcreteManager constructor called");
-    }
-
-    protected override void Initialize()
-    {
-        if (Instance != null && Instance != this)
-        {
-            GD.PrintErr($"Multiple instances of {GetType().Name} detected.");
-            return;
-        }
-
-        // Assign both base and derived Instance
-        BaseManager.Instance = this;
-        Instance = this;
-
-        IsInitialized = true;
-        InitializeCallCount++;
-
-        GD.Print("[TEST] TestConcreteManager initialized");
-    }
-
-    protected override void Cleanup()
-    {
-        IsCleanedUp = true;
-
-        // Clear both references
-        if (Instance == this)
-            Instance = null;
-
-        if (BaseManager.Instance == this)
-            BaseManager.Instance = null;
-
-        GD.Print("[TEST] TestConcreteManager cleanup called");
-    }
-
-    // Public methods to test protected functionality
-    public void CallInitialize() => Initialize();
-    public void CallCleanup() => Cleanup();
-    public void CallReady() => _Ready();
-    public void CallExitTree() => _ExitTree();
-}
-
-/// <summary>
-/// Another concrete implementation to test multiple manager types
-/// </summary>
-public partial class AnotherTestManager : BaseManager
-{
-    public static new AnotherTestManager? Instance { get; set; }
-    public bool IsInitialized { get; private set; }
-
-    public AnotherTestManager()
-    {
-        Name = "AnotherTestManager";
-    }
-
-    protected override void Initialize()
-    {
-        if (Instance != null && Instance != this)
-        {
-            return;
-        }
-
-        Instance = this;
-        IsInitialized = true;
-    }
-
-    public void CallInitialize() => Initialize();
-}
-
-// Extension method to check if method is override
-public static class MethodInfoExtensions
-{
-    public static bool IsOverride(this MethodInfo method)
-    {
-        return method.GetBaseDefinition() != method;
     }
 }

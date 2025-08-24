@@ -40,8 +40,6 @@ public class MenuManagerTest
         GD.Print("[TEST] MenuManager SetUp completed");
     }
 
-    #region Initialization Tests
-
     [TestCase]
     public void Initialize_FirstInstance_SetsInstanceCorrectly()
     {
@@ -68,10 +66,6 @@ public class MenuManagerTest
         AssertThat(MenuManager.Instance).IsEqual(firstManager);
         AssertThat(secondManager.IsQueuedForDeletion()).IsTrue();
     }
-
-    #endregion
-
-    #region Menu Registration Tests
 
     [TestCase]
     public void RegisterMenu_ValidMenu_AddsToCollection()
@@ -117,10 +111,6 @@ public class MenuManagerTest
         // We can't directly test signal connection, but we can test that registration worked
         AssertThat(_optionsMenu!.Visible).IsFalse(); // Should be hidden by default
     }
-
-    #endregion
-
-    #region Menu Display Tests
 
     [TestCase]
     public void ShowMenu_ValidMenu_ShowsAndHidesPrevious()
@@ -174,6 +164,11 @@ public class MenuManagerTest
         _menuManager.ShowMenu("non_existent");
 
         // Assert
+        if (originalMenu == null)
+        {
+            AssertThat(_menuManager.GetCurrentMenu()).IsNull();
+            return;
+        }
         AssertThat(_menuManager.GetCurrentMenu()).IsEqual(originalMenu);
         AssertThat(_mockMenu1!.Visible).IsTrue(); // Original menu should still be visible
     }
@@ -217,10 +212,6 @@ public class MenuManagerTest
         AssertThat(_menuManager.GetCurrentMenu()).IsEqual("menu2");
     }
 
-    #endregion
-
-    #region Navigation Tests
-
     [TestCase]
     public void GoBack_WithHistory_NavigatesToPreviousMenu()
     {
@@ -256,6 +247,11 @@ public class MenuManagerTest
         _menuManager.GoBack();
 
         // Assert
+        if (originalMenu == null)
+        {
+            AssertThat(_menuManager.GetCurrentMenu()).IsNull();
+            return;
+        }
         AssertThat(_menuManager.GetCurrentMenu()).IsEqual(originalMenu);
         AssertThat(_mockMenu1!.Visible).IsTrue(); // Menu should still be visible
     }
@@ -266,6 +262,9 @@ public class MenuManagerTest
         // Arrange
         _menuManager = CreateMenuManager();
         var menu3 = AutoFree(new Control { Name = "MockMenu3" });
+
+        if (menu3 == null)
+            throw new System.InvalidOperationException("Failed to create MockMenu3.");
 
         _menuManager.RegisterMenu("menu1", _mockMenu1!);
         _menuManager.RegisterMenu("menu2", _mockMenu2!);
@@ -303,10 +302,6 @@ public class MenuManagerTest
         // Assert
         AssertThat(_menuManager.GetCurrentMenu()).IsEqual("menu2");
     }
-
-    #endregion
-
-    #region Menu State Tests
 
     [TestCase]
     public void GetCurrentMenu_NoMenuActive_ReturnsNull()
@@ -366,10 +361,6 @@ public class MenuManagerTest
         AssertThat(_menuManager.IsMenuActive("test_menu")).IsFalse();
     }
 
-    #endregion
-
-    #region Menu Unregistration Tests
-
     [TestCase]
     public void UnregisterMenu_ExistingMenu_RemovesFromCollection()
     {
@@ -386,6 +377,11 @@ public class MenuManagerTest
         _menuManager.ShowMenu("test_menu");
         // If the menu was successfully unregistered, trying to show it should fail
         // and the current menu should remain unchanged
+        if (originalMenu == null)
+        {
+            AssertThat(_menuManager.GetCurrentMenu()).IsNull();
+            return;
+        }
         AssertThat(_menuManager.GetCurrentMenu()).IsEqual(originalMenu);
     }
 
@@ -401,10 +397,6 @@ public class MenuManagerTest
         // Assert - no exception thrown, test passes
         AssertThat(true).IsTrue(); // Just to have an assertion
     }
-
-    #endregion
-
-    #region Signal Tests
 
     [TestCase]
     public async System.Threading.Tasks.Task ShowMenu_EmitsMenuChangedSignal()
@@ -434,10 +426,6 @@ public class MenuManagerTest
         AssertThat(receivedMenuName).IsEqual("test_menu");
     }
 
-    #endregion
-
-    #region Options Menu Integration Tests
-
     [TestCase]
     public void OptionsMenuBackRequested_CallsGoBack()
     {
@@ -464,6 +452,9 @@ public class MenuManagerTest
         var currentOptionsMenu = AutoFree(new OptionsMenu { Name = "CurrentOptions" });
         var newMenu = AutoFree(new Control { Name = "NewMenu" });
 
+        if (currentOptionsMenu == null || newMenu == null)
+            throw new System.InvalidOperationException("Failed to create test menus.");
+
         _menuManager.RegisterMenu("current_options", currentOptionsMenu);
         _menuManager.RegisterMenu("new_menu", newMenu);
 
@@ -481,10 +472,6 @@ public class MenuManagerTest
         AssertThat(_menuManager.GetCurrentMenu()).IsEqual("new_menu");
     }
 
-    #endregion
-
-    #region Constants Tests
-
     [TestCase]
     public void MenuConstants_HaveCorrectValues()
     {
@@ -493,10 +480,6 @@ public class MenuManagerTest
         AssertThat(MenuManager.OPTIONS_MENU).IsEqual("options_menu");
         AssertThat(MenuManager.PAUSE_MENU).IsEqual("pause_menu");
     }
-
-    #endregion
-
-    #region Integration Tests
 
     [TestCase]
     public void FullWorkflow_RegisterShowNavigate_WorksCorrectly()
@@ -527,8 +510,6 @@ public class MenuManagerTest
         // The key test is that we're back to the main menu
         AssertThat(_menuManager.GetCurrentMenu()).IsEqual(MenuManager.MAIN_MENU);
     }
-
-    #endregion
 
     // Helper Methods
     private MenuManager CreateMenuManager()

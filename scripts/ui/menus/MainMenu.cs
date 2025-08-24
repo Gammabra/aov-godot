@@ -1,6 +1,8 @@
 using AshesOfVelsingrad.Managers;
 using Godot;
 
+namespace AshesOfVelsingrad.UI.Menus;
+
 /// <summary>
 /// Main menu controller that handles user interactions and navigation.
 /// Implements the Manager Pattern from your architecture documentation.

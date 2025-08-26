@@ -114,6 +114,7 @@ public partial class SettingsManager : BaseManager
     /// </remarks>
     public float GetDialogueSize()
     {
+        GD.Print($"GetDialogueSize() called, returning: {_settings?.DialogueSize ?? 1.0f}");
         return _settings?.DialogueSize ?? 1.0f;
     }
 

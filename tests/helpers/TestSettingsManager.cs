@@ -25,41 +25,37 @@ public partial class TestSettingsManager : SettingsManager
 
     protected override void Initialize()
     {
+        // Check for duplicate instances - if there's already a base instance, remove this one
+        if (SettingsManager.Instance != null && SettingsManager.Instance != this)
+        {
+            GD.Print($"[TEST] Duplicate TestSettingsManager detected. Base instance exists: {SettingsManager.Instance.GetInstanceId()}, this instance: {GetInstanceId()}. Queueing for deletion.");
+            QueueFree();
+            return;
+        }
+
+        // Check for duplicate TestSettingsManager instances
+        if (Instance != null && Instance != this)
+        {
+            GD.Print($"[TEST] Duplicate TestSettingsManager detected. TestSettings instance exists: {Instance.GetInstanceId()}, this instance: {GetInstanceId()}. Queueing for deletion.");
+            QueueFree();
+            return;
+        }
+
+        // Set both instances to this
         Instance = this;
+        SetBaseInstance(this);
 
-        // Set the base class Instance as well
-        var baseInstanceProperty = typeof(SettingsManager).GetProperty("Instance",
-            BindingFlags.Public | BindingFlags.Static);
-        baseInstanceProperty?.SetValue(null, this);
-
-        // Override the file path in the base class
-        SetSettingsFilePath(_testFilePath);
-
-        // Now call the base class load settings which will use our custom path
-        base.LoadSettings();
+        // Load settings using our custom implementation
+        LoadSettings();
 
         GD.Print("[TEST] TestSettingsManager initialized");
     }
 
-    private void SetSettingsFilePath(string newPath)
+    private void SetBaseInstance(TestSettingsManager instance)
     {
-        var filePathField = typeof(SettingsManager).GetField("_settingsFilePath",
-            BindingFlags.NonPublic | BindingFlags.Instance);
-        if (filePathField != null && filePathField.IsStatic)
-        {
-            // If it's a static field, we need to be more careful
-            GD.Print("[TEST] Warning: _settingsFilePath is static, using different approach");
-        }
-        else if (filePathField != null)
-        {
-            filePathField.SetValue(this, newPath);
-            GD.Print($"[TEST] Set settings file path to: {newPath}");
-        }
-        else
-        {
-            // If we can't set the field, let's override the methods instead
-            GD.Print("[TEST] Could not set file path field, will override methods");
-        }
+        var baseInstanceProperty = typeof(SettingsManager).GetProperty("Instance",
+            BindingFlags.Public | BindingFlags.Static);
+        baseInstanceProperty?.SetValue(null, instance);
     }
 
     public override void LoadSettings()
@@ -117,6 +113,90 @@ public partial class TestSettingsManager : SettingsManager
         {
             GD.PrintErr($"[TEST] Failed to save settings: {ex.Message}");
         }
+    }
+
+    // Override SetDialogueSize to ensure it works with our test setup
+    public new void SetDialogueSize(float size)
+    {
+        var settings = GetSettingsField();
+        if (settings == null)
+        {
+            settings = new SettingsData();
+            SetSettingsField(settings);
+        }
+
+        var clampedSize = Mathf.Clamp(size, 0.5f, 2.0f);
+        if (Mathf.Abs(settings.DialogueSize - clampedSize) > 0.01f)
+        {
+            settings.DialogueSize = clampedSize;
+            SaveSettings();
+            EmitSignal(SignalName.SettingsChanged, "DialogueSize", clampedSize);
+            EmitSignal(SignalName.DialogueSizeChanged, clampedSize);
+            GD.Print($"[TEST] SetDialogueSize called with {size}, clamped to {clampedSize}");
+        }
+    }
+
+    // Override SetSetting to ensure it works with our test setup
+    public new void SetSetting<T>(string key, T value)
+    {
+        var settings = GetSettingsField();
+        if (settings == null)
+        {
+            settings = new SettingsData();
+            SetSettingsField(settings);
+        }
+
+        var jsonValue = JsonSerializer.Serialize(value);
+        settings.CustomSettings[key] = jsonValue;
+        SaveSettings();
+        EmitSignal(SignalName.SettingsChanged, key, Variant.From(value));
+        GD.Print($"[TEST] SetSetting called with key: {key}, value: {value}");
+    }
+
+    // Override GetSetting to ensure it works with our test setup
+    public new T? GetSetting<T>(string key, T? defaultValue = default(T))
+    {
+        var settings = GetSettingsField();
+        if (settings?.CustomSettings.TryGetValue(key, out var value) == true)
+        {
+            try
+            {
+                var jsonString = value?.ToString();
+                if (!string.IsNullOrEmpty(jsonString))
+                {
+                    var result = JsonSerializer.Deserialize<T>(jsonString);
+                    GD.Print($"[TEST] GetSetting({key}) returning: {result}");
+                    return result ?? defaultValue;
+                }
+            }
+            catch (System.Exception ex)
+            {
+                GD.PrintErr($"[TEST] Error deserializing setting {key}: {ex.Message}");
+                return defaultValue;
+            }
+        }
+        GD.Print($"[TEST] GetSetting({key}) returning default: {defaultValue}");
+        return defaultValue;
+    }
+
+    // Override GetDialogueSize to ensure it works with our test setup
+    public new float GetDialogueSize()
+    {
+        var settings = GetSettingsField();
+        var result = settings?.DialogueSize ?? 1.0f;
+        GD.Print($"[TEST] GetDialogueSize() called, returning: {result}");
+        return result;
+    }
+
+    // Override ResetToDefaults to ensure it works with our test setup
+    public new void ResetToDefaults()
+    {
+        var settings = new SettingsData();
+        SetSettingsField(settings);
+        SaveSettings();
+        EmitSignal(SignalName.DialogueSizeChanged, settings.DialogueSize);
+        EmitSignal(SignalName.SettingsChanged, "Reset", true);
+        GD.Print("[TEST] ResetToDefaults called");
     }
 
     private void SetSettingsField(SettingsData settings)

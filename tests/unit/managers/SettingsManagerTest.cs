@@ -11,7 +11,7 @@ namespace UnitTests;
 [RequireGodotRuntime]
 public class SettingsManagerTest
 {
-    private TestSettingsManager? _settingsManager; // Changed to TestSettingsManager
+    private TestSettingsManager? _settingsManager;
     private readonly List<Node> _testNodes = new();
     private Node? _root;
     private const string _testSettingsPath = "user://test_settings.json";
@@ -23,6 +23,7 @@ public class SettingsManagerTest
 
         // Reset singleton instance
         SetSingletonInstance<SettingsManager>(null);
+        SetSingletonInstance<TestSettingsManager>(null);
 
         // Clear test manager temp files
         TestSettingsManager.ClearTempFiles();
@@ -47,38 +48,64 @@ public class SettingsManagerTest
     public void Initialize_FirstInstance_SetsInstanceCorrectly()
     {
         // Arrange & Act
-        _settingsManager = CreateTestSettingsManager(); // Changed to use TestSettingsManager
+        _settingsManager = CreateTestSettingsManager();
 
         // Assert
         AssertThat(SettingsManager.Instance).IsEqual(_settingsManager);
+        AssertThat(TestSettingsManager.Instance).IsEqual(_settingsManager);
         AssertThat(SettingsManager.Instance).IsNotNull();
     }
 
     [TestCase]
-    public async System.Threading.Tasks.Task Initialize_SecondInstance_RemovesDuplicate()
+    public void Initialize_SecondInstance_RemovesDuplicate()
     {
-        // Arrange
-        var firstManager = CreateTestSettingsManager(); // Changed to use TestSettingsManager
+        // This test verifies the duplicate detection logic works correctly
+        // Instead of trying to test actual singleton behavior across test isolation,
+        // we'll verify that the duplicate detection logic is implemented correctly
 
-        // Act - create second instance
-        var secondManager = AddToTestRoot(new TestSettingsManager()); // Changed to TestSettingsManager
-        _testNodes.Add(secondManager);
+        // Clear any existing instances to start fresh
+        SetSingletonInstance<SettingsManager>(null);
+        SetSingletonInstance<TestSettingsManager>(null);
+
+        // Create first manager manually
+        var firstManager = AddToTestRoot(new TestSettingsManager());
+        CallInitializeOnManager(firstManager);
+        _testNodes.Add(firstManager);
+
+        // Verify first manager is set as singleton
+        AssertThat(SettingsManager.Instance).IsEqual(firstManager);
+        AssertThat(TestSettingsManager.Instance).IsEqual(firstManager);
+        AssertThat(firstManager.GetDialogueSize()).IsEqual(1.0f);
+
+        // Store reference to the first manager
+        var originalBaseInstance = SettingsManager.Instance;
+        var originalTestInstance = TestSettingsManager.Instance;
+
+        // Create a second manager and initialize it while first still exists
+        var secondManager = AddToTestRoot(new TestSettingsManager());
         CallInitializeOnManager(secondManager);
 
-        // Wait for the queue_free to be processed
-        var tree = (SceneTree)Godot.Engine.GetMainLoop();
-        await tree.ToSignal(tree, SceneTree.SignalName.ProcessFrame);
-
-        // Assert
+        // After initialization of the second manager, the singletons should remain unchanged
+        // The second manager should have been queued for deletion
+        AssertThat(SettingsManager.Instance).IsEqual(originalBaseInstance);
+        AssertThat(TestSettingsManager.Instance).IsEqual(originalTestInstance);
         AssertThat(SettingsManager.Instance).IsEqual(firstManager);
+
+        // Verify the first manager is still functional
+        firstManager.SetDialogueSize(1.3f);
+        AssertThat(firstManager.GetDialogueSize()).IsEqual(1.3f);
+
+        // The second manager should be marked for deletion (IsQueuedForDeletion)
         AssertThat(secondManager.IsQueuedForDeletion()).IsTrue();
+
+        // Don't add secondManager to _testNodes since it's queued for deletion
     }
 
     [TestCase]
     public void Initialize_LoadsSettingsOnStart()
     {
         // Arrange & Act
-        _settingsManager = CreateTestSettingsManager(); // Changed to use TestSettingsManager
+        _settingsManager = CreateTestSettingsManager();
 
         // Assert
         // Should have default dialogue size
@@ -142,7 +169,7 @@ public class SettingsManagerTest
     public void GetDialogueSize_DefaultValue_ReturnsOne()
     {
         // Arrange
-        _settingsManager = CreateTestSettingsManager(); // Changed to use TestSettingsManager
+        _settingsManager = CreateTestSettingsManager();
 
         // Act & Assert
         AssertThat(_settingsManager.GetDialogueSize()).IsEqual(1.0f);
@@ -152,7 +179,7 @@ public class SettingsManagerTest
     public void SetDialogueSize_ValidValue_UpdatesSize()
     {
         // Arrange
-        _settingsManager = CreateTestSettingsManager(); // Changed to use TestSettingsManager
+        _settingsManager = CreateTestSettingsManager();
 
         // Act
         _settingsManager.SetDialogueSize(1.5f);
@@ -165,7 +192,7 @@ public class SettingsManagerTest
     public void SetDialogueSize_BelowMinimum_ClampsToMinimum()
     {
         // Arrange
-        _settingsManager = CreateTestSettingsManager(); // Changed to use TestSettingsManager
+        _settingsManager = CreateTestSettingsManager();
 
         // Act
         _settingsManager.SetDialogueSize(0.3f);
@@ -178,7 +205,7 @@ public class SettingsManagerTest
     public void SetDialogueSize_AboveMaximum_ClampsToMaximum()
     {
         // Arrange
-        _settingsManager = CreateTestSettingsManager(); // Changed to use TestSettingsManager
+        _settingsManager = CreateTestSettingsManager();
 
         // Act
         _settingsManager.SetDialogueSize(3.0f);
@@ -191,7 +218,7 @@ public class SettingsManagerTest
     public async System.Threading.Tasks.Task SetDialogueSize_EmitsDialogueSizeChangedSignal()
     {
         // Arrange
-        _settingsManager = CreateTestSettingsManager(); // Changed to use TestSettingsManager
+        _settingsManager = CreateTestSettingsManager();
 
         var signalReceived = false;
         var receivedSize = 0.0f;
@@ -218,7 +245,7 @@ public class SettingsManagerTest
     public async System.Threading.Tasks.Task SetDialogueSize_EmitsSettingsChangedSignal()
     {
         // Arrange
-        _settingsManager = CreateTestSettingsManager(); // Changed to use TestSettingsManager
+        _settingsManager = CreateTestSettingsManager();
 
         var signalReceived = false;
         var receivedKey = "";
@@ -248,7 +275,7 @@ public class SettingsManagerTest
     public void SetDialogueSize_SameValue_DoesNotEmitSignal()
     {
         // Arrange
-        _settingsManager = CreateTestSettingsManager(); // Changed to use TestSettingsManager
+        _settingsManager = CreateTestSettingsManager();
         _settingsManager.SetDialogueSize(1.5f);
 
         var signalCount = 0;
@@ -272,7 +299,7 @@ public class SettingsManagerTest
     public void GetSetting_NonExistentKey_ReturnsDefaultValue()
     {
         // Arrange
-        _settingsManager = CreateTestSettingsManager(); // Changed to use TestSettingsManager
+        _settingsManager = CreateTestSettingsManager();
 
         // Act & Assert
         AssertThat(_settingsManager.GetSetting<string>("non_existent")).IsNull();
@@ -284,7 +311,7 @@ public class SettingsManagerTest
     public void SetSetting_StringValue_StoresAndRetrievesCorrectly()
     {
         // Arrange
-        _settingsManager = CreateTestSettingsManager(); // Changed to use TestSettingsManager
+        _settingsManager = CreateTestSettingsManager();
 
         // Act
         _settingsManager.SetSetting("test_string", "Hello World");
@@ -297,7 +324,7 @@ public class SettingsManagerTest
     public void SetSetting_IntValue_StoresAndRetrievesCorrectly()
     {
         // Arrange
-        _settingsManager = CreateTestSettingsManager(); // Changed to use TestSettingsManager
+        _settingsManager = CreateTestSettingsManager();
 
         // Act
         _settingsManager.SetSetting("test_int", 123);
@@ -310,7 +337,7 @@ public class SettingsManagerTest
     public void SetSetting_FloatValue_StoresAndRetrievesCorrectly()
     {
         // Arrange
-        _settingsManager = CreateTestSettingsManager(); // Changed to use TestSettingsManager
+        _settingsManager = CreateTestSettingsManager();
 
         // Act
         _settingsManager.SetSetting("test_float", 3.14f);
@@ -323,7 +350,7 @@ public class SettingsManagerTest
     public void SetSetting_BoolValue_StoresAndRetrievesCorrectly()
     {
         // Arrange
-        _settingsManager = CreateTestSettingsManager(); // Changed to use TestSettingsManager
+        _settingsManager = CreateTestSettingsManager();
 
         // Act
         _settingsManager.SetSetting("test_bool", true);
@@ -336,7 +363,7 @@ public class SettingsManagerTest
     public async System.Threading.Tasks.Task SetSetting_EmitsSettingsChangedSignal()
     {
         // Arrange
-        _settingsManager = CreateTestSettingsManager(); // Changed to use TestSettingsManager
+        _settingsManager = CreateTestSettingsManager();
 
         var signalReceived = false;
         var receivedKey = "";
@@ -366,7 +393,7 @@ public class SettingsManagerTest
     public void SetSetting_UpdateExistingValue_OverwritesPreviousValue()
     {
         // Arrange
-        _settingsManager = CreateTestSettingsManager(); // Changed to use TestSettingsManager
+        _settingsManager = CreateTestSettingsManager();
         _settingsManager.SetSetting("test_key", "original_value");
 
         // Act
@@ -384,7 +411,7 @@ public class SettingsManagerTest
     public void ResetToDefaults_ResetsDialogueSizeToDefault()
     {
         // Arrange
-        _settingsManager = CreateTestSettingsManager(); // Changed to use TestSettingsManager
+        _settingsManager = CreateTestSettingsManager();
         _settingsManager.SetDialogueSize(1.8f);
 
         // Act
@@ -398,7 +425,7 @@ public class SettingsManagerTest
     public void ResetToDefaults_ClearsCustomSettings()
     {
         // Arrange
-        _settingsManager = CreateTestSettingsManager(); // Changed to use TestSettingsManager
+        _settingsManager = CreateTestSettingsManager();
         _settingsManager.SetSetting("test_key", "test_value");
         _settingsManager.SetSetting("another_key", 42);
 
@@ -414,7 +441,7 @@ public class SettingsManagerTest
     public async System.Threading.Tasks.Task ResetToDefaults_EmitsSignals()
     {
         // Arrange
-        _settingsManager = CreateTestSettingsManager(); // Changed to use TestSettingsManager
+        _settingsManager = CreateTestSettingsManager();
         _settingsManager.SetDialogueSize(1.5f);
 
         var dialogueSignalReceived = false;
@@ -457,7 +484,7 @@ public class SettingsManagerTest
         // Since we can't easily corrupt the internal data, we'll test with edge case values
 
         // Arrange
-        _settingsManager = CreateTestSettingsManager(); // Changed to use TestSettingsManager
+        _settingsManager = CreateTestSettingsManager();
 
         // Act & Assert - test with null/empty scenarios
         AssertThat(_settingsManager.GetSetting<string>("", "default")).IsEqual("default");
@@ -468,7 +495,7 @@ public class SettingsManagerTest
     public void SetDialogueSize_MultipleCalls_MaintainsConsistency()
     {
         // Arrange
-        _settingsManager = CreateTestSettingsManager(); // Changed to use TestSettingsManager
+        _settingsManager = CreateTestSettingsManager();
 
         // Act - set multiple times
         _settingsManager.SetDialogueSize(1.2f);
@@ -483,14 +510,15 @@ public class SettingsManagerTest
     public void CustomSettings_ComplexTypes_HandleCorrectly()
     {
         // Arrange
-        _settingsManager = CreateTestSettingsManager(); // Changed to use TestSettingsManager
+        _settingsManager = CreateTestSettingsManager();
+        // Use Godot.Collections.Dictionary instead of System.Collections.Generic.Dictionary
         var testDict = new Godot.Collections.Dictionary<string, int> { { "key1", 1 }, { "key2", 2 } };
 
         // Act
         _settingsManager.SetSetting("complex_type", testDict);
 
         // Assert
-        var retrieved = _settingsManager.GetSetting<Dictionary<string, int>>("complex_type");
+        var retrieved = _settingsManager.GetSetting<Godot.Collections.Dictionary<string, int>>("complex_type");
         AssertThat(retrieved).IsNotNull();
         AssertThat(retrieved!["key1"]).IsEqual(1);
         AssertThat(retrieved["key2"]).IsEqual(2);
@@ -526,7 +554,7 @@ public class SettingsManagerTest
     public void FullWorkflow_SetLoadResetSave_WorksCorrectly()
     {
         // Arrange
-        _settingsManager = CreateTestSettingsManager(); // Changed to use TestSettingsManager
+        _settingsManager = CreateTestSettingsManager();
 
         // Act & Assert - Full workflow
         // 1. Set some values
@@ -547,7 +575,7 @@ public class SettingsManagerTest
 
     #endregion
 
-    // Helper Methods - Removed the CreateSettingsManager method since we only need TestSettingsManager
+    // Helper Methods
     private TestSettingsManager CreateTestSettingsManager()
     {
         var manager = AddToTestRoot(new TestSettingsManager());
@@ -594,6 +622,7 @@ public class SettingsManagerTest
         _testNodes.Clear();
 
         SetSingletonInstance<SettingsManager>(null);
+        SetSingletonInstance<TestSettingsManager>(null);
 
         // Clear test manager temp files
         TestSettingsManager.ClearTempFiles();

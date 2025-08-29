@@ -15,7 +15,7 @@ namespace AshesOfVelsingrad.Managers;
 /// </remarks>
 public partial class MenuManager : BaseManager
 {
-    public static new MenuManager? Instance { get; private set; }
+    public static MenuManager? Instance { get; protected set; } // Changed from private to protected
 
     [Signal]
     public delegate void MenuChangedEventHandler(string menuName);
@@ -49,6 +49,16 @@ public partial class MenuManager : BaseManager
 
         Instance = this;
         GD.Print("MenuManager initialized successfully");
+    }
+
+    /// <summary>
+    /// FOR TESTING ONLY: Manually sets the singleton instance.
+    /// This method should only be used in unit tests.
+    /// </summary>
+    /// <param name="instance">The instance to set as the singleton.</param>
+    public static void SetInstanceForTesting(MenuManager? instance)
+    {
+        Instance = instance;
     }
 
     /// <summary>
@@ -120,6 +130,12 @@ public partial class MenuManager : BaseManager
             return;
         }
 
+        // Add to history for back navigation BEFORE changing current menu
+        if (addToHistory && !string.IsNullOrEmpty(_currentMenu))
+        {
+            _menuHistory.Push(_currentMenu);
+        }
+
         // Hide current menu
         if (!string.IsNullOrEmpty(_currentMenu) && _menus.ContainsKey(_currentMenu))
         {
@@ -134,14 +150,10 @@ public partial class MenuManager : BaseManager
             }
         }
 
-        // Add to history for back navigation
-        if (addToHistory && !string.IsNullOrEmpty(_currentMenu))
-        {
-            _menuHistory.Push(_currentMenu);
-        }
+        // Update current menu BEFORE showing new menu
+        _currentMenu = menuName;
 
         // Show new menu
-        _currentMenu = menuName;
         var newMenuControl = _menus[menuName];
 
         if (newMenuControl is OptionsMenu optionsMenu)

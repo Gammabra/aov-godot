@@ -1,8 +1,10 @@
 using Godot;
 using System.Collections.Generic;
 using AshesOfVelsingrad.Managers;
+using System.Reflection;
 
 namespace UnitTests;
+
 public partial class TestMenuManager : MenuManager
 {
     public Dictionary<string, Control> RegisteredMenus { get; } = new();
@@ -17,13 +19,15 @@ public partial class TestMenuManager : MenuManager
 
     protected override void Initialize()
     {
+        // Set TestMenuManager instance
         Instance = this;
 
-        var baseInstanceProperty = typeof(MenuManager).GetProperty("Instance",
-            System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.Static);
-        baseInstanceProperty?.SetValue(null, this);
+        // Use the new test-friendly method
+        MenuManager.SetInstanceForTesting(this);
 
-        GD.Print("[TEST] TestMenuManager initialized");
+        GD.Print($"[TEST] TestMenuManager initialized - MenuManager.Instance: {MenuManager.Instance != null}");
+        GD.Print($"[TEST] TestMenuManager initialized - MenuManager.Instance == this: {MenuManager.Instance == this}");
+        GD.Print($"[TEST] TestMenuManager initialized - TestMenuManager.Instance: {Instance != null}");
     }
 
     public override void RegisterMenu(string menuName, Control menuControl)
@@ -44,15 +48,33 @@ public partial class TestMenuManager : MenuManager
     public override void ShowMenu(string menuName, bool addToHistory = true)
     {
         LastShownMenu = menuName;
-        GD.Print($"[TEST] TestMenuManager: Showed menu '{menuName}'");
+        GD.Print($"[TEST] TestMenuManager: Request to show menu '{menuName}' (addToHistory: {addToHistory})");
 
         try
         {
-            base.ShowMenu(menuName, addToHistory);
+            // Only call base.ShowMenu if the menu exists and is valid
+            if (RegisteredMenus.TryGetValue(menuName, out var menuControl) &&
+                GodotObject.IsInstanceValid(menuControl) &&
+                !menuControl.IsQueuedForDeletion())
+            {
+                base.ShowMenu(menuName, addToHistory);
+            }
+            else
+            {
+                // If the menu is not registered or is invalid, DO NOT override the current menu
+                GD.Print($"[TEST] Skipping ShowMenu for '{menuName}' (menu not registered or invalid)");
+            }
         }
         catch (System.Exception ex)
         {
-            GD.Print($"[TEST] Exception in base.ShowMenu: {ex.Message} - continuing with test");
+            GD.Print($"[TEST] Exception in TestMenuManager.ShowMenu: {ex.Message} - ignoring in test mode");
         }
+    }
+
+    // Helper method to verify singleton state
+    public void VerifyInstanceState()
+    {
+        GD.Print($"[TEST] VerifyInstanceState - MenuManager.Instance == this: {MenuManager.Instance == this}");
+        GD.Print($"[TEST] VerifyInstanceState - TestMenuManager.Instance == this: {TestMenuManager.Instance == this}");
     }
 }

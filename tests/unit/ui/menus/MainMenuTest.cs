@@ -35,6 +35,9 @@ public class MainMenuTest
 
         _mainMenu = AutoFree(new MainMenu { Name = "MainMenu" });
 
+        if (_mainMenu == null)
+            throw new System.InvalidOperationException("Failed to create MainMenu instance.");
+
         // IMPORTANT: Inject the test MenuManager into MainMenu
         _mainMenu.SetMenuManagerForTesting(_testMenuManager);
 
@@ -70,6 +73,10 @@ public class MainMenuTest
     {
         // Arrange - Create a MainMenu without injected MenuManager
         var testMainMenu = AutoFree(new MainMenu { Name = "TestMainMenu" });
+
+        if (testMainMenu == null)
+            throw new System.InvalidOperationException("Failed to create TestMainMenu instance.");
+
         AddToTestRoot(testMainMenu);
         // Don't inject MenuManager, so it will be null
 
@@ -109,6 +116,10 @@ public class MainMenuTest
     {
         // Arrange - Create MainMenu without injected MenuManager
         var testMainMenu = AutoFree(new MainMenu { Name = "TestMainMenu" });
+
+        if (testMainMenu == null)
+            throw new System.InvalidOperationException("Failed to create TestMainMenu instance.");
+
         AddToTestRoot(testMainMenu);
         testMainMenu._Ready();
 
@@ -125,6 +136,9 @@ public class MainMenuTest
         // Arrange
         _mainMenu!._Ready();
         var originalMenu = _testMenuManager!.GetCurrentMenu();
+
+        if (originalMenu == null)
+            throw new System.InvalidOperationException("Original menu should not be null.");
 
         // Act
         CallPrivateMethod(_mainMenu, "OnOptionsButtonButtonUp");
@@ -286,6 +300,10 @@ public class MainMenuTest
     {
         // Arrange - Fresh main menu with injected MenuManager
         var testMainMenu = AutoFree(new MainMenu { Name = "TestMainMenu" });
+
+        if (testMainMenu == null)
+            throw new System.InvalidOperationException("Failed to create TestMainMenu instance.");
+
         testMainMenu.SetMenuManagerForTesting(_testMenuManager!);
         AddToTestRoot(testMainMenu);
 

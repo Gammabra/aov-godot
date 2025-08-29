@@ -15,7 +15,7 @@ namespace AshesOfVelsingrad.Managers;
 /// </remarks>
 public partial class MenuManager : BaseManager
 {
-    public static MenuManager? Instance { get; protected set; } // Changed from private to protected
+    public new static MenuManager? Instance { get; protected set; }
 
     [Signal]
     public delegate void MenuChangedEventHandler(string menuName);

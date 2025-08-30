@@ -75,6 +75,14 @@ public partial class MainMenu : Control
         menuManager.ShowMenu(MenuManager.OPTIONS_MENU);
     }
 
+    /// <summary>
+    /// Handles the "Exit" button click event.
+    /// Exits the game application.
+    /// </summary>
+    /// <remarks>
+    /// This method is connected to the Exit button's "button_up" signal.
+    /// It calls the Godot engine's quit method to close the application.
+    /// </remarks>
     private void OnExitButtonButtonUp()
     {
         GD.Print("EXIT GAME");

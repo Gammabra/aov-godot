@@ -115,7 +115,11 @@ public class OptionsMenuTest
         ClearAllSingletonInstances();
 
         var testOptionsMenu = AutoFree(new OptionsMenu { Name = "TestOptionsMenu" });
-        AddToTestRoot(testOptionsMenu!);
+
+        if (testOptionsMenu == null)
+            throw new System.InvalidOperationException("Failed to create OptionsMenu instance.");
+
+        AddToTestRoot(testOptionsMenu);
 
         // Act
         testOptionsMenu._Ready();
@@ -476,7 +480,11 @@ public class OptionsMenuTest
     {
         // Arrange - Create OptionsMenu without UI components
         var testOptionsMenu = AutoFree(new OptionsMenu { Name = "TestOptionsMenu" });
-        AddToTestRoot(testOptionsMenu!);
+
+        if (testOptionsMenu == null)
+            throw new System.InvalidOperationException("Failed to create OptionsMenu instance.");
+
+        AddToTestRoot(testOptionsMenu);
 
         // Act - Should not crash even with null UI components
         testOptionsMenu._Ready();
@@ -562,6 +570,10 @@ public class OptionsMenuTest
         _backButton = AutoFree(new Button { Name = "BackButton", Text = "Back" });
         _previewDialogue = AutoFree(new Control { Name = "PreviewDialogue" });
         _previewText = AutoFree(new Label { Name = "PreviewText", Text = "Sample dialogue text" });
+
+        if (_dialogueSizeSlider == null || _dialogueSizeLabel == null || _resetButton == null ||
+            _backButton == null || _previewDialogue == null || _previewText == null)
+            throw new System.InvalidOperationException("Failed to create one or more UI components.");
 
         // Add preview text to preview dialogue
         _previewDialogue.AddChild(_previewText);

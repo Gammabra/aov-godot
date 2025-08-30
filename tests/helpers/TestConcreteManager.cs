@@ -4,9 +4,6 @@ using System.Reflection;
 
 namespace UnitTests;
 
-/// <summary>
-/// Concrete implementation of BaseManager for testing purposes
-/// </summary>
 public partial class TestConcreteManager : BaseManager
 {
     public static new TestConcreteManager? Instance { get; set; }
@@ -22,7 +19,6 @@ public partial class TestConcreteManager : BaseManager
 
     protected override void Initialize()
     {
-        // Check for multiple instances of this specific type
         if (Instance != null && Instance != this)
         {
             GD.PrintErr($"Multiple instances of {GetType().Name} detected.");
@@ -30,7 +26,6 @@ public partial class TestConcreteManager : BaseManager
             return;
         }
 
-        // Assign both base and derived Instance
         BaseManager.Instance = this;
         Instance = this;
 
@@ -44,7 +39,6 @@ public partial class TestConcreteManager : BaseManager
     {
         IsCleanedUp = true;
 
-        // Clear both references
         if (Instance == this)
             Instance = null;
 
@@ -54,16 +48,12 @@ public partial class TestConcreteManager : BaseManager
         GD.Print("[TEST] TestConcreteManager cleanup called");
     }
 
-    // Public methods to test protected functionality
     public void CallInitialize() => Initialize();
     public void CallCleanup() => Cleanup();
     public void CallReady() => _Ready();
     public void CallExitTree() => _ExitTree();
 }
 
-/// <summary>
-/// Another concrete implementation to test multiple manager types
-/// </summary>
 public partial class AnotherTestManager : BaseManager
 {
     public static new AnotherTestManager? Instance { get; set; }
@@ -92,7 +82,6 @@ public partial class AnotherTestManager : BaseManager
     public void CallInitialize() => Initialize();
 }
 
-// Extension method to check if method is override
 public static class MethodInfoExtensions
 {
     public static bool IsOverride(this MethodInfo method)

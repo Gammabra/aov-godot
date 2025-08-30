@@ -19,10 +19,8 @@ public partial class TestMenuManager : MenuManager
 
     protected override void Initialize()
     {
-        // Set TestMenuManager instance
         Instance = this;
 
-        // Use the new test-friendly method
         MenuManager.SetInstanceForTesting(this);
 
         GD.Print($"[TEST] TestMenuManager initialized - MenuManager.Instance: {MenuManager.Instance != null}");
@@ -52,7 +50,6 @@ public partial class TestMenuManager : MenuManager
 
         try
         {
-            // Only call base.ShowMenu if the menu exists and is valid
             if (RegisteredMenus.TryGetValue(menuName, out var menuControl) &&
                 GodotObject.IsInstanceValid(menuControl) &&
                 !menuControl.IsQueuedForDeletion())
@@ -61,7 +58,6 @@ public partial class TestMenuManager : MenuManager
             }
             else
             {
-                // If the menu is not registered or is invalid, DO NOT override the current menu
                 GD.Print($"[TEST] Skipping ShowMenu for '{menuName}' (menu not registered or invalid)");
             }
         }
@@ -71,7 +67,6 @@ public partial class TestMenuManager : MenuManager
         }
     }
 
-    // Helper method to verify singleton state
     public void VerifyInstanceState()
     {
         GD.Print($"[TEST] VerifyInstanceState - MenuManager.Instance == this: {MenuManager.Instance == this}");

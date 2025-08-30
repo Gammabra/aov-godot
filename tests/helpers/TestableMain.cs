@@ -1,5 +1,5 @@
-using Godot;
 using System.Collections.Generic;
+using Godot;
 
 namespace UnitTests;
 
@@ -37,7 +37,7 @@ public partial class TestableMain : AshesOfVelsingrad.Main
         {
             _autoFreeCallback(mainMenu);
         }
-        
+
         _createdNodes.Add(mainMenu);
         GD.Print($"[TEST] TestableMain created MainMenu. Count: {MainMenuInstantiateCount}");
 
@@ -48,7 +48,7 @@ public partial class TestableMain : AshesOfVelsingrad.Main
         {
             _autoFreeCallback(optionsMenu);
         }
-        
+
         _createdNodes.Add(optionsMenu);
         GD.Print($"[TEST] TestableMain created OptionsMenu. Count: {OptionsMenuInstantiateCount}");
 

@@ -19,7 +19,7 @@ public class MenuManagerTest
     private Control? _mockMenu2;
     private OptionsMenu? _optionsMenu;
 
-    [Before]
+    [BeforeTest]
     public void SetUp()
     {
         GD.Print("[TEST] Starting MenuManager SetUp...");
@@ -543,7 +543,7 @@ public class MenuManagerTest
         instanceProperty?.SetValue(null, instance);
     }
 
-    [After]
+    [AfterTest]
     public void TearDown()
     {
         GD.Print("[TEST] Starting MenuManager TearDown...");

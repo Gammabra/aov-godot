@@ -16,7 +16,7 @@ public class SettingsManagerTest
     private Node? _root;
     private const string _testSettingsPath = "user://test_settings.json";
 
-    [Before]
+    [BeforeTest]
     public void SetUp()
     {
         GD.Print("[TEST] Starting SettingsManager SetUp...");
@@ -41,8 +41,6 @@ public class SettingsManagerTest
 
         GD.Print("[TEST] SettingsManager SetUp completed");
     }
-
-    #region Initialization Tests
 
     [TestCase]
     public void Initialize_FirstInstance_SetsInstanceCorrectly()
@@ -112,10 +110,6 @@ public class SettingsManagerTest
         AssertThat(_settingsManager.GetDialogueSize()).IsEqual(1.0f);
     }
 
-    #endregion
-
-    #region Settings File Operations Tests
-
     [TestCase]
     public void LoadSettings_NoExistingFile_CreatesDefaultSettings()
     {
@@ -160,10 +154,6 @@ public class SettingsManagerTest
         AssertThat(secondManager.GetDialogueSize()).IsEqual(1.8f);
         AssertThat(secondManager.GetSetting<string>("test_key")).IsEqual("test_value");
     }
-
-    #endregion
-
-    #region Dialogue Size Tests
 
     [TestCase]
     public void GetDialogueSize_DefaultValue_ReturnsOne()
@@ -291,10 +281,6 @@ public class SettingsManagerTest
         AssertThat(signalCount).IsEqual(0);
     }
 
-    #endregion
-
-    #region Custom Settings Tests
-
     [TestCase]
     public void GetSetting_NonExistentKey_ReturnsDefaultValue()
     {
@@ -403,10 +389,6 @@ public class SettingsManagerTest
         AssertThat(_settingsManager.GetSetting<string>("test_key")).IsEqual("updated_value");
     }
 
-    #endregion
-
-    #region Reset Settings Tests
-
     [TestCase]
     public void ResetToDefaults_ResetsDialogueSizeToDefault()
     {
@@ -473,10 +455,6 @@ public class SettingsManagerTest
         AssertThat(receivedDialogueSize).IsEqual(1.0f);
     }
 
-    #endregion
-
-    #region Edge Cases and Error Handling Tests
-
     [TestCase]
     public void GetSetting_WithInvalidJsonData_ReturnsDefaultValue()
     {
@@ -524,10 +502,6 @@ public class SettingsManagerTest
         AssertThat(retrieved["key2"]).IsEqual(2);
     }
 
-    #endregion
-
-    #region Persistence Tests
-
     [TestCase]
     public void Settings_PersistBetweenManagerInstances()
     {
@@ -545,10 +519,6 @@ public class SettingsManagerTest
         AssertThat(secondManager.GetDialogueSize()).IsEqual(1.4f);
         AssertThat(secondManager.GetSetting<string>("persistent_key")).IsEqual("persistent_value");
     }
-
-    #endregion
-
-    #region Integration Tests
 
     [TestCase]
     public void FullWorkflow_SetLoadResetSave_WorksCorrectly()
@@ -572,8 +542,6 @@ public class SettingsManagerTest
         AssertThat(_settingsManager.GetDialogueSize()).IsEqual(1.0f);
         AssertThat(_settingsManager.GetSetting<string>("workflow_test")).IsNull();
     }
-
-    #endregion
 
     // Helper Methods
     private TestSettingsManager CreateTestSettingsManager()
@@ -607,7 +575,7 @@ public class SettingsManagerTest
         instanceProperty?.SetValue(null, instance);
     }
 
-    [After]
+    [AfterTest]
     public void TearDown()
     {
         GD.Print("[TEST] Starting SettingsManager TearDown...");

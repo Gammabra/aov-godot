@@ -10,14 +10,12 @@ public partial class TestSettingsManager : SettingsManager
 {
     public static new TestSettingsManager? Instance { get; set; }
 
-    // Each test manager gets its own temp file
     private readonly string _testFilePath;
     private static readonly Dictionary<string, string> _tempFiles = new();
 
     public TestSettingsManager()
     {
         Name = "TestSettingsManager";
-        // Create unique temp file path for this instance
         _testFilePath = $"user://test_settings_{GetInstanceId()}.json";
         _tempFiles[GetInstanceId().ToString()] = _testFilePath;
         GD.Print($"[TEST] TestSettingsManager constructor called - using file: {_testFilePath}");
@@ -25,7 +23,6 @@ public partial class TestSettingsManager : SettingsManager
 
     protected override void Initialize()
     {
-        // Check for duplicate instances - if there's already a base instance, remove this one
         if (SettingsManager.Instance != null && SettingsManager.Instance != this)
         {
             GD.Print($"[TEST] Duplicate TestSettingsManager detected. Base instance exists: {SettingsManager.Instance.GetInstanceId()}, this instance: {GetInstanceId()}. Queueing for deletion.");
@@ -33,7 +30,6 @@ public partial class TestSettingsManager : SettingsManager
             return;
         }
 
-        // Check for duplicate TestSettingsManager instances
         if (Instance != null && Instance != this)
         {
             GD.Print($"[TEST] Duplicate TestSettingsManager detected. TestSettings instance exists: {Instance.GetInstanceId()}, this instance: {GetInstanceId()}. Queueing for deletion.");
@@ -41,11 +37,9 @@ public partial class TestSettingsManager : SettingsManager
             return;
         }
 
-        // Set both instances to this
         Instance = this;
         SetBaseInstance(this);
 
-        // Load settings using our custom implementation
         LoadSettings();
 
         GD.Print("[TEST] TestSettingsManager initialized");
@@ -76,7 +70,7 @@ public partial class TestSettingsManager : SettingsManager
             {
                 var settings = new SettingsData();
                 SetSettingsField(settings);
-                SaveSettings(); // Create default settings file
+                SaveSettings();
                 GD.Print("[TEST] Created new default settings file");
             }
         }
@@ -115,7 +109,6 @@ public partial class TestSettingsManager : SettingsManager
         }
     }
 
-    // Override SetDialogueSize to ensure it works with our test setup
     public new void SetDialogueSize(float size)
     {
         var settings = GetSettingsField();
@@ -136,7 +129,6 @@ public partial class TestSettingsManager : SettingsManager
         }
     }
 
-    // Override SetSetting to ensure it works with our test setup
     public new void SetSetting<T>(string key, T value)
     {
         var settings = GetSettingsField();
@@ -153,7 +145,6 @@ public partial class TestSettingsManager : SettingsManager
         GD.Print($"[TEST] SetSetting called with key: {key}, value: {value}");
     }
 
-    // Override GetSetting to ensure it works with our test setup
     public new T? GetSetting<T>(string key, T? defaultValue = default(T))
     {
         var settings = GetSettingsField();
@@ -179,7 +170,6 @@ public partial class TestSettingsManager : SettingsManager
         return defaultValue;
     }
 
-    // Override GetDialogueSize to ensure it works with our test setup
     public new float GetDialogueSize()
     {
         var settings = GetSettingsField();
@@ -187,8 +177,6 @@ public partial class TestSettingsManager : SettingsManager
         GD.Print($"[TEST] GetDialogueSize() called, returning: {result}");
         return result;
     }
-
-    // Override ResetToDefaults to ensure it works with our test setup
     public new void ResetToDefaults()
     {
         var settings = new SettingsData();
@@ -213,12 +201,10 @@ public partial class TestSettingsManager : SettingsManager
         return settingsField?.GetValue(this) as SettingsData;
     }
 
-    // Method to simulate persistence between manager instances
     public void SimulatePersistence(TestSettingsManager otherManager)
     {
         if (FileAccess.FileExists(_testFilePath))
         {
-            // Copy our temp file to the other manager's temp file
             using var sourceFile = FileAccess.Open(_testFilePath, FileAccess.ModeFlags.Read);
             if (sourceFile != null)
             {
@@ -230,7 +216,6 @@ public partial class TestSettingsManager : SettingsManager
         }
     }
 
-    // Clear all temp files
     public static void ClearTempFiles()
     {
         foreach (var filePath in _tempFiles.Values)
@@ -247,7 +232,6 @@ public partial class TestSettingsManager : SettingsManager
 
     public override void _ExitTree()
     {
-        // Clean up our temp file when this instance is destroyed
         if (FileAccess.FileExists(_testFilePath))
         {
             DirAccess.RemoveAbsolute(_testFilePath);

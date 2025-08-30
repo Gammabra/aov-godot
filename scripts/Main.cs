@@ -9,9 +9,9 @@ namespace AshesOfVelsingrad;
 /// </summary>
 public partial class Main : Node
 {
-    [Export] protected Control? _menuContainer;  // protected au lieu de private
-    [Export] protected PackedScene? _mainMenuScene;  // protected au lieu de private
-    [Export] protected PackedScene? _optionsMenuScene;  // protected au lieu de private
+    [Export] protected Control? _menuContainer;
+    [Export] protected PackedScene? _mainMenuScene;
+    [Export] protected PackedScene? _optionsMenuScene;
 
     public override void _Ready()
     {
@@ -19,7 +19,12 @@ public partial class Main : Node
     }
 
     /// <summary>
-    /// Initialize menus - virtual pour permettre l'override dans les tests
+    /// Initialise the menus and register them with the MenuManager.
+    /// Ensures that the SettingsManager and MenuManager singletons are available.
+    /// Uses deferred calls to avoid Godot lifecycle issues.
+    /// Catches and logs exceptions during initialization.
+    /// Also checks that the menu container and scenes are valid before proceeding.
+    /// This method can be overridden in tests to provide mock menus.
     /// </summary>
     protected virtual void InitializeMenus()
     {
@@ -51,8 +56,12 @@ public partial class Main : Node
     }
 
     /// <summary>
-    /// Create menu instances - virtual pour permettre l'override dans les tests
+    /// Create menu instances - virtual for testing overrides.
+    /// Default implementation instantiates from PackedScenes.
+    /// Checks for null references and logs appropriately.
+    /// Can be overridden in tests to provide mock or test-specific menus.
     /// </summary>
+    /// <returns>Tuple of (mainMenu, optionsMenu) nodes.</returns>
     protected virtual (Node mainMenu, Node optionsMenu) CreateMenus()
     {
         // Vérifier que le container existe avant de créer les menus
@@ -78,6 +87,11 @@ public partial class Main : Node
         return (mainMenu, optionsMenu);
     }
 
+    /// <summary>
+    /// Validates that the necessary singletons and nodes are available.
+    /// Logs errors if any required component is missing.
+    /// </summary>
+    /// <returns>True if all conditions are met, false otherwise.</returns>
     private bool ValidateInitialConditions()
     {
         if (SettingsManager.Instance == null)
@@ -101,12 +115,22 @@ public partial class Main : Node
         return true;
     }
 
+    /// <summary>
+    /// Adds the instantiated menus to the menu container.
+    /// </summary>
+    /// <param name="mainMenu">The main menu node.</param>
+    /// <param name="optionsMenu">The options menu node.</param>
     private void AddMenusToContainer(Node mainMenu, Node optionsMenu)
     {
         _menuContainer!.AddChild(mainMenu);
         _menuContainer.AddChild(optionsMenu);
     }
 
+    /// <summary>
+    /// Registers the menus with the MenuManager and shows the main menu.
+    /// </summary>
+    /// <param name="mainMenu">The main menu node.</param>
+    /// <param name="optionsMenu">The options menu node.</param>
     private void RegisterAndShowMenus(Node mainMenu, Node optionsMenu)
     {
         if (mainMenu is Control mainMenuControl && optionsMenu is Control optionsMenuControl)

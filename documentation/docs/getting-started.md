@@ -78,7 +78,7 @@ Or use the GdUnit4 tab in Godot to run tests within the editor.
 ### Visual Studio Code (Recommended)
 
 1. **Install Extensions:**
-   - C# Dev Kit (Microsoft)
+   - C# Dev Kit (v1.5.12 (pre-release) recommended) (Microsoft)
    - C# (Microsoft)
    - godot-tools (optional)
    - Conventional Commits (vivaxy) - for commit messages
@@ -91,8 +91,11 @@ Or use the GdUnit4 tab in Godot to run tests within the editor.
   "dotnet.defaultSolution": "Ashes of Velsingrad.sln",
   "files.exclude": {
     "**/.godot/": true,
-    "**/.import/": true
+    "**/.import/": true,
+    "**/*.cs.uid": true
   },
+  "godotTools.editorPath.godot4": "path\\to\\your\\Godot_v4.4.1-stable_mono_win64.exe",
+  "dotnet.unitTests.runSettingsPath": "./tests/.runsettings",
   "conventionalCommits.scopes": [
     "player", "combat", "inventory", "ui", "audio",
     "level", "ai", "save", "network", "build", "config"
@@ -188,7 +191,7 @@ dotnet test --filter "Category=Unit"
 
 **From VS Code:**
 - Use the Test Explorer panel
-- Install C# Dev Kit extension
+- Install C# Dev Kit (v1.5.12 (pre-release) recommended) extension
 - Tests will appear automatically
 
 ## ✅ Quick Validation

@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Coding Standards | Ashes of Velsingrad Documentation </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Coding Standards | Ashes of Velsingrad Documentation ">
+      
+      
+      <link rel="icon" href="../../../favicon.ico">
+      <link rel="stylesheet" href="../../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../../public/main.css">
+      <meta name="docfx:navrel" content="">
+      <meta name="docfx:tocrel" content="../../toc.html">
+      
+      <meta name="docfx:rel" content="../../../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/Gammabra/aov-godot/blob/develop/documentation/docs/technical/coding-standards.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../../../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../../../index.html">
+            <img id="logo" class="svg" src="../../../documentation/images/logo-doc.png" alt="Ashes of Velsingrad" style="height: 40px; width: auto;">
+            Ashes of Velsingrad
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="coding-standards">Coding Standards</h1>
+
+<p>This document outlines the coding standards and conventions for our Godot 4.4.1 C# (.NET 9.0) game project. These standards ensure code consistency, maintainability, and team collaboration.</p>
+<h2 id="table-of-contents">Table of Contents</h2>
+<ul>
+<li><a href="#general-principles">General Principles</a></li>
+<li><a href="#file-organization">File Organization</a></li>
+<li><a href="#c-coding-standards">C# Coding Standards</a></li>
+<li><a href="#godot-specific-guidelines">Godot-Specific Guidelines</a></li>
+<li><a href="#naming-conventions">Naming Conventions</a></li>
+<li><a href="#code-formatting">Code Formatting</a></li>
+<li><a href="#comments-and-documentation">Comments and Documentation</a></li>
+<li><a href="#error-handling">Error Handling</a></li>
+<li><a href="#performance-guidelines">Performance Guidelines</a></li>
+</ul>
+<h2 id="general-principles">General Principles</h2>
+<h3 id="code-quality">Code Quality</h3>
+<ul>
+<li><strong>Readability First</strong>: Write code that tells a story. Code is read more often than it's written.</li>
+<li><strong>KISS (Keep It Simple, Stupid)</strong>: Favor simple solutions over complex ones.</li>
+<li><strong>DRY (Don't Repeat Yourself)</strong>: Avoid code duplication through proper abstraction.</li>
+<li><strong>YAGNI (You Aren't Gonna Need It)</strong>: Don't implement features until they're actually needed.</li>
+</ul>
+<h3 id="consistency">Consistency</h3>
+<ul>
+<li>Follow the established patterns in the codebase.</li>
+<li>Use the same naming conventions and code structure throughout the project.</li>
+<li>Maintain consistent indentation and formatting as defined in <code>.editorconfig</code>.</li>
+</ul>
+<h2 id="file-organization">File Organization</h2>
+<h3 id="directory-structure">Directory Structure</h3>
+<pre><code>Scripts/
+├── Actors/          # Player, enemies, NPCs
+├── Components/      # Reusable game components
+├── Controllers/     # Input handlers, game controllers
+├── Data/           # Data classes, scriptable objects
+├── Managers/       # Singleton managers (GameManager, AudioManager, etc.)
+├── UI/             # User interface scripts
+├── Utilities/      # Helper classes and extensions
+└── Systems/        # Game systems (inventory, dialogue, etc.)
+</code></pre>
+<h3 id="file-naming">File Naming</h3>
+<ul>
+<li>Use PascalCase for C# files: <code>PlayerController.cs</code></li>
+<li>Use snake_case for GDScript files: <code>player_controller.gd</code></li>
+<li>Use descriptive names that clearly indicate the file's purpose</li>
+<li>Avoid abbreviations unless they're widely understood</li>
+</ul>
+<h2 id="c-coding-standards">C# Coding Standards</h2>
+<h3 id="class-structure">Class Structure</h3>
+<p>Organize class members in the following order:</p>
+<ol>
+<li>Constants</li>
+<li>Static fields</li>
+<li>Fields (private first, then protected, then public)</li>
+<li>Constructors</li>
+<li>Properties</li>
+<li>Events</li>
+<li>Methods (private first, then protected, then public)</li>
+<li>Nested types</li>
+</ol>
+<pre><code class="lang-csharp">public class PlayerController : CharacterBody2D
+{
+    // Constants
+    private const float DefaultSpeed = 300.0f;
+
+    // Fields
+    private float _speed;
+    private Vector2 _velocity;
+
+    // Properties
+    public float Speed
+    {
+        get =&gt; _speed;
+        set =&gt; _speed = Mathf.Max(0, value);
+    }
+
+    // Godot lifecycle methods
+    public override void _Ready()
+    {
+        _speed = DefaultSpeed;
+    }
+
+    public override void _PhysicsProcess(double delta)
+    {
+        HandleMovement();
+    }
+
+    // Private methods
+    private void HandleMovement()
+    {
+        // Implementation
+    }
+}
+</code></pre>
+<h3 id="access-modifiers">Access Modifiers</h3>
+<ul>
+<li>Always specify access modifiers explicitly</li>
+<li>Use the most restrictive access level possible</li>
+<li>Prefer <code>private</code> for internal implementation details</li>
+<li>Use <code>protected</code> for members that should be accessible to derived classes</li>
+<li>Use <code>public</code> only for the class's interface</li>
+</ul>
+<h3 id="properties-vs-fields">Properties vs Fields</h3>
+<ul>
+<li>Use properties for public data access</li>
+<li>Use auto-properties when no additional logic is needed</li>
+<li>Use full properties when validation or side effects are required</li>
+</ul>
+<pre><code class="lang-csharp">// Good - Auto property
+public int Health { get; set; }
+
+// Good - Property with validation
+public int MaxHealth
+{
+    get =&gt; _maxHealth;
+    set =&gt; _maxHealth = Mathf.Max(1, value);
+}
+
+// Avoid - Public fields
+public int health; // Don't do this
+</code></pre>
+<h2 id="godot-specific-guidelines">Godot-Specific Guidelines</h2>
+<h3 id="node-references">Node References</h3>
+<ul>
+<li>Use <code>GetNode&lt;T&gt;()</code> for type-safe node access</li>
+<li>Cache node references in <code>_Ready()</code> when possible</li>
+<li>Use <code>@export</code> for designer-configurable values</li>
+</ul>
+<pre><code class="lang-csharp">public partial class PlayerController : CharacterBody2D
+{
+    [Export] public float Speed = 300.0f;
+    [Export] public float JumpVelocity = -400.0f;
+
+    private AnimationPlayer _animationPlayer;
+    private CollisionShape2D _collisionShape;
+
+    public override void _Ready()
+    {
+        _animationPlayer = GetNode&lt;AnimationPlayer&gt;(&quot;AnimationPlayer&quot;);
+        _collisionShape = GetNode&lt;CollisionShape2D&gt;(&quot;CollisionShape2D&quot;);
+    }
+}
+</code></pre>
+<h3 id="signals">Signals</h3>
+<ul>
+<li>Use PascalCase for signal names</li>
+<li>Provide clear, descriptive signal names</li>
+<li>Document signal parameters</li>
+</ul>
+<pre><code class="lang-csharp">[Signal]
+public delegate void HealthChangedEventHandler(int newHealth, int maxHealth);
+
+[Signal]
+public delegate void PlayerDiedEventHandler();
+</code></pre>
+<h3 id="scene-management">Scene Management</h3>
+<ul>
+<li>Use <code>GetTree().ChangeSceneToFile()</code> for scene transitions</li>
+<li>Keep scene paths in constants or configuration files</li>
+<li>Handle scene loading errors gracefully</li>
+</ul>
+<h2 id="naming-conventions">Naming Conventions</h2>
+<h3 id="classes-and-interfaces">Classes and Interfaces</h3>
+<ul>
+<li><strong>Classes</strong>: PascalCase (<code>PlayerController</code>, <code>InventorySystem</code>)</li>
+<li><strong>Interfaces</strong>: PascalCase with 'I' prefix (<code>IInteractable</code>, <code>IDamageable</code>)</li>
+<li><strong>Abstract Classes</strong>: PascalCase, consider 'Base' prefix (<code>BaseWeapon</code>)</li>
+</ul>
+<h3 id="methods-and-properties">Methods and Properties</h3>
+<ul>
+<li><strong>Methods</strong>: PascalCase (<code>GetPlayerInput</code>, <code>ProcessMovement</code>)</li>
+<li><strong>Properties</strong>: PascalCase (<code>CurrentHealth</code>, <code>IsGrounded</code>)</li>
+<li><strong>Events</strong>: PascalCase with event-like names (<code>HealthChanged</code>, <code>PlayerDied</code>)</li>
+</ul>
+<h3 id="fields-and-variables">Fields and Variables</h3>
+<ul>
+<li><strong>Private fields</strong>: camelCase with underscore prefix (<code>_currentHealth</code>, <code>_isGrounded</code>)</li>
+<li><strong>Local variables</strong>: camelCase (<code>deltaTime</code>, <code>inputVector</code>)</li>
+<li><strong>Constants</strong>: PascalCase (<code>MaxPlayerCount</code>, <code>DefaultSpeed</code>)</li>
+<li><strong>Static readonly</strong>: PascalCase (<code>DefaultSettings</code>)</li>
+</ul>
+<h3 id="godot-specific">Godot-Specific</h3>
+<ul>
+<li><strong>Exported fields</strong>: PascalCase (<code>Speed</code>, <code>MaxHealth</code>)</li>
+<li><strong>Signal names</strong>: PascalCase (<code>HealthChanged</code>, <code>ItemCollected</code>)</li>
+<li><strong>Node paths</strong>: Use descriptive names in PascalCase</li>
+</ul>
+<h2 id="code-formatting">Code Formatting</h2>
+<h3 id="braces-and-indentation">Braces and Indentation</h3>
+<ul>
+<li>Use Allman style (braces on new lines)</li>
+<li>4 spaces for indentation in C#</li>
+<li>Tabs for GDScript files</li>
+</ul>
+<pre><code class="lang-csharp">// Good
+if (condition)
+{
+    DoSomething();
+}
+else
+{
+    DoSomethingElse();
+}
+
+// Good - Single line statements can omit braces for simple cases
+if (isDebug)
+    GD.Print(&quot;Debug message&quot;);
+</code></pre>
+<h3 id="line-length-and-spacing">Line Length and Spacing</h3>
+<ul>
+<li>Maximum 120 characters per line for C#</li>
+<li>Add spaces around operators and after keywords</li>
+<li>No trailing whitespace</li>
+<li>Empty line between logical sections</li>
+</ul>
+<pre><code class="lang-csharp">// Good spacing
+public void ProcessInput(double delta)
+{
+    Vector2 direction = Input.GetVector(&quot;ui_left&quot;, &quot;ui_right&quot;, &quot;ui_up&quot;, &quot;ui_down&quot;);
+
+    if (direction != Vector2.Zero)
+    {
+        _velocity.X = direction.X * Speed;
+    }
+    else
+    {
+        _velocity.X = Mathf.MoveToward(_velocity.X, 0, Speed);
+    }
+}
+</code></pre>
+<h2 id="comments-and-documentation">Comments and Documentation</h2>
+<h3 id="xml-documentation">XML Documentation</h3>
+<p>Use XML documentation for public APIs:</p>
+<pre><code class="lang-csharp">/// &lt;summary&gt;
+/// Applies damage to the character and triggers appropriate responses.
+/// &lt;/summary&gt;
+/// &lt;param name=&quot;damage&quot;&gt;The amount of damage to apply&lt;/param&gt;
+/// &lt;param name=&quot;damageType&quot;&gt;The type of damage being applied&lt;/param&gt;
+/// &lt;returns&gt;True if the character was killed by this damage&lt;/returns&gt;
+public bool TakeDamage(int damage, DamageType damageType)
+{
+    // Implementation
+}
+</code></pre>
+<h3 id="inline-comments">Inline Comments</h3>
+<ul>
+<li>Explain <strong>why</strong>, not <strong>what</strong></li>
+<li>Use <code>//</code> for single-line comments</li>
+<li>Use <code>/* */</code> for multi-line comments</li>
+<li>Keep comments up-to-date with code changes</li>
+</ul>
+<pre><code class="lang-csharp">// Calculate movement with coyote time to improve player experience
+if (_timeSinceGrounded &lt; CoyoteTime)
+{
+    _velocity.Y = JumpVelocity;
+}
+
+/*
+ * This complex calculation handles the non-linear relationship
+ * between input sensitivity and camera movement speed
+ */
+float sensitivity = Mathf.Pow(rawInput, SensitivityCurve);
+</code></pre>
+<h3 id="todo-comments">TODO Comments</h3>
+<p>Use consistent format for temporary comments:</p>
+<pre><code class="lang-csharp">// TODO: Implement save/load functionality
+// FIXME: Character sometimes clips through walls on steep slopes
+// HACK: Temporary workaround for Godot audio bug - remove in v4.5
+</code></pre>
+<h2 id="error-handling">Error Handling</h2>
+<h3 id="exception-handling">Exception Handling</h3>
+<ul>
+<li>Use specific exception types when possible</li>
+<li>Handle exceptions at the appropriate level</li>
+<li>Log errors with sufficient context</li>
+<li>Don't catch exceptions you can't handle meaningfully</li>
+</ul>
+<pre><code class="lang-csharp">try
+{
+    var saveData = SaveManager.LoadGame(saveSlot);
+    ApplyGameState(saveData);
+}
+catch (FileNotFoundException)
+{
+    GD.PrintErr($&quot;Save file not found for slot {saveSlot}&quot;);
+    StartNewGame();
+}
+catch (JsonException ex)
+{
+    GD.PrintErr($&quot;Corrupted save file: {ex.Message}&quot;);
+    ShowCorruptedSaveDialog();
+}
+</code></pre>
+<h3 id="godot-error-handling">Godot Error Handling</h3>
+<ul>
+<li>Check for null before using node references</li>
+<li>Validate export variables in <code>_Ready()</code></li>
+<li>Use Godot's built-in error codes when appropriate</li>
+</ul>
+<pre><code class="lang-csharp">public override void _Ready()
+{
+    _animationPlayer = GetNode&lt;AnimationPlayer&gt;(&quot;AnimationPlayer&quot;);
+    if (_animationPlayer == null)
+    {
+        GD.PrintErr(&quot;AnimationPlayer node not found!&quot;);
+        return;
+    }
+
+    if (Speed &lt;= 0)
+    {
+        GD.PrintErr(&quot;Speed must be greater than 0&quot;);
+        Speed = 300.0f; // Fallback value
+    }
+}
+</code></pre>
+<h2 id="performance-guidelines">Performance Guidelines</h2>
+<h3 id="memory-management">Memory Management</h3>
+<ul>
+<li>Minimize allocations in frequently called methods (<code>_Process</code>, <code>_PhysicsProcess</code>)</li>
+<li>Reuse objects when possible (object pooling for bullets, particles, etc.)</li>
+<li>Dispose of resources properly</li>
+<li>Avoid boxing/unboxing in hot paths</li>
+</ul>
+<pre><code class="lang-csharp">// Good - Reuse Vector2 instances
+private Vector2 _tempVector = Vector2.Zero;
+
+public override void _PhysicsProcess(double delta)
+{
+    _tempVector.X = Input.GetActionStrength(&quot;move_right&quot;) - Input.GetActionStrength(&quot;move_left&quot;);
+    _tempVector.Y = Input.GetActionStrength(&quot;move_down&quot;) - Input.GetActionStrength(&quot;move_up&quot;);
+
+    if (_tempVector.LengthSquared() &gt; 0.01f) // Use LengthSquared() instead of Length()
+    {
+        ProcessMovement(_tempVector);
+    }
+}
+</code></pre>
+<h3 id="godot-performance">Godot Performance</h3>
+<ul>
+<li>Use <code>_PhysicsProcess</code> for physics-related updates</li>
+<li>Use <code>_Process</code> for frame-rate dependent updates</li>
+<li>Cache node references instead of calling <code>GetNode()</code> repeatedly</li>
+<li>Use appropriate collision layers and masks</li>
+<li>Consider using <code>PackedScene.Instantiate()</code> with object pooling for frequently spawned objects</li>
+</ul>
+<h3 id="general-performance-tips">General Performance Tips</h3>
+<ul>
+<li>Prefer early returns to reduce nesting</li>
+<li>Use appropriate data structures (Dictionary vs Array)</li>
+<li>Profile before optimizing</li>
+<li>Avoid premature optimization</li>
+</ul>
+<pre><code class="lang-csharp">// Good - Early return reduces nesting
+public void ProcessCollision(KinematicCollision2D collision)
+{
+    if (collision == null)
+        return;
+
+    if (!collision.GetCollider().IsInGroup(&quot;interactive&quot;))
+        return;
+
+    // Process interaction
+    HandleInteraction(collision.GetCollider());
+}
+</code></pre>
+<hr>
+<h2 id="enforcement">Enforcement</h2>
+<p>These standards are enforced through:</p>
+<ul>
+<li><strong>EditorConfig</strong>: Automatic formatting rules</li>
+<li><strong>Code Reviews</strong>: Manual verification during pull requests</li>
+<li><strong>Static Analysis</strong>: Consider tools like SonarQube or Rider inspections</li>
+<li><strong>Team Discussions</strong>: Regular reviews and updates to standards</li>
+</ul>
+<p>Remember: These standards are guidelines to improve code quality and team productivity. When in doubt, prioritize readability and maintainability over strict adherence to rules.</p>
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/Gammabra/aov-godot/blob/develop/documentation/docs/technical/coding-standards.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          © 2025 Gammabra Studios. All Rights Reserved.
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

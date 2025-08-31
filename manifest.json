@@ -1,5 +1,5 @@
 {
-  "source_base_path": "D:/a/aov-godot/aov-godot/documentation",
+  "source_base_path": "D:/a/aov-godot/aov-godot",
   "xrefmap": "xrefmap.yml",
   "files": [
     {
@@ -12,338 +12,296 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/AshesofVelsingrad.Main.MethodName.yml",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.Main.yml",
       "output": {
         ".html": {
-          "relative_path": "api/AshesofVelsingrad.Main.MethodName.html"
+          "relative_path": "documentation/api/AshesOfVelsingrad.Main.html"
         }
       },
       "version": "",
       "Uid": null,
       "IsMRef": true,
-      "Title": "AshesofVelsingrad.Main.MethodName",
-      "Summary": "<p sourcefile=\"api/AshesofVelsingrad.Main.MethodName.yml\" sourcestartlinenumber=\"1\">Cached StringNames for the methods contained in this class, for fast lookup.</p>\n"
+      "Title": "AshesOfVelsingrad.Main",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.Main.yml\" sourcestartlinenumber=\"1\">Main scene controller that initializes the game systems.\nFollows the Component-Based Architecture and event-driven communication.</p>\n"
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/AshesofVelsingrad.Main.PropertyName.yml",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.Managers.BaseManager.yml",
       "output": {
         ".html": {
-          "relative_path": "api/AshesofVelsingrad.Main.PropertyName.html"
+          "relative_path": "documentation/api/AshesOfVelsingrad.Managers.BaseManager.html"
         }
       },
       "version": "",
       "Uid": null,
       "IsMRef": true,
-      "Title": "AshesofVelsingrad.Main.PropertyName",
-      "Summary": "<p sourcefile=\"api/AshesofVelsingrad.Main.PropertyName.yml\" sourcestartlinenumber=\"1\">Cached StringNames for the properties and fields contained in this class, for fast lookup.</p>\n"
+      "Title": "AshesOfVelsingrad.Managers.BaseManager",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.Managers.BaseManager.yml\" sourcestartlinenumber=\"1\">Base class for all manager singletons in the game.\nImplements the Manager Pattern from your architecture documentation.</p>\n"
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/AshesofVelsingrad.Main.SignalName.yml",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.Managers.MenuManager.yml",
       "output": {
         ".html": {
-          "relative_path": "api/AshesofVelsingrad.Main.SignalName.html"
+          "relative_path": "documentation/api/AshesOfVelsingrad.Managers.MenuManager.html"
         }
       },
       "version": "",
       "Uid": null,
       "IsMRef": true,
-      "Title": "AshesofVelsingrad.Main.SignalName",
-      "Summary": "<p sourcefile=\"api/AshesofVelsingrad.Main.SignalName.yml\" sourcestartlinenumber=\"1\">Cached StringNames for the signals contained in this class, for fast lookup.</p>\n"
+      "Title": "AshesOfVelsingrad.Managers.MenuManager",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.Managers.MenuManager.yml\" sourcestartlinenumber=\"1\">Manages menu navigation and state.\nCoordinates between different menus following the Manager Pattern.</p>\n"
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/AshesofVelsingrad.Main.yml",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.Managers.SettingsData.yml",
       "output": {
         ".html": {
-          "relative_path": "api/AshesofVelsingrad.Main.html"
+          "relative_path": "documentation/api/AshesOfVelsingrad.Managers.SettingsData.html"
         }
       },
       "version": "",
       "Uid": null,
       "IsMRef": true,
-      "Title": "AshesofVelsingrad.Main",
-      "Summary": "<p sourcefile=\"api/AshesofVelsingrad.Main.yml\" sourcestartlinenumber=\"1\">Classe principale du projet Godot. Gère la scène principale et les interactions globales.</p>\n"
+      "Title": "AshesOfVelsingrad.Managers.SettingsData",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.Managers.SettingsData.yml\" sourcestartlinenumber=\"1\">Data structure for settings storage</p>\n"
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/AshesofVelsingrad.yml",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.Managers.SettingsManager.yml",
       "output": {
         ".html": {
-          "relative_path": "api/AshesofVelsingrad.html"
+          "relative_path": "documentation/api/AshesOfVelsingrad.Managers.SettingsManager.html"
         }
       },
       "version": "",
       "Uid": null,
       "IsMRef": true,
-      "Title": "AshesofVelsingrad",
+      "Title": "AshesOfVelsingrad.Managers.SettingsManager",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.Managers.SettingsManager.yml\" sourcestartlinenumber=\"1\">Manages game settings and provides centralized access to configuration options.\nFollows the Manager Pattern from your architecture.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.Managers.yml",
+      "output": {
+        ".html": {
+          "relative_path": "documentation/api/AshesOfVelsingrad.Managers.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.Managers",
       "Summary": null
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/Tests.Unit.UnitTestExample.yml",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.UI.Menus.MainMenu.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Tests.Unit.UnitTestExample.html"
+          "relative_path": "documentation/api/AshesOfVelsingrad.UI.Menus.MainMenu.html"
         }
       },
       "version": "",
       "Uid": null,
       "IsMRef": true,
-      "Title": "Tests.Unit.UnitTestExample",
+      "Title": "AshesOfVelsingrad.UI.Menus.MainMenu",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.UI.Menus.MainMenu.yml\" sourcestartlinenumber=\"1\">Main menu controller that handles user interactions and navigation.\nImplements the Manager Pattern from your architecture documentation.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.UI.Menus.OptionsMenu.yml",
+      "output": {
+        ".html": {
+          "relative_path": "documentation/api/AshesOfVelsingrad.UI.Menus.OptionsMenu.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.UI.Menus.OptionsMenu",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.UI.Menus.OptionsMenu.yml\" sourcestartlinenumber=\"1\">Options menu that allows players to configure game settings.\nFollows the Component-Based Architecture and event-driven communication.\nImplements the Manager Pattern for centralized settings management.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.UI.Menus.yml",
+      "output": {
+        ".html": {
+          "relative_path": "documentation/api/AshesOfVelsingrad.UI.Menus.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.UI.Menus",
       "Summary": null
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/Tests.Unit.yml",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Tests.Unit.html"
+          "relative_path": "documentation/api/AshesOfVelsingrad.html"
         }
       },
       "version": "",
       "Uid": null,
       "IsMRef": true,
-      "Title": "Tests.Unit",
+      "Title": "AshesOfVelsingrad",
       "Summary": null
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/gdUnit4.addons.gdUnit4.src.dotnet.GdUnit4CSharpApi.ExecutionCompletedEventHandler.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/gdUnit4.addons.gdUnit4.src.dotnet.GdUnit4CSharpApi.ExecutionCompletedEventHandler.html"
-        }
-      },
-      "version": "",
-      "Uid": null,
-      "IsMRef": true,
-      "Title": "gdUnit4.addons.gdUnit4.src.dotnet.GdUnit4CSharpApi.ExecutionCompletedEventHandler",
-      "Summary": null
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/gdUnit4.addons.gdUnit4.src.dotnet.GdUnit4CSharpApi.MethodName.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/gdUnit4.addons.gdUnit4.src.dotnet.GdUnit4CSharpApi.MethodName.html"
-        }
-      },
-      "version": "",
-      "Uid": null,
-      "IsMRef": true,
-      "Title": "gdUnit4.addons.gdUnit4.src.dotnet.GdUnit4CSharpApi.MethodName",
-      "Summary": "<p sourcefile=\"api/gdUnit4.addons.gdUnit4.src.dotnet.GdUnit4CSharpApi.MethodName.yml\" sourcestartlinenumber=\"1\">Cached StringNames for the methods contained in this class, for fast lookup.</p>\n"
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/gdUnit4.addons.gdUnit4.src.dotnet.GdUnit4CSharpApi.PropertyName.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/gdUnit4.addons.gdUnit4.src.dotnet.GdUnit4CSharpApi.PropertyName.html"
-        }
-      },
-      "version": "",
-      "Uid": null,
-      "IsMRef": true,
-      "Title": "gdUnit4.addons.gdUnit4.src.dotnet.GdUnit4CSharpApi.PropertyName",
-      "Summary": "<p sourcefile=\"api/gdUnit4.addons.gdUnit4.src.dotnet.GdUnit4CSharpApi.PropertyName.yml\" sourcestartlinenumber=\"1\">Cached StringNames for the properties and fields contained in this class, for fast lookup.</p>\n"
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/gdUnit4.addons.gdUnit4.src.dotnet.GdUnit4CSharpApi.SignalName.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/gdUnit4.addons.gdUnit4.src.dotnet.GdUnit4CSharpApi.SignalName.html"
-        }
-      },
-      "version": "",
-      "Uid": null,
-      "IsMRef": true,
-      "Title": "gdUnit4.addons.gdUnit4.src.dotnet.GdUnit4CSharpApi.SignalName",
-      "Summary": "<p sourcefile=\"api/gdUnit4.addons.gdUnit4.src.dotnet.GdUnit4CSharpApi.SignalName.yml\" sourcestartlinenumber=\"1\">Cached StringNames for the signals contained in this class, for fast lookup.</p>\n"
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/gdUnit4.addons.gdUnit4.src.dotnet.GdUnit4CSharpApi.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/gdUnit4.addons.gdUnit4.src.dotnet.GdUnit4CSharpApi.html"
-        }
-      },
-      "version": "",
-      "Uid": null,
-      "IsMRef": true,
-      "Title": "gdUnit4.addons.gdUnit4.src.dotnet.GdUnit4CSharpApi",
-      "Summary": null
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/gdUnit4.addons.gdUnit4.src.dotnet.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/gdUnit4.addons.gdUnit4.src.dotnet.html"
-        }
-      },
-      "version": "",
-      "Uid": null,
-      "IsMRef": true,
-      "Title": "gdUnit4.addons.gdUnit4.src.dotnet",
-      "Summary": null
-    },
-    {
-      "type": "Conceptual",
-      "source_relative_path": "api/index.md",
-      "output": {
-        ".html": {
-          "relative_path": "api/index.html"
-        }
-      },
-      "version": ""
     },
     {
       "type": "Toc",
-      "source_relative_path": "api/toc.yml",
+      "source_relative_path": "documentation/api/toc.yml",
       "output": {
         ".html": {
-          "relative_path": "api/toc.html"
+          "relative_path": "documentation/api/toc.html"
         },
         ".json": {
-          "relative_path": "api/toc.json"
+          "relative_path": "documentation/api/toc.json"
         }
       },
       "version": ""
     },
     {
       "type": "Conceptual",
-      "source_relative_path": "docs/contributing.md",
+      "source_relative_path": "documentation/docs/contributing.md",
       "output": {
         ".html": {
-          "relative_path": "docs/contributing.html"
+          "relative_path": "documentation/docs/contributing.html"
         }
       },
       "version": ""
     },
     {
       "type": "Conceptual",
-      "source_relative_path": "docs/game-design/combat-system.md",
+      "source_relative_path": "documentation/docs/game-design/combat-system.md",
       "output": {
         ".html": {
-          "relative_path": "docs/game-design/combat-system.html"
+          "relative_path": "documentation/docs/game-design/combat-system.html"
         }
       },
       "version": ""
     },
     {
       "type": "Conceptual",
-      "source_relative_path": "docs/game-design/core-gameplay.md",
+      "source_relative_path": "documentation/docs/game-design/core-gameplay.md",
       "output": {
         ".html": {
-          "relative_path": "docs/game-design/core-gameplay.html"
+          "relative_path": "documentation/docs/game-design/core-gameplay.html"
         }
       },
       "version": ""
     },
     {
       "type": "Conceptual",
-      "source_relative_path": "docs/game-design/magic-system.md",
+      "source_relative_path": "documentation/docs/game-design/magic-system.md",
       "output": {
         ".html": {
-          "relative_path": "docs/game-design/magic-system.html"
+          "relative_path": "documentation/docs/game-design/magic-system.html"
         }
       },
       "version": ""
     },
     {
       "type": "Conceptual",
-      "source_relative_path": "docs/game-design/story-lore.md",
+      "source_relative_path": "documentation/docs/game-design/story-lore.md",
       "output": {
         ".html": {
-          "relative_path": "docs/game-design/story-lore.html"
+          "relative_path": "documentation/docs/game-design/story-lore.html"
         }
       },
       "version": ""
     },
     {
       "type": "Conceptual",
-      "source_relative_path": "docs/getting-started.md",
+      "source_relative_path": "documentation/docs/getting-started.md",
       "output": {
         ".html": {
-          "relative_path": "docs/getting-started.html"
+          "relative_path": "documentation/docs/getting-started.html"
         }
       },
       "version": ""
     },
     {
       "type": "Conceptual",
-      "source_relative_path": "docs/technical/architecture.md",
+      "source_relative_path": "documentation/docs/index.md",
       "output": {
         ".html": {
-          "relative_path": "docs/technical/architecture.html"
+          "relative_path": "documentation/docs/index.html"
         }
       },
       "version": ""
     },
     {
       "type": "Conceptual",
-      "source_relative_path": "docs/technical/coding-standards.md",
+      "source_relative_path": "documentation/docs/technical/architecture.md",
       "output": {
         ".html": {
-          "relative_path": "docs/technical/coding-standards.html"
+          "relative_path": "documentation/docs/technical/architecture.html"
         }
       },
       "version": ""
     },
     {
       "type": "Conceptual",
-      "source_relative_path": "docs/technical/testing.md",
+      "source_relative_path": "documentation/docs/technical/coding-standards.md",
       "output": {
         ".html": {
-          "relative_path": "docs/technical/testing.html"
+          "relative_path": "documentation/docs/technical/coding-standards.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "documentation/docs/technical/testing.md",
+      "output": {
+        ".html": {
+          "relative_path": "documentation/docs/technical/testing.html"
         }
       },
       "version": ""
     },
     {
       "type": "Resource",
-      "source_relative_path": "images/aov-logo-transparent.png",
+      "source_relative_path": "documentation/images/logo-doc.png",
       "output": {
         "resource": {
-          "relative_path": "images/aov-logo-transparent.png"
+          "relative_path": "documentation/images/logo-doc.png"
         }
       },
       "version": ""
     },
     {
       "type": "Resource",
-      "source_relative_path": "images/aov-logo-transparent.png.import",
+      "source_relative_path": "documentation/images/logo-doc.png.import",
       "output": {
         "resource": {
-          "relative_path": "images/aov-logo-transparent.png.import"
+          "relative_path": "documentation/images/logo-doc.png.import"
         }
       },
       "version": ""
     },
     {
       "type": "Conceptual",
-      "source_relative_path": "index.md",
+      "source_relative_path": "documentation/index.md",
       "output": {
         ".html": {
-          "relative_path": "index.html"
+          "relative_path": "documentation/index.html"
         }
       },
       "version": ""
     },
     {
       "type": "Toc",
-      "source_relative_path": "toc.yml",
+      "source_relative_path": "documentation/toc.yml",
       "output": {
         ".html": {
-          "relative_path": "toc.html"
+          "relative_path": "documentation/toc.html"
         },
         ".json": {
-          "relative_path": "toc.json"
+          "relative_path": "documentation/toc.json"
         }
       },
       "version": ""

@@ -1,0 +1,1546 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Class MenuManager | Ashes of Velsingrad Documentation </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Class MenuManager | Ashes of Velsingrad Documentation ">
+      
+      <meta name="description" content="Manages menu navigation and state. Coordinates between different menus following the Manager Pattern.">
+      <link rel="icon" href="../../favicon.ico">
+      <link rel="stylesheet" href="../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../public/main.css">
+      <meta name="docfx:navrel" content="">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../../">
+      
+      
+      
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../../index.html">
+            <img id="logo" class="svg" src="../../documentation/images/logo-doc.png" alt="Ashes of Velsingrad" style="height: 40px; width: auto;">
+            Ashes of Velsingrad
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="AshesOfVelsingrad.Managers.MenuManager">
+
+
+
+  <h1 id="AshesOfVelsingrad_Managers_MenuManager" data-uid="AshesOfVelsingrad.Managers.MenuManager" class="text-break">
+Class MenuManager  
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="AshesOfVelsingrad.html">AshesOfVelsingrad</a>.<a class="xref" href="AshesOfVelsingrad.Managers.html">Managers</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>Ashes of Velsingrad.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"><p>Manages menu navigation and state.
+Coordinates between different menus following the Manager Pattern.</p>
+</div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[ScriptPath(&quot;res://scripts/managers/MenuManager.cs&quot;)]
+public class MenuManager : BaseManager, IDisposable</code></pre>
+  </div>
+
+
+
+
+  <dl class="typelist inheritance">
+    <dt>Inheritance</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+      <div><span class="xref">GodotObject</span></div>
+      <div><span class="xref">Node</span></div>
+      <div><a class="xref" href="AshesOfVelsingrad.Managers.BaseManager.html">BaseManager</a></div>
+      <div><span class="xref">MenuManager</span></div>
+    </dd>
+  </dl>
+
+  <dl class="typelist implements">
+    <dt>Implements</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.idisposable">IDisposable</a></div>
+    </dd>
+  </dl>
+
+
+  <dl class="typelist inheritedMembers">
+    <dt>Inherited Members</dt>
+    <dd>
+    <div>
+      <a class="xref" href="AshesOfVelsingrad.Managers.BaseManager.html#AshesOfVelsingrad_Managers_BaseManager__Ready">BaseManager._Ready()</a>
+    </div>
+    <div>
+      <a class="xref" href="AshesOfVelsingrad.Managers.BaseManager.html#AshesOfVelsingrad_Managers_BaseManager__ExitTree">BaseManager._ExitTree()</a>
+    </div>
+    <div>
+      <a class="xref" href="AshesOfVelsingrad.Managers.BaseManager.html#AshesOfVelsingrad_Managers_BaseManager_Cleanup">BaseManager.Cleanup()</a>
+    </div>
+    <div>
+      <span class="xref">Node.NotificationEnterTree</span>
+    </div>
+    <div>
+      <span class="xref">Node.NotificationExitTree</span>
+    </div>
+    <div>
+      <span class="xref">Node.NotificationMovedInParent</span>
+    </div>
+    <div>
+      <span class="xref">Node.NotificationReady</span>
+    </div>
+    <div>
+      <span class="xref">Node.NotificationPaused</span>
+    </div>
+    <div>
+      <span class="xref">Node.NotificationUnpaused</span>
+    </div>
+    <div>
+      <span class="xref">Node.NotificationPhysicsProcess</span>
+    </div>
+    <div>
+      <span class="xref">Node.NotificationProcess</span>
+    </div>
+    <div>
+      <span class="xref">Node.NotificationParented</span>
+    </div>
+    <div>
+      <span class="xref">Node.NotificationUnparented</span>
+    </div>
+    <div>
+      <span class="xref">Node.NotificationSceneInstantiated</span>
+    </div>
+    <div>
+      <span class="xref">Node.NotificationDragBegin</span>
+    </div>
+    <div>
+      <span class="xref">Node.NotificationDragEnd</span>
+    </div>
+    <div>
+      <span class="xref">Node.NotificationPathRenamed</span>
+    </div>
+    <div>
+      <span class="xref">Node.NotificationChildOrderChanged</span>
+    </div>
+    <div>
+      <span class="xref">Node.NotificationInternalProcess</span>
+    </div>
+    <div>
+      <span class="xref">Node.NotificationInternalPhysicsProcess</span>
+    </div>
+    <div>
+      <span class="xref">Node.NotificationPostEnterTree</span>
+    </div>
+    <div>
+      <span class="xref">Node.NotificationDisabled</span>
+    </div>
+    <div>
+      <span class="xref">Node.NotificationEnabled</span>
+    </div>
+    <div>
+      <span class="xref">Node.NotificationResetPhysicsInterpolation</span>
+    </div>
+    <div>
+      <span class="xref">Node.NotificationEditorPreSave</span>
+    </div>
+    <div>
+      <span class="xref">Node.NotificationEditorPostSave</span>
+    </div>
+    <div>
+      <span class="xref">Node.NotificationWMMouseEnter</span>
+    </div>
+    <div>
+      <span class="xref">Node.NotificationWMMouseExit</span>
+    </div>
+    <div>
+      <span class="xref">Node.NotificationWMWindowFocusIn</span>
+    </div>
+    <div>
+      <span class="xref">Node.NotificationWMWindowFocusOut</span>
+    </div>
+    <div>
+      <span class="xref">Node.NotificationWMCloseRequest</span>
+    </div>
+    <div>
+      <span class="xref">Node.NotificationWMGoBackRequest</span>
+    </div>
+    <div>
+      <span class="xref">Node.NotificationWMSizeChanged</span>
+    </div>
+    <div>
+      <span class="xref">Node.NotificationWMDpiChange</span>
+    </div>
+    <div>
+      <span class="xref">Node.NotificationVpMouseEnter</span>
+    </div>
+    <div>
+      <span class="xref">Node.NotificationVpMouseExit</span>
+    </div>
+    <div>
+      <span class="xref">Node.NotificationWMPositionChanged</span>
+    </div>
+    <div>
+      <span class="xref">Node.NotificationOsMemoryWarning</span>
+    </div>
+    <div>
+      <span class="xref">Node.NotificationTranslationChanged</span>
+    </div>
+    <div>
+      <span class="xref">Node.NotificationWMAbout</span>
+    </div>
+    <div>
+      <span class="xref">Node.NotificationCrash</span>
+    </div>
+    <div>
+      <span class="xref">Node.NotificationOsImeUpdate</span>
+    </div>
+    <div>
+      <span class="xref">Node.NotificationApplicationResumed</span>
+    </div>
+    <div>
+      <span class="xref">Node.NotificationApplicationPaused</span>
+    </div>
+    <div>
+      <span class="xref">Node.NotificationApplicationFocusIn</span>
+    </div>
+    <div>
+      <span class="xref">Node.NotificationApplicationFocusOut</span>
+    </div>
+    <div>
+      <span class="xref">Node.NotificationTextServerChanged</span>
+    </div>
+    <div>
+      <span class="xref">Node.GetNode&lt;T&gt;(NodePath)</span>
+    </div>
+    <div>
+      <span class="xref">Node.GetNodeOrNull&lt;T&gt;(NodePath)</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Node.GetChild&lt;T&gt;(int, bool)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Node.GetChildOrNull&lt;T&gt;(int, bool)</a>
+    </div>
+    <div>
+      <span class="xref">Node.GetOwner&lt;T&gt;()</span>
+    </div>
+    <div>
+      <span class="xref">Node.GetOwnerOrNull&lt;T&gt;()</span>
+    </div>
+    <div>
+      <span class="xref">Node.GetParent&lt;T&gt;()</span>
+    </div>
+    <div>
+      <span class="xref">Node.GetParentOrNull&lt;T&gt;()</span>
+    </div>
+    <div>
+      <span class="xref">Node._EnterTree()</span>
+    </div>
+    <div>
+      <span class="xref">Node._GetConfigurationWarnings()</span>
+    </div>
+    <div>
+      <span class="xref">Node._Input(InputEvent)</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">Node._PhysicsProcess(double)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">Node._Process(double)</a>
+    </div>
+    <div>
+      <span class="xref">Node._ShortcutInput(InputEvent)</span>
+    </div>
+    <div>
+      <span class="xref">Node._UnhandledInput(InputEvent)</span>
+    </div>
+    <div>
+      <span class="xref">Node._UnhandledKeyInput(InputEvent)</span>
+    </div>
+    <div>
+      <span class="xref">Node.PrintOrphanNodes()</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Node.AddSibling(Node, bool)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Node.AddChild(Node, bool, Node.InternalMode)</a>
+    </div>
+    <div>
+      <span class="xref">Node.RemoveChild(Node)</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Node.Reparent(Node, bool)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Node.GetChildCount(bool)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Node.GetChildren(bool)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Node.GetChild(int, bool)</a>
+    </div>
+    <div>
+      <span class="xref">Node.HasNode(NodePath)</span>
+    </div>
+    <div>
+      <span class="xref">Node.GetNode(NodePath)</span>
+    </div>
+    <div>
+      <span class="xref">Node.GetNodeOrNull(NodePath)</span>
+    </div>
+    <div>
+      <span class="xref">Node.GetParent()</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">Node.FindChild(string, bool, bool)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">Node.FindChildren(string, string, bool, bool)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">Node.FindParent(string)</a>
+    </div>
+    <div>
+      <span class="xref">Node.HasNodeAndResource(NodePath)</span>
+    </div>
+    <div>
+      <span class="xref">Node.GetNodeAndResource(NodePath)</span>
+    </div>
+    <div>
+      <span class="xref">Node.IsInsideTree()</span>
+    </div>
+    <div>
+      <span class="xref">Node.IsPartOfEditedScene()</span>
+    </div>
+    <div>
+      <span class="xref">Node.IsAncestorOf(Node)</span>
+    </div>
+    <div>
+      <span class="xref">Node.IsGreaterThan(Node)</span>
+    </div>
+    <div>
+      <span class="xref">Node.GetPath()</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Node.GetPathTo(Node, bool)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Node.AddToGroup(StringName, bool)</a>
+    </div>
+    <div>
+      <span class="xref">Node.RemoveFromGroup(StringName)</span>
+    </div>
+    <div>
+      <span class="xref">Node.IsInGroup(StringName)</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Node.MoveChild(Node, int)</a>
+    </div>
+    <div>
+      <span class="xref">Node.GetGroups()</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Node.GetIndex(bool)</a>
+    </div>
+    <div>
+      <span class="xref">Node.PrintTree()</span>
+    </div>
+    <div>
+      <span class="xref">Node.PrintTreePretty()</span>
+    </div>
+    <div>
+      <span class="xref">Node.GetTreeString()</span>
+    </div>
+    <div>
+      <span class="xref">Node.GetTreeStringPretty()</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Node.PropagateNotification(int)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Node.PropagateCall(StringName, Array, bool)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Node.SetPhysicsProcess(bool)</a>
+    </div>
+    <div>
+      <span class="xref">Node.GetPhysicsProcessDeltaTime()</span>
+    </div>
+    <div>
+      <span class="xref">Node.IsPhysicsProcessing()</span>
+    </div>
+    <div>
+      <span class="xref">Node.GetProcessDeltaTime()</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Node.SetProcess(bool)</a>
+    </div>
+    <div>
+      <span class="xref">Node.IsProcessing()</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Node.SetProcessInput(bool)</a>
+    </div>
+    <div>
+      <span class="xref">Node.IsProcessingInput()</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Node.SetProcessShortcutInput(bool)</a>
+    </div>
+    <div>
+      <span class="xref">Node.IsProcessingShortcutInput()</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Node.SetProcessUnhandledInput(bool)</a>
+    </div>
+    <div>
+      <span class="xref">Node.IsProcessingUnhandledInput()</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Node.SetProcessUnhandledKeyInput(bool)</a>
+    </div>
+    <div>
+      <span class="xref">Node.IsProcessingUnhandledKeyInput()</span>
+    </div>
+    <div>
+      <span class="xref">Node.CanProcess()</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Node.SetDisplayFolded(bool)</a>
+    </div>
+    <div>
+      <span class="xref">Node.IsDisplayedFolded()</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Node.SetProcessInternal(bool)</a>
+    </div>
+    <div>
+      <span class="xref">Node.IsProcessingInternal()</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Node.SetPhysicsProcessInternal(bool)</a>
+    </div>
+    <div>
+      <span class="xref">Node.IsPhysicsProcessingInternal()</span>
+    </div>
+    <div>
+      <span class="xref">Node.IsPhysicsInterpolated()</span>
+    </div>
+    <div>
+      <span class="xref">Node.IsPhysicsInterpolatedAndEnabled()</span>
+    </div>
+    <div>
+      <span class="xref">Node.ResetPhysicsInterpolation()</span>
+    </div>
+    <div>
+      <span class="xref">Node.SetTranslationDomainInherited()</span>
+    </div>
+    <div>
+      <span class="xref">Node.GetWindow()</span>
+    </div>
+    <div>
+      <span class="xref">Node.GetLastExclusiveWindow()</span>
+    </div>
+    <div>
+      <span class="xref">Node.GetTree()</span>
+    </div>
+    <div>
+      <span class="xref">Node.CreateTween()</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Node.Duplicate(int)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Node.ReplaceBy(Node, bool)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Node.SetSceneInstanceLoadPlaceholder(bool)</a>
+    </div>
+    <div>
+      <span class="xref">Node.GetSceneInstanceLoadPlaceholder()</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Node.SetEditableInstance(Node, bool)</a>
+    </div>
+    <div>
+      <span class="xref">Node.IsEditableInstance(Node)</span>
+    </div>
+    <div>
+      <span class="xref">Node.GetViewport()</span>
+    </div>
+    <div>
+      <span class="xref">Node.QueueFree()</span>
+    </div>
+    <div>
+      <span class="xref">Node.RequestReady()</span>
+    </div>
+    <div>
+      <span class="xref">Node.IsNodeReady()</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Node.SetMultiplayerAuthority(int, bool)</a>
+    </div>
+    <div>
+      <span class="xref">Node.GetMultiplayerAuthority()</span>
+    </div>
+    <div>
+      <span class="xref">Node.IsMultiplayerAuthority()</span>
+    </div>
+    <div>
+      <span class="xref">Node.RpcConfig(StringName, Variant)</span>
+    </div>
+    <div>
+      <span class="xref">Node.GetRpcConfig()</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">Node.Atr(string, StringName)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">Node.AtrN(string, StringName, int, StringName)</a>
+    </div>
+    <div>
+      <span class="xref">Node.Rpc(StringName, params Variant[])</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.readonlyspan-1">Node.Rpc(StringName, ReadOnlySpan&lt;Variant&gt;)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int64">Node.RpcId(long, StringName, params Variant[])</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int64">Node.RpcId(long, StringName, ReadOnlySpan&lt;Variant&gt;)</a>
+    </div>
+    <div>
+      <span class="xref">Node.UpdateConfigurationWarnings()</span>
+    </div>
+    <div>
+      <span class="xref">Node.CallDeferredThreadGroup(StringName, params Variant[])</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.readonlyspan-1">Node.CallDeferredThreadGroup(StringName, ReadOnlySpan&lt;Variant&gt;)</a>
+    </div>
+    <div>
+      <span class="xref">Node.SetDeferredThreadGroup(StringName, Variant)</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Node.NotifyDeferredThreadGroup(int)</a>
+    </div>
+    <div>
+      <span class="xref">Node.CallThreadSafe(StringName, params Variant[])</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.readonlyspan-1">Node.CallThreadSafe(StringName, ReadOnlySpan&lt;Variant&gt;)</a>
+    </div>
+    <div>
+      <span class="xref">Node.SetThreadSafe(StringName, Variant)</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Node.NotifyThreadSafe(int)</a>
+    </div>
+    <div>
+      <span class="xref">Node.EmitSignalReady()</span>
+    </div>
+    <div>
+      <span class="xref">Node.EmitSignalRenamed()</span>
+    </div>
+    <div>
+      <span class="xref">Node.EmitSignalTreeEntered()</span>
+    </div>
+    <div>
+      <span class="xref">Node.EmitSignalTreeExiting()</span>
+    </div>
+    <div>
+      <span class="xref">Node.EmitSignalTreeExited()</span>
+    </div>
+    <div>
+      <span class="xref">Node.EmitSignalChildEnteredTree(Node)</span>
+    </div>
+    <div>
+      <span class="xref">Node.EmitSignalChildExitingTree(Node)</span>
+    </div>
+    <div>
+      <span class="xref">Node.EmitSignalChildOrderChanged()</span>
+    </div>
+    <div>
+      <span class="xref">Node.EmitSignalReplacingBy(Node)</span>
+    </div>
+    <div>
+      <span class="xref">Node.EmitSignalEditorDescriptionChanged(Node)</span>
+    </div>
+    <div>
+      <span class="xref">Node.EmitSignalEditorStateChanged()</span>
+    </div>
+    <div>
+      <span class="xref">Node.InvokeGodotClassMethod(in godot_string_name, NativeVariantPtrArgs, out godot_variant)</span>
+    </div>
+    <div>
+      <span class="xref">Node.HasGodotClassMethod(in godot_string_name)</span>
+    </div>
+    <div>
+      <span class="xref">Node.HasGodotClassSignal(in godot_string_name)</span>
+    </div>
+    <div>
+      <span class="xref">Node.Name</span>
+    </div>
+    <div>
+      <span class="xref">Node.UniqueNameInOwner</span>
+    </div>
+    <div>
+      <span class="xref">Node.SceneFilePath</span>
+    </div>
+    <div>
+      <span class="xref">Node.Owner</span>
+    </div>
+    <div>
+      <span class="xref">Node.Multiplayer</span>
+    </div>
+    <div>
+      <span class="xref">Node.ProcessMode</span>
+    </div>
+    <div>
+      <span class="xref">Node.ProcessPriority</span>
+    </div>
+    <div>
+      <span class="xref">Node.ProcessPhysicsPriority</span>
+    </div>
+    <div>
+      <span class="xref">Node.ProcessThreadGroup</span>
+    </div>
+    <div>
+      <span class="xref">Node.ProcessThreadGroupOrder</span>
+    </div>
+    <div>
+      <span class="xref">Node.ProcessThreadMessages</span>
+    </div>
+    <div>
+      <span class="xref">Node.PhysicsInterpolationMode</span>
+    </div>
+    <div>
+      <span class="xref">Node.AutoTranslateMode</span>
+    </div>
+    <div>
+      <span class="xref">Node.EditorDescription</span>
+    </div>
+    <div>
+      <span class="xref">Node.Ready</span>
+    </div>
+    <div>
+      <span class="xref">Node.Renamed</span>
+    </div>
+    <div>
+      <span class="xref">Node.TreeEntered</span>
+    </div>
+    <div>
+      <span class="xref">Node.TreeExiting</span>
+    </div>
+    <div>
+      <span class="xref">Node.TreeExited</span>
+    </div>
+    <div>
+      <span class="xref">Node.ChildEnteredTree</span>
+    </div>
+    <div>
+      <span class="xref">Node.ChildExitingTree</span>
+    </div>
+    <div>
+      <span class="xref">Node.ChildOrderChanged</span>
+    </div>
+    <div>
+      <span class="xref">Node.ReplacingBy</span>
+    </div>
+    <div>
+      <span class="xref">Node.EditorDescriptionChanged</span>
+    </div>
+    <div>
+      <span class="xref">Node.EditorStateChanged</span>
+    </div>
+    <div>
+      <span class="xref">GodotObject.NotificationPostinitialize</span>
+    </div>
+    <div>
+      <span class="xref">GodotObject.NotificationPredelete</span>
+    </div>
+    <div>
+      <span class="xref">GodotObject.NotificationExtensionReloaded</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint64">GodotObject.InstanceFromId(ulong)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint64">GodotObject.IsInstanceIdValid(ulong)</a>
+    </div>
+    <div>
+      <span class="xref">GodotObject.IsInstanceValid(GodotObject)</span>
+    </div>
+    <div>
+      <span class="xref">GodotObject.WeakRef(GodotObject)</span>
+    </div>
+    <div>
+      <span class="xref">GodotObject.Dispose()</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">GodotObject.Dispose(bool)</a>
+    </div>
+    <div>
+      <span class="xref">GodotObject.ToString()</span>
+    </div>
+    <div>
+      <span class="xref">GodotObject.ToSignal(GodotObject, StringName)</span>
+    </div>
+    <div>
+      <span class="xref">GodotObject._Get(StringName)</span>
+    </div>
+    <div>
+      <span class="xref">GodotObject._GetPropertyList()</span>
+    </div>
+    <div>
+      <span class="xref">GodotObject._IterGet(Variant)</span>
+    </div>
+    <div>
+      <span class="xref">GodotObject._IterInit(Array)</span>
+    </div>
+    <div>
+      <span class="xref">GodotObject._IterNext(Array)</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">GodotObject._Notification(int)</a>
+    </div>
+    <div>
+      <span class="xref">GodotObject._PropertyCanRevert(StringName)</span>
+    </div>
+    <div>
+      <span class="xref">GodotObject._PropertyGetRevert(StringName)</span>
+    </div>
+    <div>
+      <span class="xref">GodotObject._Set(StringName, Variant)</span>
+    </div>
+    <div>
+      <span class="xref">GodotObject._ValidateProperty(Dictionary)</span>
+    </div>
+    <div>
+      <span class="xref">GodotObject.Free()</span>
+    </div>
+    <div>
+      <span class="xref">GodotObject.GetClass()</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">GodotObject.IsClass(string)</a>
+    </div>
+    <div>
+      <span class="xref">GodotObject.Set(StringName, Variant)</span>
+    </div>
+    <div>
+      <span class="xref">GodotObject.Get(StringName)</span>
+    </div>
+    <div>
+      <span class="xref">GodotObject.SetIndexed(NodePath, Variant)</span>
+    </div>
+    <div>
+      <span class="xref">GodotObject.GetIndexed(NodePath)</span>
+    </div>
+    <div>
+      <span class="xref">GodotObject.GetPropertyList()</span>
+    </div>
+    <div>
+      <span class="xref">GodotObject.GetMethodList()</span>
+    </div>
+    <div>
+      <span class="xref">GodotObject.PropertyCanRevert(StringName)</span>
+    </div>
+    <div>
+      <span class="xref">GodotObject.PropertyGetRevert(StringName)</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">GodotObject.Notification(int, bool)</a>
+    </div>
+    <div>
+      <span class="xref">GodotObject.GetInstanceId()</span>
+    </div>
+    <div>
+      <span class="xref">GodotObject.SetScript(Variant)</span>
+    </div>
+    <div>
+      <span class="xref">GodotObject.GetScript()</span>
+    </div>
+    <div>
+      <span class="xref">GodotObject.SetMeta(StringName, Variant)</span>
+    </div>
+    <div>
+      <span class="xref">GodotObject.RemoveMeta(StringName)</span>
+    </div>
+    <div>
+      <span class="xref">GodotObject.GetMeta(StringName, Variant)</span>
+    </div>
+    <div>
+      <span class="xref">GodotObject.HasMeta(StringName)</span>
+    </div>
+    <div>
+      <span class="xref">GodotObject.GetMetaList()</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">GodotObject.AddUserSignal(string, Array)</a>
+    </div>
+    <div>
+      <span class="xref">GodotObject.HasUserSignal(StringName)</span>
+    </div>
+    <div>
+      <span class="xref">GodotObject.RemoveUserSignal(StringName)</span>
+    </div>
+    <div>
+      <span class="xref">GodotObject.EmitSignal(StringName, params Variant[])</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.readonlyspan-1">GodotObject.EmitSignal(StringName, ReadOnlySpan&lt;Variant&gt;)</a>
+    </div>
+    <div>
+      <span class="xref">GodotObject.Call(StringName, params Variant[])</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.readonlyspan-1">GodotObject.Call(StringName, ReadOnlySpan&lt;Variant&gt;)</a>
+    </div>
+    <div>
+      <span class="xref">GodotObject.CallDeferred(StringName, params Variant[])</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.readonlyspan-1">GodotObject.CallDeferred(StringName, ReadOnlySpan&lt;Variant&gt;)</a>
+    </div>
+    <div>
+      <span class="xref">GodotObject.SetDeferred(StringName, Variant)</span>
+    </div>
+    <div>
+      <span class="xref">GodotObject.Callv(StringName, Array)</span>
+    </div>
+    <div>
+      <span class="xref">GodotObject.HasMethod(StringName)</span>
+    </div>
+    <div>
+      <span class="xref">GodotObject.GetMethodArgumentCount(StringName)</span>
+    </div>
+    <div>
+      <span class="xref">GodotObject.HasSignal(StringName)</span>
+    </div>
+    <div>
+      <span class="xref">GodotObject.GetSignalList()</span>
+    </div>
+    <div>
+      <span class="xref">GodotObject.GetSignalConnectionList(StringName)</span>
+    </div>
+    <div>
+      <span class="xref">GodotObject.GetIncomingConnections()</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint32">GodotObject.Connect(StringName, Callable, uint)</a>
+    </div>
+    <div>
+      <span class="xref">GodotObject.Disconnect(StringName, Callable)</span>
+    </div>
+    <div>
+      <span class="xref">GodotObject.IsConnected(StringName, Callable)</span>
+    </div>
+    <div>
+      <span class="xref">GodotObject.HasConnections(StringName)</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">GodotObject.SetBlockSignals(bool)</a>
+    </div>
+    <div>
+      <span class="xref">GodotObject.IsBlockingSignals()</span>
+    </div>
+    <div>
+      <span class="xref">GodotObject.NotifyPropertyListChanged()</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">GodotObject.SetMessageTranslation(bool)</a>
+    </div>
+    <div>
+      <span class="xref">GodotObject.CanTranslateMessages()</span>
+    </div>
+    <div>
+      <span class="xref">GodotObject.Tr(StringName, StringName)</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">GodotObject.TrN(StringName, StringName, int, StringName)</a>
+    </div>
+    <div>
+      <span class="xref">GodotObject.GetTranslationDomain()</span>
+    </div>
+    <div>
+      <span class="xref">GodotObject.SetTranslationDomain(StringName)</span>
+    </div>
+    <div>
+      <span class="xref">GodotObject.IsQueuedForDeletion()</span>
+    </div>
+    <div>
+      <span class="xref">GodotObject.CancelFree()</span>
+    </div>
+    <div>
+      <span class="xref">GodotObject.EmitSignalScriptChanged()</span>
+    </div>
+    <div>
+      <span class="xref">GodotObject.EmitSignalPropertyListChanged()</span>
+    </div>
+    <div>
+      <span class="xref">GodotObject.NativeInstance</span>
+    </div>
+    <div>
+      <span class="xref">GodotObject.ScriptChanged</span>
+    </div>
+    <div>
+      <span class="xref">GodotObject.PropertyListChanged</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode">object.GetHashCode()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone">object.MemberwiseClone()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
+    </div>
+  </dd></dl>
+
+
+
+
+  <h2 id="AshesOfVelsingrad_Managers_MenuManager_remarks">Remarks</h2>
+  <div class="markdown level0 remarks"><p>This class is responsible for showing, hiding, and navigating between menus.
+It maintains a history of menus for back navigation and provides methods to register and unregister menus.
+It also emits signals when the current menu changes.</p>
+</div>
+
+
+  <h2 class="section" id="fields">Fields
+</h2>
+
+
+
+  <h3 id="AshesOfVelsingrad_Managers_MenuManager_MAIN_MENU" data-uid="AshesOfVelsingrad.Managers.MenuManager.MAIN_MENU">
+  MAIN_MENU
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/managers/MenuManager.cs/#L28"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const string MAIN_MENU = &quot;main_menu&quot;</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="AshesOfVelsingrad_Managers_MenuManager_OPTIONS_MENU" data-uid="AshesOfVelsingrad.Managers.MenuManager.OPTIONS_MENU">
+  OPTIONS_MENU
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/managers/MenuManager.cs/#L29"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const string OPTIONS_MENU = &quot;options_menu&quot;</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="AshesOfVelsingrad_Managers_MenuManager_PAUSE_MENU" data-uid="AshesOfVelsingrad.Managers.MenuManager.PAUSE_MENU">
+  PAUSE_MENU
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/managers/MenuManager.cs/#L30"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const string PAUSE_MENU = &quot;pause_menu&quot;</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+  <h2 class="section" id="properties">Properties
+</h2>
+
+
+  <a id="AshesOfVelsingrad_Managers_MenuManager_Instance_" data-uid="AshesOfVelsingrad.Managers.MenuManager.Instance*"></a>
+
+  <h3 id="AshesOfVelsingrad_Managers_MenuManager_Instance" data-uid="AshesOfVelsingrad.Managers.MenuManager.Instance">
+  Instance
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/managers/MenuManager.cs/#L18"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static MenuManager? Instance { get; protected set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="AshesOfVelsingrad.Managers.MenuManager.html">MenuManager</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
+  <a id="AshesOfVelsingrad_Managers_MenuManager_ClearHistory_" data-uid="AshesOfVelsingrad.Managers.MenuManager.ClearHistory*"></a>
+
+  <h3 id="AshesOfVelsingrad_Managers_MenuManager_ClearHistory" data-uid="AshesOfVelsingrad.Managers.MenuManager.ClearHistory">
+  ClearHistory()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/managers/MenuManager.cs/#L202"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Clears the menu history stack.
+This method removes all entries from the history stack, effectively resetting it.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void ClearHistory()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+  <h4 class="section" id="AshesOfVelsingrad_Managers_MenuManager_ClearHistory_remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>This method is useful when you want to reset the menu navigation state.
+It clears the history stack, so there are no previous menus to go back to.</p>
+</div>
+
+
+
+
+  <a id="AshesOfVelsingrad_Managers_MenuManager_EmitSignalMenuChanged_" data-uid="AshesOfVelsingrad.Managers.MenuManager.EmitSignalMenuChanged*"></a>
+
+  <h3 id="AshesOfVelsingrad_Managers_MenuManager_EmitSignalMenuChanged_System_String_" data-uid="AshesOfVelsingrad.Managers.MenuManager.EmitSignalMenuChanged(System.String)">
+  EmitSignalMenuChanged(string)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected void EmitSignalMenuChanged(string menuName)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>menuName</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AshesOfVelsingrad_Managers_MenuManager_GetCurrentMenu_" data-uid="AshesOfVelsingrad.Managers.MenuManager.GetCurrentMenu*"></a>
+
+  <h3 id="AshesOfVelsingrad_Managers_MenuManager_GetCurrentMenu" data-uid="AshesOfVelsingrad.Managers.MenuManager.GetCurrentMenu">
+  GetCurrentMenu()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/managers/MenuManager.cs/#L216"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets the name of the current active menu.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string? GetCurrentMenu()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The name of the current menu, or null if no menu is active.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+  <h4 class="section" id="AshesOfVelsingrad_Managers_MenuManager_GetCurrentMenu_remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>This method returns the name of the currently active menu.
+If no menu is currently active, it returns null.
+This can be useful for checking the current state of the menu system.</p>
+</div>
+
+
+
+
+  <a id="AshesOfVelsingrad_Managers_MenuManager_GoBack_" data-uid="AshesOfVelsingrad.Managers.MenuManager.GoBack*"></a>
+
+  <h3 id="AshesOfVelsingrad_Managers_MenuManager_GoBack" data-uid="AshesOfVelsingrad.Managers.MenuManager.GoBack">
+  GoBack()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/managers/MenuManager.cs/#L181"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Goes back to the previous menu in the history stack.
+If there is no previous menu, it prints a message indicating that.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void GoBack()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+  <h4 class="section" id="AshesOfVelsingrad_Managers_MenuManager_GoBack_remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>This method pops the last menu from the history stack and shows it.
+If the history stack is empty, it prints a message indicating that there is no previous menu to go back to.
+It does not add the previous menu back to the history stack when going back.</p>
+</div>
+
+
+
+
+  <a id="AshesOfVelsingrad_Managers_MenuManager_Initialize_" data-uid="AshesOfVelsingrad.Managers.MenuManager.Initialize*"></a>
+
+  <h3 id="AshesOfVelsingrad_Managers_MenuManager_Initialize" data-uid="AshesOfVelsingrad.Managers.MenuManager.Initialize">
+  Initialize()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/managers/MenuManager.cs/#L41"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Initializes the MenuManager singleton instance.
+Ensures only one instance exists and sets up the initial state.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected override void Initialize()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+  <h4 class="section" id="AshesOfVelsingrad_Managers_MenuManager_Initialize_remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>This method is called automatically by Godot when the node is ready.
+It checks for duplicate instances and initializes the menu system.
+If a duplicate instance is found, it removes the duplicate.</p>
+</div>
+
+
+
+
+  <a id="AshesOfVelsingrad_Managers_MenuManager_IsMenuActive_" data-uid="AshesOfVelsingrad.Managers.MenuManager.IsMenuActive*"></a>
+
+  <h3 id="AshesOfVelsingrad_Managers_MenuManager_IsMenuActive_System_String_" data-uid="AshesOfVelsingrad.Managers.MenuManager.IsMenuActive(System.String)">
+  IsMenuActive(string)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/managers/MenuManager.cs/#L231"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Checks if a specific menu is currently active.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool IsMenuActive(string menuName)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>menuName</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The unique name of the menu to check.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>True if the specified menu is active, otherwise false.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+  <h4 class="section" id="AshesOfVelsingrad_Managers_MenuManager_IsMenuActive_System_String__remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>This method checks if the specified menu is currently the active menu.
+It compares the provided menu name with the current active menu name.
+This can be useful for UI logic that needs to know if a specific menu is currently displayed.</p>
+</div>
+
+
+
+
+  <a id="AshesOfVelsingrad_Managers_MenuManager_RegisterMenu_" data-uid="AshesOfVelsingrad.Managers.MenuManager.RegisterMenu*"></a>
+
+  <h3 id="AshesOfVelsingrad_Managers_MenuManager_RegisterMenu_System_String_Godot_Control_" data-uid="AshesOfVelsingrad.Managers.MenuManager.RegisterMenu(System.String,Godot.Control)">
+  RegisterMenu(string, Control)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/managers/MenuManager.cs/#L75"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Registers a menu with the MenuManager.
+Adds the menu to the internal dictionary and hides it by default.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual void RegisterMenu(string menuName, Control menuControl)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>menuName</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The unique name of the menu to register.</p>
+</dd>
+    <dt><code>menuControl</code> <span class="xref">Control</span></dt>
+    <dd><p>The Control instance representing the menu.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h4 class="section" id="AshesOfVelsingrad_Managers_MenuManager_RegisterMenu_System_String_Godot_Control__remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>This method checks if the menu is already registered to avoid duplicates.
+If the menu is already registered, it prints an error message and does not add it again.
+It also connects back signals for navigation menus, such as OptionsMenu, to handle back navigation.</p>
+</div>
+
+
+
+
+  <a id="AshesOfVelsingrad_Managers_MenuManager_SetInstanceForTesting_" data-uid="AshesOfVelsingrad.Managers.MenuManager.SetInstanceForTesting*"></a>
+
+  <h3 id="AshesOfVelsingrad_Managers_MenuManager_SetInstanceForTesting_AshesOfVelsingrad_Managers_MenuManager_" data-uid="AshesOfVelsingrad.Managers.MenuManager.SetInstanceForTesting(AshesOfVelsingrad.Managers.MenuManager)">
+  SetInstanceForTesting(MenuManager?)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/managers/MenuManager.cs/#L59"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>FOR TESTING ONLY: Manually sets the singleton instance.
+This method should only be used in unit tests.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void SetInstanceForTesting(MenuManager? instance)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>instance</code> <a class="xref" href="AshesOfVelsingrad.Managers.MenuManager.html">MenuManager</a></dt>
+    <dd><p>The instance to set as the singleton.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AshesOfVelsingrad_Managers_MenuManager_ShowMenu_" data-uid="AshesOfVelsingrad.Managers.MenuManager.ShowMenu*"></a>
+
+  <h3 id="AshesOfVelsingrad_Managers_MenuManager_ShowMenu_System_String_System_Boolean_" data-uid="AshesOfVelsingrad.Managers.MenuManager.ShowMenu(System.String,System.Boolean)">
+  ShowMenu(string, bool)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/managers/MenuManager.cs/#L125"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Shows a menu by its name.
+Hides the current menu and shows the specified menu.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual void ShowMenu(string menuName, bool addToHistory = true)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>menuName</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The unique name of the menu to show.</p>
+</dd>
+    <dt><code>addToHistory</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>Whether to add the current menu to the history stack for back navigation.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h4 class="section" id="AshesOfVelsingrad_Managers_MenuManager_ShowMenu_System_String_System_Boolean__remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>This method checks if the specified menu exists in the registered menus.
+If it does, it hides the current menu and shows the specified menu.
+If the current menu is not empty, it adds it to the history stack for back navigation.
+If the specified menu is not found, it prints an error message.</p>
+</div>
+
+
+
+
+  <a id="AshesOfVelsingrad_Managers_MenuManager_UnregisterMenu_" data-uid="AshesOfVelsingrad.Managers.MenuManager.UnregisterMenu*"></a>
+
+  <h3 id="AshesOfVelsingrad_Managers_MenuManager_UnregisterMenu_System_String_" data-uid="AshesOfVelsingrad.Managers.MenuManager.UnregisterMenu(System.String)">
+  UnregisterMenu(string)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/managers/MenuManager.cs/#L104"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Unregisters a menu from the MenuManager.
+Removes the menu from the internal dictionary.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void UnregisterMenu(string menuName)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>menuName</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The unique name of the menu to unregister.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h4 class="section" id="AshesOfVelsingrad_Managers_MenuManager_UnregisterMenu_System_String__remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>This method checks if the menu exists before attempting to remove it.
+If the menu is currently active, it will hide it before removing.</p>
+</div>
+
+
+
+
+  <h2 class="section" id="events">Events
+</h2>
+
+
+
+  <h3 id="AshesOfVelsingrad_Managers_MenuManager_MenuChanged" data-uid="AshesOfVelsingrad.Managers.MenuManager.MenuChanged">
+  MenuChanged
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public event MenuManager.MenuChangedEventHandler MenuChanged</code></pre>
+  </div>
+
+
+
+
+
+
+  <h4 class="section">Event Type</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="AshesOfVelsingrad.Managers.MenuManager.html">MenuManager</a>.<a class="xref" href="AshesOfVelsingrad.Managers.MenuManager.html">MenuChangedEventHandler</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+</article>
+
+        <div class="contribution d-print-none">
+        </div>
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          © 2025 Gammabra Studios. All Rights Reserved.
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

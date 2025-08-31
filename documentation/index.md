@@ -75,7 +75,7 @@ Death isn't the end in Ashes of Velsingrad, but resurrection comes at a terrible
 
 Ready to begin your journey? Check out the [Getting Started](docs/getting-started.md) guide to set up your development environment and dive into the world of Velsingrad.
 
-For a deeper dive into the game's systems, explore our [Game Design](docs/game-design/core-gameplay.md) documentation, or jump straight into the [API Reference](api/index.md) if you're interested in the technical implementation.
+For a deeper dive into the game's systems, explore our [Game Design](docs/game-design/core-gameplay.md) documentation, or jump straight into the [API Reference](docs/index.md) if you're interested in the technical implementation.
 
 ---
 

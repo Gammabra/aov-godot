@@ -112,6 +112,8 @@ AshesOfVelsingrad/
 │   │   ├── AudioManager.cs    # Sound management
 │   │   ├── SceneManager.cs    # Scene transitions
 │   │   └── InputManager.cs    # Input handling
+│   │   ├── SettingsManager.cs # Game settings persistence
+│   │   └── MenuManager.cs     # Menu navigation coordination
 │   ├── ui/                    # User interface
 │   │   ├── menus/             # Game menus
 │   │   ├── hud/               # In-game UI
@@ -149,6 +151,43 @@ AshesOfVelsingrad/
 | **Managers** | `[Domain]Manager` | `GameManager`, `AudioManager` |
 | **UI** | `[Element][Type]` | `MainMenu`, `HealthBar`, `DialogBox` |
 | **Data** | `[Entity]Data` | `ItemData`, `CharacterData` |
+
+## AutoLoad Configuration
+
+### AutoLoad Best Practices
+
+For Godot 4.x with C#, managers should be configured as AutoLoad using direct script files:
+
+```
+Project Settings > AutoLoad:
+- SettingsManager: res://scripts/managers/SettingsManager.cs
+- MenuManager: res://scripts/managers/MenuManager.cs
+- GameManager: res://scripts/managers/GameManager.cs
+```
+
+**Important Notes:**
+- Use `.cs` files directly, not `.tscn` scenes
+- Order matters: dependencies should load first
+- Managers automatically become available as singletons
+
+### Deferred Initialization Pattern
+
+When UI components need to access AutoLoad managers, use deferred initialization:
+
+```csharp
+public override void _Ready()
+{
+    // Defer initialization to ensure AutoLoad managers are ready
+    CallDeferred(MethodName.DeferredReady);
+}
+
+private void DeferredReady()
+{
+    // Safe to access managers here
+    ConnectSignals();
+    InitializeUI();
+}
+```
 
 ## System Architecture
 
@@ -221,6 +260,53 @@ public class GameManager : BaseManager
 
             GD.Print($"Game state changed: {previousState} -> {newState}");
         }
+    }
+}
+```
+
+### Settings Management Pattern
+
+```csharp
+public class SettingsManager : BaseManager
+{
+    [Signal]
+    public delegate void SettingsChangedEventHandler(string key, Variant value);
+
+    private SettingsData _settings;
+
+    protected override void Initialize()
+    {
+        LoadSettings();
+    }
+
+    public void SetSetting<T>(string key, T value)
+    {
+        // Update setting and emit signal for reactive UI updates
+        _settings.SetValue(key, value);
+        SaveSettings();
+        EmitSignal(SignalName.SettingsChanged, key, Variant.From(value));
+    }
+}
+```
+
+### Menu Coordination Pattern
+
+```csharp
+public class MenuManager : BaseManager
+{
+    private readonly Dictionary<string, Control> _menus = new();
+    private readonly Stack<string> _menuHistory = new();
+
+    public void RegisterMenu(string menuName, Control menuControl)
+    {
+        _menus[menuName] = menuControl;
+        // Connect navigation signals automatically
+        ConnectMenuSignals(menuControl);
+    }
+
+    public void ShowMenu(string menuName, bool addToHistory = true)
+    {
+        // Handle transitions and history management
     }
 }
 ```

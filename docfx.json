@@ -1,0 +1,80 @@
+{
+  "metadata": [
+    {
+      "src": [
+        {
+          "files": [
+            "Ashes of Velsingrad.csproj"
+          ],
+          "exclude": [
+            "**/bin/**",
+            "**/obj/**",
+            "**/.godot/**",
+            "**/addons/**",
+            "**/gdUnit4/**",
+            "**/Tests/**"
+          ]
+        }
+      ],
+      "dest": "documentation/api",
+      "allowCompilationErrors": false,
+      "disableGitFeatures": false,
+      "disableDefaultFilter": false,
+      "references": [
+        ".godot/mono/temp/bin/Debug/GodotSharp.dll",
+        ".godot/mono/temp/bin/Debug/GodotSharpEditor.dll"
+      ],
+      "properties": {
+        "TargetFramework": "net9.0",
+        "DefineConstants": "GODOT;GODOT_PC;GODOT4;GODOT4_OR_GREATER"
+      },
+      "filter": "documentation/filterConfig.yml",
+      "globalNamespaceId": "Global"
+    }
+  ],
+  "build": {
+    "content": [
+      {
+        "files": [
+          "documentation/api/**.yml",
+          "documentation/api/index.md",
+          "documentation/docs/**.md",
+          "documentation/docs/**/*.md",
+          "documentation/toc.yml",
+          "documentation/**.md"
+        ]
+      }
+    ],
+    "output": "documentation/_site",
+    "globalMetadataFiles": [],
+    "fileMetadataFiles": [],
+    "template": [
+      "default",
+      "modern",
+      "documentation/templates/custom"
+    ],
+    "resource": [
+      {
+        "files": [
+          "documentation/images/**"
+        ]
+      }
+    ],
+    "postProcessors": [],
+    "keepFileLink": false,
+    "disableGitFeatures": false,
+    "globalMetadata": {
+      "_appTitle": "Ashes of Velsingrad Documentation",
+      "_appName": "Ashes of Velsingrad",
+      "_appFooter": "© 2025 Gammabra Studios. All Rights Reserved.",
+      "_enableSearch": true,
+      "_gitContribute": {
+        "repo": "https://github.com/Gammabra/aov-godot",
+        "branch": "develop"
+      },
+      "_gitUrlPattern": "github",
+      "_appLogoPath": "documentation/images/logo-doc.png",
+      "_enableNewTab": true
+    }
+  }
+}

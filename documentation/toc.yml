@@ -18,6 +18,8 @@
     href: docs/technical/coding-standards.md
   - name: Testing Guide
     href: docs/technical/testing.md
+  - name: Accessibility Checklist
+    href: docs/technical/accessibility-checklist.md
 - name: Contributing
   href: docs/contributing.md
 - name: API Documentation

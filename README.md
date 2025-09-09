@@ -83,6 +83,7 @@ Explore the complete game design, lore, and systems at our [DocFX Documentation]
 
 - **[Getting Started](https://gammabra.github.io/aov-godot/docs/getting-started.html)** - Set up your development environment
 - **[Game Design](https://gammabra.github.io/aov-godot/docs/game-design/core-gameplay.html)** - Deep dive into game systems
+- **[Accessibility Checklist](./ACCESSBILITY.md)** - Document describing goals and current feature regarding accessibility
 - **[API Reference](https://gammabra.github.io/aov-godot/api/index.html)** - Technical implementation details
 
 ### **🔧 Technical Documentation**

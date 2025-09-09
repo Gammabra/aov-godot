@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Accessibility Checklist – Ashes of Velsingrad | Ashes of Velsingrad Documentation </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Accessibility Checklist – Ashes of Velsingrad | Ashes of Velsingrad Documentation ">
+      
+      
+      <link rel="icon" href="../../../favicon.ico">
+      <link rel="stylesheet" href="../../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../../public/main.css">
+      <meta name="docfx:navrel" content="">
+      <meta name="docfx:tocrel" content="../../toc.html">
+      
+      <meta name="docfx:rel" content="../../../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/Gammabra/aov-godot/blob/develop/documentation/docs/technical/accessibility-checklist.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../../../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../../../index.html">
+            <img id="logo" class="svg" src="../../../documentation/images/logo-doc.png" alt="Ashes of Velsingrad" style="height: 40px; width: auto;">
+            Ashes of Velsingrad
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="accessibility-checklist--ashes-of-velsingrad">Accessibility Checklist – Ashes of Velsingrad</h1>
+
+<p><strong>Goal:</strong> Start thinking about accessibility from the beginning and track progress.</p>
+<p>This document outlines the accessibility features of Ashes of Velsingrad, what is implemented, and what is planned for the future. Accessibility is an ongoing process; contributions and feedback are welcome.</p>
+<p><strong>Project Status:</strong> Early Development | <strong>Engine:</strong> Godot (C#)</p>
+<hr>
+<h2 id="-documentation">📄 Documentation</h2>
+<ul>
+<li><strong>Purpose:</strong> Track accessibility features, current implementation, and future tasks.</li>
+<li><strong>Reference Guidelines:</strong> <a href="https://www.w3.org/WAI/standards-guidelines/wcag/">WCAG 2.2</a></li>
+</ul>
+<hr>
+<h2 id="-keyboard-navigation">🖱️ Keyboard Navigation</h2>
+<ul>
+<li>[ ] All interactive elements accessible with keyboard only.</li>
+<li>[ ] Visible focus indicators on all buttons, links, and menu items.</li>
+<li>[ ] Keyboard shortcuts tested for menus, dialogs, and key actions.</li>
+</ul>
+<p><strong>Current Status:</strong><br>
+Nothing implemented yet. Standard Godot input handling is in place but no accessibility-specific keyboard navigation features have been added.</p>
+<p><strong>TODO:</strong></p>
+<ul>
+<li>Implement focus management system using Godot's <code>grab_focus()</code> and focus neighbors</li>
+<li>Add visible focus indicators to all UI elements (buttons, menus, input fields)</li>
+<li>Create keyboard navigation flow for main menu, settings, inventory, and combat UI</li>
+<li>Implement Tab/Shift+Tab navigation through UI elements</li>
+<li>Add Enter/Space key activation for focused buttons</li>
+<li>Test keyboard-only navigation through all game screens</li>
+<li>Implement escape key handling for closing dialogs and menus</li>
+</ul>
+<hr>
+<h2 id="-text-and-typography">🔠 Text and Typography</h2>
+<ul>
+<li>[x] Adjustable text size without breaking layout.</li>
+<li>[ ] Relative font units (em/rem) used throughout UI.</li>
+<li>[ ] Clear, readable fonts chosen for main text and menus.</li>
+</ul>
+<p><strong>Current Status:</strong></p>
+<ul>
+<li>Text scaling function implemented and accessible through game settings</li>
+<li>Basic font sizing system in place</li>
+</ul>
+<p><strong>TODO:</strong></p>
+<ul>
+<li>Refactor Settings UI to follow accessibility best practices for text scaling controls</li>
+<li>Replace hardcoded font sizes with relative scaling system throughout codebase</li>
+<li>Implement minimum font size constraints (recommend 16px base minimum)</li>
+<li>Add text scaling preview in settings menu</li>
+<li>Ensure UI layouts remain functional at 200% text scale</li>
+<li>Test text scaling with different screen resolutions</li>
+<li>Choose and implement dyslexia-friendly font options</li>
+<li>Add font weight options for improved readability</li>
+</ul>
+<hr>
+<h2 id="-visual-contrast-priority">🎨 Visual Contrast (Priority)</h2>
+<ul>
+<li>[ ] High contrast between text and background.</li>
+<li>[ ] Color combinations tested for readability.</li>
+<li>[ ] Information is not conveyed by color alone.</li>
+</ul>
+<p><strong>Current Status:</strong><br>
+Nothing implemented yet. Using default Godot theme colors and standard UI elements without accessibility considerations.</p>
+<p><strong>TODO:</strong></p>
+<ul>
+<li>Audit all UI elements for WCAG AA contrast compliance (4.5:1 for normal text, 3:1 for large text)</li>
+<li>Implement high contrast theme option in settings</li>
+<li>Add colorblind-friendly palette alternatives</li>
+<li>Review and redesign health/mana bars, status indicators, and UI elements to not rely solely on color</li>
+<li>Test color combinations with colorblind simulation tools</li>
+<li>Add texture/pattern alternatives for color-coded information (enemy types, item rarities, etc.)</li>
+<li>Implement focus indicators with sufficient contrast</li>
+<li>Create dark mode/light mode theme options</li>
+<li>Test all visual elements under different lighting conditions</li>
+</ul>
+<hr>
+<h2 id="-screen-reader-support-future">🖥️ Screen Reader Support (Future)</h2>
+<ul>
+<li>[ ] Descriptive labels for buttons, links, and UI elements.</li>
+<li>[ ] Semantic headings and structures.</li>
+<li>[ ] Alt text for all images and icons.</li>
+</ul>
+<p><strong>Current Status:</strong><br>
+Nothing implemented yet. Godot's accessibility features for screen readers have not been explored or implemented.</p>
+<p><strong>TODO:</strong></p>
+<ul>
+<li>Research Godot's accessibility node system and screen reader compatibility</li>
+<li>Add descriptive names to all Control nodes for screen reader identification</li>
+<li>Implement accessible descriptions for combat actions and game state changes</li>
+<li>Create audio cues for important game events (level up, item pickup, enemy encounters)</li>
+<li>Add screen reader announcements for menu navigation</li>
+<li>Implement accessible inventory and character sheet descriptions</li>
+<li>Test with NVDA, JAWS, and other popular screen readers (when available)</li>
+<li>Create fallback text descriptions for visual-only information</li>
+</ul>
+<hr>
+<h2 id="-game-specific-accessibility-future">🎮 Game-Specific Accessibility (Future)</h2>
+<ul>
+<li>[ ] Subtitle system for all audio content</li>
+<li>[ ] Audio cue alternatives for visual indicators</li>
+<li>[ ] Difficulty/complexity options for cognitive accessibility</li>
+<li>[ ] Motor accessibility options (hold-to-toggle, timing adjustments)</li>
+</ul>
+<p><strong>Current Status:</strong><br>
+Nothing implemented yet. Standard game mechanics without accessibility considerations.</p>
+<p><strong>TODO:</strong></p>
+<ul>
+<li>Implement comprehensive subtitle system with speaker identification</li>
+<li>Add visual indicators for audio cues (combat sounds, environmental audio)</li>
+<li>Create simplified UI mode for cognitive accessibility</li>
+<li>Add timing adjustment options for time-sensitive actions</li>
+<li>Implement one-handed control schemes</li>
+<li>Add pause-anywhere functionality</li>
+<li>Create customizable control mapping system</li>
+<li>Test with various input devices and assistive technologies</li>
+</ul>
+<hr>
+<h2 id="-tracking-progress">✅ Tracking Progress</h2>
+<p><strong>Implemented Features:</strong></p>
+<ul>
+<li>Basic text scaling functionality in game settings</li>
+</ul>
+<p><strong>In Development:</strong></p>
+<ul>
+<li>Settings UI improvements for accessibility options</li>
+</ul>
+<p><strong>Pending Features / TODO (by Priority):</strong></p>
+<ol>
+<li><p><strong>High Priority (Visual Deficiencies Focus):</strong></p>
+<ul>
+<li>Visual contrast audit and improvements</li>
+<li>High contrast theme implementation</li>
+<li>Colorblind-friendly design updates</li>
+<li>Text scaling system refinements</li>
+</ul>
+</li>
+<li><p><strong>Medium Priority:</strong></p>
+<ul>
+<li>Comprehensive keyboard navigation</li>
+<li>Font and typography improvements</li>
+<li>Audio alternatives for visual information</li>
+</ul>
+</li>
+<li><p><strong>Future Implementation:</strong></p>
+<ul>
+<li>Screen reader support research and implementation</li>
+<li>Motor accessibility features</li>
+<li>Cognitive accessibility options</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h2 id="-technical-implementation-notes">🔧 Technical Implementation Notes</h2>
+<p><strong>Godot-Specific Considerations:</strong></p>
+<ul>
+<li>Utilize Godot's <code>AccessibilityNode</code> system when implementing screen reader support</li>
+<li>Leverage <code>Control.focus_mode</code> and focus neighbor properties for keyboard navigation</li>
+<li>Use Godot's theme system for implementing high contrast and font scaling options</li>
+<li>Consider Godot's input map system for customizable controls</li>
+</ul>
+<p><strong>Development Reminders:</strong></p>
+<ul>
+<li>Test accessibility features on different platforms (Windows, Linux, Mac)</li>
+<li>Document accessibility API usage for future developers</li>
+<li>Create accessibility testing checklist for each game update</li>
+<li>Plan for localization impact on accessibility features</li>
+</ul>
+<hr>
+<h2 id="-links">📌 Links</h2>
+<ul>
+<li><a href="../README.md">Main README</a> – Include a link to this accessibility document</li>
+<li><a href="https://www.w3.org/WAI/standards-guidelines/wcag/">WCAG Guidelines</a></li>
+<li><a href="https://docs.godotengine.org/en/stable/tutorials/ui/gui_accessibility.html">Godot Accessibility Documentation</a></li>
+<li><a href="#">Accessibility Feedback</a> – Add link for community feedback when available</li>
+</ul>
+<hr>
+<blockquote>
+<p><strong>Note for Contributors/Consultants:</strong> This project is in early development with basic accessibility groundwork. We welcome feedback on implementation priorities and technical approaches. Accessibility is a continuous effort, and we're committed to making Ashes of Velsingrad accessible to everyone.</p>
+</blockquote>
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/Gammabra/aov-godot/blob/develop/documentation/docs/technical/accessibility-checklist.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          © 2025 Gammabra Studios. All Rights Reserved.
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

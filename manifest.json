@@ -235,6 +235,16 @@
     },
     {
       "type": "Conceptual",
+      "source_relative_path": "documentation/docs/technical/accessibility-checklist.md",
+      "output": {
+        ".html": {
+          "relative_path": "documentation/docs/technical/accessibility-checklist.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
       "source_relative_path": "documentation/docs/technical/architecture.md",
       "output": {
         ".html": {

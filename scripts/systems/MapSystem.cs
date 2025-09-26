@@ -1,38 +1,54 @@
+using System;
 using System.Collections.Generic;
+using AshesOfVelsingrad.systems.status_effects;
 using Godot;
 
 namespace AshesOfVelsingrad.systems;
 
-public enum GroundType
+/// <summary>
+///     Enumeration of every cell type available in the game.
+/// </summary>
+public enum CellType
 {
-    // Add a Ground type when needed
+    // Add a cell type when needed
     Empty,
     Grass
 }
 
-public class GridInformation(
-    int X,
-    int Y,
-    int Z,
-    GroundType GroundType,
-    bool IsWalkable
-)
+/// <summary>
+///     Represents the information for a single grid cell in the map,
+///     including its coordinates, ground type, walkability, and the unit occupying it.
+/// </summary>
+/// <param name="x">The x-coordinate of the grid cell.</param>
+/// <param name="y">The y-coordinate of the grid cell.</param>
+/// <param name="z">The z-coordinate of the grid cell.</param>
+/// <param name="cellType">The <see cref="CellType" /> defining the terrain of the cell.</param>
+/// <param name="isWalkable">Indicates whether the cell can be walked on.</param>
+internal sealed class CellInformation(
+    int x,
+    int y,
+    int z,
+    CellType cellType,
+    bool isWalkable
+) : EffectTarget
 {
-    public int X { get; } = X;
-    public int Y { get; } = Y;
-    public int Z { get; } = Z;
-    public GroundType GroundType { get; set; } = GroundType;
-    public bool IsWalkable { get; set; } = IsWalkable;
+    public int X { get; } = x;
+    public int Y { get; } = y;
+    public int Z { get; } = z;
+    public CellType CellType { get; set; } = cellType;
+    public bool IsWalkable { get; set; } = isWalkable;
     public Unit.IUnit? Unit { get; set; } = null;
 }
 
 /// <summary>
-///     Base class for the playable maps in the game.
+///     Base class for all playable maps in the game.
 /// </summary>
 /// <remarks>
-///     This abstract class should be linked to a <see cref="GridMap" /> class.
+///     This class extends Godot's <see cref="GridMap" /> and manages the grid layout,
+///     grid metadata (<see cref="CellInformation" />), and unit placement.
+///     It enforces a single active instance through the <see cref="Instance" /> property.
 /// </remarks>
-public abstract class MapSystem : GridMap
+public abstract partial class MapSystem : GridMap
 {
     #region Private Fields
 
@@ -45,6 +61,11 @@ public abstract class MapSystem : GridMap
     ///     Used to calculate the maximum map
     /// </summary>
     private Vector3I _max;
+
+    /// <summary>
+    ///     List of information of every grid
+    /// </summary>
+    private readonly List<CellInformation> _cellsInformation = [];
 
     #endregion
 
@@ -68,12 +89,13 @@ public abstract class MapSystem : GridMap
     /// <summary>
     ///     The size of a single grid in the UI
     /// </summary>
-    public Vector3 GridSize { get; }
+    public Vector3 MapCellSize { get; private set; }
 
-    /// <summary>
-    ///     List of every information for a grid
-    /// </summary>
-    public List<GridInformation> GridInformation { get; protected set; }
+    public static readonly Dictionary<CellType, bool> CellTypeWalkable = new()
+    {
+        { CellType.Empty, false },
+        { CellType.Grass, true }
+    };
 
     /// <summary>
     ///     Instance of a map system.
@@ -124,7 +146,25 @@ public abstract class MapSystem : GridMap
     ///     It should contain the logic necessary to set up the map's state and functionality.
     ///     Derived classes must implement this method to provide their specific initialization logic.
     /// </remarks>
-    protected abstract void Initialize();
+    protected virtual void Initialize()
+    {
+        MapCellSize = CellSize;
+        foreach (Vector3I cell in GetUsedCells())
+        {
+            int meshId = GetCellItem(cell);
+            bool doesMeshExist = CellTypeWalkable.TryGetValue((CellType)meshId, out bool isWalkable);
+
+            if (!doesMeshExist)
+            {
+                GD.PrintErr($"Could not find ground type {meshId}");
+                continue;
+            }
+
+            CellInformation cellInformation = new(cell.X, cell.Y, cell.Z, (CellType)meshId, isWalkable);
+
+            _cellsInformation.Add(cellInformation);
+        }
+    }
 
     #endregion
 
@@ -143,35 +183,144 @@ public abstract class MapSystem : GridMap
         _max.Z = int.MinValue;
         foreach (Vector3I cell in GetUsedCells())
         {
-            if (cell.X < _min.X) _min.X = cell.X;
-            if (cell.Y < _min.Y) _min.Y = cell.Y;
-            if (cell.Z < _min.Z) _min.Z = cell.Z;
-
-            if (cell.X > _max.X) _max.X = cell.X;
-            if (cell.Y > _max.Y) _max.Y = cell.Y;
-            if (cell.Z > _max.Z) _max.Z = cell.Z;
+            if (cell.X < _min.X)
+                _min.X = cell.X;
+            if (cell.Y < _min.Y)
+                _min.Y = cell.Y;
+            if (cell.Z < _min.Z)
+                _min.Z = cell.Z;
+            if (cell.X > _max.X)
+                _max.X = cell.X;
+            if (cell.Y > _max.Y)
+                _max.Y = cell.Y;
+            if (cell.Z > _max.Z)
+                _max.Z = cell.Z;
         }
 
-        if (_max.X == int.MinValue) return Vector3I.Zero;
-
+        if (_max.X == int.MinValue)
+            return Vector3I.Zero;
         return _max - _min + Vector3I.One;
     }
 
-    private int GetListIndex(int x, int y, int z);
+    /// <summary>
+    ///     Converts 3D grid coordinates into the corresponding list index
+    ///     used by <see cref="_cellsInformation" />.
+    /// </summary>
+    /// <param name="x">The x-coordinate of the grid.</param>
+    /// <param name="y">The y-coordinate of the grid.</param>
+    /// <param name="z">The z-coordinate of the grid.</param>
+    /// <returns>The index of the grid in the internal list.</returns>
+    /// <exception cref="ArgumentOutOfRangeException">
+    ///     Thrown if the provided coordinates are outside the bounds of the map.
+    /// </exception>
+    private int GetListIndex(int x, int y, int z)
+    {
+        if (x < 0 || x >= Width || y < 0 || y >= Height || z < 0 || z >= Depth)
+            throw new ArgumentOutOfRangeException("Out of range");
+        return x + y * Width + z * Width * Height;
+    }
 
     #endregion
 
     #region Public Methods
 
-    public GroundType GetGroundType(int x, int y, int z);
-    public void SetGroundType(int x, int y, int z, GroundType type);
-    public bool IsWalkable(int x, int y, int z);
-    public void SetWalkable(int x, int y, int z);
+    /// <summary>
+    ///     Getter to know if a cell is walkable.
+    /// </summary>
+    /// <param name="x">The x-axis</param>
+    /// <param name="y">The y-axis</param>
+    /// <param name="z">The z-axis</param>
+    /// <returns><c>True</c> if the cell is walkable, <c>False</c> otherwise</returns>
+    public virtual bool IsWalkable(int x, int y, int z)
+    {
+        int index = GetListIndex(x, y, z);
 
+        return _cellsInformation[index].IsWalkable;
+    }
+
+    /// <summary>
+    ///     Set the IsWalkable variable of a <see cref="CellInformation" /> to the reverse value.
+    /// </summary>
+    /// <param name="x">The x-axis</param>
+    /// <param name="y">The y-axis</param>
+    /// <param name="z">The z-axis</param>
+    public virtual void SetWalkable(int x, int y, int z)
+    {
+        int index = GetListIndex(x, y, z);
+
+        _cellsInformation[index].IsWalkable = !_cellsInformation[index].IsWalkable;
+    }
+
+    /// <summary>
+    ///     Place every unit in the map.
+    /// </summary>
+    /// <param name="playerUnits">List of every unit of the player</param>
+    /// <param name="enemyUnits">List of every enemy on the maps</param>
+    /// <remarks>
+    ///     It must be called only for the class initialization.
+    /// </remarks>
     protected abstract void PlaceUnits(List<Unit.IUnit> playerUnits, List<Unit.IUnit> enemyUnits);
-    public void MoveUnit(Unit.IUnit unit, int newX, int newY, int newZ);
-    public Unit.IUnit? GetUnitAt(int x, int y, int z);
-    public void RemoveUnit(int x, int y, int z);
+
+    /// <summary>
+    ///     Moves a unit to a new position in the map.
+    /// </summary>
+    /// <param name="unit">The unit to move.</param>
+    /// <param name="newX">The target x-coordinate in the cell.</param>
+    /// <param name="newY">The target y-coordinate in the cell.</param>
+    /// <param name="newZ">The target z-coordinate in the cell.</param>
+    /// <remarks>
+    ///     Implementations should handle removing the unit from its current cell
+    ///     and assigning it to the new cell. This method does not check whether the
+    ///     target cell is walkable, which should be verified beforehand.
+    /// </remarks>
+    public virtual void MoveUnit(Unit.IUnit unit, int newX, int newY, int newZ)
+    {
+        // Remove from old position
+        foreach (CellInformation cell in _cellsInformation)
+        {
+            if (cell.Unit != unit) continue;
+            cell.Unit = null;
+            break;
+        }
+
+        // Assign to new position
+        int index = GetListIndex(newX, newY, newZ);
+
+        _cellsInformation[index].Unit = unit;
+    }
+
+    /// <summary>
+    ///     Gets the unit currently occupying the map cell at the given position.
+    /// </summary>
+    /// <param name="x">The x-coordinate of the map cell.</param>
+    /// <param name="y">The y-coordinate of the map cell.</param>
+    /// <param name="z">The z-coordinate of the map cell.</param>
+    /// <returns>
+    ///     The unit at the specified map cell, or <c>null</c> if the cell is empty.
+    /// </returns>
+    public virtual Unit.IUnit? GetUnitAt(int x, int y, int z)
+    {
+        int index = GetListIndex(x, y, z);
+
+        return _cellsInformation[index].Unit;
+    }
+
+    /// <summary>
+    ///     Removes any unit present at the given map cell.
+    /// </summary>
+    /// <param name="x">The x-coordinate of the map cell.</param>
+    /// <param name="y">The y-coordinate of the map cell.</param>
+    /// <param name="z">The z-coordinate of the map cell.</param>
+    /// <remarks>
+    ///     Implementations should clear the reference to the unit from the cell.
+    ///     If the cell is already empty, this method does nothing.
+    /// </remarks>
+    public virtual void RemoveUnit(int x, int y, int z)
+    {
+        int index = GetListIndex(x, y, z);
+
+        _cellsInformation[index].Unit = null;
+    }
 
     #endregion
 

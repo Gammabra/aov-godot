@@ -6,7 +6,7 @@ namespace AshesOfVelsingrad.systems.status_effects;
 ///     Base class for any entity that can receive and manage <see cref="StatusEffect" />s.
 ///     Provides default implementations for applying, removing, and querying effects.
 /// </summary>
-public abstract class EffectTarget : IEffectTarget
+public class EffectTarget : IEffectTarget
 {
     /// <summary>
     ///     Internal list storing all active status effects on this target.

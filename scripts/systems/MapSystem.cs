@@ -24,7 +24,7 @@ public enum CellType
 /// <param name="z">The z-coordinate of the grid cell.</param>
 /// <param name="cellType">The <see cref="CellType" /> defining the terrain of the cell.</param>
 /// <param name="isWalkable">Indicates whether the cell can be walked on.</param>
-internal sealed class CellInformation(
+public sealed class CellInformation(
     int x,
     int y,
     int z,
@@ -37,7 +37,7 @@ internal sealed class CellInformation(
     public int Z { get; } = z;
     public CellType CellType { get; set; } = cellType;
     public bool IsWalkable { get; set; } = isWalkable;
-    public Unit.IUnit? Unit { get; set; } = null;
+    public UnitSystem? Unit { get; set; }
 }
 
 /// <summary>
@@ -259,7 +259,7 @@ public abstract partial class MapSystem : GridMap
     /// <remarks>
     ///     It must be called only for the class initialization.
     /// </remarks>
-    protected abstract void PlaceUnits(List<Unit.IUnit> playerUnits, List<Unit.IUnit> enemyUnits);
+    protected abstract void PlaceUnits(List<UnitSystem> playerUnits, List<UnitSystem> enemyUnits);
 
     /// <summary>
     ///     Moves a unit to a new position in the map.
@@ -273,12 +273,13 @@ public abstract partial class MapSystem : GridMap
     ///     and assigning it to the new cell. This method does not check whether the
     ///     target cell is walkable, which should be verified beforehand.
     /// </remarks>
-    public virtual void MoveUnit(Unit.IUnit unit, int newX, int newY, int newZ)
+    public virtual void MoveUnit(UnitSystem unit, int newX, int newY, int newZ)
     {
         // Remove from old position
         foreach (CellInformation cell in _cellsInformation)
         {
-            if (cell.Unit != unit) continue;
+            if (cell.Unit != unit)
+                continue;
             cell.Unit = null;
             break;
         }
@@ -298,11 +299,19 @@ public abstract partial class MapSystem : GridMap
     /// <returns>
     ///     The unit at the specified map cell, or <c>null</c> if the cell is empty.
     /// </returns>
-    public virtual Unit.IUnit? GetUnitAt(int x, int y, int z)
+    public virtual UnitSystem? GetUnitAt(int x, int y, int z)
     {
         int index = GetListIndex(x, y, z);
 
         return _cellsInformation[index].Unit;
+    }
+
+    public virtual (int, int, int)? GetUnitPosition(UnitSystem unit)
+    {
+        foreach (CellInformation cell in _cellsInformation)
+            if (cell.Unit == unit)
+                return (cell.X, cell.Y, cell.Z);
+        return null;
     }
 
     /// <summary>
@@ -337,7 +346,8 @@ public abstract partial class MapSystem : GridMap
     /// </remarks>
     public override void _ExitTree()
     {
-        if (Instance != this) return;
+        if (Instance != this)
+            return;
         Cleanup();
         Instance = null;
     }

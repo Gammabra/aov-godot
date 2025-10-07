@@ -57,8 +57,9 @@
     "resource": [
       {
         "files": [
-          "documentation/images/**"
-        ]
+          "images/**"
+        ],
+        "src": "documentation"
       }
     ],
     "postProcessors": [],
@@ -74,7 +75,7 @@
         "branch": "develop"
       },
       "_gitUrlPattern": "github",
-      "_appLogoPath": "documentation/images/logo-doc.png",
+      "_appLogoPath": "images/logo-doc.png",
       "_enableNewTab": true
     }
   }

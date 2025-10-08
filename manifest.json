@@ -15,7 +15,7 @@
       "source_relative_path": "documentation/api/AshesOfVelsingrad.Main.yml",
       "output": {
         ".html": {
-          "relative_path": "documentation/api/AshesOfVelsingrad.Main.html"
+          "relative_path": "api/AshesOfVelsingrad.Main.html"
         }
       },
       "version": "",
@@ -29,7 +29,7 @@
       "source_relative_path": "documentation/api/AshesOfVelsingrad.Managers.BaseManager.yml",
       "output": {
         ".html": {
-          "relative_path": "documentation/api/AshesOfVelsingrad.Managers.BaseManager.html"
+          "relative_path": "api/AshesOfVelsingrad.Managers.BaseManager.html"
         }
       },
       "version": "",
@@ -43,7 +43,7 @@
       "source_relative_path": "documentation/api/AshesOfVelsingrad.Managers.MenuManager.yml",
       "output": {
         ".html": {
-          "relative_path": "documentation/api/AshesOfVelsingrad.Managers.MenuManager.html"
+          "relative_path": "api/AshesOfVelsingrad.Managers.MenuManager.html"
         }
       },
       "version": "",
@@ -57,7 +57,7 @@
       "source_relative_path": "documentation/api/AshesOfVelsingrad.Managers.SettingsData.yml",
       "output": {
         ".html": {
-          "relative_path": "documentation/api/AshesOfVelsingrad.Managers.SettingsData.html"
+          "relative_path": "api/AshesOfVelsingrad.Managers.SettingsData.html"
         }
       },
       "version": "",
@@ -71,7 +71,7 @@
       "source_relative_path": "documentation/api/AshesOfVelsingrad.Managers.SettingsManager.yml",
       "output": {
         ".html": {
-          "relative_path": "documentation/api/AshesOfVelsingrad.Managers.SettingsManager.html"
+          "relative_path": "api/AshesOfVelsingrad.Managers.SettingsManager.html"
         }
       },
       "version": "",
@@ -85,7 +85,7 @@
       "source_relative_path": "documentation/api/AshesOfVelsingrad.Managers.yml",
       "output": {
         ".html": {
-          "relative_path": "documentation/api/AshesOfVelsingrad.Managers.html"
+          "relative_path": "api/AshesOfVelsingrad.Managers.html"
         }
       },
       "version": "",
@@ -99,7 +99,7 @@
       "source_relative_path": "documentation/api/AshesOfVelsingrad.UI.Menus.MainMenu.yml",
       "output": {
         ".html": {
-          "relative_path": "documentation/api/AshesOfVelsingrad.UI.Menus.MainMenu.html"
+          "relative_path": "api/AshesOfVelsingrad.UI.Menus.MainMenu.html"
         }
       },
       "version": "",
@@ -113,7 +113,7 @@
       "source_relative_path": "documentation/api/AshesOfVelsingrad.UI.Menus.OptionsMenu.yml",
       "output": {
         ".html": {
-          "relative_path": "documentation/api/AshesOfVelsingrad.UI.Menus.OptionsMenu.html"
+          "relative_path": "api/AshesOfVelsingrad.UI.Menus.OptionsMenu.html"
         }
       },
       "version": "",
@@ -127,7 +127,7 @@
       "source_relative_path": "documentation/api/AshesOfVelsingrad.UI.Menus.yml",
       "output": {
         ".html": {
-          "relative_path": "documentation/api/AshesOfVelsingrad.UI.Menus.html"
+          "relative_path": "api/AshesOfVelsingrad.UI.Menus.html"
         }
       },
       "version": "",
@@ -141,7 +141,7 @@
       "source_relative_path": "documentation/api/AshesOfVelsingrad.yml",
       "output": {
         ".html": {
-          "relative_path": "documentation/api/AshesOfVelsingrad.html"
+          "relative_path": "api/AshesOfVelsingrad.html"
         }
       },
       "version": "",
@@ -155,10 +155,10 @@
       "source_relative_path": "documentation/api/toc.yml",
       "output": {
         ".html": {
-          "relative_path": "documentation/api/toc.html"
+          "relative_path": "api/toc.html"
         },
         ".json": {
-          "relative_path": "documentation/api/toc.json"
+          "relative_path": "api/toc.json"
         }
       },
       "version": ""
@@ -168,7 +168,7 @@
       "source_relative_path": "documentation/docs/contributing.md",
       "output": {
         ".html": {
-          "relative_path": "documentation/docs/contributing.html"
+          "relative_path": "docs/contributing.html"
         }
       },
       "version": ""
@@ -178,7 +178,7 @@
       "source_relative_path": "documentation/docs/game-design/combat-system.md",
       "output": {
         ".html": {
-          "relative_path": "documentation/docs/game-design/combat-system.html"
+          "relative_path": "docs/game-design/combat-system.html"
         }
       },
       "version": ""
@@ -188,7 +188,7 @@
       "source_relative_path": "documentation/docs/game-design/core-gameplay.md",
       "output": {
         ".html": {
-          "relative_path": "documentation/docs/game-design/core-gameplay.html"
+          "relative_path": "docs/game-design/core-gameplay.html"
         }
       },
       "version": ""
@@ -198,7 +198,7 @@
       "source_relative_path": "documentation/docs/game-design/magic-system.md",
       "output": {
         ".html": {
-          "relative_path": "documentation/docs/game-design/magic-system.html"
+          "relative_path": "docs/game-design/magic-system.html"
         }
       },
       "version": ""
@@ -208,7 +208,7 @@
       "source_relative_path": "documentation/docs/game-design/story-lore.md",
       "output": {
         ".html": {
-          "relative_path": "documentation/docs/game-design/story-lore.html"
+          "relative_path": "docs/game-design/story-lore.html"
         }
       },
       "version": ""
@@ -218,7 +218,7 @@
       "source_relative_path": "documentation/docs/getting-started.md",
       "output": {
         ".html": {
-          "relative_path": "documentation/docs/getting-started.html"
+          "relative_path": "docs/getting-started.html"
         }
       },
       "version": ""
@@ -228,7 +228,7 @@
       "source_relative_path": "documentation/docs/index.md",
       "output": {
         ".html": {
-          "relative_path": "documentation/docs/index.html"
+          "relative_path": "docs/index.html"
         }
       },
       "version": ""
@@ -238,7 +238,7 @@
       "source_relative_path": "documentation/docs/technical/accessibility-checklist.md",
       "output": {
         ".html": {
-          "relative_path": "documentation/docs/technical/accessibility-checklist.html"
+          "relative_path": "docs/technical/accessibility-checklist.html"
         }
       },
       "version": ""
@@ -248,7 +248,7 @@
       "source_relative_path": "documentation/docs/technical/architecture.md",
       "output": {
         ".html": {
-          "relative_path": "documentation/docs/technical/architecture.html"
+          "relative_path": "docs/technical/architecture.html"
         }
       },
       "version": ""
@@ -258,7 +258,7 @@
       "source_relative_path": "documentation/docs/technical/coding-standards.md",
       "output": {
         ".html": {
-          "relative_path": "documentation/docs/technical/coding-standards.html"
+          "relative_path": "docs/technical/coding-standards.html"
         }
       },
       "version": ""
@@ -268,7 +268,7 @@
       "source_relative_path": "documentation/docs/technical/testing.md",
       "output": {
         ".html": {
-          "relative_path": "documentation/docs/technical/testing.html"
+          "relative_path": "docs/technical/testing.html"
         }
       },
       "version": ""
@@ -278,7 +278,7 @@
       "source_relative_path": "documentation/images/logo-doc.png",
       "output": {
         "resource": {
-          "relative_path": "documentation/images/logo-doc.png"
+          "relative_path": "images/logo-doc.png"
         }
       },
       "version": ""
@@ -288,7 +288,7 @@
       "source_relative_path": "documentation/images/logo-doc.png.import",
       "output": {
         "resource": {
-          "relative_path": "documentation/images/logo-doc.png.import"
+          "relative_path": "images/logo-doc.png.import"
         }
       },
       "version": ""
@@ -298,7 +298,7 @@
       "source_relative_path": "documentation/index.md",
       "output": {
         ".html": {
-          "relative_path": "documentation/index.html"
+          "relative_path": "index.html"
         }
       },
       "version": ""
@@ -308,10 +308,10 @@
       "source_relative_path": "documentation/toc.yml",
       "output": {
         ".html": {
-          "relative_path": "documentation/toc.html"
+          "relative_path": "toc.html"
         },
         ".json": {
-          "relative_path": "documentation/toc.json"
+          "relative_path": "toc.json"
         }
       },
       "version": ""

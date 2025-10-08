@@ -3,172 +3,172 @@ sorted: true
 references:
 - uid: AshesOfVelsingrad
   name: AshesOfVelsingrad
-  href: documentation/api/AshesOfVelsingrad.html
+  href: api/AshesOfVelsingrad.html
   commentId: N:AshesOfVelsingrad
   fullName: AshesOfVelsingrad
   nameWithType: AshesOfVelsingrad
 - uid: AshesOfVelsingrad.Main
   name: Main
-  href: documentation/api/AshesOfVelsingrad.Main.html
+  href: api/AshesOfVelsingrad.Main.html
   commentId: T:AshesOfVelsingrad.Main
   fullName: AshesOfVelsingrad.Main
   nameWithType: Main
 - uid: AshesOfVelsingrad.Main.CreateMenus
   name: CreateMenus()
-  href: documentation/api/AshesOfVelsingrad.Main.html#AshesOfVelsingrad_Main_CreateMenus
+  href: api/AshesOfVelsingrad.Main.html#AshesOfVelsingrad_Main_CreateMenus
   commentId: M:AshesOfVelsingrad.Main.CreateMenus
   fullName: AshesOfVelsingrad.Main.CreateMenus()
   nameWithType: Main.CreateMenus()
 - uid: AshesOfVelsingrad.Main.CreateMenus*
   name: CreateMenus
-  href: documentation/api/AshesOfVelsingrad.Main.html#AshesOfVelsingrad_Main_CreateMenus_
+  href: api/AshesOfVelsingrad.Main.html#AshesOfVelsingrad_Main_CreateMenus_
   commentId: Overload:AshesOfVelsingrad.Main.CreateMenus
   isSpec: "True"
   fullName: AshesOfVelsingrad.Main.CreateMenus
   nameWithType: Main.CreateMenus
 - uid: AshesOfVelsingrad.Main.InitializeMenus
   name: InitializeMenus()
-  href: documentation/api/AshesOfVelsingrad.Main.html#AshesOfVelsingrad_Main_InitializeMenus
+  href: api/AshesOfVelsingrad.Main.html#AshesOfVelsingrad_Main_InitializeMenus
   commentId: M:AshesOfVelsingrad.Main.InitializeMenus
   fullName: AshesOfVelsingrad.Main.InitializeMenus()
   nameWithType: Main.InitializeMenus()
 - uid: AshesOfVelsingrad.Main.InitializeMenus*
   name: InitializeMenus
-  href: documentation/api/AshesOfVelsingrad.Main.html#AshesOfVelsingrad_Main_InitializeMenus_
+  href: api/AshesOfVelsingrad.Main.html#AshesOfVelsingrad_Main_InitializeMenus_
   commentId: Overload:AshesOfVelsingrad.Main.InitializeMenus
   isSpec: "True"
   fullName: AshesOfVelsingrad.Main.InitializeMenus
   nameWithType: Main.InitializeMenus
 - uid: AshesOfVelsingrad.Main._Ready
   name: _Ready()
-  href: documentation/api/AshesOfVelsingrad.Main.html#AshesOfVelsingrad_Main__Ready
+  href: api/AshesOfVelsingrad.Main.html#AshesOfVelsingrad_Main__Ready
   commentId: M:AshesOfVelsingrad.Main._Ready
   fullName: AshesOfVelsingrad.Main._Ready()
   nameWithType: Main._Ready()
 - uid: AshesOfVelsingrad.Main._Ready*
   name: _Ready
-  href: documentation/api/AshesOfVelsingrad.Main.html#AshesOfVelsingrad_Main__Ready_
+  href: api/AshesOfVelsingrad.Main.html#AshesOfVelsingrad_Main__Ready_
   commentId: Overload:AshesOfVelsingrad.Main._Ready
   isSpec: "True"
   fullName: AshesOfVelsingrad.Main._Ready
   nameWithType: Main._Ready
 - uid: AshesOfVelsingrad.Main._mainMenuScene
   name: _mainMenuScene
-  href: documentation/api/AshesOfVelsingrad.Main.html#AshesOfVelsingrad_Main__mainMenuScene
+  href: api/AshesOfVelsingrad.Main.html#AshesOfVelsingrad_Main__mainMenuScene
   commentId: F:AshesOfVelsingrad.Main._mainMenuScene
   fullName: AshesOfVelsingrad.Main._mainMenuScene
   nameWithType: Main._mainMenuScene
 - uid: AshesOfVelsingrad.Main._menuContainer
   name: _menuContainer
-  href: documentation/api/AshesOfVelsingrad.Main.html#AshesOfVelsingrad_Main__menuContainer
+  href: api/AshesOfVelsingrad.Main.html#AshesOfVelsingrad_Main__menuContainer
   commentId: F:AshesOfVelsingrad.Main._menuContainer
   fullName: AshesOfVelsingrad.Main._menuContainer
   nameWithType: Main._menuContainer
 - uid: AshesOfVelsingrad.Main._optionsMenuScene
   name: _optionsMenuScene
-  href: documentation/api/AshesOfVelsingrad.Main.html#AshesOfVelsingrad_Main__optionsMenuScene
+  href: api/AshesOfVelsingrad.Main.html#AshesOfVelsingrad_Main__optionsMenuScene
   commentId: F:AshesOfVelsingrad.Main._optionsMenuScene
   fullName: AshesOfVelsingrad.Main._optionsMenuScene
   nameWithType: Main._optionsMenuScene
 - uid: AshesOfVelsingrad.Managers
   name: AshesOfVelsingrad.Managers
-  href: documentation/api/AshesOfVelsingrad.Managers.html
+  href: api/AshesOfVelsingrad.Managers.html
   commentId: N:AshesOfVelsingrad.Managers
   fullName: AshesOfVelsingrad.Managers
   nameWithType: AshesOfVelsingrad.Managers
 - uid: AshesOfVelsingrad.Managers.BaseManager
   name: BaseManager
-  href: documentation/api/AshesOfVelsingrad.Managers.BaseManager.html
+  href: api/AshesOfVelsingrad.Managers.BaseManager.html
   commentId: T:AshesOfVelsingrad.Managers.BaseManager
   fullName: AshesOfVelsingrad.Managers.BaseManager
   nameWithType: BaseManager
 - uid: AshesOfVelsingrad.Managers.BaseManager.Cleanup
   name: Cleanup()
-  href: documentation/api/AshesOfVelsingrad.Managers.BaseManager.html#AshesOfVelsingrad_Managers_BaseManager_Cleanup
+  href: api/AshesOfVelsingrad.Managers.BaseManager.html#AshesOfVelsingrad_Managers_BaseManager_Cleanup
   commentId: M:AshesOfVelsingrad.Managers.BaseManager.Cleanup
   fullName: AshesOfVelsingrad.Managers.BaseManager.Cleanup()
   nameWithType: BaseManager.Cleanup()
 - uid: AshesOfVelsingrad.Managers.BaseManager.Cleanup*
   name: Cleanup
-  href: documentation/api/AshesOfVelsingrad.Managers.BaseManager.html#AshesOfVelsingrad_Managers_BaseManager_Cleanup_
+  href: api/AshesOfVelsingrad.Managers.BaseManager.html#AshesOfVelsingrad_Managers_BaseManager_Cleanup_
   commentId: Overload:AshesOfVelsingrad.Managers.BaseManager.Cleanup
   isSpec: "True"
   fullName: AshesOfVelsingrad.Managers.BaseManager.Cleanup
   nameWithType: BaseManager.Cleanup
 - uid: AshesOfVelsingrad.Managers.BaseManager.Initialize
   name: Initialize()
-  href: documentation/api/AshesOfVelsingrad.Managers.BaseManager.html#AshesOfVelsingrad_Managers_BaseManager_Initialize
+  href: api/AshesOfVelsingrad.Managers.BaseManager.html#AshesOfVelsingrad_Managers_BaseManager_Initialize
   commentId: M:AshesOfVelsingrad.Managers.BaseManager.Initialize
   fullName: AshesOfVelsingrad.Managers.BaseManager.Initialize()
   nameWithType: BaseManager.Initialize()
 - uid: AshesOfVelsingrad.Managers.BaseManager.Initialize*
   name: Initialize
-  href: documentation/api/AshesOfVelsingrad.Managers.BaseManager.html#AshesOfVelsingrad_Managers_BaseManager_Initialize_
+  href: api/AshesOfVelsingrad.Managers.BaseManager.html#AshesOfVelsingrad_Managers_BaseManager_Initialize_
   commentId: Overload:AshesOfVelsingrad.Managers.BaseManager.Initialize
   isSpec: "True"
   fullName: AshesOfVelsingrad.Managers.BaseManager.Initialize
   nameWithType: BaseManager.Initialize
 - uid: AshesOfVelsingrad.Managers.BaseManager.Instance
   name: Instance
-  href: documentation/api/AshesOfVelsingrad.Managers.BaseManager.html#AshesOfVelsingrad_Managers_BaseManager_Instance
+  href: api/AshesOfVelsingrad.Managers.BaseManager.html#AshesOfVelsingrad_Managers_BaseManager_Instance
   commentId: P:AshesOfVelsingrad.Managers.BaseManager.Instance
   fullName: AshesOfVelsingrad.Managers.BaseManager.Instance
   nameWithType: BaseManager.Instance
 - uid: AshesOfVelsingrad.Managers.BaseManager.Instance*
   name: Instance
-  href: documentation/api/AshesOfVelsingrad.Managers.BaseManager.html#AshesOfVelsingrad_Managers_BaseManager_Instance_
+  href: api/AshesOfVelsingrad.Managers.BaseManager.html#AshesOfVelsingrad_Managers_BaseManager_Instance_
   commentId: Overload:AshesOfVelsingrad.Managers.BaseManager.Instance
   isSpec: "True"
   fullName: AshesOfVelsingrad.Managers.BaseManager.Instance
   nameWithType: BaseManager.Instance
 - uid: AshesOfVelsingrad.Managers.BaseManager._ExitTree
   name: _ExitTree()
-  href: documentation/api/AshesOfVelsingrad.Managers.BaseManager.html#AshesOfVelsingrad_Managers_BaseManager__ExitTree
+  href: api/AshesOfVelsingrad.Managers.BaseManager.html#AshesOfVelsingrad_Managers_BaseManager__ExitTree
   commentId: M:AshesOfVelsingrad.Managers.BaseManager._ExitTree
   fullName: AshesOfVelsingrad.Managers.BaseManager._ExitTree()
   nameWithType: BaseManager._ExitTree()
 - uid: AshesOfVelsingrad.Managers.BaseManager._ExitTree*
   name: _ExitTree
-  href: documentation/api/AshesOfVelsingrad.Managers.BaseManager.html#AshesOfVelsingrad_Managers_BaseManager__ExitTree_
+  href: api/AshesOfVelsingrad.Managers.BaseManager.html#AshesOfVelsingrad_Managers_BaseManager__ExitTree_
   commentId: Overload:AshesOfVelsingrad.Managers.BaseManager._ExitTree
   isSpec: "True"
   fullName: AshesOfVelsingrad.Managers.BaseManager._ExitTree
   nameWithType: BaseManager._ExitTree
 - uid: AshesOfVelsingrad.Managers.BaseManager._Ready
   name: _Ready()
-  href: documentation/api/AshesOfVelsingrad.Managers.BaseManager.html#AshesOfVelsingrad_Managers_BaseManager__Ready
+  href: api/AshesOfVelsingrad.Managers.BaseManager.html#AshesOfVelsingrad_Managers_BaseManager__Ready
   commentId: M:AshesOfVelsingrad.Managers.BaseManager._Ready
   fullName: AshesOfVelsingrad.Managers.BaseManager._Ready()
   nameWithType: BaseManager._Ready()
 - uid: AshesOfVelsingrad.Managers.BaseManager._Ready*
   name: _Ready
-  href: documentation/api/AshesOfVelsingrad.Managers.BaseManager.html#AshesOfVelsingrad_Managers_BaseManager__Ready_
+  href: api/AshesOfVelsingrad.Managers.BaseManager.html#AshesOfVelsingrad_Managers_BaseManager__Ready_
   commentId: Overload:AshesOfVelsingrad.Managers.BaseManager._Ready
   isSpec: "True"
   fullName: AshesOfVelsingrad.Managers.BaseManager._Ready
   nameWithType: BaseManager._Ready
 - uid: AshesOfVelsingrad.Managers.MenuManager
   name: MenuManager
-  href: documentation/api/AshesOfVelsingrad.Managers.MenuManager.html
+  href: api/AshesOfVelsingrad.Managers.MenuManager.html
   commentId: T:AshesOfVelsingrad.Managers.MenuManager
   fullName: AshesOfVelsingrad.Managers.MenuManager
   nameWithType: MenuManager
 - uid: AshesOfVelsingrad.Managers.MenuManager.ClearHistory
   name: ClearHistory()
-  href: documentation/api/AshesOfVelsingrad.Managers.MenuManager.html#AshesOfVelsingrad_Managers_MenuManager_ClearHistory
+  href: api/AshesOfVelsingrad.Managers.MenuManager.html#AshesOfVelsingrad_Managers_MenuManager_ClearHistory
   commentId: M:AshesOfVelsingrad.Managers.MenuManager.ClearHistory
   fullName: AshesOfVelsingrad.Managers.MenuManager.ClearHistory()
   nameWithType: MenuManager.ClearHistory()
 - uid: AshesOfVelsingrad.Managers.MenuManager.ClearHistory*
   name: ClearHistory
-  href: documentation/api/AshesOfVelsingrad.Managers.MenuManager.html#AshesOfVelsingrad_Managers_MenuManager_ClearHistory_
+  href: api/AshesOfVelsingrad.Managers.MenuManager.html#AshesOfVelsingrad_Managers_MenuManager_ClearHistory_
   commentId: Overload:AshesOfVelsingrad.Managers.MenuManager.ClearHistory
   isSpec: "True"
   fullName: AshesOfVelsingrad.Managers.MenuManager.ClearHistory
   nameWithType: MenuManager.ClearHistory
 - uid: AshesOfVelsingrad.Managers.MenuManager.EmitSignalMenuChanged(System.String)
   name: EmitSignalMenuChanged(string)
-  href: documentation/api/AshesOfVelsingrad.Managers.MenuManager.html#AshesOfVelsingrad_Managers_MenuManager_EmitSignalMenuChanged_System_String_
+  href: api/AshesOfVelsingrad.Managers.MenuManager.html#AshesOfVelsingrad_Managers_MenuManager_EmitSignalMenuChanged_System_String_
   commentId: M:AshesOfVelsingrad.Managers.MenuManager.EmitSignalMenuChanged(System.String)
   name.vb: EmitSignalMenuChanged(String)
   fullName: AshesOfVelsingrad.Managers.MenuManager.EmitSignalMenuChanged(string)
@@ -177,66 +177,66 @@ references:
   nameWithType.vb: MenuManager.EmitSignalMenuChanged(String)
 - uid: AshesOfVelsingrad.Managers.MenuManager.EmitSignalMenuChanged*
   name: EmitSignalMenuChanged
-  href: documentation/api/AshesOfVelsingrad.Managers.MenuManager.html#AshesOfVelsingrad_Managers_MenuManager_EmitSignalMenuChanged_
+  href: api/AshesOfVelsingrad.Managers.MenuManager.html#AshesOfVelsingrad_Managers_MenuManager_EmitSignalMenuChanged_
   commentId: Overload:AshesOfVelsingrad.Managers.MenuManager.EmitSignalMenuChanged
   isSpec: "True"
   fullName: AshesOfVelsingrad.Managers.MenuManager.EmitSignalMenuChanged
   nameWithType: MenuManager.EmitSignalMenuChanged
 - uid: AshesOfVelsingrad.Managers.MenuManager.GetCurrentMenu
   name: GetCurrentMenu()
-  href: documentation/api/AshesOfVelsingrad.Managers.MenuManager.html#AshesOfVelsingrad_Managers_MenuManager_GetCurrentMenu
+  href: api/AshesOfVelsingrad.Managers.MenuManager.html#AshesOfVelsingrad_Managers_MenuManager_GetCurrentMenu
   commentId: M:AshesOfVelsingrad.Managers.MenuManager.GetCurrentMenu
   fullName: AshesOfVelsingrad.Managers.MenuManager.GetCurrentMenu()
   nameWithType: MenuManager.GetCurrentMenu()
 - uid: AshesOfVelsingrad.Managers.MenuManager.GetCurrentMenu*
   name: GetCurrentMenu
-  href: documentation/api/AshesOfVelsingrad.Managers.MenuManager.html#AshesOfVelsingrad_Managers_MenuManager_GetCurrentMenu_
+  href: api/AshesOfVelsingrad.Managers.MenuManager.html#AshesOfVelsingrad_Managers_MenuManager_GetCurrentMenu_
   commentId: Overload:AshesOfVelsingrad.Managers.MenuManager.GetCurrentMenu
   isSpec: "True"
   fullName: AshesOfVelsingrad.Managers.MenuManager.GetCurrentMenu
   nameWithType: MenuManager.GetCurrentMenu
 - uid: AshesOfVelsingrad.Managers.MenuManager.GoBack
   name: GoBack()
-  href: documentation/api/AshesOfVelsingrad.Managers.MenuManager.html#AshesOfVelsingrad_Managers_MenuManager_GoBack
+  href: api/AshesOfVelsingrad.Managers.MenuManager.html#AshesOfVelsingrad_Managers_MenuManager_GoBack
   commentId: M:AshesOfVelsingrad.Managers.MenuManager.GoBack
   fullName: AshesOfVelsingrad.Managers.MenuManager.GoBack()
   nameWithType: MenuManager.GoBack()
 - uid: AshesOfVelsingrad.Managers.MenuManager.GoBack*
   name: GoBack
-  href: documentation/api/AshesOfVelsingrad.Managers.MenuManager.html#AshesOfVelsingrad_Managers_MenuManager_GoBack_
+  href: api/AshesOfVelsingrad.Managers.MenuManager.html#AshesOfVelsingrad_Managers_MenuManager_GoBack_
   commentId: Overload:AshesOfVelsingrad.Managers.MenuManager.GoBack
   isSpec: "True"
   fullName: AshesOfVelsingrad.Managers.MenuManager.GoBack
   nameWithType: MenuManager.GoBack
 - uid: AshesOfVelsingrad.Managers.MenuManager.Initialize
   name: Initialize()
-  href: documentation/api/AshesOfVelsingrad.Managers.MenuManager.html#AshesOfVelsingrad_Managers_MenuManager_Initialize
+  href: api/AshesOfVelsingrad.Managers.MenuManager.html#AshesOfVelsingrad_Managers_MenuManager_Initialize
   commentId: M:AshesOfVelsingrad.Managers.MenuManager.Initialize
   fullName: AshesOfVelsingrad.Managers.MenuManager.Initialize()
   nameWithType: MenuManager.Initialize()
 - uid: AshesOfVelsingrad.Managers.MenuManager.Initialize*
   name: Initialize
-  href: documentation/api/AshesOfVelsingrad.Managers.MenuManager.html#AshesOfVelsingrad_Managers_MenuManager_Initialize_
+  href: api/AshesOfVelsingrad.Managers.MenuManager.html#AshesOfVelsingrad_Managers_MenuManager_Initialize_
   commentId: Overload:AshesOfVelsingrad.Managers.MenuManager.Initialize
   isSpec: "True"
   fullName: AshesOfVelsingrad.Managers.MenuManager.Initialize
   nameWithType: MenuManager.Initialize
 - uid: AshesOfVelsingrad.Managers.MenuManager.Instance
   name: Instance
-  href: documentation/api/AshesOfVelsingrad.Managers.MenuManager.html#AshesOfVelsingrad_Managers_MenuManager_Instance
+  href: api/AshesOfVelsingrad.Managers.MenuManager.html#AshesOfVelsingrad_Managers_MenuManager_Instance
   commentId: P:AshesOfVelsingrad.Managers.MenuManager.Instance
   fullName: AshesOfVelsingrad.Managers.MenuManager.Instance
   nameWithType: MenuManager.Instance
 - uid: AshesOfVelsingrad.Managers.MenuManager.Instance*
   name: Instance
-  href: documentation/api/AshesOfVelsingrad.Managers.MenuManager.html#AshesOfVelsingrad_Managers_MenuManager_Instance_
+  href: api/AshesOfVelsingrad.Managers.MenuManager.html#AshesOfVelsingrad_Managers_MenuManager_Instance_
   commentId: Overload:AshesOfVelsingrad.Managers.MenuManager.Instance
   isSpec: "True"
   fullName: AshesOfVelsingrad.Managers.MenuManager.Instance
   nameWithType: MenuManager.Instance
 - uid: AshesOfVelsingrad.Managers.MenuManager.IsMenuActive(System.String)
   name: IsMenuActive(string)
-  href: documentation/api/AshesOfVelsingrad.Managers.MenuManager.html#AshesOfVelsingrad_Managers_MenuManager_IsMenuActive_System_String_
+  href: api/AshesOfVelsingrad.Managers.MenuManager.html#AshesOfVelsingrad_Managers_MenuManager_IsMenuActive_System_String_
   commentId: M:AshesOfVelsingrad.Managers.MenuManager.IsMenuActive(System.String)
   name.vb: IsMenuActive(String)
   fullName: AshesOfVelsingrad.Managers.MenuManager.IsMenuActive(string)
@@ -245,38 +245,38 @@ references:
   nameWithType.vb: MenuManager.IsMenuActive(String)
 - uid: AshesOfVelsingrad.Managers.MenuManager.IsMenuActive*
   name: IsMenuActive
-  href: documentation/api/AshesOfVelsingrad.Managers.MenuManager.html#AshesOfVelsingrad_Managers_MenuManager_IsMenuActive_
+  href: api/AshesOfVelsingrad.Managers.MenuManager.html#AshesOfVelsingrad_Managers_MenuManager_IsMenuActive_
   commentId: Overload:AshesOfVelsingrad.Managers.MenuManager.IsMenuActive
   isSpec: "True"
   fullName: AshesOfVelsingrad.Managers.MenuManager.IsMenuActive
   nameWithType: MenuManager.IsMenuActive
 - uid: AshesOfVelsingrad.Managers.MenuManager.MAIN_MENU
   name: MAIN_MENU
-  href: documentation/api/AshesOfVelsingrad.Managers.MenuManager.html#AshesOfVelsingrad_Managers_MenuManager_MAIN_MENU
+  href: api/AshesOfVelsingrad.Managers.MenuManager.html#AshesOfVelsingrad_Managers_MenuManager_MAIN_MENU
   commentId: F:AshesOfVelsingrad.Managers.MenuManager.MAIN_MENU
   fullName: AshesOfVelsingrad.Managers.MenuManager.MAIN_MENU
   nameWithType: MenuManager.MAIN_MENU
 - uid: AshesOfVelsingrad.Managers.MenuManager.MenuChanged
   name: MenuChanged
-  href: documentation/api/AshesOfVelsingrad.Managers.MenuManager.html#AshesOfVelsingrad_Managers_MenuManager_MenuChanged
+  href: api/AshesOfVelsingrad.Managers.MenuManager.html#AshesOfVelsingrad_Managers_MenuManager_MenuChanged
   commentId: E:AshesOfVelsingrad.Managers.MenuManager.MenuChanged
   fullName: AshesOfVelsingrad.Managers.MenuManager.MenuChanged
   nameWithType: MenuManager.MenuChanged
 - uid: AshesOfVelsingrad.Managers.MenuManager.OPTIONS_MENU
   name: OPTIONS_MENU
-  href: documentation/api/AshesOfVelsingrad.Managers.MenuManager.html#AshesOfVelsingrad_Managers_MenuManager_OPTIONS_MENU
+  href: api/AshesOfVelsingrad.Managers.MenuManager.html#AshesOfVelsingrad_Managers_MenuManager_OPTIONS_MENU
   commentId: F:AshesOfVelsingrad.Managers.MenuManager.OPTIONS_MENU
   fullName: AshesOfVelsingrad.Managers.MenuManager.OPTIONS_MENU
   nameWithType: MenuManager.OPTIONS_MENU
 - uid: AshesOfVelsingrad.Managers.MenuManager.PAUSE_MENU
   name: PAUSE_MENU
-  href: documentation/api/AshesOfVelsingrad.Managers.MenuManager.html#AshesOfVelsingrad_Managers_MenuManager_PAUSE_MENU
+  href: api/AshesOfVelsingrad.Managers.MenuManager.html#AshesOfVelsingrad_Managers_MenuManager_PAUSE_MENU
   commentId: F:AshesOfVelsingrad.Managers.MenuManager.PAUSE_MENU
   fullName: AshesOfVelsingrad.Managers.MenuManager.PAUSE_MENU
   nameWithType: MenuManager.PAUSE_MENU
 - uid: AshesOfVelsingrad.Managers.MenuManager.RegisterMenu(System.String,Godot.Control)
   name: RegisterMenu(string, Control)
-  href: documentation/api/AshesOfVelsingrad.Managers.MenuManager.html#AshesOfVelsingrad_Managers_MenuManager_RegisterMenu_System_String_Godot_Control_
+  href: api/AshesOfVelsingrad.Managers.MenuManager.html#AshesOfVelsingrad_Managers_MenuManager_RegisterMenu_System_String_Godot_Control_
   commentId: M:AshesOfVelsingrad.Managers.MenuManager.RegisterMenu(System.String,Godot.Control)
   name.vb: RegisterMenu(String, Control)
   fullName: AshesOfVelsingrad.Managers.MenuManager.RegisterMenu(string, Godot.Control)
@@ -285,14 +285,14 @@ references:
   nameWithType.vb: MenuManager.RegisterMenu(String, Control)
 - uid: AshesOfVelsingrad.Managers.MenuManager.RegisterMenu*
   name: RegisterMenu
-  href: documentation/api/AshesOfVelsingrad.Managers.MenuManager.html#AshesOfVelsingrad_Managers_MenuManager_RegisterMenu_
+  href: api/AshesOfVelsingrad.Managers.MenuManager.html#AshesOfVelsingrad_Managers_MenuManager_RegisterMenu_
   commentId: Overload:AshesOfVelsingrad.Managers.MenuManager.RegisterMenu
   isSpec: "True"
   fullName: AshesOfVelsingrad.Managers.MenuManager.RegisterMenu
   nameWithType: MenuManager.RegisterMenu
 - uid: AshesOfVelsingrad.Managers.MenuManager.SetInstanceForTesting(AshesOfVelsingrad.Managers.MenuManager)
   name: SetInstanceForTesting(MenuManager?)
-  href: documentation/api/AshesOfVelsingrad.Managers.MenuManager.html#AshesOfVelsingrad_Managers_MenuManager_SetInstanceForTesting_AshesOfVelsingrad_Managers_MenuManager_
+  href: api/AshesOfVelsingrad.Managers.MenuManager.html#AshesOfVelsingrad_Managers_MenuManager_SetInstanceForTesting_AshesOfVelsingrad_Managers_MenuManager_
   commentId: M:AshesOfVelsingrad.Managers.MenuManager.SetInstanceForTesting(AshesOfVelsingrad.Managers.MenuManager)
   name.vb: SetInstanceForTesting(MenuManager)
   fullName: AshesOfVelsingrad.Managers.MenuManager.SetInstanceForTesting(AshesOfVelsingrad.Managers.MenuManager?)
@@ -301,14 +301,14 @@ references:
   nameWithType.vb: MenuManager.SetInstanceForTesting(MenuManager)
 - uid: AshesOfVelsingrad.Managers.MenuManager.SetInstanceForTesting*
   name: SetInstanceForTesting
-  href: documentation/api/AshesOfVelsingrad.Managers.MenuManager.html#AshesOfVelsingrad_Managers_MenuManager_SetInstanceForTesting_
+  href: api/AshesOfVelsingrad.Managers.MenuManager.html#AshesOfVelsingrad_Managers_MenuManager_SetInstanceForTesting_
   commentId: Overload:AshesOfVelsingrad.Managers.MenuManager.SetInstanceForTesting
   isSpec: "True"
   fullName: AshesOfVelsingrad.Managers.MenuManager.SetInstanceForTesting
   nameWithType: MenuManager.SetInstanceForTesting
 - uid: AshesOfVelsingrad.Managers.MenuManager.ShowMenu(System.String,System.Boolean)
   name: ShowMenu(string, bool)
-  href: documentation/api/AshesOfVelsingrad.Managers.MenuManager.html#AshesOfVelsingrad_Managers_MenuManager_ShowMenu_System_String_System_Boolean_
+  href: api/AshesOfVelsingrad.Managers.MenuManager.html#AshesOfVelsingrad_Managers_MenuManager_ShowMenu_System_String_System_Boolean_
   commentId: M:AshesOfVelsingrad.Managers.MenuManager.ShowMenu(System.String,System.Boolean)
   name.vb: ShowMenu(String, Boolean)
   fullName: AshesOfVelsingrad.Managers.MenuManager.ShowMenu(string, bool)
@@ -317,14 +317,14 @@ references:
   nameWithType.vb: MenuManager.ShowMenu(String, Boolean)
 - uid: AshesOfVelsingrad.Managers.MenuManager.ShowMenu*
   name: ShowMenu
-  href: documentation/api/AshesOfVelsingrad.Managers.MenuManager.html#AshesOfVelsingrad_Managers_MenuManager_ShowMenu_
+  href: api/AshesOfVelsingrad.Managers.MenuManager.html#AshesOfVelsingrad_Managers_MenuManager_ShowMenu_
   commentId: Overload:AshesOfVelsingrad.Managers.MenuManager.ShowMenu
   isSpec: "True"
   fullName: AshesOfVelsingrad.Managers.MenuManager.ShowMenu
   nameWithType: MenuManager.ShowMenu
 - uid: AshesOfVelsingrad.Managers.MenuManager.UnregisterMenu(System.String)
   name: UnregisterMenu(string)
-  href: documentation/api/AshesOfVelsingrad.Managers.MenuManager.html#AshesOfVelsingrad_Managers_MenuManager_UnregisterMenu_System_String_
+  href: api/AshesOfVelsingrad.Managers.MenuManager.html#AshesOfVelsingrad_Managers_MenuManager_UnregisterMenu_System_String_
   commentId: M:AshesOfVelsingrad.Managers.MenuManager.UnregisterMenu(System.String)
   name.vb: UnregisterMenu(String)
   fullName: AshesOfVelsingrad.Managers.MenuManager.UnregisterMenu(string)
@@ -333,58 +333,58 @@ references:
   nameWithType.vb: MenuManager.UnregisterMenu(String)
 - uid: AshesOfVelsingrad.Managers.MenuManager.UnregisterMenu*
   name: UnregisterMenu
-  href: documentation/api/AshesOfVelsingrad.Managers.MenuManager.html#AshesOfVelsingrad_Managers_MenuManager_UnregisterMenu_
+  href: api/AshesOfVelsingrad.Managers.MenuManager.html#AshesOfVelsingrad_Managers_MenuManager_UnregisterMenu_
   commentId: Overload:AshesOfVelsingrad.Managers.MenuManager.UnregisterMenu
   isSpec: "True"
   fullName: AshesOfVelsingrad.Managers.MenuManager.UnregisterMenu
   nameWithType: MenuManager.UnregisterMenu
 - uid: AshesOfVelsingrad.Managers.SettingsData
   name: SettingsData
-  href: documentation/api/AshesOfVelsingrad.Managers.SettingsData.html
+  href: api/AshesOfVelsingrad.Managers.SettingsData.html
   commentId: T:AshesOfVelsingrad.Managers.SettingsData
   fullName: AshesOfVelsingrad.Managers.SettingsData
   nameWithType: SettingsData
 - uid: AshesOfVelsingrad.Managers.SettingsData.CustomSettings
   name: CustomSettings
-  href: documentation/api/AshesOfVelsingrad.Managers.SettingsData.html#AshesOfVelsingrad_Managers_SettingsData_CustomSettings
+  href: api/AshesOfVelsingrad.Managers.SettingsData.html#AshesOfVelsingrad_Managers_SettingsData_CustomSettings
   commentId: P:AshesOfVelsingrad.Managers.SettingsData.CustomSettings
   fullName: AshesOfVelsingrad.Managers.SettingsData.CustomSettings
   nameWithType: SettingsData.CustomSettings
 - uid: AshesOfVelsingrad.Managers.SettingsData.CustomSettings*
   name: CustomSettings
-  href: documentation/api/AshesOfVelsingrad.Managers.SettingsData.html#AshesOfVelsingrad_Managers_SettingsData_CustomSettings_
+  href: api/AshesOfVelsingrad.Managers.SettingsData.html#AshesOfVelsingrad_Managers_SettingsData_CustomSettings_
   commentId: Overload:AshesOfVelsingrad.Managers.SettingsData.CustomSettings
   isSpec: "True"
   fullName: AshesOfVelsingrad.Managers.SettingsData.CustomSettings
   nameWithType: SettingsData.CustomSettings
 - uid: AshesOfVelsingrad.Managers.SettingsData.DialogueSize
   name: DialogueSize
-  href: documentation/api/AshesOfVelsingrad.Managers.SettingsData.html#AshesOfVelsingrad_Managers_SettingsData_DialogueSize
+  href: api/AshesOfVelsingrad.Managers.SettingsData.html#AshesOfVelsingrad_Managers_SettingsData_DialogueSize
   commentId: P:AshesOfVelsingrad.Managers.SettingsData.DialogueSize
   fullName: AshesOfVelsingrad.Managers.SettingsData.DialogueSize
   nameWithType: SettingsData.DialogueSize
 - uid: AshesOfVelsingrad.Managers.SettingsData.DialogueSize*
   name: DialogueSize
-  href: documentation/api/AshesOfVelsingrad.Managers.SettingsData.html#AshesOfVelsingrad_Managers_SettingsData_DialogueSize_
+  href: api/AshesOfVelsingrad.Managers.SettingsData.html#AshesOfVelsingrad_Managers_SettingsData_DialogueSize_
   commentId: Overload:AshesOfVelsingrad.Managers.SettingsData.DialogueSize
   isSpec: "True"
   fullName: AshesOfVelsingrad.Managers.SettingsData.DialogueSize
   nameWithType: SettingsData.DialogueSize
 - uid: AshesOfVelsingrad.Managers.SettingsManager
   name: SettingsManager
-  href: documentation/api/AshesOfVelsingrad.Managers.SettingsManager.html
+  href: api/AshesOfVelsingrad.Managers.SettingsManager.html
   commentId: T:AshesOfVelsingrad.Managers.SettingsManager
   fullName: AshesOfVelsingrad.Managers.SettingsManager
   nameWithType: SettingsManager
 - uid: AshesOfVelsingrad.Managers.SettingsManager.DialogueSizeChanged
   name: DialogueSizeChanged
-  href: documentation/api/AshesOfVelsingrad.Managers.SettingsManager.html#AshesOfVelsingrad_Managers_SettingsManager_DialogueSizeChanged
+  href: api/AshesOfVelsingrad.Managers.SettingsManager.html#AshesOfVelsingrad_Managers_SettingsManager_DialogueSizeChanged
   commentId: E:AshesOfVelsingrad.Managers.SettingsManager.DialogueSizeChanged
   fullName: AshesOfVelsingrad.Managers.SettingsManager.DialogueSizeChanged
   nameWithType: SettingsManager.DialogueSizeChanged
 - uid: AshesOfVelsingrad.Managers.SettingsManager.EmitSignalDialogueSizeChanged(System.Single)
   name: EmitSignalDialogueSizeChanged(float)
-  href: documentation/api/AshesOfVelsingrad.Managers.SettingsManager.html#AshesOfVelsingrad_Managers_SettingsManager_EmitSignalDialogueSizeChanged_System_Single_
+  href: api/AshesOfVelsingrad.Managers.SettingsManager.html#AshesOfVelsingrad_Managers_SettingsManager_EmitSignalDialogueSizeChanged_System_Single_
   commentId: M:AshesOfVelsingrad.Managers.SettingsManager.EmitSignalDialogueSizeChanged(System.Single)
   name.vb: EmitSignalDialogueSizeChanged(Single)
   fullName: AshesOfVelsingrad.Managers.SettingsManager.EmitSignalDialogueSizeChanged(float)
@@ -393,14 +393,14 @@ references:
   nameWithType.vb: SettingsManager.EmitSignalDialogueSizeChanged(Single)
 - uid: AshesOfVelsingrad.Managers.SettingsManager.EmitSignalDialogueSizeChanged*
   name: EmitSignalDialogueSizeChanged
-  href: documentation/api/AshesOfVelsingrad.Managers.SettingsManager.html#AshesOfVelsingrad_Managers_SettingsManager_EmitSignalDialogueSizeChanged_
+  href: api/AshesOfVelsingrad.Managers.SettingsManager.html#AshesOfVelsingrad_Managers_SettingsManager_EmitSignalDialogueSizeChanged_
   commentId: Overload:AshesOfVelsingrad.Managers.SettingsManager.EmitSignalDialogueSizeChanged
   isSpec: "True"
   fullName: AshesOfVelsingrad.Managers.SettingsManager.EmitSignalDialogueSizeChanged
   nameWithType: SettingsManager.EmitSignalDialogueSizeChanged
 - uid: AshesOfVelsingrad.Managers.SettingsManager.EmitSignalSettingsChanged(System.String,Godot.Variant)
   name: EmitSignalSettingsChanged(string, Variant)
-  href: documentation/api/AshesOfVelsingrad.Managers.SettingsManager.html#AshesOfVelsingrad_Managers_SettingsManager_EmitSignalSettingsChanged_System_String_Godot_Variant_
+  href: api/AshesOfVelsingrad.Managers.SettingsManager.html#AshesOfVelsingrad_Managers_SettingsManager_EmitSignalSettingsChanged_System_String_Godot_Variant_
   commentId: M:AshesOfVelsingrad.Managers.SettingsManager.EmitSignalSettingsChanged(System.String,Godot.Variant)
   name.vb: EmitSignalSettingsChanged(String, Variant)
   fullName: AshesOfVelsingrad.Managers.SettingsManager.EmitSignalSettingsChanged(string, Godot.Variant)
@@ -409,34 +409,34 @@ references:
   nameWithType.vb: SettingsManager.EmitSignalSettingsChanged(String, Variant)
 - uid: AshesOfVelsingrad.Managers.SettingsManager.EmitSignalSettingsChanged*
   name: EmitSignalSettingsChanged
-  href: documentation/api/AshesOfVelsingrad.Managers.SettingsManager.html#AshesOfVelsingrad_Managers_SettingsManager_EmitSignalSettingsChanged_
+  href: api/AshesOfVelsingrad.Managers.SettingsManager.html#AshesOfVelsingrad_Managers_SettingsManager_EmitSignalSettingsChanged_
   commentId: Overload:AshesOfVelsingrad.Managers.SettingsManager.EmitSignalSettingsChanged
   isSpec: "True"
   fullName: AshesOfVelsingrad.Managers.SettingsManager.EmitSignalSettingsChanged
   nameWithType: SettingsManager.EmitSignalSettingsChanged
 - uid: AshesOfVelsingrad.Managers.SettingsManager.GetDialogueSize
   name: GetDialogueSize()
-  href: documentation/api/AshesOfVelsingrad.Managers.SettingsManager.html#AshesOfVelsingrad_Managers_SettingsManager_GetDialogueSize
+  href: api/AshesOfVelsingrad.Managers.SettingsManager.html#AshesOfVelsingrad_Managers_SettingsManager_GetDialogueSize
   commentId: M:AshesOfVelsingrad.Managers.SettingsManager.GetDialogueSize
   fullName: AshesOfVelsingrad.Managers.SettingsManager.GetDialogueSize()
   nameWithType: SettingsManager.GetDialogueSize()
 - uid: AshesOfVelsingrad.Managers.SettingsManager.GetDialogueSize*
   name: GetDialogueSize
-  href: documentation/api/AshesOfVelsingrad.Managers.SettingsManager.html#AshesOfVelsingrad_Managers_SettingsManager_GetDialogueSize_
+  href: api/AshesOfVelsingrad.Managers.SettingsManager.html#AshesOfVelsingrad_Managers_SettingsManager_GetDialogueSize_
   commentId: Overload:AshesOfVelsingrad.Managers.SettingsManager.GetDialogueSize
   isSpec: "True"
   fullName: AshesOfVelsingrad.Managers.SettingsManager.GetDialogueSize
   nameWithType: SettingsManager.GetDialogueSize
 - uid: AshesOfVelsingrad.Managers.SettingsManager.GetSetting*
   name: GetSetting
-  href: documentation/api/AshesOfVelsingrad.Managers.SettingsManager.html#AshesOfVelsingrad_Managers_SettingsManager_GetSetting_
+  href: api/AshesOfVelsingrad.Managers.SettingsManager.html#AshesOfVelsingrad_Managers_SettingsManager_GetSetting_
   commentId: Overload:AshesOfVelsingrad.Managers.SettingsManager.GetSetting
   isSpec: "True"
   fullName: AshesOfVelsingrad.Managers.SettingsManager.GetSetting
   nameWithType: SettingsManager.GetSetting
 - uid: AshesOfVelsingrad.Managers.SettingsManager.GetSetting``1(System.String,``0)
   name: GetSetting<T>(string, T?)
-  href: documentation/api/AshesOfVelsingrad.Managers.SettingsManager.html#AshesOfVelsingrad_Managers_SettingsManager_GetSetting__1_System_String___0_
+  href: api/AshesOfVelsingrad.Managers.SettingsManager.html#AshesOfVelsingrad_Managers_SettingsManager_GetSetting__1_System_String___0_
   commentId: M:AshesOfVelsingrad.Managers.SettingsManager.GetSetting``1(System.String,``0)
   name.vb: GetSetting(Of T)(String, T)
   fullName: AshesOfVelsingrad.Managers.SettingsManager.GetSetting<T>(string, T?)
@@ -445,72 +445,72 @@ references:
   nameWithType.vb: SettingsManager.GetSetting(Of T)(String, T)
 - uid: AshesOfVelsingrad.Managers.SettingsManager.Initialize
   name: Initialize()
-  href: documentation/api/AshesOfVelsingrad.Managers.SettingsManager.html#AshesOfVelsingrad_Managers_SettingsManager_Initialize
+  href: api/AshesOfVelsingrad.Managers.SettingsManager.html#AshesOfVelsingrad_Managers_SettingsManager_Initialize
   commentId: M:AshesOfVelsingrad.Managers.SettingsManager.Initialize
   fullName: AshesOfVelsingrad.Managers.SettingsManager.Initialize()
   nameWithType: SettingsManager.Initialize()
 - uid: AshesOfVelsingrad.Managers.SettingsManager.Initialize*
   name: Initialize
-  href: documentation/api/AshesOfVelsingrad.Managers.SettingsManager.html#AshesOfVelsingrad_Managers_SettingsManager_Initialize_
+  href: api/AshesOfVelsingrad.Managers.SettingsManager.html#AshesOfVelsingrad_Managers_SettingsManager_Initialize_
   commentId: Overload:AshesOfVelsingrad.Managers.SettingsManager.Initialize
   isSpec: "True"
   fullName: AshesOfVelsingrad.Managers.SettingsManager.Initialize
   nameWithType: SettingsManager.Initialize
 - uid: AshesOfVelsingrad.Managers.SettingsManager.Instance
   name: Instance
-  href: documentation/api/AshesOfVelsingrad.Managers.SettingsManager.html#AshesOfVelsingrad_Managers_SettingsManager_Instance
+  href: api/AshesOfVelsingrad.Managers.SettingsManager.html#AshesOfVelsingrad_Managers_SettingsManager_Instance
   commentId: P:AshesOfVelsingrad.Managers.SettingsManager.Instance
   fullName: AshesOfVelsingrad.Managers.SettingsManager.Instance
   nameWithType: SettingsManager.Instance
 - uid: AshesOfVelsingrad.Managers.SettingsManager.Instance*
   name: Instance
-  href: documentation/api/AshesOfVelsingrad.Managers.SettingsManager.html#AshesOfVelsingrad_Managers_SettingsManager_Instance_
+  href: api/AshesOfVelsingrad.Managers.SettingsManager.html#AshesOfVelsingrad_Managers_SettingsManager_Instance_
   commentId: Overload:AshesOfVelsingrad.Managers.SettingsManager.Instance
   isSpec: "True"
   fullName: AshesOfVelsingrad.Managers.SettingsManager.Instance
   nameWithType: SettingsManager.Instance
 - uid: AshesOfVelsingrad.Managers.SettingsManager.LoadSettings
   name: LoadSettings()
-  href: documentation/api/AshesOfVelsingrad.Managers.SettingsManager.html#AshesOfVelsingrad_Managers_SettingsManager_LoadSettings
+  href: api/AshesOfVelsingrad.Managers.SettingsManager.html#AshesOfVelsingrad_Managers_SettingsManager_LoadSettings
   commentId: M:AshesOfVelsingrad.Managers.SettingsManager.LoadSettings
   fullName: AshesOfVelsingrad.Managers.SettingsManager.LoadSettings()
   nameWithType: SettingsManager.LoadSettings()
 - uid: AshesOfVelsingrad.Managers.SettingsManager.LoadSettings*
   name: LoadSettings
-  href: documentation/api/AshesOfVelsingrad.Managers.SettingsManager.html#AshesOfVelsingrad_Managers_SettingsManager_LoadSettings_
+  href: api/AshesOfVelsingrad.Managers.SettingsManager.html#AshesOfVelsingrad_Managers_SettingsManager_LoadSettings_
   commentId: Overload:AshesOfVelsingrad.Managers.SettingsManager.LoadSettings
   isSpec: "True"
   fullName: AshesOfVelsingrad.Managers.SettingsManager.LoadSettings
   nameWithType: SettingsManager.LoadSettings
 - uid: AshesOfVelsingrad.Managers.SettingsManager.ResetToDefaults
   name: ResetToDefaults()
-  href: documentation/api/AshesOfVelsingrad.Managers.SettingsManager.html#AshesOfVelsingrad_Managers_SettingsManager_ResetToDefaults
+  href: api/AshesOfVelsingrad.Managers.SettingsManager.html#AshesOfVelsingrad_Managers_SettingsManager_ResetToDefaults
   commentId: M:AshesOfVelsingrad.Managers.SettingsManager.ResetToDefaults
   fullName: AshesOfVelsingrad.Managers.SettingsManager.ResetToDefaults()
   nameWithType: SettingsManager.ResetToDefaults()
 - uid: AshesOfVelsingrad.Managers.SettingsManager.ResetToDefaults*
   name: ResetToDefaults
-  href: documentation/api/AshesOfVelsingrad.Managers.SettingsManager.html#AshesOfVelsingrad_Managers_SettingsManager_ResetToDefaults_
+  href: api/AshesOfVelsingrad.Managers.SettingsManager.html#AshesOfVelsingrad_Managers_SettingsManager_ResetToDefaults_
   commentId: Overload:AshesOfVelsingrad.Managers.SettingsManager.ResetToDefaults
   isSpec: "True"
   fullName: AshesOfVelsingrad.Managers.SettingsManager.ResetToDefaults
   nameWithType: SettingsManager.ResetToDefaults
 - uid: AshesOfVelsingrad.Managers.SettingsManager.SaveSettings
   name: SaveSettings()
-  href: documentation/api/AshesOfVelsingrad.Managers.SettingsManager.html#AshesOfVelsingrad_Managers_SettingsManager_SaveSettings
+  href: api/AshesOfVelsingrad.Managers.SettingsManager.html#AshesOfVelsingrad_Managers_SettingsManager_SaveSettings
   commentId: M:AshesOfVelsingrad.Managers.SettingsManager.SaveSettings
   fullName: AshesOfVelsingrad.Managers.SettingsManager.SaveSettings()
   nameWithType: SettingsManager.SaveSettings()
 - uid: AshesOfVelsingrad.Managers.SettingsManager.SaveSettings*
   name: SaveSettings
-  href: documentation/api/AshesOfVelsingrad.Managers.SettingsManager.html#AshesOfVelsingrad_Managers_SettingsManager_SaveSettings_
+  href: api/AshesOfVelsingrad.Managers.SettingsManager.html#AshesOfVelsingrad_Managers_SettingsManager_SaveSettings_
   commentId: Overload:AshesOfVelsingrad.Managers.SettingsManager.SaveSettings
   isSpec: "True"
   fullName: AshesOfVelsingrad.Managers.SettingsManager.SaveSettings
   nameWithType: SettingsManager.SaveSettings
 - uid: AshesOfVelsingrad.Managers.SettingsManager.SetDialogueSize(System.Single)
   name: SetDialogueSize(float)
-  href: documentation/api/AshesOfVelsingrad.Managers.SettingsManager.html#AshesOfVelsingrad_Managers_SettingsManager_SetDialogueSize_System_Single_
+  href: api/AshesOfVelsingrad.Managers.SettingsManager.html#AshesOfVelsingrad_Managers_SettingsManager_SetDialogueSize_System_Single_
   commentId: M:AshesOfVelsingrad.Managers.SettingsManager.SetDialogueSize(System.Single)
   name.vb: SetDialogueSize(Single)
   fullName: AshesOfVelsingrad.Managers.SettingsManager.SetDialogueSize(float)
@@ -519,21 +519,21 @@ references:
   nameWithType.vb: SettingsManager.SetDialogueSize(Single)
 - uid: AshesOfVelsingrad.Managers.SettingsManager.SetDialogueSize*
   name: SetDialogueSize
-  href: documentation/api/AshesOfVelsingrad.Managers.SettingsManager.html#AshesOfVelsingrad_Managers_SettingsManager_SetDialogueSize_
+  href: api/AshesOfVelsingrad.Managers.SettingsManager.html#AshesOfVelsingrad_Managers_SettingsManager_SetDialogueSize_
   commentId: Overload:AshesOfVelsingrad.Managers.SettingsManager.SetDialogueSize
   isSpec: "True"
   fullName: AshesOfVelsingrad.Managers.SettingsManager.SetDialogueSize
   nameWithType: SettingsManager.SetDialogueSize
 - uid: AshesOfVelsingrad.Managers.SettingsManager.SetSetting*
   name: SetSetting
-  href: documentation/api/AshesOfVelsingrad.Managers.SettingsManager.html#AshesOfVelsingrad_Managers_SettingsManager_SetSetting_
+  href: api/AshesOfVelsingrad.Managers.SettingsManager.html#AshesOfVelsingrad_Managers_SettingsManager_SetSetting_
   commentId: Overload:AshesOfVelsingrad.Managers.SettingsManager.SetSetting
   isSpec: "True"
   fullName: AshesOfVelsingrad.Managers.SettingsManager.SetSetting
   nameWithType: SettingsManager.SetSetting
 - uid: AshesOfVelsingrad.Managers.SettingsManager.SetSetting``1(System.String,``0)
   name: SetSetting<T>(string, T)
-  href: documentation/api/AshesOfVelsingrad.Managers.SettingsManager.html#AshesOfVelsingrad_Managers_SettingsManager_SetSetting__1_System_String___0_
+  href: api/AshesOfVelsingrad.Managers.SettingsManager.html#AshesOfVelsingrad_Managers_SettingsManager_SetSetting__1_System_String___0_
   commentId: M:AshesOfVelsingrad.Managers.SettingsManager.SetSetting``1(System.String,``0)
   name.vb: SetSetting(Of T)(String, T)
   fullName: AshesOfVelsingrad.Managers.SettingsManager.SetSetting<T>(string, T)
@@ -542,108 +542,108 @@ references:
   nameWithType.vb: SettingsManager.SetSetting(Of T)(String, T)
 - uid: AshesOfVelsingrad.Managers.SettingsManager.SettingsChanged
   name: SettingsChanged
-  href: documentation/api/AshesOfVelsingrad.Managers.SettingsManager.html#AshesOfVelsingrad_Managers_SettingsManager_SettingsChanged
+  href: api/AshesOfVelsingrad.Managers.SettingsManager.html#AshesOfVelsingrad_Managers_SettingsManager_SettingsChanged
   commentId: E:AshesOfVelsingrad.Managers.SettingsManager.SettingsChanged
   fullName: AshesOfVelsingrad.Managers.SettingsManager.SettingsChanged
   nameWithType: SettingsManager.SettingsChanged
 - uid: AshesOfVelsingrad.UI.Menus
   name: AshesOfVelsingrad.UI.Menus
-  href: documentation/api/AshesOfVelsingrad.UI.Menus.html
+  href: api/AshesOfVelsingrad.UI.Menus.html
   commentId: N:AshesOfVelsingrad.UI.Menus
   fullName: AshesOfVelsingrad.UI.Menus
   nameWithType: AshesOfVelsingrad.UI.Menus
 - uid: AshesOfVelsingrad.UI.Menus.MainMenu
   name: MainMenu
-  href: documentation/api/AshesOfVelsingrad.UI.Menus.MainMenu.html
+  href: api/AshesOfVelsingrad.UI.Menus.MainMenu.html
   commentId: T:AshesOfVelsingrad.UI.Menus.MainMenu
   fullName: AshesOfVelsingrad.UI.Menus.MainMenu
   nameWithType: MainMenu
 - uid: AshesOfVelsingrad.UI.Menus.MainMenu.SetMenuManagerForTesting(AshesOfVelsingrad.Managers.MenuManager)
   name: SetMenuManagerForTesting(MenuManager)
-  href: documentation/api/AshesOfVelsingrad.UI.Menus.MainMenu.html#AshesOfVelsingrad_UI_Menus_MainMenu_SetMenuManagerForTesting_AshesOfVelsingrad_Managers_MenuManager_
+  href: api/AshesOfVelsingrad.UI.Menus.MainMenu.html#AshesOfVelsingrad_UI_Menus_MainMenu_SetMenuManagerForTesting_AshesOfVelsingrad_Managers_MenuManager_
   commentId: M:AshesOfVelsingrad.UI.Menus.MainMenu.SetMenuManagerForTesting(AshesOfVelsingrad.Managers.MenuManager)
   fullName: AshesOfVelsingrad.UI.Menus.MainMenu.SetMenuManagerForTesting(AshesOfVelsingrad.Managers.MenuManager)
   nameWithType: MainMenu.SetMenuManagerForTesting(MenuManager)
 - uid: AshesOfVelsingrad.UI.Menus.MainMenu.SetMenuManagerForTesting*
   name: SetMenuManagerForTesting
-  href: documentation/api/AshesOfVelsingrad.UI.Menus.MainMenu.html#AshesOfVelsingrad_UI_Menus_MainMenu_SetMenuManagerForTesting_
+  href: api/AshesOfVelsingrad.UI.Menus.MainMenu.html#AshesOfVelsingrad_UI_Menus_MainMenu_SetMenuManagerForTesting_
   commentId: Overload:AshesOfVelsingrad.UI.Menus.MainMenu.SetMenuManagerForTesting
   isSpec: "True"
   fullName: AshesOfVelsingrad.UI.Menus.MainMenu.SetMenuManagerForTesting
   nameWithType: MainMenu.SetMenuManagerForTesting
 - uid: AshesOfVelsingrad.UI.Menus.MainMenu._Ready
   name: _Ready()
-  href: documentation/api/AshesOfVelsingrad.UI.Menus.MainMenu.html#AshesOfVelsingrad_UI_Menus_MainMenu__Ready
+  href: api/AshesOfVelsingrad.UI.Menus.MainMenu.html#AshesOfVelsingrad_UI_Menus_MainMenu__Ready
   commentId: M:AshesOfVelsingrad.UI.Menus.MainMenu._Ready
   fullName: AshesOfVelsingrad.UI.Menus.MainMenu._Ready()
   nameWithType: MainMenu._Ready()
 - uid: AshesOfVelsingrad.UI.Menus.MainMenu._Ready*
   name: _Ready
-  href: documentation/api/AshesOfVelsingrad.UI.Menus.MainMenu.html#AshesOfVelsingrad_UI_Menus_MainMenu__Ready_
+  href: api/AshesOfVelsingrad.UI.Menus.MainMenu.html#AshesOfVelsingrad_UI_Menus_MainMenu__Ready_
   commentId: Overload:AshesOfVelsingrad.UI.Menus.MainMenu._Ready
   isSpec: "True"
   fullName: AshesOfVelsingrad.UI.Menus.MainMenu._Ready
   nameWithType: MainMenu._Ready
 - uid: AshesOfVelsingrad.UI.Menus.OptionsMenu
   name: OptionsMenu
-  href: documentation/api/AshesOfVelsingrad.UI.Menus.OptionsMenu.html
+  href: api/AshesOfVelsingrad.UI.Menus.OptionsMenu.html
   commentId: T:AshesOfVelsingrad.UI.Menus.OptionsMenu
   fullName: AshesOfVelsingrad.UI.Menus.OptionsMenu
   nameWithType: OptionsMenu
 - uid: AshesOfVelsingrad.UI.Menus.OptionsMenu.BackRequested
   name: BackRequested
-  href: documentation/api/AshesOfVelsingrad.UI.Menus.OptionsMenu.html#AshesOfVelsingrad_UI_Menus_OptionsMenu_BackRequested
+  href: api/AshesOfVelsingrad.UI.Menus.OptionsMenu.html#AshesOfVelsingrad_UI_Menus_OptionsMenu_BackRequested
   commentId: E:AshesOfVelsingrad.UI.Menus.OptionsMenu.BackRequested
   fullName: AshesOfVelsingrad.UI.Menus.OptionsMenu.BackRequested
   nameWithType: OptionsMenu.BackRequested
 - uid: AshesOfVelsingrad.UI.Menus.OptionsMenu.EmitSignalBackRequested
   name: EmitSignalBackRequested()
-  href: documentation/api/AshesOfVelsingrad.UI.Menus.OptionsMenu.html#AshesOfVelsingrad_UI_Menus_OptionsMenu_EmitSignalBackRequested
+  href: api/AshesOfVelsingrad.UI.Menus.OptionsMenu.html#AshesOfVelsingrad_UI_Menus_OptionsMenu_EmitSignalBackRequested
   commentId: M:AshesOfVelsingrad.UI.Menus.OptionsMenu.EmitSignalBackRequested
   fullName: AshesOfVelsingrad.UI.Menus.OptionsMenu.EmitSignalBackRequested()
   nameWithType: OptionsMenu.EmitSignalBackRequested()
 - uid: AshesOfVelsingrad.UI.Menus.OptionsMenu.EmitSignalBackRequested*
   name: EmitSignalBackRequested
-  href: documentation/api/AshesOfVelsingrad.UI.Menus.OptionsMenu.html#AshesOfVelsingrad_UI_Menus_OptionsMenu_EmitSignalBackRequested_
+  href: api/AshesOfVelsingrad.UI.Menus.OptionsMenu.html#AshesOfVelsingrad_UI_Menus_OptionsMenu_EmitSignalBackRequested_
   commentId: Overload:AshesOfVelsingrad.UI.Menus.OptionsMenu.EmitSignalBackRequested
   isSpec: "True"
   fullName: AshesOfVelsingrad.UI.Menus.OptionsMenu.EmitSignalBackRequested
   nameWithType: OptionsMenu.EmitSignalBackRequested
 - uid: AshesOfVelsingrad.UI.Menus.OptionsMenu.HideMenu
   name: HideMenu()
-  href: documentation/api/AshesOfVelsingrad.UI.Menus.OptionsMenu.html#AshesOfVelsingrad_UI_Menus_OptionsMenu_HideMenu
+  href: api/AshesOfVelsingrad.UI.Menus.OptionsMenu.html#AshesOfVelsingrad_UI_Menus_OptionsMenu_HideMenu
   commentId: M:AshesOfVelsingrad.UI.Menus.OptionsMenu.HideMenu
   fullName: AshesOfVelsingrad.UI.Menus.OptionsMenu.HideMenu()
   nameWithType: OptionsMenu.HideMenu()
 - uid: AshesOfVelsingrad.UI.Menus.OptionsMenu.HideMenu*
   name: HideMenu
-  href: documentation/api/AshesOfVelsingrad.UI.Menus.OptionsMenu.html#AshesOfVelsingrad_UI_Menus_OptionsMenu_HideMenu_
+  href: api/AshesOfVelsingrad.UI.Menus.OptionsMenu.html#AshesOfVelsingrad_UI_Menus_OptionsMenu_HideMenu_
   commentId: Overload:AshesOfVelsingrad.UI.Menus.OptionsMenu.HideMenu
   isSpec: "True"
   fullName: AshesOfVelsingrad.UI.Menus.OptionsMenu.HideMenu
   nameWithType: OptionsMenu.HideMenu
 - uid: AshesOfVelsingrad.UI.Menus.OptionsMenu.ShowMenu
   name: ShowMenu()
-  href: documentation/api/AshesOfVelsingrad.UI.Menus.OptionsMenu.html#AshesOfVelsingrad_UI_Menus_OptionsMenu_ShowMenu
+  href: api/AshesOfVelsingrad.UI.Menus.OptionsMenu.html#AshesOfVelsingrad_UI_Menus_OptionsMenu_ShowMenu
   commentId: M:AshesOfVelsingrad.UI.Menus.OptionsMenu.ShowMenu
   fullName: AshesOfVelsingrad.UI.Menus.OptionsMenu.ShowMenu()
   nameWithType: OptionsMenu.ShowMenu()
 - uid: AshesOfVelsingrad.UI.Menus.OptionsMenu.ShowMenu*
   name: ShowMenu
-  href: documentation/api/AshesOfVelsingrad.UI.Menus.OptionsMenu.html#AshesOfVelsingrad_UI_Menus_OptionsMenu_ShowMenu_
+  href: api/AshesOfVelsingrad.UI.Menus.OptionsMenu.html#AshesOfVelsingrad_UI_Menus_OptionsMenu_ShowMenu_
   commentId: Overload:AshesOfVelsingrad.UI.Menus.OptionsMenu.ShowMenu
   isSpec: "True"
   fullName: AshesOfVelsingrad.UI.Menus.OptionsMenu.ShowMenu
   nameWithType: OptionsMenu.ShowMenu
 - uid: AshesOfVelsingrad.UI.Menus.OptionsMenu._Ready
   name: _Ready()
-  href: documentation/api/AshesOfVelsingrad.UI.Menus.OptionsMenu.html#AshesOfVelsingrad_UI_Menus_OptionsMenu__Ready
+  href: api/AshesOfVelsingrad.UI.Menus.OptionsMenu.html#AshesOfVelsingrad_UI_Menus_OptionsMenu__Ready
   commentId: M:AshesOfVelsingrad.UI.Menus.OptionsMenu._Ready
   fullName: AshesOfVelsingrad.UI.Menus.OptionsMenu._Ready()
   nameWithType: OptionsMenu._Ready()
 - uid: AshesOfVelsingrad.UI.Menus.OptionsMenu._Ready*
   name: _Ready
-  href: documentation/api/AshesOfVelsingrad.UI.Menus.OptionsMenu.html#AshesOfVelsingrad_UI_Menus_OptionsMenu__Ready_
+  href: api/AshesOfVelsingrad.UI.Menus.OptionsMenu.html#AshesOfVelsingrad_UI_Menus_OptionsMenu__Ready_
   commentId: Overload:AshesOfVelsingrad.UI.Menus.OptionsMenu._Ready
   isSpec: "True"
   fullName: AshesOfVelsingrad.UI.Menus.OptionsMenu._Ready

@@ -2,18 +2,18 @@
 <html>
   <head>
     <meta charset="utf-8">
-      <title>Class MenuManager | Ashes of Velsingrad Documentation </title>
+      <title>Class OptionsMenu | Ashes of Velsingrad Documentation </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content="Class MenuManager | Ashes of Velsingrad Documentation ">
+      <meta name="title" content="Class OptionsMenu | Ashes of Velsingrad Documentation ">
       
-      <meta name="description" content="Manages menu navigation and state. Coordinates between different menus following the Manager Pattern.">
-      <link rel="icon" href="../../favicon.ico">
-      <link rel="stylesheet" href="../../public/docfx.min.css">
-      <link rel="stylesheet" href="../../public/main.css">
-      <meta name="docfx:navrel" content="">
+      <meta name="description" content="Options menu that allows players to configure game settings. Follows the Component-Based Architecture and event-driven communication. Implements the Manager Pattern for centralized settings management.">
+      <link rel="icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
       <meta name="docfx:tocrel" content="toc.html">
       
-      <meta name="docfx:rel" content="../../">
+      <meta name="docfx:rel" content="../">
       
       
       
@@ -30,7 +30,7 @@
       <meta name="loc:copy" content="Copy">
       <meta name="loc:downloadPdf" content="Download PDF">
 
-      <script type="module" src="./../../public/docfx.min.js"></script>
+      <script type="module" src="./../public/docfx.min.js"></script>
 
       <script>
         const theme = localStorage.getItem('theme') || 'auto'
@@ -43,8 +43,8 @@
     <header class="bg-body border-bottom">
       <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
         <div class="container-xxl flex-nowrap">
-          <a class="navbar-brand" href="../../index.html">
-            <img id="logo" class="svg" src="../../documentation/images/logo-doc.png" alt="Ashes of Velsingrad" style="height: 40px; width: auto;">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../images/logo-doc.png" alt="Ashes of Velsingrad" style="height: 40px; width: auto;">
             Ashes of Velsingrad
           </a>
           <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
@@ -84,27 +84,28 @@
           <nav id="breadcrumb"></nav>
         </div>
 
-        <article data-uid="AshesOfVelsingrad.Managers.MenuManager">
+        <article data-uid="AshesOfVelsingrad.UI.Menus.OptionsMenu">
 
 
 
-  <h1 id="AshesOfVelsingrad_Managers_MenuManager" data-uid="AshesOfVelsingrad.Managers.MenuManager" class="text-break">
-Class MenuManager  
+  <h1 id="AshesOfVelsingrad_UI_Menus_OptionsMenu" data-uid="AshesOfVelsingrad.UI.Menus.OptionsMenu" class="text-break">
+Class OptionsMenu  
   </h1>
 
   <div class="facts text-secondary">
-    <dl><dt>Namespace</dt><dd><a class="xref" href="AshesOfVelsingrad.html">AshesOfVelsingrad</a>.<a class="xref" href="AshesOfVelsingrad.Managers.html">Managers</a></dd></dl>
+    <dl><dt>Namespace</dt><dd><a class="xref" href="AshesOfVelsingrad.html">AshesOfVelsingrad</a>.<a class="xref" href="AshesOfVelsingrad.UI.html">UI</a>.<a class="xref" href="AshesOfVelsingrad.UI.Menus.html">Menus</a></dd></dl>
   <dl><dt>Assembly</dt><dd>Ashes of Velsingrad.dll</dd></dl>
   </div>
 
-  <div class="markdown summary"><p>Manages menu navigation and state.
-Coordinates between different menus following the Manager Pattern.</p>
+  <div class="markdown summary"><p>Options menu that allows players to configure game settings.
+Follows the Component-Based Architecture and event-driven communication.
+Implements the Manager Pattern for centralized settings management.</p>
 </div>
   <div class="markdown conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[ScriptPath(&quot;res://scripts/managers/MenuManager.cs&quot;)]
-public class MenuManager : BaseManager, IDisposable</code></pre>
+    <pre><code class="lang-csharp hljs">[ScriptPath(&quot;res://scripts/ui/menus/OptionsMenu.cs&quot;)]
+public class OptionsMenu : Control, IDisposable</code></pre>
   </div>
 
 
@@ -116,8 +117,9 @@ public class MenuManager : BaseManager, IDisposable</code></pre>
       <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
       <div><span class="xref">GodotObject</span></div>
       <div><span class="xref">Node</span></div>
-      <div><a class="xref" href="AshesOfVelsingrad.Managers.BaseManager.html">BaseManager</a></div>
-      <div><span class="xref">MenuManager</span></div>
+      <div><span class="xref">CanvasItem</span></div>
+      <div><span class="xref">Control</span></div>
+      <div><span class="xref">OptionsMenu</span></div>
     </dd>
   </dl>
 
@@ -133,13 +135,754 @@ public class MenuManager : BaseManager, IDisposable</code></pre>
     <dt>Inherited Members</dt>
     <dd>
     <div>
-      <a class="xref" href="AshesOfVelsingrad.Managers.BaseManager.html#AshesOfVelsingrad_Managers_BaseManager__Ready">BaseManager._Ready()</a>
+      <span class="xref">Control.NotificationResized</span>
     </div>
     <div>
-      <a class="xref" href="AshesOfVelsingrad.Managers.BaseManager.html#AshesOfVelsingrad_Managers_BaseManager__ExitTree">BaseManager._ExitTree()</a>
+      <span class="xref">Control.NotificationMouseEnter</span>
     </div>
     <div>
-      <a class="xref" href="AshesOfVelsingrad.Managers.BaseManager.html#AshesOfVelsingrad_Managers_BaseManager_Cleanup">BaseManager.Cleanup()</a>
+      <span class="xref">Control.NotificationMouseExit</span>
+    </div>
+    <div>
+      <span class="xref">Control.NotificationMouseEnterSelf</span>
+    </div>
+    <div>
+      <span class="xref">Control.NotificationMouseExitSelf</span>
+    </div>
+    <div>
+      <span class="xref">Control.NotificationFocusEnter</span>
+    </div>
+    <div>
+      <span class="xref">Control.NotificationFocusExit</span>
+    </div>
+    <div>
+      <span class="xref">Control.NotificationThemeChanged</span>
+    </div>
+    <div>
+      <span class="xref">Control.NotificationScrollBegin</span>
+    </div>
+    <div>
+      <span class="xref">Control.NotificationScrollEnd</span>
+    </div>
+    <div>
+      <span class="xref">Control.NotificationLayoutDirectionChanged</span>
+    </div>
+    <div>
+      <span class="xref">Control._CanDropData(Vector2, Variant)</span>
+    </div>
+    <div>
+      <span class="xref">Control._DropData(Vector2, Variant)</span>
+    </div>
+    <div>
+      <span class="xref">Control._GetDragData(Vector2)</span>
+    </div>
+    <div>
+      <span class="xref">Control._GetMinimumSize()</span>
+    </div>
+    <div>
+      <span class="xref">Control._GetTooltip(Vector2)</span>
+    </div>
+    <div>
+      <span class="xref">Control._GuiInput(InputEvent)</span>
+    </div>
+    <div>
+      <span class="xref">Control._HasPoint(Vector2)</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">Control._MakeCustomTooltip(string)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">Control._StructuredTextParser(Array, string)</a>
+    </div>
+    <div>
+      <span class="xref">Control.AcceptEvent()</span>
+    </div>
+    <div>
+      <span class="xref">Control.GetMinimumSize()</span>
+    </div>
+    <div>
+      <span class="xref">Control.GetCombinedMinimumSize()</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Control.SetAnchorsPreset(Control.LayoutPreset, bool)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Control.SetOffsetsPreset(Control.LayoutPreset, Control.LayoutPresetMode, int)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Control.SetAnchorsAndOffsetsPreset(Control.LayoutPreset, Control.LayoutPresetMode, int)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">Control.SetAnchor(Side, float, bool, bool)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">Control.SetAnchorAndOffset(Side, float, float, bool)</a>
+    </div>
+    <div>
+      <span class="xref">Control.SetBegin(Vector2)</span>
+    </div>
+    <div>
+      <span class="xref">Control.SetEnd(Vector2)</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Control.SetPosition(Vector2, bool)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Control.SetSize(Vector2, bool)</a>
+    </div>
+    <div>
+      <span class="xref">Control.ResetSize()</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Control.SetGlobalPosition(Vector2, bool)</a>
+    </div>
+    <div>
+      <span class="xref">Control.GetBegin()</span>
+    </div>
+    <div>
+      <span class="xref">Control.GetEnd()</span>
+    </div>
+    <div>
+      <span class="xref">Control.GetParentAreaSize()</span>
+    </div>
+    <div>
+      <span class="xref">Control.GetScreenPosition()</span>
+    </div>
+    <div>
+      <span class="xref">Control.GetRect()</span>
+    </div>
+    <div>
+      <span class="xref">Control.GetGlobalRect()</span>
+    </div>
+    <div>
+      <span class="xref">Control.HasFocus()</span>
+    </div>
+    <div>
+      <span class="xref">Control.GrabFocus()</span>
+    </div>
+    <div>
+      <span class="xref">Control.ReleaseFocus()</span>
+    </div>
+    <div>
+      <span class="xref">Control.FindPrevValidFocus()</span>
+    </div>
+    <div>
+      <span class="xref">Control.FindNextValidFocus()</span>
+    </div>
+    <div>
+      <span class="xref">Control.FindValidFocusNeighbor(Side)</span>
+    </div>
+    <div>
+      <span class="xref">Control.BeginBulkThemeOverride()</span>
+    </div>
+    <div>
+      <span class="xref">Control.EndBulkThemeOverride()</span>
+    </div>
+    <div>
+      <span class="xref">Control.AddThemeIconOverride(StringName, Texture2D)</span>
+    </div>
+    <div>
+      <span class="xref">Control.AddThemeStyleboxOverride(StringName, StyleBox)</span>
+    </div>
+    <div>
+      <span class="xref">Control.AddThemeFontOverride(StringName, Font)</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Control.AddThemeFontSizeOverride(StringName, int)</a>
+    </div>
+    <div>
+      <span class="xref">Control.AddThemeColorOverride(StringName, Color)</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Control.AddThemeConstantOverride(StringName, int)</a>
+    </div>
+    <div>
+      <span class="xref">Control.RemoveThemeIconOverride(StringName)</span>
+    </div>
+    <div>
+      <span class="xref">Control.RemoveThemeStyleboxOverride(StringName)</span>
+    </div>
+    <div>
+      <span class="xref">Control.RemoveThemeFontOverride(StringName)</span>
+    </div>
+    <div>
+      <span class="xref">Control.RemoveThemeFontSizeOverride(StringName)</span>
+    </div>
+    <div>
+      <span class="xref">Control.RemoveThemeColorOverride(StringName)</span>
+    </div>
+    <div>
+      <span class="xref">Control.RemoveThemeConstantOverride(StringName)</span>
+    </div>
+    <div>
+      <span class="xref">Control.GetThemeIcon(StringName, StringName)</span>
+    </div>
+    <div>
+      <span class="xref">Control.GetThemeStylebox(StringName, StringName)</span>
+    </div>
+    <div>
+      <span class="xref">Control.GetThemeFont(StringName, StringName)</span>
+    </div>
+    <div>
+      <span class="xref">Control.GetThemeFontSize(StringName, StringName)</span>
+    </div>
+    <div>
+      <span class="xref">Control.GetThemeColor(StringName, StringName)</span>
+    </div>
+    <div>
+      <span class="xref">Control.GetThemeConstant(StringName, StringName)</span>
+    </div>
+    <div>
+      <span class="xref">Control.HasThemeIconOverride(StringName)</span>
+    </div>
+    <div>
+      <span class="xref">Control.HasThemeStyleboxOverride(StringName)</span>
+    </div>
+    <div>
+      <span class="xref">Control.HasThemeFontOverride(StringName)</span>
+    </div>
+    <div>
+      <span class="xref">Control.HasThemeFontSizeOverride(StringName)</span>
+    </div>
+    <div>
+      <span class="xref">Control.HasThemeColorOverride(StringName)</span>
+    </div>
+    <div>
+      <span class="xref">Control.HasThemeConstantOverride(StringName)</span>
+    </div>
+    <div>
+      <span class="xref">Control.HasThemeIcon(StringName, StringName)</span>
+    </div>
+    <div>
+      <span class="xref">Control.HasThemeStylebox(StringName, StringName)</span>
+    </div>
+    <div>
+      <span class="xref">Control.HasThemeFont(StringName, StringName)</span>
+    </div>
+    <div>
+      <span class="xref">Control.HasThemeFontSize(StringName, StringName)</span>
+    </div>
+    <div>
+      <span class="xref">Control.HasThemeColor(StringName, StringName)</span>
+    </div>
+    <div>
+      <span class="xref">Control.HasThemeConstant(StringName, StringName)</span>
+    </div>
+    <div>
+      <span class="xref">Control.GetThemeDefaultBaseScale()</span>
+    </div>
+    <div>
+      <span class="xref">Control.GetThemeDefaultFont()</span>
+    </div>
+    <div>
+      <span class="xref">Control.GetThemeDefaultFontSize()</span>
+    </div>
+    <div>
+      <span class="xref">Control.GetParentControl()</span>
+    </div>
+    <div>
+      <span class="xref">Control.GetTooltip(Vector2?)</span>
+    </div>
+    <div>
+      <span class="xref">Control.GetCursorShape(Vector2?)</span>
+    </div>
+    <div>
+      <span class="xref">Control.ForceDrag(Variant, Control)</span>
+    </div>
+    <div>
+      <span class="xref">Control.GrabClickFocus()</span>
+    </div>
+    <div>
+      <span class="xref">Control.SetDragForwarding(Callable, Callable, Callable)</span>
+    </div>
+    <div>
+      <span class="xref">Control.SetDragPreview(Control)</span>
+    </div>
+    <div>
+      <span class="xref">Control.IsDragSuccessful()</span>
+    </div>
+    <div>
+      <span class="xref">Control.WarpMouse(Vector2)</span>
+    </div>
+    <div>
+      <span class="xref">Control.UpdateMinimumSize()</span>
+    </div>
+    <div>
+      <span class="xref">Control.IsLayoutRtl()</span>
+    </div>
+    <div>
+      <span class="xref">Control.EmitSignalResized()</span>
+    </div>
+    <div>
+      <span class="xref">Control.EmitSignalGuiInput(InputEvent)</span>
+    </div>
+    <div>
+      <span class="xref">Control.EmitSignalMouseEntered()</span>
+    </div>
+    <div>
+      <span class="xref">Control.EmitSignalMouseExited()</span>
+    </div>
+    <div>
+      <span class="xref">Control.EmitSignalFocusEntered()</span>
+    </div>
+    <div>
+      <span class="xref">Control.EmitSignalFocusExited()</span>
+    </div>
+    <div>
+      <span class="xref">Control.EmitSignalSizeFlagsChanged()</span>
+    </div>
+    <div>
+      <span class="xref">Control.EmitSignalMinimumSizeChanged()</span>
+    </div>
+    <div>
+      <span class="xref">Control.EmitSignalThemeChanged()</span>
+    </div>
+    <div>
+      <span class="xref">Control.InvokeGodotClassMethod(in godot_string_name, NativeVariantPtrArgs, out godot_variant)</span>
+    </div>
+    <div>
+      <span class="xref">Control.HasGodotClassMethod(in godot_string_name)</span>
+    </div>
+    <div>
+      <span class="xref">Control.HasGodotClassSignal(in godot_string_name)</span>
+    </div>
+    <div>
+      <span class="xref">Control.ClipContents</span>
+    </div>
+    <div>
+      <span class="xref">Control.CustomMinimumSize</span>
+    </div>
+    <div>
+      <span class="xref">Control.LayoutDirection</span>
+    </div>
+    <div>
+      <span class="xref">Control.AnchorLeft</span>
+    </div>
+    <div>
+      <span class="xref">Control.AnchorTop</span>
+    </div>
+    <div>
+      <span class="xref">Control.AnchorRight</span>
+    </div>
+    <div>
+      <span class="xref">Control.AnchorBottom</span>
+    </div>
+    <div>
+      <span class="xref">Control.OffsetLeft</span>
+    </div>
+    <div>
+      <span class="xref">Control.OffsetTop</span>
+    </div>
+    <div>
+      <span class="xref">Control.OffsetRight</span>
+    </div>
+    <div>
+      <span class="xref">Control.OffsetBottom</span>
+    </div>
+    <div>
+      <span class="xref">Control.GrowHorizontal</span>
+    </div>
+    <div>
+      <span class="xref">Control.GrowVertical</span>
+    </div>
+    <div>
+      <span class="xref">Control.Size</span>
+    </div>
+    <div>
+      <span class="xref">Control.Position</span>
+    </div>
+    <div>
+      <span class="xref">Control.GlobalPosition</span>
+    </div>
+    <div>
+      <span class="xref">Control.Rotation</span>
+    </div>
+    <div>
+      <span class="xref">Control.RotationDegrees</span>
+    </div>
+    <div>
+      <span class="xref">Control.Scale</span>
+    </div>
+    <div>
+      <span class="xref">Control.PivotOffset</span>
+    </div>
+    <div>
+      <span class="xref">Control.SizeFlagsHorizontal</span>
+    </div>
+    <div>
+      <span class="xref">Control.SizeFlagsVertical</span>
+    </div>
+    <div>
+      <span class="xref">Control.SizeFlagsStretchRatio</span>
+    </div>
+    <div>
+      <span class="xref">Control.LocalizeNumeralSystem</span>
+    </div>
+    <div>
+      <span class="xref">Control.AutoTranslate</span>
+    </div>
+    <div>
+      <span class="xref">Control.TooltipText</span>
+    </div>
+    <div>
+      <span class="xref">Control.TooltipAutoTranslateMode</span>
+    </div>
+    <div>
+      <span class="xref">Control.FocusNeighborLeft</span>
+    </div>
+    <div>
+      <span class="xref">Control.FocusNeighborTop</span>
+    </div>
+    <div>
+      <span class="xref">Control.FocusNeighborRight</span>
+    </div>
+    <div>
+      <span class="xref">Control.FocusNeighborBottom</span>
+    </div>
+    <div>
+      <span class="xref">Control.FocusNext</span>
+    </div>
+    <div>
+      <span class="xref">Control.FocusPrevious</span>
+    </div>
+    <div>
+      <span class="xref">Control.FocusMode</span>
+    </div>
+    <div>
+      <span class="xref">Control.MouseFilter</span>
+    </div>
+    <div>
+      <span class="xref">Control.MouseForcePassScrollEvents</span>
+    </div>
+    <div>
+      <span class="xref">Control.MouseDefaultCursorShape</span>
+    </div>
+    <div>
+      <span class="xref">Control.ShortcutContext</span>
+    </div>
+    <div>
+      <span class="xref">Control.Theme</span>
+    </div>
+    <div>
+      <span class="xref">Control.ThemeTypeVariation</span>
+    </div>
+    <div>
+      <span class="xref">Control.Resized</span>
+    </div>
+    <div>
+      <span class="xref">Control.GuiInput</span>
+    </div>
+    <div>
+      <span class="xref">Control.MouseEntered</span>
+    </div>
+    <div>
+      <span class="xref">Control.MouseExited</span>
+    </div>
+    <div>
+      <span class="xref">Control.FocusEntered</span>
+    </div>
+    <div>
+      <span class="xref">Control.FocusExited</span>
+    </div>
+    <div>
+      <span class="xref">Control.SizeFlagsChanged</span>
+    </div>
+    <div>
+      <span class="xref">Control.MinimumSizeChanged</span>
+    </div>
+    <div>
+      <span class="xref">Control.ThemeChanged</span>
+    </div>
+    <div>
+      <span class="xref">CanvasItem.NotificationTransformChanged</span>
+    </div>
+    <div>
+      <span class="xref">CanvasItem.NotificationLocalTransformChanged</span>
+    </div>
+    <div>
+      <span class="xref">CanvasItem.NotificationDraw</span>
+    </div>
+    <div>
+      <span class="xref">CanvasItem.NotificationVisibilityChanged</span>
+    </div>
+    <div>
+      <span class="xref">CanvasItem.NotificationEnterCanvas</span>
+    </div>
+    <div>
+      <span class="xref">CanvasItem.NotificationExitCanvas</span>
+    </div>
+    <div>
+      <span class="xref">CanvasItem.NotificationWorld2DChanged</span>
+    </div>
+    <div>
+      <span class="xref">CanvasItem._Draw()</span>
+    </div>
+    <div>
+      <span class="xref">CanvasItem.GetCanvasItem()</span>
+    </div>
+    <div>
+      <span class="xref">CanvasItem.IsVisibleInTree()</span>
+    </div>
+    <div>
+      <span class="xref">CanvasItem.Show()</span>
+    </div>
+    <div>
+      <span class="xref">CanvasItem.Hide()</span>
+    </div>
+    <div>
+      <span class="xref">CanvasItem.QueueRedraw()</span>
+    </div>
+    <div>
+      <span class="xref">CanvasItem.MoveToFront()</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">CanvasItem.DrawLine(Vector2, Vector2, Color, float, bool)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">CanvasItem.DrawDashedLine(Vector2, Vector2, Color, float, float, bool, bool)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">CanvasItem.DrawPolyline(Vector2[], Color, float, bool)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.readonlyspan-1">CanvasItem.DrawPolyline(ReadOnlySpan&lt;Vector2&gt;, Color, float, bool)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">CanvasItem.DrawPolylineColors(Vector2[], Color[], float, bool)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.readonlyspan-1">CanvasItem.DrawPolylineColors(ReadOnlySpan&lt;Vector2&gt;, ReadOnlySpan&lt;Color&gt;, float, bool)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">CanvasItem.DrawArc(Vector2, float, float, float, int, Color, float, bool)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">CanvasItem.DrawMultiline(Vector2[], Color, float, bool)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.readonlyspan-1">CanvasItem.DrawMultiline(ReadOnlySpan&lt;Vector2&gt;, Color, float, bool)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">CanvasItem.DrawMultilineColors(Vector2[], Color[], float, bool)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.readonlyspan-1">CanvasItem.DrawMultilineColors(ReadOnlySpan&lt;Vector2&gt;, ReadOnlySpan&lt;Color&gt;, float, bool)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">CanvasItem.DrawRect(Rect2, Color, bool, float, bool)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">CanvasItem.DrawCircle(Vector2, float, Color, bool, float, bool)</a>
+    </div>
+    <div>
+      <span class="xref">CanvasItem.DrawTexture(Texture2D, Vector2, Color?)</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">CanvasItem.DrawTextureRect(Texture2D, Rect2, bool, Color?, bool)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">CanvasItem.DrawTextureRectRegion(Texture2D, Rect2, Rect2, Color?, bool, bool)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">CanvasItem.DrawMsdfTextureRectRegion(Texture2D, Rect2, Rect2, Color?, double, double, double)</a>
+    </div>
+    <div>
+      <span class="xref">CanvasItem.DrawLcdTextureRectRegion(Texture2D, Rect2, Rect2, Color?)</span>
+    </div>
+    <div>
+      <span class="xref">CanvasItem.DrawStyleBox(StyleBox, Rect2)</span>
+    </div>
+    <div>
+      <span class="xref">CanvasItem.DrawPrimitive(Vector2[], Color[], Vector2[], Texture2D)</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.readonlyspan-1">CanvasItem.DrawPrimitive(ReadOnlySpan&lt;Vector2&gt;, ReadOnlySpan&lt;Color&gt;, ReadOnlySpan&lt;Vector2&gt;, Texture2D)</a>
+    </div>
+    <div>
+      <span class="xref">CanvasItem.DrawPolygon(Vector2[], Color[], Vector2[], Texture2D)</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.readonlyspan-1">CanvasItem.DrawPolygon(ReadOnlySpan&lt;Vector2&gt;, ReadOnlySpan&lt;Color&gt;, ReadOnlySpan&lt;Vector2&gt;, Texture2D)</a>
+    </div>
+    <div>
+      <span class="xref">CanvasItem.DrawColoredPolygon(Vector2[], Color, Vector2[], Texture2D)</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.readonlyspan-1">CanvasItem.DrawColoredPolygon(ReadOnlySpan&lt;Vector2&gt;, Color, ReadOnlySpan&lt;Vector2&gt;, Texture2D)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">CanvasItem.DrawString(Font, Vector2, string, HorizontalAlignment, float, int, Color?, TextServer.JustificationFlag, TextServer.Direction, TextServer.Orientation)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">CanvasItem.DrawMultilineString(Font, Vector2, string, HorizontalAlignment, float, int, int, Color?, TextServer.LineBreakFlag, TextServer.JustificationFlag, TextServer.Direction, TextServer.Orientation)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">CanvasItem.DrawStringOutline(Font, Vector2, string, HorizontalAlignment, float, int, int, Color?, TextServer.JustificationFlag, TextServer.Direction, TextServer.Orientation)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">CanvasItem.DrawMultilineStringOutline(Font, Vector2, string, HorizontalAlignment, float, int, int, int, Color?, TextServer.LineBreakFlag, TextServer.JustificationFlag, TextServer.Direction, TextServer.Orientation)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">CanvasItem.DrawChar(Font, Vector2, string, int, Color?)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">CanvasItem.DrawCharOutline(Font, Vector2, string, int, int, Color?)</a>
+    </div>
+    <div>
+      <span class="xref">CanvasItem.DrawMesh(Mesh, Texture2D, Transform2D?, Color?)</span>
+    </div>
+    <div>
+      <span class="xref">CanvasItem.DrawMultimesh(MultiMesh, Texture2D)</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">CanvasItem.DrawSetTransform(Vector2, float, Vector2?)</a>
+    </div>
+    <div>
+      <span class="xref">CanvasItem.DrawSetTransformMatrix(Transform2D)</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">CanvasItem.DrawAnimationSlice(double, double, double, double)</a>
+    </div>
+    <div>
+      <span class="xref">CanvasItem.DrawEndAnimation()</span>
+    </div>
+    <div>
+      <span class="xref">CanvasItem.GetTransform()</span>
+    </div>
+    <div>
+      <span class="xref">CanvasItem.GetGlobalTransform()</span>
+    </div>
+    <div>
+      <span class="xref">CanvasItem.GetGlobalTransformWithCanvas()</span>
+    </div>
+    <div>
+      <span class="xref">CanvasItem.GetViewportTransform()</span>
+    </div>
+    <div>
+      <span class="xref">CanvasItem.GetViewportRect()</span>
+    </div>
+    <div>
+      <span class="xref">CanvasItem.GetCanvasTransform()</span>
+    </div>
+    <div>
+      <span class="xref">CanvasItem.GetScreenTransform()</span>
+    </div>
+    <div>
+      <span class="xref">CanvasItem.GetLocalMousePosition()</span>
+    </div>
+    <div>
+      <span class="xref">CanvasItem.GetGlobalMousePosition()</span>
+    </div>
+    <div>
+      <span class="xref">CanvasItem.GetCanvas()</span>
+    </div>
+    <div>
+      <span class="xref">CanvasItem.GetCanvasLayerNode()</span>
+    </div>
+    <div>
+      <span class="xref">CanvasItem.GetWorld2D()</span>
+    </div>
+    <div>
+      <span class="xref">CanvasItem.SetInstanceShaderParameter(StringName, Variant)</span>
+    </div>
+    <div>
+      <span class="xref">CanvasItem.GetInstanceShaderParameter(StringName)</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">CanvasItem.SetNotifyLocalTransform(bool)</a>
+    </div>
+    <div>
+      <span class="xref">CanvasItem.IsLocalTransformNotificationEnabled()</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">CanvasItem.SetNotifyTransform(bool)</a>
+    </div>
+    <div>
+      <span class="xref">CanvasItem.IsTransformNotificationEnabled()</span>
+    </div>
+    <div>
+      <span class="xref">CanvasItem.ForceUpdateTransform()</span>
+    </div>
+    <div>
+      <span class="xref">CanvasItem.MakeCanvasPositionLocal(Vector2)</span>
+    </div>
+    <div>
+      <span class="xref">CanvasItem.MakeInputLocal(InputEvent)</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint32">CanvasItem.SetVisibilityLayerBit(uint, bool)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint32">CanvasItem.GetVisibilityLayerBit(uint)</a>
+    </div>
+    <div>
+      <span class="xref">CanvasItem.EmitSignalDraw()</span>
+    </div>
+    <div>
+      <span class="xref">CanvasItem.EmitSignalVisibilityChanged()</span>
+    </div>
+    <div>
+      <span class="xref">CanvasItem.EmitSignalHidden()</span>
+    </div>
+    <div>
+      <span class="xref">CanvasItem.EmitSignalItemRectChanged()</span>
+    </div>
+    <div>
+      <span class="xref">CanvasItem.Visible</span>
+    </div>
+    <div>
+      <span class="xref">CanvasItem.Modulate</span>
+    </div>
+    <div>
+      <span class="xref">CanvasItem.SelfModulate</span>
+    </div>
+    <div>
+      <span class="xref">CanvasItem.ShowBehindParent</span>
+    </div>
+    <div>
+      <span class="xref">CanvasItem.TopLevel</span>
+    </div>
+    <div>
+      <span class="xref">CanvasItem.ClipChildren</span>
+    </div>
+    <div>
+      <span class="xref">CanvasItem.LightMask</span>
+    </div>
+    <div>
+      <span class="xref">CanvasItem.VisibilityLayer</span>
+    </div>
+    <div>
+      <span class="xref">CanvasItem.ZIndex</span>
+    </div>
+    <div>
+      <span class="xref">CanvasItem.ZAsRelative</span>
+    </div>
+    <div>
+      <span class="xref">CanvasItem.YSortEnabled</span>
+    </div>
+    <div>
+      <span class="xref">CanvasItem.TextureFilter</span>
+    </div>
+    <div>
+      <span class="xref">CanvasItem.TextureRepeat</span>
+    </div>
+    <div>
+      <span class="xref">CanvasItem.Material</span>
+    </div>
+    <div>
+      <span class="xref">CanvasItem.UseParentMaterial</span>
+    </div>
+    <div>
+      <span class="xref">CanvasItem.Draw</span>
+    </div>
+    <div>
+      <span class="xref">CanvasItem.VisibilityChanged</span>
+    </div>
+    <div>
+      <span class="xref">CanvasItem.Hidden</span>
+    </div>
+    <div>
+      <span class="xref">CanvasItem.ItemRectChanged</span>
     </div>
     <div>
       <span class="xref">Node.NotificationEnterTree</span>
@@ -299,6 +1042,9 @@ public class MenuManager : BaseManager, IDisposable</code></pre>
     </div>
     <div>
       <span class="xref">Node._EnterTree()</span>
+    </div>
+    <div>
+      <span class="xref">Node._ExitTree()</span>
     </div>
     <div>
       <span class="xref">Node._GetConfigurationWarnings()</span>
@@ -637,15 +1383,6 @@ public class MenuManager : BaseManager, IDisposable</code></pre>
       <span class="xref">Node.EmitSignalEditorStateChanged()</span>
     </div>
     <div>
-      <span class="xref">Node.InvokeGodotClassMethod(in godot_string_name, NativeVariantPtrArgs, out godot_variant)</span>
-    </div>
-    <div>
-      <span class="xref">Node.HasGodotClassMethod(in godot_string_name)</span>
-    </div>
-    <div>
-      <span class="xref">Node.HasGodotClassSignal(in godot_string_name)</span>
-    </div>
-    <div>
       <span class="xref">Node.Name</span>
     </div>
     <div>
@@ -977,182 +1714,20 @@ public class MenuManager : BaseManager, IDisposable</code></pre>
 
 
 
-  <h2 id="AshesOfVelsingrad_Managers_MenuManager_remarks">Remarks</h2>
-  <div class="markdown level0 remarks"><p>This class is responsible for showing, hiding, and navigating between menus.
-It maintains a history of menus for back navigation and provides methods to register and unregister menus.
-It also emits signals when the current menu changes.</p>
+  <h2 id="AshesOfVelsingrad_UI_Menus_OptionsMenu_remarks">Remarks</h2>
+  <div class="markdown level0 remarks"><p>This menu is registered with the MenuManager for navigation.
+It provides options for adjusting dialogue size and resetting settings.</p>
 </div>
-
-
-  <h2 class="section" id="fields">Fields
-</h2>
-
-
-
-  <h3 id="AshesOfVelsingrad_Managers_MenuManager_MAIN_MENU" data-uid="AshesOfVelsingrad.Managers.MenuManager.MAIN_MENU">
-  MAIN_MENU
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/managers/MenuManager.cs/#L28"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public const string MAIN_MENU = &quot;main_menu&quot;</code></pre>
-  </div>
-
-
-
-
-  <h4 class="section">Field Value</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-  <h3 id="AshesOfVelsingrad_Managers_MenuManager_OPTIONS_MENU" data-uid="AshesOfVelsingrad.Managers.MenuManager.OPTIONS_MENU">
-  OPTIONS_MENU
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/managers/MenuManager.cs/#L29"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public const string OPTIONS_MENU = &quot;options_menu&quot;</code></pre>
-  </div>
-
-
-
-
-  <h4 class="section">Field Value</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-  <h3 id="AshesOfVelsingrad_Managers_MenuManager_PAUSE_MENU" data-uid="AshesOfVelsingrad.Managers.MenuManager.PAUSE_MENU">
-  PAUSE_MENU
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/managers/MenuManager.cs/#L30"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public const string PAUSE_MENU = &quot;pause_menu&quot;</code></pre>
-  </div>
-
-
-
-
-  <h4 class="section">Field Value</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-  <h2 class="section" id="properties">Properties
-</h2>
-
-
-  <a id="AshesOfVelsingrad_Managers_MenuManager_Instance_" data-uid="AshesOfVelsingrad.Managers.MenuManager.Instance*"></a>
-
-  <h3 id="AshesOfVelsingrad_Managers_MenuManager_Instance" data-uid="AshesOfVelsingrad.Managers.MenuManager.Instance">
-  Instance
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/managers/MenuManager.cs/#L18"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static MenuManager? Instance { get; protected set; }</code></pre>
-  </div>
-
-
-
-
-
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="AshesOfVelsingrad.Managers.MenuManager.html">MenuManager</a></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
 
 
   <h2 class="section" id="methods">Methods
 </h2>
 
 
-  <a id="AshesOfVelsingrad_Managers_MenuManager_ClearHistory_" data-uid="AshesOfVelsingrad.Managers.MenuManager.ClearHistory*"></a>
+  <a id="AshesOfVelsingrad_UI_Menus_OptionsMenu_EmitSignalBackRequested_" data-uid="AshesOfVelsingrad.UI.Menus.OptionsMenu.EmitSignalBackRequested*"></a>
 
-  <h3 id="AshesOfVelsingrad_Managers_MenuManager_ClearHistory" data-uid="AshesOfVelsingrad.Managers.MenuManager.ClearHistory">
-  ClearHistory()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/managers/MenuManager.cs/#L202"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Clears the menu history stack.
-This method removes all entries from the history stack, effectively resetting it.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public void ClearHistory()</code></pre>
-  </div>
-
-
-
-
-
-
-
-
-
-  <h4 class="section" id="AshesOfVelsingrad_Managers_MenuManager_ClearHistory_remarks">Remarks</h4>
-  <div class="markdown level1 remarks"><p>This method is useful when you want to reset the menu navigation state.
-It clears the history stack, so there are no previous menus to go back to.</p>
-</div>
-
-
-
-
-  <a id="AshesOfVelsingrad_Managers_MenuManager_EmitSignalMenuChanged_" data-uid="AshesOfVelsingrad.Managers.MenuManager.EmitSignalMenuChanged*"></a>
-
-  <h3 id="AshesOfVelsingrad_Managers_MenuManager_EmitSignalMenuChanged_System_String_" data-uid="AshesOfVelsingrad.Managers.MenuManager.EmitSignalMenuChanged(System.String)">
-  EmitSignalMenuChanged(string)
+  <h3 id="AshesOfVelsingrad_UI_Menus_OptionsMenu_EmitSignalBackRequested" data-uid="AshesOfVelsingrad.UI.Menus.OptionsMenu.EmitSignalBackRequested">
+  EmitSignalBackRequested()
   
   </h3>
 
@@ -1160,14 +1735,9 @@ It clears the history stack, so there are no previous menus to go back to.</p>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">protected void EmitSignalMenuChanged(string menuName)</code></pre>
+    <pre><code class="lang-csharp hljs">protected void EmitSignalBackRequested()</code></pre>
   </div>
 
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>menuName</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd></dd>
-  </dl>
 
 
 
@@ -1180,28 +1750,22 @@ It clears the history stack, so there are no previous menus to go back to.</p>
 
 
 
-  <a id="AshesOfVelsingrad_Managers_MenuManager_GetCurrentMenu_" data-uid="AshesOfVelsingrad.Managers.MenuManager.GetCurrentMenu*"></a>
+  <a id="AshesOfVelsingrad_UI_Menus_OptionsMenu_HideMenu_" data-uid="AshesOfVelsingrad.UI.Menus.OptionsMenu.HideMenu*"></a>
 
-  <h3 id="AshesOfVelsingrad_Managers_MenuManager_GetCurrentMenu" data-uid="AshesOfVelsingrad.Managers.MenuManager.GetCurrentMenu">
-  GetCurrentMenu()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/managers/MenuManager.cs/#L216"><i class="bi bi-code-slash"></i></a>
+  <h3 id="AshesOfVelsingrad_UI_Menus_OptionsMenu_HideMenu" data-uid="AshesOfVelsingrad.UI.Menus.OptionsMenu.HideMenu">
+  HideMenu()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/fix/docfx-error404/scripts/ui/menus/OptionsMenu.cs/#L267"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Gets the name of the current active menu.</p>
+  <div class="markdown level1 summary"><p>Hides the options menu with a fade-out animation effect.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public string? GetCurrentMenu()</code></pre>
+    <pre><code class="lang-csharp hljs">public void HideMenu()</code></pre>
   </div>
 
 
-  <h4 class="section">Returns</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd><p>The name of the current menu, or null if no menu is active.</p>
-</dd>
-  </dl>
 
 
 
@@ -1209,29 +1773,29 @@ It clears the history stack, so there are no previous menus to go back to.</p>
 
 
 
-  <h4 class="section" id="AshesOfVelsingrad_Managers_MenuManager_GetCurrentMenu_remarks">Remarks</h4>
-  <div class="markdown level1 remarks"><p>This method returns the name of the currently active menu.
-If no menu is currently active, it returns null.
-This can be useful for checking the current state of the menu system.</p>
+  <h4 class="section" id="AshesOfVelsingrad_UI_Menus_OptionsMenu_HideMenu_remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>This method animates the menu from fully visible to transparent, then hides it.
+Uses a Godot Tween for smooth visual transition over 0.3 seconds.
+The menu is actually hidden after the fade-out animation completes.
+Provides a polished user experience with smooth transitions.</p>
 </div>
 
 
 
 
-  <a id="AshesOfVelsingrad_Managers_MenuManager_GoBack_" data-uid="AshesOfVelsingrad.Managers.MenuManager.GoBack*"></a>
+  <a id="AshesOfVelsingrad_UI_Menus_OptionsMenu_ShowMenu_" data-uid="AshesOfVelsingrad.UI.Menus.OptionsMenu.ShowMenu*"></a>
 
-  <h3 id="AshesOfVelsingrad_Managers_MenuManager_GoBack" data-uid="AshesOfVelsingrad.Managers.MenuManager.GoBack">
-  GoBack()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/managers/MenuManager.cs/#L181"><i class="bi bi-code-slash"></i></a>
+  <h3 id="AshesOfVelsingrad_UI_Menus_OptionsMenu_ShowMenu" data-uid="AshesOfVelsingrad.UI.Menus.OptionsMenu.ShowMenu">
+  ShowMenu()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/fix/docfx-error404/scripts/ui/menus/OptionsMenu.cs/#L249"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Goes back to the previous menu in the history stack.
-If there is no previous menu, it prints a message indicating that.</p>
+  <div class="markdown level1 summary"><p>Shows the options menu with a fade-in animation effect.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public void GoBack()</code></pre>
+    <pre><code class="lang-csharp hljs">public void ShowMenu()</code></pre>
   </div>
 
 
@@ -1242,29 +1806,28 @@ If there is no previous menu, it prints a message indicating that.</p>
 
 
 
-  <h4 class="section" id="AshesOfVelsingrad_Managers_MenuManager_GoBack_remarks">Remarks</h4>
-  <div class="markdown level1 remarks"><p>This method pops the last menu from the history stack and shows it.
-If the history stack is empty, it prints a message indicating that there is no previous menu to go back to.
-It does not add the previous menu back to the history stack when going back.</p>
+  <h4 class="section" id="AshesOfVelsingrad_UI_Menus_OptionsMenu_ShowMenu_remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>This method makes the menu visible and animates it from transparent to fully opaque.
+Uses a Godot Tween for smooth visual transition over 0.3 seconds.
+The menu starts completely transparent and fades to full visibility.</p>
 </div>
 
 
 
 
-  <a id="AshesOfVelsingrad_Managers_MenuManager_Initialize_" data-uid="AshesOfVelsingrad.Managers.MenuManager.Initialize*"></a>
+  <a id="AshesOfVelsingrad_UI_Menus_OptionsMenu__Ready_" data-uid="AshesOfVelsingrad.UI.Menus.OptionsMenu._Ready*"></a>
 
-  <h3 id="AshesOfVelsingrad_Managers_MenuManager_Initialize" data-uid="AshesOfVelsingrad.Managers.MenuManager.Initialize">
-  Initialize()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/managers/MenuManager.cs/#L41"><i class="bi bi-code-slash"></i></a>
+  <h3 id="AshesOfVelsingrad_UI_Menus_OptionsMenu__Ready" data-uid="AshesOfVelsingrad.UI.Menus.OptionsMenu._Ready">
+  _Ready()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/fix/docfx-error404/scripts/ui/menus/OptionsMenu.cs/#L34"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Initializes the MenuManager singleton instance.
-Ensures only one instance exists and sets up the initial state.</p>
+  <div class="markdown level1 summary"><p>Called when the node is ready. Initializes the options menu by calling deferred setup.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">protected override void Initialize()</code></pre>
+    <pre><code class="lang-csharp hljs">public override void _Ready()</code></pre>
   </div>
 
 
@@ -1275,211 +1838,9 @@ Ensures only one instance exists and sets up the initial state.</p>
 
 
 
-  <h4 class="section" id="AshesOfVelsingrad_Managers_MenuManager_Initialize_remarks">Remarks</h4>
-  <div class="markdown level1 remarks"><p>This method is called automatically by Godot when the node is ready.
-It checks for duplicate instances and initializes the menu system.
-If a duplicate instance is found, it removes the duplicate.</p>
-</div>
-
-
-
-
-  <a id="AshesOfVelsingrad_Managers_MenuManager_IsMenuActive_" data-uid="AshesOfVelsingrad.Managers.MenuManager.IsMenuActive*"></a>
-
-  <h3 id="AshesOfVelsingrad_Managers_MenuManager_IsMenuActive_System_String_" data-uid="AshesOfVelsingrad.Managers.MenuManager.IsMenuActive(System.String)">
-  IsMenuActive(string)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/managers/MenuManager.cs/#L231"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Checks if a specific menu is currently active.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public bool IsMenuActive(string menuName)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>menuName</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd><p>The unique name of the menu to check.</p>
-</dd>
-  </dl>
-
-  <h4 class="section">Returns</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
-    <dd><p>True if the specified menu is active, otherwise false.</p>
-</dd>
-  </dl>
-
-
-
-
-
-
-
-  <h4 class="section" id="AshesOfVelsingrad_Managers_MenuManager_IsMenuActive_System_String__remarks">Remarks</h4>
-  <div class="markdown level1 remarks"><p>This method checks if the specified menu is currently the active menu.
-It compares the provided menu name with the current active menu name.
-This can be useful for UI logic that needs to know if a specific menu is currently displayed.</p>
-</div>
-
-
-
-
-  <a id="AshesOfVelsingrad_Managers_MenuManager_RegisterMenu_" data-uid="AshesOfVelsingrad.Managers.MenuManager.RegisterMenu*"></a>
-
-  <h3 id="AshesOfVelsingrad_Managers_MenuManager_RegisterMenu_System_String_Godot_Control_" data-uid="AshesOfVelsingrad.Managers.MenuManager.RegisterMenu(System.String,Godot.Control)">
-  RegisterMenu(string, Control)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/managers/MenuManager.cs/#L75"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Registers a menu with the MenuManager.
-Adds the menu to the internal dictionary and hides it by default.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public virtual void RegisterMenu(string menuName, Control menuControl)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>menuName</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd><p>The unique name of the menu to register.</p>
-</dd>
-    <dt><code>menuControl</code> <span class="xref">Control</span></dt>
-    <dd><p>The Control instance representing the menu.</p>
-</dd>
-  </dl>
-
-
-
-
-
-
-
-
-  <h4 class="section" id="AshesOfVelsingrad_Managers_MenuManager_RegisterMenu_System_String_Godot_Control__remarks">Remarks</h4>
-  <div class="markdown level1 remarks"><p>This method checks if the menu is already registered to avoid duplicates.
-If the menu is already registered, it prints an error message and does not add it again.
-It also connects back signals for navigation menus, such as OptionsMenu, to handle back navigation.</p>
-</div>
-
-
-
-
-  <a id="AshesOfVelsingrad_Managers_MenuManager_SetInstanceForTesting_" data-uid="AshesOfVelsingrad.Managers.MenuManager.SetInstanceForTesting*"></a>
-
-  <h3 id="AshesOfVelsingrad_Managers_MenuManager_SetInstanceForTesting_AshesOfVelsingrad_Managers_MenuManager_" data-uid="AshesOfVelsingrad.Managers.MenuManager.SetInstanceForTesting(AshesOfVelsingrad.Managers.MenuManager)">
-  SetInstanceForTesting(MenuManager?)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/managers/MenuManager.cs/#L59"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>FOR TESTING ONLY: Manually sets the singleton instance.
-This method should only be used in unit tests.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static void SetInstanceForTesting(MenuManager? instance)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>instance</code> <a class="xref" href="AshesOfVelsingrad.Managers.MenuManager.html">MenuManager</a></dt>
-    <dd><p>The instance to set as the singleton.</p>
-</dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-
-
-  <a id="AshesOfVelsingrad_Managers_MenuManager_ShowMenu_" data-uid="AshesOfVelsingrad.Managers.MenuManager.ShowMenu*"></a>
-
-  <h3 id="AshesOfVelsingrad_Managers_MenuManager_ShowMenu_System_String_System_Boolean_" data-uid="AshesOfVelsingrad.Managers.MenuManager.ShowMenu(System.String,System.Boolean)">
-  ShowMenu(string, bool)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/managers/MenuManager.cs/#L125"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Shows a menu by its name.
-Hides the current menu and shows the specified menu.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public virtual void ShowMenu(string menuName, bool addToHistory = true)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>menuName</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd><p>The unique name of the menu to show.</p>
-</dd>
-    <dt><code>addToHistory</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
-    <dd><p>Whether to add the current menu to the history stack for back navigation.</p>
-</dd>
-  </dl>
-
-
-
-
-
-
-
-
-  <h4 class="section" id="AshesOfVelsingrad_Managers_MenuManager_ShowMenu_System_String_System_Boolean__remarks">Remarks</h4>
-  <div class="markdown level1 remarks"><p>This method checks if the specified menu exists in the registered menus.
-If it does, it hides the current menu and shows the specified menu.
-If the current menu is not empty, it adds it to the history stack for back navigation.
-If the specified menu is not found, it prints an error message.</p>
-</div>
-
-
-
-
-  <a id="AshesOfVelsingrad_Managers_MenuManager_UnregisterMenu_" data-uid="AshesOfVelsingrad.Managers.MenuManager.UnregisterMenu*"></a>
-
-  <h3 id="AshesOfVelsingrad_Managers_MenuManager_UnregisterMenu_System_String_" data-uid="AshesOfVelsingrad.Managers.MenuManager.UnregisterMenu(System.String)">
-  UnregisterMenu(string)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/managers/MenuManager.cs/#L104"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Unregisters a menu from the MenuManager.
-Removes the menu from the internal dictionary.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public void UnregisterMenu(string menuName)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>menuName</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd><p>The unique name of the menu to unregister.</p>
-</dd>
-  </dl>
-
-
-
-
-
-
-
-
-  <h4 class="section" id="AshesOfVelsingrad_Managers_MenuManager_UnregisterMenu_System_String__remarks">Remarks</h4>
-  <div class="markdown level1 remarks"><p>This method checks if the menu exists before attempting to remove it.
-If the menu is currently active, it will hide it before removing.</p>
+  <h4 class="section" id="AshesOfVelsingrad_UI_Menus_OptionsMenu__Ready_remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>This method is called when both the node and its children have entered the scene tree.
+It uses CallDeferred to ensure all UI elements are properly initialized.</p>
 </div>
 
 
@@ -1490,8 +1851,8 @@ If the menu is currently active, it will hide it before removing.</p>
 
 
 
-  <h3 id="AshesOfVelsingrad_Managers_MenuManager_MenuChanged" data-uid="AshesOfVelsingrad.Managers.MenuManager.MenuChanged">
-  MenuChanged
+  <h3 id="AshesOfVelsingrad_UI_Menus_OptionsMenu_BackRequested" data-uid="AshesOfVelsingrad.UI.Menus.OptionsMenu.BackRequested">
+  BackRequested
   
   </h3>
 
@@ -1499,7 +1860,7 @@ If the menu is currently active, it will hide it before removing.</p>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public event MenuManager.MenuChangedEventHandler MenuChanged</code></pre>
+    <pre><code class="lang-csharp hljs">public event OptionsMenu.BackRequestedEventHandler BackRequested</code></pre>
   </div>
 
 
@@ -1509,7 +1870,7 @@ If the menu is currently active, it will hide it before removing.</p>
 
   <h4 class="section">Event Type</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="AshesOfVelsingrad.Managers.MenuManager.html">MenuManager</a>.<a class="xref" href="AshesOfVelsingrad.Managers.MenuManager.html">MenuChangedEventHandler</a></dt>
+    <dt><a class="xref" href="AshesOfVelsingrad.UI.Menus.OptionsMenu.html">OptionsMenu</a>.<a class="xref" href="AshesOfVelsingrad.UI.Menus.OptionsMenu.html">BackRequestedEventHandler</a></dt>
     <dd></dd>
   </dl>
 

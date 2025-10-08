@@ -2,18 +2,18 @@
 <html>
   <head>
     <meta charset="utf-8">
-      <title>Class SettingsManager | Ashes of Velsingrad Documentation </title>
+      <title>Class Main | Ashes of Velsingrad Documentation </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content="Class SettingsManager | Ashes of Velsingrad Documentation ">
+      <meta name="title" content="Class Main | Ashes of Velsingrad Documentation ">
       
-      <meta name="description" content="Manages game settings and provides centralized access to configuration options. Follows the Manager Pattern from your architecture.">
-      <link rel="icon" href="../../favicon.ico">
-      <link rel="stylesheet" href="../../public/docfx.min.css">
-      <link rel="stylesheet" href="../../public/main.css">
-      <meta name="docfx:navrel" content="">
+      <meta name="description" content="Main scene controller that initializes the game systems. Follows the Component-Based Architecture and event-driven communication.">
+      <link rel="icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
       <meta name="docfx:tocrel" content="toc.html">
       
-      <meta name="docfx:rel" content="../../">
+      <meta name="docfx:rel" content="../">
       
       
       
@@ -30,7 +30,7 @@
       <meta name="loc:copy" content="Copy">
       <meta name="loc:downloadPdf" content="Download PDF">
 
-      <script type="module" src="./../../public/docfx.min.js"></script>
+      <script type="module" src="./../public/docfx.min.js"></script>
 
       <script>
         const theme = localStorage.getItem('theme') || 'auto'
@@ -43,8 +43,8 @@
     <header class="bg-body border-bottom">
       <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
         <div class="container-xxl flex-nowrap">
-          <a class="navbar-brand" href="../../index.html">
-            <img id="logo" class="svg" src="../../documentation/images/logo-doc.png" alt="Ashes of Velsingrad" style="height: 40px; width: auto;">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../images/logo-doc.png" alt="Ashes of Velsingrad" style="height: 40px; width: auto;">
             Ashes of Velsingrad
           </a>
           <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
@@ -84,27 +84,27 @@
           <nav id="breadcrumb"></nav>
         </div>
 
-        <article data-uid="AshesOfVelsingrad.Managers.SettingsManager">
+        <article data-uid="AshesOfVelsingrad.Main">
 
 
 
-  <h1 id="AshesOfVelsingrad_Managers_SettingsManager" data-uid="AshesOfVelsingrad.Managers.SettingsManager" class="text-break">
-Class SettingsManager  
+  <h1 id="AshesOfVelsingrad_Main" data-uid="AshesOfVelsingrad.Main" class="text-break">
+Class Main  
   </h1>
 
   <div class="facts text-secondary">
-    <dl><dt>Namespace</dt><dd><a class="xref" href="AshesOfVelsingrad.html">AshesOfVelsingrad</a>.<a class="xref" href="AshesOfVelsingrad.Managers.html">Managers</a></dd></dl>
+    <dl><dt>Namespace</dt><dd><a class="xref" href="AshesOfVelsingrad.html">AshesOfVelsingrad</a></dd></dl>
   <dl><dt>Assembly</dt><dd>Ashes of Velsingrad.dll</dd></dl>
   </div>
 
-  <div class="markdown summary"><p>Manages game settings and provides centralized access to configuration options.
-Follows the Manager Pattern from your architecture.</p>
+  <div class="markdown summary"><p>Main scene controller that initializes the game systems.
+Follows the Component-Based Architecture and event-driven communication.</p>
 </div>
   <div class="markdown conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[ScriptPath(&quot;res://scripts/managers/SettingsManager.cs&quot;)]
-public class SettingsManager : BaseManager, IDisposable</code></pre>
+    <pre><code class="lang-csharp hljs">[ScriptPath(&quot;res://scripts/Main.cs&quot;)]
+public class Main : Node, IDisposable</code></pre>
   </div>
 
 
@@ -116,8 +116,7 @@ public class SettingsManager : BaseManager, IDisposable</code></pre>
       <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
       <div><span class="xref">GodotObject</span></div>
       <div><span class="xref">Node</span></div>
-      <div><a class="xref" href="AshesOfVelsingrad.Managers.BaseManager.html">BaseManager</a></div>
-      <div><span class="xref">SettingsManager</span></div>
+      <div><span class="xref">Main</span></div>
     </dd>
   </dl>
 
@@ -132,15 +131,6 @@ public class SettingsManager : BaseManager, IDisposable</code></pre>
   <dl class="typelist inheritedMembers">
     <dt>Inherited Members</dt>
     <dd>
-    <div>
-      <a class="xref" href="AshesOfVelsingrad.Managers.BaseManager.html#AshesOfVelsingrad_Managers_BaseManager__Ready">BaseManager._Ready()</a>
-    </div>
-    <div>
-      <a class="xref" href="AshesOfVelsingrad.Managers.BaseManager.html#AshesOfVelsingrad_Managers_BaseManager__ExitTree">BaseManager._ExitTree()</a>
-    </div>
-    <div>
-      <a class="xref" href="AshesOfVelsingrad.Managers.BaseManager.html#AshesOfVelsingrad_Managers_BaseManager_Cleanup">BaseManager.Cleanup()</a>
-    </div>
     <div>
       <span class="xref">Node.NotificationEnterTree</span>
     </div>
@@ -299,6 +289,9 @@ public class SettingsManager : BaseManager, IDisposable</code></pre>
     </div>
     <div>
       <span class="xref">Node._EnterTree()</span>
+    </div>
+    <div>
+      <span class="xref">Node._ExitTree()</span>
     </div>
     <div>
       <span class="xref">Node._GetConfigurationWarnings()</span>
@@ -979,33 +972,95 @@ public class SettingsManager : BaseManager, IDisposable</code></pre>
 
 
 
-  <h2 class="section" id="properties">Properties
+  <h2 class="section" id="fields">Fields
 </h2>
 
 
-  <a id="AshesOfVelsingrad_Managers_SettingsManager_Instance_" data-uid="AshesOfVelsingrad.Managers.SettingsManager.Instance*"></a>
 
-  <h3 id="AshesOfVelsingrad_Managers_SettingsManager_Instance" data-uid="AshesOfVelsingrad.Managers.SettingsManager.Instance">
-  Instance
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/managers/SettingsManager.cs/#L14"><i class="bi bi-code-slash"></i></a>
+  <h3 id="AshesOfVelsingrad_Main__mainMenuScene" data-uid="AshesOfVelsingrad.Main._mainMenuScene">
+  _mainMenuScene
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/fix/docfx-error404/scripts/Main.cs/#L13"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static SettingsManager? Instance { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">[Export(PropertyHint.None, &quot;&quot;)]
+protected PackedScene? _mainMenuScene</code></pre>
   </div>
 
 
 
 
-
-  <h4 class="section">Property Value</h4>
+  <h4 class="section">Field Value</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="AshesOfVelsingrad.Managers.SettingsManager.html">SettingsManager</a></dt>
+    <dt><span class="xref">PackedScene</span></dt>
     <dd></dd>
   </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="AshesOfVelsingrad_Main__menuContainer" data-uid="AshesOfVelsingrad.Main._menuContainer">
+  _menuContainer
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/fix/docfx-error404/scripts/Main.cs/#L12"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[Export(PropertyHint.None, &quot;&quot;)]
+protected Control? _menuContainer</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">Control</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="AshesOfVelsingrad_Main__optionsMenuScene" data-uid="AshesOfVelsingrad.Main._optionsMenuScene">
+  _optionsMenuScene
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/fix/docfx-error404/scripts/Main.cs/#L14"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[Export(PropertyHint.None, &quot;&quot;)]
+protected PackedScene? _optionsMenuScene</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">PackedScene</span></dt>
+    <dd></dd>
+  </dl>
+
 
 
 
@@ -1018,308 +1073,29 @@ public class SettingsManager : BaseManager, IDisposable</code></pre>
 </h2>
 
 
-  <a id="AshesOfVelsingrad_Managers_SettingsManager_EmitSignalDialogueSizeChanged_" data-uid="AshesOfVelsingrad.Managers.SettingsManager.EmitSignalDialogueSizeChanged*"></a>
+  <a id="AshesOfVelsingrad_Main_CreateMenus_" data-uid="AshesOfVelsingrad.Main.CreateMenus*"></a>
 
-  <h3 id="AshesOfVelsingrad_Managers_SettingsManager_EmitSignalDialogueSizeChanged_System_Single_" data-uid="AshesOfVelsingrad.Managers.SettingsManager.EmitSignalDialogueSizeChanged(System.Single)">
-  EmitSignalDialogueSizeChanged(float)
-  
+  <h3 id="AshesOfVelsingrad_Main_CreateMenus" data-uid="AshesOfVelsingrad.Main.CreateMenus">
+  CreateMenus()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/fix/docfx-error404/scripts/Main.cs/#L65"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">protected void EmitSignalDialogueSizeChanged(float newSize)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>newSize</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-
-
-  <a id="AshesOfVelsingrad_Managers_SettingsManager_EmitSignalSettingsChanged_" data-uid="AshesOfVelsingrad.Managers.SettingsManager.EmitSignalSettingsChanged*"></a>
-
-  <h3 id="AshesOfVelsingrad_Managers_SettingsManager_EmitSignalSettingsChanged_System_String_Godot_Variant_" data-uid="AshesOfVelsingrad.Managers.SettingsManager.EmitSignalSettingsChanged(System.String,Godot.Variant)">
-  EmitSignalSettingsChanged(string, Variant)
-  
-  </h3>
-
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">protected void EmitSignalSettingsChanged(string settingKey, Variant newValue)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>settingKey</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd></dd>
-    <dt><code>newValue</code> <span class="xref">Variant</span></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-
-
-  <a id="AshesOfVelsingrad_Managers_SettingsManager_GetDialogueSize_" data-uid="AshesOfVelsingrad.Managers.SettingsManager.GetDialogueSize*"></a>
-
-  <h3 id="AshesOfVelsingrad_Managers_SettingsManager_GetDialogueSize" data-uid="AshesOfVelsingrad.Managers.SettingsManager.GetDialogueSize">
-  GetDialogueSize()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/managers/SettingsManager.cs/#L115"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Gets the current dialogue size setting.</p>
+  <div class="markdown level1 summary"><p>Create menu instances - virtual for testing overrides.
+Default implementation instantiates from PackedScenes.
+Checks for null references and logs appropriately.
+Can be overridden in tests to provide mock or test-specific menus.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public float GetDialogueSize()</code></pre>
+    <pre><code class="lang-csharp hljs">protected virtual (Node mainMenu, Node optionsMenu) CreateMenus()</code></pre>
   </div>
 
 
   <h4 class="section">Returns</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
-    <dd><p>The dialogue size as a float, defaulting to 1.0f if not set.</p>
-</dd>
-  </dl>
-
-
-
-
-
-
-
-  <h4 class="section" id="AshesOfVelsingrad_Managers_SettingsManager_GetDialogueSize_remarks">Remarks</h4>
-  <div class="markdown level1 remarks"><p>This method retrieves the dialogue size from the settings data.
-If the dialogue size is not set, it returns a default value of 1.0f.</p>
-</div>
-
-
-
-
-  <a id="AshesOfVelsingrad_Managers_SettingsManager_GetSetting_" data-uid="AshesOfVelsingrad.Managers.SettingsManager.GetSetting*"></a>
-
-  <h3 id="AshesOfVelsingrad_Managers_SettingsManager_GetSetting__1_System_String___0_" data-uid="AshesOfVelsingrad.Managers.SettingsManager.GetSetting``1(System.String,``0)">
-  GetSetting&lt;T&gt;(string, T?)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/managers/SettingsManager.cs/#L157"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Gets a custom setting by key, with an optional default value.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public T? GetSetting&lt;T&gt;(string key, T? defaultValue = default)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>key</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd><p>The key of the setting to retrieve.</p>
-</dd>
-    <dt><code>defaultValue</code> <span class="xref">T</span></dt>
-    <dd><p>The default value to return if the setting is not found.</p>
-</dd>
-  </dl>
-
-  <h4 class="section">Returns</h4>
-  <dl class="parameters">
-    <dt><span class="xref">T</span></dt>
-    <dd><p>The setting value if found, otherwise the default value.</p>
-</dd>
-  </dl>
-
-  <h4 class="section">Type Parameters</h4>
-  <dl class="parameters">
-    <dt><code>T</code></dt>
-    <dd><p>The type of the setting value.</p>
-</dd>
-  </dl>
-
-
-
-
-
-
-  <h4 class="section" id="AshesOfVelsingrad_Managers_SettingsManager_GetSetting__1_System_String___0__remarks">Remarks</h4>
-  <div class="markdown level1 remarks"><p>This method retrieves a custom setting from the settings data.
-If the setting is not found, it returns the provided default value.
-It uses JSON serialization to convert the setting value to the specified type.</p>
-</div>
-
-
-
-
-  <a id="AshesOfVelsingrad_Managers_SettingsManager_Initialize_" data-uid="AshesOfVelsingrad.Managers.SettingsManager.Initialize*"></a>
-
-  <h3 id="AshesOfVelsingrad_Managers_SettingsManager_Initialize" data-uid="AshesOfVelsingrad.Managers.SettingsManager.Initialize">
-  Initialize()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/managers/SettingsManager.cs/#L34"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Initializes the SettingsManager singleton instance.
-Loads settings from the JSON file or creates a new default settings object.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">protected override void Initialize()</code></pre>
-  </div>
-
-
-
-
-
-
-
-
-
-  <h4 class="section" id="AshesOfVelsingrad_Managers_SettingsManager_Initialize_remarks">Remarks</h4>
-  <div class="markdown level1 remarks"><p>This method is called automatically by Godot when the node is ready.
-It ensures that only one instance of SettingsManager exists and initializes the settings data.
-If the settings file does not exist, it creates a new default settings object and saves it.</p>
-</div>
-
-
-
-
-  <a id="AshesOfVelsingrad_Managers_SettingsManager_LoadSettings_" data-uid="AshesOfVelsingrad.Managers.SettingsManager.LoadSettings*"></a>
-
-  <h3 id="AshesOfVelsingrad_Managers_SettingsManager_LoadSettings" data-uid="AshesOfVelsingrad.Managers.SettingsManager.LoadSettings">
-  LoadSettings()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/managers/SettingsManager.cs/#L57"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Loads settings from the JSON file.
-If the file does not exist, creates a new default settings object.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public virtual void LoadSettings()</code></pre>
-  </div>
-
-
-
-
-
-
-
-
-
-  <h4 class="section" id="AshesOfVelsingrad_Managers_SettingsManager_LoadSettings_remarks">Remarks</h4>
-  <div class="markdown level1 remarks"><p>This method reads the settings from a JSON file located at user://settings.json.
-If the file is not found, it initializes a new SettingsData object with default values
-and saves it to create the settings file.</p>
-</div>
-
-
-
-
-  <a id="AshesOfVelsingrad_Managers_SettingsManager_ResetToDefaults_" data-uid="AshesOfVelsingrad.Managers.SettingsManager.ResetToDefaults*"></a>
-
-  <h3 id="AshesOfVelsingrad_Managers_SettingsManager_ResetToDefaults" data-uid="AshesOfVelsingrad.Managers.SettingsManager.ResetToDefaults">
-  ResetToDefaults()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/managers/SettingsManager.cs/#L206"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Resets all settings to their default values.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public void ResetToDefaults()</code></pre>
-  </div>
-
-
-
-
-
-
-
-
-
-  <h4 class="section" id="AshesOfVelsingrad_Managers_SettingsManager_ResetToDefaults_remarks">Remarks</h4>
-  <div class="markdown level1 remarks"><p>This method clears the current settings and initializes a new SettingsData object with default values.
-It saves the new settings to the JSON file and emits a SettingsChanged signal to notify other components.</p>
-</div>
-
-
-
-
-  <a id="AshesOfVelsingrad_Managers_SettingsManager_SaveSettings_" data-uid="AshesOfVelsingrad.Managers.SettingsManager.SaveSettings*"></a>
-
-  <h3 id="AshesOfVelsingrad_Managers_SettingsManager_SaveSettings" data-uid="AshesOfVelsingrad.Managers.SettingsManager.SaveSettings">
-  SaveSettings()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/managers/SettingsManager.cs/#L87"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Saves the current settings to the JSON file.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public virtual void SaveSettings()</code></pre>
-  </div>
-
-
-
-
-
-
-
-
-
-  <h4 class="section" id="AshesOfVelsingrad_Managers_SettingsManager_SaveSettings_remarks">Remarks</h4>
-  <div class="markdown level1 remarks"><p>This method serializes the current settings data to a JSON string and writes it to the
-user://settings.json file. It handles any exceptions that may occur during the file operations.</p>
-</div>
-
-
-
-
-  <a id="AshesOfVelsingrad_Managers_SettingsManager_SetDialogueSize_" data-uid="AshesOfVelsingrad.Managers.SettingsManager.SetDialogueSize*"></a>
-
-  <h3 id="AshesOfVelsingrad_Managers_SettingsManager_SetDialogueSize_System_Single_" data-uid="AshesOfVelsingrad.Managers.SettingsManager.SetDialogueSize(System.Single)">
-  SetDialogueSize(float)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/managers/SettingsManager.cs/#L131"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Sets the dialogue size and saves the settings.
-Emits a signal to notify other components of the change.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public void SetDialogueSize(float size)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>size</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
-    <dd><p>The new dialogue size to set.</p>
+    <dt>(<span class="xref">Node</span> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-godot.node,godot.node-.mainmenu">mainMenu</a>, <span class="xref">Node</span> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-godot.node,godot.node-.optionsmenu">optionsMenu</a>)</dt>
+    <dd><p>Tuple of (mainMenu, optionsMenu) nodes.</p>
 </dd>
   </dl>
 
@@ -1330,78 +1106,27 @@ Emits a signal to notify other components of the change.</p>
 
 
 
-  <h4 class="section" id="AshesOfVelsingrad_Managers_SettingsManager_SetDialogueSize_System_Single__remarks">Remarks</h4>
-  <div class="markdown level1 remarks"><p>This method updates the dialogue size in the settings data and saves it to the JSON file.
-It also emits a SettingsChanged signal to notify other components of the change.
-The size is clamped between 0.5f and 2.0f to ensure it remains within a reasonable range.</p>
-</div>
 
 
 
+  <a id="AshesOfVelsingrad_Main_InitializeMenus_" data-uid="AshesOfVelsingrad.Main.InitializeMenus*"></a>
 
-  <a id="AshesOfVelsingrad_Managers_SettingsManager_SetSetting_" data-uid="AshesOfVelsingrad.Managers.SettingsManager.SetSetting*"></a>
-
-  <h3 id="AshesOfVelsingrad_Managers_SettingsManager_SetSetting__1_System_String___0_" data-uid="AshesOfVelsingrad.Managers.SettingsManager.SetSetting``1(System.String,``0)">
-  SetSetting&lt;T&gt;(string, T)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/managers/SettingsManager.cs/#L189"><i class="bi bi-code-slash"></i></a>
+  <h3 id="AshesOfVelsingrad_Main_InitializeMenus" data-uid="AshesOfVelsingrad.Main.InitializeMenus">
+  InitializeMenus()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/fix/docfx-error404/scripts/Main.cs/#L29"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Sets a custom setting by key and saves the settings.
-Emits a signal to notify other components of the change.</p>
+  <div class="markdown level1 summary"><p>Initialise the menus and register them with the MenuManager.
+Ensures that the SettingsManager and MenuManager singletons are available.
+Uses deferred calls to avoid Godot lifecycle issues.
+Catches and logs exceptions during initialization.
+Also checks that the menu container and scenes are valid before proceeding.
+This method can be overridden in tests to provide mock menus.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public void SetSetting&lt;T&gt;(string key, T value)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>key</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd><p>The key of the setting to set.</p>
-</dd>
-    <dt><code>value</code> <span class="xref">T</span></dt>
-    <dd><p>The value to set for the setting.</p>
-</dd>
-  </dl>
-
-
-  <h4 class="section">Type Parameters</h4>
-  <dl class="parameters">
-    <dt><code>T</code></dt>
-    <dd><p>The type of the setting value.</p>
-</dd>
-  </dl>
-
-
-
-
-
-
-  <h4 class="section" id="AshesOfVelsingrad_Managers_SettingsManager_SetSetting__1_System_String___0__remarks">Remarks</h4>
-  <div class="markdown level1 remarks"><p>This method updates a custom setting in the settings data and saves it to the JSON file.
-It also emits a SettingsChanged signal to notify other components of the change.
-The value is serialized to JSON format before being stored.</p>
-</div>
-
-
-
-
-  <h2 class="section" id="events">Events
-</h2>
-
-
-
-  <h3 id="AshesOfVelsingrad_Managers_SettingsManager_DialogueSizeChanged" data-uid="AshesOfVelsingrad.Managers.SettingsManager.DialogueSizeChanged">
-  DialogueSizeChanged
-  
-  </h3>
-
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public event SettingsManager.DialogueSizeChangedEventHandler DialogueSizeChanged</code></pre>
+    <pre><code class="lang-csharp hljs">protected virtual void InitializeMenus()</code></pre>
   </div>
 
 
@@ -1409,11 +1134,6 @@ The value is serialized to JSON format before being stored.</p>
 
 
 
-  <h4 class="section">Event Type</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="AshesOfVelsingrad.Managers.SettingsManager.html">SettingsManager</a>.<a class="xref" href="AshesOfVelsingrad.Managers.SettingsManager.html">DialogueSizeChangedEventHandler</a></dt>
-    <dd></dd>
-  </dl>
 
 
 
@@ -1421,17 +1141,22 @@ The value is serialized to JSON format before being stored.</p>
 
 
 
+  <a id="AshesOfVelsingrad_Main__Ready_" data-uid="AshesOfVelsingrad.Main._Ready*"></a>
 
-  <h3 id="AshesOfVelsingrad_Managers_SettingsManager_SettingsChanged" data-uid="AshesOfVelsingrad.Managers.SettingsManager.SettingsChanged">
-  SettingsChanged
-  
+  <h3 id="AshesOfVelsingrad_Main__Ready" data-uid="AshesOfVelsingrad.Main._Ready">
+  _Ready()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/fix/docfx-error404/scripts/Main.cs/#L16"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Called when the node is "ready", i.e. when both the node and its children have entered the scene tree. If the node has children, their <span class="xref">Godot.Node._Ready()</span> callbacks get triggered first, and the parent node will receive the ready notification afterwards.</p>
+<p>Corresponds to the <span class="xref">Godot.Node.NotificationReady</span> notification in <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">_Notification(int)</a>. See also the <code>@onready</code> annotation for variables.</p>
+<p>Usually used for initialization. For even earlier initialization, <span class="xref">Godot.GodotObject.GodotObject()</span> may be used. See also <span class="xref">Godot.Node._EnterTree()</span>.</p>
+<p><b>Note:</b> This method may be called only once for each node. After removing a node from the scene tree and adding it again, <span class="xref">Godot.Node._Ready()</span> will <b>not</b> be called a second time. This can be bypassed by requesting another call with <span class="xref">Godot.Node.RequestReady()</span>, which may be called anywhere before adding the node again.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public event SettingsManager.SettingsChangedEventHandler SettingsChanged</code></pre>
+    <pre><code class="lang-csharp hljs">public override void _Ready()</code></pre>
   </div>
 
 
@@ -1439,11 +1164,6 @@ The value is serialized to JSON format before being stored.</p>
 
 
 
-  <h4 class="section">Event Type</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="AshesOfVelsingrad.Managers.SettingsManager.html">SettingsManager</a>.<a class="xref" href="AshesOfVelsingrad.Managers.SettingsManager.html">SettingsChangedEventHandler</a></dt>
-    <dd></dd>
-  </dl>
 
 
 

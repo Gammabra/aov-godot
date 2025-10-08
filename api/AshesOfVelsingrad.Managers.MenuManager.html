@@ -2,18 +2,18 @@
 <html>
   <head>
     <meta charset="utf-8">
-      <title>Class Main | Ashes of Velsingrad Documentation </title>
+      <title>Class MenuManager | Ashes of Velsingrad Documentation </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content="Class Main | Ashes of Velsingrad Documentation ">
+      <meta name="title" content="Class MenuManager | Ashes of Velsingrad Documentation ">
       
-      <meta name="description" content="Main scene controller that initializes the game systems. Follows the Component-Based Architecture and event-driven communication.">
-      <link rel="icon" href="../../favicon.ico">
-      <link rel="stylesheet" href="../../public/docfx.min.css">
-      <link rel="stylesheet" href="../../public/main.css">
-      <meta name="docfx:navrel" content="">
+      <meta name="description" content="Manages menu navigation and state. Coordinates between different menus following the Manager Pattern.">
+      <link rel="icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
       <meta name="docfx:tocrel" content="toc.html">
       
-      <meta name="docfx:rel" content="../../">
+      <meta name="docfx:rel" content="../">
       
       
       
@@ -30,7 +30,7 @@
       <meta name="loc:copy" content="Copy">
       <meta name="loc:downloadPdf" content="Download PDF">
 
-      <script type="module" src="./../../public/docfx.min.js"></script>
+      <script type="module" src="./../public/docfx.min.js"></script>
 
       <script>
         const theme = localStorage.getItem('theme') || 'auto'
@@ -43,8 +43,8 @@
     <header class="bg-body border-bottom">
       <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
         <div class="container-xxl flex-nowrap">
-          <a class="navbar-brand" href="../../index.html">
-            <img id="logo" class="svg" src="../../documentation/images/logo-doc.png" alt="Ashes of Velsingrad" style="height: 40px; width: auto;">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../images/logo-doc.png" alt="Ashes of Velsingrad" style="height: 40px; width: auto;">
             Ashes of Velsingrad
           </a>
           <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
@@ -84,27 +84,27 @@
           <nav id="breadcrumb"></nav>
         </div>
 
-        <article data-uid="AshesOfVelsingrad.Main">
+        <article data-uid="AshesOfVelsingrad.Managers.MenuManager">
 
 
 
-  <h1 id="AshesOfVelsingrad_Main" data-uid="AshesOfVelsingrad.Main" class="text-break">
-Class Main  
+  <h1 id="AshesOfVelsingrad_Managers_MenuManager" data-uid="AshesOfVelsingrad.Managers.MenuManager" class="text-break">
+Class MenuManager  
   </h1>
 
   <div class="facts text-secondary">
-    <dl><dt>Namespace</dt><dd><a class="xref" href="AshesOfVelsingrad.html">AshesOfVelsingrad</a></dd></dl>
+    <dl><dt>Namespace</dt><dd><a class="xref" href="AshesOfVelsingrad.html">AshesOfVelsingrad</a>.<a class="xref" href="AshesOfVelsingrad.Managers.html">Managers</a></dd></dl>
   <dl><dt>Assembly</dt><dd>Ashes of Velsingrad.dll</dd></dl>
   </div>
 
-  <div class="markdown summary"><p>Main scene controller that initializes the game systems.
-Follows the Component-Based Architecture and event-driven communication.</p>
+  <div class="markdown summary"><p>Manages menu navigation and state.
+Coordinates between different menus following the Manager Pattern.</p>
 </div>
   <div class="markdown conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[ScriptPath(&quot;res://scripts/Main.cs&quot;)]
-public class Main : Node, IDisposable</code></pre>
+    <pre><code class="lang-csharp hljs">[ScriptPath(&quot;res://scripts/managers/MenuManager.cs&quot;)]
+public class MenuManager : BaseManager, IDisposable</code></pre>
   </div>
 
 
@@ -116,7 +116,8 @@ public class Main : Node, IDisposable</code></pre>
       <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
       <div><span class="xref">GodotObject</span></div>
       <div><span class="xref">Node</span></div>
-      <div><span class="xref">Main</span></div>
+      <div><a class="xref" href="AshesOfVelsingrad.Managers.BaseManager.html">BaseManager</a></div>
+      <div><span class="xref">MenuManager</span></div>
     </dd>
   </dl>
 
@@ -131,6 +132,15 @@ public class Main : Node, IDisposable</code></pre>
   <dl class="typelist inheritedMembers">
     <dt>Inherited Members</dt>
     <dd>
+    <div>
+      <a class="xref" href="AshesOfVelsingrad.Managers.BaseManager.html#AshesOfVelsingrad_Managers_BaseManager__Ready">BaseManager._Ready()</a>
+    </div>
+    <div>
+      <a class="xref" href="AshesOfVelsingrad.Managers.BaseManager.html#AshesOfVelsingrad_Managers_BaseManager__ExitTree">BaseManager._ExitTree()</a>
+    </div>
+    <div>
+      <a class="xref" href="AshesOfVelsingrad.Managers.BaseManager.html#AshesOfVelsingrad_Managers_BaseManager_Cleanup">BaseManager.Cleanup()</a>
+    </div>
     <div>
       <span class="xref">Node.NotificationEnterTree</span>
     </div>
@@ -289,9 +299,6 @@ public class Main : Node, IDisposable</code></pre>
     </div>
     <div>
       <span class="xref">Node._EnterTree()</span>
-    </div>
-    <div>
-      <span class="xref">Node._ExitTree()</span>
     </div>
     <div>
       <span class="xref">Node._GetConfigurationWarnings()</span>
@@ -970,6 +977,11 @@ public class Main : Node, IDisposable</code></pre>
 
 
 
+  <h2 id="AshesOfVelsingrad_Managers_MenuManager_remarks">Remarks</h2>
+  <div class="markdown level0 remarks"><p>This class is responsible for showing, hiding, and navigating between menus.
+It maintains a history of menus for back navigation and provides methods to register and unregister menus.
+It also emits signals when the current menu changes.</p>
+</div>
 
 
   <h2 class="section" id="fields">Fields
@@ -977,17 +989,16 @@ public class Main : Node, IDisposable</code></pre>
 
 
 
-  <h3 id="AshesOfVelsingrad_Main__mainMenuScene" data-uid="AshesOfVelsingrad.Main._mainMenuScene">
-  _mainMenuScene
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/Main.cs/#L13"><i class="bi bi-code-slash"></i></a>
+  <h3 id="AshesOfVelsingrad_Managers_MenuManager_MAIN_MENU" data-uid="AshesOfVelsingrad.Managers.MenuManager.MAIN_MENU">
+  MAIN_MENU
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/fix/docfx-error404/scripts/managers/MenuManager.cs/#L28"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[Export(PropertyHint.None, &quot;&quot;)]
-protected PackedScene? _mainMenuScene</code></pre>
+    <pre><code class="lang-csharp hljs">public const string MAIN_MENU = &quot;main_menu&quot;</code></pre>
   </div>
 
 
@@ -995,7 +1006,7 @@ protected PackedScene? _mainMenuScene</code></pre>
 
   <h4 class="section">Field Value</h4>
   <dl class="parameters">
-    <dt><span class="xref">PackedScene</span></dt>
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
     <dd></dd>
   </dl>
 
@@ -1008,17 +1019,16 @@ protected PackedScene? _mainMenuScene</code></pre>
 
 
 
-  <h3 id="AshesOfVelsingrad_Main__menuContainer" data-uid="AshesOfVelsingrad.Main._menuContainer">
-  _menuContainer
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/Main.cs/#L12"><i class="bi bi-code-slash"></i></a>
+  <h3 id="AshesOfVelsingrad_Managers_MenuManager_OPTIONS_MENU" data-uid="AshesOfVelsingrad.Managers.MenuManager.OPTIONS_MENU">
+  OPTIONS_MENU
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/fix/docfx-error404/scripts/managers/MenuManager.cs/#L29"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[Export(PropertyHint.None, &quot;&quot;)]
-protected Control? _menuContainer</code></pre>
+    <pre><code class="lang-csharp hljs">public const string OPTIONS_MENU = &quot;options_menu&quot;</code></pre>
   </div>
 
 
@@ -1026,7 +1036,7 @@ protected Control? _menuContainer</code></pre>
 
   <h4 class="section">Field Value</h4>
   <dl class="parameters">
-    <dt><span class="xref">Control</span></dt>
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
     <dd></dd>
   </dl>
 
@@ -1039,17 +1049,16 @@ protected Control? _menuContainer</code></pre>
 
 
 
-  <h3 id="AshesOfVelsingrad_Main__optionsMenuScene" data-uid="AshesOfVelsingrad.Main._optionsMenuScene">
-  _optionsMenuScene
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/Main.cs/#L14"><i class="bi bi-code-slash"></i></a>
+  <h3 id="AshesOfVelsingrad_Managers_MenuManager_PAUSE_MENU" data-uid="AshesOfVelsingrad.Managers.MenuManager.PAUSE_MENU">
+  PAUSE_MENU
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/fix/docfx-error404/scripts/managers/MenuManager.cs/#L30"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[Export(PropertyHint.None, &quot;&quot;)]
-protected PackedScene? _optionsMenuScene</code></pre>
+    <pre><code class="lang-csharp hljs">public const string PAUSE_MENU = &quot;pause_menu&quot;</code></pre>
   </div>
 
 
@@ -1057,10 +1066,45 @@ protected PackedScene? _optionsMenuScene</code></pre>
 
   <h4 class="section">Field Value</h4>
   <dl class="parameters">
-    <dt><span class="xref">PackedScene</span></dt>
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
     <dd></dd>
   </dl>
 
+
+
+
+
+
+
+
+
+  <h2 class="section" id="properties">Properties
+</h2>
+
+
+  <a id="AshesOfVelsingrad_Managers_MenuManager_Instance_" data-uid="AshesOfVelsingrad.Managers.MenuManager.Instance*"></a>
+
+  <h3 id="AshesOfVelsingrad_Managers_MenuManager_Instance" data-uid="AshesOfVelsingrad.Managers.MenuManager.Instance">
+  Instance
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/fix/docfx-error404/scripts/managers/MenuManager.cs/#L18"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static MenuManager? Instance { get; protected set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="AshesOfVelsingrad.Managers.MenuManager.html">MenuManager</a></dt>
+    <dd></dd>
+  </dl>
 
 
 
@@ -1073,29 +1117,279 @@ protected PackedScene? _optionsMenuScene</code></pre>
 </h2>
 
 
-  <a id="AshesOfVelsingrad_Main_CreateMenus_" data-uid="AshesOfVelsingrad.Main.CreateMenus*"></a>
+  <a id="AshesOfVelsingrad_Managers_MenuManager_ClearHistory_" data-uid="AshesOfVelsingrad.Managers.MenuManager.ClearHistory*"></a>
 
-  <h3 id="AshesOfVelsingrad_Main_CreateMenus" data-uid="AshesOfVelsingrad.Main.CreateMenus">
-  CreateMenus()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/Main.cs/#L65"><i class="bi bi-code-slash"></i></a>
+  <h3 id="AshesOfVelsingrad_Managers_MenuManager_ClearHistory" data-uid="AshesOfVelsingrad.Managers.MenuManager.ClearHistory">
+  ClearHistory()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/fix/docfx-error404/scripts/managers/MenuManager.cs/#L202"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Create menu instances - virtual for testing overrides.
-Default implementation instantiates from PackedScenes.
-Checks for null references and logs appropriately.
-Can be overridden in tests to provide mock or test-specific menus.</p>
+  <div class="markdown level1 summary"><p>Clears the menu history stack.
+This method removes all entries from the history stack, effectively resetting it.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">protected virtual (Node mainMenu, Node optionsMenu) CreateMenus()</code></pre>
+    <pre><code class="lang-csharp hljs">public void ClearHistory()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+  <h4 class="section" id="AshesOfVelsingrad_Managers_MenuManager_ClearHistory_remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>This method is useful when you want to reset the menu navigation state.
+It clears the history stack, so there are no previous menus to go back to.</p>
+</div>
+
+
+
+
+  <a id="AshesOfVelsingrad_Managers_MenuManager_EmitSignalMenuChanged_" data-uid="AshesOfVelsingrad.Managers.MenuManager.EmitSignalMenuChanged*"></a>
+
+  <h3 id="AshesOfVelsingrad_Managers_MenuManager_EmitSignalMenuChanged_System_String_" data-uid="AshesOfVelsingrad.Managers.MenuManager.EmitSignalMenuChanged(System.String)">
+  EmitSignalMenuChanged(string)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected void EmitSignalMenuChanged(string menuName)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>menuName</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AshesOfVelsingrad_Managers_MenuManager_GetCurrentMenu_" data-uid="AshesOfVelsingrad.Managers.MenuManager.GetCurrentMenu*"></a>
+
+  <h3 id="AshesOfVelsingrad_Managers_MenuManager_GetCurrentMenu" data-uid="AshesOfVelsingrad.Managers.MenuManager.GetCurrentMenu">
+  GetCurrentMenu()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/fix/docfx-error404/scripts/managers/MenuManager.cs/#L216"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets the name of the current active menu.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string? GetCurrentMenu()</code></pre>
   </div>
 
 
   <h4 class="section">Returns</h4>
   <dl class="parameters">
-    <dt>(<span class="xref">Node</span> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-godot.node,godot.node-.mainmenu">mainMenu</a>, <span class="xref">Node</span> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-godot.node,godot.node-.optionsmenu">optionsMenu</a>)</dt>
-    <dd><p>Tuple of (mainMenu, optionsMenu) nodes.</p>
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The name of the current menu, or null if no menu is active.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+  <h4 class="section" id="AshesOfVelsingrad_Managers_MenuManager_GetCurrentMenu_remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>This method returns the name of the currently active menu.
+If no menu is currently active, it returns null.
+This can be useful for checking the current state of the menu system.</p>
+</div>
+
+
+
+
+  <a id="AshesOfVelsingrad_Managers_MenuManager_GoBack_" data-uid="AshesOfVelsingrad.Managers.MenuManager.GoBack*"></a>
+
+  <h3 id="AshesOfVelsingrad_Managers_MenuManager_GoBack" data-uid="AshesOfVelsingrad.Managers.MenuManager.GoBack">
+  GoBack()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/fix/docfx-error404/scripts/managers/MenuManager.cs/#L181"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Goes back to the previous menu in the history stack.
+If there is no previous menu, it prints a message indicating that.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void GoBack()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+  <h4 class="section" id="AshesOfVelsingrad_Managers_MenuManager_GoBack_remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>This method pops the last menu from the history stack and shows it.
+If the history stack is empty, it prints a message indicating that there is no previous menu to go back to.
+It does not add the previous menu back to the history stack when going back.</p>
+</div>
+
+
+
+
+  <a id="AshesOfVelsingrad_Managers_MenuManager_Initialize_" data-uid="AshesOfVelsingrad.Managers.MenuManager.Initialize*"></a>
+
+  <h3 id="AshesOfVelsingrad_Managers_MenuManager_Initialize" data-uid="AshesOfVelsingrad.Managers.MenuManager.Initialize">
+  Initialize()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/fix/docfx-error404/scripts/managers/MenuManager.cs/#L41"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Initializes the MenuManager singleton instance.
+Ensures only one instance exists and sets up the initial state.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected override void Initialize()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+  <h4 class="section" id="AshesOfVelsingrad_Managers_MenuManager_Initialize_remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>This method is called automatically by Godot when the node is ready.
+It checks for duplicate instances and initializes the menu system.
+If a duplicate instance is found, it removes the duplicate.</p>
+</div>
+
+
+
+
+  <a id="AshesOfVelsingrad_Managers_MenuManager_IsMenuActive_" data-uid="AshesOfVelsingrad.Managers.MenuManager.IsMenuActive*"></a>
+
+  <h3 id="AshesOfVelsingrad_Managers_MenuManager_IsMenuActive_System_String_" data-uid="AshesOfVelsingrad.Managers.MenuManager.IsMenuActive(System.String)">
+  IsMenuActive(string)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/fix/docfx-error404/scripts/managers/MenuManager.cs/#L231"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Checks if a specific menu is currently active.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool IsMenuActive(string menuName)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>menuName</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The unique name of the menu to check.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>True if the specified menu is active, otherwise false.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+  <h4 class="section" id="AshesOfVelsingrad_Managers_MenuManager_IsMenuActive_System_String__remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>This method checks if the specified menu is currently the active menu.
+It compares the provided menu name with the current active menu name.
+This can be useful for UI logic that needs to know if a specific menu is currently displayed.</p>
+</div>
+
+
+
+
+  <a id="AshesOfVelsingrad_Managers_MenuManager_RegisterMenu_" data-uid="AshesOfVelsingrad.Managers.MenuManager.RegisterMenu*"></a>
+
+  <h3 id="AshesOfVelsingrad_Managers_MenuManager_RegisterMenu_System_String_Godot_Control_" data-uid="AshesOfVelsingrad.Managers.MenuManager.RegisterMenu(System.String,Godot.Control)">
+  RegisterMenu(string, Control)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/fix/docfx-error404/scripts/managers/MenuManager.cs/#L75"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Registers a menu with the MenuManager.
+Adds the menu to the internal dictionary and hides it by default.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual void RegisterMenu(string menuName, Control menuControl)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>menuName</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The unique name of the menu to register.</p>
+</dd>
+    <dt><code>menuControl</code> <span class="xref">Control</span></dt>
+    <dd><p>The Control instance representing the menu.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h4 class="section" id="AshesOfVelsingrad_Managers_MenuManager_RegisterMenu_System_String_Godot_Control__remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>This method checks if the menu is already registered to avoid duplicates.
+If the menu is already registered, it prints an error message and does not add it again.
+It also connects back signals for navigation menus, such as OptionsMenu, to handle back navigation.</p>
+</div>
+
+
+
+
+  <a id="AshesOfVelsingrad_Managers_MenuManager_SetInstanceForTesting_" data-uid="AshesOfVelsingrad.Managers.MenuManager.SetInstanceForTesting*"></a>
+
+  <h3 id="AshesOfVelsingrad_Managers_MenuManager_SetInstanceForTesting_AshesOfVelsingrad_Managers_MenuManager_" data-uid="AshesOfVelsingrad.Managers.MenuManager.SetInstanceForTesting(AshesOfVelsingrad.Managers.MenuManager)">
+  SetInstanceForTesting(MenuManager?)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/fix/docfx-error404/scripts/managers/MenuManager.cs/#L59"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>FOR TESTING ONLY: Manually sets the singleton instance.
+This method should only be used in unit tests.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void SetInstanceForTesting(MenuManager? instance)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>instance</code> <a class="xref" href="AshesOfVelsingrad.Managers.MenuManager.html">MenuManager</a></dt>
+    <dd><p>The instance to set as the singleton.</p>
 </dd>
   </dl>
 
@@ -1109,24 +1403,103 @@ Can be overridden in tests to provide mock or test-specific menus.</p>
 
 
 
-  <a id="AshesOfVelsingrad_Main_InitializeMenus_" data-uid="AshesOfVelsingrad.Main.InitializeMenus*"></a>
 
-  <h3 id="AshesOfVelsingrad_Main_InitializeMenus" data-uid="AshesOfVelsingrad.Main.InitializeMenus">
-  InitializeMenus()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/Main.cs/#L29"><i class="bi bi-code-slash"></i></a>
+  <a id="AshesOfVelsingrad_Managers_MenuManager_ShowMenu_" data-uid="AshesOfVelsingrad.Managers.MenuManager.ShowMenu*"></a>
+
+  <h3 id="AshesOfVelsingrad_Managers_MenuManager_ShowMenu_System_String_System_Boolean_" data-uid="AshesOfVelsingrad.Managers.MenuManager.ShowMenu(System.String,System.Boolean)">
+  ShowMenu(string, bool)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/fix/docfx-error404/scripts/managers/MenuManager.cs/#L125"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Initialise the menus and register them with the MenuManager.
-Ensures that the SettingsManager and MenuManager singletons are available.
-Uses deferred calls to avoid Godot lifecycle issues.
-Catches and logs exceptions during initialization.
-Also checks that the menu container and scenes are valid before proceeding.
-This method can be overridden in tests to provide mock menus.</p>
+  <div class="markdown level1 summary"><p>Shows a menu by its name.
+Hides the current menu and shows the specified menu.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">protected virtual void InitializeMenus()</code></pre>
+    <pre><code class="lang-csharp hljs">public virtual void ShowMenu(string menuName, bool addToHistory = true)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>menuName</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The unique name of the menu to show.</p>
+</dd>
+    <dt><code>addToHistory</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>Whether to add the current menu to the history stack for back navigation.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h4 class="section" id="AshesOfVelsingrad_Managers_MenuManager_ShowMenu_System_String_System_Boolean__remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>This method checks if the specified menu exists in the registered menus.
+If it does, it hides the current menu and shows the specified menu.
+If the current menu is not empty, it adds it to the history stack for back navigation.
+If the specified menu is not found, it prints an error message.</p>
+</div>
+
+
+
+
+  <a id="AshesOfVelsingrad_Managers_MenuManager_UnregisterMenu_" data-uid="AshesOfVelsingrad.Managers.MenuManager.UnregisterMenu*"></a>
+
+  <h3 id="AshesOfVelsingrad_Managers_MenuManager_UnregisterMenu_System_String_" data-uid="AshesOfVelsingrad.Managers.MenuManager.UnregisterMenu(System.String)">
+  UnregisterMenu(string)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/fix/docfx-error404/scripts/managers/MenuManager.cs/#L104"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Unregisters a menu from the MenuManager.
+Removes the menu from the internal dictionary.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void UnregisterMenu(string menuName)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>menuName</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The unique name of the menu to unregister.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h4 class="section" id="AshesOfVelsingrad_Managers_MenuManager_UnregisterMenu_System_String__remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>This method checks if the menu exists before attempting to remove it.
+If the menu is currently active, it will hide it before removing.</p>
+</div>
+
+
+
+
+  <h2 class="section" id="events">Events
+</h2>
+
+
+
+  <h3 id="AshesOfVelsingrad_Managers_MenuManager_MenuChanged" data-uid="AshesOfVelsingrad.Managers.MenuManager.MenuChanged">
+  MenuChanged
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public event MenuManager.MenuChangedEventHandler MenuChanged</code></pre>
   </div>
 
 
@@ -1134,36 +1507,11 @@ This method can be overridden in tests to provide mock menus.</p>
 
 
 
-
-
-
-
-
-
-
-  <a id="AshesOfVelsingrad_Main__Ready_" data-uid="AshesOfVelsingrad.Main._Ready*"></a>
-
-  <h3 id="AshesOfVelsingrad_Main__Ready" data-uid="AshesOfVelsingrad.Main._Ready">
-  _Ready()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/Main.cs/#L16"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Called when the node is "ready", i.e. when both the node and its children have entered the scene tree. If the node has children, their <span class="xref">Godot.Node._Ready()</span> callbacks get triggered first, and the parent node will receive the ready notification afterwards.</p>
-<p>Corresponds to the <span class="xref">Godot.Node.NotificationReady</span> notification in <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">_Notification(int)</a>. See also the <code>@onready</code> annotation for variables.</p>
-<p>Usually used for initialization. For even earlier initialization, <span class="xref">Godot.GodotObject.GodotObject()</span> may be used. See also <span class="xref">Godot.Node._EnterTree()</span>.</p>
-<p><b>Note:</b> This method may be called only once for each node. After removing a node from the scene tree and adding it again, <span class="xref">Godot.Node._Ready()</span> will <b>not</b> be called a second time. This can be bypassed by requesting another call with <span class="xref">Godot.Node.RequestReady()</span>, which may be called anywhere before adding the node again.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public override void _Ready()</code></pre>
-  </div>
-
-
-
-
-
-
+  <h4 class="section">Event Type</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="AshesOfVelsingrad.Managers.MenuManager.html">MenuManager</a>.<a class="xref" href="AshesOfVelsingrad.Managers.MenuManager.html">MenuChangedEventHandler</a></dt>
+    <dd></dd>
+  </dl>
 
 
 

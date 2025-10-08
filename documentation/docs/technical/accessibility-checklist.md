@@ -167,7 +167,6 @@ Nothing implemented yet. Standard game mechanics without accessibility considera
 
 ## 📌 Links
 
-- [Main README](../README.md) – Include a link to this accessibility document
 - [WCAG Guidelines](https://www.w3.org/WAI/standards-guidelines/wcag/)
 - [Godot Accessibility Documentation](https://docs.godotengine.org/en/stable/tutorials/ui/gui_accessibility.html)
 - [Accessibility Feedback](#) – Add link for community feedback when available

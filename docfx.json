@@ -36,13 +36,14 @@
     "content": [
       {
         "files": [
-          "documentation/api/**.yml",
-          "documentation/api/index.md",
-          "documentation/docs/**.md",
-          "documentation/docs/**/*.md",
-          "documentation/toc.yml",
-          "documentation/**.md"
-        ]
+          "api/**.yml",
+          "api/index.md",
+          "docs/**.md",
+          "docs/**/*.md",
+          "toc.yml",
+          "**.md"
+        ],
+        "src": "documentation"
       }
     ],
     "output": "documentation/_site",
@@ -56,8 +57,9 @@
     "resource": [
       {
         "files": [
-          "documentation/images/**"
-        ]
+          "images/**"
+        ],
+        "src": "documentation"
       }
     ],
     "postProcessors": [],
@@ -73,7 +75,7 @@
         "branch": "develop"
       },
       "_gitUrlPattern": "github",
-      "_appLogoPath": "documentation/images/logo-doc.png",
+      "_appLogoPath": "images/logo-doc.png",
       "_enableNewTab": true
     }
   }

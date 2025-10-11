@@ -103,7 +103,7 @@ public abstract partial class UnitSystem : CharacterBody2D, IEffectTarget
         return true;
     }
 
-    private List<int> GetPossibleFloorForUnitMoves(
+    private static List<int> GetPossibleFloorForUnitMoves(
         (int, int, int) baseFloor,
         bool isNegate,
         (int, int, int)[] directions,
@@ -123,34 +123,38 @@ public abstract partial class UnitSystem : CharacterBody2D, IEffectTarget
         {
             if (!map.IsWalkable( // Check Left
                     baseFloor.Item1 + directions[0].Item1,
-                    baseFloor.Item2 + floor * directions[3].Item2,
+                    baseFloor.Item2 + floor,
                     baseFloor.Item3
                 ) &&
                 !map.IsWalkable( // Check Right
                     baseFloor.Item1 + directions[1].Item1,
-                    baseFloor.Item2 + floor * directions[1].Item2,
+                    baseFloor.Item2 + floor,
                     baseFloor.Item3
                 ) &&
                 !map.IsWalkable( // Check Forward
                     baseFloor.Item1,
-                    baseFloor.Item2 + floor * directions[2].Item2,
+                    baseFloor.Item2 + floor,
                     baseFloor.Item3 + directions[2].Item3
                 ) &&
                 !map.IsWalkable( // Check Backward
                     baseFloor.Item1,
-                    baseFloor.Item2 + floor * directions[3].Item2,
+                    baseFloor.Item2 + floor,
                     baseFloor.Item3 + directions[3].Item3
                 )
             )
+            {
+                floor += isNegate ? -1 : 1;
                 continue;
+            }
 
             possibleFloor.Add(baseFloor.Item2 + floor);
+            floor += isNegate ? -1 : 1;
         }
 
         return possibleFloor;
     }
 
-    private void QueueNewFloors(
+    private static void QueueNewFloors(
         ref Queue<((int, int, int) pos, int dist)> toExplore,
         List<int> possibleFloors,
         int distance,
@@ -159,8 +163,9 @@ public abstract partial class UnitSystem : CharacterBody2D, IEffectTarget
     {
         foreach (int floor in possibleFloors)
         {
-            basePosition.Item2 += floor;
-            toExplore.Enqueue((basePosition, distance + 1));
+            (int, int, int) newPos = basePosition;
+            newPos.Item2 = floor;
+            toExplore.Enqueue((newPos, distance + 1));
         }
     }
 
@@ -181,37 +186,67 @@ public abstract partial class UnitSystem : CharacterBody2D, IEffectTarget
             (-1, 0, 0), // Left
             (1, 0, 0), // Right
             (0, 0, 1), // Forward
-            (0, 0, -1), // Backward
-            (0, 1, 0), // Up
-            (0, -1, 0) // Down
+            (0, 0, -1) // Backward
         ];
 
         if (unitPosition == null)
             return possibleMoves;
 
         // Queue the unit position
+        visitedCells.Add(unitPosition.Value);
         toExplore.Enqueue((unitPosition.Value, 0));
         while (toExplore.Count > 0)
         {
             ((int, int, int), int) currentPos = toExplore.Dequeue();
+
+            if (currentPos.Item2 >= PossibleMovesRange) continue;
+
+            // Set the current position to possible moves and visited cells
+            if (currentPos.Item1 != unitPosition.Value && !visitedCells.Contains(currentPos.Item1))
+            {
+                possibleMoves.Add(currentPos.Item1);
+                visitedCells.Add(currentPos.Item1);
+            }
+
             // Check the possible neighbor on the unit
             List<int> possibleUpFloors = GetPossibleFloorForUnitMoves(currentPos.Item1, false, directions, map);
-            QueueNewFloors(ref toExplore, possibleUpFloors, currentPos.Item2, currentPos.Item1);
+            foreach (int upFloor in possibleUpFloors)
+            {
+                foreach ((int, int, int) dir in directions)
+                {
+                    (int, int, int) pos = currentPos.Item1;
+                    pos.Item1 += dir.Item1;
+                    pos.Item2 += upFloor;
+                    pos.Item3 += dir.Item3;
+
+                    if (map.IsWalkable(pos.Item1, pos.Item2, pos.Item3))
+                        toExplore.Enqueue((pos, currentPos.Item2 + 1));
+                }
+            }
 
             // Check the possible neighbor under the unit
-            (int, int, int) posForDown = currentPos.Item1;
-            posForDown.Item1 -= 1;
-            List<int> possibleDownLeftFloors = GetPossibleFloorForUnitMoves(posForDown, true, directions, map);
-            QueueNewFloors(ref toExplore, possibleDownLeftFloors, currentPos.Item2, posForDown);
-            posForDown.Item1 += 2;
-            List<int> possibleDownRightFloors = GetPossibleFloorForUnitMoves(posForDown, true, directions, map);
-            posForDown.Item3 += 1;
-            List<int> possibleDownFrontFloors = GetPossibleFloorForUnitMoves(posForDown, true, directions, map);
-            posForDown.Item3 -= 2;
-            List<int> possibleDownBackFloors = GetPossibleFloorForUnitMoves(posForDown, true, directions, map);
-            List<int> totalPossibleFloors = possibleUpFloors;
+            foreach ((int, int, int) dir in directions)
+            {
+                (int, int, int) posForDown = (
+                    currentPos.Item1.Item1 + dir.Item1,
+                    currentPos.Item1.Item2,
+                    currentPos.Item1.Item3 + dir.Item3
+                );
 
-            FillTotalPossibleFloors(ref totalPossibleFloors, ref toExplore, possibleDownLeftFloors, currentPos.Item2, posForDown);
+                List<int> possibleDownFloors = GetPossibleFloorForUnitMoves(posForDown, true, directions, map);
+                QueueNewFloors(ref toExplore, possibleDownFloors, currentPos.Item2, posForDown);
+            }
+
+            // Check the possible neighbor at the level of the unit
+            foreach ((int, int, int) dir in directions)
+            {
+                (int, int, int) pos = currentPos.Item1;
+                pos.Item1 += dir.Item1;
+                pos.Item3 += dir.Item3;
+
+                if (map.IsWalkable(pos.Item1, pos.Item2, pos.Item3))
+                    toExplore.Enqueue((pos, currentPos.Item2 + 1));
+            }
         }
 
         return possibleMoves;

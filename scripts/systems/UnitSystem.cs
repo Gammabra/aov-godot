@@ -5,17 +5,41 @@ using Godot;
 
 namespace AshesOfVelsingrad.systems;
 
+/// <summary>
+///     Represents the different unit archetypes in the game.
+/// </summary>
 public enum UnitType
 {
-    // Player Units (Can also be an enemy unit)
+    /// <summary>Default player-controlled unit.</summary>
     Player,
+
+    /// <summary>Close-range melee fighter unit.</summary>
     Fighter,
+
+    /// <summary>Heavy melee swordsman unit.</summary>
     Swordsman,
+
+    /// <summary>High-mobility stealth unit.</summary>
     Assassin,
+
+    /// <summary>Ranged physical attacker.</summary>
     Archer,
+
+    /// <summary>Magic-based ranged attacker.</summary>
     Mage
 }
 
+/// <summary>
+///     Base class for all units in the tactical grid-based system.
+///     Handles stats, movement, effects, and Godot integration.
+/// </summary>
+/// <remarks>
+///     This class provides fundamental behavior for all combat units, including:
+///     - Base stats (HP, attack, defense, etc.)
+///     - Turn logic (HasPlayed)
+///     - Movement logic (BFS pathfinding in 3D)
+///     - Integration with <see cref="MapSystem" /> and <see cref="StatusEffect" />
+/// </remarks>
 public abstract partial class UnitSystem : CharacterBody2D, IEffectTarget
 {
     #region Private fields
@@ -26,83 +50,117 @@ public abstract partial class UnitSystem : CharacterBody2D, IEffectTarget
 
     #region Godot properties
 
+    /// <summary>
+    ///     Emitted when the unit's portrait texture changes.
+    /// </summary>
+    /// <param name="texture">The new portrait texture.</param>
     [Signal]
     public delegate void PortraitChangedEventHandler(Texture2D texture);
 
+    /// <summary>
+    ///     Emitted when the unit's health changes.
+    /// </summary>
+    /// <param name="currentHp">The unit's current HP value.</param>
+    /// <param name="maxHp">The unit's maximum HP value.</param>
     [Signal]
     public delegate void HealthChangedEventHandler(float currentHp, float maxHp);
 
+    /// <summary>
+    ///     The portrait texture displayed for this unit in the UI.
+    /// </summary>
     public Texture2D? PortraitTexture { get; protected set; }
 
     #endregion
 
     #region Public Properties
 
+    /// <summary>The name of the unit.</summary>
     public string UnitName { get; protected set; } = string.Empty;
+
+    /// <summary>Descriptive text about the unit.</summary>
     public string Description { get; protected set; } = string.Empty;
+
+    /// <summary>The current health points of the unit.</summary>
     public float Hp { get; protected set; }
+
+    /// <summary>The maximum health points of the unit.</summary>
     public float MaxHp { get; protected set; }
+
+    /// <summary>The base physical attack value of the unit.</summary>
     public float BaseAtk { get; protected set; }
+
+    /// <summary>The base physical defense value of the unit.</summary>
     public float BaseDef { get; protected set; }
+
+    /// <summary>The unit's base speed (used for turn order or initiative).</summary>
     public float BaseSpeed { get; protected set; }
+
+    /// <summary>The unit's intelligence stat, affecting magical power or effects.</summary>
     public float Intelligence { get; protected set; }
+
+    /// <summary>The unit's available mana points for casting skills.</summary>
     public float ManaPoint { get; protected set; }
+
+    /// <summary>The type or archetype of the unit.</summary>
     public UnitType Type { get; protected set; }
+
+    /// <summary>Indicates whether the unit is alive.</summary>
     public bool IsAlive { get; protected set; } = true;
+
+    /// <summary>Indicates whether the unit has already acted this turn.</summary>
     public bool HasPlayed { get; protected set; }
+
+    /// <summary>The maximum number of tiles the unit can move per turn.</summary>
     public int PossibleMovesRange { get; protected set; }
+
+    /// <summary>List of active (usable) skills available to this unit.</summary>
     public List<SkillSystem> ActiveSkills { get; protected set; } = [];
+
+    /// <summary>List of passive (always-on) skills applied to this unit.</summary>
     public List<SkillSystem> PassiveSkills { get; protected set; } = [];
+
+    /// <summary>The unit’s curse value (used for status mechanics or debuffs).</summary>
     public float Curse { get; protected set; }
 
     #endregion
 
     #region Class Initialization
 
+    /// <summary>
+    ///     Called when the node is added to the scene tree.
+    ///     Initializes the unit instance.
+    /// </summary>
+    /// <remarks>
+    ///     This method is called automatically by Godot when the node is ready.
+    /// </remarks>
     public override void _Ready()
     {
         Initialize();
     }
 
+    /// <summary>
+    ///     Initializes the unit instance
+    ///     This method should be overridden in derived classes to set up specific functionality.
+    /// </summary>
+    /// <remarks>
+    ///     This method is called by the _Ready method to initialize the map.
+    ///     It should contain the logic necessary to set up the unit's state and functionality.
+    ///     Derived classes must implement this method to provide their specific initialization logic.
+    /// </remarks>
     protected abstract void Initialize();
 
     #endregion
 
-    #region Public Methods
+    #region Private Methods
 
-    public abstract void Attack(List<UnitSystem> targets, MapSystem? map);
-    public abstract void TakeDamage(float damage);
-
-    public void PassTurn()
-    {
-        HasPlayed = true;
-    }
-
-    public virtual void SetGridPosition(int x, int y, int z, MapSystem map)
-    {
-        try
-        {
-            map.MoveUnit(this, x, y, z);
-        }
-        catch (ArgumentOutOfRangeException e)
-        {
-            GD.Print(e.Message);
-        }
-    }
-
-    public virtual bool CanMoveTo(int x, int y, int z, MapSystem map)
-    {
-        return map.IsWalkable(x, y, z);
-    }
-
-    public virtual bool MoveTo(int x, int y, int z, MapSystem map)
-    {
-        if (!CanMoveTo(x, y, z, map))
-            return false;
-        SetGridPosition(x, y, z, map);
-        return true;
-    }
-
+    /// <summary>
+    ///     Returns all possible floors accessible from a given base tile for vertical movement.
+    /// </summary>
+    /// <param name="baseFloor">The base position (x, y, z).</param>
+    /// <param name="isNegate"><c>true</c> to check downward movement; otherwise upward.</param>
+    /// <param name="directions">The 4 cardinal directions.</param>
+    /// <param name="map">Reference to the map system.</param>
+    /// <returns>A list of valid floor (Y) positions the unit can reach.</returns>
     private static List<int> GetPossibleFloorForUnitMoves(
         (int, int, int) baseFloor,
         bool isNegate,
@@ -154,6 +212,13 @@ public abstract partial class UnitSystem : CharacterBody2D, IEffectTarget
         return possibleFloor;
     }
 
+    /// <summary>
+    ///     Queues new positions to explore based on accessible floor levels.
+    /// </summary>
+    /// <param name="toExplore">The BFS exploration queue.</param>
+    /// <param name="possibleFloors">A list of possible floor levels.</param>
+    /// <param name="distance">The current BFS distance.</param>
+    /// <param name="basePosition">The base grid position.</param>
     private static void QueueNewFloors(
         ref Queue<((int, int, int) pos, int dist)> toExplore,
         List<int> possibleFloors,
@@ -169,12 +234,88 @@ public abstract partial class UnitSystem : CharacterBody2D, IEffectTarget
         }
     }
 
+    #endregion
+
+    #region Public Methods
+
     /// <summary>
-    ///     Get the possible moves the unit has depending on his actual position and his movement range
+    ///     Performs an attack on the specified targets.
     /// </summary>
-    /// <param name="map"></param>
-    /// <returns>List of every possible moves the unit can do</returns>
-    /// <remarks>The algorithm used is the BFS</remarks>
+    /// <param name="targets">List of target units to attack.</param>
+    /// <param name="map">Reference to the map system for positional logic.</param>
+    public abstract void Attack(List<UnitSystem> targets, MapSystem? map);
+
+    /// <summary>
+    ///     Applies incoming damage to the unit and updates HP.
+    /// </summary>
+    /// <param name="damage">The amount of damage received.</param>
+    public abstract void TakeDamage(float damage);
+
+    /// <summary>
+    ///     Marks the unit as having completed its turn.
+    /// </summary>
+    public void PassTurn()
+    {
+        HasPlayed = true;
+    }
+
+    /// <summary>
+    ///     Moves the unit to the specified grid coordinates in the <see cref="MapSystem" />.
+    /// </summary>
+    /// <param name="x">The X grid coordinate.</param>
+    /// <param name="y">The Y grid coordinate (height).</param>
+    /// <param name="z">The Z grid coordinate.</param>
+    /// <param name="map">The map on which the unit exists.</param>
+    public virtual void SetGridPosition(int x, int y, int z, MapSystem map)
+    {
+        try
+        {
+            map.MoveUnit(this, x, y, z);
+        }
+        catch (ArgumentOutOfRangeException e)
+        {
+            GD.Print(e.Message);
+        }
+    }
+
+    /// <summary>
+    ///     Checks if the unit can move to a given position.
+    /// </summary>
+    /// <param name="x">The X coordinate.</param>
+    /// <param name="y">The Y coordinate (height).</param>
+    /// <param name="z">The Z coordinate.</param>
+    /// <param name="map">The map to check against.</param>
+    /// <returns><c>true</c> if the position is walkable; otherwise <c>false</c>.</returns>
+    public virtual bool CanMoveTo(int x, int y, int z, MapSystem map)
+    {
+        return map.IsWalkable(x, y, z);
+    }
+
+    /// <summary>
+    ///     Moves the unit to the specified coordinates if possible.
+    /// </summary>
+    /// <param name="x">Target X coordinate.</param>
+    /// <param name="y">Target Y coordinate (height).</param>
+    /// <param name="z">Target Z coordinate.</param>
+    /// <param name="map">The map to interact with.</param>
+    /// <returns><c>true</c> if the move was successful; otherwise <c>false</c>.</returns>
+    public virtual bool MoveTo(int x, int y, int z, MapSystem map)
+    {
+        if (!CanMoveTo(x, y, z, map))
+            return false;
+        SetGridPosition(x, y, z, map);
+        return true;
+    }
+
+    /// <summary>
+    ///     Calculates all possible movement tiles for this unit based on its range and position.
+    /// </summary>
+    /// <param name="map">The map to evaluate movement on.</param>
+    /// <returns>A list of reachable coordinates (x, y, z).</returns>
+    /// <remarks>
+    ///     This method uses a Breadth-First Search (BFS) algorithm to evaluate all valid moves
+    ///     considering walkable tiles and vertical traversal (e.g. stairs, cliffs).
+    /// </remarks>
     public virtual List<(int, int, int)> GetPossibleMoves(MapSystem map)
     {
         List<(int, int, int)> possibleMoves = [];

@@ -259,7 +259,7 @@ public abstract partial class MapSystem : GridMap
     /// <remarks>
     ///     It must be called only for the class initialization.
     /// </remarks>
-    protected abstract void PlaceUnits(List<UnitSystem> playerUnits, List<UnitSystem> enemyUnits);
+    public abstract void PlaceUnits(List<UnitSystem> playerUnits, List<UnitSystem> enemyUnits);
 
     /// <summary>
     ///     Moves a unit to a new position in the map.

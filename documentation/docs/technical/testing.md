@@ -34,7 +34,7 @@
        "**/.godot/": true,
        "**/.import/": true
      },
-     "godotTools.editorPath.godot4": "path\\to\\your\\Godot_v4.4.1-stable_mono_win64.exe",
+     "godotTools.editorPath.godot4": "path\\to\\your\\Godot_v4.5-stable_mono_win64.exe",
      "dotnet.unitTests.runSettingsPath": "./tests/.runsettings"
    }
    ```
@@ -60,19 +60,19 @@
 
 1. **Set the `GODOT_BIN` environment variable:**
 
-    This variable must point to the Godot Mono executable (for example, `Godot_v4.4.1-stable_mono_win64.exe`). It is required to run C# tests with GdUnit4.
+    This variable must point to the Godot Mono executable (for example, `Godot_v4.5-stable_mono_win64.exe`). It is required to run C# tests with GdUnit4.
     You can set this variable:
     - System-wide (recommended): via your operating system's environment variables:
 
     - **Variable name:** `GODOT_BIN`
     - **Value:** Full path to the Godot Mono executable
-    - **Example:** `C:\Program Files\Godot\Godot_v4.4.1-stable_mono_win64.exe`
+    - **Example:** `C:\Program Files\Godot\Godot_v4.5-stable_mono_win64.exe`
 
     - Or locally for tests, by adding it to the `tests/.runsettings` file, inside `RunConfiguration`:
 
     ```xml
     <EnvironmentVariables>
-         <GODOT_BIN>C:\path\to\Godot_v4.4.1-stable_mono_win64.exe</GODOT_BIN>
+         <GODOT_BIN>C:\path\to\Godot_v4.5-stable_mono_win64.exe</GODOT_BIN>
     </EnvironmentVariables>
     ```
 
@@ -436,7 +436,7 @@ Follow the project's CONTRIBUTING.md guidelines for commit message conventions. 
 1. **Tests don't run:**
    - Check that the `GODOT_BIN` environment variable is correctly set
    - Ensure GdUnit4 is enabled in the project plugins
-   - Verify the path points to the mono version: `Godot_v4.4.1-stable_mono_win64.exe`
+   - Verify the path points to the mono version: `Godot_v4.5-stable_mono_win64.exe`
 
 2. **IntelliSense not working:**
    - Regenerate project files: `Project → Tools → C# → Sync C# Project`
@@ -490,16 +490,16 @@ dotnet add package gdUnit4.analyzers --version 1.0.0
    - Go to "Advanced" tab → "Environment Variables"
    - Add new system variable:
      - Name: `GODOT_BIN`
-     - Value: `C:\path\to\Godot_v4.4.1-stable_mono_win64.exe`
+     - Value: `C:\path\to\Godot_v4.5-stable_mono_win64.exe`
 
 2. **Via Command Line:**
    ```cmd
-   setx GODOT_BIN "C:\path\to\Godot_v4.4.1-stable_mono_win64.exe"
+   setx GODOT_BIN "C:\path\to\Godot_v4.5-stable_mono_win64.exe"
    ```
 
 3. **Via PowerShell:**
    ```powershell
-   [Environment]::SetEnvironmentVariable("GODOT_BIN", "C:\path\to\Godot_v4.4.1-stable_mono_win64.exe", "Machine")
+   [Environment]::SetEnvironmentVariable("GODOT_BIN", "C:\path\to\Godot_v4.5-stable_mono_win64.exe", "Machine")
    ```
 
 ## Additional Resources

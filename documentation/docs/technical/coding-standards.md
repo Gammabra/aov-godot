@@ -1,6 +1,6 @@
 # Coding Standards
 
-This document outlines the coding standards and conventions for our Godot 4.4.1 C# (.NET 9.0) game project. These standards ensure code consistency, maintainability, and team collaboration.
+This document outlines the coding standards and conventions for our Godot 4.5 C# (.NET 9.0) game project. These standards ensure code consistency, maintainability, and team collaboration.
 
 ## Table of Contents
 

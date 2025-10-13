@@ -168,10 +168,16 @@ public class OptionsMenu : Control, IDisposable</code></pre>
       <span class="xref">Control.NotificationLayoutDirectionChanged</span>
     </div>
     <div>
+      <span class="xref">Control._AccessibilityGetContextualInfo()</span>
+    </div>
+    <div>
       <span class="xref">Control._CanDropData(Vector2, Variant)</span>
     </div>
     <div>
       <span class="xref">Control._DropData(Vector2, Variant)</span>
+    </div>
+    <div>
+      <span class="xref">Control._GetAccessibilityContainerName(Node)</span>
     </div>
     <div>
       <span class="xref">Control._GetDragData(Vector2)</span>
@@ -253,6 +259,9 @@ public class OptionsMenu : Control, IDisposable</code></pre>
     </div>
     <div>
       <span class="xref">Control.GetGlobalRect()</span>
+    </div>
+    <div>
+      <span class="xref">Control.GetFocusModeWithOverride()</span>
     </div>
     <div>
       <span class="xref">Control.HasFocus()</span>
@@ -388,6 +397,15 @@ public class OptionsMenu : Control, IDisposable</code></pre>
     </div>
     <div>
       <span class="xref">Control.ForceDrag(Variant, Control)</span>
+    </div>
+    <div>
+      <span class="xref">Control.AccessibilityDrag()</span>
+    </div>
+    <div>
+      <span class="xref">Control.AccessibilityDrop()</span>
+    </div>
+    <div>
+      <span class="xref">Control.GetMouseFilterWithOverride()</span>
     </div>
     <div>
       <span class="xref">Control.GrabClickFocus()</span>
@@ -549,7 +567,13 @@ public class OptionsMenu : Control, IDisposable</code></pre>
       <span class="xref">Control.FocusMode</span>
     </div>
     <div>
+      <span class="xref">Control.FocusBehaviorRecursive</span>
+    </div>
+    <div>
       <span class="xref">Control.MouseFilter</span>
+    </div>
+    <div>
+      <span class="xref">Control.MouseBehaviorRecursive</span>
     </div>
     <div>
       <span class="xref">Control.MouseForcePassScrollEvents</span>
@@ -559,6 +583,27 @@ public class OptionsMenu : Control, IDisposable</code></pre>
     </div>
     <div>
       <span class="xref">Control.ShortcutContext</span>
+    </div>
+    <div>
+      <span class="xref">Control.AccessibilityName</span>
+    </div>
+    <div>
+      <span class="xref">Control.AccessibilityDescription</span>
+    </div>
+    <div>
+      <span class="xref">Control.AccessibilityLive</span>
+    </div>
+    <div>
+      <span class="xref">Control.AccessibilityControlsNodes</span>
+    </div>
+    <div>
+      <span class="xref">Control.AccessibilityDescribedByNodes</span>
+    </div>
+    <div>
+      <span class="xref">Control.AccessibilityLabeledByNodes</span>
+    </div>
+    <div>
+      <span class="xref">Control.AccessibilityFlowToNodes</span>
     </div>
     <div>
       <span class="xref">Control.Theme</span>
@@ -711,22 +756,22 @@ public class OptionsMenu : Control, IDisposable</code></pre>
       <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.readonlyspan-1">CanvasItem.DrawColoredPolygon(ReadOnlySpan&lt;Vector2&gt;, Color, ReadOnlySpan&lt;Vector2&gt;, Texture2D)</a>
     </div>
     <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">CanvasItem.DrawString(Font, Vector2, string, HorizontalAlignment, float, int, Color?, TextServer.JustificationFlag, TextServer.Direction, TextServer.Orientation)</a>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">CanvasItem.DrawString(Font, Vector2, string, HorizontalAlignment, float, int, Color?, TextServer.JustificationFlag, TextServer.Direction, TextServer.Orientation, float)</a>
     </div>
     <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">CanvasItem.DrawMultilineString(Font, Vector2, string, HorizontalAlignment, float, int, int, Color?, TextServer.LineBreakFlag, TextServer.JustificationFlag, TextServer.Direction, TextServer.Orientation)</a>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">CanvasItem.DrawMultilineString(Font, Vector2, string, HorizontalAlignment, float, int, int, Color?, TextServer.LineBreakFlag, TextServer.JustificationFlag, TextServer.Direction, TextServer.Orientation, float)</a>
     </div>
     <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">CanvasItem.DrawStringOutline(Font, Vector2, string, HorizontalAlignment, float, int, int, Color?, TextServer.JustificationFlag, TextServer.Direction, TextServer.Orientation)</a>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">CanvasItem.DrawStringOutline(Font, Vector2, string, HorizontalAlignment, float, int, int, Color?, TextServer.JustificationFlag, TextServer.Direction, TextServer.Orientation, float)</a>
     </div>
     <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">CanvasItem.DrawMultilineStringOutline(Font, Vector2, string, HorizontalAlignment, float, int, int, int, Color?, TextServer.LineBreakFlag, TextServer.JustificationFlag, TextServer.Direction, TextServer.Orientation)</a>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">CanvasItem.DrawMultilineStringOutline(Font, Vector2, string, HorizontalAlignment, float, int, int, int, Color?, TextServer.LineBreakFlag, TextServer.JustificationFlag, TextServer.Direction, TextServer.Orientation, float)</a>
     </div>
     <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">CanvasItem.DrawChar(Font, Vector2, string, int, Color?)</a>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">CanvasItem.DrawChar(Font, Vector2, string, int, Color?, float)</a>
     </div>
     <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">CanvasItem.DrawCharOutline(Font, Vector2, string, int, int, Color?)</a>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">CanvasItem.DrawCharOutline(Font, Vector2, string, int, int, Color?, float)</a>
     </div>
     <div>
       <span class="xref">CanvasItem.DrawMesh(Mesh, Texture2D, Transform2D?, Color?)</span>
@@ -1017,6 +1062,12 @@ public class OptionsMenu : Control, IDisposable</code></pre>
       <span class="xref">Node.NotificationTextServerChanged</span>
     </div>
     <div>
+      <span class="xref">Node.NotificationAccessibilityUpdate</span>
+    </div>
+    <div>
+      <span class="xref">Node.NotificationAccessibilityInvalidate</span>
+    </div>
+    <div>
       <span class="xref">Node.GetNode&lt;T&gt;(NodePath)</span>
     </div>
     <div>
@@ -1047,7 +1098,13 @@ public class OptionsMenu : Control, IDisposable</code></pre>
       <span class="xref">Node._ExitTree()</span>
     </div>
     <div>
+      <span class="xref">Node._GetAccessibilityConfigurationWarnings()</span>
+    </div>
+    <div>
       <span class="xref">Node._GetConfigurationWarnings()</span>
+    </div>
+    <div>
+      <span class="xref">Node._GetFocusedAccessibilityElement()</span>
     </div>
     <div>
       <span class="xref">Node._Input(InputEvent)</span>
@@ -1069,6 +1126,9 @@ public class OptionsMenu : Control, IDisposable</code></pre>
     </div>
     <div>
       <span class="xref">Node.PrintOrphanNodes()</span>
+    </div>
+    <div>
+      <span class="xref">Node.GetOrphanNodeIds()</span>
     </div>
     <div>
       <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Node.AddSibling(Node, bool)</a>
@@ -1218,6 +1278,12 @@ public class OptionsMenu : Control, IDisposable</code></pre>
       <span class="xref">Node.CanProcess()</span>
     </div>
     <div>
+      <span class="xref">Node.QueueAccessibilityUpdate()</span>
+    </div>
+    <div>
+      <span class="xref">Node.GetAccessibilityElement()</span>
+    </div>
+    <div>
       <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Node.SetDisplayFolded(bool)</a>
     </div>
     <div>
@@ -1243,6 +1309,9 @@ public class OptionsMenu : Control, IDisposable</code></pre>
     </div>
     <div>
       <span class="xref">Node.ResetPhysicsInterpolation()</span>
+    </div>
+    <div>
+      <span class="xref">Node.CanAutoTranslate()</span>
     </div>
     <div>
       <span class="xref">Node.SetTranslationDomainInherited()</span>
@@ -1302,7 +1371,7 @@ public class OptionsMenu : Control, IDisposable</code></pre>
       <span class="xref">Node.RpcConfig(StringName, Variant)</span>
     </div>
     <div>
-      <span class="xref">Node.GetRpcConfig()</span>
+      <span class="xref">Node.GetNodeRpcConfig()</span>
     </div>
     <div>
       <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">Node.Atr(string, StringName)</a>

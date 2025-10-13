@@ -2,9 +2,9 @@
 <html>
   <head>
     <meta charset="utf-8">
-      <title>Godot 4.4.1 Testing Guide with C# and GdUnit4 | Ashes of Velsingrad Documentation </title>
+      <title>Godot 4.5 Testing Guide with C# and GdUnit4 | Ashes of Velsingrad Documentation </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content="Godot 4.4.1 Testing Guide with C# and GdUnit4 | Ashes of Velsingrad Documentation ">
+      <meta name="title" content="Godot 4.5 Testing Guide with C# and GdUnit4 | Ashes of Velsingrad Documentation ">
       
       
       <link rel="icon" href="../../favicon.ico">
@@ -71,7 +71,7 @@
         </div>
 
         <article data-uid="">
-<h1 id="godot-441-testing-guide-with-c-and-gdunit4">Godot 4.4.1 Testing Guide with C# and GdUnit4</h1>
+<h1 id="godot-45-testing-guide-with-c-and-gdunit4">Godot 4.5 Testing Guide with C# and GdUnit4</h1>
 
 <h2 id="table-of-contents">Table of Contents</h2>
 <ol>
@@ -116,7 +116,7 @@ Create a <code>.vscode/settings.json</code> file at the project root:</p>
     &quot;**/.godot/&quot;: true,
     &quot;**/.import/&quot;: true
   },
-  &quot;godotTools.editorPath.godot4&quot;: &quot;path\\to\\your\\Godot_v4.4.1-stable_mono_win64.exe&quot;,
+  &quot;godotTools.editorPath.godot4&quot;: &quot;path\\to\\your\\Godot_v4.5-stable_mono_win64.exe&quot;,
   &quot;dotnet.unitTests.runSettingsPath&quot;: &quot;./tests/.runsettings&quot;
 }
 </code></pre>
@@ -150,7 +150,7 @@ Create a <code>.vscode/settings.json</code> file at the project root:</p>
 <h3 id="environment-setup">Environment Setup</h3>
 <ol>
 <li><p><strong>Set the <code>GODOT_BIN</code> environment variable:</strong></p>
-<p>This variable must point to the Godot Mono executable (for example, <code>Godot_v4.4.1-stable_mono_win64.exe</code>). It is required to run C# tests with GdUnit4.
+<p>This variable must point to the Godot Mono executable (for example, <code>Godot_v4.5-stable_mono_win64.exe</code>). It is required to run C# tests with GdUnit4.
 You can set this variable:</p>
 <ul>
 <li><p>System-wide (recommended): via your operating system's environment variables:</p>
@@ -159,13 +159,13 @@ You can set this variable:</p>
 </li>
 <li><p><strong>Value:</strong> Full path to the Godot Mono executable</p>
 </li>
-<li><p><strong>Example:</strong> <code>C:\Program Files\Godot\Godot_v4.4.1-stable_mono_win64.exe</code></p>
+<li><p><strong>Example:</strong> <code>C:\Program Files\Godot\Godot_v4.5-stable_mono_win64.exe</code></p>
 </li>
 <li><p>Or locally for tests, by adding it to the <code>tests/.runsettings</code> file, inside <code>RunConfiguration</code>:</p>
 </li>
 </ul>
 <pre><code class="lang-xml">&lt;EnvironmentVariables&gt;
-     &lt;GODOT_BIN&gt;C:\path\to\Godot_v4.4.1-stable_mono_win64.exe&lt;/GODOT_BIN&gt;
+     &lt;GODOT_BIN&gt;C:\path\to\Godot_v4.5-stable_mono_win64.exe&lt;/GODOT_BIN&gt;
 &lt;/EnvironmentVariables&gt;
 </code></pre>
 <blockquote>
@@ -515,7 +515,7 @@ public void TestWithMock()
 <ul>
 <li>Check that the <code>GODOT_BIN</code> environment variable is correctly set</li>
 <li>Ensure GdUnit4 is enabled in the project plugins</li>
-<li>Verify the path points to the mono version: <code>Godot_v4.4.1-stable_mono_win64.exe</code></li>
+<li>Verify the path points to the mono version: <code>Godot_v4.5-stable_mono_win64.exe</code></li>
 </ul>
 </li>
 <li><p><strong>IntelliSense not working:</strong></p>
@@ -576,17 +576,17 @@ public void TestWithLogging()
 <li>Add new system variable:
 <ul>
 <li>Name: <code>GODOT_BIN</code></li>
-<li>Value: <code>C:\path\to\Godot_v4.4.1-stable_mono_win64.exe</code></li>
+<li>Value: <code>C:\path\to\Godot_v4.5-stable_mono_win64.exe</code></li>
 </ul>
 </li>
 </ul>
 </li>
 <li><p><strong>Via Command Line:</strong></p>
-<pre><code class="lang-cmd">setx GODOT_BIN &quot;C:\path\to\Godot_v4.4.1-stable_mono_win64.exe&quot;
+<pre><code class="lang-cmd">setx GODOT_BIN &quot;C:\path\to\Godot_v4.5-stable_mono_win64.exe&quot;
 </code></pre>
 </li>
 <li><p><strong>Via PowerShell:</strong></p>
-<pre><code class="lang-powershell">[Environment]::SetEnvironmentVariable(&quot;GODOT_BIN&quot;, &quot;C:\path\to\Godot_v4.4.1-stable_mono_win64.exe&quot;, &quot;Machine&quot;)
+<pre><code class="lang-powershell">[Environment]::SetEnvironmentVariable(&quot;GODOT_BIN&quot;, &quot;C:\path\to\Godot_v4.5-stable_mono_win64.exe&quot;, &quot;Machine&quot;)
 </code></pre>
 </li>
 </ol>

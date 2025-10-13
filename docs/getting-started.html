@@ -78,7 +78,7 @@
 <p>Before you begin, ensure you have the following installed:</p>
 <h3 id="required-software">Required Software</h3>
 <ul>
-<li><strong>Godot 4.4.1</strong> (Mono version) - <a href="https://godotengine.org/download">Download from official site</a></li>
+<li><strong>Godot 4.5</strong> (Mono version) - <a href="https://godotengine.org/download">Download from official site</a></li>
 <li><strong>.NET 9.0 SDK</strong> or higher - <a href="https://dotnet.microsoft.com/download">Download from Microsoft</a></li>
 <li><strong>Git</strong> - <a href="https://git-scm.com/">Download from git-scm.com</a></li>
 </ul>
@@ -103,10 +103,10 @@ cd aov-godot
 <h3 id="2-set-up-environment-variables">2. Set Up Environment Variables</h3>
 <p>You need to set the <code>GODOT_BIN</code> environment variable for testing:</p>
 <p><strong>Windows (Command Prompt):</strong></p>
-<pre><code class="lang-cmd">setx GODOT_BIN &quot;C:\path\to\Godot_v4.4.1-stable_mono_win64.exe&quot;
+<pre><code class="lang-cmd">setx GODOT_BIN &quot;C:\path\to\Godot_v4.5-stable_mono_win64.exe&quot;
 </code></pre>
 <p><strong>Windows (PowerShell):</strong></p>
-<pre><code class="lang-powershell">[Environment]::SetEnvironmentVariable(&quot;GODOT_BIN&quot;, &quot;C:\path\to\Godot_v4.4.1-stable_mono_win64.exe&quot;, &quot;Machine&quot;)
+<pre><code class="lang-powershell">[Environment]::SetEnvironmentVariable(&quot;GODOT_BIN&quot;, &quot;C:\path\to\Godot_v4.5-stable_mono_win64.exe&quot;, &quot;Machine&quot;)
 </code></pre>
 <h3 id="3-open-the-project">3. Open the Project</h3>
 <ol>
@@ -150,7 +150,7 @@ Create <code>.vscode/settings.json</code> in your project root:</p>
     &quot;**/.import/&quot;: true,
     &quot;**/*.cs.uid&quot;: true
   },
-  &quot;godotTools.editorPath.godot4&quot;: &quot;path\\to\\your\\Godot_v4.4.1-stable_mono_win64.exe&quot;,
+  &quot;godotTools.editorPath.godot4&quot;: &quot;path\\to\\your\\Godot_v4.5-stable_mono_win64.exe&quot;,
   &quot;dotnet.unitTests.runSettingsPath&quot;: &quot;./tests/.runsettings&quot;,
   &quot;conventionalCommits.scopes&quot;: [
     &quot;player&quot;, &quot;combat&quot;, &quot;inventory&quot;, &quot;ui&quot;, &quot;audio&quot;,

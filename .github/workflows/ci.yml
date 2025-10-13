@@ -46,7 +46,7 @@ jobs:
       - name: Run GdUnit4 Tests
         uses: MikeSchulze/gdunit4-action@v1
         with:
-          godot-version: '4.4.1'
+          godot-version: '4.5'
           godot-net: true
           dotnet-version: ${{ matrix.dotnet-version }}
           paths: 'res://tests/unit'

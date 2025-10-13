@@ -70,7 +70,7 @@ Combat is strategic puzzles requiring positioning, terrain usage, and careful pl
 ## 🛠️ **Development Status**
 
 **Tech Stack:**
-- **Engine:** Godot 4.4.1
+- **Engine:** Godot 4.5
 - **Language:** C# (.NET 9.0)
 - **Platform:** Windows 10/11
 
@@ -83,7 +83,7 @@ Explore the complete game design, lore, and systems at our [DocFX Documentation]
 
 - **[Getting Started](https://gammabra.github.io/aov-godot/docs/getting-started.html)** - Set up your development environment
 - **[Game Design](https://gammabra.github.io/aov-godot/docs/game-design/core-gameplay.html)** - Deep dive into game systems
-- **[Accessibility Checklist](./ACCESSBILITY.md)** - Document describing goals and current feature regarding accessibility
+- **[Accessibility Checklist](https://gammabra.github.io/aov-godot/docs/technical/accessibility-checklist.md)** - Document describing goals and current feature regarding accessibility
 - **[API Reference](https://gammabra.github.io/aov-godot/api/index.html)** - Technical implementation details
 
 ### **🔧 Technical Documentation**

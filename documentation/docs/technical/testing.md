@@ -1,4 +1,4 @@
-# Godot 4.4.1 Testing Guide with C# and GdUnit4
+# Godot 4.5 Testing Guide with C# and GdUnit4
 
 ## Table of Contents
 1. [External Editor Configuration](#external-editor-configuration)

@@ -310,4 +310,4 @@ To contribute to the API or its documentation:
 
 **Last Updated**: Auto-generated on build
 **Version**: Current development branch
-**Engine**: Godot 4.4.1 (Mono/.NET 9.0)
+**Engine**: Godot 4.5 (Mono/.NET 9.0)

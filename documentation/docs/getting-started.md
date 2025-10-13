@@ -8,7 +8,7 @@ Before you begin, ensure you have the following installed:
 
 ### Required Software
 
-- **Godot 4.4.1** (Mono version) - [Download from official site](https://godotengine.org/download)
+- **Godot 4.5** (Mono version) - [Download from official site](https://godotengine.org/download)
 - **.NET 9.0 SDK** or higher - [Download from Microsoft](https://dotnet.microsoft.com/download)
 - **Git** - [Download from git-scm.com](https://git-scm.com/)
 

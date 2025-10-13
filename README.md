@@ -70,7 +70,7 @@ Combat is strategic puzzles requiring positioning, terrain usage, and careful pl
 ## 🛠️ **Development Status**
 
 **Tech Stack:**
-- **Engine:** Godot 4.4.1
+- **Engine:** Godot 4.5
 - **Language:** C# (.NET 9.0)
 - **Platform:** Windows 10/11
 

@@ -96,9 +96,9 @@ public partial class GameManager : BaseManager
         _enemyUnitsContainer = GetNode<Node>(_enemyUnitsPath);
         _mapSystemContainer = GetNode<MapSystem>(_mapSystemPath);
         _mapSystemContainer.PlaceUnits(_playerUnits, _enemyUnits);
+        LoadUnits();
         _turnManagerContainer = GetNode<TurnManager>(_turnManagerPath);
         _turnManagerContainer.InitializeTurnOrder(_playerUnits, _enemyUnits);
-        LoadUnits();
     }
 
     private void LoadUnits()

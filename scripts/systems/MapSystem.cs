@@ -62,10 +62,14 @@ public abstract partial class MapSystem : GridMap
     /// </summary>
     private Vector3I _max;
 
+    #endregion
+
+    #region Protected Properties
+
     /// <summary>
     ///     List of information of every grid
     /// </summary>
-    private readonly List<CellInformation> _cellsInformation = [];
+    protected readonly List<CellInformation> CellsInformation = [];
 
     #endregion
 
@@ -151,18 +155,24 @@ public abstract partial class MapSystem : GridMap
         MapCellSize = CellSize;
         foreach (Vector3I cell in GetUsedCells())
         {
+            CellInformation cellInformation;
             int meshId = GetCellItem(cell);
             bool doesMeshExist = CellTypeWalkable.TryGetValue((CellType)meshId, out bool isWalkable);
 
             if (!doesMeshExist)
             {
-                GD.PrintErr($"Could not find ground type {meshId}");
-                continue;
+                GD.Print(
+                    $"Could not find ground type at ({cell.X},{cell.Y},{cell.Z}), initializing with {CellType.Empty}"
+                );
+                cellInformation = new CellInformation(cell.X, cell.Y, cell.Z, CellType.Empty, false);
+            }
+            else
+            {
+                GD.Print($"Ground type {meshId} found at ({cell.X},{cell.Y},{cell.Z})");
+                cellInformation = new CellInformation(cell.X, cell.Y, cell.Z, (CellType)meshId, isWalkable);
             }
 
-            CellInformation cellInformation = new(cell.X, cell.Y, cell.Z, (CellType)meshId, isWalkable);
-
-            _cellsInformation.Add(cellInformation);
+            CellsInformation.Add(cellInformation);
         }
     }
 
@@ -204,7 +214,7 @@ public abstract partial class MapSystem : GridMap
 
     /// <summary>
     ///     Converts 3D grid coordinates into the corresponding list index
-    ///     used by <see cref="_cellsInformation" />.
+    ///     used by <see cref="CellsInformation" />.
     /// </summary>
     /// <param name="x">The x-coordinate of the grid.</param>
     /// <param name="y">The y-coordinate of the grid.</param>
@@ -215,9 +225,16 @@ public abstract partial class MapSystem : GridMap
     /// </exception>
     private int GetListIndex(int x, int y, int z)
     {
-        if (x < 0 || x >= Width || y < 0 || y >= Height || z < 0 || z >= Depth)
-            throw new ArgumentOutOfRangeException("Out of range");
-        return x + y * Width + z * Width * Height;
+        int i = 0;
+
+        foreach (CellInformation cellInformation in CellsInformation)
+        {
+            if (cellInformation.X == x && cellInformation.Y == y && cellInformation.Z == z)
+                return i;
+            i++;
+        }
+
+        throw new ArgumentOutOfRangeException("Out of range");
     }
 
     #endregion
@@ -235,7 +252,7 @@ public abstract partial class MapSystem : GridMap
     {
         int index = GetListIndex(x, y, z);
 
-        return _cellsInformation[index].IsWalkable;
+        return CellsInformation[index].IsWalkable;
     }
 
     /// <summary>
@@ -248,7 +265,7 @@ public abstract partial class MapSystem : GridMap
     {
         int index = GetListIndex(x, y, z);
 
-        _cellsInformation[index].IsWalkable = !_cellsInformation[index].IsWalkable;
+        CellsInformation[index].IsWalkable = !CellsInformation[index].IsWalkable;
     }
 
     /// <summary>
@@ -276,7 +293,7 @@ public abstract partial class MapSystem : GridMap
     public virtual void MoveUnit(UnitSystem unit, int newX, int newY, int newZ)
     {
         // Remove from old position
-        foreach (CellInformation cell in _cellsInformation)
+        foreach (CellInformation cell in CellsInformation)
         {
             if (cell.Unit != unit)
                 continue;
@@ -287,7 +304,7 @@ public abstract partial class MapSystem : GridMap
         // Assign to new position
         int index = GetListIndex(newX, newY, newZ);
 
-        _cellsInformation[index].Unit = unit;
+        CellsInformation[index].Unit = unit;
     }
 
     /// <summary>
@@ -303,12 +320,12 @@ public abstract partial class MapSystem : GridMap
     {
         int index = GetListIndex(x, y, z);
 
-        return _cellsInformation[index].Unit;
+        return CellsInformation[index].Unit;
     }
 
     public virtual (int, int, int)? GetUnitPosition(UnitSystem unit)
     {
-        foreach (CellInformation cell in _cellsInformation)
+        foreach (CellInformation cell in CellsInformation)
             if (cell.Unit == unit)
                 return (cell.X, cell.Y, cell.Z);
         return null;
@@ -328,7 +345,7 @@ public abstract partial class MapSystem : GridMap
     {
         int index = GetListIndex(x, y, z);
 
-        _cellsInformation[index].Unit = null;
+        CellsInformation[index].Unit = null;
     }
 
     #endregion

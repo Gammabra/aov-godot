@@ -48,16 +48,20 @@ public partial class GameManager : BaseManager
     [Export]
     private NodePath _turnManagerPath;
 
+    [Export]
+    private NodePath _battleInputSystemPath;
+
     private Node _playerUnitsContainer;
     private Node _enemyUnitsContainer;
     private MapSystem _mapSystemContainer;
     private TurnManager _turnManagerContainer;
+    private BattleInputSystem _battleInputSystemContainer;
 
     #endregion
 
     #region Public Properties
 
-    public new static GameManager? Instance { get; private set; }
+    private new static GameManager? Instance { get; set; }
 
     #endregion
 
@@ -92,6 +96,7 @@ public partial class GameManager : BaseManager
 
     private void InitializeGameManager()
     {
+        _battleInputSystemContainer = GetNode<BattleInputSystem>(_battleInputSystemPath);
         _playerUnitsContainer = GetNode<Node>(_playerUnitsPath);
         _enemyUnitsContainer = GetNode<Node>(_enemyUnitsPath);
         _mapSystemContainer = GetNode<MapSystem>(_mapSystemPath);

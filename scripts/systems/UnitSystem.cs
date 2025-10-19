@@ -154,6 +154,15 @@ public abstract partial class UnitSystem : CharacterBody2D, IEffectTarget
     #region Private Methods
 
     /// <summary>
+    /// Called by every <see cref="UnitSystem"/> function with an action to report to the system that the unit has played.
+    /// </summary>
+    protected void ReportSystemUnitHasPlayed()
+    {
+        GD.Print($"{Name} has played");
+        ActionCompleted?.Invoke();
+    }
+
+    /// <summary>
     ///     Returns all possible floors accessible from a given base tile for vertical movement.
     /// </summary>
     /// <param name="baseFloor">The base position (x, y, z).</param>
@@ -239,6 +248,11 @@ public abstract partial class UnitSystem : CharacterBody2D, IEffectTarget
     #region Public Methods
 
     /// <summary>
+    /// Report to the system when the unit has played
+    /// </summary>
+    public event Action? ActionCompleted;
+
+    /// <summary>
     ///     Performs an attack on the specified targets.
     /// </summary>
     /// <param name="targets">List of target units to attack.</param>
@@ -257,6 +271,7 @@ public abstract partial class UnitSystem : CharacterBody2D, IEffectTarget
     public void PassTurn()
     {
         HasPlayed = true;
+        ReportSystemUnitHasPlayed();
     }
 
     /// <summary>
@@ -304,6 +319,7 @@ public abstract partial class UnitSystem : CharacterBody2D, IEffectTarget
         if (!CanMoveTo(x, y, z, map))
             return false;
         SetGridPosition(x, y, z, map);
+        ReportSystemUnitHasPlayed();
         return true;
     }
 

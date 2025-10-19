@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using AshesOfVelsingrad.systems;
+using System.Threading.Tasks;
 using AshesOfVelsingrad.systems.status_effects;
 using Godot;
 
@@ -67,6 +68,13 @@ public partial class GameManager : BaseManager
 
     #region Class initialization
 
+    /// <inheritdoc/>
+    public override void _Ready()
+    {
+        base._Ready();
+        _ = StartBattleWhenReady();
+    }
+
     /// <summary>
     ///     Initializes the GameManager singleton instance.
     ///     Ensures only one instance exists and sets up the initial state.
@@ -94,6 +102,15 @@ public partial class GameManager : BaseManager
 
     #region Private Methods
 
+    private async Task StartBattleWhenReady()
+    {
+        if (!IsInsideTree())
+            await ToSignal(this, "ready");
+
+        GD.Print("All nodes should be ready. Start battle now.");
+        _ = _turnManagerContainer.StartBattle();
+    }
+
     private void InitializeGameManager()
     {
         _battleInputSystemContainer = GetNode<BattleInputSystem>(_battleInputSystemPath);
@@ -103,6 +120,8 @@ public partial class GameManager : BaseManager
         _mapSystemContainer.PlaceUnits(_playerUnits, _enemyUnits);
         LoadUnits();
         _turnManagerContainer = GetNode<TurnManager>(_turnManagerPath);
+        _turnManagerContainer.OnPlayerTurn += ActivateInput;
+        _turnManagerContainer.OnPlayerEndTurn += DeactivateInput;
         _turnManagerContainer.InitializeTurnOrder(_playerUnits, _enemyUnits);
     }
 
@@ -120,6 +139,18 @@ public partial class GameManager : BaseManager
                 _enemyUnits.Add(unit);
 
         GD.Print($"Players count : {_playerUnits.Count} | Enemies count : {_enemyUnits.Count}");
+    }
+
+    private void ActivateInput()
+    {
+        GD.Print("Activate input");
+        _battleInputSystemContainer.SetInputEnabled(true);
+    }
+
+    private void DeactivateInput()
+    {
+        GD.Print("Deactivate input");
+        _battleInputSystemContainer.SetInputEnabled(false);
     }
 
     #endregion

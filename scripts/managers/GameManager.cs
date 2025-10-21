@@ -6,17 +6,33 @@ using Godot;
 
 namespace AshesOfVelsingrad.Managers;
 
+/// <summary>
+/// Represents the overall game state during a level.
+/// </summary>
 public enum GameState
 {
+    /// <summary>Waiting for the battle to start or for a process to complete.</summary>
     Waiting,
+
+    /// <summary>The player's turn is currently active.</summary>
     PlayerTurn,
+
+    /// <summary>The enemy's turn is currently active.</summary>
     EnemyTurn
 }
 
+/// <summary>
+/// Represents the outcome of a battle.
+/// </summary>
 public enum GameOutcome
 {
+    /// <summary>The battle is ongoing; no winner yet.</summary>
     Ongoing,
+
+    /// <summary>The player has won the battle.</summary>
     Victory,
+
+    /// <summary>The player has lost the battle.</summary>
     Defeat
 }
 
@@ -60,8 +76,12 @@ public partial class GameManager : BaseManager
 
     #endregion
 
-    #region Public Properties
+    #region Private Properties
 
+    /// <summary>
+    /// Singleton instance of the <see cref="GameManager"/>.
+    /// Ensures that only one active instance exists at any given time.
+    /// </summary>
     private new static GameManager? Instance { get; set; }
 
     #endregion
@@ -102,6 +122,10 @@ public partial class GameManager : BaseManager
 
     #region Private Methods
 
+    /// <summary>
+    /// Waits for the scene tree to be fully ready, then starts the battle loop.
+    /// </summary>
+    /// <returns>A task that completes once the battle has started.</returns>
     private async Task StartBattleWhenReady()
     {
         if (!IsInsideTree())
@@ -111,9 +135,17 @@ public partial class GameManager : BaseManager
         _ = _turnManagerContainer.StartBattle();
     }
 
+    /// <summary>
+    /// Initializes references to all major systems and sets up initial bindings.
+    /// </summary>
+    /// <remarks>
+    /// This method is called during <see cref="Initialize"/> to connect signals,
+    /// set up turn events, load units, and prepare the map and input systems.
+    /// </remarks>
     private void InitializeGameManager()
     {
         _battleInputSystemContainer = GetNode<BattleInputSystem>(_battleInputSystemPath);
+        _battleInputSystemContainer.OnAttackPressed += PlayerAttacked;
         _playerUnitsContainer = GetNode<Node>(_playerUnitsPath);
         _enemyUnitsContainer = GetNode<Node>(_enemyUnitsPath);
         _mapSystemContainer = GetNode<MapSystem>(_mapSystemPath);
@@ -125,6 +157,13 @@ public partial class GameManager : BaseManager
         _turnManagerContainer.InitializeTurnOrder(_playerUnits, _enemyUnits);
     }
 
+    /// <summary>
+    /// Loads all player and enemy units from their respective container nodes.
+    /// </summary>
+    /// <remarks>
+    /// This function scans the Godot scene tree for <see cref="UnitSystem"/> nodes
+    /// and stores references to them for battle management.
+    /// </remarks>
     private void LoadUnits()
     {
         _playerUnits.Clear();
@@ -141,16 +180,34 @@ public partial class GameManager : BaseManager
         GD.Print($"Players count : {_playerUnits.Count} | Enemies count : {_enemyUnits.Count}");
     }
 
+    /// <summary>
+    /// Enables player input at the start of their turn.
+    /// </summary>
     private void ActivateInput()
     {
         GD.Print("Activate input");
         _battleInputSystemContainer.SetInputEnabled(true);
     }
 
+    /// <summary>
+    /// Disables player input when their turn ends.
+    /// </summary>
     private void DeactivateInput()
     {
         GD.Print("Deactivate input");
         _battleInputSystemContainer.SetInputEnabled(false);
+    }
+
+    /// <summary>
+    /// Handles player attack input and passes the turn when an attack occurs.
+    /// </summary>
+    /// <remarks>
+    /// Called when <see cref="BattleInputSystem.OnAttackPressed"/> is triggered.
+    /// </remarks>
+    private void PlayerAttacked()
+    {
+        GD.Print("Player attacked");
+        _turnManagerContainer.GetCurrentUnit().PassTurn();
     }
 
     #endregion

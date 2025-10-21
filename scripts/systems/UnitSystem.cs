@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using AshesOfVelsingrad.systems.status_effects;
 using Godot;
 
@@ -45,6 +46,7 @@ public abstract partial class UnitSystem : CharacterBody2D, IEffectTarget
     #region Private fields
 
     private readonly EffectTarget _effectTarget = new();
+    private TaskCompletionSource? _actionTcs;
 
     #endregion
 
@@ -154,12 +156,21 @@ public abstract partial class UnitSystem : CharacterBody2D, IEffectTarget
     #region Private Methods
 
     /// <summary>
-    /// Called by every <see cref="UnitSystem"/> function with an action to report to the system that the unit has played.
+    ///     Set the result to unlock the system and clean the <see cref="TaskCompletionSource" />.
+    /// </summary>
+    private void CompleteAction()
+    {
+        _actionTcs?.TrySetResult();
+        _actionTcs = null;
+    }
+
+    /// <summary>
+    ///     Called by every <see cref="UnitSystem" /> function with an action to report to the system that the unit has played.
     /// </summary>
     protected void ReportSystemUnitHasPlayed()
     {
         GD.Print($"{Name} has played");
-        ActionCompleted?.Invoke();
+        CompleteAction();
     }
 
     /// <summary>
@@ -248,9 +259,16 @@ public abstract partial class UnitSystem : CharacterBody2D, IEffectTarget
     #region Public Methods
 
     /// <summary>
-    /// Report to the system when the unit has played
+    ///     Lock the system and wait the player for an action
     /// </summary>
-    public event Action? ActionCompleted;
+    /// <returns>
+    /// A <see cref="Task"/> that completes when the player finishes their action.
+    /// </returns>
+    public Task WaitForActionAsync()
+    {
+        _actionTcs = new TaskCompletionSource();
+        return _actionTcs.Task;
+    }
 
     /// <summary>
     ///     Performs an attack on the specified targets.

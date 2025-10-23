@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://d1gutyvnvvnlo"]
+
+[ext_resource type="PackedScene" uid="uid://d15402s2q1i0f" path="res://assets/KayKit_Prototype_Bits_1.0_FREE/KayKit_Prototype_Bits_1.0_FREE/Assets/gltf/Floor.gltf" id="1_rgqkd"]
+
+[node name="Test2" type="Node3D"]
+
+[node name="Floor2" parent="." instance=ExtResource("1_rgqkd")]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 1.483251, 0, 2.4939203)

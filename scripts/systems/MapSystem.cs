@@ -11,7 +11,7 @@ namespace AshesOfVelsingrad.systems;
 public enum CellType
 {
 	// Add a cell type when needed
-	Empty,
+	Empty = -1,
 	Grass
 }
 

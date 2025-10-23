@@ -1,0 +1,45 @@
+[gd_scene load_steps=8 format=3 uid="uid://bee2drrspdtgi"]
+
+[ext_resource type="Script" uid="uid://du2xlh41m2cd" path="res://scripts/managers/GameManager.cs" id="1_bc6e8"]
+[ext_resource type="Script" uid="uid://dycsfdky6wocx" path="res://scripts/data/Map1.cs" id="2_p4llj"]
+[ext_resource type="MeshLibrary" uid="uid://du0rgaffn5bkl" path="res://assets/mesh_library/3DMesh.tres" id="2_so6rl"]
+[ext_resource type="Script" uid="uid://dkhfwdhsqvki4" path="res://scripts/managers/TurnManager.cs" id="3_p4llj"]
+[ext_resource type="Script" uid="uid://ch3yx81605e7t" path="res://scripts/data/Player1Data.cs" id="4_so6rl"]
+[ext_resource type="Script" uid="uid://c7tb4cc8xrwme" path="res://scripts/data/Enemy1Data.cs" id="5_nvgwb"]
+[ext_resource type="Script" uid="uid://buj6bdu8gkf0j" path="res://scripts/systems/BattleInputSystem.cs" id="7_nvgwb"]
+
+[node name="Test" type="Node"]
+
+[node name="GameManager" type="Node" parent="."]
+script = ExtResource("1_bc6e8")
+_playerUnitsPath = NodePath("PlayerUnits")
+_enemyUnitsPath = NodePath("EnemyUnits")
+_mapSystemPath = NodePath("Map")
+_turnManagerPath = NodePath("TurnManager")
+_battleInputSystemPath = NodePath("../Inputs")
+
+[node name="Map" type="GridMap" parent="GameManager"]
+mesh_library = ExtResource("2_so6rl")
+data = {
+"cells": PackedInt32Array(65534, 0, 8, 0, 4, 0, 1, 4, 0, 2, 4, 0, 2, 5, 0, 1, 5, 0, 0, 5, 0, 0, 6, 0, 1, 6, 0, 2, 6, 0, 3, 4, 0, 3, 5, 0, 3, 6, 0, 3, 3, 0, 2, 3, 0, 1, 3, 0, 0, 3, 0)
+}
+script = ExtResource("2_p4llj")
+
+[node name="TurnManager" type="Node" parent="GameManager"]
+script = ExtResource("3_p4llj")
+
+[node name="PlayerUnits" type="Node" parent="GameManager"]
+
+[node name="Player1" type="CharacterBody2D" parent="GameManager/PlayerUnits"]
+script = ExtResource("4_so6rl")
+
+[node name="EnemyUnits" type="Node" parent="GameManager"]
+
+[node name="Enemy1" type="CharacterBody2D" parent="GameManager/EnemyUnits"]
+script = ExtResource("5_nvgwb")
+
+[node name="Inputs" type="Node" parent="."]
+script = ExtResource("7_nvgwb")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.36499056, 0.93101126, 0, -0.93101126, 0.3649906, 3.879195, 6.740193, 13.399664)

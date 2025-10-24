@@ -45,88 +45,7 @@ public partial class OptionsMenu : Control
 	/// </remarks>
 	public override void _Ready()
 	{
-		CreateActionList();
 		CallDeferred(MethodName.DeferredReady);
-	}
-
-	private void CreateActionList()
-	{
-		InputMap.LoadFromProjectSettings();
-		GD.Print("create action list");
-
-		if (_actionList == null || _inputButtonScene == null)
-			return;
-
-		foreach (var children in _actionList.GetChildren())
-			children.QueueFree();
-
-		GD.Print("action list empty");
-
-		foreach (var action in _inputActions)
-		{
-			if (_inputButtonScene == null)
-				continue;
-
-			var instance = _inputButtonScene.Instantiate();
-			if (instance is not Button button)
-				continue;
-
-			var actionLabel = button.GetNode<Label>("MarginContainer/HBoxContainer/LabelAction");
-			var inputLabel = button.GetNode<Label>("MarginContainer/HBoxContainer/LabelInput");
-
-			actionLabel.Text = action.Value;
-			var events = InputMap.ActionGetEvents(action.Key);
-			
-			if (events.Count > 0)
-				inputLabel.Text = events[0].AsText().TrimSuffix(" (Physical)");
-			else
-				inputLabel.Text = "";
-
-			_actionList.AddChild(button);
-			button.Pressed += () => OnInputButtonPressed(button, action.Key);
-			GD.Print($"Added button for {action.Key} to action list");
-		}
-	}
-
-	private void OnInputButtonPressed(Button button, string action)
-	{
-		if (!_isRemapping)
-		{
-			_isRemapping = true;
-			_actionToRemap = action;
-			_remappingButton = button;
-			button.GetNode<Label>("MarginContainer/HBoxContainer/LabelInput").Text = "Press key to bind...";
-		}
-	}
-
-	public override void _Input(InputEvent inputEvent)
-	{
-		if (_isRemapping && _actionToRemap != null)
-		{
-			if (inputEvent is InputEventKey || (inputEvent is InputEventMouseButton mouseButton && mouseButton.Pressed))
-			{
-				if (inputEvent is InputEventMouseButton innerMouseButton && innerMouseButton.DoubleClick)
-					innerMouseButton.DoubleClick = false;
-
-				InputMap.ActionEraseEvent(_actionToRemap, null);
-				InputMap.ActionAddEvent(_actionToRemap, inputEvent);
-				UpdateActionList(_remappingButton, inputEvent);
-
-				_isRemapping = false;
-				_actionToRemap = null;
-				_remappingButton = null;
-
-				AcceptEvent();
-			}
-		}
-	}
-
-	private void UpdateActionList(Button? button, InputEvent inputEvent)
-	{
-		if (button == null)
-			return;
-
-		button.GetNode<Label>("MarginContainer/HBoxContainer/LabelInput").Text = inputEvent.AsText().TrimSuffix(" (Physical)");
 	}
 
 	/// <summary>
@@ -140,6 +59,112 @@ public partial class OptionsMenu : Control
 	{
 		ConnectSignals();
 		InitializeUI();
+		// Wait one more frame to ensure SettingsManager has applied saved bindings
+		CallDeferred(MethodName.CreateActionList);
+	}
+
+	/// <summary>
+	/// Creates the list of input action buttons dynamically.
+	/// </summary>
+	private void CreateActionList()
+	{
+		if (_actionList == null || _inputButtonScene == null)
+			return;
+
+		GD.Print("Creating action list...");
+
+		// Clear existing buttons
+		foreach (var children in _actionList.GetChildren())
+			children.QueueFree();
+
+		// Create button for each action
+		foreach (var action in _inputActions)
+		{
+			if (_inputButtonScene == null)
+				continue;
+
+			var instance = _inputButtonScene.Instantiate();
+			if (instance is not Button button)
+				continue;
+
+			var actionLabel = button.GetNode<Label>("MarginContainer/HBoxContainer/LabelAction");
+			var inputLabel = button.GetNode<Label>("MarginContainer/HBoxContainer/LabelInput");
+
+			actionLabel.Text = action.Value;
+
+			// Get current binding from InputMap
+			var events = InputMap.ActionGetEvents(action.Key);
+
+			if (events.Count > 0)
+			{
+				var eventText = events[0].AsText().TrimSuffix(" (Physical)");
+				inputLabel.Text = eventText;
+				GD.Print($"Action '{action.Key}' bound to: {eventText}");
+			}
+			else
+			{
+				inputLabel.Text = "Unbound";
+				GD.Print($"Action '{action.Key}' is unbound");
+			}
+
+			_actionList.AddChild(button);
+			button.Pressed += () => OnInputButtonPressed(button, action.Key);
+		}
+	}
+
+	/// <summary>
+	/// Handles input button press to start remapping.
+	/// </summary>
+	private void OnInputButtonPressed(Button button, string action)
+	{
+		if (!_isRemapping)
+		{
+			_isRemapping = true;
+			_actionToRemap = action;
+			_remappingButton = button;
+			button.GetNode<Label>("MarginContainer/HBoxContainer/LabelInput").Text = "Press key to bind...";
+		}
+	}
+
+	/// <summary>
+	/// Captures input for remapping actions.
+	/// </summary>
+	public override void _Input(InputEvent inputEvent)
+	{
+		if (_isRemapping && _actionToRemap != null)
+		{
+			if (inputEvent is InputEventKey keyEvent && keyEvent.Pressed ||
+				inputEvent is InputEventMouseButton mouseButton && mouseButton.Pressed)
+			{
+				// Prevent double-click flag from being saved
+				if (inputEvent is InputEventMouseButton innerMouseButton && innerMouseButton.DoubleClick)
+					innerMouseButton.DoubleClick = false;
+
+				// Save the new binding through SettingsManager
+				SettingsManager.Instance?.SetInputBinding(_actionToRemap, inputEvent);
+
+				// Update the button display
+				UpdateActionList(_remappingButton, inputEvent);
+
+				_isRemapping = false;
+				_actionToRemap = null;
+				_remappingButton = null;
+
+				AcceptEvent();
+			}
+		}
+	}
+
+	/// <summary>
+	/// Updates the input label for a specific button.
+	/// </summary>
+	private void UpdateActionList(Button? button, InputEvent inputEvent)
+	{
+		if (button == null)
+			return;
+
+		button.GetNode<Label>("MarginContainer/HBoxContainer/LabelInput").Text =
+			inputEvent.AsText().TrimSuffix(" (Physical)");
 	}
 
 	/// <summary>
@@ -154,7 +179,17 @@ public partial class OptionsMenu : Control
 		if (SettingsManager.Instance != null)
 		{
 			SettingsManager.Instance.DialogueSizeChanged += OnDialogueSizeSettingChanged;
+			SettingsManager.Instance.InputBindingChanged += OnInputBindingChanged;
 		}
+	}
+
+	/// <summary>
+	/// Handles input binding changes from SettingsManager.
+	/// </summary>
+	private void OnInputBindingChanged(string action)
+	{
+		// Refresh the action list to show updated bindings
+		CreateActionList();
 	}
 
 	/// <summary>
@@ -362,5 +397,17 @@ public partial class OptionsMenu : Control
 		var tween = CreateTween();
 		tween.TweenProperty(this, "modulate", new Color(1, 1, 1, 0), 0.3f);
 		tween.TweenCallback(Callable.From(() => Hide()));
+	}
+
+	/// <summary>
+	/// Cleanup when the node exits the tree.
+	/// </summary>
+	public override void _ExitTree()
+	{
+		if (SettingsManager.Instance != null)
+		{
+			SettingsManager.Instance.DialogueSizeChanged -= OnDialogueSizeSettingChanged;
+			SettingsManager.Instance.InputBindingChanged -= OnInputBindingChanged;
+		}
 	}
 }

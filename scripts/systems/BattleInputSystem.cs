@@ -64,29 +64,7 @@ public sealed partial class BattleInputSystem : Node
 	/// </remarks>
 	private void Initialize()
 	{
-		SetKeyBinding("attack", Key.J);
 		GD.Print("CombatInputSystem initialized successfully");
-	}
-
-	#endregion
-
-	#region Private Methods
-
-	/// <summary>
-	///    Temporary function to test the input bindings, it must be replaced by a cleaner way to handle input in the game
-	/// </summary>
-	/// <param name="actionName">The action name</param>
-	/// <param name="key">The keybind</param>
-	private static void SetKeyBinding(string actionName, Key key)
-	{
-		if (InputMap.HasAction(actionName))
-			InputMap.EraseAction(actionName);
-		InputMap.AddAction(actionName);
-		InputEventKey ev = new()
-		{
-			Keycode = key
-		};
-		InputMap.ActionAddEvent(actionName, ev);
 	}
 
 	#endregion

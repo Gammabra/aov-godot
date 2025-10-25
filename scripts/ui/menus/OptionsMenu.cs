@@ -64,6 +64,42 @@ public partial class OptionsMenu : Control
 	}
 
 	/// <summary>
+	/// Gets a user-friendly name for the given input event.
+	/// </summary>
+	/// <param name="inputEvent">The input event to get the name for.</param>
+	/// <returns>A string representing the input event.</returns>
+	private static string GetButtonName(InputEvent inputEvent)
+	{
+		if (inputEvent is InputEventJoypadMotion joypadMotion)
+			return joypadMotion.Axis switch
+			{
+				JoyAxis.TriggerLeft => "LT",
+				JoyAxis.TriggerRight => "RT",
+				_ => $"Axis {joypadMotion.Axis}",
+			};
+
+		if (inputEvent is not InputEventJoypadButton joypadButton)
+			return inputEvent.AsText().TrimSuffix(" (Physical)");
+
+		return (int)joypadButton.ButtonIndex switch
+		{
+			0 => "A (Controller)",
+			1 => "B (Controller)",
+			2 => "X (Controller)",
+			3 => "Y (Controller)",
+			7 => "Left Stick",
+			8 => "Right Stick",
+			9 => "LB",
+			10 => "RB",
+			11 => "D-Pad Up",
+			12 => "D-Pad Down",
+			13 => "D-Pad Left",
+			14 => "D-Pad Right",
+			_ => $"Button {(int)joypadButton.ButtonIndex}",
+		};
+	}
+
+	/// <summary>
 	/// Creates the list of input action buttons dynamically.
 	/// </summary>
 	private void CreateActionList()
@@ -97,7 +133,7 @@ public partial class OptionsMenu : Control
 
 			if (events.Count > 0)
 			{
-				var eventText = events[0].AsText().TrimSuffix(" (Physical)");
+				var eventText = GetButtonName(events[0]);
 				inputLabel.Text = eventText;
 				GD.Print($"Action '{action.Key}' bound to: {eventText}");
 			}
@@ -134,8 +170,22 @@ public partial class OptionsMenu : Control
 		if (_isRemapping && _actionToRemap != null)
 		{
 			if (inputEvent is InputEventKey keyEvent && keyEvent.Pressed ||
-				inputEvent is InputEventMouseButton mouseButton && mouseButton.Pressed)
+				inputEvent is InputEventMouseButton mouseButton && mouseButton.Pressed ||
+				inputEvent is InputEventJoypadButton joypadButton && joypadButton.Pressed ||
+				inputEvent is InputEventJoypadMotion && ((InputEventJoypadMotion)inputEvent).AxisValue > 0.5f)
 			{
+				if ((inputEvent is InputEventJoypadMotion joypadMotion &&
+					joypadMotion.Axis != JoyAxis.TriggerLeft &&
+					joypadMotion.Axis != JoyAxis.TriggerRight) ||
+					(inputEvent is InputEventJoypadButton joypadBtn &&
+					(joypadBtn.ButtonIndex == JoyButton.Back ||
+					 joypadBtn.ButtonIndex == JoyButton.Guide ||
+					 joypadBtn.ButtonIndex == JoyButton.Start)) ||
+					 (inputEvent is InputEventKey keyEvt && keyEvt.Keycode == Key.Escape))
+				{
+					return;
+				}
+
 				// Prevent double-click flag from being saved
 				if (inputEvent is InputEventMouseButton innerMouseButton && innerMouseButton.DoubleClick)
 					innerMouseButton.DoubleClick = false;
@@ -164,7 +214,7 @@ public partial class OptionsMenu : Control
 			return;
 
 		button.GetNode<Label>("MarginContainer/HBoxContainer/LabelInput").Text =
-			inputEvent.AsText().TrimSuffix(" (Physical)");
+			GetButtonName(inputEvent);
 	}
 
 	/// <summary>

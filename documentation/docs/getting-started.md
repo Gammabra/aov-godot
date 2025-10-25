@@ -8,7 +8,7 @@ Before you begin, ensure you have the following installed:
 
 ### Required Software
 
-- **Godot 4.5** (Mono version) - [Download from official site](https://godotengine.org/download)
+- **Godot 4.5.1** (Mono version) - [Download from official site](https://godotengine.org/download)
 - **.NET 9.0 SDK** or higher - [Download from Microsoft](https://dotnet.microsoft.com/download)
 - **Git** - [Download from git-scm.com](https://git-scm.com/)
 
@@ -40,12 +40,12 @@ You need to set the `GODOT_BIN` environment variable for testing:
 
 **Windows (Command Prompt):**
 ```cmd
-setx GODOT_BIN "C:\path\to\Godot_v4.5-stable_mono_win64.exe"
+setx GODOT_BIN "C:\path\to\Godot_v4.5.1-stable_mono_win64.exe"
 ```
 
 **Windows (PowerShell):**
 ```powershell
-[Environment]::SetEnvironmentVariable("GODOT_BIN", "C:\path\to\Godot_v4.5-stable_mono_win64.exe", "Machine")
+[Environment]::SetEnvironmentVariable("GODOT_BIN", "C:\path\to\Godot_v4.5.1-stable_mono_win64.exe", "Machine")
 ```
 
 ### 3. Open the Project
@@ -94,7 +94,7 @@ Or use the GdUnit4 tab in Godot to run tests within the editor.
     "**/.import/": true,
     "**/*.cs.uid": true
   },
-  "godotTools.editorPath.godot4": "path\\to\\your\\Godot_v4.5-stable_mono_win64.exe",
+  "godotTools.editorPath.godot4": "path\\to\\your\\Godot_v4.5.1-stable_mono_win64.exe",
   "dotnet.unitTests.runSettingsPath": "./tests/.runsettings",
   "conventionalCommits.scopes": [
     "player", "combat", "inventory", "ui", "audio",

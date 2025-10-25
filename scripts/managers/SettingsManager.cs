@@ -231,6 +231,24 @@ public partial class SettingsManager : BaseManager
             data["alt"] = mouseEvent.AltPressed;
             data["meta"] = mouseEvent.MetaPressed;
         }
+        else if (inputEvent is InputEventJoypadButton joypadButton)
+        {
+            data["type"] = "joypad_button";
+            data["button_index"] = joypadButton.ButtonIndex;
+            data["pressed"] = joypadButton.Pressed;
+            data["device"] = joypadButton.Device;
+        }
+        else if (inputEvent is InputEventJoypadMotion joypadMotion)
+        {
+            data["type"] = "joypad_motion";
+            data["axis"] = joypadMotion.Axis;
+            data["axis_value"] = joypadMotion.AxisValue;
+            data["device"] = joypadMotion.Device;
+        }
+        else
+        {
+            GD.PrintErr($"Unsupported InputEvent type: {inputEvent.GetType().Name}");
+        }
 
         return data;
     }
@@ -313,6 +331,38 @@ public partial class SettingsManager : BaseManager
                 MetaPressed = GetBool("meta"),
             };
             return mouseEvent;
+        }
+
+        if (type == "joypad_button")
+        {
+            var joypadButton = new InputEventJoypadButton
+            {
+                ButtonIndex = (JoyButton)GetInt("button_index"),
+                Pressed = GetBool("pressed"),
+                Device = GetInt("device"),
+            };
+            return joypadButton;
+        }
+
+        if (type == "joypad_motion")
+        {
+            double axisValueDouble = 0.0;
+            if (data.TryGetValue("axis_value", out var val))
+            {
+                axisValueDouble = val switch
+                {
+                    JsonElement e when e.ValueKind == JsonValueKind.Number => e.GetDouble(),
+                    _ => Convert.ToDouble(val)
+                };
+            }
+
+            var joypadMotion = new InputEventJoypadMotion
+            {
+                Axis = (JoyAxis)GetInt("axis"),
+                AxisValue = (float)axisValueDouble,
+                Device = GetInt("device"),
+            };
+            return joypadMotion;
         }
 
         GD.PrintErr($"Unknown input type '{type}'");

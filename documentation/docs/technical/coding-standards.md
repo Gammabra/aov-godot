@@ -1,6 +1,6 @@
 # Coding Standards
 
-This document outlines the coding standards and conventions for our Godot 4.5 C# (.NET 9.0) game project. These standards ensure code consistency, maintainability, and team collaboration.
+This document outlines the coding standards and conventions for our Godot 4.5.1 C# (.NET 9.0) game project. These standards ensure code consistency, maintainability, and team collaboration.
 
 ## Table of Contents
 
@@ -279,7 +279,7 @@ Use consistent format for temporary comments:
 ```csharp
 // TODO: Implement save/load functionality
 // FIXME: Character sometimes clips through walls on steep slopes
-// HACK: Temporary workaround for Godot audio bug - remove in v4.5
+// HACK: Temporary workaround for Godot audio bug - remove in v4.5.1
 ```
 
 ## Error Handling

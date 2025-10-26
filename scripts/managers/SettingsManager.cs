@@ -58,18 +58,18 @@ public partial class SettingsManager : BaseManager
     private void SaveDefaultInputBindings()
     {
         InputMap.LoadFromProjectSettings();
-        
+
         foreach (var action in InputMap.GetActions())
         {
             var actionName = action.ToString();
             var events = InputMap.ActionGetEvents(actionName);
             var eventArray = new InputEvent[events.Count];
-            
+
             for (int i = 0; i < events.Count; i++)
             {
                 eventArray[i] = (InputEvent)events[i];
             }
-            
+
             _defaultInputBindings[actionName] = eventArray;
         }
     }
@@ -134,7 +134,7 @@ public partial class SettingsManager : BaseManager
     }
 
     /// <summary>
-    /// Applies saved input bindings to the InputMap.
+    /// Applies saved input bindings from settings to the InputMap.
     /// </summary>
     private void ApplyInputBindings()
     {
@@ -171,8 +171,10 @@ public partial class SettingsManager : BaseManager
     }
 
     /// <summary>
-    /// Gets the input binding for a specific action.
+    /// Gets the current input binding for an action.
     /// </summary>
+    /// <param name="action">The action name to retrieve the binding for.</param>
+    /// <returns>The InputEvent bound to the action, or null if not found.</returns>
     public InputEvent? GetInputBinding(string action)
     {
         if (!InputMap.HasAction(action))
@@ -183,9 +185,12 @@ public partial class SettingsManager : BaseManager
     }
 
     /// <summary>
-    /// Sets a new input binding for an action and saves it.
+    /// Sets a new input binding for an action and saves the settings.
+    /// Emits a signal to notify other components of the change.
     /// </summary>
-    public void SetInputBinding(string action, InputEvent inputEvent)
+    /// <param name="action">The action name to set the binding for.</param>
+    /// <param name="inputEvent">The InputEvent to bind to the action.</param>
+    public void SetInputBinding(string action, InputEvent? inputEvent)
     {
         if (_settings == null || !InputMap.HasAction(action))
             return;
@@ -199,13 +204,15 @@ public partial class SettingsManager : BaseManager
         SaveSettings();
 
         EmitSignal(SignalName.InputBindingChanged, action);
-        EmitSignal(SignalName.SettingsChanged, $"Input_{action}", Variant.From(inputEvent.AsText()));
+        EmitSignal(SignalName.SettingsChanged, $"Input_{action}", Variant.From(inputEvent?.AsText() ?? "Unbound"));
     }
 
     /// <summary>
     /// Serializes an InputEvent to a dictionary for JSON storage.
     /// </summary>
-    private Dictionary<string, object> SerializeInputEvent(InputEvent inputEvent)
+    /// <param name="inputEvent">The InputEvent to serialize.</param>
+    /// <returns>A dictionary representing the serialized InputEvent.</returns>
+    private Dictionary<string, object> SerializeInputEvent(InputEvent? inputEvent)
     {
         var data = new Dictionary<string, object>();
 
@@ -245,17 +252,23 @@ public partial class SettingsManager : BaseManager
             data["axis_value"] = joypadMotion.AxisValue;
             data["device"] = joypadMotion.Device;
         }
-        else
+        else if (inputEvent != null)
         {
             GD.PrintErr($"Unsupported InputEvent type: {inputEvent.GetType().Name}");
+        }
+        else
+        {
+            GD.PrintErr("Input unbound (null InputEvent)");
         }
 
         return data;
     }
 
     /// <summary>
-    /// Deserializes a dictionary back into an InputEvent.
+    /// Deserializes an InputEvent from a dictionary.
     /// </summary>
+    /// <param name="data">The dictionary containing the serialized InputEvent data.</param>
+    /// <returns>The deserialized InputEvent, or null if deserialization failed.</returns>
     private InputEvent? DeserializeInputEvent(Dictionary<string, object> data)
     {
         string? GetString(string key)
@@ -470,7 +483,7 @@ public partial class SettingsManager : BaseManager
     public void ResetToDefaults()
     {
         _settings = new SettingsData();
-        
+
         // Reset input bindings to defaults
         foreach (var binding in _defaultInputBindings)
         {
@@ -480,11 +493,11 @@ public partial class SettingsManager : BaseManager
                 InputMap.ActionAddEvent(binding.Key, inputEvent);
             }
         }
-        
+
         SaveSettings();
         EmitSignal(SignalName.DialogueSizeChanged, _settings.DialogueSize);
         EmitSignal(SignalName.SettingsChanged, "Reset", true);
-        
+
         // Notify about all input bindings being reset
         foreach (var action in _defaultInputBindings.Keys)
         {

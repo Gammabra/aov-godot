@@ -185,6 +185,16 @@ public partial class OptionsMenu : Control
 	{
 		if (_isRemapping && _actionToRemap != null)
 		{
+			if (InputMap.ActionGetEvents(_actionToRemap).Any(evt => evt.IsMatch(inputEvent)))
+			{
+				UpdateActionList(_remappingButton, inputEvent);
+				_isRemapping = false;
+				_actionToRemap = null;
+				_remappingButton = null;
+				AcceptEvent();
+				return;
+			}
+
 			if (inputEvent is InputEventKey keyEvent && keyEvent.Pressed ||
 				inputEvent is InputEventMouseButton mouseButton && mouseButton.Pressed ||
 				inputEvent is InputEventJoypadButton joypadButton && joypadButton.Pressed ||

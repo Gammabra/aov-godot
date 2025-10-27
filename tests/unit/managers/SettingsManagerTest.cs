@@ -1,5 +1,7 @@
+using System;
 using System.Collections.Generic;
 using System.Reflection;
+using System.Text.Json;
 using AshesOfVelsingrad.Managers;
 using GdUnit4;
 using Godot;
@@ -57,46 +59,29 @@ public class SettingsManagerTest
     [TestCase]
     public void Initialize_SecondInstance_RemovesDuplicate()
     {
-        // This test verifies the duplicate detection logic works correctly
-        // Instead of trying to test actual singleton behavior across test isolation,
-        // we'll verify that the duplicate detection logic is implemented correctly
-
-        // Clear any existing instances to start fresh
         SetSingletonInstance<SettingsManager>(null);
         SetSingletonInstance<TestSettingsManager>(null);
 
-        // Create first manager manually
         var firstManager = AddToTestRoot(new TestSettingsManager());
         CallInitializeOnManager(firstManager);
         _testNodes.Add(firstManager);
 
-        // Verify first manager is set as singleton
         AssertThat(SettingsManager.Instance).IsEqual(firstManager);
         AssertThat(TestSettingsManager.Instance).IsEqual(firstManager);
-        AssertThat(firstManager.GetDialogueSize()).IsEqual(1.0f);
 
-        // Store reference to the first manager
         var originalBaseInstance = SettingsManager.Instance;
         var originalTestInstance = TestSettingsManager.Instance;
 
-        // Create a second manager and initialize it while first still exists
         var secondManager = AddToTestRoot(new TestSettingsManager());
         CallInitializeOnManager(secondManager);
 
-        // After initialization of the second manager, the singletons should remain unchanged
-        // The second manager should have been queued for deletion
         AssertThat(SettingsManager.Instance).IsEqual(originalBaseInstance);
         AssertThat(TestSettingsManager.Instance).IsEqual(originalTestInstance);
         AssertThat(SettingsManager.Instance).IsEqual(firstManager);
 
-        // Verify the first manager is still functional
         firstManager.SetDialogueSize(1.3f);
         AssertThat(firstManager.GetDialogueSize()).IsEqual(1.3f);
-
-        // The second manager should be marked for deletion (IsQueuedForDeletion)
         AssertThat(secondManager.IsQueuedForDeletion()).IsTrue();
-
-        // Don't add secondManager to _testNodes since it's queued for deletion
     }
 
     [TestCase]
@@ -106,7 +91,6 @@ public class SettingsManagerTest
         _settingsManager = CreateTestSettingsManager();
 
         // Assert
-        // Should have default dialogue size
         AssertThat(_settingsManager.GetDialogueSize()).IsEqual(1.0f);
     }
 
@@ -133,7 +117,6 @@ public class SettingsManagerTest
         _settingsManager.SetDialogueSize(1.5f);
 
         // Assert
-        // The file should exist after setting a value (which triggers save)
         AssertThat(_settingsManager.GetDialogueSize()).IsEqual(1.5f);
     }
 
@@ -145,9 +128,9 @@ public class SettingsManagerTest
         firstManager.SetDialogueSize(1.8f);
         firstManager.SetSetting("test_key", "test_value");
 
-        // Act - create new manager and simulate loading existing settings
+        // Act
         var secondManager = CreateTestSettingsManager();
-        firstManager.SimulatePersistence(secondManager); // Simulate file persistence
+        firstManager.SimulatePersistence(secondManager);
         secondManager.LoadSettings();
 
         // Assert
@@ -222,7 +205,7 @@ public class SettingsManagerTest
         // Act
         _settingsManager.SetDialogueSize(1.3f);
 
-        // Wait a frame for signal processing
+        // Wait a frame
         var tree = (SceneTree)Godot.Engine.GetMainLoop();
         await tree.ToSignal(tree, SceneTree.SignalName.ProcessFrame);
 
@@ -251,7 +234,7 @@ public class SettingsManagerTest
         // Act
         _settingsManager.SetDialogueSize(1.7f);
 
-        // Wait a frame for signal processing
+        // Wait a frame
         var tree = (SceneTree)Godot.Engine.GetMainLoop();
         await tree.ToSignal(tree, SceneTree.SignalName.ProcessFrame);
 
@@ -274,12 +257,179 @@ public class SettingsManagerTest
             signalCount++;
         };
 
-        // Act - set the same value (within tolerance)
+        // Act
         _settingsManager.SetDialogueSize(1.5f);
 
         // Assert
         AssertThat(signalCount).IsEqual(0);
     }
+
+    // === INPUT BINDING TESTS ===
+
+    [TestCase]
+    public void SerializeInputEvent_KeyEvent_ReturnsCorrectDictionary()
+    {
+        // Arrange
+        _settingsManager = CreateTestSettingsManager();
+        var keyEvent = new InputEventKey
+        {
+            Keycode = Key.Space,
+            PhysicalKeycode = Key.Space,
+            Pressed = true,
+            CtrlPressed = false,
+            ShiftPressed = true
+        };
+
+        // Act
+        var result = _settingsManager.TestSerializeInputEvent(keyEvent);
+
+        // Assert
+        AssertThat(result["type"]).IsEqual("key");
+        AssertThat((int)result["keycode"]).IsEqual((int)Key.Space);
+        AssertThat((bool)result["pressed"]).IsTrue();
+        AssertThat((bool)result["shift"]).IsTrue();
+    }
+
+    [TestCase]
+    public void SerializeInputEvent_MouseButton_ReturnsCorrectDictionary()
+    {
+        // Arrange
+        _settingsManager = CreateTestSettingsManager();
+        var mouseEvent = new InputEventMouseButton
+        {
+            ButtonIndex = MouseButton.Left,
+            Pressed = true,
+            CtrlPressed = true
+        };
+
+        // Act
+        var result = _settingsManager.TestSerializeInputEvent(mouseEvent);
+
+        // Assert
+        AssertThat(result["type"]).IsEqual("mouse_button");
+        AssertThat((int)result["button_index"]).IsEqual((int)MouseButton.Left);
+        AssertThat((bool)result["pressed"]).IsTrue();
+        AssertThat((bool)result["ctrl"]).IsTrue();
+    }
+
+    [TestCase]
+    public void SerializeInputEvent_JoypadButton_ReturnsCorrectDictionary()
+    {
+        // Arrange
+        _settingsManager = CreateTestSettingsManager();
+        var joypadEvent = new InputEventJoypadButton
+        {
+            ButtonIndex = JoyButton.A,
+            Pressed = true,
+            Device = 0
+        };
+
+        // Act
+        var result = _settingsManager.TestSerializeInputEvent(joypadEvent);
+
+        // Assert
+        AssertThat(result["type"]).IsEqual("joypad_button");
+        AssertThat(result["button_index"]).IsEqual(JoyButton.A);
+        AssertThat((bool)result["pressed"]).IsTrue();
+        AssertThat((int)result["device"]).IsEqual(0);
+    }
+
+    [TestCase]
+    public void DeserializeInputEvent_KeyEvent_ReturnsCorrectEvent()
+    {
+        // Arrange
+        _settingsManager = CreateTestSettingsManager();
+        var data = new Dictionary<string, object>
+        {
+            { "type", "key" },
+            { "keycode", (int)Key.A },
+            { "physical_keycode", (int)Key.A },
+            { "unicode", 0 },
+            { "pressed", true },
+            { "ctrl", false },
+            { "shift", true },
+            { "alt", false },
+            { "meta", false }
+        };
+
+        // Act
+        var result = _settingsManager.TestDeserializeInputEvent(data) as InputEventKey;
+
+        // Assert
+        AssertThat(result).IsNotNull();
+        AssertThat(result!.Keycode).IsEqual(Key.A);
+        AssertThat(result.Pressed).IsTrue();
+        AssertThat(result.ShiftPressed).IsTrue();
+    }
+
+    [TestCase]
+    public void DeserializeInputEvent_MouseButton_ReturnsCorrectEvent()
+    {
+        // Arrange
+        _settingsManager = CreateTestSettingsManager();
+        var data = new Dictionary<string, object>
+        {
+            { "type", "mouse_button" },
+            { "button_index", (int)MouseButton.Right },
+            { "pressed", true },
+            { "ctrl", true },
+            { "shift", false },
+            { "alt", false },
+            { "meta", false }
+        };
+
+        // Act
+        var result = _settingsManager.TestDeserializeInputEvent(data) as InputEventMouseButton;
+
+        // Assert
+        AssertThat(result).IsNotNull();
+        AssertThat(result!.ButtonIndex).IsEqual(MouseButton.Right);
+        AssertThat(result.Pressed).IsTrue();
+        AssertThat(result.CtrlPressed).IsTrue();
+    }
+
+    [TestCase]
+    public void DeserializeInputEvent_InvalidType_ReturnsNull()
+    {
+        // Arrange
+        _settingsManager = CreateTestSettingsManager();
+        var data = new Dictionary<string, object>
+        {
+            { "type", "invalid_type" }
+        };
+
+        // Act
+        var result = _settingsManager.TestDeserializeInputEvent(data);
+
+        // Assert
+        AssertThat(result).IsNull();
+    }
+
+    [TestCase]
+    public void InputBindingSerialization_RoundTrip_PreservesData()
+    {
+        // Arrange
+        _settingsManager = CreateTestSettingsManager();
+        var originalEvent = new InputEventKey
+        {
+            Keycode = Key.W,
+            PhysicalKeycode = Key.W,
+            Pressed = true,
+            ShiftPressed = false,
+            CtrlPressed = false
+        };
+
+        // Act
+        var serialized = _settingsManager.TestSerializeInputEvent(originalEvent);
+        var deserialized = _settingsManager.TestDeserializeInputEvent(serialized) as InputEventKey;
+
+        // Assert
+        AssertThat(deserialized).IsNotNull();
+        AssertThat(deserialized!.Keycode).IsEqual(originalEvent.Keycode);
+        AssertThat(deserialized.Pressed).IsEqual(originalEvent.Pressed);
+    }
+
+    // === CUSTOM SETTINGS TESTS ===
 
     [TestCase]
     public void GetSetting_NonExistentKey_ReturnsDefaultValue()
@@ -365,7 +515,7 @@ public class SettingsManagerTest
         // Act
         _settingsManager.SetSetting("test_signal", "signal_value");
 
-        // Wait a frame for signal processing
+        // Wait a frame
         var tree = (SceneTree)Godot.Engine.GetMainLoop();
         await tree.ToSignal(tree, SceneTree.SignalName.ProcessFrame);
 
@@ -388,6 +538,8 @@ public class SettingsManagerTest
         // Assert
         AssertThat(_settingsManager.GetSetting<string>("test_key")).IsEqual("updated_value");
     }
+
+    // === RESET TESTS ===
 
     [TestCase]
     public void ResetToDefaults_ResetsDialogueSizeToDefault()
@@ -445,7 +597,7 @@ public class SettingsManagerTest
         // Act
         _settingsManager.ResetToDefaults();
 
-        // Wait a frame for signal processing
+        // Wait a frame
         var tree = (SceneTree)Godot.Engine.GetMainLoop();
         await tree.ToSignal(tree, SceneTree.SignalName.ProcessFrame);
 
@@ -455,52 +607,7 @@ public class SettingsManagerTest
         AssertThat(receivedDialogueSize).IsEqual(1.0f);
     }
 
-    [TestCase]
-    public void GetSetting_WithInvalidJsonData_ReturnsDefaultValue()
-    {
-        // This test simulates corrupted data scenarios
-        // Since we can't easily corrupt the internal data, we'll test with edge case values
-
-        // Arrange
-        _settingsManager = CreateTestSettingsManager();
-
-        // Act & Assert - test with null/empty scenarios
-        AssertThat(_settingsManager.GetSetting<string>("", "default")).IsEqual("default");
-        AssertThat(_settingsManager.GetSetting<int?>("non_existent")).IsNull();
-    }
-
-    [TestCase]
-    public void SetDialogueSize_MultipleCalls_MaintainsConsistency()
-    {
-        // Arrange
-        _settingsManager = CreateTestSettingsManager();
-
-        // Act - set multiple times
-        _settingsManager.SetDialogueSize(1.2f);
-        _settingsManager.SetDialogueSize(1.7f);
-        _settingsManager.SetDialogueSize(0.8f);
-
-        // Assert - should have the last valid value
-        AssertThat(_settingsManager.GetDialogueSize()).IsEqual(0.8f);
-    }
-
-    [TestCase]
-    public void CustomSettings_ComplexTypes_HandleCorrectly()
-    {
-        // Arrange
-        _settingsManager = CreateTestSettingsManager();
-        // Use Godot.Collections.Dictionary instead of System.Collections.Generic.Dictionary
-        var testDict = new Godot.Collections.Dictionary<string, int> { { "key1", 1 }, { "key2", 2 } };
-
-        // Act
-        _settingsManager.SetSetting("complex_type", testDict);
-
-        // Assert
-        var retrieved = _settingsManager.GetSetting<Godot.Collections.Dictionary<string, int>>("complex_type");
-        AssertThat(retrieved).IsNotNull();
-        AssertThat(retrieved!["key1"]).IsEqual(1);
-        AssertThat(retrieved["key2"]).IsEqual(2);
-    }
+    // === INTEGRATION TESTS ===
 
     [TestCase]
     public void Settings_PersistBetweenManagerInstances()
@@ -510,9 +617,9 @@ public class SettingsManagerTest
         firstManager.SetDialogueSize(1.4f);
         firstManager.SetSetting("persistent_key", "persistent_value");
 
-        // Act - simulate restart by creating new manager with persisted settings
+        // Act
         var secondManager = CreateTestSettingsManager();
-        firstManager.SimulatePersistence(secondManager); // Simulate file persistence
+        firstManager.SimulatePersistence(secondManager);
         secondManager.LoadSettings();
 
         // Assert
@@ -541,6 +648,23 @@ public class SettingsManagerTest
         _settingsManager.ResetToDefaults();
         AssertThat(_settingsManager.GetDialogueSize()).IsEqual(1.0f);
         AssertThat(_settingsManager.GetSetting<string>("workflow_test")).IsNull();
+    }
+
+    [TestCase]
+    public void CustomSettings_ComplexTypes_HandleCorrectly()
+    {
+        // Arrange
+        _settingsManager = CreateTestSettingsManager();
+        var testDict = new Godot.Collections.Dictionary<string, int> { { "key1", 1 }, { "key2", 2 } };
+
+        // Act
+        _settingsManager.SetSetting("complex_type", testDict);
+
+        // Assert
+        var retrieved = _settingsManager.GetSetting<Godot.Collections.Dictionary<string, int>>("complex_type");
+        AssertThat(retrieved).IsNotNull();
+        AssertThat(retrieved!["key1"]).IsEqual(1);
+        AssertThat(retrieved["key2"]).IsEqual(2);
     }
 
     // Helper Methods
@@ -592,10 +716,8 @@ public class SettingsManagerTest
         SetSingletonInstance<SettingsManager>(null);
         SetSingletonInstance<TestSettingsManager>(null);
 
-        // Clear test manager temp files
         TestSettingsManager.ClearTempFiles();
 
-        // Clean up test settings file
         if (FileAccess.FileExists(_testSettingsPath))
         {
             DirAccess.RemoveAbsolute(_testSettingsPath);

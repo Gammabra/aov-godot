@@ -258,7 +258,7 @@ public partial class SettingsManager : BaseManager
         }
         else
         {
-            GD.PrintErr("Input unbound (null InputEvent)");
+            GD.Print("Input unbound (null InputEvent)");
         }
 
         return data;

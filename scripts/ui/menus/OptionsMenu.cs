@@ -114,45 +114,45 @@ public partial class OptionsMenu : Control
 	{
 		if (_actionList == null || _inputButtonScene == null)
 			return;
-
-		GD.Print("Creating action list...");
-
-		// Clear existing buttons
+		
 		foreach (var children in _actionList.GetChildren())
 			children.QueueFree();
 
-		// Create button for each action
+		var actions = InputMap.GetActions().OrderBy(a => a);
 		foreach (var action in _inputActions)
 		{
-			if (_inputButtonScene == null)
-				continue;
-
-			var instance = _inputButtonScene.Instantiate();
-			if (instance is not Button button)
-				continue;
-
-			var actionLabel = button.GetNode<Label>("MarginContainer/HBoxContainer/LabelAction");
-			var inputLabel = button.GetNode<Label>("MarginContainer/HBoxContainer/LabelInput");
-
-			actionLabel.Text = action.Value;
-
-			// Get current binding from InputMap
-			var events = InputMap.ActionGetEvents(action.Key);
-
-			if (events.Count > 0)
+			if (!action.ToString().StartsWith("ui_"))
 			{
-				var eventText = GetButtonName(events[0]);
-				inputLabel.Text = eventText;
-				GD.Print($"Action '{action.Key}' bound to: {eventText}");
-			}
-			else
-			{
-				inputLabel.Text = "Unbound";
-				GD.Print($"Action '{action.Key}' is unbound");
-			}
+				var button = _inputButtonScene.Instantiate<Button>();
+				if (button == null) continue;
+				
+				_actionList.AddChild(button);
 
-			_actionList.AddChild(button);
-			button.Pressed += () => OnInputButtonPressed(button, action.Key);
+				var marginContainer = button.GetNode<MarginContainer>("MarginContainer");
+				if (marginContainer == null) continue;
+				
+				var hbox = marginContainer.GetNode<HBoxContainer>("HBoxContainer");
+				if (hbox == null) continue;
+				
+				var actionLabel = hbox.GetNode<Label>("LabelAction");
+				var inputLabel = hbox.GetNode<Label>("LabelInput");
+				if (actionLabel == null || inputLabel == null) continue;
+
+				actionLabel.Text = action.Value;
+				var events = InputMap.ActionGetEvents(action.Key);
+				if (events.Count > 0)
+				{
+					inputLabel.Text = GetButtonName(events[0]);
+				}
+				else
+				{
+					inputLabel.Text = "Unbound";
+					GD.Print($"Action '{action.Key}' is unbound");
+				}
+
+				_actionList.AddChild(button);
+				button.Pressed += () => OnInputButtonPressed(button, action.Key);
+			}
 		}
 	}
 
@@ -163,15 +163,22 @@ public partial class OptionsMenu : Control
 	/// <param name="action">The action associated with the button.</param>
 	private void OnInputButtonPressed(Button button, string action)
 	{
-		if (!_isRemapping)
+		if (button == null) return;
+		
+		_isRemapping = true;
+		_actionToRemap = action;
+		var marginContainer = button.GetNodeOrNull<MarginContainer>("MarginContainer");
+		if (marginContainer == null) return;
+		
+		var hbox = marginContainer.GetNodeOrNull<HBoxContainer>("HBoxContainer");
+		if (hbox == null) return;
+		
+		var inputLabel = hbox.GetNodeOrNull<Label>("LabelInput");
+		if (inputLabel != null)
 		{
-			_isRemapping = true;
-			_actionToRemap = action;
-			_remappingButton = button;
-			button.GetNode<Label>("MarginContainer/HBoxContainer/LabelInput").Text = "Press key to bind...";
+			inputLabel.Text = "Press any key...";
 		}
 	}
-
 	/// <summary>
 	/// Captures input for remapping actions.
 	/// </summary>

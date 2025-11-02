@@ -1,6 +1,6 @@
 # Software Architecture
 
-This document outlines the software architecture for **Ashes of Velsingrad**, a Godot 4.5 C# (.NET 9.0) game project. Understanding this architecture will help you navigate the codebase, make informed decisions, and contribute effectively to the project.
+This document outlines the software architecture for **Ashes of Velsingrad**, a Godot 4.5.1 C# (.NET 9.0) game project. Understanding this architecture will help you navigate the codebase, make informed decisions, and contribute effectively to the project.
 
 ## Table of Contents
 
@@ -18,7 +18,7 @@ This document outlines the software architecture for **Ashes of Velsingrad**, a 
 
 ### Technology Stack
 
-- **Engine**: Godot 4.5 (Mono version)
+- **Engine**: Godot 4.5.1 (Mono version)
 - **Language**: C# (.NET 9.0)
 - **Testing**: GdUnit4 with .NET Test SDK
 - **Build System**: MSBuild/.NET CLI

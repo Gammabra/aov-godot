@@ -40,6 +40,8 @@ public partial class TestSettingsManager : SettingsManager
         Instance = this;
         SetBaseInstance(this);
 
+        // Don't call SaveDefaultInputBindings or ApplyInputBindings in tests
+        // to avoid interfering with project's actual InputMap
         LoadSettings();
 
         GD.Print("[TEST] TestSettingsManager initialized");
@@ -64,7 +66,7 @@ public partial class TestSettingsManager : SettingsManager
                 var jsonString = file.GetAsText();
                 var settings = JsonSerializer.Deserialize<SettingsData>(jsonString) ?? new SettingsData();
                 SetSettingsField(settings);
-                GD.Print($"[TEST] Loaded settings from file - DialogueSize: {settings.DialogueSize}");
+                GD.Print($"[TEST] Loaded settings from file - DialogueSize: {settings.DialogueSize}, InputBindings: {settings.InputBindings.Count}");
             }
             else
             {
@@ -101,7 +103,7 @@ public partial class TestSettingsManager : SettingsManager
             using var file = FileAccess.Open(_testFilePath, FileAccess.ModeFlags.Write);
             file?.StoreString(jsonString);
 
-            GD.Print($"[TEST] SaveSettings() to {_testFilePath} - DialogueSize: {settings.DialogueSize}, CustomSettings count: {settings.CustomSettings.Count}");
+            GD.Print($"[TEST] SaveSettings() to {_testFilePath} - DialogueSize: {settings.DialogueSize}, InputBindings: {settings.InputBindings.Count}, CustomSettings: {settings.CustomSettings.Count}");
         }
         catch (System.Exception ex)
         {
@@ -177,6 +179,7 @@ public partial class TestSettingsManager : SettingsManager
         GD.Print($"[TEST] GetDialogueSize() called, returning: {result}");
         return result;
     }
+
     public new void ResetToDefaults()
     {
         var settings = new SettingsData();
@@ -185,6 +188,22 @@ public partial class TestSettingsManager : SettingsManager
         EmitSignal(SignalName.DialogueSizeChanged, settings.DialogueSize);
         EmitSignal(SignalName.SettingsChanged, "Reset", true);
         GD.Print("[TEST] ResetToDefaults called");
+    }
+
+    // Public wrapper for testing input binding serialization
+    public Dictionary<string, object> TestSerializeInputEvent(InputEvent? inputEvent)
+    {
+        var method = typeof(SettingsManager).GetMethod("SerializeInputEvent",
+            BindingFlags.NonPublic | BindingFlags.Instance);
+        return (Dictionary<string, object>)method!.Invoke(this, new object?[] { inputEvent })!;
+    }
+
+    // Public wrapper for testing input binding deserialization
+    public InputEvent? TestDeserializeInputEvent(Dictionary<string, object> data)
+    {
+        var method = typeof(SettingsManager).GetMethod("DeserializeInputEvent",
+            BindingFlags.NonPublic | BindingFlags.Instance);
+        return (InputEvent?)method!.Invoke(this, new object[] { data });
     }
 
     private void SetSettingsField(SettingsData settings)

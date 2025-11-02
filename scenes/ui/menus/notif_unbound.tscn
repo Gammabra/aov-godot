@@ -1,0 +1,29 @@
+[gd_scene load_steps=2 format=3 uid="uid://cx2n4apta0a0v"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ag74d"]
+bg_color = Color(0, 0, 0, 0.43529412)
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color(0.37651092, 0.03332992, 0.07652276, 1)
+
+[node name="CanvasLayer" type="CanvasLayer"]
+
+[node name="Panel" type="Panel" parent="."]
+offset_left = 348.0
+offset_top = 559.0
+offset_right = 758.0
+offset_bottom = 612.0
+size_flags_vertical = 8
+theme_override_styles/panel = SubResource("StyleBoxFlat_ag74d")
+
+[node name="Label" type="Label" parent="Panel"]
+layout_mode = 0
+offset_right = 410.0
+offset_bottom = 53.0
+size_flags_horizontal = 3
+size_flags_vertical = 6
+text = "Input Unbound"
+horizontal_alignment = 1
+vertical_alignment = 1

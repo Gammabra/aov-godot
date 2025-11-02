@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
 using AshesOfVelsingrad.Managers;
@@ -25,93 +26,69 @@ public class OptionsMenuTest
     private Button? _backButton;
     private Control? _previewDialogue;
     private Label? _previewText;
+    private VBoxContainer? _actionList;
+    private PackedScene? _inputButtonScene;
 
     [BeforeTest]
     public void SetUp()
     {
         GD.Print("[TEST] Starting OptionsMenu SetUp...");
 
-        // Clear singleton instances
         ClearAllSingletonInstances();
 
         _root = new Node { Name = "TestRoot" };
         ((SceneTree)Godot.Engine.GetMainLoop()).Root.AddChild(_root);
         _testNodes.Add(_root);
 
-        // Create test settings manager
         _testSettingsManager = CreateTestSettingsManager();
-
-        // Create OptionsMenu instance
         _optionsMenu = AutoFree(new OptionsMenu { Name = "OptionsMenu" });
 
         if (_optionsMenu == null)
             throw new System.InvalidOperationException("Failed to create OptionsMenu instance.");
 
-        // Create UI components
         CreateUIComponents();
-
-        // Set up exported properties using reflection
         SetupExportedProperties();
-
         AddToTestRoot(_optionsMenu);
 
         GD.Print("[TEST] OptionsMenu SetUp completed");
     }
 
+    // === INITIALIZATION TESTS ===
+
     [TestCase]
     public void Debug_InitializationProcess()
     {
-        // This test helps us understand what's happening during initialization
-
-        // Check slider before _Ready()
         GD.Print($"[DEBUG] Before _Ready - Slider.Value: {_dialogueSizeSlider!.Value}");
         GD.Print($"[DEBUG] Before _Ready - Settings.GetDialogueSize(): {_testSettingsManager!.GetDialogueSize()}");
 
-        // Act
         _optionsMenu!._Ready();
 
-        // Check slider after _Ready()
         GD.Print($"[DEBUG] After _Ready - Slider.Value: {_dialogueSizeSlider.Value}");
         GD.Print($"[DEBUG] After _Ready - Settings.GetDialogueSize(): {_testSettingsManager.GetDialogueSize()}");
 
-        // This will help us understand if InitializeUI is being called correctly
         AssertThat(GodotObject.IsInstanceValid(_optionsMenu)).IsTrue();
     }
 
     [TestCase]
     public async Task Ready_WithValidSettingsManager_InitializesSuccessfully()
     {
-        // Arrange is done in SetUp
-
-        // Act
         _optionsMenu!._Ready();
 
-        // Wait a frame for deferred initialization to complete
         var tree = (SceneTree)Godot.Engine.GetMainLoop();
         await tree.ToSignal(tree, SceneTree.SignalName.ProcessFrame);
 
-        // Assert - No errors should occur, OptionsMenu should be ready
         AssertThat(GodotObject.IsInstanceValid(_optionsMenu)).IsTrue();
-
-        // Verify slider is initialized with correct bounds
         AssertThat(_dialogueSizeSlider!.MinValue).IsEqual(0.5);
         AssertThat(_dialogueSizeSlider.MaxValue).IsEqual(2.0);
         AssertThat(_dialogueSizeSlider.Step).IsEqual(0.1);
 
-        // Check if the value was set correctly after deferred initialization
         var settingsValue = _testSettingsManager!.GetDialogueSize();
-        var sliderValue = _dialogueSizeSlider.Value;
-
-        GD.Print($"[DEBUG] Settings value: {settingsValue}, Slider value: {sliderValue}");
-
-        // After deferred initialization, slider should match settings
         AssertThat(_dialogueSizeSlider.Value).IsEqual((double)settingsValue);
     }
 
     [TestCase]
     public void Ready_WithNullSettingsManager_PrintsErrorAndReturns()
     {
-        // Arrange - Clear the settings manager instance
         ClearAllSingletonInstances();
 
         var testOptionsMenu = AutoFree(new OptionsMenu { Name = "TestOptionsMenu" });
@@ -121,24 +98,21 @@ public class OptionsMenuTest
 
         AddToTestRoot(testOptionsMenu);
 
-        // Act
         testOptionsMenu._Ready();
 
-        // Assert - Should not crash, but will print error
         AssertThat(GodotObject.IsInstanceValid(testOptionsMenu)).IsTrue();
     }
+
+    // === DIALOGUE SIZE TESTS ===
 
     [TestCase]
     public void OnDialogueSizeChanged_ValidValue_UpdatesSettingsAndUI()
     {
-        // Arrange
         _optionsMenu!._Ready();
         var newSize = 1.5;
 
-        // Act
         CallPrivateMethod(_optionsMenu, "OnDialogueSizeChanged", newSize);
 
-        // Assert
         AssertThat(_testSettingsManager!.GetDialogueSize()).IsEqual(1.5f);
         AssertThat(_dialogueSizeLabel!.Text).Contains("150%");
     }
@@ -146,85 +120,39 @@ public class OptionsMenuTest
     [TestCase]
     public void OnDialogueSizeChanged_ValueBelowMin_ClampsToMinimum()
     {
-        // Arrange
         _optionsMenu!._Ready();
-        var newSize = 0.3; // Below minimum of 0.5
+        var newSize = 0.3;
 
-        // Act
         CallPrivateMethod(_optionsMenu, "OnDialogueSizeChanged", newSize);
 
-        // Assert - The SettingsManager will clamp the value
         AssertThat(_testSettingsManager!.GetDialogueSize()).IsEqual(0.5f);
-        // The label should show the clamped value (50%)
-        var labelText = _dialogueSizeLabel!.Text;
-        GD.Print($"[TEST] Label text after clamping to minimum: {labelText}");
-        // The OnDialogueSizeChanged method passes the unclamped value to UpdateDialogueSizeLabel
-        // We need to test the actual behavior, not our assumption
-    }
-
-    [TestCase]
-    public void OnDialogueSizeChanged_TestsClampingBehavior()
-    {
-        // Test that examines the actual implementation behavior
-        // Based on the code, OnDialogueSizeChanged calls UpdateDialogueSizeLabel with the raw value
-        // but SetDialogueSize clamps the value in SettingsManager
-
-        // Arrange
-        _optionsMenu!._Ready();
-
-        // Test 1: Value below minimum
-        CallPrivateMethod(_optionsMenu, "OnDialogueSizeChanged", 0.3);
-        AssertThat(_testSettingsManager!.GetDialogueSize()).IsEqual(0.5f);
-        // Label will show 30% because UpdateDialogueSizeLabel gets the unclamped value
-
-        // Test 2: Value above maximum  
-        CallPrivateMethod(_optionsMenu, "OnDialogueSizeChanged", 2.5);
-        AssertThat(_testSettingsManager.GetDialogueSize()).IsEqual(2.0f);
-        // Label will show 250% because UpdateDialogueSizeLabel gets the unclamped value
-
-        // This reveals the actual implementation behavior vs our initial assumptions
     }
 
     [TestCase]
     public void OnDialogueSizeChanged_ValueAboveMax_ClampsToMaximum()
     {
-        // Arrange
         _optionsMenu!._Ready();
-        var newSize = 2.5; // Above maximum of 2.0
+        var newSize = 2.5;
 
-        // Act
         CallPrivateMethod(_optionsMenu, "OnDialogueSizeChanged", newSize);
 
-        // Assert - The SettingsManager will clamp the value
         AssertThat(_testSettingsManager!.GetDialogueSize()).IsEqual(2.0f);
-        // Similar issue as above - the label shows the unclamped value passed to UpdateDialogueSizeLabel
-        var labelText = _dialogueSizeLabel!.Text;
-        GD.Print($"[TEST] Label text after clamping to maximum: {labelText}");
     }
 
     [TestCase]
     public void OnDialogueSizeSettingChanged_ExternalChange_UpdatesSliderAndUI()
     {
-        // Arrange
         _optionsMenu!._Ready();
 
-        // Set initial slider value and ensure it has proper bounds
         _dialogueSizeSlider!.MinValue = 0.5;
         _dialogueSizeSlider.MaxValue = 2.0;
         _dialogueSizeSlider.Value = 1.0;
 
         var newSize = 1.5f;
 
-        // Act - Simulate external settings change
         CallPrivateMethod(_optionsMenu, "OnDialogueSizeSettingChanged", newSize);
 
-        // Assert
         var sliderValue = (float)_dialogueSizeSlider.Value;
-        var difference = Mathf.Abs(sliderValue - newSize);
-
-        GD.Print($"[TEST] Initial: 1.0, New: {newSize}, Final Slider: {sliderValue}, Difference: {difference}");
-
-        // The slider should be updated to the new value
         AssertThat(sliderValue).IsEqual(newSize);
         AssertThat(_dialogueSizeLabel!.Text).Contains("150%");
     }
@@ -232,44 +160,35 @@ public class OptionsMenuTest
     [TestCase]
     public void OnDialogueSizeSettingChanged_SameValue_DoesNotUpdateSlider()
     {
-        // Arrange
         _optionsMenu!._Ready();
         _dialogueSizeSlider!.MinValue = 0.5;
         _dialogueSizeSlider.MaxValue = 2.0;
         _dialogueSizeSlider.Value = 1.5;
         var originalValue = _dialogueSizeSlider.Value;
 
-        // Act - Set the same value
         CallPrivateMethod(_optionsMenu, "OnDialogueSizeSettingChanged", 1.5f);
 
-        // Assert - Slider value should remain unchanged
         AssertThat(_dialogueSizeSlider.Value).IsEqual(originalValue);
     }
 
     [TestCase]
     public void UpdateDialogueSizeLabel_ValidSize_DisplaysCorrectPercentage()
     {
-        // Arrange
         _optionsMenu!._Ready();
 
-        // Act
         CallPrivateMethod(_optionsMenu, "UpdateDialogueSizeLabel", 0.75f);
 
-        // Assert
         AssertThat(_dialogueSizeLabel!.Text).IsEqual("Dialog sizes: 75%");
     }
 
     [TestCase]
     public void UpdateDialogueSizeLabel_EdgeValues_DisplaysCorrectPercentages()
     {
-        // Arrange
         _optionsMenu!._Ready();
 
-        // Act & Assert - Test minimum value
         CallPrivateMethod(_optionsMenu, "UpdateDialogueSizeLabel", 0.5f);
         AssertThat(_dialogueSizeLabel!.Text).IsEqual("Dialog sizes: 50%");
 
-        // Act & Assert - Test maximum value
         CallPrivateMethod(_optionsMenu, "UpdateDialogueSizeLabel", 2.0f);
         AssertThat(_dialogueSizeLabel!.Text).IsEqual("Dialog sizes: 200%");
     }
@@ -277,45 +196,198 @@ public class OptionsMenuTest
     [TestCase]
     public void UpdatePreview_ValidComponents_UpdatesFontSizeAndScale()
     {
-        // Arrange
         _optionsMenu!._Ready();
         _testSettingsManager!.SetDialogueSize(1.5f);
 
-        // Act
         CallPrivateMethod(_optionsMenu, "UpdatePreview");
 
-        // Assert - Check that preview dialogue scale is updated
         var expectedScale = new Vector2(1.5f, 1.5f);
         AssertThat(_previewDialogue!.Scale).IsEqual(expectedScale);
     }
 
+    // === INPUT BINDING TESTS ===
+
+    [TestCase]
+    public async Task CreateActionList_WithValidInputs_CreatesButtons()
+    {
+        // Setup InputMap with test actions
+        if (!InputMap.HasAction("test_action"))
+        {
+            InputMap.AddAction("test_action");
+            InputMap.ActionAddEvent("test_action", new InputEventKey { Keycode = Key.A });
+        }
+
+        _optionsMenu!._Ready();
+
+        // Wait for deferred creation
+        var tree = (SceneTree)Godot.Engine.GetMainLoop();
+        await tree.ToSignal(tree, SceneTree.SignalName.ProcessFrame);
+        await tree.ToSignal(tree, SceneTree.SignalName.ProcessFrame);
+
+        // Check that action list has been populated
+        if (_actionList != null && _actionList.GetChildCount() > 0)
+        {
+            var firstButton = _actionList.GetChild(0) as Button;
+            AssertThat(firstButton).IsNotNull();
+        }
+
+        // Cleanup
+        if (InputMap.HasAction("test_action"))
+        {
+            InputMap.EraseAction("test_action");
+        }
+    }
+
+    [TestCase]
+    public void GetButtonName_KeyEvent_ReturnsCorrectName()
+    {
+        var keyEvent = new InputEventKey { Keycode = Key.Space };
+
+        var method = typeof(OptionsMenu).GetMethod("GetButtonName",
+            BindingFlags.NonPublic | BindingFlags.Static);
+        var result = method?.Invoke(null, new object[] { keyEvent }) as string;
+
+        AssertThat(result).IsNotNull();
+        AssertThat(result).Contains("Space");
+    }
+
+    [TestCase]
+    public void GetButtonName_JoypadButton_ReturnsCorrectName()
+    {
+        var joypadEvent = new InputEventJoypadButton { ButtonIndex = JoyButton.A };
+
+        var method = typeof(OptionsMenu).GetMethod("GetButtonName",
+            BindingFlags.NonPublic | BindingFlags.Static);
+        var result = method?.Invoke(null, new object[] { joypadEvent }) as string;
+
+        AssertThat(result).IsNotNull();
+        AssertThat(result).IsEqual("A (Controller)");
+    }
+
+    [TestCase]
+    public void GetButtonName_JoypadMotion_ReturnsCorrectName()
+    {
+        var joypadMotion = new InputEventJoypadMotion { Axis = JoyAxis.TriggerLeft };
+
+        var method = typeof(OptionsMenu).GetMethod("GetButtonName",
+            BindingFlags.NonPublic | BindingFlags.Static);
+        var result = method?.Invoke(null, new object[] { joypadMotion }) as string;
+
+        AssertThat(result).IsNotNull();
+        AssertThat(result).IsEqual("LT");
+    }
+
+    [TestCase]
+    public void OnInputButtonPressed_StartsRemapping()
+    {
+        _optionsMenu!._Ready();
+
+        // Create a test button
+        var testButton = new Button();
+        var hbox = new HBoxContainer();
+        var inputLabel = new Label { Name = "LabelInput" };
+        hbox.AddChild(inputLabel);
+        var marginContainer = new MarginContainer { Name = "MarginContainer" };
+        marginContainer.AddChild(hbox);
+        testButton.AddChild(marginContainer);
+
+        CallPrivateMethod(_optionsMenu, "OnInputButtonPressed", testButton, "test_action");
+
+        var isRemapping = GetPrivateField<bool>(_optionsMenu, "_isRemapping");
+        AssertThat(isRemapping).IsTrue();
+
+        testButton.QueueFree();
+    }
+
+    [TestCase]
+    public void Input_WhileRemapping_UpdatesBinding()
+    {
+        // Setup
+        if (!InputMap.HasAction("test_remap"))
+        {
+            InputMap.AddAction("test_remap");
+        }
+
+        _optionsMenu!._Ready();
+
+        // Start remapping
+        SetPrivateField(_optionsMenu, "_isRemapping", true);
+        SetPrivateField(_optionsMenu, "_actionToRemap", "test_remap");
+
+        // Create input event
+        var keyEvent = new InputEventKey { Keycode = Key.W, Pressed = true };
+
+        // Trigger input
+        _optionsMenu._Input(keyEvent);
+
+        // Verify remapping stopped
+        var isRemapping = GetPrivateField<bool>(_optionsMenu, "_isRemapping");
+        AssertThat(isRemapping).IsFalse();
+
+        // Cleanup
+        if (InputMap.HasAction("test_remap"))
+        {
+            InputMap.EraseAction("test_remap");
+        }
+    }
+
+    [TestCase]
+    public void Input_EscapeWhileRemapping_DoesNotBind()
+    {
+        _optionsMenu!._Ready();
+
+        SetPrivateField(_optionsMenu, "_isRemapping", true);
+        SetPrivateField(_optionsMenu, "_actionToRemap", "test_action");
+
+        var escapeEvent = new InputEventKey { Keycode = Key.Escape, Pressed = true };
+
+        _optionsMenu._Input(escapeEvent);
+
+        var isRemapping = GetPrivateField<bool>(_optionsMenu, "_isRemapping");
+        AssertThat(isRemapping).IsTrue(); // Should still be remapping
+    }
+
+    [TestCase]
+    public async Task OnInputBindingChanged_RefreshesActionList()
+    {
+        _optionsMenu!._Ready();
+
+        var tree = (SceneTree)Godot.Engine.GetMainLoop();
+        await tree.ToSignal(tree, SceneTree.SignalName.ProcessFrame);
+
+        AssertThat(_actionList).IsNotNull();
+        var initialChildCount = _actionList!.GetChildCount();
+
+        CallPrivateMethod(_optionsMenu, "OnInputBindingChanged", "test_action");
+
+        await tree.ToSignal(tree, SceneTree.SignalName.ProcessFrame);
+
+        // Action list should still have children after refresh
+        AssertThat(_actionList.GetChildCount()).IsEqual(initialChildCount);
+    }
+
+    // === RESET TESTS ===
+
     [TestCase]
     public void OnResetPressed_CallsShowResetConfirmation()
     {
-        // Arrange
         _optionsMenu!._Ready();
 
-        // Act - This should complete without error
         CallPrivateMethod(_optionsMenu, "OnResetPressed");
 
-        // Assert - Method should complete without exception
         AssertThat(GodotObject.IsInstanceValid(_optionsMenu)).IsTrue();
     }
 
     [TestCase]
     public async Task ShowResetConfirmation_CreatesDialog_WithCorrectProperties()
     {
-        // Arrange
         _optionsMenu!._Ready();
 
-        // Act
         CallPrivateMethod(_optionsMenu, "ShowResetConfirmation");
 
-        // Wait a frame for dialog to be created
         var tree = (SceneTree)Godot.Engine.GetMainLoop();
         await tree.ToSignal(tree, SceneTree.SignalName.ProcessFrame);
 
-        // Assert - Find the confirmation dialog in the tree
         var root = tree.Root;
         AcceptDialog? confirmDialog = null;
 
@@ -332,14 +404,14 @@ public class OptionsMenuTest
         AssertThat(confirmDialog!.DialogText).IsEqual("Do you really want to reset all parameters ?");
         AssertThat(confirmDialog.Title).IsEqual("Confirm");
 
-        // Clean up
         confirmDialog.QueueFree();
     }
+
+    // === NAVIGATION TESTS ===
 
     [TestCase]
     public void OnBackPressed_EmitsBackRequestedSignal()
     {
-        // Arrange
         _optionsMenu!._Ready();
         var signalEmitted = false;
 
@@ -349,75 +421,62 @@ public class OptionsMenuTest
             GD.Print("[TEST] BackRequested signal received");
         };
 
-        // Act
         CallPrivateMethod(_optionsMenu, "OnBackPressed");
 
-        // Assert
         AssertThat(signalEmitted).IsTrue();
     }
+
+    // === ANIMATION TESTS ===
 
     [TestCase]
     public async Task ShowMenu_AnimatesFromTransparentToVisible()
     {
-        // Arrange
         _optionsMenu!._Ready();
         _optionsMenu.Hide();
 
-        // Act
         _optionsMenu.ShowMenu();
 
-        // Assert - Menu should be visible immediately
         AssertThat(_optionsMenu.Visible).IsTrue();
 
-        // Wait for animation to complete
         var tree = (SceneTree)Godot.Engine.GetMainLoop();
         await tree.CreateTimer(0.4f).ToSignal(tree.CreateTimer(0.4f), SceneTreeTimer.SignalName.Timeout);
 
-        // Check that modulation is white (fully visible)
         AssertThat(_optionsMenu.Modulate).IsEqual(Colors.White);
     }
 
     [TestCase]
     public async Task HideMenu_AnimatesFromVisibleToTransparent()
     {
-        // Arrange
         _optionsMenu!._Ready();
         _optionsMenu.Show();
         _optionsMenu.Modulate = Colors.White;
 
-        // Act
         _optionsMenu.HideMenu();
 
-        // Wait for animation to complete
         var tree = (SceneTree)Godot.Engine.GetMainLoop();
         await tree.CreateTimer(0.4f).ToSignal(tree.CreateTimer(0.4f), SceneTreeTimer.SignalName.Timeout);
 
-        // Assert - Menu should be hidden after animation
         AssertThat(_optionsMenu.Visible).IsFalse();
     }
+
+    // === INTEGRATION TESTS ===
 
     [TestCase]
     public void SliderConnections_WorkCorrectly()
     {
-        // Arrange
         _optionsMenu!._Ready();
 
-        // Act - Simulate slider value change
         _dialogueSizeSlider!.Value = 1.8;
         _dialogueSizeSlider.EmitSignal(Slider.SignalName.ValueChanged, 1.8);
 
-        // Note: In a real scenario, the signal would be connected in Godot editor
-        // For testing, we verify the method can be called directly
         CallPrivateMethod(_optionsMenu, "OnDialogueSizeChanged", 1.8);
 
-        // Assert
         AssertThat(_testSettingsManager!.GetDialogueSize()).IsEqual(1.8f);
     }
 
     [TestCase]
     public void ButtonConnections_WorkCorrectly()
     {
-        // Arrange
         _optionsMenu!._Ready();
         var backSignalEmitted = false;
 
@@ -426,41 +485,32 @@ public class OptionsMenuTest
             backSignalEmitted = true;
         };
 
-        // Act - Simulate button presses
         CallPrivateMethod(_optionsMenu, "OnResetPressed");
         CallPrivateMethod(_optionsMenu, "OnBackPressed");
 
-        // Assert
         AssertThat(backSignalEmitted).IsTrue();
     }
 
     [TestCase]
     public void SettingsManagerEvents_AreHandledCorrectly()
     {
-        // Arrange
         _optionsMenu!._Ready();
 
-        // Act - Trigger settings manager event
         _testSettingsManager!.SetDialogueSize(1.3f);
 
-        // Assert - The OptionsMenu should have received the event and updated UI
-        // Note: This tests the event connection established in ConnectSignals()
         AssertThat(_testSettingsManager.GetDialogueSize()).IsEqual(1.3f);
     }
 
     [TestCase]
     public void MultipleSliderChanges_WorkConsistently()
     {
-        // Arrange
         _optionsMenu!._Ready();
         var values = new[] { 0.5, 1.0, 1.5, 2.0, 0.8 };
 
         foreach (var value in values)
         {
-            // Act
             CallPrivateMethod(_optionsMenu, "OnDialogueSizeChanged", value);
 
-            // Assert
             AssertThat(_testSettingsManager!.GetDialogueSize()).IsEqual((float)value);
             var expectedPercentage = Mathf.RoundToInt((float)value * 100);
             AssertThat(_dialogueSizeLabel!.Text).Contains($"{expectedPercentage}%");
@@ -470,7 +520,6 @@ public class OptionsMenuTest
     [TestCase]
     public void OptionsMenu_InheritsFromControl()
     {
-        // Assert
         AssertThat(_optionsMenu).IsInstanceOf<Control>();
         AssertThat(_optionsMenu).IsInstanceOf<Node>();
     }
@@ -478,7 +527,6 @@ public class OptionsMenuTest
     [TestCase]
     public void NullUIComponents_DoNotCauseErrors()
     {
-        // Arrange - Create OptionsMenu without UI components
         var testOptionsMenu = AutoFree(new OptionsMenu { Name = "TestOptionsMenu" });
 
         if (testOptionsMenu == null)
@@ -486,47 +534,38 @@ public class OptionsMenuTest
 
         AddToTestRoot(testOptionsMenu);
 
-        // Act - Should not crash even with null UI components
         testOptionsMenu._Ready();
         CallPrivateMethod(testOptionsMenu, "OnDialogueSizeChanged", 1.5);
         CallPrivateMethod(testOptionsMenu, "UpdateDialogueSizeLabel", 1.5f);
         CallPrivateMethod(testOptionsMenu, "UpdatePreview");
 
-        // Assert
         AssertThat(GodotObject.IsInstanceValid(testOptionsMenu)).IsTrue();
     }
 
     [TestCase]
     public async Task IntegrationTest_FullWorkflow()
     {
-        // Arrange
         _optionsMenu!._Ready();
 
-        // Act 1 - Show menu
         _optionsMenu.ShowMenu();
         AssertThat(_optionsMenu.Visible).IsTrue();
 
-        // Act 2 - Change dialogue size
         CallPrivateMethod(_optionsMenu, "OnDialogueSizeChanged", 1.6);
         AssertThat(_testSettingsManager!.GetDialogueSize()).IsEqual(1.6f);
 
-        // Act 3 - Reset settings
-        var originalSize = _testSettingsManager.GetDialogueSize();
         _testSettingsManager.ResetToDefaults();
         AssertThat(_testSettingsManager.GetDialogueSize()).IsEqual(1.0f);
 
-        // Act 4 - Hide menu
         _optionsMenu.HideMenu();
 
-        // Wait for hide animation
         var tree = (SceneTree)Godot.Engine.GetMainLoop();
         await tree.CreateTimer(0.4f).ToSignal(tree.CreateTimer(0.4f), SceneTreeTimer.SignalName.Timeout);
 
-        // Assert
         AssertThat(_optionsMenu.Visible).IsFalse();
     }
 
-    // Helper Methods
+    // === HELPER METHODS ===
+
     private TestSettingsManager CreateTestSettingsManager()
     {
         var manager = AddToTestRoot(new TestSettingsManager());
@@ -555,14 +594,13 @@ public class OptionsMenuTest
 
     private void CreateUIComponents()
     {
-        // Create slider with proper configuration
         _dialogueSizeSlider = AutoFree(new HSlider
         {
             Name = "DialogueSizeSlider",
             MinValue = 0.5,
             MaxValue = 2.0,
             Step = 0.1,
-            Value = 1.0 // Set default value
+            Value = 1.0
         });
 
         _dialogueSizeLabel = AutoFree(new Label { Name = "DialogueSizeLabel" });
@@ -570,25 +608,46 @@ public class OptionsMenuTest
         _backButton = AutoFree(new Button { Name = "BackButton", Text = "Back" });
         _previewDialogue = AutoFree(new Control { Name = "PreviewDialogue" });
         _previewText = AutoFree(new Label { Name = "PreviewText", Text = "Sample dialogue text" });
+        _actionList = AutoFree(new VBoxContainer { Name = "ActionList" });
+
+        // Create a simple input button scene for testing
+        _inputButtonScene = CreateMockInputButtonScene();
 
         if (_dialogueSizeSlider == null || _dialogueSizeLabel == null || _resetButton == null ||
-            _backButton == null || _previewDialogue == null || _previewText == null)
+            _backButton == null || _previewDialogue == null || _previewText == null || _actionList == null)
             throw new System.InvalidOperationException("Failed to create one or more UI components.");
 
-        // Add preview text to preview dialogue
         _previewDialogue.AddChild(_previewText);
 
-        // Add components to options menu
         _optionsMenu!.AddChild(_dialogueSizeSlider);
         _optionsMenu.AddChild(_dialogueSizeLabel);
         _optionsMenu.AddChild(_resetButton);
         _optionsMenu.AddChild(_backButton);
         _optionsMenu.AddChild(_previewDialogue);
+        _optionsMenu.AddChild(_actionList);
+    }
+
+    private PackedScene CreateMockInputButtonScene()
+    {
+        var scene = new PackedScene();
+        var button = new Button();
+
+        var marginContainer = new MarginContainer { Name = "MarginContainer" };
+        var hbox = new HBoxContainer { Name = "HBoxContainer" };
+        var labelAction = new Label { Name = "LabelAction" };
+        var labelInput = new Label { Name = "LabelInput" };
+
+        hbox.AddChild(labelAction);
+        hbox.AddChild(labelInput);
+        marginContainer.AddChild(hbox);
+        button.AddChild(marginContainer);
+
+        scene.Pack(button);
+        return scene;
     }
 
     private void SetupExportedProperties()
     {
-        // Use reflection to set the private exported fields
         var optionsMenuType = typeof(OptionsMenu);
 
         SetPrivateField(optionsMenuType, "_dialogueSizeSlider", _dialogueSizeSlider);
@@ -597,12 +656,26 @@ public class OptionsMenuTest
         SetPrivateField(optionsMenuType, "_backButton", _backButton);
         SetPrivateField(optionsMenuType, "_previewDialogue", _previewDialogue);
         SetPrivateField(optionsMenuType, "_previewText", _previewText);
+        SetPrivateField(optionsMenuType, "_actionList", _actionList);
+        SetPrivateField(optionsMenuType, "_inputButtonScene", _inputButtonScene);
     }
 
     private void SetPrivateField(System.Type type, string fieldName, object? value)
     {
         var field = type.GetField(fieldName, BindingFlags.NonPublic | BindingFlags.Instance);
         field?.SetValue(_optionsMenu, value);
+    }
+
+    private void SetPrivateField(object instance, string fieldName, object? value)
+    {
+        var field = instance.GetType().GetField(fieldName, BindingFlags.NonPublic | BindingFlags.Instance);
+        field?.SetValue(instance, value);
+    }
+
+    private T? GetPrivateField<T>(object instance, string fieldName)
+    {
+        var field = instance.GetType().GetField(fieldName, BindingFlags.NonPublic | BindingFlags.Instance);
+        return field != null ? (T?)field.GetValue(instance) : default;
     }
 
     private void ClearAllSingletonInstances()

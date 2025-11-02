@@ -1,3 +1,9 @@
+using System.Collections.Generic;
+using System.Diagnostics.Tracing;
+using System.Linq;
+using System.Runtime.CompilerServices;
+using System.Threading.Tasks;
+using System.Xml.Resolvers;
 using AshesOfVelsingrad.Managers;
 using Godot;
 
@@ -8,21 +14,35 @@ namespace AshesOfVelsingrad.UI.Menus;
 /// Follows the Component-Based Architecture and event-driven communication.
 /// Implements the Manager Pattern for centralized settings management.
 /// </summary>
-/// <remarks>
-/// This menu is registered with the MenuManager for navigation.
-/// It provides options for adjusting dialogue size and resetting settings.
-/// </remarks>
 public partial class OptionsMenu : Control
 {
+    [Export] private PackedScene? _inputButtonScene;
+    [Export] private PackedScene? _notifUnboundScene;
     [Export] private Slider? _dialogueSizeSlider;
     [Export] private Label? _dialogueSizeLabel;
     [Export] private Button? _resetButton;
     [Export] private Button? _backButton;
     [Export] private Control? _previewDialogue;
     [Export] private Label? _previewText;
+    [Export] private VBoxContainer? _actionList;
 
     [Signal]
     public delegate void BackRequestedEventHandler();
+
+    private bool _isRemapping = false;
+    private string? _actionToRemap;
+    private Button? _remappingButton;
+    private List<CanvasLayer> _notifUnboundList = new List<CanvasLayer>();
+
+    // Dictionary mapping internal action names to display names
+    private Dictionary<string, string> _inputActions = new Dictionary<string, string>
+    {
+        { "attack", "Attack" },
+        { "move_up", "Move Up" },
+        { "move_left", "Move Left" },
+        { "move_down", "Move Down" },
+        { "move_right", "Move Right" },
+    };
 
     /// <summary>
     /// Called when the node is ready. Initializes the options menu by calling deferred setup.
@@ -47,21 +67,281 @@ public partial class OptionsMenu : Control
     {
         ConnectSignals();
         InitializeUI();
+        // Wait one more frame to ensure SettingsManager has applied saved bindings
+        CallDeferred(MethodName.CreateActionList);
     }
 
     /// <summary>
-    /// Connects signals for UI interactions and settings management.
+    /// Gets a user-friendly name for the given input event.
+    /// </summary>
+    /// <param name="inputEvent">The input event to get the name for.</param>
+    /// <returns>A string representing the input event.</returns>
+    private static string GetButtonName(InputEvent inputEvent)
+    {
+        if (inputEvent is InputEventJoypadMotion joypadMotion)
+            return joypadMotion.Axis switch
+            {
+                JoyAxis.TriggerLeft => "LT",
+                JoyAxis.TriggerRight => "RT",
+                _ => $"Axis {joypadMotion.Axis}",
+            };
+
+        if (inputEvent is not InputEventJoypadButton joypadButton)
+            return inputEvent.AsText().TrimSuffix(" (Physical)");
+
+        return (int)joypadButton.ButtonIndex switch
+        {
+            0 => "A (Controller)",
+            1 => "B (Controller)",
+            2 => "X (Controller)",
+            3 => "Y (Controller)",
+            7 => "Left Stick",
+            8 => "Right Stick",
+            9 => "LB",
+            10 => "RB",
+            11 => "D-Pad Up",
+            12 => "D-Pad Down",
+            13 => "D-Pad Left",
+            14 => "D-Pad Right",
+            _ => $"Button {(int)joypadButton.ButtonIndex}",
+        };
+    }
+
+    /// <summary>
+    /// Creates the list of input action buttons dynamically.
+    /// </summary>
+    private void CreateActionList()
+    {
+        if (_actionList == null || _inputButtonScene == null)
+            return;
+
+        foreach (var children in _actionList.GetChildren())
+            children.QueueFree();
+
+        var actions = InputMap.GetActions().OrderBy(a => a);
+        foreach (var action in _inputActions)
+        {
+            if (!action.ToString().StartsWith("ui_"))
+            {
+                var button = _inputButtonScene.Instantiate<Button>();
+                if (button == null) continue;
+
+                _actionList.AddChild(button);
+
+                var marginContainer = button.GetNode<MarginContainer>("MarginContainer");
+                if (marginContainer == null) continue;
+
+                var hbox = marginContainer.GetNode<HBoxContainer>("HBoxContainer");
+                if (hbox == null) continue;
+
+                var actionLabel = hbox.GetNode<Label>("LabelAction");
+                var inputLabel = hbox.GetNode<Label>("LabelInput");
+                if (actionLabel == null || inputLabel == null) continue;
+
+                actionLabel.Text = action.Value;
+                var events = InputMap.ActionGetEvents(action.Key);
+                if (events.Count > 0)
+                {
+                    inputLabel.Text = GetButtonName(events[0]);
+                }
+                else
+                {
+                    inputLabel.Text = "Unbound";
+                    GD.Print($"Action '{action.Key}' is unbound");
+                }
+
+                _actionList.AddChild(button);
+                button.Pressed += () => OnInputButtonPressed(button, action.Key);
+            }
+        }
+    }
+
+    /// <summary>
+    /// Handles input button press to start remapping.
+    /// </summary>
+    /// <param name="button">The button that was pressed.</param>
+    /// <param name="action">The action associated with the button.</param>
+    private void OnInputButtonPressed(Button button, string action)
+    {
+        if (button == null) return;
+
+        _isRemapping = true;
+        _actionToRemap = action;
+        var marginContainer = button.GetNodeOrNull<MarginContainer>("MarginContainer");
+        if (marginContainer == null) return;
+
+        var hbox = marginContainer.GetNodeOrNull<HBoxContainer>("HBoxContainer");
+        if (hbox == null) return;
+
+        var inputLabel = hbox.GetNodeOrNull<Label>("LabelInput");
+        if (inputLabel != null)
+        {
+            inputLabel.Text = "Press any key...";
+        }
+    }
+    /// <summary>
+    /// Captures input for remapping actions.
+    /// </summary>
+    /// <param name="inputEvent">The input event to process.</param>
+    /// <remarks>
+    /// This method listens for input events when remapping is active.
+    /// It updates the binding in SettingsManager and refreshes the button display.
+    /// It ignores certain inputs like Escape or specific joypad buttons to prevent unwanted bindings.
+    /// </remarks>
+    public override void _Input(InputEvent inputEvent)
+    {
+        if (_isRemapping && _actionToRemap != null)
+        {
+            if (InputMap.ActionGetEvents(_actionToRemap).Any(evt => evt.IsMatch(inputEvent)))
+            {
+                UpdateActionList(_remappingButton, inputEvent);
+                _isRemapping = false;
+                _actionToRemap = null;
+                _remappingButton = null;
+                AcceptEvent();
+                return;
+            }
+
+            if (inputEvent is InputEventKey keyEvent && keyEvent.Pressed ||
+                inputEvent is InputEventMouseButton mouseButton && mouseButton.Pressed ||
+                inputEvent is InputEventJoypadButton joypadButton && joypadButton.Pressed ||
+                inputEvent is InputEventJoypadMotion && ((InputEventJoypadMotion)inputEvent).AxisValue > 0.5f)
+            {
+                if ((inputEvent is InputEventJoypadMotion joypadMotion &&
+                    joypadMotion.Axis != JoyAxis.TriggerLeft &&
+                    joypadMotion.Axis != JoyAxis.TriggerRight) ||
+                    (inputEvent is InputEventJoypadButton joypadBtn &&
+                    (joypadBtn.ButtonIndex == JoyButton.Back ||
+                     joypadBtn.ButtonIndex == JoyButton.Guide ||
+                     joypadBtn.ButtonIndex == JoyButton.Start)) ||
+                     (inputEvent is InputEventKey keyEvt && keyEvt.Keycode == Key.Escape))
+                {
+                    return;
+                }
+
+                // Check if this input is already bound to another action
+                foreach (string action in InputMap.GetActions())
+                {
+                    var events = InputMap.ActionGetEvents(action);
+                    if (events.Any(evt => evt.IsMatch(inputEvent)))
+                    {
+                        // Unbind the input from its existing action
+                        SettingsManager.Instance?.SetInputBinding(action, null);
+                        _ = CreateNotifUnbound(action);
+                        break;
+                    }
+                }
+
+                // Prevent double-click flag from being saved
+                if (inputEvent is InputEventMouseButton innerMouseButton && innerMouseButton.DoubleClick)
+                    innerMouseButton.DoubleClick = false;
+
+                // Save the new binding through SettingsManager
+                SettingsManager.Instance?.SetInputBinding(_actionToRemap, inputEvent);
+
+                // Update the button display
+                UpdateActionList(_remappingButton, inputEvent);
+
+                _isRemapping = false;
+                _actionToRemap = null;
+                _remappingButton = null;
+
+                AcceptEvent();
+            }
+        }
+    }
+
+    /// <summary>
+    /// Creates a notification for unbound actions.
+    /// </summary>
+    /// <param name="action">The action that was unbound.</param>
+    /// <remarks>
+    /// This method instantiates a notification UI element to inform the user
+    /// that an action has been unbound. The notification is displayed for 5 seconds
+    /// before being removed. Multiple notifications are stacked vertically.
+    /// </remarks>
+    private async Task CreateNotifUnbound(string action)
+    {
+        var notifInstance = _notifUnboundScene?.Instantiate() as CanvasLayer;
+        if (notifInstance == null)
+            return;
+
+        GetTree().Root.AddChild(notifInstance);
+        notifInstance.GetNode<Label>("Panel/Label").Text = $"The action '{action}' is now unbound.";
+        _notifUnboundList.Add(notifInstance);
+
+        PlaceNotifUnbound();
+        await ToSignal(GetTree().CreateTimer(5), "timeout");
+
+        _notifUnboundList.Remove(notifInstance);
+        notifInstance.QueueFree();
+        PlaceNotifUnbound();
+    }
+
+    /// <summary>
+    /// Places unbound notifications on the screen.
+    /// </summary>
+    private void PlaceNotifUnbound()
+    {
+        var viewportSize = GetViewport().GetVisibleRect().Size;
+        float offset = 0;
+
+        foreach (var notif in _notifUnboundList)
+        {
+            var panel = notif.GetNode<Panel>("Panel");
+            var notifSize = panel.Size;
+
+            panel.Position = new Vector2(
+                (viewportSize.X - notifSize.X) / 2,
+                viewportSize.Y - notifSize.Y - 20 - offset
+            );
+
+            offset += notifSize.Y + 10;
+        }
+    }
+
+    /// <summary>
+    /// Updates the input label for a specific button.
+    /// </summary>
+    /// <param name="button">The button to update.</param>
+    /// <param name="inputEvent">The new input event to display.</param>
+    private void UpdateActionList(Button? button, InputEvent inputEvent)
+    {
+        if (button == null)
+            return;
+
+        button.GetNode<Label>("MarginContainer/HBoxContainer/LabelInput").Text =
+            GetButtonName(inputEvent);
+    }
+
+    /// <summary>
+    /// Connects signals from UI elements and SettingsManager.
     /// </summary>
     /// <remarks>
-    /// This method connects to the SettingsManager for dialogue size changes.
-    /// Ensures proper event-driven communication between UI elements and managers.
+    /// This method sets up event handlers for UI interactions and settings changes.
+    /// It ensures that changes in the UI are reflected in the SettingsManager and vice versa.
     /// </remarks>
     private void ConnectSignals()
     {
         if (SettingsManager.Instance != null)
         {
             SettingsManager.Instance.DialogueSizeChanged += OnDialogueSizeSettingChanged;
+            SettingsManager.Instance.InputBindingChanged += OnInputBindingChanged;
         }
+    }
+
+    /// <summary>
+    /// Handles input binding changes from SettingsManager.
+    /// </summary>
+    /// <param name="action">The action whose binding has changed.</param>
+    /// <remarks>
+    /// This method refreshes the action list to reflect updated bindings.
+    /// It ensures that the UI stays in sync with the underlying settings.
+    /// </remarks>
+    private void OnInputBindingChanged(string action)
+    {
+        // Refresh the action list to show updated bindings
+        CreateActionList();
     }
 
     /// <summary>
@@ -269,5 +549,17 @@ public partial class OptionsMenu : Control
         var tween = CreateTween();
         tween.TweenProperty(this, "modulate", new Color(1, 1, 1, 0), 0.3f);
         tween.TweenCallback(Callable.From(() => Hide()));
+    }
+
+    /// <summary>
+    /// Cleanup when the node exits the tree.
+    /// </summary>
+    public override void _ExitTree()
+    {
+        if (SettingsManager.Instance != null)
+        {
+            SettingsManager.Instance.DialogueSizeChanged -= OnDialogueSizeSettingChanged;
+            SettingsManager.Instance.InputBindingChanged -= OnInputBindingChanged;
+        }
     }
 }

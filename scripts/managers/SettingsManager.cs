@@ -19,8 +19,12 @@ public partial class SettingsManager : BaseManager
     [Signal]
     public delegate void DialogueSizeChangedEventHandler(float newSize);
 
+    [Signal]
+    public delegate void InputBindingChangedEventHandler(string action);
+
     private const string _settingsFilePath = "user://settings.json";
     private SettingsData? _settings;
+    private Dictionary<string, InputEvent[]> _defaultInputBindings = new();
 
     /// <summary>
     /// Initializes the SettingsManager singleton instance.
@@ -41,8 +45,33 @@ public partial class SettingsManager : BaseManager
         }
 
         Instance = this;
+        SaveDefaultInputBindings();
         LoadSettings();
+        ApplyInputBindings();
         GD.Print("SettingsManager initialized successfully");
+        GD.Print($"Applied {_settings?.InputBindings.Count ?? 0} custom input bindings");
+    }
+
+    /// <summary>
+    /// Saves the default input bindings from project settings before any modifications.
+    /// </summary>
+    private void SaveDefaultInputBindings()
+    {
+        InputMap.LoadFromProjectSettings();
+
+        foreach (var action in InputMap.GetActions())
+        {
+            var actionName = action.ToString();
+            var events = InputMap.ActionGetEvents(actionName);
+            var eventArray = new InputEvent[events.Count];
+
+            for (int i = 0; i < events.Count; i++)
+            {
+                eventArray[i] = (InputEvent)events[i];
+            }
+
+            _defaultInputBindings[actionName] = eventArray;
+        }
     }
 
     /// <summary>
@@ -105,6 +134,255 @@ public partial class SettingsManager : BaseManager
     }
 
     /// <summary>
+    /// Applies saved input bindings from settings to the InputMap.
+    /// </summary>
+    private void ApplyInputBindings()
+    {
+        if (_settings?.InputBindings == null || _settings.InputBindings.Count == 0)
+        {
+            return;
+        }
+
+        foreach (var binding in _settings.InputBindings)
+        {
+            if (!InputMap.HasAction(binding.Key))
+            {
+                GD.PrintErr($"Action '{binding.Key}' not found in InputMap");
+                continue;
+            }
+
+            // Clear existing events
+            InputMap.ActionEraseEvents(binding.Key);
+
+            // Add saved event
+            var inputEvent = DeserializeInputEvent(binding.Value);
+
+            if (inputEvent != null)
+            {
+                InputMap.ActionAddEvent(binding.Key, inputEvent);
+                SetInputBinding(binding.Key, inputEvent);
+                GD.Print($"Applied custom binding for '{binding.Key}': {inputEvent.AsText()}");
+            }
+            else
+            {
+                GD.PrintErr($"Failed to deserialize input event for action '{binding.Key}'");
+            }
+        }
+    }
+
+    /// <summary>
+    /// Gets the current input binding for an action.
+    /// </summary>
+    /// <param name="action">The action name to retrieve the binding for.</param>
+    /// <returns>The InputEvent bound to the action, or null if not found.</returns>
+    public InputEvent? GetInputBinding(string action)
+    {
+        if (!InputMap.HasAction(action))
+            return null;
+
+        var events = InputMap.ActionGetEvents(action);
+        return events.Count > 0 ? (InputEvent)events[0] : null;
+    }
+
+    /// <summary>
+    /// Sets a new input binding for an action and saves the settings.
+    /// Emits a signal to notify other components of the change.
+    /// </summary>
+    /// <param name="action">The action name to set the binding for.</param>
+    /// <param name="inputEvent">The InputEvent to bind to the action.</param>
+    public void SetInputBinding(string action, InputEvent? inputEvent)
+    {
+        if (_settings == null || !InputMap.HasAction(action))
+            return;
+
+        // Update InputMap
+        InputMap.ActionEraseEvents(action);
+        InputMap.ActionAddEvent(action, inputEvent);
+
+        // Save to settings
+        _settings.InputBindings[action] = SerializeInputEvent(inputEvent);
+        SaveSettings();
+
+        EmitSignal(SignalName.InputBindingChanged, action);
+        EmitSignal(SignalName.SettingsChanged, $"Input_{action}", Variant.From(inputEvent?.AsText() ?? "Unbound"));
+    }
+
+    /// <summary>
+    /// Serializes an InputEvent to a dictionary for JSON storage.
+    /// </summary>
+    /// <param name="inputEvent">The InputEvent to serialize.</param>
+    /// <returns>A dictionary representing the serialized InputEvent.</returns>
+    private Dictionary<string, object> SerializeInputEvent(InputEvent? inputEvent)
+    {
+        var data = new Dictionary<string, object>();
+
+        if (inputEvent is InputEventKey keyEvent)
+        {
+            data["type"] = "key";
+            data["keycode"] = (int)keyEvent.Keycode;
+            data["physical_keycode"] = (int)keyEvent.PhysicalKeycode;
+            data["unicode"] = keyEvent.Unicode;
+            data["pressed"] = keyEvent.Pressed;
+            data["ctrl"] = keyEvent.CtrlPressed;
+            data["shift"] = keyEvent.ShiftPressed;
+            data["alt"] = keyEvent.AltPressed;
+            data["meta"] = keyEvent.MetaPressed;
+        }
+        else if (inputEvent is InputEventMouseButton mouseEvent)
+        {
+            data["type"] = "mouse_button";
+            data["button_index"] = (int)mouseEvent.ButtonIndex;
+            data["pressed"] = mouseEvent.Pressed;
+            data["ctrl"] = mouseEvent.CtrlPressed;
+            data["shift"] = mouseEvent.ShiftPressed;
+            data["alt"] = mouseEvent.AltPressed;
+            data["meta"] = mouseEvent.MetaPressed;
+        }
+        else if (inputEvent is InputEventJoypadButton joypadButton)
+        {
+            data["type"] = "joypad_button";
+            data["button_index"] = joypadButton.ButtonIndex;
+            data["pressed"] = joypadButton.Pressed;
+            data["device"] = joypadButton.Device;
+        }
+        else if (inputEvent is InputEventJoypadMotion joypadMotion)
+        {
+            data["type"] = "joypad_motion";
+            data["axis"] = joypadMotion.Axis;
+            data["axis_value"] = joypadMotion.AxisValue;
+            data["device"] = joypadMotion.Device;
+        }
+        else if (inputEvent != null)
+        {
+            GD.PrintErr($"Unsupported InputEvent type: {inputEvent.GetType().Name}");
+        }
+        else
+        {
+            GD.Print("Input unbound (null InputEvent)");
+        }
+
+        return data;
+    }
+
+    /// <summary>
+    /// Deserializes an InputEvent from a dictionary.
+    /// </summary>
+    /// <param name="data">The dictionary containing the serialized InputEvent data.</param>
+    /// <returns>The deserialized InputEvent, or null if deserialization failed.</returns>
+    private InputEvent? DeserializeInputEvent(Dictionary<string, object> data)
+    {
+        string? GetString(string key)
+        {
+            if (!data.TryGetValue(key, out var val))
+                return null;
+
+            return val switch
+            {
+                JsonElement e when e.ValueKind == JsonValueKind.String => e.GetString(),
+                JsonElement e => e.ToString(),
+                _ => val?.ToString()
+            };
+        }
+
+        int GetInt(string key)
+        {
+            if (!data.TryGetValue(key, out var val))
+                return 0;
+
+            return val switch
+            {
+                JsonElement e when e.ValueKind == JsonValueKind.Number => e.GetInt32(),
+                _ => Convert.ToInt32(val)
+            };
+        }
+
+        bool GetBool(string key)
+        {
+            if (!data.TryGetValue(key, out var val))
+                return false;
+
+            return val switch
+            {
+                JsonElement e when e.ValueKind == JsonValueKind.True => true,
+                JsonElement e when e.ValueKind == JsonValueKind.False => false,
+                _ => Convert.ToBoolean(val)
+            };
+        }
+
+        var type = GetString("type");
+        if (type == null)
+        {
+            GD.PrintErr("Missing 'type' field in input binding");
+            return null;
+        }
+
+        if (type == "key")
+        {
+            var keyEvent = new InputEventKey
+            {
+                Keycode = (Key)GetInt("keycode"),
+                PhysicalKeycode = (Key)GetInt("physical_keycode"),
+                Unicode = GetInt("unicode"),
+                Pressed = GetBool("pressed"),
+                CtrlPressed = GetBool("ctrl"),
+                ShiftPressed = GetBool("shift"),
+                AltPressed = GetBool("alt"),
+                MetaPressed = GetBool("meta"),
+            };
+            return keyEvent;
+        }
+
+        if (type == "mouse_button")
+        {
+            var mouseEvent = new InputEventMouseButton
+            {
+                ButtonIndex = (MouseButton)GetInt("button_index"),
+                Pressed = GetBool("pressed"),
+                CtrlPressed = GetBool("ctrl"),
+                ShiftPressed = GetBool("shift"),
+                AltPressed = GetBool("alt"),
+                MetaPressed = GetBool("meta"),
+            };
+            return mouseEvent;
+        }
+
+        if (type == "joypad_button")
+        {
+            var joypadButton = new InputEventJoypadButton
+            {
+                ButtonIndex = (JoyButton)GetInt("button_index"),
+                Pressed = GetBool("pressed"),
+                Device = GetInt("device"),
+            };
+            return joypadButton;
+        }
+
+        if (type == "joypad_motion")
+        {
+            double axisValueDouble = 0.0;
+            if (data.TryGetValue("axis_value", out var val))
+            {
+                axisValueDouble = val switch
+                {
+                    JsonElement e when e.ValueKind == JsonValueKind.Number => e.GetDouble(),
+                    _ => Convert.ToDouble(val)
+                };
+            }
+
+            var joypadMotion = new InputEventJoypadMotion
+            {
+                Axis = (JoyAxis)GetInt("axis"),
+                AxisValue = (float)axisValueDouble,
+                Device = GetInt("device"),
+            };
+            return joypadMotion;
+        }
+
+        GD.PrintErr($"Unknown input type '{type}'");
+        return null;
+    }
+
+    /// <summary>
     /// Gets the current dialogue size setting.
     /// </summary>
     /// <returns>The dialogue size as a float, defaulting to 1.0f if not set.</returns>
@@ -114,7 +392,6 @@ public partial class SettingsManager : BaseManager
     /// </remarks>
     public float GetDialogueSize()
     {
-        GD.Print($"GetDialogueSize() called, returning: {_settings?.DialogueSize ?? 1.0f}");
         return _settings?.DialogueSize ?? 1.0f;
     }
 
@@ -206,9 +483,26 @@ public partial class SettingsManager : BaseManager
     public void ResetToDefaults()
     {
         _settings = new SettingsData();
+
+        // Reset input bindings to defaults
+        foreach (var binding in _defaultInputBindings)
+        {
+            InputMap.ActionEraseEvents(binding.Key);
+            foreach (var inputEvent in binding.Value)
+            {
+                InputMap.ActionAddEvent(binding.Key, inputEvent);
+            }
+        }
+
         SaveSettings();
         EmitSignal(SignalName.DialogueSizeChanged, _settings.DialogueSize);
         EmitSignal(SignalName.SettingsChanged, "Reset", true);
+
+        // Notify about all input bindings being reset
+        foreach (var action in _defaultInputBindings.Keys)
+        {
+            EmitSignal(SignalName.InputBindingChanged, action);
+        }
     }
 }
 
@@ -222,5 +516,6 @@ public partial class SettingsManager : BaseManager
 public class SettingsData
 {
     public float DialogueSize { get; set; } = 1.0f;
+    public Dictionary<string, Dictionary<string, object>> InputBindings { get; set; } = new();
     public Dictionary<string, object> CustomSettings { get; set; } = new();
 }

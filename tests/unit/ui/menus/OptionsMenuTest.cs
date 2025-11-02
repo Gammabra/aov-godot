@@ -242,7 +242,7 @@ public class OptionsMenuTest
     public void GetButtonName_KeyEvent_ReturnsCorrectName()
     {
         var keyEvent = new InputEventKey { Keycode = Key.Space };
-        
+
         var method = typeof(OptionsMenu).GetMethod("GetButtonName",
             BindingFlags.NonPublic | BindingFlags.Static);
         var result = method?.Invoke(null, new object[] { keyEvent }) as string;
@@ -255,7 +255,7 @@ public class OptionsMenuTest
     public void GetButtonName_JoypadButton_ReturnsCorrectName()
     {
         var joypadEvent = new InputEventJoypadButton { ButtonIndex = JoyButton.A };
-        
+
         var method = typeof(OptionsMenu).GetMethod("GetButtonName",
             BindingFlags.NonPublic | BindingFlags.Static);
         var result = method?.Invoke(null, new object[] { joypadEvent }) as string;
@@ -268,7 +268,7 @@ public class OptionsMenuTest
     public void GetButtonName_JoypadMotion_ReturnsCorrectName()
     {
         var joypadMotion = new InputEventJoypadMotion { Axis = JoyAxis.TriggerLeft };
-        
+
         var method = typeof(OptionsMenu).GetMethod("GetButtonName",
             BindingFlags.NonPublic | BindingFlags.Static);
         var result = method?.Invoke(null, new object[] { joypadMotion }) as string;
@@ -631,17 +631,17 @@ public class OptionsMenuTest
     {
         var scene = new PackedScene();
         var button = new Button();
-        
+
         var marginContainer = new MarginContainer { Name = "MarginContainer" };
         var hbox = new HBoxContainer { Name = "HBoxContainer" };
         var labelAction = new Label { Name = "LabelAction" };
         var labelInput = new Label { Name = "LabelInput" };
-        
+
         hbox.AddChild(labelAction);
         hbox.AddChild(labelInput);
         marginContainer.AddChild(hbox);
         button.AddChild(marginContainer);
-        
+
         scene.Pack(button);
         return scene;
     }

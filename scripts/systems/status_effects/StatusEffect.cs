@@ -1,4 +1,4 @@
-﻿using AshesOfVelsingrad.utilities;
+using AshesOfVelsingrad.utilities;
 
 namespace AshesOfVelsingrad.systems.status_effects;
 

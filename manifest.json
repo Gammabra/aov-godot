@@ -12,6 +12,20 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.Enemy1Data.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.Enemy1Data.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.Enemy1Data",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "documentation/api/AshesOfVelsingrad.Main.yml",
       "output": {
         ".html": {
@@ -40,6 +54,48 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.Managers.GameManager.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.Managers.GameManager.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.Managers.GameManager",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.Managers.GameManager.yml\" sourcestartlinenumber=\"1\">The conductor of a level. The <code>GameManager</code> handles everything that a level needs to work correctly.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.Managers.GameOutcome.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.Managers.GameOutcome.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.Managers.GameOutcome",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.Managers.GameOutcome.yml\" sourcestartlinenumber=\"1\">Represents the outcome of a battle.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.Managers.GameState.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.Managers.GameState.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.Managers.GameState",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.Managers.GameState.yml\" sourcestartlinenumber=\"1\">Represents the overall game state during a level.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "documentation/api/AshesOfVelsingrad.Managers.MenuManager.yml",
       "output": {
         ".html": {
@@ -51,6 +107,20 @@
       "IsMRef": true,
       "Title": "AshesOfVelsingrad.Managers.MenuManager",
       "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.Managers.MenuManager.yml\" sourcestartlinenumber=\"1\">Manages menu navigation and state.\nCoordinates between different menus following the Manager Pattern.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.Managers.SceneManager.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.Managers.SceneManager.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.Managers.SceneManager",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.Managers.SceneManager.yml\" sourcestartlinenumber=\"1\">The <code>SceneManager</code> handles every inside level related informations.</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -82,6 +152,34 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.Managers.TurnManager.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.Managers.TurnManager.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.Managers.TurnManager",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.Managers.TurnManager.yml\" sourcestartlinenumber=\"1\">Manages the turn-based battle flow between player and enemy units.\nHandles turn order, state transitions, and async waiting for unit actions.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.Managers.TurnState.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.Managers.TurnState.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.Managers.TurnState",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.Managers.TurnState.yml\" sourcestartlinenumber=\"1\">Defines the possible turn states in the battle system.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "documentation/api/AshesOfVelsingrad.Managers.yml",
       "output": {
         ".html": {
@@ -92,6 +190,34 @@
       "Uid": null,
       "IsMRef": true,
       "Title": "AshesOfVelsingrad.Managers",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.Map1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.Map1.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.Map1",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.Player1Data.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.Player1Data.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.Player1Data",
       "Summary": null
     },
     {
@@ -134,6 +260,258 @@
       "Uid": null,
       "IsMRef": true,
       "Title": "AshesOfVelsingrad.UI.Menus",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.systems.BattleInputSystem.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.systems.BattleInputSystem.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.systems.BattleInputSystem",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.systems.CellInformation.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.systems.CellInformation.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.systems.CellInformation",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.systems.CellInformation.yml\" sourcestartlinenumber=\"1\">Represents the information for a single grid cell in the map,\nincluding its coordinates, ground type, walkability, and the unit occupying it.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.systems.CellType.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.systems.CellType.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.systems.CellType",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.systems.CellType.yml\" sourcestartlinenumber=\"1\">Enumeration of every cell type available in the game.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.systems.EffectType.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.systems.EffectType.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.systems.EffectType",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.systems.EffectType.yml\" sourcestartlinenumber=\"1\">Defines the type of effect a skill applies when used.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.systems.MagicType.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.systems.MagicType.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.systems.MagicType",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.systems.MagicType.yml\" sourcestartlinenumber=\"1\">Represents the elemental type of a skill.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.systems.MapSystem.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.systems.MapSystem.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.systems.MapSystem",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.systems.MapSystem.yml\" sourcestartlinenumber=\"1\">Base class for all playable maps in the game.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.systems.SkillSystem.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.systems.SkillSystem.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.systems.SkillSystem",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.systems.SkillSystem.yml\" sourcestartlinenumber=\"1\">Base class for all skills available in the game.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.systems.TargetTypes.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.systems.TargetTypes.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.systems.TargetTypes",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.systems.TargetTypes.yml\" sourcestartlinenumber=\"1\">Defines the targeting pattern of a skill.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.systems.UnitSystem.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.systems.UnitSystem.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.systems.UnitSystem",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.systems.UnitSystem.yml\" sourcestartlinenumber=\"1\">Base class for all units in the tactical grid-based system.\nHandles stats, movement, effects, and Godot integration.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.systems.UnitType.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.systems.UnitType.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.systems.UnitType",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.systems.UnitType.yml\" sourcestartlinenumber=\"1\">Represents the different unit archetypes in the game.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.systems.status_effects.EffectTarget.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.systems.status_effects.EffectTarget.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.systems.status_effects.EffectTarget",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.systems.status_effects.EffectTarget.yml\" sourcestartlinenumber=\"1\">Base class for any entity that can receive and manage <xref href=\"AshesOfVelsingrad.systems.status_effects.StatusEffect\" data-throw-if-not-resolved=\"false\"></xref>s.\nProvides default implementations for applying, removing, and querying effects.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.systems.status_effects.IEffectTarget.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.systems.status_effects.IEffectTarget.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.systems.status_effects.IEffectTarget",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.systems.status_effects.IEffectTarget.yml\" sourcestartlinenumber=\"1\">Represents an entity that can receive and manage status effects.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.systems.status_effects.StatusEffect.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.systems.status_effects.StatusEffect.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.systems.status_effects.StatusEffect",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.systems.status_effects.StatusEffect.yml\" sourcestartlinenumber=\"1\">Base class for all status effects that can be applied to an <xref href=\"AshesOfVelsingrad.systems.status_effects.IEffectTarget\" data-throw-if-not-resolved=\"false\"></xref>.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.systems.status_effects.StatusEffectSystem.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.systems.status_effects.StatusEffectSystem.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.systems.status_effects.StatusEffectSystem",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.systems.status_effects.StatusEffectSystem.yml\" sourcestartlinenumber=\"1\">Manages the application and lifecycle of status effects on all tracked targets.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.systems.status_effects.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.systems.status_effects.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.systems.status_effects",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.systems.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.systems.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.systems",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.utilities.Constants.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.utilities.Constants.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.utilities.Constants",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.utilities.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.utilities.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.utilities",
       "Summary": null
     },
     {

@@ -1,0 +1,75 @@
+[gd_scene load_steps=13 format=3 uid="uid://bee2drrspdtgi"]
+
+[ext_resource type="Script" uid="uid://du2xlh41m2cd" path="res://scripts/managers/GameManager.cs" id="1_bc6e8"]
+[ext_resource type="Script" uid="uid://dycsfdky6wocx" path="res://scripts/data/Map1.cs" id="2_p4llj"]
+[ext_resource type="MeshLibrary" uid="uid://du0rgaffn5bkl" path="res://assets/mesh_library/3DMesh.tres" id="2_so6rl"]
+[ext_resource type="Script" uid="uid://dkhfwdhsqvki4" path="res://scripts/managers/TurnManager.cs" id="3_p4llj"]
+[ext_resource type="Script" uid="uid://ch3yx81605e7t" path="res://scripts/data/Player1Data.cs" id="4_so6rl"]
+[ext_resource type="Script" uid="uid://c7tb4cc8xrwme" path="res://scripts/data/Enemy1Data.cs" id="5_nvgwb"]
+[ext_resource type="Texture2D" uid="uid://d2o6v40ln62ci" path="res://assets/aov-logo-transparent.png" id="6_l5nkq"]
+[ext_resource type="Texture2D" uid="uid://ddwok17vhh08j" path="res://assets/icon.svg" id="6_lhig6"]
+[ext_resource type="Script" uid="uid://buj6bdu8gkf0j" path="res://scripts/systems/BattleInputSystem.cs" id="7_nvgwb"]
+[ext_resource type="Script" uid="uid://wjt2bsk8h3nd" path="res://scripts/managers/BillboardManager.cs" id="10_ctjmi"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_ctjmi"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_k3vm1"]
+
+[node name="Test" type="Node"]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.8170543, 0.57656074, 0, -0.57656074, 0.8170543, 4, 4.505361, 9.432553)
+
+[node name="Inputs" type="Node" parent="."]
+script = ExtResource("7_nvgwb")
+
+[node name="GameManager" type="Node" parent="."]
+script = ExtResource("1_bc6e8")
+_playerUnitsPath = NodePath("PlayerUnits")
+_enemyUnitsPath = NodePath("EnemyUnits")
+_mapSystemPath = NodePath("GridMap")
+_turnManagerPath = NodePath("TurnManager")
+_battleInputSystemPath = NodePath("../Inputs")
+
+[node name="GridMap" type="GridMap" parent="GameManager"]
+mesh_library = ExtResource("2_so6rl")
+collision_layer = 3
+collision_mask = 3
+data = {
+"cells": PackedInt32Array(0, 3, 0, 3, 3, 0, 2, 3, 0, 1, 3, 0, 1, 2, 0, 0, 2, 0, 2, 2, 0, 3, 2, 0, 3, 1, 0, 2, 1, 0, 1, 1, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 2, 0, 0, 3, 0, 0)
+}
+script = ExtResource("2_p4llj")
+
+[node name="PlayerUnits" type="Node" parent="GameManager"]
+
+[node name="Player1" type="CharacterBody3D" parent="GameManager/PlayerUnits"]
+script = ExtResource("4_so6rl")
+
+[node name="Sprite3D" type="Sprite3D" parent="GameManager/PlayerUnits/Player1"]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
+billboard = 1
+texture = ExtResource("6_l5nkq")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="GameManager/PlayerUnits/Player1"]
+shape = SubResource("SphereShape3D_ctjmi")
+
+[node name="EnemyUnits" type="Node" parent="GameManager"]
+
+[node name="Enemy1" type="CharacterBody3D" parent="GameManager/EnemyUnits"]
+script = ExtResource("5_nvgwb")
+
+[node name="Sprite3D" type="Sprite3D" parent="GameManager/EnemyUnits/Enemy1"]
+billboard = 1
+texture = ExtResource("6_lhig6")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="GameManager/EnemyUnits/Enemy1"]
+shape = SubResource("SphereShape3D_k3vm1")
+
+[node name="TurnManager" type="Node" parent="GameManager"]
+script = ExtResource("3_p4llj")
+
+[node name="BillboardManager" type="Node" parent="."]
+script = ExtResource("10_ctjmi")
+_cameraPath = NodePath("../Camera3D")
+_playerUnitsPath = NodePath("../GameManager/PlayerUnits")
+_enemyUnitsPath = NodePath("../GameManager/EnemyUnits")

@@ -1,8 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://bjgrvgvbxb6y6"]
+[gd_scene load_steps=4 format=3 uid="uid://bjgrvgvbxb6y6"]
 
 [ext_resource type="Script" uid="uid://dxaddbwp5mbqw" path="res://scripts/ui/menus/OptionsMenu.cs" id="1_8sva7"]
+[ext_resource type="PackedScene" uid="uid://cgx15llmqjglu" path="res://scenes/ui/menus/input_button.tscn" id="2_2lvmk"]
+[ext_resource type="PackedScene" uid="uid://cx2n4apta0a0v" path="res://scenes/ui/menus/notif_unbound.tscn" id="3_etp0f"]
 
-[node name="OptionsMenu" type="Control" node_paths=PackedStringArray("_dialogueSizeSlider", "_dialogueSizeLabel", "_resetButton", "_backButton", "_previewDialogue", "_previewText")]
+[node name="OptionsMenu" type="Control" node_paths=PackedStringArray("_dialogueSizeSlider", "_dialogueSizeLabel", "_resetButton", "_backButton", "_previewDialogue", "_previewText", "_actionList", "_notifList")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -10,12 +12,16 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_8sva7")
-_dialogueSizeSlider = NodePath("ColorRect/Panel/VBoxContainer/DialogueSection/DialogueSizeSlider")
-_dialogueSizeLabel = NodePath("ColorRect/Panel/VBoxContainer/DialogueSection/DialogueSizeLabel")
-_resetButton = NodePath("ColorRect/Panel/VBoxContainer/ButtonsContainer/ResetButton")
-_backButton = NodePath("ColorRect/Panel/VBoxContainer/ButtonsContainer/BackButton")
-_previewDialogue = NodePath("ColorRect/Panel/VBoxContainer/PreviewSection/PreviewDialogue")
-_previewText = NodePath("ColorRect/Panel/VBoxContainer/PreviewSection/PreviewDialogue/PreviewText")
+_inputButtonScene = ExtResource("2_2lvmk")
+_notifUnboundScene = ExtResource("3_etp0f")
+_dialogueSizeSlider = NodePath("ColorRect/Panel/MarginContainer/VBoxContainer/ScrollContainer/SettingsList/DialogueSection/DialogueSizeSlider")
+_dialogueSizeLabel = NodePath("ColorRect/Panel/MarginContainer/VBoxContainer/ScrollContainer/SettingsList/DialogueSection/DialogueSizeLabel")
+_resetButton = NodePath("ColorRect/Panel/MarginContainer/VBoxContainer/ScrollContainer/SettingsList/ButtonsContainer/ResetButton")
+_backButton = NodePath("ColorRect/Panel/MarginContainer/VBoxContainer/ScrollContainer/SettingsList/ButtonsContainer/BackButton")
+_previewDialogue = NodePath("ColorRect/Panel/MarginContainer/VBoxContainer/ScrollContainer/SettingsList/PreviewSection/PreviewDialogue")
+_previewText = NodePath("ColorRect/Panel/MarginContainer/VBoxContainer/ScrollContainer/SettingsList/PreviewSection/PreviewDialogue/PreviewText")
+_actionList = NodePath("ColorRect/Panel/MarginContainer/VBoxContainer/ScrollContainer/SettingsList/ActionList")
+_notifList = NodePath("")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
@@ -26,70 +32,99 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.528296, 0.0197021, 0.190682, 1)
 
-[node name="Panel" type="Panel" parent="ColorRect"]
+[node name="Panel" type="PanelContainer" parent="ColorRect"]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -576.0
+offset_top = -324.0
+offset_right = 576.0
+offset_bottom = 324.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="ColorRect/Panel"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Title" type="Label" parent="ColorRect/Panel/VBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="ColorRect/Panel"]
 layout_mode = 2
+theme_override_constants/margin_left = 25
+theme_override_constants/margin_top = 25
+theme_override_constants/margin_right = 25
+theme_override_constants/margin_bottom = 25
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ColorRect/Panel/MarginContainer"]
+layout_mode = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="ColorRect/Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="SettingsList" type="VBoxContainer" parent="ColorRect/Panel/MarginContainer/VBoxContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Title" type="Label" parent="ColorRect/Panel/MarginContainer/VBoxContainer/ScrollContainer/SettingsList"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 32
 text = "Options"
 
-[node name="HSeparator" type="HSeparator" parent="ColorRect/Panel/VBoxContainer"]
+[node name="HSeparator" type="HSeparator" parent="ColorRect/Panel/MarginContainer/VBoxContainer/ScrollContainer/SettingsList"]
 layout_mode = 2
 
-[node name="DialogueSection" type="VBoxContainer" parent="ColorRect/Panel/VBoxContainer"]
+[node name="DialogueSection" type="VBoxContainer" parent="ColorRect/Panel/MarginContainer/VBoxContainer/ScrollContainer/SettingsList"]
 layout_mode = 2
 
-[node name="DialogueSizeLabel" type="Label" parent="ColorRect/Panel/VBoxContainer/DialogueSection"]
+[node name="DialogueSizeLabel" type="Label" parent="ColorRect/Panel/MarginContainer/VBoxContainer/ScrollContainer/SettingsList/DialogueSection"]
 layout_mode = 2
 text = "Dialog sizes: 0%"
 
-[node name="DialogueSizeSlider" type="HSlider" parent="ColorRect/Panel/VBoxContainer/DialogueSection"]
+[node name="DialogueSizeSlider" type="HSlider" parent="ColorRect/Panel/MarginContainer/VBoxContainer/ScrollContainer/SettingsList/DialogueSection"]
 layout_mode = 2
 value = 50.0
 
-[node name="PreviewSection" type="VBoxContainer" parent="ColorRect/Panel/VBoxContainer"]
+[node name="PreviewSection" type="VBoxContainer" parent="ColorRect/Panel/MarginContainer/VBoxContainer/ScrollContainer/SettingsList"]
 layout_mode = 2
 theme_override_constants/separation = 0
 
-[node name="PreviewLabel" type="Label" parent="ColorRect/Panel/VBoxContainer/PreviewSection"]
+[node name="PreviewLabel" type="Label" parent="ColorRect/Panel/MarginContainer/VBoxContainer/ScrollContainer/SettingsList/PreviewSection"]
 layout_mode = 2
 text = "Preview :"
 
-[node name="PreviewDialogue" type="PanelContainer" parent="ColorRect/Panel/VBoxContainer/PreviewSection"]
+[node name="PreviewDialogue" type="PanelContainer" parent="ColorRect/Panel/MarginContainer/VBoxContainer/ScrollContainer/SettingsList/PreviewSection"]
 layout_mode = 2
 
-[node name="PreviewText" type="Label" parent="ColorRect/Panel/VBoxContainer/PreviewSection/PreviewDialogue"]
+[node name="PreviewText" type="Label" parent="ColorRect/Panel/MarginContainer/VBoxContainer/ScrollContainer/SettingsList/PreviewSection/PreviewDialogue"]
 layout_mode = 2
 text = "Discution example"
 
-[node name="HSeparator2" type="HSeparator" parent="ColorRect/Panel/VBoxContainer"]
+[node name="HSeparator2" type="HSeparator" parent="ColorRect/Panel/MarginContainer/VBoxContainer/ScrollContainer/SettingsList"]
 layout_mode = 2
 theme_override_constants/separation = 0
 
-[node name="ButtonsContainer" type="HBoxContainer" parent="ColorRect/Panel/VBoxContainer"]
+[node name="ActionList" type="VBoxContainer" parent="ColorRect/Panel/MarginContainer/VBoxContainer/ScrollContainer/SettingsList"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="InputButton" parent="ColorRect/Panel/MarginContainer/VBoxContainer/ScrollContainer/SettingsList/ActionList" instance=ExtResource("2_2lvmk")]
 layout_mode = 2
 
-[node name="ResetButton" type="Button" parent="ColorRect/Panel/VBoxContainer/ButtonsContainer"]
+[node name="HSeparator3" type="HSeparator" parent="ColorRect/Panel/MarginContainer/VBoxContainer/ScrollContainer/SettingsList"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="ButtonsContainer" type="HBoxContainer" parent="ColorRect/Panel/MarginContainer/VBoxContainer/ScrollContainer/SettingsList"]
+layout_mode = 2
+
+[node name="ResetButton" type="Button" parent="ColorRect/Panel/MarginContainer/VBoxContainer/ScrollContainer/SettingsList/ButtonsContainer"]
 layout_mode = 2
 text = "Reset Settings"
 
-[node name="BackButton" type="Button" parent="ColorRect/Panel/VBoxContainer/ButtonsContainer"]
+[node name="BackButton" type="Button" parent="ColorRect/Panel/MarginContainer/VBoxContainer/ScrollContainer/SettingsList/ButtonsContainer"]
 layout_mode = 2
 text = "Back"
 
-[connection signal="value_changed" from="ColorRect/Panel/VBoxContainer/DialogueSection/DialogueSizeSlider" to="." method="OnDialogueSizeChanged"]
-[connection signal="pressed" from="ColorRect/Panel/VBoxContainer/ButtonsContainer/ResetButton" to="." method="OnResetPressed"]
-[connection signal="pressed" from="ColorRect/Panel/VBoxContainer/ButtonsContainer/BackButton" to="." method="OnBackPressed"]
+[connection signal="value_changed" from="ColorRect/Panel/MarginContainer/VBoxContainer/ScrollContainer/SettingsList/DialogueSection/DialogueSizeSlider" to="." method="OnDialogueSizeChanged"]
+[connection signal="pressed" from="ColorRect/Panel/MarginContainer/VBoxContainer/ScrollContainer/SettingsList/ButtonsContainer/ResetButton" to="." method="OnResetPressed"]
+[connection signal="pressed" from="ColorRect/Panel/MarginContainer/VBoxContainer/ScrollContainer/SettingsList/ButtonsContainer/BackButton" to="." method="OnBackPressed"]

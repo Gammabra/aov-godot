@@ -10,24 +10,28 @@ public sealed partial class Map1 : MapSystem
 	{
 		foreach (UnitSystem unit in playerUnits)
 		{
-			CellsInformation[0].Unit = unit;
-			Vector3I pos = new(CellsInformation[0].X, CellsInformation[0].Y, CellsInformation[0].Z);
+			CellInformation cell = CellsInformation[0];
+			cell.Unit = unit;
+
+			Vector3I pos = new(cell.X, cell.Y, cell.Z);
 			Vector3 worldPos = MapToLocal(pos);
-			worldPos.Y += 1f;
+			//worldPos += new Vector3(CellSize.X * 0.5f, 0f, CellSize.Z * 0.5f);
+			worldPos.Y += CellSize.Y * 2f;
 
 			unit.GlobalPosition = worldPos;
-			AddChild(unit);
 		}
 
 		foreach (UnitSystem unit in enemyUnits)
 		{
-			CellsInformation[1].Unit = unit;
-			Vector3I pos = new(CellsInformation[1].X, CellsInformation[1].Y, CellsInformation[1].Z);
+			CellInformation cell = CellsInformation[1];
+			cell.Unit = unit;
+
+			Vector3I pos = new(cell.X, cell.Y, cell.Z);
 			Vector3 worldPos = MapToLocal(pos);
-			worldPos.Y += 1f;
+			//worldPos += new Vector3(CellSize.X * 0.5f, 0f, CellSize.Z * 0.5f);
+			worldPos.Y += CellSize.Y * 2f;
 
 			unit.GlobalPosition = worldPos;
-			unit.AddChild(unit);
 		}
 	}
 }

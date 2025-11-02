@@ -52,6 +52,9 @@ public abstract partial class UnitSystem : CharacterBody3D, IEffectTarget
 
 	#region Godot properties
 
+	[Export]
+	public float Gravity = ProjectSettings.GetSetting("physics/3d/default_gravity").AsSingle();
+
 	/// <summary>
 	///     Emitted when the unit's portrait texture changes.
 	/// </summary>
@@ -267,6 +270,16 @@ public abstract partial class UnitSystem : CharacterBody3D, IEffectTarget
 	#endregion
 
 	#region Public Methods
+
+	public override void _PhysicsProcess(double delta)
+	{
+		Vector3 velocity = Velocity;
+
+		if (!IsOnFloor()) velocity.Y -= Gravity * (float)delta;
+
+		Velocity = velocity;
+		MoveAndSlide();
+	}
 
 	/// <summary>
 	///     Lock the system and wait the player for an action

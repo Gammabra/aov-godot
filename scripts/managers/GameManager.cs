@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using AshesOfVelsingrad.systems;
@@ -152,6 +153,7 @@ public partial class GameManager : BaseManager
     {
         _battleInputSystemContainer = GetNode<BattleInputSystem>(_battleInputSystemPath);
         _battleInputSystemContainer.OnAttackPressed += PlayerAttacked;
+        _battleInputSystemContainer.OnMoveUnitToPressed += PlayerUnitMoved;
         _playerUnitsContainer = GetNode<Node>(_playerUnitsPath);
         _enemyUnitsContainer = GetNode<Node>(_enemyUnitsPath);
         LoadUnits();
@@ -161,6 +163,8 @@ public partial class GameManager : BaseManager
         _turnManagerContainer.OnPlayerTurn += ActivateInput;
         _turnManagerContainer.OnPlayerEndTurn += DeactivateInput;
         _turnManagerContainer.InitializeTurnOrder(_playerUnits, _enemyUnits);
+        if (_enemyUnits.Contains(_turnManagerContainer.GetCurrentUnit()))
+            DeactivateInput();
     }
 
     /// <summary>
@@ -177,11 +181,13 @@ public partial class GameManager : BaseManager
             GD.PrintErr("PlayerUnitsContainer not set");
             return;
         }
+
         if (_enemyUnitsContainer == null)
         {
             GD.PrintErr("EnemyUnitsContainer not set");
             return;
         }
+
         _playerUnits.Clear();
         _enemyUnits.Clear();
 
@@ -206,6 +212,7 @@ public partial class GameManager : BaseManager
             GD.PrintErr("BattleInputSystemContainer not set");
             return;
         }
+
         GD.Print("Activate input");
         _battleInputSystemContainer.SetInputEnabled(true);
     }
@@ -220,6 +227,7 @@ public partial class GameManager : BaseManager
             GD.PrintErr("BattleInputSystemContainer not set");
             return;
         }
+
         GD.Print("Deactivate input");
         _battleInputSystemContainer.SetInputEnabled(false);
     }
@@ -237,8 +245,47 @@ public partial class GameManager : BaseManager
             GD.PrintErr("TurnManagerContainer not set");
             return;
         }
+
         GD.Print("Player attacked");
         _turnManagerContainer.GetCurrentUnit().PassTurn();
+    }
+
+    private void PlayerUnitMoved(Vector3I cell)
+    {
+        if (_mapSystemContainer == null)
+        {
+            GD.PrintErr("MapSystemContainer not set");
+            return;
+        }
+
+        if (_turnManagerContainer == null)
+        {
+            GD.PrintErr("TurnManagerContainer not set");
+            return;
+        }
+
+        try
+        {
+            if (!_turnManagerContainer.GetCurrentUnit().CanMoveTo(cell.X, cell.Y, cell.Z, _mapSystemContainer))
+            {
+                ActivateInput();
+                return;
+            }
+        }
+        catch (ArgumentOutOfRangeException)
+        {
+            ActivateInput();
+            return;
+        }
+
+
+        Vector3I pos = new(cell.X, cell.Y, cell.Z);
+        Vector3 worldPos = _mapSystemContainer.MapToLocal(pos);
+        worldPos.Y += _mapSystemContainer.CellSize.Y * 0.5f;
+
+        _turnManagerContainer.GetCurrentUnit().GlobalPosition = worldPos;
+        GD.Print("Player unit moved");
+        _turnManagerContainer.GetCurrentUnit().MoveTo(cell.X, cell.Y, cell.Z, _mapSystemContainer);
     }
 
     #endregion

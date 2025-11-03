@@ -12,14 +12,14 @@ namespace AshesOfVelsingrad.Managers;
 /// </summary>
 public enum TurnState
 {
-    /// <summary>The player's turn to act.</summary>
+	/// <summary>The player's turn to act.</summary>
     PlayerTurn,
 
-    /// <summary>The enemy's turn to act.</summary>
-    EnemyTurn,
+	/// <summary>The enemy's turn to act.</summary>
+	EnemyTurn,
 
-    /// <summary>Idle state while waiting for setup or transitions.</summary>
-    Waiting
+	/// <summary>Idle state while waiting for setup or transitions.</summary>
+	Waiting
 }
 
 /// <summary>
@@ -33,29 +33,29 @@ public enum TurnState
 /// </remarks>
 public partial class TurnManager : BaseManager
 {
-    #region Private Fields
+	#region Private Fields
 
-    private TurnState _currentTurnState = TurnState.Waiting;
-    private int _turn;
-    private List<KeyValuePair<UnitSystem, TurnState>> _unitsTurnOrder = [];
-    private int _currentIndex;
+	private TurnState _currentTurnState = TurnState.Waiting;
+	private int _turn;
+	private List<KeyValuePair<UnitSystem, TurnState>> _unitsTurnOrder = [];
+	private int _currentIndex;
 
-    #endregion
+	#endregion
 
-    #region Private Properties
+	#region Private Properties
 
-    /// <summary>
-    /// Singleton instance of the <see cref="TurnManager"/>.
-    /// Ensures only one instance exists in the scene tree.
-    /// </summary>
-    private new static TurnManager? Instance { get; set; }
+	/// <summary>
+	/// Singleton instance of the <see cref="TurnManager"/>.
+	/// Ensures only one instance exists in the scene tree.
+	/// </summary>
+	private new static TurnManager? Instance { get; set; }
 
-    #endregion
+	#endregion
 
-    #region Public Properties
+	#region Public Properties
 
-    /// <summary>
-    /// Triggered when the player's turn begins.
+	/// <summary>
+	/// Triggered when the player's turn begins.
     /// </summary>
     public event Action? OnPlayerTurn;
 
@@ -64,96 +64,96 @@ public partial class TurnManager : BaseManager
 	/// </summary>
 	public event Action? OnPlayerEndTurn;
 
-    #endregion
+	#endregion
 
-    #region Class Initialization
+	#region Class Initialization
 
-    /// <summary>
-    ///     Initializes the TurnManager singleton instance.
-    ///     Ensures only one instance exists and sets up the initial state.
-    /// </summary>
-    /// <remarks>
-    ///     This method is called automatically by Godot when the node is ready.
-    ///     It checks for duplicate instances and initializes the game system.
-    ///     If a duplicate instance is found, it removes the duplicate.
-    /// </remarks>
-    protected override void Initialize()
-    {
-        if (Instance != null && Instance != this)
-        {
-            GD.PrintErr($"Multiple instances of {GetType().Name} detected. Removing duplicate.");
-            QueueFree();
-            return;
-        }
+	/// <summary>
+	///     Initializes the TurnManager singleton instance.
+	///     Ensures only one instance exists and sets up the initial state.
+	/// </summary>
+	/// <remarks>
+	///     This method is called automatically by Godot when the node is ready.
+	///     It checks for duplicate instances and initializes the game system.
+	///     If a duplicate instance is found, it removes the duplicate.
+	/// </remarks>
+	protected override void Initialize()
+	{
+		if (Instance != null && Instance != this)
+		{
+			GD.PrintErr($"Multiple instances of {GetType().Name} detected. Removing duplicate.");
+			QueueFree();
+			return;
+		}
 
-        Instance = this;
-        GD.Print("TurnManager initialized successfully");
-    }
+		Instance = this;
+		GD.Print("TurnManager initialized successfully");
+	}
 
-    #endregion
+	#endregion
 
-    #region Private Methods
+	#region Private Methods
 
-    /// <summary>
-    /// Main asynchronous turn processing loop.
-    /// Handles turn progression for all units in the battle.
-    /// </summary>
-    /// <remarks>
-    /// This method runs indefinitely while the battle is ongoing.
-    /// It alternates between player and enemy turns, invoking events and awaiting actions.
-    /// </remarks>
-    private async Task ProcessTurn()
-    {
-        while (true)
-        {
-            GD.Print($"{_unitsTurnOrder[_currentIndex].Key.Name} turn");
-            switch (_currentTurnState)
-            {
-                case TurnState.PlayerTurn:
-                    OnPlayerTurn?.Invoke();
-                    await _unitsTurnOrder[_currentIndex].Key.WaitForActionAsync();
-                    OnPlayerEndTurn?.Invoke();
-                    break;
-                case TurnState.EnemyTurn:
-                    await WaitForEnemyAction(_unitsTurnOrder[_currentIndex].Key);
-                    break;
-            }
+	/// <summary>
+	/// Main asynchronous turn processing loop.
+	/// Handles turn progression for all units in the battle.
+	/// </summary>
+	/// <remarks>
+	/// This method runs indefinitely while the battle is ongoing.
+	/// It alternates between player and enemy turns, invoking events and awaiting actions.
+	/// </remarks>
+	private async Task ProcessTurn()
+	{
+		while (true)
+		{
+			GD.Print($"{_unitsTurnOrder[_currentIndex].Key.Name} turn");
+			switch (_currentTurnState)
+			{
+				case TurnState.PlayerTurn:
+					OnPlayerTurn?.Invoke();
+					await _unitsTurnOrder[_currentIndex].Key.WaitForActionAsync();
+					OnPlayerEndTurn?.Invoke();
+					break;
+				case TurnState.EnemyTurn:
+					await WaitForEnemyAction(_unitsTurnOrder[_currentIndex].Key);
+					break;
+			}
 
-            _currentIndex++;
-            if (_currentIndex == _unitsTurnOrder.Count)
-                _currentIndex = 0;
-            _currentTurnState = _unitsTurnOrder[_currentIndex].Value;
-            _turn++;
-        }
-    }
+			_currentIndex++;
+			if (_currentIndex == _unitsTurnOrder.Count)
+				_currentIndex = 0;
+			_currentTurnState = _unitsTurnOrder[_currentIndex].Value;
+			_turn++;
+		}
+	}
 
-    /// <summary>
-    /// Simulates an enemy action asynchronously.
-    /// </summary>
-    /// <param name="unit">The enemy unit performing the action.</param>
-    /// <returns>A task that completes when the enemy finishes its action.</returns>
-    /// <remarks>
-    /// Currently, this method is a placeholder with a delay.
-    /// Replace with the actual AI logic in future implementations.
-    /// </remarks>
-    private static async Task WaitForEnemyAction(UnitSystem unit)
-    {
-        GD.Print($"{unit.Name} start thinking...");
-        await Task.Delay(10000); // TODO: Replace by the real ai method
-        GD.Print($"{unit.Name} played.");
-    }
+	/// <summary>
+	/// Simulates an enemy action asynchronously.
+	/// </summary>
+	/// <param name="unit">The enemy unit performing the action.</param>
+	/// <returns>A task that completes when the enemy finishes its action.</returns>
+	/// <remarks>
+	/// Currently, this method is a placeholder with a delay.
+	/// Replace with the actual AI logic in future implementations.
+	/// </remarks>
+	private static async Task WaitForEnemyAction(UnitSystem unit)
+	{
+		GD.Print($"{unit.Name} start thinking...");
+		await Task.Delay(10000); // TODO: Replace by the real ai method
+		GD.Print($"{unit.Name} played.");
+	}
 
-    #endregion
+	#endregion
 
-    #region Public Methods
+	#region Public Methods
 
-    /// <summary>
-    /// Initializes the turn order list based on all participating units.
-    /// </summary>
-    /// <param name="playerUnits">List of all player-controlled units.</param>
-    /// <param name="enemyUnits">List of all enemy-controlled units.</param>
-    /// <remarks>
-    /// The order is determined by each unit's <see cref="UnitSystem.BaseSpeed"/> value,
+	/// <summary>
+	/// Initializes the turn order list based on all participating units.
+	/// </summary>
+	/// <param name="playerUnits">List of all player-controlled units.</param>
+	/// <param name="enemyUnits">List of all enemy-controlled units.</param>
+	/// <remarks>
+	/// The order is determined by each unit's <see cref="UnitSystem.BaseSpeed"/> value,
     /// sorted from highest to lowest.
     /// </remarks>
     public void InitializeTurnOrder(List<UnitSystem> playerUnits, List<UnitSystem> enemyUnits)

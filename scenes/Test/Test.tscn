@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://bee2drrspdtgi"]
+[gd_scene load_steps=12 format=3 uid="uid://bee2drrspdtgi"]
 
 [ext_resource type="Script" uid="uid://du2xlh41m2cd" path="res://scripts/managers/GameManager.cs" id="1_bc6e8"]
 [ext_resource type="Script" uid="uid://dycsfdky6wocx" path="res://scripts/data/Map1.cs" id="2_p4llj"]
@@ -9,7 +9,6 @@
 [ext_resource type="Texture2D" uid="uid://d2o6v40ln62ci" path="res://assets/aov-logo-transparent.png" id="6_l5nkq"]
 [ext_resource type="Texture2D" uid="uid://ddwok17vhh08j" path="res://assets/icon.svg" id="6_lhig6"]
 [ext_resource type="Script" uid="uid://buj6bdu8gkf0j" path="res://scripts/systems/BattleInputSystem.cs" id="7_nvgwb"]
-[ext_resource type="Script" uid="uid://wjt2bsk8h3nd" path="res://scripts/managers/BillboardManager.cs" id="10_ctjmi"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_ctjmi"]
 
@@ -18,10 +17,12 @@
 [node name="Test" type="Node"]
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.8170543, 0.57656074, 0, -0.57656074, 0.8170543, 4, 4.505361, 9.432553)
+transform = Transform3D(1, 0, 0, 0, 0.8170543, 0.57656074, 0, -0.57656074, 0.8170543, 4, 6.757878, 10.624343)
 
 [node name="Inputs" type="Node" parent="."]
 script = ExtResource("7_nvgwb")
+_mapSystemPath = NodePath("../GameManager/GridMap")
+_camera3DPath = NodePath("../Camera3D")
 
 [node name="GameManager" type="Node" parent="."]
 script = ExtResource("1_bc6e8")
@@ -44,6 +45,7 @@ script = ExtResource("2_p4llj")
 
 [node name="Player1" type="CharacterBody3D" parent="GameManager/PlayerUnits"]
 script = ExtResource("4_so6rl")
+Gravity = null
 
 [node name="Sprite3D" type="Sprite3D" parent="GameManager/PlayerUnits/Player1"]
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
@@ -57,6 +59,7 @@ shape = SubResource("SphereShape3D_ctjmi")
 
 [node name="Enemy1" type="CharacterBody3D" parent="GameManager/EnemyUnits"]
 script = ExtResource("5_nvgwb")
+Gravity = null
 
 [node name="Sprite3D" type="Sprite3D" parent="GameManager/EnemyUnits/Enemy1"]
 billboard = 1
@@ -67,9 +70,3 @@ shape = SubResource("SphereShape3D_k3vm1")
 
 [node name="TurnManager" type="Node" parent="GameManager"]
 script = ExtResource("3_p4llj")
-
-[node name="BillboardManager" type="Node" parent="."]
-script = ExtResource("10_ctjmi")
-_cameraPath = NodePath("../Camera3D")
-_playerUnitsPath = NodePath("../GameManager/PlayerUnits")
-_enemyUnitsPath = NodePath("../GameManager/EnemyUnits")

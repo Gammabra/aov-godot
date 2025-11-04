@@ -45,7 +45,6 @@ script = ExtResource("2_p4llj")
 
 [node name="Player1" type="CharacterBody3D" parent="GameManager/PlayerUnits"]
 script = ExtResource("4_so6rl")
-Gravity = null
 
 [node name="Sprite3D" type="Sprite3D" parent="GameManager/PlayerUnits/Player1"]
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
@@ -59,7 +58,6 @@ shape = SubResource("SphereShape3D_ctjmi")
 
 [node name="Enemy1" type="CharacterBody3D" parent="GameManager/EnemyUnits"]
 script = ExtResource("5_nvgwb")
-Gravity = null
 
 [node name="Sprite3D" type="Sprite3D" parent="GameManager/EnemyUnits/Enemy1"]
 billboard = 1

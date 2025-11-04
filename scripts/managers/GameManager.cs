@@ -48,6 +48,7 @@ public partial class GameManager : BaseManager
     private GameOutcome _gameOutcome = GameOutcome.Ongoing;
     private readonly List<UnitSystem> _playerUnits = [];
     private readonly List<UnitSystem> _enemyUnits = [];
+    private List<(int, int, int)> _currentUnitPossibleMoves = [];
     private StatusEffectSystem _statusEffectSystem = new();
 
     #endregion
@@ -152,7 +153,7 @@ public partial class GameManager : BaseManager
     private void InitializeGameManager()
     {
         _battleInputSystemContainer = GetNode<BattleInputSystem>(_battleInputSystemPath);
-        _battleInputSystemContainer.OnAttackPressed += PlayerAttacked;
+        _battleInputSystemContainer.OnAttackPressed += PlayerUnitAttacked;
         _battleInputSystemContainer.OnMoveUnitToPressed += PlayerUnitMoved;
         _playerUnitsContainer = GetNode<Node>(_playerUnitsPath);
         _enemyUnitsContainer = GetNode<Node>(_enemyUnitsPath);
@@ -160,11 +161,13 @@ public partial class GameManager : BaseManager
         _mapSystemContainer = GetNode<MapSystem>(_mapSystemPath);
         _mapSystemContainer.PlaceUnits(_playerUnits, _enemyUnits);
         _turnManagerContainer = GetNode<TurnManager>(_turnManagerPath);
-        _turnManagerContainer.OnPlayerTurn += ActivateInput;
-        _turnManagerContainer.OnPlayerEndTurn += DeactivateInput;
+        _turnManagerContainer.OnPlayerTurn += ActivatePlayerUnit;
+        _turnManagerContainer.OnPlayerEndTurn += DeactivatePlayerUnit;
         _turnManagerContainer.InitializeTurnOrder(_playerUnits, _enemyUnits);
         if (_enemyUnits.Contains(_turnManagerContainer.GetCurrentUnit()))
-            DeactivateInput();
+            DeactivatePlayerUnit();
+        else
+            ActivatePlayerUnit();
     }
 
     /// <summary>
@@ -203,42 +206,70 @@ public partial class GameManager : BaseManager
     }
 
     /// <summary>
-    /// Enables player input at the start of their turn.
+    /// Activate player unit (actions and inputs) at the start of their turn.
     /// </summary>
-    private void ActivateInput()
+    private void ActivatePlayerUnit()
     {
         if (_battleInputSystemContainer == null)
         {
-            GD.PrintErr("BattleInputSystemContainer not set");
+            GD.PrintErr("BattleInputSystemContainer not set in GameManager.");
             return;
         }
 
-        GD.Print("Activate input");
+        if (_turnManagerContainer == null)
+        {
+            GD.PrintErr("TurnManagerContainer not set in GameManager.");
+            return;
+        }
+
+        if (_mapSystemContainer == null)
+        {
+            GD.PrintErr("MapSystemContainer not set in GameManager.");
+            return;
+        }
+
+        if (_currentUnitPossibleMoves.Count == 0)
+            _currentUnitPossibleMoves = _turnManagerContainer.GetCurrentUnit().GetPossibleMoves(_mapSystemContainer);
+        GD.Print("Current Unit Possible Moves: " + string.Join(", ", _currentUnitPossibleMoves));
         _battleInputSystemContainer.SetInputEnabled(true);
+        GD.Print("Activate input");
     }
 
     /// <summary>
-    /// Disables player input when their turn ends.
+    /// Disables player unit (actions and inputs) when their turn ends.
     /// </summary>
-    private void DeactivateInput()
+    private void DeactivatePlayerUnit()
     {
         if (_battleInputSystemContainer == null)
         {
-            GD.PrintErr("BattleInputSystemContainer not set");
+            GD.PrintErr("BattleInputSystemContainer not set in GameManager.");
             return;
         }
 
+        if (_turnManagerContainer == null)
+        {
+            GD.PrintErr("TurnManagerContainer not set in GameManager.");
+            return;
+        }
+
+        if (_mapSystemContainer == null)
+        {
+            GD.PrintErr("MapSystemContainer not set in GameManager.");
+            return;
+        }
+
+        _currentUnitPossibleMoves.Clear();
         GD.Print("Deactivate input");
         _battleInputSystemContainer.SetInputEnabled(false);
     }
 
     /// <summary>
-    /// Handles player attack input and passes the turn when an attack occurs.
+    /// Handles player unit attack input and passes the turn when an attack occurs.
     /// </summary>
     /// <remarks>
     /// Called when <see cref="BattleInputSystem.OnAttackPressed"/> is triggered.
     /// </remarks>
-    private void PlayerAttacked()
+    private void PlayerUnitAttacked()
     {
         if (_turnManagerContainer == null)
         {
@@ -250,17 +281,29 @@ public partial class GameManager : BaseManager
         _turnManagerContainer.GetCurrentUnit().PassTurn();
     }
 
+    /// <summary>
+    /// Handles player "move to" input.
+    /// </summary>
+    /// <remarks>
+    /// Called when <see cref="BattleInputSystem.OnMoveUnitToPressed"/> is triggered.
+    /// </remarks>
     private void PlayerUnitMoved(Vector3I cell)
     {
         if (_mapSystemContainer == null)
         {
-            GD.PrintErr("MapSystemContainer not set");
+            GD.PrintErr("MapSystemContainer not set in GameManager.");
             return;
         }
 
         if (_turnManagerContainer == null)
         {
-            GD.PrintErr("TurnManagerContainer not set");
+            GD.PrintErr("TurnManagerContainer not set in GameManager.");
+            return;
+        }
+
+        if (!_currentUnitPossibleMoves.Contains((cell.X, cell.Y, cell.Z)))
+        {
+            ActivatePlayerUnit();
             return;
         }
 
@@ -268,22 +311,22 @@ public partial class GameManager : BaseManager
         {
             if (!_turnManagerContainer.GetCurrentUnit().CanMoveTo(cell.X, cell.Y, cell.Z, _mapSystemContainer))
             {
-                ActivateInput();
+                ActivatePlayerUnit();
                 return;
             }
         }
         catch (ArgumentOutOfRangeException)
         {
-            ActivateInput();
+            ActivatePlayerUnit();
             return;
         }
 
-
+        // TODO: Handle the unit moves in the ui and not just teleport the unit
         Vector3I pos = new(cell.X, cell.Y, cell.Z);
         Vector3 worldPos = _mapSystemContainer.MapToLocal(pos);
         worldPos.Y += _mapSystemContainer.CellSize.Y * 0.5f;
-
         _turnManagerContainer.GetCurrentUnit().GlobalPosition = worldPos;
+
         GD.Print("Player unit moved");
         _turnManagerContainer.GetCurrentUnit().MoveTo(cell.X, cell.Y, cell.Z, _mapSystemContainer);
     }

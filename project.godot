@@ -19,6 +19,7 @@ config/icon="uid://d2o6v40ln62ci"
 
 SettingsManager="*res://scripts/managers/SettingsManager.cs"
 MenuManager="*res://scripts/managers/MenuManager.cs"
+EnemyAiManager="*res://scripts/managers/EnemyAIManager.cs"
 
 [dotnet]
 

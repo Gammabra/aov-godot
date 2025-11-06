@@ -4,62 +4,62 @@ namespace AshesOfVelsingrad.systems;
 
 public sealed partial class BattleInputSystem : Node
 {
-    #region Godot Public Events
+	#region Godot Public Events
 
-    [Signal]
-    public delegate void OnAttackPressedEventHandler();
+	[Signal]
+	public delegate void OnAttackPressedEventHandler();
 
-    #endregion
+	#endregion
 
-    #region Private Fields
+	#region Private Fields
 
-    private bool _inputEnabled = true;
+	private bool _inputEnabled = true;
 
-    #endregion
+	#endregion
 
-    #region Public Properties
+	#region Public Properties
 
-    private static BattleInputSystem? Instance { get; set; }
+	private static BattleInputSystem? Instance { get; set; }
 
-    #endregion
+	#endregion
 
-    #region Class Initialization
+	#region Class Initialization
 
-    /// <summary>
-    ///     Called when the node is added to the scene tree.
-    ///     Initializes the <see cref="BattleInputSystem" /> instance and checks for duplicates.
-    /// </summary>
-    /// <remarks>
-    ///     This method is called automatically by Godot when the node is ready.
-    ///     It ensures that only one instance of the <see cref="BattleInputSystem" /> exists in the scene tree.
-    ///     If a duplicate instance is found, it removes the duplicate.
-    /// </remarks>
-    public override void _Ready()
-    {
-        // For AutoLoad, the initialization does immediately
-        if (IsInsideTree() && GetParent() == GetTree().Root)
-        {
-            Initialize();
-        }
-        // For manual instances, check for duplicates.
-        else if (Instance == null)
-        {
-            Initialize();
-        }
-        else
-        {
-            GD.PrintErr($"Multiple instances of {GetType().Name} detected. Removing duplicate.");
-            QueueFree();
-        }
-    }
+	/// <summary>
+	///     Called when the node is added to the scene tree.
+	///     Initializes the <see cref="BattleInputSystem" /> instance and checks for duplicates.
+	/// </summary>
+	/// <remarks>
+	///     This method is called automatically by Godot when the node is ready.
+	///     It ensures that only one instance of the <see cref="BattleInputSystem" /> exists in the scene tree.
+	///     If a duplicate instance is found, it removes the duplicate.
+	/// </remarks>
+	public override void _Ready()
+	{
+		// For AutoLoad, the initialization does immediately
+		if (IsInsideTree() && GetParent() == GetTree().Root)
+		{
+			Initialize();
+		}
+		// For manual instances, check for duplicates.
+		else if (Instance == null)
+		{
+			Initialize();
+		}
+		else
+		{
+			GD.PrintErr($"Multiple instances of {GetType().Name} detected. Removing duplicate.");
+			QueueFree();
+		}
+	}
 
-    /// <summary>
-    ///     Initializes the <see cref="BattleInputSystem" /> instance
-    ///     This method should be overridden in derived classes to set up specific functionality.
-    /// </summary>
-    /// <remarks>
-    ///     This method is called by the _Ready method to initialize the map.
-    ///     It should contain the logic necessary to set up the map's state and functionality.
+	/// <summary>
+	///     Initializes the <see cref="BattleInputSystem" /> instance
+	///     This method should be overridden in derived classes to set up specific functionality.
+	/// </summary>
+	/// <remarks>
+	///     This method is called by the _Ready method to initialize the map.
+	///     It should contain the logic necessary to set up the map's state and functionality.
     ///     Derived classes must implement this method to provide their specific initialization logic.
     /// </remarks>
     private void Initialize()

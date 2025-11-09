@@ -309,13 +309,31 @@ public abstract partial class UnitSystem : CharacterBody3D, IEffectTarget
     /// </summary>
     /// <param name="targets">List of target units to attack.</param>
     /// <param name="map">Reference to the map system for positional logic.</param>
-    public abstract void Attack(List<UnitSystem> targets, MapSystem? map);
+    /// <param name="skill">Tells which active skill to use</param>
+    public virtual void Play(List<UnitSystem> targets, MapSystem? map, SkillSystem skill)
+    {
+        if (!ActiveSkills.Contains(skill))
+        {
+            GD.PrintErr($"The unit does not have the skill '{skill.Name}'");
+            return;
+        }
+
+        skill.Use(targets, map);
+        ReportSystemUnitHasPlayed();
+    }
 
     /// <summary>
     ///     Applies incoming damage to the unit and updates HP.
     /// </summary>
     /// <param name="damage">The amount of damage received.</param>
-    public abstract void TakeDamage(float damage);
+    public virtual void TakeDamage(float damage)
+    {
+        float realDamage = damage - BaseDef;
+
+        if (realDamage < 0)
+            realDamage = 0;
+        Hp -= realDamage;
+    }
 
     /// <summary>
     ///     Marks the unit as having completed its turn.

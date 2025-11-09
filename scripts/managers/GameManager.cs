@@ -155,7 +155,7 @@ public partial class GameManager : BaseManager
     private void InitializeGameManager()
     {
         _battleInputSystemContainer = GetNode<BattleInputSystem>(_battleInputSystemPath);
-        _battleInputSystemContainer.OnAttackPressed += PlayerUnitAttacked;
+        _battleInputSystemContainer.OnPassTurnPressed += PlayerUnitPassedTurn;
         _battleInputSystemContainer.OnMoveUnitToPressed += PlayerUnitMoved;
         _battleInputSystemContainer.OnSelectedSkillPressed += SelectSkill;
         _playerUnitsContainer = GetNode<Node>(_playerUnitsPath);
@@ -346,12 +346,12 @@ public partial class GameManager : BaseManager
     }
 
     /// <summary>
-    /// Handles player unit attack input and passes the turn when an attack occurs.
+    /// Handles player unit pass turn input.
     /// </summary>
     /// <remarks>
-    /// Called when <see cref="BattleInputSystem.OnAttackPressed"/> is triggered.
+    /// Called when <see cref="BattleInputSystem.OnPassTurnPressed"/> is triggered.
     /// </remarks>
-    private void PlayerUnitAttacked()
+    private void PlayerUnitPassedTurn()
     {
         if (_turnManagerContainer == null)
         {
@@ -359,7 +359,6 @@ public partial class GameManager : BaseManager
             return;
         }
 
-        GD.Print("Player attacked");
         _turnManagerContainer.GetCurrentUnit().PassTurn();
     }
 

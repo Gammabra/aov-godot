@@ -266,6 +266,12 @@ public partial class GameManager : BaseManager
         _battleInputSystemContainer.SetInputEnabled(false);
     }
 
+    /// <summary>
+    /// Handles player unit select skill input.
+    /// </summary>
+    /// <remarks>
+    /// Called when <see cref="BattleInputSystem.OnSelectedSkillPressed"/> is triggered.
+    /// </remarks>
     private void SelectSkill(int skillId)
     {
         if (_turnManagerContainer == null)
@@ -283,6 +289,9 @@ public partial class GameManager : BaseManager
         _selectedSkill = _turnManagerContainer.GetCurrentUnit().ActiveSkills[skillId];
     }
 
+    /// <summary>
+    /// Handles player unit select target input.
+    /// </summary>
     private void SelectTarget(UnitSystem unit)
     {
         List<UnitSystem> targetUnits = [];

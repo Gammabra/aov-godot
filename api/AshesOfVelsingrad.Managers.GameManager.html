@@ -89,7 +89,7 @@
 
 
   <h1 id="AshesOfVelsingrad_Managers_GameManager" data-uid="AshesOfVelsingrad.Managers.GameManager" class="text-break">
-Class GameManager  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptSignalsGenerator/AshesOfVelsingrad.Managers.GameManager_ScriptSignals.generated.cs/#L6"><i class="bi bi-code-slash"></i></a>
+Class GameManager  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptPropertiesGenerator/AshesOfVelsingrad.Managers.GameManager_ScriptProperties.generated.cs/#L6"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
@@ -1010,7 +1010,7 @@ public class GameManager : BaseManager, IDisposable</code></pre>
 
   <h3 id="AshesOfVelsingrad_Managers_GameManager_Initialize" data-uid="AshesOfVelsingrad.Managers.GameManager.Initialize">
   Initialize()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/managers/GameManager.cs/#L107"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/managers/GameManager.cs/#L111"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Initializes the GameManager singleton instance.
@@ -1039,11 +1039,103 @@ If a duplicate instance is found, it removes the duplicate.</p>
 
 
 
+  <a id="AshesOfVelsingrad_Managers_GameManager_MoveUnit_" data-uid="AshesOfVelsingrad.Managers.GameManager.MoveUnit*"></a>
+
+  <h3 id="AshesOfVelsingrad_Managers_GameManager_MoveUnit_Godot_Vector3I_" data-uid="AshesOfVelsingrad.Managers.GameManager.MoveUnit(Godot.Vector3I)">
+  MoveUnit(Vector3I)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/managers/GameManager.cs/#L394"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Moves the currently active unit to the specified cell on the map.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void MoveUnit(Vector3I cell)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>cell</code> <span class="xref">Vector3I</span></dt>
+    <dd><p>The target cell position as a <span class="xref">Godot.Vector3I</span> (grid coordinates X, Y, Z).</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+  <h4 class="section" id="AshesOfVelsingrad_Managers_GameManager_MoveUnit_Godot_Vector3I__examples">Examples</h4>
+  <pre><code class="lang-csharp">Vector3I targetCell = new Vector3I(2, 0, 3);
+gameManager.MoveUnit(targetCell);</code></pre>
+
+
+  <h4 class="section" id="AshesOfVelsingrad_Managers_GameManager_MoveUnit_Godot_Vector3I__remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>Checks that both <code>_mapSystemContainer</code> and <code>_turnManagerContainer</code>
+are properly set before performing the move.
+If valid, the active unit is repositioned in the world based on the given
+cell coordinates and the map’s cell size.</p>
+</div>
+
+
+
+
+  <a id="AshesOfVelsingrad_Managers_GameManager_UseSkill_" data-uid="AshesOfVelsingrad.Managers.GameManager.UseSkill*"></a>
+
+  <h3 id="AshesOfVelsingrad_Managers_GameManager_UseSkill_AshesOfVelsingrad_systems_UnitSystem_AshesOfVelsingrad_systems_UnitSystem_AshesOfVelsingrad_systems_SkillSystem_" data-uid="AshesOfVelsingrad.Managers.GameManager.UseSkill(AshesOfVelsingrad.systems.UnitSystem,AshesOfVelsingrad.systems.UnitSystem,AshesOfVelsingrad.systems.SkillSystem)">
+  UseSkill(UnitSystem, UnitSystem, SkillSystem)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/managers/GameManager.cs/#L441"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Uses a skill from a source unit on a target unit, depending on the skill’s target type.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void UseSkill(UnitSystem sourceUnit, UnitSystem targetUnit, SkillSystem skill)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>sourceUnit</code> <a class="xref" href="AshesOfVelsingrad.systems.UnitSystem.html">UnitSystem</a></dt>
+    <dd><p>The unit that performs the skill.</p>
+</dd>
+    <dt><code>targetUnit</code> <a class="xref" href="AshesOfVelsingrad.systems.UnitSystem.html">UnitSystem</a></dt>
+    <dd><p>The main target unit of the skill.</p>
+</dd>
+    <dt><code>skill</code> <a class="xref" href="AshesOfVelsingrad.systems.SkillSystem.html">SkillSystem</a></dt>
+    <dd><p>The skill being used, containing information about its target type and effects.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+  <h4 class="section" id="AshesOfVelsingrad_Managers_GameManager_UseSkill_AshesOfVelsingrad_systems_UnitSystem_AshesOfVelsingrad_systems_UnitSystem_AshesOfVelsingrad_systems_SkillSystem__examples">Examples</h4>
+  <pre><code class="lang-csharp">SkillSystem healSkill = new SkillSystem("Heal", TargetTypes.SingleAlly);
+gameManager.UseSkill(playerUnit, allyUnit, healSkill);</code></pre>
+
+
+  <h4 class="section" id="AshesOfVelsingrad_Managers_GameManager_UseSkill_AshesOfVelsingrad_systems_UnitSystem_AshesOfVelsingrad_systems_UnitSystem_AshesOfVelsingrad_systems_SkillSystem__remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>Determines which units are allies or enemies based on the source unit,
+then applies the skill accordingly depending on its <code>TargetType</code>.
+If required containers are not initialized, the method prints an error
+and exits early.</p>
+</div>
+
+
+
+
   <a id="AshesOfVelsingrad_Managers_GameManager__Ready_" data-uid="AshesOfVelsingrad.Managers.GameManager._Ready*"></a>
 
   <h3 id="AshesOfVelsingrad_Managers_GameManager__Ready" data-uid="AshesOfVelsingrad.Managers.GameManager._Ready">
   _Ready()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/managers/GameManager.cs/#L92"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/managers/GameManager.cs/#L96"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Called when the node is added to the scene tree.
@@ -1076,7 +1168,7 @@ If a duplicate instance is found, it removes the duplicate.</p>
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/Gammabra/aov-godot/blob/develop/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptSignalsGenerator/AshesOfVelsingrad.Managers.GameManager_ScriptSignals.generated.cs/#L6" class="edit-link">Edit this page</a>
+          <a href="https://github.com/Gammabra/aov-godot/blob/develop/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptPropertiesGenerator/AshesOfVelsingrad.Managers.GameManager_ScriptProperties.generated.cs/#L6" class="edit-link">Edit this page</a>
         </div>
 
 

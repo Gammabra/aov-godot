@@ -13,22 +13,6 @@ references:
   commentId: T:AshesOfVelsingrad.Enemy1Data
   fullName: AshesOfVelsingrad.Enemy1Data
   nameWithType: Enemy1Data
-- uid: AshesOfVelsingrad.Enemy1Data.Attack(System.Collections.Generic.List{AshesOfVelsingrad.systems.UnitSystem},AshesOfVelsingrad.systems.MapSystem)
-  name: Attack(List<UnitSystem>, MapSystem?)
-  href: api/AshesOfVelsingrad.Enemy1Data.html#AshesOfVelsingrad_Enemy1Data_Attack_System_Collections_Generic_List_AshesOfVelsingrad_systems_UnitSystem__AshesOfVelsingrad_systems_MapSystem_
-  commentId: M:AshesOfVelsingrad.Enemy1Data.Attack(System.Collections.Generic.List{AshesOfVelsingrad.systems.UnitSystem},AshesOfVelsingrad.systems.MapSystem)
-  name.vb: Attack(List(Of UnitSystem), MapSystem)
-  fullName: AshesOfVelsingrad.Enemy1Data.Attack(System.Collections.Generic.List<AshesOfVelsingrad.systems.UnitSystem>, AshesOfVelsingrad.systems.MapSystem?)
-  fullName.vb: AshesOfVelsingrad.Enemy1Data.Attack(System.Collections.Generic.List(Of AshesOfVelsingrad.systems.UnitSystem), AshesOfVelsingrad.systems.MapSystem)
-  nameWithType: Enemy1Data.Attack(List<UnitSystem>, MapSystem?)
-  nameWithType.vb: Enemy1Data.Attack(List(Of UnitSystem), MapSystem)
-- uid: AshesOfVelsingrad.Enemy1Data.Attack*
-  name: Attack
-  href: api/AshesOfVelsingrad.Enemy1Data.html#AshesOfVelsingrad_Enemy1Data_Attack_
-  commentId: Overload:AshesOfVelsingrad.Enemy1Data.Attack
-  isSpec: "True"
-  fullName: AshesOfVelsingrad.Enemy1Data.Attack
-  nameWithType: Enemy1Data.Attack
 - uid: AshesOfVelsingrad.Enemy1Data.Initialize
   name: Initialize()
   href: api/AshesOfVelsingrad.Enemy1Data.html#AshesOfVelsingrad_Enemy1Data_Initialize
@@ -42,22 +26,6 @@ references:
   isSpec: "True"
   fullName: AshesOfVelsingrad.Enemy1Data.Initialize
   nameWithType: Enemy1Data.Initialize
-- uid: AshesOfVelsingrad.Enemy1Data.TakeDamage(System.Single)
-  name: TakeDamage(float)
-  href: api/AshesOfVelsingrad.Enemy1Data.html#AshesOfVelsingrad_Enemy1Data_TakeDamage_System_Single_
-  commentId: M:AshesOfVelsingrad.Enemy1Data.TakeDamage(System.Single)
-  name.vb: TakeDamage(Single)
-  fullName: AshesOfVelsingrad.Enemy1Data.TakeDamage(float)
-  fullName.vb: AshesOfVelsingrad.Enemy1Data.TakeDamage(Single)
-  nameWithType: Enemy1Data.TakeDamage(float)
-  nameWithType.vb: Enemy1Data.TakeDamage(Single)
-- uid: AshesOfVelsingrad.Enemy1Data.TakeDamage*
-  name: TakeDamage
-  href: api/AshesOfVelsingrad.Enemy1Data.html#AshesOfVelsingrad_Enemy1Data_TakeDamage_
-  commentId: Overload:AshesOfVelsingrad.Enemy1Data.TakeDamage
-  isSpec: "True"
-  fullName: AshesOfVelsingrad.Enemy1Data.TakeDamage
-  nameWithType: Enemy1Data.TakeDamage
 - uid: AshesOfVelsingrad.Main
   name: Main
   href: api/AshesOfVelsingrad.Main.html
@@ -217,6 +185,32 @@ references:
   isSpec: "True"
   fullName: AshesOfVelsingrad.Managers.GameManager.Initialize
   nameWithType: GameManager.Initialize
+- uid: AshesOfVelsingrad.Managers.GameManager.MoveUnit(Godot.Vector3I)
+  name: MoveUnit(Vector3I)
+  href: api/AshesOfVelsingrad.Managers.GameManager.html#AshesOfVelsingrad_Managers_GameManager_MoveUnit_Godot_Vector3I_
+  commentId: M:AshesOfVelsingrad.Managers.GameManager.MoveUnit(Godot.Vector3I)
+  fullName: AshesOfVelsingrad.Managers.GameManager.MoveUnit(Godot.Vector3I)
+  nameWithType: GameManager.MoveUnit(Vector3I)
+- uid: AshesOfVelsingrad.Managers.GameManager.MoveUnit*
+  name: MoveUnit
+  href: api/AshesOfVelsingrad.Managers.GameManager.html#AshesOfVelsingrad_Managers_GameManager_MoveUnit_
+  commentId: Overload:AshesOfVelsingrad.Managers.GameManager.MoveUnit
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.Managers.GameManager.MoveUnit
+  nameWithType: GameManager.MoveUnit
+- uid: AshesOfVelsingrad.Managers.GameManager.UseSkill(AshesOfVelsingrad.systems.UnitSystem,AshesOfVelsingrad.systems.UnitSystem,AshesOfVelsingrad.systems.SkillSystem)
+  name: UseSkill(UnitSystem, UnitSystem, SkillSystem)
+  href: api/AshesOfVelsingrad.Managers.GameManager.html#AshesOfVelsingrad_Managers_GameManager_UseSkill_AshesOfVelsingrad_systems_UnitSystem_AshesOfVelsingrad_systems_UnitSystem_AshesOfVelsingrad_systems_SkillSystem_
+  commentId: M:AshesOfVelsingrad.Managers.GameManager.UseSkill(AshesOfVelsingrad.systems.UnitSystem,AshesOfVelsingrad.systems.UnitSystem,AshesOfVelsingrad.systems.SkillSystem)
+  fullName: AshesOfVelsingrad.Managers.GameManager.UseSkill(AshesOfVelsingrad.systems.UnitSystem, AshesOfVelsingrad.systems.UnitSystem, AshesOfVelsingrad.systems.SkillSystem)
+  nameWithType: GameManager.UseSkill(UnitSystem, UnitSystem, SkillSystem)
+- uid: AshesOfVelsingrad.Managers.GameManager.UseSkill*
+  name: UseSkill
+  href: api/AshesOfVelsingrad.Managers.GameManager.html#AshesOfVelsingrad_Managers_GameManager_UseSkill_
+  commentId: Overload:AshesOfVelsingrad.Managers.GameManager.UseSkill
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.Managers.GameManager.UseSkill
+  nameWithType: GameManager.UseSkill
 - uid: AshesOfVelsingrad.Managers.GameManager._Ready
   name: _Ready()
   href: api/AshesOfVelsingrad.Managers.GameManager.html#AshesOfVelsingrad_Managers_GameManager__Ready
@@ -901,22 +895,6 @@ references:
   commentId: T:AshesOfVelsingrad.Player1Data
   fullName: AshesOfVelsingrad.Player1Data
   nameWithType: Player1Data
-- uid: AshesOfVelsingrad.Player1Data.Attack(System.Collections.Generic.List{AshesOfVelsingrad.systems.UnitSystem},AshesOfVelsingrad.systems.MapSystem)
-  name: Attack(List<UnitSystem>, MapSystem?)
-  href: api/AshesOfVelsingrad.Player1Data.html#AshesOfVelsingrad_Player1Data_Attack_System_Collections_Generic_List_AshesOfVelsingrad_systems_UnitSystem__AshesOfVelsingrad_systems_MapSystem_
-  commentId: M:AshesOfVelsingrad.Player1Data.Attack(System.Collections.Generic.List{AshesOfVelsingrad.systems.UnitSystem},AshesOfVelsingrad.systems.MapSystem)
-  name.vb: Attack(List(Of UnitSystem), MapSystem)
-  fullName: AshesOfVelsingrad.Player1Data.Attack(System.Collections.Generic.List<AshesOfVelsingrad.systems.UnitSystem>, AshesOfVelsingrad.systems.MapSystem?)
-  fullName.vb: AshesOfVelsingrad.Player1Data.Attack(System.Collections.Generic.List(Of AshesOfVelsingrad.systems.UnitSystem), AshesOfVelsingrad.systems.MapSystem)
-  nameWithType: Player1Data.Attack(List<UnitSystem>, MapSystem?)
-  nameWithType.vb: Player1Data.Attack(List(Of UnitSystem), MapSystem)
-- uid: AshesOfVelsingrad.Player1Data.Attack*
-  name: Attack
-  href: api/AshesOfVelsingrad.Player1Data.html#AshesOfVelsingrad_Player1Data_Attack_
-  commentId: Overload:AshesOfVelsingrad.Player1Data.Attack
-  isSpec: "True"
-  fullName: AshesOfVelsingrad.Player1Data.Attack
-  nameWithType: Player1Data.Attack
 - uid: AshesOfVelsingrad.Player1Data.Initialize
   name: Initialize()
   href: api/AshesOfVelsingrad.Player1Data.html#AshesOfVelsingrad_Player1Data_Initialize
@@ -930,22 +908,6 @@ references:
   isSpec: "True"
   fullName: AshesOfVelsingrad.Player1Data.Initialize
   nameWithType: Player1Data.Initialize
-- uid: AshesOfVelsingrad.Player1Data.TakeDamage(System.Single)
-  name: TakeDamage(float)
-  href: api/AshesOfVelsingrad.Player1Data.html#AshesOfVelsingrad_Player1Data_TakeDamage_System_Single_
-  commentId: M:AshesOfVelsingrad.Player1Data.TakeDamage(System.Single)
-  name.vb: TakeDamage(Single)
-  fullName: AshesOfVelsingrad.Player1Data.TakeDamage(float)
-  fullName.vb: AshesOfVelsingrad.Player1Data.TakeDamage(Single)
-  nameWithType: Player1Data.TakeDamage(float)
-  nameWithType.vb: Player1Data.TakeDamage(Single)
-- uid: AshesOfVelsingrad.Player1Data.TakeDamage*
-  name: TakeDamage
-  href: api/AshesOfVelsingrad.Player1Data.html#AshesOfVelsingrad_Player1Data_TakeDamage_
-  commentId: Overload:AshesOfVelsingrad.Player1Data.TakeDamage
-  isSpec: "True"
-  fullName: AshesOfVelsingrad.Player1Data.TakeDamage
-  nameWithType: Player1Data.TakeDamage
 - uid: AshesOfVelsingrad.UI.Menus
   name: AshesOfVelsingrad.UI.Menus
   href: api/AshesOfVelsingrad.UI.Menus.html
@@ -1086,12 +1048,24 @@ references:
   commentId: T:AshesOfVelsingrad.systems.BattleInputSystem
   fullName: AshesOfVelsingrad.systems.BattleInputSystem
   nameWithType: BattleInputSystem
-- uid: AshesOfVelsingrad.systems.BattleInputSystem.OnAttackPressed
-  name: OnAttackPressed
-  href: api/AshesOfVelsingrad.systems.BattleInputSystem.html#AshesOfVelsingrad_systems_BattleInputSystem_OnAttackPressed
-  commentId: E:AshesOfVelsingrad.systems.BattleInputSystem.OnAttackPressed
-  fullName: AshesOfVelsingrad.systems.BattleInputSystem.OnAttackPressed
-  nameWithType: BattleInputSystem.OnAttackPressed
+- uid: AshesOfVelsingrad.systems.BattleInputSystem.OnMoveUnitToPressed
+  name: OnMoveUnitToPressed
+  href: api/AshesOfVelsingrad.systems.BattleInputSystem.html#AshesOfVelsingrad_systems_BattleInputSystem_OnMoveUnitToPressed
+  commentId: E:AshesOfVelsingrad.systems.BattleInputSystem.OnMoveUnitToPressed
+  fullName: AshesOfVelsingrad.systems.BattleInputSystem.OnMoveUnitToPressed
+  nameWithType: BattleInputSystem.OnMoveUnitToPressed
+- uid: AshesOfVelsingrad.systems.BattleInputSystem.OnPassTurnPressed
+  name: OnPassTurnPressed
+  href: api/AshesOfVelsingrad.systems.BattleInputSystem.html#AshesOfVelsingrad_systems_BattleInputSystem_OnPassTurnPressed
+  commentId: E:AshesOfVelsingrad.systems.BattleInputSystem.OnPassTurnPressed
+  fullName: AshesOfVelsingrad.systems.BattleInputSystem.OnPassTurnPressed
+  nameWithType: BattleInputSystem.OnPassTurnPressed
+- uid: AshesOfVelsingrad.systems.BattleInputSystem.OnSelectedSkillPressed
+  name: OnSelectedSkillPressed
+  href: api/AshesOfVelsingrad.systems.BattleInputSystem.html#AshesOfVelsingrad_systems_BattleInputSystem_OnSelectedSkillPressed
+  commentId: E:AshesOfVelsingrad.systems.BattleInputSystem.OnSelectedSkillPressed
+  fullName: AshesOfVelsingrad.systems.BattleInputSystem.OnSelectedSkillPressed
+  nameWithType: BattleInputSystem.OnSelectedSkillPressed
 - uid: AshesOfVelsingrad.systems.BattleInputSystem.SetInputEnabled(System.Boolean)
   name: SetInputEnabled(bool)
   href: api/AshesOfVelsingrad.systems.BattleInputSystem.html#AshesOfVelsingrad_systems_BattleInputSystem_SetInputEnabled_System_Boolean_
@@ -1757,15 +1731,15 @@ references:
   isSpec: "True"
   fullName: AshesOfVelsingrad.systems.SkillSystem.TotalCooldown
   nameWithType: SkillSystem.TotalCooldown
-- uid: AshesOfVelsingrad.systems.SkillSystem.Use(System.Collections.Generic.List{AshesOfVelsingrad.systems.UnitSystem})
-  name: Use(List<UnitSystem>)
-  href: api/AshesOfVelsingrad.systems.SkillSystem.html#AshesOfVelsingrad_systems_SkillSystem_Use_System_Collections_Generic_List_AshesOfVelsingrad_systems_UnitSystem__
-  commentId: M:AshesOfVelsingrad.systems.SkillSystem.Use(System.Collections.Generic.List{AshesOfVelsingrad.systems.UnitSystem})
-  name.vb: Use(List(Of UnitSystem))
-  fullName: AshesOfVelsingrad.systems.SkillSystem.Use(System.Collections.Generic.List<AshesOfVelsingrad.systems.UnitSystem>)
-  fullName.vb: AshesOfVelsingrad.systems.SkillSystem.Use(System.Collections.Generic.List(Of AshesOfVelsingrad.systems.UnitSystem))
-  nameWithType: SkillSystem.Use(List<UnitSystem>)
-  nameWithType.vb: SkillSystem.Use(List(Of UnitSystem))
+- uid: AshesOfVelsingrad.systems.SkillSystem.Use(System.Collections.Generic.List{AshesOfVelsingrad.systems.UnitSystem},AshesOfVelsingrad.systems.MapSystem)
+  name: Use(List<UnitSystem>, MapSystem?)
+  href: api/AshesOfVelsingrad.systems.SkillSystem.html#AshesOfVelsingrad_systems_SkillSystem_Use_System_Collections_Generic_List_AshesOfVelsingrad_systems_UnitSystem__AshesOfVelsingrad_systems_MapSystem_
+  commentId: M:AshesOfVelsingrad.systems.SkillSystem.Use(System.Collections.Generic.List{AshesOfVelsingrad.systems.UnitSystem},AshesOfVelsingrad.systems.MapSystem)
+  name.vb: Use(List(Of UnitSystem), MapSystem)
+  fullName: AshesOfVelsingrad.systems.SkillSystem.Use(System.Collections.Generic.List<AshesOfVelsingrad.systems.UnitSystem>, AshesOfVelsingrad.systems.MapSystem?)
+  fullName.vb: AshesOfVelsingrad.systems.SkillSystem.Use(System.Collections.Generic.List(Of AshesOfVelsingrad.systems.UnitSystem), AshesOfVelsingrad.systems.MapSystem)
+  nameWithType: SkillSystem.Use(List<UnitSystem>, MapSystem?)
+  nameWithType.vb: SkillSystem.Use(List(Of UnitSystem), MapSystem)
 - uid: AshesOfVelsingrad.systems.SkillSystem.Use*
   name: Use
   href: api/AshesOfVelsingrad.systems.SkillSystem.html#AshesOfVelsingrad_systems_SkillSystem_Use_
@@ -1835,22 +1809,6 @@ references:
   isSpec: "True"
   fullName: AshesOfVelsingrad.systems.UnitSystem.ApplyEffect
   nameWithType: UnitSystem.ApplyEffect
-- uid: AshesOfVelsingrad.systems.UnitSystem.Attack(System.Collections.Generic.List{AshesOfVelsingrad.systems.UnitSystem},AshesOfVelsingrad.systems.MapSystem)
-  name: Attack(List<UnitSystem>, MapSystem?)
-  href: api/AshesOfVelsingrad.systems.UnitSystem.html#AshesOfVelsingrad_systems_UnitSystem_Attack_System_Collections_Generic_List_AshesOfVelsingrad_systems_UnitSystem__AshesOfVelsingrad_systems_MapSystem_
-  commentId: M:AshesOfVelsingrad.systems.UnitSystem.Attack(System.Collections.Generic.List{AshesOfVelsingrad.systems.UnitSystem},AshesOfVelsingrad.systems.MapSystem)
-  name.vb: Attack(List(Of UnitSystem), MapSystem)
-  fullName: AshesOfVelsingrad.systems.UnitSystem.Attack(System.Collections.Generic.List<AshesOfVelsingrad.systems.UnitSystem>, AshesOfVelsingrad.systems.MapSystem?)
-  fullName.vb: AshesOfVelsingrad.systems.UnitSystem.Attack(System.Collections.Generic.List(Of AshesOfVelsingrad.systems.UnitSystem), AshesOfVelsingrad.systems.MapSystem)
-  nameWithType: UnitSystem.Attack(List<UnitSystem>, MapSystem?)
-  nameWithType.vb: UnitSystem.Attack(List(Of UnitSystem), MapSystem)
-- uid: AshesOfVelsingrad.systems.UnitSystem.Attack*
-  name: Attack
-  href: api/AshesOfVelsingrad.systems.UnitSystem.html#AshesOfVelsingrad_systems_UnitSystem_Attack_
-  commentId: Overload:AshesOfVelsingrad.systems.UnitSystem.Attack
-  isSpec: "True"
-  fullName: AshesOfVelsingrad.systems.UnitSystem.Attack
-  nameWithType: UnitSystem.Attack
 - uid: AshesOfVelsingrad.systems.UnitSystem.BaseAtk
   name: BaseAtk
   href: api/AshesOfVelsingrad.systems.UnitSystem.html#AshesOfVelsingrad_systems_UnitSystem_BaseAtk
@@ -2013,12 +1971,6 @@ references:
   isSpec: "True"
   fullName: AshesOfVelsingrad.systems.UnitSystem.GetPossibleMoves
   nameWithType: UnitSystem.GetPossibleMoves
-- uid: AshesOfVelsingrad.systems.UnitSystem.Gravity
-  name: Gravity
-  href: api/AshesOfVelsingrad.systems.UnitSystem.html#AshesOfVelsingrad_systems_UnitSystem_Gravity
-  commentId: F:AshesOfVelsingrad.systems.UnitSystem.Gravity
-  fullName: AshesOfVelsingrad.systems.UnitSystem.Gravity
-  nameWithType: UnitSystem.Gravity
 - uid: AshesOfVelsingrad.systems.UnitSystem.HasEffect*
   name: HasEffect
   href: api/AshesOfVelsingrad.systems.UnitSystem.html#AshesOfVelsingrad_systems_UnitSystem_HasEffect_
@@ -2174,6 +2126,22 @@ references:
   isSpec: "True"
   fullName: AshesOfVelsingrad.systems.UnitSystem.PassiveSkills
   nameWithType: UnitSystem.PassiveSkills
+- uid: AshesOfVelsingrad.systems.UnitSystem.Play(System.Collections.Generic.List{AshesOfVelsingrad.systems.UnitSystem},AshesOfVelsingrad.systems.MapSystem,AshesOfVelsingrad.systems.SkillSystem)
+  name: Play(List<UnitSystem>, MapSystem?, SkillSystem)
+  href: api/AshesOfVelsingrad.systems.UnitSystem.html#AshesOfVelsingrad_systems_UnitSystem_Play_System_Collections_Generic_List_AshesOfVelsingrad_systems_UnitSystem__AshesOfVelsingrad_systems_MapSystem_AshesOfVelsingrad_systems_SkillSystem_
+  commentId: M:AshesOfVelsingrad.systems.UnitSystem.Play(System.Collections.Generic.List{AshesOfVelsingrad.systems.UnitSystem},AshesOfVelsingrad.systems.MapSystem,AshesOfVelsingrad.systems.SkillSystem)
+  name.vb: Play(List(Of UnitSystem), MapSystem, SkillSystem)
+  fullName: AshesOfVelsingrad.systems.UnitSystem.Play(System.Collections.Generic.List<AshesOfVelsingrad.systems.UnitSystem>, AshesOfVelsingrad.systems.MapSystem?, AshesOfVelsingrad.systems.SkillSystem)
+  fullName.vb: AshesOfVelsingrad.systems.UnitSystem.Play(System.Collections.Generic.List(Of AshesOfVelsingrad.systems.UnitSystem), AshesOfVelsingrad.systems.MapSystem, AshesOfVelsingrad.systems.SkillSystem)
+  nameWithType: UnitSystem.Play(List<UnitSystem>, MapSystem?, SkillSystem)
+  nameWithType.vb: UnitSystem.Play(List(Of UnitSystem), MapSystem, SkillSystem)
+- uid: AshesOfVelsingrad.systems.UnitSystem.Play*
+  name: Play
+  href: api/AshesOfVelsingrad.systems.UnitSystem.html#AshesOfVelsingrad_systems_UnitSystem_Play_
+  commentId: Overload:AshesOfVelsingrad.systems.UnitSystem.Play
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.systems.UnitSystem.Play
+  nameWithType: UnitSystem.Play
 - uid: AshesOfVelsingrad.systems.UnitSystem.PortraitChanged
   name: PortraitChanged
   href: api/AshesOfVelsingrad.systems.UnitSystem.html#AshesOfVelsingrad_systems_UnitSystem_PortraitChanged

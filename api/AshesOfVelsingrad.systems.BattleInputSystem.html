@@ -89,7 +89,7 @@
 
 
   <h1 id="AshesOfVelsingrad_systems_BattleInputSystem" data-uid="AshesOfVelsingrad.systems.BattleInputSystem" class="text-break">
-Class BattleInputSystem  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptSignalsGenerator/AshesOfVelsingrad.systems.BattleInputSystem_ScriptSignals.generated.cs/#L6"><i class="bi bi-code-slash"></i></a>
+Class BattleInputSystem  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptPathAttributeGenerator/AshesOfVelsingrad.systems.BattleInputSystem_ScriptPath.generated.cs/#L4"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
@@ -942,7 +942,7 @@ public sealed class BattleInputSystem : Node, IDisposable</code></pre>
 
   <h3 id="AshesOfVelsingrad_systems_BattleInputSystem_SetInputEnabled_System_Boolean_" data-uid="AshesOfVelsingrad.systems.BattleInputSystem.SetInputEnabled(System.Boolean)">
   SetInputEnabled(bool)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/systems/BattleInputSystem.cs/#L91"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/systems/BattleInputSystem.cs/#L197"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Set the input to enabled or not.</p>
@@ -975,7 +975,7 @@ public sealed class BattleInputSystem : Node, IDisposable</code></pre>
 
   <h3 id="AshesOfVelsingrad_systems_BattleInputSystem__ExitTree" data-uid="AshesOfVelsingrad.systems.BattleInputSystem._ExitTree">
   _ExitTree()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/systems/BattleInputSystem.cs/#L109"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/systems/BattleInputSystem.cs/#L215"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Called when the node is removed from the scene tree.
@@ -1008,7 +1008,7 @@ This is important for preventing memory leaks and ensuring that the manager can 
 
   <h3 id="AshesOfVelsingrad_systems_BattleInputSystem__Input_Godot_InputEvent_" data-uid="AshesOfVelsingrad.systems.BattleInputSystem._Input(Godot.InputEvent)">
   _Input(InputEvent)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/systems/BattleInputSystem.cs/#L75"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/systems/BattleInputSystem.cs/#L121"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Called when there is an input event. The input event propagates up through the node tree until a node consumes it.</p>
@@ -1044,7 +1044,7 @@ This is important for preventing memory leaks and ensuring that the manager can 
 
   <h3 id="AshesOfVelsingrad_systems_BattleInputSystem__Ready" data-uid="AshesOfVelsingrad.systems.BattleInputSystem._Ready">
   _Ready()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/systems/BattleInputSystem.cs/#L37"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/systems/BattleInputSystem.cs/#L81"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Called when the node is added to the scene tree.
@@ -1078,16 +1078,17 @@ If a duplicate instance is found, it removes the duplicate.</p>
 
 
 
-  <h3 id="AshesOfVelsingrad_systems_BattleInputSystem_OnAttackPressed" data-uid="AshesOfVelsingrad.systems.BattleInputSystem.OnAttackPressed">
-  OnAttackPressed
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptSignalsGenerator/AshesOfVelsingrad.systems.BattleInputSystem_ScriptSignals.generated.cs/#L33"><i class="bi bi-code-slash"></i></a>
+  <h3 id="AshesOfVelsingrad_systems_BattleInputSystem_OnMoveUnitToPressed" data-uid="AshesOfVelsingrad.systems.BattleInputSystem.OnMoveUnitToPressed">
+  OnMoveUnitToPressed
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptSignalsGenerator/AshesOfVelsingrad.systems.BattleInputSystem_ScriptSignals.generated.cs/#L53"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Emitted when the player clicks on a map cell to move a unit there.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public event BattleInputSystem.OnAttackPressedEventHandler OnAttackPressed</code></pre>
+    <pre><code class="lang-csharp hljs">public event BattleInputSystem.OnMoveUnitToPressedEventHandler OnMoveUnitToPressed</code></pre>
   </div>
 
 
@@ -1097,12 +1098,86 @@ If a duplicate instance is found, it removes the duplicate.</p>
 
   <h4 class="section">Event Type</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="AshesOfVelsingrad.systems.BattleInputSystem.html">BattleInputSystem</a>.<a class="xref" href="AshesOfVelsingrad.systems.BattleInputSystem.html">OnAttackPressedEventHandler</a></dt>
+    <dt><a class="xref" href="AshesOfVelsingrad.systems.BattleInputSystem.html">BattleInputSystem</a>.<a class="xref" href="AshesOfVelsingrad.systems.BattleInputSystem.html">OnMoveUnitToPressedEventHandler</a></dt>
     <dd></dd>
   </dl>
 
 
 
+  <h4 class="section" id="AshesOfVelsingrad_systems_BattleInputSystem_OnMoveUnitToPressed_remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>This signal is used to notify systems responsible for unit movement
+or selection that the player has requested a move to a specific location.</p>
+</div>
+
+
+
+
+
+  <h3 id="AshesOfVelsingrad_systems_BattleInputSystem_OnPassTurnPressed" data-uid="AshesOfVelsingrad.systems.BattleInputSystem.OnPassTurnPressed">
+  OnPassTurnPressed
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptSignalsGenerator/AshesOfVelsingrad.systems.BattleInputSystem_ScriptSignals.generated.cs/#L43"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Emitted when the player presses the &quot;pass turn&quot; input action.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public event BattleInputSystem.OnPassTurnPressedEventHandler OnPassTurnPressed</code></pre>
+  </div>
+
+
+
+
+
+
+  <h4 class="section">Event Type</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="AshesOfVelsingrad.systems.BattleInputSystem.html">BattleInputSystem</a>.<a class="xref" href="AshesOfVelsingrad.systems.BattleInputSystem.html">OnPassTurnPressedEventHandler</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+  <h4 class="section" id="AshesOfVelsingrad_systems_BattleInputSystem_OnPassTurnPressed_remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>Used by the <a class="xref" href="AshesOfVelsingrad.Managers.GameManager.html">GameManager</a> to indicate that the player
+has chosen to skip their current turn and let control pass to the next entity.</p>
+</div>
+
+
+
+
+
+  <h3 id="AshesOfVelsingrad_systems_BattleInputSystem_OnSelectedSkillPressed" data-uid="AshesOfVelsingrad.systems.BattleInputSystem.OnSelectedSkillPressed">
+  OnSelectedSkillPressed
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptSignalsGenerator/AshesOfVelsingrad.systems.BattleInputSystem_ScriptSignals.generated.cs/#L63"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Emitted when the player selects a specific skill.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public event BattleInputSystem.OnSelectedSkillPressedEventHandler OnSelectedSkillPressed</code></pre>
+  </div>
+
+
+
+
+
+
+  <h4 class="section">Event Type</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="AshesOfVelsingrad.systems.BattleInputSystem.html">BattleInputSystem</a>.<a class="xref" href="AshesOfVelsingrad.systems.BattleInputSystem.html">OnSelectedSkillPressedEventHandler</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+  <h4 class="section" id="AshesOfVelsingrad_systems_BattleInputSystem_OnSelectedSkillPressed_remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>Used by the combat system or skill management system to determine which
+skill the player intends to use. Skills are indexed from 0 to 4.</p>
+</div>
 
 
 
@@ -1111,7 +1186,7 @@ If a duplicate instance is found, it removes the duplicate.</p>
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/Gammabra/aov-godot/blob/develop/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptSignalsGenerator/AshesOfVelsingrad.systems.BattleInputSystem_ScriptSignals.generated.cs/#L6" class="edit-link">Edit this page</a>
+          <a href="https://github.com/Gammabra/aov-godot/blob/develop/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptPathAttributeGenerator/AshesOfVelsingrad.systems.BattleInputSystem_ScriptPath.generated.cs/#L4" class="edit-link">Edit this page</a>
         </div>
 
 

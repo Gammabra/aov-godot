@@ -150,7 +150,7 @@ Class SkillSystem  <a class="header-action link-secondary" title="View source" h
   <h2 id="AshesOfVelsingrad_systems_SkillSystem_remarks">Remarks</h2>
   <div class="markdown level0 remarks"><p>This class defines the common properties and behaviors of every skill,
 such as its cost, cooldown, range, type, and targeting logic.
-Specific skills should inherit from this class and implement the <a class="xref" href="AshesOfVelsingrad.systems.SkillSystem.html#AshesOfVelsingrad_systems_SkillSystem_Use_System_Collections_Generic_List_AshesOfVelsingrad_systems_UnitSystem__">Use(List&lt;UnitSystem&gt;)</a> method.</p>
+Specific skills should inherit from this class and implement the <a class="xref" href="AshesOfVelsingrad.systems.SkillSystem.html#AshesOfVelsingrad_systems_SkillSystem_Use_System_Collections_Generic_List_AshesOfVelsingrad_systems_UnitSystem__AshesOfVelsingrad_systems_MapSystem_">Use(List&lt;UnitSystem&gt;, MapSystem?)</a> method.</p>
 </div>
 
 
@@ -511,8 +511,8 @@ Specific skills should inherit from this class and implement the <a class="xref"
 
   <a id="AshesOfVelsingrad_systems_SkillSystem_Use_" data-uid="AshesOfVelsingrad.systems.SkillSystem.Use*"></a>
 
-  <h3 id="AshesOfVelsingrad_systems_SkillSystem_Use_System_Collections_Generic_List_AshesOfVelsingrad_systems_UnitSystem__" data-uid="AshesOfVelsingrad.systems.SkillSystem.Use(System.Collections.Generic.List{AshesOfVelsingrad.systems.UnitSystem})">
-  Use(List&lt;UnitSystem&gt;)
+  <h3 id="AshesOfVelsingrad_systems_SkillSystem_Use_System_Collections_Generic_List_AshesOfVelsingrad_systems_UnitSystem__AshesOfVelsingrad_systems_MapSystem_" data-uid="AshesOfVelsingrad.systems.SkillSystem.Use(System.Collections.Generic.List{AshesOfVelsingrad.systems.UnitSystem},AshesOfVelsingrad.systems.MapSystem)">
+  Use(List&lt;UnitSystem&gt;, MapSystem?)
   <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/systems/SkillSystem.cs/#L111"><i class="bi bi-code-slash"></i></a>
   </h3>
 
@@ -521,12 +521,14 @@ Specific skills should inherit from this class and implement the <a class="xref"
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public abstract void Use(List&lt;UnitSystem&gt; targets)</code></pre>
+    <pre><code class="lang-csharp hljs">public abstract void Use(List&lt;UnitSystem&gt; targets, MapSystem? map)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
     <dt><code>targets</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a class="xref" href="AshesOfVelsingrad.systems.UnitSystem.html">UnitSystem</a>&gt;</dt>
+    <dd></dd>
+    <dt><code>map</code> <a class="xref" href="AshesOfVelsingrad.systems.MapSystem.html">MapSystem</a></dt>
     <dd></dd>
   </dl>
 
@@ -537,7 +539,7 @@ Specific skills should inherit from this class and implement the <a class="xref"
 
 
 
-  <h4 class="section" id="AshesOfVelsingrad_systems_SkillSystem_Use_System_Collections_Generic_List_AshesOfVelsingrad_systems_UnitSystem___remarks">Remarks</h4>
+  <h4 class="section" id="AshesOfVelsingrad_systems_SkillSystem_Use_System_Collections_Generic_List_AshesOfVelsingrad_systems_UnitSystem__AshesOfVelsingrad_systems_MapSystem__remarks">Remarks</h4>
   <div class="markdown level1 remarks"><p>This method must be implemented in derived classes
 to define the actual effect of the skill (damage, healing, etc.).</p>
 </div>

@@ -1,5 +1,6 @@
 using Godot;
 using Godot.Collections;
+using AshesOfVelsingrad.Managers;
 
 namespace AshesOfVelsingrad.systems;
 
@@ -24,22 +25,45 @@ public sealed partial class BattleInputSystem : Node
 
     #endregion
 
-    #region Godot Public Events
+    #region Private Properties
 
-    [Signal]
-    public delegate void OnPassTurnPressedEventHandler();
-
-    [Signal]
-    public delegate void OnMoveUnitToPressedEventHandler(Vector3I dest);
-
-    [Signal]
-    public delegate void OnSelectedSkillPressedEventHandler(int skillId);
+    private static BattleInputSystem? Instance { get; set; }
 
     #endregion
 
-    #region Public Properties
+    #region Godot Public Events
 
-    private static BattleInputSystem? Instance { get; set; }
+    /// <summary>
+    ///     Emitted when the player presses the "pass turn" input action.
+    /// </summary>
+    /// <remarks>
+    ///     Used by the <see cref="GameManager"/> to indicate that the player
+    ///     has chosen to skip their current turn and let control pass to the next entity.
+    /// </remarks>
+    [Signal]
+    public delegate void OnPassTurnPressedEventHandler();
+
+    /// <summary>
+    ///     Emitted when the player clicks on a map cell to move a unit there.
+    /// </summary>
+    /// <param name="dest">The target cell position on the grid, in map coordinates (<see cref="Vector3I" />).</param>
+    /// <remarks>
+    ///     This signal is used to notify systems responsible for unit movement
+    ///     or selection that the player has requested a move to a specific location.
+    /// </remarks>
+    [Signal]
+    public delegate void OnMoveUnitToPressedEventHandler(Vector3I dest);
+
+    /// <summary>
+    ///     Emitted when the player selects a specific skill.
+    /// </summary>
+    /// <param name="skillId">The numerical identifier of the selected skill.</param>
+    /// <remarks>
+    ///     Used by the combat system or skill management system to determine which
+    ///     skill the player intends to use. Skills are indexed from 0 to 4.
+    /// </remarks>
+    [Signal]
+    public delegate void OnSelectedSkillPressedEventHandler(int skillId);
 
     #endregion
 

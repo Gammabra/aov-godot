@@ -46,6 +46,7 @@ public partial class GameManager : BaseManager
 
     private GameState _gameState = GameState.Waiting;
     private GameOutcome _gameOutcome = GameOutcome.Ongoing;
+    private bool _unitMoved;
     private readonly List<UnitSystem> _playerUnits = [];
     private readonly List<UnitSystem> _enemyUnits = [];
     private List<(int, int, int)> _currentUnitPossibleMoves = [];
@@ -165,7 +166,8 @@ public partial class GameManager : BaseManager
         _mapSystemContainer.PlaceUnits(_playerUnits, _enemyUnits);
         _turnManagerContainer = GetNode<TurnManager>(_turnManagerPath);
         _turnManagerContainer.OnPlayerTurn += ActivatePlayerUnit;
-        _turnManagerContainer.OnPlayerEndTurn += DeactivatePlayerUnit;
+        _turnManagerContainer.OnPlayerTurnEnd += DeactivatePlayerUnit;
+        _turnManagerContainer.OnEnemyTurnEnd += EnemyTurnEnded;
         _turnManagerContainer.InitializeTurnOrder(_playerUnits, _enemyUnits);
         if (_enemyUnits.Contains(_turnManagerContainer.GetCurrentUnit()))
             DeactivatePlayerUnit();
@@ -261,9 +263,11 @@ public partial class GameManager : BaseManager
             return;
         }
 
+        _selectedSkill = null;
+        _unitMoved = false;
         _currentUnitPossibleMoves.Clear();
-        GD.Print("Deactivate input");
         _battleInputSystemContainer.SetInputEnabled(false);
+        GD.Print("Deactivate input and player units");
     }
 
     /// <summary>
@@ -346,6 +350,12 @@ public partial class GameManager : BaseManager
             return;
         }
 
+        if (_battleInputSystemContainer == null)
+        {
+            GD.PrintErr("BattleInputSystemContainer not set in GameManager.");
+            return;
+        }
+
         if (!_currentUnitPossibleMoves.Contains((cell.X, cell.Y, cell.Z)))
         {
             ActivatePlayerUnit();
@@ -367,6 +377,12 @@ public partial class GameManager : BaseManager
         }
 
         MoveUnit(cell);
+        _battleInputSystemContainer.SetInputEnabled(true);
+    }
+
+    private void EnemyTurnEnded()
+    {
+        _unitMoved = false;
     }
 
     #endregion
@@ -405,13 +421,21 @@ public partial class GameManager : BaseManager
             return;
         }
 
+        if (_unitMoved)
+        {
+            GD.Print("Unit Already Moved");
+            return;
+        }
+
+        // TODO: Replace by the unit move animation instead of teleport him
         Vector3I pos = new(cell.X, cell.Y, cell.Z);
         Vector3 worldPos = _mapSystemContainer.MapToLocal(pos);
         worldPos.Y += _mapSystemContainer.CellSize.Y * 0.5f;
         _turnManagerContainer.GetCurrentUnit().GlobalPosition = worldPos;
 
-        GD.Print("Unit moved");
         _turnManagerContainer.GetCurrentUnit().MoveTo(cell.X, cell.Y, cell.Z, _mapSystemContainer);
+        _unitMoved = true;
+        GD.Print("Unit moved");
     }
 
     /// <summary>

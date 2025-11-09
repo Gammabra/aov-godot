@@ -27,7 +27,7 @@ public sealed partial class BattleInputSystem : Node
     #region Godot Public Events
 
     [Signal]
-    public delegate void OnAttackPressedEventHandler();
+    public delegate void OnPassTurnPressedEventHandler();
 
     [Signal]
     public delegate void OnMoveUnitToPressedEventHandler(Vector3I dest);
@@ -98,11 +98,10 @@ public sealed partial class BattleInputSystem : Node
     {
         if (!_inputEnabled)
             return;
-        if (@event.IsActionPressed("attack"))
+        if (@event.IsActionPressed("battle_pass_turn"))
         {
-            GD.Print("J Key pressed.");
             _inputEnabled = false;
-            EmitSignalOnAttackPressed();
+            EmitSignalOnPassTurnPressed();
             return;
         }
 

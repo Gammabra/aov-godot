@@ -47,13 +47,11 @@ public abstract partial class UnitSystem : CharacterBody3D, IEffectTarget
 
     private readonly EffectTarget _effectTarget = new();
     private TaskCompletionSource? _actionTcs;
+    private float _gravity = ProjectSettings.GetSetting("physics/3d/default_gravity").AsSingle();
 
     #endregion
 
     #region Godot properties
-
-    [Export]
-    public float Gravity = ProjectSettings.GetSetting("physics/3d/default_gravity").AsSingle();
 
     /// <summary>
     ///     Emitted when the unit's portrait texture changes.
@@ -75,6 +73,9 @@ public abstract partial class UnitSystem : CharacterBody3D, IEffectTarget
     /// </summary>
     public Texture2D? PortraitTexture { get; protected set; }
 
+    /// <summary>
+    /// The 3D Sprite of the unit displayed in the UI.
+    /// </summary>
     public Sprite3D? CharacterSprite { get; protected set; }
 
     #endregion
@@ -206,40 +207,47 @@ public abstract partial class UnitSystem : CharacterBody3D, IEffectTarget
 
         if (isNegate)
             floor *= -1;
-        while (map.IsWalkable(
-                baseFloor.Item1,
-                baseFloor.Item2 + floor,
-                baseFloor.Item3
-            ))
+        try
         {
-            if (!map.IsWalkable( // Check Left
-                    baseFloor.Item1 + directions[0].Item1,
-                    baseFloor.Item2 + floor,
-                    baseFloor.Item3
-                ) &&
-                !map.IsWalkable( // Check Right
-                    baseFloor.Item1 + directions[1].Item1,
-                    baseFloor.Item2 + floor,
-                    baseFloor.Item3
-                ) &&
-                !map.IsWalkable( // Check Forward
+            while (map.IsWalkable(
                     baseFloor.Item1,
                     baseFloor.Item2 + floor,
-                    baseFloor.Item3 + directions[2].Item3
-                ) &&
-                !map.IsWalkable( // Check Backward
-                    baseFloor.Item1,
-                    baseFloor.Item2 + floor,
-                    baseFloor.Item3 + directions[3].Item3
-                )
-            )
+                    baseFloor.Item3
+                ))
             {
-                floor += isNegate ? -1 : 1;
-                continue;
-            }
+                if (!map.IsWalkable( // Check Left
+                        baseFloor.Item1 + directions[0].Item1,
+                        baseFloor.Item2 + floor,
+                        baseFloor.Item3
+                    ) &&
+                    !map.IsWalkable( // Check Right
+                        baseFloor.Item1 + directions[1].Item1,
+                        baseFloor.Item2 + floor,
+                        baseFloor.Item3
+                    ) &&
+                    !map.IsWalkable( // Check Forward
+                        baseFloor.Item1,
+                        baseFloor.Item2 + floor,
+                        baseFloor.Item3 + directions[2].Item3
+                    ) &&
+                    !map.IsWalkable( // Check Backward
+                        baseFloor.Item1,
+                        baseFloor.Item2 + floor,
+                        baseFloor.Item3 + directions[3].Item3
+                    )
+                )
+                {
+                    floor += isNegate ? -1 : 1;
+                    continue;
+                }
 
-            possibleFloor.Add(baseFloor.Item2 + floor);
-            floor += isNegate ? -1 : 1;
+                possibleFloor.Add(baseFloor.Item2 + floor);
+                floor += isNegate ? -1 : 1;
+            }
+        }
+        catch (ArgumentOutOfRangeException e)
+        {
+            return possibleFloor;
         }
 
         return possibleFloor;
@@ -271,11 +279,14 @@ public abstract partial class UnitSystem : CharacterBody3D, IEffectTarget
 
     #region Public Methods
 
+    /// <summary>
+    /// Handles the physics of the unit in the UI.
+    /// </summary>
     public override void _PhysicsProcess(double delta)
     {
         Vector3 velocity = Velocity;
 
-        if (!IsOnFloor()) velocity.Y -= Gravity * (float)delta;
+        if (!IsOnFloor()) velocity.Y -= _gravity * (float)delta;
 
         Velocity = velocity;
         MoveAndSlide();
@@ -298,13 +309,31 @@ public abstract partial class UnitSystem : CharacterBody3D, IEffectTarget
     /// </summary>
     /// <param name="targets">List of target units to attack.</param>
     /// <param name="map">Reference to the map system for positional logic.</param>
-    public abstract void Attack(List<UnitSystem> targets, MapSystem? map);
+    /// <param name="skill">Tells which active skill to use</param>
+    public virtual void Play(List<UnitSystem> targets, MapSystem? map, SkillSystem skill)
+    {
+        if (!ActiveSkills.Contains(skill))
+        {
+            GD.PrintErr($"The unit does not have the skill '{skill.Name}'");
+            return;
+        }
+
+        skill.Use(targets, map);
+        ReportSystemUnitHasPlayed();
+    }
 
     /// <summary>
     ///     Applies incoming damage to the unit and updates HP.
     /// </summary>
     /// <param name="damage">The amount of damage received.</param>
-    public abstract void TakeDamage(float damage);
+    public virtual void TakeDamage(float damage)
+    {
+        float realDamage = damage - BaseDef;
+
+        if (realDamage < 0)
+            realDamage = 0;
+        Hp -= realDamage;
+    }
 
     /// <summary>
     ///     Marks the unit as having completed its turn.
@@ -382,10 +411,10 @@ public abstract partial class UnitSystem : CharacterBody3D, IEffectTarget
         (int, int, int)[] directions =
         [
             (-1, 0, 0), // Left
-			(1, 0, 0), // Right
-			(0, 0, 1), // Forward
-			(0, 0, -1) // Backward
-		];
+            (1, 0, 0), // Right
+            (0, 0, 1), // Forward
+            (0, 0, -1) // Backward
+        ];
 
         if (unitPosition == null)
             return possibleMoves;
@@ -397,7 +426,8 @@ public abstract partial class UnitSystem : CharacterBody3D, IEffectTarget
         {
             ((int, int, int), int) currentPos = toExplore.Dequeue();
 
-            if (currentPos.Item2 >= PossibleMovesRange) continue;
+            if (currentPos.Item2 > PossibleMovesRange)
+                continue;
 
             // Set the current position to possible moves and visited cells
             if (currentPos.Item1 != unitPosition.Value && !visitedCells.Contains(currentPos.Item1))
@@ -442,8 +472,16 @@ public abstract partial class UnitSystem : CharacterBody3D, IEffectTarget
                 pos.Item1 += dir.Item1;
                 pos.Item3 += dir.Item3;
 
-                if (map.IsWalkable(pos.Item1, pos.Item2, pos.Item3))
-                    toExplore.Enqueue((pos, currentPos.Item2 + 1));
+                try
+                {
+                    if (map.IsWalkable(pos.Item1, pos.Item2, pos.Item3))
+                        toExplore.Enqueue((pos, currentPos.Item2 + 1));
+                }
+                catch (ArgumentOutOfRangeException)
+                {
+                    // Just continue the loop without enqueue the position.
+                    // If the exception must be handled one day, it must be handled here.
+                }
             }
         }
 

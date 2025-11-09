@@ -1,13 +1,21 @@
+using AshesOfVelsingrad.Managers;
 using Godot;
+using Godot.Collections;
 
 namespace AshesOfVelsingrad.systems;
 
 public sealed partial class BattleInputSystem : Node
 {
-    #region Godot Public Events
+    #region Godot Private Fields
 
-    [Signal]
-    public delegate void OnAttackPressedEventHandler();
+    [Export]
+    private NodePath? _mapSystemPath;
+
+    [Export]
+    private NodePath? _camera3DPath;
+
+    private MapSystem? _mapSystemContainer;
+    private Camera3D? _camera3DContainer;
 
     #endregion
 
@@ -17,9 +25,45 @@ public sealed partial class BattleInputSystem : Node
 
     #endregion
 
-    #region Public Properties
+    #region Private Properties
 
     private static BattleInputSystem? Instance { get; set; }
+
+    #endregion
+
+    #region Godot Public Events
+
+    /// <summary>
+    ///     Emitted when the player presses the "pass turn" input action.
+    /// </summary>
+    /// <remarks>
+    ///     Used by the <see cref="GameManager"/> to indicate that the player
+    ///     has chosen to skip their current turn and let control pass to the next entity.
+    /// </remarks>
+    [Signal]
+    public delegate void OnPassTurnPressedEventHandler();
+
+    /// <summary>
+    ///     Emitted when the player clicks on a map cell to move a unit there.
+    /// </summary>
+    /// <param name="dest">The target cell position on the grid, in map coordinates (<see cref="Vector3I" />).</param>
+    /// <remarks>
+    ///     This signal is used to notify systems responsible for unit movement
+    ///     or selection that the player has requested a move to a specific location.
+    /// </remarks>
+    [Signal]
+    public delegate void OnMoveUnitToPressedEventHandler(Vector3I dest);
+
+    /// <summary>
+    ///     Emitted when the player selects a specific skill.
+    /// </summary>
+    /// <param name="skillId">The numerical identifier of the selected skill.</param>
+    /// <remarks>
+    ///     Used by the combat system or skill management system to determine which
+    ///     skill the player intends to use. Skills are indexed from 0 to 4.
+    /// </remarks>
+    [Signal]
+    public delegate void OnSelectedSkillPressedEventHandler(int skillId);
 
     #endregion
 
@@ -64,7 +108,9 @@ public sealed partial class BattleInputSystem : Node
     /// </remarks>
     private void Initialize()
     {
-        GD.Print("CombatInputSystem initialized successfully");
+        _mapSystemContainer = GetNode<MapSystem>(_mapSystemPath);
+        _camera3DContainer = GetNode<Camera3D>(_camera3DPath);
+        GD.Print("BattleInputSystem initialized successfully");
     }
 
     #endregion
@@ -76,12 +122,72 @@ public sealed partial class BattleInputSystem : Node
     {
         if (!_inputEnabled)
             return;
-        if (@event.IsActionPressed("attack"))
+        if (@event.IsActionPressed("battle_pass_turn"))
         {
-            GD.Print("J Key pressed.");
             _inputEnabled = false;
-            EmitSignal(SignalName.OnAttackPressed);
+            EmitSignalOnPassTurnPressed();
+            return;
         }
+
+        if (@event.IsActionPressed("battle_move_unit_to"))
+        {
+            if (GetViewport().GuiGetHoveredControl() is not null ||
+                _camera3DContainer is null ||
+                _mapSystemContainer is null)
+                return;
+
+            Vector2 mouse = GetViewport().GetMousePosition();
+            Vector3 from = _camera3DContainer.ProjectRayOrigin(mouse);
+            Vector3 dir = _camera3DContainer.ProjectRayNormal(mouse);
+            Vector3 to = from + dir * 2000f;
+
+            PhysicsDirectSpaceState3D space = _camera3DContainer.GetWorld3D().DirectSpaceState;
+            PhysicsRayQueryParameters3D query = PhysicsRayQueryParameters3D.Create(
+                from,
+                to
+            );
+            Dictionary? result = space.IntersectRay(query);
+
+            if (result.Count < 0)
+                return;
+            if (result.TryGetValue("position", out Variant position))
+            {
+                Vector3 worldPos = (Vector3)position;
+                Vector3I cell = _mapSystemContainer.LocalToMap(worldPos);
+                GD.Print($"Cellule cliquée : {cell}");
+                int item = _mapSystemContainer.GetCellItem(cell);
+                GD.Print($"Item index : {item}");
+                _inputEnabled = false;
+                EmitSignalOnMoveUnitToPressed(cell);
+            }
+        }
+
+        if (@event.IsActionPressed("battle_select_skill1"))
+        {
+            EmitSignalOnSelectedSkillPressed(0);
+            return;
+        }
+
+        if (@event.IsActionPressed("battle_select_skill2"))
+        {
+            EmitSignalOnSelectedSkillPressed(1);
+            return;
+        }
+
+        if (@event.IsActionPressed("battle_select_skill3"))
+        {
+            EmitSignalOnSelectedSkillPressed(2);
+            return;
+        }
+
+        if (@event.IsActionPressed("battle_select_skill4"))
+        {
+            EmitSignalOnSelectedSkillPressed(3);
+            return;
+        }
+
+        if (@event.IsActionPressed("battle_select_skill5"))
+            EmitSignalOnSelectedSkillPressed(4);
     }
 
     /// <summary>

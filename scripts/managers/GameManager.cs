@@ -157,7 +157,7 @@ public partial class GameManager : BaseManager
         _battleInputSystemContainer = GetNode<BattleInputSystem>(_battleInputSystemPath);
         _battleInputSystemContainer.OnPassTurnPressed += PlayerUnitPassedTurn;
         _battleInputSystemContainer.OnMoveUnitToPressed += PlayerUnitMoved;
-        _battleInputSystemContainer.OnSelectedSkillPressed += SelectSkill;
+        _battleInputSystemContainer.OnSelectedSkillPressed += PlayerSkillSelected;
         _playerUnitsContainer = GetNode<Node>(_playerUnitsPath);
         _enemyUnitsContainer = GetNode<Node>(_enemyUnitsPath);
         LoadUnits();
@@ -272,7 +272,7 @@ public partial class GameManager : BaseManager
     /// <remarks>
     /// Called when <see cref="BattleInputSystem.OnSelectedSkillPressed"/> is triggered.
     /// </remarks>
-    private void SelectSkill(int skillId)
+    private void PlayerSkillSelected(int skillId)
     {
         if (_turnManagerContainer == null)
         {
@@ -292,10 +292,8 @@ public partial class GameManager : BaseManager
     /// <summary>
     /// Handles player unit select target input.
     /// </summary>
-    private void SelectTarget(UnitSystem unit)
+    private void PlayerTargetSelected(UnitSystem unit)
     {
-        List<UnitSystem> targetUnits = [];
-
         if (_selectedSkill == null)
         {
             GD.PrintErr("Skill not selected");
@@ -308,50 +306,7 @@ public partial class GameManager : BaseManager
             return;
         }
 
-        switch (_selectedSkill.TargetType)
-        {
-            case TargetTypes.SingleAlly:
-                if (!_playerUnits.Contains(unit))
-                {
-                    GD.PrintErr($"Player unit {unit.UnitName} not found.");
-                    return;
-                }
-
-                targetUnits.Add(unit);
-                _turnManagerContainer.GetCurrentUnit().Play(targetUnits, _mapSystemContainer, _selectedSkill);
-                break;
-
-            case TargetTypes.SingleEnemy:
-                if (!_enemyUnits.Contains(unit))
-                {
-                    GD.PrintErr($"Enemy unit {unit.UnitName} not found.");
-                    return;
-                }
-
-                targetUnits.Add(unit);
-                _turnManagerContainer.GetCurrentUnit().Play(targetUnits, _mapSystemContainer, _selectedSkill);
-                break;
-
-            case TargetTypes.AllAllies:
-                if (!_playerUnits.Contains(unit))
-                {
-                    GD.PrintErr($"Player unit {unit.UnitName} not found.");
-                    return;
-                }
-
-                _turnManagerContainer.GetCurrentUnit().Play(_playerUnits, _mapSystemContainer, _selectedSkill);
-                break;
-
-            case TargetTypes.AllEnemies:
-                if (!_enemyUnits.Contains(unit))
-                {
-                    GD.PrintErr($"Enemy unit {unit.UnitName} not found.");
-                    return;
-                }
-
-                _turnManagerContainer.GetCurrentUnit().Play(_enemyUnits, _mapSystemContainer, _selectedSkill);
-                break;
-        }
+        UseSkill(_turnManagerContainer.GetCurrentUnit(), unit, _selectedSkill);
     }
 
     /// <summary>
@@ -411,14 +366,140 @@ public partial class GameManager : BaseManager
             return;
         }
 
-        // TODO: Handle the unit moves in the ui and not just teleport the unit
+        MoveUnit(cell);
+    }
+
+    #endregion
+
+    #region Public Methods
+
+    /// <summary>
+    /// Moves the currently active unit to the specified cell on the map.
+    /// </summary>
+    /// <param name="cell">
+    /// The target cell position as a <see cref="Vector3I"/> (grid coordinates X, Y, Z).
+    /// </param>
+    /// <remarks>
+    /// Checks that both <c>_mapSystemContainer</c> and <c>_turnManagerContainer</c>
+    /// are properly set before performing the move.
+    /// If valid, the active unit is repositioned in the world based on the given
+    /// cell coordinates and the map’s cell size.
+    /// </remarks>
+    /// <example>
+    /// <code>
+    /// Vector3I targetCell = new Vector3I(2, 0, 3);
+    /// gameManager.MoveUnit(targetCell);
+    /// </code>
+    /// </example>
+    public void MoveUnit(Vector3I cell)
+    {
+        if (_mapSystemContainer == null)
+        {
+            GD.PrintErr("MapSystemContainer not set in GameManager.");
+            return;
+        }
+
+        if (_turnManagerContainer == null)
+        {
+            GD.PrintErr("TurnManagerContainer not set in GameManager.");
+            return;
+        }
+
         Vector3I pos = new(cell.X, cell.Y, cell.Z);
         Vector3 worldPos = _mapSystemContainer.MapToLocal(pos);
         worldPos.Y += _mapSystemContainer.CellSize.Y * 0.5f;
         _turnManagerContainer.GetCurrentUnit().GlobalPosition = worldPos;
 
-        GD.Print("Player unit moved");
+        GD.Print("Unit moved");
         _turnManagerContainer.GetCurrentUnit().MoveTo(cell.X, cell.Y, cell.Z, _mapSystemContainer);
+    }
+
+    /// <summary>
+    /// Uses a skill from a source unit on a target unit, depending on the skill’s target type.
+    /// </summary>
+    /// <param name="sourceUnit">
+    /// The unit that performs the skill.
+    /// </param>
+    /// <param name="targetUnit">
+    /// The main target unit of the skill.
+    /// </param>
+    /// <param name="skill">
+    /// The skill being used, containing information about its target type and effects.
+    /// </param>
+    /// <remarks>
+    /// Determines which units are allies or enemies based on the source unit,
+    /// then applies the skill accordingly depending on its <c>TargetType</c>.
+    /// If required containers are not initialized, the method prints an error
+    /// and exits early.
+    /// </remarks>
+    /// <example>
+    /// <code>
+    /// SkillSystem healSkill = new SkillSystem("Heal", TargetTypes.SingleAlly);
+    /// gameManager.UseSkill(playerUnit, allyUnit, healSkill);
+    /// </code>
+    /// </example>
+    public void UseSkill(UnitSystem sourceUnit, UnitSystem targetUnit, SkillSystem skill)
+    {
+        List<UnitSystem> allyUnits = [];
+        List<UnitSystem> enemyUnits = [];
+        List<UnitSystem> targetUnits = [];
+
+        if (_turnManagerContainer == null)
+        {
+            GD.PrintErr("TurnManagerContainer not set in GameManager.");
+            return;
+        }
+
+        if (_playerUnits.Contains(sourceUnit))
+        {
+            allyUnits = _playerUnits;
+            enemyUnits = _enemyUnits;
+        }
+
+        switch (skill.TargetType)
+        {
+            case TargetTypes.SingleAlly:
+                if (!allyUnits.Contains(targetUnit))
+                {
+                    GD.PrintErr($"Ally unit {targetUnit.UnitName} not found.");
+                    return;
+                }
+
+                targetUnits.Add(targetUnit);
+                _turnManagerContainer.GetCurrentUnit().Play(targetUnits, _mapSystemContainer, skill);
+                break;
+
+            case TargetTypes.SingleEnemy:
+                if (!enemyUnits.Contains(targetUnit))
+                {
+                    GD.PrintErr($"Enemy unit {targetUnit.UnitName} not found.");
+                    return;
+                }
+
+                targetUnits.Add(targetUnit);
+                _turnManagerContainer.GetCurrentUnit().Play(targetUnits, _mapSystemContainer, skill);
+                break;
+
+            case TargetTypes.AllAllies:
+                if (!allyUnits.Contains(targetUnit))
+                {
+                    GD.PrintErr($"Ally unit {targetUnit.UnitName} not found.");
+                    return;
+                }
+
+                _turnManagerContainer.GetCurrentUnit().Play(allyUnits, _mapSystemContainer, skill);
+                break;
+
+            case TargetTypes.AllEnemies:
+                if (!enemyUnits.Contains(targetUnit))
+                {
+                    GD.PrintErr($"Enemy unit {targetUnit.UnitName} not found.");
+                    return;
+                }
+
+                _turnManagerContainer.GetCurrentUnit().Play(enemyUnits, _mapSystemContainer, skill);
+                break;
+        }
     }
 
     #endregion

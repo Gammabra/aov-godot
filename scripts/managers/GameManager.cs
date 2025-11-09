@@ -49,6 +49,8 @@ public partial class GameManager : BaseManager
     private readonly List<UnitSystem> _playerUnits = [];
     private readonly List<UnitSystem> _enemyUnits = [];
     private List<(int, int, int)> _currentUnitPossibleMoves = [];
+    private SkillSystem? _selectedSkill;
+    private UnitSystem? _selectedUnitForPlayedSkill;
     private StatusEffectSystem _statusEffectSystem = new();
 
     #endregion
@@ -155,6 +157,7 @@ public partial class GameManager : BaseManager
         _battleInputSystemContainer = GetNode<BattleInputSystem>(_battleInputSystemPath);
         _battleInputSystemContainer.OnAttackPressed += PlayerUnitAttacked;
         _battleInputSystemContainer.OnMoveUnitToPressed += PlayerUnitMoved;
+        _battleInputSystemContainer.OnSelectedSkillPressed += SelectSkill;
         _playerUnitsContainer = GetNode<Node>(_playerUnitsPath);
         _enemyUnitsContainer = GetNode<Node>(_enemyUnitsPath);
         LoadUnits();
@@ -261,6 +264,85 @@ public partial class GameManager : BaseManager
         _currentUnitPossibleMoves.Clear();
         GD.Print("Deactivate input");
         _battleInputSystemContainer.SetInputEnabled(false);
+    }
+
+    private void SelectSkill(int skillId)
+    {
+        if (_turnManagerContainer == null)
+        {
+            GD.PrintErr("TurnManagerContainer not set in GameManager.");
+            return;
+        }
+
+        if (skillId >= _turnManagerContainer.GetCurrentUnit().ActiveSkills.Count)
+        {
+            GD.PrintErr("Skill Id is out of Skill List");
+            return;
+        }
+
+        _selectedSkill = _turnManagerContainer.GetCurrentUnit().ActiveSkills[skillId];
+    }
+
+    private void SelectTarget(UnitSystem unit)
+    {
+        List<UnitSystem> targetUnits = [];
+
+        if (_selectedSkill == null)
+        {
+            GD.PrintErr("Skill not selected");
+            return;
+        }
+
+        if (_turnManagerContainer == null)
+        {
+            GD.PrintErr("TurnManagerContainer not set");
+            return;
+        }
+
+        switch (_selectedSkill.TargetType)
+        {
+            case TargetTypes.SingleAlly:
+                if (!_playerUnits.Contains(unit))
+                {
+                    GD.PrintErr($"Player unit {unit.UnitName} not found.");
+                    return;
+                }
+
+                targetUnits.Add(unit);
+                _turnManagerContainer.GetCurrentUnit().Play(targetUnits, _mapSystemContainer, _selectedSkill);
+                break;
+
+            case TargetTypes.SingleEnemy:
+                if (!_enemyUnits.Contains(unit))
+                {
+                    GD.PrintErr($"Enemy unit {unit.UnitName} not found.");
+                    return;
+                }
+
+                targetUnits.Add(unit);
+                _turnManagerContainer.GetCurrentUnit().Play(targetUnits, _mapSystemContainer, _selectedSkill);
+                break;
+
+            case TargetTypes.AllAllies:
+                if (!_playerUnits.Contains(unit))
+                {
+                    GD.PrintErr($"Player unit {unit.UnitName} not found.");
+                    return;
+                }
+
+                _turnManagerContainer.GetCurrentUnit().Play(_playerUnits, _mapSystemContainer, _selectedSkill);
+                break;
+
+            case TargetTypes.AllEnemies:
+                if (!_enemyUnits.Contains(unit))
+                {
+                    GD.PrintErr($"Enemy unit {unit.UnitName} not found.");
+                    return;
+                }
+
+                _turnManagerContainer.GetCurrentUnit().Play(_enemyUnits, _mapSystemContainer, _selectedSkill);
+                break;
+        }
     }
 
     /// <summary>

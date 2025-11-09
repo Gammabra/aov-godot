@@ -60,9 +60,14 @@ public partial class TurnManager : BaseManager
     public event Action? OnPlayerTurn;
 
     /// <summary>
-	/// Triggered when the player's turn ends.
-	/// </summary>
-	public event Action? OnPlayerEndTurn;
+    /// Triggered when the player's turn ends.
+    /// </summary>
+    public event Action? OnPlayerTurnEnd;
+
+    /// <summary>
+    /// Triggered when the enemy's turn ends
+    /// </summary>
+    public event Action? OnEnemyTurnEnd;
 
     #endregion
 
@@ -112,18 +117,22 @@ public partial class TurnManager : BaseManager
                 case TurnState.PlayerTurn:
                     OnPlayerTurn?.Invoke();
                     await _unitsTurnOrder[_currentIndex].Key.WaitForActionAsync();
-                    OnPlayerEndTurn?.Invoke();
+                    OnPlayerTurnEnd?.Invoke();
                     break;
                 case TurnState.EnemyTurn:
                     await WaitForEnemyAction(_unitsTurnOrder[_currentIndex].Key);
+                    OnEnemyTurnEnd?.Invoke();
                     break;
             }
 
             _currentIndex++;
             if (_currentIndex == _unitsTurnOrder.Count)
+            {
                 _currentIndex = 0;
+                _turn++;
+            }
+
             _currentTurnState = _unitsTurnOrder[_currentIndex].Value;
-            _turn++;
         }
     }
 

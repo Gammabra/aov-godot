@@ -245,7 +245,7 @@ public abstract partial class UnitSystem : CharacterBody3D, IEffectTarget
                 floor += isNegate ? -1 : 1;
             }
         }
-        catch (ArgumentOutOfRangeException e)
+        catch (ArgumentOutOfRangeException)
         {
             return possibleFloor;
         }
@@ -389,7 +389,6 @@ public abstract partial class UnitSystem : CharacterBody3D, IEffectTarget
         if (!CanMoveTo(x, y, z, map))
             return false;
         SetGridPosition(x, y, z, map);
-        ReportSystemUnitHasPlayed();
         return true;
     }
 

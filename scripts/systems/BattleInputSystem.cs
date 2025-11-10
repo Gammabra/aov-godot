@@ -44,15 +44,18 @@ public sealed partial class BattleInputSystem : Node
     public delegate void OnPassTurnPressedEventHandler();
 
     /// <summary>
-    ///     Emitted when the player clicks on a map cell to move a unit there.
+    ///     Emitted when the player clicks on a map cell
+    ///     to move a unit or select a target.
     /// </summary>
-    /// <param name="dest">The target cell position on the grid, in map coordinates (<see cref="Vector3I" />).</param>
+    /// <param name="dest">
+    ///     The target cell position on the grid, in map coordinates (<see cref="Vector3I" />).
+    /// </param>
     /// <remarks>
-    ///     This signal is used to notify systems responsible for unit movement
-    ///     or selection that the player has requested a move to a specific location.
+    ///     This signal notifies systems responsible for unit movement or selection
+    ///     that the player has requested a move or target action.
     /// </remarks>
     [Signal]
-    public delegate void OnMoveUnitToPressedEventHandler(Vector3I dest);
+    public delegate void OnMoveUnitOrSelectTargetPressedEventHandler(Vector3I dest);
 
     /// <summary>
     ///     Emitted when the player selects a specific skill.
@@ -64,6 +67,16 @@ public sealed partial class BattleInputSystem : Node
     /// </remarks>
     [Signal]
     public delegate void OnSelectedSkillPressedEventHandler(int skillId);
+
+    /// <summary>
+    ///     Emitted when the player selects the move action
+    /// </summary>
+    /// <remarks>
+    ///     This signal is used to notify systems handling unit commands
+    ///     that the player has initiated a move selection.
+    /// </remarks>
+    [Signal]
+    public delegate void OnSelectMovePressedEventHandler();
 
     #endregion
 
@@ -120,6 +133,8 @@ public sealed partial class BattleInputSystem : Node
     /// <inheritdoc />
     public override void _Input(InputEvent @event)
     {
+        // If an input must works even when the player inputs are disabled (like open settings input),
+        // place it before this condition
         if (!_inputEnabled)
             return;
         if (@event.IsActionPressed("battle_pass_turn"))
@@ -129,7 +144,7 @@ public sealed partial class BattleInputSystem : Node
             return;
         }
 
-        if (@event.IsActionPressed("battle_move_unit_to"))
+        if (@event.IsActionPressed("battle_move_unit_and_select_target"))
         {
             if (GetViewport().GuiGetHoveredControl() is not null ||
                 _camera3DContainer is null ||
@@ -155,11 +170,15 @@ public sealed partial class BattleInputSystem : Node
                 Vector3 worldPos = (Vector3)position;
                 Vector3I cell = _mapSystemContainer.LocalToMap(worldPos);
                 GD.Print($"Cellule cliquée : {cell}");
-                int item = _mapSystemContainer.GetCellItem(cell);
-                GD.Print($"Item index : {item}");
                 _inputEnabled = false;
-                EmitSignalOnMoveUnitToPressed(cell);
+                EmitSignalOnMoveUnitOrSelectTargetPressed(cell);
             }
+        }
+
+        if (@event.IsActionPressed("battle_select_move"))
+        {
+            EmitSignalOnSelectMovePressed();
+            return;
         }
 
         if (@event.IsActionPressed("battle_select_skill1"))
@@ -216,22 +235,7 @@ public sealed partial class BattleInputSystem : Node
     {
         if (Instance != this)
             return;
-        Cleanup();
         Instance = null;
-    }
-
-    /// <summary>
-    ///     Cleans up the <see cref="BattleInputSystem" /> instance.
-    ///     This method can be overridden in derived classes to implement specific cleanup logic.
-    /// </summary>
-    /// <remarks>
-    ///     This method is called when the system is removed from the scene tree.
-    ///     It provides a place for derived classes to implement any necessary cleanup logic,
-    ///     such as disconnecting signals or releasing resources.
-    ///     By default, it does nothing, but derived classes can override it to perform specific cleanup tasks.
-    /// </remarks>
-    private static void Cleanup()
-    {
     }
 
     #endregion

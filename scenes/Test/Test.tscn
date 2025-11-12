@@ -17,10 +17,12 @@
 [node name="Test" type="Node"]
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.8170543, 0.57656074, 0, -0.57656074, 0.8170543, 4, 4.505361, 9.432553)
+transform = Transform3D(1, 0, 0, 0, 0.8170543, 0.57656074, 0, -0.57656074, 0.8170543, 4, 6.757878, 10.624343)
 
 [node name="Inputs" type="Node" parent="."]
 script = ExtResource("7_nvgwb")
+_mapSystemPath = NodePath("../GameManager/GridMap")
+_camera3DPath = NodePath("../Camera3D")
 
 [node name="GameManager" type="Node" parent="."]
 script = ExtResource("1_bc6e8")

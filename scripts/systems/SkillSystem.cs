@@ -108,7 +108,7 @@ public abstract class SkillSystem
     ///     This method must be implemented in derived classes
     ///     to define the actual effect of the skill (damage, healing, etc.).
     /// </remarks>
-    public abstract void Use(List<UnitSystem> targets);
+    public abstract void Use(List<UnitSystem> targets, MapSystem? map);
 
     /// <summary>
     ///     Reduces the cooldown of the skill by one turn, if greater than zero.

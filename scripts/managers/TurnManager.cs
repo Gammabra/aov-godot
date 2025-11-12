@@ -39,6 +39,7 @@ public partial class TurnManager : BaseManager
 	private int _turn;
 	private List<KeyValuePair<UnitSystem, TurnState>> _unitsTurnOrder = [];
 	private int _currentIndex;
+	private EnemyAIManager? _aiManager;
 
 	#endregion
 
@@ -49,6 +50,7 @@ public partial class TurnManager : BaseManager
 	/// Ensures only one instance exists in the scene tree.
 	/// </summary>
 	private new static TurnManager? Instance { get; set; }
+	
 
 	#endregion
 
@@ -135,13 +137,13 @@ public partial class TurnManager : BaseManager
 	private async Task WaitForEnemyAction(UnitSystem unit)
 	{
 		GD.Print($"{unit.Name} start thinking...");
-		
+
 		// Get the EnemyAIManager instance
-		EnemyAIManager? aiManager = GetNode<EnemyAIManager>("/root/EnemyAIManager");
-		
-		if (aiManager != null)
+
+
+		if (_aiManager != null)
 		{
-			await aiManager.ExecuteAITurn(unit);
+			await _aiManager.ExecuteAITurn(unit);
 		}
 		else
 		{
@@ -149,13 +151,22 @@ public partial class TurnManager : BaseManager
 			await Task.Delay(2000);
 			unit.PassTurn();
 		}
-		
+
 		GD.Print($"{unit.Name} played.");
 	}
 
 	#endregion
 
 	#region Public Methods
+	
+	/// <summary>
+	/// Sets the reference to the EnemyAIManager instance.
+	/// </summary>
+	/// <param name="aiManager">The EnemyAIManager instance to use.</param>
+	public void SetAIManager(EnemyAIManager aiManager)
+	{
+		_aiManager = aiManager;
+	}
 
 	/// <summary>
 	/// Initializes the turn order list based on all participating units.

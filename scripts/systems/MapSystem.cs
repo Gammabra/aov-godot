@@ -298,6 +298,7 @@ public abstract partial class MapSystem : GridMap
             if (cell.Unit != unit)
                 continue;
             cell.Unit = null;
+            SetWalkable(cell.X, cell.Y, cell.Z);
             break;
         }
 
@@ -305,6 +306,7 @@ public abstract partial class MapSystem : GridMap
         int index = GetListIndex(newX, newY, newZ);
 
         CellsInformation[index].Unit = unit;
+        SetWalkable(newX, newY, newZ);
     }
 
     /// <summary>

@@ -10,59 +10,29 @@ namespace AshesOfVelsingrad.Managers;
 
 /// <summary>
 /// Manages AI decision-making for enemy units during combat.
-/// Coordinates between the TurnManager and individual enemy AI behaviors.
+/// This is NOT a singleton - it's created per battle by GameManager.
 /// </summary>
-/// <remarks>
-/// This manager follows the singleton pattern and acts as the orchestrator
-/// for all enemy AI operations. It queries battle state, evaluates threats,
-/// and delegates execution to individual enemy AI components.
-/// </remarks>
-public partial class EnemyAIManager : BaseManager
+public class EnemyAIManager
 {
 	#region Private Fields
 
 	private MapSystem? _mapSystem;
 	private List<UnitSystem> _playerUnits = [];
 	private List<UnitSystem> _enemyUnits = [];
+	private GameManager? _gameManager;
 
 	#endregion
 
-	#region Private Properties
+	#region Constructor
 
 	/// <summary>
-	/// Singleton instance of the <see cref="EnemyAIManager"/>.
+	/// Creates a new EnemyAIManager instance for a specific battle.
 	/// </summary>
-	private new static EnemyAIManager? Instance { get; set; }
-
-	#endregion
-
-	#region Godot Export Fields
-
-	[Export]
-	private NodePath? _mapSystemPath;
-
-	#endregion
-
-	#region Class Initialization
-
-	/// <summary>
-	/// Initializes the EnemyAIManager singleton instance.
-	/// </summary>
-	protected override void Initialize()
+	/// <param name="gameManager">Reference to the GameManager controlling this battle.</param>
+	public EnemyAIManager(GameManager gameManager)
 	{
-		if (Instance != null && Instance != this)
-		{
-			GD.PrintErr($"Multiple instances of {GetType().Name} detected. Removing duplicate.");
-			QueueFree();
-			return;
-		}
-
-		Instance = this;
-		
-		if (_mapSystemPath != null)
-			_mapSystem = GetNode<MapSystem>(_mapSystemPath);
-		
-		GD.Print("EnemyAIManager initialized successfully");
+		_gameManager = gameManager;
+		GD.Print("EnemyAIManager created for battle");
 	}
 
 	#endregion
@@ -70,11 +40,17 @@ public partial class EnemyAIManager : BaseManager
 	#region Public Methods
 
 	/// <summary>
-	/// Sets the references to player and enemy unit collections.
-	/// Should be called by GameManager during initialization.
+	/// Sets the MapSystem reference for AI pathfinding and queries.
 	/// </summary>
-	/// <param name="playerUnits">List of all player units in the battle.</param>
-	/// <param name="enemyUnits">List of all enemy units in the battle.</param>
+	public void SetMapSystem(MapSystem map)
+	{
+		_mapSystem = map;
+		GD.Print("EnemyAIManager: MapSystem reference set");
+	}
+
+	/// <summary>
+	/// Sets the references to player and enemy unit collections.
+	/// </summary>
 	public void SetUnitReferences(List<UnitSystem> playerUnits, List<UnitSystem> enemyUnits)
 	{
 		_playerUnits = playerUnits;
@@ -84,15 +60,19 @@ public partial class EnemyAIManager : BaseManager
 
 	/// <summary>
 	/// Executes AI logic for a specific enemy unit's turn.
-	/// This is called by TurnManager's WaitForEnemyAction method.
 	/// </summary>
-	/// <param name="unit">The enemy unit that needs to act.</param>
-	/// <returns>A task that completes when the AI has finished its turn.</returns>
 	public async Task ExecuteAITurn(UnitSystem unit)
 	{
 		if (_mapSystem == null)
 		{
 			GD.PrintErr("EnemyAIManager: MapSystem not set");
+			unit.PassTurn();
+			return;
+		}
+
+		if (_gameManager == null)
+		{
+			GD.PrintErr("EnemyAIManager: GameManager reference lost");
 			unit.PassTurn();
 			return;
 		}
@@ -119,7 +99,6 @@ public partial class EnemyAIManager : BaseManager
 	/// <summary>
 	/// Gets all player units that are currently alive.
 	/// </summary>
-	/// <returns>List of alive player units.</returns>
 	public List<UnitSystem> GetAlivePlayerUnits()
 	{
 		return _playerUnits.Where(u => u.IsAlive).ToList();
@@ -128,7 +107,6 @@ public partial class EnemyAIManager : BaseManager
 	/// <summary>
 	/// Gets all enemy units that are currently alive.
 	/// </summary>
-	/// <returns>List of alive enemy units.</returns>
 	public List<UnitSystem> GetAliveEnemyUnits()
 	{
 		return _enemyUnits.Where(u => u.IsAlive).ToList();
@@ -141,8 +119,6 @@ public partial class EnemyAIManager : BaseManager
 	/// <summary>
 	/// Retrieves the AI behavior component attached to a unit.
 	/// </summary>
-	/// <param name="unit">The unit to check.</param>
-	/// <returns>The AI behavior component, or null if none exists.</returns>
 	private static EnemyAIBehavior? GetAIBehavior(UnitSystem unit)
 	{
 		foreach (Node child in unit.GetChildren())
@@ -156,8 +132,6 @@ public partial class EnemyAIManager : BaseManager
 	/// <summary>
 	/// Creates a snapshot of the current battle state for AI decision-making.
 	/// </summary>
-	/// <param name="actingUnit">The unit that is currently acting.</param>
-	/// <returns>A BattleState object containing all relevant information.</returns>
 	private BattleState CreateBattleState(UnitSystem actingUnit)
 	{
 		return new BattleState
@@ -165,18 +139,16 @@ public partial class EnemyAIManager : BaseManager
 			ActingUnit = actingUnit,
 			MapSystem = _mapSystem!,
 			PlayerUnits = GetAlivePlayerUnits(),
-			EnemyUnits = GetAliveEnemyUnits()
+			EnemyUnits = GetAliveEnemyUnits(),
+			GameManager = _gameManager!
 		};
 	}
 
 	/// <summary>
 	/// Executes a simple default AI behavior when no specific AI component is found.
 	/// </summary>
-	/// <param name="unit">The unit to control.</param>
-	/// <returns>A task that completes when the action is finished.</returns>
 	private async Task ExecuteDefaultBehavior(UnitSystem unit)
 	{
-		// Simple default: wait a moment then pass turn
 		await Task.Delay(1000);
 		GD.Print($"EnemyAIManager: {unit.Name} passes turn (default behavior)");
 		unit.PassTurn();
@@ -203,13 +175,31 @@ public class BattleState
 	/// <summary>All alive enemy units.</summary>
 	public required List<UnitSystem> EnemyUnits { get; init; }
 
+	/// <summary>Reference to GameManager for executing actions.</summary>
+	public required GameManager GameManager { get; init; }
+
+	/// <summary>
+	/// Moves the acting unit to a target position using GameManager.
+	/// </summary>
+	public void MoveUnitTo(Vector3I targetCell)
+	{
+		GameManager.MoveUnit(targetCell);
+	}
+
+	/// <summary>
+	/// Uses a skill on a target through GameManager.
+	/// </summary>
+	public void UseSkillOn(UnitSystem target, SkillSystem skill)
+	{
+		GameManager.UseSkill(ActingUnit, target, skill);
+	}
+
 	/// <summary>
 	/// Finds the nearest player unit to the acting unit.
 	/// </summary>
-	/// <returns>The closest player unit, or null if none exist.</returns>
 	public UnitSystem? GetNearestPlayerUnit()
 	{
-		(int, int, int)? actingPos = MapSystem.GetUnitPosition(ActingUnit);
+		Vector3I? actingPos = MapSystem.GetUnitPosition(ActingUnit);
 		if (actingPos == null || PlayerUnits.Count == 0)
 			return null;
 
@@ -218,7 +208,7 @@ public class BattleState
 
 		foreach (UnitSystem player in PlayerUnits)
 		{
-			(int, int, int)? playerPos = MapSystem.GetUnitPosition(player);
+			Vector3I? playerPos = MapSystem.GetUnitPosition(player);
 			if (playerPos == null) continue;
 
 			float distance = CalculateDistance(actingPos.Value, playerPos.Value);
@@ -235,7 +225,6 @@ public class BattleState
 	/// <summary>
 	/// Finds the weakest player unit (lowest HP percentage).
 	/// </summary>
-	/// <returns>The weakest player unit, or null if none exist.</returns>
 	public UnitSystem? GetWeakestPlayerUnit()
 	{
 		return PlayerUnits
@@ -246,31 +235,64 @@ public class BattleState
 	/// <summary>
 	/// Calculates Manhattan distance between two grid positions.
 	/// </summary>
-	private static float CalculateDistance((int, int, int) pos1, (int, int, int) pos2)
+	private static float CalculateDistance(Vector3I pos1, Vector3I pos2)
 	{
-		return Math.Abs(pos1.Item1 - pos2.Item1) +
-			   Math.Abs(pos1.Item2 - pos2.Item2) +
-			   Math.Abs(pos1.Item3 - pos2.Item3);
+		return Math.Abs(pos1.X - pos2.X) +
+			   Math.Abs(pos1.Y - pos2.Y) +
+			   Math.Abs(pos1.Z - pos2.Z);
 	}
 
 	/// <summary>
 	/// Gets all player units within a specific range of the acting unit.
 	/// </summary>
-	/// <param name="range">The maximum distance to consider.</param>
-	/// <returns>List of player units within range.</returns>
 	public List<UnitSystem> GetPlayerUnitsInRange(int range)
 	{
-		(int, int, int)? actingPos = MapSystem.GetUnitPosition(ActingUnit);
+		Vector3I? actingPos = MapSystem.GetUnitPosition(ActingUnit);
 		if (actingPos == null)
 			return [];
 
 		return PlayerUnits
 			.Where(player =>
 			{
-				(int, int, int)? playerPos = MapSystem.GetUnitPosition(player);
+				Vector3I? playerPos = MapSystem.GetUnitPosition(player);
 				return playerPos != null &&
 					   CalculateDistance(actingPos.Value, playerPos.Value) <= range;
 			})
 			.ToList();
+	}
+
+	/// <summary>
+	/// Gets the best path to move toward a target unit.
+	/// Returns the next cell to move to, or null if can't move closer.
+	/// </summary>
+	public Vector3I? GetMoveTowardTarget(UnitSystem target)
+	{
+		Vector3I? currentPos = MapSystem.GetUnitPosition(ActingUnit);
+		Vector3I? targetPos = MapSystem.GetUnitPosition(target);
+
+		if (currentPos == null || targetPos == null)
+			return null;
+
+		// Get all possible moves for this unit
+		List<Vector3I> possibleMoves = ActingUnit.GetPossibleMoves(MapSystem);
+
+		if (possibleMoves.Count == 0)
+			return null;
+
+		// Find the move that gets closest to target
+		Vector3I? bestMove = null;
+		float bestDistance = float.MaxValue;
+
+		foreach (Vector3I move in possibleMoves)
+		{
+			float distance = CalculateDistance(move, targetPos.Value);
+			if (distance < bestDistance)
+			{
+				bestDistance = distance;
+				bestMove = move;
+			}
+		}
+
+		return bestMove;
 	}
 }

@@ -325,11 +325,11 @@ public abstract partial class MapSystem : GridMap
         return CellsInformation[index].Unit;
     }
 
-    public virtual (int, int, int)? GetUnitPosition(UnitSystem unit)
+    public virtual Vector3I? GetUnitPosition(UnitSystem unit)
     {
         foreach (CellInformation cell in CellsInformation)
             if (cell.Unit == unit)
-                return (cell.X, cell.Y, cell.Z);
+                return new Vector3I(cell.X, cell.Y, cell.Z);
         return null;
     }
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bee2drrspdtgi"]
+[gd_scene load_steps=13 format=3 uid="uid://bee2drrspdtgi"]
 
 [ext_resource type="Script" uid="uid://du2xlh41m2cd" path="res://scripts/managers/GameManager.cs" id="1_bc6e8"]
 [ext_resource type="Script" uid="uid://dycsfdky6wocx" path="res://scripts/data/Map1.cs" id="2_p4llj"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://d2o6v40ln62ci" path="res://assets/aov-logo-transparent.png" id="6_l5nkq"]
 [ext_resource type="Texture2D" uid="uid://ddwok17vhh08j" path="res://assets/icon.svg" id="6_lhig6"]
 [ext_resource type="Script" uid="uid://buj6bdu8gkf0j" path="res://scripts/systems/BattleInputSystem.cs" id="7_nvgwb"]
+[ext_resource type="Script" uid="uid://dvsd81c4l1hgb" path="res://scripts/AI/EnemyAIBehavior.cs" id="9_ctjmi"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_ctjmi"]
 
@@ -65,6 +66,9 @@ texture = ExtResource("6_lhig6")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="GameManager/EnemyUnits/Enemy1"]
 shape = SubResource("SphereShape3D_k3vm1")
+
+[node name="Node" type="Node" parent="GameManager/EnemyUnits/Enemy1"]
+script = ExtResource("9_ctjmi")
 
 [node name="TurnManager" type="Node" parent="GameManager"]
 script = ExtResource("3_p4llj")

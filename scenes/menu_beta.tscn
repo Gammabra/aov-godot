@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dly7v2pb0m006"]
+[gd_scene load_steps=8 format=3 uid="uid://dly7v2pb0m006"]
 
 [ext_resource type="Texture2D" uid="uid://b5g32aw86klf1" path="res://assets/menu_assets/MENU proto.png" id="1_crup6"]
 [ext_resource type="Texture2D" uid="uid://btapw4xgdwv57" path="res://assets/menu_assets/Logo AOV v2 white.png" id="2_xf5kf"]
@@ -16,8 +16,6 @@ border_width_bottom = 2
 border_blend = true
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3mi6d"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_yu3h4"]
 
 [node name="MenuBeta" type="Node2D"]
 
@@ -53,8 +51,7 @@ theme_override_fonts/font = ExtResource("3_3mi6d")
 theme_override_font_sizes/font_size = 55
 theme_override_styles/normal = SubResource("StyleBoxEmpty_xf5kf")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_xf5kf")
-theme_override_styles/disabled = SubResource("StyleBoxEmpty_3mi6d")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_yu3h4")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_3mi6d")
 text = "Play"
 
 [node name="ButtonOptions" type="Button" parent="HBoxContainer/VBoxContainer"]
@@ -63,8 +60,7 @@ theme_override_fonts/font = ExtResource("3_3mi6d")
 theme_override_font_sizes/font_size = 55
 theme_override_styles/normal = SubResource("StyleBoxEmpty_xf5kf")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_xf5kf")
-theme_override_styles/disabled = SubResource("StyleBoxEmpty_3mi6d")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_yu3h4")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_3mi6d")
 text = "Options"
 script = ExtResource("4_xf5kf")
 
@@ -74,8 +70,7 @@ theme_override_fonts/font = ExtResource("3_3mi6d")
 theme_override_font_sizes/font_size = 55
 theme_override_styles/normal = SubResource("StyleBoxEmpty_xf5kf")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_xf5kf")
-theme_override_styles/disabled = SubResource("StyleBoxEmpty_3mi6d")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_yu3h4")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_3mi6d")
 text = "Exit"
 script = ExtResource("4_xf5kf")
 

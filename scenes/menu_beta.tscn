@@ -1,0 +1,77 @@
+[gd_scene load_steps=8 format=3 uid="uid://dly7v2pb0m006"]
+
+[ext_resource type="Texture2D" uid="uid://b5g32aw86klf1" path="res://assets/menu_assets/MENU proto.png" id="1_crup6"]
+[ext_resource type="Texture2D" uid="uid://btapw4xgdwv57" path="res://assets/menu_assets/Logo AOV v2 white.png" id="2_xf5kf"]
+[ext_resource type="FontFile" uid="uid://dri86n5u6wvhn" path="res://font/abibas/Abibas.ttf" id="3_3mi6d"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xf5kf"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xf5kf"]
+bg_color = Color(0.060530446, 0.06053032, 0.060530372, 0.79607844)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_blend = true
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3mi6d"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_yu3h4"]
+
+[node name="MenuBeta" type="Node2D"]
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_left = 203.0
+offset_top = 193.0
+offset_right = 243.0
+offset_bottom = 233.0
+
+[node name="MenuProto" type="Sprite2D" parent="TextureRect"]
+scale = Vector2(0.5999153, 0.5997711)
+texture = ExtResource("1_crup6")
+offset = Vector2(621, 219)
+
+[node name="LogoAovV2White" type="Sprite2D" parent="."]
+position = Vector2(52.000004, 48)
+scale = Vector2(0.10205079, 0.093261726)
+texture = ExtResource("2_xf5kf")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+offset_right = 1151.0
+offset_bottom = 648.0
+alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+alignment = 1
+
+[node name="ButtonPlay" type="Button" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_3mi6d")
+theme_override_font_sizes/font_size = 55
+theme_override_styles/normal = SubResource("StyleBoxEmpty_xf5kf")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_xf5kf")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_3mi6d")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_yu3h4")
+text = " PLAY "
+
+[node name="ButtonOptions" type="Button" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_3mi6d")
+theme_override_font_sizes/font_size = 55
+theme_override_styles/normal = SubResource("StyleBoxEmpty_xf5kf")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_xf5kf")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_3mi6d")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_yu3h4")
+text = " OPTIONS "
+
+[node name="ButtonExit" type="Button" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_3mi6d")
+theme_override_font_sizes/font_size = 55
+theme_override_styles/normal = SubResource("StyleBoxEmpty_xf5kf")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_xf5kf")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_3mi6d")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_yu3h4")
+text = " EXIT "

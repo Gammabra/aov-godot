@@ -23,7 +23,6 @@ public partial class GameManager : BaseManager
     private List<(int, int, int)> _currentUnitReachableCellsForCurrentSelectedSkill = [];
     private SkillSystem? _selectedSkill;
     private UnitSystem? _selectedUnitForPlayedSkill;
-    private StatusEffectSystem _statusEffectSystem = new();
 
     #endregion
 
@@ -59,6 +58,12 @@ public partial class GameManager : BaseManager
     /// Ensures that only one active instance exists at any given time.
     /// </summary>
     private new static GameManager? Instance { get; set; }
+
+    #endregion
+
+    #region Public Properties
+
+    public StatusEffectSystem StatusEffectSystem { get; } = new();
 
     #endregion
 
@@ -117,6 +122,7 @@ public partial class GameManager : BaseManager
         _turnManagerContainer.OnPlayerTurn += ActivatePlayerUnit;
         _turnManagerContainer.OnPlayerTurnEnd += DeactivatePlayerUnit;
         _turnManagerContainer.OnEnemyTurnEnd += EnemyTurnEnded;
+        _turnManagerContainer.OnCurrentTurnEnd += CurrentTurnEnded;
         _turnManagerContainer.InitializeTurnOrder(_playerUnits, _enemyUnits);
         if (_enemyUnits.Contains(_turnManagerContainer.GetCurrentUnit()))
             DeactivatePlayerUnit();
@@ -327,6 +333,26 @@ public partial class GameManager : BaseManager
     private void EnemyTurnEnded()
     {
         _unitMoved = false;
+    }
+
+    /// <summary>
+    ///
+    /// </summary>
+    private void CurrentTurnEnded()
+    {
+        foreach (UnitSystem unit in _playerUnits)
+        {
+            foreach (SkillSystem skill in unit.ActiveSkills)
+                skill.ReduceCooldown();
+        }
+
+        foreach (UnitSystem unit in _enemyUnits)
+        {
+            foreach (SkillSystem skill in unit.ActiveSkills)
+                skill.ReduceCooldown();
+        }
+
+        StatusEffectSystem.ProcessTurnEnd();
     }
 
     #endregion

@@ -19,7 +19,10 @@ public enum TurnState
     EnemyTurn,
 
     /// <summary>Idle state while waiting for setup or transitions.</summary>
-    Waiting
+    Waiting,
+
+    /// <summary>State that inform the game is finished.</summary>
+    Finished
 }
 
 /// <summary>
@@ -69,6 +72,11 @@ public partial class TurnManager : BaseManager
     /// </summary>
     public event Action? OnEnemyTurnEnd;
 
+    /// <summary>
+    /// Triggered when the current turn ends.
+    /// </summary>
+    public event Action? OnCurrentTurnEnd;
+
     #endregion
 
     #region Class Initialization
@@ -109,7 +117,7 @@ public partial class TurnManager : BaseManager
     /// </remarks>
     private async Task ProcessTurn()
     {
-        while (true)
+        while (_currentTurnState != TurnState.Finished)
         {
             GD.Print($"{_unitsTurnOrder[_currentIndex].Key.Name} turn");
             switch (_currentTurnState)
@@ -130,6 +138,7 @@ public partial class TurnManager : BaseManager
             {
                 _currentIndex = 0;
                 _turn++;
+                OnCurrentTurnEnd?.Invoke();
             }
 
             _currentTurnState = _unitsTurnOrder[_currentIndex].Value;
@@ -197,6 +206,15 @@ public partial class TurnManager : BaseManager
     public UnitSystem GetCurrentUnit()
     {
         return _unitsTurnOrder[_currentIndex].Key;
+    }
+
+    /// <summary>
+    /// Called by the <see cref="GameManager"/> to inform the <see cref="TurnManager"/>
+    /// the game is finished
+    /// </summary>
+    public void EndTurnManagerLoop()
+    {
+        _currentTurnState = TurnState.Finished;
     }
 
     #endregion

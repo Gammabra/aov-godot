@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using AshesOfVelsingrad.utilities;
 
-namespace AshesOfVelsingrad.systems.status_effects;
+namespace AshesOfVelsingrad.Systems;
 
 /// <summary>
 ///     Manages the application and lifecycle of status effects on all tracked targets.

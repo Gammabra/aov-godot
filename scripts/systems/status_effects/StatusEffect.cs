@@ -1,6 +1,6 @@
 using AshesOfVelsingrad.utilities;
 
-namespace AshesOfVelsingrad.systems.status_effects;
+namespace AshesOfVelsingrad.Systems;
 
 /// <summary>
 ///     Base class for all status effects that can be applied to an <see cref="IEffectTarget" />.

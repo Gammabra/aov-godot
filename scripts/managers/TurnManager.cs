@@ -134,6 +134,9 @@ public partial class TurnManager : BaseManager
             }
 
             _currentIndex++;
+            for (; _currentIndex < _unitsTurnOrder.Count; _currentIndex++)
+                if (_unitsTurnOrder[_currentIndex].Key.IsAlive)
+                    break;
             if (_currentIndex == _unitsTurnOrder.Count)
             {
                 _currentIndex = 0;

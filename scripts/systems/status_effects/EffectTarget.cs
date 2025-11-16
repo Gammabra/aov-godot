@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace AshesOfVelsingrad.systems.status_effects;
+namespace AshesOfVelsingrad.Systems;
 
 /// <summary>
 ///     Base class for any entity that can receive and manage <see cref="StatusEffect" />s.

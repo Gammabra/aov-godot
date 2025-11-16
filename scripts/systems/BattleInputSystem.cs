@@ -2,9 +2,9 @@ using AshesOfVelsingrad.Managers;
 using Godot;
 using Godot.Collections;
 
-namespace AshesOfVelsingrad.systems;
+namespace AshesOfVelsingrad.Systems;
 
-public sealed partial class BattleInputSystem : Node
+public partial class BattleInputSystem : Node
 {
     #region Godot Private Fields
 
@@ -119,7 +119,7 @@ public sealed partial class BattleInputSystem : Node
     ///     It should contain the logic necessary to set up the map's state and functionality.
     ///     Derived classes must implement this method to provide their specific initialization logic.
     /// </remarks>
-    private void Initialize()
+    protected virtual void Initialize()
     {
         _mapSystemContainer = GetNode<MapSystem>(_mapSystemPath);
         _camera3DContainer = GetNode<Camera3D>(_camera3DPath);
@@ -216,6 +216,20 @@ public sealed partial class BattleInputSystem : Node
     public void SetInputEnabled(bool enabled)
     {
         _inputEnabled = enabled;
+    }
+
+    #endregion
+
+    #region For testing methods
+
+    /// <summary>
+    /// FOR TESTING ONLY: Manually sets the singleton instance.
+    /// This method should only be used in unit tests.
+    /// </summary>
+    /// <param name="instance">The instance to set as the singleton.</param>
+    protected static void SetInstanceForTesting(BattleInputSystem? instance)
+    {
+        Instance = instance;
     }
 
     #endregion

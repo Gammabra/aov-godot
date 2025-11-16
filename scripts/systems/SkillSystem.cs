@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace AshesOfVelsingrad.systems;
+namespace AshesOfVelsingrad.Systems;
 
 /// <summary>
 ///     Represents the elemental type of a skill.

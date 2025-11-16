@@ -1,5 +1,5 @@
 using System.Collections.Generic;
-using AshesOfVelsingrad.systems;
+using AshesOfVelsingrad.Systems;
 
 namespace AshesOfVelsingrad;
 
@@ -8,6 +8,7 @@ public sealed class Skill1 : SkillSystem
     public Skill1()
     {
         TargetType = TargetTypes.SingleEnemy;
+        Range = 1;
     }
 
     public override void Use(List<UnitSystem> targets, MapSystem? map)
@@ -21,6 +22,7 @@ public sealed class Skill2 : SkillSystem
     public Skill2()
     {
         TargetType = TargetTypes.SingleEnemy;
+        Range = 2;
     }
 
     public override void Use(List<UnitSystem> targets, MapSystem? map)
@@ -34,6 +36,7 @@ public sealed class Skill3 : SkillSystem
     public Skill3()
     {
         TargetType = TargetTypes.SingleEnemy;
+        Range = 3;
     }
 
     public override void Use(List<UnitSystem> targets, MapSystem? map)
@@ -47,6 +50,7 @@ public sealed class Skill4 : SkillSystem
     public Skill4()
     {
         TargetType = TargetTypes.SingleEnemy;
+        Range = 4;
     }
 
     public override void Use(List<UnitSystem> targets, MapSystem? map)
@@ -60,6 +64,7 @@ public sealed class Skill5 : SkillSystem
     public Skill5()
     {
         TargetType = TargetTypes.SingleEnemy;
+        Range = 5;
     }
 
     public override void Use(List<UnitSystem> targets, MapSystem? map)

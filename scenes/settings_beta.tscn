@@ -1,0 +1,94 @@
+[gd_scene load_steps=7 format=3 uid="uid://geowrsurjvqo"]
+
+[ext_resource type="Texture2D" uid="uid://b5g32aw86klf1" path="res://assets/menu_assets/MENU proto.png" id="1_ujhbt"]
+[ext_resource type="FontFile" uid="uid://dri86n5u6wvhn" path="res://font/abibas/Abibas.ttf" id="3_tlijc"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xf5kf"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_m7784"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3mi6d"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_yu3h4"]
+
+[node name="MenuBeta" type="Node2D"]
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_left = 203.0
+offset_top = 193.0
+offset_right = 243.0
+offset_bottom = 233.0
+
+[node name="MenuProto" type="Sprite2D" parent="TextureRect"]
+modulate = Color(0.29954743, 0.29954746, 0.29954734, 0.8392157)
+scale = Vector2(0.5999153, 0.5997711)
+texture = ExtResource("1_ujhbt")
+offset = Vector2(621, 219)
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TextureRect"]
+layout_mode = 0
+offset_left = -203.0
+offset_top = -49.0
+offset_right = 948.0
+offset_bottom = 7.0
+theme_override_constants/separation = 27
+alignment = 1
+
+[node name="ButtonSubtitles" type="Button" parent="TextureRect/HBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_tlijc")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxEmpty_xf5kf")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_m7784")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_3mi6d")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_yu3h4")
+text = "Subtitles"
+
+[node name="ButtonVideo" type="Button" parent="TextureRect/HBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_tlijc")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxEmpty_xf5kf")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_m7784")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_3mi6d")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_yu3h4")
+text = "Video"
+
+[node name="ButtonVisal" type="Button" parent="TextureRect/HBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_tlijc")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxEmpty_xf5kf")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_m7784")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_3mi6d")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_yu3h4")
+text = "Visual"
+
+[node name="ButtonCommand" type="Button" parent="TextureRect/HBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_tlijc")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxEmpty_xf5kf")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_m7784")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_3mi6d")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_yu3h4")
+text = "Command"
+
+[node name="ButtonAudio" type="Button" parent="TextureRect/HBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_tlijc")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxEmpty_xf5kf")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_m7784")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_3mi6d")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_yu3h4")
+text = "Audio"
+
+[node name="LabelSettings" type="Label" parent="."]
+offset_top = 59.0
+offset_right = 1151.0
+offset_bottom = 119.0
+theme_override_fonts/font = ExtResource("3_tlijc")
+theme_override_font_sizes/font_size = 60
+text = "Settings"
+horizontal_alignment = 1

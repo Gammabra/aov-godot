@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://dly7v2pb0m006"]
+[gd_scene load_steps=9 format=3 uid="uid://dly7v2pb0m006"]
 
 [ext_resource type="Texture2D" uid="uid://b5g32aw86klf1" path="res://assets/menu_assets/MENU proto.png" id="1_crup6"]
 [ext_resource type="Texture2D" uid="uid://btapw4xgdwv57" path="res://assets/menu_assets/Logo AOV v2 white.png" id="2_xf5kf"]
 [ext_resource type="FontFile" uid="uid://dri86n5u6wvhn" path="res://font/abibas/Abibas.ttf" id="3_3mi6d"]
+[ext_resource type="Script" uid="uid://uk5aj3rgblwf" path="res://scripts/menu/button_menu.gd" id="4_xf5kf"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xf5kf"]
 
@@ -54,7 +55,7 @@ theme_override_styles/normal = SubResource("StyleBoxEmpty_xf5kf")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_xf5kf")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_3mi6d")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_yu3h4")
-text = " PLAY "
+text = "Play"
 
 [node name="ButtonOptions" type="Button" parent="HBoxContainer/VBoxContainer"]
 layout_mode = 2
@@ -64,7 +65,8 @@ theme_override_styles/normal = SubResource("StyleBoxEmpty_xf5kf")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_xf5kf")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_3mi6d")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_yu3h4")
-text = " OPTIONS "
+text = "Options"
+script = ExtResource("4_xf5kf")
 
 [node name="ButtonExit" type="Button" parent="HBoxContainer/VBoxContainer"]
 layout_mode = 2
@@ -74,4 +76,8 @@ theme_override_styles/normal = SubResource("StyleBoxEmpty_xf5kf")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_xf5kf")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_3mi6d")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_yu3h4")
-text = " EXIT "
+text = "Exit"
+script = ExtResource("4_xf5kf")
+
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/ButtonOptions" to="HBoxContainer/VBoxContainer/ButtonOptions" method="_on_OptionsButton_pressed"]
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/ButtonExit" to="HBoxContainer/VBoxContainer/ButtonExit" method="_on_ExitButton_pressed"]

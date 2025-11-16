@@ -63,6 +63,15 @@ public abstract partial class MapSystem : GridMap
 
     #endregion
 
+    #region Protected Properties
+
+    /// <summary>
+    ///     List of information of every grid
+    /// </summary>
+    public readonly List<CellInformation> CellsInformation = [];
+
+    #endregion
+
     #region Public Properties
 
     /// <summary>
@@ -79,11 +88,6 @@ public abstract partial class MapSystem : GridMap
     ///     The total Z axis of the map (in number of cells)
     /// </summary>
     public int Depth => GetUsedSize().Z;
-
-    /// <summary>
-    ///     List of information of every grid
-    /// </summary>
-    public readonly List<CellInformation> CellsInformation = [];
 
     /// <summary>
     ///     The size of a single grid in the UI
@@ -148,31 +152,27 @@ public abstract partial class MapSystem : GridMap
     protected virtual void Initialize()
     {
         MapCellSize = CellSize;
-        GetUsedSize();
-        GD.Print($"Min: {_min}");
-        GD.Print($"Max: {_max}");
-        for (int x = _min.X; x <= _max.X; x++)
-            for (int y = _min.Y; y <= _max.Y; y++)
-                for (int z = _min.Z; z <= _max.Z; z++)
-                {
-                    Vector3I cell = new(x, y, z);
+        foreach (Vector3I cell in GetUsedCells())
+        {
+            CellInformation cellInformation;
+            int meshId = GetCellItem(cell);
+            bool doesMeshExist = CellTypeWalkable.TryGetValue((CellType)meshId, out bool isWalkable);
 
-                    int meshId = GetCellItem(cell);
-                    bool isOccupied = meshId != -1;
-                    CellInformation info;
+            if (!doesMeshExist)
+            {
+                GD.Print(
+                    $"Could not find ground type at ({cell.X},{cell.Y},{cell.Z}), initializing with {CellType.Empty}"
+                );
+                cellInformation = new CellInformation(cell.X, cell.Y, cell.Z, CellType.Empty, false);
+            }
+            else
+            {
+                GD.Print($"Ground type {meshId} found at ({cell.X},{cell.Y},{cell.Z})");
+                cellInformation = new CellInformation(cell.X, cell.Y, cell.Z, (CellType)meshId, isWalkable);
+            }
 
-                    if (!isOccupied)
-                        info = new CellInformation(x, y, z, CellType.Empty, false);
-                    else if (CellTypeWalkable.TryGetValue((CellType)meshId, out bool isWalkable))
-                        info = new CellInformation(x, y, z, (CellType)meshId, isWalkable);
-                    else
-                        info = new CellInformation(x, y, z, CellType.Empty, false);
-
-                    GD.Print($"Info at cell ({x}, {y}, {z}):");
-                    GD.Print($"- CellType: {info.CellType}");
-                    GD.Print($"- IsWalkable: {info.IsWalkable}");
-                    CellsInformation.Add(info);
-                }
+            CellsInformation.Add(cellInformation);
+        }
     }
 
     #endregion
@@ -239,6 +239,20 @@ public abstract partial class MapSystem : GridMap
     #endregion
 
     #region Public Methods
+
+    /// <summary>
+    ///     Getter to know if a cell is empty.
+    /// </summary>
+    /// <param name="x">The x-axis</param>
+    /// <param name="y">The y-axis</param>
+    /// <param name="z">The z-axis</param>
+    /// <returns><c>True</c> if the cell is empty, <c>False</c> otherwise</returns>
+    public virtual bool IsEmpty(int x, int y, int z)
+    {
+        int index = GetListIndex(x, y, z);
+
+        return CellsInformation[index].CellType == CellType.Empty;
+    }
 
     /// <summary>
     ///     Getter to know if a cell is walkable.

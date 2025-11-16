@@ -1,9 +1,8 @@
 using System;
 using System.Collections.Generic;
-using AshesOfVelsingrad.systems.status_effects;
 using Godot;
 
-namespace AshesOfVelsingrad.systems;
+namespace AshesOfVelsingrad.Systems;
 
 /// <summary>
 ///     Enumeration of every cell type available in the game.
@@ -64,15 +63,6 @@ public abstract partial class MapSystem : GridMap
 
     #endregion
 
-    #region Protected Properties
-
-    /// <summary>
-    ///     List of information of every grid
-    /// </summary>
-    protected readonly List<CellInformation> CellsInformation = [];
-
-    #endregion
-
     #region Public Properties
 
     /// <summary>
@@ -91,9 +81,14 @@ public abstract partial class MapSystem : GridMap
     public int Depth => GetUsedSize().Z;
 
     /// <summary>
+    ///     List of information of every grid
+    /// </summary>
+    public readonly List<CellInformation> CellsInformation = [];
+
+    /// <summary>
     ///     The size of a single grid in the UI
     /// </summary>
-    public Vector3 MapCellSize { get; private set; }
+    public Vector3 MapCellSize { get; protected set; }
 
     public static readonly Dictionary<CellType, bool> CellTypeWalkable = new()
     {
@@ -107,7 +102,7 @@ public abstract partial class MapSystem : GridMap
     /// <remarks>
     ///     It will be used to check if there is only one instance.
     /// </remarks>
-    public static MapSystem? Instance { get; protected set; }
+    public static MapSystem? Instance { get; set; }
 
     #endregion
 
@@ -147,33 +142,37 @@ public abstract partial class MapSystem : GridMap
     /// </summary>
     /// <remarks>
     ///     This method is called by the _Ready method to initialize the map.
-	///     It should contain the logic necessary to set up the map's state and functionality.
-	///     Derived classes must implement this method to provide their specific initialization logic.
-	/// </remarks>
-	protected virtual void Initialize()
+    ///     It should contain the logic necessary to set up the map's state and functionality.
+    ///     Derived classes must implement this method to provide their specific initialization logic.
+    /// </remarks>
+    protected virtual void Initialize()
     {
         MapCellSize = CellSize;
-        foreach (Vector3I cell in GetUsedCells())
-        {
-            CellInformation cellInformation;
-            int meshId = GetCellItem(cell);
-            bool doesMeshExist = CellTypeWalkable.TryGetValue((CellType)meshId, out bool isWalkable);
+        GetUsedSize();
+        GD.Print($"Min: {_min}");
+        GD.Print($"Max: {_max}");
+        for (int x = _min.X; x <= _max.X; x++)
+            for (int y = _min.Y; y <= _max.Y; y++)
+                for (int z = _min.Z; z <= _max.Z; z++)
+                {
+                    Vector3I cell = new(x, y, z);
 
-            if (!doesMeshExist)
-            {
-                GD.Print(
-                    $"Could not find ground type at ({cell.X},{cell.Y},{cell.Z}), initializing with {CellType.Empty}"
-                );
-                cellInformation = new CellInformation(cell.X, cell.Y, cell.Z, CellType.Empty, false);
-            }
-            else
-            {
-                GD.Print($"Ground type {meshId} found at ({cell.X},{cell.Y},{cell.Z})");
-                cellInformation = new CellInformation(cell.X, cell.Y, cell.Z, (CellType)meshId, isWalkable);
-            }
+                    int meshId = GetCellItem(cell);
+                    bool isOccupied = meshId != -1;
+                    CellInformation info;
 
-            CellsInformation.Add(cellInformation);
-        }
+                    if (!isOccupied)
+                        info = new CellInformation(x, y, z, CellType.Empty, false);
+                    else if (CellTypeWalkable.TryGetValue((CellType)meshId, out bool isWalkable))
+                        info = new CellInformation(x, y, z, (CellType)meshId, isWalkable);
+                    else
+                        info = new CellInformation(x, y, z, CellType.Empty, false);
+
+                    GD.Print($"Info at cell ({x}, {y}, {z}):");
+                    GD.Print($"- CellType: {info.CellType}");
+                    GD.Print($"- IsWalkable: {info.IsWalkable}");
+                    CellsInformation.Add(info);
+                }
     }
 
     #endregion

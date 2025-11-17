@@ -124,6 +124,8 @@ public partial class GameManager
     /// <param name="cell">The grid position selected as a target.</param>
     private void HandlePlayerSelectTarget(Vector3I cell)
     {
+        UnitSystem? target;
+
         if (_mapSystemContainer == null)
         {
             GD.PrintErr("MapSystemContainer not set in GameManager.");
@@ -141,8 +143,6 @@ public partial class GameManager
             GD.PrintErr("BattleInputSystemContainer not set in GameManager.");
             return;
         }
-
-        UnitSystem? target;
 
         try
         {
@@ -180,6 +180,20 @@ public partial class GameManager
         if (_selectedSkill == null)
         {
             GD.PrintErr("No selected skill.");
+            _battleInputSystemContainer.SetInputEnabled(true);
+            return;
+        }
+
+        if (_selectedSkill.EffectType == EffectType.Revive && target.IsAlive)
+        {
+            GD.PrintErr("Target is already alive.");
+            _battleInputSystemContainer.SetInputEnabled(true);
+            return;
+        }
+
+        if (_selectedSkill.EffectType != EffectType.Revive && !target.IsAlive)
+        {
+            GD.PrintErr("Target is dead.");
             _battleInputSystemContainer.SetInputEnabled(true);
             return;
         }

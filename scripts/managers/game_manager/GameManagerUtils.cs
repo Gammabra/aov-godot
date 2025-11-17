@@ -60,11 +60,17 @@ public partial class GameManager
 
         foreach (Node child in _playerUnitsContainer.GetChildren())
             if (child is UnitSystem unit)
+            {
+                unit.InjectDependencies(_statusEffectSystem);
                 _playerUnits.Add(unit);
+            }
 
         foreach (Node child in _enemyUnitsContainer.GetChildren())
             if (child is UnitSystem unit)
+            {
+                unit.InjectDependencies(_statusEffectSystem);
                 _enemyUnits.Add(unit);
+            }
 
         GD.Print($"Players count : {_playerUnits.Count} | Enemies count : {_enemyUnits.Count}");
     }

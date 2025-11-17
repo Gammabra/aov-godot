@@ -39,15 +39,16 @@ public enum UnitType
 ///     - Base stats (HP, attack, defense, etc.)
 ///     - Turn logic (HasPlayed)
 ///     - Movement logic (BFS pathfinding in 3D)
-///     - Integration with <see cref="MapSystem" /> and <see cref="StatusEffect" />
+///     - Integration with <see cref="MapSystem" /> and <see cref="StatusEffect{UnitSystem}" />
 /// </remarks>
-public abstract partial class UnitSystem : CharacterBody3D, IEffectTarget
+public abstract partial class UnitSystem : CharacterBody3D, IEffectTarget<UnitSystem>
 {
     #region Private fields
 
-    private readonly EffectTarget _effectTarget = new();
+    private readonly EffectTarget<UnitSystem> _effectTarget = new();
     private TaskCompletionSource? _actionTcs;
     private float _gravity = ProjectSettings.GetSetting("physics/3d/default_gravity").AsSingle();
+    private StatusEffectSystem? _statusEffectSystem;
 
     #endregion
 
@@ -163,6 +164,15 @@ public abstract partial class UnitSystem : CharacterBody3D, IEffectTarget
                 CharacterSprite = sprite;
                 break;
             }
+    }
+
+    /// <summary>
+    /// Injects an instance of the status effect system into this unit.
+    /// </summary>
+    /// <param name="statusEffectSystem">The status effect system to be used by this unit.</param>
+    public virtual void InjectDependencies(StatusEffectSystem statusEffectSystem)
+    {
+        _statusEffectSystem = statusEffectSystem;
     }
 
     #endregion
@@ -582,27 +592,36 @@ public abstract partial class UnitSystem : CharacterBody3D, IEffectTarget
         return possibleCells;
     }
 
+    /// <summary>
+    /// Applies a status effect to this unit.
+    /// </summary>
+    /// <param name="statusEffect">The status effect to apply.</param>
+    public virtual void SetStatusEffectOnUnit(StatusEffect<UnitSystem> statusEffect)
+    {
+        _statusEffectSystem?.ApplyEffect(this, statusEffect);
+    }
+
     /// <inheritdoc />
-    public void ApplyEffect(StatusEffect statusEffect)
+    public void ApplyEffect(StatusEffect<UnitSystem> statusEffect)
     {
         _effectTarget.ApplyEffect(statusEffect);
     }
 
     /// <inheritdoc />
-    public void RemoveEffect(StatusEffect statusEffect)
+    public void RemoveEffect(StatusEffect<UnitSystem> statusEffect)
     {
         _effectTarget.RemoveEffect(statusEffect);
     }
 
     /// <inheritdoc />
     public bool HasEffect<T>()
-        where T : StatusEffect
+        where T : StatusEffect<UnitSystem>
     {
         return _effectTarget.HasEffect<T>();
     }
 
     /// <inheritdoc />
-    public List<StatusEffect> GetActiveEffects()
+    public List<StatusEffect<UnitSystem>> GetActiveEffects()
     {
         return _effectTarget.GetActiveEffects();
     }

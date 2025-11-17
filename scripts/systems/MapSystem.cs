@@ -29,7 +29,7 @@ public sealed class CellInformation(
     int z,
     CellType cellType,
     bool isWalkable
-) : EffectTarget
+) : EffectTarget<CellInformation>
 {
     public int X { get; } = x;
     public int Y { get; } = y;
@@ -60,6 +60,8 @@ public abstract partial class MapSystem : GridMap
     ///     Used to calculate the maximum map
     /// </summary>
     private Vector3I _max;
+
+    private StatusEffectSystem? _statusEffectSystem;
 
     #endregion
 
@@ -146,10 +148,10 @@ public abstract partial class MapSystem : GridMap
     /// </summary>
     /// <remarks>
     ///     This method is called by the _Ready method to initialize the map.
-    ///     It should contain the logic necessary to set up the map's state and functionality.
-    ///     Derived classes must implement this method to provide their specific initialization logic.
-    /// </remarks>
-    protected virtual void Initialize()
+	///     It should contain the logic necessary to set up the map's state and functionality.
+	///     Derived classes must implement this method to provide their specific initialization logic.
+	/// </remarks>
+	protected virtual void Initialize()
     {
         MapCellSize = CellSize;
         foreach (Vector3I cell in GetUsedCells())
@@ -173,6 +175,15 @@ public abstract partial class MapSystem : GridMap
 
             CellsInformation.Add(cellInformation);
         }
+    }
+
+    /// <summary>
+    /// Injects an instance of the status effect system into this map.
+    /// </summary>
+    /// <param name="statusEffectSystem">The status effect system to be used by this map.</param>
+    public virtual void InjectDependencies(StatusEffectSystem statusEffectSystem)
+    {
+        _statusEffectSystem = statusEffectSystem;
     }
 
     #endregion
@@ -361,6 +372,29 @@ public abstract partial class MapSystem : GridMap
         int index = GetListIndex(x, y, z);
 
         CellsInformation[index].Unit = null;
+    }
+
+    /// <summary>
+    /// Applies a status effect to a list of cells on the map.
+    /// </summary>
+    /// <param name="cells">
+    /// A list of cell coordinates represented as tuples (x, y, z) where the status effect should be applied.
+    /// </param>
+    /// <param name="statusEffect">The status effect to apply to the cells.</param>
+    public virtual void SetStatusEffectOnCells(List<(int, int, int)> cells, StatusEffect<CellInformation> statusEffect)
+    {
+        foreach ((int, int, int) cell in cells)
+            try
+            {
+                int index = GetListIndex(cell.Item1, cell.Item2, cell.Item3);
+
+                if (_statusEffectSystem is not null)
+                    _statusEffectSystem.ApplyEffect(CellsInformation[index], statusEffect);
+            }
+            catch (ArgumentOutOfRangeException)
+            {
+                // Does nothing if the cell don't exist.
+            }
     }
 
     #endregion

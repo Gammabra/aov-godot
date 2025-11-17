@@ -23,6 +23,7 @@ public partial class GameManager : BaseManager
     private List<(int, int, int)> _currentUnitReachableCellsForCurrentSelectedSkill = [];
     private SkillSystem? _selectedSkill;
     private UnitSystem? _selectedUnitForPlayedSkill;
+    private readonly StatusEffectSystem _statusEffectSystem = new();
 
     #endregion
 
@@ -58,12 +59,6 @@ public partial class GameManager : BaseManager
     /// Ensures that only one active instance exists at any given time.
     /// </summary>
     private new static GameManager? Instance { get; set; }
-
-    #endregion
-
-    #region Public Properties
-
-    public StatusEffectSystem StatusEffectSystem { get; } = new();
 
     #endregion
 
@@ -117,6 +112,7 @@ public partial class GameManager : BaseManager
         _enemyUnitsContainer = GetNode<Node>(_enemyUnitsPath);
         LoadUnits();
         _mapSystemContainer = GetNode<MapSystem>(_mapSystemPath);
+        _mapSystemContainer.InjectDependencies(_statusEffectSystem);
         _mapSystemContainer.PlaceUnits(_playerUnits, _enemyUnits);
         _turnManagerContainer = GetNode<TurnManager>(_turnManagerPath);
         _turnManagerContainer.OnPlayerTurn += ActivatePlayerUnit;
@@ -276,6 +272,7 @@ public partial class GameManager : BaseManager
             return;
         }
 
+        _statusEffectSystem.ProcessTargetTurnEnd(_turnManagerContainer.GetCurrentUnit());
         _turnManagerContainer.GetCurrentUnit().PassTurn();
         CheckUnitTurnEnd();
     }
@@ -334,7 +331,14 @@ public partial class GameManager : BaseManager
     /// </summary>
     private void EnemyTurnEnded()
     {
+        if (_turnManagerContainer is null)
+        {
+            GD.PrintErr("TurnManagerContainer not set in GameManager.");
+            return;
+        }
+
         _unitMoved = false;
+        _statusEffectSystem.ProcessTargetTurnEnd(_turnManagerContainer.GetCurrentUnit());
         CheckUnitTurnEnd();
     }
 
@@ -355,7 +359,7 @@ public partial class GameManager : BaseManager
                 skill.ReduceCooldown();
         }
 
-        StatusEffectSystem.ProcessTurnEnd();
+        _statusEffectSystem.ProcessTurnEnd();
     }
 
     #endregion

@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using AshesOfVelsingrad.Systems;
 using Godot;
 
@@ -184,5 +185,57 @@ public partial class GameManager
         }
 
         UseSkill(_turnManagerContainer.GetCurrentUnit(), target, _selectedSkill);
+    }
+
+    /// <summary>
+    /// Sets all units as dead.
+    /// (The called method verify if the unit HP is equal or less than 0)
+    /// This is typically used when evaluating defeat conditions
+    /// or performing a full cleanup of player-controlled units.
+    /// </summary>
+    private void CheckUnitsLife(List<UnitSystem> units)
+    {
+        foreach (UnitSystem unit in units)
+            unit.SetIsAlive(false);
+    }
+
+    /// <summary>
+    /// Evaluates the win/lose conditions based on the number of living units.
+    /// If no player units remain, the result is a defeat.
+    /// If no enemy units remain, the result is a victory.
+    /// Ends the turn manager loop accordingly.
+    /// </summary>
+    private void CheckWinLoseCondition()
+    {
+        int alivePlayerUnits = 0;
+        int aliveEnemies = 0;
+
+        foreach (UnitSystem unit in _playerUnits)
+            if (unit.IsAlive)
+                alivePlayerUnits++;
+        if (alivePlayerUnits == 0)
+        {
+            _gameOutcome = GameOutcome.Defeat;
+            _turnManagerContainer?.EndTurnManagerLoop();
+            GD.Print("Lose!");
+            return;
+        }
+
+        foreach (UnitSystem unit in _enemyUnits)
+            if (unit.IsAlive)
+                aliveEnemies++;
+        if (aliveEnemies == 0)
+        {
+            _gameOutcome = GameOutcome.Victory;
+            _turnManagerContainer?.EndTurnManagerLoop();
+            GD.Print("Win!");
+        }
+    }
+
+    private void CheckUnitTurnEnd()
+    {
+        CheckUnitsLife(_playerUnits);
+        CheckUnitsLife(_enemyUnits);
+        CheckWinLoseCondition();
     }
 }

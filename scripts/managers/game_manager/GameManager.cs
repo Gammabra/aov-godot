@@ -215,6 +215,7 @@ public partial class GameManager : BaseManager
         _currentUnitReachableCellsForCurrentSelectedSkill.Clear();
         _battleInputSystemContainer.SetInputEnabled(false);
         GD.Print("Deactivate input and player units");
+        CheckUnitTurnEnd();
     }
 
     /// <summary>
@@ -276,6 +277,7 @@ public partial class GameManager : BaseManager
         }
 
         _turnManagerContainer.GetCurrentUnit().PassTurn();
+        CheckUnitTurnEnd();
     }
 
     /// <summary>
@@ -333,10 +335,11 @@ public partial class GameManager : BaseManager
     private void EnemyTurnEnded()
     {
         _unitMoved = false;
+        CheckUnitTurnEnd();
     }
 
     /// <summary>
-    ///
+    /// Handles all logic that should occur at the end of the current turn.
     /// </summary>
     private void CurrentTurnEnded()
     {

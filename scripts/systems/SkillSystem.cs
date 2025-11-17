@@ -27,7 +27,8 @@ public enum EffectType
     Debuff,
     Dot,
     Control,
-    StatusEffect
+    StatusEffect,
+    Revive
 }
 
 /// <summary>

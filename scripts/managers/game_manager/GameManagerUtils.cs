@@ -252,6 +252,15 @@ public partial class GameManager
         }
     }
 
+    /// <summary>
+    /// Performs end-of-turn checks for all units.
+    /// </summary>
+    /// <remarks>
+    /// This method updates the <see cref="UnitSystem.IsAlive"/> state of all
+    /// player and enemy units, then evaluates the win/lose conditions.
+    /// It is typically called at the end of a unit's turn to ensure that
+    /// deaths, revives, and victory conditions are handled immediately.
+    /// </remarks>
     private void CheckUnitTurnEnd()
     {
         CheckUnitsLife(_playerUnits);

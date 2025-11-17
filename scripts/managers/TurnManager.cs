@@ -117,7 +117,7 @@ public partial class TurnManager : BaseManager
     /// </remarks>
     private async Task ProcessTurn()
     {
-        while (_currentTurnState != TurnState.Finished)
+        while (true)
         {
             GD.Print($"{_unitsTurnOrder[_currentIndex].Key.Name} turn");
             switch (_currentTurnState)
@@ -132,6 +132,9 @@ public partial class TurnManager : BaseManager
                     OnEnemyTurnEnd?.Invoke();
                     break;
             }
+
+            if (_currentTurnState == TurnState.Finished)
+                break;
 
             _currentIndex++;
             for (; _currentIndex < _unitsTurnOrder.Count; _currentIndex++)

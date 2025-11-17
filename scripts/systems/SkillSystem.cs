@@ -111,6 +111,13 @@ public abstract class SkillSystem
     /// </remarks>
     public abstract void Use(List<UnitSystem> targets, MapSystem? map);
 
+    public virtual void SetCooldown()
+    {
+        if (Cooldown != 0)
+            return;
+        Cooldown = TotalCooldown;
+    }
+
     /// <summary>
     ///     Reduces the cooldown of the skill by one turn, if greater than zero.
     /// </summary>

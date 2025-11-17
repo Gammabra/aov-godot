@@ -477,6 +477,7 @@ public partial class GameManager : BaseManager
                 }
 
                 targetUnits.Add(targetUnit);
+                _selectedSkill?.SetCooldown();
                 _turnManagerContainer.GetCurrentUnit().Play(targetUnits, _mapSystemContainer, skill);
                 break;
 
@@ -490,6 +491,7 @@ public partial class GameManager : BaseManager
                 }
 
                 targetUnits.Add(targetUnit);
+                _selectedSkill?.SetCooldown();
                 _turnManagerContainer.GetCurrentUnit().Play(targetUnits, _mapSystemContainer, skill);
                 break;
 
@@ -502,6 +504,7 @@ public partial class GameManager : BaseManager
                     return;
                 }
 
+                _selectedSkill?.SetCooldown();
                 _turnManagerContainer.GetCurrentUnit().Play(allyUnits, _mapSystemContainer, skill);
                 break;
 
@@ -514,6 +517,7 @@ public partial class GameManager : BaseManager
                     return;
                 }
 
+                _selectedSkill?.SetCooldown();
                 _turnManagerContainer.GetCurrentUnit().Play(enemyUnits, _mapSystemContainer, skill);
                 break;
         }

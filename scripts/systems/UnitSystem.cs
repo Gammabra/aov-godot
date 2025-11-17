@@ -280,6 +280,24 @@ public abstract partial class UnitSystem : CharacterBody3D, IEffectTarget
     #region Public Methods
 
     /// <summary>
+    /// Set if the unit is alive or not.
+    /// </summary>
+    /// <param name="isAlive">A boolean to set unit <see cref="IsAlive"/> value</param>
+    public void SetIsAlive(bool isAlive)
+    {
+        if (!isAlive)
+        {
+            if (Hp <= 0)
+                IsAlive = isAlive;
+        }
+        else
+        {
+            if (Hp >= 0)
+                IsAlive = isAlive;
+        }
+    }
+
+    /// <summary>
     /// Handles the physics of the unit in the UI.
     /// </summary>
     public override void _PhysicsProcess(double delta)
@@ -411,10 +429,10 @@ public abstract partial class UnitSystem : CharacterBody3D, IEffectTarget
         (int, int, int)[] directions =
         [
             (-1, 0, 0), // Left
-            (1, 0, 0), // Right
-            (0, 0, 1), // Forward
-            (0, 0, -1) // Backward
-        ];
+			(1, 0, 0), // Right
+			(0, 0, 1), // Forward
+			(0, 0, -1) // Backward
+		];
 
         if (unitPosition == null)
             return possibleMoves;
@@ -507,12 +525,12 @@ public abstract partial class UnitSystem : CharacterBody3D, IEffectTarget
         (int, int, int)[] directions =
         [
             (-1, 0, 0), // Left
-            (1, 0, 0), // Right
-            (0, 1, 0), // Up
-            (0, -1, 0), // Down
-            (0, 0, 1), // Forward
-            (0, 0, -1) // Backward
-        ];
+			(1, 0, 0), // Right
+			(0, 1, 0), // Up
+			(0, -1, 0), // Down
+			(0, 0, 1), // Forward
+			(0, 0, -1) // Backward
+		];
 
         if (unitPosition == null)
             return possibleCells;

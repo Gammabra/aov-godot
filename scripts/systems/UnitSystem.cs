@@ -116,9 +116,6 @@ public abstract partial class UnitSystem : CharacterBody3D, IEffectTarget<UnitSy
     /// <summary>Indicates whether the unit is alive.</summary>
     public bool IsAlive { get; protected set; } = true;
 
-    /// <summary>Indicates whether the unit has already acted this turn.</summary>
-    public bool HasPlayed { get; protected set; }
-
     /// <summary>The maximum number of tiles the unit can move per turn.</summary>
     public int PossibleMovesRange { get; protected set; }
 
@@ -369,7 +366,6 @@ public abstract partial class UnitSystem : CharacterBody3D, IEffectTarget<UnitSy
     /// </summary>
     public void PassTurn()
     {
-        HasPlayed = true;
         ReportSystemUnitHasPlayed();
     }
 

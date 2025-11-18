@@ -39,9 +39,6 @@ public sealed class StatusEffectSystem
     /// </remarks>
     public void ApplyEffect<TTarget>(IEffectTarget<TTarget> target, StatusEffect<TTarget> newEffect)
     {
-        if (typeof(TTarget) != typeof(MapSystem) && typeof(TTarget) != typeof(UnitSystem))
-            return;
-
         // Add the target to the list if not already present
         if (!_allTargets.Contains(target))
             _allTargets.Add(target);

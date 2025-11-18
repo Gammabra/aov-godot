@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using AshesOfVelsingrad.Systems;
+using Godot;
 
 namespace AshesOfVelsingrad;
 
@@ -13,7 +14,8 @@ public sealed class Skill1 : SkillSystem
 
     public override void Use(List<UnitSystem> targets, MapSystem? map)
     {
-        targets[0].TakeDamage(1);
+        targets[0].TakeDamage(101);
+        GD.Print(targets[0].Hp);
     }
 }
 
@@ -87,7 +89,6 @@ public sealed partial class Player1Data : UnitSystem
         Intelligence = 200;
         ManaPoint = 200;
         IsAlive = true;
-        HasPlayed = false;
         PossibleMovesRange = 2;
         Curse = 0;
         ActiveSkills.Add(new Skill1());

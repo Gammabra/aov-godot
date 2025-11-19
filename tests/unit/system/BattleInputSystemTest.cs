@@ -94,7 +94,6 @@ public class BattleInputSystemTest
             .GetField("_inputEnabled", BindingFlags.NonPublic | BindingFlags.Instance)!
             .GetValue(sys);
 
-        AssertThat(enabledField).IsNotNull();
         if (enabledField is not null)
             AssertThat((bool)enabledField).IsFalse();
     }

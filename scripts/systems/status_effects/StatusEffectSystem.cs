@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using AshesOfVelsingrad.utilities;
+using Godot;
 
 namespace AshesOfVelsingrad.Systems;
 
@@ -57,24 +58,22 @@ public sealed class StatusEffectSystem
     /// <summary>
     ///     Processes end-of-turn updates for a single target.
     /// </summary>
-    /// <typeparam name="TTarget">
-    ///     The type of the target to process.
-    /// </typeparam>
     /// <param name="target">
     ///     The target whose status effects should be updated.
     /// </param>
     /// <remarks>
-    ///     Each status effect has its <see cref="StatusEffect{TTarget}.OnTurnPassed"/> method called,
+    ///     Each status effect has its <see cref="StatusEffect{UnitSystem}.OnTurnPassed"/> method called,
     ///     and expired effects are removed automatically. If a target has no more active effects,
     ///     it is removed from the tracking list.
     /// </remarks>
-    public void ProcessTargetTurnEnd<TTarget>(IEffectTarget<TTarget> target)
+    public void ProcessUnitTurnEnd(IEffectTarget<UnitSystem>? target)
     {
-        foreach (StatusEffect<TTarget> statusEffect in
+        if (target is null)
+            return;
+
+        foreach (StatusEffect<UnitSystem> statusEffect in
             target.GetActiveEffects().ToList()) // Copy to avoid foreach/remove issues
         {
-            if (statusEffect.GetType() != typeof(UnitSystem))
-                continue;
             if (statusEffect.Duration == Constants.PermanentStatusEffect)
                 continue;
             statusEffect.OnTurnPassed(target);
@@ -94,26 +93,26 @@ public sealed class StatusEffectSystem
     ///     Iterates over all tracked targets in <see cref="_allTargets"/> and updates
     ///     their status effects. Expired effects are removed, and targets with no remaining
     ///     effects are removed from the tracking list.
-    ///     Only targets of type <see cref="MapSystem"/> are processed by this method.
+    ///     Only targets of type <see cref="CellInformation"/> are processed by this method.
     /// </remarks>
     public void ProcessTurnEnd()
     {
-        foreach (IEffectTarget<object> target in _allTargets.ToList()) // Make a copy in case list is modified
+        foreach (object target in _allTargets.ToList()) // Make a copy in case list is modified
         {
-            if (target.GetType() != typeof(MapSystem))
+            if (target is not IEffectTarget<CellInformation> cell)
                 continue;
-            foreach (StatusEffect<object> statusEffect in
-                target.GetActiveEffects().ToList()) // Copy to avoid foreach/remove issues
+            foreach (StatusEffect<CellInformation> statusEffect in
+                cell.GetActiveEffects().ToList()) // Copy to avoid foreach/remove issues
             {
                 if (statusEffect.Duration == Constants.PermanentStatusEffect)
                     continue;
-                statusEffect.OnTurnPassed(target);
+                statusEffect.OnTurnPassed(cell);
                 if (statusEffect.Duration > 0)
                     continue;
-                target.RemoveEffect(statusEffect);
+                cell.RemoveEffect(statusEffect);
             }
 
-            if (target.GetActiveEffects().Count == 0)
+            if (cell.GetActiveEffects().Count == 0)
                 _allTargets.Remove(target);
         }
     }

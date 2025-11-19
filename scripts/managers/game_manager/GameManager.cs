@@ -272,7 +272,7 @@ public partial class GameManager : BaseManager
             return;
         }
 
-        _statusEffectSystem.ProcessTargetTurnEnd(_turnManagerContainer.GetCurrentUnit());
+        _statusEffectSystem.ProcessUnitTurnEnd(_turnManagerContainer.GetCurrentUnit());
         _turnManagerContainer.GetCurrentUnit().PassTurn();
         CheckUnitTurnEnd();
     }
@@ -338,7 +338,7 @@ public partial class GameManager : BaseManager
         }
 
         _unitMoved = false;
-        _statusEffectSystem.ProcessTargetTurnEnd(_turnManagerContainer.GetCurrentUnit());
+        _statusEffectSystem.ProcessUnitTurnEnd(_turnManagerContainer.GetCurrentUnit());
         CheckUnitTurnEnd();
     }
 

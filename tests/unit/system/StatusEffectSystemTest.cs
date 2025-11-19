@@ -1,0 +1,157 @@
+﻿using AshesOfVelsingrad.Systems;
+using GdUnit4;
+using static GdUnit4.Assertions;
+
+namespace UnitTests;
+
+[TestSuite]
+[RequireGodotRuntime]
+public class StatusEffectSystemTest
+{
+    // =====================================================
+    //  APPLY EFFECT
+    // =====================================================
+
+    [TestCase]
+    public void ApplyEffect_AddsTarget_AndEffect()
+    {
+        StatusEffectSystem sys = new();
+        TestConcreteEffectTarget<object> target = new();
+        TestConcreteStatusEffect<object> effect = new(duration: 2);
+
+        sys.ApplyEffect(target, effect);
+
+        AssertThat(target.GetActiveEffects().Count).IsEqual(1);
+        AssertThat(target.ApplyCalled).IsTrue();
+    }
+
+    [TestCase]
+    public void ApplyEffect_Stacks_WhenStackable()
+    {
+        StatusEffectSystem sys = new();
+        TestConcreteEffectTarget<object> target = new();
+        TestConcreteStatusEffect<object> effect1 = new() { Stackable = true };
+        TestConcreteStatusEffect<object> effect2 = new() { Stackable = true };
+
+        sys.ApplyEffect(target, effect1);
+        sys.ApplyEffect(target, effect2);
+
+        AssertThat(target.GetActiveEffects().Count).IsEqual(1);
+        AssertThat(effect1.StackCount).IsEqual(2);
+    }
+
+    [TestCase]
+    public void ApplyEffect_DoesNotStack_WhenNotStackable()
+    {
+        StatusEffectSystem sys = new();
+        TestConcreteEffectTarget<object> target = new();
+        TestConcreteStatusEffect<object> e1 = new() { Stackable = false };
+        TestConcreteStatusEffect<object> e2 = new() { Stackable = false };
+
+        sys.ApplyEffect(target, e1);
+        sys.ApplyEffect(target, e2);
+
+        AssertThat(target.GetActiveEffects().Count).IsEqual(1);
+        AssertThat(e1.StackCount).IsEqual(1);
+    }
+
+    // =====================================================
+    //  PROCESS TARGET TURN END  (UnitSystem only)
+    // =====================================================
+
+    [TestCase]
+    public void ProcessTargetTurnEnd_ProcessesUnitSystemEffects()
+    {
+        StatusEffectSystem sys = new();
+        TestConcreteEffectTarget<UnitSystem> unitTarget = new();
+        TestConcreteStatusEffect<UnitSystem> effect = new(duration: 2);
+
+        sys.ApplyEffect(unitTarget, effect);
+
+        sys.ProcessUnitTurnEnd(unitTarget);
+
+        AssertThat(effect.Duration).IsEqual(1);
+        AssertThat(effect.TurnPassedCalled).IsTrue();
+    }
+
+    [TestCase]
+    public void ProcessTargetTurnEnd_RemovesExpiredEffect_AndUntracksTarget()
+    {
+        StatusEffectSystem sys = new();
+        TestConcreteEffectTarget<UnitSystem> unitTarget = new();
+        TestConcreteStatusEffect<UnitSystem> effect = new(duration: 1);
+
+        sys.ApplyEffect(unitTarget, effect);
+
+        sys.ProcessUnitTurnEnd(unitTarget); // Duration -> 0
+        sys.ProcessUnitTurnEnd(unitTarget); // Should remove
+
+        AssertThat(unitTarget.GetActiveEffects().Count).IsEqual(0);
+    }
+
+    [TestCase]
+    public void ProcessTargetTurnEnd_IgnoresNonUnitSystemEffects()
+    {
+        StatusEffectSystem sys = new();
+        TestConcreteEffectTarget<object> target = new();
+        TestConcreteStatusEffect<object> effect = new(duration: 2);
+
+        sys.ApplyEffect(target, effect);
+
+        // Should do nothing because type mismatch
+        sys.ProcessUnitTurnEnd(target as IEffectTarget<UnitSystem>);
+
+        AssertThat(effect.Duration).IsEqual(2);
+        AssertThat(effect.TurnPassedCalled).IsFalse();
+    }
+
+    // =====================================================
+    //  PROCESS TURN END (MapSystem / CellInformation only)
+    // =====================================================
+
+    [TestCase]
+    public void ProcessTurnEnd_ProcessesOnlyCellInformationTargets()
+    {
+        StatusEffectSystem sys = new();
+
+        // Cell target : OK
+        TestConcreteEffectTarget<CellInformation> cellTarget = new();
+        TestConcreteStatusEffect<CellInformation> cellEffect = new(duration: 1);
+        sys.ApplyEffect(cellTarget, cellEffect);
+
+        // Unit target : should NOT be processed
+        TestConcreteUnitSystem unitTarget = new();
+        TestConcreteStatusEffect<UnitSystem> unitEffect = new(duration: 1);
+        sys.ApplyEffect(unitTarget, unitEffect);
+
+        // Run map processing
+        sys.ProcessTurnEnd();
+
+        // Cell effect must have ticked
+        AssertThat(cellEffect.Duration).IsEqual(0);
+        AssertThat(cellEffect.TurnPassedCalled).IsTrue();
+
+        // Unit effect should be untouched
+        AssertThat(unitEffect.Duration).IsEqual(1);
+        AssertThat(unitEffect.TurnPassedCalled).IsFalse();
+    }
+
+    [TestCase]
+    public void ProcessTurnEnd_RemovesExpiredEffects_AndUntracksCellTarget()
+    {
+        StatusEffectSystem sys = new();
+
+        TestConcreteEffectTarget<CellInformation> cellTarget = new();
+        TestConcreteStatusEffect<CellInformation> effect = new(duration: 1);
+
+        sys.ApplyEffect(cellTarget, effect);
+
+        // Process first turn → effect duration becomes 0
+        sys.ProcessTurnEnd();
+
+        // Process second turn → effect should be removed and target untracked
+        sys.ProcessTurnEnd();
+
+        AssertThat(cellTarget.GetActiveEffects().Count).IsEqual(0);
+    }
+}

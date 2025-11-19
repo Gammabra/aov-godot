@@ -1,4 +1,4 @@
-﻿using AshesOfVelsingrad.Systems;
+using AshesOfVelsingrad.Systems;
 using GdUnit4;
 using static GdUnit4.Assertions;
 

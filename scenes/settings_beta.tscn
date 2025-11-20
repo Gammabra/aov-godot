@@ -211,6 +211,22 @@ theme_override_fonts/font = ExtResource("3_tlijc")
 theme_override_font_sizes/font_size = 30
 text = "Langage"
 
+[node name="OptionButton" type="OptionButton" parent="MainContent/PageSubtitle/Langage"]
+custom_minimum_size = Vector2(130, 0)
+layout_mode = 0
+offset_left = 125.0
+offset_top = 2.0
+offset_right = 219.0
+offset_bottom = 30.0
+theme_override_fonts/font = ExtResource("3_tlijc")
+theme_override_font_sizes/font_size = 20
+selected = 0
+item_count = 2
+popup/item_0/text = "English"
+popup/item_0/id = 0
+popup/item_1/text = "French"
+popup/item_1/id = 1
+
 [node name="DisplayTime" type="Label" parent="MainContent/PageSubtitle"]
 layout_mode = 0
 offset_left = 56.0

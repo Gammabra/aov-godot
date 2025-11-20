@@ -7,21 +7,19 @@
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_m7784"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iuawr"]
-content_margin_left = 0.0
-content_margin_top = 10.0
-content_margin_right = 0.0
-content_margin_bottom = 10.0
 bg_color = Color(0.060530446, 0.06053032, 0.060530372, 0.79607844)
 border_width_left = 2
 border_width_top = 2
 border_width_right = 2
 border_width_bottom = 2
 border_blend = true
+expand_margin_left = 10.0
+expand_margin_right = 10.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m7784"]
 bg_color = Color(0.18039216, 0.18039216, 0.18039216, 0.8235294)
-expand_margin_left = 20.0
-expand_margin_right = 20.0
+expand_margin_left = 10.0
+expand_margin_right = 10.0
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_t01jc"]
 
@@ -58,10 +56,11 @@ alignment = 1
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 size_flags_vertical = 4
-theme_override_constants/separation = 50
+theme_override_constants/separation = 20
 alignment = 1
 
 [node name="ButtonSubtitle" type="Button" parent="VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(160, 55)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_tlijc")
 theme_override_font_sizes/font_size = 40
@@ -70,8 +69,11 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_iuawr")
 theme_override_styles/hover = SubResource("StyleBoxFlat_m7784")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_t01jc")
 text = "Subtitle"
+autowrap_trim_flags = 0
+icon_alignment = 1
 
 [node name="ButtonVideo" type="Button" parent="VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(160, 55)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_tlijc")
 theme_override_font_sizes/font_size = 40
@@ -80,8 +82,11 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_iuawr")
 theme_override_styles/hover = SubResource("StyleBoxFlat_m7784")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_t01jc")
 text = "Video"
+autowrap_trim_flags = 0
+icon_alignment = 1
 
 [node name="ButtonVisual" type="Button" parent="VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(160, 55)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_tlijc")
 theme_override_font_sizes/font_size = 40
@@ -90,8 +95,11 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_iuawr")
 theme_override_styles/hover = SubResource("StyleBoxFlat_m7784")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_t01jc")
 text = "Visual"
+autowrap_trim_flags = 0
+icon_alignment = 1
 
 [node name="ButtonCommand" type="Button" parent="VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(160, 55)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_tlijc")
 theme_override_font_sizes/font_size = 40
@@ -100,8 +108,11 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_iuawr")
 theme_override_styles/hover = SubResource("StyleBoxFlat_m7784")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_t01jc")
 text = "Command"
+autowrap_trim_flags = 0
+icon_alignment = 1
 
 [node name="ButtonAudio" type="Button" parent="VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(160, 55)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_tlijc")
 theme_override_font_sizes/font_size = 40
@@ -110,6 +121,8 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_iuawr")
 theme_override_styles/hover = SubResource("StyleBoxFlat_m7784")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_t01jc")
 text = "Audio"
+autowrap_trim_flags = 0
+icon_alignment = 1
 
 [node name="MainContent" type="Node" parent="."]
 script = ExtResource("1_iuawr")

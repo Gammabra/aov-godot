@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace AshesOfVelsingrad.systems;
+namespace AshesOfVelsingrad.Systems;
 
 /// <summary>
 ///     Represents the elemental type of a skill.
@@ -27,7 +27,8 @@ public enum EffectType
     Debuff,
     Dot,
     Control,
-    StatusEffect
+    StatusEffect,
+    Revive
 }
 
 /// <summary>
@@ -109,6 +110,13 @@ public abstract class SkillSystem
     ///     to define the actual effect of the skill (damage, healing, etc.).
     /// </remarks>
     public abstract void Use(List<UnitSystem> targets, MapSystem? map);
+
+    public virtual void SetCooldown()
+    {
+        if (Cooldown != 0)
+            return;
+        Cooldown = TotalCooldown;
+    }
 
     /// <summary>
     ///     Reduces the cooldown of the skill by one turn, if greater than zero.

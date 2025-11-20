@@ -1,14 +1,20 @@
 using AshesOfVelsingrad.utilities;
 
-namespace AshesOfVelsingrad.systems.status_effects;
+namespace AshesOfVelsingrad.Systems;
 
 /// <summary>
-///     Base class for all status effects that can be applied to an <see cref="IEffectTarget" />.
+///     Base class for all status effects that can be applied to an <see cref="IEffectTarget{TTarget}"/>.
 /// </summary>
+/// <typeparam name="TTarget">
+///     The type of target this status effect can be applied to,
+///     such as <see cref="UnitSystem"/> or <see cref="MapSystem"/>.
+/// </typeparam>
 /// <remarks>
-///     This class provides the basic data and behavior for a status effect.
+///     This class provides core properties and methods for a status effect,
+///     including stacking behavior, duration management, and hooks for
+///     when the effect is applied, removed, or updated each turn.
 /// </remarks>
-public abstract class StatusEffect
+public abstract class StatusEffect<TTarget>
 {
     /// <summary>
     ///     The display name of the effect.
@@ -41,7 +47,7 @@ public abstract class StatusEffect
     ///     Override this to implement custom logic (e.g., visual feedback, stat changes).
     /// </summary>
     /// <param name="target">The target receiving the effect.</param>
-    public virtual void OnApply(IEffectTarget target)
+    public virtual void OnApply(IEffectTarget<TTarget> target)
     {
     }
 
@@ -50,7 +56,7 @@ public abstract class StatusEffect
     ///     Override this to implement cleanup logic (e.g., removing buffs, stopping VFX).
     /// </summary>
     /// <param name="target">The target losing the effect.</param>
-    public virtual void OnRemove(IEffectTarget target)
+    public virtual void OnRemove(IEffectTarget<TTarget> target)
     {
     }
 
@@ -58,15 +64,19 @@ public abstract class StatusEffect
     ///     Called at the end of each turn to update the effect’s duration or apply ongoing logic.
     /// </summary>
     /// <param name="target">The target affected by this effect.</param>
-    public virtual void OnTurnPassed(IEffectTarget target)
+    public virtual void OnTurnPassed(IEffectTarget<TTarget> target)
     {
         if (Duration == Constants.PermanentStatusEffect)
             return;
         Duration--;
     }
 
+    /// <summary>
+    ///     Increases the stack count of the effect if it is stackable.
+    /// </summary>
     public virtual void AddStack()
     {
-        if (IsStackable) StackCount++;
+        if (IsStackable)
+            StackCount++;
     }
 }

@@ -114,28 +114,51 @@ text = "Audio"
 [node name="MainContent" type="Node" parent="."]
 script = ExtResource("1_iuawr")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MainContent"]
+[node name="PageSubtitle" type="Control" parent="MainContent"]
+layout_mode = 3
+anchors_preset = 0
 offset_top = 211.0
 offset_right = 1152.0
-offset_bottom = 648.0
+offset_bottom = 211.0
 
-[node name="PageSubtitle" type="Control" parent="MainContent/VBoxContainer"]
-layout_mode = 2
+[node name="Label" type="Label" parent="MainContent/PageSubtitle"]
+layout_mode = 0
+offset_left = 63.0
+offset_top = 8.0
+offset_right = 211.0
+offset_bottom = 43.0
+text = "Langues:"
 
-[node name="PageVideo" type="Control" parent="MainContent/VBoxContainer"]
-layout_mode = 2
+[node name="PageVideo" type="Control" parent="MainContent"]
+layout_mode = 3
+anchors_preset = 0
+offset_top = 215.0
+offset_right = 1152.0
+offset_bottom = 215.0
 
-[node name="PageVisual" type="Control" parent="MainContent/VBoxContainer"]
-layout_mode = 2
+[node name="PageVisual" type="Control" parent="MainContent"]
+layout_mode = 3
+anchors_preset = 0
+offset_top = 219.0
+offset_right = 1152.0
+offset_bottom = 219.0
 
-[node name="PageCommand" type="Control" parent="MainContent/VBoxContainer"]
-layout_mode = 2
+[node name="PageCommand" type="Control" parent="MainContent"]
+layout_mode = 3
+anchors_preset = 0
+offset_top = 223.0
+offset_right = 1152.0
+offset_bottom = 223.0
 
-[node name="PageAudio" type="Control" parent="MainContent/VBoxContainer"]
-layout_mode = 2
+[node name="PageAudio" type="Control" parent="MainContent"]
+layout_mode = 3
+anchors_preset = 0
+offset_top = 227.0
+offset_right = 1152.0
+offset_bottom = 227.0
 
-[connection signal="pressed" from="VBoxContainer/HBoxContainer/ButtonSubtitle" to="." method="_on_button_subtitle_pressed"]
-[connection signal="pressed" from="VBoxContainer/HBoxContainer/ButtonVideo" to="." method="_on_button_video_pressed"]
-[connection signal="pressed" from="VBoxContainer/HBoxContainer/ButtonVisual" to="." method="_on_button_visual_pressed"]
-[connection signal="pressed" from="VBoxContainer/HBoxContainer/ButtonCommand" to="." method="_on_button_command_pressed"]
-[connection signal="pressed" from="VBoxContainer/HBoxContainer/ButtonAudio" to="." method="_on_button_audio_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/ButtonSubtitle" to="MainContent" method="_on_button_subtitle_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/ButtonVideo" to="MainContent" method="_on_button_video_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/ButtonVisual" to="MainContent" method="_on_button_visual_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/ButtonCommand" to="MainContent" method="_on_button_command_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/ButtonAudio" to="MainContent" method="_on_button_audio_pressed"]

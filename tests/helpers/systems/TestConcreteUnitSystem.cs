@@ -19,9 +19,33 @@ public sealed partial class TestConcreteUnitSystem : UnitSystem
 
     public readonly List<string> Log = [];
 
-    public TestConcreteUnitSystem()
+    public TestConcreteUnitSystem(
+        string unitName = "TestUnit",
+        string description = "Unit used only for unit testing.",
+        float maxHp = 100,
+        float hp = 100,
+        float baseAtk = 10,
+        float baseDef = 5,
+        float baseSpeed = 4,
+        float manaPoint = 100,
+        int possibleMovesRange = 1
+    )
     {
         Name = "TestConcreteUnitSystem";
+
+        IsInitialized = true;
+        InitializeCallCount++;
+        UnitName = unitName;
+        Description = description;
+        MaxHp = maxHp;
+        Hp = hp;
+        BaseAtk = baseAtk;
+        BaseDef = baseDef;
+        BaseSpeed = baseSpeed;
+        ManaPoint = manaPoint;
+        PossibleMovesRange = possibleMovesRange;
+        Type = UnitType.Player;
+
         GD.Print("[TEST] TestConcreteUnitSystem constructor called");
     }
 

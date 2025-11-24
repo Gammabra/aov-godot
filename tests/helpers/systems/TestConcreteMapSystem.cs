@@ -43,7 +43,7 @@ public sealed partial class TestConcreteMapSystem : MapSystem
     public override void PlaceUnits(List<UnitSystem> playerUnits, List<UnitSystem> enemyUnits)
     {
         CellsInformation[0].Unit = playerUnits[0];
-        CellsInformation[1].Unit = enemyUnits[1];
+        CellsInformation[1].Unit = enemyUnits[0];
     }
 
     public void AddUnit(UnitSystem unit)

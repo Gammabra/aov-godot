@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using AshesOfVelsingrad.Systems;
+using Godot;
 
 namespace UnitTests;
 
@@ -9,7 +10,7 @@ namespace UnitTests;
 public class TestConcreteSkillSystem : SkillSystem
 {
     public bool WasUsed { get; private set; }
-    public List<UnitSystem> LastTargets { get; private set; } = new();
+    public List<UnitSystem> LastTargets { get; private set; } = [];
     public MapSystem? LastMap { get; private set; }
 
     public TestConcreteSkillSystem(
@@ -34,6 +35,8 @@ public class TestConcreteSkillSystem : SkillSystem
         TargetType = target;
 
         AreaEffect = new List<(int, int, int)>();
+
+        GD.Print("[TEST] TestConcreteSkillSystem constructor called");
     }
 
     public override void Use(List<UnitSystem> targets, MapSystem? map)
@@ -42,5 +45,6 @@ public class TestConcreteSkillSystem : SkillSystem
 
         LastTargets = new List<UnitSystem>(targets);
         LastMap = map;
+        GD.Print($"[TEST] Skill {Name} used");
     }
 }

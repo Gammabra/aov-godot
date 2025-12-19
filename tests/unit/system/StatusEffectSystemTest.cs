@@ -1,5 +1,8 @@
+using System;
+using System.Collections.Generic;
 using AshesOfVelsingrad.Systems;
 using GdUnit4;
+using Godot;
 using static GdUnit4.Assertions;
 
 namespace UnitTests;
@@ -8,6 +11,37 @@ namespace UnitTests;
 [RequireGodotRuntime]
 public class StatusEffectSystemTest
 {
+    private Node? _root;
+    private readonly List<Node> _testNodes = new();
+
+    private T AddNode<T>(T node)
+        where T : Node
+    {
+        if (_root == null)
+            throw new InvalidOperationException("Root is not initialized.");
+
+        _root.AddChild(node);
+        _testNodes.Add(node);
+        return node;
+    }
+
+    [BeforeTest]
+    public void Setup()
+    {
+        _root = new Node { Name = "TestRoot" };
+        ((SceneTree)Engine.GetMainLoop()).Root.AddChild(_root);
+        _testNodes.Clear();
+        _testNodes.Add(_root);
+    }
+
+    [AfterTest]
+    public void Cleanup()
+    {
+        foreach (Node node in _testNodes)
+            node.QueueFree();
+        _testNodes.Clear();
+    }
+
     // =====================================================
     //  APPLY EFFECT
     // =====================================================
@@ -120,7 +154,7 @@ public class StatusEffectSystemTest
         sys.ApplyEffect(cellTarget, cellEffect);
 
         // Unit target : should NOT be processed
-        TestConcreteUnitSystem unitTarget = new();
+        TestConcreteUnitSystem unitTarget = AddNode(new TestConcreteUnitSystem());
         TestConcreteStatusEffect<UnitSystem> unitEffect = new(duration: 1);
         sys.ApplyEffect(unitTarget, unitEffect);
 

@@ -13,7 +13,7 @@ public class TestConcreteStatusEffect<TTarget> : StatusEffect<TTarget>
     public IEffectTarget<TTarget>? LastRemoveTarget { get; private set; }
     public IEffectTarget<TTarget>? LastTurnTarget { get; private set; }
 
-    public bool Stackable { get; set; } = false;
+    public bool Stackable { get; init; }
 
     public override bool IsStackable => Stackable;
 

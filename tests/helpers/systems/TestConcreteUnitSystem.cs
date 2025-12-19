@@ -12,7 +12,6 @@ public sealed partial class TestConcreteUnitSystem : UnitSystem
 {
     public bool IsInitialized { get; private set; }
     public bool IsCleanedUp { get; private set; }
-    public int InitializeCallCount { get; private set; }
 
     public StatusEffectSystem? InjectedStatusEffectSystem => _injectedStatusEffectSystem;
     private StatusEffectSystem? _injectedStatusEffectSystem;
@@ -34,7 +33,6 @@ public sealed partial class TestConcreteUnitSystem : UnitSystem
         Name = "TestConcreteUnitSystem";
 
         IsInitialized = true;
-        InitializeCallCount++;
         UnitName = unitName;
         Description = description;
         MaxHp = maxHp;
@@ -51,11 +49,11 @@ public sealed partial class TestConcreteUnitSystem : UnitSystem
 
     protected override void Initialize()
     {
+        if (IsInitialized)
+            return;
         base.Initialize();
         IsInitialized = true;
-        InitializeCallCount++;
 
-        // Default test values
         UnitName = "TestUnit";
         Description = "Unit used only for unit testing.";
         MaxHp = 100;
@@ -90,11 +88,6 @@ public sealed partial class TestConcreteUnitSystem : UnitSystem
 
     // ---------- Public test helpers ----------
 
-    public void CallReady()
-    {
-        _Ready();
-    }
-
     public void CallInitialize()
     {
         Initialize();
@@ -103,15 +96,5 @@ public sealed partial class TestConcreteUnitSystem : UnitSystem
     public void CallCleanup()
     {
         Cleanup();
-    }
-
-    // Allows adding a fake sprite for Initialize() to detect
-    public void AddFakeSprite()
-    {
-        Sprite3D sprite = new()
-        {
-            Name = "FakeSprite"
-        };
-        AddChild(sprite);
     }
 }

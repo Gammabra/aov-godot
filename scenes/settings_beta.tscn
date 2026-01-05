@@ -1,9 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://geowrsurjvqo"]
+[gd_scene load_steps=13 format=3 uid="uid://geowrsurjvqo"]
 
 [ext_resource type="Script" uid="uid://yjm5q2rxx15j" path="res://scripts/menu/settings_pages.gd" id="1_iuawr"]
 [ext_resource type="Texture2D" uid="uid://b5g32aw86klf1" path="res://assets/menu_assets/MENU proto.png" id="1_ujhbt"]
 [ext_resource type="FontFile" uid="uid://dri86n5u6wvhn" path="res://font/abibas/Abibas.ttf" id="3_tlijc"]
 [ext_resource type="Script" uid="uid://dep000km3rj72" path="res://scripts/menu/button_settings_font.gd" id="4_ujhbt"]
+[ext_resource type="Script" uid="uid://cjcmjml2mkhsn" path="res://scripts/menu/color_rect.gd" id="5_t01jc"]
+[ext_resource type="Script" uid="uid://coudpqt8ipw41" path="res://scripts/menu/resolution_button.gd" id="6_tlijc"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_m7784"]
 
@@ -136,6 +138,7 @@ icon_alignment = 1
 script = ExtResource("1_iuawr")
 
 [node name="PageSubtitle" type="Control" parent="MainContent"]
+visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_top = 211.0
@@ -172,6 +175,19 @@ theme_override_fonts/font = ExtResource("3_tlijc")
 theme_override_font_sizes/font_size = 30
 text = "Size"
 
+[node name="HSlider" type="HSlider" parent="MainContent/PageSubtitle/Size"]
+layout_mode = 0
+offset_left = 71.0
+offset_top = 7.0
+offset_right = 221.0
+offset_bottom = 23.0
+step = 25.0
+value = 50.0
+rounded = true
+tick_count = 5
+ticks_on_borders = true
+ticks_position = 3
+
 [node name="Font" type="Label" parent="MainContent/PageSubtitle"]
 layout_mode = 0
 offset_left = 56.0
@@ -202,6 +218,14 @@ theme_override_fonts/font = ExtResource("3_tlijc")
 theme_override_font_sizes/font_size = 30
 text = "Text Color"
 
+[node name="ColorRect" type="ColorRect" parent="MainContent/PageSubtitle/TextColor"]
+layout_mode = 0
+offset_left = 139.0
+offset_top = 5.0
+offset_right = 159.0
+offset_bottom = 25.0
+script = ExtResource("5_t01jc")
+
 [node name="BgColor" type="Label" parent="MainContent/PageSubtitle"]
 layout_mode = 0
 offset_left = 56.0
@@ -211,6 +235,14 @@ offset_bottom = 194.0
 theme_override_fonts/font = ExtResource("3_tlijc")
 theme_override_font_sizes/font_size = 30
 text = "Background Color"
+
+[node name="ColorRect" type="ColorRect" parent="MainContent/PageSubtitle/BgColor"]
+layout_mode = 0
+offset_left = 228.0
+offset_top = 5.0
+offset_right = 248.0
+offset_bottom = 25.0
+script = ExtResource("5_t01jc")
 
 [node name="Langage" type="Label" parent="MainContent/PageSubtitle"]
 layout_mode = 0
@@ -273,14 +305,249 @@ offset_top = 215.0
 offset_right = 1152.0
 offset_bottom = 215.0
 
+[node name="Contrast" type="Label" parent="MainContent/PageVideo"]
+layout_mode = 0
+offset_left = 56.0
+offset_top = 18.0
+offset_right = 204.0
+offset_bottom = 53.0
+theme_override_fonts/font = ExtResource("3_tlijc")
+theme_override_font_sizes/font_size = 30
+text = "Contrast"
+
+[node name="HSlider" type="HSlider" parent="MainContent/PageVideo/Contrast"]
+layout_mode = 0
+offset_left = 126.0
+offset_top = 7.0
+offset_right = 276.0
+offset_bottom = 23.0
+step = 25.0
+value = 50.0
+rounded = true
+tick_count = 5
+ticks_on_borders = true
+ticks_position = 3
+
+[node name="Brightness" type="Label" parent="MainContent/PageVideo"]
+layout_mode = 0
+offset_left = 56.0
+offset_top = 53.0
+offset_right = 204.0
+offset_bottom = 88.0
+theme_override_fonts/font = ExtResource("3_tlijc")
+theme_override_font_sizes/font_size = 30
+text = "Brightness"
+
+[node name="HSlider" type="HSlider" parent="MainContent/PageVideo/Brightness"]
+layout_mode = 0
+offset_left = 155.0
+offset_top = 7.0
+offset_right = 305.0
+offset_bottom = 23.0
+step = 25.0
+value = 50.0
+rounded = true
+tick_count = 5
+ticks_on_borders = true
+ticks_position = 3
+
+[node name="Animations" type="Label" parent="MainContent/PageVideo"]
+layout_mode = 0
+offset_left = 56.0
+offset_top = 88.0
+offset_right = 204.0
+offset_bottom = 123.0
+theme_override_fonts/font = ExtResource("3_tlijc")
+theme_override_font_sizes/font_size = 30
+text = "Animations"
+
+[node name="CheckBox" type="CheckBox" parent="MainContent/PageVideo/Animations"]
+layout_mode = 0
+offset_left = 156.0
+offset_top = 3.0
+offset_right = 180.0
+offset_bottom = 27.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_ujhbt")
+theme_override_styles/hover = SubResource("StyleBoxFlat_t01jc")
+theme_override_colors/checkbox_checked_color = Color(0.4539004, 0, 0.04259321, 1)
+theme_override_colors/checkbox_unchecked_color = Color(0, 0, 0, 1)
+
+[node name="Resolution" type="Label" parent="MainContent/PageVideo"]
+layout_mode = 0
+offset_left = 56.0
+offset_top = 123.0
+offset_right = 204.0
+offset_bottom = 158.0
+theme_override_fonts/font = ExtResource("3_tlijc")
+theme_override_font_sizes/font_size = 30
+text = "Resolution"
+
+[node name="OptionButton" type="OptionButton" parent="MainContent/PageVideo/Resolution"]
+custom_minimum_size = Vector2(130, 0)
+layout_mode = 0
+offset_left = 151.0
+offset_top = 2.0
+offset_right = 281.0
+offset_bottom = 30.0
+theme_override_fonts/font = ExtResource("3_tlijc")
+theme_override_font_sizes/font_size = 20
+selected = 0
+item_count = 2
+popup/item_0/text = "1920 x 1080"
+popup/item_0/id = 0
+popup/item_1/text = " 1280 x 720"
+popup/item_1/id = 1
+script = ExtResource("6_tlijc")
+
+[node name="Texture" type="Label" parent="MainContent/PageVideo"]
+layout_mode = 0
+offset_left = 56.0
+offset_top = 158.0
+offset_right = 204.0
+offset_bottom = 193.0
+theme_override_fonts/font = ExtResource("3_tlijc")
+theme_override_font_sizes/font_size = 30
+text = "Texture"
+
+[node name="OptionButton" type="OptionButton" parent="MainContent/PageVideo/Texture"]
+custom_minimum_size = Vector2(130, 0)
+layout_mode = 0
+offset_left = 110.0
+offset_top = 1.0
+offset_right = 240.0
+offset_bottom = 29.0
+theme_override_fonts/font = ExtResource("3_tlijc")
+theme_override_font_sizes/font_size = 20
+selected = 0
+item_count = 2
+popup/item_0/text = "Quality"
+popup/item_0/id = 0
+popup/item_1/text = "Performance"
+popup/item_1/id = 1
+
 [node name="PageVisual" type="Control" parent="MainContent"]
+visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_top = 219.0
 offset_right = 1152.0
 offset_bottom = 219.0
 
+[node name="Interface Size" type="Label" parent="MainContent/PageVisual"]
+layout_mode = 0
+offset_left = 56.0
+offset_top = 22.0
+offset_right = 204.0
+offset_bottom = 57.0
+theme_override_fonts/font = ExtResource("3_tlijc")
+theme_override_font_sizes/font_size = 30
+text = "Interface Size"
+
+[node name="HSlider" type="HSlider" parent="MainContent/PageVisual/Interface Size"]
+layout_mode = 0
+offset_left = 190.0
+offset_top = 6.0
+offset_right = 340.0
+offset_bottom = 22.0
+step = 25.0
+value = 50.0
+rounded = true
+tick_count = 5
+ticks_on_borders = true
+ticks_position = 3
+
+[node name="Blurry" type="Label" parent="MainContent/PageVisual"]
+layout_mode = 0
+offset_left = 56.0
+offset_top = 57.0
+offset_right = 204.0
+offset_bottom = 92.0
+theme_override_fonts/font = ExtResource("3_tlijc")
+theme_override_font_sizes/font_size = 30
+text = "Blurry"
+
+[node name="CheckBox" type="CheckBox" parent="MainContent/PageVisual/Blurry"]
+layout_mode = 0
+offset_left = 94.0
+offset_top = 4.0
+offset_right = 118.0
+offset_bottom = 28.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_ujhbt")
+theme_override_styles/hover = SubResource("StyleBoxFlat_t01jc")
+theme_override_colors/checkbox_checked_color = Color(0.4539004, 0, 0.04259321, 1)
+theme_override_colors/checkbox_unchecked_color = Color(0, 0, 0, 1)
+
+[node name="Camera Shake" type="Label" parent="MainContent/PageVisual"]
+layout_mode = 0
+offset_left = 56.0
+offset_top = 92.0
+offset_right = 204.0
+offset_bottom = 127.0
+theme_override_fonts/font = ExtResource("3_tlijc")
+theme_override_font_sizes/font_size = 30
+text = "Camera Shake"
+
+[node name="CheckBox" type="CheckBox" parent="MainContent/PageVisual/Camera Shake"]
+layout_mode = 0
+offset_left = 188.0
+offset_top = 2.0
+offset_right = 212.0
+offset_bottom = 26.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_ujhbt")
+theme_override_styles/hover = SubResource("StyleBoxFlat_t01jc")
+theme_override_colors/checkbox_checked_color = Color(0.4539004, 0, 0.04259321, 1)
+theme_override_colors/checkbox_unchecked_color = Color(0, 0, 0, 1)
+
+[node name="Visual Indicators" type="Label" parent="MainContent/PageVisual"]
+layout_mode = 0
+offset_left = 56.0
+offset_top = 124.0
+offset_right = 204.0
+offset_bottom = 159.0
+theme_override_fonts/font = ExtResource("3_tlijc")
+theme_override_font_sizes/font_size = 30
+text = "Visual Indicators"
+
+[node name="CheckBox" type="CheckBox" parent="MainContent/PageVisual/Visual Indicators"]
+layout_mode = 0
+offset_left = 231.0
+offset_top = 3.0
+offset_right = 255.0
+offset_bottom = 27.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_ujhbt")
+theme_override_styles/hover = SubResource("StyleBoxFlat_t01jc")
+theme_override_colors/checkbox_checked_color = Color(0.4539004, 0, 0.04259321, 1)
+theme_override_colors/checkbox_unchecked_color = Color(0, 0, 0, 1)
+
+[node name="Color Blindness" type="Label" parent="MainContent/PageVisual"]
+layout_mode = 0
+offset_left = 56.0
+offset_top = 159.0
+offset_right = 204.0
+offset_bottom = 194.0
+theme_override_fonts/font = ExtResource("3_tlijc")
+theme_override_font_sizes/font_size = 30
+text = "Color Blindness"
+
+[node name="OptionButton" type="OptionButton" parent="MainContent/PageVisual/Color Blindness"]
+custom_minimum_size = Vector2(130, 0)
+layout_mode = 0
+offset_left = 209.0
+offset_right = 339.0
+offset_bottom = 28.0
+theme_override_fonts/font = ExtResource("3_tlijc")
+theme_override_font_sizes/font_size = 20
+selected = 0
+item_count = 3
+popup/item_0/text = "Deuteranopia"
+popup/item_0/id = 0
+popup/item_1/text = "Protanopia"
+popup/item_1/id = 1
+popup/item_2/text = "Tritanopia"
+popup/item_2/id = 2
+
 [node name="PageCommand" type="Control" parent="MainContent"]
+visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_top = 223.0
@@ -288,14 +555,108 @@ offset_right = 1152.0
 offset_bottom = 223.0
 
 [node name="PageAudio" type="Control" parent="MainContent"]
+visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_top = 227.0
 offset_right = 1152.0
 offset_bottom = 227.0
 
+[node name="Volume" type="Label" parent="MainContent/PageAudio"]
+layout_mode = 0
+offset_left = 56.0
+offset_top = 22.0
+offset_right = 204.0
+offset_bottom = 57.0
+theme_override_fonts/font = ExtResource("3_tlijc")
+theme_override_font_sizes/font_size = 30
+text = "Volume"
+
+[node name="HSlider" type="HSlider" parent="MainContent/PageAudio/Volume"]
+layout_mode = 0
+offset_left = 97.0
+offset_top = 7.0
+offset_right = 247.0
+offset_bottom = 23.0
+step = 25.0
+value = 50.0
+rounded = true
+tick_count = 5
+ticks_on_borders = true
+ticks_position = 3
+
+[node name="Music" type="Label" parent="MainContent/PageAudio"]
+layout_mode = 0
+offset_left = 56.0
+offset_top = 57.0
+offset_right = 204.0
+offset_bottom = 92.0
+theme_override_fonts/font = ExtResource("3_tlijc")
+theme_override_font_sizes/font_size = 30
+text = "Music"
+
+[node name="HSlider" type="HSlider" parent="MainContent/PageAudio/Music"]
+layout_mode = 0
+offset_left = 86.0
+offset_top = 7.0
+offset_right = 236.0
+offset_bottom = 23.0
+step = 25.0
+value = 50.0
+rounded = true
+tick_count = 5
+ticks_on_borders = true
+ticks_position = 3
+
+[node name="Voices" type="Label" parent="MainContent/PageAudio"]
+layout_mode = 0
+offset_left = 56.0
+offset_top = 92.0
+offset_right = 204.0
+offset_bottom = 127.0
+theme_override_fonts/font = ExtResource("3_tlijc")
+theme_override_font_sizes/font_size = 30
+text = "Voices"
+
+[node name="HSlider" type="HSlider" parent="MainContent/PageAudio/Voices"]
+layout_mode = 0
+offset_left = 92.0
+offset_top = 7.0
+offset_right = 242.0
+offset_bottom = 23.0
+step = 25.0
+value = 50.0
+rounded = true
+tick_count = 5
+ticks_on_borders = true
+ticks_position = 3
+
+[node name="Sound Effects" type="Label" parent="MainContent/PageAudio"]
+layout_mode = 0
+offset_left = 56.0
+offset_top = 124.0
+offset_right = 204.0
+offset_bottom = 159.0
+theme_override_fonts/font = ExtResource("3_tlijc")
+theme_override_font_sizes/font_size = 30
+text = "Sound Effects"
+
+[node name="HSlider" type="HSlider" parent="MainContent/PageAudio/Sound Effects"]
+layout_mode = 0
+offset_left = 179.0
+offset_top = 7.0
+offset_right = 329.0
+offset_bottom = 23.0
+step = 25.0
+value = 50.0
+rounded = true
+tick_count = 5
+ticks_on_borders = true
+ticks_position = 3
+
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/ButtonSubtitle" to="MainContent" method="_on_button_subtitle_pressed"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/ButtonVideo" to="MainContent" method="_on_button_video_pressed"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/ButtonVisual" to="MainContent" method="_on_button_visual_pressed"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/ButtonCommand" to="MainContent" method="_on_button_command_pressed"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/ButtonAudio" to="MainContent" method="_on_button_audio_pressed"]
+[connection signal="item_selected" from="MainContent/PageVideo/Resolution/OptionButton" to="MainContent/PageVideo/Resolution/OptionButton" method="_on_item_selected"]

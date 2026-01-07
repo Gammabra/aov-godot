@@ -239,16 +239,18 @@ public class GameManagerTest
         GD.Print("[TEST] Start HandlePlayerUnitMove_CellNotReachable_ReenablesInput");
 
         GameManager manager = AddNode(new GameManager());
-
+        TestConcreteMapSystem map = AddNode(new TestConcreteMapSystem());
+        TurnManager turnManager = AddNode(new TurnManager());
         BattleInputSystem inputSystem = AddNode(new BattleInputSystem());
-        manager.Set("_battleInputSystemContainer", inputSystem);
 
+        SetPrivateField(manager, "_battleInputSystemContainer", inputSystem);
+        SetPrivateField(manager, "_mapSystemContainer", map);
+        SetPrivateField(manager, "_turnManagerContainer", turnManager);
         SetPrivateField(
             manager,
             "_currentUnitPossibleMoves",
             new List<(int, int, int)>()
         );
-
         CallPrivateMethod(
             manager,
             "HandlePlayerUnitMove",
@@ -266,16 +268,16 @@ public class GameManagerTest
         GameManager manager = AddNode(new GameManager());
         BattleInputSystem inputSystem = AddNode(new BattleInputSystem());
         TestConcreteMapSystem mapSystem = AddNode(new TestConcreteMapSystem());
+        TurnManager turnManager = AddNode(new TurnManager());
 
         SetPrivateField(manager, "_battleInputSystemContainer", inputSystem);
         SetPrivateField(manager, "_mapSystemContainer", mapSystem);
-
+        SetPrivateField(manager, "_turnManagerContainer", turnManager);
         SetPrivateField(
             manager,
             "_currentUnitPossibleMoves",
             new List<(int, int, int)> { (1, 0, 1) }
         );
-
         CallPrivateMethod(
             manager,
             "HandlePlayerUnitMove",
@@ -293,22 +295,21 @@ public class GameManagerTest
         GameManager manager = AddNode(new GameManager());
         BattleInputSystem inputSystem = AddNode(new BattleInputSystem());
         TestConcreteMapSystem mapSystem = AddNode(new TestConcreteMapSystem());
+        TurnManager turnManager = AddNode(new TurnManager());
 
         SetPrivateField(manager, "_battleInputSystemContainer", inputSystem);
         SetPrivateField(manager, "_mapSystemContainer", mapSystem);
-
+        SetPrivateField(manager, "_turnManagerContainer", turnManager);
         SetPrivateField(
             manager,
             "_currentUnitReachableCellsForCurrentSelectedSkill",
             new List<(int, int, int)>()
         );
-
         CallPrivateMethod(
             manager,
             "HandlePlayerSelectTarget",
             new Vector3I(2, 0, 2)
         );
-
         AssertThat(GetPrivateField<bool>(inputSystem, "_inputEnabled")).IsTrue();
     }
 
@@ -343,6 +344,52 @@ public class GameManagerTest
     }
 
     [TestCase]
+    public void ActivatePlayerUnit()
+    {
+        GD.Print("[TEST] Start ActivatePlayerUnit");
+
+        GameManager manager = AddNode(new GameManager());
+        Node playerContainer = AddNode(new Node());
+        Node enemyContainer = AddNode(new Node());
+        TestConcreteUnitSystem playerUnit = CreateUnit("Player", speed: 2);
+        TestConcreteUnitSystem enemyUnit = CreateUnit("Enemy", 1);
+        BattleInputSystem inputSystem = AddNode(new BattleInputSystem());
+        TestConcreteMapSystem mapSystem = AddNode(new TestConcreteMapSystem());
+        TurnManager turnManager = new();
+
+        playerContainer.AddChild(playerUnit);
+        enemyContainer.AddChild(enemyUnit);
+        manager.AddChild(turnManager);
+
+        SetPrivateField(manager, "_playerUnitsContainer", playerContainer);
+        SetPrivateField(manager, "_enemyUnitsContainer", enemyContainer);
+        SetPrivateField(manager, "_battleInputSystemContainer", inputSystem);
+        SetPrivateField(manager, "_turnManagerContainer", turnManager);
+        SetPrivateField(manager, "_mapSystemContainer", mapSystem);
+
+        mapSystem.AddWalkableCell(0, 0, 0);
+        mapSystem.AddWalkableCell(1, 0, 0);
+        mapSystem.AddWalkableCell(0, 0, 1);
+        mapSystem.AddWalkableCell(1, 0, 1);
+        mapSystem.AddWalkableCell(-1, 0, 0);
+        mapSystem.AddWalkableCell(0, 0, -1);
+        mapSystem.AddWalkableCell(-1, 0, -1);
+        mapSystem.AddUnit(playerUnit);
+        SetPrivateField(manager, "_isPlayerTurn", false);
+        inputSystem.SetInputEnabled(false);
+
+        CallPrivateMethod(manager, "LoadUnits");
+        turnManager.InitializeTurnOrder(
+            GetPrivateField<List<UnitSystem>>(manager, "_playerUnits"),
+            GetPrivateField<List<UnitSystem>>(manager, "_enemyUnits")
+        );
+        CallPrivateMethod(manager, "ActivatePlayerUnit");
+
+        AssertThat(GetPrivateField<bool>(manager, "_isPlayerTurn")).IsTrue();
+        AssertThat(GetPrivateField<bool>(inputSystem, "_inputEnabled")).IsTrue();
+    }
+
+    [TestCase]
     public void DeactivatePlayerUnit_And_Win()
     {
         GD.Print("[TEST] Start DeactivatePlayerUnit");
@@ -354,10 +401,11 @@ public class GameManagerTest
         TestConcreteUnitSystem enemyUnit = CreateUnit("Enemy", 0, 1);
         BattleInputSystem inputSystem = AddNode(new BattleInputSystem());
         TestConcreteMapSystem mapSystem = AddNode(new TestConcreteMapSystem());
-        TurnManager turnManager = AddNode(new TurnManager());
+        TurnManager turnManager = new();
 
         playerContainer.AddChild(playerUnit);
         enemyContainer.AddChild(enemyUnit);
+        manager.AddChild(turnManager);
 
         SetPrivateField(manager, "_playerUnitsContainer", playerContainer);
         SetPrivateField(manager, "_enemyUnitsContainer", enemyContainer);

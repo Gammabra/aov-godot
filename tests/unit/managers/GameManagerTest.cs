@@ -36,9 +36,9 @@ public class GameManagerTest
             .SetValue(null, null);
     }
 
-    private TestConcreteUnitSystem CreateUnit(string name, float hp = 100)
+    private TestConcreteUnitSystem CreateUnit(string name, float hp = 100, int speed = 4)
     {
-        TestConcreteUnitSystem unit = new(hp: hp);
+        TestConcreteUnitSystem unit = new(hp: hp, baseSpeed: speed);
         unit.Name = name;
         return unit;
     }
@@ -310,6 +310,89 @@ public class GameManagerTest
         );
 
         AssertThat(GetPrivateField<bool>(inputSystem, "_inputEnabled")).IsTrue();
+    }
+
+    [TestCase]
+    public void MoveUnit_MapSystemNull_ReenablesInput()
+    {
+        GameManager manager = AddNode(new GameManager());
+        BattleInputSystem inputSystem = AddNode(new BattleInputSystem());
+
+        SetPrivateField(manager, "_battleInputSystemContainer", inputSystem);
+        SetPrivateField(manager, "_isPlayerTurn", true);
+
+        manager.MoveUnit(new Vector3I(1, 0, 1));
+
+        AssertThat(GetPrivateField<bool>(inputSystem, "_inputEnabled")).IsTrue();
+    }
+
+    [TestCase]
+    public void MoveUnit_AlreadyMoved_DoesNothing()
+    {
+        GameManager manager = AddNode(new GameManager());
+        BattleInputSystem inputSystem = AddNode(new BattleInputSystem());
+
+        SetPrivateField(manager, "_battleInputSystemContainer", inputSystem);
+        SetPrivateField(manager, "_unitMoved", true);
+        SetPrivateField(manager, "_isPlayerTurn", true);
+
+        manager.MoveUnit(new Vector3I(1, 0, 1));
+
+        AssertThat(GetPrivateField<bool>(manager, "_unitMoved")).IsTrue();
+        AssertThat(GetPrivateField<bool>(inputSystem, "_inputEnabled")).IsTrue();
+    }
+
+    [TestCase]
+    public void DeactivatePlayerUnit_And_Win()
+    {
+        GD.Print("[TEST] Start DeactivatePlayerUnit");
+
+        GameManager manager = AddNode(new GameManager());
+        Node playerContainer = AddNode(new Node());
+        Node enemyContainer = AddNode(new Node());
+        TestConcreteUnitSystem playerUnit = CreateUnit("Player", speed: 2);
+        TestConcreteUnitSystem enemyUnit = CreateUnit("Enemy", 0, 1);
+        BattleInputSystem inputSystem = AddNode(new BattleInputSystem());
+        TestConcreteMapSystem mapSystem = AddNode(new TestConcreteMapSystem());
+        TurnManager turnManager = AddNode(new TurnManager());
+
+        playerContainer.AddChild(playerUnit);
+        enemyContainer.AddChild(enemyUnit);
+
+        SetPrivateField(manager, "_playerUnitsContainer", playerContainer);
+        SetPrivateField(manager, "_enemyUnitsContainer", enemyContainer);
+        SetPrivateField(manager, "_battleInputSystemContainer", inputSystem);
+        SetPrivateField(manager, "_turnManagerContainer", turnManager);
+        SetPrivateField(manager, "_mapSystemContainer", mapSystem);
+
+        SetPrivateField(manager, "_clickOnMapContext", ClickOnMapContext.SelectUnitTarget);
+        SetPrivateField(manager, "_isPlayerTurn", true);
+        SetPrivateField(manager, "_selectedSkill", new TestConcreteSkillSystem());
+        SetPrivateField(manager, "_unitMoved", true);
+        List<(int, int, int)> tupleList = [];
+        tupleList.Add((1, 1, 1));
+        SetPrivateField(manager, "_currentUnitPossibleMoves", tupleList);
+        SetPrivateField(manager, "_currentUnitReachableCellsForCurrentSelectedSkill", tupleList);
+        inputSystem.SetInputEnabled(true);
+
+        CallPrivateMethod(manager, "LoadUnits");
+        CallPrivateMethod(manager, "DeactivatePlayerUnit");
+
+        AssertThat(GetPrivateField<ClickOnMapContext>(manager, "_clickOnMapContext"))
+            .IsEqual(ClickOnMapContext.MoveUnit);
+        AssertThat(GetPrivateField<bool>(manager, "_isPlayerTurn")).IsFalse();
+        AssertThat(GetPrivateField<SkillSystem?>(manager, "_selectedSkill")).IsNull();
+        AssertThat(GetPrivateField<bool>(manager, "_unitMoved")).IsFalse();
+        AssertThat(GetPrivateField<List<(int, int, int)>>(manager, "_currentUnitPossibleMoves").Count).IsEqual(0);
+        AssertThat(
+                GetPrivateField<List<(int, int, int)>>(manager, "_currentUnitReachableCellsForCurrentSelectedSkill")
+                    .Count
+            )
+            .IsEqual(0);
+        AssertThat(GetPrivateField<bool>(inputSystem, "_inputEnabled")).IsFalse();
+        AssertThat(playerUnit.IsAlive).IsTrue();
+        AssertThat(enemyUnit.IsAlive).IsFalse();
+        AssertThat(GetPrivateField<GameOutcome>(manager, "_gameOutcome")).IsEqual(GameOutcome.Victory);
     }
 
     #endregion

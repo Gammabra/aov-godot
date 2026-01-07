@@ -268,8 +268,9 @@ public class GameManagerTest
         GameManager manager = AddNode(new GameManager());
         BattleInputSystem inputSystem = AddNode(new BattleInputSystem());
         TestConcreteMapSystem mapSystem = AddNode(new TestConcreteMapSystem());
-        TurnManager turnManager = AddNode(new TurnManager());
+        TurnManager turnManager = new();
 
+        turnManager.AddChild(turnManager);
         SetPrivateField(manager, "_battleInputSystemContainer", inputSystem);
         SetPrivateField(manager, "_mapSystemContainer", mapSystem);
         SetPrivateField(manager, "_turnManagerContainer", turnManager);
@@ -295,8 +296,9 @@ public class GameManagerTest
         GameManager manager = AddNode(new GameManager());
         BattleInputSystem inputSystem = AddNode(new BattleInputSystem());
         TestConcreteMapSystem mapSystem = AddNode(new TestConcreteMapSystem());
-        TurnManager turnManager = AddNode(new TurnManager());
+        TurnManager turnManager = new();
 
+        turnManager.AddChild(turnManager);
         SetPrivateField(manager, "_battleInputSystemContainer", inputSystem);
         SetPrivateField(manager, "_mapSystemContainer", mapSystem);
         SetPrivateField(manager, "_turnManagerContainer", turnManager);
@@ -441,6 +443,113 @@ public class GameManagerTest
         AssertThat(playerUnit.IsAlive).IsTrue();
         AssertThat(enemyUnit.IsAlive).IsFalse();
         AssertThat(GetPrivateField<GameOutcome>(manager, "_gameOutcome")).IsEqual(GameOutcome.Victory);
+    }
+
+    [TestCase]
+    public void PlayerSelectedMove()
+    {
+        GD.Print("[TEST] Start DeactivatePlayerUnit");
+
+        GameManager manager = AddNode(new GameManager());
+
+        SetPrivateField(manager, "_clickOnMapContext", ClickOnMapContext.SelectUnitTarget);
+
+        CallPrivateMethod(manager, "PlayerSelectedMove");
+
+        AssertThat(GetPrivateField<ClickOnMapContext>(manager, "_clickOnMapContext"))
+            .IsEqual(ClickOnMapContext.MoveUnit);
+    }
+
+    [TestCase]
+    public void PlayerSelectedSkill_InvalidSkillId_DoesNothing()
+    {
+        GameManager manager = AddNode(new GameManager());
+        TurnManager turnManager = new();
+        TestConcreteMapSystem mapSystem = AddNode(new TestConcreteMapSystem());
+        TestConcreteUnitSystem unit = CreateUnit("Player");
+
+        turnManager.AddChild(turnManager);
+        unit.ActiveSkills.Clear();
+
+        SetPrivateField(manager, "_turnManagerContainer", turnManager);
+        SetPrivateField(manager, "_mapSystemContainer", mapSystem);
+
+        turnManager.InitializeTurnOrder(new List<UnitSystem> { unit }, new List<UnitSystem>());
+
+        CallPrivateMethod(manager, "PlayerSelectedSkill", 0);
+
+        AssertThat(GetPrivateField<SkillSystem?>(manager, "_selectedSkill")).IsNull();
+    }
+
+    [TestCase]
+    public void PlayerSelectedSkill_SkillOnCooldown_IsRejected()
+    {
+        GameManager manager = AddNode(new GameManager());
+        TurnManager turnManager = new();
+        TestConcreteMapSystem mapSystem = AddNode(new TestConcreteMapSystem());
+        TestConcreteSkillSystem skill = new(cooldown: 1);
+
+        turnManager.AddChild(turnManager);
+        skill.SetCooldown();
+
+        TestConcreteUnitSystem unit = CreateUnit("Player");
+        unit.ActiveSkills.Add(skill);
+
+        SetPrivateField(manager, "_turnManagerContainer", turnManager);
+        SetPrivateField(manager, "_mapSystemContainer", mapSystem);
+
+        turnManager.InitializeTurnOrder(new List<UnitSystem> { unit }, new List<UnitSystem>());
+
+        CallPrivateMethod(manager, "PlayerSelectedSkill", 0);
+
+        AssertThat(GetPrivateField<SkillSystem?>(manager, "_selectedSkill")).IsNull();
+    }
+
+    [TestCase]
+    public void EnemyTurnEnded_ResetsUnitMovedAndChecksTurnEnd()
+    {
+        GameManager manager = AddNode(new GameManager());
+        TurnManager turnManager = new();
+        TestConcreteUnitSystem enemy = CreateUnit("Enemy");
+
+        turnManager.AddChild(turnManager);
+        SetPrivateField(manager, "_turnManagerContainer", turnManager);
+        SetPrivateField(manager, "_unitMoved", true);
+
+        turnManager.InitializeTurnOrder(
+            new List<UnitSystem>(),
+            new List<UnitSystem> { enemy }
+        );
+
+        CallPrivateMethod(manager, "EnemyTurnEnded");
+
+        AssertThat(GetPrivateField<bool>(manager, "_unitMoved")).IsFalse();
+    }
+
+    [TestCase]
+    public void CurrentTurnEnded_ReducesAllCooldowns()
+    {
+        GameManager manager = AddNode(new GameManager());
+
+        TestConcreteSkillSystem skill1 = new(cooldown: 2);
+        skill1.SetCooldown();
+
+        TestConcreteSkillSystem skill2 = new(cooldown: 1);
+        skill2.SetCooldown();
+
+        TestConcreteUnitSystem player = CreateUnit("Player");
+        player.ActiveSkills.Add(skill1);
+
+        TestConcreteUnitSystem enemy = CreateUnit("Enemy");
+        enemy.ActiveSkills.Add(skill2);
+
+        SetPrivateField(manager, "_playerUnits", new List<UnitSystem> { player });
+        SetPrivateField(manager, "_enemyUnits", new List<UnitSystem> { enemy });
+
+        CallPrivateMethod(manager, "CurrentTurnEnded");
+
+        AssertThat(skill1.Cooldown).IsEqual(1);
+        AssertThat(skill2.Cooldown).IsEqual(0);
     }
 
     #endregion

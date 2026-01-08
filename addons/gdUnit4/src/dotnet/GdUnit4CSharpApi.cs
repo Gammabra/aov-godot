@@ -4,6 +4,8 @@
 namespace gdUnit4.addons.gdUnit4.src.dotnet;
 #pragma warning restore IDE1006
 
+#nullable enable
+
 #if GDUNIT4NET_API_V5
 using System;
 using System.Collections.Generic;

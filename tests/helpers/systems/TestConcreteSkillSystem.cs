@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using AshesOfVelsingrad.Systems;
+using Godot;
 
 namespace UnitTests;
 
@@ -33,7 +34,7 @@ public class TestConcreteSkillSystem : SkillSystem
         EffectType = effect;
         TargetType = target;
 
-        AreaEffect = new List<(int, int, int)>();
+        AreaEffect = new List<Vector3I>();
     }
 
     public override void Use(List<UnitSystem> targets, MapSystem? map)

@@ -16,10 +16,10 @@ public partial class GameManager : BaseManager
     private bool _isPlayerTurn;
     private bool _unitMoved;
     private ClickOnMapContext _clickOnMapContext = ClickOnMapContext.MoveUnit;
-    private readonly List<UnitSystem> _playerUnits = [];
-    private readonly List<UnitSystem> _enemyUnits = [];
-    private List<(int, int, int)> _currentUnitPossibleMoves = [];
-    private List<(int, int, int)> _currentUnitReachableCellsForCurrentSelectedSkill = [];
+    private readonly List<UnitSystem> _playerUnits = new List<UnitSystem>();
+    private readonly List<UnitSystem> _enemyUnits = new List<UnitSystem>();
+    private List<Vector3I> _currentUnitPossibleMoves = new List<Vector3I>();
+    private List<Vector3I> _currentUnitReachableCellsForCurrentSelectedSkill = new List<Vector3I>();
     private SkillSystem? _selectedSkill;
     private UnitSystem? _selectedUnitForPlayedSkill;
     private readonly StatusEffectSystem _statusEffectSystem = new();
@@ -225,9 +225,10 @@ public partial class GameManager : BaseManager
         GD.Print($"Selected Skill {skillId}");
         _clickOnMapContext = ClickOnMapContext.SelectUnitTarget;
         _selectedSkill = _turnManagerContainer.GetCurrentUnit().ActiveSkills[skillId];
-        _currentUnitReachableCellsForCurrentSelectedSkill = _turnManagerContainer
+        var reachableTuples = _turnManagerContainer
             .GetCurrentUnit()
             .GetReachableCellsForSkills(_mapSystemContainer, _selectedSkill);
+        _currentUnitReachableCellsForCurrentSelectedSkill = reachableTuples.ConvertAll(t => new Vector3I(t.Item1, t.Item2, t.Item3));
         GD.Print(
             "Current Unit Reachable cells: " + string.Join(", ", _currentUnitReachableCellsForCurrentSelectedSkill)
         );
@@ -400,11 +401,11 @@ public partial class GameManager : BaseManager
 	/// Uses a skill from a source unit on a target unit.
 	/// This can be called by AI behaviors through BattleState.
 	/// </summary>
-	public void UseSkill(UnitSystem sourceUnit, UnitSystem targetUnit, SkillSystem skill)
-	{
-		List<UnitSystem> allyUnits = [];
-		List<UnitSystem> enemyUnits = [];
-		List<UnitSystem> targetUnits = [];
+    public void UseSkill(UnitSystem sourceUnit, UnitSystem targetUnit, SkillSystem skill)
+    {
+        List<UnitSystem> allyUnits = new List<UnitSystem>();
+        List<UnitSystem> enemyUnits = new List<UnitSystem>();
+        List<UnitSystem> targetUnits = new List<UnitSystem>();
 
         if (_turnManagerContainer == null)
         {

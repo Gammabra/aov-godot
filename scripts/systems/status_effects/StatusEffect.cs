@@ -19,12 +19,12 @@ public abstract class StatusEffect<TTarget>
     /// <summary>
     ///     The display name of the effect.
     /// </summary>
-    public string Name { get; protected set; }
+    public string Name { get; protected set; } = string.Empty;
 
     /// <summary>
     ///     A description of what this effect does.
     /// </summary>
-    public string Description { get; protected set; }
+    public string Description { get; protected set; } = string.Empty;
 
     /// <summary>
     ///     The number of turns the effect will last.

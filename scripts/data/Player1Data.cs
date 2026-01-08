@@ -89,7 +89,6 @@ public sealed partial class Player1Data : UnitSystem
 		Intelligence = 200;
 		ManaPoint = 200;
 		IsAlive = true;
-		HasPlayed = false;
 		PossibleMovesRange = 2;
 		Curse = 0;
         ActiveSkills.Add(new Skill1());

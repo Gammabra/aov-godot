@@ -1,11 +1,10 @@
-[gd_scene load_steps=13 format=3 uid="uid://geowrsurjvqo"]
+[gd_scene load_steps=12 format=3 uid="uid://geowrsurjvqo"]
 
 [ext_resource type="Script" uid="uid://yjm5q2rxx15j" path="res://scripts/menu/settings_pages.gd" id="1_iuawr"]
 [ext_resource type="Texture2D" uid="uid://b5g32aw86klf1" path="res://assets/menu_assets/MENU proto.png" id="1_ujhbt"]
 [ext_resource type="FontFile" uid="uid://dri86n5u6wvhn" path="res://font/abibas/Abibas.ttf" id="3_tlijc"]
 [ext_resource type="Script" uid="uid://dep000km3rj72" path="res://scripts/menu/button_settings_font.gd" id="4_ujhbt"]
 [ext_resource type="Script" uid="uid://cjcmjml2mkhsn" path="res://scripts/menu/color_rect.gd" id="5_t01jc"]
-[ext_resource type="Script" uid="uid://coudpqt8ipw41" path="res://scripts/menu/resolution_button.gd" id="6_tlijc"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_m7784"]
 
@@ -147,9 +146,9 @@ offset_bottom = 211.0
 
 [node name="Subtitles" type="Label" parent="MainContent/PageSubtitle"]
 layout_mode = 0
-offset_left = 56.0
+offset_left = 453.0
 offset_top = 22.0
-offset_right = 204.0
+offset_right = 601.0
 offset_bottom = 57.0
 theme_override_fonts/font = ExtResource("3_tlijc")
 theme_override_font_sizes/font_size = 30
@@ -157,8 +156,8 @@ text = "Subtitles"
 
 [node name="CheckBox" type="CheckBox" parent="MainContent/PageSubtitle/Subtitles"]
 layout_mode = 0
-offset_left = 132.0
-offset_right = 156.0
+offset_left = 136.0
+offset_right = 160.0
 offset_bottom = 24.0
 theme_override_styles/normal = SubResource("StyleBoxFlat_ujhbt")
 theme_override_styles/hover = SubResource("StyleBoxFlat_t01jc")
@@ -167,9 +166,9 @@ theme_override_colors/checkbox_unchecked_color = Color(0, 0, 0, 1)
 
 [node name="Size" type="Label" parent="MainContent/PageSubtitle"]
 layout_mode = 0
-offset_left = 56.0
+offset_left = 512.0
 offset_top = 57.0
-offset_right = 204.0
+offset_right = 660.0
 offset_bottom = 92.0
 theme_override_fonts/font = ExtResource("3_tlijc")
 theme_override_font_sizes/font_size = 30
@@ -177,9 +176,9 @@ text = "Size"
 
 [node name="HSlider" type="HSlider" parent="MainContent/PageSubtitle/Size"]
 layout_mode = 0
-offset_left = 71.0
+offset_left = 76.0
 offset_top = 7.0
-offset_right = 221.0
+offset_right = 226.0
 offset_bottom = 23.0
 step = 25.0
 value = 50.0
@@ -190,10 +189,10 @@ ticks_position = 3
 
 [node name="Font" type="Label" parent="MainContent/PageSubtitle"]
 layout_mode = 0
-offset_left = 56.0
-offset_top = 92.0
-offset_right = 204.0
-offset_bottom = 127.0
+offset_left = 512.0
+offset_top = 90.0
+offset_right = 660.0
+offset_bottom = 125.0
 theme_override_fonts/font = ExtResource("3_tlijc")
 theme_override_font_sizes/font_size = 30
 text = "Font"
@@ -201,8 +200,8 @@ text = "Font"
 [node name="OptionButton" type="OptionButton" parent="MainContent/PageSubtitle/Font"]
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 0
-offset_left = 71.0
-offset_right = 201.0
+offset_left = 78.0
+offset_right = 228.0
 offset_bottom = 28.0
 theme_override_fonts/font = ExtResource("3_tlijc")
 theme_override_font_sizes/font_size = 20
@@ -210,9 +209,9 @@ script = ExtResource("4_ujhbt")
 
 [node name="TextColor" type="Label" parent="MainContent/PageSubtitle"]
 layout_mode = 0
-offset_left = 56.0
+offset_left = 447.0
 offset_top = 124.0
-offset_right = 204.0
+offset_right = 595.0
 offset_bottom = 159.0
 theme_override_fonts/font = ExtResource("3_tlijc")
 theme_override_font_sizes/font_size = 30
@@ -220,17 +219,17 @@ text = "Text Color"
 
 [node name="ColorRect" type="ColorRect" parent="MainContent/PageSubtitle/TextColor"]
 layout_mode = 0
-offset_left = 139.0
+offset_left = 144.0
 offset_top = 5.0
-offset_right = 159.0
+offset_right = 164.0
 offset_bottom = 25.0
 script = ExtResource("5_t01jc")
 
 [node name="BgColor" type="Label" parent="MainContent/PageSubtitle"]
 layout_mode = 0
-offset_left = 56.0
+offset_left = 361.0
 offset_top = 159.0
-offset_right = 204.0
+offset_right = 574.0
 offset_bottom = 194.0
 theme_override_fonts/font = ExtResource("3_tlijc")
 theme_override_font_sizes/font_size = 30
@@ -238,17 +237,17 @@ text = "Background Color"
 
 [node name="ColorRect" type="ColorRect" parent="MainContent/PageSubtitle/BgColor"]
 layout_mode = 0
-offset_left = 228.0
+offset_left = 230.0
 offset_top = 5.0
-offset_right = 248.0
+offset_right = 250.0
 offset_bottom = 25.0
 script = ExtResource("5_t01jc")
 
 [node name="Langage" type="Label" parent="MainContent/PageSubtitle"]
 layout_mode = 0
-offset_left = 56.0
+offset_left = 470.0
 offset_top = 194.0
-offset_right = 204.0
+offset_right = 618.0
 offset_bottom = 229.0
 theme_override_fonts/font = ExtResource("3_tlijc")
 theme_override_font_sizes/font_size = 30
@@ -257,9 +256,9 @@ text = "Langage"
 [node name="OptionButton" type="OptionButton" parent="MainContent/PageSubtitle/Langage"]
 custom_minimum_size = Vector2(130, 0)
 layout_mode = 0
-offset_left = 125.0
+offset_left = 120.0
 offset_top = 2.0
-offset_right = 219.0
+offset_right = 250.0
 offset_bottom = 30.0
 theme_override_fonts/font = ExtResource("3_tlijc")
 theme_override_font_sizes/font_size = 20
@@ -272,9 +271,9 @@ popup/item_1/id = 1
 
 [node name="DisplayTime" type="Label" parent="MainContent/PageSubtitle"]
 layout_mode = 0
-offset_left = 56.0
+offset_left = 414.0
 offset_top = 229.0
-offset_right = 204.0
+offset_right = 573.0
 offset_bottom = 264.0
 theme_override_fonts/font = ExtResource("3_tlijc")
 theme_override_font_sizes/font_size = 30
@@ -299,6 +298,7 @@ popup/item_2/text = "8"
 popup/item_2/id = 2
 
 [node name="PageVideo" type="Control" parent="MainContent"]
+visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_top = 215.0
@@ -307,9 +307,9 @@ offset_bottom = 215.0
 
 [node name="Contrast" type="Label" parent="MainContent/PageVideo"]
 layout_mode = 0
-offset_left = 56.0
+offset_left = 462.0
 offset_top = 18.0
-offset_right = 204.0
+offset_right = 610.0
 offset_bottom = 53.0
 theme_override_fonts/font = ExtResource("3_tlijc")
 theme_override_font_sizes/font_size = 30
@@ -330,9 +330,9 @@ ticks_position = 3
 
 [node name="Brightness" type="Label" parent="MainContent/PageVideo"]
 layout_mode = 0
-offset_left = 56.0
+offset_left = 434.0
 offset_top = 53.0
-offset_right = 204.0
+offset_right = 582.0
 offset_bottom = 88.0
 theme_override_fonts/font = ExtResource("3_tlijc")
 theme_override_font_sizes/font_size = 30
@@ -353,9 +353,9 @@ ticks_position = 3
 
 [node name="Animations" type="Label" parent="MainContent/PageVideo"]
 layout_mode = 0
-offset_left = 56.0
+offset_left = 429.0
 offset_top = 88.0
-offset_right = 204.0
+offset_right = 577.0
 offset_bottom = 123.0
 theme_override_fonts/font = ExtResource("3_tlijc")
 theme_override_font_sizes/font_size = 30
@@ -363,9 +363,9 @@ text = "Animations"
 
 [node name="CheckBox" type="CheckBox" parent="MainContent/PageVideo/Animations"]
 layout_mode = 0
-offset_left = 156.0
+offset_left = 158.0
 offset_top = 3.0
-offset_right = 180.0
+offset_right = 182.0
 offset_bottom = 27.0
 theme_override_styles/normal = SubResource("StyleBoxFlat_ujhbt")
 theme_override_styles/hover = SubResource("StyleBoxFlat_t01jc")
@@ -374,9 +374,9 @@ theme_override_colors/checkbox_unchecked_color = Color(0, 0, 0, 1)
 
 [node name="Resolution" type="Label" parent="MainContent/PageVideo"]
 layout_mode = 0
-offset_left = 56.0
+offset_left = 436.0
 offset_top = 123.0
-offset_right = 204.0
+offset_right = 584.0
 offset_bottom = 158.0
 theme_override_fonts/font = ExtResource("3_tlijc")
 theme_override_font_sizes/font_size = 30
@@ -397,13 +397,12 @@ popup/item_0/text = "1920 x 1080"
 popup/item_0/id = 0
 popup/item_1/text = " 1280 x 720"
 popup/item_1/id = 1
-script = ExtResource("6_tlijc")
 
 [node name="Texture" type="Label" parent="MainContent/PageVideo"]
 layout_mode = 0
-offset_left = 56.0
+offset_left = 475.0
 offset_top = 158.0
-offset_right = 204.0
+offset_right = 623.0
 offset_bottom = 193.0
 theme_override_fonts/font = ExtResource("3_tlijc")
 theme_override_font_sizes/font_size = 30
@@ -426,7 +425,6 @@ popup/item_1/text = "Performance"
 popup/item_1/id = 1
 
 [node name="PageVisual" type="Control" parent="MainContent"]
-visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_top = 219.0
@@ -435,10 +433,10 @@ offset_bottom = 219.0
 
 [node name="Interface Size" type="Label" parent="MainContent/PageVisual"]
 layout_mode = 0
-offset_left = 56.0
-offset_top = 22.0
-offset_right = 204.0
-offset_bottom = 57.0
+offset_left = 394.0
+offset_top = 14.0
+offset_right = 569.0
+offset_bottom = 49.0
 theme_override_fonts/font = ExtResource("3_tlijc")
 theme_override_font_sizes/font_size = 30
 text = "Interface Size"
@@ -458,20 +456,20 @@ ticks_position = 3
 
 [node name="Blurry" type="Label" parent="MainContent/PageVisual"]
 layout_mode = 0
-offset_left = 56.0
-offset_top = 57.0
-offset_right = 204.0
-offset_bottom = 92.0
+offset_left = 487.0
+offset_top = 45.0
+offset_right = 635.0
+offset_bottom = 80.0
 theme_override_fonts/font = ExtResource("3_tlijc")
 theme_override_font_sizes/font_size = 30
 text = "Blurry"
 
 [node name="CheckBox" type="CheckBox" parent="MainContent/PageVisual/Blurry"]
 layout_mode = 0
-offset_left = 94.0
-offset_top = 4.0
-offset_right = 118.0
-offset_bottom = 28.0
+offset_left = 99.0
+offset_top = 5.0
+offset_right = 123.0
+offset_bottom = 29.0
 theme_override_styles/normal = SubResource("StyleBoxFlat_ujhbt")
 theme_override_styles/hover = SubResource("StyleBoxFlat_t01jc")
 theme_override_colors/checkbox_checked_color = Color(0.4539004, 0, 0.04259321, 1)
@@ -479,20 +477,19 @@ theme_override_colors/checkbox_unchecked_color = Color(0, 0, 0, 1)
 
 [node name="Camera Shake" type="Label" parent="MainContent/PageVisual"]
 layout_mode = 0
-offset_left = 56.0
-offset_top = 92.0
-offset_right = 204.0
-offset_bottom = 127.0
+offset_left = 394.0
+offset_top = 84.0
+offset_right = 566.0
+offset_bottom = 119.0
 theme_override_fonts/font = ExtResource("3_tlijc")
 theme_override_font_sizes/font_size = 30
 text = "Camera Shake"
 
 [node name="CheckBox" type="CheckBox" parent="MainContent/PageVisual/Camera Shake"]
 layout_mode = 0
-offset_left = 188.0
-offset_top = 2.0
-offset_right = 212.0
-offset_bottom = 26.0
+offset_left = 192.0
+offset_right = 216.0
+offset_bottom = 24.0
 theme_override_styles/normal = SubResource("StyleBoxFlat_ujhbt")
 theme_override_styles/hover = SubResource("StyleBoxFlat_t01jc")
 theme_override_colors/checkbox_checked_color = Color(0.4539004, 0, 0.04259321, 1)
@@ -500,10 +497,10 @@ theme_override_colors/checkbox_unchecked_color = Color(0, 0, 0, 1)
 
 [node name="Visual Indicators" type="Label" parent="MainContent/PageVisual"]
 layout_mode = 0
-offset_left = 56.0
-offset_top = 124.0
-offset_right = 204.0
-offset_bottom = 159.0
+offset_left = 355.0
+offset_top = 119.0
+offset_right = 568.0
+offset_bottom = 154.0
 theme_override_fonts/font = ExtResource("3_tlijc")
 theme_override_font_sizes/font_size = 30
 text = "Visual Indicators"
@@ -511,9 +508,9 @@ text = "Visual Indicators"
 [node name="CheckBox" type="CheckBox" parent="MainContent/PageVisual/Visual Indicators"]
 layout_mode = 0
 offset_left = 231.0
-offset_top = 3.0
+offset_top = 5.0
 offset_right = 255.0
-offset_bottom = 27.0
+offset_bottom = 29.0
 theme_override_styles/normal = SubResource("StyleBoxFlat_ujhbt")
 theme_override_styles/hover = SubResource("StyleBoxFlat_t01jc")
 theme_override_colors/checkbox_checked_color = Color(0.4539004, 0, 0.04259321, 1)
@@ -521,10 +518,10 @@ theme_override_colors/checkbox_unchecked_color = Color(0, 0, 0, 1)
 
 [node name="Color Blindness" type="Label" parent="MainContent/PageVisual"]
 layout_mode = 0
-offset_left = 56.0
-offset_top = 159.0
-offset_right = 204.0
-offset_bottom = 194.0
+offset_left = 377.0
+offset_top = 151.0
+offset_right = 569.0
+offset_bottom = 186.0
 theme_override_fonts/font = ExtResource("3_tlijc")
 theme_override_font_sizes/font_size = 30
 text = "Color Blindness"
@@ -558,15 +555,16 @@ offset_bottom = 223.0
 visible = false
 layout_mode = 3
 anchors_preset = 0
-offset_top = 227.0
-offset_right = 1152.0
-offset_bottom = 227.0
+offset_left = 24.0
+offset_top = 211.0
+offset_right = 1176.0
+offset_bottom = 211.0
 
 [node name="Volume" type="Label" parent="MainContent/PageAudio"]
 layout_mode = 0
-offset_left = 56.0
+offset_left = 455.0
 offset_top = 22.0
-offset_right = 204.0
+offset_right = 603.0
 offset_bottom = 57.0
 theme_override_fonts/font = ExtResource("3_tlijc")
 theme_override_font_sizes/font_size = 30
@@ -587,9 +585,9 @@ ticks_position = 3
 
 [node name="Music" type="Label" parent="MainContent/PageAudio"]
 layout_mode = 0
-offset_left = 56.0
+offset_left = 466.0
 offset_top = 57.0
-offset_right = 204.0
+offset_right = 614.0
 offset_bottom = 92.0
 theme_override_fonts/font = ExtResource("3_tlijc")
 theme_override_font_sizes/font_size = 30
@@ -610,9 +608,9 @@ ticks_position = 3
 
 [node name="Voices" type="Label" parent="MainContent/PageAudio"]
 layout_mode = 0
-offset_left = 56.0
+offset_left = 462.0
 offset_top = 92.0
-offset_right = 204.0
+offset_right = 610.0
 offset_bottom = 127.0
 theme_override_fonts/font = ExtResource("3_tlijc")
 theme_override_font_sizes/font_size = 30
@@ -633,9 +631,9 @@ ticks_position = 3
 
 [node name="Sound Effects" type="Label" parent="MainContent/PageAudio"]
 layout_mode = 0
-offset_left = 56.0
+offset_left = 376.0
 offset_top = 124.0
-offset_right = 204.0
+offset_right = 543.0
 offset_bottom = 159.0
 theme_override_fonts/font = ExtResource("3_tlijc")
 theme_override_font_sizes/font_size = 30
@@ -659,4 +657,5 @@ ticks_position = 3
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/ButtonVisual" to="MainContent" method="_on_button_visual_pressed"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/ButtonCommand" to="MainContent" method="_on_button_command_pressed"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/ButtonAudio" to="MainContent" method="_on_button_audio_pressed"]
-[connection signal="item_selected" from="MainContent/PageVideo/Resolution/OptionButton" to="MainContent/PageVideo/Resolution/OptionButton" method="_on_item_selected"]
+[connection signal="item_selected" from="MainContent/PageVideo/Resolution/OptionButton" to="MainContent" method="_on_resolution_item_selected"]
+[connection signal="value_changed" from="MainContent/PageAudio/Volume/HSlider" to="MainContent" method="_on_volume_value_changed"]

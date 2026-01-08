@@ -99,7 +99,7 @@ public partial class GameManager
             return;
         }
 
-        if (!_currentUnitPossibleMoves.Contains((cell.X, cell.Y, cell.Z)))
+        if (!_currentUnitPossibleMoves.Contains(new Vector3I(cell.X, cell.Y, cell.Z)))
         {
             _battleInputSystemContainer.SetInputEnabled(true);
             return;
@@ -169,7 +169,7 @@ public partial class GameManager
             }
         }
 
-        if (!_currentUnitReachableCellsForCurrentSelectedSkill.Contains((cell.X, cell.Y, cell.Z)))
+        if (!_currentUnitReachableCellsForCurrentSelectedSkill.Contains(new Vector3I(cell.X, cell.Y, cell.Z)))
         {
             GD.PrintErr("The cell/target is not reachable.");
             _battleInputSystemContainer.SetInputEnabled(true);

@@ -9,17 +9,13 @@
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_m7784"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iuawr"]
-bg_color = Color(0.060530446, 0.06053032, 0.060530372, 0.79607844)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
+bg_color = Color(0.07106302, 0.0339631, 0.1336748, 0)
 border_blend = true
 expand_margin_left = 10.0
 expand_margin_right = 10.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m7784"]
-bg_color = Color(0.18039216, 0.18039216, 0.18039216, 0.8235294)
+bg_color = Color(0.18039216, 0.18039216, 0.18039216, 0)
 expand_margin_left = 10.0
 expand_margin_right = 10.0
 
@@ -71,6 +67,9 @@ alignment = 1
 [node name="ButtonSubtitle" type="Button" parent="VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(160, 55)
 layout_mode = 2
+theme_override_colors/font_focus_color = Color(0.8352941, 0.0627451, 0.19215687, 1)
+theme_override_colors/font_pressed_color = Color(0.8352941, 0.0627451, 0.19215687, 1)
+theme_override_colors/font_hover_color = Color(0.8352941, 0.0627451, 0.19215687, 1)
 theme_override_fonts/font = ExtResource("3_tlijc")
 theme_override_font_sizes/font_size = 40
 theme_override_styles/normal = SubResource("StyleBoxEmpty_m7784")
@@ -84,6 +83,9 @@ icon_alignment = 1
 [node name="ButtonVideo" type="Button" parent="VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(160, 55)
 layout_mode = 2
+theme_override_colors/font_focus_color = Color(0.8348589, 0.0646869, 0.19091931, 1)
+theme_override_colors/font_pressed_color = Color(0.8352941, 0.0627451, 0.19215687, 1)
+theme_override_colors/font_hover_color = Color(0.8352941, 0.0627451, 0.19215687, 1)
 theme_override_fonts/font = ExtResource("3_tlijc")
 theme_override_font_sizes/font_size = 40
 theme_override_styles/normal = SubResource("StyleBoxEmpty_m7784")
@@ -97,6 +99,9 @@ icon_alignment = 1
 [node name="ButtonVisual" type="Button" parent="VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(160, 55)
 layout_mode = 2
+theme_override_colors/font_focus_color = Color(0.8348589, 0.0646869, 0.19091931, 1)
+theme_override_colors/font_pressed_color = Color(0.8352941, 0.0627451, 0.19215687, 1)
+theme_override_colors/font_hover_color = Color(0.8352941, 0.0627451, 0.19215687, 1)
 theme_override_fonts/font = ExtResource("3_tlijc")
 theme_override_font_sizes/font_size = 40
 theme_override_styles/normal = SubResource("StyleBoxEmpty_m7784")
@@ -110,6 +115,9 @@ icon_alignment = 1
 [node name="ButtonCommand" type="Button" parent="VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(160, 55)
 layout_mode = 2
+theme_override_colors/font_focus_color = Color(0.8348589, 0.0646869, 0.19091931, 1)
+theme_override_colors/font_pressed_color = Color(0.8352941, 0.0627451, 0.19215687, 1)
+theme_override_colors/font_hover_color = Color(0.8352941, 0.0627451, 0.19215687, 1)
 theme_override_fonts/font = ExtResource("3_tlijc")
 theme_override_font_sizes/font_size = 40
 theme_override_styles/normal = SubResource("StyleBoxEmpty_m7784")
@@ -123,6 +131,9 @@ icon_alignment = 1
 [node name="ButtonAudio" type="Button" parent="VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(160, 55)
 layout_mode = 2
+theme_override_colors/font_focus_color = Color(0.8348589, 0.0646869, 0.19091931, 1)
+theme_override_colors/font_pressed_color = Color(0.8352941, 0.0627451, 0.19215687, 1)
+theme_override_colors/font_hover_color = Color(0.8352941, 0.0627451, 0.19215687, 1)
 theme_override_fonts/font = ExtResource("3_tlijc")
 theme_override_font_sizes/font_size = 40
 theme_override_styles/normal = SubResource("StyleBoxEmpty_m7784")
@@ -418,11 +429,13 @@ offset_bottom = 29.0
 theme_override_fonts/font = ExtResource("3_tlijc")
 theme_override_font_sizes/font_size = 20
 selected = 0
-item_count = 2
-popup/item_0/text = "Quality"
+item_count = 3
+popup/item_0/text = "Low"
 popup/item_0/id = 0
-popup/item_1/text = "Performance"
+popup/item_1/text = "Medium"
 popup/item_1/id = 1
+popup/item_2/text = "High"
+popup/item_2/id = 2
 
 [node name="PageVisual" type="Control" parent="MainContent"]
 layout_mode = 3
@@ -535,13 +548,15 @@ offset_bottom = 28.0
 theme_override_fonts/font = ExtResource("3_tlijc")
 theme_override_font_sizes/font_size = 20
 selected = 0
-item_count = 3
-popup/item_0/text = "Deuteranopia"
+item_count = 4
+popup/item_0/text = "None"
 popup/item_0/id = 0
-popup/item_1/text = "Protanopia"
+popup/item_1/text = "Deuteranopia"
 popup/item_1/id = 1
-popup/item_2/text = "Tritanopia"
+popup/item_2/text = "Protanopia"
 popup/item_2/id = 2
+popup/item_3/text = "Tritanopia"
+popup/item_3/id = 3
 
 [node name="PageCommand" type="Control" parent="MainContent"]
 visible = false

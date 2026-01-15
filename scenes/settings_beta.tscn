@@ -38,6 +38,7 @@ offset_bottom = 233.0
 
 [node name="MenuProto" type="Sprite2D" parent="TextureRect"]
 modulate = Color(0.29954743, 0.29954746, 0.29954734, 0.8392157)
+position = Vector2(0, -1)
 scale = Vector2(0.5999153, 0.5997711)
 texture = ExtResource("1_ujhbt")
 offset = Vector2(621, 219)
@@ -157,18 +158,19 @@ offset_bottom = 211.0
 
 [node name="Subtitles" type="Label" parent="MainContent/PageSubtitle"]
 layout_mode = 0
-offset_left = 453.0
-offset_top = 22.0
-offset_right = 601.0
-offset_bottom = 57.0
+offset_left = 428.0
+offset_top = 20.0
+offset_right = 576.0
+offset_bottom = 55.0
 theme_override_fonts/font = ExtResource("3_tlijc")
 theme_override_font_sizes/font_size = 30
 text = "Subtitles"
+horizontal_alignment = 2
 
 [node name="CheckBox" type="CheckBox" parent="MainContent/PageSubtitle/Subtitles"]
 layout_mode = 0
-offset_left = 136.0
-offset_right = 160.0
+offset_left = 171.0
+offset_right = 195.0
 offset_bottom = 24.0
 theme_override_styles/normal = SubResource("StyleBoxFlat_ujhbt")
 theme_override_styles/hover = SubResource("StyleBoxFlat_t01jc")
@@ -177,20 +179,21 @@ theme_override_colors/checkbox_unchecked_color = Color(0, 0, 0, 1)
 
 [node name="Size" type="Label" parent="MainContent/PageSubtitle"]
 layout_mode = 0
-offset_left = 512.0
-offset_top = 57.0
-offset_right = 660.0
-offset_bottom = 92.0
+offset_left = 428.0
+offset_top = 55.0
+offset_right = 576.0
+offset_bottom = 90.0
 theme_override_fonts/font = ExtResource("3_tlijc")
 theme_override_font_sizes/font_size = 30
 text = "Size"
+horizontal_alignment = 2
 
 [node name="HSlider" type="HSlider" parent="MainContent/PageSubtitle/Size"]
 layout_mode = 0
-offset_left = 76.0
-offset_top = 7.0
-offset_right = 226.0
-offset_bottom = 23.0
+offset_left = 171.0
+offset_top = 9.0
+offset_right = 321.0
+offset_bottom = 25.0
 step = 25.0
 value = 50.0
 rounded = true
@@ -200,19 +203,20 @@ ticks_position = 3
 
 [node name="Font" type="Label" parent="MainContent/PageSubtitle"]
 layout_mode = 0
-offset_left = 512.0
+offset_left = 428.0
 offset_top = 90.0
-offset_right = 660.0
+offset_right = 576.0
 offset_bottom = 125.0
 theme_override_fonts/font = ExtResource("3_tlijc")
 theme_override_font_sizes/font_size = 30
 text = "Font"
+horizontal_alignment = 2
 
 [node name="OptionButton" type="OptionButton" parent="MainContent/PageSubtitle/Font"]
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 0
-offset_left = 78.0
-offset_right = 228.0
+offset_left = 171.0
+offset_right = 321.0
 offset_bottom = 28.0
 theme_override_fonts/font = ExtResource("3_tlijc")
 theme_override_font_sizes/font_size = 20
@@ -220,57 +224,60 @@ script = ExtResource("4_ujhbt")
 
 [node name="TextColor" type="Label" parent="MainContent/PageSubtitle"]
 layout_mode = 0
-offset_left = 447.0
-offset_top = 124.0
-offset_right = 595.0
-offset_bottom = 159.0
+offset_left = 428.0
+offset_top = 125.0
+offset_right = 576.0
+offset_bottom = 160.0
 theme_override_fonts/font = ExtResource("3_tlijc")
 theme_override_font_sizes/font_size = 30
 text = "Text Color"
+horizontal_alignment = 2
 
 [node name="ColorRect" type="ColorRect" parent="MainContent/PageSubtitle/TextColor"]
 layout_mode = 0
-offset_left = 144.0
-offset_top = 5.0
-offset_right = 164.0
-offset_bottom = 25.0
+offset_left = 171.0
+offset_top = 4.0
+offset_right = 191.0
+offset_bottom = 24.0
 script = ExtResource("5_t01jc")
 
 [node name="BgColor" type="Label" parent="MainContent/PageSubtitle"]
 layout_mode = 0
-offset_left = 361.0
-offset_top = 159.0
-offset_right = 574.0
-offset_bottom = 194.0
+offset_left = 363.0
+offset_top = 160.0
+offset_right = 576.0
+offset_bottom = 195.0
 theme_override_fonts/font = ExtResource("3_tlijc")
 theme_override_font_sizes/font_size = 30
 text = "Background Color"
+horizontal_alignment = 2
 
 [node name="ColorRect" type="ColorRect" parent="MainContent/PageSubtitle/BgColor"]
 layout_mode = 0
-offset_left = 230.0
-offset_top = 5.0
-offset_right = 250.0
-offset_bottom = 25.0
+offset_left = 236.0
+offset_top = 3.0
+offset_right = 256.0
+offset_bottom = 23.0
 script = ExtResource("5_t01jc")
 
 [node name="Langage" type="Label" parent="MainContent/PageSubtitle"]
 layout_mode = 0
-offset_left = 470.0
-offset_top = 194.0
-offset_right = 618.0
-offset_bottom = 229.0
+offset_left = 428.0
+offset_top = 195.0
+offset_right = 576.0
+offset_bottom = 230.0
 theme_override_fonts/font = ExtResource("3_tlijc")
 theme_override_font_sizes/font_size = 30
 text = "Langage"
+horizontal_alignment = 2
 
 [node name="OptionButton" type="OptionButton" parent="MainContent/PageSubtitle/Langage"]
 custom_minimum_size = Vector2(130, 0)
 layout_mode = 0
-offset_left = 120.0
-offset_top = 2.0
-offset_right = 250.0
-offset_bottom = 30.0
+offset_left = 171.0
+offset_top = 5.0
+offset_right = 301.0
+offset_bottom = 33.0
 theme_override_fonts/font = ExtResource("3_tlijc")
 theme_override_font_sizes/font_size = 20
 selected = 0
@@ -282,21 +289,21 @@ popup/item_1/id = 1
 
 [node name="DisplayTime" type="Label" parent="MainContent/PageSubtitle"]
 layout_mode = 0
-offset_left = 414.0
-offset_top = 229.0
-offset_right = 573.0
-offset_bottom = 264.0
+offset_left = 417.0
+offset_top = 230.0
+offset_right = 576.0
+offset_bottom = 265.0
 theme_override_fonts/font = ExtResource("3_tlijc")
 theme_override_font_sizes/font_size = 30
 text = "Display Time"
+horizontal_alignment = 2
 
 [node name="OptionButton" type="OptionButton" parent="MainContent/PageSubtitle/DisplayTime"]
 custom_minimum_size = Vector2(130, 0)
 layout_mode = 0
-offset_left = 175.0
-offset_top = 1.0
-offset_right = 305.0
-offset_bottom = 29.0
+offset_left = 182.0
+offset_right = 312.0
+offset_bottom = 28.0
 theme_override_fonts/font = ExtResource("3_tlijc")
 theme_override_font_sizes/font_size = 20
 selected = 0
@@ -318,19 +325,20 @@ offset_bottom = 215.0
 
 [node name="Contrast" type="Label" parent="MainContent/PageVideo"]
 layout_mode = 0
-offset_left = 462.0
+offset_left = 427.0
 offset_top = 18.0
-offset_right = 610.0
+offset_right = 575.0
 offset_bottom = 53.0
 theme_override_fonts/font = ExtResource("3_tlijc")
 theme_override_font_sizes/font_size = 30
 text = "Contrast"
+horizontal_alignment = 2
 
 [node name="HSlider" type="HSlider" parent="MainContent/PageVideo/Contrast"]
 layout_mode = 0
-offset_left = 126.0
+offset_left = 165.0
 offset_top = 7.0
-offset_right = 276.0
+offset_right = 315.0
 offset_bottom = 23.0
 step = 25.0
 value = 50.0
@@ -341,19 +349,20 @@ ticks_position = 3
 
 [node name="Brightness" type="Label" parent="MainContent/PageVideo"]
 layout_mode = 0
-offset_left = 434.0
+offset_left = 427.0
 offset_top = 53.0
-offset_right = 582.0
+offset_right = 575.0
 offset_bottom = 88.0
 theme_override_fonts/font = ExtResource("3_tlijc")
 theme_override_font_sizes/font_size = 30
 text = "Brightness"
+horizontal_alignment = 2
 
 [node name="HSlider" type="HSlider" parent="MainContent/PageVideo/Brightness"]
 layout_mode = 0
-offset_left = 155.0
+offset_left = 165.0
 offset_top = 7.0
-offset_right = 305.0
+offset_right = 315.0
 offset_bottom = 23.0
 step = 25.0
 value = 50.0
@@ -364,20 +373,21 @@ ticks_position = 3
 
 [node name="Animations" type="Label" parent="MainContent/PageVideo"]
 layout_mode = 0
-offset_left = 429.0
-offset_top = 88.0
-offset_right = 577.0
-offset_bottom = 123.0
+offset_left = 427.0
+offset_top = 87.0
+offset_right = 575.0
+offset_bottom = 122.0
 theme_override_fonts/font = ExtResource("3_tlijc")
 theme_override_font_sizes/font_size = 30
 text = "Animations"
+horizontal_alignment = 2
 
 [node name="CheckBox" type="CheckBox" parent="MainContent/PageVideo/Animations"]
 layout_mode = 0
-offset_left = 158.0
-offset_top = 3.0
-offset_right = 182.0
-offset_bottom = 27.0
+offset_left = 165.0
+offset_top = 2.0
+offset_right = 189.0
+offset_bottom = 26.0
 theme_override_styles/normal = SubResource("StyleBoxFlat_ujhbt")
 theme_override_styles/hover = SubResource("StyleBoxFlat_t01jc")
 theme_override_colors/checkbox_checked_color = Color(0.4539004, 0, 0.04259321, 1)
@@ -385,21 +395,22 @@ theme_override_colors/checkbox_unchecked_color = Color(0, 0, 0, 1)
 
 [node name="Resolution" type="Label" parent="MainContent/PageVideo"]
 layout_mode = 0
-offset_left = 436.0
-offset_top = 123.0
-offset_right = 584.0
-offset_bottom = 158.0
+offset_left = 427.0
+offset_top = 122.0
+offset_right = 575.0
+offset_bottom = 157.0
 theme_override_fonts/font = ExtResource("3_tlijc")
 theme_override_font_sizes/font_size = 30
 text = "Resolution"
+horizontal_alignment = 2
 
 [node name="OptionButton" type="OptionButton" parent="MainContent/PageVideo/Resolution"]
 custom_minimum_size = Vector2(130, 0)
 layout_mode = 0
-offset_left = 151.0
-offset_top = 2.0
-offset_right = 281.0
-offset_bottom = 30.0
+offset_left = 165.0
+offset_top = 3.0
+offset_right = 295.0
+offset_bottom = 31.0
 theme_override_fonts/font = ExtResource("3_tlijc")
 theme_override_font_sizes/font_size = 20
 selected = 0
@@ -411,21 +422,22 @@ popup/item_1/id = 1
 
 [node name="Texture" type="Label" parent="MainContent/PageVideo"]
 layout_mode = 0
-offset_left = 475.0
-offset_top = 158.0
-offset_right = 623.0
-offset_bottom = 193.0
+offset_left = 427.0
+offset_top = 156.0
+offset_right = 575.0
+offset_bottom = 191.0
 theme_override_fonts/font = ExtResource("3_tlijc")
 theme_override_font_sizes/font_size = 30
 text = "Texture"
+horizontal_alignment = 2
 
 [node name="OptionButton" type="OptionButton" parent="MainContent/PageVideo/Texture"]
 custom_minimum_size = Vector2(130, 0)
 layout_mode = 0
-offset_left = 110.0
-offset_top = 1.0
-offset_right = 240.0
-offset_bottom = 29.0
+offset_left = 165.0
+offset_top = 2.0
+offset_right = 295.0
+offset_bottom = 30.0
 theme_override_fonts/font = ExtResource("3_tlijc")
 theme_override_font_sizes/font_size = 20
 selected = 0
@@ -438,6 +450,7 @@ popup/item_2/text = "High"
 popup/item_2/id = 2
 
 [node name="PageVisual" type="Control" parent="MainContent"]
+visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_top = 219.0
@@ -446,20 +459,21 @@ offset_bottom = 219.0
 
 [node name="Interface Size" type="Label" parent="MainContent/PageVisual"]
 layout_mode = 0
-offset_left = 394.0
-offset_top = 14.0
-offset_right = 569.0
-offset_bottom = 49.0
+offset_left = 402.0
+offset_top = 12.0
+offset_right = 577.0
+offset_bottom = 47.0
 theme_override_fonts/font = ExtResource("3_tlijc")
 theme_override_font_sizes/font_size = 30
 text = "Interface Size"
+horizontal_alignment = 2
 
 [node name="HSlider" type="HSlider" parent="MainContent/PageVisual/Interface Size"]
 layout_mode = 0
-offset_left = 190.0
-offset_top = 6.0
-offset_right = 340.0
-offset_bottom = 22.0
+offset_left = 195.0
+offset_top = 7.0
+offset_right = 345.0
+offset_bottom = 23.0
 step = 25.0
 value = 50.0
 rounded = true
@@ -469,20 +483,20 @@ ticks_position = 3
 
 [node name="Blurry" type="Label" parent="MainContent/PageVisual"]
 layout_mode = 0
-offset_left = 487.0
+offset_left = 428.0
 offset_top = 45.0
-offset_right = 635.0
+offset_right = 576.0
 offset_bottom = 80.0
 theme_override_fonts/font = ExtResource("3_tlijc")
 theme_override_font_sizes/font_size = 30
 text = "Blurry"
+horizontal_alignment = 2
 
 [node name="CheckBox" type="CheckBox" parent="MainContent/PageVisual/Blurry"]
 layout_mode = 0
-offset_left = 99.0
-offset_top = 5.0
-offset_right = 123.0
-offset_bottom = 29.0
+offset_left = 169.0
+offset_right = 193.0
+offset_bottom = 24.0
 theme_override_styles/normal = SubResource("StyleBoxFlat_ujhbt")
 theme_override_styles/hover = SubResource("StyleBoxFlat_t01jc")
 theme_override_colors/checkbox_checked_color = Color(0.4539004, 0, 0.04259321, 1)
@@ -490,19 +504,21 @@ theme_override_colors/checkbox_unchecked_color = Color(0, 0, 0, 1)
 
 [node name="Camera Shake" type="Label" parent="MainContent/PageVisual"]
 layout_mode = 0
-offset_left = 394.0
-offset_top = 84.0
-offset_right = 566.0
-offset_bottom = 119.0
+offset_left = 404.0
+offset_top = 81.0
+offset_right = 576.0
+offset_bottom = 116.0
 theme_override_fonts/font = ExtResource("3_tlijc")
 theme_override_font_sizes/font_size = 30
 text = "Camera Shake"
+horizontal_alignment = 2
 
 [node name="CheckBox" type="CheckBox" parent="MainContent/PageVisual/Camera Shake"]
 layout_mode = 0
-offset_left = 192.0
-offset_right = 216.0
-offset_bottom = 24.0
+offset_left = 193.0
+offset_top = 2.0
+offset_right = 217.0
+offset_bottom = 26.0
 theme_override_styles/normal = SubResource("StyleBoxFlat_ujhbt")
 theme_override_styles/hover = SubResource("StyleBoxFlat_t01jc")
 theme_override_colors/checkbox_checked_color = Color(0.4539004, 0, 0.04259321, 1)
@@ -510,19 +526,20 @@ theme_override_colors/checkbox_unchecked_color = Color(0, 0, 0, 1)
 
 [node name="Visual Indicators" type="Label" parent="MainContent/PageVisual"]
 layout_mode = 0
-offset_left = 355.0
-offset_top = 119.0
-offset_right = 568.0
-offset_bottom = 154.0
+offset_left = 363.0
+offset_top = 116.0
+offset_right = 576.0
+offset_bottom = 151.0
 theme_override_fonts/font = ExtResource("3_tlijc")
 theme_override_font_sizes/font_size = 30
 text = "Visual Indicators"
+horizontal_alignment = 2
 
 [node name="CheckBox" type="CheckBox" parent="MainContent/PageVisual/Visual Indicators"]
 layout_mode = 0
-offset_left = 231.0
+offset_left = 234.0
 offset_top = 5.0
-offset_right = 255.0
+offset_right = 258.0
 offset_bottom = 29.0
 theme_override_styles/normal = SubResource("StyleBoxFlat_ujhbt")
 theme_override_styles/hover = SubResource("StyleBoxFlat_t01jc")
@@ -531,20 +548,22 @@ theme_override_colors/checkbox_unchecked_color = Color(0, 0, 0, 1)
 
 [node name="Color Blindness" type="Label" parent="MainContent/PageVisual"]
 layout_mode = 0
-offset_left = 377.0
+offset_left = 385.0
 offset_top = 151.0
-offset_right = 569.0
+offset_right = 577.0
 offset_bottom = 186.0
 theme_override_fonts/font = ExtResource("3_tlijc")
 theme_override_font_sizes/font_size = 30
 text = "Color Blindness"
+horizontal_alignment = 2
 
 [node name="OptionButton" type="OptionButton" parent="MainContent/PageVisual/Color Blindness"]
 custom_minimum_size = Vector2(130, 0)
 layout_mode = 0
-offset_left = 209.0
-offset_right = 339.0
-offset_bottom = 28.0
+offset_left = 213.0
+offset_top = 2.0
+offset_right = 355.0
+offset_bottom = 30.0
 theme_override_fonts/font = ExtResource("3_tlijc")
 theme_override_font_sizes/font_size = 20
 selected = 0
@@ -559,12 +578,227 @@ popup/item_3/text = "Tritanopia"
 popup/item_3/id = 3
 
 [node name="PageCommand" type="Control" parent="MainContent"]
-visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_top = 223.0
 offset_right = 1152.0
 offset_bottom = 223.0
+
+[node name="move_up" type="Label" parent="MainContent/PageCommand"]
+layout_mode = 0
+offset_left = 403.0
+offset_top = -11.0
+offset_right = 578.0
+offset_bottom = 24.0
+theme_override_fonts/font = ExtResource("3_tlijc")
+theme_override_font_sizes/font_size = 30
+text = "Move Up"
+horizontal_alignment = 2
+
+[node name="Button" type="Button" parent="MainContent/PageCommand/move_up"]
+layout_mode = 0
+offset_left = 193.0
+offset_top = 2.0
+offset_right = 209.0
+offset_bottom = 17.0
+
+[node name="move_down" type="Label" parent="MainContent/PageCommand"]
+layout_mode = 0
+offset_left = 403.0
+offset_top = 22.0
+offset_right = 578.0
+offset_bottom = 57.0
+theme_override_fonts/font = ExtResource("3_tlijc")
+theme_override_font_sizes/font_size = 30
+text = "Move Down"
+horizontal_alignment = 2
+
+[node name="Button" type="Button" parent="MainContent/PageCommand/move_down"]
+layout_mode = 0
+offset_left = 193.0
+offset_top = 2.0
+offset_right = 209.0
+offset_bottom = 19.0
+
+[node name="move_left" type="Label" parent="MainContent/PageCommand"]
+layout_mode = 0
+offset_left = 403.0
+offset_top = 55.0
+offset_right = 578.0
+offset_bottom = 90.0
+theme_override_fonts/font = ExtResource("3_tlijc")
+theme_override_font_sizes/font_size = 30
+text = "Move Left"
+horizontal_alignment = 2
+
+[node name="Button" type="Button" parent="MainContent/PageCommand/move_left"]
+layout_mode = 0
+offset_left = 193.0
+offset_top = 2.0
+offset_right = 209.0
+offset_bottom = 17.0
+
+[node name="move_right" type="Label" parent="MainContent/PageCommand"]
+layout_mode = 0
+offset_left = 403.0
+offset_top = 88.0
+offset_right = 578.0
+offset_bottom = 123.0
+theme_override_fonts/font = ExtResource("3_tlijc")
+theme_override_font_sizes/font_size = 30
+text = "Move Right"
+horizontal_alignment = 2
+
+[node name="Button" type="Button" parent="MainContent/PageCommand/move_right"]
+layout_mode = 0
+offset_left = 193.0
+offset_top = 2.0
+offset_right = 209.0
+offset_bottom = 18.0
+
+[node name="battle_move_unit_to" type="Label" parent="MainContent/PageCommand"]
+layout_mode = 0
+offset_left = 392.0
+offset_top = 121.0
+offset_right = 578.0
+offset_bottom = 156.0
+theme_override_fonts/font = ExtResource("3_tlijc")
+theme_override_font_sizes/font_size = 30
+text = "Battle Move To"
+horizontal_alignment = 2
+
+[node name="Button" type="Button" parent="MainContent/PageCommand/battle_move_unit_to"]
+layout_mode = 0
+offset_left = 204.0
+offset_top = 2.0
+offset_right = 220.0
+offset_bottom = 19.0
+
+[node name="battle_select_skill1" type="Label" parent="MainContent/PageCommand"]
+layout_mode = 0
+offset_left = 403.0
+offset_top = 153.0
+offset_right = 578.0
+offset_bottom = 188.0
+theme_override_fonts/font = ExtResource("3_tlijc")
+theme_override_font_sizes/font_size = 30
+text = "Battle Skill 1"
+horizontal_alignment = 2
+
+[node name="Button" type="Button" parent="MainContent/PageCommand/battle_select_skill1"]
+layout_mode = 0
+offset_left = 193.0
+offset_top = 2.0
+offset_right = 209.0
+offset_bottom = 17.0
+
+[node name="battle_select_skill2" type="Label" parent="MainContent/PageCommand"]
+layout_mode = 0
+offset_left = 403.0
+offset_top = 186.0
+offset_right = 578.0
+offset_bottom = 221.0
+theme_override_fonts/font = ExtResource("3_tlijc")
+theme_override_font_sizes/font_size = 30
+text = "Battle Skill 2"
+horizontal_alignment = 2
+
+[node name="Button" type="Button" parent="MainContent/PageCommand/battle_select_skill2"]
+layout_mode = 0
+offset_left = 193.0
+offset_top = 2.0
+offset_right = 209.0
+offset_bottom = 18.0
+
+[node name="battle_select_skill3" type="Label" parent="MainContent/PageCommand"]
+layout_mode = 0
+offset_left = 403.0
+offset_top = 219.0
+offset_right = 578.0
+offset_bottom = 254.0
+theme_override_fonts/font = ExtResource("3_tlijc")
+theme_override_font_sizes/font_size = 30
+text = "Battle Skill 3"
+horizontal_alignment = 2
+
+[node name="Button" type="Button" parent="MainContent/PageCommand/battle_select_skill3"]
+layout_mode = 0
+offset_left = 193.0
+offset_top = 2.0
+offset_right = 209.0
+offset_bottom = 18.0
+
+[node name="battle_select_skill4" type="Label" parent="MainContent/PageCommand"]
+layout_mode = 0
+offset_left = 403.0
+offset_top = 252.0
+offset_right = 578.0
+offset_bottom = 287.0
+theme_override_fonts/font = ExtResource("3_tlijc")
+theme_override_font_sizes/font_size = 30
+text = "Battle Skill 4"
+horizontal_alignment = 2
+
+[node name="Button" type="Button" parent="MainContent/PageCommand/battle_select_skill4"]
+layout_mode = 0
+offset_left = 193.0
+offset_top = 2.0
+offset_right = 209.0
+offset_bottom = 18.0
+
+[node name="battle_select_skill5" type="Label" parent="MainContent/PageCommand"]
+layout_mode = 0
+offset_left = 403.0
+offset_top = 285.0
+offset_right = 578.0
+offset_bottom = 320.0
+theme_override_fonts/font = ExtResource("3_tlijc")
+theme_override_font_sizes/font_size = 30
+text = "Battle Skill 5"
+horizontal_alignment = 2
+
+[node name="Button" type="Button" parent="MainContent/PageCommand/battle_select_skill5"]
+layout_mode = 0
+offset_left = 193.0
+offset_top = 2.0
+offset_right = 209.0
+offset_bottom = 17.0
+
+[node name="battle_pass_turn" type="Label" parent="MainContent/PageCommand"]
+layout_mode = 0
+offset_left = 376.0
+offset_top = 318.0
+offset_right = 578.0
+offset_bottom = 353.0
+theme_override_fonts/font = ExtResource("3_tlijc")
+theme_override_font_sizes/font_size = 30
+text = "Battle Pass Turn"
+horizontal_alignment = 2
+
+[node name="Button" type="Button" parent="MainContent/PageCommand/battle_pass_turn"]
+layout_mode = 0
+offset_left = 220.0
+offset_top = 2.0
+offset_right = 236.0
+offset_bottom = 18.0
+
+[node name="toggle_options" type="Label" parent="MainContent/PageCommand"]
+layout_mode = 0
+offset_left = 395.0
+offset_top = 351.0
+offset_right = 578.0
+offset_bottom = 386.0
+theme_override_fonts/font = ExtResource("3_tlijc")
+theme_override_font_sizes/font_size = 30
+text = "Toggle Options"
+horizontal_alignment = 2
+
+[node name="Button" type="Button" parent="MainContent/PageCommand/toggle_options"]
+layout_mode = 0
+offset_left = 201.0
+offset_top = 2.0
+offset_right = 217.0
+offset_bottom = 17.0
 
 [node name="PageAudio" type="Control" parent="MainContent"]
 visible = false
@@ -577,20 +811,21 @@ offset_bottom = 211.0
 
 [node name="Volume" type="Label" parent="MainContent/PageAudio"]
 layout_mode = 0
-offset_left = 455.0
-offset_top = 22.0
-offset_right = 603.0
-offset_bottom = 57.0
+offset_left = 406.0
+offset_top = 21.0
+offset_right = 554.0
+offset_bottom = 56.0
 theme_override_fonts/font = ExtResource("3_tlijc")
 theme_override_font_sizes/font_size = 30
 text = "Volume"
+horizontal_alignment = 2
 
 [node name="HSlider" type="HSlider" parent="MainContent/PageAudio/Volume"]
 layout_mode = 0
-offset_left = 97.0
-offset_top = 7.0
-offset_right = 247.0
-offset_bottom = 23.0
+offset_left = 165.0
+offset_top = 6.0
+offset_right = 315.0
+offset_bottom = 22.0
 step = 25.0
 value = 50.0
 rounded = true
@@ -600,19 +835,20 @@ ticks_position = 3
 
 [node name="Music" type="Label" parent="MainContent/PageAudio"]
 layout_mode = 0
-offset_left = 466.0
-offset_top = 57.0
-offset_right = 614.0
-offset_bottom = 92.0
+offset_left = 406.0
+offset_top = 56.0
+offset_right = 554.0
+offset_bottom = 91.0
 theme_override_fonts/font = ExtResource("3_tlijc")
 theme_override_font_sizes/font_size = 30
 text = "Music"
+horizontal_alignment = 2
 
 [node name="HSlider" type="HSlider" parent="MainContent/PageAudio/Music"]
 layout_mode = 0
-offset_left = 86.0
+offset_left = 165.0
 offset_top = 7.0
-offset_right = 236.0
+offset_right = 315.0
 offset_bottom = 23.0
 step = 25.0
 value = 50.0
@@ -623,20 +859,21 @@ ticks_position = 3
 
 [node name="Voices" type="Label" parent="MainContent/PageAudio"]
 layout_mode = 0
-offset_left = 462.0
-offset_top = 92.0
-offset_right = 610.0
-offset_bottom = 127.0
+offset_left = 406.0
+offset_top = 91.0
+offset_right = 554.0
+offset_bottom = 126.0
 theme_override_fonts/font = ExtResource("3_tlijc")
 theme_override_font_sizes/font_size = 30
 text = "Voices"
+horizontal_alignment = 2
 
 [node name="HSlider" type="HSlider" parent="MainContent/PageAudio/Voices"]
 layout_mode = 0
-offset_left = 92.0
-offset_top = 7.0
-offset_right = 242.0
-offset_bottom = 23.0
+offset_left = 165.0
+offset_top = 8.0
+offset_right = 315.0
+offset_bottom = 24.0
 step = 25.0
 value = 50.0
 rounded = true
@@ -646,20 +883,21 @@ ticks_position = 3
 
 [node name="Sound Effects" type="Label" parent="MainContent/PageAudio"]
 layout_mode = 0
-offset_left = 376.0
-offset_top = 124.0
-offset_right = 543.0
-offset_bottom = 159.0
+offset_left = 387.0
+offset_top = 126.0
+offset_right = 554.0
+offset_bottom = 161.0
 theme_override_fonts/font = ExtResource("3_tlijc")
 theme_override_font_sizes/font_size = 30
 text = "Sound Effects"
+horizontal_alignment = 2
 
 [node name="HSlider" type="HSlider" parent="MainContent/PageAudio/Sound Effects"]
 layout_mode = 0
-offset_left = 179.0
-offset_top = 7.0
-offset_right = 329.0
-offset_bottom = 23.0
+offset_left = 184.0
+offset_top = 8.0
+offset_right = 334.0
+offset_bottom = 24.0
 step = 25.0
 value = 50.0
 rounded = true

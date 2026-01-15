@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AshesOfVelsingrad.Managers;
-using AshesOfVelsingrad.systems;
+using AshesOfVelsingrad.Systems;
 using Godot;
 
 namespace AshesOfVelsingrad.AI;
@@ -89,9 +89,19 @@ public partial class EnemyAIBehavior : Node
 
 	#endregion
 
-	#region Private Fields
+	#region Public Fields
 
-	private UnitSystem? _unit;
+	public UnitSystem? _unit;
+
+	#endregion
+
+	#region Public Properties
+
+	/// <summary>
+	/// Read-only access to the UnitSystem this AI is attached to.
+	/// Useful for external systems that need to query the AI's unit.
+	/// </summary>
+	public UnitSystem? Unit => _unit;
 
 	#endregion
 
@@ -148,7 +158,7 @@ public partial class EnemyAIBehavior : Node
 	/// </summary>
 	/// <param name="battleState">Current battle state.</param>
 	/// <returns>An AI decision containing the chosen action and target.</returns>
-	private AIDecision MakeDecision(BattleState battleState)
+	public AIDecision MakeDecision(BattleState battleState)
 	{
 		if (_unit == null)
 		{
@@ -303,7 +313,7 @@ public partial class EnemyAIBehavior : Node
 	/// Selects the best skill to use against a target.
 	/// For now returns the first active skill, but can be enhanced with more logic.
 	/// </summary>
-	private SkillSystem? GetBestSkill(BattleState battleState, UnitSystem target)
+	public SkillSystem? GetBestSkill(BattleState battleState, UnitSystem target)
 	{
 		if (_unit == null || _unit.ActiveSkills.Count == 0)
 			return null;
@@ -357,7 +367,7 @@ public partial class EnemyAIBehavior : Node
 	/// Calculates Manhattan distance between two grid positions.
 	/// Uses 3D Euclidean distance for more accurate pathfinding.
 	/// </summary>
-	private static int CalculateManhattanDistance(Vector3I pos1, Vector3I pos2)
+	public static int CalculateManhattanDistance(Vector3I pos1, Vector3I pos2)
 	{
 		int dx = Math.Abs(pos1.X - pos2.X);
 		int dy = Math.Abs(pos1.Y - pos2.Y);

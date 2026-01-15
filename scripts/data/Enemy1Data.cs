@@ -1,5 +1,5 @@
 using System.Collections.Generic;
-using AshesOfVelsingrad.systems;
+using AshesOfVelsingrad.Systems;
 
 namespace AshesOfVelsingrad;
 
@@ -17,7 +17,6 @@ public sealed partial class Enemy1Data : UnitSystem
 		Intelligence = 100;
 		ManaPoint = 100;
 		IsAlive = true;
-		HasPlayed = false;
 		PossibleMovesRange = 2;
 		Curse = 0;
 	}

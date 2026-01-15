@@ -1,9 +1,8 @@
 using System;
 using System.Collections.Generic;
-using AshesOfVelsingrad.systems.status_effects;
 using Godot;
 
-namespace AshesOfVelsingrad.systems;
+namespace AshesOfVelsingrad.Systems;
 
 /// <summary>
 ///     Enumeration of every cell type available in the game.
@@ -30,7 +29,7 @@ public sealed class CellInformation(
     int z,
     CellType cellType,
     bool isWalkable
-) : EffectTarget
+) : EffectTarget<CellInformation>
 {
     public int X { get; } = x;
     public int Y { get; } = y;
@@ -62,6 +61,8 @@ public abstract partial class MapSystem : GridMap
     /// </summary>
     private Vector3I _max;
 
+    private StatusEffectSystem? _statusEffectSystem;
+
     #endregion
 
     #region Protected Properties
@@ -69,7 +70,7 @@ public abstract partial class MapSystem : GridMap
     /// <summary>
     ///     List of information of every grid
     /// </summary>
-    protected readonly List<CellInformation> CellsInformation = [];
+    public readonly List<CellInformation> CellsInformation = [];
 
     #endregion
 
@@ -93,7 +94,7 @@ public abstract partial class MapSystem : GridMap
     /// <summary>
     ///     The size of a single grid in the UI
     /// </summary>
-    public Vector3 MapCellSize { get; private set; }
+    public Vector3 MapCellSize { get; protected set; }
 
     public static readonly Dictionary<CellType, bool> CellTypeWalkable = new()
     {
@@ -107,7 +108,7 @@ public abstract partial class MapSystem : GridMap
     /// <remarks>
     ///     It will be used to check if there is only one instance.
     /// </remarks>
-    public static MapSystem? Instance { get; protected set; }
+    public static MapSystem? Instance { get; set; }
 
     #endregion
 
@@ -176,6 +177,15 @@ public abstract partial class MapSystem : GridMap
         }
     }
 
+    /// <summary>
+    /// Injects an instance of the status effect system into this map.
+    /// </summary>
+    /// <param name="statusEffectSystem">The status effect system to be used by this map.</param>
+    public virtual void InjectDependencies(StatusEffectSystem statusEffectSystem)
+    {
+        _statusEffectSystem = statusEffectSystem;
+    }
+
     #endregion
 
     #region Private Methods
@@ -240,6 +250,20 @@ public abstract partial class MapSystem : GridMap
     #endregion
 
     #region Public Methods
+
+    /// <summary>
+    ///     Getter to know if a cell is empty.
+    /// </summary>
+    /// <param name="x">The x-axis</param>
+    /// <param name="y">The y-axis</param>
+    /// <param name="z">The z-axis</param>
+    /// <returns><c>True</c> if the cell is empty, <c>False</c> otherwise</returns>
+    public virtual bool IsEmpty(int x, int y, int z)
+    {
+        int index = GetListIndex(x, y, z);
+
+        return CellsInformation[index].CellType == CellType.Empty;
+    }
 
     /// <summary>
     ///     Getter to know if a cell is walkable.
@@ -348,6 +372,29 @@ public abstract partial class MapSystem : GridMap
         int index = GetListIndex(x, y, z);
 
         CellsInformation[index].Unit = null;
+    }
+
+    /// <summary>
+    /// Applies a status effect to a list of cells on the map.
+    /// </summary>
+    /// <param name="cells">
+    /// A list of cell coordinates represented as tuples (x, y, z) where the status effect should be applied.
+    /// </param>
+    /// <param name="statusEffect">The status effect to apply to the cells.</param>
+    public virtual void SetStatusEffectOnCells(List<(int, int, int)> cells, StatusEffect<CellInformation> statusEffect)
+    {
+        foreach ((int, int, int) cell in cells)
+            try
+            {
+                int index = GetListIndex(cell.Item1, cell.Item2, cell.Item3);
+
+                if (_statusEffectSystem is not null)
+                    _statusEffectSystem.ApplyEffect(CellsInformation[index], statusEffect);
+            }
+            catch (ArgumentOutOfRangeException)
+            {
+                // Does nothing if the cell don't exist.
+            }
     }
 
     #endregion

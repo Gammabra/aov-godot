@@ -28,6 +28,27 @@ var camera_shake_enabled: bool = true
 var visual_indicators_enabled: bool = true
 var color_blindness: String = "Deuteranopia"
 
+# ---------- COMMAND ----------
+@onready var page_command := $PageCommand
+
+var waiting_action := ""
+var waiting_button: Button = null
+
+var actions := {
+	"move_up": "move_up",
+	"move_down": "move_down",
+	"move_left": "move_left",
+	"move_right": "move_right",
+	"battle_move_unit_to": "battle_move_unit_to",
+	"battle_select_skill1": "battle_select_skill1",
+	"battle_select_skill2": "battle_select_skill2",
+	"battle_select_skill3": "battle_select_skill3",
+	"battle_select_skill4": "battle_select_skill4",
+	"battle_select_skill5": "battle_select_skill5",
+	"battle_pass_turn": "battle_pass_turn",
+	"toggle_options": "toggle_options"
+}
+
 # ---------- AUDIO ----------
 var master_volume: float = 0.8
 var music_volume: float = 0.8
@@ -115,6 +136,49 @@ func _on_visual_indicators_toggled(enabled: bool):
 
 func _on_color_blindness_item_selected(index: int):
 	color_blindness = $VisualColorBlindnessOption.get_item_text(index)
+
+# =================================================
+# COMMAND
+# =================================================
+
+func _ready():
+	for action in actions.keys():
+		var label := page_command.get_node(actions[action]) as Label
+		var btn := label.get_node("Button") as Button
+		btn.text = _get_action_key(action)
+		btn.pressed.connect(_on_rebind_pressed.bind(action, btn))
+
+func _on_rebind_pressed(action: String, btn: Button):
+	waiting_action = action
+	waiting_button = btn
+	btn.text = "Press key..."
+
+func _input(event):
+	if waiting_action == "":
+		return
+	if event is InputEventKey and event.pressed:
+		_bind_event(event)
+	if event is InputEventMouseButton and event.pressed:
+		_bind_event(event)
+
+func _bind_event(event):
+	InputMap.action_erase_events(waiting_action)
+	InputMap.action_add_event(waiting_action, event)
+
+	waiting_button.text = _get_action_key(waiting_action)
+	waiting_action = ""
+	waiting_button = null
+
+func _get_action_key(action_name: String) -> String:
+	var events = InputMap.action_get_events(action_name)
+	if events.is_empty():
+		return "None"
+	var ev = events[0]
+	if ev is InputEventKey:
+		return OS.get_keycode_string(ev.physical_keycode)
+	if ev is InputEventMouseButton:
+		return "Mouse " + str(ev.button_index)
+	return "Unknown"
 
 # =================================================
 # AUDIO

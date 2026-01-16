@@ -2,9 +2,9 @@
 
 [ext_resource type="Script" uid="uid://yjm5q2rxx15j" path="res://scripts/menu/settings_pages.gd" id="1_iuawr"]
 [ext_resource type="Texture2D" uid="uid://b5g32aw86klf1" path="res://assets/menu_assets/MENU proto.png" id="1_ujhbt"]
+[ext_resource type="Script" uid="uid://dj8kekyo0tl7p" path="res://scripts/menu/settings_save.gd" id="3_qi5fe"]
 [ext_resource type="FontFile" uid="uid://dri86n5u6wvhn" path="res://font/abibas/Abibas.ttf" id="3_tlijc"]
 [ext_resource type="Script" uid="uid://dep000km3rj72" path="res://scripts/menu/button_settings_font.gd" id="4_ujhbt"]
-[ext_resource type="Script" uid="uid://cjcmjml2mkhsn" path="res://scripts/menu/color_rect.gd" id="5_t01jc"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_m7784"]
 
@@ -51,6 +51,16 @@ theme_override_fonts/font = ExtResource("3_tlijc")
 theme_override_font_sizes/font_size = 60
 text = "Settings"
 horizontal_alignment = 1
+
+[node name="ButtonSave" type="Button" parent="."]
+offset_left = 1028.0
+offset_top = 583.0
+offset_right = 1132.0
+offset_bottom = 630.0
+theme_override_fonts/font = ExtResource("3_tlijc")
+theme_override_font_sizes/font_size = 30
+text = "Save"
+script = ExtResource("3_qi5fe")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 custom_minimum_size = Vector2(300, 0)
@@ -233,13 +243,21 @@ theme_override_font_sizes/font_size = 30
 text = "Text Color"
 horizontal_alignment = 2
 
-[node name="ColorRect" type="ColorRect" parent="MainContent/PageSubtitle/TextColor"]
+[node name="OptionButton" type="OptionButton" parent="MainContent/PageSubtitle/TextColor"]
+custom_minimum_size = Vector2(150, 0)
 layout_mode = 0
 offset_left = 171.0
-offset_top = 4.0
-offset_right = 191.0
-offset_bottom = 24.0
-script = ExtResource("5_t01jc")
+offset_right = 321.0
+offset_bottom = 28.0
+theme_override_fonts/font = ExtResource("3_tlijc")
+theme_override_font_sizes/font_size = 20
+item_count = 3
+popup/item_0/text = "White"
+popup/item_0/id = 0
+popup/item_1/text = "Red"
+popup/item_1/id = 1
+popup/item_2/text = "Green"
+popup/item_2/id = 2
 
 [node name="BgColor" type="Label" parent="MainContent/PageSubtitle"]
 layout_mode = 0
@@ -252,13 +270,22 @@ theme_override_font_sizes/font_size = 30
 text = "Background Color"
 horizontal_alignment = 2
 
-[node name="ColorRect" type="ColorRect" parent="MainContent/PageSubtitle/BgColor"]
+[node name="OptionButton" type="OptionButton" parent="MainContent/PageSubtitle/BgColor"]
+custom_minimum_size = Vector2(150, 0)
 layout_mode = 0
 offset_left = 236.0
-offset_top = 3.0
-offset_right = 256.0
-offset_bottom = 23.0
-script = ExtResource("5_t01jc")
+offset_top = 2.0
+offset_right = 386.0
+offset_bottom = 30.0
+theme_override_fonts/font = ExtResource("3_tlijc")
+theme_override_font_sizes/font_size = 20
+item_count = 3
+popup/item_0/text = "White"
+popup/item_0/id = 0
+popup/item_1/text = "Red"
+popup/item_1/id = 1
+popup/item_2/text = "Green"
+popup/item_2/id = 2
 
 [node name="Langage" type="Label" parent="MainContent/PageSubtitle"]
 layout_mode = 0
@@ -275,9 +302,9 @@ horizontal_alignment = 2
 custom_minimum_size = Vector2(130, 0)
 layout_mode = 0
 offset_left = 171.0
-offset_top = 5.0
+offset_top = 3.0
 offset_right = 301.0
-offset_bottom = 33.0
+offset_bottom = 31.0
 theme_override_fonts/font = ExtResource("3_tlijc")
 theme_override_font_sizes/font_size = 20
 selected = 0
@@ -302,8 +329,9 @@ horizontal_alignment = 2
 custom_minimum_size = Vector2(130, 0)
 layout_mode = 0
 offset_left = 182.0
+offset_top = 3.0
 offset_right = 312.0
-offset_bottom = 28.0
+offset_bottom = 31.0
 theme_override_fonts/font = ExtResource("3_tlijc")
 theme_override_font_sizes/font_size = 20
 selected = 0
@@ -457,7 +485,7 @@ offset_top = 219.0
 offset_right = 1152.0
 offset_bottom = 219.0
 
-[node name="Interface Size" type="Label" parent="MainContent/PageVisual"]
+[node name="InterfaceSize" type="Label" parent="MainContent/PageVisual"]
 layout_mode = 0
 offset_left = 402.0
 offset_top = 12.0
@@ -468,7 +496,7 @@ theme_override_font_sizes/font_size = 30
 text = "Interface Size"
 horizontal_alignment = 2
 
-[node name="HSlider" type="HSlider" parent="MainContent/PageVisual/Interface Size"]
+[node name="HSlider" type="HSlider" parent="MainContent/PageVisual/InterfaceSize"]
 layout_mode = 0
 offset_left = 195.0
 offset_top = 7.0
@@ -502,7 +530,7 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_t01jc")
 theme_override_colors/checkbox_checked_color = Color(0.4539004, 0, 0.04259321, 1)
 theme_override_colors/checkbox_unchecked_color = Color(0, 0, 0, 1)
 
-[node name="Camera Shake" type="Label" parent="MainContent/PageVisual"]
+[node name="CameraShake" type="Label" parent="MainContent/PageVisual"]
 layout_mode = 0
 offset_left = 404.0
 offset_top = 81.0
@@ -513,7 +541,7 @@ theme_override_font_sizes/font_size = 30
 text = "Camera Shake"
 horizontal_alignment = 2
 
-[node name="CheckBox" type="CheckBox" parent="MainContent/PageVisual/Camera Shake"]
+[node name="CheckBox" type="CheckBox" parent="MainContent/PageVisual/CameraShake"]
 layout_mode = 0
 offset_left = 193.0
 offset_top = 2.0
@@ -524,7 +552,7 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_t01jc")
 theme_override_colors/checkbox_checked_color = Color(0.4539004, 0, 0.04259321, 1)
 theme_override_colors/checkbox_unchecked_color = Color(0, 0, 0, 1)
 
-[node name="Visual Indicators" type="Label" parent="MainContent/PageVisual"]
+[node name="VisualIndicators" type="Label" parent="MainContent/PageVisual"]
 layout_mode = 0
 offset_left = 363.0
 offset_top = 116.0
@@ -535,7 +563,7 @@ theme_override_font_sizes/font_size = 30
 text = "Visual Indicators"
 horizontal_alignment = 2
 
-[node name="CheckBox" type="CheckBox" parent="MainContent/PageVisual/Visual Indicators"]
+[node name="CheckBox" type="CheckBox" parent="MainContent/PageVisual/VisualIndicators"]
 layout_mode = 0
 offset_left = 234.0
 offset_top = 5.0
@@ -546,7 +574,7 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_t01jc")
 theme_override_colors/checkbox_checked_color = Color(0.4539004, 0, 0.04259321, 1)
 theme_override_colors/checkbox_unchecked_color = Color(0, 0, 0, 1)
 
-[node name="Color Blindness" type="Label" parent="MainContent/PageVisual"]
+[node name="ColorBlindness" type="Label" parent="MainContent/PageVisual"]
 layout_mode = 0
 offset_left = 385.0
 offset_top = 151.0
@@ -557,7 +585,7 @@ theme_override_font_sizes/font_size = 30
 text = "Color Blindness"
 horizontal_alignment = 2
 
-[node name="OptionButton" type="OptionButton" parent="MainContent/PageVisual/Color Blindness"]
+[node name="OptionButton" type="OptionButton" parent="MainContent/PageVisual/ColorBlindness"]
 custom_minimum_size = Vector2(130, 0)
 layout_mode = 0
 offset_left = 213.0
@@ -578,6 +606,7 @@ popup/item_3/text = "Tritanopia"
 popup/item_3/id = 3
 
 [node name="PageCommand" type="Control" parent="MainContent"]
+visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_top = 223.0
@@ -809,7 +838,7 @@ offset_top = 211.0
 offset_right = 1176.0
 offset_bottom = 211.0
 
-[node name="Volume" type="Label" parent="MainContent/PageAudio"]
+[node name="Master" type="Label" parent="MainContent/PageAudio"]
 layout_mode = 0
 offset_left = 406.0
 offset_top = 21.0
@@ -820,7 +849,7 @@ theme_override_font_sizes/font_size = 30
 text = "Volume"
 horizontal_alignment = 2
 
-[node name="HSlider" type="HSlider" parent="MainContent/PageAudio/Volume"]
+[node name="HSlider" type="HSlider" parent="MainContent/PageAudio/Master"]
 layout_mode = 0
 offset_left = 165.0
 offset_top = 6.0
@@ -881,7 +910,7 @@ tick_count = 5
 ticks_on_borders = true
 ticks_position = 3
 
-[node name="Sound Effects" type="Label" parent="MainContent/PageAudio"]
+[node name="SFX" type="Label" parent="MainContent/PageAudio"]
 layout_mode = 0
 offset_left = 387.0
 offset_top = 126.0
@@ -892,7 +921,7 @@ theme_override_font_sizes/font_size = 30
 text = "Sound Effects"
 horizontal_alignment = 2
 
-[node name="HSlider" type="HSlider" parent="MainContent/PageAudio/Sound Effects"]
+[node name="HSlider" type="HSlider" parent="MainContent/PageAudio/SFX"]
 layout_mode = 0
 offset_left = 184.0
 offset_top = 8.0
@@ -910,5 +939,24 @@ ticks_position = 3
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/ButtonVisual" to="MainContent" method="_on_button_visual_pressed"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/ButtonCommand" to="MainContent" method="_on_button_command_pressed"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/ButtonAudio" to="MainContent" method="_on_button_audio_pressed"]
+[connection signal="toggled" from="MainContent/PageSubtitle/Subtitles/CheckBox" to="MainContent" method="_on_subtitles_toggled"]
+[connection signal="value_changed" from="MainContent/PageSubtitle/Size/HSlider" to="MainContent" method="_on_subtitle_size_changed"]
+[connection signal="item_selected" from="MainContent/PageSubtitle/Font/OptionButton" to="MainContent" method="_on_subtitle_font_item_selected"]
+[connection signal="item_selected" from="MainContent/PageSubtitle/TextColor/OptionButton" to="MainContent" method="_on_subtitle_text_color_changed"]
+[connection signal="item_selected" from="MainContent/PageSubtitle/BgColor/OptionButton" to="MainContent" method="_on_subtitle_bg_color_changed"]
+[connection signal="item_selected" from="MainContent/PageSubtitle/Langage/OptionButton" to="MainContent" method="_on_subtitle_language_item_selected"]
+[connection signal="item_selected" from="MainContent/PageSubtitle/DisplayTime/OptionButton" to="MainContent" method="_on_subtitle_display_time_changed"]
+[connection signal="value_changed" from="MainContent/PageVideo/Contrast/HSlider" to="MainContent" method="_on_contrast_changed"]
+[connection signal="value_changed" from="MainContent/PageVideo/Brightness/HSlider" to="MainContent" method="_on_brightness_changed"]
+[connection signal="toggled" from="MainContent/PageVideo/Animations/CheckBox" to="MainContent" method="_on_animations_toggled"]
 [connection signal="item_selected" from="MainContent/PageVideo/Resolution/OptionButton" to="MainContent" method="_on_resolution_item_selected"]
-[connection signal="value_changed" from="MainContent/PageAudio/Volume/HSlider" to="MainContent" method="_on_volume_value_changed"]
+[connection signal="item_selected" from="MainContent/PageVideo/Texture/OptionButton" to="MainContent" method="_on_texture_item_selected"]
+[connection signal="value_changed" from="MainContent/PageVisual/InterfaceSize/HSlider" to="MainContent" method="_on_interface_size_changed"]
+[connection signal="toggled" from="MainContent/PageVisual/Blurry/CheckBox" to="MainContent" method="_on_blurry_toggled"]
+[connection signal="toggled" from="MainContent/PageVisual/CameraShake/CheckBox" to="MainContent" method="_on_camera_shake_toggled"]
+[connection signal="toggled" from="MainContent/PageVisual/VisualIndicators/CheckBox" to="MainContent" method="_on_visual_indicators_toggled"]
+[connection signal="item_selected" from="MainContent/PageVisual/ColorBlindness/OptionButton" to="MainContent" method="_on_color_blindness_item_selected"]
+[connection signal="value_changed" from="MainContent/PageAudio/Master/HSlider" to="MainContent" method="_on_master_volume_changed"]
+[connection signal="value_changed" from="MainContent/PageAudio/Music/HSlider" to="MainContent" method="_on_music_volume_changed"]
+[connection signal="value_changed" from="MainContent/PageAudio/Voices/HSlider" to="MainContent" method="_on_voices_volume_changed"]
+[connection signal="value_changed" from="MainContent/PageAudio/SFX/HSlider" to="MainContent" method="_on_sfx_volume_changed"]

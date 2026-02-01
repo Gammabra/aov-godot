@@ -1,3 +1,4 @@
+using System;
 using AshesOfVelsingrad.utilities;
 
 namespace AshesOfVelsingrad.Systems;
@@ -14,23 +15,28 @@ namespace AshesOfVelsingrad.Systems;
 ///     including stacking behavior, duration management, and hooks for
 ///     when the effect is applied, removed, or updated each turn.
 /// </remarks>
-public abstract class StatusEffect<TTarget>
+public abstract class StatusEffect<TTarget>(
+    string name,
+    string description,
+    int duration,
+    bool isStackable
+) : IStatusEffect
 {
     /// <summary>
     ///     The display name of the effect.
     /// </summary>
-    public string Name { get; protected set; }
+    public string Name { get; protected set; } = name;
 
     /// <summary>
     ///     A description of what this effect does.
     /// </summary>
-    public string Description { get; protected set; }
+    public string Description { get; protected set; } = description;
 
     /// <summary>
     ///     The number of turns the effect will last.
     ///     A value of <c>-1</c> means the effect is permanent.
     /// </summary>
-    public int Duration { get; protected set; }
+    public int Duration { get; protected set; } = duration;
 
     /// <summary>
     ///     The number of times this effect has been stacked.
@@ -40,7 +46,9 @@ public abstract class StatusEffect<TTarget>
     /// <summary>
     ///     Whether this effect can be stacked.
     /// </summary>
-    public virtual bool IsStackable => false;
+    public bool IsStackable { get; } = isStackable;
+
+    public IStatusEffect? EffectToSpread { get; set; }
 
     /// <summary>
     ///     Called when this effect is applied to a target.

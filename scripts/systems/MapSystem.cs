@@ -37,6 +37,13 @@ public sealed class CellInformation(
     public CellType CellType { get; set; } = cellType;
     public bool IsWalkable { get; set; } = isWalkable;
     public UnitSystem? Unit { get; set; }
+
+    public void OnUnitEntered(UnitSystem unit)
+    {
+        foreach (StatusEffect<CellInformation> effect in GetActiveEffects())
+            if (effect.EffectToSpread is StatusEffect<UnitSystem> unitEffect)
+                unit.ApplyEffect(unitEffect);
+    }
 }
 
 /// <summary>
@@ -148,10 +155,10 @@ public abstract partial class MapSystem : GridMap
     /// </summary>
     /// <remarks>
     ///     This method is called by the _Ready method to initialize the map.
-	///     It should contain the logic necessary to set up the map's state and functionality.
-	///     Derived classes must implement this method to provide their specific initialization logic.
-	/// </remarks>
-	protected virtual void Initialize()
+    ///     It should contain the logic necessary to set up the map's state and functionality.
+    ///     Derived classes must implement this method to provide their specific initialization logic.
+    /// </remarks>
+    protected virtual void Initialize()
     {
         MapCellSize = CellSize;
         foreach (Vector3I cell in GetUsedCells())

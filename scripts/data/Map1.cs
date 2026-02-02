@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using AshesOfVelsingrad.Systems;
 using Godot;
 
-namespace AshesOfVelsingrad;
+namespace AshesOfVelsingrad.Data.StatusEffect;
 
 public sealed partial class Map1 : MapSystem
 {
@@ -13,6 +13,9 @@ public sealed partial class Map1 : MapSystem
             CellInformation cell = CellsInformation[0];
             cell.Unit = unit;
             SetWalkable(cell.X, cell.Y, cell.Z);
+            List<(int, int, int)> cells = [];
+            cells.Add((cell.X, cell.Y, cell.Z));
+            SetStatusEffectOnCells(cells, new BurningCellEffect(10));
 
             Vector3I pos = new(cell.X, cell.Y, cell.Z);
             Vector3 worldPos = MapToLocal(pos);

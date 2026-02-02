@@ -8,10 +8,10 @@ public sealed partial class Enemy1Data : UnitSystem
     {
         UnitName = "Enemy1";
         Description = "Test enemy unit";
-        MaxHp = 2;
+        MaxHp = 100;
         Hp = MaxHp;
         BaseAtk = 100;
-        BaseDef = 100;
+        BaseDef = 0;
         BaseSpeed = 100;
         Intelligence = 100;
         ManaPoint = 100;

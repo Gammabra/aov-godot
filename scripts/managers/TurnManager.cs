@@ -120,6 +120,8 @@ public partial class TurnManager : BaseManager
         while (true)
         {
             GD.Print($"{_unitsTurnOrder[_currentIndex].Key.Name} turn");
+            foreach (KeyValuePair<UnitSystem, TurnState> unit in _unitsTurnOrder)
+                GD.Print($"{unit.Key.Name} (HP: {unit.Key.Hp})");
             switch (_currentTurnState)
             {
                 case TurnState.PlayerTurn:

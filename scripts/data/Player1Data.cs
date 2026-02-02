@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using AshesOfVelsingrad.Data;
 using AshesOfVelsingrad.Systems;
 using Godot;
 
@@ -14,7 +15,8 @@ public sealed class Skill1 : SkillSystem
 
     public override void Use(List<UnitSystem> targets, MapSystem? map)
     {
-        targets[0].TakeDamage(101);
+        targets[0].TakeDamage(1);
+        targets[0].SetStatusEffectOnUnit(new BurningEffect(2));
         GD.Print(targets[0].Hp);
     }
 }
@@ -84,7 +86,7 @@ public sealed partial class Player1Data : UnitSystem
         MaxHp = 2000;
         Hp = MaxHp;
         BaseAtk = 200;
-        BaseDef = 200;
+        BaseDef = 0;
         BaseSpeed = 200;
         Intelligence = 200;
         ManaPoint = 200;

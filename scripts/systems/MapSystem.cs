@@ -337,6 +337,7 @@ public abstract partial class MapSystem : GridMap
         int index = GetListIndex(newX, newY, newZ);
 
         CellsInformation[index].Unit = unit;
+        CellsInformation[index].OnUnitEntered(unit);
         SetWalkable(newX, newY, newZ);
     }
 

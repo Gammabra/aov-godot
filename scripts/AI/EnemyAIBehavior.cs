@@ -11,7 +11,7 @@ namespace AshesOfVelsingrad.AI;
 /// <summary>
 /// Defines different AI personality types that determine decision-making behavior.
 /// </summary>
-public enum AIPersonality //TODO: add at least a survival type for low HP behavior or something like that
+public enum AIPersonality
 {
 	/// <summary>Attacks the nearest target, prefers close combat.</summary>
 	Aggressive,
@@ -80,9 +80,6 @@ public partial class EnemyAIBehavior : Node
 
 	[Export]
 	public float ThinkingDelayMax { get; set; } = 2.0f;
-
-	[Export]
-	public int AttackRange { get; set; } = 1;
 
 	#endregion
 
@@ -214,7 +211,20 @@ public partial class EnemyAIBehavior : Node
 				};
 			}
 		}
-		else //TODO: find a condition so it is worth moving in the direction of the player even if we can't attack after
+		else if (_unit.Hp < _unit.MaxHp * 0.3f) // TODO: check 1/3 of hp is balanced or not, check if personality should be required for this move
+		{
+			// Defensive AI tries to maintain distance
+			Vector3I? movePos = CalculateMoveAway(battleState, targetPos.Value, _unit.PossibleMovesRange);
+			if (movePos.HasValue)
+			{
+				return new AIDecision
+				{
+					Action = AIAction.Move,
+					MovePosition = movePos.Value
+				};
+			}
+		}
+		else
 		{
 			// go closer to target
 			Vector3I? movePos = CalculateMoveToRange(battleState, targetPos.Value);
@@ -227,7 +237,6 @@ public partial class EnemyAIBehavior : Node
 				};
 			}
 		}
-		//TODO: add flee behavior for defensive AI when low HP
 
 		// Can't reach target effectively
 		GD.Print($"{_unit.Name}: Cannot reach {target.Name}, passing turn");
@@ -242,6 +251,8 @@ public partial class EnemyAIBehavior : Node
 	/// </summary>
 	/// <param name="battleState">Current battle state.</param>
 	/// <returns>The selected target unit, or null if none available.</returns>
+
+	//TODO: Upgrade the target selection to consider more factors like threat level, distance, status effects, skill choosen, etc.
 	private UnitSystem? SelectTarget(BattleState battleState)
 	{
 		if (_unit == null)
@@ -262,8 +273,10 @@ public partial class EnemyAIBehavior : Node
 	/// </summary>
 	private UnitSystem? SelectDefensiveTarget(BattleState battleState)
 	{
+		if (_unit == null)
+			return null;
 		// Defensive AI prioritizes nearby threats
-		List<UnitSystem> nearbyUnits = battleState.GetPlayerUnitsInRange(AttackRange + 2);
+		List<UnitSystem> nearbyUnits = battleState.GetPlayerUnitsInRange(_unit.PossibleMovesRange + 1);
 
 		if (nearbyUnits.Count > 0)
 		{

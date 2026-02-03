@@ -167,7 +167,7 @@ public class UnitSystemTest
         unit.Play(new List<UnitSystem>(), null, skill);
 
         AssertThat(skill.WasUsed).IsTrue();
-        AssertThat(unit.ManaPoint).IsEqual(95);
+        AssertThat(unit.Mana).IsEqual(95);
     }
 
     [TestCase]

@@ -183,7 +183,7 @@ public partial class EnemyAIBehavior : Node
 		int distance = CalculateManhattanDistance(myPos.Value, targetPos.Value);
 
 		// Get skill to use (for now, just get first available skill)
-		SkillSystem? skill = GetBestSkill(battleState, target);
+		SkillSystem? skill = GetBestSkill(battleState, target, distance);
 
 		// Decision logic based on distance and unit capabilities
 		if (skill != null && distance <= skill.Range)
@@ -214,7 +214,7 @@ public partial class EnemyAIBehavior : Node
 				};
 			}
 		}
-		else //TODO: find a condition so it is worth moving even if we can't attack after
+		else //TODO: find a condition so it is worth moving in the direction of the player even if we can't attack after
 		{
 			// go closer to target
 			Vector3I? movePos = CalculateMoveToRange(battleState, targetPos.Value);
@@ -296,7 +296,7 @@ public partial class EnemyAIBehavior : Node
 	/// Selects the best skill to use against a target.
 	/// For now returns the first active skill, but can be enhanced with more logic.
 	/// </summary>
-	public SkillSystem? GetBestSkill(BattleState battleState, UnitSystem target)
+	public SkillSystem? GetBestSkill(BattleState battleState, UnitSystem target, int distance)
 	{
 		if (_unit == null || _unit.ActiveSkills.Count == 0)
 			return null;
@@ -304,10 +304,17 @@ public partial class EnemyAIBehavior : Node
 		// Simple implementation: return first skill
 		// TODO: Add logic to choose best skill based on:
 		// - Skill damage/effect type
-		// - Mana cost vs available mana
 		// - Target's resistances/weaknesses
-		// - Skill cooldowns
-		return _unit.ActiveSkills[0];
+		// - Compare the available skills and choose the most effective one
+		// - Be able to choose a skill that will only be usable after some turns (cooldown/mana management)
+
+		foreach (var skill in _unit.ActiveSkills)
+		{
+			if (skill.ManaCost <= _unit.Mana && skill.Cooldown == 0)
+				return skill;
+		}
+
+		return null;
 	}
 
 	/// <summary>
@@ -316,6 +323,7 @@ public partial class EnemyAIBehavior : Node
 	/// <param name="battleState">Current battle state.</param>
 	/// <param name="targetPos">The target's grid position.</param>
 	/// <returns>The grid position to move to, or null if no valid move exists.</returns>
+	//TODO: improve this to consider obstacles and pathfinding and take in account attack range to optimize distance better
 	private Vector3I? CalculateMoveToRange(BattleState battleState, Vector3I targetPos)
 	{
 		if (_unit == null)

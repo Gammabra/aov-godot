@@ -15,7 +15,8 @@ public sealed partial class Enemy1Data : UnitSystem
 		BaseDef = 100;
 		BaseSpeed = 100;
 		Intelligence = 100;
-		ManaPoint = 100;
+		ManaMax = 100;
+		Mana = ManaMax;
 		IsAlive = true;
 		PossibleMovesRange = 2;
 		Curse = 0;

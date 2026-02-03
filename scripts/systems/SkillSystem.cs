@@ -55,22 +55,22 @@ public abstract class SkillSystem
     /// <summary>
     ///     The name of the skill.
     /// </summary>
-    public string Name { get; protected set; }
+    public string Name { get; protected init; }
 
     /// <summary>
     ///     A description of the skill, used for tooltips or UI.
     /// </summary>
-    public string Description { get; protected set; }
+    public string Description { get; protected init; }
 
     /// <summary>
     ///     The amount of mana consumed when using this skill.
     /// </summary>
-    public float ManaCost { get; protected set; }
+    public float ManaCost { get; protected init; }
 
     /// <summary>
     ///     The total cooldown duration (in turns) before the skill can be reused.
     /// </summary>
-    public int TotalCooldown { get; protected set; }
+    public int TotalCooldown { get; protected init; }
 
     /// <summary>
     ///     The remaining cooldown (in turns) before the skill becomes available again.
@@ -80,27 +80,27 @@ public abstract class SkillSystem
     /// <summary>
     ///     The maximum distance (in grid units) from which the skill can target.
     /// </summary>
-    public int Range { get; protected set; }
+    public int Range { get; protected init; }
 
     /// <summary>
     ///     The cells affected relative to the target position (area of effect).
     /// </summary>
-    public List<(int, int, int)> AreaEffect { get; protected set; }
+    public List<(int, int, int)> AreaEffect { get; protected init; }
 
     /// <summary>
     ///     The magical element type of this skill (e.g., Fire, Water, Light).
     /// </summary>
-    public MagicType MagicType { get; protected set; }
+    public MagicType MagicType { get; protected init; }
 
     /// <summary>
     ///     The type of effect this skill applies (e.g., damage, heal, buff).
     /// </summary>
-    public EffectType EffectType { get; protected set; }
+    public EffectType EffectType { get; protected init; }
 
     /// <summary>
     ///     The type of target(s) this skill can be used on.
     /// </summary>
-    public TargetTypes TargetType { get; protected set; }
+    public TargetTypes TargetType { get; protected init; }
 
     /// <summary>
     ///     Executes the skill logic when cast.

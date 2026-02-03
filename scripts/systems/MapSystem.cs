@@ -34,15 +34,36 @@ public sealed class CellInformation(
     public int X { get; } = x;
     public int Y { get; } = y;
     public int Z { get; } = z;
-    public CellType CellType { get; set; } = cellType;
-    public bool IsWalkable { get; set; } = isWalkable;
-    public UnitSystem? Unit { get; set; }
+    public CellType CellType { get; } = cellType;
+    public bool IsWalkable { get; private set; } = isWalkable;
+    public UnitSystem? Unit { get; private set; }
 
+    /// <summary>
+    /// Set the logic when a unit has entered the cell
+    /// </summary>
+    /// <param name="unit">The unit that entered the cell</param>
     public void OnUnitEntered(UnitSystem unit)
     {
         foreach (StatusEffect<CellInformation> effect in GetActiveEffects())
             if (effect.EffectToSpread is StatusEffect<UnitSystem> unitEffect)
                 unit.ApplyEffect(unitEffect);
+    }
+
+    /// <summary>
+    /// Set <see cref="IsWalkable"/> variable to the opposite one
+    /// </summary>
+    internal void SetWalkable()
+    {
+        IsWalkable = !IsWalkable;
+    }
+
+    /// <summary>
+    /// Set <see cref="Unit"/>
+    /// </summary>
+    /// <param name="unit">The unit that is on the cell</param>
+    internal void SetUnit(UnitSystem? unit = null)
+    {
+        Unit = unit;
     }
 }
 
@@ -101,9 +122,9 @@ public abstract partial class MapSystem : GridMap
     /// <summary>
     ///     The size of a single grid in the UI
     /// </summary>
-    public Vector3 MapCellSize { get; protected set; }
+    protected Vector3 MapCellSize { get; set; }
 
-    public static readonly Dictionary<CellType, bool> CellTypeWalkable = new()
+    private static readonly Dictionary<CellType, bool> _cellTypeWalkable = new()
     {
         { CellType.Empty, false },
         { CellType.Grass, true }
@@ -115,7 +136,7 @@ public abstract partial class MapSystem : GridMap
     /// <remarks>
     ///     It will be used to check if there is only one instance.
     /// </remarks>
-    public static MapSystem? Instance { get; set; }
+    protected static MapSystem? Instance { get; set; }
 
     #endregion
 
@@ -165,7 +186,7 @@ public abstract partial class MapSystem : GridMap
         {
             CellInformation cellInformation;
             int meshId = GetCellItem(cell);
-            bool doesMeshExist = CellTypeWalkable.TryGetValue((CellType)meshId, out bool isWalkable);
+            bool doesMeshExist = _cellTypeWalkable.TryGetValue((CellType)meshId, out bool isWalkable);
 
             if (!doesMeshExist)
             {
@@ -296,7 +317,7 @@ public abstract partial class MapSystem : GridMap
     {
         int index = GetListIndex(x, y, z);
 
-        CellsInformation[index].IsWalkable = !CellsInformation[index].IsWalkable;
+        CellsInformation[index].SetWalkable();
     }
 
     /// <summary>
@@ -328,7 +349,7 @@ public abstract partial class MapSystem : GridMap
         {
             if (cell.Unit != unit)
                 continue;
-            cell.Unit = null;
+            cell.SetUnit();
             SetWalkable(cell.X, cell.Y, cell.Z);
             break;
         }
@@ -336,7 +357,7 @@ public abstract partial class MapSystem : GridMap
         // Assign to new position
         int index = GetListIndex(newX, newY, newZ);
 
-        CellsInformation[index].Unit = unit;
+        CellsInformation[index].SetUnit(unit);
         CellsInformation[index].OnUnitEntered(unit);
         SetWalkable(newX, newY, newZ);
     }
@@ -379,7 +400,7 @@ public abstract partial class MapSystem : GridMap
     {
         int index = GetListIndex(x, y, z);
 
-        CellsInformation[index].Unit = null;
+        CellsInformation[index].SetUnit();
     }
 
     /// <summary>
@@ -396,8 +417,7 @@ public abstract partial class MapSystem : GridMap
             {
                 int index = GetListIndex(cell.Item1, cell.Item2, cell.Item3);
 
-                if (_statusEffectSystem is not null)
-                    _statusEffectSystem.ApplyEffect(CellsInformation[index], statusEffect);
+                _statusEffectSystem?.ApplyEffect(CellsInformation[index], statusEffect);
             }
             catch (ArgumentOutOfRangeException)
             {

@@ -95,7 +95,9 @@ public partial class GameManager : BaseManager
         _battleInputSystemContainer.OnSelectMovePressed += PlayerSelectedMove;
         _playerUnitsContainer = GetNode<Node>(_playerUnitsPath);
         _enemyUnitsContainer = GetNode<Node>(_enemyUnitsPath);
+
         LoadUnits();
+
         _mapSystemContainer = GetNode<MapSystem>(_mapSystemPath);
         _mapSystemContainer.InjectDependencies(_statusEffectSystem);
         _mapSystemContainer.PlaceUnits(_playerUnits, _enemyUnits);
@@ -105,10 +107,22 @@ public partial class GameManager : BaseManager
         _turnManagerContainer.OnEnemyTurnEnd += EnemyTurnEnded;
         _turnManagerContainer.OnCurrentTurnEnd += CurrentTurnEnded;
         _turnManagerContainer.InitializeTurnOrder(_playerUnits, _enemyUnits);
+
         if (_enemyUnits.Contains(_turnManagerContainer.GetCurrentUnit()))
             DeactivatePlayerUnit();
         else
             ActivatePlayerUnit();
+
+        // Create EnemyAIManager as a battle-scoped instance (NOT a global singleton)
+		AIManager = new EnemyAIManager(this);
+		AIManager.SetUnitReferences(_playerUnits, _enemyUnits);
+		
+		if (_mapSystemContainer != null)
+			AIManager.SetMapSystem(_mapSystemContainer);
+		else
+			GD.PrintErr("EnemyAIManager: MapSystem not available when setting up AI manager");
+		
+		_turnManagerContainer.SetAIManager(AIManager);
     }
 
 	#endregion

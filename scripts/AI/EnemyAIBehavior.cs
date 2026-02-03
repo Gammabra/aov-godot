@@ -11,7 +11,7 @@ namespace AshesOfVelsingrad.AI;
 /// <summary>
 /// Defines different AI personality types that determine decision-making behavior.
 /// </summary>
-public enum AIPersonality
+public enum AIPersonality //TODO: add at least a survival type for low HP behavior or something like that
 {
 	/// <summary>Attacks the nearest target, prefers close combat.</summary>
 	Aggressive,
@@ -163,13 +163,6 @@ public partial class EnemyAIBehavior : Node
 			return new AIDecision { Action = AIAction.Pass };
 		}
 
-		// Check if there are any valid targets
-		if (battleState.PlayerUnits.Count == 0)
-		{
-			GD.Print($"{_unit.Name}: No player units available, passing turn");
-			return new AIDecision { Action = AIAction.Pass };
-		}
-
 		// Choose target based on personality
 		UnitSystem? target = SelectTarget(battleState);
 
@@ -184,9 +177,7 @@ public partial class EnemyAIBehavior : Node
 		Vector3I? targetPos = battleState.MapSystem.GetUnitPosition(target);
 
 		if (myPos == null || targetPos == null)
-		{
 			return new AIDecision { Action = AIAction.Pass };
-		}
 
 		// Calculate distance to target
 		int distance = CalculateManhattanDistance(myPos.Value, targetPos.Value);
@@ -195,7 +186,7 @@ public partial class EnemyAIBehavior : Node
 		SkillSystem? skill = GetBestSkill(battleState, target);
 
 		// Decision logic based on distance and unit capabilities
-		if (distance <= AttackRange && skill != null)
+		if (skill != null && distance <= skill.Range)
 		{
 			// In attack range - just attack
 			GD.Print($"{_unit.Name}: Target in range, attacking {target.Name}");
@@ -206,39 +197,37 @@ public partial class EnemyAIBehavior : Node
 				Skill = skill
 			};
 		}
-		else if (distance <= _unit.PossibleMovesRange + AttackRange)
+		else if (skill != null && distance <= _unit.PossibleMovesRange + skill.Range)
 		{
 			// Can move closer and possibly attack
-			Vector3I? movePos = CalculateMoveTowardsTarget(battleState, targetPos.Value);
+			Vector3I? movePos = CalculateMoveToRange(battleState, targetPos.Value);
 
 			if (movePos.HasValue)
 			{
-				int distanceAfterMove = CalculateManhattanDistance(movePos.Value, targetPos.Value);
-
-				if (distanceAfterMove <= AttackRange && skill != null)
+				GD.Print($"{_unit.Name}: Moving to {movePos.Value} and attacking {target.Name}");
+				return new AIDecision
 				{
-					// Can move and attack
-					GD.Print($"{_unit.Name}: Moving to {movePos.Value} and attacking {target.Name}");
-					return new AIDecision
-					{
-						Action = AIAction.MoveAndSkill,
-						Target = target,
-						MovePosition = movePos.Value,
-						Skill = skill
-					};
-				}
-				else
-				{
-					// Just move closer
-					GD.Print($"{_unit.Name}: Moving closer to {target.Name}");
-					return new AIDecision
-					{
-						Action = AIAction.Move,
-						MovePosition = movePos.Value
-					};
-				}
+					Action = AIAction.MoveAndSkill,
+					Target = target,
+					MovePosition = movePos.Value,
+					Skill = skill
+				};
 			}
 		}
+		else //TODO: find a condition so it is worth moving even if we can't attack after
+		{
+			// go closer to target
+			Vector3I? movePos = CalculateMoveToRange(battleState, targetPos.Value);
+			if (movePos.HasValue)
+			{
+				return new AIDecision
+				{
+					Action = AIAction.Move,
+					MovePosition = movePos.Value
+				};
+			}
+		}
+		//TODO: add flee behavior for defensive AI when low HP
 
 		// Can't reach target effectively
 		GD.Print($"{_unit.Name}: Cannot reach {target.Name}, passing turn");
@@ -327,9 +316,7 @@ public partial class EnemyAIBehavior : Node
 	/// <param name="battleState">Current battle state.</param>
 	/// <param name="targetPos">The target's grid position.</param>
 	/// <returns>The grid position to move to, or null if no valid move exists.</returns>
-	private Vector3I? CalculateMoveTowardsTarget(
-		BattleState battleState,
-		Vector3I targetPos)
+	private Vector3I? CalculateMoveToRange(BattleState battleState, Vector3I targetPos)
 	{
 		if (_unit == null)
 			return null;
@@ -350,6 +337,34 @@ public partial class EnemyAIBehavior : Node
 			if (distance < bestDistance)
 			{
 				bestDistance = distance;
+				bestMove = move;
+			}
+		}
+
+		return bestMove;
+	}
+
+	/// <summary>
+	/// Calculates the best position to move away from the target.
+	/// </summary>
+	/// <param name="battleState">The current battle state.</param>
+	/// <param name="targetPos">The target's grid position.</param>
+	/// <param name="minDistance">The minimum distance to move away from the target.</param>
+	/// <returns>The grid position to move to, or null if no valid move exists.</returns>
+	private Vector3I? CalculateMoveAway(BattleState battleState, Vector3I targetPos, int minDistance)
+	{
+		if (_unit == null) return null;
+
+		var possibleMoves = _unit.GetPossibleMoves(battleState.MapSystem);
+		Vector3I? bestMove = null;
+		int maxDistance = 0;
+
+		foreach (var move in possibleMoves)
+		{
+			int distance = CalculateManhattanDistance(move, targetPos);
+			if (distance > maxDistance && distance >= minDistance)
+			{
+				maxDistance = distance;
 				bestMove = move;
 			}
 		}

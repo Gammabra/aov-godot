@@ -5,9 +5,9 @@
 [ext_resource type="MeshLibrary" uid="uid://du0rgaffn5bkl" path="res://assets/mesh_library/3DMesh.tres" id="2_so6rl"]
 [ext_resource type="Script" uid="uid://dkhfwdhsqvki4" path="res://scripts/managers/TurnManager.cs" id="3_p4llj"]
 [ext_resource type="Script" uid="uid://ch3yx81605e7t" path="res://scripts/data/Player1Data.cs" id="4_so6rl"]
-[ext_resource type="Script" uid="uid://c7tb4cc8xrwme" path="res://scripts/data/Enemy1Data.cs" id="5_nvgwb"]
 [ext_resource type="Texture2D" uid="uid://d2o6v40ln62ci" path="res://assets/aov-logo-transparent.png" id="6_l5nkq"]
 [ext_resource type="Texture2D" uid="uid://ddwok17vhh08j" path="res://assets/icon.svg" id="6_lhig6"]
+[ext_resource type="Script" uid="uid://bfi5ppgft55u7" path="res://scripts/data/EnemyArcher.cs" id="7_ctjmi"]
 [ext_resource type="Script" uid="uid://buj6bdu8gkf0j" path="res://scripts/systems/BattleInputSystem.cs" id="7_nvgwb"]
 [ext_resource type="Script" uid="uid://dvsd81c4l1hgb" path="res://scripts/AI/EnemyAIBehavior.cs" id="9_ctjmi"]
 
@@ -55,17 +55,17 @@ shape = SubResource("SphereShape3D_ctjmi")
 
 [node name="EnemyUnits" type="Node" parent="GameManager"]
 
-[node name="Enemy1" type="CharacterBody3D" parent="GameManager/EnemyUnits"]
-script = ExtResource("5_nvgwb")
+[node name="Archer" type="CharacterBody3D" parent="GameManager/EnemyUnits"]
+script = ExtResource("7_ctjmi")
 
-[node name="Sprite3D" type="Sprite3D" parent="GameManager/EnemyUnits/Enemy1"]
+[node name="Sprite3D" type="Sprite3D" parent="GameManager/EnemyUnits/Archer"]
 billboard = 1
 texture = ExtResource("6_lhig6")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="GameManager/EnemyUnits/Enemy1"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="GameManager/EnemyUnits/Archer"]
 shape = SubResource("SphereShape3D_k3vm1")
 
-[node name="Node" type="Node" parent="GameManager/EnemyUnits/Enemy1"]
+[node name="Node" type="Node" parent="GameManager/EnemyUnits/Archer"]
 script = ExtResource("9_ctjmi")
 
 [node name="TurnManager" type="Node" parent="GameManager"]

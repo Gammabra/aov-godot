@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using AshesOfVelsingrad.utilities;
-using Godot;
 
 namespace AshesOfVelsingrad.Systems;
 
@@ -21,6 +20,40 @@ public sealed class StatusEffectSystem
     ///     List of all targets currently having effects.
     /// </summary>
     private readonly List<object> _allTargets = [];
+
+    #region Private Methods
+
+    /// <summary>
+    ///     Updates all active status effects on the given target at the end of a turn.
+    /// </summary>
+    /// <typeparam name="TTarget">
+    ///     The concrete type of the effect target (e.g. <see cref="UnitSystem"/> or
+    ///     <see cref="CellInformation"/>).
+    /// </typeparam>
+    /// <param name="target">
+    ///     The target whose active <see cref="StatusEffect{TTarget}"/> instances
+    ///     should be updated.
+    /// </param>
+    private void RefreshTargetEffectsOnTurnEnd<TTarget>(IEffectTarget<TTarget> target)
+    {
+        foreach (StatusEffect<TTarget> statusEffect in
+            target.GetActiveEffects().ToList()) // Copy to avoid foreach/remove issues
+        {
+            if (statusEffect.Duration == Constants.PermanentStatusEffect)
+                continue;
+            statusEffect.OnTurnPassed(target);
+            if (statusEffect.Duration > 0)
+                continue;
+            target.RemoveEffect(statusEffect);
+        }
+
+        if (target.GetActiveEffects().Count == 0)
+            _allTargets.Remove(target);
+    }
+
+    #endregion
+
+    #region Public Methods
 
     /// <summary>
     ///     Applies a new status effect to the given target, or stacks it if already present.
@@ -71,19 +104,7 @@ public sealed class StatusEffectSystem
         if (target is null)
             return;
 
-        foreach (StatusEffect<UnitSystem> statusEffect in
-            target.GetActiveEffects().ToList()) // Copy to avoid foreach/remove issues
-        {
-            if (statusEffect.Duration == Constants.PermanentStatusEffect)
-                continue;
-            statusEffect.OnTurnPassed(target);
-            if (statusEffect.Duration > 0)
-                continue;
-            target.RemoveEffect(statusEffect);
-        }
-
-        if (target.GetActiveEffects().Count == 0)
-            _allTargets.Remove(target);
+        RefreshTargetEffectsOnTurnEnd(target);
     }
 
     /// <summary>
@@ -101,19 +122,9 @@ public sealed class StatusEffectSystem
         {
             if (target is not IEffectTarget<CellInformation> cell)
                 continue;
-            foreach (StatusEffect<CellInformation> statusEffect in
-                cell.GetActiveEffects().ToList()) // Copy to avoid foreach/remove issues
-            {
-                if (statusEffect.Duration == Constants.PermanentStatusEffect)
-                    continue;
-                statusEffect.OnTurnPassed(cell);
-                if (statusEffect.Duration > 0)
-                    continue;
-                cell.RemoveEffect(statusEffect);
-            }
-
-            if (cell.GetActiveEffects().Count == 0)
-                _allTargets.Remove(target);
+            RefreshTargetEffectsOnTurnEnd(cell);
         }
     }
+
+    #endregion
 }

@@ -1,6 +1,7 @@
 using AshesOfVelsingrad.Systems;
 using Godot;
 using System.Collections.Generic;
+using AshesOfVelsingrad.AI;
 
 namespace AshesOfVelsingrad;
 
@@ -27,6 +28,7 @@ public sealed partial class EnemyArcher : UnitSystem
 		PossibleMovesRange = 3;
 		Curse = 0;
 		Type = UnitType.Archer;
+		Personality = AIPersonality.Defensive;
 
 		// Initialize skills
 		_basicAttack = new BasicAttackSkill();

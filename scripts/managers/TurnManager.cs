@@ -18,11 +18,11 @@ public enum TurnState
 	/// <summary>The enemy's turn to act.</summary>
 	EnemyTurn,
 
-    /// <summary>Idle state while waiting for setup or transitions.</summary>
-    Waiting,
+	/// <summary>Idle state while waiting for setup or transitions.</summary>
+	Waiting,
 
-    /// <summary>State that inform the game is finished.</summary>
-    Finished
+	/// <summary>State that inform the game is finished.</summary>
+	Finished
 }
 
 /// <summary>
@@ -65,12 +65,12 @@ public partial class TurnManager : BaseManager
     public event Action? OnPlayerTurn;
 
     /// <summary>
-    /// Triggered when the player's turn ends.
-    /// </summary>
-    public event Action? OnPlayerTurnEnd;
+	/// Triggered when the player's turn ends.
+	/// </summary>
+	public event Action? OnPlayerTurnEnd;
 
-    /// <summary>
-    /// Triggered when the enemy's turn ends
+	/// <summary>
+	/// Triggered when the enemy's turn ends
     /// </summary>
     public event Action? OnEnemyTurnEnd;
 
@@ -162,9 +162,7 @@ public partial class TurnManager : BaseManager
 	{
 		GD.Print($"{unit.Name} start thinking...");
 
-		// Get the EnemyAIManager instance
-
-
+		//Get the EnemyAIManager instance
 		if (_aiManager != null)
 		{
 			await _aiManager.ExecuteAITurn(unit);
@@ -199,50 +197,50 @@ public partial class TurnManager : BaseManager
 	/// <param name="enemyUnits">List of all enemy-controlled units.</param>
 	/// <remarks>
 	/// The order is determined by each unit's <see cref="UnitSystem.BaseSpeed"/> value,
-    /// sorted from highest to lowest.
-    /// </remarks>
-    public void InitializeTurnOrder(List<UnitSystem> playerUnits, List<UnitSystem> enemyUnits)
-    {
-        foreach (UnitSystem unit in playerUnits)
-            _unitsTurnOrder.Add(new KeyValuePair<UnitSystem, TurnState>(unit, TurnState.PlayerTurn));
-        foreach (UnitSystem unit in enemyUnits)
-            _unitsTurnOrder.Add(new KeyValuePair<UnitSystem, TurnState>(unit, TurnState.EnemyTurn));
-        _unitsTurnOrder = _unitsTurnOrder.OrderByDescending(unit => unit.Key.BaseSpeed).ToList();
+	/// sorted from highest to lowest.
+	/// </remarks>
+	public void InitializeTurnOrder(List<UnitSystem> playerUnits, List<UnitSystem> enemyUnits)
+	{
+		foreach (UnitSystem unit in playerUnits)
+			_unitsTurnOrder.Add(new KeyValuePair<UnitSystem, TurnState>(unit, TurnState.PlayerTurn));
+		foreach (UnitSystem unit in enemyUnits)
+			_unitsTurnOrder.Add(new KeyValuePair<UnitSystem, TurnState>(unit, TurnState.EnemyTurn));
+		_unitsTurnOrder = _unitsTurnOrder.OrderByDescending(unit => unit.Key.BaseSpeed).ToList();
 
-        GD.Print("Turn order initialized:");
-        foreach (KeyValuePair<UnitSystem, TurnState> unit in _unitsTurnOrder)
-            GD.Print($"{unit.Key.Name} (Speed: {unit.Key.BaseSpeed})");
-    }
+		GD.Print("Turn order initialized:");
+		foreach (KeyValuePair<UnitSystem, TurnState> unit in _unitsTurnOrder)
+			GD.Print($"{unit.Key.Name} (Speed: {unit.Key.BaseSpeed})");
+	}
 
-    /// <summary>
-    /// Starts the turn-based battle loop asynchronously.
-    /// </summary>
-    /// <returns>A task representing the battle loop’s lifetime.</returns>
-    public async Task StartBattle()
-    {
-        GD.Print("Starting Battle");
-        _currentTurnState = _unitsTurnOrder[_currentIndex].Value;
-        _turn++;
-        await ProcessTurn();
-    }
+	/// <summary>
+	/// Starts the turn-based battle loop asynchronously.
+	/// </summary>
+	/// <returns>A task representing the battle loop’s lifetime.</returns>
+	public async Task StartBattle()
+	{
+		GD.Print("Starting Battle");
+		_currentTurnState = _unitsTurnOrder[_currentIndex].Value;
+		_turn++;
+		await ProcessTurn();
+	}
 
-    /// <summary>
-    /// Gets the unit currently taking its turn.
-    /// </summary>
-    /// <returns>The <see cref="UnitSystem"/> that is currently active.</returns>
-    public UnitSystem GetCurrentUnit()
-    {
-        return _unitsTurnOrder[_currentIndex].Key;
-    }
+	/// <summary>
+	/// Gets the unit currently taking its turn.
+	/// </summary>
+	/// <returns>The <see cref="UnitSystem"/> that is currently active.</returns>
+	public UnitSystem GetCurrentUnit()
+	{
+		return _unitsTurnOrder[_currentIndex].Key;
+	}
 
-    /// <summary>
-    /// Called by the <see cref="GameManager"/> to inform the <see cref="TurnManager"/>
-    /// the game is finished
-    /// </summary>
-    public void EndTurnManagerLoop()
-    {
-        _currentTurnState = TurnState.Finished;
-    }
+	/// <summary>
+	/// Called by the <see cref="GameManager"/> to inform the <see cref="TurnManager"/>
+	/// the game is finished
+	/// </summary>
+	public void EndTurnManagerLoop()
+	{
+		_currentTurnState = TurnState.Finished;
+	}
 
-    #endregion
+	#endregion
 }

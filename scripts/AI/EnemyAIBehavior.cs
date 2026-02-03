@@ -185,12 +185,6 @@ public partial class EnemyAIBehavior : Node
 		// Get skill to use (for now, just get first available skill)
 		SkillSystem? skill = GetBestSkill(battleState, target);
 
-		if (skill == null)
-		{
-			GD.Print($"{_unit.Name}: No usable skill available, passing turn");
-			return new AIDecision { Action = AIAction.Pass };
-		}
-
 		// Decide between move and attack
 		Vector3I? myPos = battleState.MapSystem.GetUnitPosition(_unit);
 		Vector3I? targetPos = battleState.MapSystem.GetUnitPosition(target);
@@ -204,7 +198,7 @@ public partial class EnemyAIBehavior : Node
 		int distance = CalculateManhattanDistance(myPos.Value, targetPos.Value);
 
 		// Decision logic based on distance and unit capabilities
-		if (distance <= AttackRange)
+		if (distance <= AttackRange && skill != null)
 		{
 			// In attack range - just attack
 			GD.Print($"{_unit.Name}: Target in range, attacking {target.Name}");
@@ -224,7 +218,7 @@ public partial class EnemyAIBehavior : Node
 			{
 				int distanceAfterMove = CalculateManhattanDistance(movePos.Value, targetPos.Value);
 
-				if (distanceAfterMove <= AttackRange)
+				if (distanceAfterMove <= AttackRange && skill != null)
 				{
 					// Can move and attack
 					GD.Print($"{_unit.Name}: Moving to {movePos.Value} and attacking {target.Name}");

@@ -43,40 +43,40 @@ public partial class BattleInputSystem : Node
 	[Signal]
 	public delegate void OnPassTurnPressedEventHandler();
 
-    /// <summary>
-    ///     Emitted when the player clicks on a map cell
-    ///     to move a unit or select a target.
-    /// </summary>
-    /// <param name="dest">
-    ///     The target cell position on the grid, in map coordinates (<see cref="Vector3I" />).
-    /// </param>
-    /// <remarks>
-    ///     This signal notifies systems responsible for unit movement or selection
-    ///     that the player has requested a move or target action.
-    /// </remarks>
-    [Signal]
-    public delegate void OnMoveUnitOrSelectTargetPressedEventHandler(Vector3I dest);
+	/// <summary>
+	///     Emitted when the player clicks on a map cell
+	///     to move a unit or select a target.
+	/// </summary>
+	/// <param name="dest">
+	///     The target cell position on the grid, in map coordinates (<see cref="Vector3I" />).
+	/// </param>
+	/// <remarks>
+	///     This signal notifies systems responsible for unit movement or selection
+	///     that the player has requested a move or target action.
+	/// </remarks>
+	[Signal]
+	public delegate void OnMoveUnitOrSelectTargetPressedEventHandler(Vector3I dest);
 
-    /// <summary>
-    ///     Emitted when the player selects a specific skill.
-    /// </summary>
-    /// <param name="skillId">The numerical identifier of the selected skill.</param>
-    /// <remarks>
-    ///     Used by the combat system or skill management system to determine which
-    ///     skill the player intends to use. Skills are indexed from 0 to 4.
-    /// </remarks>
-    [Signal]
-    public delegate void OnSelectedSkillPressedEventHandler(int skillId);
+	/// <summary>
+	///     Emitted when the player selects a specific skill.
+	/// </summary>
+	/// <param name="skillId">The numerical identifier of the selected skill.</param>
+	/// <remarks>
+	///     Used by the combat system or skill management system to determine which
+	///     skill the player intends to use. Skills are indexed from 0 to 4.
+	/// </remarks>
+	[Signal]
+	public delegate void OnSelectedSkillPressedEventHandler(int skillId);
 
-    /// <summary>
-    ///     Emitted when the player selects the move action
-    /// </summary>
-    /// <remarks>
-    ///     This signal is used to notify systems handling unit commands
-    ///     that the player has initiated a move selection.
-    /// </remarks>
-    [Signal]
-    public delegate void OnSelectMovePressedEventHandler();
+	/// <summary>
+	///     Emitted when the player selects the move action
+	/// </summary>
+	/// <remarks>
+	///     This signal is used to notify systems handling unit commands
+	///     that the player has initiated a move selection.
+	/// </remarks>
+	[Signal]
+	public delegate void OnSelectMovePressedEventHandler();
 
 	#endregion
 

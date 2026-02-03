@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Godot;
+using AshesOfVelsingrad.AI;
 
 namespace AshesOfVelsingrad.Systems;
 
@@ -127,6 +128,9 @@ public abstract partial class UnitSystem : CharacterBody3D, IEffectTarget<UnitSy
 
     /// <summary>The unit’s curse value (used for status mechanics or debuffs).</summary>
     public float Curse { get; protected set; }
+
+    /// <summary>The default AI personality type of the unit.</summary>
+    public AIPersonality Personality { get; protected set; } = AIPersonality.Defensive;
 
     #endregion
 

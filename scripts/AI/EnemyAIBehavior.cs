@@ -76,9 +76,6 @@ public partial class EnemyAIBehavior : Node
 	#region Godot Export Fields
 
 	[Export]
-	public AIPersonality Personality { get; set; } = AIPersonality.Balanced;
-
-	[Export]
 	public float ThinkingDelayMin { get; set; } = 0.5f;
 
 	[Export]
@@ -113,7 +110,7 @@ public partial class EnemyAIBehavior : Node
 		if (GetParent() is UnitSystem unit)
 		{
 			_unit = unit;
-			GD.Print($"EnemyAIBehavior attached to {_unit.Name} (Personality: {Personality})");
+			GD.Print($"EnemyAIBehavior attached to {_unit.Name} (Personality: {_unit.Personality})");
 		}
 		else
 		{
@@ -182,9 +179,6 @@ public partial class EnemyAIBehavior : Node
 			return new AIDecision { Action = AIAction.Pass };
 		}
 
-		// Get skill to use (for now, just get first available skill)
-		SkillSystem? skill = GetBestSkill(battleState, target);
-
 		// Decide between move and attack
 		Vector3I? myPos = battleState.MapSystem.GetUnitPosition(_unit);
 		Vector3I? targetPos = battleState.MapSystem.GetUnitPosition(target);
@@ -196,6 +190,9 @@ public partial class EnemyAIBehavior : Node
 
 		// Calculate distance to target
 		int distance = CalculateManhattanDistance(myPos.Value, targetPos.Value);
+
+		// Get skill to use (for now, just get first available skill)
+		SkillSystem? skill = GetBestSkill(battleState, target);
 
 		// Decision logic based on distance and unit capabilities
 		if (distance <= AttackRange && skill != null)
@@ -258,7 +255,10 @@ public partial class EnemyAIBehavior : Node
 	/// <returns>The selected target unit, or null if none available.</returns>
 	private UnitSystem? SelectTarget(BattleState battleState)
 	{
-		return Personality switch
+		if (_unit == null)
+			return null;
+
+		return _unit.Personality switch
 		{
 			AIPersonality.Aggressive => battleState.GetNearestPlayerUnit(),
 			AIPersonality.Opportunistic => battleState.GetWeakestPlayerUnit(),

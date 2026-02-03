@@ -194,7 +194,7 @@ public class MapSystemTest
         map.AddWalkableCell(0, 0, 0);
         map.AddWalkableCell(1, 0, 0);
 
-        map.CellsInformation[0].Unit = unit;
+        map.CellsInformation[0].SetUnit(unit);
 
         map.MoveUnit(unit, 1, 0, 0);
 
@@ -209,7 +209,7 @@ public class MapSystemTest
         TestConcreteUnitSystem unit = AddToTestRoot(new TestConcreteUnitSystem());
 
         map.AddWalkableCell(5, 5, 5);
-        map.CellsInformation[0].Unit = unit;
+        map.CellsInformation[0].SetUnit(unit);
 
         (int, int, int)? pos = map.GetUnitPosition(unit);
         AssertThat(pos.HasValue).IsTrue();
@@ -224,7 +224,7 @@ public class MapSystemTest
         TestConcreteUnitSystem unit = AddToTestRoot(new TestConcreteUnitSystem());
 
         map.AddWalkableCell(1, 1, 1);
-        map.CellsInformation[0].Unit = unit;
+        map.CellsInformation[0].SetUnit(unit);
 
         map.RemoveUnit(1, 1, 1);
 

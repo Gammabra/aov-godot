@@ -42,15 +42,15 @@ public sealed partial class TestConcreteMapSystem : MapSystem
 
     public override void PlaceUnits(List<UnitSystem> playerUnits, List<UnitSystem> enemyUnits)
     {
-        CellsInformation[0].Unit = playerUnits[0];
-        CellsInformation[1].Unit = enemyUnits[0];
+        CellsInformation[0].SetUnit(playerUnits[0]);
+        CellsInformation[1].SetUnit(enemyUnits[0]);
 
         GD.Print("[TEST] TestConcreteMapSystem PlaceUnits called");
     }
 
     public void AddUnit(UnitSystem unit)
     {
-        CellsInformation[0].Unit = unit;
+        CellsInformation[0].SetUnit(unit);
 
         GD.Print("[TEST] TestConcreteMapSystem AddUnits called");
     }

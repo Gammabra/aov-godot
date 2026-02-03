@@ -109,7 +109,10 @@ public abstract partial class UnitSystem : CharacterBody3D, IEffectTarget<UnitSy
     public float Intelligence { get; protected set; }
 
     /// <summary>The unit's available mana points for casting skills.</summary>
-    public float ManaPoint { get; protected set; }
+    public float ManaMax { get; protected set; }
+
+    /// <summary>The current mana points of the unit.</summary>
+    public float Mana { get; protected set; }
 
     /// <summary>The type or archetype of the unit.</summary>
     public UnitType Type { get; protected set; }
@@ -347,7 +350,7 @@ public abstract partial class UnitSystem : CharacterBody3D, IEffectTarget<UnitSy
         }
 
         skill.Use(targets, map);
-        ManaPoint -= skill.ManaCost;
+        Mana -= skill.ManaCost;
         ReportSystemUnitHasPlayed();
     }
 

@@ -39,7 +39,8 @@ public sealed partial class TestConcreteUnitSystem : UnitSystem
         BaseAtk = 10;
         BaseDef = 5;
         BaseSpeed = 4;
-        ManaPoint = 100;
+        ManaMax = 100;
+        Mana = ManaMax;
         PossibleMovesRange = 1;
         Type = UnitType.Player;
 

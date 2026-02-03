@@ -23,7 +23,8 @@ public sealed partial class EnemyArcher : UnitSystem
 		BaseDef = 5;
 		BaseSpeed = 120;
 		Intelligence = 15;
-		ManaPoint = 50;
+		ManaMax = 50;
+		Mana = ManaMax;
 		IsAlive = true;
 		PossibleMovesRange = 3;
 		Curse = 0;

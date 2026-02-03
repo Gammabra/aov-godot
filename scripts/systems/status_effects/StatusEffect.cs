@@ -1,5 +1,6 @@
 using System;
 using AshesOfVelsingrad.utilities;
+using Godot;
 
 namespace AshesOfVelsingrad.Systems;
 
@@ -25,7 +26,7 @@ public abstract class StatusEffect<TTarget>(
     /// <summary>
     ///     The display name of the effect.
     /// </summary>
-    public string Name { get; protected set; } = name;
+    public string Name { get; } = name;
 
     /// <summary>
     ///     A description of what this effect does.
@@ -41,14 +42,14 @@ public abstract class StatusEffect<TTarget>(
     /// <summary>
     ///     The number of times this effect has been stacked.
     /// </summary>
-    public int StackCount { get; protected set; } = 1;
+    public int StackCount { get; private set; } = 1;
 
     /// <summary>
     ///     Whether this effect can be stacked.
     /// </summary>
     public bool IsStackable { get; } = isStackable;
 
-    public IStatusEffect? EffectToSpread { get; set; }
+    public IStatusEffect? EffectToSpread { get; protected init; }
 
     /// <summary>
     ///     Called when this effect is applied to a target.
@@ -77,6 +78,10 @@ public abstract class StatusEffect<TTarget>(
         if (Duration == Constants.PermanentStatusEffect)
             return;
         Duration--;
+        if (target is UnitSystem unit)
+            GD.Print($"Duration of {Name} on {unit.UnitName} is {Duration}");
+        else if (target is CellInformation cell)
+            GD.Print($"Duration on cell ({cell.X}, {cell.Y}, {cell.Z}) is {Duration}");
     }
 
     /// <summary>

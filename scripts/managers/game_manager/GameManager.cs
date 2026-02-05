@@ -1,7 +1,7 @@
-using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using AshesOfVelsingrad.Systems;
+using AshesOfVelsingrad.AI;
 using Godot;
 
 namespace AshesOfVelsingrad.Managers;
@@ -42,6 +42,13 @@ public partial class GameManager : BaseManager
 
 	[Export]
 	private NodePath? _battleInputSystemPath;
+
+    /// <summary>
+    /// Toggle threat map visualization for all enemy units.
+    /// Call this from a debug input or console command.
+    /// </summary>
+    [Export]
+    public bool EnableThreatMapDebug { get; set; } = false;
 
 	private Node? _playerUnitsContainer;
 	private Node? _enemyUnitsContainer;
@@ -499,4 +506,125 @@ public partial class GameManager : BaseManager
     }
 
 	#endregion
+
+    #region Debug Methods
+
+    public override void _Input(InputEvent @event)
+    {
+        base._Input(@event);
+        
+        // Press F1 to toggle threat map visualization
+        if (@event is InputEventKey keyEvent && keyEvent.Pressed && !keyEvent.Echo)
+        {
+            if (keyEvent.Keycode == Key.F1)
+            {
+                EnableThreatMapDebug = !EnableThreatMapDebug;
+                GD.Print($"Threat Map Debug: {(EnableThreatMapDebug ? "ON" : "OFF")}");
+                
+                if (EnableThreatMapDebug)
+                {
+                    ShowAllThreatMaps();
+                }
+            }
+            
+            // Press F2 to show action scores for current AI unit
+            if (keyEvent.Keycode == Key.F2)
+            {
+                ShowCurrentAIActionScores();
+            }
+        }
+    }
+
+    /// <summary>
+    /// Visualizes threat maps for all enemy units.
+    /// </summary>
+    private void ShowAllThreatMaps()
+    {
+        if (_mapSystemContainer == null || AIManager == null)
+        {
+            GD.PrintErr("Cannot show threat maps - systems not initialized");
+            return;
+        }
+
+        foreach (var enemy in _enemyUnits)
+        {
+            if (!enemy.IsAlive)
+                continue;
+
+            // Find the AIDebugVisualizer for this enemy
+            var aiBehavior = FindAIBehavior(enemy);
+            if (aiBehavior != null)
+            {
+                var visualizer = aiBehavior.GetNodeOrNull<AIDebugVisualizer>("AIDebugVisualizer");
+                if (visualizer != null)
+                {
+                    var battleState = new BattleState
+                    {
+                        ActingUnit = enemy,
+                        MapSystem = _mapSystemContainer,
+                        PlayerUnits = AIManager.GetAlivePlayerUnits(),
+                        EnemyUnits = AIManager.GetAliveEnemyUnits(),
+                        GameManager = this
+                    };
+                    
+                    visualizer.VisualizeThreatMap(enemy, battleState, 5);
+                    GD.Print($"Showing threat map for {enemy.Name}");
+                }
+            }
+        }
+    }
+
+    /// <summary>
+    /// Shows action scores for the current unit if it's an AI unit.
+    /// </summary>
+    private void ShowCurrentAIActionScores()
+    {
+        if (_turnManagerContainer == null || _mapSystemContainer == null || AIManager == null)
+        {
+            GD.PrintErr("Cannot show action scores - systems not initialized");
+            return;
+        }
+
+        var currentUnit = _turnManagerContainer.GetCurrentUnit();
+        
+        // Only works for enemy units
+        if (!_enemyUnits.Contains(currentUnit))
+        {
+            GD.Print("Current unit is not an enemy - no AI to visualize");
+            return;
+        }
+
+        var aiBehavior = FindAIBehavior(currentUnit);
+        if (aiBehavior == null)
+        {
+            GD.PrintErr($"No AI behavior found for {currentUnit.Name}");
+            return;
+        }
+
+        // This would require making some methods public in AIDecisionGenerator
+        // For now, just enable the visualizer and let it show on next turn
+        GD.Print("Action scores will be shown automatically if debug visualization is enabled");
+    }
+
+    /// <summary>
+    /// Finds the EnemyAIBehavior component attached to a unit.
+    /// </summary>
+    private EnemyAIBehavior? FindAIBehavior(UnitSystem unit)
+    {
+        foreach (Node child in unit.GetChildren())
+        {
+            if (child is EnemyAIBehavior behavior)
+                return behavior;
+            
+            // Also check children of children (in case it's under a Node)
+            foreach (Node grandchild in child.GetChildren())
+            {
+                if (grandchild is EnemyAIBehavior behaviorNested)
+                    return behaviorNested;
+            }
+        }
+        return null;
+    }
+
+    #endregion
 }

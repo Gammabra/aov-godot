@@ -211,7 +211,7 @@ public partial class EnemyAIBehavior : Node
 				};
 			}
 		}
-		else if (_unit.Hp < _unit.MaxHp * 0.3f) // TODO: check 1/3 of hp is balanced or not, check if personality should be required for this move
+		else if (_unit.Hp < _unit.MaxHp * 0.3f)
 		{
 			// Defensive AI tries to maintain distance
 			Vector3I? movePos = CalculateMoveAway(battleState, targetPos.Value, _unit.PossibleMovesRange);
@@ -339,7 +339,7 @@ public partial class EnemyAIBehavior : Node
 		// TODO: Add when status effect system is more developed
 		
 		// Prefer targets that are isolated (easier to gang up on)
-		int alliesNearTarget = CountAlliesNear(targetPos.Value, battleState, 2);
+		int alliesNearTarget = CountPlayerUnitsNear(targetPos.Value, battleState, 2);
 		score -= alliesNearTarget * 10f;
 
 		return score;
@@ -364,19 +364,19 @@ public partial class EnemyAIBehavior : Node
 	}
 
 	/// <summary>
-	/// Counts the number of allies near a given position within a specified range.
+	/// Counts the number of enemy allies near a given position within a specified range.
 	/// </summary>
 	/// <param name="position">The position to check around.</param>
 	/// <param name="battleState">Current battle state.</param>
 	/// <param name="range">The range to consider.</param>
-	/// <returns>The number of allies within the specified range.</returns>
-	private int CountAlliesNear(Vector3I position, BattleState battleState, int range)
+	/// <returns>The number of enemy allies within the specified range.</returns>
+	private int CountEnemyAlliesNear(Vector3I position, BattleState battleState, int range)
 	{
 		int count = 0;
-		foreach (var ally in battleState.PlayerUnits)
+		foreach (var ally in battleState.EnemyUnits)
 		{
+			if (ally == _unit) continue;
 			Vector3I? allyPos = battleState.MapSystem.GetUnitPosition(ally);
-
 			if (allyPos != null && CalculateManhattanDistance(position, allyPos.Value) <= range)
 				count++;
 		}
@@ -384,40 +384,22 @@ public partial class EnemyAIBehavior : Node
 	}
 
 	/// <summary>
-	/// Defensive AI prefers targets that are closer but also considers threat level.
+	/// Counts the number of allies near a given position within a specified range.
 	/// </summary>
-	private UnitSystem? SelectDefensiveTarget(BattleState battleState)
+	/// <param name="position">The position to check around.</param>
+	/// <param name="battleState">Current battle state.</param>
+	/// <param name="range">The range to consider.</param>
+	/// <returns>The number of allies within the specified range.</returns>
+	private int CountPlayerUnitsNear(Vector3I position, BattleState battleState, int range)
 	{
-		if (_unit == null)
-			return null;
-		// Defensive AI prioritizes nearby threats
-		List<UnitSystem> nearbyUnits = battleState.GetPlayerUnitsInRange(_unit.PossibleMovesRange + 1);
-
-		if (nearbyUnits.Count > 0)
+		int count = 0;
+		foreach (var enemy in battleState.PlayerUnits)
 		{
-			// Among nearby units, prefer the one with highest attack
-			return nearbyUnits.OrderByDescending(u => u.BaseAtk).FirstOrDefault();
+			Vector3I? enemyPos = battleState.MapSystem.GetUnitPosition(enemy);
+			if (enemyPos != null && CalculateManhattanDistance(position, enemyPos.Value) <= range)
+				count++;
 		}
-
-		// No immediate threats, pick nearest
-		return battleState.GetNearestPlayerUnit();
-	}
-
-	/// <summary>
-	/// Balanced AI weighs multiple factors: distance, health, threat.
-	/// </summary>
-	private UnitSystem? SelectBalancedTarget(BattleState battleState)
-	{
-		List<UnitSystem> nearbyUnits = battleState.GetPlayerUnitsInRange(5);
-
-		if (nearbyUnits.Count > 0)
-		{
-			// Among nearby units, prefer weaker ones
-			return nearbyUnits.OrderBy(u => u.Hp / u.MaxHp).FirstOrDefault();
-		}
-
-		// Otherwise, go for nearest
-		return battleState.GetNearestPlayerUnit();
+		return count;
 	}
 
 	/// <summary>
@@ -636,38 +618,85 @@ public partial class EnemyAIBehavior : Node
 	}
 
 	/// <summary>
-	/// Calculates the best position to move towards the target.
+	/// Calculates the best position to move to get within skill range of the target.
 	/// </summary>
-	/// <param name="battleState">Current battle state.</param>
+	/// <param name="battleState">The current battle state.</param>
 	/// <param name="targetPos">The target's grid position.</param>
+	/// <param name="skillRange">The range of the skill to get within.</param>
 	/// <returns>The grid position to move to, or null if no valid move exists.</returns>
-	//TODO: improve this to consider obstacles and pathfinding and take in account attack range to optimize distance better
-	private Vector3I? CalculateMoveToRange(BattleState battleState, Vector3I targetPos)
+	private Vector3I? CalculateMoveToRange(BattleState battleState, Vector3I targetPos, int skillRange = 0)
 	{
 		if (_unit == null)
 			return null;
 
-		// Get all possible moves for this unit
 		List<Vector3I> possibleMoves = _unit.GetPossibleMoves(battleState.MapSystem);
-
 		if (possibleMoves.Count == 0)
 			return null;
 
-		// Find the move that gets us closest to the target
 		Vector3I? bestMove = null;
-		int bestDistance = int.MaxValue;
+		float bestScore = float.MinValue;
 
 		foreach (Vector3I move in possibleMoves)
 		{
-			int distance = CalculateManhattanDistance(move, targetPos);
-			if (distance < bestDistance)
+			float score = ScorePosition(move, targetPos, skillRange, battleState);
+			if (score > bestScore)
 			{
-				bestDistance = distance;
+				bestScore = score;
 				bestMove = move;
 			}
 		}
 
 		return bestMove;
+	}
+
+	private float ScorePosition(Vector3I position, Vector3I targetPos, int skillRange, BattleState battleState)
+	{
+		float score = 0f;
+		int distance = CalculateManhattanDistance(position, targetPos);
+
+		// Prefer positions that put us in attack range
+		if (skillRange > 0)
+		{
+			if (distance == skillRange)
+				score += 100f; // Perfect range!
+			else if (distance < skillRange)
+				score += 50f - (skillRange - distance) * 5f; // Closer is okay but not ideal
+			else
+				score += 20f - (distance - skillRange) * 10f; // Further is bad
+		}
+		else
+		{
+			// Just move closer
+			score += (20 - distance) * 5f;
+		}
+
+		// Terrain bonuses
+		CellType terrain = battleState.MapSystem.GetCellType(position);
+		switch (terrain)
+		{
+			case CellType.Grass:
+				score += 10f; // Slight preference for grass
+				break;
+			// Add more terrain types as your game develops
+		}
+
+		// Tactical positioning
+		// Prefer positions with allies nearby (for defensive personalities)
+		if (_unit!.Personality == AIPersonality.Defensive || _unit.Personality == AIPersonality.Balanced)
+		{
+			int alliesNearby = CountEnemyAlliesNear(position, battleState, 2);
+			score += alliesNearby * 5f;
+		}
+
+		// Avoid being surrounded by enemies
+		int enemiesNearby = CountPlayerUnitsNear(position, battleState, 2);
+		if (enemiesNearby > 2)
+			score -= (enemiesNearby - 1) * 15f; // Penalty for being surrounded
+
+		// Prefer higher ground (future: could give attack/defense bonuses)
+		score += position.Y * 2f;
+
+		return score;
 	}
 
 	/// <summary>

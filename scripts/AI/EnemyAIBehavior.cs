@@ -251,21 +251,136 @@ public partial class EnemyAIBehavior : Node
 	/// </summary>
 	/// <param name="battleState">Current battle state.</param>
 	/// <returns>The selected target unit, or null if none available.</returns>
-
-	//TODO: Upgrade the target selection to consider more factors like threat level, distance, status effects, skill choosen, etc.
 	private UnitSystem? SelectTarget(BattleState battleState)
 	{
 		if (_unit == null)
 			return null;
 
-		return _unit.Personality switch
+		var candidates = battleState.PlayerUnits;
+
+		if (candidates.Count == 0)
+			return null;
+
+		// Score each potential target
+		UnitSystem? bestTarget = null;
+		float bestScore = float.MinValue;
+
+		foreach (var candidate in candidates)
 		{
-			AIPersonality.Aggressive => battleState.GetNearestPlayerUnit(),
-			AIPersonality.Opportunistic => battleState.GetWeakestPlayerUnit(),
-			AIPersonality.Defensive => SelectDefensiveTarget(battleState),
-			AIPersonality.Balanced => SelectBalancedTarget(battleState),
-			_ => battleState.GetNearestPlayerUnit()
-		};
+			float score = ScoreTarget(candidate, battleState);
+			if (score > bestScore)
+			{
+				bestScore = score;
+				bestTarget = candidate;
+			}
+		}
+
+		return bestTarget;
+	}
+
+	/// <summary>
+	/// Scores a potential target based on distance, health, and threat level.
+	/// Higher score means more desirable to target.
+	/// </summary>
+	/// <param name="target">The target unit to score.</param>
+	/// <param name="battleState">Current battle state.</param>
+	/// <returns>A float score representing the desirability of targeting this unit.</returns>
+	private float ScoreTarget(UnitSystem target, BattleState battleState)
+	{
+		if (_unit == null)
+			return float.MinValue;
+
+		Vector3I? myPos = battleState.MapSystem.GetUnitPosition(_unit);
+		Vector3I? targetPos = battleState.MapSystem.GetUnitPosition(target);
+		
+		if (myPos == null || targetPos == null)
+			return float.MinValue;
+
+		float score = 0f;
+		int distance = CalculateManhattanDistance(myPos.Value, targetPos.Value);
+
+		// Personality-based scoring
+		switch (_unit!.Personality)
+		{
+			case AIPersonality.Aggressive:
+				// Prefer close targets
+				score += (10 - distance) * 5f;
+				// Prefer high-threat targets
+				score += target.BaseAtk * 2f;
+				break;
+				
+			case AIPersonality.Opportunistic:
+				// Strongly prefer low HP targets
+				float hpPercentage = target.Hp / target.MaxHp;
+				score += (1f - hpPercentage) * 100f;
+				// Prefer targets we can kill this turn
+				if (CanKillThisTurn(target))
+					score += 50f;
+				break;
+				
+			case AIPersonality.Defensive:
+				// Prefer nearby threats
+				if (distance <= 3)
+					score += 40f;
+				// Prefer high-attack enemies
+				score += target.BaseAtk * 3f;
+				break;
+				
+			case AIPersonality.Balanced:
+				// Balance distance, HP, and threat
+				score += (1f - target.Hp / target.MaxHp) * 30f;
+				score += (10 - distance) * 2f;
+				score += target.BaseAtk * 1.5f;
+				break;
+		}
+
+		// General factors
+		// Prefer targets with status effects we can exploit
+		// TODO: Add when status effect system is more developed
+		
+		// Prefer targets that are isolated (easier to gang up on)
+		int alliesNearTarget = CountAlliesNear(targetPos.Value, battleState, 2);
+		score -= alliesNearTarget * 10f;
+
+		return score;
+	}
+
+	/// <summary>
+	/// Determines if the AI can likely kill the target this turn.
+	/// </summary>
+	/// <param name="target">The target unit.</param>
+	/// <returns>True if the target can be killed this turn, false otherwise.</returns>
+	private bool CanKillThisTurn(UnitSystem target)
+	{
+		if (_unit == null) return false;
+		
+		// Rough estimate: can we deal enough damage?
+		float estimatedDamage = _unit.BaseAtk - target.BaseDef;
+	
+		if (estimatedDamage < 0)
+			estimatedDamage = 0;
+		
+		return target.Hp <= estimatedDamage * 1.5f; // 1.5x buffer for skill bonuses
+	}
+
+	/// <summary>
+	/// Counts the number of allies near a given position within a specified range.
+	/// </summary>
+	/// <param name="position">The position to check around.</param>
+	/// <param name="battleState">Current battle state.</param>
+	/// <param name="range">The range to consider.</param>
+	/// <returns>The number of allies within the specified range.</returns>
+	private int CountAlliesNear(Vector3I position, BattleState battleState, int range)
+	{
+		int count = 0;
+		foreach (var ally in battleState.PlayerUnits)
+		{
+			Vector3I? allyPos = battleState.MapSystem.GetUnitPosition(ally);
+
+			if (allyPos != null && CalculateManhattanDistance(position, allyPos.Value) <= range)
+				count++;
+		}
+		return count;
 	}
 
 	/// <summary>

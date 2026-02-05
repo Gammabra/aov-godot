@@ -306,28 +306,218 @@ public partial class EnemyAIBehavior : Node
 	}
 
 	/// <summary>
-	/// Selects the best skill to use against a target.
-	/// For now returns the first active skill, but can be enhanced with more logic.
+	/// Selects the best skill to use against the target based on distance and effectiveness.
 	/// </summary>
+	/// <param name="battleState">Current battle state.</param>
+	/// <param name="target">The target unit.</param>
+	/// <param name="distance">Distance to the target.</param>
+	/// <returns>The best skill to use, or null if none suitable.</returns>
 	public SkillSystem? GetBestSkill(BattleState battleState, UnitSystem target, int distance)
 	{
 		if (_unit == null || _unit.ActiveSkills.Count == 0)
 			return null;
 
-		// Simple implementation: return first skill
-		// TODO: Add logic to choose best skill based on:
-		// - Skill damage/effect type
-		// - Target's resistances/weaknesses
-		// - Compare the available skills and choose the most effective one
-		// - Be able to choose a skill that will only be usable after some turns (cooldown/mana management)
+		SkillSystem? bestSkill = null;
+		float bestScore = float.MinValue;
 
 		foreach (var skill in _unit.ActiveSkills)
 		{
-			if (skill.ManaCost <= _unit.Mana && skill.Cooldown == 0)
-				return skill;
+			// Skip if can't use
+			if (skill.ManaCost > _unit.Mana || skill.Cooldown != 0)
+				continue;
+			
+			// Skip if out of range (unless we can move closer)
+			if (distance > skill.Range + _unit.PossibleMovesRange)
+				continue;
+
+			float score = ScoreSkill(skill, target, battleState);
+			
+			if (score > bestScore)
+			{
+				bestScore = score;
+				bestSkill = skill;
+			}
 		}
 
-		return null;
+		return bestSkill;
+	}
+
+	/// <summary>
+	/// Scores a skill based on its effectiveness against the target and current battle state.
+	/// Higher score means more desirable to use.
+	/// </summary>
+	/// <param name="skill">The skill to score.</param>
+	/// <param name="target">The target unit.</param>
+	/// <param name="battleState">Current battle state.</param>
+	/// <returns>A float score representing the desirability of using the skill.</returns>
+	private float ScoreSkill(SkillSystem skill, UnitSystem target, BattleState battleState)
+	{
+		float score = 0f;
+
+		// Base score by effect type
+		switch (skill.EffectType)
+		{
+			case EffectType.Damage:
+				score += ScoreDamageSkill(skill, target);
+				break;
+			case EffectType.Heal:
+				score += ScoreHealSkill(skill, battleState);
+				break;
+			case EffectType.Buff:
+				score += ScoreBuffSkill(skill, battleState);
+				break;
+			case EffectType.Debuff:
+			case EffectType.Control:
+				score += ScoreDebuffSkill(skill, target);
+				break;
+		}
+
+		// Personality modifiers
+		score *= GetPersonalitySkillMultiplier(skill);
+
+		// Prefer lower mana cost if similar effectiveness
+		score -= skill.ManaCost * 0.1f;
+
+		// Bonus for AOE if multiple targets in range
+		if (skill.AreaEffect.Count > 0)
+		{
+			int targetsInAOE = CountTargetsInAOE(skill, target, battleState);
+			score += targetsInAOE * 10f;
+		}
+
+		return score;
+	}
+
+	/// <summary>
+	/// Scores a damage-dealing skill based on target's health and resistances.
+	/// </summary>
+	/// <param name="skill">The damage skill.</param>
+	/// <param name="target">The target unit.</param>
+	/// <returns>A float score representing the desirability of using the damage skill.</returns>
+	private float ScoreDamageSkill(SkillSystem skill, UnitSystem target)
+	{
+		float score = 50f; // Base damage skill value
+		
+		// Prefer damage against low HP targets
+		float hpPercentage = target.Hp / target.MaxHp;
+		if (hpPercentage < 0.3f)
+			score += 30f; // Finish them off!
+		
+		// TODO: Add elemental effectiveness when we implement resistances
+		// if (target.IsWeakTo(skill.MagicType))
+		//     score += 25f;
+		
+		return score;
+	}
+
+	/// <summary>
+	/// Scores a healing skill based on the most damaged ally's health.
+	/// </summary>
+	/// <param name="skill">The healing skill.</param>
+	/// <param name="battleState">Current battle state.</param>
+	/// <returns>A float score representing the desirability of using the healing skill.</returns>
+	private float ScoreHealSkill(SkillSystem skill, BattleState battleState)
+	{
+		// Find most damaged ally
+		var mostDamagedAlly = battleState.EnemyUnits
+			.OrderBy(u => u.Hp / u.MaxHp)
+			.FirstOrDefault();
+		
+		if (mostDamagedAlly == null)
+			return 0f;
+		
+		float hpPercentage = mostDamagedAlly.Hp / mostDamagedAlly.MaxHp;
+		
+		// High value if ally is critical
+		if (hpPercentage < 0.3f)
+			return 80f;
+		if (hpPercentage < 0.6f)
+			return 40f;
+		
+		return 10f; // Low priority if everyone is healthy
+	}
+
+	/// <summary>
+	/// Scores a buff skill based on current battle state.
+	/// </summary>
+	/// <param name="skill">The buff skill.</param>
+	/// <param name="battleState">Current battle state.</param>
+	/// <returns>A float score representing the desirability of using the buff skill.</returns>
+	private float ScoreBuffSkill(SkillSystem skill, BattleState battleState)
+	{
+		// Buffs are more valuable early in combat
+		// TODO: Track turn count in BattleState
+		return 30f;
+	}
+
+	/// <summary>
+	/// Scores a debuff or control skill based on target threat level.
+	/// </summary>
+	/// <param name="skill">The debuff/control skill.</param>
+	/// <param name="target">The target unit.</param>
+	/// <returns>A float score representing the desirability of using the debuff/control skill.</returns>
+	private float ScoreDebuffSkill(SkillSystem skill, UnitSystem target)
+	{
+		float score = 40f;
+		
+		// Prefer debuffing high-threat targets
+		if (target.BaseAtk > _unit!.BaseAtk * 1.5f)
+			score += 20f;
+		
+		// Control is valuable against high HP enemies
+		if (skill.EffectType == EffectType.Control && target.Hp > target.MaxHp * 0.7f)
+			score += 15f;
+		
+		return score;
+	}
+
+	/// <summary>
+	/// Gets a personality-based multiplier for skill scoring.
+	/// </summary>
+	/// <param name="skill">The skill being evaluated.</param>
+	/// <returns>A float multiplier to adjust skill score.</returns>
+	private float GetPersonalitySkillMultiplier(SkillSystem skill)
+	{
+		if (_unit == null) return 1f;
+		
+		return _unit.Personality switch
+		{
+			AIPersonality.Aggressive => skill.EffectType == EffectType.Damage ? 1.3f : 0.8f,
+			AIPersonality.Defensive => skill.EffectType == EffectType.Heal ? 1.3f : 
+									skill.EffectType == EffectType.Buff ? 1.2f : 0.9f,
+			AIPersonality.Opportunistic => skill.EffectType == EffectType.Damage ? 1.2f : 1.0f,
+			AIPersonality.Balanced => 1.0f,
+			_ => 1.0f
+		};
+	}
+
+	/// <summary>
+	/// Counts how many units would be affected by the skill's area of effect.
+	/// </summary>
+	/// <param name="skill">The skill being evaluated.</param>
+	/// <param name="primaryTarget">The primary target unit.</param>
+	/// <param name="battleState">Current battle state.</param>
+	/// <returns>The number of units affected by the skill's AOE.</returns>
+	private int CountTargetsInAOE(SkillSystem skill, UnitSystem primaryTarget, BattleState battleState)
+	{
+		Vector3I? targetPos = battleState.MapSystem.GetUnitPosition(primaryTarget);
+		if (targetPos == null) return 0;
+		
+		int count = 0;
+		var targetList = skill.TargetType == TargetTypes.AllEnemies || skill.TargetType == TargetTypes.SingleEnemy
+			? battleState.PlayerUnits 
+			: battleState.EnemyUnits;
+		
+		foreach (var aoeOffset in skill.AreaEffect)
+		{
+			Vector3I checkPos = targetPos.Value + aoeOffset;
+			var unitAtPos = battleState.MapSystem.GetUnitAt(checkPos.X, checkPos.Y, checkPos.Z);
+			
+			if (unitAtPos != null && targetList.Contains(unitAtPos))
+				count++;
+		}
+		
+		return count;
 	}
 
 	/// <summary>

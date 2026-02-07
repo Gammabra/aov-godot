@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using AshesOfVelsingrad.systems;
+using AshesOfVelsingrad.Systems;
 using Godot;
 
 namespace AshesOfVelsingrad.Managers;
@@ -19,7 +19,10 @@ public enum TurnState
     EnemyTurn,
 
     /// <summary>Idle state while waiting for setup or transitions.</summary>
-    Waiting
+    Waiting,
+
+    /// <summary>State that inform the game is finished.</summary>
+    Finished
 }
 
 /// <summary>
@@ -60,9 +63,19 @@ public partial class TurnManager : BaseManager
     public event Action? OnPlayerTurn;
 
     /// <summary>
-	/// Triggered when the player's turn ends.
-	/// </summary>
-	public event Action? OnPlayerEndTurn;
+    /// Triggered when the player's turn ends.
+    /// </summary>
+    public event Action? OnPlayerTurnEnd;
+
+    /// <summary>
+    /// Triggered when the enemy's turn ends
+    /// </summary>
+    public event Action? OnEnemyTurnEnd;
+
+    /// <summary>
+    /// Triggered when the current turn ends.
+    /// </summary>
+    public event Action? OnCurrentTurnEnd;
 
     #endregion
 
@@ -112,18 +125,29 @@ public partial class TurnManager : BaseManager
                 case TurnState.PlayerTurn:
                     OnPlayerTurn?.Invoke();
                     await _unitsTurnOrder[_currentIndex].Key.WaitForActionAsync();
-                    OnPlayerEndTurn?.Invoke();
+                    OnPlayerTurnEnd?.Invoke();
                     break;
                 case TurnState.EnemyTurn:
                     await WaitForEnemyAction(_unitsTurnOrder[_currentIndex].Key);
+                    OnEnemyTurnEnd?.Invoke();
                     break;
             }
 
+            if (_currentTurnState == TurnState.Finished)
+                break;
+
             _currentIndex++;
+            for (; _currentIndex < _unitsTurnOrder.Count; _currentIndex++)
+                if (_unitsTurnOrder[_currentIndex].Key.IsAlive)
+                    break;
             if (_currentIndex == _unitsTurnOrder.Count)
+            {
                 _currentIndex = 0;
+                _turn++;
+                OnCurrentTurnEnd?.Invoke();
+            }
+
             _currentTurnState = _unitsTurnOrder[_currentIndex].Value;
-            _turn++;
         }
     }
 
@@ -188,6 +212,15 @@ public partial class TurnManager : BaseManager
     public UnitSystem GetCurrentUnit()
     {
         return _unitsTurnOrder[_currentIndex].Key;
+    }
+
+    /// <summary>
+    /// Called by the <see cref="GameManager"/> to inform the <see cref="TurnManager"/>
+    /// the game is finished
+    /// </summary>
+    public void EndTurnManagerLoop()
+    {
+        _currentTurnState = TurnState.Finished;
     }
 
     #endregion

@@ -1,10 +1,10 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
-using AshesOfVelsingrad.systems.status_effects;
 using Godot;
 
-namespace AshesOfVelsingrad.systems;
+namespace AshesOfVelsingrad.Systems;
 
 /// <summary>
 ///     Represents the different unit archetypes in the game.
@@ -39,15 +39,16 @@ public enum UnitType
 ///     - Base stats (HP, attack, defense, etc.)
 ///     - Turn logic (HasPlayed)
 ///     - Movement logic (BFS pathfinding in 3D)
-///     - Integration with <see cref="MapSystem" /> and <see cref="StatusEffect" />
+///     - Integration with <see cref="MapSystem" /> and <see cref="StatusEffect{UnitSystem}" />
 /// </remarks>
-public abstract partial class UnitSystem : CharacterBody3D, IEffectTarget
+public abstract partial class UnitSystem : CharacterBody3D, IEffectTarget<UnitSystem>
 {
     #region Private fields
 
-    private readonly EffectTarget _effectTarget = new();
+    private readonly EffectTarget<UnitSystem> _effectTarget = new();
     private TaskCompletionSource? _actionTcs;
     private float _gravity = ProjectSettings.GetSetting("physics/3d/default_gravity").AsSingle();
+    private StatusEffectSystem? _statusEffectSystem;
 
     #endregion
 
@@ -115,9 +116,6 @@ public abstract partial class UnitSystem : CharacterBody3D, IEffectTarget
     /// <summary>Indicates whether the unit is alive.</summary>
     public bool IsAlive { get; protected set; } = true;
 
-    /// <summary>Indicates whether the unit has already acted this turn.</summary>
-    public bool HasPlayed { get; protected set; }
-
     /// <summary>The maximum number of tiles the unit can move per turn.</summary>
     public int PossibleMovesRange { get; protected set; }
 
@@ -163,6 +161,15 @@ public abstract partial class UnitSystem : CharacterBody3D, IEffectTarget
                 CharacterSprite = sprite;
                 break;
             }
+    }
+
+    /// <summary>
+    /// Injects an instance of the status effect system into this unit.
+    /// </summary>
+    /// <param name="statusEffectSystem">The status effect system to be used by this unit.</param>
+    public virtual void InjectDependencies(StatusEffectSystem statusEffectSystem)
+    {
+        _statusEffectSystem = statusEffectSystem;
     }
 
     #endregion
@@ -245,7 +252,7 @@ public abstract partial class UnitSystem : CharacterBody3D, IEffectTarget
                 floor += isNegate ? -1 : 1;
             }
         }
-        catch (ArgumentOutOfRangeException e)
+        catch (ArgumentOutOfRangeException)
         {
             return possibleFloor;
         }
@@ -278,6 +285,24 @@ public abstract partial class UnitSystem : CharacterBody3D, IEffectTarget
     #endregion
 
     #region Public Methods
+
+    /// <summary>
+    /// Set if the unit is alive or not.
+    /// </summary>
+    /// <param name="isAlive">A boolean to set unit <see cref="IsAlive"/> value</param>
+    public void SetIsAlive(bool isAlive)
+    {
+        if (!isAlive)
+        {
+            if (Hp <= 0)
+                IsAlive = isAlive;
+        }
+        else
+        {
+            if (Hp >= 0)
+                IsAlive = isAlive;
+        }
+    }
 
     /// <summary>
     /// Handles the physics of the unit in the UI.
@@ -319,6 +344,7 @@ public abstract partial class UnitSystem : CharacterBody3D, IEffectTarget
         }
 
         skill.Use(targets, map);
+        ManaPoint -= skill.ManaCost;
         ReportSystemUnitHasPlayed();
     }
 
@@ -340,7 +366,6 @@ public abstract partial class UnitSystem : CharacterBody3D, IEffectTarget
     /// </summary>
     public void PassTurn()
     {
-        HasPlayed = true;
         ReportSystemUnitHasPlayed();
     }
 
@@ -389,7 +414,6 @@ public abstract partial class UnitSystem : CharacterBody3D, IEffectTarget
         if (!CanMoveTo(x, y, z, map))
             return false;
         SetGridPosition(x, y, z, map);
-        ReportSystemUnitHasPlayed();
         return true;
     }
 
@@ -411,10 +435,10 @@ public abstract partial class UnitSystem : CharacterBody3D, IEffectTarget
         (int, int, int)[] directions =
         [
             (-1, 0, 0), // Left
-            (1, 0, 0), // Right
-            (0, 0, 1), // Forward
-            (0, 0, -1) // Backward
-        ];
+			(1, 0, 0), // Right
+			(0, 0, 1), // Forward
+			(0, 0, -1) // Backward
+		];
 
         if (unitPosition == null)
             return possibleMoves;
@@ -488,27 +512,112 @@ public abstract partial class UnitSystem : CharacterBody3D, IEffectTarget
         return possibleMoves;
     }
 
+    /// <summary>
+    ///     Calculates all reachable cells for this unit based on the skill range and the unit position.
+    /// </summary>
+    /// <param name="map">The map to evaluate reachable cells on.</param>
+    /// <param name="skill">The selected skill</param>
+    /// <returns>A list of reachable coordinates (x, y, z).</returns>
+    /// <remarks>
+    ///     This method uses a Breadth-First Search (BFS) algorithm to evaluate all valid cells
+    ///     considering vertical traversal (e.g. stairs, cliffs).
+    /// </remarks>
+    public virtual List<(int, int, int)> GetReachableCellsForSkills(MapSystem map, SkillSystem skill)
+    {
+        List<(int, int, int)> possibleCells = [];
+        Queue<((int, int, int) pos, int dist)> toExplore = new();
+        (int, int, int)? unitPosition = map.GetUnitPosition(this);
+        List<(int, int, int)> visitedCells = [];
+        (int, int, int)[] directions =
+        [
+            (-1, 0, 0), // Left
+			(1, 0, 0), // Right
+			(0, 1, 0), // Up
+			(0, -1, 0), // Down
+			(0, 0, 1), // Forward
+			(0, 0, -1) // Backward
+		];
+
+        if (unitPosition == null)
+            return possibleCells;
+
+        // Queue the unit position
+        visitedCells.Add(unitPosition.Value);
+        toExplore.Enqueue((unitPosition.Value, 0));
+        while (toExplore.Count > 0)
+        {
+            ((int, int, int), int) currentPos = toExplore.Dequeue();
+
+            if (currentPos.Item2 > skill.Range)
+                continue;
+
+            // Set the current position to visited cells
+            if (currentPos.Item1 != unitPosition.Value && !visitedCells.Contains(currentPos.Item1))
+            {
+                possibleCells.Add(currentPos.Item1);
+                visitedCells.Add(currentPos.Item1);
+            }
+
+            // Check the possible neighbor at the current position
+            foreach ((int, int, int) dir in directions)
+            {
+                (int, int, int) pos = currentPos.Item1;
+                pos.Item1 += dir.Item1;
+                pos.Item2 += dir.Item2;
+                pos.Item3 += dir.Item3;
+
+                GD.Print($"Neighbor pos: {pos}");
+
+                try
+                {
+                    map.IsEmpty(pos.Item1, pos.Item2, pos.Item3);
+                    toExplore.Enqueue((pos, currentPos.Item2 + 1));
+                }
+                catch (ArgumentOutOfRangeException)
+                {
+                    // Just continue the loop without enqueue the position.
+                    // If the exception must be handled one day, it must be handled here.
+                }
+            }
+        }
+
+        possibleCells = possibleCells
+            .Where(c => !map.IsEmpty(c.Item1, c.Item2, c.Item3))
+            .ToList();
+
+        return possibleCells;
+    }
+
+    /// <summary>
+    /// Applies a status effect to this unit.
+    /// </summary>
+    /// <param name="statusEffect">The status effect to apply.</param>
+    public virtual void SetStatusEffectOnUnit(StatusEffect<UnitSystem> statusEffect)
+    {
+        _statusEffectSystem?.ApplyEffect(this, statusEffect);
+    }
+
     /// <inheritdoc />
-    public void ApplyEffect(StatusEffect statusEffect)
+    public void ApplyEffect(StatusEffect<UnitSystem> statusEffect)
     {
         _effectTarget.ApplyEffect(statusEffect);
     }
 
     /// <inheritdoc />
-    public void RemoveEffect(StatusEffect statusEffect)
+    public void RemoveEffect(StatusEffect<UnitSystem> statusEffect)
     {
         _effectTarget.RemoveEffect(statusEffect);
     }
 
     /// <inheritdoc />
     public bool HasEffect<T>()
-        where T : StatusEffect
+        where T : StatusEffect<UnitSystem>
     {
         return _effectTarget.HasEffect<T>();
     }
 
     /// <inheritdoc />
-    public List<StatusEffect> GetActiveEffects()
+    public List<StatusEffect<UnitSystem>> GetActiveEffects()
     {
         return _effectTarget.GetActiveEffects();
     }

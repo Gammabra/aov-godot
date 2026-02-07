@@ -83,7 +83,7 @@ public sealed partial class Player1Data : UnitSystem
     {
         UnitName = "Player1";
         Description = "Test player unit";
-        MaxHp = 2000;
+        MaxHp = 1000;
         Hp = MaxHp;
         BaseAtk = 200;
         BaseDef = 0;

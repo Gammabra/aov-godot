@@ -10,33 +10,18 @@ public sealed class DataStructures
         ApplyModifier,
         RemoveModifier,
         Control,
-        ResourceChange,
         Summon
     }
 
-    public enum StatType
+    public enum StatTypeWithModifier
     {
-        Hp,
-        MaxHp,
         Atk,
-        Def,
-        Speed,
-        Intelligence,
-        Mana,
-        Curse
+        Def
     }
 
     public enum ModifierType
     {
         Flat,
         Percent
-    }
-
-    public record EffectPayload
-    {
-        public EffectType EffectType;
-        public StatType? StatType;
-        public ModifierType? ModifierType;
-        public float Value;
     }
 }

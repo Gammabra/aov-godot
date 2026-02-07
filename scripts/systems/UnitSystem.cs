@@ -41,7 +41,7 @@ public enum UnitType
 ///     - Movement logic (BFS pathfinding in 3D)
 ///     - Integration with <see cref="MapSystem" /> and <see cref="StatusEffect{UnitSystem}" />
 /// </remarks>
-public abstract partial class UnitSystem : CharacterBody3D, IEffectTarget<UnitSystem>
+public abstract partial class UnitSystem : CharacterBody3D, IEffectTarget<UnitSystem>, IStatusEffectBehavior
 {
     #region Private fields
 
@@ -49,6 +49,27 @@ public abstract partial class UnitSystem : CharacterBody3D, IEffectTarget<UnitSy
     private TaskCompletionSource? _actionTcs;
     private float _gravity = ProjectSettings.GetSetting("physics/3d/default_gravity").AsSingle();
     private StatusEffectSystem? _statusEffectSystem;
+
+    private Dictionary<DataStructures.StatTypeWithModifier, Func<float>> _baseStats =>
+        new()
+        {
+            { DataStructures.StatTypeWithModifier.Atk, () => BaseAtk },
+            { DataStructures.StatTypeWithModifier.Def, () => BaseDef }
+        };
+
+    private Dictionary<DataStructures.StatTypeWithModifier, Action<float>> _applyModifiers =>
+        new()
+        {
+            { DataStructures.StatTypeWithModifier.Atk, v => AtkModifierAmount += v },
+            { DataStructures.StatTypeWithModifier.Def, v => DefModifierAmount += v }
+        };
+
+    private Dictionary<DataStructures.StatTypeWithModifier, Action<float>> _removeModifiers =>
+        new()
+        {
+            { DataStructures.StatTypeWithModifier.Atk, v => AtkModifierAmount -= v },
+            { DataStructures.StatTypeWithModifier.Def, v => DefModifierAmount -= v }
+        };
 
     #endregion
 
@@ -98,8 +119,12 @@ public abstract partial class UnitSystem : CharacterBody3D, IEffectTarget<UnitSy
     /// <summary>The base physical attack value of the unit.</summary>
     public float BaseAtk { get; protected set; }
 
+    public float AtkModifierAmount { get; protected set; }
+
     /// <summary>The base physical defense value of the unit.</summary>
     public float BaseDef { get; protected set; }
+
+    public float DefModifierAmount { get; protected set; }
 
     /// <summary>The unit's base speed (used for turn order or initiative).</summary>
     public float BaseSpeed { get; protected set; }
@@ -109,6 +134,11 @@ public abstract partial class UnitSystem : CharacterBody3D, IEffectTarget<UnitSy
 
     /// <summary>The unit's available mana points for casting skills.</summary>
     public float ManaPoint { get; protected set; }
+
+    /// <summary>
+    /// Tell if the unit is controlled or not
+    /// </summary>
+    public bool IsControlled { get; protected set; }
 
     /// <summary>The type or archetype of the unit.</summary>
     public UnitType Type { get; protected set; }
@@ -435,10 +465,10 @@ public abstract partial class UnitSystem : CharacterBody3D, IEffectTarget<UnitSy
         (int, int, int)[] directions =
         [
             (-1, 0, 0), // Left
-			(1, 0, 0), // Right
-			(0, 0, 1), // Forward
-			(0, 0, -1) // Backward
-		];
+            (1, 0, 0), // Right
+            (0, 0, 1), // Forward
+            (0, 0, -1) // Backward
+        ];
 
         if (unitPosition == null)
             return possibleMoves;
@@ -531,12 +561,12 @@ public abstract partial class UnitSystem : CharacterBody3D, IEffectTarget<UnitSy
         (int, int, int)[] directions =
         [
             (-1, 0, 0), // Left
-			(1, 0, 0), // Right
-			(0, 1, 0), // Up
-			(0, -1, 0), // Down
-			(0, 0, 1), // Forward
-			(0, 0, -1) // Backward
-		];
+            (1, 0, 0), // Right
+            (0, 1, 0), // Up
+            (0, -1, 0), // Down
+            (0, 0, 1), // Forward
+            (0, 0, -1) // Backward
+        ];
 
         if (unitPosition == null)
             return possibleCells;
@@ -597,6 +627,10 @@ public abstract partial class UnitSystem : CharacterBody3D, IEffectTarget<UnitSy
         _statusEffectSystem?.ApplyEffect(this, statusEffect);
     }
 
+    #endregion
+
+    #region IEffectTarget Implementation
+
     /// <inheritdoc />
     public void ApplyEffect(StatusEffect<UnitSystem> statusEffect)
     {
@@ -620,6 +654,78 @@ public abstract partial class UnitSystem : CharacterBody3D, IEffectTarget<UnitSy
     public List<StatusEffect<UnitSystem>> GetActiveEffects()
     {
         return _effectTarget.GetActiveEffects();
+    }
+
+    #endregion
+
+    #region IStatusEffect Implementation
+
+    public virtual void OnEffectDamage(DataStructures.ModifierType modifierType, float amount)
+    {
+        float value = modifierType == DataStructures.ModifierType.Flat
+            ? amount
+            : MaxHp * amount / 100f;
+
+        Hp -= value;
+
+        if (Hp <= 0)
+        {
+            Hp = 0;
+            IsAlive = false;
+        }
+    }
+
+    public virtual void OnEffectHeal(float amount)
+    {
+        Hp += amount;
+        if (Hp > MaxHp)
+            Hp = MaxHp;
+    }
+
+    public virtual void OnEffectRevive(DataStructures.ModifierType modifierType, float amount)
+    {
+        float value = modifierType == DataStructures.ModifierType.Flat
+            ? amount
+            : MaxHp * amount / 100f;
+
+        Hp += value;
+        IsAlive = true;
+    }
+
+    public virtual void OnEffectModifierApplied(
+        DataStructures.StatTypeWithModifier statType,
+        DataStructures.ModifierType modifierType,
+        float amount
+    )
+    {
+        float value = modifierType == DataStructures.ModifierType.Flat
+            ? amount
+            : _baseStats[statType]() * amount / 100f;
+
+        _applyModifiers[statType](value);
+    }
+
+    public virtual void OnEffectModifierRemoved(
+        DataStructures.StatTypeWithModifier statType,
+        DataStructures.ModifierType modifierType,
+        float amount
+    )
+    {
+        float value = modifierType == DataStructures.ModifierType.Flat
+            ? amount
+            : _baseStats[statType]() * amount / 100f;
+
+        _removeModifiers[statType](value);
+    }
+
+    public virtual void OnEffectControlApplied()
+    {
+        IsControlled = true;
+    }
+
+    public void OnEffectControlRemoved()
+    {
+        IsControlled = false;
     }
 
     #endregion

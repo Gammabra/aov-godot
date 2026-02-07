@@ -15,7 +15,7 @@ public sealed class BurningEffect(int duration)
     public override void OnTurnPassed(IEffectTarget<UnitSystem> target)
     {
         if (target is UnitSystem unit)
-            unit.TakeDamage(5);
+            unit.OnEffectDamage(DataStructures.ModifierType.Flat, 10);
         base.OnTurnPassed(target);
     }
 

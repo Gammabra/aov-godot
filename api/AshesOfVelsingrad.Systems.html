@@ -2,9 +2,9 @@
 <html>
   <head>
     <meta charset="utf-8">
-      <title>Namespace AshesOfVelsingrad.systems.status_effects | Ashes of Velsingrad Documentation </title>
+      <title>Namespace AshesOfVelsingrad.Systems | Ashes of Velsingrad Documentation </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content="Namespace AshesOfVelsingrad.systems.status_effects | Ashes of Velsingrad Documentation ">
+      <meta name="title" content="Namespace AshesOfVelsingrad.Systems | Ashes of Velsingrad Documentation ">
       
       
       <link rel="icon" href="../favicon.ico">
@@ -84,9 +84,9 @@
           <nav id="breadcrumb"></nav>
         </div>
 
-        <article data-uid="AshesOfVelsingrad.systems.status_effects">
+        <article data-uid="AshesOfVelsingrad.Systems">
 
-  <h1 id="AshesOfVelsingrad_systems_status_effects" data-uid="AshesOfVelsingrad.systems.status_effects" class="text-break">Namespace AshesOfVelsingrad.systems.status_effects</h1>
+  <h1 id="AshesOfVelsingrad_Systems" data-uid="AshesOfVelsingrad.Systems" class="text-break">Namespace AshesOfVelsingrad.Systems</h1>
   <div class="markdown level0 summary"></div>
   <div class="markdown level0 conceptual"></div>
   <div class="markdown level0 remarks"></div>
@@ -95,27 +95,82 @@
 Classes
 </h3>
     <dl class="jumplist">
-      <dt><a class="xref" href="AshesOfVelsingrad.systems.status_effects.EffectTarget.html">EffectTarget</a></dt>
-      <dd><p>Base class for any entity that can receive and manage <a class="xref" href="AshesOfVelsingrad.systems.status_effects.StatusEffect.html">StatusEffect</a>s.
+      <dt><a class="xref" href="AshesOfVelsingrad.Systems.BattleInputSystem.html">BattleInputSystem</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="AshesOfVelsingrad.Systems.CellInformation.html">CellInformation</a></dt>
+      <dd><p>Represents the information for a single grid cell in the map,
+including its coordinates, ground type, walkability, and the unit occupying it.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="AshesOfVelsingrad.Systems.EffectTarget-1.html">EffectTarget&lt;TTarget&gt;</a></dt>
+      <dd><p>Base class for any entity that can receive and manage <a class="xref" href="AshesOfVelsingrad.Systems.StatusEffect-1.html">StatusEffect&lt;TTarget&gt;</a>s.
 Provides default implementations for applying, removing, and querying effects.</p>
 </dd>
     </dl>
     <dl class="jumplist">
-      <dt><a class="xref" href="AshesOfVelsingrad.systems.status_effects.StatusEffect.html">StatusEffect</a></dt>
-      <dd><p>Base class for all status effects that can be applied to an <a class="xref" href="AshesOfVelsingrad.systems.status_effects.IEffectTarget.html">IEffectTarget</a>.</p>
+      <dt><a class="xref" href="AshesOfVelsingrad.Systems.MapSystem.html">MapSystem</a></dt>
+      <dd><p>Base class for all playable maps in the game.</p>
 </dd>
     </dl>
     <dl class="jumplist">
-      <dt><a class="xref" href="AshesOfVelsingrad.systems.status_effects.StatusEffectSystem.html">StatusEffectSystem</a></dt>
-      <dd><p>Manages the application and lifecycle of status effects on all tracked targets.</p>
+      <dt><a class="xref" href="AshesOfVelsingrad.Systems.SkillSystem.html">SkillSystem</a></dt>
+      <dd><p>Base class for all skills available in the game.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="AshesOfVelsingrad.Systems.StatusEffectSystem.html">StatusEffectSystem</a></dt>
+      <dd><p>Manages the lifecycle and application of <a class="xref" href="AshesOfVelsingrad.Systems.StatusEffect-1.html">StatusEffect&lt;TTarget&gt;</a>s
+for all tracked targets in the game, including units and map cells.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="AshesOfVelsingrad.Systems.StatusEffect-1.html">StatusEffect&lt;TTarget&gt;</a></dt>
+      <dd><p>Base class for all status effects that can be applied to an <a class="xref" href="AshesOfVelsingrad.Systems.IEffectTarget-1.html">IEffectTarget&lt;TTarget&gt;</a>.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="AshesOfVelsingrad.Systems.UnitSystem.html">UnitSystem</a></dt>
+      <dd><p>Base class for all units in the tactical grid-based system.
+Handles stats, movement, effects, and Godot integration.</p>
 </dd>
     </dl>
     <h3 id="interfaces">
 Interfaces
 </h3>
     <dl class="jumplist">
-      <dt><a class="xref" href="AshesOfVelsingrad.systems.status_effects.IEffectTarget.html">IEffectTarget</a></dt>
-      <dd><p>Represents an entity that can receive and manage status effects.</p>
+      <dt><a class="xref" href="AshesOfVelsingrad.Systems.IEffectTarget-1.html">IEffectTarget&lt;TTarget&gt;</a></dt>
+      <dd><p>Represents any entity that can receive and manage <a class="xref" href="AshesOfVelsingrad.Systems.StatusEffect-1.html">StatusEffect&lt;TTarget&gt;</a>s.</p>
+</dd>
+    </dl>
+    <h3 id="enums">
+Enums
+</h3>
+    <dl class="jumplist">
+      <dt><a class="xref" href="AshesOfVelsingrad.Systems.CellType.html">CellType</a></dt>
+      <dd><p>Enumeration of every cell type available in the game.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="AshesOfVelsingrad.Systems.EffectType.html">EffectType</a></dt>
+      <dd><p>Defines the type of effect a skill applies when used.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="AshesOfVelsingrad.Systems.MagicType.html">MagicType</a></dt>
+      <dd><p>Represents the elemental type of a skill.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="AshesOfVelsingrad.Systems.TargetTypes.html">TargetTypes</a></dt>
+      <dd><p>Defines the targeting pattern of a skill.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="AshesOfVelsingrad.Systems.UnitType.html">UnitType</a></dt>
+      <dd><p>Represents the different unit archetypes in the game.</p>
 </dd>
     </dl>
 

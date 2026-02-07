@@ -2,11 +2,11 @@
 <html>
   <head>
     <meta charset="utf-8">
-      <title>Enum CellType | Ashes of Velsingrad Documentation </title>
+      <title>Enum UnitType | Ashes of Velsingrad Documentation </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content="Enum CellType | Ashes of Velsingrad Documentation ">
+      <meta name="title" content="Enum UnitType | Ashes of Velsingrad Documentation ">
       
-      <meta name="description" content="Enumeration of every cell type available in the game.">
+      <meta name="description" content="Represents the different unit archetypes in the game.">
       <link rel="icon" href="../favicon.ico">
       <link rel="stylesheet" href="../public/docfx.min.css">
       <link rel="stylesheet" href="../public/main.css">
@@ -16,7 +16,7 @@
       <meta name="docfx:rel" content="../">
       
       
-      <meta name="docfx:docurl" content="https://github.com/Gammabra/aov-godot/new/develop/apiSpec/new?filename=AshesOfVelsingrad_systems_CellType.md&amp;value=---%0Auid%3A%20AshesOfVelsingrad.systems.CellType%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="docfx:docurl" content="https://github.com/Gammabra/aov-godot/new/develop/apiSpec/new?filename=AshesOfVelsingrad_Systems_UnitType.md&amp;value=---%0Auid%3A%20AshesOfVelsingrad.Systems.UnitType%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -84,26 +84,26 @@
           <nav id="breadcrumb"></nav>
         </div>
 
-        <article data-uid="AshesOfVelsingrad.systems.CellType">
+        <article data-uid="AshesOfVelsingrad.Systems.UnitType">
 
 
 
 
-  <h1 id="AshesOfVelsingrad_systems_CellType" data-uid="AshesOfVelsingrad.systems.CellType" class="text-break">
-Enum CellType  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/systems/MapSystem.cs/#L11"><i class="bi bi-code-slash"></i></a>
+  <h1 id="AshesOfVelsingrad_Systems_UnitType" data-uid="AshesOfVelsingrad.Systems.UnitType" class="text-break">
+Enum UnitType  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/systems/UnitSystem.cs/#L12"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
-    <dl><dt>Namespace</dt><dd><a class="xref" href="AshesOfVelsingrad.html">AshesOfVelsingrad</a>.<a class="xref" href="AshesOfVelsingrad.systems.html">systems</a></dd></dl>
+    <dl><dt>Namespace</dt><dd><a class="xref" href="AshesOfVelsingrad.html">AshesOfVelsingrad</a>.<a class="xref" href="AshesOfVelsingrad.Systems.html">Systems</a></dd></dl>
   <dl><dt>Assembly</dt><dd>Ashes of Velsingrad.dll</dd></dl>
   </div>
 
-  <div class="markdown summary"><p>Enumeration of every cell type available in the game.</p>
+  <div class="markdown summary"><p>Represents the different unit archetypes in the game.</p>
 </div>
   <div class="markdown conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public enum CellType</code></pre>
+    <pre><code class="lang-csharp hljs">public enum UnitType</code></pre>
   </div>
 
 
@@ -117,12 +117,30 @@ Enum CellType  <a class="header-action link-secondary" title="View source" href=
   <h2 id="fields">Fields
 </h2>
   <dl class="parameters">
-    <dt id="AshesOfVelsingrad_systems_CellType_Empty"><code>Empty = -1</code></dt>
+    <dt id="AshesOfVelsingrad_Systems_UnitType_Archer"><code>Archer = 4</code></dt>
   
-  <dd></dd>
-    <dt id="AshesOfVelsingrad_systems_CellType_Grass"><code>Grass = 0</code></dt>
+  <dd><p>Ranged physical attacker.</p>
+</dd>
+    <dt id="AshesOfVelsingrad_Systems_UnitType_Assassin"><code>Assassin = 3</code></dt>
   
-  <dd></dd>
+  <dd><p>High-mobility stealth unit.</p>
+</dd>
+    <dt id="AshesOfVelsingrad_Systems_UnitType_Fighter"><code>Fighter = 1</code></dt>
+  
+  <dd><p>Close-range melee fighter unit.</p>
+</dd>
+    <dt id="AshesOfVelsingrad_Systems_UnitType_Mage"><code>Mage = 5</code></dt>
+  
+  <dd><p>Magic-based ranged attacker.</p>
+</dd>
+    <dt id="AshesOfVelsingrad_Systems_UnitType_Player"><code>Player = 0</code></dt>
+  
+  <dd><p>Default player-controlled unit.</p>
+</dd>
+    <dt id="AshesOfVelsingrad_Systems_UnitType_Swordsman"><code>Swordsman = 2</code></dt>
+  
+  <dd><p>Heavy melee swordsman unit.</p>
+</dd>
   </dl>
 
 
@@ -130,7 +148,7 @@ Enum CellType  <a class="header-action link-secondary" title="View source" href=
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/systems/MapSystem.cs/#L11" class="edit-link">Edit this page</a>
+          <a href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/systems/UnitSystem.cs/#L12" class="edit-link">Edit this page</a>
         </div>
 
 

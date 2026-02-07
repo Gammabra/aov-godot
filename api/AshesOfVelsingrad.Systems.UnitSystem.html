@@ -16,7 +16,7 @@
       <meta name="docfx:rel" content="../">
       
       
-      <meta name="docfx:docurl" content="https://github.com/Gammabra/aov-godot/new/develop/apiSpec/new?filename=AshesOfVelsingrad_systems_UnitSystem.md&amp;value=---%0Auid%3A%20AshesOfVelsingrad.systems.UnitSystem%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="docfx:docurl" content="https://github.com/Gammabra/aov-godot/new/develop/apiSpec/new?filename=AshesOfVelsingrad_Systems_UnitSystem.md&amp;value=---%0Auid%3A%20AshesOfVelsingrad.Systems.UnitSystem%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -84,16 +84,16 @@
           <nav id="breadcrumb"></nav>
         </div>
 
-        <article data-uid="AshesOfVelsingrad.systems.UnitSystem">
+        <article data-uid="AshesOfVelsingrad.Systems.UnitSystem">
 
 
 
-  <h1 id="AshesOfVelsingrad_systems_UnitSystem" data-uid="AshesOfVelsingrad.systems.UnitSystem" class="text-break">
-Class UnitSystem  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptPropertiesGenerator/AshesOfVelsingrad.systems.UnitSystem_ScriptProperties.generated.cs/#L6"><i class="bi bi-code-slash"></i></a>
+  <h1 id="AshesOfVelsingrad_Systems_UnitSystem" data-uid="AshesOfVelsingrad.Systems.UnitSystem" class="text-break">
+Class UnitSystem  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptSignalsGenerator/AshesOfVelsingrad.Systems.UnitSystem_ScriptSignals.generated.cs/#L6"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
-    <dl><dt>Namespace</dt><dd><a class="xref" href="AshesOfVelsingrad.html">AshesOfVelsingrad</a>.<a class="xref" href="AshesOfVelsingrad.systems.html">systems</a></dd></dl>
+    <dl><dt>Namespace</dt><dd><a class="xref" href="AshesOfVelsingrad.html">AshesOfVelsingrad</a>.<a class="xref" href="AshesOfVelsingrad.Systems.html">Systems</a></dd></dl>
   <dl><dt>Assembly</dt><dd>Ashes of Velsingrad.dll</dd></dl>
   </div>
 
@@ -104,7 +104,7 @@ Handles stats, movement, effects, and Godot integration.</p>
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[ScriptPath(&quot;res://scripts/systems/UnitSystem.cs&quot;)]
-public abstract class UnitSystem : CharacterBody3D, IDisposable, IEffectTarget</code></pre>
+public abstract class UnitSystem : CharacterBody3D, IDisposable, IEffectTarget&lt;UnitSystem&gt;</code></pre>
   </div>
 
 
@@ -128,7 +128,7 @@ public abstract class UnitSystem : CharacterBody3D, IDisposable, IEffectTarget</
     <dt>Implements</dt>
     <dd>
       <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.idisposable">IDisposable</a></div>
-      <div><a class="xref" href="AshesOfVelsingrad.systems.status_effects.IEffectTarget.html">IEffectTarget</a></div>
+      <div><a class="xref" href="AshesOfVelsingrad.Systems.IEffectTarget-1.html">IEffectTarget</a>&lt;<a class="xref" href="AshesOfVelsingrad.Systems.UnitSystem.html">UnitSystem</a>&gt;</div>
     </dd>
   </dl>
 
@@ -1426,13 +1426,13 @@ public abstract class UnitSystem : CharacterBody3D, IDisposable, IEffectTarget</
 
 
 
-  <h2 id="AshesOfVelsingrad_systems_UnitSystem_remarks">Remarks</h2>
+  <h2 id="AshesOfVelsingrad_Systems_UnitSystem_remarks">Remarks</h2>
   <div class="markdown level0 remarks"><p>This class provides fundamental behavior for all combat units, including:</p>
 <ul>
 <li>Base stats (HP, attack, defense, etc.)</li>
 <li>Turn logic (HasPlayed)</li>
 <li>Movement logic (BFS pathfinding in 3D)</li>
-<li>Integration with <a class="xref" href="AshesOfVelsingrad.systems.MapSystem.html">MapSystem</a> and <a class="xref" href="AshesOfVelsingrad.systems.status_effects.StatusEffect.html">StatusEffect</a></li>
+<li>Integration with <a class="xref" href="AshesOfVelsingrad.Systems.MapSystem.html">MapSystem</a> and <a class="xref" href="AshesOfVelsingrad.Systems.StatusEffect-1.html">StatusEffect&lt;TTarget&gt;</a></li>
 </ul>
 </div>
 
@@ -1441,11 +1441,11 @@ public abstract class UnitSystem : CharacterBody3D, IDisposable, IEffectTarget</
 </h2>
 
 
-  <a id="AshesOfVelsingrad_systems_UnitSystem_ActiveSkills_" data-uid="AshesOfVelsingrad.systems.UnitSystem.ActiveSkills*"></a>
+  <a id="AshesOfVelsingrad_Systems_UnitSystem_ActiveSkills_" data-uid="AshesOfVelsingrad.Systems.UnitSystem.ActiveSkills*"></a>
 
-  <h3 id="AshesOfVelsingrad_systems_UnitSystem_ActiveSkills" data-uid="AshesOfVelsingrad.systems.UnitSystem.ActiveSkills">
+  <h3 id="AshesOfVelsingrad_Systems_UnitSystem_ActiveSkills" data-uid="AshesOfVelsingrad.Systems.UnitSystem.ActiveSkills">
   ActiveSkills
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/systems/UnitSystem.cs/#L125"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/systems/UnitSystem.cs/#L123"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>List of active (usable) skills available to this unit.</p>
@@ -1462,7 +1462,7 @@ public abstract class UnitSystem : CharacterBody3D, IDisposable, IEffectTarget</
 
   <h4 class="section">Property Value</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a class="xref" href="AshesOfVelsingrad.systems.SkillSystem.html">SkillSystem</a>&gt;</dt>
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a class="xref" href="AshesOfVelsingrad.Systems.SkillSystem.html">SkillSystem</a>&gt;</dt>
     <dd></dd>
   </dl>
 
@@ -1473,11 +1473,11 @@ public abstract class UnitSystem : CharacterBody3D, IDisposable, IEffectTarget</
 
 
 
-  <a id="AshesOfVelsingrad_systems_UnitSystem_BaseAtk_" data-uid="AshesOfVelsingrad.systems.UnitSystem.BaseAtk*"></a>
+  <a id="AshesOfVelsingrad_Systems_UnitSystem_BaseAtk_" data-uid="AshesOfVelsingrad.Systems.UnitSystem.BaseAtk*"></a>
 
-  <h3 id="AshesOfVelsingrad_systems_UnitSystem_BaseAtk" data-uid="AshesOfVelsingrad.systems.UnitSystem.BaseAtk">
+  <h3 id="AshesOfVelsingrad_Systems_UnitSystem_BaseAtk" data-uid="AshesOfVelsingrad.Systems.UnitSystem.BaseAtk">
   BaseAtk
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/systems/UnitSystem.cs/#L98"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/systems/UnitSystem.cs/#L99"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>The base physical attack value of the unit.</p>
@@ -1505,11 +1505,11 @@ public abstract class UnitSystem : CharacterBody3D, IDisposable, IEffectTarget</
 
 
 
-  <a id="AshesOfVelsingrad_systems_UnitSystem_BaseDef_" data-uid="AshesOfVelsingrad.systems.UnitSystem.BaseDef*"></a>
+  <a id="AshesOfVelsingrad_Systems_UnitSystem_BaseDef_" data-uid="AshesOfVelsingrad.Systems.UnitSystem.BaseDef*"></a>
 
-  <h3 id="AshesOfVelsingrad_systems_UnitSystem_BaseDef" data-uid="AshesOfVelsingrad.systems.UnitSystem.BaseDef">
+  <h3 id="AshesOfVelsingrad_Systems_UnitSystem_BaseDef" data-uid="AshesOfVelsingrad.Systems.UnitSystem.BaseDef">
   BaseDef
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/systems/UnitSystem.cs/#L101"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/systems/UnitSystem.cs/#L102"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>The base physical defense value of the unit.</p>
@@ -1537,11 +1537,11 @@ public abstract class UnitSystem : CharacterBody3D, IDisposable, IEffectTarget</
 
 
 
-  <a id="AshesOfVelsingrad_systems_UnitSystem_BaseSpeed_" data-uid="AshesOfVelsingrad.systems.UnitSystem.BaseSpeed*"></a>
+  <a id="AshesOfVelsingrad_Systems_UnitSystem_BaseSpeed_" data-uid="AshesOfVelsingrad.Systems.UnitSystem.BaseSpeed*"></a>
 
-  <h3 id="AshesOfVelsingrad_systems_UnitSystem_BaseSpeed" data-uid="AshesOfVelsingrad.systems.UnitSystem.BaseSpeed">
+  <h3 id="AshesOfVelsingrad_Systems_UnitSystem_BaseSpeed" data-uid="AshesOfVelsingrad.Systems.UnitSystem.BaseSpeed">
   BaseSpeed
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/systems/UnitSystem.cs/#L104"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/systems/UnitSystem.cs/#L105"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>The unit's base speed (used for turn order or initiative).</p>
@@ -1569,11 +1569,11 @@ public abstract class UnitSystem : CharacterBody3D, IDisposable, IEffectTarget</
 
 
 
-  <a id="AshesOfVelsingrad_systems_UnitSystem_CharacterSprite_" data-uid="AshesOfVelsingrad.systems.UnitSystem.CharacterSprite*"></a>
+  <a id="AshesOfVelsingrad_Systems_UnitSystem_CharacterSprite_" data-uid="AshesOfVelsingrad.Systems.UnitSystem.CharacterSprite*"></a>
 
-  <h3 id="AshesOfVelsingrad_systems_UnitSystem_CharacterSprite" data-uid="AshesOfVelsingrad.systems.UnitSystem.CharacterSprite">
+  <h3 id="AshesOfVelsingrad_Systems_UnitSystem_CharacterSprite" data-uid="AshesOfVelsingrad.Systems.UnitSystem.CharacterSprite">
   CharacterSprite
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/systems/UnitSystem.cs/#L79"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/systems/UnitSystem.cs/#L80"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>The 3D Sprite of the unit displayed in the UI.</p>
@@ -1601,11 +1601,11 @@ public abstract class UnitSystem : CharacterBody3D, IDisposable, IEffectTarget</
 
 
 
-  <a id="AshesOfVelsingrad_systems_UnitSystem_Curse_" data-uid="AshesOfVelsingrad.systems.UnitSystem.Curse*"></a>
+  <a id="AshesOfVelsingrad_Systems_UnitSystem_Curse_" data-uid="AshesOfVelsingrad.Systems.UnitSystem.Curse*"></a>
 
-  <h3 id="AshesOfVelsingrad_systems_UnitSystem_Curse" data-uid="AshesOfVelsingrad.systems.UnitSystem.Curse">
+  <h3 id="AshesOfVelsingrad_Systems_UnitSystem_Curse" data-uid="AshesOfVelsingrad.Systems.UnitSystem.Curse">
   Curse
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/systems/UnitSystem.cs/#L131"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/systems/UnitSystem.cs/#L129"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>The unit’s curse value (used for status mechanics or debuffs).</p>
@@ -1633,11 +1633,11 @@ public abstract class UnitSystem : CharacterBody3D, IDisposable, IEffectTarget</
 
 
 
-  <a id="AshesOfVelsingrad_systems_UnitSystem_Description_" data-uid="AshesOfVelsingrad.systems.UnitSystem.Description*"></a>
+  <a id="AshesOfVelsingrad_Systems_UnitSystem_Description_" data-uid="AshesOfVelsingrad.Systems.UnitSystem.Description*"></a>
 
-  <h3 id="AshesOfVelsingrad_systems_UnitSystem_Description" data-uid="AshesOfVelsingrad.systems.UnitSystem.Description">
+  <h3 id="AshesOfVelsingrad_Systems_UnitSystem_Description" data-uid="AshesOfVelsingrad.Systems.UnitSystem.Description">
   Description
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/systems/UnitSystem.cs/#L89"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/systems/UnitSystem.cs/#L90"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Descriptive text about the unit.</p>
@@ -1665,43 +1665,11 @@ public abstract class UnitSystem : CharacterBody3D, IDisposable, IEffectTarget</
 
 
 
-  <a id="AshesOfVelsingrad_systems_UnitSystem_HasPlayed_" data-uid="AshesOfVelsingrad.systems.UnitSystem.HasPlayed*"></a>
+  <a id="AshesOfVelsingrad_Systems_UnitSystem_Hp_" data-uid="AshesOfVelsingrad.Systems.UnitSystem.Hp*"></a>
 
-  <h3 id="AshesOfVelsingrad_systems_UnitSystem_HasPlayed" data-uid="AshesOfVelsingrad.systems.UnitSystem.HasPlayed">
-  HasPlayed
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/systems/UnitSystem.cs/#L119"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Indicates whether the unit has already acted this turn.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public bool HasPlayed { get; protected set; }</code></pre>
-  </div>
-
-
-
-
-
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-  <a id="AshesOfVelsingrad_systems_UnitSystem_Hp_" data-uid="AshesOfVelsingrad.systems.UnitSystem.Hp*"></a>
-
-  <h3 id="AshesOfVelsingrad_systems_UnitSystem_Hp" data-uid="AshesOfVelsingrad.systems.UnitSystem.Hp">
+  <h3 id="AshesOfVelsingrad_Systems_UnitSystem_Hp" data-uid="AshesOfVelsingrad.Systems.UnitSystem.Hp">
   Hp
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/systems/UnitSystem.cs/#L92"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/systems/UnitSystem.cs/#L93"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>The current health points of the unit.</p>
@@ -1729,11 +1697,11 @@ public abstract class UnitSystem : CharacterBody3D, IDisposable, IEffectTarget</
 
 
 
-  <a id="AshesOfVelsingrad_systems_UnitSystem_Intelligence_" data-uid="AshesOfVelsingrad.systems.UnitSystem.Intelligence*"></a>
+  <a id="AshesOfVelsingrad_Systems_UnitSystem_Intelligence_" data-uid="AshesOfVelsingrad.Systems.UnitSystem.Intelligence*"></a>
 
-  <h3 id="AshesOfVelsingrad_systems_UnitSystem_Intelligence" data-uid="AshesOfVelsingrad.systems.UnitSystem.Intelligence">
+  <h3 id="AshesOfVelsingrad_Systems_UnitSystem_Intelligence" data-uid="AshesOfVelsingrad.Systems.UnitSystem.Intelligence">
   Intelligence
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/systems/UnitSystem.cs/#L107"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/systems/UnitSystem.cs/#L108"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>The unit's intelligence stat, affecting magical power or effects.</p>
@@ -1761,11 +1729,11 @@ public abstract class UnitSystem : CharacterBody3D, IDisposable, IEffectTarget</
 
 
 
-  <a id="AshesOfVelsingrad_systems_UnitSystem_IsAlive_" data-uid="AshesOfVelsingrad.systems.UnitSystem.IsAlive*"></a>
+  <a id="AshesOfVelsingrad_Systems_UnitSystem_IsAlive_" data-uid="AshesOfVelsingrad.Systems.UnitSystem.IsAlive*"></a>
 
-  <h3 id="AshesOfVelsingrad_systems_UnitSystem_IsAlive" data-uid="AshesOfVelsingrad.systems.UnitSystem.IsAlive">
+  <h3 id="AshesOfVelsingrad_Systems_UnitSystem_IsAlive" data-uid="AshesOfVelsingrad.Systems.UnitSystem.IsAlive">
   IsAlive
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/systems/UnitSystem.cs/#L116"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/systems/UnitSystem.cs/#L117"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Indicates whether the unit is alive.</p>
@@ -1793,11 +1761,11 @@ public abstract class UnitSystem : CharacterBody3D, IDisposable, IEffectTarget</
 
 
 
-  <a id="AshesOfVelsingrad_systems_UnitSystem_ManaPoint_" data-uid="AshesOfVelsingrad.systems.UnitSystem.ManaPoint*"></a>
+  <a id="AshesOfVelsingrad_Systems_UnitSystem_ManaPoint_" data-uid="AshesOfVelsingrad.Systems.UnitSystem.ManaPoint*"></a>
 
-  <h3 id="AshesOfVelsingrad_systems_UnitSystem_ManaPoint" data-uid="AshesOfVelsingrad.systems.UnitSystem.ManaPoint">
+  <h3 id="AshesOfVelsingrad_Systems_UnitSystem_ManaPoint" data-uid="AshesOfVelsingrad.Systems.UnitSystem.ManaPoint">
   ManaPoint
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/systems/UnitSystem.cs/#L110"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/systems/UnitSystem.cs/#L111"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>The unit's available mana points for casting skills.</p>
@@ -1825,11 +1793,11 @@ public abstract class UnitSystem : CharacterBody3D, IDisposable, IEffectTarget</
 
 
 
-  <a id="AshesOfVelsingrad_systems_UnitSystem_MaxHp_" data-uid="AshesOfVelsingrad.systems.UnitSystem.MaxHp*"></a>
+  <a id="AshesOfVelsingrad_Systems_UnitSystem_MaxHp_" data-uid="AshesOfVelsingrad.Systems.UnitSystem.MaxHp*"></a>
 
-  <h3 id="AshesOfVelsingrad_systems_UnitSystem_MaxHp" data-uid="AshesOfVelsingrad.systems.UnitSystem.MaxHp">
+  <h3 id="AshesOfVelsingrad_Systems_UnitSystem_MaxHp" data-uid="AshesOfVelsingrad.Systems.UnitSystem.MaxHp">
   MaxHp
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/systems/UnitSystem.cs/#L95"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/systems/UnitSystem.cs/#L96"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>The maximum health points of the unit.</p>
@@ -1857,11 +1825,11 @@ public abstract class UnitSystem : CharacterBody3D, IDisposable, IEffectTarget</
 
 
 
-  <a id="AshesOfVelsingrad_systems_UnitSystem_PassiveSkills_" data-uid="AshesOfVelsingrad.systems.UnitSystem.PassiveSkills*"></a>
+  <a id="AshesOfVelsingrad_Systems_UnitSystem_PassiveSkills_" data-uid="AshesOfVelsingrad.Systems.UnitSystem.PassiveSkills*"></a>
 
-  <h3 id="AshesOfVelsingrad_systems_UnitSystem_PassiveSkills" data-uid="AshesOfVelsingrad.systems.UnitSystem.PassiveSkills">
+  <h3 id="AshesOfVelsingrad_Systems_UnitSystem_PassiveSkills" data-uid="AshesOfVelsingrad.Systems.UnitSystem.PassiveSkills">
   PassiveSkills
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/systems/UnitSystem.cs/#L128"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/systems/UnitSystem.cs/#L126"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>List of passive (always-on) skills applied to this unit.</p>
@@ -1878,7 +1846,7 @@ public abstract class UnitSystem : CharacterBody3D, IDisposable, IEffectTarget</
 
   <h4 class="section">Property Value</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a class="xref" href="AshesOfVelsingrad.systems.SkillSystem.html">SkillSystem</a>&gt;</dt>
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a class="xref" href="AshesOfVelsingrad.Systems.SkillSystem.html">SkillSystem</a>&gt;</dt>
     <dd></dd>
   </dl>
 
@@ -1889,11 +1857,11 @@ public abstract class UnitSystem : CharacterBody3D, IDisposable, IEffectTarget</
 
 
 
-  <a id="AshesOfVelsingrad_systems_UnitSystem_PortraitTexture_" data-uid="AshesOfVelsingrad.systems.UnitSystem.PortraitTexture*"></a>
+  <a id="AshesOfVelsingrad_Systems_UnitSystem_PortraitTexture_" data-uid="AshesOfVelsingrad.Systems.UnitSystem.PortraitTexture*"></a>
 
-  <h3 id="AshesOfVelsingrad_systems_UnitSystem_PortraitTexture" data-uid="AshesOfVelsingrad.systems.UnitSystem.PortraitTexture">
+  <h3 id="AshesOfVelsingrad_Systems_UnitSystem_PortraitTexture" data-uid="AshesOfVelsingrad.Systems.UnitSystem.PortraitTexture">
   PortraitTexture
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/systems/UnitSystem.cs/#L74"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/systems/UnitSystem.cs/#L75"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>The portrait texture displayed for this unit in the UI.</p>
@@ -1921,11 +1889,11 @@ public abstract class UnitSystem : CharacterBody3D, IDisposable, IEffectTarget</
 
 
 
-  <a id="AshesOfVelsingrad_systems_UnitSystem_PossibleMovesRange_" data-uid="AshesOfVelsingrad.systems.UnitSystem.PossibleMovesRange*"></a>
+  <a id="AshesOfVelsingrad_Systems_UnitSystem_PossibleMovesRange_" data-uid="AshesOfVelsingrad.Systems.UnitSystem.PossibleMovesRange*"></a>
 
-  <h3 id="AshesOfVelsingrad_systems_UnitSystem_PossibleMovesRange" data-uid="AshesOfVelsingrad.systems.UnitSystem.PossibleMovesRange">
+  <h3 id="AshesOfVelsingrad_Systems_UnitSystem_PossibleMovesRange" data-uid="AshesOfVelsingrad.Systems.UnitSystem.PossibleMovesRange">
   PossibleMovesRange
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/systems/UnitSystem.cs/#L122"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/systems/UnitSystem.cs/#L120"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>The maximum number of tiles the unit can move per turn.</p>
@@ -1953,11 +1921,11 @@ public abstract class UnitSystem : CharacterBody3D, IDisposable, IEffectTarget</
 
 
 
-  <a id="AshesOfVelsingrad_systems_UnitSystem_Type_" data-uid="AshesOfVelsingrad.systems.UnitSystem.Type*"></a>
+  <a id="AshesOfVelsingrad_Systems_UnitSystem_Type_" data-uid="AshesOfVelsingrad.Systems.UnitSystem.Type*"></a>
 
-  <h3 id="AshesOfVelsingrad_systems_UnitSystem_Type" data-uid="AshesOfVelsingrad.systems.UnitSystem.Type">
+  <h3 id="AshesOfVelsingrad_Systems_UnitSystem_Type" data-uid="AshesOfVelsingrad.Systems.UnitSystem.Type">
   Type
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/systems/UnitSystem.cs/#L113"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/systems/UnitSystem.cs/#L114"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>The type or archetype of the unit.</p>
@@ -1974,7 +1942,7 @@ public abstract class UnitSystem : CharacterBody3D, IDisposable, IEffectTarget</
 
   <h4 class="section">Property Value</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="AshesOfVelsingrad.systems.UnitType.html">UnitType</a></dt>
+    <dt><a class="xref" href="AshesOfVelsingrad.Systems.UnitType.html">UnitType</a></dt>
     <dd></dd>
   </dl>
 
@@ -1985,11 +1953,11 @@ public abstract class UnitSystem : CharacterBody3D, IDisposable, IEffectTarget</
 
 
 
-  <a id="AshesOfVelsingrad_systems_UnitSystem_UnitName_" data-uid="AshesOfVelsingrad.systems.UnitSystem.UnitName*"></a>
+  <a id="AshesOfVelsingrad_Systems_UnitSystem_UnitName_" data-uid="AshesOfVelsingrad.Systems.UnitSystem.UnitName*"></a>
 
-  <h3 id="AshesOfVelsingrad_systems_UnitSystem_UnitName" data-uid="AshesOfVelsingrad.systems.UnitSystem.UnitName">
+  <h3 id="AshesOfVelsingrad_Systems_UnitSystem_UnitName" data-uid="AshesOfVelsingrad.Systems.UnitSystem.UnitName">
   UnitName
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/systems/UnitSystem.cs/#L86"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/systems/UnitSystem.cs/#L87"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>The name of the unit.</p>
@@ -2021,11 +1989,11 @@ public abstract class UnitSystem : CharacterBody3D, IDisposable, IEffectTarget</
 </h2>
 
 
-  <a id="AshesOfVelsingrad_systems_UnitSystem_ApplyEffect_" data-uid="AshesOfVelsingrad.systems.UnitSystem.ApplyEffect*"></a>
+  <a id="AshesOfVelsingrad_Systems_UnitSystem_ApplyEffect_" data-uid="AshesOfVelsingrad.Systems.UnitSystem.ApplyEffect*"></a>
 
-  <h3 id="AshesOfVelsingrad_systems_UnitSystem_ApplyEffect_AshesOfVelsingrad_systems_status_effects_StatusEffect_" data-uid="AshesOfVelsingrad.systems.UnitSystem.ApplyEffect(AshesOfVelsingrad.systems.status_effects.StatusEffect)">
-  ApplyEffect(StatusEffect)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/systems/UnitSystem.cs/#L492"><i class="bi bi-code-slash"></i></a>
+  <h3 id="AshesOfVelsingrad_Systems_UnitSystem_ApplyEffect_AshesOfVelsingrad_Systems_StatusEffect_AshesOfVelsingrad_Systems_UnitSystem__" data-uid="AshesOfVelsingrad.Systems.UnitSystem.ApplyEffect(AshesOfVelsingrad.Systems.StatusEffect{AshesOfVelsingrad.Systems.UnitSystem})">
+  ApplyEffect(StatusEffect&lt;UnitSystem&gt;)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/systems/UnitSystem.cs/#L601"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Applies a status effect to this target.</p>
@@ -2033,13 +2001,13 @@ public abstract class UnitSystem : CharacterBody3D, IDisposable, IEffectTarget</
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public void ApplyEffect(StatusEffect statusEffect)</code></pre>
+    <pre><code class="lang-csharp hljs">public void ApplyEffect(StatusEffect&lt;UnitSystem&gt; statusEffect)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
-    <dt><code>statusEffect</code> <a class="xref" href="AshesOfVelsingrad.systems.status_effects.StatusEffect.html">StatusEffect</a></dt>
-    <dd><p>The status effect to apply.</p>
+    <dt><code>statusEffect</code> <a class="xref" href="AshesOfVelsingrad.Systems.StatusEffect-1.html">StatusEffect</a>&lt;<a class="xref" href="AshesOfVelsingrad.Systems.UnitSystem.html">UnitSystem</a>&gt;</dt>
+    <dd><p>The <a class="xref" href="AshesOfVelsingrad.Systems.StatusEffect-1.html">StatusEffect&lt;TTarget&gt;</a> instance to apply.</p>
 </dd>
   </dl>
 
@@ -2054,11 +2022,11 @@ public abstract class UnitSystem : CharacterBody3D, IDisposable, IEffectTarget</
 
 
 
-  <a id="AshesOfVelsingrad_systems_UnitSystem_CanMoveTo_" data-uid="AshesOfVelsingrad.systems.UnitSystem.CanMoveTo*"></a>
+  <a id="AshesOfVelsingrad_Systems_UnitSystem_CanMoveTo_" data-uid="AshesOfVelsingrad.Systems.UnitSystem.CanMoveTo*"></a>
 
-  <h3 id="AshesOfVelsingrad_systems_UnitSystem_CanMoveTo_System_Int32_System_Int32_System_Int32_AshesOfVelsingrad_systems_MapSystem_" data-uid="AshesOfVelsingrad.systems.UnitSystem.CanMoveTo(System.Int32,System.Int32,System.Int32,AshesOfVelsingrad.systems.MapSystem)">
+  <h3 id="AshesOfVelsingrad_Systems_UnitSystem_CanMoveTo_System_Int32_System_Int32_System_Int32_AshesOfVelsingrad_Systems_MapSystem_" data-uid="AshesOfVelsingrad.Systems.UnitSystem.CanMoveTo(System.Int32,System.Int32,System.Int32,AshesOfVelsingrad.Systems.MapSystem)">
   CanMoveTo(int, int, int, MapSystem)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/systems/UnitSystem.cs/#L374"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/systems/UnitSystem.cs/#L399"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Checks if the unit can move to a given position.</p>
@@ -2080,7 +2048,7 @@ public abstract class UnitSystem : CharacterBody3D, IDisposable, IEffectTarget</
     <dt><code>z</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
     <dd><p>The Z coordinate.</p>
 </dd>
-    <dt><code>map</code> <a class="xref" href="AshesOfVelsingrad.systems.MapSystem.html">MapSystem</a></dt>
+    <dt><code>map</code> <a class="xref" href="AshesOfVelsingrad.Systems.MapSystem.html">MapSystem</a></dt>
     <dd><p>The map to check against.</p>
 </dd>
   </dl>
@@ -2102,11 +2070,11 @@ public abstract class UnitSystem : CharacterBody3D, IDisposable, IEffectTarget</
 
 
 
-  <a id="AshesOfVelsingrad_systems_UnitSystem_Cleanup_" data-uid="AshesOfVelsingrad.systems.UnitSystem.Cleanup*"></a>
+  <a id="AshesOfVelsingrad_Systems_UnitSystem_Cleanup_" data-uid="AshesOfVelsingrad.Systems.UnitSystem.Cleanup*"></a>
 
-  <h3 id="AshesOfVelsingrad_systems_UnitSystem_Cleanup" data-uid="AshesOfVelsingrad.systems.UnitSystem.Cleanup">
+  <h3 id="AshesOfVelsingrad_Systems_UnitSystem_Cleanup" data-uid="AshesOfVelsingrad.Systems.UnitSystem.Cleanup">
   Cleanup()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/systems/UnitSystem.cs/#L544"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/systems/UnitSystem.cs/#L653"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Cleans up the unit instance.
@@ -2126,7 +2094,7 @@ This method can be overridden in derived classes to implement specific cleanup l
 
 
 
-  <h4 class="section" id="AshesOfVelsingrad_systems_UnitSystem_Cleanup_remarks">Remarks</h4>
+  <h4 class="section" id="AshesOfVelsingrad_Systems_UnitSystem_Cleanup_remarks">Remarks</h4>
   <div class="markdown level1 remarks"><p>This method is called when the unit is removed from the scene tree.
 It provides a place for derived classes to implement any necessary cleanup logic,
 such as disconnecting signals or releasing resources.
@@ -2136,11 +2104,11 @@ By default, it does nothing, but derived classes can override it to perform spec
 
 
 
-  <a id="AshesOfVelsingrad_systems_UnitSystem_EmitSignalHealthChanged_" data-uid="AshesOfVelsingrad.systems.UnitSystem.EmitSignalHealthChanged*"></a>
+  <a id="AshesOfVelsingrad_Systems_UnitSystem_EmitSignalHealthChanged_" data-uid="AshesOfVelsingrad.Systems.UnitSystem.EmitSignalHealthChanged*"></a>
 
-  <h3 id="AshesOfVelsingrad_systems_UnitSystem_EmitSignalHealthChanged_System_Single_System_Single_" data-uid="AshesOfVelsingrad.systems.UnitSystem.EmitSignalHealthChanged(System.Single,System.Single)">
+  <h3 id="AshesOfVelsingrad_Systems_UnitSystem_EmitSignalHealthChanged_System_Single_System_Single_" data-uid="AshesOfVelsingrad.Systems.UnitSystem.EmitSignalHealthChanged(System.Single,System.Single)">
   EmitSignalHealthChanged(float, float)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptSignalsGenerator/AshesOfVelsingrad.systems.UnitSystem_ScriptSignals.generated.cs/#L52"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptSignalsGenerator/AshesOfVelsingrad.Systems.UnitSystem_ScriptSignals.generated.cs/#L52"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"></div>
@@ -2169,11 +2137,11 @@ By default, it does nothing, but derived classes can override it to perform spec
 
 
 
-  <a id="AshesOfVelsingrad_systems_UnitSystem_EmitSignalPortraitChanged_" data-uid="AshesOfVelsingrad.systems.UnitSystem.EmitSignalPortraitChanged*"></a>
+  <a id="AshesOfVelsingrad_Systems_UnitSystem_EmitSignalPortraitChanged_" data-uid="AshesOfVelsingrad.Systems.UnitSystem.EmitSignalPortraitChanged*"></a>
 
-  <h3 id="AshesOfVelsingrad_systems_UnitSystem_EmitSignalPortraitChanged_Godot_Texture2D_" data-uid="AshesOfVelsingrad.systems.UnitSystem.EmitSignalPortraitChanged(Godot.Texture2D)">
+  <h3 id="AshesOfVelsingrad_Systems_UnitSystem_EmitSignalPortraitChanged_Godot_Texture2D_" data-uid="AshesOfVelsingrad.Systems.UnitSystem.EmitSignalPortraitChanged(Godot.Texture2D)">
   EmitSignalPortraitChanged(Texture2D)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptSignalsGenerator/AshesOfVelsingrad.systems.UnitSystem_ScriptSignals.generated.cs/#L42"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptSignalsGenerator/AshesOfVelsingrad.Systems.UnitSystem_ScriptSignals.generated.cs/#L42"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"></div>
@@ -2200,26 +2168,26 @@ By default, it does nothing, but derived classes can override it to perform spec
 
 
 
-  <a id="AshesOfVelsingrad_systems_UnitSystem_GetActiveEffects_" data-uid="AshesOfVelsingrad.systems.UnitSystem.GetActiveEffects*"></a>
+  <a id="AshesOfVelsingrad_Systems_UnitSystem_GetActiveEffects_" data-uid="AshesOfVelsingrad.Systems.UnitSystem.GetActiveEffects*"></a>
 
-  <h3 id="AshesOfVelsingrad_systems_UnitSystem_GetActiveEffects" data-uid="AshesOfVelsingrad.systems.UnitSystem.GetActiveEffects">
+  <h3 id="AshesOfVelsingrad_Systems_UnitSystem_GetActiveEffects" data-uid="AshesOfVelsingrad.Systems.UnitSystem.GetActiveEffects">
   GetActiveEffects()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/systems/UnitSystem.cs/#L511"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/systems/UnitSystem.cs/#L620"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Retrieves all status effects that are currently active on this target.</p>
+  <div class="markdown level1 summary"><p>Retrieves all status effects currently active on this target.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public List&lt;StatusEffect&gt; GetActiveEffects()</code></pre>
+    <pre><code class="lang-csharp hljs">public List&lt;StatusEffect&lt;UnitSystem&gt;&gt; GetActiveEffects()</code></pre>
   </div>
 
 
   <h4 class="section">Returns</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a class="xref" href="AshesOfVelsingrad.systems.status_effects.StatusEffect.html">StatusEffect</a>&gt;</dt>
-    <dd><p>A list containing all active status effects.</p>
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a class="xref" href="AshesOfVelsingrad.Systems.StatusEffect-1.html">StatusEffect</a>&lt;<a class="xref" href="AshesOfVelsingrad.Systems.UnitSystem.html">UnitSystem</a>&gt;&gt;</dt>
+    <dd><p>A list of <a class="xref" href="AshesOfVelsingrad.Systems.StatusEffect-1.html">StatusEffect&lt;TTarget&gt;</a> representing all active effects.</p>
 </dd>
   </dl>
 
@@ -2233,11 +2201,11 @@ By default, it does nothing, but derived classes can override it to perform spec
 
 
 
-  <a id="AshesOfVelsingrad_systems_UnitSystem_GetPossibleMoves_" data-uid="AshesOfVelsingrad.systems.UnitSystem.GetPossibleMoves*"></a>
+  <a id="AshesOfVelsingrad_Systems_UnitSystem_GetPossibleMoves_" data-uid="AshesOfVelsingrad.Systems.UnitSystem.GetPossibleMoves*"></a>
 
-  <h3 id="AshesOfVelsingrad_systems_UnitSystem_GetPossibleMoves_AshesOfVelsingrad_systems_MapSystem_" data-uid="AshesOfVelsingrad.systems.UnitSystem.GetPossibleMoves(AshesOfVelsingrad.systems.MapSystem)">
+  <h3 id="AshesOfVelsingrad_Systems_UnitSystem_GetPossibleMoves_AshesOfVelsingrad_Systems_MapSystem_" data-uid="AshesOfVelsingrad.Systems.UnitSystem.GetPossibleMoves(AshesOfVelsingrad.Systems.MapSystem)">
   GetPossibleMoves(MapSystem)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/systems/UnitSystem.cs/#L405"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/systems/UnitSystem.cs/#L429"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Calculates all possible movement tiles for this unit based on its range and position.</p>
@@ -2250,7 +2218,7 @@ By default, it does nothing, but derived classes can override it to perform spec
 
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
-    <dt><code>map</code> <a class="xref" href="AshesOfVelsingrad.systems.MapSystem.html">MapSystem</a></dt>
+    <dt><code>map</code> <a class="xref" href="AshesOfVelsingrad.Systems.MapSystem.html">MapSystem</a></dt>
     <dd><p>The map to evaluate movement on.</p>
 </dd>
   </dl>
@@ -2268,7 +2236,7 @@ By default, it does nothing, but derived classes can override it to perform spec
 
 
 
-  <h4 class="section" id="AshesOfVelsingrad_systems_UnitSystem_GetPossibleMoves_AshesOfVelsingrad_systems_MapSystem__remarks">Remarks</h4>
+  <h4 class="section" id="AshesOfVelsingrad_Systems_UnitSystem_GetPossibleMoves_AshesOfVelsingrad_Systems_MapSystem__remarks">Remarks</h4>
   <div class="markdown level1 remarks"><p>This method uses a Breadth-First Search (BFS) algorithm to evaluate all valid moves
 considering walkable tiles and vertical traversal (e.g. stairs, cliffs).</p>
 </div>
@@ -2276,33 +2244,79 @@ considering walkable tiles and vertical traversal (e.g. stairs, cliffs).</p>
 
 
 
-  <a id="AshesOfVelsingrad_systems_UnitSystem_HasEffect_" data-uid="AshesOfVelsingrad.systems.UnitSystem.HasEffect*"></a>
+  <a id="AshesOfVelsingrad_Systems_UnitSystem_GetReachableCellsForSkills_" data-uid="AshesOfVelsingrad.Systems.UnitSystem.GetReachableCellsForSkills*"></a>
 
-  <h3 id="AshesOfVelsingrad_systems_UnitSystem_HasEffect__1" data-uid="AshesOfVelsingrad.systems.UnitSystem.HasEffect``1">
-  HasEffect&lt;T&gt;()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/systems/UnitSystem.cs/#L504"><i class="bi bi-code-slash"></i></a>
+  <h3 id="AshesOfVelsingrad_Systems_UnitSystem_GetReachableCellsForSkills_AshesOfVelsingrad_Systems_MapSystem_AshesOfVelsingrad_Systems_SkillSystem_" data-uid="AshesOfVelsingrad.Systems.UnitSystem.GetReachableCellsForSkills(AshesOfVelsingrad.Systems.MapSystem,AshesOfVelsingrad.Systems.SkillSystem)">
+  GetReachableCellsForSkills(MapSystem, SkillSystem)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/systems/UnitSystem.cs/#L525"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Checks whether this target currently has an active status effect of the given type.</p>
+  <div class="markdown level1 summary"><p>Calculates all reachable cells for this unit based on the skill range and the unit position.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public bool HasEffect&lt;T&gt;() where T : StatusEffect</code></pre>
+    <pre><code class="lang-csharp hljs">public virtual List&lt;(int, int, int)&gt; GetReachableCellsForSkills(MapSystem map, SkillSystem skill)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>map</code> <a class="xref" href="AshesOfVelsingrad.Systems.MapSystem.html">MapSystem</a></dt>
+    <dd><p>The map to evaluate reachable cells on.</p>
+</dd>
+    <dt><code>skill</code> <a class="xref" href="AshesOfVelsingrad.Systems.SkillSystem.html">SkillSystem</a></dt>
+    <dd><p>The selected skill</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;(<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>)&gt;</dt>
+    <dd><p>A list of reachable coordinates (x, y, z).</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+  <h4 class="section" id="AshesOfVelsingrad_Systems_UnitSystem_GetReachableCellsForSkills_AshesOfVelsingrad_Systems_MapSystem_AshesOfVelsingrad_Systems_SkillSystem__remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>This method uses a Breadth-First Search (BFS) algorithm to evaluate all valid cells
+considering vertical traversal (e.g. stairs, cliffs).</p>
+</div>
+
+
+
+
+  <a id="AshesOfVelsingrad_Systems_UnitSystem_HasEffect_" data-uid="AshesOfVelsingrad.Systems.UnitSystem.HasEffect*"></a>
+
+  <h3 id="AshesOfVelsingrad_Systems_UnitSystem_HasEffect__1" data-uid="AshesOfVelsingrad.Systems.UnitSystem.HasEffect``1">
+  HasEffect&lt;T&gt;()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/systems/UnitSystem.cs/#L613"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Checks whether this target currently has an active status effect of the specified type.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool HasEffect&lt;T&gt;() where T : StatusEffect&lt;UnitSystem&gt;</code></pre>
   </div>
 
 
   <h4 class="section">Returns</h4>
   <dl class="parameters">
     <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
-    <dd><p><code>true</code> if the effect is present, otherwise <code>false</code>.</p>
+    <dd><p><code>true</code> if the effect is present on this target; otherwise, <code>false</code>.</p>
 </dd>
   </dl>
 
   <h4 class="section">Type Parameters</h4>
   <dl class="parameters">
     <dt><code>T</code></dt>
-    <dd><p>The type of the status effect to check for.</p>
+    <dd><p>The type of <a class="xref" href="AshesOfVelsingrad.Systems.StatusEffect-1.html">StatusEffect&lt;TTarget&gt;</a> to check for.</p>
 </dd>
   </dl>
 
@@ -2315,11 +2329,11 @@ considering walkable tiles and vertical traversal (e.g. stairs, cliffs).</p>
 
 
 
-  <a id="AshesOfVelsingrad_systems_UnitSystem_Initialize_" data-uid="AshesOfVelsingrad.systems.UnitSystem.Initialize*"></a>
+  <a id="AshesOfVelsingrad_Systems_UnitSystem_Initialize_" data-uid="AshesOfVelsingrad.Systems.UnitSystem.Initialize*"></a>
 
-  <h3 id="AshesOfVelsingrad_systems_UnitSystem_Initialize" data-uid="AshesOfVelsingrad.systems.UnitSystem.Initialize">
+  <h3 id="AshesOfVelsingrad_Systems_UnitSystem_Initialize" data-uid="AshesOfVelsingrad.Systems.UnitSystem.Initialize">
   Initialize()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/systems/UnitSystem.cs/#L158"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/systems/UnitSystem.cs/#L156"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Initializes the unit instance
@@ -2339,7 +2353,7 @@ This method should be overridden in derived classes to set up specific functiona
 
 
 
-  <h4 class="section" id="AshesOfVelsingrad_systems_UnitSystem_Initialize_remarks">Remarks</h4>
+  <h4 class="section" id="AshesOfVelsingrad_Systems_UnitSystem_Initialize_remarks">Remarks</h4>
   <div class="markdown level1 remarks"><p>This method is called by the _Ready method to initialize the map.
 It should contain the logic necessary to set up the unit's state and functionality.
 Derived classes must implement this method to provide their specific initialization logic.</p>
@@ -2348,11 +2362,44 @@ Derived classes must implement this method to provide their specific initializat
 
 
 
-  <a id="AshesOfVelsingrad_systems_UnitSystem_MoveTo_" data-uid="AshesOfVelsingrad.systems.UnitSystem.MoveTo*"></a>
+  <a id="AshesOfVelsingrad_Systems_UnitSystem_InjectDependencies_" data-uid="AshesOfVelsingrad.Systems.UnitSystem.InjectDependencies*"></a>
 
-  <h3 id="AshesOfVelsingrad_systems_UnitSystem_MoveTo_System_Int32_System_Int32_System_Int32_AshesOfVelsingrad_systems_MapSystem_" data-uid="AshesOfVelsingrad.systems.UnitSystem.MoveTo(System.Int32,System.Int32,System.Int32,AshesOfVelsingrad.systems.MapSystem)">
+  <h3 id="AshesOfVelsingrad_Systems_UnitSystem_InjectDependencies_AshesOfVelsingrad_Systems_StatusEffectSystem_" data-uid="AshesOfVelsingrad.Systems.UnitSystem.InjectDependencies(AshesOfVelsingrad.Systems.StatusEffectSystem)">
+  InjectDependencies(StatusEffectSystem)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/systems/UnitSystem.cs/#L170"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Injects an instance of the status effect system into this unit.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual void InjectDependencies(StatusEffectSystem statusEffectSystem)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>statusEffectSystem</code> <a class="xref" href="AshesOfVelsingrad.Systems.StatusEffectSystem.html">StatusEffectSystem</a></dt>
+    <dd><p>The status effect system to be used by this unit.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AshesOfVelsingrad_Systems_UnitSystem_MoveTo_" data-uid="AshesOfVelsingrad.Systems.UnitSystem.MoveTo*"></a>
+
+  <h3 id="AshesOfVelsingrad_Systems_UnitSystem_MoveTo_System_Int32_System_Int32_System_Int32_AshesOfVelsingrad_Systems_MapSystem_" data-uid="AshesOfVelsingrad.Systems.UnitSystem.MoveTo(System.Int32,System.Int32,System.Int32,AshesOfVelsingrad.Systems.MapSystem)">
   MoveTo(int, int, int, MapSystem)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/systems/UnitSystem.cs/#L387"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/systems/UnitSystem.cs/#L412"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Moves the unit to the specified coordinates if possible.</p>
@@ -2374,7 +2421,7 @@ Derived classes must implement this method to provide their specific initializat
     <dt><code>z</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
     <dd><p>Target Z coordinate.</p>
 </dd>
-    <dt><code>map</code> <a class="xref" href="AshesOfVelsingrad.systems.MapSystem.html">MapSystem</a></dt>
+    <dt><code>map</code> <a class="xref" href="AshesOfVelsingrad.Systems.MapSystem.html">MapSystem</a></dt>
     <dd><p>The map to interact with.</p>
 </dd>
   </dl>
@@ -2396,11 +2443,11 @@ Derived classes must implement this method to provide their specific initializat
 
 
 
-  <a id="AshesOfVelsingrad_systems_UnitSystem_PassTurn_" data-uid="AshesOfVelsingrad.systems.UnitSystem.PassTurn*"></a>
+  <a id="AshesOfVelsingrad_Systems_UnitSystem_PassTurn_" data-uid="AshesOfVelsingrad.Systems.UnitSystem.PassTurn*"></a>
 
-  <h3 id="AshesOfVelsingrad_systems_UnitSystem_PassTurn" data-uid="AshesOfVelsingrad.systems.UnitSystem.PassTurn">
+  <h3 id="AshesOfVelsingrad_Systems_UnitSystem_PassTurn" data-uid="AshesOfVelsingrad.Systems.UnitSystem.PassTurn">
   PassTurn()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/systems/UnitSystem.cs/#L341"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/systems/UnitSystem.cs/#L367"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Marks the unit as having completed its turn.</p>
@@ -2423,11 +2470,11 @@ Derived classes must implement this method to provide their specific initializat
 
 
 
-  <a id="AshesOfVelsingrad_systems_UnitSystem_Play_" data-uid="AshesOfVelsingrad.systems.UnitSystem.Play*"></a>
+  <a id="AshesOfVelsingrad_Systems_UnitSystem_Play_" data-uid="AshesOfVelsingrad.Systems.UnitSystem.Play*"></a>
 
-  <h3 id="AshesOfVelsingrad_systems_UnitSystem_Play_System_Collections_Generic_List_AshesOfVelsingrad_systems_UnitSystem__AshesOfVelsingrad_systems_MapSystem_AshesOfVelsingrad_systems_SkillSystem_" data-uid="AshesOfVelsingrad.systems.UnitSystem.Play(System.Collections.Generic.List{AshesOfVelsingrad.systems.UnitSystem},AshesOfVelsingrad.systems.MapSystem,AshesOfVelsingrad.systems.SkillSystem)">
+  <h3 id="AshesOfVelsingrad_Systems_UnitSystem_Play_System_Collections_Generic_List_AshesOfVelsingrad_Systems_UnitSystem__AshesOfVelsingrad_Systems_MapSystem_AshesOfVelsingrad_Systems_SkillSystem_" data-uid="AshesOfVelsingrad.Systems.UnitSystem.Play(System.Collections.Generic.List{AshesOfVelsingrad.Systems.UnitSystem},AshesOfVelsingrad.Systems.MapSystem,AshesOfVelsingrad.Systems.SkillSystem)">
   Play(List&lt;UnitSystem&gt;, MapSystem?, SkillSystem)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/systems/UnitSystem.cs/#L313"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/systems/UnitSystem.cs/#L338"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Performs an attack on the specified targets.</p>
@@ -2440,13 +2487,13 @@ Derived classes must implement this method to provide their specific initializat
 
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
-    <dt><code>targets</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a class="xref" href="AshesOfVelsingrad.systems.UnitSystem.html">UnitSystem</a>&gt;</dt>
+    <dt><code>targets</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a class="xref" href="AshesOfVelsingrad.Systems.UnitSystem.html">UnitSystem</a>&gt;</dt>
     <dd><p>List of target units to attack.</p>
 </dd>
-    <dt><code>map</code> <a class="xref" href="AshesOfVelsingrad.systems.MapSystem.html">MapSystem</a></dt>
+    <dt><code>map</code> <a class="xref" href="AshesOfVelsingrad.Systems.MapSystem.html">MapSystem</a></dt>
     <dd><p>Reference to the map system for positional logic.</p>
 </dd>
-    <dt><code>skill</code> <a class="xref" href="AshesOfVelsingrad.systems.SkillSystem.html">SkillSystem</a></dt>
+    <dt><code>skill</code> <a class="xref" href="AshesOfVelsingrad.Systems.SkillSystem.html">SkillSystem</a></dt>
     <dd><p>Tells which active skill to use</p>
 </dd>
   </dl>
@@ -2462,25 +2509,25 @@ Derived classes must implement this method to provide their specific initializat
 
 
 
-  <a id="AshesOfVelsingrad_systems_UnitSystem_RemoveEffect_" data-uid="AshesOfVelsingrad.systems.UnitSystem.RemoveEffect*"></a>
+  <a id="AshesOfVelsingrad_Systems_UnitSystem_RemoveEffect_" data-uid="AshesOfVelsingrad.Systems.UnitSystem.RemoveEffect*"></a>
 
-  <h3 id="AshesOfVelsingrad_systems_UnitSystem_RemoveEffect_AshesOfVelsingrad_systems_status_effects_StatusEffect_" data-uid="AshesOfVelsingrad.systems.UnitSystem.RemoveEffect(AshesOfVelsingrad.systems.status_effects.StatusEffect)">
-  RemoveEffect(StatusEffect)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/systems/UnitSystem.cs/#L498"><i class="bi bi-code-slash"></i></a>
+  <h3 id="AshesOfVelsingrad_Systems_UnitSystem_RemoveEffect_AshesOfVelsingrad_Systems_StatusEffect_AshesOfVelsingrad_Systems_UnitSystem__" data-uid="AshesOfVelsingrad.Systems.UnitSystem.RemoveEffect(AshesOfVelsingrad.Systems.StatusEffect{AshesOfVelsingrad.Systems.UnitSystem})">
+  RemoveEffect(StatusEffect&lt;UnitSystem&gt;)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/systems/UnitSystem.cs/#L607"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Removes an active status effect from this target.</p>
+  <div class="markdown level1 summary"><p>Removes a status effect from this target.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public void RemoveEffect(StatusEffect statusEffect)</code></pre>
+    <pre><code class="lang-csharp hljs">public void RemoveEffect(StatusEffect&lt;UnitSystem&gt; statusEffect)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
-    <dt><code>statusEffect</code> <a class="xref" href="AshesOfVelsingrad.systems.status_effects.StatusEffect.html">StatusEffect</a></dt>
-    <dd><p>The status effect to remove.</p>
+    <dt><code>statusEffect</code> <a class="xref" href="AshesOfVelsingrad.Systems.StatusEffect-1.html">StatusEffect</a>&lt;<a class="xref" href="AshesOfVelsingrad.Systems.UnitSystem.html">UnitSystem</a>&gt;</dt>
+    <dd><p>The <a class="xref" href="AshesOfVelsingrad.Systems.StatusEffect-1.html">StatusEffect&lt;TTarget&gt;</a> instance to remove.</p>
 </dd>
   </dl>
 
@@ -2495,14 +2542,14 @@ Derived classes must implement this method to provide their specific initializat
 
 
 
-  <a id="AshesOfVelsingrad_systems_UnitSystem_ReportSystemUnitHasPlayed_" data-uid="AshesOfVelsingrad.systems.UnitSystem.ReportSystemUnitHasPlayed*"></a>
+  <a id="AshesOfVelsingrad_Systems_UnitSystem_ReportSystemUnitHasPlayed_" data-uid="AshesOfVelsingrad.Systems.UnitSystem.ReportSystemUnitHasPlayed*"></a>
 
-  <h3 id="AshesOfVelsingrad_systems_UnitSystem_ReportSystemUnitHasPlayed" data-uid="AshesOfVelsingrad.systems.UnitSystem.ReportSystemUnitHasPlayed">
+  <h3 id="AshesOfVelsingrad_Systems_UnitSystem_ReportSystemUnitHasPlayed" data-uid="AshesOfVelsingrad.Systems.UnitSystem.ReportSystemUnitHasPlayed">
   ReportSystemUnitHasPlayed()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/systems/UnitSystem.cs/#L184"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/systems/UnitSystem.cs/#L191"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Called by every <a class="xref" href="AshesOfVelsingrad.systems.UnitSystem.html">UnitSystem</a> function with an action to report to the system that the unit has played.</p>
+  <div class="markdown level1 summary"><p>Called by every <a class="xref" href="AshesOfVelsingrad.Systems.UnitSystem.html">UnitSystem</a> function with an action to report to the system that the unit has played.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -2522,14 +2569,14 @@ Derived classes must implement this method to provide their specific initializat
 
 
 
-  <a id="AshesOfVelsingrad_systems_UnitSystem_SetGridPosition_" data-uid="AshesOfVelsingrad.systems.UnitSystem.SetGridPosition*"></a>
+  <a id="AshesOfVelsingrad_Systems_UnitSystem_SetGridPosition_" data-uid="AshesOfVelsingrad.Systems.UnitSystem.SetGridPosition*"></a>
 
-  <h3 id="AshesOfVelsingrad_systems_UnitSystem_SetGridPosition_System_Int32_System_Int32_System_Int32_AshesOfVelsingrad_systems_MapSystem_" data-uid="AshesOfVelsingrad.systems.UnitSystem.SetGridPosition(System.Int32,System.Int32,System.Int32,AshesOfVelsingrad.systems.MapSystem)">
+  <h3 id="AshesOfVelsingrad_Systems_UnitSystem_SetGridPosition_System_Int32_System_Int32_System_Int32_AshesOfVelsingrad_Systems_MapSystem_" data-uid="AshesOfVelsingrad.Systems.UnitSystem.SetGridPosition(System.Int32,System.Int32,System.Int32,AshesOfVelsingrad.Systems.MapSystem)">
   SetGridPosition(int, int, int, MapSystem)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/systems/UnitSystem.cs/#L354"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/systems/UnitSystem.cs/#L379"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Moves the unit to the specified grid coordinates in the <a class="xref" href="AshesOfVelsingrad.systems.MapSystem.html">MapSystem</a>.</p>
+  <div class="markdown level1 summary"><p>Moves the unit to the specified grid coordinates in the <a class="xref" href="AshesOfVelsingrad.Systems.MapSystem.html">MapSystem</a>.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -2548,7 +2595,7 @@ Derived classes must implement this method to provide their specific initializat
     <dt><code>z</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
     <dd><p>The Z grid coordinate.</p>
 </dd>
-    <dt><code>map</code> <a class="xref" href="AshesOfVelsingrad.systems.MapSystem.html">MapSystem</a></dt>
+    <dt><code>map</code> <a class="xref" href="AshesOfVelsingrad.Systems.MapSystem.html">MapSystem</a></dt>
     <dd><p>The map on which the unit exists.</p>
 </dd>
   </dl>
@@ -2564,11 +2611,77 @@ Derived classes must implement this method to provide their specific initializat
 
 
 
-  <a id="AshesOfVelsingrad_systems_UnitSystem_TakeDamage_" data-uid="AshesOfVelsingrad.systems.UnitSystem.TakeDamage*"></a>
+  <a id="AshesOfVelsingrad_Systems_UnitSystem_SetIsAlive_" data-uid="AshesOfVelsingrad.Systems.UnitSystem.SetIsAlive*"></a>
 
-  <h3 id="AshesOfVelsingrad_systems_UnitSystem_TakeDamage_System_Single_" data-uid="AshesOfVelsingrad.systems.UnitSystem.TakeDamage(System.Single)">
+  <h3 id="AshesOfVelsingrad_Systems_UnitSystem_SetIsAlive_System_Boolean_" data-uid="AshesOfVelsingrad.Systems.UnitSystem.SetIsAlive(System.Boolean)">
+  SetIsAlive(bool)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/systems/UnitSystem.cs/#L293"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Set if the unit is alive or not.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetIsAlive(bool isAlive)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>isAlive</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>A boolean to set unit <a class="xref" href="AshesOfVelsingrad.Systems.UnitSystem.html#AshesOfVelsingrad_Systems_UnitSystem_IsAlive">IsAlive</a> value</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AshesOfVelsingrad_Systems_UnitSystem_SetStatusEffectOnUnit_" data-uid="AshesOfVelsingrad.Systems.UnitSystem.SetStatusEffectOnUnit*"></a>
+
+  <h3 id="AshesOfVelsingrad_Systems_UnitSystem_SetStatusEffectOnUnit_AshesOfVelsingrad_Systems_StatusEffect_AshesOfVelsingrad_Systems_UnitSystem__" data-uid="AshesOfVelsingrad.Systems.UnitSystem.SetStatusEffectOnUnit(AshesOfVelsingrad.Systems.StatusEffect{AshesOfVelsingrad.Systems.UnitSystem})">
+  SetStatusEffectOnUnit(StatusEffect&lt;UnitSystem&gt;)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/systems/UnitSystem.cs/#L595"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Applies a status effect to this unit.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual void SetStatusEffectOnUnit(StatusEffect&lt;UnitSystem&gt; statusEffect)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>statusEffect</code> <a class="xref" href="AshesOfVelsingrad.Systems.StatusEffect-1.html">StatusEffect</a>&lt;<a class="xref" href="AshesOfVelsingrad.Systems.UnitSystem.html">UnitSystem</a>&gt;</dt>
+    <dd><p>The status effect to apply.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AshesOfVelsingrad_Systems_UnitSystem_TakeDamage_" data-uid="AshesOfVelsingrad.Systems.UnitSystem.TakeDamage*"></a>
+
+  <h3 id="AshesOfVelsingrad_Systems_UnitSystem_TakeDamage_System_Single_" data-uid="AshesOfVelsingrad.Systems.UnitSystem.TakeDamage(System.Single)">
   TakeDamage(float)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/systems/UnitSystem.cs/#L329"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/systems/UnitSystem.cs/#L355"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Applies incoming damage to the unit and updates HP.</p>
@@ -2597,11 +2710,11 @@ Derived classes must implement this method to provide their specific initializat
 
 
 
-  <a id="AshesOfVelsingrad_systems_UnitSystem_WaitForActionAsync_" data-uid="AshesOfVelsingrad.systems.UnitSystem.WaitForActionAsync*"></a>
+  <a id="AshesOfVelsingrad_Systems_UnitSystem_WaitForActionAsync_" data-uid="AshesOfVelsingrad.Systems.UnitSystem.WaitForActionAsync*"></a>
 
-  <h3 id="AshesOfVelsingrad_systems_UnitSystem_WaitForActionAsync" data-uid="AshesOfVelsingrad.systems.UnitSystem.WaitForActionAsync">
+  <h3 id="AshesOfVelsingrad_Systems_UnitSystem_WaitForActionAsync" data-uid="AshesOfVelsingrad.Systems.UnitSystem.WaitForActionAsync">
   WaitForActionAsync()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/systems/UnitSystem.cs/#L301"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/systems/UnitSystem.cs/#L326"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Lock the system and wait the player for an action</p>
@@ -2630,11 +2743,11 @@ Derived classes must implement this method to provide their specific initializat
 
 
 
-  <a id="AshesOfVelsingrad_systems_UnitSystem__ExitTree_" data-uid="AshesOfVelsingrad.systems.UnitSystem._ExitTree*"></a>
+  <a id="AshesOfVelsingrad_Systems_UnitSystem__ExitTree_" data-uid="AshesOfVelsingrad.Systems.UnitSystem._ExitTree*"></a>
 
-  <h3 id="AshesOfVelsingrad_systems_UnitSystem__ExitTree" data-uid="AshesOfVelsingrad.systems.UnitSystem._ExitTree">
+  <h3 id="AshesOfVelsingrad_Systems_UnitSystem__ExitTree" data-uid="AshesOfVelsingrad.Systems.UnitSystem._ExitTree">
   _ExitTree()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/systems/UnitSystem.cs/#L529"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/systems/UnitSystem.cs/#L638"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Called when the node is removed from the scene tree.
@@ -2654,7 +2767,7 @@ Cleans up the unit instance and sets it to null.</p>
 
 
 
-  <h4 class="section" id="AshesOfVelsingrad_systems_UnitSystem__ExitTree_remarks">Remarks</h4>
+  <h4 class="section" id="AshesOfVelsingrad_Systems_UnitSystem__ExitTree_remarks">Remarks</h4>
   <div class="markdown level1 remarks"><p>This method is called automatically by Godot when the node is removed from the scene tree.
 It ensures that the unit instance is properly cleaned up and set to null.
 This is important for preventing memory leaks and ensuring that the manager can be re-initialized later if needed.</p>
@@ -2663,11 +2776,11 @@ This is important for preventing memory leaks and ensuring that the manager can 
 
 
 
-  <a id="AshesOfVelsingrad_systems_UnitSystem__PhysicsProcess_" data-uid="AshesOfVelsingrad.systems.UnitSystem._PhysicsProcess*"></a>
+  <a id="AshesOfVelsingrad_Systems_UnitSystem__PhysicsProcess_" data-uid="AshesOfVelsingrad.Systems.UnitSystem._PhysicsProcess*"></a>
 
-  <h3 id="AshesOfVelsingrad_systems_UnitSystem__PhysicsProcess_System_Double_" data-uid="AshesOfVelsingrad.systems.UnitSystem._PhysicsProcess(System.Double)">
+  <h3 id="AshesOfVelsingrad_Systems_UnitSystem__PhysicsProcess_System_Double_" data-uid="AshesOfVelsingrad.Systems.UnitSystem._PhysicsProcess(System.Double)">
   _PhysicsProcess(double)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/systems/UnitSystem.cs/#L285"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/systems/UnitSystem.cs/#L310"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Handles the physics of the unit in the UI.</p>
@@ -2695,11 +2808,11 @@ This is important for preventing memory leaks and ensuring that the manager can 
 
 
 
-  <a id="AshesOfVelsingrad_systems_UnitSystem__Ready_" data-uid="AshesOfVelsingrad.systems.UnitSystem._Ready*"></a>
+  <a id="AshesOfVelsingrad_Systems_UnitSystem__Ready_" data-uid="AshesOfVelsingrad.Systems.UnitSystem._Ready*"></a>
 
-  <h3 id="AshesOfVelsingrad_systems_UnitSystem__Ready" data-uid="AshesOfVelsingrad.systems.UnitSystem._Ready">
+  <h3 id="AshesOfVelsingrad_Systems_UnitSystem__Ready" data-uid="AshesOfVelsingrad.Systems.UnitSystem._Ready">
   _Ready()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/systems/UnitSystem.cs/#L144"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/systems/UnitSystem.cs/#L142"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Called when the node is added to the scene tree.
@@ -2719,7 +2832,7 @@ Initializes the unit instance.</p>
 
 
 
-  <h4 class="section" id="AshesOfVelsingrad_systems_UnitSystem__Ready_remarks">Remarks</h4>
+  <h4 class="section" id="AshesOfVelsingrad_Systems_UnitSystem__Ready_remarks">Remarks</h4>
   <div class="markdown level1 remarks"><p>This method is called automatically by Godot when the node is ready.</p>
 </div>
 
@@ -2731,9 +2844,9 @@ Initializes the unit instance.</p>
 
 
 
-  <h3 id="AshesOfVelsingrad_systems_UnitSystem_HealthChanged" data-uid="AshesOfVelsingrad.systems.UnitSystem.HealthChanged">
+  <h3 id="AshesOfVelsingrad_Systems_UnitSystem_HealthChanged" data-uid="AshesOfVelsingrad.Systems.UnitSystem.HealthChanged">
   HealthChanged
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptSignalsGenerator/AshesOfVelsingrad.systems.UnitSystem_ScriptSignals.generated.cs/#L48"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptSignalsGenerator/AshesOfVelsingrad.Systems.UnitSystem_ScriptSignals.generated.cs/#L48"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Emitted when the unit's health changes.</p>
@@ -2751,7 +2864,7 @@ Initializes the unit instance.</p>
 
   <h4 class="section">Event Type</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="AshesOfVelsingrad.systems.UnitSystem.html">UnitSystem</a>.<a class="xref" href="AshesOfVelsingrad.systems.UnitSystem.html">HealthChangedEventHandler</a></dt>
+    <dt><a class="xref" href="AshesOfVelsingrad.Systems.UnitSystem.html">UnitSystem</a>.<a class="xref" href="AshesOfVelsingrad.Systems.UnitSystem.html">HealthChangedEventHandler</a></dt>
     <dd></dd>
   </dl>
 
@@ -2762,9 +2875,9 @@ Initializes the unit instance.</p>
 
 
 
-  <h3 id="AshesOfVelsingrad_systems_UnitSystem_PortraitChanged" data-uid="AshesOfVelsingrad.systems.UnitSystem.PortraitChanged">
+  <h3 id="AshesOfVelsingrad_Systems_UnitSystem_PortraitChanged" data-uid="AshesOfVelsingrad.Systems.UnitSystem.PortraitChanged">
   PortraitChanged
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptSignalsGenerator/AshesOfVelsingrad.systems.UnitSystem_ScriptSignals.generated.cs/#L38"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptSignalsGenerator/AshesOfVelsingrad.Systems.UnitSystem_ScriptSignals.generated.cs/#L38"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Emitted when the unit's portrait texture changes.</p>
@@ -2782,7 +2895,7 @@ Initializes the unit instance.</p>
 
   <h4 class="section">Event Type</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="AshesOfVelsingrad.systems.UnitSystem.html">UnitSystem</a>.<a class="xref" href="AshesOfVelsingrad.systems.UnitSystem.html">PortraitChangedEventHandler</a></dt>
+    <dt><a class="xref" href="AshesOfVelsingrad.Systems.UnitSystem.html">UnitSystem</a>.<a class="xref" href="AshesOfVelsingrad.Systems.UnitSystem.html">PortraitChangedEventHandler</a></dt>
     <dd></dd>
   </dl>
 
@@ -2796,7 +2909,7 @@ Initializes the unit instance.</p>
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/Gammabra/aov-godot/blob/develop/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptPropertiesGenerator/AshesOfVelsingrad.systems.UnitSystem_ScriptProperties.generated.cs/#L6" class="edit-link">Edit this page</a>
+          <a href="https://github.com/Gammabra/aov-godot/blob/develop/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptSignalsGenerator/AshesOfVelsingrad.Systems.UnitSystem_ScriptSignals.generated.cs/#L6" class="edit-link">Edit this page</a>
         </div>
 
 

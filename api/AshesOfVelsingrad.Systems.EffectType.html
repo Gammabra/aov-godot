@@ -2,11 +2,11 @@
 <html>
   <head>
     <meta charset="utf-8">
-      <title>Enum TargetTypes | Ashes of Velsingrad Documentation </title>
+      <title>Enum EffectType | Ashes of Velsingrad Documentation </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content="Enum TargetTypes | Ashes of Velsingrad Documentation ">
+      <meta name="title" content="Enum EffectType | Ashes of Velsingrad Documentation ">
       
-      <meta name="description" content="Defines the targeting pattern of a skill.">
+      <meta name="description" content="Defines the type of effect a skill applies when used.">
       <link rel="icon" href="../favicon.ico">
       <link rel="stylesheet" href="../public/docfx.min.css">
       <link rel="stylesheet" href="../public/main.css">
@@ -16,7 +16,7 @@
       <meta name="docfx:rel" content="../">
       
       
-      <meta name="docfx:docurl" content="https://github.com/Gammabra/aov-godot/new/develop/apiSpec/new?filename=AshesOfVelsingrad_systems_TargetTypes.md&amp;value=---%0Auid%3A%20AshesOfVelsingrad.systems.TargetTypes%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="docfx:docurl" content="https://github.com/Gammabra/aov-godot/new/develop/apiSpec/new?filename=AshesOfVelsingrad_Systems_EffectType.md&amp;value=---%0Auid%3A%20AshesOfVelsingrad.Systems.EffectType%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -84,26 +84,26 @@
           <nav id="breadcrumb"></nav>
         </div>
 
-        <article data-uid="AshesOfVelsingrad.systems.TargetTypes">
+        <article data-uid="AshesOfVelsingrad.Systems.EffectType">
 
 
 
 
-  <h1 id="AshesOfVelsingrad_systems_TargetTypes" data-uid="AshesOfVelsingrad.systems.TargetTypes" class="text-break">
-Enum TargetTypes  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/systems/SkillSystem.cs/#L36"><i class="bi bi-code-slash"></i></a>
+  <h1 id="AshesOfVelsingrad_Systems_EffectType" data-uid="AshesOfVelsingrad.Systems.EffectType" class="text-break">
+Enum EffectType  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/systems/SkillSystem.cs/#L22"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
-    <dl><dt>Namespace</dt><dd><a class="xref" href="AshesOfVelsingrad.html">AshesOfVelsingrad</a>.<a class="xref" href="AshesOfVelsingrad.systems.html">systems</a></dd></dl>
+    <dl><dt>Namespace</dt><dd><a class="xref" href="AshesOfVelsingrad.html">AshesOfVelsingrad</a>.<a class="xref" href="AshesOfVelsingrad.Systems.html">Systems</a></dd></dl>
   <dl><dt>Assembly</dt><dd>Ashes of Velsingrad.dll</dd></dl>
   </div>
 
-  <div class="markdown summary"><p>Defines the targeting pattern of a skill.</p>
+  <div class="markdown summary"><p>Defines the type of effect a skill applies when used.</p>
 </div>
   <div class="markdown conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public enum TargetTypes</code></pre>
+    <pre><code class="lang-csharp hljs">public enum EffectType</code></pre>
   </div>
 
 
@@ -117,16 +117,28 @@ Enum TargetTypes  <a class="header-action link-secondary" title="View source" hr
   <h2 id="fields">Fields
 </h2>
   <dl class="parameters">
-    <dt id="AshesOfVelsingrad_systems_TargetTypes_AllAllies"><code>AllAllies = 1</code></dt>
+    <dt id="AshesOfVelsingrad_Systems_EffectType_Buff"><code>Buff = 2</code></dt>
   
   <dd></dd>
-    <dt id="AshesOfVelsingrad_systems_TargetTypes_AllEnemies"><code>AllEnemies = 3</code></dt>
+    <dt id="AshesOfVelsingrad_Systems_EffectType_Control"><code>Control = 5</code></dt>
   
   <dd></dd>
-    <dt id="AshesOfVelsingrad_systems_TargetTypes_SingleAlly"><code>SingleAlly = 0</code></dt>
+    <dt id="AshesOfVelsingrad_Systems_EffectType_Damage"><code>Damage = 0</code></dt>
   
   <dd></dd>
-    <dt id="AshesOfVelsingrad_systems_TargetTypes_SingleEnemy"><code>SingleEnemy = 2</code></dt>
+    <dt id="AshesOfVelsingrad_Systems_EffectType_Debuff"><code>Debuff = 3</code></dt>
+  
+  <dd></dd>
+    <dt id="AshesOfVelsingrad_Systems_EffectType_Dot"><code>Dot = 4</code></dt>
+  
+  <dd></dd>
+    <dt id="AshesOfVelsingrad_Systems_EffectType_Heal"><code>Heal = 1</code></dt>
+  
+  <dd></dd>
+    <dt id="AshesOfVelsingrad_Systems_EffectType_Revive"><code>Revive = 7</code></dt>
+  
+  <dd></dd>
+    <dt id="AshesOfVelsingrad_Systems_EffectType_StatusEffect"><code>StatusEffect = 6</code></dt>
   
   <dd></dd>
   </dl>
@@ -136,7 +148,7 @@ Enum TargetTypes  <a class="header-action link-secondary" title="View source" hr
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/systems/SkillSystem.cs/#L36" class="edit-link">Edit this page</a>
+          <a href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/systems/SkillSystem.cs/#L22" class="edit-link">Edit this page</a>
         </div>
 
 

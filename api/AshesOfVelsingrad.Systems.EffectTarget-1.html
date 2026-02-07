@@ -2,9 +2,9 @@
 <html>
   <head>
     <meta charset="utf-8">
-      <title>Class EffectTarget | Ashes of Velsingrad Documentation </title>
+      <title>Class EffectTarget&lt;TTarget&gt; | Ashes of Velsingrad Documentation </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content="Class EffectTarget | Ashes of Velsingrad Documentation ">
+      <meta name="title" content="Class EffectTarget&lt;TTarget&gt; | Ashes of Velsingrad Documentation ">
       
       <meta name="description" content="Base class for any entity that can receive and manage s. Provides default implementations for applying, removing, and querying effects.">
       <link rel="icon" href="../favicon.ico">
@@ -16,7 +16,7 @@
       <meta name="docfx:rel" content="../">
       
       
-      <meta name="docfx:docurl" content="https://github.com/Gammabra/aov-godot/new/develop/apiSpec/new?filename=AshesOfVelsingrad_systems_status_effects_EffectTarget.md&amp;value=---%0Auid%3A%20AshesOfVelsingrad.systems.status_effects.EffectTarget%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="docfx:docurl" content="https://github.com/Gammabra/aov-godot/new/develop/apiSpec/new?filename=AshesOfVelsingrad_Systems_EffectTarget_1.md&amp;value=---%0Auid%3A%20AshesOfVelsingrad.Systems.EffectTarget%601%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -84,50 +84,56 @@
           <nav id="breadcrumb"></nav>
         </div>
 
-        <article data-uid="AshesOfVelsingrad.systems.status_effects.EffectTarget">
+        <article data-uid="AshesOfVelsingrad.Systems.EffectTarget`1">
 
 
 
-  <h1 id="AshesOfVelsingrad_systems_status_effects_EffectTarget" data-uid="AshesOfVelsingrad.systems.status_effects.EffectTarget" class="text-break">
-Class EffectTarget  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/systems/status_effects/EffectTarget.cs/#L9"><i class="bi bi-code-slash"></i></a>
+  <h1 id="AshesOfVelsingrad_Systems_EffectTarget_1" data-uid="AshesOfVelsingrad.Systems.EffectTarget`1" class="text-break">
+Class EffectTarget&lt;TTarget&gt;  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/systems/status_effects/EffectTarget.cs/#L10"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
-    <dl><dt>Namespace</dt><dd><a class="xref" href="AshesOfVelsingrad.html">AshesOfVelsingrad</a>.<a class="xref" href="AshesOfVelsingrad.systems.html">systems</a>.<a class="xref" href="AshesOfVelsingrad.systems.status_effects.html">status_effects</a></dd></dl>
+    <dl><dt>Namespace</dt><dd><a class="xref" href="AshesOfVelsingrad.html">AshesOfVelsingrad</a>.<a class="xref" href="AshesOfVelsingrad.Systems.html">Systems</a></dd></dl>
   <dl><dt>Assembly</dt><dd>Ashes of Velsingrad.dll</dd></dl>
   </div>
 
-  <div class="markdown summary"><p>Base class for any entity that can receive and manage <a class="xref" href="AshesOfVelsingrad.systems.status_effects.StatusEffect.html">StatusEffect</a>s.
+  <div class="markdown summary"><p>Base class for any entity that can receive and manage <a class="xref" href="AshesOfVelsingrad.Systems.StatusEffect-1.html">StatusEffect&lt;TTarget&gt;</a>s.
 Provides default implementations for applying, removing, and querying effects.</p>
 </div>
   <div class="markdown conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class EffectTarget : IEffectTarget</code></pre>
+    <pre><code class="lang-csharp hljs">public class EffectTarget&lt;TTarget&gt; : IEffectTarget&lt;TTarget&gt;</code></pre>
   </div>
 
 
 
+  <h4 class="section">Type Parameters</h4>
+  <dl class="parameters">
+    <dt><code>TTarget</code></dt>
+    <dd><p>The type of target this effect system is applied to (e.g., UnitSystem, CellInformation).</p>
+</dd>
+  </dl>
 
   <dl class="typelist inheritance">
     <dt>Inheritance</dt>
     <dd>
       <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
-      <div><span class="xref">EffectTarget</span></div>
+      <div><span class="xref">EffectTarget&lt;TTarget&gt;</span></div>
     </dd>
   </dl>
 
   <dl class="typelist implements">
     <dt>Implements</dt>
     <dd>
-      <div><a class="xref" href="AshesOfVelsingrad.systems.status_effects.IEffectTarget.html">IEffectTarget</a></div>
+      <div><a class="xref" href="AshesOfVelsingrad.Systems.IEffectTarget-1.html">IEffectTarget</a>&lt;TTarget&gt;</div>
     </dd>
   </dl>
 
   <dl class="typelist derived">
     <dt>Derived</dt>
     <dd>
-      <div><a class="xref" href="AshesOfVelsingrad.systems.CellInformation.html">CellInformation</a></div>
+      <div><a class="xref" href="AshesOfVelsingrad.Systems.CellInformation.html">CellInformation</a></div>
     </dd>
   </dl>
 
@@ -166,11 +172,11 @@ Provides default implementations for applying, removing, and querying effects.</
 </h2>
 
 
-  <a id="AshesOfVelsingrad_systems_status_effects_EffectTarget_ApplyEffect_" data-uid="AshesOfVelsingrad.systems.status_effects.EffectTarget.ApplyEffect*"></a>
+  <a id="AshesOfVelsingrad_Systems_EffectTarget_1_ApplyEffect_" data-uid="AshesOfVelsingrad.Systems.EffectTarget`1.ApplyEffect*"></a>
 
-  <h3 id="AshesOfVelsingrad_systems_status_effects_EffectTarget_ApplyEffect_AshesOfVelsingrad_systems_status_effects_StatusEffect_" data-uid="AshesOfVelsingrad.systems.status_effects.EffectTarget.ApplyEffect(AshesOfVelsingrad.systems.status_effects.StatusEffect)">
-  ApplyEffect(StatusEffect)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/systems/status_effects/EffectTarget.cs/#L17"><i class="bi bi-code-slash"></i></a>
+  <h3 id="AshesOfVelsingrad_Systems_EffectTarget_1_ApplyEffect_AshesOfVelsingrad_Systems_StatusEffect__0__" data-uid="AshesOfVelsingrad.Systems.EffectTarget`1.ApplyEffect(AshesOfVelsingrad.Systems.StatusEffect{`0})">
+  ApplyEffect(StatusEffect&lt;TTarget&gt;)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/systems/status_effects/EffectTarget.cs/#L18"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Applies a status effect to this target.</p>
@@ -178,13 +184,13 @@ Provides default implementations for applying, removing, and querying effects.</
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public virtual void ApplyEffect(StatusEffect statusEffect)</code></pre>
+    <pre><code class="lang-csharp hljs">public virtual void ApplyEffect(StatusEffect&lt;TTarget&gt; statusEffect)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
-    <dt><code>statusEffect</code> <a class="xref" href="AshesOfVelsingrad.systems.status_effects.StatusEffect.html">StatusEffect</a></dt>
-    <dd><p>The status effect to apply.</p>
+    <dt><code>statusEffect</code> <a class="xref" href="AshesOfVelsingrad.Systems.StatusEffect-1.html">StatusEffect</a>&lt;TTarget&gt;</dt>
+    <dd><p>The <a class="xref" href="AshesOfVelsingrad.Systems.StatusEffect-1.html">StatusEffect&lt;TTarget&gt;</a> instance to apply.</p>
 </dd>
   </dl>
 
@@ -199,26 +205,26 @@ Provides default implementations for applying, removing, and querying effects.</
 
 
 
-  <a id="AshesOfVelsingrad_systems_status_effects_EffectTarget_GetActiveEffects_" data-uid="AshesOfVelsingrad.systems.status_effects.EffectTarget.GetActiveEffects*"></a>
+  <a id="AshesOfVelsingrad_Systems_EffectTarget_1_GetActiveEffects_" data-uid="AshesOfVelsingrad.Systems.EffectTarget`1.GetActiveEffects*"></a>
 
-  <h3 id="AshesOfVelsingrad_systems_status_effects_EffectTarget_GetActiveEffects" data-uid="AshesOfVelsingrad.systems.status_effects.EffectTarget.GetActiveEffects">
+  <h3 id="AshesOfVelsingrad_Systems_EffectTarget_1_GetActiveEffects" data-uid="AshesOfVelsingrad.Systems.EffectTarget`1.GetActiveEffects">
   GetActiveEffects()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/systems/status_effects/EffectTarget.cs/#L41"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/systems/status_effects/EffectTarget.cs/#L42"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Retrieves all status effects that are currently active on this target.</p>
+  <div class="markdown level1 summary"><p>Retrieves all status effects currently active on this target.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public List&lt;StatusEffect&gt; GetActiveEffects()</code></pre>
+    <pre><code class="lang-csharp hljs">public List&lt;StatusEffect&lt;TTarget&gt;&gt; GetActiveEffects()</code></pre>
   </div>
 
 
   <h4 class="section">Returns</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a class="xref" href="AshesOfVelsingrad.systems.status_effects.StatusEffect.html">StatusEffect</a>&gt;</dt>
-    <dd><p>A list containing all active status effects.</p>
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a class="xref" href="AshesOfVelsingrad.Systems.StatusEffect-1.html">StatusEffect</a>&lt;TTarget&gt;&gt;</dt>
+    <dd><p>A list of <a class="xref" href="AshesOfVelsingrad.Systems.StatusEffect-1.html">StatusEffect&lt;TTarget&gt;</a> representing all active effects.</p>
 </dd>
   </dl>
 
@@ -232,33 +238,33 @@ Provides default implementations for applying, removing, and querying effects.</
 
 
 
-  <a id="AshesOfVelsingrad_systems_status_effects_EffectTarget_HasEffect_" data-uid="AshesOfVelsingrad.systems.status_effects.EffectTarget.HasEffect*"></a>
+  <a id="AshesOfVelsingrad_Systems_EffectTarget_1_HasEffect_" data-uid="AshesOfVelsingrad.Systems.EffectTarget`1.HasEffect*"></a>
 
-  <h3 id="AshesOfVelsingrad_systems_status_effects_EffectTarget_HasEffect__1" data-uid="AshesOfVelsingrad.systems.status_effects.EffectTarget.HasEffect``1">
+  <h3 id="AshesOfVelsingrad_Systems_EffectTarget_1_HasEffect__1" data-uid="AshesOfVelsingrad.Systems.EffectTarget`1.HasEffect``1">
   HasEffect&lt;T&gt;()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/systems/status_effects/EffectTarget.cs/#L31"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/systems/status_effects/EffectTarget.cs/#L32"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Checks whether this target currently has an active status effect of the given type.</p>
+  <div class="markdown level1 summary"><p>Checks whether this target currently has an active status effect of the specified type.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public bool HasEffect&lt;T&gt;() where T : StatusEffect</code></pre>
+    <pre><code class="lang-csharp hljs">public bool HasEffect&lt;T&gt;() where T : StatusEffect&lt;TTarget&gt;</code></pre>
   </div>
 
 
   <h4 class="section">Returns</h4>
   <dl class="parameters">
     <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
-    <dd><p><code>true</code> if the effect is present, otherwise <code>false</code>.</p>
+    <dd><p><code>true</code> if the effect is present on this target; otherwise, <code>false</code>.</p>
 </dd>
   </dl>
 
   <h4 class="section">Type Parameters</h4>
   <dl class="parameters">
     <dt><code>T</code></dt>
-    <dd><p>The type of the status effect to check for.</p>
+    <dd><p>The type of <a class="xref" href="AshesOfVelsingrad.Systems.StatusEffect-1.html">StatusEffect&lt;TTarget&gt;</a> to check for.</p>
 </dd>
   </dl>
 
@@ -271,25 +277,25 @@ Provides default implementations for applying, removing, and querying effects.</
 
 
 
-  <a id="AshesOfVelsingrad_systems_status_effects_EffectTarget_RemoveEffect_" data-uid="AshesOfVelsingrad.systems.status_effects.EffectTarget.RemoveEffect*"></a>
+  <a id="AshesOfVelsingrad_Systems_EffectTarget_1_RemoveEffect_" data-uid="AshesOfVelsingrad.Systems.EffectTarget`1.RemoveEffect*"></a>
 
-  <h3 id="AshesOfVelsingrad_systems_status_effects_EffectTarget_RemoveEffect_AshesOfVelsingrad_systems_status_effects_StatusEffect_" data-uid="AshesOfVelsingrad.systems.status_effects.EffectTarget.RemoveEffect(AshesOfVelsingrad.systems.status_effects.StatusEffect)">
-  RemoveEffect(StatusEffect)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/systems/status_effects/EffectTarget.cs/#L24"><i class="bi bi-code-slash"></i></a>
+  <h3 id="AshesOfVelsingrad_Systems_EffectTarget_1_RemoveEffect_AshesOfVelsingrad_Systems_StatusEffect__0__" data-uid="AshesOfVelsingrad.Systems.EffectTarget`1.RemoveEffect(AshesOfVelsingrad.Systems.StatusEffect{`0})">
+  RemoveEffect(StatusEffect&lt;TTarget&gt;)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/systems/status_effects/EffectTarget.cs/#L25"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Removes an active status effect from this target.</p>
+  <div class="markdown level1 summary"><p>Removes a status effect from this target.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public virtual void RemoveEffect(StatusEffect statusEffect)</code></pre>
+    <pre><code class="lang-csharp hljs">public virtual void RemoveEffect(StatusEffect&lt;TTarget&gt; statusEffect)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
-    <dt><code>statusEffect</code> <a class="xref" href="AshesOfVelsingrad.systems.status_effects.StatusEffect.html">StatusEffect</a></dt>
-    <dd><p>The status effect to remove.</p>
+    <dt><code>statusEffect</code> <a class="xref" href="AshesOfVelsingrad.Systems.StatusEffect-1.html">StatusEffect</a>&lt;TTarget&gt;</dt>
+    <dd><p>The <a class="xref" href="AshesOfVelsingrad.Systems.StatusEffect-1.html">StatusEffect&lt;TTarget&gt;</a> instance to remove.</p>
 </dd>
   </dl>
 
@@ -308,7 +314,7 @@ Provides default implementations for applying, removing, and querying effects.</
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/systems/status_effects/EffectTarget.cs/#L9" class="edit-link">Edit this page</a>
+          <a href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/systems/status_effects/EffectTarget.cs/#L10" class="edit-link">Edit this page</a>
         </div>
 
 

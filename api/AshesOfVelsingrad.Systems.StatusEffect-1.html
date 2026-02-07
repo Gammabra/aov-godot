@@ -2,9 +2,9 @@
 <html>
   <head>
     <meta charset="utf-8">
-      <title>Class StatusEffect | Ashes of Velsingrad Documentation </title>
+      <title>Class StatusEffect&lt;TTarget&gt; | Ashes of Velsingrad Documentation </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content="Class StatusEffect | Ashes of Velsingrad Documentation ">
+      <meta name="title" content="Class StatusEffect&lt;TTarget&gt; | Ashes of Velsingrad Documentation ">
       
       <meta name="description" content="Base class for all status effects that can be applied to an .">
       <link rel="icon" href="../favicon.ico">
@@ -16,7 +16,7 @@
       <meta name="docfx:rel" content="../">
       
       
-      <meta name="docfx:docurl" content="https://github.com/Gammabra/aov-godot/new/develop/apiSpec/new?filename=AshesOfVelsingrad_systems_status_effects_StatusEffect.md&amp;value=---%0Auid%3A%20AshesOfVelsingrad.systems.status_effects.StatusEffect%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="docfx:docurl" content="https://github.com/Gammabra/aov-godot/new/develop/apiSpec/new?filename=AshesOfVelsingrad_Systems_StatusEffect_1.md&amp;value=---%0Auid%3A%20AshesOfVelsingrad.Systems.StatusEffect%601%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -84,35 +84,42 @@
           <nav id="breadcrumb"></nav>
         </div>
 
-        <article data-uid="AshesOfVelsingrad.systems.status_effects.StatusEffect">
+        <article data-uid="AshesOfVelsingrad.Systems.StatusEffect`1">
 
 
 
-  <h1 id="AshesOfVelsingrad_systems_status_effects_StatusEffect" data-uid="AshesOfVelsingrad.systems.status_effects.StatusEffect" class="text-break">
-Class StatusEffect  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/systems/status_effects/StatusEffect.cs/#L11"><i class="bi bi-code-slash"></i></a>
+  <h1 id="AshesOfVelsingrad_Systems_StatusEffect_1" data-uid="AshesOfVelsingrad.Systems.StatusEffect`1" class="text-break">
+Class StatusEffect&lt;TTarget&gt;  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/systems/status_effects/StatusEffect.cs/#L17"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
-    <dl><dt>Namespace</dt><dd><a class="xref" href="AshesOfVelsingrad.html">AshesOfVelsingrad</a>.<a class="xref" href="AshesOfVelsingrad.systems.html">systems</a>.<a class="xref" href="AshesOfVelsingrad.systems.status_effects.html">status_effects</a></dd></dl>
+    <dl><dt>Namespace</dt><dd><a class="xref" href="AshesOfVelsingrad.html">AshesOfVelsingrad</a>.<a class="xref" href="AshesOfVelsingrad.Systems.html">Systems</a></dd></dl>
   <dl><dt>Assembly</dt><dd>Ashes of Velsingrad.dll</dd></dl>
   </div>
 
-  <div class="markdown summary"><p>Base class for all status effects that can be applied to an <a class="xref" href="AshesOfVelsingrad.systems.status_effects.IEffectTarget.html">IEffectTarget</a>.</p>
+  <div class="markdown summary"><p>Base class for all status effects that can be applied to an <a class="xref" href="AshesOfVelsingrad.Systems.IEffectTarget-1.html">IEffectTarget&lt;TTarget&gt;</a>.</p>
 </div>
   <div class="markdown conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public abstract class StatusEffect</code></pre>
+    <pre><code class="lang-csharp hljs">public abstract class StatusEffect&lt;TTarget&gt;</code></pre>
   </div>
 
 
 
+  <h4 class="section">Type Parameters</h4>
+  <dl class="parameters">
+    <dt><code>TTarget</code></dt>
+    <dd><p>The type of target this status effect can be applied to,
+such as <a class="xref" href="AshesOfVelsingrad.Systems.UnitSystem.html">UnitSystem</a> or <a class="xref" href="AshesOfVelsingrad.Systems.MapSystem.html">MapSystem</a>.</p>
+</dd>
+  </dl>
 
   <dl class="typelist inheritance">
     <dt>Inheritance</dt>
     <dd>
       <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
-      <div><span class="xref">StatusEffect</span></div>
+      <div><span class="xref">StatusEffect&lt;TTarget&gt;</span></div>
     </dd>
   </dl>
 
@@ -147,8 +154,10 @@ Class StatusEffect  <a class="header-action link-secondary" title="View source" 
 
 
 
-  <h2 id="AshesOfVelsingrad_systems_status_effects_StatusEffect_remarks">Remarks</h2>
-  <div class="markdown level0 remarks"><p>This class provides the basic data and behavior for a status effect.</p>
+  <h2 id="AshesOfVelsingrad_Systems_StatusEffect_1_remarks">Remarks</h2>
+  <div class="markdown level0 remarks"><p>This class provides core properties and methods for a status effect,
+including stacking behavior, duration management, and hooks for
+when the effect is applied, removed, or updated each turn.</p>
 </div>
 
 
@@ -156,11 +165,11 @@ Class StatusEffect  <a class="header-action link-secondary" title="View source" 
 </h2>
 
 
-  <a id="AshesOfVelsingrad_systems_status_effects_StatusEffect_Description_" data-uid="AshesOfVelsingrad.systems.status_effects.StatusEffect.Description*"></a>
+  <a id="AshesOfVelsingrad_Systems_StatusEffect_1_Description_" data-uid="AshesOfVelsingrad.Systems.StatusEffect`1.Description*"></a>
 
-  <h3 id="AshesOfVelsingrad_systems_status_effects_StatusEffect_Description" data-uid="AshesOfVelsingrad.systems.status_effects.StatusEffect.Description">
+  <h3 id="AshesOfVelsingrad_Systems_StatusEffect_1_Description" data-uid="AshesOfVelsingrad.Systems.StatusEffect`1.Description">
   Description
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/systems/status_effects/StatusEffect.cs/#L21"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/systems/status_effects/StatusEffect.cs/#L27"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>A description of what this effect does.</p>
@@ -188,11 +197,11 @@ Class StatusEffect  <a class="header-action link-secondary" title="View source" 
 
 
 
-  <a id="AshesOfVelsingrad_systems_status_effects_StatusEffect_Duration_" data-uid="AshesOfVelsingrad.systems.status_effects.StatusEffect.Duration*"></a>
+  <a id="AshesOfVelsingrad_Systems_StatusEffect_1_Duration_" data-uid="AshesOfVelsingrad.Systems.StatusEffect`1.Duration*"></a>
 
-  <h3 id="AshesOfVelsingrad_systems_status_effects_StatusEffect_Duration" data-uid="AshesOfVelsingrad.systems.status_effects.StatusEffect.Duration">
+  <h3 id="AshesOfVelsingrad_Systems_StatusEffect_1_Duration" data-uid="AshesOfVelsingrad.Systems.StatusEffect`1.Duration">
   Duration
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/systems/status_effects/StatusEffect.cs/#L27"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/systems/status_effects/StatusEffect.cs/#L33"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>The number of turns the effect will last.
@@ -221,11 +230,11 @@ A value of <code>-1</code> means the effect is permanent.</p>
 
 
 
-  <a id="AshesOfVelsingrad_systems_status_effects_StatusEffect_IsStackable_" data-uid="AshesOfVelsingrad.systems.status_effects.StatusEffect.IsStackable*"></a>
+  <a id="AshesOfVelsingrad_Systems_StatusEffect_1_IsStackable_" data-uid="AshesOfVelsingrad.Systems.StatusEffect`1.IsStackable*"></a>
 
-  <h3 id="AshesOfVelsingrad_systems_status_effects_StatusEffect_IsStackable" data-uid="AshesOfVelsingrad.systems.status_effects.StatusEffect.IsStackable">
+  <h3 id="AshesOfVelsingrad_Systems_StatusEffect_1_IsStackable" data-uid="AshesOfVelsingrad.Systems.StatusEffect`1.IsStackable">
   IsStackable
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/systems/status_effects/StatusEffect.cs/#L37"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/systems/status_effects/StatusEffect.cs/#L43"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Whether this effect can be stacked.</p>
@@ -253,11 +262,11 @@ A value of <code>-1</code> means the effect is permanent.</p>
 
 
 
-  <a id="AshesOfVelsingrad_systems_status_effects_StatusEffect_Name_" data-uid="AshesOfVelsingrad.systems.status_effects.StatusEffect.Name*"></a>
+  <a id="AshesOfVelsingrad_Systems_StatusEffect_1_Name_" data-uid="AshesOfVelsingrad.Systems.StatusEffect`1.Name*"></a>
 
-  <h3 id="AshesOfVelsingrad_systems_status_effects_StatusEffect_Name" data-uid="AshesOfVelsingrad.systems.status_effects.StatusEffect.Name">
+  <h3 id="AshesOfVelsingrad_Systems_StatusEffect_1_Name" data-uid="AshesOfVelsingrad.Systems.StatusEffect`1.Name">
   Name
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/systems/status_effects/StatusEffect.cs/#L16"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/systems/status_effects/StatusEffect.cs/#L22"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>The display name of the effect.</p>
@@ -285,11 +294,11 @@ A value of <code>-1</code> means the effect is permanent.</p>
 
 
 
-  <a id="AshesOfVelsingrad_systems_status_effects_StatusEffect_StackCount_" data-uid="AshesOfVelsingrad.systems.status_effects.StatusEffect.StackCount*"></a>
+  <a id="AshesOfVelsingrad_Systems_StatusEffect_1_StackCount_" data-uid="AshesOfVelsingrad.Systems.StatusEffect`1.StackCount*"></a>
 
-  <h3 id="AshesOfVelsingrad_systems_status_effects_StatusEffect_StackCount" data-uid="AshesOfVelsingrad.systems.status_effects.StatusEffect.StackCount">
+  <h3 id="AshesOfVelsingrad_Systems_StatusEffect_1_StackCount" data-uid="AshesOfVelsingrad.Systems.StatusEffect`1.StackCount">
   StackCount
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/systems/status_effects/StatusEffect.cs/#L32"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/systems/status_effects/StatusEffect.cs/#L38"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>The number of times this effect has been stacked.</p>
@@ -321,14 +330,15 @@ A value of <code>-1</code> means the effect is permanent.</p>
 </h2>
 
 
-  <a id="AshesOfVelsingrad_systems_status_effects_StatusEffect_AddStack_" data-uid="AshesOfVelsingrad.systems.status_effects.StatusEffect.AddStack*"></a>
+  <a id="AshesOfVelsingrad_Systems_StatusEffect_1_AddStack_" data-uid="AshesOfVelsingrad.Systems.StatusEffect`1.AddStack*"></a>
 
-  <h3 id="AshesOfVelsingrad_systems_status_effects_StatusEffect_AddStack" data-uid="AshesOfVelsingrad.systems.status_effects.StatusEffect.AddStack">
+  <h3 id="AshesOfVelsingrad_Systems_StatusEffect_1_AddStack" data-uid="AshesOfVelsingrad.Systems.StatusEffect`1.AddStack">
   AddStack()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/systems/status_effects/StatusEffect.cs/#L68"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/systems/status_effects/StatusEffect.cs/#L77"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Increases the stack count of the effect if it is stackable.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -347,11 +357,11 @@ A value of <code>-1</code> means the effect is permanent.</p>
 
 
 
-  <a id="AshesOfVelsingrad_systems_status_effects_StatusEffect_OnApply_" data-uid="AshesOfVelsingrad.systems.status_effects.StatusEffect.OnApply*"></a>
+  <a id="AshesOfVelsingrad_Systems_StatusEffect_1_OnApply_" data-uid="AshesOfVelsingrad.Systems.StatusEffect`1.OnApply*"></a>
 
-  <h3 id="AshesOfVelsingrad_systems_status_effects_StatusEffect_OnApply_AshesOfVelsingrad_systems_status_effects_IEffectTarget_" data-uid="AshesOfVelsingrad.systems.status_effects.StatusEffect.OnApply(AshesOfVelsingrad.systems.status_effects.IEffectTarget)">
-  OnApply(IEffectTarget)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/systems/status_effects/StatusEffect.cs/#L44"><i class="bi bi-code-slash"></i></a>
+  <h3 id="AshesOfVelsingrad_Systems_StatusEffect_1_OnApply_AshesOfVelsingrad_Systems_IEffectTarget__0__" data-uid="AshesOfVelsingrad.Systems.StatusEffect`1.OnApply(AshesOfVelsingrad.Systems.IEffectTarget{`0})">
+  OnApply(IEffectTarget&lt;TTarget&gt;)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/systems/status_effects/StatusEffect.cs/#L50"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Called when this effect is applied to a target.
@@ -360,12 +370,12 @@ Override this to implement custom logic (e.g., visual feedback, stat changes).</
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public virtual void OnApply(IEffectTarget target)</code></pre>
+    <pre><code class="lang-csharp hljs">public virtual void OnApply(IEffectTarget&lt;TTarget&gt; target)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
-    <dt><code>target</code> <a class="xref" href="AshesOfVelsingrad.systems.status_effects.IEffectTarget.html">IEffectTarget</a></dt>
+    <dt><code>target</code> <a class="xref" href="AshesOfVelsingrad.Systems.IEffectTarget-1.html">IEffectTarget</a>&lt;TTarget&gt;</dt>
     <dd><p>The target receiving the effect.</p>
 </dd>
   </dl>
@@ -381,11 +391,11 @@ Override this to implement custom logic (e.g., visual feedback, stat changes).</
 
 
 
-  <a id="AshesOfVelsingrad_systems_status_effects_StatusEffect_OnRemove_" data-uid="AshesOfVelsingrad.systems.status_effects.StatusEffect.OnRemove*"></a>
+  <a id="AshesOfVelsingrad_Systems_StatusEffect_1_OnRemove_" data-uid="AshesOfVelsingrad.Systems.StatusEffect`1.OnRemove*"></a>
 
-  <h3 id="AshesOfVelsingrad_systems_status_effects_StatusEffect_OnRemove_AshesOfVelsingrad_systems_status_effects_IEffectTarget_" data-uid="AshesOfVelsingrad.systems.status_effects.StatusEffect.OnRemove(AshesOfVelsingrad.systems.status_effects.IEffectTarget)">
-  OnRemove(IEffectTarget)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/systems/status_effects/StatusEffect.cs/#L53"><i class="bi bi-code-slash"></i></a>
+  <h3 id="AshesOfVelsingrad_Systems_StatusEffect_1_OnRemove_AshesOfVelsingrad_Systems_IEffectTarget__0__" data-uid="AshesOfVelsingrad.Systems.StatusEffect`1.OnRemove(AshesOfVelsingrad.Systems.IEffectTarget{`0})">
+  OnRemove(IEffectTarget&lt;TTarget&gt;)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/systems/status_effects/StatusEffect.cs/#L59"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Called when this effect is removed from a target.
@@ -394,12 +404,12 @@ Override this to implement cleanup logic (e.g., removing buffs, stopping VFX).</
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public virtual void OnRemove(IEffectTarget target)</code></pre>
+    <pre><code class="lang-csharp hljs">public virtual void OnRemove(IEffectTarget&lt;TTarget&gt; target)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
-    <dt><code>target</code> <a class="xref" href="AshesOfVelsingrad.systems.status_effects.IEffectTarget.html">IEffectTarget</a></dt>
+    <dt><code>target</code> <a class="xref" href="AshesOfVelsingrad.Systems.IEffectTarget-1.html">IEffectTarget</a>&lt;TTarget&gt;</dt>
     <dd><p>The target losing the effect.</p>
 </dd>
   </dl>
@@ -415,11 +425,11 @@ Override this to implement cleanup logic (e.g., removing buffs, stopping VFX).</
 
 
 
-  <a id="AshesOfVelsingrad_systems_status_effects_StatusEffect_OnTurnPassed_" data-uid="AshesOfVelsingrad.systems.status_effects.StatusEffect.OnTurnPassed*"></a>
+  <a id="AshesOfVelsingrad_Systems_StatusEffect_1_OnTurnPassed_" data-uid="AshesOfVelsingrad.Systems.StatusEffect`1.OnTurnPassed*"></a>
 
-  <h3 id="AshesOfVelsingrad_systems_status_effects_StatusEffect_OnTurnPassed_AshesOfVelsingrad_systems_status_effects_IEffectTarget_" data-uid="AshesOfVelsingrad.systems.status_effects.StatusEffect.OnTurnPassed(AshesOfVelsingrad.systems.status_effects.IEffectTarget)">
-  OnTurnPassed(IEffectTarget)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/systems/status_effects/StatusEffect.cs/#L61"><i class="bi bi-code-slash"></i></a>
+  <h3 id="AshesOfVelsingrad_Systems_StatusEffect_1_OnTurnPassed_AshesOfVelsingrad_Systems_IEffectTarget__0__" data-uid="AshesOfVelsingrad.Systems.StatusEffect`1.OnTurnPassed(AshesOfVelsingrad.Systems.IEffectTarget{`0})">
+  OnTurnPassed(IEffectTarget&lt;TTarget&gt;)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/systems/status_effects/StatusEffect.cs/#L67"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Called at the end of each turn to update the effect’s duration or apply ongoing logic.</p>
@@ -427,12 +437,12 @@ Override this to implement cleanup logic (e.g., removing buffs, stopping VFX).</
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public virtual void OnTurnPassed(IEffectTarget target)</code></pre>
+    <pre><code class="lang-csharp hljs">public virtual void OnTurnPassed(IEffectTarget&lt;TTarget&gt; target)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
-    <dt><code>target</code> <a class="xref" href="AshesOfVelsingrad.systems.status_effects.IEffectTarget.html">IEffectTarget</a></dt>
+    <dt><code>target</code> <a class="xref" href="AshesOfVelsingrad.Systems.IEffectTarget-1.html">IEffectTarget</a>&lt;TTarget&gt;</dt>
     <dd><p>The target affected by this effect.</p>
 </dd>
   </dl>
@@ -452,7 +462,7 @@ Override this to implement cleanup logic (e.g., removing buffs, stopping VFX).</
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/systems/status_effects/StatusEffect.cs/#L11" class="edit-link">Edit this page</a>
+          <a href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/systems/status_effects/StatusEffect.cs/#L17" class="edit-link">Edit this page</a>
         </div>
 
 

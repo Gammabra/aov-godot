@@ -187,7 +187,7 @@ public partial class GameManager
     ///     This is typically used when evaluating defeat conditions
     ///     or performing a full cleanup of player-controlled units.
     /// </summary>
-    private void CheckUnitsLife(List<UnitSystem> units)
+    private static void CheckUnitsLife(List<UnitSystem> units)
     {
         foreach (UnitSystem unit in units)
             unit.SetIsAlive(false);

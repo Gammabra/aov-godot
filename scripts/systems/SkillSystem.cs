@@ -1,46 +1,7 @@
 using System.Collections.Generic;
+using AshesOfVelsingrad.Utilities;
 
 namespace AshesOfVelsingrad.Systems;
-
-/// <summary>
-///     Represents the elemental type of a skill.
-/// </summary>
-public enum MagicType
-{
-    None,
-    Fire,
-    Water,
-    Earth,
-    Wind,
-    Light,
-    Dark
-}
-
-/// <summary>
-///     Defines the type of effect a skill applies when used.
-/// </summary>
-public enum EffectType
-{
-    Damage,
-    Heal,
-    Buff,
-    Debuff,
-    Dot,
-    Control,
-    StatusEffect,
-    Revive
-}
-
-/// <summary>
-///     Defines the targeting pattern of a skill.
-/// </summary>
-public enum TargetTypes
-{
-    SingleAlly,
-    AllAllies,
-    SingleEnemy,
-    AllEnemies
-}
 
 /// <summary>
 ///     Base class for all skills available in the game.
@@ -52,6 +13,8 @@ public enum TargetTypes
 /// </remarks>
 public abstract class SkillSystem
 {
+    #region Public Properties
+
     /// <summary>
     ///     The name of the skill.
     /// </summary>
@@ -90,17 +53,21 @@ public abstract class SkillSystem
     /// <summary>
     ///     The magical element type of this skill (e.g., Fire, Water, Light).
     /// </summary>
-    public MagicType MagicType { get; protected init; }
+    public AovDataStructures.MagicType MagicType { get; protected init; }
 
     /// <summary>
     ///     The type of effect this skill applies (e.g., damage, heal, buff).
     /// </summary>
-    public EffectType EffectType { get; protected init; }
+    public AovDataStructures.EffectType EffectType { get; protected init; }
 
     /// <summary>
     ///     The type of target(s) this skill can be used on.
     /// </summary>
-    public TargetTypes TargetType { get; protected init; }
+    public AovDataStructures.TargetTypes TargetType { get; protected init; }
+
+    #endregion
+
+    #region Public Methods
 
     /// <summary>
     ///     Executes the skill logic when cast.
@@ -127,4 +94,6 @@ public abstract class SkillSystem
             return;
         Cooldown--;
     }
+
+    #endregion
 }

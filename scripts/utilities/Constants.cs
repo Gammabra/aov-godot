@@ -1,4 +1,4 @@
-namespace AshesOfVelsingrad.utilities;
+namespace AshesOfVelsingrad.Utilities;
 
 public static class Constants
 {

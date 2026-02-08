@@ -6,6 +6,7 @@ on:
       - release
       - canary
       - develop
+      - hotfix/episync
 
 jobs:
   mirror:
@@ -21,5 +22,5 @@ jobs:
         env:
           SCHOOL_REPO_TOKEN: ${{ secrets.GH_PAT }}
         run: |
-          git remote add epitech https://x-access-token:${SCHOOL_REPO_TOKEN}@github.com/EpitechPGE45-2025/G-EIP-700-PAR-7-1-eip-99.git
+          git remote add epitech https://${SCHOOL_REPO_TOKEN}@github.com/EpitechPGE45-2025/G-EIP-700-PAR-7-1-eip-99.git
           git push --mirror epitech

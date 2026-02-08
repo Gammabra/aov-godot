@@ -16,11 +16,11 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0 # Fetch all history for all branches and tags
+          fetch-depth: 0
 
       - name: Push to school repository
         env:
           SCHOOL_REPO_TOKEN: ${{ secrets.GH_PAT }}
         run: |
-          git remote add epitech https://${SCHOOL_REPO_TOKEN}@github.com/EpitechPGE45-2025/G-EIP-700-PAR-7-1-eip-99.git
+          git remote add epitech https://x-access-token:${SCHOOL_REPO_TOKEN}@github.com/EpitechPGE45-2025/G-EIP-700-PAR-7-1-eip-99.git
           git push --mirror epitech

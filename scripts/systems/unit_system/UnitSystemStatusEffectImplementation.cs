@@ -90,6 +90,7 @@ public abstract partial class UnitSystem : IEffectTarget<UnitSystem>, IStatusEff
 
     #region IStatusEffect Implementation
 
+    /// <inheritdoc/>
     public virtual void OnEffectDamage(AovDataStructures.ModifierType modifierType, float amount)
     {
         float value = modifierType == AovDataStructures.ModifierType.Flat
@@ -105,23 +106,31 @@ public abstract partial class UnitSystem : IEffectTarget<UnitSystem>, IStatusEff
         }
     }
 
+    /// <inheritdoc/>
     public virtual void OnEffectHeal(float amount)
     {
+        if (!IsAlive)
+            return;
         Hp += amount;
         if (Hp > MaxHp)
             Hp = MaxHp;
     }
 
+    /// <inheritdoc/>
     public virtual void OnEffectRevive(AovDataStructures.ModifierType modifierType, float amount)
     {
         float value = modifierType == AovDataStructures.ModifierType.Flat
             ? amount
             : MaxHp * amount / 100f;
 
+        if (IsAlive)
+            return;
+
         Hp += value;
         IsAlive = true;
     }
 
+    /// <inheritdoc/>
     public virtual void OnEffectModifierApplied(
         AovDataStructures.StatTypeWithModifier statType,
         AovDataStructures.ModifierType modifierType,
@@ -135,6 +144,7 @@ public abstract partial class UnitSystem : IEffectTarget<UnitSystem>, IStatusEff
         _applyModifiers[statType](value);
     }
 
+    /// <inheritdoc/>
     public virtual void OnEffectModifierRemoved(
         AovDataStructures.StatTypeWithModifier statType,
         AovDataStructures.ModifierType modifierType,
@@ -148,11 +158,13 @@ public abstract partial class UnitSystem : IEffectTarget<UnitSystem>, IStatusEff
         _removeModifiers[statType](value);
     }
 
+    /// <inheritdoc/>
     public virtual void OnEffectControlApplied()
     {
         IsControlled = true;
     }
 
+    /// <inheritdoc/>
     public virtual void OnEffectControlRemoved()
     {
         IsControlled = false;

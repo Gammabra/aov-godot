@@ -59,7 +59,7 @@ public abstract partial class UnitSystem
     /// <param name="damage">The amount of damage received.</param>
     public virtual void TakeDamage(float damage)
     {
-        float realDamage = damage - BaseDef;
+        float realDamage = damage - (BaseDef + DefModifierAmount);
 
         if (realDamage < 0)
             realDamage = 0;

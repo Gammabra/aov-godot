@@ -1,20 +1,22 @@
-﻿namespace AshesOfVelsingrad.Systems;
+﻿using AshesOfVelsingrad.Utilities;
+
+namespace AshesOfVelsingrad.Systems;
 
 public interface IStatusEffectBehavior
 {
-    void OnEffectDamage(DataStructures.ModifierType modifierType, float amount);
+    void OnEffectDamage(AovDataStructures.ModifierType modifierType, float amount);
     void OnEffectHeal(float amount);
-    void OnEffectRevive(DataStructures.ModifierType modifierType, float amount);
+    void OnEffectRevive(AovDataStructures.ModifierType modifierType, float amount);
 
     void OnEffectModifierApplied(
-        DataStructures.StatTypeWithModifier statTypeWithModifier,
-        DataStructures.ModifierType modifierType,
+        AovDataStructures.StatTypeWithModifier statTypeWithModifier,
+        AovDataStructures.ModifierType modifierType,
         float amount
     );
 
     void OnEffectModifierRemoved(
-        DataStructures.StatTypeWithModifier statTypeWithModifier,
-        DataStructures.ModifierType modifierType,
+        AovDataStructures.StatTypeWithModifier statTypeWithModifier,
+        AovDataStructures.ModifierType modifierType,
         float amount
     );
 

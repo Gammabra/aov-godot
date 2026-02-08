@@ -5,16 +5,6 @@ using Godot;
 namespace AshesOfVelsingrad.Systems;
 
 /// <summary>
-///     Enumeration of every cell type available in the game.
-/// </summary>
-public enum CellType
-{
-    // Add a cell type when needed
-    Empty = -1,
-    Grass
-}
-
-/// <summary>
 ///     Represents the information for a single grid cell in the map,
 ///     including its coordinates, ground type, walkability, and the unit occupying it.
 /// </summary>

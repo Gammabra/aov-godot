@@ -6,7 +6,6 @@ on:
       - release
       - canary
       - develop
-      - hotfix/episync
 
 jobs:
   mirror:

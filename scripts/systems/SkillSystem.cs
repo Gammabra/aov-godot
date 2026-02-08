@@ -78,6 +78,9 @@ public abstract class SkillSystem
     /// </remarks>
     public abstract void Use(List<UnitSystem> targets, MapSystem? map);
 
+    /// <summary>
+    ///     Set the cooldown of the skill to the total cooldown
+    /// </summary>
     public virtual void SetCooldown()
     {
         if (Cooldown != 0)

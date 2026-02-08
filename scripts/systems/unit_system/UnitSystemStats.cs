@@ -32,9 +32,9 @@ public abstract partial class UnitSystem
     public bool IsAlive { get; protected set; } = true;
 
     /// <summary>
-    /// Set if the unit is alive or not.
+    ///     Set if the unit is alive or not.
     /// </summary>
-    /// <param name="isAlive">A boolean to set unit <see cref="IsAlive"/> value</param>
+    /// <param name="isAlive">A boolean to set unit <see cref="IsAlive" /> value</param>
     public void SetIsAlive(bool isAlive)
     {
         if (!isAlive)
@@ -51,6 +51,8 @@ public abstract partial class UnitSystem
 
     #endregion
 
+    #region Public Methods
+
     /// <summary>
     ///     Applies incoming damage to the unit and updates HP.
     /// </summary>
@@ -63,4 +65,6 @@ public abstract partial class UnitSystem
             realDamage = 0;
         Hp -= realDamage;
     }
+
+    #endregion
 }

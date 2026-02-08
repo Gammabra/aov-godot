@@ -40,20 +40,24 @@ public abstract partial class UnitSystem : IEffectTarget<UnitSystem>, IStatusEff
     public float DefModifierAmount { get; protected set; }
 
     /// <summary>
-    /// Tell if the unit is controlled or not
+    ///     Tell if the unit is controlled or not
     /// </summary>
     public bool IsControlled { get; protected set; }
 
     #endregion
 
+    #region Public Methods
+
     /// <summary>
-    /// Applies a status effect to this unit.
+    ///     Applies a status effect to this unit.
     /// </summary>
     /// <param name="statusEffect">The status effect to apply.</param>
     public virtual void SetStatusEffectOnUnit(StatusEffect<UnitSystem> statusEffect)
     {
         _statusEffectSystem?.ApplyEffect(this, statusEffect);
     }
+
+    #endregion
 
     #region IEffectTarget Implementation
 

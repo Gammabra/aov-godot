@@ -1,7 +1,8 @@
 ﻿namespace AshesOfVelsingrad.Systems;
 
 /// <summary>
-/// Empty interface to be able to contain any status effect as the actual <see cref="StatusEffect{TTarget}"/> abstract class cannot take object as the TTarget
+///     Empty interface to be able to contain any status effect as the actual <see cref="StatusEffect{TTarget}" /> abstract
+///     class cannot take object as the TTarget
 /// </summary>
 public interface IStatusEffect
 {

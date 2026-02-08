@@ -1,45 +1,19 @@
 using System;
 using System.Collections.Generic;
 using AshesOfVelsingrad.Systems;
+using AshesOfVelsingrad.Utilities;
 using Godot;
 
 namespace AshesOfVelsingrad.Managers;
 
-/// <summary>
-/// Represents the outcome of a battle.
-/// </summary>
-public enum GameOutcome
-{
-    /// <summary>The battle is ongoing; no winner yet.</summary>
-    Ongoing,
-
-    /// <summary>The player has won the battle.</summary>
-    Victory,
-
-    /// <summary>The player has lost the battle.</summary>
-    Defeat
-}
-
-/// <summary>
-/// Defines the current interaction mode when clicking on the map.
-/// </summary>
-public enum ClickOnMapContext
-{
-    /// <summary>The player is selecting a cell to move a unit.</summary>
-    MoveUnit,
-
-    /// <summary>The player is selecting a unit or target cell for a skill.</summary>
-    SelectUnitTarget
-}
-
 public partial class GameManager
 {
     /// <summary>
-    /// Loads all player and enemy units from their respective container nodes.
+    ///     Loads all player and enemy units from their respective container nodes.
     /// </summary>
     /// <remarks>
-    /// This function scans the Godot scene tree for <see cref="UnitSystem"/> nodes
-    /// and stores references to them for battle management.
+    ///     This function scans the Godot scene tree for <see cref="UnitSystem" /> nodes
+    ///     and stores references to them for battle management.
     /// </remarks>
     private void LoadUnits()
     {
@@ -76,7 +50,7 @@ public partial class GameManager
     }
 
     /// <summary>
-    /// Executes logic for moving the active player unit to a new cell on the map.
+    ///     Executes logic for moving the active player unit to a new cell on the map.
     /// </summary>
     /// <param name="cell">The grid cell to move the unit to.</param>
     private void HandlePlayerUnitMove(Vector3I cell)
@@ -125,7 +99,7 @@ public partial class GameManager
     }
 
     /// <summary>
-    /// Handles logic when a player selects a cell as a skill target.
+    ///     Handles logic when a player selects a cell as a skill target.
     /// </summary>
     /// <param name="cell">The grid position selected as a target.</param>
     private void HandlePlayerSelectTarget(Vector3I cell)
@@ -190,14 +164,14 @@ public partial class GameManager
             return;
         }
 
-        if (_selectedSkill.EffectType == EffectType.Revive && target.IsAlive)
+        if (_selectedSkill.EffectType == AovDataStructures.EffectType.Revive && target.IsAlive)
         {
             GD.PrintErr("Target is already alive.");
             _battleInputSystemContainer.SetInputEnabled(true);
             return;
         }
 
-        if (_selectedSkill.EffectType != EffectType.Revive && !target.IsAlive)
+        if (_selectedSkill.EffectType != AovDataStructures.EffectType.Revive && !target.IsAlive)
         {
             GD.PrintErr("Target is dead.");
             _battleInputSystemContainer.SetInputEnabled(true);
@@ -208,10 +182,10 @@ public partial class GameManager
     }
 
     /// <summary>
-    /// Sets all units as dead.
-    /// (The called method verify if the unit HP is equal or less than 0)
-    /// This is typically used when evaluating defeat conditions
-    /// or performing a full cleanup of player-controlled units.
+    ///     Sets all units as dead.
+    ///     (The called method verify if the unit HP is equal or less than 0)
+    ///     This is typically used when evaluating defeat conditions
+    ///     or performing a full cleanup of player-controlled units.
     /// </summary>
     private void CheckUnitsLife(List<UnitSystem> units)
     {
@@ -220,10 +194,10 @@ public partial class GameManager
     }
 
     /// <summary>
-    /// Evaluates the win/lose conditions based on the number of living units.
-    /// If no player units remain, the result is a defeat.
-    /// If no enemy units remain, the result is a victory.
-    /// Ends the turn manager loop accordingly.
+    ///     Evaluates the win/lose conditions based on the number of living units.
+    ///     If no player units remain, the result is a defeat.
+    ///     If no enemy units remain, the result is a victory.
+    ///     Ends the turn manager loop accordingly.
     /// </summary>
     private void CheckWinLoseCondition()
     {
@@ -235,7 +209,7 @@ public partial class GameManager
                 alivePlayerUnits++;
         if (alivePlayerUnits == 0)
         {
-            _gameOutcome = GameOutcome.Defeat;
+            _gameOutcome = AovDataStructures.GameOutcome.Defeat;
             _turnManagerContainer?.EndTurnManagerLoop();
             GD.Print("Lose!");
             return;
@@ -246,20 +220,20 @@ public partial class GameManager
                 aliveEnemies++;
         if (aliveEnemies == 0)
         {
-            _gameOutcome = GameOutcome.Victory;
+            _gameOutcome = AovDataStructures.GameOutcome.Victory;
             _turnManagerContainer?.EndTurnManagerLoop();
             GD.Print("Win!");
         }
     }
 
     /// <summary>
-    /// Performs end-of-turn checks for all units.
+    ///     Performs end-of-turn checks for all units.
     /// </summary>
     /// <remarks>
-    /// This method updates the <see cref="UnitSystem.IsAlive"/> state of all
-    /// player and enemy units, then evaluates the win/lose conditions.
-    /// It is typically called at the end of a unit's turn to ensure that
-    /// deaths, revives, and victory conditions are handled immediately.
+    ///     This method updates the <see cref="UnitSystem.IsAlive" /> state of all
+    ///     player and enemy units, then evaluates the win/lose conditions.
+    ///     It is typically called at the end of a unit's turn to ensure that
+    ///     deaths, revives, and victory conditions are handled immediately.
     /// </remarks>
     private void CheckUnitTurnEnd()
     {

@@ -3,44 +3,27 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AshesOfVelsingrad.Systems;
+using AshesOfVelsingrad.Utilities;
 using Godot;
 
 namespace AshesOfVelsingrad.Managers;
 
 /// <summary>
-/// Defines the possible turn states in the battle system.
-/// </summary>
-public enum TurnState
-{
-    /// <summary>The player's turn to act.</summary>
-    PlayerTurn,
-
-    /// <summary>The enemy's turn to act.</summary>
-    EnemyTurn,
-
-    /// <summary>Idle state while waiting for setup or transitions.</summary>
-    Waiting,
-
-    /// <summary>State that inform the game is finished.</summary>
-    Finished
-}
-
-/// <summary>
-/// Manages the turn-based battle flow between player and enemy units.
-/// Handles turn order, state transitions, and async waiting for unit actions.
+///     Manages the turn-based battle flow between player and enemy units.
+///     Handles turn order, state transitions, and async waiting for unit actions.
 /// </summary>
 /// <remarks>
-/// This class acts as the core of the turn-based combat loop.
-/// It determines which unit acts next, triggers player input events,
-/// and handles asynchronous waiting for both player and AI actions.
+///     This class acts as the core of the turn-based combat loop.
+///     It determines which unit acts next, triggers player input events,
+///     and handles asynchronous waiting for both player and AI actions.
 /// </remarks>
 public partial class TurnManager : BaseManager
 {
     #region Private Fields
 
-    private TurnState _currentTurnState = TurnState.Waiting;
+    private AovDataStructures.TurnState _currentTurnState = AovDataStructures.TurnState.Waiting;
     private int _turn;
-    private List<KeyValuePair<UnitSystem, TurnState>> _unitsTurnOrder = [];
+    private List<KeyValuePair<UnitSystem, AovDataStructures.TurnState>> _unitsTurnOrder = [];
     private int _currentIndex;
 
     #endregion
@@ -48,8 +31,8 @@ public partial class TurnManager : BaseManager
     #region Private Properties
 
     /// <summary>
-    /// Singleton instance of the <see cref="TurnManager"/>.
-    /// Ensures only one instance exists in the scene tree.
+    ///     Singleton instance of the <see cref="TurnManager" />.
+    ///     Ensures only one instance exists in the scene tree.
     /// </summary>
     private new static TurnManager? Instance { get; set; }
 
@@ -58,22 +41,22 @@ public partial class TurnManager : BaseManager
     #region Public Properties
 
     /// <summary>
-    /// Triggered when the player's turn begins.
+    ///     Triggered when the player's turn begins.
     /// </summary>
     public event Action? OnPlayerTurn;
 
     /// <summary>
-    /// Triggered when the player's turn ends.
+    ///     Triggered when the player's turn ends.
     /// </summary>
     public event Action? OnPlayerTurnEnd;
 
     /// <summary>
-    /// Triggered when the enemy's turn ends
+    ///     Triggered when the enemy's turn ends
     /// </summary>
     public event Action? OnEnemyTurnEnd;
 
     /// <summary>
-    /// Triggered when the current turn ends.
+    ///     Triggered when the current turn ends.
     /// </summary>
     public event Action? OnCurrentTurnEnd;
 
@@ -108,34 +91,34 @@ public partial class TurnManager : BaseManager
     #region Private Methods
 
     /// <summary>
-    /// Main asynchronous turn processing loop.
-    /// Handles turn progression for all units in the battle.
+    ///     Main asynchronous turn processing loop.
+    ///     Handles turn progression for all units in the battle.
     /// </summary>
     /// <remarks>
-    /// This method runs indefinitely while the battle is ongoing.
-    /// It alternates between player and enemy turns, invoking events and awaiting actions.
+    ///     This method runs indefinitely while the battle is ongoing.
+    ///     It alternates between player and enemy turns, invoking events and awaiting actions.
     /// </remarks>
     private async Task ProcessTurn()
     {
         while (true)
         {
             GD.Print($"{_unitsTurnOrder[_currentIndex].Key.Name} turn");
-            foreach (KeyValuePair<UnitSystem, TurnState> unit in _unitsTurnOrder)
+            foreach (KeyValuePair<UnitSystem, AovDataStructures.TurnState> unit in _unitsTurnOrder)
                 GD.Print($"{unit.Key.Name} (HP: {unit.Key.Hp})");
             switch (_currentTurnState)
             {
-                case TurnState.PlayerTurn:
+                case AovDataStructures.TurnState.PlayerTurn:
                     OnPlayerTurn?.Invoke();
                     await _unitsTurnOrder[_currentIndex].Key.WaitForActionAsync();
                     OnPlayerTurnEnd?.Invoke();
                     break;
-                case TurnState.EnemyTurn:
+                case AovDataStructures.TurnState.EnemyTurn:
                     await WaitForEnemyAction(_unitsTurnOrder[_currentIndex].Key);
                     OnEnemyTurnEnd?.Invoke();
                     break;
             }
 
-            if (_currentTurnState == TurnState.Finished)
+            if (_currentTurnState == AovDataStructures.TurnState.Finished)
                 break;
 
             _currentIndex++;
@@ -154,13 +137,13 @@ public partial class TurnManager : BaseManager
     }
 
     /// <summary>
-    /// Simulates an enemy action asynchronously.
+    ///     Simulates an enemy action asynchronously.
     /// </summary>
     /// <param name="unit">The enemy unit performing the action.</param>
     /// <returns>A task that completes when the enemy finishes its action.</returns>
     /// <remarks>
-    /// Currently, this method is a placeholder with a delay.
-    /// Replace with the actual AI logic in future implementations.
+    ///     Currently, this method is a placeholder with a delay.
+    ///     Replace with the actual AI logic in future implementations.
     /// </remarks>
     private static async Task WaitForEnemyAction(UnitSystem unit)
     {
@@ -174,29 +157,33 @@ public partial class TurnManager : BaseManager
     #region Public Methods
 
     /// <summary>
-    /// Initializes the turn order list based on all participating units.
+    ///     Initializes the turn order list based on all participating units.
     /// </summary>
     /// <param name="playerUnits">List of all player-controlled units.</param>
     /// <param name="enemyUnits">List of all enemy-controlled units.</param>
     /// <remarks>
-    /// The order is determined by each unit's <see cref="UnitSystem.BaseSpeed"/> value,
-    /// sorted from highest to lowest.
+    ///     The order is determined by each unit's <see cref="UnitSystem.BaseSpeed" /> value,
+    ///     sorted from highest to lowest.
     /// </remarks>
     public void InitializeTurnOrder(List<UnitSystem> playerUnits, List<UnitSystem> enemyUnits)
     {
         foreach (UnitSystem unit in playerUnits)
-            _unitsTurnOrder.Add(new KeyValuePair<UnitSystem, TurnState>(unit, TurnState.PlayerTurn));
+            _unitsTurnOrder.Add(
+                new KeyValuePair<UnitSystem, AovDataStructures.TurnState>(unit, AovDataStructures.TurnState.PlayerTurn)
+            );
         foreach (UnitSystem unit in enemyUnits)
-            _unitsTurnOrder.Add(new KeyValuePair<UnitSystem, TurnState>(unit, TurnState.EnemyTurn));
+            _unitsTurnOrder.Add(
+                new KeyValuePair<UnitSystem, AovDataStructures.TurnState>(unit, AovDataStructures.TurnState.EnemyTurn)
+            );
         _unitsTurnOrder = _unitsTurnOrder.OrderByDescending(unit => unit.Key.BaseSpeed).ToList();
 
         GD.Print("Turn order initialized:");
-        foreach (KeyValuePair<UnitSystem, TurnState> unit in _unitsTurnOrder)
+        foreach (KeyValuePair<UnitSystem, AovDataStructures.TurnState> unit in _unitsTurnOrder)
             GD.Print($"{unit.Key.Name} (Speed: {unit.Key.BaseSpeed})");
     }
 
     /// <summary>
-    /// Starts the turn-based battle loop asynchronously.
+    ///     Starts the turn-based battle loop asynchronously.
     /// </summary>
     /// <returns>A task representing the battle loop’s lifetime.</returns>
     public async Task StartBattle()
@@ -208,21 +195,21 @@ public partial class TurnManager : BaseManager
     }
 
     /// <summary>
-    /// Gets the unit currently taking its turn.
+    ///     Gets the unit currently taking its turn.
     /// </summary>
-    /// <returns>The <see cref="UnitSystem"/> that is currently active.</returns>
+    /// <returns>The <see cref="UnitSystem" /> that is currently active.</returns>
     public UnitSystem GetCurrentUnit()
     {
         return _unitsTurnOrder[_currentIndex].Key;
     }
 
     /// <summary>
-    /// Called by the <see cref="GameManager"/> to inform the <see cref="TurnManager"/>
-    /// the game is finished
+    ///     Called by the <see cref="GameManager" /> to inform the <see cref="TurnManager" />
+    ///     the game is finished
     /// </summary>
     public void EndTurnManagerLoop()
     {
-        _currentTurnState = TurnState.Finished;
+        _currentTurnState = AovDataStructures.TurnState.Finished;
     }
 
     #endregion

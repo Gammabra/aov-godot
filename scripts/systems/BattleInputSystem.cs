@@ -4,6 +4,37 @@ using Godot.Collections;
 
 namespace AshesOfVelsingrad.Systems;
 
+/// <summary>
+///     Central system responsible for handling player inputs during battle phases.
+/// </summary>
+/// <remarks>
+///     <para>
+///         <see cref="BattleInputSystem" /> captures and interprets user actions
+///         (keyboard and mouse) related to combat gameplay, including:
+///     </para>
+///     <list type="bullet">
+///         <item>
+///             <description>Passing the turn</description>
+///         </item>
+///         <item>
+///             <description>Moving a unit or selecting a target on the map</description>
+///         </item>
+///         <item>
+///             <description>Selecting the move action</description>
+///         </item>
+///         <item>
+///             <description>Selecting a skill</description>
+///         </item>
+///     </list>
+///     <para>
+///         This system acts as a single entry point for battle-related inputs and
+///         communicates with other game systems through Godot signals.
+///     </para>
+///     <para>
+///         The class follows a singleton-like pattern to ensure that only one active
+///         instance exists within the scene tree.
+///     </para>
+/// </remarks>
 public partial class BattleInputSystem : Node
 {
     #region Godot Private Fields
@@ -37,7 +68,7 @@ public partial class BattleInputSystem : Node
     ///     Emitted when the player presses the "pass turn" input action.
     /// </summary>
     /// <remarks>
-    ///     Used by the <see cref="GameManager"/> to indicate that the player
+    ///     Used by the <see cref="GameManager" /> to indicate that the player
     ///     has chosen to skip their current turn and let control pass to the next entity.
     /// </remarks>
     [Signal]
@@ -124,6 +155,20 @@ public partial class BattleInputSystem : Node
         _mapSystemContainer = GetNode<MapSystem>(_mapSystemPath);
         _camera3DContainer = GetNode<Camera3D>(_camera3DPath);
         GD.Print("BattleInputSystem initialized successfully");
+    }
+
+    #endregion
+
+    #region For testing methods
+
+    /// <summary>
+    ///     FOR TESTING ONLY: Manually sets the singleton instance.
+    ///     This method should only be used in unit tests.
+    /// </summary>
+    /// <param name="instance">The instance to set as the singleton.</param>
+    protected static void SetInstanceForTesting(BattleInputSystem? instance)
+    {
+        Instance = instance;
     }
 
     #endregion
@@ -216,20 +261,6 @@ public partial class BattleInputSystem : Node
     public void SetInputEnabled(bool enabled)
     {
         _inputEnabled = enabled;
-    }
-
-    #endregion
-
-    #region For testing methods
-
-    /// <summary>
-    /// FOR TESTING ONLY: Manually sets the singleton instance.
-    /// This method should only be used in unit tests.
-    /// </summary>
-    /// <param name="instance">The instance to set as the singleton.</param>
-    protected static void SetInstanceForTesting(BattleInputSystem? instance)
-    {
-        Instance = instance;
     }
 
     #endregion

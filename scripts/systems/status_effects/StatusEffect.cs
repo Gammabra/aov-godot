@@ -1,15 +1,14 @@
-using System;
-using AshesOfVelsingrad.utilities;
+using AshesOfVelsingrad.Utilities;
 using Godot;
 
 namespace AshesOfVelsingrad.Systems;
 
 /// <summary>
-///     Base class for all status effects that can be applied to an <see cref="IEffectTarget{TTarget}"/>.
+///     Base class for all status effects that can be applied to an <see cref="IEffectTarget{TTarget}" />.
 /// </summary>
 /// <typeparam name="TTarget">
 ///     The type of target this status effect can be applied to,
-///     such as <see cref="UnitSystem"/> or <see cref="MapSystem"/>.
+///     such as <see cref="UnitSystem" /> or <see cref="MapSystem" />.
 /// </typeparam>
 /// <remarks>
 ///     This class provides core properties and methods for a status effect,

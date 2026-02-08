@@ -52,7 +52,7 @@ public abstract class StatusEffect<TTarget>(
 
     /// <summary>
     ///     Called when this effect is applied to a target.
-    ///     Override this to implement custom logic (e.g., visual feedback, stat changes).
+    ///     Override this to implement custom logic (e.g., visual/audio feedback, stat changes).
     /// </summary>
     /// <param name="target">The target receiving the effect.</param>
     public virtual void OnApply(IEffectTarget<TTarget> target)
@@ -61,7 +61,7 @@ public abstract class StatusEffect<TTarget>(
 
     /// <summary>
     ///     Called when this effect is removed from a target.
-    ///     Override this to implement cleanup logic (e.g., removing buffs, stopping VFX).
+    ///     Override this to implement cleanup logic (e.g., removing buffs, stopping visual/audio feedback).
     /// </summary>
     /// <param name="target">The target losing the effect.</param>
     public virtual void OnRemove(IEffectTarget<TTarget> target)

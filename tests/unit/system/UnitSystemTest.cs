@@ -122,7 +122,6 @@ public class UnitSystemTest
     public void TakeDamage_ReducesHpBasedOnDefense()
     {
         TestConcreteUnitSystem unit = AddNodeToTestRoot(new TestConcreteUnitSystem());
-        unit.CallInitialize();
 
         unit.TakeDamage(20);
         AssertThat(unit.Hp).IsEqual(85);

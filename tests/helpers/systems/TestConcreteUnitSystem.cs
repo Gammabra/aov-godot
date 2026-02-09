@@ -33,7 +33,6 @@ public sealed partial class TestConcreteUnitSystem : UnitSystem
     {
         Name = "TestConcreteUnitSystem";
 
-        IsInitialized = true;
         UnitName = unitName;
         Description = description;
         MaxHp = maxHp;
@@ -52,7 +51,6 @@ public sealed partial class TestConcreteUnitSystem : UnitSystem
     {
         if (IsInitialized)
             return;
-        base.Initialize();
         IsInitialized = true;
 
         UnitName = "TestUnit";
@@ -66,8 +64,9 @@ public sealed partial class TestConcreteUnitSystem : UnitSystem
         PossibleMovesRange = 1;
         Type = AovDataStructures.UnitType.Player;
 
-        Log.Add("Initialized");
-
+        base.Initialize();
+        GD.Print($"[TEST] Total atk is {TotalAtk}");
+        GD.Print($"[TEST] Total def is {TotalDef}");
         GD.Print("[TEST] TestConcreteUnitSystem initialized");
     }
 

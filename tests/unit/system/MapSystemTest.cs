@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Reflection;
+using AshesOfVelsingrad.Data;
 using AshesOfVelsingrad.Systems;
 using GdUnit4;
 using Godot;
@@ -269,6 +271,26 @@ public class MapSystemTest
         AssertThat(map.Width).IsEqual(0);
         AssertThat(map.Height).IsEqual(0);
         AssertThat(map.Depth).IsEqual(0);
+    }
+
+    [TestCase]
+    public void SpreadStatusEffectToUnit()
+    {
+        TestConcreteMapSystem map = CreateAndInitialize<TestConcreteMapSystem>();
+        TestConcreteUnitSystem unit = AddToTestRoot(new TestConcreteUnitSystem());
+        StatusEffectSystem effectSystem = new();
+        BurningCellEffect effect = new(2);
+
+        unit.InjectDependencies(effectSystem);
+        map.AddWalkableCell(0, 0, 0);
+        map.CellsInformation[0].ApplyEffect(effect);
+        map.CellsInformation[0].OnUnitEntered(unit);
+        List<StatusEffect<UnitSystem>> unitEffects = unit.GetActiveEffects();
+        GD.Print($"Count = {unitEffects.Count}");
+
+        bool hasBurning = unitEffects.Any(e => e is BurningEffect);
+        AssertThat(map.CellsInformation[0].GetActiveEffects().Count).IsEqual(1);
+        AssertThat(hasBurning).IsTrue();
     }
 
     [AfterTest]

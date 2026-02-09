@@ -28,7 +28,8 @@ public sealed partial class TestConcreteUnitSystem : UnitSystem
         float baseDef = 5,
         float baseSpeed = 4,
         float manaPoint = 100,
-        int possibleMovesRange = 1
+        int possibleMovesRange = 1,
+        bool isAlive = true
     )
     {
         Name = "TestConcreteUnitSystem";
@@ -41,6 +42,7 @@ public sealed partial class TestConcreteUnitSystem : UnitSystem
         BaseSpeed = baseSpeed;
         ManaPoint = manaPoint;
         PossibleMovesRange = possibleMovesRange;
+        IsAlive = isAlive;
         Type = AovDataStructures.UnitType.Player;
         GD.Print("[TEST] TestConcreteUnitSystem constructor called");
     }

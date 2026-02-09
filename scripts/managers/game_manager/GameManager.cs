@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using AshesOfVelsingrad.Systems;
@@ -115,10 +116,31 @@ public partial class GameManager : BaseManager
         _turnManagerContainer.OnCurrentTurnEnd += CurrentTurnEnded;
         _turnManagerContainer.InitializeTurnOrder(_playerUnits, _enemyUnits);
 
-        if (_enemyUnits.Contains(_turnManagerContainer.GetCurrentUnit()))
-            DeactivatePlayerUnit();
+        // Debug: show unit counts to help diagnose empty turn order
+        GD.Print($"[DEBUG] Players: {_playerUnits.Count}, Enemies: {_enemyUnits.Count}");
+
+        bool hasUnits = (_playerUnits.Count + _enemyUnits.Count) > 0;
+
+        if (hasUnits)
+        {
+            try
+            {
+                if (_enemyUnits.Contains(_turnManagerContainer.GetCurrentUnit()))
+                    DeactivatePlayerUnit();
+                else
+                    ActivatePlayerUnit();
+            }
+            catch (Exception ex)
+            {
+                GD.PrintErr($"TurnManager.GetCurrentUnit() failed: {ex.Message}");
+                // Fallback: ensure player unit is deactivated to avoid undefined state
+                DeactivatePlayerUnit();
+            }
+        }
         else
-            ActivatePlayerUnit();
+        {
+            GD.PrintErr("No units found; skipping turn activation.");
+        }
 
         // Create EnemyAIManager as a battle-scoped instance (NOT a global singleton)
 		AIManager = new EnemyAIManager(this);

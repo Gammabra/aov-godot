@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using System.Linq;
 using AshesOfVelsingrad.Systems;
 using Godot;
 
@@ -42,8 +41,17 @@ public sealed partial class TestConcreteMapSystem : MapSystem
 
     public override void PlaceUnits(List<UnitSystem> playerUnits, List<UnitSystem> enemyUnits)
     {
-        CellsInformation[0].Unit = playerUnits[0];
-        CellsInformation[1].Unit = enemyUnits[1];
+        // Ensure we have enough cells
+        while (CellsInformation.Count < 2)
+        {
+            CellsInformation.Add(new CellInformation(CellsInformation.Count, 0, 0, CellType.Grass, true));
+        }
+        
+        if (playerUnits.Count > 0)
+            CellsInformation[0].Unit = playerUnits[0];
+        
+        if (enemyUnits.Count > 0)
+            CellsInformation[1].Unit = enemyUnits[0];
     }
 
     public void AddUnit(UnitSystem unit)

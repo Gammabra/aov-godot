@@ -72,7 +72,9 @@ public partial class GameManager
                 _enemyUnits.Add(unit);
             }
 
-        GD.Print($"Players count : {_playerUnits.Count} | Enemies count : {_enemyUnits.Count}");
+        GD.Print($"[DEBUG] Player container child count: {_playerUnitsContainer.GetChildCount()}");
+        foreach (Node child in _playerUnitsContainer.GetChildren())
+            GD.Print($"[DEBUG] player child: {child.Name} type: {child.GetType().FullName} isUnitSystem: {child is UnitSystem}");
     }
 
     /// <summary>

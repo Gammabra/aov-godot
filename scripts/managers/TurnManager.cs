@@ -230,6 +230,18 @@ public partial class TurnManager : BaseManager
 	/// <returns>The <see cref="UnitSystem"/> that is currently active.</returns>
 	public UnitSystem GetCurrentUnit()
 	{
+		if (_unitsTurnOrder.Count == 0)
+		{
+			GD.PrintErr("No units in turn order!");
+			throw new InvalidOperationException("Turn order is not initialized or is empty.");
+		}
+		
+		if (_currentIndex < 0 || _currentIndex >= _unitsTurnOrder.Count)
+		{
+			GD.PrintErr($"Current index {_currentIndex} out of range for turn order of size {_unitsTurnOrder.Count}");
+			throw new IndexOutOfRangeException($"Current index is out of range");
+		}
+		
 		return _unitsTurnOrder[_currentIndex].Key;
 	}
 

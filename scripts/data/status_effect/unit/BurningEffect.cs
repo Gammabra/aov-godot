@@ -4,25 +4,17 @@ using AshesOfVelsingrad.Utilities;
 
 namespace AshesOfVelsingrad.Data;
 
-public sealed class BurningEffect(int duration)
-    : StatusEffect<UnitSystem>("Burning", "BurningEffect", duration, false)
+public sealed class BurningEffect(
+    int duration,
+    AovDataStructures.ModifierType modifierType,
+    float amount
+)
+    : StatusEffect<UnitSystem>("Burning", "BurningEffect", duration, false, modifierType, amount)
 {
-    public override void OnApply(IEffectTarget<UnitSystem> target)
-    {
-        GD.Print($"Applying BurningEffect on {target}");
-        base.OnApply(target);
-    }
-
     public override void OnTurnPassed(IEffectTarget<UnitSystem> target)
     {
         if (target is UnitSystem unit)
-            unit.OnEffectDamage(AovDataStructures.ModifierType.Flat, 10);
+            unit.OnEffectDamage(ModifierType, Amount);
         base.OnTurnPassed(target);
-    }
-
-    public override void OnRemove(IEffectTarget<UnitSystem> target)
-    {
-        GD.Print($"Applying BurningEffect on {target}");
-        base.OnRemove(target);
     }
 }

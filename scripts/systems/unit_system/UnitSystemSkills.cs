@@ -115,7 +115,7 @@ public abstract partial class UnitSystem
             return;
         }
 
-        skill.Use(targets, map);
+        skill.Use(this, targets, map);
         ManaPoint -= skill.ManaCost;
         ReportSystemUnitHasPlayed();
     }

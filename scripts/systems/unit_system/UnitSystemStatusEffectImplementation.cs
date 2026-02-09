@@ -11,6 +11,9 @@ public abstract partial class UnitSystem : IEffectTarget<UnitSystem>, IStatusEff
     private readonly EffectTarget<UnitSystem> _effectTarget = new();
     private StatusEffectSystem? _statusEffectSystem;
 
+    private float _atkModifierAmount;
+    private float _defModifierAmount;
+
     private Dictionary<AovDataStructures.StatTypeWithModifier, Func<float>> _baseStats =>
         new()
         {
@@ -21,28 +24,52 @@ public abstract partial class UnitSystem : IEffectTarget<UnitSystem>, IStatusEff
     private Dictionary<AovDataStructures.StatTypeWithModifier, Action<float>> _applyModifiers =>
         new()
         {
-            { AovDataStructures.StatTypeWithModifier.Atk, v => AtkModifierAmount += v },
-            { AovDataStructures.StatTypeWithModifier.Def, v => DefModifierAmount += v }
+            {
+                AovDataStructures.StatTypeWithModifier.Atk, v =>
+                {
+                    _atkModifierAmount += v;
+                    TotalAtk = BaseAtk + _atkModifierAmount;
+                }
+            },
+            {
+                AovDataStructures.StatTypeWithModifier.Def, v =>
+                {
+                    _defModifierAmount += v;
+                    TotalDef = BaseDef + _defModifierAmount;
+                }
+            }
         };
 
     private Dictionary<AovDataStructures.StatTypeWithModifier, Action<float>> _removeModifiers =>
         new()
         {
-            { AovDataStructures.StatTypeWithModifier.Atk, v => AtkModifierAmount -= v },
-            { AovDataStructures.StatTypeWithModifier.Def, v => DefModifierAmount -= v }
+            {
+                AovDataStructures.StatTypeWithModifier.Atk, v =>
+                {
+                    _atkModifierAmount -= v;
+                    TotalAtk = BaseAtk + _atkModifierAmount;
+                }
+            },
+            {
+                AovDataStructures.StatTypeWithModifier.Def, v =>
+                {
+                    _defModifierAmount -= v;
+                    TotalDef = BaseDef + _defModifierAmount;
+                }
+            }
         };
 
     #endregion
 
     #region Public Properties
 
-    public float AtkModifierAmount { get; protected set; }
-    public float DefModifierAmount { get; protected set; }
+    public float TotalAtk { get; private set; }
+    public float TotalDef { get; private set; }
 
     /// <summary>
     ///     Tell if the unit is controlled or not
     /// </summary>
-    public bool IsControlled { get; protected set; }
+    public bool IsControlled { get; private set; }
 
     #endregion
 

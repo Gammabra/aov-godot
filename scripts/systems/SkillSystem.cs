@@ -76,7 +76,7 @@ public abstract class SkillSystem
     ///     This method must be implemented in derived classes
     ///     to define the actual effect of the skill (damage, healing, etc.).
     /// </remarks>
-    public abstract void Use(List<UnitSystem> targets, MapSystem? map);
+    public abstract void Use(UnitSystem caster, List<UnitSystem> targets, MapSystem? map);
 
     /// <summary>
     ///     Set the cooldown of the skill to the total cooldown

@@ -14,7 +14,7 @@ public sealed class Skill1 : SkillSystem
         Range = 1;
     }
 
-    public override void Use(List<UnitSystem> targets, MapSystem? map)
+    public override void Use(UnitSystem caster, List<UnitSystem> targets, MapSystem? map)
     {
         targets[0].SetStatusEffectOnUnit(new BurningEffect(1, AovDataStructures.ModifierType.Flat, 10));
     }
@@ -25,10 +25,10 @@ public sealed class Skill2 : SkillSystem
     public Skill2()
     {
         TargetType = AovDataStructures.TargetTypes.SingleAlly;
-        Range = 1;
+        Range = 0;
     }
 
-    public override void Use(List<UnitSystem> targets, MapSystem? map)
+    public override void Use(UnitSystem caster, List<UnitSystem> targets, MapSystem? map)
     {
         targets[0].SetStatusEffectOnUnit(new AtkBuffer(10, AovDataStructures.ModifierType.Flat, 10));
     }
@@ -42,9 +42,8 @@ public sealed class Skill3 : SkillSystem
         Range = 2;
     }
 
-    public override void Use(List<UnitSystem> targets, MapSystem? map)
+    public override void Use(UnitSystem caster, List<UnitSystem> targets, MapSystem? map)
     {
-        GD.Print(targets[0].Name);
         targets[0].SetStatusEffectOnUnit(new Stun(1));
     }
 }
@@ -54,12 +53,12 @@ public sealed class Skill4 : SkillSystem
     public Skill4()
     {
         TargetType = AovDataStructures.TargetTypes.SingleEnemy;
-        Range = 4;
+        Range = 2;
     }
 
-    public override void Use(List<UnitSystem> targets, MapSystem? map)
+    public override void Use(UnitSystem caster, List<UnitSystem> targets, MapSystem? map)
     {
-        targets[0].TakeDamage(4);
+        targets[0].TakeDamage(caster.TotalAtk);
     }
 }
 
@@ -71,7 +70,7 @@ public sealed class Skill5 : SkillSystem
         Range = 5;
     }
 
-    public override void Use(List<UnitSystem> targets, MapSystem? map)
+    public override void Use(UnitSystem caster, List<UnitSystem> targets, MapSystem? map)
     {
         targets[0].TakeDamage(5);
     }

@@ -40,7 +40,7 @@ public sealed class CellInformation(
     {
         foreach (StatusEffect<CellInformation> effect in GetActiveEffects())
             if (effect.EffectToSpread is StatusEffect<UnitSystem> unitEffect)
-                unit.ApplyEffect(unitEffect);
+                unit.SetStatusEffectOnUnit(unitEffect);
     }
 
     /// <summary>

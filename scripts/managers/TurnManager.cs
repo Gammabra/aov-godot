@@ -108,13 +108,19 @@ public partial class TurnManager : BaseManager
             switch (_currentTurnState)
             {
                 case AovDataStructures.TurnState.PlayerTurn:
-                    OnPlayerTurn?.Invoke();
-                    await _unitsTurnOrder[_currentIndex].Key.WaitForActionAsync();
+                    if (!_unitsTurnOrder[_currentIndex].Key.IsControlled)
+                    {
+                        OnPlayerTurn?.Invoke();
+                        await _unitsTurnOrder[_currentIndex].Key.WaitForActionAsync();
+                    }
+
                     OnPlayerTurnEnd?.Invoke();
                     break;
                 case AovDataStructures.TurnState.EnemyTurn:
-                    await WaitForEnemyAction(_unitsTurnOrder[_currentIndex].Key);
+                    if (!_unitsTurnOrder[_currentIndex].Key.IsControlled)
+                        await WaitForEnemyAction(_unitsTurnOrder[_currentIndex].Key);
                     OnEnemyTurnEnd?.Invoke();
+
                     break;
             }
 
@@ -124,18 +130,18 @@ public partial class TurnManager : BaseManager
             _currentIndex++;
             for (; _currentIndex < _unitsTurnOrder.Count; _currentIndex++)
             {
-                if (_unitsTurnOrder[_currentIndex].Key.IsControlled)
-                    continue;
                 if (_unitsTurnOrder[_currentIndex].Key.IsAlive)
                     break;
             }
 
-            if (_currentIndex == _unitsTurnOrder.Count)
+            if (_currentIndex >= _unitsTurnOrder.Count)
             {
                 _currentIndex = 0;
                 _turn++;
                 OnCurrentTurnEnd?.Invoke();
             }
+
+            GD.Print($"Current index after trying reset to 0 loop : {_currentIndex}");
 
             _currentTurnState = _unitsTurnOrder[_currentIndex].Value;
         }
@@ -196,7 +202,7 @@ public partial class TurnManager : BaseManager
         GD.Print("Starting Battle");
         _currentTurnState = _unitsTurnOrder[_currentIndex].Value;
         _turn++;
-        await ProcessTurn();
+        await Task.Run(async () => await ProcessTurn());
     }
 
     /// <summary>

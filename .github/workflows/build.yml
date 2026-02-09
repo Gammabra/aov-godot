@@ -29,7 +29,7 @@ jobs:
         run: |
           mkdir -p ~/.local/share/godot/export_templates/4.6.stable.mono
           cd ~/.local/share/godot/export_templates/4.6.stable.mono
-          wget https://github.com/godotengine/godot/releases/download/4.6-stable/Godot_v4.6-stable_mono_export_templates.tpz
+          wget https://github.com/godotengine/godot-builds/releases/download/4.6-stable/Godot_v4.6-stable_mono_export_templates.tpz
           unzip Godot_v4.6-stable_mono_export_templates.tpz
           mv templates/* .
           rm -rf templates Godot_v4.6-stable_mono_export_templates.tpz

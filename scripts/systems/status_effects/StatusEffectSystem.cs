@@ -74,17 +74,26 @@ public sealed class StatusEffectSystem
     /// </remarks>
     public void ApplyEffect<TTarget>(IEffectTarget<TTarget> target, StatusEffect<TTarget> newEffect)
     {
+        StatusEffect<TTarget>? existing = null;
+
         // Add the target to the list if not already present
         if (!_allTargets.Contains(target))
             _allTargets.Add(target);
 
         // Check if the effect already exists
-        StatusEffect<TTarget>? existing = target
-            .GetActiveEffects()
-            .FirstOrDefault(e => e.GetType() == newEffect.GetType());
+        foreach (StatusEffect<TTarget> effect in target.GetActiveEffects())
+        {
+            if (effect.Name != newEffect.Name)
+                continue;
+            existing = effect;
+            break;
+        }
 
-        if (existing is not null && existing.IsStackable)
-            existing.AddStack();
+        if (existing is not null)
+        {
+            if (existing.IsStackable)
+                existing.AddStack();
+        }
         else if (existing == null)
         {
             target.ApplyEffect(newEffect);

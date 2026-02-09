@@ -40,7 +40,7 @@ public class TestConcreteSkillSystem : SkillSystem
         GD.Print("[TEST] TestConcreteSkillSystem constructor called");
     }
 
-    public override void Use(List<UnitSystem> targets, MapSystem? map)
+    public override void Use(UnitSystem caster, List<UnitSystem> targets, MapSystem? map)
     {
         WasUsed = true;
 

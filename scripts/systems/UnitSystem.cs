@@ -299,15 +299,13 @@ public abstract partial class UnitSystem : CharacterBody3D, IEffectTarget<UnitSy
     /// <param name="isAlive">A boolean to set unit <see cref="IsAlive"/> value</param>
     public void SetIsAlive(bool isAlive)
     {
-        if (!isAlive)
+        if (!isAlive && Hp <= 0)
         {
-            if (Hp <= 0)
-                IsAlive = isAlive;
+            IsAlive = isAlive;
         }
-        else
+        else if (isAlive && Hp > 0)
         {
-            if (Hp >= 0)
-                IsAlive = isAlive;
+            IsAlive = isAlive;
         }
     }
 

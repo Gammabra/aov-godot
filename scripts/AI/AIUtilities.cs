@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using AshesOfVelsingrad.Managers;
 using AshesOfVelsingrad.Systems;
 using Godot;
@@ -238,7 +237,6 @@ public static class AIUtilities
 	/// Calculates the total threat level of nearby enemies.
 	/// </summary>
 	public static float CalculateThreatLevel(
-		UnitSystem unit,
 		Vector3I position, 
 		BattleState battleState, 
 		int range)
@@ -279,7 +277,7 @@ public static class AIUtilities
 		int dz = Math.Abs(to.Z - from.Z);
 		
 		// For now, just check if the path is relatively clear
-		// This is a placeholder - you could implement Bresenham's line algorithm here
+		// TODO: This is a placeholder - implement Bresenham's line algorithm here
 		return dx <= 5 && dz <= 5;
 	}
 

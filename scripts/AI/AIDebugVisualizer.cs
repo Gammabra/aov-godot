@@ -105,7 +105,7 @@ public partial class AIDebugVisualizer : Node3D
 
 		foreach (var move in possibleMoves)
 		{
-			float threatLevel = AIUtilities.CalculateThreatLevel(unit, move, battleState, range);
+			float threatLevel = AIUtilities.CalculateThreatLevel(move, battleState, range);
 			
 			// Normalize threat level to color intensity
 			float intensity = Mathf.Clamp(threatLevel / 100f, 0f, 1f);
@@ -341,7 +341,6 @@ public partial class AIDebugVisualizer : Node3D
 	private MeshInstance3D CreateArrow(Vector3 from, Vector3 to, Color color)
 	{
 		// Create a simple cylinder as an arrow
-		var direction = (to - from).Normalized();
 		var distance = from.DistanceTo(to);
 		var midpoint = (from + to) / 2;
 

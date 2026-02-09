@@ -261,6 +261,28 @@ public class MapSystemTest
 	}
 
 	[TestCase]
+	public void InjectDependencies_SetsStatusEffectSystem()
+	{
+		TestConcreteMapSystem map = CreateAndInitialize<TestConcreteMapSystem>();
+		StatusEffectSystem ses = new();
+		
+		// Inject dependencies
+		map.InjectDependencies(ses);
+		
+		// Add a cell and apply a status effect
+		TestConcreteStatusEffect<CellInformation> effect = new();
+		map.AddWalkableCell(0, 0, 0);
+		
+		map.SetStatusEffectOnCells(
+			new List<(int, int, int)> { (0, 0, 0) },
+			effect
+		);
+		
+		// Verify the effect was applied (which proves the dependency injection worked)
+		AssertThat(effect.ApplyCalled).IsTrue();
+	}
+
+	[TestCase]
 	public void WidthHeightDepth_ZeroWhenNoCells()
 	{
 		TestConcreteMapSystem map = CreateAndInitialize<TestConcreteMapSystem>();
@@ -268,6 +290,112 @@ public class MapSystemTest
 		AssertThat(map.Width).IsEqual(0);
 		AssertThat(map.Height).IsEqual(0);
 		AssertThat(map.Depth).IsEqual(0);
+	}
+
+	[TestCase]
+	public void GetCellType_ReturnsCorrectCellType()
+	{
+		TestConcreteMapSystem map = CreateAndInitialize<TestConcreteMapSystem>();
+		map.AddWalkableCell(0, 0, 0); // Grass type
+		map.AddEmptyCell(1, 0, 0);    // Empty type
+
+		AssertThat(map.GetCellType(new Vector3I(0, 0, 0))).IsEqual(CellType.Grass);
+		AssertThat(map.GetCellType(new Vector3I(1, 0, 0))).IsEqual(CellType.Empty);
+	}
+
+	[TestCase]
+	public void GetCellType_ThrowsOnInvalidPosition()
+	{
+		TestConcreteMapSystem map = CreateAndInitialize<TestConcreteMapSystem>();
+		map.AddWalkableCell(0, 0, 0);
+
+		AssertThrown(() => 
+			map.GetCellType(new Vector3I(99, 99, 99))
+		)
+			.IsInstanceOf<ArgumentOutOfRangeException>()
+			.HasPropertyValue("ParamName", "Out of range"); // Changed from HasMessage
+	}
+
+	[TestCase]
+	public void MapCellSize_SetCorrectlyOnInitialize()
+	{
+		TestConcreteMapSystem map = CreateAndInitialize<TestConcreteMapSystem>();
+		
+		// Default GridMap CellSize is (1, 1, 1)
+		AssertThat(map.MapCellSize).IsEqual(new Vector3(1, 1, 1));
+	}
+
+	[TestCase]
+	public void GetUnitPosition_ReturnsNullWhenUnitNotOnMap()
+	{
+		TestConcreteMapSystem map = CreateAndInitialize<TestConcreteMapSystem>();
+		TestConcreteUnitSystem unit = AddToTestRoot(new TestConcreteUnitSystem());
+		
+		map.AddWalkableCell(0, 0, 0);
+		// Don't place the unit on the map
+		
+		Vector3I? pos = map.GetUnitPosition(unit);
+		AssertThat(pos).IsNull();
+	}
+
+	[TestCase]
+	public void MoveUnit_HandlesWalkabilityToggle()
+	{
+		TestConcreteMapSystem map = CreateAndInitialize<TestConcreteMapSystem>();
+		TestConcreteUnitSystem unit = AddToTestRoot(new TestConcreteUnitSystem());
+
+		map.AddWalkableCell(0, 0, 0);
+		map.AddWalkableCell(1, 0, 0);
+
+		// Initially both cells are walkable
+		AssertThat(map.IsWalkable(0, 0, 0)).IsTrue();
+		AssertThat(map.IsWalkable(1, 0, 0)).IsTrue();
+
+		// Place unit on (0,0,0) - should make it unwalkable
+		map.CellsInformation[0].Unit = unit;
+		map.SetWalkable(0, 0, 0); // Toggle to unwalkable
+
+		AssertThat(map.IsWalkable(0, 0, 0)).IsFalse();
+
+		// Move unit to (1,0,0)
+		map.MoveUnit(unit, 1, 0, 0);
+
+		// Old cell should be walkable again, new cell should be unwalkable
+		AssertThat(map.IsWalkable(0, 0, 0)).IsTrue();
+		AssertThat(map.IsWalkable(1, 0, 0)).IsFalse();
+	}
+
+	[TestCase]
+	public void SetStatusEffectOnCells_IgnoresOutOfBoundsCells()
+	{
+		TestConcreteMapSystem map = CreateAndInitialize<TestConcreteMapSystem>();
+		StatusEffectSystem ses = new();
+		map.InjectDependencies(ses);
+
+		TestConcreteStatusEffect<CellInformation> effect = new();
+
+		map.AddWalkableCell(0, 0, 0);
+
+		// Include a valid cell and an invalid cell
+		map.SetStatusEffectOnCells(
+			new List<(int, int, int)> { (0, 0, 0), (99, 99, 99) },
+			effect
+		);
+
+		// Should still apply to valid cell and ignore invalid one (not throw)
+		AssertThat(effect.ApplyCalled).IsTrue();
+	}
+
+	[TestCase]
+	public void CellTypeWalkable_ContainsAllCellTypes()
+	{
+		// Ensure the static dictionary has entries for all CellType enum values
+		AssertThat(MapSystem.CellTypeWalkable.ContainsKey(CellType.Empty)).IsTrue();
+		AssertThat(MapSystem.CellTypeWalkable.ContainsKey(CellType.Grass)).IsTrue();
+		
+		// Verify the values
+		AssertThat(MapSystem.CellTypeWalkable[CellType.Empty]).IsFalse();
+		AssertThat(MapSystem.CellTypeWalkable[CellType.Grass]).IsTrue();
 	}
 
 	[AfterTest]

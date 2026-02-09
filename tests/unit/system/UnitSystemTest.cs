@@ -258,6 +258,303 @@ public class UnitSystemTest
         AssertThat(reachable.Contains((1, 0, 0))).IsTrue();
     }
 
+    [TestCase]
+    public void Initialize_SetsCharacterSprite_WhenSprite3DChildExists()
+    {
+        TestConcreteUnitSystem unit = AddNodeToTestRoot(new TestConcreteUnitSystem());
+        
+        // Add a Sprite3D child
+        Sprite3D sprite = new Sprite3D { Name = "TestSprite" };
+        unit.AddChild(sprite);
+        
+        unit.CallInitialize();
+
+        AssertThat(unit.CharacterSprite).IsNotNull();
+        AssertThat(unit.CharacterSprite).IsEqual(sprite);
+    }
+
+    [TestCase]
+    public void Initialize_CharacterSpriteIsNull_WhenNoSprite3DChild()
+    {
+        TestConcreteUnitSystem unit = AddNodeToTestRoot(new TestConcreteUnitSystem());
+        unit.CallInitialize();
+
+        AssertThat(unit.CharacterSprite).IsNull();
+    }
+
+    [TestCase]
+    public void CanMoveTo_ReturnsTrueForWalkableCell()
+    {
+        TestConcreteUnitSystem unit = AddNodeToTestRoot(new TestConcreteUnitSystem());
+        unit.CallInitialize();
+
+        TestConcreteMapSystem map = CreateAndInitializeMap<TestConcreteMapSystem>();
+        map.AddWalkableCell(0, 0, 0);
+
+        bool canMove = unit.CanMoveTo(0, 0, 0, map);
+        AssertThat(canMove).IsTrue();
+    }
+
+    [TestCase]
+    public void CanMoveTo_ReturnsFalseForNonWalkableCell()
+    {
+        TestConcreteUnitSystem unit = AddNodeToTestRoot(new TestConcreteUnitSystem());
+        unit.CallInitialize();
+
+        TestConcreteMapSystem map = CreateAndInitializeMap<TestConcreteMapSystem>();
+        map.AddEmptyCell(0, 0, 0);
+
+        bool canMove = unit.CanMoveTo(0, 0, 0, map);
+        AssertThat(canMove).IsFalse();
+    }
+
+    [TestCase]
+    public void SetGridPosition_MovesUnitToCorrectPosition()
+    {
+        TestConcreteUnitSystem unit = AddNodeToTestRoot(new TestConcreteUnitSystem());
+        unit.CallInitialize();
+
+        TestConcreteMapSystem map = CreateAndInitializeMap<TestConcreteMapSystem>();
+        map.AddWalkableCell(0, 0, 0);
+        map.AddWalkableCell(1, 0, 0);
+        
+        // Place unit at (0,0,0)
+        map.CellsInformation[0].Unit = unit;
+
+        // Move to (1,0,0)
+        unit.SetGridPosition(1, 0, 0, map);
+
+        AssertThat(map.GetUnitAt(1, 0, 0)).IsEqual(unit);
+        AssertThat(map.GetUnitAt(0, 0, 0)).IsNull();
+    }
+
+    [TestCase]
+    public void SetGridPosition_HandlesOutOfRangeGracefully()
+    {
+        TestConcreteUnitSystem unit = AddNodeToTestRoot(new TestConcreteUnitSystem());
+        unit.CallInitialize();
+
+        TestConcreteMapSystem map = CreateAndInitializeMap<TestConcreteMapSystem>();
+        map.AddWalkableCell(0, 0, 0);
+
+        // Should not throw, just print error
+        unit.SetGridPosition(99, 99, 99, map);
+        
+        // Unit should still be at original position (not moved)
+        AssertThat(map.GetUnitAt(0, 0, 0)).IsNull();
+    }
+
+    [TestCase]
+    public void TakeDamage_NeverReducesBelowZero()
+    {
+        TestConcreteUnitSystem unit = AddNodeToTestRoot(new TestConcreteUnitSystem());
+        unit.CallInitialize();
+
+        // Defense is 5, so 5 damage should result in 0 real damage
+        unit.TakeDamage(5);
+        AssertThat(unit.Hp).IsEqual(100); // No damage taken
+
+        // Less than defense also results in 0 damage
+        unit.TakeDamage(3);
+        AssertThat(unit.Hp).IsEqual(100);
+    }
+
+    [TestCase]
+    public void TakeDamage_CanReduceHpToZero()
+    {
+        TestConcreteUnitSystem unit = AddNodeToTestRoot(new TestConcreteUnitSystem());
+        unit.CallInitialize();
+
+        // Deal 105 damage (100 HP + 5 defense)
+        unit.TakeDamage(105);
+        AssertThat(unit.Hp).IsEqual(0);
+    }
+
+    [TestCase]
+    public void TakeDamage_CanReduceHpBelowZero()
+    {
+        TestConcreteUnitSystem unit = AddNodeToTestRoot(new TestConcreteUnitSystem());
+        unit.CallInitialize();
+
+        // Deal 200 damage
+        unit.TakeDamage(200);
+        AssertThat(unit.Hp).IsLess(0);
+    }
+
+    [TestCase]
+    public void SetIsAlive_OnlySetsFalseWhenHpIsZeroOrLess()
+    {
+        TestConcreteUnitSystem unit = AddNodeToTestRoot(new TestConcreteUnitSystem());
+        unit.CallInitialize();
+
+        // Try to set dead when HP is positive - should not work
+        unit.SetIsAlive(false);
+        AssertThat(unit.IsAlive).IsTrue(); // Should still be alive
+
+        // Now reduce HP to 0
+        unit.TakeDamage(105);
+        unit.SetIsAlive(false);
+        AssertThat(unit.IsAlive).IsFalse(); // Now it should work
+    }
+
+    [TestCase]
+    public void SetIsAlive_OnlySetsTrueWhenHpIsPositive()
+    {
+        TestConcreteUnitSystem unit = AddNodeToTestRoot(new TestConcreteUnitSystem());
+        unit.CallInitialize();
+
+        // Kill the unit
+        unit.TakeDamage(105);
+        unit.SetIsAlive(false);
+
+        // Try to revive when HP is still 0 - should not work
+        unit.SetIsAlive(true);
+        AssertThat(unit.IsAlive).IsFalse(); // Should still be dead
+    }
+
+    [TestCase]
+    public void GetActiveEffects_ReturnsAllAppliedEffects()
+    {
+        TestConcreteUnitSystem unit = AddNodeToTestRoot(new TestConcreteUnitSystem());
+        unit.CallInitialize();
+
+        TestConcreteStatusEffect<UnitSystem> effect1 = new();
+        TestConcreteStatusEffect<UnitSystem> effect2 = new();
+        
+        unit.ApplyEffect(effect1);
+        unit.ApplyEffect(effect2);
+
+        var activeEffects = unit.GetActiveEffects();
+        AssertThat(activeEffects.Count).IsEqual(2);
+        AssertThat(activeEffects.Contains(effect1)).IsTrue();
+        AssertThat(activeEffects.Contains(effect2)).IsTrue();
+    }
+
+    [TestCase]
+    public void GetActiveEffects_ReturnsEmptyListWhenNoEffects()
+    {
+        TestConcreteUnitSystem unit = AddNodeToTestRoot(new TestConcreteUnitSystem());
+        unit.CallInitialize();
+
+        var activeEffects = unit.GetActiveEffects();
+        AssertThat(activeEffects.Count).IsEqual(0);
+    }
+
+    [TestCase]
+    public void WaitForActionAsync_TaskCompletesOnPassTurn()
+    {
+        TestConcreteUnitSystem unit = AddNodeToTestRoot(new TestConcreteUnitSystem());
+        unit.CallInitialize();
+
+        Task task = unit.WaitForActionAsync();
+        AssertThat(task.IsCompleted).IsFalse();
+
+        unit.PassTurn();
+        AssertThat(task.IsCompleted).IsTrue();
+    }
+
+    [TestCase]
+    public void WaitForActionAsync_TaskCompletesOnPlay()
+    {
+        TestConcreteUnitSystem unit = AddNodeToTestRoot(new TestConcreteUnitSystem());
+        unit.CallInitialize();
+
+        TestConcreteSkillSystem skill = new();
+        unit.ActiveSkills.Add(skill);
+
+        Task task = unit.WaitForActionAsync();
+        AssertThat(task.IsCompleted).IsFalse();
+
+        unit.Play(new List<UnitSystem>(), null, skill);
+        AssertThat(task.IsCompleted).IsTrue();
+    }
+
+    [TestCase]
+    public void Play_MultipleSkills_ReducesManaCorrectly()
+    {
+        TestConcreteUnitSystem unit = AddNodeToTestRoot(new TestConcreteUnitSystem());
+        unit.CallInitialize();
+
+        TestConcreteSkillSystem skill1 = new();
+        TestConcreteSkillSystem skill2 = new();
+        unit.ActiveSkills.Add(skill1);
+        unit.ActiveSkills.Add(skill2);
+
+        unit.Play(new List<UnitSystem>(), null, skill1);
+        AssertThat(unit.Mana).IsEqual(95); // 100 - 5
+
+        // In real scenario, mana would regenerate or this would be a new turn
+        // But for testing, just verify it can be called again
+        unit.Play(new List<UnitSystem>(), null, skill2);
+        AssertThat(unit.Mana).IsEqual(90); // 95 - 5
+    }
+
+    [TestCase]
+    public void GetPossibleMoves_ReturnsEmptyWhenUnitNotOnMap()
+    {
+        TestConcreteUnitSystem unit = AddNodeToTestRoot(new TestConcreteUnitSystem());
+        unit.CallInitialize();
+
+        TestConcreteMapSystem map = CreateAndInitializeMap<TestConcreteMapSystem>();
+        map.AddWalkableCell(0, 0, 0);
+        // Don't add unit to map
+
+        List<Vector3I> moves = unit.GetPossibleMoves(map);
+        AssertThat(moves.Count).IsEqual(0);
+    }
+
+    [TestCase]
+    public void GetPossibleMoves_DoesNotIncludeCurrentPosition()
+    {
+        TestConcreteUnitSystem unit = AddNodeToTestRoot(new TestConcreteUnitSystem());
+        unit.CallInitialize();
+
+        TestConcreteMapSystem map = CreateAndInitializeMap<TestConcreteMapSystem>();
+        map.AddWalkableCell(0, 0, 0);
+        map.AddWalkableCell(1, 0, 0);
+        map.AddUnit(unit);
+
+        List<Vector3I> moves = unit.GetPossibleMoves(map);
+        
+        Vector3I? unitPos = map.GetUnitPosition(unit);
+        AssertThat(unitPos).IsNotNull();
+        AssertThat(moves.Contains(unitPos!.Value)).IsFalse();
+    }
+
+    [TestCase]
+    public void GetReachableCellsForSkills_ReturnsEmptyWhenUnitNotOnMap()
+    {
+        TestConcreteUnitSystem unit = AddNodeToTestRoot(new TestConcreteUnitSystem());
+        unit.CallInitialize();
+
+        TestConcreteSkillSystem skill = new();
+        TestConcreteMapSystem map = CreateAndInitializeMap<TestConcreteMapSystem>();
+        map.AddWalkableCell(0, 0, 0);
+        // Don't add unit to map
+
+        List<(int, int, int)> reachable = unit.GetReachableCellsForSkills(map, skill);
+        AssertThat(reachable.Count).IsEqual(0);
+    }
+
+    [TestCase]
+    public void GetReachableCellsForSkills_OnlyReturnsNonEmptyCells()
+    {
+        TestConcreteUnitSystem unit = AddNodeToTestRoot(new TestConcreteUnitSystem());
+        unit.CallInitialize();
+
+        TestConcreteSkillSystem skill = new();
+        TestConcreteMapSystem map = CreateAndInitializeMap<TestConcreteMapSystem>();
+        map.AddWalkableCell(0, 0, 0);
+        map.AddWalkableCell(1, 0, 0);
+        map.AddEmptyCell(2, 0, 0); // This should not be included
+        map.AddUnit(unit);
+
+        List<(int, int, int)> reachable = unit.GetReachableCellsForSkills(map, skill);
+        
+        AssertThat(reachable.Contains((1, 0, 0))).IsTrue();
+        AssertThat(reachable.Contains((2, 0, 0))).IsFalse(); // Empty cells filtered out
+    }
+
     [AfterTest]
     public void TearDown()
     {

@@ -4,10 +4,10 @@ using System.Linq;
 using System.Reflection;
 using AshesOfVelsingrad.Data;
 using AshesOfVelsingrad.Systems;
+using AshesOfVelsingrad.Utilities;
 using GdUnit4;
 using Godot;
 using static GdUnit4.Assertions;
-using AshesOfVelsingrad.Utilities;
 
 namespace UnitTests;
 

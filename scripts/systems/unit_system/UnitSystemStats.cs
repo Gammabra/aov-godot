@@ -1,4 +1,4 @@
-﻿namespace AshesOfVelsingrad.Systems;
+namespace AshesOfVelsingrad.Systems;
 
 public abstract partial class UnitSystem
 {

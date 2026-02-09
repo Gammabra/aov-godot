@@ -1,4 +1,4 @@
-﻿namespace AshesOfVelsingrad.Utilities;
+namespace AshesOfVelsingrad.Utilities;
 
 /// <summary>
 ///     Provides shared data structures and enumerations used across the game systems.

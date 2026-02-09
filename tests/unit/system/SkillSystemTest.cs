@@ -2,10 +2,10 @@ using System;
 using System.Collections.Generic;
 using System.Reflection;
 using AshesOfVelsingrad.Systems;
+using AshesOfVelsingrad.Utilities;
 using GdUnit4;
 using Godot;
 using static GdUnit4.Assertions;
-using AshesOfVelsingrad.Utilities;
 
 namespace UnitTests;
 

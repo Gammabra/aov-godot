@@ -5,6 +5,7 @@ using AshesOfVelsingrad.Systems;
 using GdUnit4;
 using Godot;
 using static GdUnit4.Assertions;
+using AshesOfVelsingrad.Utilities;
 
 namespace UnitTests;
 
@@ -81,9 +82,9 @@ public class SkillSystemTest
         AssertThat(skill.TotalCooldown).IsEqual(0);
         AssertThat(skill.Cooldown).IsEqual(0);
         AssertThat(skill.Range).IsEqual(1);
-        AssertThat(skill.MagicType).IsEqual(MagicType.None);
-        AssertThat(skill.EffectType).IsEqual(EffectType.Damage);
-        AssertThat(skill.TargetType).IsEqual(TargetTypes.SingleEnemy);
+        AssertThat(skill.MagicType).IsEqual(AovDataStructures.MagicType.None);
+        AssertThat(skill.EffectType).IsEqual(AovDataStructures.EffectType.Damage);
+        AssertThat(skill.TargetType).IsEqual(AovDataStructures.TargetTypes.SingleEnemy);
         AssertThat(skill.AreaEffect).IsNotNull();
     }
 

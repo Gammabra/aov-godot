@@ -1,4 +1,5 @@
 ﻿using AshesOfVelsingrad.Systems;
+using AshesOfVelsingrad.Utilities;
 
 namespace AshesOfVelsingrad.Data;
 
@@ -7,6 +8,6 @@ public sealed class BurningCellEffect : StatusEffect<CellInformation>
     public BurningCellEffect(int duration)
         : base("BurningCell", "BurningCellEffect", duration, false)
     {
-        EffectToSpread = new BurningEffect(2);
+        EffectToSpread = new BurningEffect(2, AovDataStructures.ModifierType.Flat, 5);
     }
 }

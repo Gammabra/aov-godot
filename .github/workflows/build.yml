@@ -27,12 +27,12 @@ jobs:
 
       - name: Install Godot export templates
         run: |
-          mkdir -p ~/.local/share/godot/export_templates/4.5.1.stable.mono
-          cd ~/.local/share/godot/export_templates/4.5.1.stable.mono
-          wget https://github.com/godotengine/godot/releases/download/4.5.1-stable/Godot_v4.5.1-stable_mono_export_templates.tpz
-          unzip Godot_v4.5.1-stable_mono_export_templates.tpz
+          mkdir -p ~/.local/share/godot/export_templates/4.6.0.stable.mono
+          cd ~/.local/share/godot/export_templates/4.6.0.stable.mono
+          wget https://github.com/godotengine/godot/releases/download/4.6.0-stable/Godot_v4.6.0-stable_mono_export_templates.tpz
+          unzip Godot_v4.6.0-stable_mono_export_templates.tpz
           mv templates/* .
-          rm -rf templates Godot_v4.5.1-stable_mono_export_templates.tpz
+          rm -rf templates Godot_v4.6.0-stable_mono_export_templates.tpz
 
       - name: Check if C# project exists
         id: check_csharp

@@ -97,7 +97,7 @@ public class SkillSystemTest
         List<UnitSystem> targets = new() { unitA, unitB };
         TestConcreteMapSystem map = CreateAndInitializeMap<TestConcreteMapSystem>();
 
-        skill.Use(targets, map);
+        skill.Use(unitA, targets, map);
 
         AssertThat(skill.WasUsed).IsTrue();
         AssertThat(skill.LastTargets.Count).IsEqual(2);

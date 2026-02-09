@@ -1,4 +1,4 @@
-﻿using AshesOfVelsingrad.Utilities;
+using AshesOfVelsingrad.Utilities;
 
 namespace AshesOfVelsingrad.Systems;
 

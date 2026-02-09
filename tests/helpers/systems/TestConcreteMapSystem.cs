@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using AshesOfVelsingrad.Systems;
-using Godot;
 using AshesOfVelsingrad.Utilities;
+using Godot;
 
 namespace UnitTests;
 

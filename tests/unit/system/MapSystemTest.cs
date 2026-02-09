@@ -5,6 +5,7 @@ using AshesOfVelsingrad.Systems;
 using GdUnit4;
 using Godot;
 using static GdUnit4.Assertions;
+using AshesOfVelsingrad.Utilities;
 
 namespace UnitTests;
 
@@ -120,7 +121,7 @@ public class MapSystemTest
         TestConcreteMapSystem map = CreateAndInitialize<TestConcreteMapSystem>();
         map.AddEmptyCell(4, 5, 6);
 
-        AssertThat(map.CellsInformation[0].CellType).IsEqual(CellType.Empty);
+        AssertThat(map.CellsInformation[0].CellType).IsEqual(AovDataStructures.CellType.Empty);
         AssertThat(map.CellsInformation[0].IsWalkable).IsFalse();
     }
 

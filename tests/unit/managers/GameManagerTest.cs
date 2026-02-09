@@ -6,6 +6,7 @@ using AshesOfVelsingrad.Systems;
 using GdUnit4;
 using Godot;
 using static GdUnit4.Assertions;
+using AshesOfVelsingrad.Utilities;
 
 namespace UnitTests;
 
@@ -126,7 +127,7 @@ public class GameManagerTest
 
         enemyUnit.SetIsAlive(false);
 
-        SetPrivateField(manager, "_gameOutcome", GameOutcome.Ongoing);
+        SetPrivateField(manager, "_gameOutcome", AovDataStructures.GameOutcome.Ongoing);
         playerContainer.AddChild(playerUnit);
         enemyContainer.AddChild(enemyUnit);
 
@@ -137,10 +138,10 @@ public class GameManagerTest
 
         CallPrivateMethod(manager, "CheckWinLoseCondition");
 
-        GameOutcome outcome = GetPrivateField<GameOutcome>(manager, "_gameOutcome");
+        AovDataStructures.GameOutcome outcome = GetPrivateField<AovDataStructures.GameOutcome>(manager, "_gameOutcome");
         AssertThat(GetPrivateField<List<UnitSystem>>(manager, "_playerUnits")[0].IsAlive).IsTrue();
         AssertThat(GetPrivateField<List<UnitSystem>>(manager, "_enemyUnits")[0].IsAlive).IsFalse();
-        AssertThat(outcome).IsEqual(GameOutcome.Victory);
+        AssertThat(outcome).IsEqual(AovDataStructures.GameOutcome.Victory);
     }
 
     [TestCase]
@@ -156,7 +157,7 @@ public class GameManagerTest
 
         playerUnit.SetIsAlive(false);
 
-        SetPrivateField(manager, "_gameOutcome", GameOutcome.Ongoing);
+        SetPrivateField(manager, "_gameOutcome", AovDataStructures.GameOutcome.Ongoing);
         playerContainer.AddChild(playerUnit);
         enemyContainer.AddChild(enemyUnit);
 
@@ -167,10 +168,10 @@ public class GameManagerTest
 
         CallPrivateMethod(manager, "CheckWinLoseCondition");
 
-        GameOutcome outcome = GetPrivateField<GameOutcome>(manager, "_gameOutcome");
+        AovDataStructures.GameOutcome outcome = GetPrivateField<AovDataStructures.GameOutcome>(manager, "_gameOutcome");
         AssertThat(GetPrivateField<List<UnitSystem>>(manager, "_playerUnits")[0].IsAlive).IsFalse();
         AssertThat(GetPrivateField<List<UnitSystem>>(manager, "_enemyUnits")[0].IsAlive).IsTrue();
-        AssertThat((int)outcome).IsEqual((int)GameOutcome.Defeat);
+        AssertThat((int)outcome).IsEqual((int)AovDataStructures.GameOutcome.Defeat);
     }
 
     [TestCase]
@@ -184,7 +185,7 @@ public class GameManagerTest
         TestConcreteUnitSystem playerUnit = CreateUnit("Player", 0);
         TestConcreteUnitSystem enemyUnit = CreateUnit("Enemy", 0);
 
-        SetPrivateField(manager, "_gameOutcome", GameOutcome.Ongoing);
+        SetPrivateField(manager, "_gameOutcome", AovDataStructures.GameOutcome.Ongoing);
         playerContainer.AddChild(playerUnit);
         enemyContainer.AddChild(enemyUnit);
 
@@ -216,7 +217,7 @@ public class GameManagerTest
         TestConcreteUnitSystem playerUnit = CreateUnit("Player");
         TestConcreteUnitSystem enemyUnit = CreateUnit("Enemy", 0);
 
-        SetPrivateField(manager, "_gameOutcome", GameOutcome.Victory);
+        SetPrivateField(manager, "_gameOutcome", AovDataStructures.GameOutcome.Victory);
         playerContainer.AddChild(playerUnit);
         enemyContainer.AddChild(enemyUnit);
 
@@ -227,10 +228,10 @@ public class GameManagerTest
 
         CallPrivateMethod(manager, "CheckUnitTurnEnd");
 
-        GameOutcome outcome = GetPrivateField<GameOutcome>(manager, "_gameOutcome");
+        AovDataStructures.GameOutcome outcome = GetPrivateField<AovDataStructures.GameOutcome>(manager, "_gameOutcome");
         AssertThat(GetPrivateField<List<UnitSystem>>(manager, "_playerUnits")[0].IsAlive).IsTrue();
         AssertThat(GetPrivateField<List<UnitSystem>>(manager, "_enemyUnits")[0].IsAlive).IsFalse();
-        AssertThat(outcome).IsEqual(GameOutcome.Victory);
+        AssertThat(outcome).IsEqual(AovDataStructures.GameOutcome.Victory);
     }
 
     [TestCase]
@@ -415,7 +416,7 @@ public class GameManagerTest
         SetPrivateField(manager, "_turnManagerContainer", turnManager);
         SetPrivateField(manager, "_mapSystemContainer", mapSystem);
 
-        SetPrivateField(manager, "_clickOnMapContext", ClickOnMapContext.SelectUnitTarget);
+        SetPrivateField(manager, "_clickOnMapContext", AovDataStructures.ClickOnMapContext.SelectUnitTarget);
         SetPrivateField(manager, "_isPlayerTurn", true);
         SetPrivateField(manager, "_selectedSkill", new TestConcreteSkillSystem());
         SetPrivateField(manager, "_unitMoved", true);
@@ -428,8 +429,8 @@ public class GameManagerTest
         CallPrivateMethod(manager, "LoadUnits");
         CallPrivateMethod(manager, "DeactivatePlayerUnit");
 
-        AssertThat(GetPrivateField<ClickOnMapContext>(manager, "_clickOnMapContext"))
-            .IsEqual(ClickOnMapContext.MoveUnit);
+        AssertThat(GetPrivateField<AovDataStructures.ClickOnMapContext>(manager, "_clickOnMapContext"))
+            .IsEqual(AovDataStructures.ClickOnMapContext.MoveUnit);
         AssertThat(GetPrivateField<bool>(manager, "_isPlayerTurn")).IsFalse();
         AssertThat(GetPrivateField<SkillSystem?>(manager, "_selectedSkill")).IsNull();
         AssertThat(GetPrivateField<bool>(manager, "_unitMoved")).IsFalse();
@@ -442,7 +443,8 @@ public class GameManagerTest
         AssertThat(GetPrivateField<bool>(inputSystem, "_inputEnabled")).IsFalse();
         AssertThat(playerUnit.IsAlive).IsTrue();
         AssertThat(enemyUnit.IsAlive).IsFalse();
-        AssertThat(GetPrivateField<GameOutcome>(manager, "_gameOutcome")).IsEqual(GameOutcome.Victory);
+        AssertThat(GetPrivateField<AovDataStructures.GameOutcome>(manager, "_gameOutcome"))
+            .IsEqual(AovDataStructures.GameOutcome.Victory);
     }
 
     [TestCase]
@@ -452,12 +454,12 @@ public class GameManagerTest
 
         GameManager manager = AddNode(new GameManager());
 
-        SetPrivateField(manager, "_clickOnMapContext", ClickOnMapContext.SelectUnitTarget);
+        SetPrivateField(manager, "_clickOnMapContext", AovDataStructures.ClickOnMapContext.SelectUnitTarget);
 
         CallPrivateMethod(manager, "PlayerSelectedMove");
 
-        AssertThat(GetPrivateField<ClickOnMapContext>(manager, "_clickOnMapContext"))
-            .IsEqual(ClickOnMapContext.MoveUnit);
+        AssertThat(GetPrivateField<AovDataStructures.ClickOnMapContext>(manager, "_clickOnMapContext"))
+            .IsEqual(AovDataStructures.ClickOnMapContext.MoveUnit);
     }
 
     [TestCase]

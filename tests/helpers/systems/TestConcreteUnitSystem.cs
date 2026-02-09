@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using AshesOfVelsingrad.Systems;
 using Godot;
+using AshesOfVelsingrad.Utilities;
 
 namespace UnitTests;
 
@@ -42,7 +43,7 @@ public sealed partial class TestConcreteUnitSystem : UnitSystem
         BaseSpeed = baseSpeed;
         ManaPoint = manaPoint;
         PossibleMovesRange = possibleMovesRange;
-        Type = UnitType.Player;
+        Type = AovDataStructures.UnitType.Player;
 
         GD.Print("[TEST] TestConcreteUnitSystem constructor called");
     }
@@ -63,7 +64,7 @@ public sealed partial class TestConcreteUnitSystem : UnitSystem
         BaseSpeed = 4;
         ManaPoint = 100;
         PossibleMovesRange = 1;
-        Type = UnitType.Player;
+        Type = AovDataStructures.UnitType.Player;
 
         Log.Add("Initialized");
 

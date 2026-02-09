@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using AshesOfVelsingrad.Systems;
 using Godot;
+using AshesOfVelsingrad.Utilities;
 
 namespace UnitTests;
 
@@ -19,9 +20,9 @@ public class TestConcreteSkillSystem : SkillSystem
         float manaCost = 5,
         int cooldown = 0,
         int range = 1,
-        MagicType magic = MagicType.None,
-        EffectType effect = EffectType.Damage,
-        TargetTypes target = TargetTypes.SingleEnemy
+        AovDataStructures.MagicType magic = AovDataStructures.MagicType.None,
+        AovDataStructures.EffectType effect = AovDataStructures.EffectType.Damage,
+        AovDataStructures.TargetTypes target = AovDataStructures.TargetTypes.SingleEnemy
     )
     {
         Name = name;

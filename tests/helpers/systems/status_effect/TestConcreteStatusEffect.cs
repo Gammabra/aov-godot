@@ -1,5 +1,5 @@
 using AshesOfVelsingrad.Systems;
-using AshesOfVelsingrad.utilities;
+using AshesOfVelsingrad.Utilities;
 
 namespace UnitTests;
 

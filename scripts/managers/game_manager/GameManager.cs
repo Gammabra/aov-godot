@@ -211,6 +211,7 @@ public partial class GameManager : BaseManager
         _currentUnitReachableCellsForCurrentSelectedSkill.Clear();
         _battleInputSystemContainer.SetInputEnabled(false);
         GD.Print("Deactivate input and player units");
+        _statusEffectSystem.ProcessUnitTurnEnd(_turnManagerContainer.GetCurrentUnit());
         CheckUnitTurnEnd();
     }
 

@@ -79,10 +79,11 @@ public class StatusEffectSystemTest
     {
         StatusEffectSystem sys = new();
         TestConcreteEffectTarget<object> target = new();
-        TestConcreteStatusEffect<object> e1 = new(isStackable: true);
+        TestConcreteStatusEffect<object> e1 = new(isStackable: false);
+        TestConcreteStatusEffect<object> e2 = new(isStackable: false);
 
         sys.ApplyEffect(target, e1);
-        sys.ApplyEffect(target, e1);
+        sys.ApplyEffect(target, e2);
 
         AssertThat(target.GetActiveEffects().Count).IsEqual(1);
         AssertThat(target.GetActiveEffects()[0].StackCount).IsEqual(1);

@@ -19,7 +19,9 @@ public abstract class StatusEffect<TTarget>(
     string name,
     string description,
     int duration,
-    bool isStackable
+    bool isStackable,
+    AovDataStructures.ModifierType modifierType = default,
+    float amount = 0
 ) : IStatusEffect
 {
     /// <summary>
@@ -44,6 +46,16 @@ public abstract class StatusEffect<TTarget>(
     public int StackCount { get; private set; } = 1;
 
     /// <summary>
+    /// The modifier type (flat/percent)
+    /// </summary>
+    public AovDataStructures.ModifierType ModifierType { get; private set; } = modifierType;
+
+    /// <summary>
+    /// The amount to apply
+    /// </summary>
+    public float Amount { get; private set; } = amount;
+
+    /// <summary>
     ///     Whether this effect can be stacked.
     /// </summary>
     public bool IsStackable { get; } = isStackable;
@@ -57,6 +69,7 @@ public abstract class StatusEffect<TTarget>(
     /// <param name="target">The target receiving the effect.</param>
     public virtual void OnApply(IEffectTarget<TTarget> target)
     {
+        GD.Print($"Applying {Name} on {target}");
     }
 
     /// <summary>
@@ -66,6 +79,7 @@ public abstract class StatusEffect<TTarget>(
     /// <param name="target">The target losing the effect.</param>
     public virtual void OnRemove(IEffectTarget<TTarget> target)
     {
+        GD.Print($"Remove {Name} on {target}");
     }
 
     /// <summary>

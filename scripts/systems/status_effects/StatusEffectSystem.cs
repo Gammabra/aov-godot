@@ -45,6 +45,7 @@ public sealed class StatusEffectSystem
             if (statusEffect.Duration > 0)
                 continue;
             target.RemoveEffect(statusEffect);
+            statusEffect.OnRemove(target);
         }
 
         if (target.GetActiveEffects().Count == 0)
@@ -85,7 +86,10 @@ public sealed class StatusEffectSystem
         if (existing is not null && existing.IsStackable)
             existing.AddStack();
         else if (existing == null)
+        {
             target.ApplyEffect(newEffect);
+            newEffect.OnApply(target);
+        }
     }
 
     /// <summary>

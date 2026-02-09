@@ -64,14 +64,15 @@ public class StatusEffectSystemTest
     {
         StatusEffectSystem sys = new();
         TestConcreteEffectTarget<UnitSystem> target = new();
-        TestConcreteStatusEffect<UnitSystem> effect1 = new(isStackable: true);
-        TestConcreteStatusEffect<UnitSystem> effect2 = new(isStackable: true);
+        TestConcreteStatusEffect<UnitSystem> effect1 = new(duration: 1, isStackable: true);
+        TestConcreteStatusEffect<UnitSystem> effect2 = new(duration: 3, isStackable: true);
 
         sys.ApplyEffect(target, effect1);
         sys.ApplyEffect(target, effect2);
 
         AssertThat(target.GetActiveEffects().Count).IsEqual(1);
         AssertThat(target.GetActiveEffects()[0].StackCount).IsEqual(2);
+        AssertThat(target.GetActiveEffects()[0].Duration).IsEqual(3);
     }
 
     [TestCase]
@@ -79,14 +80,15 @@ public class StatusEffectSystemTest
     {
         StatusEffectSystem sys = new();
         TestConcreteEffectTarget<object> target = new();
-        TestConcreteStatusEffect<object> e1 = new(isStackable: false);
-        TestConcreteStatusEffect<object> e2 = new(isStackable: false);
+        TestConcreteStatusEffect<object> e1 = new(duration: 2, isStackable: false);
+        TestConcreteStatusEffect<object> e2 = new(duration: 1, isStackable: false);
 
         sys.ApplyEffect(target, e1);
         sys.ApplyEffect(target, e2);
 
         AssertThat(target.GetActiveEffects().Count).IsEqual(1);
         AssertThat(target.GetActiveEffects()[0].StackCount).IsEqual(1);
+        AssertThat(target.GetActiveEffects()[0].Duration).IsEqual(2);
     }
 
     // =====================================================

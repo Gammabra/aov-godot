@@ -32,7 +32,6 @@ public sealed partial class TestConcreteUnitSystem : UnitSystem
     )
     {
         Name = "TestConcreteUnitSystem";
-
         UnitName = unitName;
         Description = description;
         MaxHp = maxHp;
@@ -43,7 +42,6 @@ public sealed partial class TestConcreteUnitSystem : UnitSystem
         ManaPoint = manaPoint;
         PossibleMovesRange = possibleMovesRange;
         Type = AovDataStructures.UnitType.Player;
-
         GD.Print("[TEST] TestConcreteUnitSystem constructor called");
     }
 
@@ -52,17 +50,6 @@ public sealed partial class TestConcreteUnitSystem : UnitSystem
         if (IsInitialized)
             return;
         IsInitialized = true;
-
-        UnitName = "TestUnit";
-        Description = "Unit used only for unit testing.";
-        MaxHp = 100;
-        Hp = 100;
-        BaseAtk = 10;
-        BaseDef = 5;
-        BaseSpeed = 4;
-        ManaPoint = 100;
-        PossibleMovesRange = 1;
-        Type = AovDataStructures.UnitType.Player;
 
         base.Initialize();
         GD.Print($"[TEST] Total atk is {TotalAtk}");

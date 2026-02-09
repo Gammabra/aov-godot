@@ -48,6 +48,8 @@ public abstract partial class UnitSystem
         if (unitPosition == null)
             return possibleCells;
 
+        possibleCells.Add(unitPosition.Value);
+
         // Queue the unit position
         visitedCells.Add(unitPosition.Value);
         toExplore.Enqueue((unitPosition.Value, 0));
@@ -72,8 +74,6 @@ public abstract partial class UnitSystem
                 pos.Item1 += dir.Item1;
                 pos.Item2 += dir.Item2;
                 pos.Item3 += dir.Item3;
-
-                GD.Print($"Neighbor pos: {pos}");
 
                 try
                 {

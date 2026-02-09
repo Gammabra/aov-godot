@@ -51,7 +51,7 @@ public abstract class StatusEffect<TTarget>(
     public AovDataStructures.ModifierType ModifierType { get; private set; } = modifierType;
 
     /// <summary>
-    /// The amount to apply
+    ///     The amount to apply
     /// </summary>
     public float Amount { get; private set; } = amount;
 
@@ -60,6 +60,9 @@ public abstract class StatusEffect<TTarget>(
     /// </summary>
     public bool IsStackable { get; } = isStackable;
 
+    /// <summary>
+    ///     Store a effect status that can be spread
+    /// </summary>
     public IStatusEffect? EffectToSpread { get; protected init; }
 
     /// <summary>
@@ -104,5 +107,13 @@ public abstract class StatusEffect<TTarget>(
     {
         if (IsStackable)
             StackCount++;
+    }
+
+    public virtual void ResetDuration(int duration)
+    {
+        if (Duration == Constants.PermanentStatusEffect)
+            return;
+        if (Duration < duration)
+            Duration = duration;
     }
 }

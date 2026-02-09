@@ -93,8 +93,9 @@ public sealed class StatusEffectSystem
         {
             if (existing.IsStackable)
                 existing.AddStack();
+            existing.ResetDuration(newEffect.Duration);
         }
-        else if (existing == null)
+        else
         {
             target.ApplyEffect(newEffect);
             newEffect.OnApply(target);

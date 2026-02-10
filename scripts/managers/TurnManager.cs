@@ -249,7 +249,7 @@ public partial class TurnManager : BaseManager
 	/// Called by the <see cref="GameManager"/> to inform the <see cref="TurnManager"/>
 	/// the game is finished
 	/// </summary>
-	public void EndTurnManagerLoop()
+	public virtual void EndTurnManagerLoop()
 	{
 		_currentTurnState = TurnState.Finished;
 	}

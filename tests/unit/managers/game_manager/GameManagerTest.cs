@@ -273,7 +273,7 @@ public class GameManagerTest
 
 		var sourceUnit = _gameManager.GetPlayerUnit(0);
 		var targetUnit = _gameManager.GetEnemyUnit(0);
-		var skill = new TestConcreteSkillSystem("TestSkill", "Testable main skill description", 5, 0, 1, MagicType.None, EffectType.Damage, TargetTypes.SingleEnemy);
+		var skill = new TestConcreteSkillSystem(target: TargetTypes.SingleEnemy);
 		sourceUnit.ActiveSkills.Add(skill);
 
 		_turnManager!.SetCurrentUnit(sourceUnit);
@@ -291,7 +291,7 @@ public class GameManagerTest
 
 		var sourceUnit = _gameManager.GetPlayerUnit(0);
 		var allyUnit = _gameManager.GetPlayerUnit(0); // Same unit (self-heal)
-		var skill = new TestConcreteSkillSystem("TestSkill", "Testable main skill description", 5, 0, 1, MagicType.None, EffectType.Damage, TargetTypes.SingleAlly);
+		var skill = new TestConcreteSkillSystem(target: TargetTypes.SingleAlly);
 		sourceUnit.ActiveSkills.Add(skill);
 
 		_turnManager!.SetCurrentUnit(sourceUnit);
@@ -309,7 +309,7 @@ public class GameManagerTest
 
 		var sourceUnit = _gameManager.GetPlayerUnit(0);
 		var targetUnit = _gameManager.GetEnemyUnit(0); // Just one to trigger the check
-		var skill = new TestConcreteSkillSystem("TestSkill", "Testable main skill description", 5, 0, 1, MagicType.None, EffectType.Damage, TargetTypes.AllEnemies);
+		var skill = new TestConcreteSkillSystem(target: TargetTypes.AllEnemies);
 		sourceUnit.ActiveSkills.Add(skill);
 
 		_turnManager!.SetCurrentUnit(sourceUnit);
@@ -327,7 +327,7 @@ public class GameManagerTest
 
 		var sourceUnit = _gameManager.GetPlayerUnit(0);
 		var wrongTargetUnit = _gameManager.GetPlayerUnit(0); // Player targeting player with enemy skill
-		var skill = new TestConcreteSkillSystem("TestSkill", "Testable main skill description", 5, 0, 1, MagicType.None, EffectType.Damage, TargetTypes.SingleEnemy);
+		var skill = new TestConcreteSkillSystem(target: TargetTypes.SingleEnemy);
 		sourceUnit.ActiveSkills.Add(skill);
 
 		_turnManager!.SetCurrentUnit(sourceUnit);

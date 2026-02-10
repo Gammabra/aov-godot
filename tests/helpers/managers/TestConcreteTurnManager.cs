@@ -1,3 +1,4 @@
+using Godot;
 using AshesOfVelsingrad.Managers;
 using AshesOfVelsingrad.Systems;
 
@@ -6,6 +7,7 @@ namespace UnitTests;
 public partial class TestConcreteTurnManager : TurnManager
 {
 	private UnitSystem? _currentUnit;
+	public bool TurnLoopEnded { get; private set; }
 
 	public void SetCurrentUnit(UnitSystem unit)
 	{
@@ -15,5 +17,12 @@ public partial class TestConcreteTurnManager : TurnManager
 	public new UnitSystem GetCurrentUnit()
 	{
 		return _currentUnit ?? base.GetCurrentUnit();
+	}
+	
+	// If EndTurnManagerLoop is NOT virtual, use new:
+	public override void EndTurnManagerLoop()
+	{
+		GD.Print("[TEST] EndTurnManagerLoop called");
+		TurnLoopEnded = true;
 	}
 }

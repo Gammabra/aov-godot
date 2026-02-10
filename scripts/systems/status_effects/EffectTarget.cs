@@ -6,7 +6,8 @@ namespace AshesOfVelsingrad.Systems;
 ///     Base class for any entity that can receive and manage <see cref="StatusEffect{T}" />s.
 ///     Provides default implementations for applying, removing, and querying effects.
 /// </summary>
-/// /// <typeparam name="TTarget">The type of target this effect system is applied to (e.g., UnitSystem, CellInformation).</typeparam>
+/// ///
+/// <typeparam name="TTarget">The type of target this effect system is applied to (e.g., UnitSystem, CellInformation).</typeparam>
 public class EffectTarget<TTarget> : IEffectTarget<TTarget>
 {
     /// <summary>
@@ -18,14 +19,12 @@ public class EffectTarget<TTarget> : IEffectTarget<TTarget>
     public virtual void ApplyEffect(StatusEffect<TTarget> statusEffect)
     {
         _activeEffects.Add(statusEffect);
-        statusEffect.OnApply(this);
     }
 
     /// <inheritdoc />
     public virtual void RemoveEffect(StatusEffect<TTarget> statusEffect)
     {
         _activeEffects.Remove(statusEffect);
-        statusEffect.OnRemove(this);
     }
 
     /// <inheritdoc />

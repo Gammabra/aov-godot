@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Reflection;
 using AshesOfVelsingrad.Managers;
 using AshesOfVelsingrad.Systems;
+using AshesOfVelsingrad.Utilities;
 using GdUnit4;
 using Godot;
 using static GdUnit4.Assertions;
@@ -114,7 +115,7 @@ public class TurnManagerTest
             .GetField("_currentTurnState", BindingFlags.NonPublic | BindingFlags.Instance)!
             .GetValue(manager);
 
-        AssertThat(currentState).IsEqual(TurnState.Finished);
+        AssertThat(currentState).IsEqual(AovDataStructures.TurnState.Finished);
     }
 
     #endregion

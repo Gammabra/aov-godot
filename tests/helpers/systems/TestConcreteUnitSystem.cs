@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using AshesOfVelsingrad.Systems;
+using AshesOfVelsingrad.Utilities;
 using Godot;
 
 namespace UnitTests;
@@ -27,12 +28,11 @@ public sealed partial class TestConcreteUnitSystem : UnitSystem
         float baseDef = 5,
         float baseSpeed = 4,
         float manaPoint = 100,
-        int possibleMovesRange = 1
+        int possibleMovesRange = 1,
+        bool isAlive = true
     )
     {
         Name = "TestConcreteUnitSystem";
-
-        IsInitialized = true;
         UnitName = unitName;
         Description = description;
         MaxHp = maxHp;
@@ -42,8 +42,8 @@ public sealed partial class TestConcreteUnitSystem : UnitSystem
         BaseSpeed = baseSpeed;
         ManaPoint = manaPoint;
         PossibleMovesRange = possibleMovesRange;
-        Type = UnitType.Player;
-
+        IsAlive = isAlive;
+        Type = AovDataStructures.UnitType.Player;
         GD.Print("[TEST] TestConcreteUnitSystem constructor called");
     }
 
@@ -51,22 +51,11 @@ public sealed partial class TestConcreteUnitSystem : UnitSystem
     {
         if (IsInitialized)
             return;
-        base.Initialize();
         IsInitialized = true;
 
-        UnitName = "TestUnit";
-        Description = "Unit used only for unit testing.";
-        MaxHp = 100;
-        Hp = 100;
-        BaseAtk = 10;
-        BaseDef = 5;
-        BaseSpeed = 4;
-        ManaPoint = 100;
-        PossibleMovesRange = 1;
-        Type = UnitType.Player;
-
-        Log.Add("Initialized");
-
+        base.Initialize();
+        GD.Print($"[TEST] Total atk is {TotalAtk}");
+        GD.Print($"[TEST] Total def is {TotalDef}");
         GD.Print("[TEST] TestConcreteUnitSystem initialized");
     }
 

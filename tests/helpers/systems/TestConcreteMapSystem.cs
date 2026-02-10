@@ -1,6 +1,6 @@
 using System.Collections.Generic;
-using System.Linq;
 using AshesOfVelsingrad.Systems;
+using AshesOfVelsingrad.Utilities;
 using Godot;
 
 namespace UnitTests;
@@ -12,7 +12,7 @@ public sealed partial class TestConcreteMapSystem : MapSystem
     public bool IsInitialized { get; private set; }
     public bool IsCleanedUp { get; private set; }
 
-    public readonly List<Vector3I> ManualCells = new();
+    private readonly List<Vector3I> _manualCells = new();
 
     public TestConcreteMapSystem()
     {
@@ -42,15 +42,15 @@ public sealed partial class TestConcreteMapSystem : MapSystem
 
     public override void PlaceUnits(List<UnitSystem> playerUnits, List<UnitSystem> enemyUnits)
     {
-        CellsInformation[0].Unit = playerUnits[0];
-        CellsInformation[1].Unit = enemyUnits[0];
+        CellsInformation[0].SetUnit(playerUnits[0]);
+        CellsInformation[1].SetUnit(enemyUnits[0]);
 
         GD.Print("[TEST] TestConcreteMapSystem PlaceUnits called");
     }
 
     public void AddUnit(UnitSystem unit)
     {
-        CellsInformation[0].Unit = unit;
+        CellsInformation[0].SetUnit(unit);
 
         GD.Print("[TEST] TestConcreteMapSystem AddUnits called");
     }
@@ -58,7 +58,7 @@ public sealed partial class TestConcreteMapSystem : MapSystem
     protected override void Cleanup()
     {
         IsCleanedUp = true;
-        ManualCells.Clear();
+        _manualCells.Clear();
         CellsInformation.Clear();
 
         if (Instance == this)
@@ -73,25 +73,25 @@ public sealed partial class TestConcreteMapSystem : MapSystem
     public new Vector3I[] GetUsedCells()
     {
         GD.Print("[TEST] TestConcreteMapSystem GetUsedCells called");
-        return ManualCells.ToArray();
+        return _manualCells.ToArray();
     }
 
-    public void AddCell(int x, int y, int z, CellType type, bool walkable)
+    private void AddCell(int x, int y, int z, AovDataStructures.CellType type, bool walkable)
     {
-        ManualCells.Add(new Vector3I(x, y, z));
+        _manualCells.Add(new Vector3I(x, y, z));
         CellsInformation.Add(new CellInformation(x, y, z, type, walkable));
         GD.Print("[TEST] TestConcreteMapSystem AddCell called");
     }
 
     public void AddEmptyCell(int x, int y, int z)
     {
-        AddCell(x, y, z, CellType.Empty, false);
+        AddCell(x, y, z, AovDataStructures.CellType.Empty, false);
         GD.Print("[TEST] TestConcreteMapSystem AddEmptyCell called");
     }
 
     public void AddWalkableCell(int x, int y, int z)
     {
-        AddCell(x, y, z, CellType.Grass, true);
+        AddCell(x, y, z, AovDataStructures.CellType.Grass, true);
         GD.Print("[TEST] TestConcreteMapSystem AddWalkableCell called");
     }
 

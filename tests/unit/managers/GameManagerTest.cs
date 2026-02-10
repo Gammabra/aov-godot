@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Reflection;
 using AshesOfVelsingrad.Managers;
 using AshesOfVelsingrad.Systems;
+using AshesOfVelsingrad.Utilities;
 using GdUnit4;
 using Godot;
 using static GdUnit4.Assertions;
@@ -126,7 +127,7 @@ public class GameManagerTest
 
         enemyUnit.SetIsAlive(false);
 
-        SetPrivateField(manager, "_gameOutcome", GameOutcome.Ongoing);
+        SetPrivateField(manager, "_gameOutcome", AovDataStructures.GameOutcome.Ongoing);
         playerContainer.AddChild(playerUnit);
         enemyContainer.AddChild(enemyUnit);
 
@@ -137,10 +138,10 @@ public class GameManagerTest
 
         CallPrivateMethod(manager, "CheckWinLoseCondition");
 
-        GameOutcome outcome = GetPrivateField<GameOutcome>(manager, "_gameOutcome");
+        AovDataStructures.GameOutcome outcome = GetPrivateField<AovDataStructures.GameOutcome>(manager, "_gameOutcome");
         AssertThat(GetPrivateField<List<UnitSystem>>(manager, "_playerUnits")[0].IsAlive).IsTrue();
         AssertThat(GetPrivateField<List<UnitSystem>>(manager, "_enemyUnits")[0].IsAlive).IsFalse();
-        AssertThat(outcome).IsEqual(GameOutcome.Victory);
+        AssertThat(outcome).IsEqual(AovDataStructures.GameOutcome.Victory);
     }
 
     [TestCase]
@@ -156,7 +157,7 @@ public class GameManagerTest
 
         playerUnit.SetIsAlive(false);
 
-        SetPrivateField(manager, "_gameOutcome", GameOutcome.Ongoing);
+        SetPrivateField(manager, "_gameOutcome", AovDataStructures.GameOutcome.Ongoing);
         playerContainer.AddChild(playerUnit);
         enemyContainer.AddChild(enemyUnit);
 
@@ -167,10 +168,10 @@ public class GameManagerTest
 
         CallPrivateMethod(manager, "CheckWinLoseCondition");
 
-        GameOutcome outcome = GetPrivateField<GameOutcome>(manager, "_gameOutcome");
+        AovDataStructures.GameOutcome outcome = GetPrivateField<AovDataStructures.GameOutcome>(manager, "_gameOutcome");
         AssertThat(GetPrivateField<List<UnitSystem>>(manager, "_playerUnits")[0].IsAlive).IsFalse();
         AssertThat(GetPrivateField<List<UnitSystem>>(manager, "_enemyUnits")[0].IsAlive).IsTrue();
-        AssertThat((int)outcome).IsEqual((int)GameOutcome.Defeat);
+        AssertThat((int)outcome).IsEqual((int)AovDataStructures.GameOutcome.Defeat);
     }
 
     [TestCase]
@@ -184,7 +185,7 @@ public class GameManagerTest
         TestConcreteUnitSystem playerUnit = CreateUnit("Player", 0);
         TestConcreteUnitSystem enemyUnit = CreateUnit("Enemy", 0);
 
-        SetPrivateField(manager, "_gameOutcome", GameOutcome.Ongoing);
+        SetPrivateField(manager, "_gameOutcome", AovDataStructures.GameOutcome.Ongoing);
         playerContainer.AddChild(playerUnit);
         enemyContainer.AddChild(enemyUnit);
 
@@ -216,7 +217,7 @@ public class GameManagerTest
         TestConcreteUnitSystem playerUnit = CreateUnit("Player");
         TestConcreteUnitSystem enemyUnit = CreateUnit("Enemy", 0);
 
-        SetPrivateField(manager, "_gameOutcome", GameOutcome.Victory);
+        SetPrivateField(manager, "_gameOutcome", AovDataStructures.GameOutcome.Victory);
         playerContainer.AddChild(playerUnit);
         enemyContainer.AddChild(enemyUnit);
 
@@ -227,10 +228,10 @@ public class GameManagerTest
 
         CallPrivateMethod(manager, "CheckUnitTurnEnd");
 
-        GameOutcome outcome = GetPrivateField<GameOutcome>(manager, "_gameOutcome");
+        AovDataStructures.GameOutcome outcome = GetPrivateField<AovDataStructures.GameOutcome>(manager, "_gameOutcome");
         AssertThat(GetPrivateField<List<UnitSystem>>(manager, "_playerUnits")[0].IsAlive).IsTrue();
         AssertThat(GetPrivateField<List<UnitSystem>>(manager, "_enemyUnits")[0].IsAlive).IsFalse();
-        AssertThat(outcome).IsEqual(GameOutcome.Victory);
+        AssertThat(outcome).IsEqual(AovDataStructures.GameOutcome.Victory);
     }
 
     [TestCase]
@@ -240,12 +241,10 @@ public class GameManagerTest
 
         GameManager manager = AddNode(new GameManager());
         TestConcreteMapSystem map = AddNode(new TestConcreteMapSystem());
-        TurnManager turnManager = AddNode(new TurnManager());
         BattleInputSystem inputSystem = AddNode(new BattleInputSystem());
 
         SetPrivateField(manager, "_battleInputSystemContainer", inputSystem);
         SetPrivateField(manager, "_mapSystemContainer", map);
-        SetPrivateField(manager, "_turnManagerContainer", turnManager);
         SetPrivateField(
             manager,
             "_currentUnitPossibleMoves",
@@ -268,12 +267,9 @@ public class GameManagerTest
         GameManager manager = AddNode(new GameManager());
         BattleInputSystem inputSystem = AddNode(new BattleInputSystem());
         TestConcreteMapSystem mapSystem = AddNode(new TestConcreteMapSystem());
-        TurnManager turnManager = new();
 
-        turnManager.AddChild(turnManager);
         SetPrivateField(manager, "_battleInputSystemContainer", inputSystem);
         SetPrivateField(manager, "_mapSystemContainer", mapSystem);
-        SetPrivateField(manager, "_turnManagerContainer", turnManager);
         SetPrivateField(
             manager,
             "_currentUnitPossibleMoves",
@@ -296,12 +292,9 @@ public class GameManagerTest
         GameManager manager = AddNode(new GameManager());
         BattleInputSystem inputSystem = AddNode(new BattleInputSystem());
         TestConcreteMapSystem mapSystem = AddNode(new TestConcreteMapSystem());
-        TurnManager turnManager = new();
 
-        turnManager.AddChild(turnManager);
         SetPrivateField(manager, "_battleInputSystemContainer", inputSystem);
         SetPrivateField(manager, "_mapSystemContainer", mapSystem);
-        SetPrivateField(manager, "_turnManagerContainer", turnManager);
         SetPrivateField(
             manager,
             "_currentUnitReachableCellsForCurrentSelectedSkill",
@@ -412,10 +405,10 @@ public class GameManagerTest
         SetPrivateField(manager, "_playerUnitsContainer", playerContainer);
         SetPrivateField(manager, "_enemyUnitsContainer", enemyContainer);
         SetPrivateField(manager, "_battleInputSystemContainer", inputSystem);
-        SetPrivateField(manager, "_turnManagerContainer", turnManager);
         SetPrivateField(manager, "_mapSystemContainer", mapSystem);
+        SetPrivateField(manager, "_turnManagerContainer", turnManager);
 
-        SetPrivateField(manager, "_clickOnMapContext", ClickOnMapContext.SelectUnitTarget);
+        SetPrivateField(manager, "_clickOnMapContext", AovDataStructures.ClickOnMapContext.SelectUnitTarget);
         SetPrivateField(manager, "_isPlayerTurn", true);
         SetPrivateField(manager, "_selectedSkill", new TestConcreteSkillSystem());
         SetPrivateField(manager, "_unitMoved", true);
@@ -426,10 +419,14 @@ public class GameManagerTest
         inputSystem.SetInputEnabled(true);
 
         CallPrivateMethod(manager, "LoadUnits");
+        turnManager.InitializeTurnOrder(
+            GetPrivateField<List<UnitSystem>>(manager, "_playerUnits"),
+            GetPrivateField<List<UnitSystem>>(manager, "_enemyUnits")
+        );
         CallPrivateMethod(manager, "DeactivatePlayerUnit");
 
-        AssertThat(GetPrivateField<ClickOnMapContext>(manager, "_clickOnMapContext"))
-            .IsEqual(ClickOnMapContext.MoveUnit);
+        AssertThat(GetPrivateField<AovDataStructures.ClickOnMapContext>(manager, "_clickOnMapContext"))
+            .IsEqual(AovDataStructures.ClickOnMapContext.MoveUnit);
         AssertThat(GetPrivateField<bool>(manager, "_isPlayerTurn")).IsFalse();
         AssertThat(GetPrivateField<SkillSystem?>(manager, "_selectedSkill")).IsNull();
         AssertThat(GetPrivateField<bool>(manager, "_unitMoved")).IsFalse();
@@ -442,7 +439,8 @@ public class GameManagerTest
         AssertThat(GetPrivateField<bool>(inputSystem, "_inputEnabled")).IsFalse();
         AssertThat(playerUnit.IsAlive).IsTrue();
         AssertThat(enemyUnit.IsAlive).IsFalse();
-        AssertThat(GetPrivateField<GameOutcome>(manager, "_gameOutcome")).IsEqual(GameOutcome.Victory);
+        AssertThat(GetPrivateField<AovDataStructures.GameOutcome>(manager, "_gameOutcome"))
+            .IsEqual(AovDataStructures.GameOutcome.Victory);
     }
 
     [TestCase]
@@ -452,12 +450,12 @@ public class GameManagerTest
 
         GameManager manager = AddNode(new GameManager());
 
-        SetPrivateField(manager, "_clickOnMapContext", ClickOnMapContext.SelectUnitTarget);
+        SetPrivateField(manager, "_clickOnMapContext", AovDataStructures.ClickOnMapContext.SelectUnitTarget);
 
         CallPrivateMethod(manager, "PlayerSelectedMove");
 
-        AssertThat(GetPrivateField<ClickOnMapContext>(manager, "_clickOnMapContext"))
-            .IsEqual(ClickOnMapContext.MoveUnit);
+        AssertThat(GetPrivateField<AovDataStructures.ClickOnMapContext>(manager, "_clickOnMapContext"))
+            .IsEqual(AovDataStructures.ClickOnMapContext.MoveUnit);
     }
 
     [TestCase]
@@ -468,7 +466,7 @@ public class GameManagerTest
         TestConcreteMapSystem mapSystem = AddNode(new TestConcreteMapSystem());
         TestConcreteUnitSystem unit = CreateUnit("Player");
 
-        turnManager.AddChild(turnManager);
+        manager.AddChild(turnManager);
         unit.ActiveSkills.Clear();
 
         SetPrivateField(manager, "_turnManagerContainer", turnManager);
@@ -489,7 +487,7 @@ public class GameManagerTest
         TestConcreteMapSystem mapSystem = AddNode(new TestConcreteMapSystem());
         TestConcreteSkillSystem skill = new(cooldown: 1);
 
-        turnManager.AddChild(turnManager);
+        manager.AddChild(turnManager);
         skill.SetCooldown();
 
         TestConcreteUnitSystem unit = CreateUnit("Player");
@@ -512,7 +510,7 @@ public class GameManagerTest
         TurnManager turnManager = new();
         TestConcreteUnitSystem enemy = CreateUnit("Enemy");
 
-        turnManager.AddChild(turnManager);
+        manager.AddChild(turnManager);
         SetPrivateField(manager, "_turnManagerContainer", turnManager);
         SetPrivateField(manager, "_unitMoved", true);
 
@@ -576,7 +574,7 @@ public class GameManagerTest
     {
         MethodInfo method = obj
                 .GetType()
-                .GetMethod(methodName, BindingFlags.Instance | BindingFlags.NonPublic) ??
+                .GetMethod(methodName, BindingFlags.Instance | BindingFlags.NonPublic | BindingFlags.Static) ??
             throw new InvalidOperationException($"Method '{methodName}' not found on type '{obj.GetType().Name}'.");
 
         return method.Invoke(obj, parameters);

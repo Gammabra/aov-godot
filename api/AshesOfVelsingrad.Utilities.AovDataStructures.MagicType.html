@@ -2,11 +2,11 @@
 <html>
   <head>
     <meta charset="utf-8">
-      <title>Enum ClickOnMapContext | Ashes of Velsingrad Documentation </title>
+      <title>Enum AovDataStructures.MagicType | Ashes of Velsingrad Documentation </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content="Enum ClickOnMapContext | Ashes of Velsingrad Documentation ">
+      <meta name="title" content="Enum AovDataStructures.MagicType | Ashes of Velsingrad Documentation ">
       
-      <meta name="description" content="Defines the current interaction mode when clicking on the map.">
+      <meta name="description" content="Represents the elemental type of a skill.">
       <link rel="icon" href="../favicon.ico">
       <link rel="stylesheet" href="../public/docfx.min.css">
       <link rel="stylesheet" href="../public/main.css">
@@ -16,7 +16,7 @@
       <meta name="docfx:rel" content="../">
       
       
-      <meta name="docfx:docurl" content="https://github.com/Gammabra/aov-godot/new/develop/apiSpec/new?filename=AshesOfVelsingrad_Managers_ClickOnMapContext.md&amp;value=---%0Auid%3A%20AshesOfVelsingrad.Managers.ClickOnMapContext%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="docfx:docurl" content="https://github.com/Gammabra/aov-godot/new/develop/apiSpec/new?filename=AshesOfVelsingrad_Utilities_AovDataStructures_MagicType.md&amp;value=---%0Auid%3A%20AshesOfVelsingrad.Utilities.AovDataStructures.MagicType%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -84,26 +84,26 @@
           <nav id="breadcrumb"></nav>
         </div>
 
-        <article data-uid="AshesOfVelsingrad.Managers.ClickOnMapContext">
+        <article data-uid="AshesOfVelsingrad.Utilities.AovDataStructures.MagicType">
 
 
 
 
-  <h1 id="AshesOfVelsingrad_Managers_ClickOnMapContext" data-uid="AshesOfVelsingrad.Managers.ClickOnMapContext" class="text-break">
-Enum ClickOnMapContext  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/managers/game_manager/GameManagerUtils.cs/#L26"><i class="bi bi-code-slash"></i></a>
+  <h1 id="AshesOfVelsingrad_Utilities_AovDataStructures_MagicType" data-uid="AshesOfVelsingrad.Utilities.AovDataStructures.MagicType" class="text-break">
+Enum AovDataStructures.MagicType  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/utilities/AovDataStructures.cs/#L74"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
-    <dl><dt>Namespace</dt><dd><a class="xref" href="AshesOfVelsingrad.html">AshesOfVelsingrad</a>.<a class="xref" href="AshesOfVelsingrad.Managers.html">Managers</a></dd></dl>
+    <dl><dt>Namespace</dt><dd><a class="xref" href="AshesOfVelsingrad.html">AshesOfVelsingrad</a>.<a class="xref" href="AshesOfVelsingrad.Utilities.html">Utilities</a></dd></dl>
   <dl><dt>Assembly</dt><dd>Ashes of Velsingrad.dll</dd></dl>
   </div>
 
-  <div class="markdown summary"><p>Defines the current interaction mode when clicking on the map.</p>
+  <div class="markdown summary"><p>Represents the elemental type of a skill.</p>
 </div>
   <div class="markdown conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public enum ClickOnMapContext</code></pre>
+    <pre><code class="lang-csharp hljs">public enum AovDataStructures.MagicType</code></pre>
   </div>
 
 
@@ -117,14 +117,27 @@ Enum ClickOnMapContext  <a class="header-action link-secondary" title="View sour
   <h2 id="fields">Fields
 </h2>
   <dl class="parameters">
-    <dt id="AshesOfVelsingrad_Managers_ClickOnMapContext_MoveUnit"><code>MoveUnit = 0</code></dt>
+    <dt id="AshesOfVelsingrad_Utilities_AovDataStructures_MagicType_Dark"><code>Dark = 6</code></dt>
   
-  <dd><p>The player is selecting a cell to move a unit.</p>
-</dd>
-    <dt id="AshesOfVelsingrad_Managers_ClickOnMapContext_SelectUnitTarget"><code>SelectUnitTarget = 1</code></dt>
+  <dd></dd>
+    <dt id="AshesOfVelsingrad_Utilities_AovDataStructures_MagicType_Earth"><code>Earth = 3</code></dt>
   
-  <dd><p>The player is selecting a unit or target cell for a skill.</p>
-</dd>
+  <dd></dd>
+    <dt id="AshesOfVelsingrad_Utilities_AovDataStructures_MagicType_Fire"><code>Fire = 1</code></dt>
+  
+  <dd></dd>
+    <dt id="AshesOfVelsingrad_Utilities_AovDataStructures_MagicType_Light"><code>Light = 5</code></dt>
+  
+  <dd></dd>
+    <dt id="AshesOfVelsingrad_Utilities_AovDataStructures_MagicType_None"><code>None = 0</code></dt>
+  
+  <dd></dd>
+    <dt id="AshesOfVelsingrad_Utilities_AovDataStructures_MagicType_Water"><code>Water = 2</code></dt>
+  
+  <dd></dd>
+    <dt id="AshesOfVelsingrad_Utilities_AovDataStructures_MagicType_Wind"><code>Wind = 4</code></dt>
+  
+  <dd></dd>
   </dl>
 
 
@@ -132,7 +145,7 @@ Enum ClickOnMapContext  <a class="header-action link-secondary" title="View sour
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/managers/game_manager/GameManagerUtils.cs/#L26" class="edit-link">Edit this page</a>
+          <a href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/utilities/AovDataStructures.cs/#L74" class="edit-link">Edit this page</a>
         </div>
 
 

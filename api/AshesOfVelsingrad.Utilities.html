@@ -2,11 +2,11 @@
 <html>
   <head>
     <meta charset="utf-8">
-      <title>Enum TurnState | Ashes of Velsingrad Documentation </title>
+      <title>Namespace AshesOfVelsingrad.Utilities | Ashes of Velsingrad Documentation </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content="Enum TurnState | Ashes of Velsingrad Documentation ">
+      <meta name="title" content="Namespace AshesOfVelsingrad.Utilities | Ashes of Velsingrad Documentation ">
       
-      <meta name="description" content="Defines the possible turn states in the battle system.">
+      
       <link rel="icon" href="../favicon.ico">
       <link rel="stylesheet" href="../public/docfx.min.css">
       <link rel="stylesheet" href="../public/main.css">
@@ -16,7 +16,7 @@
       <meta name="docfx:rel" content="../">
       
       
-      <meta name="docfx:docurl" content="https://github.com/Gammabra/aov-godot/new/develop/apiSpec/new?filename=AshesOfVelsingrad_Managers_TurnState.md&amp;value=---%0Auid%3A%20AshesOfVelsingrad.Managers.TurnState%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -84,63 +84,83 @@
           <nav id="breadcrumb"></nav>
         </div>
 
-        <article data-uid="AshesOfVelsingrad.Managers.TurnState">
+        <article data-uid="AshesOfVelsingrad.Utilities">
 
+  <h1 id="AshesOfVelsingrad_Utilities" data-uid="AshesOfVelsingrad.Utilities" class="text-break">Namespace AshesOfVelsingrad.Utilities</h1>
+  <div class="markdown level0 summary"></div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="markdown level0 remarks"></div>
 
-
-
-  <h1 id="AshesOfVelsingrad_Managers_TurnState" data-uid="AshesOfVelsingrad.Managers.TurnState" class="text-break">
-Enum TurnState  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/managers/TurnManager.cs/#L13"><i class="bi bi-code-slash"></i></a>
-  </h1>
-
-  <div class="facts text-secondary">
-    <dl><dt>Namespace</dt><dd><a class="xref" href="AshesOfVelsingrad.html">AshesOfVelsingrad</a>.<a class="xref" href="AshesOfVelsingrad.Managers.html">Managers</a></dd></dl>
-  <dl><dt>Assembly</dt><dd>Ashes of Velsingrad.dll</dd></dl>
-  </div>
-
-  <div class="markdown summary"><p>Defines the possible turn states in the battle system.</p>
-</div>
-  <div class="markdown conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public enum TurnState</code></pre>
-  </div>
-
-
-
-
-
-
-
-
-
-  <h2 id="fields">Fields
-</h2>
-  <dl class="parameters">
-    <dt id="AshesOfVelsingrad_Managers_TurnState_EnemyTurn"><code>EnemyTurn = 1</code></dt>
-  
-  <dd><p>The enemy's turn to act.</p>
+    <h3 id="classes">
+Classes
+</h3>
+    <dl class="jumplist">
+      <dt><a class="xref" href="AshesOfVelsingrad.Utilities.AovDataStructures.html">AovDataStructures</a></dt>
+      <dd><p>Provides shared data structures and enumerations used across the game systems.</p>
 </dd>
-    <dt id="AshesOfVelsingrad_Managers_TurnState_Finished"><code>Finished = 3</code></dt>
-  
-  <dd><p>State that inform the game is finished.</p>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="AshesOfVelsingrad.Utilities.Constants.html">Constants</a></dt>
+      <dd></dd>
+    </dl>
+    <h3 id="enums">
+Enums
+</h3>
+    <dl class="jumplist">
+      <dt><a class="xref" href="AshesOfVelsingrad.Utilities.AovDataStructures.CellType.html">AovDataStructures.CellType</a></dt>
+      <dd><p>Enumeration of every cell type available in the game.</p>
 </dd>
-    <dt id="AshesOfVelsingrad_Managers_TurnState_PlayerTurn"><code>PlayerTurn = 0</code></dt>
-  
-  <dd><p>The player's turn to act.</p>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="AshesOfVelsingrad.Utilities.AovDataStructures.ClickOnMapContext.html">AovDataStructures.ClickOnMapContext</a></dt>
+      <dd><p>Defines the current interaction mode when clicking on the map.</p>
 </dd>
-    <dt id="AshesOfVelsingrad_Managers_TurnState_Waiting"><code>Waiting = 2</code></dt>
-  
-  <dd><p>Idle state while waiting for setup or transitions.</p>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="AshesOfVelsingrad.Utilities.AovDataStructures.EffectType.html">AovDataStructures.EffectType</a></dt>
+      <dd><p>Defines the type of effect applied by a skill or status effect.</p>
 </dd>
-  </dl>
-
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="AshesOfVelsingrad.Utilities.AovDataStructures.GameOutcome.html">AovDataStructures.GameOutcome</a></dt>
+      <dd><p>Represents the outcome of a battle.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="AshesOfVelsingrad.Utilities.AovDataStructures.MagicType.html">AovDataStructures.MagicType</a></dt>
+      <dd><p>Represents the elemental type of a skill.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="AshesOfVelsingrad.Utilities.AovDataStructures.ModifierType.html">AovDataStructures.ModifierType</a></dt>
+      <dd><p>Defines how a numerical modifier affects a value.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="AshesOfVelsingrad.Utilities.AovDataStructures.StatTypeWithModifier.html">AovDataStructures.StatTypeWithModifier</a></dt>
+      <dd><p>Represents a stat that can receive modifiers.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="AshesOfVelsingrad.Utilities.AovDataStructures.TargetTypes.html">AovDataStructures.TargetTypes</a></dt>
+      <dd><p>Defines the targeting pattern of a skill.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="AshesOfVelsingrad.Utilities.AovDataStructures.TurnState.html">AovDataStructures.TurnState</a></dt>
+      <dd><p>Defines the possible turn states in the battle system.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="AshesOfVelsingrad.Utilities.AovDataStructures.UnitType.html">AovDataStructures.UnitType</a></dt>
+      <dd><p>Represents the different unit archetypes in the game.</p>
+</dd>
+    </dl>
 
 
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/managers/TurnManager.cs/#L13" class="edit-link">Edit this page</a>
         </div>
 
 

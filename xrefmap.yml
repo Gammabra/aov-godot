@@ -7,6 +7,220 @@ references:
   commentId: N:AshesOfVelsingrad
   fullName: AshesOfVelsingrad
   nameWithType: AshesOfVelsingrad
+- uid: AshesOfVelsingrad.Data
+  name: AshesOfVelsingrad.Data
+  href: api/AshesOfVelsingrad.Data.html
+  commentId: N:AshesOfVelsingrad.Data
+  fullName: AshesOfVelsingrad.Data
+  nameWithType: AshesOfVelsingrad.Data
+- uid: AshesOfVelsingrad.Data.AtkBuffer
+  name: AtkBuffer
+  href: api/AshesOfVelsingrad.Data.AtkBuffer.html
+  commentId: T:AshesOfVelsingrad.Data.AtkBuffer
+  fullName: AshesOfVelsingrad.Data.AtkBuffer
+  nameWithType: AtkBuffer
+- uid: AshesOfVelsingrad.Data.AtkBuffer.#ctor(System.Int32,AshesOfVelsingrad.Utilities.AovDataStructures.ModifierType,System.Single)
+  name: AtkBuffer(int, ModifierType, float)
+  href: api/AshesOfVelsingrad.Data.AtkBuffer.html#AshesOfVelsingrad_Data_AtkBuffer__ctor_System_Int32_AshesOfVelsingrad_Utilities_AovDataStructures_ModifierType_System_Single_
+  commentId: M:AshesOfVelsingrad.Data.AtkBuffer.#ctor(System.Int32,AshesOfVelsingrad.Utilities.AovDataStructures.ModifierType,System.Single)
+  name.vb: New(Integer, ModifierType, Single)
+  fullName: AshesOfVelsingrad.Data.AtkBuffer.AtkBuffer(int, AshesOfVelsingrad.Utilities.AovDataStructures.ModifierType, float)
+  fullName.vb: AshesOfVelsingrad.Data.AtkBuffer.New(Integer, AshesOfVelsingrad.Utilities.AovDataStructures.ModifierType, Single)
+  nameWithType: AtkBuffer.AtkBuffer(int, AovDataStructures.ModifierType, float)
+  nameWithType.vb: AtkBuffer.New(Integer, AovDataStructures.ModifierType, Single)
+- uid: AshesOfVelsingrad.Data.AtkBuffer.#ctor*
+  name: AtkBuffer
+  href: api/AshesOfVelsingrad.Data.AtkBuffer.html#AshesOfVelsingrad_Data_AtkBuffer__ctor_
+  commentId: Overload:AshesOfVelsingrad.Data.AtkBuffer.#ctor
+  isSpec: "True"
+  name.vb: New
+  fullName: AshesOfVelsingrad.Data.AtkBuffer.AtkBuffer
+  fullName.vb: AshesOfVelsingrad.Data.AtkBuffer.New
+  nameWithType: AtkBuffer.AtkBuffer
+  nameWithType.vb: AtkBuffer.New
+- uid: AshesOfVelsingrad.Data.AtkBuffer.OnApply(AshesOfVelsingrad.Systems.IEffectTarget{AshesOfVelsingrad.Systems.UnitSystem})
+  name: OnApply(IEffectTarget<UnitSystem>)
+  href: api/AshesOfVelsingrad.Data.AtkBuffer.html#AshesOfVelsingrad_Data_AtkBuffer_OnApply_AshesOfVelsingrad_Systems_IEffectTarget_AshesOfVelsingrad_Systems_UnitSystem__
+  commentId: M:AshesOfVelsingrad.Data.AtkBuffer.OnApply(AshesOfVelsingrad.Systems.IEffectTarget{AshesOfVelsingrad.Systems.UnitSystem})
+  name.vb: OnApply(IEffectTarget(Of UnitSystem))
+  fullName: AshesOfVelsingrad.Data.AtkBuffer.OnApply(AshesOfVelsingrad.Systems.IEffectTarget<AshesOfVelsingrad.Systems.UnitSystem>)
+  fullName.vb: AshesOfVelsingrad.Data.AtkBuffer.OnApply(AshesOfVelsingrad.Systems.IEffectTarget(Of AshesOfVelsingrad.Systems.UnitSystem))
+  nameWithType: AtkBuffer.OnApply(IEffectTarget<UnitSystem>)
+  nameWithType.vb: AtkBuffer.OnApply(IEffectTarget(Of UnitSystem))
+- uid: AshesOfVelsingrad.Data.AtkBuffer.OnApply*
+  name: OnApply
+  href: api/AshesOfVelsingrad.Data.AtkBuffer.html#AshesOfVelsingrad_Data_AtkBuffer_OnApply_
+  commentId: Overload:AshesOfVelsingrad.Data.AtkBuffer.OnApply
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.Data.AtkBuffer.OnApply
+  nameWithType: AtkBuffer.OnApply
+- uid: AshesOfVelsingrad.Data.AtkBuffer.OnRemove(AshesOfVelsingrad.Systems.IEffectTarget{AshesOfVelsingrad.Systems.UnitSystem})
+  name: OnRemove(IEffectTarget<UnitSystem>)
+  href: api/AshesOfVelsingrad.Data.AtkBuffer.html#AshesOfVelsingrad_Data_AtkBuffer_OnRemove_AshesOfVelsingrad_Systems_IEffectTarget_AshesOfVelsingrad_Systems_UnitSystem__
+  commentId: M:AshesOfVelsingrad.Data.AtkBuffer.OnRemove(AshesOfVelsingrad.Systems.IEffectTarget{AshesOfVelsingrad.Systems.UnitSystem})
+  name.vb: OnRemove(IEffectTarget(Of UnitSystem))
+  fullName: AshesOfVelsingrad.Data.AtkBuffer.OnRemove(AshesOfVelsingrad.Systems.IEffectTarget<AshesOfVelsingrad.Systems.UnitSystem>)
+  fullName.vb: AshesOfVelsingrad.Data.AtkBuffer.OnRemove(AshesOfVelsingrad.Systems.IEffectTarget(Of AshesOfVelsingrad.Systems.UnitSystem))
+  nameWithType: AtkBuffer.OnRemove(IEffectTarget<UnitSystem>)
+  nameWithType.vb: AtkBuffer.OnRemove(IEffectTarget(Of UnitSystem))
+- uid: AshesOfVelsingrad.Data.AtkBuffer.OnRemove*
+  name: OnRemove
+  href: api/AshesOfVelsingrad.Data.AtkBuffer.html#AshesOfVelsingrad_Data_AtkBuffer_OnRemove_
+  commentId: Overload:AshesOfVelsingrad.Data.AtkBuffer.OnRemove
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.Data.AtkBuffer.OnRemove
+  nameWithType: AtkBuffer.OnRemove
+- uid: AshesOfVelsingrad.Data.BurningCellEffect
+  name: BurningCellEffect
+  href: api/AshesOfVelsingrad.Data.BurningCellEffect.html
+  commentId: T:AshesOfVelsingrad.Data.BurningCellEffect
+  fullName: AshesOfVelsingrad.Data.BurningCellEffect
+  nameWithType: BurningCellEffect
+- uid: AshesOfVelsingrad.Data.BurningCellEffect.#ctor(System.Int32)
+  name: BurningCellEffect(int)
+  href: api/AshesOfVelsingrad.Data.BurningCellEffect.html#AshesOfVelsingrad_Data_BurningCellEffect__ctor_System_Int32_
+  commentId: M:AshesOfVelsingrad.Data.BurningCellEffect.#ctor(System.Int32)
+  name.vb: New(Integer)
+  fullName: AshesOfVelsingrad.Data.BurningCellEffect.BurningCellEffect(int)
+  fullName.vb: AshesOfVelsingrad.Data.BurningCellEffect.New(Integer)
+  nameWithType: BurningCellEffect.BurningCellEffect(int)
+  nameWithType.vb: BurningCellEffect.New(Integer)
+- uid: AshesOfVelsingrad.Data.BurningCellEffect.#ctor*
+  name: BurningCellEffect
+  href: api/AshesOfVelsingrad.Data.BurningCellEffect.html#AshesOfVelsingrad_Data_BurningCellEffect__ctor_
+  commentId: Overload:AshesOfVelsingrad.Data.BurningCellEffect.#ctor
+  isSpec: "True"
+  name.vb: New
+  fullName: AshesOfVelsingrad.Data.BurningCellEffect.BurningCellEffect
+  fullName.vb: AshesOfVelsingrad.Data.BurningCellEffect.New
+  nameWithType: BurningCellEffect.BurningCellEffect
+  nameWithType.vb: BurningCellEffect.New
+- uid: AshesOfVelsingrad.Data.BurningEffect
+  name: BurningEffect
+  href: api/AshesOfVelsingrad.Data.BurningEffect.html
+  commentId: T:AshesOfVelsingrad.Data.BurningEffect
+  fullName: AshesOfVelsingrad.Data.BurningEffect
+  nameWithType: BurningEffect
+- uid: AshesOfVelsingrad.Data.BurningEffect.#ctor(System.Int32,AshesOfVelsingrad.Utilities.AovDataStructures.ModifierType,System.Single)
+  name: BurningEffect(int, ModifierType, float)
+  href: api/AshesOfVelsingrad.Data.BurningEffect.html#AshesOfVelsingrad_Data_BurningEffect__ctor_System_Int32_AshesOfVelsingrad_Utilities_AovDataStructures_ModifierType_System_Single_
+  commentId: M:AshesOfVelsingrad.Data.BurningEffect.#ctor(System.Int32,AshesOfVelsingrad.Utilities.AovDataStructures.ModifierType,System.Single)
+  name.vb: New(Integer, ModifierType, Single)
+  fullName: AshesOfVelsingrad.Data.BurningEffect.BurningEffect(int, AshesOfVelsingrad.Utilities.AovDataStructures.ModifierType, float)
+  fullName.vb: AshesOfVelsingrad.Data.BurningEffect.New(Integer, AshesOfVelsingrad.Utilities.AovDataStructures.ModifierType, Single)
+  nameWithType: BurningEffect.BurningEffect(int, AovDataStructures.ModifierType, float)
+  nameWithType.vb: BurningEffect.New(Integer, AovDataStructures.ModifierType, Single)
+- uid: AshesOfVelsingrad.Data.BurningEffect.#ctor*
+  name: BurningEffect
+  href: api/AshesOfVelsingrad.Data.BurningEffect.html#AshesOfVelsingrad_Data_BurningEffect__ctor_
+  commentId: Overload:AshesOfVelsingrad.Data.BurningEffect.#ctor
+  isSpec: "True"
+  name.vb: New
+  fullName: AshesOfVelsingrad.Data.BurningEffect.BurningEffect
+  fullName.vb: AshesOfVelsingrad.Data.BurningEffect.New
+  nameWithType: BurningEffect.BurningEffect
+  nameWithType.vb: BurningEffect.New
+- uid: AshesOfVelsingrad.Data.BurningEffect.OnTurnPassed(AshesOfVelsingrad.Systems.IEffectTarget{AshesOfVelsingrad.Systems.UnitSystem})
+  name: OnTurnPassed(IEffectTarget<UnitSystem>)
+  href: api/AshesOfVelsingrad.Data.BurningEffect.html#AshesOfVelsingrad_Data_BurningEffect_OnTurnPassed_AshesOfVelsingrad_Systems_IEffectTarget_AshesOfVelsingrad_Systems_UnitSystem__
+  commentId: M:AshesOfVelsingrad.Data.BurningEffect.OnTurnPassed(AshesOfVelsingrad.Systems.IEffectTarget{AshesOfVelsingrad.Systems.UnitSystem})
+  name.vb: OnTurnPassed(IEffectTarget(Of UnitSystem))
+  fullName: AshesOfVelsingrad.Data.BurningEffect.OnTurnPassed(AshesOfVelsingrad.Systems.IEffectTarget<AshesOfVelsingrad.Systems.UnitSystem>)
+  fullName.vb: AshesOfVelsingrad.Data.BurningEffect.OnTurnPassed(AshesOfVelsingrad.Systems.IEffectTarget(Of AshesOfVelsingrad.Systems.UnitSystem))
+  nameWithType: BurningEffect.OnTurnPassed(IEffectTarget<UnitSystem>)
+  nameWithType.vb: BurningEffect.OnTurnPassed(IEffectTarget(Of UnitSystem))
+- uid: AshesOfVelsingrad.Data.BurningEffect.OnTurnPassed*
+  name: OnTurnPassed
+  href: api/AshesOfVelsingrad.Data.BurningEffect.html#AshesOfVelsingrad_Data_BurningEffect_OnTurnPassed_
+  commentId: Overload:AshesOfVelsingrad.Data.BurningEffect.OnTurnPassed
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.Data.BurningEffect.OnTurnPassed
+  nameWithType: BurningEffect.OnTurnPassed
+- uid: AshesOfVelsingrad.Data.StatusEffect
+  name: AshesOfVelsingrad.Data.StatusEffect
+  href: api/AshesOfVelsingrad.Data.StatusEffect.html
+  commentId: N:AshesOfVelsingrad.Data.StatusEffect
+  fullName: AshesOfVelsingrad.Data.StatusEffect
+  nameWithType: AshesOfVelsingrad.Data.StatusEffect
+- uid: AshesOfVelsingrad.Data.StatusEffect.Map1
+  name: Map1
+  href: api/AshesOfVelsingrad.Data.StatusEffect.Map1.html
+  commentId: T:AshesOfVelsingrad.Data.StatusEffect.Map1
+  fullName: AshesOfVelsingrad.Data.StatusEffect.Map1
+  nameWithType: Map1
+- uid: AshesOfVelsingrad.Data.StatusEffect.Map1.PlaceUnits(System.Collections.Generic.List{AshesOfVelsingrad.Systems.UnitSystem},System.Collections.Generic.List{AshesOfVelsingrad.Systems.UnitSystem})
+  name: PlaceUnits(List<UnitSystem>, List<UnitSystem>)
+  href: api/AshesOfVelsingrad.Data.StatusEffect.Map1.html#AshesOfVelsingrad_Data_StatusEffect_Map1_PlaceUnits_System_Collections_Generic_List_AshesOfVelsingrad_Systems_UnitSystem__System_Collections_Generic_List_AshesOfVelsingrad_Systems_UnitSystem__
+  commentId: M:AshesOfVelsingrad.Data.StatusEffect.Map1.PlaceUnits(System.Collections.Generic.List{AshesOfVelsingrad.Systems.UnitSystem},System.Collections.Generic.List{AshesOfVelsingrad.Systems.UnitSystem})
+  name.vb: PlaceUnits(List(Of UnitSystem), List(Of UnitSystem))
+  fullName: AshesOfVelsingrad.Data.StatusEffect.Map1.PlaceUnits(System.Collections.Generic.List<AshesOfVelsingrad.Systems.UnitSystem>, System.Collections.Generic.List<AshesOfVelsingrad.Systems.UnitSystem>)
+  fullName.vb: AshesOfVelsingrad.Data.StatusEffect.Map1.PlaceUnits(System.Collections.Generic.List(Of AshesOfVelsingrad.Systems.UnitSystem), System.Collections.Generic.List(Of AshesOfVelsingrad.Systems.UnitSystem))
+  nameWithType: Map1.PlaceUnits(List<UnitSystem>, List<UnitSystem>)
+  nameWithType.vb: Map1.PlaceUnits(List(Of UnitSystem), List(Of UnitSystem))
+- uid: AshesOfVelsingrad.Data.StatusEffect.Map1.PlaceUnits*
+  name: PlaceUnits
+  href: api/AshesOfVelsingrad.Data.StatusEffect.Map1.html#AshesOfVelsingrad_Data_StatusEffect_Map1_PlaceUnits_
+  commentId: Overload:AshesOfVelsingrad.Data.StatusEffect.Map1.PlaceUnits
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.Data.StatusEffect.Map1.PlaceUnits
+  nameWithType: Map1.PlaceUnits
+- uid: AshesOfVelsingrad.Data.Stun
+  name: Stun
+  href: api/AshesOfVelsingrad.Data.Stun.html
+  commentId: T:AshesOfVelsingrad.Data.Stun
+  fullName: AshesOfVelsingrad.Data.Stun
+  nameWithType: Stun
+- uid: AshesOfVelsingrad.Data.Stun.#ctor(System.Int32)
+  name: Stun(int)
+  href: api/AshesOfVelsingrad.Data.Stun.html#AshesOfVelsingrad_Data_Stun__ctor_System_Int32_
+  commentId: M:AshesOfVelsingrad.Data.Stun.#ctor(System.Int32)
+  name.vb: New(Integer)
+  fullName: AshesOfVelsingrad.Data.Stun.Stun(int)
+  fullName.vb: AshesOfVelsingrad.Data.Stun.New(Integer)
+  nameWithType: Stun.Stun(int)
+  nameWithType.vb: Stun.New(Integer)
+- uid: AshesOfVelsingrad.Data.Stun.#ctor*
+  name: Stun
+  href: api/AshesOfVelsingrad.Data.Stun.html#AshesOfVelsingrad_Data_Stun__ctor_
+  commentId: Overload:AshesOfVelsingrad.Data.Stun.#ctor
+  isSpec: "True"
+  name.vb: New
+  fullName: AshesOfVelsingrad.Data.Stun.Stun
+  fullName.vb: AshesOfVelsingrad.Data.Stun.New
+  nameWithType: Stun.Stun
+  nameWithType.vb: Stun.New
+- uid: AshesOfVelsingrad.Data.Stun.OnApply(AshesOfVelsingrad.Systems.IEffectTarget{AshesOfVelsingrad.Systems.UnitSystem})
+  name: OnApply(IEffectTarget<UnitSystem>)
+  href: api/AshesOfVelsingrad.Data.Stun.html#AshesOfVelsingrad_Data_Stun_OnApply_AshesOfVelsingrad_Systems_IEffectTarget_AshesOfVelsingrad_Systems_UnitSystem__
+  commentId: M:AshesOfVelsingrad.Data.Stun.OnApply(AshesOfVelsingrad.Systems.IEffectTarget{AshesOfVelsingrad.Systems.UnitSystem})
+  name.vb: OnApply(IEffectTarget(Of UnitSystem))
+  fullName: AshesOfVelsingrad.Data.Stun.OnApply(AshesOfVelsingrad.Systems.IEffectTarget<AshesOfVelsingrad.Systems.UnitSystem>)
+  fullName.vb: AshesOfVelsingrad.Data.Stun.OnApply(AshesOfVelsingrad.Systems.IEffectTarget(Of AshesOfVelsingrad.Systems.UnitSystem))
+  nameWithType: Stun.OnApply(IEffectTarget<UnitSystem>)
+  nameWithType.vb: Stun.OnApply(IEffectTarget(Of UnitSystem))
+- uid: AshesOfVelsingrad.Data.Stun.OnApply*
+  name: OnApply
+  href: api/AshesOfVelsingrad.Data.Stun.html#AshesOfVelsingrad_Data_Stun_OnApply_
+  commentId: Overload:AshesOfVelsingrad.Data.Stun.OnApply
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.Data.Stun.OnApply
+  nameWithType: Stun.OnApply
+- uid: AshesOfVelsingrad.Data.Stun.OnRemove(AshesOfVelsingrad.Systems.IEffectTarget{AshesOfVelsingrad.Systems.UnitSystem})
+  name: OnRemove(IEffectTarget<UnitSystem>)
+  href: api/AshesOfVelsingrad.Data.Stun.html#AshesOfVelsingrad_Data_Stun_OnRemove_AshesOfVelsingrad_Systems_IEffectTarget_AshesOfVelsingrad_Systems_UnitSystem__
+  commentId: M:AshesOfVelsingrad.Data.Stun.OnRemove(AshesOfVelsingrad.Systems.IEffectTarget{AshesOfVelsingrad.Systems.UnitSystem})
+  name.vb: OnRemove(IEffectTarget(Of UnitSystem))
+  fullName: AshesOfVelsingrad.Data.Stun.OnRemove(AshesOfVelsingrad.Systems.IEffectTarget<AshesOfVelsingrad.Systems.UnitSystem>)
+  fullName.vb: AshesOfVelsingrad.Data.Stun.OnRemove(AshesOfVelsingrad.Systems.IEffectTarget(Of AshesOfVelsingrad.Systems.UnitSystem))
+  nameWithType: Stun.OnRemove(IEffectTarget<UnitSystem>)
+  nameWithType.vb: Stun.OnRemove(IEffectTarget(Of UnitSystem))
+- uid: AshesOfVelsingrad.Data.Stun.OnRemove*
+  name: OnRemove
+  href: api/AshesOfVelsingrad.Data.Stun.html#AshesOfVelsingrad_Data_Stun_OnRemove_
+  commentId: Overload:AshesOfVelsingrad.Data.Stun.OnRemove
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.Data.Stun.OnRemove
+  nameWithType: Stun.OnRemove
 - uid: AshesOfVelsingrad.Enemy1Data
   name: Enemy1Data
   href: api/AshesOfVelsingrad.Enemy1Data.html
@@ -166,24 +380,6 @@ references:
   isSpec: "True"
   fullName: AshesOfVelsingrad.Managers.BaseManager._Ready
   nameWithType: BaseManager._Ready
-- uid: AshesOfVelsingrad.Managers.ClickOnMapContext
-  name: ClickOnMapContext
-  href: api/AshesOfVelsingrad.Managers.ClickOnMapContext.html
-  commentId: T:AshesOfVelsingrad.Managers.ClickOnMapContext
-  fullName: AshesOfVelsingrad.Managers.ClickOnMapContext
-  nameWithType: ClickOnMapContext
-- uid: AshesOfVelsingrad.Managers.ClickOnMapContext.MoveUnit
-  name: MoveUnit
-  href: api/AshesOfVelsingrad.Managers.ClickOnMapContext.html#AshesOfVelsingrad_Managers_ClickOnMapContext_MoveUnit
-  commentId: F:AshesOfVelsingrad.Managers.ClickOnMapContext.MoveUnit
-  fullName: AshesOfVelsingrad.Managers.ClickOnMapContext.MoveUnit
-  nameWithType: ClickOnMapContext.MoveUnit
-- uid: AshesOfVelsingrad.Managers.ClickOnMapContext.SelectUnitTarget
-  name: SelectUnitTarget
-  href: api/AshesOfVelsingrad.Managers.ClickOnMapContext.html#AshesOfVelsingrad_Managers_ClickOnMapContext_SelectUnitTarget
-  commentId: F:AshesOfVelsingrad.Managers.ClickOnMapContext.SelectUnitTarget
-  fullName: AshesOfVelsingrad.Managers.ClickOnMapContext.SelectUnitTarget
-  nameWithType: ClickOnMapContext.SelectUnitTarget
 - uid: AshesOfVelsingrad.Managers.GameManager
   name: GameManager
   href: api/AshesOfVelsingrad.Managers.GameManager.html
@@ -242,30 +438,6 @@ references:
   isSpec: "True"
   fullName: AshesOfVelsingrad.Managers.GameManager._Ready
   nameWithType: GameManager._Ready
-- uid: AshesOfVelsingrad.Managers.GameOutcome
-  name: GameOutcome
-  href: api/AshesOfVelsingrad.Managers.GameOutcome.html
-  commentId: T:AshesOfVelsingrad.Managers.GameOutcome
-  fullName: AshesOfVelsingrad.Managers.GameOutcome
-  nameWithType: GameOutcome
-- uid: AshesOfVelsingrad.Managers.GameOutcome.Defeat
-  name: Defeat
-  href: api/AshesOfVelsingrad.Managers.GameOutcome.html#AshesOfVelsingrad_Managers_GameOutcome_Defeat
-  commentId: F:AshesOfVelsingrad.Managers.GameOutcome.Defeat
-  fullName: AshesOfVelsingrad.Managers.GameOutcome.Defeat
-  nameWithType: GameOutcome.Defeat
-- uid: AshesOfVelsingrad.Managers.GameOutcome.Ongoing
-  name: Ongoing
-  href: api/AshesOfVelsingrad.Managers.GameOutcome.html#AshesOfVelsingrad_Managers_GameOutcome_Ongoing
-  commentId: F:AshesOfVelsingrad.Managers.GameOutcome.Ongoing
-  fullName: AshesOfVelsingrad.Managers.GameOutcome.Ongoing
-  nameWithType: GameOutcome.Ongoing
-- uid: AshesOfVelsingrad.Managers.GameOutcome.Victory
-  name: Victory
-  href: api/AshesOfVelsingrad.Managers.GameOutcome.html#AshesOfVelsingrad_Managers_GameOutcome_Victory
-  commentId: F:AshesOfVelsingrad.Managers.GameOutcome.Victory
-  fullName: AshesOfVelsingrad.Managers.GameOutcome.Victory
-  nameWithType: GameOutcome.Victory
 - uid: AshesOfVelsingrad.Managers.MenuManager
   name: MenuManager
   href: api/AshesOfVelsingrad.Managers.MenuManager.html
@@ -862,58 +1034,6 @@ references:
   isSpec: "True"
   fullName: AshesOfVelsingrad.Managers.TurnManager.StartBattle
   nameWithType: TurnManager.StartBattle
-- uid: AshesOfVelsingrad.Managers.TurnState
-  name: TurnState
-  href: api/AshesOfVelsingrad.Managers.TurnState.html
-  commentId: T:AshesOfVelsingrad.Managers.TurnState
-  fullName: AshesOfVelsingrad.Managers.TurnState
-  nameWithType: TurnState
-- uid: AshesOfVelsingrad.Managers.TurnState.EnemyTurn
-  name: EnemyTurn
-  href: api/AshesOfVelsingrad.Managers.TurnState.html#AshesOfVelsingrad_Managers_TurnState_EnemyTurn
-  commentId: F:AshesOfVelsingrad.Managers.TurnState.EnemyTurn
-  fullName: AshesOfVelsingrad.Managers.TurnState.EnemyTurn
-  nameWithType: TurnState.EnemyTurn
-- uid: AshesOfVelsingrad.Managers.TurnState.Finished
-  name: Finished
-  href: api/AshesOfVelsingrad.Managers.TurnState.html#AshesOfVelsingrad_Managers_TurnState_Finished
-  commentId: F:AshesOfVelsingrad.Managers.TurnState.Finished
-  fullName: AshesOfVelsingrad.Managers.TurnState.Finished
-  nameWithType: TurnState.Finished
-- uid: AshesOfVelsingrad.Managers.TurnState.PlayerTurn
-  name: PlayerTurn
-  href: api/AshesOfVelsingrad.Managers.TurnState.html#AshesOfVelsingrad_Managers_TurnState_PlayerTurn
-  commentId: F:AshesOfVelsingrad.Managers.TurnState.PlayerTurn
-  fullName: AshesOfVelsingrad.Managers.TurnState.PlayerTurn
-  nameWithType: TurnState.PlayerTurn
-- uid: AshesOfVelsingrad.Managers.TurnState.Waiting
-  name: Waiting
-  href: api/AshesOfVelsingrad.Managers.TurnState.html#AshesOfVelsingrad_Managers_TurnState_Waiting
-  commentId: F:AshesOfVelsingrad.Managers.TurnState.Waiting
-  fullName: AshesOfVelsingrad.Managers.TurnState.Waiting
-  nameWithType: TurnState.Waiting
-- uid: AshesOfVelsingrad.Map1
-  name: Map1
-  href: api/AshesOfVelsingrad.Map1.html
-  commentId: T:AshesOfVelsingrad.Map1
-  fullName: AshesOfVelsingrad.Map1
-  nameWithType: Map1
-- uid: AshesOfVelsingrad.Map1.PlaceUnits(System.Collections.Generic.List{AshesOfVelsingrad.Systems.UnitSystem},System.Collections.Generic.List{AshesOfVelsingrad.Systems.UnitSystem})
-  name: PlaceUnits(List<UnitSystem>, List<UnitSystem>)
-  href: api/AshesOfVelsingrad.Map1.html#AshesOfVelsingrad_Map1_PlaceUnits_System_Collections_Generic_List_AshesOfVelsingrad_Systems_UnitSystem__System_Collections_Generic_List_AshesOfVelsingrad_Systems_UnitSystem__
-  commentId: M:AshesOfVelsingrad.Map1.PlaceUnits(System.Collections.Generic.List{AshesOfVelsingrad.Systems.UnitSystem},System.Collections.Generic.List{AshesOfVelsingrad.Systems.UnitSystem})
-  name.vb: PlaceUnits(List(Of UnitSystem), List(Of UnitSystem))
-  fullName: AshesOfVelsingrad.Map1.PlaceUnits(System.Collections.Generic.List<AshesOfVelsingrad.Systems.UnitSystem>, System.Collections.Generic.List<AshesOfVelsingrad.Systems.UnitSystem>)
-  fullName.vb: AshesOfVelsingrad.Map1.PlaceUnits(System.Collections.Generic.List(Of AshesOfVelsingrad.Systems.UnitSystem), System.Collections.Generic.List(Of AshesOfVelsingrad.Systems.UnitSystem))
-  nameWithType: Map1.PlaceUnits(List<UnitSystem>, List<UnitSystem>)
-  nameWithType.vb: Map1.PlaceUnits(List(Of UnitSystem), List(Of UnitSystem))
-- uid: AshesOfVelsingrad.Map1.PlaceUnits*
-  name: PlaceUnits
-  href: api/AshesOfVelsingrad.Map1.html#AshesOfVelsingrad_Map1_PlaceUnits_
-  commentId: Overload:AshesOfVelsingrad.Map1.PlaceUnits
-  isSpec: "True"
-  fullName: AshesOfVelsingrad.Map1.PlaceUnits
-  nameWithType: Map1.PlaceUnits
 - uid: AshesOfVelsingrad.Player1Data
   name: Player1Data
   href: api/AshesOfVelsingrad.Player1Data.html
@@ -958,15 +1078,15 @@ references:
   fullName.vb: AshesOfVelsingrad.Skill1.New
   nameWithType: Skill1.Skill1
   nameWithType.vb: Skill1.New
-- uid: AshesOfVelsingrad.Skill1.Use(System.Collections.Generic.List{AshesOfVelsingrad.Systems.UnitSystem},AshesOfVelsingrad.Systems.MapSystem)
-  name: Use(List<UnitSystem>, MapSystem?)
-  href: api/AshesOfVelsingrad.Skill1.html#AshesOfVelsingrad_Skill1_Use_System_Collections_Generic_List_AshesOfVelsingrad_Systems_UnitSystem__AshesOfVelsingrad_Systems_MapSystem_
-  commentId: M:AshesOfVelsingrad.Skill1.Use(System.Collections.Generic.List{AshesOfVelsingrad.Systems.UnitSystem},AshesOfVelsingrad.Systems.MapSystem)
-  name.vb: Use(List(Of UnitSystem), MapSystem)
-  fullName: AshesOfVelsingrad.Skill1.Use(System.Collections.Generic.List<AshesOfVelsingrad.Systems.UnitSystem>, AshesOfVelsingrad.Systems.MapSystem?)
-  fullName.vb: AshesOfVelsingrad.Skill1.Use(System.Collections.Generic.List(Of AshesOfVelsingrad.Systems.UnitSystem), AshesOfVelsingrad.Systems.MapSystem)
-  nameWithType: Skill1.Use(List<UnitSystem>, MapSystem?)
-  nameWithType.vb: Skill1.Use(List(Of UnitSystem), MapSystem)
+- uid: AshesOfVelsingrad.Skill1.Use(AshesOfVelsingrad.Systems.UnitSystem,System.Collections.Generic.List{AshesOfVelsingrad.Systems.UnitSystem},AshesOfVelsingrad.Systems.MapSystem)
+  name: Use(UnitSystem, List<UnitSystem>, MapSystem?)
+  href: api/AshesOfVelsingrad.Skill1.html#AshesOfVelsingrad_Skill1_Use_AshesOfVelsingrad_Systems_UnitSystem_System_Collections_Generic_List_AshesOfVelsingrad_Systems_UnitSystem__AshesOfVelsingrad_Systems_MapSystem_
+  commentId: M:AshesOfVelsingrad.Skill1.Use(AshesOfVelsingrad.Systems.UnitSystem,System.Collections.Generic.List{AshesOfVelsingrad.Systems.UnitSystem},AshesOfVelsingrad.Systems.MapSystem)
+  name.vb: Use(UnitSystem, List(Of UnitSystem), MapSystem)
+  fullName: AshesOfVelsingrad.Skill1.Use(AshesOfVelsingrad.Systems.UnitSystem, System.Collections.Generic.List<AshesOfVelsingrad.Systems.UnitSystem>, AshesOfVelsingrad.Systems.MapSystem?)
+  fullName.vb: AshesOfVelsingrad.Skill1.Use(AshesOfVelsingrad.Systems.UnitSystem, System.Collections.Generic.List(Of AshesOfVelsingrad.Systems.UnitSystem), AshesOfVelsingrad.Systems.MapSystem)
+  nameWithType: Skill1.Use(UnitSystem, List<UnitSystem>, MapSystem?)
+  nameWithType.vb: Skill1.Use(UnitSystem, List(Of UnitSystem), MapSystem)
 - uid: AshesOfVelsingrad.Skill1.Use*
   name: Use
   href: api/AshesOfVelsingrad.Skill1.html#AshesOfVelsingrad_Skill1_Use_
@@ -999,15 +1119,15 @@ references:
   fullName.vb: AshesOfVelsingrad.Skill2.New
   nameWithType: Skill2.Skill2
   nameWithType.vb: Skill2.New
-- uid: AshesOfVelsingrad.Skill2.Use(System.Collections.Generic.List{AshesOfVelsingrad.Systems.UnitSystem},AshesOfVelsingrad.Systems.MapSystem)
-  name: Use(List<UnitSystem>, MapSystem?)
-  href: api/AshesOfVelsingrad.Skill2.html#AshesOfVelsingrad_Skill2_Use_System_Collections_Generic_List_AshesOfVelsingrad_Systems_UnitSystem__AshesOfVelsingrad_Systems_MapSystem_
-  commentId: M:AshesOfVelsingrad.Skill2.Use(System.Collections.Generic.List{AshesOfVelsingrad.Systems.UnitSystem},AshesOfVelsingrad.Systems.MapSystem)
-  name.vb: Use(List(Of UnitSystem), MapSystem)
-  fullName: AshesOfVelsingrad.Skill2.Use(System.Collections.Generic.List<AshesOfVelsingrad.Systems.UnitSystem>, AshesOfVelsingrad.Systems.MapSystem?)
-  fullName.vb: AshesOfVelsingrad.Skill2.Use(System.Collections.Generic.List(Of AshesOfVelsingrad.Systems.UnitSystem), AshesOfVelsingrad.Systems.MapSystem)
-  nameWithType: Skill2.Use(List<UnitSystem>, MapSystem?)
-  nameWithType.vb: Skill2.Use(List(Of UnitSystem), MapSystem)
+- uid: AshesOfVelsingrad.Skill2.Use(AshesOfVelsingrad.Systems.UnitSystem,System.Collections.Generic.List{AshesOfVelsingrad.Systems.UnitSystem},AshesOfVelsingrad.Systems.MapSystem)
+  name: Use(UnitSystem, List<UnitSystem>, MapSystem?)
+  href: api/AshesOfVelsingrad.Skill2.html#AshesOfVelsingrad_Skill2_Use_AshesOfVelsingrad_Systems_UnitSystem_System_Collections_Generic_List_AshesOfVelsingrad_Systems_UnitSystem__AshesOfVelsingrad_Systems_MapSystem_
+  commentId: M:AshesOfVelsingrad.Skill2.Use(AshesOfVelsingrad.Systems.UnitSystem,System.Collections.Generic.List{AshesOfVelsingrad.Systems.UnitSystem},AshesOfVelsingrad.Systems.MapSystem)
+  name.vb: Use(UnitSystem, List(Of UnitSystem), MapSystem)
+  fullName: AshesOfVelsingrad.Skill2.Use(AshesOfVelsingrad.Systems.UnitSystem, System.Collections.Generic.List<AshesOfVelsingrad.Systems.UnitSystem>, AshesOfVelsingrad.Systems.MapSystem?)
+  fullName.vb: AshesOfVelsingrad.Skill2.Use(AshesOfVelsingrad.Systems.UnitSystem, System.Collections.Generic.List(Of AshesOfVelsingrad.Systems.UnitSystem), AshesOfVelsingrad.Systems.MapSystem)
+  nameWithType: Skill2.Use(UnitSystem, List<UnitSystem>, MapSystem?)
+  nameWithType.vb: Skill2.Use(UnitSystem, List(Of UnitSystem), MapSystem)
 - uid: AshesOfVelsingrad.Skill2.Use*
   name: Use
   href: api/AshesOfVelsingrad.Skill2.html#AshesOfVelsingrad_Skill2_Use_
@@ -1040,15 +1160,15 @@ references:
   fullName.vb: AshesOfVelsingrad.Skill3.New
   nameWithType: Skill3.Skill3
   nameWithType.vb: Skill3.New
-- uid: AshesOfVelsingrad.Skill3.Use(System.Collections.Generic.List{AshesOfVelsingrad.Systems.UnitSystem},AshesOfVelsingrad.Systems.MapSystem)
-  name: Use(List<UnitSystem>, MapSystem?)
-  href: api/AshesOfVelsingrad.Skill3.html#AshesOfVelsingrad_Skill3_Use_System_Collections_Generic_List_AshesOfVelsingrad_Systems_UnitSystem__AshesOfVelsingrad_Systems_MapSystem_
-  commentId: M:AshesOfVelsingrad.Skill3.Use(System.Collections.Generic.List{AshesOfVelsingrad.Systems.UnitSystem},AshesOfVelsingrad.Systems.MapSystem)
-  name.vb: Use(List(Of UnitSystem), MapSystem)
-  fullName: AshesOfVelsingrad.Skill3.Use(System.Collections.Generic.List<AshesOfVelsingrad.Systems.UnitSystem>, AshesOfVelsingrad.Systems.MapSystem?)
-  fullName.vb: AshesOfVelsingrad.Skill3.Use(System.Collections.Generic.List(Of AshesOfVelsingrad.Systems.UnitSystem), AshesOfVelsingrad.Systems.MapSystem)
-  nameWithType: Skill3.Use(List<UnitSystem>, MapSystem?)
-  nameWithType.vb: Skill3.Use(List(Of UnitSystem), MapSystem)
+- uid: AshesOfVelsingrad.Skill3.Use(AshesOfVelsingrad.Systems.UnitSystem,System.Collections.Generic.List{AshesOfVelsingrad.Systems.UnitSystem},AshesOfVelsingrad.Systems.MapSystem)
+  name: Use(UnitSystem, List<UnitSystem>, MapSystem?)
+  href: api/AshesOfVelsingrad.Skill3.html#AshesOfVelsingrad_Skill3_Use_AshesOfVelsingrad_Systems_UnitSystem_System_Collections_Generic_List_AshesOfVelsingrad_Systems_UnitSystem__AshesOfVelsingrad_Systems_MapSystem_
+  commentId: M:AshesOfVelsingrad.Skill3.Use(AshesOfVelsingrad.Systems.UnitSystem,System.Collections.Generic.List{AshesOfVelsingrad.Systems.UnitSystem},AshesOfVelsingrad.Systems.MapSystem)
+  name.vb: Use(UnitSystem, List(Of UnitSystem), MapSystem)
+  fullName: AshesOfVelsingrad.Skill3.Use(AshesOfVelsingrad.Systems.UnitSystem, System.Collections.Generic.List<AshesOfVelsingrad.Systems.UnitSystem>, AshesOfVelsingrad.Systems.MapSystem?)
+  fullName.vb: AshesOfVelsingrad.Skill3.Use(AshesOfVelsingrad.Systems.UnitSystem, System.Collections.Generic.List(Of AshesOfVelsingrad.Systems.UnitSystem), AshesOfVelsingrad.Systems.MapSystem)
+  nameWithType: Skill3.Use(UnitSystem, List<UnitSystem>, MapSystem?)
+  nameWithType.vb: Skill3.Use(UnitSystem, List(Of UnitSystem), MapSystem)
 - uid: AshesOfVelsingrad.Skill3.Use*
   name: Use
   href: api/AshesOfVelsingrad.Skill3.html#AshesOfVelsingrad_Skill3_Use_
@@ -1081,15 +1201,15 @@ references:
   fullName.vb: AshesOfVelsingrad.Skill4.New
   nameWithType: Skill4.Skill4
   nameWithType.vb: Skill4.New
-- uid: AshesOfVelsingrad.Skill4.Use(System.Collections.Generic.List{AshesOfVelsingrad.Systems.UnitSystem},AshesOfVelsingrad.Systems.MapSystem)
-  name: Use(List<UnitSystem>, MapSystem?)
-  href: api/AshesOfVelsingrad.Skill4.html#AshesOfVelsingrad_Skill4_Use_System_Collections_Generic_List_AshesOfVelsingrad_Systems_UnitSystem__AshesOfVelsingrad_Systems_MapSystem_
-  commentId: M:AshesOfVelsingrad.Skill4.Use(System.Collections.Generic.List{AshesOfVelsingrad.Systems.UnitSystem},AshesOfVelsingrad.Systems.MapSystem)
-  name.vb: Use(List(Of UnitSystem), MapSystem)
-  fullName: AshesOfVelsingrad.Skill4.Use(System.Collections.Generic.List<AshesOfVelsingrad.Systems.UnitSystem>, AshesOfVelsingrad.Systems.MapSystem?)
-  fullName.vb: AshesOfVelsingrad.Skill4.Use(System.Collections.Generic.List(Of AshesOfVelsingrad.Systems.UnitSystem), AshesOfVelsingrad.Systems.MapSystem)
-  nameWithType: Skill4.Use(List<UnitSystem>, MapSystem?)
-  nameWithType.vb: Skill4.Use(List(Of UnitSystem), MapSystem)
+- uid: AshesOfVelsingrad.Skill4.Use(AshesOfVelsingrad.Systems.UnitSystem,System.Collections.Generic.List{AshesOfVelsingrad.Systems.UnitSystem},AshesOfVelsingrad.Systems.MapSystem)
+  name: Use(UnitSystem, List<UnitSystem>, MapSystem?)
+  href: api/AshesOfVelsingrad.Skill4.html#AshesOfVelsingrad_Skill4_Use_AshesOfVelsingrad_Systems_UnitSystem_System_Collections_Generic_List_AshesOfVelsingrad_Systems_UnitSystem__AshesOfVelsingrad_Systems_MapSystem_
+  commentId: M:AshesOfVelsingrad.Skill4.Use(AshesOfVelsingrad.Systems.UnitSystem,System.Collections.Generic.List{AshesOfVelsingrad.Systems.UnitSystem},AshesOfVelsingrad.Systems.MapSystem)
+  name.vb: Use(UnitSystem, List(Of UnitSystem), MapSystem)
+  fullName: AshesOfVelsingrad.Skill4.Use(AshesOfVelsingrad.Systems.UnitSystem, System.Collections.Generic.List<AshesOfVelsingrad.Systems.UnitSystem>, AshesOfVelsingrad.Systems.MapSystem?)
+  fullName.vb: AshesOfVelsingrad.Skill4.Use(AshesOfVelsingrad.Systems.UnitSystem, System.Collections.Generic.List(Of AshesOfVelsingrad.Systems.UnitSystem), AshesOfVelsingrad.Systems.MapSystem)
+  nameWithType: Skill4.Use(UnitSystem, List<UnitSystem>, MapSystem?)
+  nameWithType.vb: Skill4.Use(UnitSystem, List(Of UnitSystem), MapSystem)
 - uid: AshesOfVelsingrad.Skill4.Use*
   name: Use
   href: api/AshesOfVelsingrad.Skill4.html#AshesOfVelsingrad_Skill4_Use_
@@ -1122,15 +1242,15 @@ references:
   fullName.vb: AshesOfVelsingrad.Skill5.New
   nameWithType: Skill5.Skill5
   nameWithType.vb: Skill5.New
-- uid: AshesOfVelsingrad.Skill5.Use(System.Collections.Generic.List{AshesOfVelsingrad.Systems.UnitSystem},AshesOfVelsingrad.Systems.MapSystem)
-  name: Use(List<UnitSystem>, MapSystem?)
-  href: api/AshesOfVelsingrad.Skill5.html#AshesOfVelsingrad_Skill5_Use_System_Collections_Generic_List_AshesOfVelsingrad_Systems_UnitSystem__AshesOfVelsingrad_Systems_MapSystem_
-  commentId: M:AshesOfVelsingrad.Skill5.Use(System.Collections.Generic.List{AshesOfVelsingrad.Systems.UnitSystem},AshesOfVelsingrad.Systems.MapSystem)
-  name.vb: Use(List(Of UnitSystem), MapSystem)
-  fullName: AshesOfVelsingrad.Skill5.Use(System.Collections.Generic.List<AshesOfVelsingrad.Systems.UnitSystem>, AshesOfVelsingrad.Systems.MapSystem?)
-  fullName.vb: AshesOfVelsingrad.Skill5.Use(System.Collections.Generic.List(Of AshesOfVelsingrad.Systems.UnitSystem), AshesOfVelsingrad.Systems.MapSystem)
-  nameWithType: Skill5.Use(List<UnitSystem>, MapSystem?)
-  nameWithType.vb: Skill5.Use(List(Of UnitSystem), MapSystem)
+- uid: AshesOfVelsingrad.Skill5.Use(AshesOfVelsingrad.Systems.UnitSystem,System.Collections.Generic.List{AshesOfVelsingrad.Systems.UnitSystem},AshesOfVelsingrad.Systems.MapSystem)
+  name: Use(UnitSystem, List<UnitSystem>, MapSystem?)
+  href: api/AshesOfVelsingrad.Skill5.html#AshesOfVelsingrad_Skill5_Use_AshesOfVelsingrad_Systems_UnitSystem_System_Collections_Generic_List_AshesOfVelsingrad_Systems_UnitSystem__AshesOfVelsingrad_Systems_MapSystem_
+  commentId: M:AshesOfVelsingrad.Skill5.Use(AshesOfVelsingrad.Systems.UnitSystem,System.Collections.Generic.List{AshesOfVelsingrad.Systems.UnitSystem},AshesOfVelsingrad.Systems.MapSystem)
+  name.vb: Use(UnitSystem, List(Of UnitSystem), MapSystem)
+  fullName: AshesOfVelsingrad.Skill5.Use(AshesOfVelsingrad.Systems.UnitSystem, System.Collections.Generic.List<AshesOfVelsingrad.Systems.UnitSystem>, AshesOfVelsingrad.Systems.MapSystem?)
+  fullName.vb: AshesOfVelsingrad.Skill5.Use(AshesOfVelsingrad.Systems.UnitSystem, System.Collections.Generic.List(Of AshesOfVelsingrad.Systems.UnitSystem), AshesOfVelsingrad.Systems.MapSystem)
+  nameWithType: Skill5.Use(UnitSystem, List<UnitSystem>, MapSystem?)
+  nameWithType.vb: Skill5.Use(UnitSystem, List(Of UnitSystem), MapSystem)
 - uid: AshesOfVelsingrad.Skill5.Use*
   name: Use
   href: api/AshesOfVelsingrad.Skill5.html#AshesOfVelsingrad_Skill5_Use_
@@ -1319,15 +1439,15 @@ references:
   commentId: T:AshesOfVelsingrad.Systems.CellInformation
   fullName: AshesOfVelsingrad.Systems.CellInformation
   nameWithType: CellInformation
-- uid: AshesOfVelsingrad.Systems.CellInformation.#ctor(System.Int32,System.Int32,System.Int32,AshesOfVelsingrad.Systems.CellType,System.Boolean)
+- uid: AshesOfVelsingrad.Systems.CellInformation.#ctor(System.Int32,System.Int32,System.Int32,AshesOfVelsingrad.Utilities.AovDataStructures.CellType,System.Boolean)
   name: CellInformation(int, int, int, CellType, bool)
-  href: api/AshesOfVelsingrad.Systems.CellInformation.html#AshesOfVelsingrad_Systems_CellInformation__ctor_System_Int32_System_Int32_System_Int32_AshesOfVelsingrad_Systems_CellType_System_Boolean_
-  commentId: M:AshesOfVelsingrad.Systems.CellInformation.#ctor(System.Int32,System.Int32,System.Int32,AshesOfVelsingrad.Systems.CellType,System.Boolean)
+  href: api/AshesOfVelsingrad.Systems.CellInformation.html#AshesOfVelsingrad_Systems_CellInformation__ctor_System_Int32_System_Int32_System_Int32_AshesOfVelsingrad_Utilities_AovDataStructures_CellType_System_Boolean_
+  commentId: M:AshesOfVelsingrad.Systems.CellInformation.#ctor(System.Int32,System.Int32,System.Int32,AshesOfVelsingrad.Utilities.AovDataStructures.CellType,System.Boolean)
   name.vb: New(Integer, Integer, Integer, CellType, Boolean)
-  fullName: AshesOfVelsingrad.Systems.CellInformation.CellInformation(int, int, int, AshesOfVelsingrad.Systems.CellType, bool)
-  fullName.vb: AshesOfVelsingrad.Systems.CellInformation.New(Integer, Integer, Integer, AshesOfVelsingrad.Systems.CellType, Boolean)
-  nameWithType: CellInformation.CellInformation(int, int, int, CellType, bool)
-  nameWithType.vb: CellInformation.New(Integer, Integer, Integer, CellType, Boolean)
+  fullName: AshesOfVelsingrad.Systems.CellInformation.CellInformation(int, int, int, AshesOfVelsingrad.Utilities.AovDataStructures.CellType, bool)
+  fullName.vb: AshesOfVelsingrad.Systems.CellInformation.New(Integer, Integer, Integer, AshesOfVelsingrad.Utilities.AovDataStructures.CellType, Boolean)
+  nameWithType: CellInformation.CellInformation(int, int, int, AovDataStructures.CellType, bool)
+  nameWithType.vb: CellInformation.New(Integer, Integer, Integer, AovDataStructures.CellType, Boolean)
 - uid: AshesOfVelsingrad.Systems.CellInformation.#ctor*
   name: CellInformation
   href: api/AshesOfVelsingrad.Systems.CellInformation.html#AshesOfVelsingrad_Systems_CellInformation__ctor_
@@ -1364,6 +1484,19 @@ references:
   isSpec: "True"
   fullName: AshesOfVelsingrad.Systems.CellInformation.IsWalkable
   nameWithType: CellInformation.IsWalkable
+- uid: AshesOfVelsingrad.Systems.CellInformation.OnUnitEntered(AshesOfVelsingrad.Systems.UnitSystem)
+  name: OnUnitEntered(UnitSystem)
+  href: api/AshesOfVelsingrad.Systems.CellInformation.html#AshesOfVelsingrad_Systems_CellInformation_OnUnitEntered_AshesOfVelsingrad_Systems_UnitSystem_
+  commentId: M:AshesOfVelsingrad.Systems.CellInformation.OnUnitEntered(AshesOfVelsingrad.Systems.UnitSystem)
+  fullName: AshesOfVelsingrad.Systems.CellInformation.OnUnitEntered(AshesOfVelsingrad.Systems.UnitSystem)
+  nameWithType: CellInformation.OnUnitEntered(UnitSystem)
+- uid: AshesOfVelsingrad.Systems.CellInformation.OnUnitEntered*
+  name: OnUnitEntered
+  href: api/AshesOfVelsingrad.Systems.CellInformation.html#AshesOfVelsingrad_Systems_CellInformation_OnUnitEntered_
+  commentId: Overload:AshesOfVelsingrad.Systems.CellInformation.OnUnitEntered
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.Systems.CellInformation.OnUnitEntered
+  nameWithType: CellInformation.OnUnitEntered
 - uid: AshesOfVelsingrad.Systems.CellInformation.Unit
   name: Unit
   href: api/AshesOfVelsingrad.Systems.CellInformation.html#AshesOfVelsingrad_Systems_CellInformation_Unit
@@ -1416,24 +1549,6 @@ references:
   isSpec: "True"
   fullName: AshesOfVelsingrad.Systems.CellInformation.Z
   nameWithType: CellInformation.Z
-- uid: AshesOfVelsingrad.Systems.CellType
-  name: CellType
-  href: api/AshesOfVelsingrad.Systems.CellType.html
-  commentId: T:AshesOfVelsingrad.Systems.CellType
-  fullName: AshesOfVelsingrad.Systems.CellType
-  nameWithType: CellType
-- uid: AshesOfVelsingrad.Systems.CellType.Empty
-  name: Empty
-  href: api/AshesOfVelsingrad.Systems.CellType.html#AshesOfVelsingrad_Systems_CellType_Empty
-  commentId: F:AshesOfVelsingrad.Systems.CellType.Empty
-  fullName: AshesOfVelsingrad.Systems.CellType.Empty
-  nameWithType: CellType.Empty
-- uid: AshesOfVelsingrad.Systems.CellType.Grass
-  name: Grass
-  href: api/AshesOfVelsingrad.Systems.CellType.html#AshesOfVelsingrad_Systems_CellType_Grass
-  commentId: F:AshesOfVelsingrad.Systems.CellType.Grass
-  fullName: AshesOfVelsingrad.Systems.CellType.Grass
-  nameWithType: CellType.Grass
 - uid: AshesOfVelsingrad.Systems.EffectTarget`1
   name: EffectTarget<TTarget>
   href: api/AshesOfVelsingrad.Systems.EffectTarget-1.html
@@ -1514,60 +1629,6 @@ references:
   fullName.vb: AshesOfVelsingrad.Systems.EffectTarget(Of TTarget).RemoveEffect
   nameWithType: EffectTarget<TTarget>.RemoveEffect
   nameWithType.vb: EffectTarget(Of TTarget).RemoveEffect
-- uid: AshesOfVelsingrad.Systems.EffectType
-  name: EffectType
-  href: api/AshesOfVelsingrad.Systems.EffectType.html
-  commentId: T:AshesOfVelsingrad.Systems.EffectType
-  fullName: AshesOfVelsingrad.Systems.EffectType
-  nameWithType: EffectType
-- uid: AshesOfVelsingrad.Systems.EffectType.Buff
-  name: Buff
-  href: api/AshesOfVelsingrad.Systems.EffectType.html#AshesOfVelsingrad_Systems_EffectType_Buff
-  commentId: F:AshesOfVelsingrad.Systems.EffectType.Buff
-  fullName: AshesOfVelsingrad.Systems.EffectType.Buff
-  nameWithType: EffectType.Buff
-- uid: AshesOfVelsingrad.Systems.EffectType.Control
-  name: Control
-  href: api/AshesOfVelsingrad.Systems.EffectType.html#AshesOfVelsingrad_Systems_EffectType_Control
-  commentId: F:AshesOfVelsingrad.Systems.EffectType.Control
-  fullName: AshesOfVelsingrad.Systems.EffectType.Control
-  nameWithType: EffectType.Control
-- uid: AshesOfVelsingrad.Systems.EffectType.Damage
-  name: Damage
-  href: api/AshesOfVelsingrad.Systems.EffectType.html#AshesOfVelsingrad_Systems_EffectType_Damage
-  commentId: F:AshesOfVelsingrad.Systems.EffectType.Damage
-  fullName: AshesOfVelsingrad.Systems.EffectType.Damage
-  nameWithType: EffectType.Damage
-- uid: AshesOfVelsingrad.Systems.EffectType.Debuff
-  name: Debuff
-  href: api/AshesOfVelsingrad.Systems.EffectType.html#AshesOfVelsingrad_Systems_EffectType_Debuff
-  commentId: F:AshesOfVelsingrad.Systems.EffectType.Debuff
-  fullName: AshesOfVelsingrad.Systems.EffectType.Debuff
-  nameWithType: EffectType.Debuff
-- uid: AshesOfVelsingrad.Systems.EffectType.Dot
-  name: Dot
-  href: api/AshesOfVelsingrad.Systems.EffectType.html#AshesOfVelsingrad_Systems_EffectType_Dot
-  commentId: F:AshesOfVelsingrad.Systems.EffectType.Dot
-  fullName: AshesOfVelsingrad.Systems.EffectType.Dot
-  nameWithType: EffectType.Dot
-- uid: AshesOfVelsingrad.Systems.EffectType.Heal
-  name: Heal
-  href: api/AshesOfVelsingrad.Systems.EffectType.html#AshesOfVelsingrad_Systems_EffectType_Heal
-  commentId: F:AshesOfVelsingrad.Systems.EffectType.Heal
-  fullName: AshesOfVelsingrad.Systems.EffectType.Heal
-  nameWithType: EffectType.Heal
-- uid: AshesOfVelsingrad.Systems.EffectType.Revive
-  name: Revive
-  href: api/AshesOfVelsingrad.Systems.EffectType.html#AshesOfVelsingrad_Systems_EffectType_Revive
-  commentId: F:AshesOfVelsingrad.Systems.EffectType.Revive
-  fullName: AshesOfVelsingrad.Systems.EffectType.Revive
-  nameWithType: EffectType.Revive
-- uid: AshesOfVelsingrad.Systems.EffectType.StatusEffect
-  name: StatusEffect
-  href: api/AshesOfVelsingrad.Systems.EffectType.html#AshesOfVelsingrad_Systems_EffectType_StatusEffect
-  commentId: F:AshesOfVelsingrad.Systems.EffectType.StatusEffect
-  fullName: AshesOfVelsingrad.Systems.EffectType.StatusEffect
-  nameWithType: EffectType.StatusEffect
 - uid: AshesOfVelsingrad.Systems.IEffectTarget`1
   name: IEffectTarget<TTarget>
   href: api/AshesOfVelsingrad.Systems.IEffectTarget-1.html
@@ -1648,66 +1709,130 @@ references:
   fullName.vb: AshesOfVelsingrad.Systems.IEffectTarget(Of TTarget).RemoveEffect
   nameWithType: IEffectTarget<TTarget>.RemoveEffect
   nameWithType.vb: IEffectTarget(Of TTarget).RemoveEffect
-- uid: AshesOfVelsingrad.Systems.MagicType
-  name: MagicType
-  href: api/AshesOfVelsingrad.Systems.MagicType.html
-  commentId: T:AshesOfVelsingrad.Systems.MagicType
-  fullName: AshesOfVelsingrad.Systems.MagicType
-  nameWithType: MagicType
-- uid: AshesOfVelsingrad.Systems.MagicType.Dark
-  name: Dark
-  href: api/AshesOfVelsingrad.Systems.MagicType.html#AshesOfVelsingrad_Systems_MagicType_Dark
-  commentId: F:AshesOfVelsingrad.Systems.MagicType.Dark
-  fullName: AshesOfVelsingrad.Systems.MagicType.Dark
-  nameWithType: MagicType.Dark
-- uid: AshesOfVelsingrad.Systems.MagicType.Earth
-  name: Earth
-  href: api/AshesOfVelsingrad.Systems.MagicType.html#AshesOfVelsingrad_Systems_MagicType_Earth
-  commentId: F:AshesOfVelsingrad.Systems.MagicType.Earth
-  fullName: AshesOfVelsingrad.Systems.MagicType.Earth
-  nameWithType: MagicType.Earth
-- uid: AshesOfVelsingrad.Systems.MagicType.Fire
-  name: Fire
-  href: api/AshesOfVelsingrad.Systems.MagicType.html#AshesOfVelsingrad_Systems_MagicType_Fire
-  commentId: F:AshesOfVelsingrad.Systems.MagicType.Fire
-  fullName: AshesOfVelsingrad.Systems.MagicType.Fire
-  nameWithType: MagicType.Fire
-- uid: AshesOfVelsingrad.Systems.MagicType.Light
-  name: Light
-  href: api/AshesOfVelsingrad.Systems.MagicType.html#AshesOfVelsingrad_Systems_MagicType_Light
-  commentId: F:AshesOfVelsingrad.Systems.MagicType.Light
-  fullName: AshesOfVelsingrad.Systems.MagicType.Light
-  nameWithType: MagicType.Light
-- uid: AshesOfVelsingrad.Systems.MagicType.None
-  name: None
-  href: api/AshesOfVelsingrad.Systems.MagicType.html#AshesOfVelsingrad_Systems_MagicType_None
-  commentId: F:AshesOfVelsingrad.Systems.MagicType.None
-  fullName: AshesOfVelsingrad.Systems.MagicType.None
-  nameWithType: MagicType.None
-- uid: AshesOfVelsingrad.Systems.MagicType.Water
-  name: Water
-  href: api/AshesOfVelsingrad.Systems.MagicType.html#AshesOfVelsingrad_Systems_MagicType_Water
-  commentId: F:AshesOfVelsingrad.Systems.MagicType.Water
-  fullName: AshesOfVelsingrad.Systems.MagicType.Water
-  nameWithType: MagicType.Water
-- uid: AshesOfVelsingrad.Systems.MagicType.Wind
-  name: Wind
-  href: api/AshesOfVelsingrad.Systems.MagicType.html#AshesOfVelsingrad_Systems_MagicType_Wind
-  commentId: F:AshesOfVelsingrad.Systems.MagicType.Wind
-  fullName: AshesOfVelsingrad.Systems.MagicType.Wind
-  nameWithType: MagicType.Wind
+- uid: AshesOfVelsingrad.Systems.IStatusEffect
+  name: IStatusEffect
+  href: api/AshesOfVelsingrad.Systems.IStatusEffect.html
+  commentId: T:AshesOfVelsingrad.Systems.IStatusEffect
+  fullName: AshesOfVelsingrad.Systems.IStatusEffect
+  nameWithType: IStatusEffect
+- uid: AshesOfVelsingrad.Systems.IStatusEffectBehavior
+  name: IStatusEffectBehavior
+  href: api/AshesOfVelsingrad.Systems.IStatusEffectBehavior.html
+  commentId: T:AshesOfVelsingrad.Systems.IStatusEffectBehavior
+  fullName: AshesOfVelsingrad.Systems.IStatusEffectBehavior
+  nameWithType: IStatusEffectBehavior
+- uid: AshesOfVelsingrad.Systems.IStatusEffectBehavior.OnEffectControlApplied
+  name: OnEffectControlApplied()
+  href: api/AshesOfVelsingrad.Systems.IStatusEffectBehavior.html#AshesOfVelsingrad_Systems_IStatusEffectBehavior_OnEffectControlApplied
+  commentId: M:AshesOfVelsingrad.Systems.IStatusEffectBehavior.OnEffectControlApplied
+  fullName: AshesOfVelsingrad.Systems.IStatusEffectBehavior.OnEffectControlApplied()
+  nameWithType: IStatusEffectBehavior.OnEffectControlApplied()
+- uid: AshesOfVelsingrad.Systems.IStatusEffectBehavior.OnEffectControlApplied*
+  name: OnEffectControlApplied
+  href: api/AshesOfVelsingrad.Systems.IStatusEffectBehavior.html#AshesOfVelsingrad_Systems_IStatusEffectBehavior_OnEffectControlApplied_
+  commentId: Overload:AshesOfVelsingrad.Systems.IStatusEffectBehavior.OnEffectControlApplied
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.Systems.IStatusEffectBehavior.OnEffectControlApplied
+  nameWithType: IStatusEffectBehavior.OnEffectControlApplied
+- uid: AshesOfVelsingrad.Systems.IStatusEffectBehavior.OnEffectControlRemoved
+  name: OnEffectControlRemoved()
+  href: api/AshesOfVelsingrad.Systems.IStatusEffectBehavior.html#AshesOfVelsingrad_Systems_IStatusEffectBehavior_OnEffectControlRemoved
+  commentId: M:AshesOfVelsingrad.Systems.IStatusEffectBehavior.OnEffectControlRemoved
+  fullName: AshesOfVelsingrad.Systems.IStatusEffectBehavior.OnEffectControlRemoved()
+  nameWithType: IStatusEffectBehavior.OnEffectControlRemoved()
+- uid: AshesOfVelsingrad.Systems.IStatusEffectBehavior.OnEffectControlRemoved*
+  name: OnEffectControlRemoved
+  href: api/AshesOfVelsingrad.Systems.IStatusEffectBehavior.html#AshesOfVelsingrad_Systems_IStatusEffectBehavior_OnEffectControlRemoved_
+  commentId: Overload:AshesOfVelsingrad.Systems.IStatusEffectBehavior.OnEffectControlRemoved
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.Systems.IStatusEffectBehavior.OnEffectControlRemoved
+  nameWithType: IStatusEffectBehavior.OnEffectControlRemoved
+- uid: AshesOfVelsingrad.Systems.IStatusEffectBehavior.OnEffectDamage(AshesOfVelsingrad.Utilities.AovDataStructures.ModifierType,System.Single)
+  name: OnEffectDamage(ModifierType, float)
+  href: api/AshesOfVelsingrad.Systems.IStatusEffectBehavior.html#AshesOfVelsingrad_Systems_IStatusEffectBehavior_OnEffectDamage_AshesOfVelsingrad_Utilities_AovDataStructures_ModifierType_System_Single_
+  commentId: M:AshesOfVelsingrad.Systems.IStatusEffectBehavior.OnEffectDamage(AshesOfVelsingrad.Utilities.AovDataStructures.ModifierType,System.Single)
+  name.vb: OnEffectDamage(ModifierType, Single)
+  fullName: AshesOfVelsingrad.Systems.IStatusEffectBehavior.OnEffectDamage(AshesOfVelsingrad.Utilities.AovDataStructures.ModifierType, float)
+  fullName.vb: AshesOfVelsingrad.Systems.IStatusEffectBehavior.OnEffectDamage(AshesOfVelsingrad.Utilities.AovDataStructures.ModifierType, Single)
+  nameWithType: IStatusEffectBehavior.OnEffectDamage(AovDataStructures.ModifierType, float)
+  nameWithType.vb: IStatusEffectBehavior.OnEffectDamage(AovDataStructures.ModifierType, Single)
+- uid: AshesOfVelsingrad.Systems.IStatusEffectBehavior.OnEffectDamage*
+  name: OnEffectDamage
+  href: api/AshesOfVelsingrad.Systems.IStatusEffectBehavior.html#AshesOfVelsingrad_Systems_IStatusEffectBehavior_OnEffectDamage_
+  commentId: Overload:AshesOfVelsingrad.Systems.IStatusEffectBehavior.OnEffectDamage
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.Systems.IStatusEffectBehavior.OnEffectDamage
+  nameWithType: IStatusEffectBehavior.OnEffectDamage
+- uid: AshesOfVelsingrad.Systems.IStatusEffectBehavior.OnEffectHeal(System.Single)
+  name: OnEffectHeal(float)
+  href: api/AshesOfVelsingrad.Systems.IStatusEffectBehavior.html#AshesOfVelsingrad_Systems_IStatusEffectBehavior_OnEffectHeal_System_Single_
+  commentId: M:AshesOfVelsingrad.Systems.IStatusEffectBehavior.OnEffectHeal(System.Single)
+  name.vb: OnEffectHeal(Single)
+  fullName: AshesOfVelsingrad.Systems.IStatusEffectBehavior.OnEffectHeal(float)
+  fullName.vb: AshesOfVelsingrad.Systems.IStatusEffectBehavior.OnEffectHeal(Single)
+  nameWithType: IStatusEffectBehavior.OnEffectHeal(float)
+  nameWithType.vb: IStatusEffectBehavior.OnEffectHeal(Single)
+- uid: AshesOfVelsingrad.Systems.IStatusEffectBehavior.OnEffectHeal*
+  name: OnEffectHeal
+  href: api/AshesOfVelsingrad.Systems.IStatusEffectBehavior.html#AshesOfVelsingrad_Systems_IStatusEffectBehavior_OnEffectHeal_
+  commentId: Overload:AshesOfVelsingrad.Systems.IStatusEffectBehavior.OnEffectHeal
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.Systems.IStatusEffectBehavior.OnEffectHeal
+  nameWithType: IStatusEffectBehavior.OnEffectHeal
+- uid: AshesOfVelsingrad.Systems.IStatusEffectBehavior.OnEffectModifierApplied(AshesOfVelsingrad.Utilities.AovDataStructures.StatTypeWithModifier,AshesOfVelsingrad.Utilities.AovDataStructures.ModifierType,System.Single)
+  name: OnEffectModifierApplied(StatTypeWithModifier, ModifierType, float)
+  href: api/AshesOfVelsingrad.Systems.IStatusEffectBehavior.html#AshesOfVelsingrad_Systems_IStatusEffectBehavior_OnEffectModifierApplied_AshesOfVelsingrad_Utilities_AovDataStructures_StatTypeWithModifier_AshesOfVelsingrad_Utilities_AovDataStructures_ModifierType_System_Single_
+  commentId: M:AshesOfVelsingrad.Systems.IStatusEffectBehavior.OnEffectModifierApplied(AshesOfVelsingrad.Utilities.AovDataStructures.StatTypeWithModifier,AshesOfVelsingrad.Utilities.AovDataStructures.ModifierType,System.Single)
+  name.vb: OnEffectModifierApplied(StatTypeWithModifier, ModifierType, Single)
+  fullName: AshesOfVelsingrad.Systems.IStatusEffectBehavior.OnEffectModifierApplied(AshesOfVelsingrad.Utilities.AovDataStructures.StatTypeWithModifier, AshesOfVelsingrad.Utilities.AovDataStructures.ModifierType, float)
+  fullName.vb: AshesOfVelsingrad.Systems.IStatusEffectBehavior.OnEffectModifierApplied(AshesOfVelsingrad.Utilities.AovDataStructures.StatTypeWithModifier, AshesOfVelsingrad.Utilities.AovDataStructures.ModifierType, Single)
+  nameWithType: IStatusEffectBehavior.OnEffectModifierApplied(AovDataStructures.StatTypeWithModifier, AovDataStructures.ModifierType, float)
+  nameWithType.vb: IStatusEffectBehavior.OnEffectModifierApplied(AovDataStructures.StatTypeWithModifier, AovDataStructures.ModifierType, Single)
+- uid: AshesOfVelsingrad.Systems.IStatusEffectBehavior.OnEffectModifierApplied*
+  name: OnEffectModifierApplied
+  href: api/AshesOfVelsingrad.Systems.IStatusEffectBehavior.html#AshesOfVelsingrad_Systems_IStatusEffectBehavior_OnEffectModifierApplied_
+  commentId: Overload:AshesOfVelsingrad.Systems.IStatusEffectBehavior.OnEffectModifierApplied
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.Systems.IStatusEffectBehavior.OnEffectModifierApplied
+  nameWithType: IStatusEffectBehavior.OnEffectModifierApplied
+- uid: AshesOfVelsingrad.Systems.IStatusEffectBehavior.OnEffectModifierRemoved(AshesOfVelsingrad.Utilities.AovDataStructures.StatTypeWithModifier,AshesOfVelsingrad.Utilities.AovDataStructures.ModifierType,System.Single)
+  name: OnEffectModifierRemoved(StatTypeWithModifier, ModifierType, float)
+  href: api/AshesOfVelsingrad.Systems.IStatusEffectBehavior.html#AshesOfVelsingrad_Systems_IStatusEffectBehavior_OnEffectModifierRemoved_AshesOfVelsingrad_Utilities_AovDataStructures_StatTypeWithModifier_AshesOfVelsingrad_Utilities_AovDataStructures_ModifierType_System_Single_
+  commentId: M:AshesOfVelsingrad.Systems.IStatusEffectBehavior.OnEffectModifierRemoved(AshesOfVelsingrad.Utilities.AovDataStructures.StatTypeWithModifier,AshesOfVelsingrad.Utilities.AovDataStructures.ModifierType,System.Single)
+  name.vb: OnEffectModifierRemoved(StatTypeWithModifier, ModifierType, Single)
+  fullName: AshesOfVelsingrad.Systems.IStatusEffectBehavior.OnEffectModifierRemoved(AshesOfVelsingrad.Utilities.AovDataStructures.StatTypeWithModifier, AshesOfVelsingrad.Utilities.AovDataStructures.ModifierType, float)
+  fullName.vb: AshesOfVelsingrad.Systems.IStatusEffectBehavior.OnEffectModifierRemoved(AshesOfVelsingrad.Utilities.AovDataStructures.StatTypeWithModifier, AshesOfVelsingrad.Utilities.AovDataStructures.ModifierType, Single)
+  nameWithType: IStatusEffectBehavior.OnEffectModifierRemoved(AovDataStructures.StatTypeWithModifier, AovDataStructures.ModifierType, float)
+  nameWithType.vb: IStatusEffectBehavior.OnEffectModifierRemoved(AovDataStructures.StatTypeWithModifier, AovDataStructures.ModifierType, Single)
+- uid: AshesOfVelsingrad.Systems.IStatusEffectBehavior.OnEffectModifierRemoved*
+  name: OnEffectModifierRemoved
+  href: api/AshesOfVelsingrad.Systems.IStatusEffectBehavior.html#AshesOfVelsingrad_Systems_IStatusEffectBehavior_OnEffectModifierRemoved_
+  commentId: Overload:AshesOfVelsingrad.Systems.IStatusEffectBehavior.OnEffectModifierRemoved
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.Systems.IStatusEffectBehavior.OnEffectModifierRemoved
+  nameWithType: IStatusEffectBehavior.OnEffectModifierRemoved
+- uid: AshesOfVelsingrad.Systems.IStatusEffectBehavior.OnEffectRevive(AshesOfVelsingrad.Utilities.AovDataStructures.ModifierType,System.Single)
+  name: OnEffectRevive(ModifierType, float)
+  href: api/AshesOfVelsingrad.Systems.IStatusEffectBehavior.html#AshesOfVelsingrad_Systems_IStatusEffectBehavior_OnEffectRevive_AshesOfVelsingrad_Utilities_AovDataStructures_ModifierType_System_Single_
+  commentId: M:AshesOfVelsingrad.Systems.IStatusEffectBehavior.OnEffectRevive(AshesOfVelsingrad.Utilities.AovDataStructures.ModifierType,System.Single)
+  name.vb: OnEffectRevive(ModifierType, Single)
+  fullName: AshesOfVelsingrad.Systems.IStatusEffectBehavior.OnEffectRevive(AshesOfVelsingrad.Utilities.AovDataStructures.ModifierType, float)
+  fullName.vb: AshesOfVelsingrad.Systems.IStatusEffectBehavior.OnEffectRevive(AshesOfVelsingrad.Utilities.AovDataStructures.ModifierType, Single)
+  nameWithType: IStatusEffectBehavior.OnEffectRevive(AovDataStructures.ModifierType, float)
+  nameWithType.vb: IStatusEffectBehavior.OnEffectRevive(AovDataStructures.ModifierType, Single)
+- uid: AshesOfVelsingrad.Systems.IStatusEffectBehavior.OnEffectRevive*
+  name: OnEffectRevive
+  href: api/AshesOfVelsingrad.Systems.IStatusEffectBehavior.html#AshesOfVelsingrad_Systems_IStatusEffectBehavior_OnEffectRevive_
+  commentId: Overload:AshesOfVelsingrad.Systems.IStatusEffectBehavior.OnEffectRevive
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.Systems.IStatusEffectBehavior.OnEffectRevive
+  nameWithType: IStatusEffectBehavior.OnEffectRevive
 - uid: AshesOfVelsingrad.Systems.MapSystem
   name: MapSystem
   href: api/AshesOfVelsingrad.Systems.MapSystem.html
   commentId: T:AshesOfVelsingrad.Systems.MapSystem
   fullName: AshesOfVelsingrad.Systems.MapSystem
   nameWithType: MapSystem
-- uid: AshesOfVelsingrad.Systems.MapSystem.CellTypeWalkable
-  name: CellTypeWalkable
-  href: api/AshesOfVelsingrad.Systems.MapSystem.html#AshesOfVelsingrad_Systems_MapSystem_CellTypeWalkable
-  commentId: F:AshesOfVelsingrad.Systems.MapSystem.CellTypeWalkable
-  fullName: AshesOfVelsingrad.Systems.MapSystem.CellTypeWalkable
-  nameWithType: MapSystem.CellTypeWalkable
 - uid: AshesOfVelsingrad.Systems.MapSystem.CellsInformation
   name: CellsInformation
   href: api/AshesOfVelsingrad.Systems.MapSystem.html#AshesOfVelsingrad_Systems_MapSystem_CellsInformation
@@ -2147,15 +2272,15 @@ references:
   isSpec: "True"
   fullName: AshesOfVelsingrad.Systems.SkillSystem.TotalCooldown
   nameWithType: SkillSystem.TotalCooldown
-- uid: AshesOfVelsingrad.Systems.SkillSystem.Use(System.Collections.Generic.List{AshesOfVelsingrad.Systems.UnitSystem},AshesOfVelsingrad.Systems.MapSystem)
-  name: Use(List<UnitSystem>, MapSystem?)
-  href: api/AshesOfVelsingrad.Systems.SkillSystem.html#AshesOfVelsingrad_Systems_SkillSystem_Use_System_Collections_Generic_List_AshesOfVelsingrad_Systems_UnitSystem__AshesOfVelsingrad_Systems_MapSystem_
-  commentId: M:AshesOfVelsingrad.Systems.SkillSystem.Use(System.Collections.Generic.List{AshesOfVelsingrad.Systems.UnitSystem},AshesOfVelsingrad.Systems.MapSystem)
-  name.vb: Use(List(Of UnitSystem), MapSystem)
-  fullName: AshesOfVelsingrad.Systems.SkillSystem.Use(System.Collections.Generic.List<AshesOfVelsingrad.Systems.UnitSystem>, AshesOfVelsingrad.Systems.MapSystem?)
-  fullName.vb: AshesOfVelsingrad.Systems.SkillSystem.Use(System.Collections.Generic.List(Of AshesOfVelsingrad.Systems.UnitSystem), AshesOfVelsingrad.Systems.MapSystem)
-  nameWithType: SkillSystem.Use(List<UnitSystem>, MapSystem?)
-  nameWithType.vb: SkillSystem.Use(List(Of UnitSystem), MapSystem)
+- uid: AshesOfVelsingrad.Systems.SkillSystem.Use(AshesOfVelsingrad.Systems.UnitSystem,System.Collections.Generic.List{AshesOfVelsingrad.Systems.UnitSystem},AshesOfVelsingrad.Systems.MapSystem)
+  name: Use(UnitSystem, List<UnitSystem>, MapSystem?)
+  href: api/AshesOfVelsingrad.Systems.SkillSystem.html#AshesOfVelsingrad_Systems_SkillSystem_Use_AshesOfVelsingrad_Systems_UnitSystem_System_Collections_Generic_List_AshesOfVelsingrad_Systems_UnitSystem__AshesOfVelsingrad_Systems_MapSystem_
+  commentId: M:AshesOfVelsingrad.Systems.SkillSystem.Use(AshesOfVelsingrad.Systems.UnitSystem,System.Collections.Generic.List{AshesOfVelsingrad.Systems.UnitSystem},AshesOfVelsingrad.Systems.MapSystem)
+  name.vb: Use(UnitSystem, List(Of UnitSystem), MapSystem)
+  fullName: AshesOfVelsingrad.Systems.SkillSystem.Use(AshesOfVelsingrad.Systems.UnitSystem, System.Collections.Generic.List<AshesOfVelsingrad.Systems.UnitSystem>, AshesOfVelsingrad.Systems.MapSystem?)
+  fullName.vb: AshesOfVelsingrad.Systems.SkillSystem.Use(AshesOfVelsingrad.Systems.UnitSystem, System.Collections.Generic.List(Of AshesOfVelsingrad.Systems.UnitSystem), AshesOfVelsingrad.Systems.MapSystem)
+  nameWithType: SkillSystem.Use(UnitSystem, List<UnitSystem>, MapSystem?)
+  nameWithType.vb: SkillSystem.Use(UnitSystem, List(Of UnitSystem), MapSystem)
 - uid: AshesOfVelsingrad.Systems.SkillSystem.Use*
   name: Use
   href: api/AshesOfVelsingrad.Systems.SkillSystem.html#AshesOfVelsingrad_Systems_SkillSystem_Use_
@@ -2223,6 +2348,25 @@ references:
   fullName.vb: AshesOfVelsingrad.Systems.StatusEffect(Of TTarget)
   nameWithType: StatusEffect<TTarget>
   nameWithType.vb: StatusEffect(Of TTarget)
+- uid: AshesOfVelsingrad.Systems.StatusEffect`1.#ctor(System.String,System.String,System.Int32,System.Boolean,AshesOfVelsingrad.Utilities.AovDataStructures.ModifierType,System.Single)
+  name: StatusEffect(string, string, int, bool, ModifierType, float)
+  href: api/AshesOfVelsingrad.Systems.StatusEffect-1.html#AshesOfVelsingrad_Systems_StatusEffect_1__ctor_System_String_System_String_System_Int32_System_Boolean_AshesOfVelsingrad_Utilities_AovDataStructures_ModifierType_System_Single_
+  commentId: M:AshesOfVelsingrad.Systems.StatusEffect`1.#ctor(System.String,System.String,System.Int32,System.Boolean,AshesOfVelsingrad.Utilities.AovDataStructures.ModifierType,System.Single)
+  name.vb: New(String, String, Integer, Boolean, ModifierType, Single)
+  fullName: AshesOfVelsingrad.Systems.StatusEffect<TTarget>.StatusEffect(string, string, int, bool, AshesOfVelsingrad.Utilities.AovDataStructures.ModifierType, float)
+  fullName.vb: AshesOfVelsingrad.Systems.StatusEffect(Of TTarget).New(String, String, Integer, Boolean, AshesOfVelsingrad.Utilities.AovDataStructures.ModifierType, Single)
+  nameWithType: StatusEffect<TTarget>.StatusEffect(string, string, int, bool, AovDataStructures.ModifierType, float)
+  nameWithType.vb: StatusEffect(Of TTarget).New(String, String, Integer, Boolean, AovDataStructures.ModifierType, Single)
+- uid: AshesOfVelsingrad.Systems.StatusEffect`1.#ctor*
+  name: StatusEffect
+  href: api/AshesOfVelsingrad.Systems.StatusEffect-1.html#AshesOfVelsingrad_Systems_StatusEffect_1__ctor_
+  commentId: Overload:AshesOfVelsingrad.Systems.StatusEffect`1.#ctor
+  isSpec: "True"
+  name.vb: New
+  fullName: AshesOfVelsingrad.Systems.StatusEffect<TTarget>.StatusEffect
+  fullName.vb: AshesOfVelsingrad.Systems.StatusEffect(Of TTarget).New
+  nameWithType: StatusEffect<TTarget>.StatusEffect
+  nameWithType.vb: StatusEffect(Of TTarget).New
 - uid: AshesOfVelsingrad.Systems.StatusEffect`1.AddStack
   name: AddStack()
   href: api/AshesOfVelsingrad.Systems.StatusEffect-1.html#AshesOfVelsingrad_Systems_StatusEffect_1_AddStack
@@ -2240,6 +2384,23 @@ references:
   fullName.vb: AshesOfVelsingrad.Systems.StatusEffect(Of TTarget).AddStack
   nameWithType: StatusEffect<TTarget>.AddStack
   nameWithType.vb: StatusEffect(Of TTarget).AddStack
+- uid: AshesOfVelsingrad.Systems.StatusEffect`1.Amount
+  name: Amount
+  href: api/AshesOfVelsingrad.Systems.StatusEffect-1.html#AshesOfVelsingrad_Systems_StatusEffect_1_Amount
+  commentId: P:AshesOfVelsingrad.Systems.StatusEffect`1.Amount
+  fullName: AshesOfVelsingrad.Systems.StatusEffect<TTarget>.Amount
+  fullName.vb: AshesOfVelsingrad.Systems.StatusEffect(Of TTarget).Amount
+  nameWithType: StatusEffect<TTarget>.Amount
+  nameWithType.vb: StatusEffect(Of TTarget).Amount
+- uid: AshesOfVelsingrad.Systems.StatusEffect`1.Amount*
+  name: Amount
+  href: api/AshesOfVelsingrad.Systems.StatusEffect-1.html#AshesOfVelsingrad_Systems_StatusEffect_1_Amount_
+  commentId: Overload:AshesOfVelsingrad.Systems.StatusEffect`1.Amount
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.Systems.StatusEffect<TTarget>.Amount
+  fullName.vb: AshesOfVelsingrad.Systems.StatusEffect(Of TTarget).Amount
+  nameWithType: StatusEffect<TTarget>.Amount
+  nameWithType.vb: StatusEffect(Of TTarget).Amount
 - uid: AshesOfVelsingrad.Systems.StatusEffect`1.Description
   name: Description
   href: api/AshesOfVelsingrad.Systems.StatusEffect-1.html#AshesOfVelsingrad_Systems_StatusEffect_1_Description
@@ -2274,6 +2435,23 @@ references:
   fullName.vb: AshesOfVelsingrad.Systems.StatusEffect(Of TTarget).Duration
   nameWithType: StatusEffect<TTarget>.Duration
   nameWithType.vb: StatusEffect(Of TTarget).Duration
+- uid: AshesOfVelsingrad.Systems.StatusEffect`1.EffectToSpread
+  name: EffectToSpread
+  href: api/AshesOfVelsingrad.Systems.StatusEffect-1.html#AshesOfVelsingrad_Systems_StatusEffect_1_EffectToSpread
+  commentId: P:AshesOfVelsingrad.Systems.StatusEffect`1.EffectToSpread
+  fullName: AshesOfVelsingrad.Systems.StatusEffect<TTarget>.EffectToSpread
+  fullName.vb: AshesOfVelsingrad.Systems.StatusEffect(Of TTarget).EffectToSpread
+  nameWithType: StatusEffect<TTarget>.EffectToSpread
+  nameWithType.vb: StatusEffect(Of TTarget).EffectToSpread
+- uid: AshesOfVelsingrad.Systems.StatusEffect`1.EffectToSpread*
+  name: EffectToSpread
+  href: api/AshesOfVelsingrad.Systems.StatusEffect-1.html#AshesOfVelsingrad_Systems_StatusEffect_1_EffectToSpread_
+  commentId: Overload:AshesOfVelsingrad.Systems.StatusEffect`1.EffectToSpread
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.Systems.StatusEffect<TTarget>.EffectToSpread
+  fullName.vb: AshesOfVelsingrad.Systems.StatusEffect(Of TTarget).EffectToSpread
+  nameWithType: StatusEffect<TTarget>.EffectToSpread
+  nameWithType.vb: StatusEffect(Of TTarget).EffectToSpread
 - uid: AshesOfVelsingrad.Systems.StatusEffect`1.IsStackable
   name: IsStackable
   href: api/AshesOfVelsingrad.Systems.StatusEffect-1.html#AshesOfVelsingrad_Systems_StatusEffect_1_IsStackable
@@ -2291,6 +2469,23 @@ references:
   fullName.vb: AshesOfVelsingrad.Systems.StatusEffect(Of TTarget).IsStackable
   nameWithType: StatusEffect<TTarget>.IsStackable
   nameWithType.vb: StatusEffect(Of TTarget).IsStackable
+- uid: AshesOfVelsingrad.Systems.StatusEffect`1.ModifierType
+  name: ModifierType
+  href: api/AshesOfVelsingrad.Systems.StatusEffect-1.html#AshesOfVelsingrad_Systems_StatusEffect_1_ModifierType
+  commentId: P:AshesOfVelsingrad.Systems.StatusEffect`1.ModifierType
+  fullName: AshesOfVelsingrad.Systems.StatusEffect<TTarget>.ModifierType
+  fullName.vb: AshesOfVelsingrad.Systems.StatusEffect(Of TTarget).ModifierType
+  nameWithType: StatusEffect<TTarget>.ModifierType
+  nameWithType.vb: StatusEffect(Of TTarget).ModifierType
+- uid: AshesOfVelsingrad.Systems.StatusEffect`1.ModifierType*
+  name: ModifierType
+  href: api/AshesOfVelsingrad.Systems.StatusEffect-1.html#AshesOfVelsingrad_Systems_StatusEffect_1_ModifierType_
+  commentId: Overload:AshesOfVelsingrad.Systems.StatusEffect`1.ModifierType
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.Systems.StatusEffect<TTarget>.ModifierType
+  fullName.vb: AshesOfVelsingrad.Systems.StatusEffect(Of TTarget).ModifierType
+  nameWithType: StatusEffect<TTarget>.ModifierType
+  nameWithType.vb: StatusEffect(Of TTarget).ModifierType
 - uid: AshesOfVelsingrad.Systems.StatusEffect`1.Name
   name: Name
   href: api/AshesOfVelsingrad.Systems.StatusEffect-1.html#AshesOfVelsingrad_Systems_StatusEffect_1_Name
@@ -2362,6 +2557,24 @@ references:
   fullName.vb: AshesOfVelsingrad.Systems.StatusEffect(Of TTarget).OnTurnPassed
   nameWithType: StatusEffect<TTarget>.OnTurnPassed
   nameWithType.vb: StatusEffect(Of TTarget).OnTurnPassed
+- uid: AshesOfVelsingrad.Systems.StatusEffect`1.ResetDuration(System.Int32)
+  name: ResetDuration(int)
+  href: api/AshesOfVelsingrad.Systems.StatusEffect-1.html#AshesOfVelsingrad_Systems_StatusEffect_1_ResetDuration_System_Int32_
+  commentId: M:AshesOfVelsingrad.Systems.StatusEffect`1.ResetDuration(System.Int32)
+  name.vb: ResetDuration(Integer)
+  fullName: AshesOfVelsingrad.Systems.StatusEffect<TTarget>.ResetDuration(int)
+  fullName.vb: AshesOfVelsingrad.Systems.StatusEffect(Of TTarget).ResetDuration(Integer)
+  nameWithType: StatusEffect<TTarget>.ResetDuration(int)
+  nameWithType.vb: StatusEffect(Of TTarget).ResetDuration(Integer)
+- uid: AshesOfVelsingrad.Systems.StatusEffect`1.ResetDuration*
+  name: ResetDuration
+  href: api/AshesOfVelsingrad.Systems.StatusEffect-1.html#AshesOfVelsingrad_Systems_StatusEffect_1_ResetDuration_
+  commentId: Overload:AshesOfVelsingrad.Systems.StatusEffect`1.ResetDuration
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.Systems.StatusEffect<TTarget>.ResetDuration
+  fullName.vb: AshesOfVelsingrad.Systems.StatusEffect(Of TTarget).ResetDuration
+  nameWithType: StatusEffect<TTarget>.ResetDuration
+  nameWithType.vb: StatusEffect(Of TTarget).ResetDuration
 - uid: AshesOfVelsingrad.Systems.StatusEffect`1.StackCount
   name: StackCount
   href: api/AshesOfVelsingrad.Systems.StatusEffect-1.html#AshesOfVelsingrad_Systems_StatusEffect_1_StackCount
@@ -2379,36 +2592,6 @@ references:
   fullName.vb: AshesOfVelsingrad.Systems.StatusEffect(Of TTarget).StackCount
   nameWithType: StatusEffect<TTarget>.StackCount
   nameWithType.vb: StatusEffect(Of TTarget).StackCount
-- uid: AshesOfVelsingrad.Systems.TargetTypes
-  name: TargetTypes
-  href: api/AshesOfVelsingrad.Systems.TargetTypes.html
-  commentId: T:AshesOfVelsingrad.Systems.TargetTypes
-  fullName: AshesOfVelsingrad.Systems.TargetTypes
-  nameWithType: TargetTypes
-- uid: AshesOfVelsingrad.Systems.TargetTypes.AllAllies
-  name: AllAllies
-  href: api/AshesOfVelsingrad.Systems.TargetTypes.html#AshesOfVelsingrad_Systems_TargetTypes_AllAllies
-  commentId: F:AshesOfVelsingrad.Systems.TargetTypes.AllAllies
-  fullName: AshesOfVelsingrad.Systems.TargetTypes.AllAllies
-  nameWithType: TargetTypes.AllAllies
-- uid: AshesOfVelsingrad.Systems.TargetTypes.AllEnemies
-  name: AllEnemies
-  href: api/AshesOfVelsingrad.Systems.TargetTypes.html#AshesOfVelsingrad_Systems_TargetTypes_AllEnemies
-  commentId: F:AshesOfVelsingrad.Systems.TargetTypes.AllEnemies
-  fullName: AshesOfVelsingrad.Systems.TargetTypes.AllEnemies
-  nameWithType: TargetTypes.AllEnemies
-- uid: AshesOfVelsingrad.Systems.TargetTypes.SingleAlly
-  name: SingleAlly
-  href: api/AshesOfVelsingrad.Systems.TargetTypes.html#AshesOfVelsingrad_Systems_TargetTypes_SingleAlly
-  commentId: F:AshesOfVelsingrad.Systems.TargetTypes.SingleAlly
-  fullName: AshesOfVelsingrad.Systems.TargetTypes.SingleAlly
-  nameWithType: TargetTypes.SingleAlly
-- uid: AshesOfVelsingrad.Systems.TargetTypes.SingleEnemy
-  name: SingleEnemy
-  href: api/AshesOfVelsingrad.Systems.TargetTypes.html#AshesOfVelsingrad_Systems_TargetTypes_SingleEnemy
-  commentId: F:AshesOfVelsingrad.Systems.TargetTypes.SingleEnemy
-  fullName: AshesOfVelsingrad.Systems.TargetTypes.SingleEnemy
-  nameWithType: TargetTypes.SingleEnemy
 - uid: AshesOfVelsingrad.Systems.UnitSystem
   name: UnitSystem
   href: api/AshesOfVelsingrad.Systems.UnitSystem.html
@@ -2706,6 +2889,19 @@ references:
   isSpec: "True"
   fullName: AshesOfVelsingrad.Systems.UnitSystem.IsAlive
   nameWithType: UnitSystem.IsAlive
+- uid: AshesOfVelsingrad.Systems.UnitSystem.IsControlled
+  name: IsControlled
+  href: api/AshesOfVelsingrad.Systems.UnitSystem.html#AshesOfVelsingrad_Systems_UnitSystem_IsControlled
+  commentId: P:AshesOfVelsingrad.Systems.UnitSystem.IsControlled
+  fullName: AshesOfVelsingrad.Systems.UnitSystem.IsControlled
+  nameWithType: UnitSystem.IsControlled
+- uid: AshesOfVelsingrad.Systems.UnitSystem.IsControlled*
+  name: IsControlled
+  href: api/AshesOfVelsingrad.Systems.UnitSystem.html#AshesOfVelsingrad_Systems_UnitSystem_IsControlled_
+  commentId: Overload:AshesOfVelsingrad.Systems.UnitSystem.IsControlled
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.Systems.UnitSystem.IsControlled
+  nameWithType: UnitSystem.IsControlled
 - uid: AshesOfVelsingrad.Systems.UnitSystem.ManaPoint
   name: ManaPoint
   href: api/AshesOfVelsingrad.Systems.UnitSystem.html#AshesOfVelsingrad_Systems_UnitSystem_ManaPoint
@@ -2748,6 +2944,112 @@ references:
   isSpec: "True"
   fullName: AshesOfVelsingrad.Systems.UnitSystem.MoveTo
   nameWithType: UnitSystem.MoveTo
+- uid: AshesOfVelsingrad.Systems.UnitSystem.OnEffectControlApplied
+  name: OnEffectControlApplied()
+  href: api/AshesOfVelsingrad.Systems.UnitSystem.html#AshesOfVelsingrad_Systems_UnitSystem_OnEffectControlApplied
+  commentId: M:AshesOfVelsingrad.Systems.UnitSystem.OnEffectControlApplied
+  fullName: AshesOfVelsingrad.Systems.UnitSystem.OnEffectControlApplied()
+  nameWithType: UnitSystem.OnEffectControlApplied()
+- uid: AshesOfVelsingrad.Systems.UnitSystem.OnEffectControlApplied*
+  name: OnEffectControlApplied
+  href: api/AshesOfVelsingrad.Systems.UnitSystem.html#AshesOfVelsingrad_Systems_UnitSystem_OnEffectControlApplied_
+  commentId: Overload:AshesOfVelsingrad.Systems.UnitSystem.OnEffectControlApplied
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.Systems.UnitSystem.OnEffectControlApplied
+  nameWithType: UnitSystem.OnEffectControlApplied
+- uid: AshesOfVelsingrad.Systems.UnitSystem.OnEffectControlRemoved
+  name: OnEffectControlRemoved()
+  href: api/AshesOfVelsingrad.Systems.UnitSystem.html#AshesOfVelsingrad_Systems_UnitSystem_OnEffectControlRemoved
+  commentId: M:AshesOfVelsingrad.Systems.UnitSystem.OnEffectControlRemoved
+  fullName: AshesOfVelsingrad.Systems.UnitSystem.OnEffectControlRemoved()
+  nameWithType: UnitSystem.OnEffectControlRemoved()
+- uid: AshesOfVelsingrad.Systems.UnitSystem.OnEffectControlRemoved*
+  name: OnEffectControlRemoved
+  href: api/AshesOfVelsingrad.Systems.UnitSystem.html#AshesOfVelsingrad_Systems_UnitSystem_OnEffectControlRemoved_
+  commentId: Overload:AshesOfVelsingrad.Systems.UnitSystem.OnEffectControlRemoved
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.Systems.UnitSystem.OnEffectControlRemoved
+  nameWithType: UnitSystem.OnEffectControlRemoved
+- uid: AshesOfVelsingrad.Systems.UnitSystem.OnEffectDamage(AshesOfVelsingrad.Utilities.AovDataStructures.ModifierType,System.Single)
+  name: OnEffectDamage(ModifierType, float)
+  href: api/AshesOfVelsingrad.Systems.UnitSystem.html#AshesOfVelsingrad_Systems_UnitSystem_OnEffectDamage_AshesOfVelsingrad_Utilities_AovDataStructures_ModifierType_System_Single_
+  commentId: M:AshesOfVelsingrad.Systems.UnitSystem.OnEffectDamage(AshesOfVelsingrad.Utilities.AovDataStructures.ModifierType,System.Single)
+  name.vb: OnEffectDamage(ModifierType, Single)
+  fullName: AshesOfVelsingrad.Systems.UnitSystem.OnEffectDamage(AshesOfVelsingrad.Utilities.AovDataStructures.ModifierType, float)
+  fullName.vb: AshesOfVelsingrad.Systems.UnitSystem.OnEffectDamage(AshesOfVelsingrad.Utilities.AovDataStructures.ModifierType, Single)
+  nameWithType: UnitSystem.OnEffectDamage(AovDataStructures.ModifierType, float)
+  nameWithType.vb: UnitSystem.OnEffectDamage(AovDataStructures.ModifierType, Single)
+- uid: AshesOfVelsingrad.Systems.UnitSystem.OnEffectDamage*
+  name: OnEffectDamage
+  href: api/AshesOfVelsingrad.Systems.UnitSystem.html#AshesOfVelsingrad_Systems_UnitSystem_OnEffectDamage_
+  commentId: Overload:AshesOfVelsingrad.Systems.UnitSystem.OnEffectDamage
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.Systems.UnitSystem.OnEffectDamage
+  nameWithType: UnitSystem.OnEffectDamage
+- uid: AshesOfVelsingrad.Systems.UnitSystem.OnEffectHeal(System.Single)
+  name: OnEffectHeal(float)
+  href: api/AshesOfVelsingrad.Systems.UnitSystem.html#AshesOfVelsingrad_Systems_UnitSystem_OnEffectHeal_System_Single_
+  commentId: M:AshesOfVelsingrad.Systems.UnitSystem.OnEffectHeal(System.Single)
+  name.vb: OnEffectHeal(Single)
+  fullName: AshesOfVelsingrad.Systems.UnitSystem.OnEffectHeal(float)
+  fullName.vb: AshesOfVelsingrad.Systems.UnitSystem.OnEffectHeal(Single)
+  nameWithType: UnitSystem.OnEffectHeal(float)
+  nameWithType.vb: UnitSystem.OnEffectHeal(Single)
+- uid: AshesOfVelsingrad.Systems.UnitSystem.OnEffectHeal*
+  name: OnEffectHeal
+  href: api/AshesOfVelsingrad.Systems.UnitSystem.html#AshesOfVelsingrad_Systems_UnitSystem_OnEffectHeal_
+  commentId: Overload:AshesOfVelsingrad.Systems.UnitSystem.OnEffectHeal
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.Systems.UnitSystem.OnEffectHeal
+  nameWithType: UnitSystem.OnEffectHeal
+- uid: AshesOfVelsingrad.Systems.UnitSystem.OnEffectModifierApplied(AshesOfVelsingrad.Utilities.AovDataStructures.StatTypeWithModifier,AshesOfVelsingrad.Utilities.AovDataStructures.ModifierType,System.Single)
+  name: OnEffectModifierApplied(StatTypeWithModifier, ModifierType, float)
+  href: api/AshesOfVelsingrad.Systems.UnitSystem.html#AshesOfVelsingrad_Systems_UnitSystem_OnEffectModifierApplied_AshesOfVelsingrad_Utilities_AovDataStructures_StatTypeWithModifier_AshesOfVelsingrad_Utilities_AovDataStructures_ModifierType_System_Single_
+  commentId: M:AshesOfVelsingrad.Systems.UnitSystem.OnEffectModifierApplied(AshesOfVelsingrad.Utilities.AovDataStructures.StatTypeWithModifier,AshesOfVelsingrad.Utilities.AovDataStructures.ModifierType,System.Single)
+  name.vb: OnEffectModifierApplied(StatTypeWithModifier, ModifierType, Single)
+  fullName: AshesOfVelsingrad.Systems.UnitSystem.OnEffectModifierApplied(AshesOfVelsingrad.Utilities.AovDataStructures.StatTypeWithModifier, AshesOfVelsingrad.Utilities.AovDataStructures.ModifierType, float)
+  fullName.vb: AshesOfVelsingrad.Systems.UnitSystem.OnEffectModifierApplied(AshesOfVelsingrad.Utilities.AovDataStructures.StatTypeWithModifier, AshesOfVelsingrad.Utilities.AovDataStructures.ModifierType, Single)
+  nameWithType: UnitSystem.OnEffectModifierApplied(AovDataStructures.StatTypeWithModifier, AovDataStructures.ModifierType, float)
+  nameWithType.vb: UnitSystem.OnEffectModifierApplied(AovDataStructures.StatTypeWithModifier, AovDataStructures.ModifierType, Single)
+- uid: AshesOfVelsingrad.Systems.UnitSystem.OnEffectModifierApplied*
+  name: OnEffectModifierApplied
+  href: api/AshesOfVelsingrad.Systems.UnitSystem.html#AshesOfVelsingrad_Systems_UnitSystem_OnEffectModifierApplied_
+  commentId: Overload:AshesOfVelsingrad.Systems.UnitSystem.OnEffectModifierApplied
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.Systems.UnitSystem.OnEffectModifierApplied
+  nameWithType: UnitSystem.OnEffectModifierApplied
+- uid: AshesOfVelsingrad.Systems.UnitSystem.OnEffectModifierRemoved(AshesOfVelsingrad.Utilities.AovDataStructures.StatTypeWithModifier,AshesOfVelsingrad.Utilities.AovDataStructures.ModifierType,System.Single)
+  name: OnEffectModifierRemoved(StatTypeWithModifier, ModifierType, float)
+  href: api/AshesOfVelsingrad.Systems.UnitSystem.html#AshesOfVelsingrad_Systems_UnitSystem_OnEffectModifierRemoved_AshesOfVelsingrad_Utilities_AovDataStructures_StatTypeWithModifier_AshesOfVelsingrad_Utilities_AovDataStructures_ModifierType_System_Single_
+  commentId: M:AshesOfVelsingrad.Systems.UnitSystem.OnEffectModifierRemoved(AshesOfVelsingrad.Utilities.AovDataStructures.StatTypeWithModifier,AshesOfVelsingrad.Utilities.AovDataStructures.ModifierType,System.Single)
+  name.vb: OnEffectModifierRemoved(StatTypeWithModifier, ModifierType, Single)
+  fullName: AshesOfVelsingrad.Systems.UnitSystem.OnEffectModifierRemoved(AshesOfVelsingrad.Utilities.AovDataStructures.StatTypeWithModifier, AshesOfVelsingrad.Utilities.AovDataStructures.ModifierType, float)
+  fullName.vb: AshesOfVelsingrad.Systems.UnitSystem.OnEffectModifierRemoved(AshesOfVelsingrad.Utilities.AovDataStructures.StatTypeWithModifier, AshesOfVelsingrad.Utilities.AovDataStructures.ModifierType, Single)
+  nameWithType: UnitSystem.OnEffectModifierRemoved(AovDataStructures.StatTypeWithModifier, AovDataStructures.ModifierType, float)
+  nameWithType.vb: UnitSystem.OnEffectModifierRemoved(AovDataStructures.StatTypeWithModifier, AovDataStructures.ModifierType, Single)
+- uid: AshesOfVelsingrad.Systems.UnitSystem.OnEffectModifierRemoved*
+  name: OnEffectModifierRemoved
+  href: api/AshesOfVelsingrad.Systems.UnitSystem.html#AshesOfVelsingrad_Systems_UnitSystem_OnEffectModifierRemoved_
+  commentId: Overload:AshesOfVelsingrad.Systems.UnitSystem.OnEffectModifierRemoved
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.Systems.UnitSystem.OnEffectModifierRemoved
+  nameWithType: UnitSystem.OnEffectModifierRemoved
+- uid: AshesOfVelsingrad.Systems.UnitSystem.OnEffectRevive(AshesOfVelsingrad.Utilities.AovDataStructures.ModifierType,System.Single)
+  name: OnEffectRevive(ModifierType, float)
+  href: api/AshesOfVelsingrad.Systems.UnitSystem.html#AshesOfVelsingrad_Systems_UnitSystem_OnEffectRevive_AshesOfVelsingrad_Utilities_AovDataStructures_ModifierType_System_Single_
+  commentId: M:AshesOfVelsingrad.Systems.UnitSystem.OnEffectRevive(AshesOfVelsingrad.Utilities.AovDataStructures.ModifierType,System.Single)
+  name.vb: OnEffectRevive(ModifierType, Single)
+  fullName: AshesOfVelsingrad.Systems.UnitSystem.OnEffectRevive(AshesOfVelsingrad.Utilities.AovDataStructures.ModifierType, float)
+  fullName.vb: AshesOfVelsingrad.Systems.UnitSystem.OnEffectRevive(AshesOfVelsingrad.Utilities.AovDataStructures.ModifierType, Single)
+  nameWithType: UnitSystem.OnEffectRevive(AovDataStructures.ModifierType, float)
+  nameWithType.vb: UnitSystem.OnEffectRevive(AovDataStructures.ModifierType, Single)
+- uid: AshesOfVelsingrad.Systems.UnitSystem.OnEffectRevive*
+  name: OnEffectRevive
+  href: api/AshesOfVelsingrad.Systems.UnitSystem.html#AshesOfVelsingrad_Systems_UnitSystem_OnEffectRevive_
+  commentId: Overload:AshesOfVelsingrad.Systems.UnitSystem.OnEffectRevive
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.Systems.UnitSystem.OnEffectRevive
+  nameWithType: UnitSystem.OnEffectRevive
 - uid: AshesOfVelsingrad.Systems.UnitSystem.PassTurn
   name: PassTurn()
   href: api/AshesOfVelsingrad.Systems.UnitSystem.html#AshesOfVelsingrad_Systems_UnitSystem_PassTurn
@@ -2915,6 +3217,32 @@ references:
   isSpec: "True"
   fullName: AshesOfVelsingrad.Systems.UnitSystem.TakeDamage
   nameWithType: UnitSystem.TakeDamage
+- uid: AshesOfVelsingrad.Systems.UnitSystem.TotalAtk
+  name: TotalAtk
+  href: api/AshesOfVelsingrad.Systems.UnitSystem.html#AshesOfVelsingrad_Systems_UnitSystem_TotalAtk
+  commentId: P:AshesOfVelsingrad.Systems.UnitSystem.TotalAtk
+  fullName: AshesOfVelsingrad.Systems.UnitSystem.TotalAtk
+  nameWithType: UnitSystem.TotalAtk
+- uid: AshesOfVelsingrad.Systems.UnitSystem.TotalAtk*
+  name: TotalAtk
+  href: api/AshesOfVelsingrad.Systems.UnitSystem.html#AshesOfVelsingrad_Systems_UnitSystem_TotalAtk_
+  commentId: Overload:AshesOfVelsingrad.Systems.UnitSystem.TotalAtk
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.Systems.UnitSystem.TotalAtk
+  nameWithType: UnitSystem.TotalAtk
+- uid: AshesOfVelsingrad.Systems.UnitSystem.TotalDef
+  name: TotalDef
+  href: api/AshesOfVelsingrad.Systems.UnitSystem.html#AshesOfVelsingrad_Systems_UnitSystem_TotalDef
+  commentId: P:AshesOfVelsingrad.Systems.UnitSystem.TotalDef
+  fullName: AshesOfVelsingrad.Systems.UnitSystem.TotalDef
+  nameWithType: UnitSystem.TotalDef
+- uid: AshesOfVelsingrad.Systems.UnitSystem.TotalDef*
+  name: TotalDef
+  href: api/AshesOfVelsingrad.Systems.UnitSystem.html#AshesOfVelsingrad_Systems_UnitSystem_TotalDef_
+  commentId: Overload:AshesOfVelsingrad.Systems.UnitSystem.TotalDef
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.Systems.UnitSystem.TotalDef
+  nameWithType: UnitSystem.TotalDef
 - uid: AshesOfVelsingrad.Systems.UnitSystem.Type
   name: Type
   href: api/AshesOfVelsingrad.Systems.UnitSystem.html#AshesOfVelsingrad_Systems_UnitSystem_Type
@@ -2996,48 +3324,6 @@ references:
   isSpec: "True"
   fullName: AshesOfVelsingrad.Systems.UnitSystem._Ready
   nameWithType: UnitSystem._Ready
-- uid: AshesOfVelsingrad.Systems.UnitType
-  name: UnitType
-  href: api/AshesOfVelsingrad.Systems.UnitType.html
-  commentId: T:AshesOfVelsingrad.Systems.UnitType
-  fullName: AshesOfVelsingrad.Systems.UnitType
-  nameWithType: UnitType
-- uid: AshesOfVelsingrad.Systems.UnitType.Archer
-  name: Archer
-  href: api/AshesOfVelsingrad.Systems.UnitType.html#AshesOfVelsingrad_Systems_UnitType_Archer
-  commentId: F:AshesOfVelsingrad.Systems.UnitType.Archer
-  fullName: AshesOfVelsingrad.Systems.UnitType.Archer
-  nameWithType: UnitType.Archer
-- uid: AshesOfVelsingrad.Systems.UnitType.Assassin
-  name: Assassin
-  href: api/AshesOfVelsingrad.Systems.UnitType.html#AshesOfVelsingrad_Systems_UnitType_Assassin
-  commentId: F:AshesOfVelsingrad.Systems.UnitType.Assassin
-  fullName: AshesOfVelsingrad.Systems.UnitType.Assassin
-  nameWithType: UnitType.Assassin
-- uid: AshesOfVelsingrad.Systems.UnitType.Fighter
-  name: Fighter
-  href: api/AshesOfVelsingrad.Systems.UnitType.html#AshesOfVelsingrad_Systems_UnitType_Fighter
-  commentId: F:AshesOfVelsingrad.Systems.UnitType.Fighter
-  fullName: AshesOfVelsingrad.Systems.UnitType.Fighter
-  nameWithType: UnitType.Fighter
-- uid: AshesOfVelsingrad.Systems.UnitType.Mage
-  name: Mage
-  href: api/AshesOfVelsingrad.Systems.UnitType.html#AshesOfVelsingrad_Systems_UnitType_Mage
-  commentId: F:AshesOfVelsingrad.Systems.UnitType.Mage
-  fullName: AshesOfVelsingrad.Systems.UnitType.Mage
-  nameWithType: UnitType.Mage
-- uid: AshesOfVelsingrad.Systems.UnitType.Player
-  name: Player
-  href: api/AshesOfVelsingrad.Systems.UnitType.html#AshesOfVelsingrad_Systems_UnitType_Player
-  commentId: F:AshesOfVelsingrad.Systems.UnitType.Player
-  fullName: AshesOfVelsingrad.Systems.UnitType.Player
-  nameWithType: UnitType.Player
-- uid: AshesOfVelsingrad.Systems.UnitType.Swordsman
-  name: Swordsman
-  href: api/AshesOfVelsingrad.Systems.UnitType.html#AshesOfVelsingrad_Systems_UnitType_Swordsman
-  commentId: F:AshesOfVelsingrad.Systems.UnitType.Swordsman
-  fullName: AshesOfVelsingrad.Systems.UnitType.Swordsman
-  nameWithType: UnitType.Swordsman
 - uid: AshesOfVelsingrad.UI.Menus
   name: AshesOfVelsingrad.UI.Menus
   href: api/AshesOfVelsingrad.UI.Menus.html
@@ -3166,21 +3452,321 @@ references:
   isSpec: "True"
   fullName: AshesOfVelsingrad.UI.Menus.OptionsMenu._Ready
   nameWithType: OptionsMenu._Ready
-- uid: AshesOfVelsingrad.utilities
-  name: AshesOfVelsingrad.utilities
-  href: api/AshesOfVelsingrad.utilities.html
-  commentId: N:AshesOfVelsingrad.utilities
-  fullName: AshesOfVelsingrad.utilities
-  nameWithType: AshesOfVelsingrad.utilities
-- uid: AshesOfVelsingrad.utilities.Constants
+- uid: AshesOfVelsingrad.Utilities
+  name: AshesOfVelsingrad.Utilities
+  href: api/AshesOfVelsingrad.Utilities.html
+  commentId: N:AshesOfVelsingrad.Utilities
+  fullName: AshesOfVelsingrad.Utilities
+  nameWithType: AshesOfVelsingrad.Utilities
+- uid: AshesOfVelsingrad.Utilities.AovDataStructures
+  name: AovDataStructures
+  href: api/AshesOfVelsingrad.Utilities.AovDataStructures.html
+  commentId: T:AshesOfVelsingrad.Utilities.AovDataStructures
+  fullName: AshesOfVelsingrad.Utilities.AovDataStructures
+  nameWithType: AovDataStructures
+- uid: AshesOfVelsingrad.Utilities.AovDataStructures.CellType
+  name: AovDataStructures.CellType
+  href: api/AshesOfVelsingrad.Utilities.AovDataStructures.CellType.html
+  commentId: T:AshesOfVelsingrad.Utilities.AovDataStructures.CellType
+  fullName: AshesOfVelsingrad.Utilities.AovDataStructures.CellType
+  nameWithType: AovDataStructures.CellType
+- uid: AshesOfVelsingrad.Utilities.AovDataStructures.CellType.Empty
+  name: Empty
+  href: api/AshesOfVelsingrad.Utilities.AovDataStructures.CellType.html#AshesOfVelsingrad_Utilities_AovDataStructures_CellType_Empty
+  commentId: F:AshesOfVelsingrad.Utilities.AovDataStructures.CellType.Empty
+  fullName: AshesOfVelsingrad.Utilities.AovDataStructures.CellType.Empty
+  nameWithType: AovDataStructures.CellType.Empty
+- uid: AshesOfVelsingrad.Utilities.AovDataStructures.CellType.Grass
+  name: Grass
+  href: api/AshesOfVelsingrad.Utilities.AovDataStructures.CellType.html#AshesOfVelsingrad_Utilities_AovDataStructures_CellType_Grass
+  commentId: F:AshesOfVelsingrad.Utilities.AovDataStructures.CellType.Grass
+  fullName: AshesOfVelsingrad.Utilities.AovDataStructures.CellType.Grass
+  nameWithType: AovDataStructures.CellType.Grass
+- uid: AshesOfVelsingrad.Utilities.AovDataStructures.ClickOnMapContext
+  name: AovDataStructures.ClickOnMapContext
+  href: api/AshesOfVelsingrad.Utilities.AovDataStructures.ClickOnMapContext.html
+  commentId: T:AshesOfVelsingrad.Utilities.AovDataStructures.ClickOnMapContext
+  fullName: AshesOfVelsingrad.Utilities.AovDataStructures.ClickOnMapContext
+  nameWithType: AovDataStructures.ClickOnMapContext
+- uid: AshesOfVelsingrad.Utilities.AovDataStructures.ClickOnMapContext.MoveUnit
+  name: MoveUnit
+  href: api/AshesOfVelsingrad.Utilities.AovDataStructures.ClickOnMapContext.html#AshesOfVelsingrad_Utilities_AovDataStructures_ClickOnMapContext_MoveUnit
+  commentId: F:AshesOfVelsingrad.Utilities.AovDataStructures.ClickOnMapContext.MoveUnit
+  fullName: AshesOfVelsingrad.Utilities.AovDataStructures.ClickOnMapContext.MoveUnit
+  nameWithType: AovDataStructures.ClickOnMapContext.MoveUnit
+- uid: AshesOfVelsingrad.Utilities.AovDataStructures.ClickOnMapContext.SelectUnitTarget
+  name: SelectUnitTarget
+  href: api/AshesOfVelsingrad.Utilities.AovDataStructures.ClickOnMapContext.html#AshesOfVelsingrad_Utilities_AovDataStructures_ClickOnMapContext_SelectUnitTarget
+  commentId: F:AshesOfVelsingrad.Utilities.AovDataStructures.ClickOnMapContext.SelectUnitTarget
+  fullName: AshesOfVelsingrad.Utilities.AovDataStructures.ClickOnMapContext.SelectUnitTarget
+  nameWithType: AovDataStructures.ClickOnMapContext.SelectUnitTarget
+- uid: AshesOfVelsingrad.Utilities.AovDataStructures.EffectType
+  name: AovDataStructures.EffectType
+  href: api/AshesOfVelsingrad.Utilities.AovDataStructures.EffectType.html
+  commentId: T:AshesOfVelsingrad.Utilities.AovDataStructures.EffectType
+  fullName: AshesOfVelsingrad.Utilities.AovDataStructures.EffectType
+  nameWithType: AovDataStructures.EffectType
+- uid: AshesOfVelsingrad.Utilities.AovDataStructures.EffectType.ApplyModifier
+  name: ApplyModifier
+  href: api/AshesOfVelsingrad.Utilities.AovDataStructures.EffectType.html#AshesOfVelsingrad_Utilities_AovDataStructures_EffectType_ApplyModifier
+  commentId: F:AshesOfVelsingrad.Utilities.AovDataStructures.EffectType.ApplyModifier
+  fullName: AshesOfVelsingrad.Utilities.AovDataStructures.EffectType.ApplyModifier
+  nameWithType: AovDataStructures.EffectType.ApplyModifier
+- uid: AshesOfVelsingrad.Utilities.AovDataStructures.EffectType.Control
+  name: Control
+  href: api/AshesOfVelsingrad.Utilities.AovDataStructures.EffectType.html#AshesOfVelsingrad_Utilities_AovDataStructures_EffectType_Control
+  commentId: F:AshesOfVelsingrad.Utilities.AovDataStructures.EffectType.Control
+  fullName: AshesOfVelsingrad.Utilities.AovDataStructures.EffectType.Control
+  nameWithType: AovDataStructures.EffectType.Control
+- uid: AshesOfVelsingrad.Utilities.AovDataStructures.EffectType.Damage
+  name: Damage
+  href: api/AshesOfVelsingrad.Utilities.AovDataStructures.EffectType.html#AshesOfVelsingrad_Utilities_AovDataStructures_EffectType_Damage
+  commentId: F:AshesOfVelsingrad.Utilities.AovDataStructures.EffectType.Damage
+  fullName: AshesOfVelsingrad.Utilities.AovDataStructures.EffectType.Damage
+  nameWithType: AovDataStructures.EffectType.Damage
+- uid: AshesOfVelsingrad.Utilities.AovDataStructures.EffectType.Heal
+  name: Heal
+  href: api/AshesOfVelsingrad.Utilities.AovDataStructures.EffectType.html#AshesOfVelsingrad_Utilities_AovDataStructures_EffectType_Heal
+  commentId: F:AshesOfVelsingrad.Utilities.AovDataStructures.EffectType.Heal
+  fullName: AshesOfVelsingrad.Utilities.AovDataStructures.EffectType.Heal
+  nameWithType: AovDataStructures.EffectType.Heal
+- uid: AshesOfVelsingrad.Utilities.AovDataStructures.EffectType.RemoveModifier
+  name: RemoveModifier
+  href: api/AshesOfVelsingrad.Utilities.AovDataStructures.EffectType.html#AshesOfVelsingrad_Utilities_AovDataStructures_EffectType_RemoveModifier
+  commentId: F:AshesOfVelsingrad.Utilities.AovDataStructures.EffectType.RemoveModifier
+  fullName: AshesOfVelsingrad.Utilities.AovDataStructures.EffectType.RemoveModifier
+  nameWithType: AovDataStructures.EffectType.RemoveModifier
+- uid: AshesOfVelsingrad.Utilities.AovDataStructures.EffectType.Revive
+  name: Revive
+  href: api/AshesOfVelsingrad.Utilities.AovDataStructures.EffectType.html#AshesOfVelsingrad_Utilities_AovDataStructures_EffectType_Revive
+  commentId: F:AshesOfVelsingrad.Utilities.AovDataStructures.EffectType.Revive
+  fullName: AshesOfVelsingrad.Utilities.AovDataStructures.EffectType.Revive
+  nameWithType: AovDataStructures.EffectType.Revive
+- uid: AshesOfVelsingrad.Utilities.AovDataStructures.EffectType.Summon
+  name: Summon
+  href: api/AshesOfVelsingrad.Utilities.AovDataStructures.EffectType.html#AshesOfVelsingrad_Utilities_AovDataStructures_EffectType_Summon
+  commentId: F:AshesOfVelsingrad.Utilities.AovDataStructures.EffectType.Summon
+  fullName: AshesOfVelsingrad.Utilities.AovDataStructures.EffectType.Summon
+  nameWithType: AovDataStructures.EffectType.Summon
+- uid: AshesOfVelsingrad.Utilities.AovDataStructures.GameOutcome
+  name: AovDataStructures.GameOutcome
+  href: api/AshesOfVelsingrad.Utilities.AovDataStructures.GameOutcome.html
+  commentId: T:AshesOfVelsingrad.Utilities.AovDataStructures.GameOutcome
+  fullName: AshesOfVelsingrad.Utilities.AovDataStructures.GameOutcome
+  nameWithType: AovDataStructures.GameOutcome
+- uid: AshesOfVelsingrad.Utilities.AovDataStructures.GameOutcome.Defeat
+  name: Defeat
+  href: api/AshesOfVelsingrad.Utilities.AovDataStructures.GameOutcome.html#AshesOfVelsingrad_Utilities_AovDataStructures_GameOutcome_Defeat
+  commentId: F:AshesOfVelsingrad.Utilities.AovDataStructures.GameOutcome.Defeat
+  fullName: AshesOfVelsingrad.Utilities.AovDataStructures.GameOutcome.Defeat
+  nameWithType: AovDataStructures.GameOutcome.Defeat
+- uid: AshesOfVelsingrad.Utilities.AovDataStructures.GameOutcome.Ongoing
+  name: Ongoing
+  href: api/AshesOfVelsingrad.Utilities.AovDataStructures.GameOutcome.html#AshesOfVelsingrad_Utilities_AovDataStructures_GameOutcome_Ongoing
+  commentId: F:AshesOfVelsingrad.Utilities.AovDataStructures.GameOutcome.Ongoing
+  fullName: AshesOfVelsingrad.Utilities.AovDataStructures.GameOutcome.Ongoing
+  nameWithType: AovDataStructures.GameOutcome.Ongoing
+- uid: AshesOfVelsingrad.Utilities.AovDataStructures.GameOutcome.Victory
+  name: Victory
+  href: api/AshesOfVelsingrad.Utilities.AovDataStructures.GameOutcome.html#AshesOfVelsingrad_Utilities_AovDataStructures_GameOutcome_Victory
+  commentId: F:AshesOfVelsingrad.Utilities.AovDataStructures.GameOutcome.Victory
+  fullName: AshesOfVelsingrad.Utilities.AovDataStructures.GameOutcome.Victory
+  nameWithType: AovDataStructures.GameOutcome.Victory
+- uid: AshesOfVelsingrad.Utilities.AovDataStructures.MagicType
+  name: AovDataStructures.MagicType
+  href: api/AshesOfVelsingrad.Utilities.AovDataStructures.MagicType.html
+  commentId: T:AshesOfVelsingrad.Utilities.AovDataStructures.MagicType
+  fullName: AshesOfVelsingrad.Utilities.AovDataStructures.MagicType
+  nameWithType: AovDataStructures.MagicType
+- uid: AshesOfVelsingrad.Utilities.AovDataStructures.MagicType.Dark
+  name: Dark
+  href: api/AshesOfVelsingrad.Utilities.AovDataStructures.MagicType.html#AshesOfVelsingrad_Utilities_AovDataStructures_MagicType_Dark
+  commentId: F:AshesOfVelsingrad.Utilities.AovDataStructures.MagicType.Dark
+  fullName: AshesOfVelsingrad.Utilities.AovDataStructures.MagicType.Dark
+  nameWithType: AovDataStructures.MagicType.Dark
+- uid: AshesOfVelsingrad.Utilities.AovDataStructures.MagicType.Earth
+  name: Earth
+  href: api/AshesOfVelsingrad.Utilities.AovDataStructures.MagicType.html#AshesOfVelsingrad_Utilities_AovDataStructures_MagicType_Earth
+  commentId: F:AshesOfVelsingrad.Utilities.AovDataStructures.MagicType.Earth
+  fullName: AshesOfVelsingrad.Utilities.AovDataStructures.MagicType.Earth
+  nameWithType: AovDataStructures.MagicType.Earth
+- uid: AshesOfVelsingrad.Utilities.AovDataStructures.MagicType.Fire
+  name: Fire
+  href: api/AshesOfVelsingrad.Utilities.AovDataStructures.MagicType.html#AshesOfVelsingrad_Utilities_AovDataStructures_MagicType_Fire
+  commentId: F:AshesOfVelsingrad.Utilities.AovDataStructures.MagicType.Fire
+  fullName: AshesOfVelsingrad.Utilities.AovDataStructures.MagicType.Fire
+  nameWithType: AovDataStructures.MagicType.Fire
+- uid: AshesOfVelsingrad.Utilities.AovDataStructures.MagicType.Light
+  name: Light
+  href: api/AshesOfVelsingrad.Utilities.AovDataStructures.MagicType.html#AshesOfVelsingrad_Utilities_AovDataStructures_MagicType_Light
+  commentId: F:AshesOfVelsingrad.Utilities.AovDataStructures.MagicType.Light
+  fullName: AshesOfVelsingrad.Utilities.AovDataStructures.MagicType.Light
+  nameWithType: AovDataStructures.MagicType.Light
+- uid: AshesOfVelsingrad.Utilities.AovDataStructures.MagicType.None
+  name: None
+  href: api/AshesOfVelsingrad.Utilities.AovDataStructures.MagicType.html#AshesOfVelsingrad_Utilities_AovDataStructures_MagicType_None
+  commentId: F:AshesOfVelsingrad.Utilities.AovDataStructures.MagicType.None
+  fullName: AshesOfVelsingrad.Utilities.AovDataStructures.MagicType.None
+  nameWithType: AovDataStructures.MagicType.None
+- uid: AshesOfVelsingrad.Utilities.AovDataStructures.MagicType.Water
+  name: Water
+  href: api/AshesOfVelsingrad.Utilities.AovDataStructures.MagicType.html#AshesOfVelsingrad_Utilities_AovDataStructures_MagicType_Water
+  commentId: F:AshesOfVelsingrad.Utilities.AovDataStructures.MagicType.Water
+  fullName: AshesOfVelsingrad.Utilities.AovDataStructures.MagicType.Water
+  nameWithType: AovDataStructures.MagicType.Water
+- uid: AshesOfVelsingrad.Utilities.AovDataStructures.MagicType.Wind
+  name: Wind
+  href: api/AshesOfVelsingrad.Utilities.AovDataStructures.MagicType.html#AshesOfVelsingrad_Utilities_AovDataStructures_MagicType_Wind
+  commentId: F:AshesOfVelsingrad.Utilities.AovDataStructures.MagicType.Wind
+  fullName: AshesOfVelsingrad.Utilities.AovDataStructures.MagicType.Wind
+  nameWithType: AovDataStructures.MagicType.Wind
+- uid: AshesOfVelsingrad.Utilities.AovDataStructures.ModifierType
+  name: AovDataStructures.ModifierType
+  href: api/AshesOfVelsingrad.Utilities.AovDataStructures.ModifierType.html
+  commentId: T:AshesOfVelsingrad.Utilities.AovDataStructures.ModifierType
+  fullName: AshesOfVelsingrad.Utilities.AovDataStructures.ModifierType
+  nameWithType: AovDataStructures.ModifierType
+- uid: AshesOfVelsingrad.Utilities.AovDataStructures.ModifierType.Flat
+  name: Flat
+  href: api/AshesOfVelsingrad.Utilities.AovDataStructures.ModifierType.html#AshesOfVelsingrad_Utilities_AovDataStructures_ModifierType_Flat
+  commentId: F:AshesOfVelsingrad.Utilities.AovDataStructures.ModifierType.Flat
+  fullName: AshesOfVelsingrad.Utilities.AovDataStructures.ModifierType.Flat
+  nameWithType: AovDataStructures.ModifierType.Flat
+- uid: AshesOfVelsingrad.Utilities.AovDataStructures.ModifierType.Percent
+  name: Percent
+  href: api/AshesOfVelsingrad.Utilities.AovDataStructures.ModifierType.html#AshesOfVelsingrad_Utilities_AovDataStructures_ModifierType_Percent
+  commentId: F:AshesOfVelsingrad.Utilities.AovDataStructures.ModifierType.Percent
+  fullName: AshesOfVelsingrad.Utilities.AovDataStructures.ModifierType.Percent
+  nameWithType: AovDataStructures.ModifierType.Percent
+- uid: AshesOfVelsingrad.Utilities.AovDataStructures.StatTypeWithModifier
+  name: AovDataStructures.StatTypeWithModifier
+  href: api/AshesOfVelsingrad.Utilities.AovDataStructures.StatTypeWithModifier.html
+  commentId: T:AshesOfVelsingrad.Utilities.AovDataStructures.StatTypeWithModifier
+  fullName: AshesOfVelsingrad.Utilities.AovDataStructures.StatTypeWithModifier
+  nameWithType: AovDataStructures.StatTypeWithModifier
+- uid: AshesOfVelsingrad.Utilities.AovDataStructures.StatTypeWithModifier.Atk
+  name: Atk
+  href: api/AshesOfVelsingrad.Utilities.AovDataStructures.StatTypeWithModifier.html#AshesOfVelsingrad_Utilities_AovDataStructures_StatTypeWithModifier_Atk
+  commentId: F:AshesOfVelsingrad.Utilities.AovDataStructures.StatTypeWithModifier.Atk
+  fullName: AshesOfVelsingrad.Utilities.AovDataStructures.StatTypeWithModifier.Atk
+  nameWithType: AovDataStructures.StatTypeWithModifier.Atk
+- uid: AshesOfVelsingrad.Utilities.AovDataStructures.StatTypeWithModifier.Def
+  name: Def
+  href: api/AshesOfVelsingrad.Utilities.AovDataStructures.StatTypeWithModifier.html#AshesOfVelsingrad_Utilities_AovDataStructures_StatTypeWithModifier_Def
+  commentId: F:AshesOfVelsingrad.Utilities.AovDataStructures.StatTypeWithModifier.Def
+  fullName: AshesOfVelsingrad.Utilities.AovDataStructures.StatTypeWithModifier.Def
+  nameWithType: AovDataStructures.StatTypeWithModifier.Def
+- uid: AshesOfVelsingrad.Utilities.AovDataStructures.TargetTypes
+  name: AovDataStructures.TargetTypes
+  href: api/AshesOfVelsingrad.Utilities.AovDataStructures.TargetTypes.html
+  commentId: T:AshesOfVelsingrad.Utilities.AovDataStructures.TargetTypes
+  fullName: AshesOfVelsingrad.Utilities.AovDataStructures.TargetTypes
+  nameWithType: AovDataStructures.TargetTypes
+- uid: AshesOfVelsingrad.Utilities.AovDataStructures.TargetTypes.AllAllies
+  name: AllAllies
+  href: api/AshesOfVelsingrad.Utilities.AovDataStructures.TargetTypes.html#AshesOfVelsingrad_Utilities_AovDataStructures_TargetTypes_AllAllies
+  commentId: F:AshesOfVelsingrad.Utilities.AovDataStructures.TargetTypes.AllAllies
+  fullName: AshesOfVelsingrad.Utilities.AovDataStructures.TargetTypes.AllAllies
+  nameWithType: AovDataStructures.TargetTypes.AllAllies
+- uid: AshesOfVelsingrad.Utilities.AovDataStructures.TargetTypes.AllEnemies
+  name: AllEnemies
+  href: api/AshesOfVelsingrad.Utilities.AovDataStructures.TargetTypes.html#AshesOfVelsingrad_Utilities_AovDataStructures_TargetTypes_AllEnemies
+  commentId: F:AshesOfVelsingrad.Utilities.AovDataStructures.TargetTypes.AllEnemies
+  fullName: AshesOfVelsingrad.Utilities.AovDataStructures.TargetTypes.AllEnemies
+  nameWithType: AovDataStructures.TargetTypes.AllEnemies
+- uid: AshesOfVelsingrad.Utilities.AovDataStructures.TargetTypes.SingleAlly
+  name: SingleAlly
+  href: api/AshesOfVelsingrad.Utilities.AovDataStructures.TargetTypes.html#AshesOfVelsingrad_Utilities_AovDataStructures_TargetTypes_SingleAlly
+  commentId: F:AshesOfVelsingrad.Utilities.AovDataStructures.TargetTypes.SingleAlly
+  fullName: AshesOfVelsingrad.Utilities.AovDataStructures.TargetTypes.SingleAlly
+  nameWithType: AovDataStructures.TargetTypes.SingleAlly
+- uid: AshesOfVelsingrad.Utilities.AovDataStructures.TargetTypes.SingleEnemy
+  name: SingleEnemy
+  href: api/AshesOfVelsingrad.Utilities.AovDataStructures.TargetTypes.html#AshesOfVelsingrad_Utilities_AovDataStructures_TargetTypes_SingleEnemy
+  commentId: F:AshesOfVelsingrad.Utilities.AovDataStructures.TargetTypes.SingleEnemy
+  fullName: AshesOfVelsingrad.Utilities.AovDataStructures.TargetTypes.SingleEnemy
+  nameWithType: AovDataStructures.TargetTypes.SingleEnemy
+- uid: AshesOfVelsingrad.Utilities.AovDataStructures.TurnState
+  name: AovDataStructures.TurnState
+  href: api/AshesOfVelsingrad.Utilities.AovDataStructures.TurnState.html
+  commentId: T:AshesOfVelsingrad.Utilities.AovDataStructures.TurnState
+  fullName: AshesOfVelsingrad.Utilities.AovDataStructures.TurnState
+  nameWithType: AovDataStructures.TurnState
+- uid: AshesOfVelsingrad.Utilities.AovDataStructures.TurnState.EnemyTurn
+  name: EnemyTurn
+  href: api/AshesOfVelsingrad.Utilities.AovDataStructures.TurnState.html#AshesOfVelsingrad_Utilities_AovDataStructures_TurnState_EnemyTurn
+  commentId: F:AshesOfVelsingrad.Utilities.AovDataStructures.TurnState.EnemyTurn
+  fullName: AshesOfVelsingrad.Utilities.AovDataStructures.TurnState.EnemyTurn
+  nameWithType: AovDataStructures.TurnState.EnemyTurn
+- uid: AshesOfVelsingrad.Utilities.AovDataStructures.TurnState.Finished
+  name: Finished
+  href: api/AshesOfVelsingrad.Utilities.AovDataStructures.TurnState.html#AshesOfVelsingrad_Utilities_AovDataStructures_TurnState_Finished
+  commentId: F:AshesOfVelsingrad.Utilities.AovDataStructures.TurnState.Finished
+  fullName: AshesOfVelsingrad.Utilities.AovDataStructures.TurnState.Finished
+  nameWithType: AovDataStructures.TurnState.Finished
+- uid: AshesOfVelsingrad.Utilities.AovDataStructures.TurnState.PlayerTurn
+  name: PlayerTurn
+  href: api/AshesOfVelsingrad.Utilities.AovDataStructures.TurnState.html#AshesOfVelsingrad_Utilities_AovDataStructures_TurnState_PlayerTurn
+  commentId: F:AshesOfVelsingrad.Utilities.AovDataStructures.TurnState.PlayerTurn
+  fullName: AshesOfVelsingrad.Utilities.AovDataStructures.TurnState.PlayerTurn
+  nameWithType: AovDataStructures.TurnState.PlayerTurn
+- uid: AshesOfVelsingrad.Utilities.AovDataStructures.TurnState.Waiting
+  name: Waiting
+  href: api/AshesOfVelsingrad.Utilities.AovDataStructures.TurnState.html#AshesOfVelsingrad_Utilities_AovDataStructures_TurnState_Waiting
+  commentId: F:AshesOfVelsingrad.Utilities.AovDataStructures.TurnState.Waiting
+  fullName: AshesOfVelsingrad.Utilities.AovDataStructures.TurnState.Waiting
+  nameWithType: AovDataStructures.TurnState.Waiting
+- uid: AshesOfVelsingrad.Utilities.AovDataStructures.UnitType
+  name: AovDataStructures.UnitType
+  href: api/AshesOfVelsingrad.Utilities.AovDataStructures.UnitType.html
+  commentId: T:AshesOfVelsingrad.Utilities.AovDataStructures.UnitType
+  fullName: AshesOfVelsingrad.Utilities.AovDataStructures.UnitType
+  nameWithType: AovDataStructures.UnitType
+- uid: AshesOfVelsingrad.Utilities.AovDataStructures.UnitType.Archer
+  name: Archer
+  href: api/AshesOfVelsingrad.Utilities.AovDataStructures.UnitType.html#AshesOfVelsingrad_Utilities_AovDataStructures_UnitType_Archer
+  commentId: F:AshesOfVelsingrad.Utilities.AovDataStructures.UnitType.Archer
+  fullName: AshesOfVelsingrad.Utilities.AovDataStructures.UnitType.Archer
+  nameWithType: AovDataStructures.UnitType.Archer
+- uid: AshesOfVelsingrad.Utilities.AovDataStructures.UnitType.Assassin
+  name: Assassin
+  href: api/AshesOfVelsingrad.Utilities.AovDataStructures.UnitType.html#AshesOfVelsingrad_Utilities_AovDataStructures_UnitType_Assassin
+  commentId: F:AshesOfVelsingrad.Utilities.AovDataStructures.UnitType.Assassin
+  fullName: AshesOfVelsingrad.Utilities.AovDataStructures.UnitType.Assassin
+  nameWithType: AovDataStructures.UnitType.Assassin
+- uid: AshesOfVelsingrad.Utilities.AovDataStructures.UnitType.Fighter
+  name: Fighter
+  href: api/AshesOfVelsingrad.Utilities.AovDataStructures.UnitType.html#AshesOfVelsingrad_Utilities_AovDataStructures_UnitType_Fighter
+  commentId: F:AshesOfVelsingrad.Utilities.AovDataStructures.UnitType.Fighter
+  fullName: AshesOfVelsingrad.Utilities.AovDataStructures.UnitType.Fighter
+  nameWithType: AovDataStructures.UnitType.Fighter
+- uid: AshesOfVelsingrad.Utilities.AovDataStructures.UnitType.Mage
+  name: Mage
+  href: api/AshesOfVelsingrad.Utilities.AovDataStructures.UnitType.html#AshesOfVelsingrad_Utilities_AovDataStructures_UnitType_Mage
+  commentId: F:AshesOfVelsingrad.Utilities.AovDataStructures.UnitType.Mage
+  fullName: AshesOfVelsingrad.Utilities.AovDataStructures.UnitType.Mage
+  nameWithType: AovDataStructures.UnitType.Mage
+- uid: AshesOfVelsingrad.Utilities.AovDataStructures.UnitType.Player
+  name: Player
+  href: api/AshesOfVelsingrad.Utilities.AovDataStructures.UnitType.html#AshesOfVelsingrad_Utilities_AovDataStructures_UnitType_Player
+  commentId: F:AshesOfVelsingrad.Utilities.AovDataStructures.UnitType.Player
+  fullName: AshesOfVelsingrad.Utilities.AovDataStructures.UnitType.Player
+  nameWithType: AovDataStructures.UnitType.Player
+- uid: AshesOfVelsingrad.Utilities.AovDataStructures.UnitType.Swordsman
+  name: Swordsman
+  href: api/AshesOfVelsingrad.Utilities.AovDataStructures.UnitType.html#AshesOfVelsingrad_Utilities_AovDataStructures_UnitType_Swordsman
+  commentId: F:AshesOfVelsingrad.Utilities.AovDataStructures.UnitType.Swordsman
+  fullName: AshesOfVelsingrad.Utilities.AovDataStructures.UnitType.Swordsman
+  nameWithType: AovDataStructures.UnitType.Swordsman
+- uid: AshesOfVelsingrad.Utilities.Constants
   name: Constants
-  href: api/AshesOfVelsingrad.utilities.Constants.html
-  commentId: T:AshesOfVelsingrad.utilities.Constants
-  fullName: AshesOfVelsingrad.utilities.Constants
+  href: api/AshesOfVelsingrad.Utilities.Constants.html
+  commentId: T:AshesOfVelsingrad.Utilities.Constants
+  fullName: AshesOfVelsingrad.Utilities.Constants
   nameWithType: Constants
-- uid: AshesOfVelsingrad.utilities.Constants.PermanentStatusEffect
+- uid: AshesOfVelsingrad.Utilities.Constants.PermanentStatusEffect
   name: PermanentStatusEffect
-  href: api/AshesOfVelsingrad.utilities.Constants.html#AshesOfVelsingrad_utilities_Constants_PermanentStatusEffect
-  commentId: F:AshesOfVelsingrad.utilities.Constants.PermanentStatusEffect
-  fullName: AshesOfVelsingrad.utilities.Constants.PermanentStatusEffect
+  href: api/AshesOfVelsingrad.Utilities.Constants.html#AshesOfVelsingrad_Utilities_Constants_PermanentStatusEffect
+  commentId: F:AshesOfVelsingrad.Utilities.Constants.PermanentStatusEffect
+  fullName: AshesOfVelsingrad.Utilities.Constants.PermanentStatusEffect
   nameWithType: Constants.PermanentStatusEffect

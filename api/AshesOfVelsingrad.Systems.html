@@ -96,7 +96,8 @@ Classes
 </h3>
     <dl class="jumplist">
       <dt><a class="xref" href="AshesOfVelsingrad.Systems.BattleInputSystem.html">BattleInputSystem</a></dt>
-      <dd></dd>
+      <dd><p>Central system responsible for handling player inputs during battle phases.</p>
+</dd>
     </dl>
     <dl class="jumplist">
       <dt><a class="xref" href="AshesOfVelsingrad.Systems.CellInformation.html">CellInformation</a></dt>
@@ -145,32 +146,15 @@ Interfaces
       <dd><p>Represents any entity that can receive and manage <a class="xref" href="AshesOfVelsingrad.Systems.StatusEffect-1.html">StatusEffect&lt;TTarget&gt;</a>s.</p>
 </dd>
     </dl>
-    <h3 id="enums">
-Enums
-</h3>
     <dl class="jumplist">
-      <dt><a class="xref" href="AshesOfVelsingrad.Systems.CellType.html">CellType</a></dt>
-      <dd><p>Enumeration of every cell type available in the game.</p>
+      <dt><a class="xref" href="AshesOfVelsingrad.Systems.IStatusEffect.html">IStatusEffect</a></dt>
+      <dd><p>Empty interface to be able to contain any status effect as the actual <a class="xref" href="AshesOfVelsingrad.Systems.StatusEffect-1.html">StatusEffect&lt;TTarget&gt;</a> abstract
+class cannot take object as the TTarget</p>
 </dd>
     </dl>
     <dl class="jumplist">
-      <dt><a class="xref" href="AshesOfVelsingrad.Systems.EffectType.html">EffectType</a></dt>
-      <dd><p>Defines the type of effect a skill applies when used.</p>
-</dd>
-    </dl>
-    <dl class="jumplist">
-      <dt><a class="xref" href="AshesOfVelsingrad.Systems.MagicType.html">MagicType</a></dt>
-      <dd><p>Represents the elemental type of a skill.</p>
-</dd>
-    </dl>
-    <dl class="jumplist">
-      <dt><a class="xref" href="AshesOfVelsingrad.Systems.TargetTypes.html">TargetTypes</a></dt>
-      <dd><p>Defines the targeting pattern of a skill.</p>
-</dd>
-    </dl>
-    <dl class="jumplist">
-      <dt><a class="xref" href="AshesOfVelsingrad.Systems.UnitType.html">UnitType</a></dt>
-      <dd><p>Represents the different unit archetypes in the game.</p>
+      <dt><a class="xref" href="AshesOfVelsingrad.Systems.IStatusEffectBehavior.html">IStatusEffectBehavior</a></dt>
+      <dd><p>Defines the behavior contract for status effects applied to an entity.</p>
 </dd>
     </dl>
 

@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Class AtkBuffer | Ashes of Velsingrad Documentation </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Class AtkBuffer | Ashes of Velsingrad Documentation ">
+      
+      
+      <link rel="icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/Gammabra/aov-godot/new/develop/apiSpec/new?filename=AshesOfVelsingrad_Data_AtkBuffer.md&amp;value=---%0Auid%3A%20AshesOfVelsingrad.Data.AtkBuffer%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../images/logo-doc.png" alt="Ashes of Velsingrad" style="height: 40px; width: auto;">
+            Ashes of Velsingrad
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="AshesOfVelsingrad.Data.AtkBuffer">
+
+
+
+  <h1 id="AshesOfVelsingrad_Data_AtkBuffer" data-uid="AshesOfVelsingrad.Data.AtkBuffer" class="text-break">
+Class AtkBuffer  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/data/status_effect/unit/AtkBuffer.cs/#L7"><i class="bi bi-code-slash"></i></a>
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="AshesOfVelsingrad.html">AshesOfVelsingrad</a>.<a class="xref" href="AshesOfVelsingrad.Data.html">Data</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>Ashes of Velsingrad.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"></div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public sealed class AtkBuffer : StatusEffect&lt;UnitSystem&gt;, IStatusEffect</code></pre>
+  </div>
+
+
+
+
+  <dl class="typelist inheritance">
+    <dt>Inheritance</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+      <div><a class="xref" href="AshesOfVelsingrad.Systems.StatusEffect-1.html">StatusEffect</a>&lt;<a class="xref" href="AshesOfVelsingrad.Systems.UnitSystem.html">UnitSystem</a>&gt;</div>
+      <div><span class="xref">AtkBuffer</span></div>
+    </dd>
+  </dl>
+
+  <dl class="typelist implements">
+    <dt>Implements</dt>
+    <dd>
+      <div><a class="xref" href="AshesOfVelsingrad.Systems.IStatusEffect.html">IStatusEffect</a></div>
+    </dd>
+  </dl>
+
+
+  <dl class="typelist inheritedMembers">
+    <dt>Inherited Members</dt>
+    <dd>
+    <div>
+      <a class="xref" href="AshesOfVelsingrad.Systems.StatusEffect-1.html#AshesOfVelsingrad_Systems_StatusEffect_1_Name">StatusEffect&lt;UnitSystem&gt;.Name</a>
+    </div>
+    <div>
+      <a class="xref" href="AshesOfVelsingrad.Systems.StatusEffect-1.html#AshesOfVelsingrad_Systems_StatusEffect_1_Description">StatusEffect&lt;UnitSystem&gt;.Description</a>
+    </div>
+    <div>
+      <a class="xref" href="AshesOfVelsingrad.Systems.StatusEffect-1.html#AshesOfVelsingrad_Systems_StatusEffect_1_Duration">StatusEffect&lt;UnitSystem&gt;.Duration</a>
+    </div>
+    <div>
+      <a class="xref" href="AshesOfVelsingrad.Systems.StatusEffect-1.html#AshesOfVelsingrad_Systems_StatusEffect_1_StackCount">StatusEffect&lt;UnitSystem&gt;.StackCount</a>
+    </div>
+    <div>
+      <a class="xref" href="AshesOfVelsingrad.Systems.StatusEffect-1.html#AshesOfVelsingrad_Systems_StatusEffect_1_ModifierType">StatusEffect&lt;UnitSystem&gt;.ModifierType</a>
+    </div>
+    <div>
+      <a class="xref" href="AshesOfVelsingrad.Systems.StatusEffect-1.html#AshesOfVelsingrad_Systems_StatusEffect_1_Amount">StatusEffect&lt;UnitSystem&gt;.Amount</a>
+    </div>
+    <div>
+      <a class="xref" href="AshesOfVelsingrad.Systems.StatusEffect-1.html#AshesOfVelsingrad_Systems_StatusEffect_1_IsStackable">StatusEffect&lt;UnitSystem&gt;.IsStackable</a>
+    </div>
+    <div>
+      <a class="xref" href="AshesOfVelsingrad.Systems.StatusEffect-1.html#AshesOfVelsingrad_Systems_StatusEffect_1_EffectToSpread">StatusEffect&lt;UnitSystem&gt;.EffectToSpread</a>
+    </div>
+    <div>
+      <a class="xref" href="AshesOfVelsingrad.Systems.StatusEffect-1.html#AshesOfVelsingrad_Systems_StatusEffect_1_OnTurnPassed_AshesOfVelsingrad_Systems_IEffectTarget__0__">StatusEffect&lt;UnitSystem&gt;.OnTurnPassed(IEffectTarget&lt;UnitSystem&gt;)</a>
+    </div>
+    <div>
+      <a class="xref" href="AshesOfVelsingrad.Systems.StatusEffect-1.html#AshesOfVelsingrad_Systems_StatusEffect_1_AddStack">StatusEffect&lt;UnitSystem&gt;.AddStack()</a>
+    </div>
+    <div>
+      <a class="xref" href="AshesOfVelsingrad.Systems.StatusEffect-1.html#AshesOfVelsingrad_Systems_StatusEffect_1_ResetDuration_System_Int32_">StatusEffect&lt;UnitSystem&gt;.ResetDuration(int)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode">object.GetHashCode()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring">object.ToString()</a>
+    </div>
+  </dd></dl>
+
+
+
+
+
+
+  <h2 class="section" id="constructors">Constructors
+</h2>
+
+
+  <a id="AshesOfVelsingrad_Data_AtkBuffer__ctor_" data-uid="AshesOfVelsingrad.Data.AtkBuffer.#ctor*"></a>
+
+  <h3 id="AshesOfVelsingrad_Data_AtkBuffer__ctor_System_Int32_AshesOfVelsingrad_Utilities_AovDataStructures_ModifierType_System_Single_" data-uid="AshesOfVelsingrad.Data.AtkBuffer.#ctor(System.Int32,AshesOfVelsingrad.Utilities.AovDataStructures.ModifierType,System.Single)">
+  AtkBuffer(int, ModifierType, float)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/data/status_effect/unit/AtkBuffer.cs/#L7"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public AtkBuffer(int duration, AovDataStructures.ModifierType modifierType, float amount)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>duration</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+    <dt><code>modifierType</code> <a class="xref" href="AshesOfVelsingrad.Utilities.AovDataStructures.html">AovDataStructures</a>.<a class="xref" href="AshesOfVelsingrad.Utilities.AovDataStructures.ModifierType.html">ModifierType</a></dt>
+    <dd></dd>
+    <dt><code>amount</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
+  <a id="AshesOfVelsingrad_Data_AtkBuffer_OnApply_" data-uid="AshesOfVelsingrad.Data.AtkBuffer.OnApply*"></a>
+
+  <h3 id="AshesOfVelsingrad_Data_AtkBuffer_OnApply_AshesOfVelsingrad_Systems_IEffectTarget_AshesOfVelsingrad_Systems_UnitSystem__" data-uid="AshesOfVelsingrad.Data.AtkBuffer.OnApply(AshesOfVelsingrad.Systems.IEffectTarget{AshesOfVelsingrad.Systems.UnitSystem})">
+  OnApply(IEffectTarget&lt;UnitSystem&gt;)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/data/status_effect/unit/AtkBuffer.cs/#L21"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Called when this effect is applied to a target.
+Override this to implement custom logic (e.g., visual/audio feedback, stat changes).</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override void OnApply(IEffectTarget&lt;UnitSystem&gt; target)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>target</code> <a class="xref" href="AshesOfVelsingrad.Systems.IEffectTarget-1.html">IEffectTarget</a>&lt;<a class="xref" href="AshesOfVelsingrad.Systems.UnitSystem.html">UnitSystem</a>&gt;</dt>
+    <dd><p>The target receiving the effect.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AshesOfVelsingrad_Data_AtkBuffer_OnRemove_" data-uid="AshesOfVelsingrad.Data.AtkBuffer.OnRemove*"></a>
+
+  <h3 id="AshesOfVelsingrad_Data_AtkBuffer_OnRemove_AshesOfVelsingrad_Systems_IEffectTarget_AshesOfVelsingrad_Systems_UnitSystem__" data-uid="AshesOfVelsingrad.Data.AtkBuffer.OnRemove(AshesOfVelsingrad.Systems.IEffectTarget{AshesOfVelsingrad.Systems.UnitSystem})">
+  OnRemove(IEffectTarget&lt;UnitSystem&gt;)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/data/status_effect/unit/AtkBuffer.cs/#L28"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Called when this effect is removed from a target.
+Override this to implement cleanup logic (e.g., removing buffs, stopping visual/audio feedback).</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override void OnRemove(IEffectTarget&lt;UnitSystem&gt; target)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>target</code> <a class="xref" href="AshesOfVelsingrad.Systems.IEffectTarget-1.html">IEffectTarget</a>&lt;<a class="xref" href="AshesOfVelsingrad.Systems.UnitSystem.html">UnitSystem</a>&gt;</dt>
+    <dd><p>The target losing the effect.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/data/status_effect/unit/AtkBuffer.cs/#L7" class="edit-link">Edit this page</a>
+        </div>
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          © 2025 Gammabra Studios. All Rights Reserved.
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

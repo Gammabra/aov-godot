@@ -89,7 +89,7 @@
 
 
   <h1 id="AshesOfVelsingrad_Systems_CellInformation" data-uid="AshesOfVelsingrad.Systems.CellInformation" class="text-break">
-Class CellInformation  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/systems/MapSystem.cs/#L26"><i class="bi bi-code-slash"></i></a>
+Class CellInformation  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/systems/map_system/CellInformation.cs/#L14"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
@@ -172,9 +172,9 @@ including its coordinates, ground type, walkability, and the unit occupying it.<
 
   <a id="AshesOfVelsingrad_Systems_CellInformation__ctor_" data-uid="AshesOfVelsingrad.Systems.CellInformation.#ctor*"></a>
 
-  <h3 id="AshesOfVelsingrad_Systems_CellInformation__ctor_System_Int32_System_Int32_System_Int32_AshesOfVelsingrad_Systems_CellType_System_Boolean_" data-uid="AshesOfVelsingrad.Systems.CellInformation.#ctor(System.Int32,System.Int32,System.Int32,AshesOfVelsingrad.Systems.CellType,System.Boolean)">
+  <h3 id="AshesOfVelsingrad_Systems_CellInformation__ctor_System_Int32_System_Int32_System_Int32_AshesOfVelsingrad_Utilities_AovDataStructures_CellType_System_Boolean_" data-uid="AshesOfVelsingrad.Systems.CellInformation.#ctor(System.Int32,System.Int32,System.Int32,AshesOfVelsingrad.Utilities.AovDataStructures.CellType,System.Boolean)">
   CellInformation(int, int, int, CellType, bool)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/systems/MapSystem.cs/#L26"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/systems/map_system/CellInformation.cs/#L14"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Represents the information for a single grid cell in the map,
@@ -183,7 +183,7 @@ including its coordinates, ground type, walkability, and the unit occupying it.<
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public CellInformation(int x, int y, int z, CellType cellType, bool isWalkable)</code></pre>
+    <pre><code class="lang-csharp hljs">public CellInformation(int x, int y, int z, AovDataStructures.CellType cellType, bool isWalkable)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -197,7 +197,7 @@ including its coordinates, ground type, walkability, and the unit occupying it.<
     <dt><code>z</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
     <dd><p>The z-coordinate of the grid cell.</p>
 </dd>
-    <dt><code>cellType</code> <a class="xref" href="AshesOfVelsingrad.Systems.CellType.html">CellType</a></dt>
+    <dt><code>cellType</code> <a class="xref" href="AshesOfVelsingrad.Utilities.AovDataStructures.html">AovDataStructures</a>.<a class="xref" href="AshesOfVelsingrad.Utilities.AovDataStructures.CellType.html">CellType</a></dt>
     <dd><p>The <a class="xref" href="AshesOfVelsingrad.Systems.CellInformation.html#AshesOfVelsingrad_Systems_CellInformation_CellType">CellType</a> defining the terrain of the cell.</p>
 </dd>
     <dt><code>isWalkable</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
@@ -224,14 +224,14 @@ including its coordinates, ground type, walkability, and the unit occupying it.<
 
   <h3 id="AshesOfVelsingrad_Systems_CellInformation_CellType" data-uid="AshesOfVelsingrad.Systems.CellInformation.CellType">
   CellType
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/systems/MapSystem.cs/#L37"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/systems/map_system/CellInformation.cs/#L27"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public CellType CellType { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">public AovDataStructures.CellType CellType { get; }</code></pre>
   </div>
 
 
@@ -240,7 +240,7 @@ including its coordinates, ground type, walkability, and the unit occupying it.<
 
   <h4 class="section">Property Value</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="AshesOfVelsingrad.Systems.CellType.html">CellType</a></dt>
+    <dt><a class="xref" href="AshesOfVelsingrad.Utilities.AovDataStructures.html">AovDataStructures</a>.<a class="xref" href="AshesOfVelsingrad.Utilities.AovDataStructures.CellType.html">CellType</a></dt>
     <dd></dd>
   </dl>
 
@@ -255,14 +255,14 @@ including its coordinates, ground type, walkability, and the unit occupying it.<
 
   <h3 id="AshesOfVelsingrad_Systems_CellInformation_IsWalkable" data-uid="AshesOfVelsingrad.Systems.CellInformation.IsWalkable">
   IsWalkable
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/systems/MapSystem.cs/#L38"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/systems/map_system/CellInformation.cs/#L28"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public bool IsWalkable { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">public bool IsWalkable { get; }</code></pre>
   </div>
 
 
@@ -286,14 +286,14 @@ including its coordinates, ground type, walkability, and the unit occupying it.<
 
   <h3 id="AshesOfVelsingrad_Systems_CellInformation_Unit" data-uid="AshesOfVelsingrad.Systems.CellInformation.Unit">
   Unit
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/systems/MapSystem.cs/#L39"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/systems/map_system/CellInformation.cs/#L29"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public UnitSystem? Unit { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">public UnitSystem? Unit { get; }</code></pre>
   </div>
 
 
@@ -317,7 +317,7 @@ including its coordinates, ground type, walkability, and the unit occupying it.<
 
   <h3 id="AshesOfVelsingrad_Systems_CellInformation_X" data-uid="AshesOfVelsingrad.Systems.CellInformation.X">
   X
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/systems/MapSystem.cs/#L34"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/systems/map_system/CellInformation.cs/#L24"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"></div>
@@ -348,7 +348,7 @@ including its coordinates, ground type, walkability, and the unit occupying it.<
 
   <h3 id="AshesOfVelsingrad_Systems_CellInformation_Y" data-uid="AshesOfVelsingrad.Systems.CellInformation.Y">
   Y
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/systems/MapSystem.cs/#L35"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/systems/map_system/CellInformation.cs/#L25"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"></div>
@@ -379,7 +379,7 @@ including its coordinates, ground type, walkability, and the unit occupying it.<
 
   <h3 id="AshesOfVelsingrad_Systems_CellInformation_Z" data-uid="AshesOfVelsingrad.Systems.CellInformation.Z">
   Z
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/systems/MapSystem.cs/#L36"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/systems/map_system/CellInformation.cs/#L26"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"></div>
@@ -406,11 +406,48 @@ including its coordinates, ground type, walkability, and the unit occupying it.<
 
 
 
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
+  <a id="AshesOfVelsingrad_Systems_CellInformation_OnUnitEntered_" data-uid="AshesOfVelsingrad.Systems.CellInformation.OnUnitEntered*"></a>
+
+  <h3 id="AshesOfVelsingrad_Systems_CellInformation_OnUnitEntered_AshesOfVelsingrad_Systems_UnitSystem_" data-uid="AshesOfVelsingrad.Systems.CellInformation.OnUnitEntered(AshesOfVelsingrad.Systems.UnitSystem)">
+  OnUnitEntered(UnitSystem)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/systems/map_system/CellInformation.cs/#L39"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Set the logic when a unit has entered the cell</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void OnUnitEntered(UnitSystem unit)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>unit</code> <a class="xref" href="AshesOfVelsingrad.Systems.UnitSystem.html">UnitSystem</a></dt>
+    <dd><p>The unit that entered the cell</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
 
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/systems/MapSystem.cs/#L26" class="edit-link">Edit this page</a>
+          <a href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/systems/map_system/CellInformation.cs/#L14" class="edit-link">Edit this page</a>
         </div>
 
 

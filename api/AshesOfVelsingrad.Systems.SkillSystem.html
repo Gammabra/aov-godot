@@ -89,7 +89,7 @@
 
 
   <h1 id="AshesOfVelsingrad_Systems_SkillSystem" data-uid="AshesOfVelsingrad.Systems.SkillSystem" class="text-break">
-Class SkillSystem  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/systems/SkillSystem.cs/#L53"><i class="bi bi-code-slash"></i></a>
+Class SkillSystem  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/systems/SkillSystem.cs/#L14"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
@@ -160,7 +160,7 @@ Class SkillSystem  <a class="header-action link-secondary" title="View source" h
   <h2 id="AshesOfVelsingrad_Systems_SkillSystem_remarks">Remarks</h2>
   <div class="markdown level0 remarks"><p>This class defines the common properties and behaviors of every skill,
 such as its cost, cooldown, range, type, and targeting logic.
-Specific skills should inherit from this class and implement the <a class="xref" href="AshesOfVelsingrad.Systems.SkillSystem.html#AshesOfVelsingrad_Systems_SkillSystem_Use_System_Collections_Generic_List_AshesOfVelsingrad_Systems_UnitSystem__AshesOfVelsingrad_Systems_MapSystem_">Use(List&lt;UnitSystem&gt;, MapSystem?)</a> method.</p>
+Specific skills should inherit from this class and implement the <a class="xref" href="AshesOfVelsingrad.Systems.SkillSystem.html#AshesOfVelsingrad_Systems_SkillSystem_Use_AshesOfVelsingrad_Systems_UnitSystem_System_Collections_Generic_List_AshesOfVelsingrad_Systems_UnitSystem__AshesOfVelsingrad_Systems_MapSystem_">Use(UnitSystem, List&lt;UnitSystem&gt;, MapSystem?)</a> method.</p>
 </div>
 
 
@@ -172,7 +172,7 @@ Specific skills should inherit from this class and implement the <a class="xref"
 
   <h3 id="AshesOfVelsingrad_Systems_SkillSystem_AreaEffect" data-uid="AshesOfVelsingrad.Systems.SkillSystem.AreaEffect">
   AreaEffect
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/systems/SkillSystem.cs/#L88"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/systems/SkillSystem.cs/#L51"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>The cells affected relative to the target position (area of effect).</p>
@@ -180,7 +180,7 @@ Specific skills should inherit from this class and implement the <a class="xref"
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public List&lt;(int, int, int)&gt; AreaEffect { get; protected set; }</code></pre>
+    <pre><code class="lang-csharp hljs">public List&lt;(int, int, int)&gt; AreaEffect { get; protected init; }</code></pre>
   </div>
 
 
@@ -204,7 +204,7 @@ Specific skills should inherit from this class and implement the <a class="xref"
 
   <h3 id="AshesOfVelsingrad_Systems_SkillSystem_Cooldown" data-uid="AshesOfVelsingrad.Systems.SkillSystem.Cooldown">
   Cooldown
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/systems/SkillSystem.cs/#L78"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/systems/SkillSystem.cs/#L41"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>The remaining cooldown (in turns) before the skill becomes available again.</p>
@@ -236,7 +236,7 @@ Specific skills should inherit from this class and implement the <a class="xref"
 
   <h3 id="AshesOfVelsingrad_Systems_SkillSystem_Description" data-uid="AshesOfVelsingrad.Systems.SkillSystem.Description">
   Description
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/systems/SkillSystem.cs/#L63"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/systems/SkillSystem.cs/#L26"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>A description of the skill, used for tooltips or UI.</p>
@@ -244,7 +244,7 @@ Specific skills should inherit from this class and implement the <a class="xref"
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public string Description { get; protected set; }</code></pre>
+    <pre><code class="lang-csharp hljs">public string Description { get; protected init; }</code></pre>
   </div>
 
 
@@ -268,7 +268,7 @@ Specific skills should inherit from this class and implement the <a class="xref"
 
   <h3 id="AshesOfVelsingrad_Systems_SkillSystem_EffectType" data-uid="AshesOfVelsingrad.Systems.SkillSystem.EffectType">
   EffectType
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/systems/SkillSystem.cs/#L98"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/systems/SkillSystem.cs/#L61"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>The type of effect this skill applies (e.g., damage, heal, buff).</p>
@@ -276,7 +276,7 @@ Specific skills should inherit from this class and implement the <a class="xref"
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public EffectType EffectType { get; protected set; }</code></pre>
+    <pre><code class="lang-csharp hljs">public AovDataStructures.EffectType EffectType { get; protected init; }</code></pre>
   </div>
 
 
@@ -285,7 +285,7 @@ Specific skills should inherit from this class and implement the <a class="xref"
 
   <h4 class="section">Property Value</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="AshesOfVelsingrad.Systems.EffectType.html">EffectType</a></dt>
+    <dt><a class="xref" href="AshesOfVelsingrad.Utilities.AovDataStructures.html">AovDataStructures</a>.<a class="xref" href="AshesOfVelsingrad.Utilities.AovDataStructures.EffectType.html">EffectType</a></dt>
     <dd></dd>
   </dl>
 
@@ -300,7 +300,7 @@ Specific skills should inherit from this class and implement the <a class="xref"
 
   <h3 id="AshesOfVelsingrad_Systems_SkillSystem_MagicType" data-uid="AshesOfVelsingrad.Systems.SkillSystem.MagicType">
   MagicType
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/systems/SkillSystem.cs/#L93"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/systems/SkillSystem.cs/#L56"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>The magical element type of this skill (e.g., Fire, Water, Light).</p>
@@ -308,7 +308,7 @@ Specific skills should inherit from this class and implement the <a class="xref"
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public MagicType MagicType { get; protected set; }</code></pre>
+    <pre><code class="lang-csharp hljs">public AovDataStructures.MagicType MagicType { get; protected init; }</code></pre>
   </div>
 
 
@@ -317,7 +317,7 @@ Specific skills should inherit from this class and implement the <a class="xref"
 
   <h4 class="section">Property Value</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="AshesOfVelsingrad.Systems.MagicType.html">MagicType</a></dt>
+    <dt><a class="xref" href="AshesOfVelsingrad.Utilities.AovDataStructures.html">AovDataStructures</a>.<a class="xref" href="AshesOfVelsingrad.Utilities.AovDataStructures.MagicType.html">MagicType</a></dt>
     <dd></dd>
   </dl>
 
@@ -332,7 +332,7 @@ Specific skills should inherit from this class and implement the <a class="xref"
 
   <h3 id="AshesOfVelsingrad_Systems_SkillSystem_ManaCost" data-uid="AshesOfVelsingrad.Systems.SkillSystem.ManaCost">
   ManaCost
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/systems/SkillSystem.cs/#L68"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/systems/SkillSystem.cs/#L31"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>The amount of mana consumed when using this skill.</p>
@@ -340,7 +340,7 @@ Specific skills should inherit from this class and implement the <a class="xref"
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public float ManaCost { get; protected set; }</code></pre>
+    <pre><code class="lang-csharp hljs">public float ManaCost { get; protected init; }</code></pre>
   </div>
 
 
@@ -364,7 +364,7 @@ Specific skills should inherit from this class and implement the <a class="xref"
 
   <h3 id="AshesOfVelsingrad_Systems_SkillSystem_Name" data-uid="AshesOfVelsingrad.Systems.SkillSystem.Name">
   Name
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/systems/SkillSystem.cs/#L58"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/systems/SkillSystem.cs/#L21"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>The name of the skill.</p>
@@ -372,7 +372,7 @@ Specific skills should inherit from this class and implement the <a class="xref"
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public string Name { get; protected set; }</code></pre>
+    <pre><code class="lang-csharp hljs">public string Name { get; protected init; }</code></pre>
   </div>
 
 
@@ -396,7 +396,7 @@ Specific skills should inherit from this class and implement the <a class="xref"
 
   <h3 id="AshesOfVelsingrad_Systems_SkillSystem_Range" data-uid="AshesOfVelsingrad.Systems.SkillSystem.Range">
   Range
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/systems/SkillSystem.cs/#L83"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/systems/SkillSystem.cs/#L46"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>The maximum distance (in grid units) from which the skill can target.</p>
@@ -404,7 +404,7 @@ Specific skills should inherit from this class and implement the <a class="xref"
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public int Range { get; protected set; }</code></pre>
+    <pre><code class="lang-csharp hljs">public int Range { get; protected init; }</code></pre>
   </div>
 
 
@@ -428,7 +428,7 @@ Specific skills should inherit from this class and implement the <a class="xref"
 
   <h3 id="AshesOfVelsingrad_Systems_SkillSystem_TargetType" data-uid="AshesOfVelsingrad.Systems.SkillSystem.TargetType">
   TargetType
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/systems/SkillSystem.cs/#L103"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/systems/SkillSystem.cs/#L66"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>The type of target(s) this skill can be used on.</p>
@@ -436,7 +436,7 @@ Specific skills should inherit from this class and implement the <a class="xref"
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public TargetTypes TargetType { get; protected set; }</code></pre>
+    <pre><code class="lang-csharp hljs">public AovDataStructures.TargetTypes TargetType { get; protected init; }</code></pre>
   </div>
 
 
@@ -445,7 +445,7 @@ Specific skills should inherit from this class and implement the <a class="xref"
 
   <h4 class="section">Property Value</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="AshesOfVelsingrad.Systems.TargetTypes.html">TargetTypes</a></dt>
+    <dt><a class="xref" href="AshesOfVelsingrad.Utilities.AovDataStructures.html">AovDataStructures</a>.<a class="xref" href="AshesOfVelsingrad.Utilities.AovDataStructures.TargetTypes.html">TargetTypes</a></dt>
     <dd></dd>
   </dl>
 
@@ -460,7 +460,7 @@ Specific skills should inherit from this class and implement the <a class="xref"
 
   <h3 id="AshesOfVelsingrad_Systems_SkillSystem_TotalCooldown" data-uid="AshesOfVelsingrad.Systems.SkillSystem.TotalCooldown">
   TotalCooldown
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/systems/SkillSystem.cs/#L73"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/systems/SkillSystem.cs/#L36"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>The total cooldown duration (in turns) before the skill can be reused.</p>
@@ -468,7 +468,7 @@ Specific skills should inherit from this class and implement the <a class="xref"
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public int TotalCooldown { get; protected set; }</code></pre>
+    <pre><code class="lang-csharp hljs">public int TotalCooldown { get; protected init; }</code></pre>
   </div>
 
 
@@ -496,7 +496,7 @@ Specific skills should inherit from this class and implement the <a class="xref"
 
   <h3 id="AshesOfVelsingrad_Systems_SkillSystem_ReduceCooldown" data-uid="AshesOfVelsingrad.Systems.SkillSystem.ReduceCooldown">
   ReduceCooldown()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/systems/SkillSystem.cs/#L124"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/systems/SkillSystem.cs/#L94"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Reduces the cooldown of the skill by one turn, if greater than zero.</p>
@@ -523,10 +523,11 @@ Specific skills should inherit from this class and implement the <a class="xref"
 
   <h3 id="AshesOfVelsingrad_Systems_SkillSystem_SetCooldown" data-uid="AshesOfVelsingrad.Systems.SkillSystem.SetCooldown">
   SetCooldown()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/systems/SkillSystem.cs/#L114"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/systems/SkillSystem.cs/#L84"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Set the cooldown of the skill to the total cooldown</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -547,9 +548,9 @@ Specific skills should inherit from this class and implement the <a class="xref"
 
   <a id="AshesOfVelsingrad_Systems_SkillSystem_Use_" data-uid="AshesOfVelsingrad.Systems.SkillSystem.Use*"></a>
 
-  <h3 id="AshesOfVelsingrad_Systems_SkillSystem_Use_System_Collections_Generic_List_AshesOfVelsingrad_Systems_UnitSystem__AshesOfVelsingrad_Systems_MapSystem_" data-uid="AshesOfVelsingrad.Systems.SkillSystem.Use(System.Collections.Generic.List{AshesOfVelsingrad.Systems.UnitSystem},AshesOfVelsingrad.Systems.MapSystem)">
-  Use(List&lt;UnitSystem&gt;, MapSystem?)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/systems/SkillSystem.cs/#L112"><i class="bi bi-code-slash"></i></a>
+  <h3 id="AshesOfVelsingrad_Systems_SkillSystem_Use_AshesOfVelsingrad_Systems_UnitSystem_System_Collections_Generic_List_AshesOfVelsingrad_Systems_UnitSystem__AshesOfVelsingrad_Systems_MapSystem_" data-uid="AshesOfVelsingrad.Systems.SkillSystem.Use(AshesOfVelsingrad.Systems.UnitSystem,System.Collections.Generic.List{AshesOfVelsingrad.Systems.UnitSystem},AshesOfVelsingrad.Systems.MapSystem)">
+  Use(UnitSystem, List&lt;UnitSystem&gt;, MapSystem?)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/systems/SkillSystem.cs/#L79"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Executes the skill logic when cast.</p>
@@ -557,11 +558,13 @@ Specific skills should inherit from this class and implement the <a class="xref"
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public abstract void Use(List&lt;UnitSystem&gt; targets, MapSystem? map)</code></pre>
+    <pre><code class="lang-csharp hljs">public abstract void Use(UnitSystem caster, List&lt;UnitSystem&gt; targets, MapSystem? map)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
+    <dt><code>caster</code> <a class="xref" href="AshesOfVelsingrad.Systems.UnitSystem.html">UnitSystem</a></dt>
+    <dd></dd>
     <dt><code>targets</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a class="xref" href="AshesOfVelsingrad.Systems.UnitSystem.html">UnitSystem</a>&gt;</dt>
     <dd></dd>
     <dt><code>map</code> <a class="xref" href="AshesOfVelsingrad.Systems.MapSystem.html">MapSystem</a></dt>
@@ -575,7 +578,7 @@ Specific skills should inherit from this class and implement the <a class="xref"
 
 
 
-  <h4 class="section" id="AshesOfVelsingrad_Systems_SkillSystem_Use_System_Collections_Generic_List_AshesOfVelsingrad_Systems_UnitSystem__AshesOfVelsingrad_Systems_MapSystem__remarks">Remarks</h4>
+  <h4 class="section" id="AshesOfVelsingrad_Systems_SkillSystem_Use_AshesOfVelsingrad_Systems_UnitSystem_System_Collections_Generic_List_AshesOfVelsingrad_Systems_UnitSystem__AshesOfVelsingrad_Systems_MapSystem__remarks">Remarks</h4>
   <div class="markdown level1 remarks"><p>This method must be implemented in derived classes
 to define the actual effect of the skill (damage, healing, etc.).</p>
 </div>
@@ -587,7 +590,7 @@ to define the actual effect of the skill (damage, healing, etc.).</p>
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/systems/SkillSystem.cs/#L53" class="edit-link">Edit this page</a>
+          <a href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/systems/SkillSystem.cs/#L14" class="edit-link">Edit this page</a>
         </div>
 
 

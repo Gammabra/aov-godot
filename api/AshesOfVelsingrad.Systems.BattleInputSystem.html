@@ -6,7 +6,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <meta name="title" content="Class BattleInputSystem | Ashes of Velsingrad Documentation ">
       
-      
+      <meta name="description" content="Central system responsible for handling player inputs during battle phases.">
       <link rel="icon" href="../favicon.ico">
       <link rel="stylesheet" href="../public/docfx.min.css">
       <link rel="stylesheet" href="../public/main.css">
@@ -89,7 +89,7 @@
 
 
   <h1 id="AshesOfVelsingrad_Systems_BattleInputSystem" data-uid="AshesOfVelsingrad.Systems.BattleInputSystem" class="text-break">
-Class BattleInputSystem  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptPropertyDefValGenerator/AshesOfVelsingrad.Systems.BattleInputSystem_ScriptPropertyDefVal.generated.cs/#L3"><i class="bi bi-code-slash"></i></a>
+Class BattleInputSystem  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptMethodsGenerator/AshesOfVelsingrad.Systems.BattleInputSystem_ScriptMethods.generated.cs/#L6"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
@@ -97,7 +97,8 @@ Class BattleInputSystem  <a class="header-action link-secondary" title="View sou
   <dl><dt>Assembly</dt><dd>Ashes of Velsingrad.dll</dd></dl>
   </div>
 
-  <div class="markdown summary"></div>
+  <div class="markdown summary"><p>Central system responsible for handling player inputs during battle phases.</p>
+</div>
   <div class="markdown conceptual"></div>
 
   <div class="codewrapper">
@@ -986,6 +987,21 @@ public class BattleInputSystem : Node, IDisposable</code></pre>
 
 
 
+  <h2 id="AshesOfVelsingrad_Systems_BattleInputSystem_remarks">Remarks</h2>
+  <div class="markdown level0 remarks"><p>
+    <a class="xref" href="AshesOfVelsingrad.Systems.BattleInputSystem.html">BattleInputSystem</a> captures and interprets user actions
+    (keyboard and mouse) related to combat gameplay, including:
+</p>
+<ul><li>Passing the turn</li><li>Moving a unit or selecting a target on the map</li><li>Selecting the move action</li><li>Selecting a skill</li></ul>
+<p>
+    This system acts as a single entry point for battle-related inputs and
+    communicates with other game systems through Godot signals.
+</p>
+<p>
+    The class follows a singleton-like pattern to ensure that only one active
+    instance exists within the scene tree.
+</p>
+</div>
 
 
   <h2 class="section" id="methods">Methods
@@ -1110,7 +1126,7 @@ public class BattleInputSystem : Node, IDisposable</code></pre>
 
   <h3 id="AshesOfVelsingrad_Systems_BattleInputSystem_Initialize" data-uid="AshesOfVelsingrad.Systems.BattleInputSystem.Initialize">
   Initialize()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/systems/BattleInputSystem.cs/#L122"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/systems/BattleInputSystem.cs/#L153"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Initializes the <a class="xref" href="AshesOfVelsingrad.Systems.BattleInputSystem.html">BattleInputSystem</a> instance
@@ -1143,7 +1159,7 @@ Derived classes must implement this method to provide their specific initializat
 
   <h3 id="AshesOfVelsingrad_Systems_BattleInputSystem_SetInputEnabled_System_Boolean_" data-uid="AshesOfVelsingrad.Systems.BattleInputSystem.SetInputEnabled(System.Boolean)">
   SetInputEnabled(bool)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/systems/BattleInputSystem.cs/#L216"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/systems/BattleInputSystem.cs/#L261"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Set the input to enabled or not.</p>
@@ -1176,7 +1192,7 @@ Derived classes must implement this method to provide their specific initializat
 
   <h3 id="AshesOfVelsingrad_Systems_BattleInputSystem_SetInstanceForTesting_AshesOfVelsingrad_Systems_BattleInputSystem_" data-uid="AshesOfVelsingrad.Systems.BattleInputSystem.SetInstanceForTesting(AshesOfVelsingrad.Systems.BattleInputSystem)">
   SetInstanceForTesting(BattleInputSystem?)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/systems/BattleInputSystem.cs/#L230"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/systems/BattleInputSystem.cs/#L169"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>FOR TESTING ONLY: Manually sets the singleton instance.
@@ -1210,7 +1226,7 @@ This method should only be used in unit tests.</p>
 
   <h3 id="AshesOfVelsingrad_Systems_BattleInputSystem__ExitTree" data-uid="AshesOfVelsingrad.Systems.BattleInputSystem._ExitTree">
   _ExitTree()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/systems/BattleInputSystem.cs/#L248"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/systems/BattleInputSystem.cs/#L279"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Called when the node is removed from the scene tree.
@@ -1243,7 +1259,7 @@ This is important for preventing memory leaks and ensuring that the manager can 
 
   <h3 id="AshesOfVelsingrad_Systems_BattleInputSystem__Input_Godot_InputEvent_" data-uid="AshesOfVelsingrad.Systems.BattleInputSystem._Input(Godot.InputEvent)">
   _Input(InputEvent)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/systems/BattleInputSystem.cs/#L134"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/systems/BattleInputSystem.cs/#L179"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Called when there is an input event. The input event propagates up through the node tree until a node consumes it.</p>
@@ -1279,7 +1295,7 @@ This is important for preventing memory leaks and ensuring that the manager can 
 
   <h3 id="AshesOfVelsingrad_Systems_BattleInputSystem__Ready" data-uid="AshesOfVelsingrad.Systems.BattleInputSystem._Ready">
   _Ready()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/systems/BattleInputSystem.cs/#L94"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/systems/BattleInputSystem.cs/#L125"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Called when the node is added to the scene tree.
@@ -1457,7 +1473,7 @@ skill the player intends to use. Skills are indexed from 0 to 4.</p>
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/Gammabra/aov-godot/blob/develop/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptPropertyDefValGenerator/AshesOfVelsingrad.Systems.BattleInputSystem_ScriptPropertyDefVal.generated.cs/#L3" class="edit-link">Edit this page</a>
+          <a href="https://github.com/Gammabra/aov-godot/blob/develop/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptMethodsGenerator/AshesOfVelsingrad.Systems.BattleInputSystem_ScriptMethods.generated.cs/#L6" class="edit-link">Edit this page</a>
         </div>
 
 

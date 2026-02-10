@@ -1,4 +1,6 @@
+using System;
 using System.Collections.Generic;
+using System.Reflection;
 using AshesOfVelsingrad.Managers;
 using AshesOfVelsingrad.Systems;
 using Godot;
@@ -66,11 +68,15 @@ public partial class TestConcreteGameManager : GameManager
 
 	public UnitSystem GetPlayerUnit(int index)
 	{
+		if (_playerUnits == null || index >= _playerUnits.Count)
+			throw new InvalidOperationException($"Cannot get player unit at index {index}. Count: {_playerUnits?.Count ?? 0}");
 		return _playerUnits[index];
 	}
 
 	public UnitSystem GetEnemyUnit(int index)
 	{
+		if (_enemyUnits == null || index >= _enemyUnits.Count)
+			throw new InvalidOperationException($"Cannot get enemy unit at index {index}. Count: {_enemyUnits?.Count ?? 0}");
 		return _enemyUnits[index];
 	}
 
@@ -96,5 +102,86 @@ public partial class TestConcreteGameManager : GameManager
 		var field = typeof(GameManager).GetField("_unitMoved",
 			System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
 		_unitMoved = (bool)field?.GetValue(this)!;
+	}
+
+	public void SetCurrentUnitPossibleMoves(List<Vector3I> moves)
+	{
+		var field = typeof(GameManager).GetField("_currentUnitPossibleMoves",
+			BindingFlags.NonPublic | BindingFlags.Instance);
+		field?.SetValue(this, moves);
+	}
+
+	public int GetCurrentUnitPossibleMovesCount()
+	{
+		var field = typeof(GameManager).GetField("_currentUnitPossibleMoves",
+			BindingFlags.NonPublic | BindingFlags.Instance);
+		var moves = (List<Vector3I>)field?.GetValue(this)!;
+		return moves?.Count ?? 0;
+	}
+
+	public void SetSelectedSkill(SkillSystem skill)
+	{
+		var field = typeof(GameManager).GetField("_selectedSkill",
+			BindingFlags.NonPublic | BindingFlags.Instance);
+		field?.SetValue(this, skill);
+	}
+
+	public void SetCurrentUnitReachableCells(List<Vector3I> cells)
+	{
+		var field = typeof(GameManager).GetField("_currentUnitReachableCellsForCurrentSelectedSkill",
+			BindingFlags.NonPublic | BindingFlags.Instance);
+		field?.SetValue(this, cells);
+	}
+
+	public void CallHandlePlayerUnitMove(Vector3I cell)
+	{
+		var method = typeof(GameManager).GetMethod("HandlePlayerUnitMove",
+			BindingFlags.NonPublic | BindingFlags.Instance);
+		method?.Invoke(this, new object[] { cell });
+	}
+
+	public void CallHandlePlayerSelectTarget(Vector3I cell)
+	{
+		var method = typeof(GameManager).GetMethod("HandlePlayerSelectTarget",
+			BindingFlags.NonPublic | BindingFlags.Instance);
+		method?.Invoke(this, new object[] { cell });
+	}
+
+	public void CallCheckUnitsLife(List<UnitSystem> units)
+	{
+		var method = typeof(GameManager).GetMethod("CheckUnitsLife",
+			BindingFlags.NonPublic | BindingFlags.Instance);
+		method?.Invoke(this, new object[] { units });
+	}
+
+	public void CallCheckWinLoseCondition()
+	{
+		var method = typeof(GameManager).GetMethod("CheckWinLoseCondition",
+			BindingFlags.NonPublic | BindingFlags.Instance);
+		method?.Invoke(this, null);
+	}
+
+	public void CallCheckUnitTurnEnd()
+	{
+		var method = typeof(GameManager).GetMethod("CheckUnitTurnEnd",
+			BindingFlags.NonPublic | BindingFlags.Instance);
+		method?.Invoke(this, null);
+	}
+
+	public GameOutcome GetGameOutcome()
+	{
+		var field = typeof(GameManager).GetField("_gameOutcome",
+			BindingFlags.NonPublic | BindingFlags.Instance);
+		return (GameOutcome)field?.GetValue(this)!;
+	}
+
+	public List<UnitSystem> GetPlayerUnitsList()
+	{
+		return _playerUnits;
+	}
+
+	public List<UnitSystem> GetEnemyUnitsList()
+	{
+		return _enemyUnits;
 	}
 }

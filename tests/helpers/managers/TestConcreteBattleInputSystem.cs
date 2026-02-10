@@ -4,6 +4,11 @@ namespace UnitTests;
 
 public partial class TestConcreteBattleInputSystem : BattleInputSystem
 {
-	// Just a placeholder for testing
-	// Add any test-specific functionality if needed
+	public bool InputEnabled { get; private set; }
+
+	public override void SetInputEnabled(bool enabled)
+	{
+		InputEnabled = enabled;
+		base.SetInputEnabled(enabled);
+	}
 }

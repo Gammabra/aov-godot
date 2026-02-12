@@ -8,11 +8,15 @@
 
 config_version=5
 
+[animation]
+
+compatibility/default_parent_skeleton_in_mesh_instance_3d=true
+
 [application]
 
 config/name="Ashes of Velsingrad"
 run/main_scene="uid://geowrsurjvqo"
-config/features=PackedStringArray("4.5", "4.5.1", "C#", "Forward Plus")
+config/features=PackedStringArray("4.6", "C#", "Forward Plus")
 config/icon="uid://d2o6v40ln62ci"
 
 [autoload]
@@ -26,7 +30,7 @@ project/assembly_name="Ashes of Velsingrad"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/gdUnit4/plugin.cfg")
+enabled=PackedStringArray()
 
 [gdunit4]
 

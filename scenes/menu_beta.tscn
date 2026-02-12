@@ -1,9 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://dly7v2pb0m006"]
+[gd_scene format=3 uid="uid://dly7v2pb0m006"]
 
 [ext_resource type="Texture2D" uid="uid://b5g32aw86klf1" path="res://assets/menu_assets/MENU proto.png" id="1_crup6"]
 [ext_resource type="Texture2D" uid="uid://btapw4xgdwv57" path="res://assets/menu_assets/Logo AOV v2 white.png" id="2_xf5kf"]
 [ext_resource type="FontFile" uid="uid://dri86n5u6wvhn" path="res://font/abibas/Abibas.ttf" id="3_3mi6d"]
-[ext_resource type="Script" uid="uid://uk5aj3rgblwf" path="res://scripts/menu/button_menu.gd" id="4_xf5kf"]
+[ext_resource type="Script" uid="uid://b8qswx3qw7x7g" path="res://scripts/menu/button_menu.cs" id="4_xf5kf"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xf5kf"]
 
@@ -17,35 +17,35 @@ border_blend = true
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3mi6d"]
 
-[node name="MenuBeta" type="Node2D"]
+[node name="MenuBeta" type="Node2D" unique_id=1349196094]
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="TextureRect" type="TextureRect" parent="." unique_id=739213102]
 offset_left = 203.0
 offset_top = 193.0
 offset_right = 243.0
 offset_bottom = 233.0
 
-[node name="MenuProto" type="Sprite2D" parent="TextureRect"]
+[node name="MenuProto" type="Sprite2D" parent="TextureRect" unique_id=2060387610]
 scale = Vector2(0.5999153, 0.5997711)
 texture = ExtResource("1_crup6")
 offset = Vector2(621, 219)
 
-[node name="LogoAovV2White" type="Sprite2D" parent="."]
+[node name="LogoAovV2White" type="Sprite2D" parent="." unique_id=1328452743]
 position = Vector2(52.000004, 48)
 scale = Vector2(0.10205079, 0.093261726)
 texture = ExtResource("2_xf5kf")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=567552316]
 offset_right = 1151.0
 offset_bottom = 648.0
 alignment = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer" unique_id=1269806081]
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 alignment = 1
 
-[node name="ButtonPlay" type="Button" parent="HBoxContainer/VBoxContainer"]
+[node name="ButtonPlay" type="Button" parent="HBoxContainer/VBoxContainer" unique_id=2116551739]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_3mi6d")
 theme_override_font_sizes/font_size = 55
@@ -54,7 +54,7 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_xf5kf")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_3mi6d")
 text = "Play"
 
-[node name="ButtonOptions" type="Button" parent="HBoxContainer/VBoxContainer"]
+[node name="ButtonOptions" type="Button" parent="HBoxContainer/VBoxContainer" unique_id=1854145709]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_3mi6d")
 theme_override_font_sizes/font_size = 55
@@ -64,7 +64,7 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_3mi6d")
 text = "Options"
 script = ExtResource("4_xf5kf")
 
-[node name="ButtonExit" type="Button" parent="HBoxContainer/VBoxContainer"]
+[node name="ButtonExit" type="Button" parent="HBoxContainer/VBoxContainer" unique_id=2111163949]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_3mi6d")
 theme_override_font_sizes/font_size = 55

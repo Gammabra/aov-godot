@@ -1,7 +1,6 @@
 using System.Threading.Tasks;
 using AshesOfVelsingrad.AI;
 using AshesOfVelsingrad.Managers;
-using Godot;
 
 namespace UnitTests;
 
@@ -15,12 +14,7 @@ public partial class TestConcreteEnemyAIBehavior : EnemyAIBehavior
 		ExecuteTurnWasCalled = true;
 		LastBattleState = battleState;
 
-        GD.Print("TestConcreteEnemyAIBehavior: ExecuteTurn called with BattleState: " + battleState);
-		
-		// Simulate AI thinking
-		await Task.Delay(10);
-		
-		// Pass turn
-		battleState.ActingUnit.PassTurn();
+		// Call base implementation to test actual AI logic
+		await base.ExecuteTurn(battleState);
 	}
 }

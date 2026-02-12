@@ -79,28 +79,6 @@ public partial class settings_pages : Node
 	}
 
 	// =================================================
-	// PAGES
-	// =================================================
-
-	private void ShowPage(string pageName)
-	{
-		foreach (Node p in GetChildren())
-		{
-			if (p is CanvasItem ci)
-				ci.Visible = false;
-		}
-
-		if (GetNode(pageName) is CanvasItem page)
-			page.Visible = true;
-	}
-
-	public void _on_button_subtitle_pressed() => ShowPage("PageSubtitle");
-	public void _on_button_video_pressed() => ShowPage("PageVideo");
-	public void _on_button_visual_pressed() => ShowPage("PageVisual");
-	public void _on_button_command_pressed() => ShowPage("PageCommand");
-	public void _on_button_audio_pressed() => ShowPage("PageAudio");
-
-	// =================================================
 	// SUBTITLE
 	// =================================================
 

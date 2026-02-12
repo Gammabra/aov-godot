@@ -31,7 +31,7 @@ public partial class settings_save : Button
 		cfg.SetValue("subtitle", "text_color", settings.Get("subtitle_text_color"));
 		cfg.SetValue("subtitle", "bg_color", settings.Get("subtitle_bg_color"));
 		cfg.SetValue("subtitle", "language", settings.Get("subtitle_language"));
-		cfg.SetValue("subtitle", "display_time", settings.Get("subtitle_display_time"));
+		cfg.SetValue("subtitle", "opacity", settings.Get("subtitle_opacity"));
 
 		// ---------- VIDEO ----------
 		cfg.SetValue("video", "contrast", settings.Get("contrast"));
@@ -101,7 +101,7 @@ public partial class settings_save : Button
 		settings.Set("subtitle_text_color", cfg.GetValue("subtitle", "text_color", settings.Get("subtitle_text_color")));
 		settings.Set("subtitle_bg_color", cfg.GetValue("subtitle", "bg_color", settings.Get("subtitle_bg_color")));
 		settings.Set("subtitle_language", cfg.GetValue("subtitle", "language", settings.Get("subtitle_language")));
-		settings.Set("subtitle_display_time", cfg.GetValue("subtitle", "display_time", settings.Get("subtitle_display_time")));
+		settings.Set("subtitle_opacity", cfg.GetValue("subtitle", "opacity", settings.Get("subtitle_opacity")));
 
 		// ---------- VIDEO ----------
 		settings.Set("contrast", cfg.GetValue("video", "contrast", settings.Get("contrast")));

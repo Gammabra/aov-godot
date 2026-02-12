@@ -15,7 +15,7 @@ public partial class settings_pages : Node
 	public int subtitle_text_color = 0;
 	public int subtitle_bg_color = 0;
 	public string subtitle_language = "English";
-	public float subtitle_display_time = 3.0f;
+	public float subtitle_opacity = 50.0f;
 
 	// ---------- VIDEO ----------
 	public float contrast = 50.0f;
@@ -87,17 +87,12 @@ public partial class settings_pages : Node
 	public void _on_subtitle_font_item_selected(long index) => subtitle_font_index = (int)index;
 	public void _on_subtitle_text_color_changed(long index) => subtitle_text_color = (int)index;
 	public void _on_subtitle_bg_color_changed(long index) => subtitle_bg_color = (int)index;
+	public void _on_subtitle_opacity_changed(double value) => subtitle_opacity = (float)value;
 
 	public void _on_subtitle_language_item_selected(long index)
 	{
 		var btn = GetNode<OptionButton>("PageSubtitle/Langage/OptionButton");
 		subtitle_language = btn.GetItemText((int)index);
-	}
-
-	public void _on_subtitle_display_time_changed(long index)
-	{
-		var btn = GetNode<OptionButton>("PageSubtitle/DisplayTime/OptionButton");
-		subtitle_display_time = float.Parse(btn.GetItemText((int)index));
 	}
 
 	// =================================================
@@ -245,6 +240,7 @@ public partial class settings_pages : Node
 		GetNode<HSlider>("PageSubtitle/Size/HSlider").Value = subtitle_size;
 		GetNode<OptionButton>("PageSubtitle/TextColor/OptionButton").Select(subtitle_text_color);
 		GetNode<OptionButton>("PageSubtitle/BgColor/OptionButton").Select(subtitle_bg_color);
+		GetNode<HSlider>("PageSubtitle/Opacity/HSlider").Value = subtitle_opacity;
 
 		GetNode<HSlider>("PageVideo/Contrast/HSlider").Value = contrast;
 		GetNode<HSlider>("PageVideo/Brightness/HSlider").Value = brightness;

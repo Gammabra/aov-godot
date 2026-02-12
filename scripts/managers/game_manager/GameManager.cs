@@ -403,7 +403,7 @@ public partial class GameManager : BaseManager
     /// gameManager.MoveUnit(targetCell);
     /// </code>
     /// </example>
-    public void MoveUnit(Vector3I cell)
+    public virtual void MoveUnit(Vector3I cell)
     {
         if (_mapSystemContainer == null)
         {
@@ -444,7 +444,7 @@ public partial class GameManager : BaseManager
 	/// Uses a skill from a source unit on a target unit.
 	/// This can be called by AI behaviors through BattleState.
 	/// </summary>
-    public void UseSkill(UnitSystem sourceUnit, UnitSystem targetUnit, SkillSystem skill)
+    public virtual void UseSkill(UnitSystem sourceUnit, UnitSystem targetUnit, SkillSystem skill)
     {
         List<UnitSystem> allyUnits = new List<UnitSystem>();
         List<UnitSystem> enemyUnits = new List<UnitSystem>();

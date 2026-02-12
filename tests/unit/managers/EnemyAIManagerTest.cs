@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.Reflection;
 using System.Threading.Tasks;
-using AshesOfVelsingrad.AI;
 using AshesOfVelsingrad.Managers;
 using AshesOfVelsingrad.Systems;
 using GdUnit4;
@@ -97,7 +96,7 @@ public class EnemyAIManagerTest
         turnManager.SetCurrentUnit(enemy1); // Set an enemy as current unit for the test
         // Set the TurnManager on GameManager via reflection
         var field = typeof(GameManager).GetField("_turnManagerContainer",
-            System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
+            BindingFlags.NonPublic | BindingFlags.Instance);
         field?.SetValue(_gameManager, turnManager);
 
         // Create AI Manager

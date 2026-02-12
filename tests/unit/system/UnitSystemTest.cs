@@ -167,7 +167,7 @@ public class UnitSystemTest
         unit.Play(new List<UnitSystem>(), null, skill);
 
         AssertThat(skill.WasUsed).IsTrue();
-        AssertThat(unit.Mana).IsEqual(95);
+        AssertThat(unit.Mana).IsEqual(90);
     }
 
     [TestCase]
@@ -481,12 +481,12 @@ public class UnitSystemTest
         unit.ActiveSkills.Add(skill2);
 
         unit.Play(new List<UnitSystem>(), null, skill1);
-        AssertThat(unit.Mana).IsEqual(95); // 100 - 5
+        AssertThat(unit.Mana).IsEqual(90);
 
         // In real scenario, mana would regenerate or this would be a new turn
         // But for testing, just verify it can be called again
         unit.Play(new List<UnitSystem>(), null, skill2);
-        AssertThat(unit.Mana).IsEqual(90); // 95 - 5
+        AssertThat(unit.Mana).IsEqual(80);
     }
 
     [TestCase]

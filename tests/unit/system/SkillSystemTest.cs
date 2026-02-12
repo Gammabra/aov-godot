@@ -77,7 +77,7 @@ public class SkillSystemTest
 
         AssertThat(skill.Name).IsEqual("TestSkill");
         AssertThat(skill.Description).IsEqual("Test skill description");
-        AssertThat(skill.ManaCost).IsEqual(5f);
+        AssertThat(skill.ManaCost).IsEqual(10f);
         AssertThat(skill.TotalCooldown).IsEqual(0);
         AssertThat(skill.Cooldown).IsEqual(0);
         AssertThat(skill.Range).IsEqual(1);

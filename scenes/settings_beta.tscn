@@ -3,6 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://b5g32aw86klf1" path="res://assets/menu_assets/MENU proto.png" id="1_ujhbt"]
 [ext_resource type="Script" uid="uid://qkmc6tubh4dh" path="res://scripts/menu/settings_save.cs" id="3_t01jc"]
 [ext_resource type="FontFile" uid="uid://dri86n5u6wvhn" path="res://font/abibas/Abibas.ttf" id="3_tlijc"]
+[ext_resource type="Script" uid="uid://bmdj8jh7q5csj" path="res://scripts/menu/settings_page_manager.cs" id="4_qi5fe"]
 [ext_resource type="Script" uid="uid://0d4ak6xjigui" path="res://scripts/menu/settings_pages.cs" id="4_tlijc"]
 [ext_resource type="Script" uid="uid://crudjafba0x46" path="res://scripts/menu/button_settings_font.cs" id="5_t01jc"]
 
@@ -62,25 +63,28 @@ theme_override_font_sizes/font_size = 30
 text = "Save"
 script = ExtResource("3_t01jc")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=2023019499]
+[node name="PageManager" type="Node" parent="." unique_id=885377501]
+script = ExtResource("4_qi5fe")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PageManager" unique_id=2023019499]
 custom_minimum_size = Vector2(300, 0)
 offset_right = 1151.0
 offset_bottom = 335.0
 alignment = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer" unique_id=1318815892]
+[node name="HBoxContainer" type="HBoxContainer" parent="PageManager/VBoxContainer" unique_id=1318815892]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 size_flags_vertical = 4
 theme_override_constants/separation = 20
 alignment = 1
 
-[node name="ButtonSubtitle" type="Button" parent="VBoxContainer/HBoxContainer" unique_id=727346576]
+[node name="ButtonSubtitle" type="Button" parent="PageManager/VBoxContainer/HBoxContainer" unique_id=727346576]
 custom_minimum_size = Vector2(160, 55)
 layout_mode = 2
-theme_override_colors/font_focus_color = Color(0.8352941, 0.0627451, 0.19215687, 1)
-theme_override_colors/font_pressed_color = Color(0.8352941, 0.0627451, 0.19215687, 1)
-theme_override_colors/font_hover_color = Color(0.8352941, 0.0627451, 0.19215687, 1)
+theme_override_colors/font_focus_color = Color(0.8745098, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0.8745098, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0.8745098, 0, 0, 1)
 theme_override_fonts/font = ExtResource("3_tlijc")
 theme_override_font_sizes/font_size = 40
 theme_override_styles/normal = SubResource("StyleBoxEmpty_m7784")
@@ -91,12 +95,12 @@ text = "Subtitle"
 autowrap_trim_flags = 0
 icon_alignment = 1
 
-[node name="ButtonVideo" type="Button" parent="VBoxContainer/HBoxContainer" unique_id=468110324]
+[node name="ButtonVideo" type="Button" parent="PageManager/VBoxContainer/HBoxContainer" unique_id=468110324]
 custom_minimum_size = Vector2(160, 55)
 layout_mode = 2
-theme_override_colors/font_focus_color = Color(0.8348589, 0.0646869, 0.19091931, 1)
-theme_override_colors/font_pressed_color = Color(0.8352941, 0.0627451, 0.19215687, 1)
-theme_override_colors/font_hover_color = Color(0.8352941, 0.0627451, 0.19215687, 1)
+theme_override_colors/font_focus_color = Color(0.8745098, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0.8745098, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0.8745098, 0, 0, 1)
 theme_override_fonts/font = ExtResource("3_tlijc")
 theme_override_font_sizes/font_size = 40
 theme_override_styles/normal = SubResource("StyleBoxEmpty_m7784")
@@ -107,12 +111,12 @@ text = "Video"
 autowrap_trim_flags = 0
 icon_alignment = 1
 
-[node name="ButtonVisual" type="Button" parent="VBoxContainer/HBoxContainer" unique_id=925863024]
+[node name="ButtonVisual" type="Button" parent="PageManager/VBoxContainer/HBoxContainer" unique_id=925863024]
 custom_minimum_size = Vector2(160, 55)
 layout_mode = 2
-theme_override_colors/font_focus_color = Color(0.8348589, 0.0646869, 0.19091931, 1)
-theme_override_colors/font_pressed_color = Color(0.8352941, 0.0627451, 0.19215687, 1)
-theme_override_colors/font_hover_color = Color(0.8352941, 0.0627451, 0.19215687, 1)
+theme_override_colors/font_focus_color = Color(0.8745098, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0.8745098, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0.8745098, 0, 0, 1)
 theme_override_fonts/font = ExtResource("3_tlijc")
 theme_override_font_sizes/font_size = 40
 theme_override_styles/normal = SubResource("StyleBoxEmpty_m7784")
@@ -123,12 +127,12 @@ text = "Visual"
 autowrap_trim_flags = 0
 icon_alignment = 1
 
-[node name="ButtonCommand" type="Button" parent="VBoxContainer/HBoxContainer" unique_id=1177699801]
+[node name="ButtonCommand" type="Button" parent="PageManager/VBoxContainer/HBoxContainer" unique_id=1177699801]
 custom_minimum_size = Vector2(160, 55)
 layout_mode = 2
-theme_override_colors/font_focus_color = Color(0.8348589, 0.0646869, 0.19091931, 1)
-theme_override_colors/font_pressed_color = Color(0.8352941, 0.0627451, 0.19215687, 1)
-theme_override_colors/font_hover_color = Color(0.8352941, 0.0627451, 0.19215687, 1)
+theme_override_colors/font_focus_color = Color(0.8745098, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0.8745098, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0.8745098, 0, 0, 1)
 theme_override_fonts/font = ExtResource("3_tlijc")
 theme_override_font_sizes/font_size = 40
 theme_override_styles/normal = SubResource("StyleBoxEmpty_m7784")
@@ -139,12 +143,12 @@ text = "Command"
 autowrap_trim_flags = 0
 icon_alignment = 1
 
-[node name="ButtonAudio" type="Button" parent="VBoxContainer/HBoxContainer" unique_id=2095731372]
+[node name="ButtonAudio" type="Button" parent="PageManager/VBoxContainer/HBoxContainer" unique_id=2095731372]
 custom_minimum_size = Vector2(160, 55)
 layout_mode = 2
-theme_override_colors/font_focus_color = Color(0.8348589, 0.0646869, 0.19091931, 1)
-theme_override_colors/font_pressed_color = Color(0.8352941, 0.0627451, 0.19215687, 1)
-theme_override_colors/font_hover_color = Color(0.8352941, 0.0627451, 0.19215687, 1)
+theme_override_colors/font_focus_color = Color(0.8745098, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0.8745098, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0.8745098, 0, 0, 1)
 theme_override_fonts/font = ExtResource("3_tlijc")
 theme_override_font_sizes/font_size = 40
 theme_override_styles/normal = SubResource("StyleBoxEmpty_m7784")
@@ -934,11 +938,16 @@ tick_count = 5
 ticks_on_borders = true
 ticks_position = 3
 
-[connection signal="pressed" from="VBoxContainer/HBoxContainer/ButtonSubtitle" to="MainContent" method="_on_button_subtitle_pressed"]
-[connection signal="pressed" from="VBoxContainer/HBoxContainer/ButtonVideo" to="MainContent" method="_on_button_video_pressed"]
-[connection signal="pressed" from="VBoxContainer/HBoxContainer/ButtonVisual" to="MainContent" method="_on_button_visual_pressed"]
-[connection signal="pressed" from="VBoxContainer/HBoxContainer/ButtonCommand" to="MainContent" method="_on_button_command_pressed"]
-[connection signal="pressed" from="VBoxContainer/HBoxContainer/ButtonAudio" to="MainContent" method="_on_button_audio_pressed"]
+[connection signal="pressed" from="PageManager/VBoxContainer/HBoxContainer/ButtonSubtitle" to="MainContent" method="_on_button_subtitle_pressed"]
+[connection signal="pressed" from="PageManager/VBoxContainer/HBoxContainer/ButtonSubtitle" to="PageManager" method="_on_button_subtitle_pressed"]
+[connection signal="pressed" from="PageManager/VBoxContainer/HBoxContainer/ButtonVideo" to="MainContent" method="_on_button_video_pressed"]
+[connection signal="pressed" from="PageManager/VBoxContainer/HBoxContainer/ButtonVideo" to="PageManager" method="_on_button_video_pressed"]
+[connection signal="pressed" from="PageManager/VBoxContainer/HBoxContainer/ButtonVisual" to="MainContent" method="_on_button_visual_pressed"]
+[connection signal="pressed" from="PageManager/VBoxContainer/HBoxContainer/ButtonVisual" to="PageManager" method="_on_button_visual_pressed"]
+[connection signal="pressed" from="PageManager/VBoxContainer/HBoxContainer/ButtonCommand" to="MainContent" method="_on_button_command_pressed"]
+[connection signal="pressed" from="PageManager/VBoxContainer/HBoxContainer/ButtonCommand" to="PageManager" method="_on_button_command_pressed"]
+[connection signal="pressed" from="PageManager/VBoxContainer/HBoxContainer/ButtonAudio" to="MainContent" method="_on_button_audio_pressed"]
+[connection signal="pressed" from="PageManager/VBoxContainer/HBoxContainer/ButtonAudio" to="PageManager" method="_on_button_audio_pressed"]
 [connection signal="toggled" from="MainContent/PageSubtitle/Subtitles/CheckBox" to="MainContent" method="_on_subtitles_toggled"]
 [connection signal="value_changed" from="MainContent/PageSubtitle/Size/HSlider" to="MainContent" method="_on_subtitle_size_changed"]
 [connection signal="item_selected" from="MainContent/PageSubtitle/Font/OptionButton" to="MainContent" method="_on_subtitle_font_item_selected"]

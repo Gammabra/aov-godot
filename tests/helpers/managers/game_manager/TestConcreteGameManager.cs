@@ -17,6 +17,10 @@ public partial class TestConcreteGameManager : GameManager
 	public int PlayerUnitsCount => _playerUnits.Count;
 	public int EnemyUnitsCount => _enemyUnits.Count;
 	public bool UnitMoved => _unitMoved;
+	public Vector3I? LastMovedToPosition { get; private set; }
+	public SkillSystem? LastUsedSkill { get; private set; }
+	public UnitSystem? LastSkillTarget { get; private set; }
+	public UnitSystem? LastSkillSource { get; private set; }
 
 	public void SetNodePaths(
 		NodePath playerUnitsPath,
@@ -95,13 +99,14 @@ public partial class TestConcreteGameManager : GameManager
 	}
 
 	// Override MoveUnit to track if unit moved
-	public new void MoveUnit(Vector3I cell)
+	public override void MoveUnit(Vector3I cell)
 	{
+		LastMovedToPosition = cell;
 		base.MoveUnit(cell);
 		
 		var field = typeof(GameManager).GetField("_unitMoved",
 			System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
-		_unitMoved = (bool)field?.GetValue(this)!;
+			_unitMoved = (bool)field?.GetValue(this)!;
 	}
 
 	public void SetCurrentUnitPossibleMoves(List<Vector3I> moves)
@@ -183,5 +188,23 @@ public partial class TestConcreteGameManager : GameManager
 	public List<UnitSystem> GetEnemyUnitsList()
 	{
 		return _enemyUnits;
+	}
+
+	// Override or add the UseSkill method
+	public override void UseSkill(UnitSystem source, UnitSystem target, SkillSystem skill)
+	{
+		LastSkillSource = source;
+		LastSkillTarget = target;
+		LastUsedSkill = skill;
+		// Don't call base - just record the call for test verification
+		base.UseSkill(source, target, skill);
+	}
+
+	// Method to call base GameManager.UseSkill via reflection
+	public void CallUseSkill(UnitSystem source, UnitSystem target, SkillSystem skill)
+	{
+		var method = typeof(GameManager).GetMethod("UseSkill",
+			BindingFlags.Public | BindingFlags.Instance);
+		method?.Invoke(this, new object[] { source, target, skill });
 	}
 }

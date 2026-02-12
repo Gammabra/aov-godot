@@ -155,7 +155,7 @@ public partial class EnemyAIBehavior : Node
 	/// </summary>
 	/// <param name="battleState">Snapshot of the current battle situation.</param>
 	/// <returns>A task that completes when the AI has finished its turn.</returns>
-	public async Task ExecuteTurn(BattleState battleState)
+	public virtual async Task ExecuteTurn(BattleState battleState)
 	{
 		if (_unit == null || _decisionGenerator == null || _evaluator == null)
 		{

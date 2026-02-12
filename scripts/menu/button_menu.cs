@@ -7,6 +7,11 @@ public partial class button_menu : Button
 		GetTree().ChangeSceneToFile("res://scenes/settings_beta.tscn");
 	}
 
+	public void _on_ExitSettingsButton_pressed()
+	{
+		GetTree().ChangeSceneToFile("res://scenes/menu_beta.tscn");
+	}
+
 	public void _on_ExitButton_pressed()
 	{
 		GetTree().Quit();

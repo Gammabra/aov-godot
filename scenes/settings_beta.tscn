@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://geowrsurjvqo"]
 
 [ext_resource type="Texture2D" uid="uid://b5g32aw86klf1" path="res://assets/menu_assets/MENU proto.png" id="1_ujhbt"]
+[ext_resource type="Script" uid="uid://b8qswx3qw7x7g" path="res://scripts/menu/button_menu.cs" id="3_qi5fe"]
 [ext_resource type="Script" uid="uid://qkmc6tubh4dh" path="res://scripts/menu/settings_save.cs" id="3_t01jc"]
 [ext_resource type="FontFile" uid="uid://dri86n5u6wvhn" path="res://font/abibas/Abibas.ttf" id="3_tlijc"]
 [ext_resource type="Script" uid="uid://bmdj8jh7q5csj" path="res://scripts/menu/settings_page_manager.cs" id="4_qi5fe"]
@@ -28,6 +29,17 @@ bg_color = Color(0, 0, 0, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t01jc"]
 bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qi5fe"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h5uks"]
+bg_color = Color(0, 0, 0, 0)
+draw_center = false
+border_blend = true
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_h5uks"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_sjfrx"]
 
 [node name="MenuBeta" type="Node2D" unique_id=675576821]
 
@@ -936,6 +948,22 @@ tick_count = 5
 ticks_on_borders = true
 ticks_position = 3
 
+[node name="ButtonExitSettings" type="Button" parent="." unique_id=120356062]
+offset_left = 24.0
+offset_top = 20.0
+offset_right = 76.0
+offset_bottom = 62.0
+theme_override_colors/font_focus_color = Color(0.8745098, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0.8745098, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0.8745098, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxEmpty_qi5fe")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_h5uks")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_h5uks")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_sjfrx")
+text = "X"
+script = ExtResource("3_qi5fe")
+
 [connection signal="pressed" from="PageManager/VBoxContainer/HBoxContainer/ButtonSubtitle" to="MainContent" method="_on_button_subtitle_pressed"]
 [connection signal="pressed" from="PageManager/VBoxContainer/HBoxContainer/ButtonSubtitle" to="PageManager" method="_on_button_subtitle_pressed"]
 [connection signal="pressed" from="PageManager/VBoxContainer/HBoxContainer/ButtonVideo" to="MainContent" method="_on_button_video_pressed"]
@@ -967,3 +995,4 @@ ticks_position = 3
 [connection signal="value_changed" from="MainContent/PageAudio/Music/HSlider" to="MainContent" method="_on_music_volume_changed"]
 [connection signal="value_changed" from="MainContent/PageAudio/Voices/HSlider" to="MainContent" method="_on_voices_volume_changed"]
 [connection signal="value_changed" from="MainContent/PageAudio/SFX/HSlider" to="MainContent" method="_on_sfx_volume_changed"]
+[connection signal="pressed" from="ButtonExitSettings" to="ButtonExitSettings" method="_on_ExitSettingsButton_pressed"]

@@ -1,6 +1,7 @@
 using System.Reflection;
 using System.Collections.Generic;
 using AshesOfVelsingrad.Systems;
+using AshesOfVelsingrad.AI;
 using Godot;
 
 namespace UnitTests;
@@ -14,6 +15,16 @@ public partial class TestConcreteUnitSystem : UnitSystem
 	public bool IsInitialized { get; private set; }
 	public bool IsCleanedUp { get; private set; }
 	public List<string> Log { get; } = new();
+
+	public new AIPersonality Personality
+	{
+		get => base.Personality;
+		set
+		{
+			var property = typeof(UnitSystem).GetProperty("Personality");
+			property?.SetValue(this, value);
+		}
+	}
 
 	// Expose the private _statusEffectSystem field for testing
 	public StatusEffectSystem? InjectedStatusEffectSystem

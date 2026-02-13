@@ -71,6 +71,28 @@ public partial class TestConcreteUnitSystem : UnitSystem
 		}
 	}
 
+	public new float BaseAtk
+	{
+		get => base.BaseAtk;
+		set
+		{
+			var field = typeof(UnitSystem).GetProperty("BaseAtk",
+				BindingFlags.Public | BindingFlags.Instance);
+			field?.SetValue(this, value);
+		}
+	}
+
+	public new float BaseDef
+	{
+		get => base.BaseDef;
+		set
+		{
+			var field = typeof(UnitSystem).GetProperty("BaseDef",
+				BindingFlags.Public | BindingFlags.Instance);
+			field?.SetValue(this, value);
+		}
+	}
+
 	public TestConcreteUnitSystem()
 	{
 		GD.Print("[TEST] TestConcreteUnitSystem constructor called");

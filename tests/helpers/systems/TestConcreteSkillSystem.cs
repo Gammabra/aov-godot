@@ -1,6 +1,8 @@
 using AshesOfVelsingrad.Systems;
 using System.Collections.Generic;
 using System.Reflection;
+using AshesOfVelsingrad.Utilities;
+using Godot;
 
 namespace UnitTests;
 
@@ -26,19 +28,25 @@ public partial class TestConcreteSkillSystem : SkillSystem
 	public TestConcreteSkillSystem(
 		string name = "TestSkill",
         string description = "Test skill description",
-		EffectType effect = EffectType.Damage,
-		TargetTypes target = TargetTypes.SingleEnemy,
-		int range = 1,
-		int manaCost = 10,
-		int cooldown = 0)
-	{
-		Name = name;
+        float manaCost = 10,
+        int cooldown = 0,
+        int range = 1,
+        AovDataStructures.MagicType magic = AovDataStructures.MagicType.None,
+        AovDataStructures.EffectType effect = AovDataStructures.EffectType.Damage,
+        AovDataStructures.TargetTypes target = AovDataStructures.TargetTypes.SingleEnemy
+    )
+    {
+        Name = name;
         Description = description;
 		EffectType = effect;
 		TargetType = target;
 		Range = range;
 		ManaCost = manaCost;
-		Cooldown = cooldown;
+        TotalCooldown = cooldown;
+        Cooldown = 0;
+        MagicType = magic;
+
+        AreaEffect = new List<(int, int, int)>();
 	}
 
 	// Add public setters for properties that need to be modified in tests
@@ -102,11 +110,12 @@ public partial class TestConcreteSkillSystem : SkillSystem
 		}
 	}
 
-	public override void Use(List<UnitSystem> targets, MapSystem? map)
-	{
+    public override void Use(UnitSystem caster, List<UnitSystem> targets, MapSystem? map)
+    {
         WasUsed = true;
         LastTargets = targets;
         LastMap = map;
+        GD.Print($"[TEST] Skill {Name} used");
 
         // Call base implementation if needed (currently abstract, so no logic to execute)
     }

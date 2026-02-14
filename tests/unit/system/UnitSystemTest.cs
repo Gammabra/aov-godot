@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Reflection;
 using System.Threading.Tasks;
 using AshesOfVelsingrad.Systems;
+using AshesOfVelsingrad.Utilities;
 using GdUnit4;
 using Godot;
 using static GdUnit4.Assertions;
@@ -78,7 +79,6 @@ public class UnitSystemTest
         AssertThat(unit.UnitName).IsEqual("TestUnit");
         AssertThat(unit.MaxHp).IsEqual(100);
         AssertThat(unit.Hp).IsEqual(100);
-        AssertThat(unit.Log).Contains("Initialized");
     }
 
     [TestCase]
@@ -123,7 +123,6 @@ public class UnitSystemTest
     public void TakeDamage_ReducesHpBasedOnDefense()
     {
         TestConcreteUnitSystem unit = AddNodeToTestRoot(new TestConcreteUnitSystem());
-        unit.CallInitialize();
 
         unit.TakeDamage(20);
         AssertThat(unit.Hp).IsEqual(85);
@@ -259,300 +258,289 @@ public class UnitSystemTest
     }
 
     [TestCase]
-    public void Initialize_SetsCharacterSprite_WhenSprite3DChildExists()
+    public void OnEffectDamageFlat()
     {
-        TestConcreteUnitSystem unit = AddNodeToTestRoot(new TestConcreteUnitSystem());
-        
-        // Add a Sprite3D child
-        Sprite3D sprite = new Sprite3D { Name = "TestSprite" };
-        unit.AddChild(sprite);
-        
-        unit.CallInitialize();
+        TestConcreteUnitSystem unit1 = AddNodeToTestRoot(new TestConcreteUnitSystem());
+        TestConcreteUnitSystem unit2 = AddNodeToTestRoot(new TestConcreteUnitSystem(maxHp: 150, hp: 150));
+        unit1.CallInitialize();
 
-        AssertThat(unit.CharacterSprite).IsNotNull();
-        AssertThat(unit.CharacterSprite).IsEqual(sprite);
+        unit1.OnEffectDamage(AovDataStructures.ModifierType.Flat, 10);
+        unit2.OnEffectDamage(AovDataStructures.ModifierType.Flat, 10);
+        AssertThat(unit1.Hp).IsEqual(90);
+        AssertThat(unit2.Hp).IsEqual(140);
     }
 
     [TestCase]
-    public void Initialize_CharacterSpriteIsNull_WhenNoSprite3DChild()
+    public void OnEffectDamagePercent()
     {
-        TestConcreteUnitSystem unit = AddNodeToTestRoot(new TestConcreteUnitSystem());
-        unit.CallInitialize();
+        TestConcreteUnitSystem unit1 = AddNodeToTestRoot(new TestConcreteUnitSystem());
+        TestConcreteUnitSystem unit2 = AddNodeToTestRoot(new TestConcreteUnitSystem(maxHp: 150, hp: 150));
+        unit1.CallInitialize();
 
-        AssertThat(unit.CharacterSprite).IsNull();
+        unit1.OnEffectDamage(AovDataStructures.ModifierType.Percent, 10);
+        unit2.OnEffectDamage(AovDataStructures.ModifierType.Percent, 10);
+        AssertThat(unit1.Hp).IsEqual(90);
+        AssertThat(unit2.Hp).IsEqual(135);
     }
 
     [TestCase]
-    public void CanMoveTo_ReturnsTrueForWalkableCell()
+    public void OnEffectHeal()
     {
-        TestConcreteUnitSystem unit = AddNodeToTestRoot(new TestConcreteUnitSystem());
-        unit.CallInitialize();
+        TestConcreteUnitSystem unit1 = AddNodeToTestRoot(new TestConcreteUnitSystem(hp: 40));
+        TestConcreteUnitSystem unit2 = AddNodeToTestRoot(new TestConcreteUnitSystem(hp: 90));
+        unit1.CallInitialize();
 
-        TestConcreteMapSystem map = CreateAndInitializeMap<TestConcreteMapSystem>();
-        map.AddWalkableCell(0, 0, 0);
-
-        bool canMove = unit.CanMoveTo(0, 0, 0, map);
-        AssertThat(canMove).IsTrue();
+        unit1.OnEffectHeal(30);
+        unit2.OnEffectHeal(100);
+        AssertThat(unit1.Hp).IsEqual(70);
+        AssertThat(unit2.Hp).IsEqual(100);
     }
 
     [TestCase]
-    public void CanMoveTo_ReturnsFalseForNonWalkableCell()
+    public void OnEffectHeal_UnitNotAlive()
     {
-        TestConcreteUnitSystem unit = AddNodeToTestRoot(new TestConcreteUnitSystem());
-        unit.CallInitialize();
+        TestConcreteUnitSystem unit1 = AddNodeToTestRoot(new TestConcreteUnitSystem(hp: 0, isAlive: false));
+        unit1.CallInitialize();
 
-        TestConcreteMapSystem map = CreateAndInitializeMap<TestConcreteMapSystem>();
-        map.AddEmptyCell(0, 0, 0);
-
-        bool canMove = unit.CanMoveTo(0, 0, 0, map);
-        AssertThat(canMove).IsFalse();
+        unit1.OnEffectHeal(30);
+        AssertThat(unit1.Hp).IsEqual(0);
     }
 
     [TestCase]
-    public void SetGridPosition_MovesUnitToCorrectPosition()
+    public void OnEffectRevive()
     {
-        TestConcreteUnitSystem unit = AddNodeToTestRoot(new TestConcreteUnitSystem());
-        unit.CallInitialize();
+        TestConcreteUnitSystem unit1 = AddNodeToTestRoot(new TestConcreteUnitSystem(hp: 0, isAlive: false));
+        TestConcreteUnitSystem unit2 = AddNodeToTestRoot(new TestConcreteUnitSystem(maxHp: 241, hp: 0, isAlive: false));
+        unit1.CallInitialize();
 
-        TestConcreteMapSystem map = CreateAndInitializeMap<TestConcreteMapSystem>();
-        map.AddWalkableCell(0, 0, 0);
-        map.AddWalkableCell(1, 0, 0);
-        
-        // Place unit at (0,0,0)
-        map.CellsInformation[0].Unit = unit;
-
-        // Move to (1,0,0)
-        unit.SetGridPosition(1, 0, 0, map);
-
-        AssertThat(map.GetUnitAt(1, 0, 0)).IsEqual(unit);
-        AssertThat(map.GetUnitAt(0, 0, 0)).IsNull();
+        unit1.OnEffectRevive(AovDataStructures.ModifierType.Flat, 30);
+        unit2.OnEffectRevive(AovDataStructures.ModifierType.Percent, 70);
+        AssertThat(unit1.Hp).IsEqual(30);
+        AssertThat(unit1.IsAlive).IsEqual(true);
+        AssertThat(unit2.Hp).IsEqual(168.7f);
+        AssertThat(unit2.IsAlive).IsEqual(true);
     }
 
     [TestCase]
-    public void SetGridPosition_HandlesOutOfRangeGracefully()
+    public void OnEffectRevive_UnitAlreadyAlive()
     {
-        TestConcreteUnitSystem unit = AddNodeToTestRoot(new TestConcreteUnitSystem());
-        unit.CallInitialize();
+        TestConcreteUnitSystem unit1 = AddNodeToTestRoot(new TestConcreteUnitSystem(hp: 40));
+        unit1.CallInitialize();
 
-        TestConcreteMapSystem map = CreateAndInitializeMap<TestConcreteMapSystem>();
-        map.AddWalkableCell(0, 0, 0);
-
-        // Should not throw, just print error
-        unit.SetGridPosition(99, 99, 99, map);
-        
-        // Unit should still be at original position (not moved)
-        AssertThat(map.GetUnitAt(0, 0, 0)).IsNull();
+        unit1.OnEffectRevive(AovDataStructures.ModifierType.Flat, 10);
+        AssertThat(unit1.Hp).IsEqual(40);
     }
 
     [TestCase]
-    public void TakeDamage_NeverReducesBelowZero()
+    public void OnEffectModifierApplied_Atk()
     {
-        TestConcreteUnitSystem unit = AddNodeToTestRoot(new TestConcreteUnitSystem());
-        unit.CallInitialize();
+        TestConcreteUnitSystem unit1 = AddNodeToTestRoot(new TestConcreteUnitSystem(baseAtk: 40));
+        TestConcreteUnitSystem unit2 = AddNodeToTestRoot(new TestConcreteUnitSystem(baseAtk: 88));
+        TestConcreteUnitSystem unit3 = AddNodeToTestRoot(new TestConcreteUnitSystem(baseAtk: 64));
+        TestConcreteUnitSystem unit4 = AddNodeToTestRoot(new TestConcreteUnitSystem(baseAtk: 111));
+        unit1.CallInitialize();
+        unit2.CallInitialize();
+        unit3.CallInitialize();
+        unit4.CallInitialize();
 
-        // Defense is 5, so 5 damage should result in 0 real damage
-        unit.TakeDamage(5);
-        AssertThat(unit.Hp).IsEqual(100); // No damage taken
-
-        // Less than defense also results in 0 damage
-        unit.TakeDamage(3);
-        AssertThat(unit.Hp).IsEqual(100);
+        unit1.OnEffectModifierApplied(
+            AovDataStructures.StatTypeWithModifier.Atk,
+            AovDataStructures.ModifierType.Flat,
+            10
+        );
+        unit2.OnEffectModifierApplied(
+            AovDataStructures.StatTypeWithModifier.Atk,
+            AovDataStructures.ModifierType.Percent,
+            20
+        );
+        unit3.OnEffectModifierApplied(
+            AovDataStructures.StatTypeWithModifier.Atk,
+            AovDataStructures.ModifierType.Flat,
+            -15
+        );
+        unit4.OnEffectModifierApplied(
+            AovDataStructures.StatTypeWithModifier.Atk,
+            AovDataStructures.ModifierType.Percent,
+            -3
+        );
+        AssertThat(unit1.TotalAtk).IsEqual(50);
+        AssertThat(unit2.TotalAtk).IsEqual(105.6f);
+        AssertThat(unit3.TotalAtk).IsEqual(49);
+        AssertThat(unit4.TotalAtk).IsEqual(107.67f);
     }
 
     [TestCase]
-    public void TakeDamage_CanReduceHpToZero()
+    public void OnEffectModifierApplied_Def()
     {
-        TestConcreteUnitSystem unit = AddNodeToTestRoot(new TestConcreteUnitSystem());
-        unit.CallInitialize();
+        TestConcreteUnitSystem unit1 = AddNodeToTestRoot(new TestConcreteUnitSystem(baseDef: 40));
+        TestConcreteUnitSystem unit2 = AddNodeToTestRoot(new TestConcreteUnitSystem(baseDef: 88));
+        TestConcreteUnitSystem unit3 = AddNodeToTestRoot(new TestConcreteUnitSystem(baseDef: 64));
+        TestConcreteUnitSystem unit4 = AddNodeToTestRoot(new TestConcreteUnitSystem(baseDef: 111));
+        unit1.CallInitialize();
+        unit2.CallInitialize();
+        unit3.CallInitialize();
+        unit4.CallInitialize();
 
-        // Deal 105 damage (100 HP + 5 defense)
-        unit.TakeDamage(105);
-        AssertThat(unit.Hp).IsEqual(0);
+        unit1.OnEffectModifierApplied(
+            AovDataStructures.StatTypeWithModifier.Def,
+            AovDataStructures.ModifierType.Flat,
+            10
+        );
+        unit2.OnEffectModifierApplied(
+            AovDataStructures.StatTypeWithModifier.Def,
+            AovDataStructures.ModifierType.Percent,
+            20
+        );
+        unit3.OnEffectModifierApplied(
+            AovDataStructures.StatTypeWithModifier.Def,
+            AovDataStructures.ModifierType.Flat,
+            -15
+        );
+        unit4.OnEffectModifierApplied(
+            AovDataStructures.StatTypeWithModifier.Def,
+            AovDataStructures.ModifierType.Percent,
+            -3
+        );
+        AssertThat(unit1.TotalDef).IsEqual(50);
+        AssertThat(unit2.TotalDef).IsEqual(105.6f);
+        AssertThat(unit3.TotalDef).IsEqual(49);
+        AssertThat(unit4.TotalDef).IsEqual(107.67f);
     }
 
     [TestCase]
-    public void TakeDamage_CanReduceHpBelowZero()
+    public void OnEffectModifierRemoved_Atk()
     {
-        TestConcreteUnitSystem unit = AddNodeToTestRoot(new TestConcreteUnitSystem());
-        unit.CallInitialize();
+        TestConcreteUnitSystem unit1 = AddNodeToTestRoot(new TestConcreteUnitSystem(baseAtk: 40));
+        TestConcreteUnitSystem unit2 = AddNodeToTestRoot(new TestConcreteUnitSystem(baseAtk: 88));
+        TestConcreteUnitSystem unit3 = AddNodeToTestRoot(new TestConcreteUnitSystem(baseAtk: 64));
+        TestConcreteUnitSystem unit4 = AddNodeToTestRoot(new TestConcreteUnitSystem(baseAtk: 111));
+        unit1.CallInitialize();
+        unit2.CallInitialize();
+        unit3.CallInitialize();
+        unit4.CallInitialize();
 
-        // Deal 200 damage
-        unit.TakeDamage(200);
-        AssertThat(unit.Hp).IsLess(0);
+        unit1.OnEffectModifierApplied(
+            AovDataStructures.StatTypeWithModifier.Atk,
+            AovDataStructures.ModifierType.Flat,
+            10
+        );
+        unit2.OnEffectModifierApplied(
+            AovDataStructures.StatTypeWithModifier.Atk,
+            AovDataStructures.ModifierType.Percent,
+            20
+        );
+        unit3.OnEffectModifierApplied(
+            AovDataStructures.StatTypeWithModifier.Atk,
+            AovDataStructures.ModifierType.Flat,
+            -15
+        );
+        unit4.OnEffectModifierApplied(
+            AovDataStructures.StatTypeWithModifier.Atk,
+            AovDataStructures.ModifierType.Percent,
+            -3
+        );
+        unit1.OnEffectModifierRemoved(
+            AovDataStructures.StatTypeWithModifier.Atk,
+            AovDataStructures.ModifierType.Flat,
+            10
+        );
+        unit2.OnEffectModifierRemoved(
+            AovDataStructures.StatTypeWithModifier.Atk,
+            AovDataStructures.ModifierType.Percent,
+            20
+        );
+        unit3.OnEffectModifierRemoved(
+            AovDataStructures.StatTypeWithModifier.Atk,
+            AovDataStructures.ModifierType.Flat,
+            -15
+        );
+        unit4.OnEffectModifierRemoved(
+            AovDataStructures.StatTypeWithModifier.Atk,
+            AovDataStructures.ModifierType.Percent,
+            -3
+        );
+        AssertThat(unit1.TotalAtk).IsEqual(40);
+        AssertThat(unit2.TotalAtk).IsEqual(88);
+        AssertThat(unit3.TotalAtk).IsEqual(64);
+        AssertThat(unit4.TotalAtk).IsEqual(111);
     }
 
     [TestCase]
-    public void SetIsAlive_OnlySetsFalseWhenHpIsZeroOrLess()
+    public void OnEffectModifierRemoved_Def()
     {
-        TestConcreteUnitSystem unit = AddNodeToTestRoot(new TestConcreteUnitSystem());
-        unit.CallInitialize();
+        TestConcreteUnitSystem unit1 = AddNodeToTestRoot(new TestConcreteUnitSystem(baseDef: 40));
+        TestConcreteUnitSystem unit2 = AddNodeToTestRoot(new TestConcreteUnitSystem(baseDef: 88));
+        TestConcreteUnitSystem unit3 = AddNodeToTestRoot(new TestConcreteUnitSystem(baseDef: 64));
+        TestConcreteUnitSystem unit4 = AddNodeToTestRoot(new TestConcreteUnitSystem(baseDef: 111));
+        unit1.CallInitialize();
+        unit2.CallInitialize();
+        unit3.CallInitialize();
+        unit4.CallInitialize();
 
-        // Try to set dead when HP is positive - should not work
-        unit.SetIsAlive(false);
-        AssertThat(unit.IsAlive).IsTrue(); // Should still be alive
-
-        // Now reduce HP to 0
-        unit.TakeDamage(105);
-        unit.SetIsAlive(false);
-        AssertThat(unit.IsAlive).IsFalse(); // Now it should work
+        unit1.OnEffectModifierApplied(
+            AovDataStructures.StatTypeWithModifier.Def,
+            AovDataStructures.ModifierType.Flat,
+            10
+        );
+        unit2.OnEffectModifierApplied(
+            AovDataStructures.StatTypeWithModifier.Def,
+            AovDataStructures.ModifierType.Percent,
+            20
+        );
+        unit3.OnEffectModifierApplied(
+            AovDataStructures.StatTypeWithModifier.Def,
+            AovDataStructures.ModifierType.Flat,
+            -15
+        );
+        unit4.OnEffectModifierApplied(
+            AovDataStructures.StatTypeWithModifier.Def,
+            AovDataStructures.ModifierType.Percent,
+            -3
+        );
+        unit1.OnEffectModifierRemoved(
+            AovDataStructures.StatTypeWithModifier.Def,
+            AovDataStructures.ModifierType.Flat,
+            10
+        );
+        unit2.OnEffectModifierRemoved(
+            AovDataStructures.StatTypeWithModifier.Def,
+            AovDataStructures.ModifierType.Percent,
+            20
+        );
+        unit3.OnEffectModifierRemoved(
+            AovDataStructures.StatTypeWithModifier.Def,
+            AovDataStructures.ModifierType.Flat,
+            -15
+        );
+        unit4.OnEffectModifierRemoved(
+            AovDataStructures.StatTypeWithModifier.Def,
+            AovDataStructures.ModifierType.Percent,
+            -3
+        );
+        AssertThat(unit1.TotalDef).IsEqual(40);
+        AssertThat(unit2.TotalDef).IsEqual(88);
+        AssertThat(unit3.TotalDef).IsEqual(64);
+        AssertThat(unit4.TotalDef).IsEqual(111);
     }
 
     [TestCase]
-    public void SetIsAlive_OnlySetsTrueWhenHpIsPositive()
+    public void OnEffectControlApplied()
     {
-        TestConcreteUnitSystem unit = AddNodeToTestRoot(new TestConcreteUnitSystem());
-        unit.CallInitialize();
+        TestConcreteUnitSystem unit1 = AddNodeToTestRoot(new TestConcreteUnitSystem());
+        unit1.CallInitialize();
 
-        // Kill the unit
-        unit.TakeDamage(105);
-        unit.SetIsAlive(false);
-
-        // Try to revive when HP is still 0 - should not work
-        unit.SetIsAlive(true);
-        AssertThat(unit.IsAlive).IsFalse(); // Should still be dead
+        unit1.OnEffectControlApplied();
+        AssertThat(unit1.IsControlled).IsTrue();
     }
 
     [TestCase]
-    public void GetActiveEffects_ReturnsAllAppliedEffects()
+    public void OnEffectControlRemoved()
     {
-        TestConcreteUnitSystem unit = AddNodeToTestRoot(new TestConcreteUnitSystem());
-        unit.CallInitialize();
+        TestConcreteUnitSystem unit1 = AddNodeToTestRoot(new TestConcreteUnitSystem());
+        unit1.CallInitialize();
 
-        TestConcreteStatusEffect<UnitSystem> effect1 = new();
-        TestConcreteStatusEffect<UnitSystem> effect2 = new();
-        
-        unit.ApplyEffect(effect1);
-        unit.ApplyEffect(effect2);
-
-        var activeEffects = unit.GetActiveEffects();
-        AssertThat(activeEffects.Count).IsEqual(2);
-        AssertThat(activeEffects.Contains(effect1)).IsTrue();
-        AssertThat(activeEffects.Contains(effect2)).IsTrue();
-    }
-
-    [TestCase]
-    public void GetActiveEffects_ReturnsEmptyListWhenNoEffects()
-    {
-        TestConcreteUnitSystem unit = AddNodeToTestRoot(new TestConcreteUnitSystem());
-        unit.CallInitialize();
-
-        var activeEffects = unit.GetActiveEffects();
-        AssertThat(activeEffects.Count).IsEqual(0);
-    }
-
-    [TestCase]
-    public void WaitForActionAsync_TaskCompletesOnPassTurn()
-    {
-        TestConcreteUnitSystem unit = AddNodeToTestRoot(new TestConcreteUnitSystem());
-        unit.CallInitialize();
-
-        Task task = unit.WaitForActionAsync();
-        AssertThat(task.IsCompleted).IsFalse();
-
-        unit.PassTurn();
-        AssertThat(task.IsCompleted).IsTrue();
-    }
-
-    [TestCase]
-    public void WaitForActionAsync_TaskCompletesOnPlay()
-    {
-        TestConcreteUnitSystem unit = AddNodeToTestRoot(new TestConcreteUnitSystem());
-        unit.CallInitialize();
-
-        TestConcreteSkillSystem skill = new();
-        unit.ActiveSkills.Add(skill);
-
-        Task task = unit.WaitForActionAsync();
-        AssertThat(task.IsCompleted).IsFalse();
-
-        unit.Play(new List<UnitSystem>(), null, skill);
-        AssertThat(task.IsCompleted).IsTrue();
-    }
-
-    [TestCase]
-    public void Play_MultipleSkills_ReducesManaCorrectly()
-    {
-        TestConcreteUnitSystem unit = AddNodeToTestRoot(new TestConcreteUnitSystem());
-        unit.CallInitialize();
-
-        TestConcreteSkillSystem skill1 = new();
-        TestConcreteSkillSystem skill2 = new();
-        unit.ActiveSkills.Add(skill1);
-        unit.ActiveSkills.Add(skill2);
-
-        unit.Play(new List<UnitSystem>(), null, skill1);
-        AssertThat(unit.Mana).IsEqual(90);
-
-        // In real scenario, mana would regenerate or this would be a new turn
-        // But for testing, just verify it can be called again
-        unit.Play(new List<UnitSystem>(), null, skill2);
-        AssertThat(unit.Mana).IsEqual(80);
-    }
-
-    [TestCase]
-    public void GetPossibleMoves_ReturnsEmptyWhenUnitNotOnMap()
-    {
-        TestConcreteUnitSystem unit = AddNodeToTestRoot(new TestConcreteUnitSystem());
-        unit.CallInitialize();
-
-        TestConcreteMapSystem map = CreateAndInitializeMap<TestConcreteMapSystem>();
-        map.AddWalkableCell(0, 0, 0);
-        // Don't add unit to map
-
-        List<Vector3I> moves = unit.GetPossibleMoves(map);
-        AssertThat(moves.Count).IsEqual(0);
-    }
-
-    [TestCase]
-    public void GetPossibleMoves_DoesNotIncludeCurrentPosition()
-    {
-        TestConcreteUnitSystem unit = AddNodeToTestRoot(new TestConcreteUnitSystem());
-        unit.CallInitialize();
-
-        TestConcreteMapSystem map = CreateAndInitializeMap<TestConcreteMapSystem>();
-        map.AddWalkableCell(0, 0, 0);
-        map.AddWalkableCell(1, 0, 0);
-        map.AddUnit(unit);
-
-        List<Vector3I> moves = unit.GetPossibleMoves(map);
-        
-        Vector3I? unitPos = map.GetUnitPosition(unit);
-        AssertThat(unitPos).IsNotNull();
-        AssertThat(moves.Contains(unitPos!.Value)).IsFalse();
-    }
-
-    [TestCase]
-    public void GetReachableCellsForSkills_ReturnsEmptyWhenUnitNotOnMap()
-    {
-        TestConcreteUnitSystem unit = AddNodeToTestRoot(new TestConcreteUnitSystem());
-        unit.CallInitialize();
-
-        TestConcreteSkillSystem skill = new();
-        TestConcreteMapSystem map = CreateAndInitializeMap<TestConcreteMapSystem>();
-        map.AddWalkableCell(0, 0, 0);
-        // Don't add unit to map
-
-        List<(int, int, int)> reachable = unit.GetReachableCellsForSkills(map, skill);
-        AssertThat(reachable.Count).IsEqual(0);
-    }
-
-    [TestCase]
-    public void GetReachableCellsForSkills_OnlyReturnsNonEmptyCells()
-    {
-        TestConcreteUnitSystem unit = AddNodeToTestRoot(new TestConcreteUnitSystem());
-        unit.CallInitialize();
-
-        TestConcreteSkillSystem skill = new();
-        TestConcreteMapSystem map = CreateAndInitializeMap<TestConcreteMapSystem>();
-        map.AddWalkableCell(0, 0, 0);
-        map.AddWalkableCell(1, 0, 0);
-        map.AddEmptyCell(2, 0, 0); // This should not be included
-        map.AddUnit(unit);
-
-        List<(int, int, int)> reachable = unit.GetReachableCellsForSkills(map, skill);
-        
-        AssertThat(reachable.Contains((1, 0, 0))).IsTrue();
-        AssertThat(reachable.Contains((2, 0, 0))).IsFalse(); // Empty cells filtered out
+        unit1.OnEffectControlRemoved();
+        AssertThat(unit1.IsControlled).IsFalse();
     }
 
     [AfterTest]

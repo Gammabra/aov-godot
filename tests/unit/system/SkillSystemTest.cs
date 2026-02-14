@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Reflection;
 using AshesOfVelsingrad.Systems;
+using AshesOfVelsingrad.Utilities;
 using GdUnit4;
 using Godot;
 using static GdUnit4.Assertions;
@@ -81,9 +82,9 @@ public class SkillSystemTest
         AssertThat(skill.TotalCooldown).IsEqual(0);
         AssertThat(skill.Cooldown).IsEqual(0);
         AssertThat(skill.Range).IsEqual(1);
-        AssertThat(skill.MagicType).IsEqual(MagicType.None);
-        AssertThat(skill.EffectType).IsEqual(EffectType.Damage);
-        AssertThat(skill.TargetType).IsEqual(TargetTypes.SingleEnemy);
+        AssertThat(skill.MagicType).IsEqual(AovDataStructures.MagicType.None);
+        AssertThat(skill.EffectType).IsEqual(AovDataStructures.EffectType.Damage);
+        AssertThat(skill.TargetType).IsEqual(AovDataStructures.TargetTypes.SingleEnemy);
         AssertThat(skill.AreaEffect).IsNotNull();
     }
 
@@ -96,7 +97,7 @@ public class SkillSystemTest
         List<UnitSystem> targets = new() { unitA, unitB };
         TestConcreteMapSystem map = CreateAndInitializeMap<TestConcreteMapSystem>();
 
-        skill.Use(targets, map);
+        skill.Use(unitA, targets, map);
 
         AssertThat(skill.WasUsed).IsTrue();
         AssertThat(skill.LastTargets.Count).IsEqual(2);

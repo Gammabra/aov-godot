@@ -1,7 +1,10 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Reflection;
+using AshesOfVelsingrad.Data;
 using AshesOfVelsingrad.Systems;
+using AshesOfVelsingrad.Utilities;
 using GdUnit4;
 using Godot;
 using static GdUnit4.Assertions;
@@ -120,7 +123,7 @@ public class MapSystemTest
 		TestConcreteMapSystem map = CreateAndInitialize<TestConcreteMapSystem>();
 		map.AddEmptyCell(4, 5, 6);
 
-		AssertThat(map.CellsInformation[0].CellType).IsEqual(CellType.Empty);
+		AssertThat(map.CellsInformation[0].CellType).IsEqual(AovDataStructures.CellType.Empty);
 		AssertThat(map.CellsInformation[0].IsWalkable).IsFalse();
 	}
 
@@ -194,7 +197,7 @@ public class MapSystemTest
 		map.AddWalkableCell(0, 0, 0);
 		map.AddWalkableCell(1, 0, 0);
 
-		map.CellsInformation[0].Unit = unit;
+        map.CellsInformation[0].SetUnit(unit);
 
 		map.MoveUnit(unit, 1, 0, 0);
 
@@ -208,8 +211,8 @@ public class MapSystemTest
 		TestConcreteMapSystem map = CreateAndInitialize<TestConcreteMapSystem>();
 		TestConcreteUnitSystem unit = AddToTestRoot(new TestConcreteUnitSystem());
 
-		map.AddWalkableCell(5, 5, 5);
-		map.CellsInformation[0].Unit = unit;
+        map.AddWalkableCell(5, 5, 5);
+        map.CellsInformation[0].SetUnit(unit);
 
 		Vector3I? pos = map.GetUnitPosition(unit);
 		AssertThat(pos.HasValue).IsTrue();
@@ -224,7 +227,7 @@ public class MapSystemTest
 		TestConcreteUnitSystem unit = AddToTestRoot(new TestConcreteUnitSystem());
 
 		map.AddWalkableCell(1, 1, 1);
-		map.CellsInformation[0].Unit = unit;
+		map.CellsInformation[0].SetUnit(unit);
 
 		map.RemoveUnit(1, 1, 1);
 
@@ -291,6 +294,26 @@ public class MapSystemTest
 		AssertThat(map.Height).IsEqual(0);
 		AssertThat(map.Depth).IsEqual(0);
 	}
+
+    [TestCase]
+    public void SpreadStatusEffectToUnit()
+    {
+        TestConcreteMapSystem map = CreateAndInitialize<TestConcreteMapSystem>();
+        TestConcreteUnitSystem unit = AddToTestRoot(new TestConcreteUnitSystem());
+        StatusEffectSystem effectSystem = new();
+        BurningCellEffect effect = new(2);
+
+        unit.InjectDependencies(effectSystem);
+        map.AddWalkableCell(0, 0, 0);
+        map.CellsInformation[0].ApplyEffect(effect);
+        map.CellsInformation[0].OnUnitEntered(unit);
+        List<StatusEffect<UnitSystem>> unitEffects = unit.GetActiveEffects();
+        GD.Print($"Count = {unitEffects.Count}");
+
+        bool hasBurning = unitEffects.Any(e => e is BurningEffect);
+        AssertThat(map.CellsInformation[0].GetActiveEffects().Count).IsEqual(1);
+        AssertThat(hasBurning).IsTrue();
+    }
 
 	[TestCase]
 	public void GetCellType_ReturnsCorrectCellType()

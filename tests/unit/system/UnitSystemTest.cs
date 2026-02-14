@@ -253,8 +253,8 @@ public class UnitSystemTest
         map.AddWalkableCell(1, 0, 0);
         map.AddUnit(unit);
 
-        List<(int, int, int)> reachable = unit.GetReachableCellsForSkills(map, skill);
-        AssertThat(reachable.Contains((1, 0, 0))).IsTrue();
+        List<Vector3I> reachable = unit.GetReachableCellsForSkills(map, skill);
+        AssertThat(reachable.Contains(new Vector3I(1, 0, 0))).IsTrue();
     }
 
     [TestCase]

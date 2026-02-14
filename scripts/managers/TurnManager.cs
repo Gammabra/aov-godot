@@ -31,28 +31,28 @@ public partial class TurnManager : BaseManager
 
 	#region Private Properties
 
-    /// <summary>
-    ///     Singleton instance of the <see cref="TurnManager" />.
-    ///     Ensures only one instance exists in the scene tree.
-    /// </summary>
-    private new static TurnManager? Instance { get; set; }
+	/// <summary>
+	///     Singleton instance of the <see cref="TurnManager" />.
+	///     Ensures only one instance exists in the scene tree.
+	/// </summary>
+	private new static TurnManager? Instance { get; set; }
 
 	#endregion
 
 	#region Public Properties
 
-    /// <summary>
-    ///     Triggered when the player's turn begins.
+	/// <summary>
+	///     Triggered when the player's turn begins.
     /// </summary>
     public event Action? OnPlayerTurn;
 
     /// <summary>
-    ///     Triggered when the player's turn ends.
-    /// </summary>
-    public event Action? OnPlayerTurnEnd;
+	///     Triggered when the player's turn ends.
+	/// </summary>
+	public event Action? OnPlayerTurnEnd;
 
-    /// <summary>
-    ///     Triggered when the enemy's turn ends
+	/// <summary>
+	///     Triggered when the enemy's turn ends
     /// </summary>
     public event Action? OnEnemyTurnEnd;
 
@@ -191,37 +191,37 @@ public partial class TurnManager : BaseManager
     /// <param name="playerUnits">List of all player-controlled units.</param>
     /// <param name="enemyUnits">List of all enemy-controlled units.</param>
     /// <remarks>
-    ///     The order is determined by each unit's <see cref="UnitSystem.BaseSpeed" /> value,
-    ///     sorted from highest to lowest.
-    /// </remarks>
-    public void InitializeTurnOrder(List<UnitSystem> playerUnits, List<UnitSystem> enemyUnits)
-    {
-        foreach (UnitSystem unit in playerUnits)
-            _unitsTurnOrder.Add(
-                new KeyValuePair<UnitSystem, AovDataStructures.TurnState>(unit, AovDataStructures.TurnState.PlayerTurn)
-            );
-        foreach (UnitSystem unit in enemyUnits)
-            _unitsTurnOrder.Add(
-                new KeyValuePair<UnitSystem, AovDataStructures.TurnState>(unit, AovDataStructures.TurnState.EnemyTurn)
-            );
-        _unitsTurnOrder = _unitsTurnOrder.OrderByDescending(unit => unit.Key.BaseSpeed).ToList();
+	///     The order is determined by each unit's <see cref="UnitSystem.BaseSpeed" /> value,
+	///     sorted from highest to lowest.
+	/// </remarks>
+	public void InitializeTurnOrder(List<UnitSystem> playerUnits, List<UnitSystem> enemyUnits)
+	{
+		foreach (UnitSystem unit in playerUnits)
+			_unitsTurnOrder.Add(
+				new KeyValuePair<UnitSystem, AovDataStructures.TurnState>(unit, AovDataStructures.TurnState.PlayerTurn)
+			);
+		foreach (UnitSystem unit in enemyUnits)
+			_unitsTurnOrder.Add(
+				new KeyValuePair<UnitSystem, AovDataStructures.TurnState>(unit, AovDataStructures.TurnState.EnemyTurn)
+			);
+		_unitsTurnOrder = _unitsTurnOrder.OrderByDescending(unit => unit.Key.BaseSpeed).ToList();
 
-        GD.Print("Turn order initialized:");
-        foreach (KeyValuePair<UnitSystem, AovDataStructures.TurnState> unit in _unitsTurnOrder)
-            GD.Print($"{unit.Key.Name} (Speed: {unit.Key.BaseSpeed})");
-    }
+		GD.Print("Turn order initialized:");
+		foreach (KeyValuePair<UnitSystem, AovDataStructures.TurnState> unit in _unitsTurnOrder)
+			GD.Print($"{unit.Key.Name} (Speed: {unit.Key.BaseSpeed})");
+	}
 
-    /// <summary>
-    ///     Starts the turn-based battle loop asynchronously.
-    /// </summary>
-    /// <returns>A task representing the battle loop’s lifetime.</returns>
-    public async Task StartBattle()
-    {
-        GD.Print("Starting Battle");
-        _currentTurnState = _unitsTurnOrder[_currentIndex].Value;
-        _turn++;
-        await Task.Run(async () => await ProcessTurn());
-    }
+	/// <summary>
+	///     Starts the turn-based battle loop asynchronously.
+	/// </summary>
+	/// <returns>A task representing the battle loop’s lifetime.</returns>
+	public async Task StartBattle()
+	{
+		GD.Print("Starting Battle");
+		_currentTurnState = _unitsTurnOrder[_currentIndex].Value;
+		_turn++;
+		await Task.Run(async () => await ProcessTurn());
+	}
 
 	/// <summary>
 	/// Gets the unit currently taking its turn.

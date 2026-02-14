@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using AshesOfVelsingrad.Systems;
@@ -287,7 +288,7 @@ public partial class GameManager : BaseManager
         var reachableTuples = _turnManagerContainer
             .GetCurrentUnit()
             .GetReachableCellsForSkills(_mapSystemContainer, _selectedSkill);
-        _currentUnitReachableCellsForCurrentSelectedSkill = reachableTuples.ConvertAll(t => new Vector3I(t.Item1, t.Item2, t.Item3));
+        _currentUnitReachableCellsForCurrentSelectedSkill = reachableTuples.ConvertAll(t => new Vector3I(t.X, t.Y, t.Z));
         GD.Print(
             "Current Unit Reachable cells: " + string.Join(", ", _currentUnitReachableCellsForCurrentSelectedSkill)
         );

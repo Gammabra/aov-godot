@@ -84,17 +84,17 @@ public class AIUtilitiesTest
 		_aiUnit = AddNodeToTestRoot(new TestConcreteUnitSystem { Name = "AIEnemy" });
 		_aiUnit.CallInitialize();
 		_aiUnit.PossibleMovesRange = 3;
-		_mapSystem.CellsInformation[12].Unit = _aiUnit;
+		_mapSystem.CellsInformation[12].SetUnit(_aiUnit);
 
 		// Create player units
 		var player1 = AddNodeToTestRoot(new TestConcreteUnitSystem { Name = "Player1" });
 		player1.CallInitialize();
-		_mapSystem.CellsInformation[24].Unit = player1; // (4,0,4)
+		_mapSystem.CellsInformation[24].SetUnit(player1); // (4,0,4)
 		_playerUnits.Add(player1);
 
 		var ally1 = AddNodeToTestRoot(new TestConcreteUnitSystem { Name = "Ally1" });
 		ally1.CallInitialize();
-		_mapSystem.CellsInformation[0].Unit = ally1; // (0,0,0)
+		_mapSystem.CellsInformation[0].SetUnit(ally1); // (0,0,0)
 		_enemyUnits.Add(_aiUnit);
 		_enemyUnits.Add(ally1);
 
@@ -259,7 +259,7 @@ public class AIUtilitiesTest
 		// Add another ally near position (1,0,1)
 		var ally2 = AddNodeToTestRoot(new TestConcreteUnitSystem { Name = "Ally2" });
 		ally2.CallInitialize();
-		_mapSystem!.CellsInformation[6].Unit = ally2; // (1,0,1)
+		_mapSystem!.CellsInformation[6].SetUnit(ally2); // (1,0,1)
 		_enemyUnits.Add(ally2);
 
 		int count = AIUtilities.CountEnemyAlliesNear(
@@ -311,7 +311,7 @@ public class AIUtilitiesTest
 		// Add another player near (3,0,3)
 		var player2 = AddNodeToTestRoot(new TestConcreteUnitSystem { Name = "Player2" });
 		player2.CallInitialize();
-		_mapSystem!.CellsInformation[18].Unit = player2; // (3,0,3)
+		_mapSystem!.CellsInformation[18].SetUnit(player2); // (3,0,3)
 		_playerUnits.Add(player2);
 
 		int count = AIUtilities.CountPlayerUnitsNear(
@@ -399,7 +399,7 @@ public class AIUtilitiesTest
 		// Add a closer enemy
 		var closeEnemy = AddNodeToTestRoot(new TestConcreteUnitSystem { Name = "CloseEnemy" });
 		closeEnemy.CallInitialize();
-		_mapSystem!.CellsInformation[13].Unit = closeEnemy; // (3,0,2) - distance 1
+		_mapSystem!.CellsInformation[13].SetUnit(closeEnemy); // (3,0,2) - distance 1
 		_playerUnits.Add(closeEnemy);
 
 		var nearest = AIUtilities.FindNearestThreat(_aiUnit!, _battleState!);
@@ -441,7 +441,7 @@ public class AIUtilitiesTest
 		var closeEnemy = AddNodeToTestRoot(new TestConcreteUnitSystem { Name = "Close" });
 		closeEnemy.CallInitialize();
 		closeEnemy.BaseAtk = 20;
-		_mapSystem!.CellsInformation[13].Unit = closeEnemy; // (3,0,2)
+		_mapSystem!.CellsInformation[13].SetUnit(closeEnemy); // (3,0,2)
 		_playerUnits.Add(closeEnemy);
 
 		float threat = AIUtilities.CalculateThreatLevel(position, _battleState!, 3);
@@ -499,7 +499,7 @@ public class AIUtilitiesTest
 		// Add a close unit
 		var closeUnit = AddNodeToTestRoot(new TestConcreteUnitSystem { Name = "Close" });
 		closeUnit.CallInitialize();
-		_mapSystem!.CellsInformation[13].Unit = closeUnit; // (3,0,2) - distance 1
+		_mapSystem!.CellsInformation[13].SetUnit(closeUnit); // (3,0,2) - distance 1
 		_playerUnits.Add(closeUnit);
 
 		var unitsInRange = AIUtilities.GetUnitsInRange(

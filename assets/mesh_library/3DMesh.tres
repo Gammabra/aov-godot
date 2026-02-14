@@ -1,4 +1,4 @@
-[gd_resource type="MeshLibrary" load_steps=8 format=4 uid="uid://du0rgaffn5bkl"]
+[gd_resource type="MeshLibrary" format=4 uid="uid://du0rgaffn5bkl"]
 
 [ext_resource type="Texture2D" uid="uid://dg1je02s83nty" path="res://assets/KayKit_Prototype_Bits_1.0_FREE/KayKit_Prototype_Bits_1.0_FREE/Assets/gltf/prototypebits_texture.png" id="1_2b1qk"]
 

@@ -4,6 +4,7 @@ using System.Reflection;
 using AshesOfVelsingrad.AI;
 using AshesOfVelsingrad.Managers;
 using AshesOfVelsingrad.Systems;
+using AshesOfVelsingrad.Utilities;
 using GdUnit4;
 using Godot;
 using static GdUnit4.Assertions;
@@ -88,18 +89,18 @@ public class AIEvaluatorTest
 		_aiUnit.CallInitialize();
 		_aiUnit.PossibleMovesRange = 3;
 		_aiUnit.Mana = 100;
-		_mapSystem.CellsInformation[12].Unit = _aiUnit; // Index for (2,0,2)
+		_mapSystem.CellsInformation[12].SetUnit(_aiUnit); // Index for (2,0,2)
 
 		// Create player unit at (4, 0, 4) - diagonal
 		var player1 = AddNodeToTestRoot(new TestConcreteUnitSystem { Name = "Player1" });
 		player1.CallInitialize();
-		_mapSystem.CellsInformation[24].Unit = player1; // Index for (4,0,4)
+		_mapSystem.CellsInformation[24].SetUnit(player1); // Index for (4,0,4)
 		_playerUnits.Add(player1);
 
 		// Create ally unit at (0, 0, 0) - corner
 		var ally1 = AddNodeToTestRoot(new TestConcreteUnitSystem { Name = "Ally1" });
 		ally1.CallInitialize();
-		_mapSystem.CellsInformation[0].Unit = ally1; // Index for (0,0,0)
+		_mapSystem.CellsInformation[0].SetUnit(ally1); // Index for (0,0,0)
 		_enemyUnits.Add(_aiUnit);
 		_enemyUnits.Add(ally1);
 
@@ -121,8 +122,8 @@ public class AIEvaluatorTest
 	{
 		return new TestConcreteSkillSystem(
 			name: "Attack",
-			effect: EffectType.Damage,
-			target: TargetTypes.SingleEnemy,
+			effect: AovDataStructures.EffectType.Damage,
+			target: AovDataStructures.TargetTypes.SingleEnemy,
 			range: range,
 			manaCost: manaCost
 		);
@@ -132,8 +133,8 @@ public class AIEvaluatorTest
 	{
 		return new TestConcreteSkillSystem(
 			name: "Heal",
-			effect: EffectType.Heal,
-			target: TargetTypes.SingleAlly,
+			effect: AovDataStructures.EffectType.Heal,
+			target: AovDataStructures.TargetTypes.SingleAlly,
 			range: range,
 			manaCost: manaCost
 		);
@@ -250,7 +251,7 @@ public class AIEvaluatorTest
 		// Add more player units nearby to create threat
 		var player2 = AddNodeToTestRoot(new TestConcreteUnitSystem { Name = "Player2" });
 		player2.CallInitialize();
-		_mapSystem!.CellsInformation[13].Unit = player2; // Adjacent to AI
+		_mapSystem!.CellsInformation[13].SetUnit(player2); // Adjacent to AI
 		_playerUnits.Add(player2);
 
 		float score = _evaluator!.EvaluateOffensiveAction(
@@ -388,7 +389,7 @@ public class AIEvaluatorTest
 		// Add threats near current position
 		var player2 = AddNodeToTestRoot(new TestConcreteUnitSystem { Name = "Player2" });
 		player2.CallInitialize();
-		_mapSystem!.CellsInformation[13].Unit = player2; // Adjacent to (2,0,2)
+		_mapSystem!.CellsInformation[13].SetUnit(player2); // Adjacent to (2,0,2)
 		_playerUnits.Add(player2);
 
 		float score = _evaluator!.EvaluateDefensiveAction(
@@ -443,7 +444,7 @@ public class AIEvaluatorTest
         
         var closeTarget = AddNodeToTestRoot(new TestConcreteUnitSystem { Name = "Player2" });
         closeTarget.CallInitialize();
-        _mapSystem!.CellsInformation[13].Unit = closeTarget; // (3,0,2)
+        _mapSystem!.CellsInformation[13].SetUnit(closeTarget); // (3,0,2)
         _playerUnits.Add(closeTarget);
 
         var method = typeof(AIEvaluator).GetMethod("ScoreTarget",
@@ -481,7 +482,7 @@ public class AIEvaluatorTest
         var weakTarget = AddNodeToTestRoot(new TestConcreteUnitSystem { Name = "Player2" });
         weakTarget.CallInitialize();
         weakTarget.TakeDamage(95); // 5% HP
-        _mapSystem!.CellsInformation[23].Unit = weakTarget;
+        _mapSystem!.CellsInformation[23].SetUnit(weakTarget);
         _playerUnits.Add(weakTarget);
 
         var method = typeof(AIEvaluator).GetMethod("ScoreTarget",
@@ -651,9 +652,9 @@ public class AIEvaluatorTest
         player4.CallInitialize();
         
         // Surround position (2,0,2) with enemies
-        _mapSystem!.CellsInformation[11].Unit = player2; // (1,0,2) - adjacent
-        _mapSystem.CellsInformation[13].Unit = player3; // (3,0,2) - adjacent
-        _mapSystem.CellsInformation[7].Unit = player4; // (2,0,1) - adjacent
+        _mapSystem!.CellsInformation[11].SetUnit(player2); // (1,0,2) - adjacent
+        _mapSystem.CellsInformation[13].SetUnit(player3); // (3,0,2) - adjacent
+        _mapSystem.CellsInformation[7].SetUnit(player4); // (2,0,1) - adjacent
         _playerUnits.Add(player2);
         _playerUnits.Add(player3);
         _playerUnits.Add(player4);

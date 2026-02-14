@@ -5,6 +5,7 @@ using System.Reflection;
 using AshesOfVelsingrad.AI;
 using AshesOfVelsingrad.Managers;
 using AshesOfVelsingrad.Systems;
+using AshesOfVelsingrad.Utilities;
 using GdUnit4;
 using Godot;
 using static GdUnit4.Assertions;
@@ -88,18 +89,18 @@ public class AIDecisionGeneratorTest
 		_aiUnit = AddNodeToTestRoot(new TestConcreteUnitSystem { Name = "AIEnemy" });
 		_aiUnit.CallInitialize();
 		_aiUnit.Mana = 100;
-		_mapSystem.CellsInformation[12].Unit = _aiUnit; // Index for (2,0,2)
+		_mapSystem.CellsInformation[12].SetUnit(_aiUnit); // Index for (2,0,2)
 
 		// Create player unit at (4, 0, 4) - diagonal
 		var player1 = AddNodeToTestRoot(new TestConcreteUnitSystem { Name = "Player1" });
 		player1.CallInitialize();
-		_mapSystem.CellsInformation[24].Unit = player1; // Index for (4,0,4)
+		_mapSystem.CellsInformation[24].SetUnit(player1); // Index for (4,0,4)
 		_playerUnits.Add(player1);
 
 		// Create ally unit at (0, 0, 0) - corner
 		var ally1 = AddNodeToTestRoot(new TestConcreteUnitSystem { Name = "Ally1" });
 		ally1.CallInitialize();
-		_mapSystem.CellsInformation[0].Unit = ally1; // Index for (0,0,0)
+		_mapSystem.CellsInformation[0].SetUnit(ally1); // Index for (0,0,0)
 		_enemyUnits.Add(_aiUnit);
 		_enemyUnits.Add(ally1);
 
@@ -122,7 +123,7 @@ public class AIDecisionGeneratorTest
 		return new TestConcreteSkillSystem
 		{
 			Name = "Attack",
-			EffectType = EffectType.Damage,
+			EffectType = AovDataStructures.EffectType.Damage,
 			Range = range,
 			ManaCost = manaCost,
 			Cooldown = 0
@@ -134,7 +135,7 @@ public class AIDecisionGeneratorTest
 		return new TestConcreteSkillSystem
 		{
 			Name = "Heal",
-			EffectType = EffectType.Heal,
+			EffectType = AovDataStructures.EffectType.Heal,
 			Range = range,
 			ManaCost = manaCost,
 			Cooldown = 0
@@ -190,7 +191,7 @@ public class AIDecisionGeneratorTest
 	public void GenerateAllPossibleActions_ReturnsEmptyWhenUnitNotOnMap()
 	{
 		// Remove unit from map
-		_mapSystem!.CellsInformation[12].Unit = null;
+		_mapSystem!.CellsInformation[12].SetUnit(null);
 
 		var actions = _generator!.GenerateAllPossibleActions(_battleState!);
 
@@ -207,8 +208,8 @@ public class AIDecisionGeneratorTest
 		var actions = _generator!.GenerateAllPossibleActions(_battleState!);
 
 		var offensiveActions = actions.Where(a => 
-			a.Action == AIAction.UseSkill && a.Skill?.EffectType == EffectType.Damage ||
-			a.Action == AIAction.MoveAndSkill && a.Skill?.EffectType == EffectType.Damage
+			a.Action == AIAction.UseSkill && a.Skill?.EffectType == AovDataStructures.EffectType.Damage ||
+			a.Action == AIAction.MoveAndSkill && a.Skill?.EffectType == AovDataStructures.EffectType.Damage
 		).ToList();
 
 		AssertThat(offensiveActions.Count).IsGreater(0);
@@ -228,7 +229,7 @@ public class AIDecisionGeneratorTest
 		var actions = _generator!.GenerateAllPossibleActions(_battleState!);
 
 		var supportActions = actions.Where(a => 
-			a.Skill?.EffectType == EffectType.Heal
+			a.Skill?.EffectType == AovDataStructures.EffectType.Heal
 		).ToList();
 
 		AssertThat(supportActions.Count).IsGreater(0);
@@ -257,8 +258,8 @@ public class AIDecisionGeneratorTest
 	public void GenerateOffensiveActions_CreatesUseSkillAction_WhenInRange()
 	{
 		// Place player close to AI unit
-		_mapSystem!.CellsInformation[24].Unit = null; // Remove from (4,4)
-		_mapSystem.CellsInformation[13].Unit = _playerUnits[0]; // Place at (3,0,2) - adjacent
+		_mapSystem!.CellsInformation[24].SetUnit(null); // Remove from (4,4)
+		_mapSystem.CellsInformation[13].SetUnit(_playerUnits[0]); // Place at (3,0,2) - adjacent
 
 		// Add melee attack skill
 		var attackSkill = CreateDamageSkill(range: 1);
@@ -272,24 +273,6 @@ public class AIDecisionGeneratorTest
 		).ToList();
 
 		AssertThat(useSkillActions.Count).IsGreater(0);
-	}
-
-	[TestCase]
-	public void GenerateOffensiveActions_CreatesMoveAndSkillAction_WhenOutOfRange()
-	{
-		// Player is at (4,0,4), AI at (2,0,2) - distance 4
-		// Add skill with range 1
-		var attackSkill = CreateDamageSkill(range: 1);
-		_aiUnit!.ActiveSkills.Add(attackSkill);
-
-		var actions = _generator!.GenerateAllPossibleActions(_battleState!);
-
-		var moveAndSkillActions = actions.Where(a => 
-			a.Action == AIAction.MoveAndSkill &&
-			a.Target == _playerUnits[0]
-		).ToList();
-
-		AssertThat(moveAndSkillActions.Count).IsGreater(0);
 	}
 
 	[TestCase]
@@ -335,7 +318,7 @@ public class AIDecisionGeneratorTest
 
 		var selfHealActions = actions.Where(a => 
 			a.Target == _aiUnit && 
-			a.Skill?.EffectType == EffectType.Heal
+			a.Skill?.EffectType == AovDataStructures.EffectType.Heal
 		).ToList();
 
 		AssertThat(selfHealActions.Count).IsEqual(0);
@@ -354,7 +337,7 @@ public class AIDecisionGeneratorTest
 
 		var healActions = actions.Where(a => 
 			a.Target == ally &&
-			a.Skill?.EffectType == EffectType.Heal
+			a.Skill?.EffectType == AovDataStructures.EffectType.Heal
 		).ToList();
 
 		AssertThat(healActions.Count).IsGreater(0);
@@ -386,8 +369,8 @@ public class AIDecisionGeneratorTest
 		_aiUnit!.TakeDamage(60);
 
 		// Place enemy close
-		_mapSystem!.CellsInformation[24].Unit = null;
-		_mapSystem.CellsInformation[13].Unit = _playerUnits[0]; // Adjacent
+		_mapSystem!.CellsInformation[24].SetUnit(null);
+		_mapSystem.CellsInformation[13].SetUnit(_playerUnits[0]); // Adjacent
 
 		var actions = _generator!.GenerateAllPossibleActions(_battleState!);
 

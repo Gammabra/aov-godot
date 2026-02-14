@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Reflection;
 using AshesOfVelsingrad.Managers;
 using AshesOfVelsingrad.Systems;
+using AshesOfVelsingrad.Utilities;
 using Godot;
 
 namespace UnitTests;
@@ -173,11 +174,11 @@ public partial class TestConcreteGameManager : GameManager
 		method?.Invoke(this, null);
 	}
 
-	public GameOutcome GetGameOutcome()
+	public AovDataStructures.GameOutcome GetGameOutcome()
 	{
 		var field = typeof(GameManager).GetField("_gameOutcome",
 			BindingFlags.NonPublic | BindingFlags.Instance);
-		return (GameOutcome)field?.GetValue(this)!;
+		return (AovDataStructures.GameOutcome)field?.GetValue(this)!;
 	}
 
 	public List<UnitSystem> GetPlayerUnitsList()

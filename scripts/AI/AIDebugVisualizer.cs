@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using AshesOfVelsingrad.Managers;
 using AshesOfVelsingrad.Systems;
+using AshesOfVelsingrad.Utilities;
 using Godot;
 
 namespace AshesOfVelsingrad.AI;
@@ -372,15 +373,15 @@ public partial class AIDebugVisualizer : Node3D
 		return meshInstance;
 	}
 
-	private Color GetColorForEffectType(EffectType effectType)
+	private Color GetColorForEffectType(AovDataStructures.EffectType effectType)
 	{
 		return effectType switch
 		{
-			EffectType.Damage => new Color(1, 0, 0, 0.7f),     // Red
-			EffectType.Heal => new Color(0, 1, 0, 0.7f),       // Green
-			EffectType.Buff => new Color(0, 0, 1, 0.7f),       // Blue
-			EffectType.Debuff => new Color(0.5f, 0, 0.5f, 0.7f), // Purple
-			EffectType.Control => new Color(0.5f, 0.5f, 0, 0.7f), // Olive
+			AovDataStructures.EffectType.Damage => new Color(1, 0, 0, 0.7f),     // Red
+			AovDataStructures.EffectType.Heal => new Color(0, 1, 0, 0.7f),       // Green
+			AovDataStructures.EffectType.Buff => new Color(0, 0, 1, 0.7f),       // Blue
+			AovDataStructures.EffectType.Debuff => new Color(0.5f, 0, 0.5f, 0.7f), // Purple
+			AovDataStructures.EffectType.Control => new Color(0.5f, 0.5f, 0, 0.7f), // Olive
 			_ => new Color(1, 1, 1, 0.5f)                      // White
 		};
 	}

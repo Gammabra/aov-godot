@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using AshesOfVelsingrad.Managers;
 using AshesOfVelsingrad.Systems;
+using AshesOfVelsingrad.Utilities;
 using Godot;
 
 namespace AshesOfVelsingrad.AI;
@@ -118,10 +119,10 @@ public static class AIUtilities
 		}
 
 		// Terrain bonuses
-		CellType terrain = battleState.MapSystem.GetCellType(position);
+		AovDataStructures.CellType terrain = battleState.MapSystem.GetCellType(position);
 		switch (terrain)
 		{
-			case CellType.Grass:
+			case AovDataStructures.CellType.Grass:
 				score += 10f;
 				break;
 		}

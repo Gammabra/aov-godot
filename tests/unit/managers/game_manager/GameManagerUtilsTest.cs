@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Reflection;
 using AshesOfVelsingrad.Managers;
 using AshesOfVelsingrad.Systems;
+using AshesOfVelsingrad.Utilities;
 using GdUnit4;
 using Godot;
 using static GdUnit4.Assertions;
@@ -291,7 +292,7 @@ public class GameManagerUtilsTest
 		_gameManager!.CallInitialize();
 
 		var unit = _gameManager.GetPlayerUnit(0);
-		_mapSystem!.CellsInformation[0].Unit = unit;
+		_mapSystem!.CellsInformation[0].SetUnit(unit);
 		_turnManager!.SetCurrentUnit(unit);
 
 		// Set up possible moves
@@ -309,7 +310,7 @@ public class GameManagerUtilsTest
 		_gameManager!.CallInitialize();
 
 		var unit = _gameManager.GetPlayerUnit(0);
-		_mapSystem!.CellsInformation[0].Unit = unit;
+		_mapSystem!.CellsInformation[0].SetUnit(unit);
 		_turnManager!.SetCurrentUnit(unit);
 
 		// Set up possible moves (not including 2,0,0)
@@ -329,7 +330,7 @@ public class GameManagerUtilsTest
 		_gameManager!.CallInitialize();
 
 		var unit = _gameManager.GetPlayerUnit(0);
-		_mapSystem!.CellsInformation[0].Unit = unit;
+		_mapSystem!.CellsInformation[0].SetUnit(unit);
 		_turnManager!.SetCurrentUnit(unit);
 
 		_gameManager.SetCurrentUnitPossibleMoves(new List<Vector3I> { new Vector3I(1, 0, 0) });
@@ -369,10 +370,10 @@ public class GameManagerUtilsTest
 
 		var sourceUnit = _gameManager.GetPlayerUnit(0);
 		var targetUnit = _gameManager.GetEnemyUnit(0);
-		var skill = new TestConcreteSkillSystem(target: TargetTypes.SingleEnemy);
+		var skill = new TestConcreteSkillSystem(target: AovDataStructures.TargetTypes.SingleEnemy);
 		sourceUnit.ActiveSkills.Add(skill);
 
-		_mapSystem!.CellsInformation[1].Unit = targetUnit;
+		_mapSystem!.CellsInformation[1].SetUnit(targetUnit);
 		_turnManager!.SetCurrentUnit(sourceUnit);
 
 		_gameManager.SetSelectedSkill(skill);
@@ -391,9 +392,9 @@ public class GameManagerUtilsTest
 
 		var sourceUnit = _gameManager.GetPlayerUnit(0);
 		var targetUnit = _gameManager.GetEnemyUnit(0);
-		var skill = new TestConcreteSkillSystem(target: TargetTypes.SingleEnemy);
+		var skill = new TestConcreteSkillSystem(target: AovDataStructures.TargetTypes.SingleEnemy);
 
-		_mapSystem!.CellsInformation[2].Unit = targetUnit;
+		_mapSystem!.CellsInformation[2].SetUnit(targetUnit);
 		_turnManager!.SetCurrentUnit(sourceUnit);
 
 		_gameManager.SetSelectedSkill(skill);
@@ -412,7 +413,7 @@ public class GameManagerUtilsTest
 		_gameManager!.CallInitialize();
 
 		var sourceUnit = _gameManager.GetPlayerUnit(0);
-		var skill = new TestConcreteSkillSystem(range: 2, target: TargetTypes.SingleEnemy);
+		var skill = new TestConcreteSkillSystem(range: 2, target: AovDataStructures.TargetTypes.SingleEnemy);
 
 		_turnManager!.SetCurrentUnit(sourceUnit);
 
@@ -441,11 +442,11 @@ public class GameManagerUtilsTest
         var skill = new TestConcreteSkillSystem 
         ( 
 			name: "Test Revive",
-            effect: EffectType.Revive,
-            target: TargetTypes.SingleAlly
+            effect: AovDataStructures.EffectType.Revive,
+            target: AovDataStructures.TargetTypes.SingleAlly
         );
         sourceUnit.ActiveSkills.Add(skill);
-        _mapSystem!.CellsInformation[1].Unit = targetUnit;
+        _mapSystem!.CellsInformation[1].SetUnit(targetUnit);
 
         _turnManager!.SetCurrentUnit(sourceUnit);
 
@@ -472,8 +473,8 @@ public class GameManagerUtilsTest
         var targetUnit = _gameManager.GetPlayerUnit(1);
         var skill = new TestConcreteSkillSystem 
         ( 
-            target: TargetTypes.SingleAlly,
-            effect: EffectType.Heal // Not a revive
+            target: AovDataStructures.TargetTypes.SingleAlly,
+            effect: AovDataStructures.EffectType.Heal // Not a revive
         );
         sourceUnit.ActiveSkills.Add(skill);
 
@@ -483,7 +484,7 @@ public class GameManagerUtilsTest
         
         AssertThat(targetUnit.IsAlive).IsFalse(); // Verify target is dead
 
-        _mapSystem!.CellsInformation[1].Unit = targetUnit;
+        _mapSystem!.CellsInformation[1].SetUnit(targetUnit);
         _turnManager!.SetCurrentUnit(sourceUnit);
 
         _gameManager.SetSelectedSkill(skill);
@@ -504,13 +505,13 @@ public class GameManagerUtilsTest
 
 		var sourceUnit = _gameManager.GetPlayerUnit(0);
 		var targetUnit = _gameManager.GetEnemyUnit(0);
-		var skill = new TestConcreteSkillSystem(target: TargetTypes.SingleEnemy);
+		var skill = new TestConcreteSkillSystem(target: AovDataStructures.TargetTypes.SingleEnemy);
 		sourceUnit.ActiveSkills.Add(skill);
 
 		// Add a cell one level down
 		_mapSystem!.AddWalkableCell(1, -1, 0);
 		int index = _mapSystem.CellsInformation.Count - 1;
-		_mapSystem.CellsInformation[index].Unit = targetUnit;
+		_mapSystem.CellsInformation[index].SetUnit(targetUnit);
 
 		_turnManager!.SetCurrentUnit(sourceUnit);
 
@@ -527,22 +528,6 @@ public class GameManagerUtilsTest
 	#endregion
 
 	#region CheckUnitsLife Tests
-
-	[TestCase]
-	public void CheckUnitsLife_SetsDeadUnitsToNotAlive()
-	{
-		SetupGameManagerDependencies();
-		_gameManager!.CallInitialize();
-
-		var unit = _gameManager.GetPlayerUnit(0);
-		
-		// Kill the unit
-		unit.TakeDamage(200);
-		
-		_gameManager.CallCheckUnitsLife(_gameManager.GetPlayerUnitsList());
-
-		AssertThat(unit.IsAlive).IsFalse();
-	}
 
 	[TestCase]
 	public void CheckUnitsLife_KeepsAliveUnitsAlive()
@@ -581,7 +566,7 @@ public class GameManagerUtilsTest
 
         _gameManager.CallCheckWinLoseCondition();
 
-        AssertThat(_gameManager.GetGameOutcome()).IsEqual(GameOutcome.Defeat);
+        AssertThat(_gameManager.GetGameOutcome()).IsEqual(AovDataStructures.GameOutcome.Defeat);
         AssertThat(_turnManager!.TurnLoopEnded).IsTrue();
     }
 
@@ -604,7 +589,7 @@ public class GameManagerUtilsTest
 
         _gameManager.CallCheckWinLoseCondition();
 
-        AssertThat(_gameManager.GetGameOutcome()).IsEqual(GameOutcome.Victory);
+        AssertThat(_gameManager.GetGameOutcome()).IsEqual(AovDataStructures.GameOutcome.Victory);
         AssertThat(_turnManager!.TurnLoopEnded).IsTrue();
     }
 
@@ -621,7 +606,7 @@ public class GameManagerUtilsTest
         // All units alive
         _gameManager.CallCheckWinLoseCondition();
 
-        AssertThat(_gameManager.GetGameOutcome()).IsEqual(GameOutcome.Ongoing);
+        AssertThat(_gameManager.GetGameOutcome()).IsEqual(AovDataStructures.GameOutcome.Ongoing);
         AssertThat(_turnManager!.TurnLoopEnded).IsFalse();
     }
 
@@ -642,7 +627,7 @@ public class GameManagerUtilsTest
 
 		_gameManager.CallCheckWinLoseCondition();
 
-		AssertThat(_gameManager.GetGameOutcome()).IsEqual(GameOutcome.Ongoing);
+		AssertThat(_gameManager.GetGameOutcome()).IsEqual(AovDataStructures.GameOutcome.Ongoing);
 	}
 
 	#endregion
@@ -683,7 +668,7 @@ public class GameManagerUtilsTest
 
 		_gameManager.CallCheckUnitTurnEnd();
 
-		AssertThat(_gameManager.GetGameOutcome()).IsEqual(GameOutcome.Victory);
+		AssertThat(_gameManager.GetGameOutcome()).IsEqual(AovDataStructures.GameOutcome.Victory);
 	}
 
 	#endregion

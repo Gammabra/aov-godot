@@ -1,10 +1,9 @@
 using System;
 using System.Collections.Generic;
 using System.Reflection;
-using System.Threading.Tasks;
-using AshesOfVelsingrad.AI;
 using AshesOfVelsingrad.Managers;
 using AshesOfVelsingrad.Systems;
+using AshesOfVelsingrad.Utilities;
 using GdUnit4;
 using Godot;
 using static GdUnit4.Assertions;
@@ -15,437 +14,571 @@ namespace UnitTests;
 [RequireGodotRuntime]
 public class GameManagerTest
 {
-	private readonly List<Node> _testNodes = new();
-	private Node? _root;
-	private TestConcreteGameManager? _gameManager;
-	private TestConcreteMapSystem? _mapSystem;
-	private TestConcreteTurnManager? _turnManager;
-	private TestConcreteBattleInputSystem? _battleInputSystem;
-
-	#region Private Helper Methods
-
-	private T AddNodeToTestRoot<T>(T node)
-		where T : Node
-	{
-		if (_root == null)
-			throw new InvalidOperationException("Test root node is not initialized.");
-		_root.AddChild(node);
-		_testNodes.Add(node);
-		return node;
-	}
-
-	private void SetSingletonInstance<T>(T? instance)
-		where T : class
-	{
-		PropertyInfo? instanceProperty = typeof(T).GetProperty(
-			"Instance",
-			BindingFlags.Public | BindingFlags.Static | BindingFlags.NonPublic
-		);
-		instanceProperty?.SetValue(null, instance);
-	}
-
-	private void ResetSingletons()
-	{
-		SetSingletonInstance<GameManager>(null);
-		SetSingletonInstance<MapSystem>(null);
-		TestConcreteMapSystem.Instance = null;
-	}
-
-	private void SetupGameManagerDependencies()
-	{
-		// Create map system
-		_mapSystem = AddNodeToTestRoot(new TestConcreteMapSystem());
-		_mapSystem.CallInitialize();
-		_mapSystem.AddWalkableCell(0, 0, 0);
-		_mapSystem.AddWalkableCell(1, 0, 0);
-		_mapSystem.AddWalkableCell(2, 0, 0);
-
-		// Create turn manager
-		_turnManager = AddNodeToTestRoot(new TestConcreteTurnManager());
-
-		// Create battle input system
-		_battleInputSystem = AddNodeToTestRoot(new TestConcreteBattleInputSystem());
-
-		// Create player and enemy unit containers
-		Node playerUnitsContainer = AddNodeToTestRoot(new Node { Name = "PlayerUnits" });
-		Node enemyUnitsContainer = AddNodeToTestRoot(new Node { Name = "EnemyUnits" });
-
-		// Create test units (create + parent directly into containers)
-        var playerUnit = new TestConcreteUnitSystem { Name = "PlayerUnit1" };
-        var enemyUnit = new TestConcreteUnitSystem { Name = "EnemyUnit1" };
-
-        playerUnitsContainer.AddChild(playerUnit);
-        enemyUnitsContainer.AddChild(enemyUnit);
-
-        // Track nodes for teardown
-        _testNodes.Add(playerUnit);
-        _testNodes.Add(enemyUnit);
-
-        // Initialize after parenting
-        playerUnit.CallInitialize();
-        enemyUnit.CallInitialize();
-
-		// Create game manager
-		_gameManager = AddNodeToTestRoot(new TestConcreteGameManager());
-		
-		// Set up node paths
-		_gameManager.SetNodePaths(
-			playerUnitsContainer.GetPath(),
-			enemyUnitsContainer.GetPath(),
-			_mapSystem.GetPath(),
-			_turnManager.GetPath(),
-			_battleInputSystem.GetPath()
-		);
-	}
-
-	#endregion
-
-	#region Setup and Teardown
-
-	[BeforeTest]
-	public void Setup()
-	{
-		ResetSingletons();
-		_testNodes.Clear();
-
-		_root = new Node { Name = "TestRoot" };
-		((SceneTree)Engine.GetMainLoop()).Root.AddChild(_root);
-		_testNodes.Add(_root);
-	}
-
-	[AfterTest]
-	public void TearDown()
-	{
-		foreach (Node node in _testNodes)
-		{
-			if (GodotObject.IsInstanceValid(node) && !node.IsQueuedForDeletion())
-				node.QueueFree();
-		}
-
-		_testNodes.Clear();
-		ResetSingletons();
-	}
-
-	#endregion
-
-	#region Initialization Tests
-
-	[TestCase]
-	public void Initialize_SetsSingletonInstance()
-	{
-		SetupGameManagerDependencies();
-		_gameManager!.CallInitialize();
-
-		AssertThat(_gameManager.IsInitialized).IsTrue();
-	}
-
-	[TestCase]
-	public void Initialize_CreatesAIManager()
-	{
-		SetupGameManagerDependencies();
-		_gameManager!.CallInitialize();
-
-		AssertThat(_gameManager.AIManager).IsNotNull();
-	}
-
-	[TestCase]
-	public void Initialize_LoadsUnits()
-	{
-		SetupGameManagerDependencies();
-		_gameManager!.CallInitialize();
-
-		AssertThat(_gameManager.PlayerUnitsCount).IsGreater(0);
-		AssertThat(_gameManager.EnemyUnitsCount).IsGreater(0);
-	}
-
-	[TestCase]
-	public void Initialize_ConnectsBattleInputSignals()
-	{
-		SetupGameManagerDependencies();
-		_gameManager!.CallInitialize();
-
-		// Verify signals are connected by triggering them
-		AssertThat(_battleInputSystem!.IsConnected(
-			TestConcreteBattleInputSystem.SignalName.OnPassTurnPressed,
-			Callable.From(() => { })
-		)).IsFalse(); // We can't easily verify this without reflection, so just check manager initialized
-		
-		AssertThat(_gameManager.IsInitialized).IsTrue();
-	}
-
-	[TestCase]
-	public void Initialize_SingletonPattern_PreventsMultipleInstances()
-	{
-		SetupGameManagerDependencies();
-		_gameManager!.CallInitialize();
-
-		var secondManager = AddNodeToTestRoot(new TestConcreteGameManager());
-		secondManager.SetNodePaths(
-			new NodePath("PlayerUnits"),
-			new NodePath("EnemyUnits"),
-			_mapSystem!.GetPath(),
-			_turnManager!.GetPath(),
-			_battleInputSystem!.GetPath()
-		);
-		secondManager.CallInitialize();
-
-		AssertThat(secondManager.IsQueuedForDeletion()).IsTrue();
-	}
-
-	#endregion
-
-	#region MoveUnit Tests
-
-	[TestCase]
-	public void MoveUnit_MovesUnitToCorrectPosition()
-	{
-		SetupGameManagerDependencies();
-		_gameManager!.CallInitialize();
-
-		// Set up a unit at position (0,0,0)
-		var unit = _gameManager.GetPlayerUnit(0);
-		_mapSystem!.CellsInformation[0].Unit = unit;
-		_turnManager!.SetCurrentUnit(unit);
-
-		// Move to (1,0,0)
-		_gameManager.MoveUnit(new Vector3I(1, 0, 0));
-
-		AssertThat(_mapSystem.GetUnitAt(1, 0, 0)).IsEqual(unit);
-		AssertThat(_gameManager.UnitMoved).IsTrue();
-	}
-
-	[TestCase]
-	public void MoveUnit_DoesNotMoveIfAlreadyMoved()
-	{
-		SetupGameManagerDependencies();
-		_gameManager!.CallInitialize();
-
-		var unit = _gameManager.GetPlayerUnit(0);
-		_mapSystem!.CellsInformation[0].Unit = unit;
-		_turnManager!.SetCurrentUnit(unit);
-
-		// Move once
-		_gameManager.MoveUnit(new Vector3I(1, 0, 0));
-		
-		// Try to move again
-		_gameManager.MoveUnit(new Vector3I(2, 0, 0));
-
-		// Unit should still be at (1,0,0)
-		AssertThat(_mapSystem.GetUnitAt(1, 0, 0)).IsEqual(unit);
-		AssertThat(_mapSystem.GetUnitAt(2, 0, 0)).IsNull();
-	}
-
-	[TestCase]
-	public void MoveUnit_HandlesNullMapSystemGracefully()
-	{
-		SetupGameManagerDependencies();
-		_gameManager!.CallInitialize();
-		_gameManager.ClearMapSystem();
-
-		// Should not throw
-		_gameManager.MoveUnit(new Vector3I(1, 0, 0));
-		
-		AssertThat(_gameManager.UnitMoved).IsFalse();
-	}
-
-	[TestCase]
-	public void MoveUnit_HandlesNullTurnManagerGracefully()
-	{
-		SetupGameManagerDependencies();
-		_gameManager!.CallInitialize();
-		_gameManager.ClearTurnManager();
-
-		// Should not throw
-		_gameManager.MoveUnit(new Vector3I(1, 0, 0));
-		
-		AssertThat(_gameManager.UnitMoved).IsFalse();
-	}
-
-	#endregion
-
-	#region UseSkill Tests
-
-	[TestCase]
-	public void UseSkill_SingleEnemy_UsesSkillOnTarget()
-	{
-		SetupGameManagerDependencies();
-		_gameManager!.CallInitialize();
-
-		var sourceUnit = _gameManager.GetPlayerUnit(0);
-		var targetUnit = _gameManager.GetEnemyUnit(0);
-		var skill = new TestConcreteSkillSystem(target: TargetTypes.SingleEnemy);
-		sourceUnit.ActiveSkills.Add(skill);
-
-		_turnManager!.SetCurrentUnit(sourceUnit);
-
-		_gameManager.UseSkill(sourceUnit, targetUnit, skill);
-
-		AssertThat(skill.WasUsed).IsTrue();
-	}
-
-	[TestCase]
-	public void UseSkill_SingleAlly_UsesSkillOnAlly()
-	{
-		SetupGameManagerDependencies();
-		_gameManager!.CallInitialize();
-
-		var sourceUnit = _gameManager.GetPlayerUnit(0);
-		var allyUnit = _gameManager.GetPlayerUnit(0); // Same unit (self-heal)
-		var skill = new TestConcreteSkillSystem(target: TargetTypes.SingleAlly);
-		sourceUnit.ActiveSkills.Add(skill);
-
-		_turnManager!.SetCurrentUnit(sourceUnit);
-
-		_gameManager.UseSkill(sourceUnit, allyUnit, skill);
-
-		AssertThat(skill.WasUsed).IsTrue();
-	}
-
-	[TestCase]
-	public void UseSkill_AllEnemies_TargetsAllEnemyUnits()
-	{
-		SetupGameManagerDependencies();
-		_gameManager!.CallInitialize();
-
-		var sourceUnit = _gameManager.GetPlayerUnit(0);
-		var targetUnit = _gameManager.GetEnemyUnit(0); // Just one to trigger the check
-		var skill = new TestConcreteSkillSystem(target: TargetTypes.AllEnemies);
-		sourceUnit.ActiveSkills.Add(skill);
-
-		_turnManager!.SetCurrentUnit(sourceUnit);
-
-		_gameManager.UseSkill(sourceUnit, targetUnit, skill);
-
-		AssertThat(skill.WasUsed).IsTrue();
-	}
-
-	[TestCase]
-	public void UseSkill_InvalidTarget_DoesNotUseSkill()
-	{
-		SetupGameManagerDependencies();
-		_gameManager!.CallInitialize();
-
-		var sourceUnit = _gameManager.GetPlayerUnit(0);
-		var wrongTargetUnit = _gameManager.GetPlayerUnit(0); // Player targeting player with enemy skill
-		var skill = new TestConcreteSkillSystem(target: TargetTypes.SingleEnemy);
-		sourceUnit.ActiveSkills.Add(skill);
-
-		_turnManager!.SetCurrentUnit(sourceUnit);
-
-		_gameManager.UseSkill(sourceUnit, wrongTargetUnit, skill);
-
-		AssertThat(skill.WasUsed).IsFalse();
-	}
-
-	[TestCase]
-	public void UseSkill_HandlesNullTurnManagerGracefully()
-	{
-		SetupGameManagerDependencies();
-		_gameManager!.CallInitialize();
-		_gameManager.ClearTurnManager();
-
-		var sourceUnit = _gameManager.GetPlayerUnit(0);
-		var targetUnit = _gameManager.GetEnemyUnit(0);
-		var skill = new TestConcreteSkillSystem();
-
-		// Should not throw
-		_gameManager.UseSkill(sourceUnit, targetUnit, skill);
-		
-		AssertThat(skill.WasUsed).IsFalse();
-	}
-
-	#endregion
-
-	#region AI Manager Tests
-
-	[TestCase]
-	public void AIManager_IsCreatedDuringInitialization()
-	{
-		SetupGameManagerDependencies();
-		_gameManager!.CallInitialize();
-
-		AssertThat(_gameManager.AIManager).IsNotNull();
-	}
-
-	[TestCase]
-	public void AIManager_HasCorrectUnitReferences()
-	{
-		SetupGameManagerDependencies();
-		_gameManager!.CallInitialize();
-
-		var alivePlayerUnits = _gameManager.AIManager!.GetAlivePlayerUnits();
-		var aliveEnemyUnits = _gameManager.AIManager.GetAliveEnemyUnits();
-
-		AssertThat(alivePlayerUnits.Count).IsGreater(0);
-		AssertThat(aliveEnemyUnits.Count).IsGreater(0);
-	}
-
-	#endregion
-
-	#region Debug Methods Tests
-
-	[TestCase]
-	public void EnableThreatMapDebug_CanBeToggled()
-	{
-		SetupGameManagerDependencies();
-		_gameManager!.CallInitialize();
-
-		_gameManager.EnableThreatMapDebug = true;
-		AssertThat(_gameManager.EnableThreatMapDebug).IsTrue();
-
-		_gameManager.EnableThreatMapDebug = false;
-		AssertThat(_gameManager.EnableThreatMapDebug).IsFalse();
-	}
-
-	#endregion
-
-	#region Edge Cases and Error Handling
-
-	[TestCase]
-	public void MoveUnit_UpdatesGlobalPosition()
-	{
-		SetupGameManagerDependencies();
-		_gameManager!.CallInitialize();
-
-		var unit = _gameManager.GetPlayerUnit(0);
-		_mapSystem!.CellsInformation[0].Unit = unit;
-		_turnManager!.SetCurrentUnit(unit);
-
-		Vector3 originalPosition = unit.GlobalPosition;
-		_gameManager.MoveUnit(new Vector3I(1, 0, 0));
-
-		// Position should have changed
-		AssertThat(unit.GlobalPosition).IsNotEqual(originalPosition);
-	}
-
-	[TestCase]
-	public void GameManager_HandlesEmptyUnitContainers()
-	{
-		// Create game manager with empty unit containers
-		Node emptyPlayerContainer = AddNodeToTestRoot(new Node { Name = "EmptyPlayers" });
-		Node emptyEnemyContainer = AddNodeToTestRoot(new Node { Name = "EmptyEnemies" });
-
-		_mapSystem = AddNodeToTestRoot(new TestConcreteMapSystem());
-		_mapSystem.CallInitialize();
-
-		_turnManager = AddNodeToTestRoot(new TestConcreteTurnManager());
-		_battleInputSystem = AddNodeToTestRoot(new TestConcreteBattleInputSystem());
-
-		var gameManager = AddNodeToTestRoot(new TestConcreteGameManager());
-		gameManager.SetNodePaths(
-			emptyPlayerContainer.GetPath(),
-			emptyEnemyContainer.GetPath(),
-			_mapSystem.GetPath(),
-			_turnManager.GetPath(),
-			_battleInputSystem.GetPath()
-		);
-
-		// Should not throw
-		gameManager.CallInitialize();
-
-		AssertThat(gameManager.PlayerUnitsCount).IsEqual(0);
-		AssertThat(gameManager.EnemyUnitsCount).IsEqual(0);
-	}
-
-	#endregion
+    private Node? _root;
+    private readonly List<Node> _testNodes = new();
+
+    #region Helpers
+
+    private T AddNode<T>(T node)
+        where T : Node
+    {
+        if (_root == null)
+            throw new InvalidOperationException("Root is not initialized.");
+
+        _root.AddChild(node);
+        _testNodes.Add(node);
+        return node;
+    }
+
+    private void ResetSingleton()
+    {
+        typeof(GameManager)
+            .GetProperty("Instance", BindingFlags.Static | BindingFlags.NonPublic)!
+            .SetValue(null, null);
+    }
+
+    private TestConcreteUnitSystem CreateUnit(string name, float hp = 100, int speed = 4)
+    {
+        TestConcreteUnitSystem unit = new(hp: hp, baseSpeed: speed);
+        unit.Name = name;
+        return unit;
+    }
+
+    #endregion
+
+    #region Setup / Teardown
+
+    [BeforeTest]
+    public void Setup()
+    {
+        ResetSingleton();
+        _root = new Node { Name = "TestRoot" };
+        ((SceneTree)Engine.GetMainLoop()).Root.AddChild(_root);
+        _testNodes.Clear();
+        _testNodes.Add(_root);
+    }
+
+    [AfterTest]
+    public void Cleanup()
+    {
+        foreach (Node node in _testNodes)
+            node.QueueFree();
+        _testNodes.Clear();
+        ResetSingleton();
+    }
+
+    #endregion
+
+    #region Tests
+
+    [TestCase]
+    public void Initialize_SetsSingleton()
+    {
+        GD.Print("[TEST] Start Initialize_SetsSingleton");
+
+        GameManager manager = AddNode(new GameManager());
+        manager.Call("Initialize");
+
+        object? instance = typeof(GameManager)
+            .GetProperty("Instance", BindingFlags.Static | BindingFlags.NonPublic)!
+            .GetValue(null);
+
+        AssertThat(instance).IsNotNull();
+        AssertThat(instance).IsEqual(manager);
+    }
+
+    [TestCase]
+    public void LoadUnits_AddsUnitsFromContainers()
+    {
+        GD.Print("[TEST] Start LoadUnits_AddsUnitsFromContainers");
+
+        GameManager manager = AddNode(new GameManager());
+
+        Node playerContainer = AddNode(new Node());
+        Node enemyContainer = AddNode(new Node());
+
+        TestConcreteUnitSystem playerUnit = CreateUnit("Player");
+        playerContainer.AddChild(playerUnit);
+
+        TestConcreteUnitSystem enemyUnit = CreateUnit("Enemy");
+        enemyContainer.AddChild(enemyUnit);
+
+        manager.Set("_playerUnitsContainer", playerContainer);
+        manager.Set("_enemyUnitsContainer", enemyContainer);
+
+        manager.Call("LoadUnits");
+
+        AssertThat(playerContainer.GetChildCount()).IsEqual(1);
+        AssertThat(playerContainer.GetChildCount()).IsEqual(1);
+        AssertThat(GetPrivateField<List<UnitSystem>>(manager, "_playerUnits").Count).IsEqual(1);
+        AssertThat(GetPrivateField<List<UnitSystem>>(manager, "_enemyUnits").Count).IsEqual(1);
+    }
+
+    [TestCase]
+    public void CheckWinLoseCondition_SetsVictory_WhenNoEnemiesAlive()
+    {
+        GD.Print("[TEST] Start CheckWinLoseCondition_SetsVictory_WhenNoEnemiesAlive");
+
+        GameManager manager = AddNode(new GameManager());
+        Node playerContainer = AddNode(new Node());
+        Node enemyContainer = AddNode(new Node());
+        TestConcreteUnitSystem playerUnit = CreateUnit("Player");
+        TestConcreteUnitSystem enemyUnit = CreateUnit("Enemy", 0);
+
+        enemyUnit.SetIsAlive(false);
+
+        SetPrivateField(manager, "_gameOutcome", AovDataStructures.GameOutcome.Ongoing);
+        playerContainer.AddChild(playerUnit);
+        enemyContainer.AddChild(enemyUnit);
+
+        SetPrivateField(manager, "_playerUnitsContainer", playerContainer);
+        SetPrivateField(manager, "_enemyUnitsContainer", enemyContainer);
+
+        CallPrivateMethod(manager, "LoadUnits");
+
+        CallPrivateMethod(manager, "CheckWinLoseCondition");
+
+        AovDataStructures.GameOutcome outcome = GetPrivateField<AovDataStructures.GameOutcome>(manager, "_gameOutcome");
+        AssertThat(GetPrivateField<List<UnitSystem>>(manager, "_playerUnits")[0].IsAlive).IsTrue();
+        AssertThat(GetPrivateField<List<UnitSystem>>(manager, "_enemyUnits")[0].IsAlive).IsFalse();
+        AssertThat(outcome).IsEqual(AovDataStructures.GameOutcome.Victory);
+    }
+
+    [TestCase]
+    public void CheckWinLoseCondition_SetsDefeat_WhenNoPlayersAlive()
+    {
+        GD.Print("[TEST] Start CheckWinLoseCondition_SetsDefeat_WhenNoPlayersAlive");
+
+        GameManager manager = AddNode(new GameManager());
+        Node playerContainer = AddNode(new Node());
+        Node enemyContainer = AddNode(new Node());
+        TestConcreteUnitSystem playerUnit = CreateUnit("Player", 0);
+        TestConcreteUnitSystem enemyUnit = CreateUnit("Enemy");
+
+        playerUnit.SetIsAlive(false);
+
+        SetPrivateField(manager, "_gameOutcome", AovDataStructures.GameOutcome.Ongoing);
+        playerContainer.AddChild(playerUnit);
+        enemyContainer.AddChild(enemyUnit);
+
+        SetPrivateField(manager, "_playerUnitsContainer", playerContainer);
+        SetPrivateField(manager, "_enemyUnitsContainer", enemyContainer);
+
+        CallPrivateMethod(manager, "LoadUnits");
+
+        CallPrivateMethod(manager, "CheckWinLoseCondition");
+
+        AovDataStructures.GameOutcome outcome = GetPrivateField<AovDataStructures.GameOutcome>(manager, "_gameOutcome");
+        AssertThat(GetPrivateField<List<UnitSystem>>(manager, "_playerUnits")[0].IsAlive).IsFalse();
+        AssertThat(GetPrivateField<List<UnitSystem>>(manager, "_enemyUnits")[0].IsAlive).IsTrue();
+        AssertThat((int)outcome).IsEqual((int)AovDataStructures.GameOutcome.Defeat);
+    }
+
+    [TestCase]
+    public void CheckUnitsLife_SetsAllUnitsDead()
+    {
+        GD.Print("[TEST] Start CheckUnitsLife_SetsAllUnitsDead");
+
+        GameManager manager = AddNode(new GameManager());
+        Node playerContainer = AddNode(new Node());
+        Node enemyContainer = AddNode(new Node());
+        TestConcreteUnitSystem playerUnit = CreateUnit("Player", 0);
+        TestConcreteUnitSystem enemyUnit = CreateUnit("Enemy", 0);
+
+        SetPrivateField(manager, "_gameOutcome", AovDataStructures.GameOutcome.Ongoing);
+        playerContainer.AddChild(playerUnit);
+        enemyContainer.AddChild(enemyUnit);
+
+        SetPrivateField(manager, "_playerUnitsContainer", playerContainer);
+        SetPrivateField(manager, "_enemyUnitsContainer", enemyContainer);
+
+        CallPrivateMethod(manager, "LoadUnits");
+
+        List<UnitSystem> playerUnits = GetPrivateField<List<UnitSystem>>(manager, "_playerUnits");
+        List<UnitSystem> enemyUnits = GetPrivateField<List<UnitSystem>>(manager, "_enemyUnits");
+
+        List<UnitSystem> units = playerUnits;
+        units.AddRange(enemyUnits);
+
+        CallPrivateMethod(manager, "CheckUnitsLife", units);
+
+        AssertThat(playerUnit.IsAlive).IsFalse();
+        AssertThat(enemyUnit.IsAlive).IsFalse();
+    }
+
+    [TestCase]
+    public void CheckUnitTurnEnd_TriggersVictory()
+    {
+        GD.Print("[TEST] Start CheckUnitTurnEnd_TriggersVictory");
+
+        GameManager manager = AddNode(new GameManager());
+        Node playerContainer = AddNode(new Node());
+        Node enemyContainer = AddNode(new Node());
+        TestConcreteUnitSystem playerUnit = CreateUnit("Player");
+        TestConcreteUnitSystem enemyUnit = CreateUnit("Enemy", 0);
+
+        SetPrivateField(manager, "_gameOutcome", AovDataStructures.GameOutcome.Victory);
+        playerContainer.AddChild(playerUnit);
+        enemyContainer.AddChild(enemyUnit);
+
+        SetPrivateField(manager, "_playerUnitsContainer", playerContainer);
+        SetPrivateField(manager, "_enemyUnitsContainer", enemyContainer);
+
+        CallPrivateMethod(manager, "LoadUnits");
+
+        CallPrivateMethod(manager, "CheckUnitTurnEnd");
+
+        AovDataStructures.GameOutcome outcome = GetPrivateField<AovDataStructures.GameOutcome>(manager, "_gameOutcome");
+        AssertThat(GetPrivateField<List<UnitSystem>>(manager, "_playerUnits")[0].IsAlive).IsTrue();
+        AssertThat(GetPrivateField<List<UnitSystem>>(manager, "_enemyUnits")[0].IsAlive).IsFalse();
+        AssertThat(outcome).IsEqual(AovDataStructures.GameOutcome.Victory);
+    }
+
+    [TestCase]
+    public void HandlePlayerUnitMove_CellNotReachable_ReenablesInput()
+    {
+        GD.Print("[TEST] Start HandlePlayerUnitMove_CellNotReachable_ReenablesInput");
+
+        GameManager manager = AddNode(new GameManager());
+        TestConcreteMapSystem map = AddNode(new TestConcreteMapSystem());
+        BattleInputSystem inputSystem = AddNode(new BattleInputSystem());
+
+        SetPrivateField(manager, "_battleInputSystemContainer", inputSystem);
+        SetPrivateField(manager, "_mapSystemContainer", map);
+        SetPrivateField(
+            manager,
+            "_currentUnitPossibleMoves",
+            new List<Vector3I>()
+        );
+        CallPrivateMethod(
+            manager,
+            "HandlePlayerUnitMove",
+            new Vector3I(1, 0, 1)
+        );
+
+        AssertThat(GetPrivateField<bool>(inputSystem, "_inputEnabled")).IsTrue();
+    }
+
+    [TestCase]
+    public void HandlePlayerUnitMove_ValidMove()
+    {
+        GD.Print("[TEST] Start HandlePlayerUnitMove_ValidMove_ClearsPossibleMoves");
+
+        GameManager manager = AddNode(new GameManager());
+        BattleInputSystem inputSystem = AddNode(new BattleInputSystem());
+        TestConcreteMapSystem mapSystem = AddNode(new TestConcreteMapSystem());
+
+        SetPrivateField(manager, "_battleInputSystemContainer", inputSystem);
+        SetPrivateField(manager, "_mapSystemContainer", mapSystem);
+        SetPrivateField(
+            manager,
+            "_currentUnitPossibleMoves",
+            new List<Vector3I> { new Vector3I(1, 0, 1) }
+        );
+        CallPrivateMethod(
+            manager,
+            "HandlePlayerUnitMove",
+            new Vector3I(1, 0, 1)
+        );
+
+        AssertThat(GetPrivateField<bool>(inputSystem, "_inputEnabled")).IsTrue();
+    }
+
+    [TestCase]
+    public void HandlePlayerSelectTarget_CellNotReachable_ReenablesInput()
+    {
+        GD.Print("[TEST] Start HandlePlayerSelectTarget_CellNotReachable_ReenablesInput");
+
+        GameManager manager = AddNode(new GameManager());
+        BattleInputSystem inputSystem = AddNode(new BattleInputSystem());
+        TestConcreteMapSystem mapSystem = AddNode(new TestConcreteMapSystem());
+
+        SetPrivateField(manager, "_battleInputSystemContainer", inputSystem);
+        SetPrivateField(manager, "_mapSystemContainer", mapSystem);
+        SetPrivateField(
+            manager,
+            "_currentUnitReachableCellsForCurrentSelectedSkill",
+            new List<Vector3I>()
+        );
+        CallPrivateMethod(
+            manager,
+            "HandlePlayerSelectTarget",
+            new Vector3I(2, 0, 2)
+        );
+        AssertThat(GetPrivateField<bool>(inputSystem, "_inputEnabled")).IsTrue();
+    }
+
+    [TestCase]
+    public void MoveUnit_MapSystemNull_ReenablesInput()
+    {
+        GameManager manager = AddNode(new GameManager());
+        BattleInputSystem inputSystem = AddNode(new BattleInputSystem());
+
+        SetPrivateField(manager, "_battleInputSystemContainer", inputSystem);
+        SetPrivateField(manager, "_isPlayerTurn", true);
+
+        manager.MoveUnit(new Vector3I(1, 0, 1));
+
+        AssertThat(GetPrivateField<bool>(inputSystem, "_inputEnabled")).IsTrue();
+    }
+
+    [TestCase]
+    public void MoveUnit_AlreadyMoved_DoesNothing()
+    {
+        GameManager manager = AddNode(new GameManager());
+        BattleInputSystem inputSystem = AddNode(new BattleInputSystem());
+
+        SetPrivateField(manager, "_battleInputSystemContainer", inputSystem);
+        SetPrivateField(manager, "_unitMoved", true);
+        SetPrivateField(manager, "_isPlayerTurn", true);
+
+        manager.MoveUnit(new Vector3I(1, 0, 1));
+
+        AssertThat(GetPrivateField<bool>(manager, "_unitMoved")).IsTrue();
+        AssertThat(GetPrivateField<bool>(inputSystem, "_inputEnabled")).IsTrue();
+    }
+
+    [TestCase]
+    public void ActivatePlayerUnit()
+    {
+        GD.Print("[TEST] Start ActivatePlayerUnit");
+
+        GameManager manager = AddNode(new GameManager());
+        Node playerContainer = AddNode(new Node());
+        Node enemyContainer = AddNode(new Node());
+        TestConcreteUnitSystem playerUnit = CreateUnit("Player", speed: 2);
+        TestConcreteUnitSystem enemyUnit = CreateUnit("Enemy", 1);
+        BattleInputSystem inputSystem = AddNode(new BattleInputSystem());
+        TestConcreteMapSystem mapSystem = AddNode(new TestConcreteMapSystem());
+        TurnManager turnManager = new();
+
+        playerContainer.AddChild(playerUnit);
+        enemyContainer.AddChild(enemyUnit);
+        manager.AddChild(turnManager);
+
+        SetPrivateField(manager, "_playerUnitsContainer", playerContainer);
+        SetPrivateField(manager, "_enemyUnitsContainer", enemyContainer);
+        SetPrivateField(manager, "_battleInputSystemContainer", inputSystem);
+        SetPrivateField(manager, "_turnManagerContainer", turnManager);
+        SetPrivateField(manager, "_mapSystemContainer", mapSystem);
+
+        mapSystem.AddWalkableCell(0, 0, 0);
+        mapSystem.AddWalkableCell(1, 0, 0);
+        mapSystem.AddWalkableCell(0, 0, 1);
+        mapSystem.AddWalkableCell(1, 0, 1);
+        mapSystem.AddWalkableCell(-1, 0, 0);
+        mapSystem.AddWalkableCell(0, 0, -1);
+        mapSystem.AddWalkableCell(-1, 0, -1);
+        mapSystem.AddUnit(playerUnit);
+        SetPrivateField(manager, "_isPlayerTurn", false);
+        inputSystem.SetInputEnabled(false);
+
+        CallPrivateMethod(manager, "LoadUnits");
+        turnManager.InitializeTurnOrder(
+            GetPrivateField<List<UnitSystem>>(manager, "_playerUnits"),
+            GetPrivateField<List<UnitSystem>>(manager, "_enemyUnits")
+        );
+        CallPrivateMethod(manager, "ActivatePlayerUnit");
+
+        AssertThat(GetPrivateField<bool>(manager, "_isPlayerTurn")).IsTrue();
+        AssertThat(GetPrivateField<bool>(inputSystem, "_inputEnabled")).IsTrue();
+    }
+
+    [TestCase]
+    public void DeactivatePlayerUnit_And_Win()
+    {
+        GD.Print("[TEST] Start DeactivatePlayerUnit");
+
+        GameManager manager = AddNode(new GameManager());
+        Node playerContainer = AddNode(new Node());
+        Node enemyContainer = AddNode(new Node());
+        TestConcreteUnitSystem playerUnit = CreateUnit("Player", speed: 2);
+        TestConcreteUnitSystem enemyUnit = CreateUnit("Enemy", 0, 1);
+        BattleInputSystem inputSystem = AddNode(new BattleInputSystem());
+        TestConcreteMapSystem mapSystem = AddNode(new TestConcreteMapSystem());
+        TurnManager turnManager = new();
+
+        playerContainer.AddChild(playerUnit);
+        enemyContainer.AddChild(enemyUnit);
+        manager.AddChild(turnManager);
+
+        SetPrivateField(manager, "_playerUnitsContainer", playerContainer);
+        SetPrivateField(manager, "_enemyUnitsContainer", enemyContainer);
+        SetPrivateField(manager, "_battleInputSystemContainer", inputSystem);
+        SetPrivateField(manager, "_mapSystemContainer", mapSystem);
+        SetPrivateField(manager, "_turnManagerContainer", turnManager);
+
+        SetPrivateField(manager, "_clickOnMapContext", AovDataStructures.ClickOnMapContext.SelectUnitTarget);
+        SetPrivateField(manager, "_isPlayerTurn", true);
+        SetPrivateField(manager, "_selectedSkill", new TestConcreteSkillSystem());
+        SetPrivateField(manager, "_unitMoved", true);
+        List<Vector3I> tupleList = [];
+        tupleList.Add(new Vector3I(1, 1, 1));
+        SetPrivateField(manager, "_currentUnitPossibleMoves", tupleList);
+        SetPrivateField(manager, "_currentUnitReachableCellsForCurrentSelectedSkill", tupleList);
+        inputSystem.SetInputEnabled(true);
+
+        CallPrivateMethod(manager, "LoadUnits");
+        turnManager.InitializeTurnOrder(
+            GetPrivateField<List<UnitSystem>>(manager, "_playerUnits"),
+            GetPrivateField<List<UnitSystem>>(manager, "_enemyUnits")
+        );
+        CallPrivateMethod(manager, "DeactivatePlayerUnit");
+
+        AssertThat(GetPrivateField<AovDataStructures.ClickOnMapContext>(manager, "_clickOnMapContext"))
+            .IsEqual(AovDataStructures.ClickOnMapContext.MoveUnit);
+        AssertThat(GetPrivateField<bool>(manager, "_isPlayerTurn")).IsFalse();
+        AssertThat(GetPrivateField<SkillSystem?>(manager, "_selectedSkill")).IsNull();
+        AssertThat(GetPrivateField<bool>(manager, "_unitMoved")).IsFalse();
+        AssertThat(GetPrivateField<List<Vector3I>>(manager, "_currentUnitPossibleMoves").Count).IsEqual(0);
+        AssertThat(
+                GetPrivateField<List<Vector3I>>(manager, "_currentUnitReachableCellsForCurrentSelectedSkill")
+                    .Count
+            )
+            .IsEqual(0);
+        AssertThat(GetPrivateField<bool>(inputSystem, "_inputEnabled")).IsFalse();
+        AssertThat(playerUnit.IsAlive).IsTrue();
+        AssertThat(enemyUnit.IsAlive).IsFalse();
+        AssertThat(GetPrivateField<AovDataStructures.GameOutcome>(manager, "_gameOutcome"))
+            .IsEqual(AovDataStructures.GameOutcome.Victory);
+    }
+
+    [TestCase]
+    public void PlayerSelectedMove()
+    {
+        GD.Print("[TEST] Start DeactivatePlayerUnit");
+
+        GameManager manager = AddNode(new GameManager());
+
+        SetPrivateField(manager, "_clickOnMapContext", AovDataStructures.ClickOnMapContext.SelectUnitTarget);
+
+        CallPrivateMethod(manager, "PlayerSelectedMove");
+
+        AssertThat(GetPrivateField<AovDataStructures.ClickOnMapContext>(manager, "_clickOnMapContext"))
+            .IsEqual(AovDataStructures.ClickOnMapContext.MoveUnit);
+    }
+
+    [TestCase]
+    public void PlayerSelectedSkill_InvalidSkillId_DoesNothing()
+    {
+        GameManager manager = AddNode(new GameManager());
+        TurnManager turnManager = new();
+        TestConcreteMapSystem mapSystem = AddNode(new TestConcreteMapSystem());
+        TestConcreteUnitSystem unit = CreateUnit("Player");
+
+        manager.AddChild(turnManager);
+        unit.ActiveSkills.Clear();
+
+        SetPrivateField(manager, "_turnManagerContainer", turnManager);
+        SetPrivateField(manager, "_mapSystemContainer", mapSystem);
+
+        turnManager.InitializeTurnOrder(new List<UnitSystem> { unit }, new List<UnitSystem>());
+
+        CallPrivateMethod(manager, "PlayerSelectedSkill", 0);
+
+        AssertThat(GetPrivateField<SkillSystem?>(manager, "_selectedSkill")).IsNull();
+    }
+
+    [TestCase]
+    public void PlayerSelectedSkill_SkillOnCooldown_IsRejected()
+    {
+        GameManager manager = AddNode(new GameManager());
+        TurnManager turnManager = new();
+        TestConcreteMapSystem mapSystem = AddNode(new TestConcreteMapSystem());
+        TestConcreteSkillSystem skill = new(cooldown: 1);
+
+        manager.AddChild(turnManager);
+        skill.SetCooldown();
+
+        TestConcreteUnitSystem unit = CreateUnit("Player");
+        unit.ActiveSkills.Add(skill);
+
+        SetPrivateField(manager, "_turnManagerContainer", turnManager);
+        SetPrivateField(manager, "_mapSystemContainer", mapSystem);
+
+        turnManager.InitializeTurnOrder(new List<UnitSystem> { unit }, new List<UnitSystem>());
+
+        CallPrivateMethod(manager, "PlayerSelectedSkill", 0);
+
+        AssertThat(GetPrivateField<SkillSystem?>(manager, "_selectedSkill")).IsNull();
+    }
+
+    [TestCase]
+    public void EnemyTurnEnded_ResetsUnitMovedAndChecksTurnEnd()
+    {
+        GameManager manager = AddNode(new GameManager());
+        TurnManager turnManager = new();
+        TestConcreteUnitSystem enemy = CreateUnit("Enemy");
+
+        manager.AddChild(turnManager);
+        SetPrivateField(manager, "_turnManagerContainer", turnManager);
+        SetPrivateField(manager, "_unitMoved", true);
+
+        turnManager.InitializeTurnOrder(
+            new List<UnitSystem>(),
+            new List<UnitSystem> { enemy }
+        );
+
+        CallPrivateMethod(manager, "EnemyTurnEnded");
+
+        AssertThat(GetPrivateField<bool>(manager, "_unitMoved")).IsFalse();
+    }
+
+    [TestCase]
+    public void CurrentTurnEnded_ReducesAllCooldowns()
+    {
+        GameManager manager = AddNode(new GameManager());
+
+        TestConcreteSkillSystem skill1 = new(cooldown: 2);
+        skill1.SetCooldown();
+
+        TestConcreteSkillSystem skill2 = new(cooldown: 1);
+        skill2.SetCooldown();
+
+        TestConcreteUnitSystem player = CreateUnit("Player");
+        player.ActiveSkills.Add(skill1);
+
+        TestConcreteUnitSystem enemy = CreateUnit("Enemy");
+        enemy.ActiveSkills.Add(skill2);
+
+        SetPrivateField(manager, "_playerUnits", new List<UnitSystem> { player });
+        SetPrivateField(manager, "_enemyUnits", new List<UnitSystem> { enemy });
+
+        CallPrivateMethod(manager, "CurrentTurnEnded");
+
+        AssertThat(skill1.Cooldown).IsEqual(1);
+        AssertThat(skill2.Cooldown).IsEqual(0);
+    }
+
+    #endregion
+
+    #region Private Utilities
+
+    private static T GetPrivateField<T>(object obj, string field)
+    {
+        return (T)obj
+            .GetType()
+            .GetField(field, BindingFlags.Instance | BindingFlags.NonPublic)!
+            .GetValue(obj)!;
+    }
+
+    private static void SetPrivateField(object obj, string field, object value)
+    {
+        obj
+            .GetType()
+            .GetField(field, BindingFlags.Instance | BindingFlags.NonPublic)!
+            .SetValue(obj, value);
+    }
+
+    private static object? CallPrivateMethod(object obj, string methodName, params object?[] parameters)
+    {
+        MethodInfo method = obj
+                .GetType()
+                .GetMethod(methodName, BindingFlags.Instance | BindingFlags.NonPublic | BindingFlags.Static) ??
+            throw new InvalidOperationException($"Method '{methodName}' not found on type '{obj.GetType().Name}'.");
+
+        return method.Invoke(obj, parameters);
+    }
+
+    #endregion
 }

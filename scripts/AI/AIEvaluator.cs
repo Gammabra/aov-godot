@@ -1,6 +1,7 @@
 using System.Linq;
 using AshesOfVelsingrad.Managers;
 using AshesOfVelsingrad.Systems;
+using AshesOfVelsingrad.Utilities;
 using Godot;
 
 namespace AshesOfVelsingrad.AI;
@@ -93,7 +94,7 @@ public class AIEvaluator
 		// Urgency multiplier based on ally's health
 		float hpPercentage = ally.Hp / ally.MaxHp;
 		
-		if (skill.EffectType == EffectType.Heal)
+		if (skill.EffectType == AovDataStructures.EffectType.Heal)
 		{
 			if (hpPercentage < 0.2f)
 				score += 150f;
@@ -241,17 +242,17 @@ public class AIEvaluator
 		// Base score by effect type
 		switch (skill.EffectType)
 		{
-			case EffectType.Damage:
+			case AovDataStructures.EffectType.Damage:
 				score += ScoreDamageSkill(skill, target);
 				break;
-			case EffectType.Heal:
+			case AovDataStructures.EffectType.Heal:
 				score += ScoreHealSkill(skill, battleState);
 				break;
-			case EffectType.Buff:
+			case AovDataStructures.EffectType.Buff:
 				score += ScoreBuffSkill(skill, battleState);
 				break;
-			case EffectType.Debuff:
-			case EffectType.Control:
+			case AovDataStructures.EffectType.Debuff:
+			case AovDataStructures.EffectType.Control:
 				score += ScoreDebuffSkill(skill, target);
 				break;
 		}
@@ -344,7 +345,7 @@ public class AIEvaluator
 		if (target.BaseAtk > _unit.BaseAtk * 1.5f)
 			score += 20f;
 		
-		if (skill.EffectType == EffectType.Control && target.Hp > target.MaxHp * 0.7f)
+		if (skill.EffectType == AovDataStructures.EffectType.Control && target.Hp > target.MaxHp * 0.7f)
 			score += 15f;
 		
 		return score;
@@ -359,10 +360,10 @@ public class AIEvaluator
 	{
 		return _unit.Personality switch
 		{
-			AIPersonality.Aggressive => skill.EffectType == EffectType.Damage ? 1.3f : 0.8f,
-			AIPersonality.Defensive => skill.EffectType == EffectType.Heal ? 1.3f : 
-									skill.EffectType == EffectType.Buff ? 1.2f : 0.9f,
-			AIPersonality.Opportunistic => skill.EffectType == EffectType.Damage ? 1.2f : 1.0f,
+			AIPersonality.Aggressive => skill.EffectType == AovDataStructures.EffectType.Damage ? 1.3f : 0.8f,
+			AIPersonality.Defensive => skill.EffectType == AovDataStructures.EffectType.Heal ? 1.3f : 
+									skill.EffectType == AovDataStructures.EffectType.Buff ? 1.2f : 0.9f,
+			AIPersonality.Opportunistic => skill.EffectType == AovDataStructures.EffectType.Damage ? 1.2f : 1.0f,
 			AIPersonality.Balanced => 1.0f,
 			_ => 1.0f
 		};
@@ -381,7 +382,7 @@ public class AIEvaluator
 		if (targetPos == null) return 0;
 		
 		int count = 0;
-		var targetList = skill.TargetType == TargetTypes.AllEnemies || skill.TargetType == TargetTypes.SingleEnemy
+		var targetList = skill.TargetType == AovDataStructures.TargetTypes.AllEnemies || skill.TargetType == AovDataStructures.TargetTypes.SingleEnemy
 			? battleState.PlayerUnits 
 			: battleState.EnemyUnits;
 		
@@ -428,10 +429,10 @@ public class AIEvaluator
 			score += (20 - distance) * 5f;
 
 		// Terrain bonuses
-		CellType terrain = battleState.MapSystem.GetCellType(position);
+		AovDataStructures.CellType terrain = battleState.MapSystem.GetCellType(position);
 		switch (terrain)
 		{
-			case CellType.Grass:
+			case AovDataStructures.CellType.Grass:
 				score += 10f;
 				break;
 		}

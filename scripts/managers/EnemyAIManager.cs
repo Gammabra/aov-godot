@@ -78,6 +78,9 @@ public class EnemyAIManager
 
 		GD.Print($"EnemyAIManager: {unit.Name} is thinking...");
 
+		// Wait one frame to ensure children are loaded
+		await unit.ToSignal(unit.GetTree(), SceneTree.SignalName.ProcessFrame);
+
 		// Get the AI component attached to this unit
 		EnemyAIBehavior? aiBehavior = GetAIBehavior(unit);
 		

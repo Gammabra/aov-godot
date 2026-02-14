@@ -206,6 +206,13 @@ public abstract partial class MapSystem : GridMap
             }
     }
 
+    public virtual AovDataStructures.CellType GetCellType(Vector3I position)
+    {
+        int index = GetListIndex(position.X, position.Y, position.Z);
+
+        return CellsInformation[index].CellType;
+    }
+
     #endregion
 
     #region Class Destroyer

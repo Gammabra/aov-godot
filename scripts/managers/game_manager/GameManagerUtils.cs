@@ -187,6 +187,7 @@ public partial class GameManager
     /// </summary>
     private static void CheckUnitsLife(List<UnitSystem> units)
     {
+        GD.Print("Checking units life...");
         foreach (UnitSystem unit in units)
             unit.SetIsAlive(false);
     }

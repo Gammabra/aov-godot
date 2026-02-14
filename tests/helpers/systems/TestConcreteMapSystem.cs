@@ -12,6 +12,16 @@ public sealed partial class TestConcreteMapSystem : MapSystem
     public bool IsInitialized { get; private set; }
     public bool IsCleanedUp { get; private set; }
 
+    public new Vector3I MapCellSize
+    {
+        get => MapCellSize;
+        set
+        {
+            var property = typeof(MapSystem).GetProperty("MapCellSize");
+            property?.SetValue(this, value);
+        }
+    }
+
     private readonly List<Vector3I> _manualCells = new();
 
     public TestConcreteMapSystem()
@@ -34,7 +44,7 @@ public sealed partial class TestConcreteMapSystem : MapSystem
         MapSystem.Instance = this;
         Instance = this;
 
-        MapCellSize = new Vector3(1, 1, 1);
+        MapCellSize = new Vector3I(1, 1, 1);
         IsInitialized = true;
 
         GD.Print("[TEST] TestConcreteMapSystem initialized");
@@ -45,14 +55,14 @@ public sealed partial class TestConcreteMapSystem : MapSystem
         // Ensure we have enough cells
         while (CellsInformation.Count < 2)
         {
-            CellsInformation.Add(new CellInformation(CellsInformation.Count, 0, 0, CellType.Grass, true));
+            CellsInformation.Add(new CellInformation(CellsInformation.Count, 0, 0, AovDataStructures.CellType.Grass, true));
         }
         
         if (playerUnits.Count > 0)
-            CellsInformation[0].Unit = playerUnits[0];
+            CellsInformation[0].SetUnit(playerUnits[0]);
         
         if (enemyUnits.Count > 0)
-            CellsInformation[1].Unit = enemyUnits[0];
+            CellsInformation[1].SetUnit(enemyUnits[0]);
     }
 
     public void AddUnit(UnitSystem unit)

@@ -2,6 +2,7 @@ using AshesOfVelsingrad.Systems;
 using Godot;
 using System.Collections.Generic;
 using AshesOfVelsingrad.AI;
+using AshesOfVelsingrad.Utilities;
 
 namespace AshesOfVelsingrad;
 
@@ -28,7 +29,7 @@ public sealed partial class EnemyArcher : UnitSystem
 		IsAlive = true;
 		PossibleMovesRange = 3;
 		Curse = 0;
-		Type = UnitType.Archer;
+		Type = AovDataStructures.UnitType.Archer;
 		Personality = AIPersonality.Defensive;
 
 		// Initialize skills
@@ -68,12 +69,12 @@ public class BasicAttackSkill : SkillSystem
 		Cooldown = 0;
 		Range = 4; // Archer has longer range
 		AreaEffect = new List<Vector3I> { new Vector3I(0, 0, 0) }; // Single target
-		MagicType = MagicType.None;
-		EffectType = EffectType.Damage;
-		TargetType = TargetTypes.SingleEnemy;
+		MagicType = AovDataStructures.MagicType.None;
+		EffectType = AovDataStructures.EffectType.Damage;
+		TargetType = AovDataStructures.TargetTypes.SingleEnemy;
 	}
 
-	public override void Use(List<UnitSystem> targets, MapSystem? map)
+	public override void Use(UnitSystem caster, List<UnitSystem> targets, MapSystem? map)
 	{
 		if (targets.Count == 0) return;
 

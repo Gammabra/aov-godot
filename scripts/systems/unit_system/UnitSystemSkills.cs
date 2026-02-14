@@ -29,20 +29,20 @@ public abstract partial class UnitSystem
     ///     This method uses a Breadth-First Search (BFS) algorithm to evaluate all valid cells
     ///     considering vertical traversal (e.g. stairs, cliffs).
     /// </remarks>
-    public virtual List<(int, int, int)> GetReachableCellsForSkills(MapSystem map, SkillSystem skill)
+    public virtual List<Vector3I> GetReachableCellsForSkills(MapSystem map, SkillSystem skill)
     {
-        List<(int, int, int)> possibleCells = [];
-        Queue<((int, int, int) pos, int dist)> toExplore = new();
-        (int, int, int)? unitPosition = map.GetUnitPosition(this);
-        List<(int, int, int)> visitedCells = [];
-        (int, int, int)[] directions =
+        List<Vector3I> possibleCells = [];
+        Queue<(Vector3I pos, int dist)> toExplore = new();
+        Vector3I? unitPosition = map.GetUnitPosition(this);
+        List<Vector3I> visitedCells = [];
+        Vector3I[] directions =
         [
-            (-1, 0, 0), // Left
-            (1, 0, 0), // Right
-            (0, 1, 0), // Up
-            (0, -1, 0), // Down
-            (0, 0, 1), // Forward
-            (0, 0, -1) // Backward
+            new Vector3I(-1, 0, 0), // Left
+            new Vector3I(1, 0, 0), // Right
+            new Vector3I(0, 1, 0), // Up
+            new Vector3I(0, -1, 0), // Down
+            new Vector3I(0, 0, 1), // Forward
+            new Vector3I(0, 0, -1) // Backward
         ];
 
         if (unitPosition == null)
@@ -55,30 +55,30 @@ public abstract partial class UnitSystem
         toExplore.Enqueue((unitPosition.Value, 0));
         while (toExplore.Count > 0)
         {
-            ((int, int, int), int) currentPos = toExplore.Dequeue();
+            (Vector3I pos, int dist) currentPos = toExplore.Dequeue();
 
-            if (currentPos.Item2 > skill.Range)
+            if (currentPos.dist > skill.Range)
                 continue;
 
             // Set the current position to visited cells
-            if (currentPos.Item1 != unitPosition.Value && !visitedCells.Contains(currentPos.Item1))
+            if (currentPos.pos != unitPosition.Value && !visitedCells.Contains(currentPos.pos))
             {
-                possibleCells.Add(currentPos.Item1);
-                visitedCells.Add(currentPos.Item1);
+                possibleCells.Add(currentPos.pos);
+                visitedCells.Add(currentPos.pos);
             }
 
             // Check the possible neighbor at the current position
-            foreach ((int, int, int) dir in directions)
+            foreach (Vector3I dir in directions)
             {
-                (int, int, int) pos = currentPos.Item1;
-                pos.Item1 += dir.Item1;
-                pos.Item2 += dir.Item2;
-                pos.Item3 += dir.Item3;
+                Vector3I pos = currentPos.pos;
+                pos.X += dir.X;
+                pos.Y += dir.Y;
+                pos.Z += dir.Z;
 
                 try
                 {
-                    map.IsEmpty(pos.Item1, pos.Item2, pos.Item3);
-                    toExplore.Enqueue((pos, currentPos.Item2 + 1));
+                    map.IsEmpty(pos.X, pos.Y, pos.Z);
+                    toExplore.Enqueue((pos, currentPos.dist + 1));
                 }
                 catch (ArgumentOutOfRangeException)
                 {
@@ -89,7 +89,7 @@ public abstract partial class UnitSystem
         }
 
         possibleCells = possibleCells
-            .Where(c => !map.IsEmpty(c.Item1, c.Item2, c.Item3))
+            .Where(c => !map.IsEmpty(c.X, c.Y, c.Z))
             .ToList();
 
         return possibleCells;
@@ -109,14 +109,14 @@ public abstract partial class UnitSystem
             return;
         }
 
-        if (ManaPoint < skill.ManaCost)
+        if (Mana < skill.ManaCost)
         {
             GD.PrintErr($"The unit mana point is smaller than the skill '{skill.Name}'");
             return;
         }
 
         skill.Use(this, targets, map);
-        ManaPoint -= skill.ManaCost;
+        Mana -= skill.ManaCost;
         ReportSystemUnitHasPlayed();
     }
 

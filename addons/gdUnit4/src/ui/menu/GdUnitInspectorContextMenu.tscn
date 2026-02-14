@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://bjcc71p2h1trr"]
+[gd_scene load_steps=0 format=3 uid="uid://bjcc71p2h1trr"]
 
 [ext_resource type="Script" path="res://addons/gdUnit4/src/ui/menu/GdUnitInspectorContextMenu.gd" id="1_0x0vc"]
 

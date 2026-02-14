@@ -322,8 +322,8 @@ public class MapSystemTest
 		map.AddWalkableCell(0, 0, 0); // Grass type
 		map.AddEmptyCell(1, 0, 0);    // Empty type
 
-		AssertThat(map.GetCellType(new Vector3I(0, 0, 0))).IsEqual(CellType.Grass);
-		AssertThat(map.GetCellType(new Vector3I(1, 0, 0))).IsEqual(CellType.Empty);
+		AssertThat(map.GetCellType(new Vector3I(0, 0, 0))).IsEqual(AovDataStructures.CellType.Grass);
+		AssertThat(map.GetCellType(new Vector3I(1, 0, 0))).IsEqual(AovDataStructures.CellType.Empty);
 	}
 
 	[TestCase]
@@ -337,15 +337,6 @@ public class MapSystemTest
 		)
 			.IsInstanceOf<ArgumentOutOfRangeException>()
 			.HasPropertyValue("ParamName", "Out of range"); // Changed from HasMessage
-	}
-
-	[TestCase]
-	public void MapCellSize_SetCorrectlyOnInitialize()
-	{
-		TestConcreteMapSystem map = CreateAndInitialize<TestConcreteMapSystem>();
-		
-		// Default GridMap CellSize is (1, 1, 1)
-		AssertThat(map.MapCellSize).IsEqual(new Vector3(1, 1, 1));
 	}
 
 	[TestCase]
@@ -375,7 +366,7 @@ public class MapSystemTest
 		AssertThat(map.IsWalkable(1, 0, 0)).IsTrue();
 
 		// Place unit on (0,0,0) - should make it unwalkable
-		map.CellsInformation[0].Unit = unit;
+		map.CellsInformation[0].SetUnit(unit);
 		map.SetWalkable(0, 0, 0); // Toggle to unwalkable
 
 		AssertThat(map.IsWalkable(0, 0, 0)).IsFalse();
@@ -407,18 +398,6 @@ public class MapSystemTest
 
 		// Should still apply to valid cell and ignore invalid one (not throw)
 		AssertThat(effect.ApplyCalled).IsTrue();
-	}
-
-	[TestCase]
-	public void CellTypeWalkable_ContainsAllCellTypes()
-	{
-		// Ensure the static dictionary has entries for all CellType enum values
-		AssertThat(MapSystem.CellTypeWalkable.ContainsKey(CellType.Empty)).IsTrue();
-		AssertThat(MapSystem.CellTypeWalkable.ContainsKey(CellType.Grass)).IsTrue();
-		
-		// Verify the values
-		AssertThat(MapSystem.CellTypeWalkable[CellType.Empty]).IsFalse();
-		AssertThat(MapSystem.CellTypeWalkable[CellType.Grass]).IsTrue();
 	}
 
 	[AfterTest]

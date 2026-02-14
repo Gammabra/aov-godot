@@ -17,8 +17,8 @@ public partial class TestConcreteSkillSystem : SkillSystem
 	{
 		Name = "TestSkill";
 		Description = "Test skill description";
-		EffectType = EffectType.Damage;
-		TargetType = TargetTypes.SingleEnemy;
+		EffectType = AovDataStructures.EffectType.Damage;
+		TargetType = AovDataStructures.TargetTypes.SingleEnemy;
 		Range = 1;
 		ManaCost = 10;
 		Cooldown = 0;
@@ -46,7 +46,7 @@ public partial class TestConcreteSkillSystem : SkillSystem
         Cooldown = 0;
         MagicType = magic;
 
-        AreaEffect = new List<(int, int, int)>();
+        AreaEffect = new List<Vector3I>();
 	}
 
 	// Add public setters for properties that need to be modified in tests
@@ -60,7 +60,7 @@ public partial class TestConcreteSkillSystem : SkillSystem
 		}
 	}
 
-	public new EffectType EffectType
+	public new AovDataStructures.EffectType EffectType
 	{
 		get => base.EffectType;
 		set
@@ -70,7 +70,7 @@ public partial class TestConcreteSkillSystem : SkillSystem
 		}
 	}
 
-	public new TargetTypes TargetType
+	public new AovDataStructures.TargetTypes TargetType
 	{
 		get => base.TargetType;
 		set

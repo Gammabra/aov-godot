@@ -115,7 +115,8 @@ public partial class TestConcreteUnitSystem : UnitSystem
         BaseAtk = baseAtk;
         BaseDef = baseDef;
         BaseSpeed = baseSpeed;
-        ManaPoint = manaPoint;
+		ManaMax = manaPoint;
+        Mana = manaPoint;
         PossibleMovesRange = possibleMovesRange;
         IsAlive = isAlive;
         Type = AovDataStructures.UnitType.Player;

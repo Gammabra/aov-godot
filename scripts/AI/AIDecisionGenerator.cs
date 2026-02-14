@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using AshesOfVelsingrad.Managers;
 using AshesOfVelsingrad.Systems;
+using AshesOfVelsingrad.Utilities;
 using Godot;
 
 namespace AshesOfVelsingrad.AI;
@@ -75,9 +76,9 @@ public class AIDecisionGenerator
 		foreach (var skill in _unit.ActiveSkills)
 		{
 			// Skip non-offensive skills
-			if (skill.EffectType != EffectType.Damage && 
-				skill.EffectType != EffectType.Debuff && 
-				skill.EffectType != EffectType.Control)
+			if (skill.EffectType != AovDataStructures.EffectType.Damage && 
+				skill.EffectType != AovDataStructures.EffectType.Debuff && 
+				skill.EffectType != AovDataStructures.EffectType.Control)
 				continue;
 
 			// Skip if can't afford or on cooldown
@@ -147,9 +148,9 @@ public class AIDecisionGenerator
 		foreach (var skill in _unit.ActiveSkills)
 		{
 			// Only consider support skills
-			if (skill.EffectType != EffectType.Heal && 
-				skill.EffectType != EffectType.Buff &&
-				skill.EffectType != EffectType.Revive)
+			if (skill.EffectType != AovDataStructures.EffectType.Heal && 
+				skill.EffectType != AovDataStructures.EffectType.Buff &&
+				skill.EffectType != AovDataStructures.EffectType.Revive)
 				continue;
 
 			// Skip if can't afford or on cooldown

@@ -11,189 +11,189 @@ namespace AshesOfVelsingrad.AI;
 /// </summary>
 public class AIDecisionGenerator
 {
-	private readonly UnitSystem _unit;
-	private readonly AIEvaluator _evaluator;
+    private readonly UnitSystem _unit;
+    private readonly AIEvaluator _evaluator;
 
-	public AIDecisionGenerator(UnitSystem unit)
-	{
-		_unit = unit;
-		_evaluator = new AIEvaluator(unit);
-	}
+    public AIDecisionGenerator(UnitSystem unit)
+    {
+        _unit = unit;
+        _evaluator = new AIEvaluator(unit);
+    }
 
-	/// <summary>
-	/// Generates all possible actions the AI could take this turn.
-	/// </summary>
+    /// <summary>
+    /// Generates all possible actions the AI could take this turn.
+    /// </summary>
     /// <param name="battleState">Current state of the battle for context.</param>
     /// <returns>List of potential AI decisions with associated scores.</returns>
-	public List<AIDecision> GenerateAllPossibleActions(BattleState battleState)
-	{
-		List<AIDecision> actions = new();
-		Vector3I? myPos = battleState.MapSystem.GetUnitPosition(_unit);
+    public List<AIDecision> GenerateAllPossibleActions(BattleState battleState)
+    {
+        List<AIDecision> actions = new();
+        Vector3I? myPos = battleState.MapSystem.GetUnitPosition(_unit);
 
-		if (myPos == null)
-			return actions;
+        if (myPos == null)
+            return actions;
 
-		// 1. Evaluate offensive actions against each enemy
-		foreach (var target in battleState.PlayerUnits)
-			actions.AddRange(GenerateOffensiveActions(target, myPos.Value, battleState));
+        // 1. Evaluate offensive actions against each enemy
+        foreach (var target in battleState.PlayerUnits)
+            actions.AddRange(GenerateOffensiveActions(target, myPos.Value, battleState));
 
-		// 2. Evaluate support actions for allies (healing, buffs)
-		foreach (var ally in battleState.EnemyUnits)
-			actions.AddRange(GenerateSupportActions(ally, myPos.Value, battleState));
+        // 2. Evaluate support actions for allies (healing, buffs)
+        foreach (var ally in battleState.EnemyUnits)
+            actions.AddRange(GenerateSupportActions(ally, myPos.Value, battleState));
 
-		// 3. Evaluate defensive/positioning actions
-		actions.AddRange(GenerateDefensiveActions(myPos.Value, battleState));
+        // 3. Evaluate defensive/positioning actions
+        actions.AddRange(GenerateDefensiveActions(myPos.Value, battleState));
 
-		// 4. Always include "pass turn" as a fallback option
-		actions.Add(new AIDecision
-		{
-			Action = AIAction.Pass,
-			Score = 0f,
-			Reasoning = "No better options available"
-		});
+        // 4. Always include "pass turn" as a fallback option
+        actions.Add(new AIDecision
+        {
+            Action = AIAction.Pass,
+            Score = 0f,
+            Reasoning = "No better options available"
+        });
 
-		return actions;
-	}
+        return actions;
+    }
 
-	/// <summary>
-	/// Generates all possible offensive actions against a specific target.
-	/// </summary>
-	/// <param name="target">The enemy target.</param>
-	/// <param name="myPos">The AI unit's current position.</param>
-	/// <param name="battleState">Current battle state.</param>
-	/// <returns>List of possible offensive actions.</returns>
-	private List<AIDecision> GenerateOffensiveActions(UnitSystem target, Vector3I myPos, BattleState battleState)
-	{
-		List<AIDecision> actions = new();
-		Vector3I? targetPos = battleState.MapSystem.GetUnitPosition(target);
-		
-		if (targetPos == null)
-			return actions;
+    /// <summary>
+    /// Generates all possible offensive actions against a specific target.
+    /// </summary>
+    /// <param name="target">The enemy target.</param>
+    /// <param name="myPos">The AI unit's current position.</param>
+    /// <param name="battleState">Current battle state.</param>
+    /// <returns>List of possible offensive actions.</returns>
+    private List<AIDecision> GenerateOffensiveActions(UnitSystem target, Vector3I myPos, BattleState battleState)
+    {
+        List<AIDecision> actions = new();
+        Vector3I? targetPos = battleState.MapSystem.GetUnitPosition(target);
 
-		int distance = AIUtilities.CalculateManhattanDistance(myPos, targetPos.Value);
+        if (targetPos == null)
+            return actions;
 
-		// Try each offensive skill
-		foreach (var skill in _unit.ActiveSkills)
-		{
-			// Skip non-offensive skills
-			if (skill.EffectType != AovDataStructures.EffectType.Damage && 
-				skill.EffectType != AovDataStructures.EffectType.Debuff && 
-				skill.EffectType != AovDataStructures.EffectType.Control)
-				continue;
+        int distance = AIUtilities.CalculateManhattanDistance(myPos, targetPos.Value);
 
-			// Skip if can't afford or on cooldown
-			if (skill.ManaCost > _unit.Mana || skill.Cooldown != 0)
-				continue;
+        // Try each offensive skill
+        foreach (var skill in _unit.ActiveSkills)
+        {
+            // Skip non-offensive skills
+            if (skill.EffectType != AovDataStructures.EffectType.Damage &&
+                skill.EffectType != AovDataStructures.EffectType.Debuff &&
+                skill.EffectType != AovDataStructures.EffectType.Control)
+                continue;
 
-			// Option 1: Use skill without moving (if in range)
-			if (distance <= skill.Range)
-			{
-				float score = _evaluator.EvaluateOffensiveAction(target, skill, myPos, targetPos.Value, battleState, false);
-				actions.Add(new AIDecision
-				{
-					Action = AIAction.UseSkill,
-					Target = target,
-					Skill = skill,
-					Score = score,
-					Reasoning = $"Attack {target.UnitName} with {skill.Name} from current position"
-				});
-			}
+            // Skip if can't afford or on cooldown
+            if (skill.ManaCost > _unit.Mana || skill.Cooldown != 0)
+                continue;
 
-			// Option 2: Move closer and use skill
-			if (distance <= _unit.PossibleMovesRange + skill.Range)
-			{
-				Vector3I? movePos = AIUtilities.CalculateMoveToRange(_unit, battleState, targetPos.Value, skill.Range);
-				
-				if (movePos.HasValue)
-				{
-					float score = _evaluator.EvaluateOffensiveAction(target, skill, movePos.Value, targetPos.Value, battleState, true);
-					actions.Add(new AIDecision
-					{
-						Action = AIAction.MoveAndSkill,
-						Target = target,
-						Skill = skill,
-						MovePosition = movePos.Value,
-						Score = score,
-						Reasoning = $"Move to {movePos.Value}, then attack {target.UnitName} with {skill.Name}"
-					});
-				}
-			}
-		}
+            // Option 1: Use skill without moving (if in range)
+            if (distance <= skill.Range)
+            {
+                float score = _evaluator.EvaluateOffensiveAction(target, skill, myPos, targetPos.Value, battleState, false);
+                actions.Add(new AIDecision
+                {
+                    Action = AIAction.UseSkill,
+                    Target = target,
+                    Skill = skill,
+                    Score = score,
+                    Reasoning = $"Attack {target.UnitName} with {skill.Name} from current position"
+                });
+            }
 
-		return actions;
-	}
+            // Option 2: Move closer and use skill
+            if (distance <= _unit.PossibleMovesRange + skill.Range)
+            {
+                Vector3I? movePos = AIUtilities.CalculateMoveToRange(_unit, battleState, targetPos.Value, skill.Range);
 
-	/// <summary>
-	/// Generates all possible support actions for an ally.
-	/// </summary>
-	/// <param name="ally">The ally to potentially support.</param>
-	/// <param name="myPos">The AI unit's current position.</param>
-	/// <param name="battleState">Current battle state.</param>
-	/// <returns>List of possible support actions.</returns>
-	private List<AIDecision> GenerateSupportActions(UnitSystem ally, Vector3I myPos, BattleState battleState)
-	{
-		List<AIDecision> actions = new();
-		
-		// Don't support yourself
-		if (ally == _unit)
-			return actions;
+                if (movePos.HasValue)
+                {
+                    float score = _evaluator.EvaluateOffensiveAction(target, skill, movePos.Value, targetPos.Value, battleState, true);
+                    actions.Add(new AIDecision
+                    {
+                        Action = AIAction.MoveAndSkill,
+                        Target = target,
+                        Skill = skill,
+                        MovePosition = movePos.Value,
+                        Score = score,
+                        Reasoning = $"Move to {movePos.Value}, then attack {target.UnitName} with {skill.Name}"
+                    });
+                }
+            }
+        }
 
-		Vector3I? allyPos = battleState.MapSystem.GetUnitPosition(ally);
-		if (allyPos == null)
-			return actions;
+        return actions;
+    }
 
-		int distance = AIUtilities.CalculateManhattanDistance(myPos, allyPos.Value);
+    /// <summary>
+    /// Generates all possible support actions for an ally.
+    /// </summary>
+    /// <param name="ally">The ally to potentially support.</param>
+    /// <param name="myPos">The AI unit's current position.</param>
+    /// <param name="battleState">Current battle state.</param>
+    /// <returns>List of possible support actions.</returns>
+    private List<AIDecision> GenerateSupportActions(UnitSystem ally, Vector3I myPos, BattleState battleState)
+    {
+        List<AIDecision> actions = new();
 
-		// Try each support skill
-		foreach (var skill in _unit.ActiveSkills)
-		{
-			// Only consider support skills
-			if (skill.EffectType != AovDataStructures.EffectType.Heal && 
-				skill.EffectType != AovDataStructures.EffectType.Buff &&
-				skill.EffectType != AovDataStructures.EffectType.Revive)
-				continue;
+        // Don't support yourself
+        if (ally == _unit)
+            return actions;
 
-			// Skip if can't afford or on cooldown
-			if (skill.ManaCost > _unit.Mana || skill.Cooldown != 0)
-				continue;
+        Vector3I? allyPos = battleState.MapSystem.GetUnitPosition(ally);
+        if (allyPos == null)
+            return actions;
 
-			// Option 1: Use skill without moving (if in range)
-			if (distance <= skill.Range)
-			{
-				float score = _evaluator.EvaluateSupportAction(ally, skill, myPos, allyPos.Value, battleState, false);
-				actions.Add(new AIDecision
-				{
-					Action = AIAction.UseSkill,
-					Target = ally,
-					Skill = skill,
-					Score = score,
-					Reasoning = $"Support {ally.UnitName} with {skill.Name} from current position"
-				});
-			}
+        int distance = AIUtilities.CalculateManhattanDistance(myPos, allyPos.Value);
 
-			// Option 2: Move closer and use skill
-			if (distance <= _unit.PossibleMovesRange + skill.Range)
-			{
-				Vector3I? movePos = AIUtilities.CalculateMoveToRange(_unit, battleState, allyPos.Value, skill.Range);
-				
-				if (movePos.HasValue)
-				{
-					float score = _evaluator.EvaluateSupportAction(ally, skill, movePos.Value, allyPos.Value, battleState, true);
-					actions.Add(new AIDecision
-					{
-						Action = AIAction.MoveAndSkill,
-						Target = ally,
-						Skill = skill,
-						MovePosition = movePos.Value,
-						Score = score,
-						Reasoning = $"Move to {movePos.Value}, then support {ally.UnitName} with {skill.Name}"
-					});
-				}
-			}
-		}
+        // Try each support skill
+        foreach (var skill in _unit.ActiveSkills)
+        {
+            // Only consider support skills
+            if (skill.EffectType != AovDataStructures.EffectType.Heal &&
+                skill.EffectType != AovDataStructures.EffectType.Buff &&
+                skill.EffectType != AovDataStructures.EffectType.Revive)
+                continue;
 
-		return actions;
-	}
+            // Skip if can't afford or on cooldown
+            if (skill.ManaCost > _unit.Mana || skill.Cooldown != 0)
+                continue;
+
+            // Option 1: Use skill without moving (if in range)
+            if (distance <= skill.Range)
+            {
+                float score = _evaluator.EvaluateSupportAction(ally, skill, myPos, allyPos.Value, battleState, false);
+                actions.Add(new AIDecision
+                {
+                    Action = AIAction.UseSkill,
+                    Target = ally,
+                    Skill = skill,
+                    Score = score,
+                    Reasoning = $"Support {ally.UnitName} with {skill.Name} from current position"
+                });
+            }
+
+            // Option 2: Move closer and use skill
+            if (distance <= _unit.PossibleMovesRange + skill.Range)
+            {
+                Vector3I? movePos = AIUtilities.CalculateMoveToRange(_unit, battleState, allyPos.Value, skill.Range);
+
+                if (movePos.HasValue)
+                {
+                    float score = _evaluator.EvaluateSupportAction(ally, skill, movePos.Value, allyPos.Value, battleState, true);
+                    actions.Add(new AIDecision
+                    {
+                        Action = AIAction.MoveAndSkill,
+                        Target = ally,
+                        Skill = skill,
+                        MovePosition = movePos.Value,
+                        Score = score,
+                        Reasoning = $"Move to {movePos.Value}, then support {ally.UnitName} with {skill.Name}"
+                    });
+                }
+            }
+        }
+
+        return actions;
+    }
 
     /// <summary>
 	/// Generates defensive/positioning actions like retreating or repositioning.
@@ -202,41 +202,41 @@ public class AIDecisionGenerator
 	/// <param name="battleState">Current battle state.</param>
 	/// <returns>List of possible defensive actions.</returns>
 	private List<AIDecision> GenerateDefensiveActions(Vector3I myPos, BattleState battleState)
-	{
-		List<AIDecision> actions = new();
+    {
+        List<AIDecision> actions = new();
 
-		// Only consider defensive moves if we're in danger
-		float hpPercentage = _unit.Hp / _unit.MaxHp;
-		int nearbyEnemies = AIUtilities.CountPlayerUnitsNear(_unit, myPos, battleState, 3);
+        // Only consider defensive moves if we're in danger
+        float hpPercentage = _unit.Hp / _unit.MaxHp;
+        int nearbyEnemies = AIUtilities.CountPlayerUnitsNear(_unit, myPos, battleState, 3);
 
-		// Not in danger - skip defensive actions
-		if (hpPercentage > 0.5f && nearbyEnemies <= 1)
-			return actions;
+        // Not in danger - skip defensive actions
+        if (hpPercentage > 0.5f && nearbyEnemies <= 1)
+            return actions;
 
-		// Find nearest threat to retreat from
-		UnitSystem? nearestThreat = AIUtilities.FindNearestThreat(_unit, battleState);
-		if (nearestThreat == null)
-			return actions;
+        // Find nearest threat to retreat from
+        UnitSystem? nearestThreat = AIUtilities.FindNearestThreat(_unit, battleState);
+        if (nearestThreat == null)
+            return actions;
 
-		Vector3I? threatPos = battleState.MapSystem.GetUnitPosition(nearestThreat);
-		if (threatPos == null)
-			return actions;
+        Vector3I? threatPos = battleState.MapSystem.GetUnitPosition(nearestThreat);
+        if (threatPos == null)
+            return actions;
 
-		// Generate retreat move
-		Vector3I? retreatPos = AIUtilities.CalculateMoveAway(_unit, battleState, threatPos.Value, 2);
-		
-		if (retreatPos.HasValue)
-		{
-			float score = _evaluator.EvaluateDefensiveAction(myPos, retreatPos.Value, battleState);
-			actions.Add(new AIDecision
-			{
-				Action = AIAction.Move,
-				MovePosition = retreatPos.Value,
-				Score = score,
-				Reasoning = $"Retreat to {retreatPos.Value} away from threats"
-			});
-		}
+        // Generate retreat move
+        Vector3I? retreatPos = AIUtilities.CalculateMoveAway(_unit, battleState, threatPos.Value, 2);
 
-		return actions;
-	}
+        if (retreatPos.HasValue)
+        {
+            float score = _evaluator.EvaluateDefensiveAction(myPos, retreatPos.Value, battleState);
+            actions.Add(new AIDecision
+            {
+                Action = AIAction.Move,
+                MovePosition = retreatPos.Value,
+                Score = score,
+                Reasoning = $"Retreat to {retreatPos.Value} away from threats"
+            });
+        }
+
+        return actions;
+    }
 }

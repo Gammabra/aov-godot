@@ -1,8 +1,8 @@
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using AshesOfVelsingrad.Systems;
 using AshesOfVelsingrad.AI;
+using AshesOfVelsingrad.Systems;
 using AshesOfVelsingrad.Utilities;
 using Godot;
 
@@ -10,9 +10,9 @@ namespace AshesOfVelsingrad.Managers;
 
 public partial class GameManager : BaseManager
 {
-	public EnemyAIManager? AIManager { get; private set; }
+    public EnemyAIManager? AIManager { get; private set; }
 
-	#region Private Fields
+    #region Private Fields
 
     private AovDataStructures.GameOutcome _gameOutcome = AovDataStructures.GameOutcome.Ongoing;
     private bool _isPlayerTurn;
@@ -26,24 +26,24 @@ public partial class GameManager : BaseManager
     private UnitSystem? _selectedUnitForPlayedSkill;
     private readonly StatusEffectSystem _statusEffectSystem = new();
 
-	#endregion
+    #endregion
 
-	#region Godot Private Fields
+    #region Godot Private Fields
 
-	[Export]
-	private NodePath? _playerUnitsPath;
+    [Export]
+    private NodePath? _playerUnitsPath;
 
-	[Export]
-	private NodePath? _enemyUnitsPath;
+    [Export]
+    private NodePath? _enemyUnitsPath;
 
-	[Export]
-	private NodePath? _mapSystemPath;
+    [Export]
+    private NodePath? _mapSystemPath;
 
-	[Export]
-	private NodePath? _turnManagerPath;
+    [Export]
+    private NodePath? _turnManagerPath;
 
-	[Export]
-	private NodePath? _battleInputSystemPath;
+    [Export]
+    private NodePath? _battleInputSystemPath;
 
     /// <summary>
     /// Toggle threat map visualization for all enemy units.
@@ -52,15 +52,15 @@ public partial class GameManager : BaseManager
     [Export]
     public bool EnableThreatMapDebug { get; set; } = false;
 
-	private Node? _playerUnitsContainer;
-	private Node? _enemyUnitsContainer;
-	private MapSystem? _mapSystemContainer;
-	private TurnManager? _turnManagerContainer;
-	private BattleInputSystem? _battleInputSystemContainer;
+    private Node? _playerUnitsContainer;
+    private Node? _enemyUnitsContainer;
+    private MapSystem? _mapSystemContainer;
+    private TurnManager? _turnManagerContainer;
+    private BattleInputSystem? _battleInputSystemContainer;
 
-	#endregion
+    #endregion
 
-	#region Private Properties
+    #region Private Properties
 
     /// <summary>
     ///     Singleton instance of the <see cref="GameManager" />.
@@ -68,9 +68,9 @@ public partial class GameManager : BaseManager
     /// </summary>
     private new static GameManager? Instance { get; set; }
 
-	#endregion
+    #endregion
 
-	#region Class initialization
+    #region Class initialization
 
     /// <inheritdoc />
     public override void _Ready()
@@ -79,14 +79,14 @@ public partial class GameManager : BaseManager
         _ = StartBattleWhenReady();
     }
 
-	protected override void Initialize()
-	{
-		if (Instance != null && Instance != this)
-		{
-			GD.PrintErr($"Multiple instances of {GetType().Name} detected. Removing duplicate.");
-			QueueFree();
-			return;
-		}
+    protected override void Initialize()
+    {
+        if (Instance != null && Instance != this)
+        {
+            GD.PrintErr($"Multiple instances of {GetType().Name} detected. Removing duplicate.");
+            QueueFree();
+            return;
+        }
 
         Instance = this;
         InitializeGameManager();
@@ -149,20 +149,20 @@ public partial class GameManager : BaseManager
         }
 
         // Create EnemyAIManager as a battle-scoped instance (NOT a global singleton)
-		AIManager = new EnemyAIManager(this);
-		AIManager.SetUnitReferences(_playerUnits, _enemyUnits);
-		
-		if (_mapSystemContainer != null)
-			AIManager.SetMapSystem(_mapSystemContainer);
-		else
-			GD.PrintErr("EnemyAIManager: MapSystem not available when setting up AI manager");
-		
-		_turnManagerContainer.SetAIManager(AIManager);
+        AIManager = new EnemyAIManager(this);
+        AIManager.SetUnitReferences(_playerUnits, _enemyUnits);
+
+        if (_mapSystemContainer != null)
+            AIManager.SetMapSystem(_mapSystemContainer);
+        else
+            GD.PrintErr("EnemyAIManager: MapSystem not available when setting up AI manager");
+
+        _turnManagerContainer.SetAIManager(AIManager);
     }
 
-	#endregion
+    #endregion
 
-	#region Private Methods
+    #region Private Methods
 
     /// <summary>
     ///     Waits for the scene tree to be fully ready, then starts the battle loop.
@@ -173,11 +173,11 @@ public partial class GameManager : BaseManager
         if (!IsInsideTree())
             await ToSignal(this, "ready");
 
-		if (_turnManagerContainer == null)
-		{
-			GD.PrintErr("TurnManagerContainer not set");
-			return;
-		}
+        if (_turnManagerContainer == null)
+        {
+            GD.PrintErr("TurnManagerContainer not set");
+            return;
+        }
 
         GD.Print("All nodes should be ready. Start battle now.");
         _ = _turnManagerContainer.StartBattle();
@@ -194,17 +194,17 @@ public partial class GameManager : BaseManager
             return;
         }
 
-		if (_turnManagerContainer == null)
-		{
-			GD.PrintErr("TurnManagerContainer not set in GameManager.");
-			return;
-		}
+        if (_turnManagerContainer == null)
+        {
+            GD.PrintErr("TurnManagerContainer not set in GameManager.");
+            return;
+        }
 
-		if (_mapSystemContainer == null)
-		{
-			GD.PrintErr("MapSystemContainer not set in GameManager.");
-			return;
-		}
+        if (_mapSystemContainer == null)
+        {
+            GD.PrintErr("MapSystemContainer not set in GameManager.");
+            return;
+        }
 
         _isPlayerTurn = true;
         if (_currentUnitPossibleMoves.Count == 0)
@@ -225,17 +225,17 @@ public partial class GameManager : BaseManager
             return;
         }
 
-		if (_turnManagerContainer == null)
-		{
-			GD.PrintErr("TurnManagerContainer not set in GameManager.");
-			return;
-		}
+        if (_turnManagerContainer == null)
+        {
+            GD.PrintErr("TurnManagerContainer not set in GameManager.");
+            return;
+        }
 
-		if (_mapSystemContainer == null)
-		{
-			GD.PrintErr("MapSystemContainer not set in GameManager.");
-			return;
-		}
+        if (_mapSystemContainer == null)
+        {
+            GD.PrintErr("MapSystemContainer not set in GameManager.");
+            return;
+        }
 
         _clickOnMapContext = AovDataStructures.ClickOnMapContext.MoveUnit;
         _isPlayerTurn = false;
@@ -270,11 +270,11 @@ public partial class GameManager : BaseManager
             return;
         }
 
-		if (skillId >= _turnManagerContainer.GetCurrentUnit().ActiveSkills.Count)
-		{
-			GD.PrintErr("Skill Id is out of Skill List");
-			return;
-		}
+        if (skillId >= _turnManagerContainer.GetCurrentUnit().ActiveSkills.Count)
+        {
+            GD.PrintErr("Skill Id is out of Skill List");
+            return;
+        }
 
         if (_turnManagerContainer.GetCurrentUnit().ActiveSkills[skillId].Cooldown != 0)
         {
@@ -398,9 +398,9 @@ public partial class GameManager : BaseManager
         _statusEffectSystem.ProcessTurnEnd();
     }
 
-	#endregion
+    #endregion
 
-	#region Public Methods
+    #region Public Methods
 
     /// <summary>
     ///     Moves the currently active unit to the specified cell on the map.
@@ -495,16 +495,16 @@ public partial class GameManager : BaseManager
             return;
         }
 
-		if (_playerUnits.Contains(sourceUnit))
-		{
-			allyUnits = _playerUnits;
-			enemyUnits = _enemyUnits;
-		}
-		else
-		{
-			allyUnits = _enemyUnits;
-			enemyUnits = _playerUnits;
-		}
+        if (_playerUnits.Contains(sourceUnit))
+        {
+            allyUnits = _playerUnits;
+            enemyUnits = _enemyUnits;
+        }
+        else
+        {
+            allyUnits = _enemyUnits;
+            enemyUnits = _playerUnits;
+        }
 
         switch (skill.TargetType)
         {
@@ -564,14 +564,14 @@ public partial class GameManager : BaseManager
         }
     }
 
-	#endregion
+    #endregion
 
     #region Debug Methods
 
     public override void _Input(InputEvent @event)
     {
         base._Input(@event);
-        
+
         // Press F1 to toggle threat map visualization
         if (@event is InputEventKey keyEvent && keyEvent.Pressed && !keyEvent.Echo)
         {
@@ -579,13 +579,13 @@ public partial class GameManager : BaseManager
             {
                 EnableThreatMapDebug = !EnableThreatMapDebug;
                 GD.Print($"Threat Map Debug: {(EnableThreatMapDebug ? "ON" : "OFF")}");
-                
+
                 if (EnableThreatMapDebug)
                 {
                     ShowAllThreatMaps();
                 }
             }
-            
+
             // Press F2 to show action scores for current AI unit
             if (keyEvent.Keycode == Key.F2)
             {
@@ -625,7 +625,7 @@ public partial class GameManager : BaseManager
                         EnemyUnits = AIManager.GetAliveEnemyUnits(),
                         GameManager = this
                     };
-                    
+
                     visualizer.VisualizeThreatMap(enemy, battleState, 5);
                     GD.Print($"Showing threat map for {enemy.Name}");
                 }
@@ -645,7 +645,7 @@ public partial class GameManager : BaseManager
         }
 
         var currentUnit = _turnManagerContainer.GetCurrentUnit();
-        
+
         // Only works for enemy units
         if (!_enemyUnits.Contains(currentUnit))
         {
@@ -674,7 +674,7 @@ public partial class GameManager : BaseManager
         {
             if (child is EnemyAIBehavior behavior)
                 return behavior;
-            
+
             // Also check children of children (in case it's under a Node)
             foreach (Node grandchild in child.GetChildren())
             {

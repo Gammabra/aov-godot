@@ -57,10 +57,10 @@ public sealed partial class TestConcreteMapSystem : MapSystem
         {
             CellsInformation.Add(new CellInformation(CellsInformation.Count, 0, 0, AovDataStructures.CellType.Grass, true));
         }
-        
+
         if (playerUnits.Count > 0)
             CellsInformation[0].SetUnit(playerUnits[0]);
-        
+
         if (enemyUnits.Count > 0)
             CellsInformation[1].SetUnit(enemyUnits[0]);
     }

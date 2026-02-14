@@ -78,34 +78,34 @@ public sealed class Skill5 : SkillSystem
 
 public sealed partial class Player1Data : UnitSystem
 {
-	protected override void Initialize()
-	{
-		UnitName = "Player1";
-		Description = "Test player unit";
-		MaxHp = 1000;
-		Hp = MaxHp;
-		BaseAtk = 200;
-		BaseDef = 0;
-		BaseSpeed = 200;
-		Intelligence = 200;
-		ManaMax = 200;
-		Mana = ManaMax;
-		IsAlive = true;
-		PossibleMovesRange = 2;
-		Curse = 0;
-		ActiveSkills.Add(new Skill1());
-		ActiveSkills.Add(new Skill2());
-		ActiveSkills.Add(new Skill3());
-		ActiveSkills.Add(new Skill4());
-		ActiveSkills.Add(new Skill5());
-	}
+    protected override void Initialize()
+    {
+        UnitName = "Player1";
+        Description = "Test player unit";
+        MaxHp = 1000;
+        Hp = MaxHp;
+        BaseAtk = 200;
+        BaseDef = 0;
+        BaseSpeed = 200;
+        Intelligence = 200;
+        ManaMax = 200;
+        Mana = ManaMax;
+        IsAlive = true;
+        PossibleMovesRange = 2;
+        Curse = 0;
+        ActiveSkills.Add(new Skill1());
+        ActiveSkills.Add(new Skill2());
+        ActiveSkills.Add(new Skill3());
+        ActiveSkills.Add(new Skill4());
+        ActiveSkills.Add(new Skill5());
+    }
 
-	public override void Play(List<UnitSystem> targets, MapSystem? map, SkillSystem skill)
-	{
-		ReportSystemUnitHasPlayed();
-	}
+    public override void Play(List<UnitSystem> targets, MapSystem? map, SkillSystem skill)
+    {
+        ReportSystemUnitHasPlayed();
+    }
 
-	public override void TakeDamage(float damage)
-	{
-	}
+    public override void TakeDamage(float damage)
+    {
+    }
 }

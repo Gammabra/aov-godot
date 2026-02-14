@@ -165,23 +165,18 @@ public class BattleInputSystemTest
             )
         );
 
-        // Act : invoquer la méthode privée qui est normalement appelée après le raycast
-        // Nom exact : "EmitSignalOnMoveUnitOrSelectTargetPressed" (utilisé dans ton code)
         MethodInfo? method = typeof(BattleInputSystem).GetMethod(
             "EmitSignalOnMoveUnitOrSelectTargetPressed",
             BindingFlags.Instance | BindingFlags.NonPublic | BindingFlags.Public
         );
 
-        // Si la méthode n'existe pas (variations de nom), on peut émettre le signal via EmitSignal directement :
         if (method != null)
         {
-            // Construire une cellule de test
             Vector3I testCell = new(5, 0, 5);
             method.Invoke(sys, new object?[] { testCell });
         }
         else
         {
-            // fallback : émettre le signal manuellement (moins "noir box" mais fonctionne)
             sys.EmitSignal("OnMoveUnitOrSelectTargetPressed", new Vector3I(5, 0, 5));
         }
 

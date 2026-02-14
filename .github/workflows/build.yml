@@ -2,72 +2,72 @@ name: Build and Lint
 
 on:
   push:
-    branches: [ develop, canary, release ]
+    branches: [develop, canary, release]
   pull_request:
-    branches: [ develop, canary, release ]
+    branches: [develop, canary, release]
 
 jobs:
   build-and-lint:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v4
+      - name: Checkout code
+        uses: actions/checkout@v4
 
-    - name: Setup .NET
-      uses: actions/setup-dotnet@v4
-      with:
-        dotnet-version: '9.0.x'
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: "9.0.x"
 
-    - name: Setup Godot
-      uses: chickensoft-games/setup-godot@v2.3.0
-      with:
-        version: '4.5.1'
-        use-dotnet: true
+      - name: Setup Godot
+        uses: chickensoft-games/setup-godot@v2.3.0
+        with:
+          version: "4.6.0"
+          use-dotnet: true
 
-    - name: Install Godot export templates
-      run: |
-        mkdir -p ~/.local/share/godot/export_templates/4.5.1.stable.mono
-        cd ~/.local/share/godot/export_templates/4.5.1.stable.mono
-        wget https://github.com/godotengine/godot/releases/download/4.5.1-stable/Godot_v4.5.1-stable_mono_export_templates.tpz
-        unzip Godot_v4.5.1-stable_mono_export_templates.tpz
-        mv templates/* .
-        rm -rf templates Godot_v4.5.1-stable_mono_export_templates.tpz
+      - name: Install Godot export templates
+        run: |
+          mkdir -p ~/.local/share/godot/export_templates/4.6.stable.mono
+          cd ~/.local/share/godot/export_templates/4.6.stable.mono
+          wget https://github.com/godotengine/godot-builds/releases/download/4.6-stable/Godot_v4.6-stable_mono_export_templates.tpz
+          unzip Godot_v4.6-stable_mono_export_templates.tpz
+          mv templates/* .
+          rm -rf templates Godot_v4.6-stable_mono_export_templates.tpz
 
-    - name: Check if C# project exists
-      id: check_csharp
-      run: |
-        if find . -name "*.csproj" -o -name "*.sln" | grep -q .; then
-          echo "has_csharp=true" >> $GITHUB_OUTPUT
-        else
-          echo "has_csharp=false" >> $GITHUB_OUTPUT
-        fi
+      - name: Check if C# project exists
+        id: check_csharp
+        run: |
+          if find . -name "*.csproj" -o -name "*.sln" | grep -q .; then
+            echo "has_csharp=true" >> $GITHUB_OUTPUT
+          else
+            echo "has_csharp=false" >> $GITHUB_OUTPUT
+          fi
 
-    - name: Restore dependencies
-      if: steps.check_csharp.outputs.has_csharp == 'true'
-      run: dotnet restore
+      - name: Restore dependencies
+        if: steps.check_csharp.outputs.has_csharp == 'true'
+        run: dotnet restore
 
-    - name: Check code formatting
-      if: steps.check_csharp.outputs.has_csharp == 'true'
-      run: dotnet format --verify-no-changes --verbosity diagnostic "Ashes of Velsingrad.csproj"
+      - name: Check code formatting
+        if: steps.check_csharp.outputs.has_csharp == 'true'
+        run: dotnet format --verify-no-changes --verbosity diagnostic "Ashes of Velsingrad.csproj"
 
-    - name: Build project
-      if: steps.check_csharp.outputs.has_csharp == 'true'
-      run: dotnet build "Ashes of Velsingrad.csproj" --configuration ExportRelease /p:Platform="AnyCPU"
+      - name: Build project
+        if: steps.check_csharp.outputs.has_csharp == 'true'
+        run: dotnet build "Ashes of Velsingrad.csproj" --configuration ExportRelease /p:Platform="AnyCPU"
 
-    - name: Import project assets
-      run: |
-        godot --headless --import --quit
+      - name: Import project assets
+        run: |
+          godot --headless --import --quit
 
-    - name: Export project (Windows)
-      run: |
-        mkdir -p builds/windows
-        # Temporarily disabled until export templates are properly configured
-        # godot --headless --export-release "Windows Desktop" builds/windows/ashes-of-velsingrad.exe
-        echo "Export step skipped - no export templates available in CI"
+      - name: Export project (Windows)
+        run: |
+          mkdir -p builds/windows
+          # Temporarily disabled until export templates are properly configured
+          # godot --headless --export-release "Windows Desktop" builds/windows/ashes-of-velsingrad.exe
+          echo "Export step skipped - no export templates available in CI"
 
-    - name: Upload build artifacts
-      uses: actions/upload-artifact@v4
-      with:
-        name: ashes-of-velsingrad-builds
-        path: builds/
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: ashes-of-velsingrad-builds
+          path: builds/

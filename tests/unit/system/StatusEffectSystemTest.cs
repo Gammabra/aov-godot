@@ -1,5 +1,8 @@
+using System;
+using System.Collections.Generic;
 using AshesOfVelsingrad.Systems;
 using GdUnit4;
+using Godot;
 using static GdUnit4.Assertions;
 
 namespace UnitTests;
@@ -8,6 +11,37 @@ namespace UnitTests;
 [RequireGodotRuntime]
 public class StatusEffectSystemTest
 {
+    private Node? _root;
+    private readonly List<Node> _testNodes = new();
+
+    private T AddNode<T>(T node)
+        where T : Node
+    {
+        if (_root == null)
+            throw new InvalidOperationException("Root is not initialized.");
+
+        _root.AddChild(node);
+        _testNodes.Add(node);
+        return node;
+    }
+
+    [BeforeTest]
+    public void Setup()
+    {
+        _root = new Node { Name = "TestRoot" };
+        ((SceneTree)Engine.GetMainLoop()).Root.AddChild(_root);
+        _testNodes.Clear();
+        _testNodes.Add(_root);
+    }
+
+    [AfterTest]
+    public void Cleanup()
+    {
+        foreach (Node node in _testNodes)
+            node.QueueFree();
+        _testNodes.Clear();
+    }
+
     // =====================================================
     //  APPLY EFFECT
     // =====================================================
@@ -29,15 +63,16 @@ public class StatusEffectSystemTest
     public void ApplyEffect_Stacks_WhenStackable()
     {
         StatusEffectSystem sys = new();
-        TestConcreteEffectTarget<object> target = new();
-        TestConcreteStatusEffect<object> effect1 = new() { Stackable = true };
-        TestConcreteStatusEffect<object> effect2 = new() { Stackable = true };
+        TestConcreteEffectTarget<UnitSystem> target = new();
+        TestConcreteStatusEffect<UnitSystem> effect1 = new(duration: 1, isStackable: true);
+        TestConcreteStatusEffect<UnitSystem> effect2 = new(duration: 3, isStackable: true);
 
         sys.ApplyEffect(target, effect1);
         sys.ApplyEffect(target, effect2);
 
         AssertThat(target.GetActiveEffects().Count).IsEqual(1);
-        AssertThat(effect1.StackCount).IsEqual(2);
+        AssertThat(target.GetActiveEffects()[0].StackCount).IsEqual(2);
+        AssertThat(target.GetActiveEffects()[0].Duration).IsEqual(3);
     }
 
     [TestCase]
@@ -45,14 +80,15 @@ public class StatusEffectSystemTest
     {
         StatusEffectSystem sys = new();
         TestConcreteEffectTarget<object> target = new();
-        TestConcreteStatusEffect<object> e1 = new() { Stackable = false };
-        TestConcreteStatusEffect<object> e2 = new() { Stackable = false };
+        TestConcreteStatusEffect<object> e1 = new(duration: 2, isStackable: false);
+        TestConcreteStatusEffect<object> e2 = new(duration: 1, isStackable: false);
 
         sys.ApplyEffect(target, e1);
         sys.ApplyEffect(target, e2);
 
         AssertThat(target.GetActiveEffects().Count).IsEqual(1);
-        AssertThat(e1.StackCount).IsEqual(1);
+        AssertThat(target.GetActiveEffects()[0].StackCount).IsEqual(1);
+        AssertThat(target.GetActiveEffects()[0].Duration).IsEqual(2);
     }
 
     // =====================================================
@@ -120,7 +156,7 @@ public class StatusEffectSystemTest
         sys.ApplyEffect(cellTarget, cellEffect);
 
         // Unit target : should NOT be processed
-        TestConcreteUnitSystem unitTarget = new();
+        TestConcreteUnitSystem unitTarget = AddNode(new TestConcreteUnitSystem());
         TestConcreteStatusEffect<UnitSystem> unitEffect = new(duration: 1);
         sys.ApplyEffect(unitTarget, unitEffect);
 

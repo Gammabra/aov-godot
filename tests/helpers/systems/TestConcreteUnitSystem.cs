@@ -1,6 +1,7 @@
 using System.Reflection;
 using System.Collections.Generic;
 using AshesOfVelsingrad.Systems;
+using AshesOfVelsingrad.Utilities;
 using AshesOfVelsingrad.AI;
 using Godot;
 
@@ -93,32 +94,45 @@ public partial class TestConcreteUnitSystem : UnitSystem
 		}
 	}
 
-	public TestConcreteUnitSystem()
-	{
-		GD.Print("[TEST] TestConcreteUnitSystem constructor called");
-	}
+    public TestConcreteUnitSystem(
+        string unitName = "TestUnit",
+        string description = "Unit used only for unit testing.",
+        float maxHp = 100,
+        float hp = 100,
+        float baseAtk = 10,
+        float baseDef = 5,
+        float baseSpeed = 4,
+        float manaPoint = 100,
+        int possibleMovesRange = 1,
+        bool isAlive = true
+    )
+    {
+        Name = "TestConcreteUnitSystem";
+        UnitName = unitName;
+        Description = description;
+        MaxHp = maxHp;
+        Hp = hp;
+        BaseAtk = baseAtk;
+        BaseDef = baseDef;
+        BaseSpeed = baseSpeed;
+        ManaPoint = manaPoint;
+        PossibleMovesRange = possibleMovesRange;
+        IsAlive = isAlive;
+        Type = AovDataStructures.UnitType.Player;
+        GD.Print("[TEST] TestConcreteUnitSystem constructor called");
+    }
 
-	protected override void Initialize()
-	{
-		base.Initialize();
-		
-		UnitName = "TestUnit";
-		MaxHp = 100;
-		Hp = 100;
-		BaseAtk = 20;
-		BaseDef = 5;
-		BaseSpeed = 4;
-		Intelligence = 15;
-		ManaMax = 100;
-		Mana = 100;
-		Type = UnitType.Player;
-		PossibleMovesRange = 3;
-		IsAlive = true;
-		
-		IsInitialized = true;
-		Log.Add("Initialized");
-		GD.Print("[TEST] TestConcreteUnitSystem initialized");
-	}
+    protected override void Initialize()
+    {
+        if (IsInitialized)
+            return;
+        IsInitialized = true;
+
+        base.Initialize();
+        GD.Print($"[TEST] Total atk is {TotalAtk}");
+        GD.Print($"[TEST] Total def is {TotalDef}");
+        GD.Print("[TEST] TestConcreteUnitSystem initialized");
+    }
 
 	public override void InjectDependencies(StatusEffectSystem statusEffectSystem)
 	{

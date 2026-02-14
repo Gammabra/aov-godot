@@ -1,5 +1,5 @@
 using AshesOfVelsingrad.Systems;
-using AshesOfVelsingrad.utilities;
+using AshesOfVelsingrad.Utilities;
 
 namespace UnitTests;
 
@@ -13,19 +13,13 @@ public class TestConcreteStatusEffect<TTarget> : StatusEffect<TTarget>
     public IEffectTarget<TTarget>? LastRemoveTarget { get; private set; }
     public IEffectTarget<TTarget>? LastTurnTarget { get; private set; }
 
-    public bool Stackable { get; set; } = false;
-
-    public override bool IsStackable => Stackable;
-
     public TestConcreteStatusEffect(
         string name = "Test Effect",
         string description = "Test Description",
-        int duration = 1
-    )
+        int duration = 1,
+        bool isStackable = false
+    ) : base(name, description, duration, isStackable)
     {
-        Name = name;
-        Description = description;
-        Duration = duration;
     }
 
     public override void OnApply(IEffectTarget<TTarget> target)

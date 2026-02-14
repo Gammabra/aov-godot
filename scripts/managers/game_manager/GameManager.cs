@@ -1,8 +1,8 @@
-using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using AshesOfVelsingrad.Systems;
 using AshesOfVelsingrad.AI;
+using AshesOfVelsingrad.Utilities;
 using Godot;
 
 namespace AshesOfVelsingrad.Managers;
@@ -13,10 +13,10 @@ public partial class GameManager : BaseManager
 
 	#region Private Fields
 
-    private GameOutcome _gameOutcome = GameOutcome.Ongoing;
+    private AovDataStructures.GameOutcome _gameOutcome = AovDataStructures.GameOutcome.Ongoing;
     private bool _isPlayerTurn;
     private bool _unitMoved;
-    private ClickOnMapContext _clickOnMapContext = ClickOnMapContext.MoveUnit;
+    private AovDataStructures.ClickOnMapContext _clickOnMapContext = AovDataStructures.ClickOnMapContext.MoveUnit;
     private readonly List<UnitSystem> _playerUnits = new List<UnitSystem>();
     private readonly List<UnitSystem> _enemyUnits = new List<UnitSystem>();
     private List<Vector3I> _currentUnitPossibleMoves = new List<Vector3I>();
@@ -61,17 +61,22 @@ public partial class GameManager : BaseManager
 
 	#region Private Properties
 
-	private new static GameManager? Instance { get; set; }
+    /// <summary>
+    ///     Singleton instance of the <see cref="GameManager" />.
+    ///     Ensures that only one active instance exists at any given time.
+    /// </summary>
+    private new static GameManager? Instance { get; set; }
 
 	#endregion
 
 	#region Class initialization
 
-	public override void _Ready()
-	{
-		base._Ready();
-		_ = StartBattleWhenReady();
-	}
+    /// <inheritdoc />
+    public override void _Ready()
+    {
+        base._Ready();
+        _ = StartBattleWhenReady();
+    }
 
 	protected override void Initialize()
 	{
@@ -88,11 +93,11 @@ public partial class GameManager : BaseManager
     }
 
     /// <summary>
-    /// Initializes references to all major systems and sets up initial bindings.
+    ///     Initializes references to all major systems and sets up initial bindings.
     /// </summary>
     /// <remarks>
-    /// This method is called during <see cref="Initialize"/> to connect signals,
-    /// set up turn events, load units, and prepare the map and input systems.
+    ///     This method is called during <see cref="Initialize" /> to connect signals,
+    ///     set up turn events, load units, and prepare the map and input systems.
     /// </remarks>
     private void InitializeGameManager()
     {
@@ -158,10 +163,14 @@ public partial class GameManager : BaseManager
 
 	#region Private Methods
 
-	private async Task StartBattleWhenReady()
-	{
-		if (!IsInsideTree())
-			await ToSignal(this, "ready");
+    /// <summary>
+    ///     Waits for the scene tree to be fully ready, then starts the battle loop.
+    /// </summary>
+    /// <returns>A task that completes once the battle has started.</returns>
+    private async Task StartBattleWhenReady()
+    {
+        if (!IsInsideTree())
+            await ToSignal(this, "ready");
 
 		if (_turnManagerContainer == null)
 		{
@@ -173,13 +182,16 @@ public partial class GameManager : BaseManager
         _ = _turnManagerContainer.StartBattle();
     }
 
-	private void ActivatePlayerUnit()
-	{
-		if (_battleInputSystemContainer == null)
-		{
-			GD.PrintErr("BattleInputSystemContainer not set in GameManager.");
-			return;
-		}
+    /// <summary>
+    ///     Activate player unit (actions and inputs) at the start of their turn.
+    /// </summary>
+    private void ActivatePlayerUnit()
+    {
+        if (_battleInputSystemContainer == null)
+        {
+            GD.PrintErr("BattleInputSystemContainer not set in GameManager.");
+            return;
+        }
 
 		if (_turnManagerContainer == null)
 		{
@@ -201,13 +213,16 @@ public partial class GameManager : BaseManager
         GD.Print("Activate input");
     }
 
-	private void DeactivatePlayerUnit()
-	{
-		if (_battleInputSystemContainer == null)
-		{
-			GD.PrintErr("BattleInputSystemContainer not set in GameManager.");
-			return;
-		}
+    /// <summary>
+    ///     Disables player unit (actions and inputs) when their turn ends.
+    /// </summary>
+    private void DeactivatePlayerUnit()
+    {
+        if (_battleInputSystemContainer == null)
+        {
+            GD.PrintErr("BattleInputSystemContainer not set in GameManager.");
+            return;
+        }
 
 		if (_turnManagerContainer == null)
 		{
@@ -221,7 +236,7 @@ public partial class GameManager : BaseManager
 			return;
 		}
 
-        _clickOnMapContext = ClickOnMapContext.MoveUnit;
+        _clickOnMapContext = AovDataStructures.ClickOnMapContext.MoveUnit;
         _isPlayerTurn = false;
         _selectedSkill = null;
         _unitMoved = false;
@@ -229,14 +244,15 @@ public partial class GameManager : BaseManager
         _currentUnitReachableCellsForCurrentSelectedSkill.Clear();
         _battleInputSystemContainer.SetInputEnabled(false);
         GD.Print("Deactivate input and player units");
+        _statusEffectSystem.ProcessUnitTurnEnd(_turnManagerContainer.GetCurrentUnit());
         CheckUnitTurnEnd();
     }
 
     /// <summary>
-    /// Handles player unit select skill input.
+    ///     Handles player unit select skill input.
     /// </summary>
     /// <remarks>
-    /// Called when <see cref="BattleInputSystem.OnSelectedSkillPressed"/> is triggered.
+    ///     Called when <see cref="BattleInputSystem.OnSelectedSkillPressed" /> is triggered.
     /// </remarks>
     private void PlayerSelectedSkill(int skillId)
     {
@@ -266,7 +282,7 @@ public partial class GameManager : BaseManager
         }
 
         GD.Print($"Selected Skill {skillId}");
-        _clickOnMapContext = ClickOnMapContext.SelectUnitTarget;
+        _clickOnMapContext = AovDataStructures.ClickOnMapContext.SelectUnitTarget;
         _selectedSkill = _turnManagerContainer.GetCurrentUnit().ActiveSkills[skillId];
         var reachableTuples = _turnManagerContainer
             .GetCurrentUnit()
@@ -278,10 +294,10 @@ public partial class GameManager : BaseManager
     }
 
     /// <summary>
-    /// Handles player unit pass turn input.
+    ///     Handles player unit pass turn input.
     /// </summary>
     /// <remarks>
-    /// Called when <see cref="BattleInputSystem.OnPassTurnPressed"/> is triggered.
+    ///     Called when <see cref="BattleInputSystem.OnPassTurnPressed" /> is triggered.
     /// </remarks>
     private void PlayerPassedUnitTurn()
     {
@@ -297,19 +313,19 @@ public partial class GameManager : BaseManager
     }
 
     /// <summary>
-    /// Handles input when the player selects the “Move” action.
+    ///     Handles input when the player selects the “Move” action.
     /// </summary>
     private void PlayerSelectedMove()
     {
         if (_unitMoved)
             return;
         GD.Print("Selected move action.");
-        _clickOnMapContext = ClickOnMapContext.MoveUnit;
+        _clickOnMapContext = AovDataStructures.ClickOnMapContext.MoveUnit;
     }
 
     /// <summary>
-    /// Determines what to do when the player clicks on the map —
-    /// either move a unit or select a skill target depending on the current context.
+    ///     Determines what to do when the player clicks on the map —
+    ///     either move a unit or select a skill target depending on the current context.
     /// </summary>
     /// <param name="cell">The grid cell clicked by the player.</param>
     private void PlayerMovedUnitOrSelectedTarget(Vector3I cell)
@@ -336,17 +352,17 @@ public partial class GameManager : BaseManager
 
         switch (_clickOnMapContext)
         {
-            case ClickOnMapContext.MoveUnit:
+            case AovDataStructures.ClickOnMapContext.MoveUnit:
                 HandlePlayerUnitMove(cell);
                 break;
-            case ClickOnMapContext.SelectUnitTarget:
+            case AovDataStructures.ClickOnMapContext.SelectUnitTarget:
                 HandlePlayerSelectTarget(cell);
                 break;
         }
     }
 
     /// <summary>
-    /// Resets movement flags when the enemy turn ends.
+    ///     Resets movement flags when the enemy turn ends.
     /// </summary>
     private void EnemyTurnEnded()
     {
@@ -362,7 +378,7 @@ public partial class GameManager : BaseManager
     }
 
     /// <summary>
-    /// Handles all logic that should occur at the end of the current turn.
+    ///     Handles all logic that should occur at the end of the current turn.
     /// </summary>
     private void CurrentTurnEnded()
     {
@@ -386,19 +402,19 @@ public partial class GameManager : BaseManager
 	#region Public Methods
 
     /// <summary>
-    /// Moves the currently active unit to the specified cell on the map.
+    ///     Moves the currently active unit to the specified cell on the map.
     /// </summary>
     /// <param name="cell">
-    /// The target cell position as a <see cref="Vector3I"/> (grid coordinates X, Y, Z).
+    ///     The target cell position as a <see cref="Vector3I" /> (grid coordinates X, Y, Z).
     /// </param>
     /// <remarks>
-    /// Checks that both <c>_mapSystemContainer</c> and <c>_turnManagerContainer</c>
-    /// are properly set before performing the move.
-    /// If valid, the active unit is repositioned in the world based on the given
-    /// cell coordinates and the map’s cell size.
+    ///     Checks that both <c>_mapSystemContainer</c> and <c>_turnManagerContainer</c>
+    ///     are properly set before performing the move.
+    ///     If valid, the active unit is repositioned in the world based on the given
+    ///     cell coordinates and the map’s cell size.
     /// </remarks>
     /// <example>
-    /// <code>
+    ///     <code>
     /// Vector3I targetCell = new Vector3I(2, 0, 3);
     /// gameManager.MoveUnit(targetCell);
     /// </code>
@@ -440,10 +456,30 @@ public partial class GameManager : BaseManager
         GD.Print("Unit moved");
     }
 
-	/// <summary>
-	/// Uses a skill from a source unit on a target unit.
-	/// This can be called by AI behaviors through BattleState.
-	/// </summary>
+    /// <summary>
+    ///     Uses a skill from a source unit on a target unit, depending on the skill’s target type.
+    /// </summary>
+    /// <param name="sourceUnit">
+    ///     The unit that performs the skill.
+    /// </param>
+    /// <param name="targetUnit">
+    ///     The main target unit of the skill.
+    /// </param>
+    /// <param name="skill">
+    ///     The skill being used, containing information about its target type and effects.
+    /// </param>
+    /// <remarks>
+    ///     Determines which units are allies or enemies based on the source unit,
+    ///     then applies the skill accordingly depending on its <c>TargetType</c>.
+    ///     If required containers are not initialized, the method prints an error
+    ///     and exits early.
+    /// </remarks>
+    /// <example>
+    ///     <code>
+    /// SkillSystem healSkill = new SkillSystem("Heal", TargetTypes.SingleAlly);
+    /// gameManager.UseSkill(playerUnit, allyUnit, healSkill);
+    /// </code>
+    /// </example>
     public virtual void UseSkill(UnitSystem sourceUnit, UnitSystem targetUnit, SkillSystem skill)
     {
         List<UnitSystem> allyUnits = new List<UnitSystem>();
@@ -471,7 +507,7 @@ public partial class GameManager : BaseManager
 
         switch (skill.TargetType)
         {
-            case TargetTypes.SingleAlly:
+            case AovDataStructures.TargetTypes.SingleAlly:
                 if (!allyUnits.Contains(targetUnit))
                 {
                     GD.PrintErr($"Ally unit {targetUnit.UnitName} not found.");
@@ -485,7 +521,7 @@ public partial class GameManager : BaseManager
                 _turnManagerContainer.GetCurrentUnit().Play(targetUnits, _mapSystemContainer, skill);
                 break;
 
-            case TargetTypes.SingleEnemy:
+            case AovDataStructures.TargetTypes.SingleEnemy:
                 if (!enemyUnits.Contains(targetUnit))
                 {
                     GD.PrintErr($"Enemy unit {targetUnit.UnitName} not found.");
@@ -499,7 +535,7 @@ public partial class GameManager : BaseManager
                 _turnManagerContainer.GetCurrentUnit().Play(targetUnits, _mapSystemContainer, skill);
                 break;
 
-            case TargetTypes.AllAllies:
+            case AovDataStructures.TargetTypes.AllAllies:
                 if (!allyUnits.Contains(targetUnit))
                 {
                     GD.PrintErr($"Ally unit {targetUnit.UnitName} not found.");
@@ -512,7 +548,7 @@ public partial class GameManager : BaseManager
                 _turnManagerContainer.GetCurrentUnit().Play(allyUnits, _mapSystemContainer, skill);
                 break;
 
-            case TargetTypes.AllEnemies:
+            case AovDataStructures.TargetTypes.AllEnemies:
                 if (!enemyUnits.Contains(targetUnit))
                 {
                     GD.PrintErr($"Enemy unit {targetUnit.UnitName} not found.");

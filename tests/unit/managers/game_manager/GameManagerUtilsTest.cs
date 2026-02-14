@@ -14,43 +14,43 @@ namespace UnitTests;
 [RequireGodotRuntime]
 public class GameManagerUtilsTest
 {
-	private readonly List<Node> _testNodes = new();
-	private Node? _root;
-	private TestConcreteGameManager? _gameManager;
-	private TestConcreteMapSystem? _mapSystem;
-	private TestConcreteTurnManager? _turnManager;
-	private TestConcreteBattleInputSystem? _battleInputSystem;
+    private readonly List<Node> _testNodes = new();
+    private Node? _root;
+    private TestConcreteGameManager? _gameManager;
+    private TestConcreteMapSystem? _mapSystem;
+    private TestConcreteTurnManager? _turnManager;
+    private TestConcreteBattleInputSystem? _battleInputSystem;
 
-	#region Private Helper Methods
+    #region Private Helper Methods
 
-	private T AddNodeToTestRoot<T>(T node)
-		where T : Node
-	{
-		if (_root == null)
-			throw new InvalidOperationException("Test root node is not initialized.");
-		_root.AddChild(node);
-		_testNodes.Add(node);
-		return node;
-	}
+    private T AddNodeToTestRoot<T>(T node)
+        where T : Node
+    {
+        if (_root == null)
+            throw new InvalidOperationException("Test root node is not initialized.");
+        _root.AddChild(node);
+        _testNodes.Add(node);
+        return node;
+    }
 
-	private void SetSingletonInstance<T>(T? instance)
-		where T : class
-	{
-		PropertyInfo? instanceProperty = typeof(T).GetProperty(
-			"Instance",
-			BindingFlags.Public | BindingFlags.Static | BindingFlags.NonPublic
-		);
-		instanceProperty?.SetValue(null, instance);
-	}
+    private void SetSingletonInstance<T>(T? instance)
+        where T : class
+    {
+        PropertyInfo? instanceProperty = typeof(T).GetProperty(
+            "Instance",
+            BindingFlags.Public | BindingFlags.Static | BindingFlags.NonPublic
+        );
+        instanceProperty?.SetValue(null, instance);
+    }
 
-	private void ResetSingletons()
-	{
-		SetSingletonInstance<GameManager>(null);
-		SetSingletonInstance<MapSystem>(null);
-		TestConcreteMapSystem.Instance = null;
-	}
+    private void ResetSingletons()
+    {
+        SetSingletonInstance<GameManager>(null);
+        SetSingletonInstance<MapSystem>(null);
+        TestConcreteMapSystem.Instance = null;
+    }
 
-	private void SetupGameManagerDependencies()
+    private void SetupGameManagerDependencies()
     {
         // Create map system
         _mapSystem = AddNodeToTestRoot(new TestConcreteMapSystem());
@@ -74,7 +74,7 @@ public class GameManagerUtilsTest
         TestConcreteUnitSystem playerUnit2 = new TestConcreteUnitSystem { Name = "PlayerUnit2" };
         TestConcreteUnitSystem enemyUnit1 = new TestConcreteUnitSystem { Name = "EnemyUnit1" };
         TestConcreteUnitSystem enemyUnit2 = new TestConcreteUnitSystem { Name = "EnemyUnit2" };
-        
+
         playerUnit1.CallInitialize();
         playerUnit2.CallInitialize();
         enemyUnit1.CallInitialize();
@@ -85,7 +85,7 @@ public class GameManagerUtilsTest
         playerUnitsContainer.AddChild(playerUnit2);
         enemyUnitsContainer.AddChild(enemyUnit1);
         enemyUnitsContainer.AddChild(enemyUnit2);
-        
+
         // Track for cleanup
         _testNodes.Add(playerUnit1);
         _testNodes.Add(playerUnit2);
@@ -94,7 +94,7 @@ public class GameManagerUtilsTest
 
         // Create game manager AFTER containers have units as children
         _gameManager = AddNodeToTestRoot(new TestConcreteGameManager());
-        
+
         // Set up node paths
         _gameManager.SetNodePaths(
             playerUnitsContainer.GetPath(),
@@ -105,333 +105,333 @@ public class GameManagerUtilsTest
         );
     }
 
-	#endregion
+    #endregion
 
-	#region Setup and Teardown
+    #region Setup and Teardown
 
-	[BeforeTest]
-	public void Setup()
-	{
-		ResetSingletons();
-		_testNodes.Clear();
+    [BeforeTest]
+    public void Setup()
+    {
+        ResetSingletons();
+        _testNodes.Clear();
 
-		_root = new Node { Name = "TestRoot" };
-		((SceneTree)Engine.GetMainLoop()).Root.AddChild(_root);
-		_testNodes.Add(_root);
-	}
+        _root = new Node { Name = "TestRoot" };
+        ((SceneTree)Engine.GetMainLoop()).Root.AddChild(_root);
+        _testNodes.Add(_root);
+    }
 
-	[AfterTest]
-	public void TearDown()
-	{
-		foreach (Node node in _testNodes)
-		{
-			if (GodotObject.IsInstanceValid(node) && !node.IsQueuedForDeletion())
-				node.QueueFree();
-		}
+    [AfterTest]
+    public void TearDown()
+    {
+        foreach (Node node in _testNodes)
+        {
+            if (GodotObject.IsInstanceValid(node) && !node.IsQueuedForDeletion())
+                node.QueueFree();
+        }
 
-		_testNodes.Clear();
-		ResetSingletons();
-	}
+        _testNodes.Clear();
+        ResetSingletons();
+    }
 
-	#endregion
+    #endregion
 
-	#region LoadUnits Tests
+    #region LoadUnits Tests
 
-	[TestCase]
-	public void LoadUnits_LoadsPlayerUnits()
-	{
-		SetupGameManagerDependencies();
-		_gameManager!.CallInitialize();
+    [TestCase]
+    public void LoadUnits_LoadsPlayerUnits()
+    {
+        SetupGameManagerDependencies();
+        _gameManager!.CallInitialize();
 
-		AssertThat(_gameManager.PlayerUnitsCount).IsEqual(2);
-	}
+        AssertThat(_gameManager.PlayerUnitsCount).IsEqual(2);
+    }
 
-	[TestCase]
-	public void LoadUnits_LoadsEnemyUnits()
-	{
-		SetupGameManagerDependencies();
-		_gameManager!.CallInitialize();
+    [TestCase]
+    public void LoadUnits_LoadsEnemyUnits()
+    {
+        SetupGameManagerDependencies();
+        _gameManager!.CallInitialize();
 
-		AssertThat(_gameManager.EnemyUnitsCount).IsEqual(2);
-	}
+        AssertThat(_gameManager.EnemyUnitsCount).IsEqual(2);
+    }
 
-	[TestCase]
+    [TestCase]
     public void LoadUnits_InjectsDependenciesToUnits()
     {
         SetupGameManagerDependencies();
         _gameManager!.CallInitialize();
 
         var playerUnit = _gameManager.GetPlayerUnit(0);
-        
+
         // Instead of checking the field directly, verify the dependency was injected
         // by checking that status effects can be applied (which requires the injected system)
         var effect = new TestConcreteStatusEffect<UnitSystem>();
         playerUnit.SetStatusEffectOnUnit(effect);
-        
+
         // If the dependency was injected, the effect should be applied successfully
         AssertThat(playerUnit.HasEffect<TestConcreteStatusEffect<UnitSystem>>()).IsTrue();
     }
 
-	[TestCase]
-	public void LoadUnits_HandlesEmptyPlayerContainer()
-	{
-		// Create empty player container  
-		Node emptyPlayerContainer = AddNodeToTestRoot(new Node { Name = "EmptyPlayers" });
-		Node enemyContainer = AddNodeToTestRoot(new Node { Name = "Enemies" });
+    [TestCase]
+    public void LoadUnits_HandlesEmptyPlayerContainer()
+    {
+        // Create empty player container  
+        Node emptyPlayerContainer = AddNodeToTestRoot(new Node { Name = "EmptyPlayers" });
+        Node enemyContainer = AddNodeToTestRoot(new Node { Name = "Enemies" });
 
-		// Create unit WITHOUT adding to test root first
-		var enemyUnit = new TestConcreteUnitSystem { Name = "Enemy1" };
-		enemyUnit.CallInitialize();
-		
-		// Add to container, THEN track for cleanup
-		enemyContainer.AddChild(enemyUnit);
-		_testNodes.Add(enemyUnit);  // Add to cleanup list manually
+        // Create unit WITHOUT adding to test root first
+        var enemyUnit = new TestConcreteUnitSystem { Name = "Enemy1" };
+        enemyUnit.CallInitialize();
 
-		_mapSystem = AddNodeToTestRoot(new TestConcreteMapSystem());
-		_mapSystem.CallInitialize();
-		_turnManager = AddNodeToTestRoot(new TestConcreteTurnManager());
-		_battleInputSystem = AddNodeToTestRoot(new TestConcreteBattleInputSystem());
+        // Add to container, THEN track for cleanup
+        enemyContainer.AddChild(enemyUnit);
+        _testNodes.Add(enemyUnit);  // Add to cleanup list manually
 
-		var gameManager = AddNodeToTestRoot(new TestConcreteGameManager());
-		gameManager.SetNodePaths(
-			emptyPlayerContainer.GetPath(),
-			enemyContainer.GetPath(),
-			_mapSystem.GetPath(),
-			_turnManager.GetPath(),
-			_battleInputSystem.GetPath()
-		);
+        _mapSystem = AddNodeToTestRoot(new TestConcreteMapSystem());
+        _mapSystem.CallInitialize();
+        _turnManager = AddNodeToTestRoot(new TestConcreteTurnManager());
+        _battleInputSystem = AddNodeToTestRoot(new TestConcreteBattleInputSystem());
 
-		gameManager.CallInitialize();
+        var gameManager = AddNodeToTestRoot(new TestConcreteGameManager());
+        gameManager.SetNodePaths(
+            emptyPlayerContainer.GetPath(),
+            enemyContainer.GetPath(),
+            _mapSystem.GetPath(),
+            _turnManager.GetPath(),
+            _battleInputSystem.GetPath()
+        );
 
-		AssertThat(gameManager.PlayerUnitsCount).IsEqual(0);
-		AssertThat(gameManager.EnemyUnitsCount).IsEqual(1);
-	}
+        gameManager.CallInitialize();
 
-	[TestCase]
-	public void LoadUnits_HandlesEmptyEnemyContainer()
-	{
-		// Create containers with only player units
-		Node playerContainer = AddNodeToTestRoot(new Node { Name = "Players" });
-		Node emptyEnemyContainer = AddNodeToTestRoot(new Node { Name = "EmptyEnemies" });
+        AssertThat(gameManager.PlayerUnitsCount).IsEqual(0);
+        AssertThat(gameManager.EnemyUnitsCount).IsEqual(1);
+    }
 
-		// Create unit WITHOUT adding to test root
-		var playerUnit = new TestConcreteUnitSystem { Name = "Player1" };
-		playerUnit.CallInitialize();
-		
-		// Add to container, then track for cleanup
-		playerContainer.AddChild(playerUnit);
-		_testNodes.Add(playerUnit);
+    [TestCase]
+    public void LoadUnits_HandlesEmptyEnemyContainer()
+    {
+        // Create containers with only player units
+        Node playerContainer = AddNodeToTestRoot(new Node { Name = "Players" });
+        Node emptyEnemyContainer = AddNodeToTestRoot(new Node { Name = "EmptyEnemies" });
 
-		_mapSystem = AddNodeToTestRoot(new TestConcreteMapSystem());
-		_mapSystem.CallInitialize();
-		_turnManager = AddNodeToTestRoot(new TestConcreteTurnManager());
-		_battleInputSystem = AddNodeToTestRoot(new TestConcreteBattleInputSystem());
+        // Create unit WITHOUT adding to test root
+        var playerUnit = new TestConcreteUnitSystem { Name = "Player1" };
+        playerUnit.CallInitialize();
 
-		var gameManager = AddNodeToTestRoot(new TestConcreteGameManager());
-		gameManager.SetNodePaths(
-			playerContainer.GetPath(),
-			emptyEnemyContainer.GetPath(),
-			_mapSystem.GetPath(),
-			_turnManager.GetPath(),
-			_battleInputSystem.GetPath()
-		);
+        // Add to container, then track for cleanup
+        playerContainer.AddChild(playerUnit);
+        _testNodes.Add(playerUnit);
 
-		gameManager.CallInitialize();
+        _mapSystem = AddNodeToTestRoot(new TestConcreteMapSystem());
+        _mapSystem.CallInitialize();
+        _turnManager = AddNodeToTestRoot(new TestConcreteTurnManager());
+        _battleInputSystem = AddNodeToTestRoot(new TestConcreteBattleInputSystem());
 
-		AssertThat(gameManager.PlayerUnitsCount).IsEqual(1);
-		AssertThat(gameManager.EnemyUnitsCount).IsEqual(0);
-	}
+        var gameManager = AddNodeToTestRoot(new TestConcreteGameManager());
+        gameManager.SetNodePaths(
+            playerContainer.GetPath(),
+            emptyEnemyContainer.GetPath(),
+            _mapSystem.GetPath(),
+            _turnManager.GetPath(),
+            _battleInputSystem.GetPath()
+        );
 
-	[TestCase]
-	public void LoadUnits_IgnoresNonUnitSystemChildren()
-	{
-		Node playerContainer = AddNodeToTestRoot(new Node { Name = "Players" });
-		Node enemyContainer = AddNodeToTestRoot(new Node { Name = "Enemies" });
+        gameManager.CallInitialize();
 
-		// Create unit WITHOUT adding to test root
-		var playerUnit = new TestConcreteUnitSystem { Name = "Player1" };
-		playerUnit.CallInitialize();
-		
-		// Add to container, then track for cleanup
-		playerContainer.AddChild(playerUnit);
-		_testNodes.Add(playerUnit);
+        AssertThat(gameManager.PlayerUnitsCount).IsEqual(1);
+        AssertThat(gameManager.EnemyUnitsCount).IsEqual(0);
+    }
 
-		// Add a non-UnitSystem node
-		var nonUnitNode = new Node { Name = "NotAUnit" };
-		playerContainer.AddChild(nonUnitNode);
-		_testNodes.Add(nonUnitNode);  // Track for cleanup
+    [TestCase]
+    public void LoadUnits_IgnoresNonUnitSystemChildren()
+    {
+        Node playerContainer = AddNodeToTestRoot(new Node { Name = "Players" });
+        Node enemyContainer = AddNodeToTestRoot(new Node { Name = "Enemies" });
 
-		_mapSystem = AddNodeToTestRoot(new TestConcreteMapSystem());
-		_mapSystem.CallInitialize();
-		_turnManager = AddNodeToTestRoot(new TestConcreteTurnManager());
-		_battleInputSystem = AddNodeToTestRoot(new TestConcreteBattleInputSystem());
+        // Create unit WITHOUT adding to test root
+        var playerUnit = new TestConcreteUnitSystem { Name = "Player1" };
+        playerUnit.CallInitialize();
 
-		var gameManager = AddNodeToTestRoot(new TestConcreteGameManager());
-		gameManager.SetNodePaths(
-			playerContainer.GetPath(),
-			enemyContainer.GetPath(),
-			_mapSystem.GetPath(),
-			_turnManager.GetPath(),
-			_battleInputSystem.GetPath()
-		);
+        // Add to container, then track for cleanup
+        playerContainer.AddChild(playerUnit);
+        _testNodes.Add(playerUnit);
 
-		gameManager.CallInitialize();
+        // Add a non-UnitSystem node
+        var nonUnitNode = new Node { Name = "NotAUnit" };
+        playerContainer.AddChild(nonUnitNode);
+        _testNodes.Add(nonUnitNode);  // Track for cleanup
 
-		// Should only load the UnitSystem, not the regular Node
-		AssertThat(gameManager.PlayerUnitsCount).IsEqual(1);
-	}
+        _mapSystem = AddNodeToTestRoot(new TestConcreteMapSystem());
+        _mapSystem.CallInitialize();
+        _turnManager = AddNodeToTestRoot(new TestConcreteTurnManager());
+        _battleInputSystem = AddNodeToTestRoot(new TestConcreteBattleInputSystem());
 
-	#endregion
+        var gameManager = AddNodeToTestRoot(new TestConcreteGameManager());
+        gameManager.SetNodePaths(
+            playerContainer.GetPath(),
+            enemyContainer.GetPath(),
+            _mapSystem.GetPath(),
+            _turnManager.GetPath(),
+            _battleInputSystem.GetPath()
+        );
 
-	#region HandlePlayerUnitMove Tests
+        gameManager.CallInitialize();
 
-	[TestCase]
-	public void HandlePlayerUnitMove_MovesUnitToValidCell()
-	{
-		SetupGameManagerDependencies();
-		_gameManager!.CallInitialize();
+        // Should only load the UnitSystem, not the regular Node
+        AssertThat(gameManager.PlayerUnitsCount).IsEqual(1);
+    }
 
-		var unit = _gameManager.GetPlayerUnit(0);
-		_mapSystem!.CellsInformation[0].SetUnit(unit);
-		_turnManager!.SetCurrentUnit(unit);
+    #endregion
 
-		// Set up possible moves
-		_gameManager.SetCurrentUnitPossibleMoves(new List<Vector3I> { new Vector3I(1, 0, 0) });
+    #region HandlePlayerUnitMove Tests
 
-		_gameManager.CallHandlePlayerUnitMove(new Vector3I(1, 0, 0));
+    [TestCase]
+    public void HandlePlayerUnitMove_MovesUnitToValidCell()
+    {
+        SetupGameManagerDependencies();
+        _gameManager!.CallInitialize();
 
-		AssertThat(_mapSystem.GetUnitAt(1, 0, 0)).IsEqual(unit);
-	}
+        var unit = _gameManager.GetPlayerUnit(0);
+        _mapSystem!.CellsInformation[0].SetUnit(unit);
+        _turnManager!.SetCurrentUnit(unit);
 
-	[TestCase]
-	public void HandlePlayerUnitMove_RejectsInvalidCell()
-	{
-		SetupGameManagerDependencies();
-		_gameManager!.CallInitialize();
+        // Set up possible moves
+        _gameManager.SetCurrentUnitPossibleMoves(new List<Vector3I> { new Vector3I(1, 0, 0) });
 
-		var unit = _gameManager.GetPlayerUnit(0);
-		_mapSystem!.CellsInformation[0].SetUnit(unit);
-		_turnManager!.SetCurrentUnit(unit);
+        _gameManager.CallHandlePlayerUnitMove(new Vector3I(1, 0, 0));
 
-		// Set up possible moves (not including 2,0,0)
-		_gameManager.SetCurrentUnitPossibleMoves(new List<Vector3I> { new Vector3I(1, 0, 0) });
+        AssertThat(_mapSystem.GetUnitAt(1, 0, 0)).IsEqual(unit);
+    }
 
-		_gameManager.CallHandlePlayerUnitMove(new Vector3I(2, 0, 0));
+    [TestCase]
+    public void HandlePlayerUnitMove_RejectsInvalidCell()
+    {
+        SetupGameManagerDependencies();
+        _gameManager!.CallInitialize();
 
-		// Unit should not have moved
-		AssertThat(_mapSystem.GetUnitAt(2, 0, 0)).IsNull();
-		AssertThat(_battleInputSystem!.InputEnabled).IsTrue();
-	}
+        var unit = _gameManager.GetPlayerUnit(0);
+        _mapSystem!.CellsInformation[0].SetUnit(unit);
+        _turnManager!.SetCurrentUnit(unit);
 
-	[TestCase]
-	public void HandlePlayerUnitMove_ClearsPossibleMovesAfterMove()
-	{
-		SetupGameManagerDependencies();
-		_gameManager!.CallInitialize();
+        // Set up possible moves (not including 2,0,0)
+        _gameManager.SetCurrentUnitPossibleMoves(new List<Vector3I> { new Vector3I(1, 0, 0) });
 
-		var unit = _gameManager.GetPlayerUnit(0);
-		_mapSystem!.CellsInformation[0].SetUnit(unit);
-		_turnManager!.SetCurrentUnit(unit);
+        _gameManager.CallHandlePlayerUnitMove(new Vector3I(2, 0, 0));
 
-		_gameManager.SetCurrentUnitPossibleMoves(new List<Vector3I> { new Vector3I(1, 0, 0) });
+        // Unit should not have moved
+        AssertThat(_mapSystem.GetUnitAt(2, 0, 0)).IsNull();
+        AssertThat(_battleInputSystem!.InputEnabled).IsTrue();
+    }
 
-		_gameManager.CallHandlePlayerUnitMove(new Vector3I(1, 0, 0));
+    [TestCase]
+    public void HandlePlayerUnitMove_ClearsPossibleMovesAfterMove()
+    {
+        SetupGameManagerDependencies();
+        _gameManager!.CallInitialize();
 
-		AssertThat(_gameManager.GetCurrentUnitPossibleMovesCount()).IsEqual(0);
-	}
+        var unit = _gameManager.GetPlayerUnit(0);
+        _mapSystem!.CellsInformation[0].SetUnit(unit);
+        _turnManager!.SetCurrentUnit(unit);
 
-	[TestCase]
-	public void HandlePlayerUnitMove_HandlesOutOfRangeException()
-	{
-		SetupGameManagerDependencies();
-		_gameManager!.CallInitialize();
+        _gameManager.SetCurrentUnitPossibleMoves(new List<Vector3I> { new Vector3I(1, 0, 0) });
 
-		var unit = _gameManager.GetPlayerUnit(0);
-		_turnManager!.SetCurrentUnit(unit);
+        _gameManager.CallHandlePlayerUnitMove(new Vector3I(1, 0, 0));
 
-		// Try to move to a cell that doesn't exist
-		_gameManager.SetCurrentUnitPossibleMoves(new List<Vector3I> { new Vector3I(99, 99, 99) });
+        AssertThat(_gameManager.GetCurrentUnitPossibleMovesCount()).IsEqual(0);
+    }
 
-		// Should not throw
-		_gameManager.CallHandlePlayerUnitMove(new Vector3I(99, 99, 99));
+    [TestCase]
+    public void HandlePlayerUnitMove_HandlesOutOfRangeException()
+    {
+        SetupGameManagerDependencies();
+        _gameManager!.CallInitialize();
 
-		AssertThat(_battleInputSystem!.InputEnabled).IsTrue();
-	}
+        var unit = _gameManager.GetPlayerUnit(0);
+        _turnManager!.SetCurrentUnit(unit);
 
-	#endregion
+        // Try to move to a cell that doesn't exist
+        _gameManager.SetCurrentUnitPossibleMoves(new List<Vector3I> { new Vector3I(99, 99, 99) });
 
-	#region HandlePlayerSelectTarget Tests
+        // Should not throw
+        _gameManager.CallHandlePlayerUnitMove(new Vector3I(99, 99, 99));
 
-	[TestCase]
-	public void HandlePlayerSelectTarget_UsesSkillOnValidTarget()
-	{
-		SetupGameManagerDependencies();
-		_gameManager!.CallInitialize();
+        AssertThat(_battleInputSystem!.InputEnabled).IsTrue();
+    }
 
-		var sourceUnit = _gameManager.GetPlayerUnit(0);
-		var targetUnit = _gameManager.GetEnemyUnit(0);
-		var skill = new TestConcreteSkillSystem(target: AovDataStructures.TargetTypes.SingleEnemy);
-		sourceUnit.ActiveSkills.Add(skill);
+    #endregion
 
-		_mapSystem!.CellsInformation[1].SetUnit(targetUnit);
-		_turnManager!.SetCurrentUnit(sourceUnit);
+    #region HandlePlayerSelectTarget Tests
 
-		_gameManager.SetSelectedSkill(skill);
-		_gameManager.SetCurrentUnitReachableCells(new List<Vector3I> { new Vector3I(1, 0, 0) });
+    [TestCase]
+    public void HandlePlayerSelectTarget_UsesSkillOnValidTarget()
+    {
+        SetupGameManagerDependencies();
+        _gameManager!.CallInitialize();
 
-		_gameManager.CallHandlePlayerSelectTarget(new Vector3I(1, 0, 0));
+        var sourceUnit = _gameManager.GetPlayerUnit(0);
+        var targetUnit = _gameManager.GetEnemyUnit(0);
+        var skill = new TestConcreteSkillSystem(target: AovDataStructures.TargetTypes.SingleEnemy);
+        sourceUnit.ActiveSkills.Add(skill);
 
-		AssertThat(skill.WasUsed).IsTrue();
-	}
+        _mapSystem!.CellsInformation[1].SetUnit(targetUnit);
+        _turnManager!.SetCurrentUnit(sourceUnit);
 
-	[TestCase]
-	public void HandlePlayerSelectTarget_RejectsNonReachableCell()
-	{
-		SetupGameManagerDependencies();
-		_gameManager!.CallInitialize();
+        _gameManager.SetSelectedSkill(skill);
+        _gameManager.SetCurrentUnitReachableCells(new List<Vector3I> { new Vector3I(1, 0, 0) });
 
-		var sourceUnit = _gameManager.GetPlayerUnit(0);
-		var targetUnit = _gameManager.GetEnemyUnit(0);
-		var skill = new TestConcreteSkillSystem(target: AovDataStructures.TargetTypes.SingleEnemy);
+        _gameManager.CallHandlePlayerSelectTarget(new Vector3I(1, 0, 0));
 
-		_mapSystem!.CellsInformation[2].SetUnit(targetUnit);
-		_turnManager!.SetCurrentUnit(sourceUnit);
+        AssertThat(skill.WasUsed).IsTrue();
+    }
 
-		_gameManager.SetSelectedSkill(skill);
-		_gameManager.SetCurrentUnitReachableCells(new List<Vector3I> { new Vector3I(1, 0, 0) });
+    [TestCase]
+    public void HandlePlayerSelectTarget_RejectsNonReachableCell()
+    {
+        SetupGameManagerDependencies();
+        _gameManager!.CallInitialize();
 
-		_gameManager.CallHandlePlayerSelectTarget(new Vector3I(2, 0, 0));
+        var sourceUnit = _gameManager.GetPlayerUnit(0);
+        var targetUnit = _gameManager.GetEnemyUnit(0);
+        var skill = new TestConcreteSkillSystem(target: AovDataStructures.TargetTypes.SingleEnemy);
 
-		AssertThat(skill.WasUsed).IsFalse();
-		AssertThat(_battleInputSystem!.InputEnabled).IsTrue();
-	}
+        _mapSystem!.CellsInformation[2].SetUnit(targetUnit);
+        _turnManager!.SetCurrentUnit(sourceUnit);
 
-	[TestCase]
-	public void HandlePlayerSelectTarget_RejectsEmptyCell()
-	{
-		SetupGameManagerDependencies();
-		_gameManager!.CallInitialize();
+        _gameManager.SetSelectedSkill(skill);
+        _gameManager.SetCurrentUnitReachableCells(new List<Vector3I> { new Vector3I(1, 0, 0) });
 
-		var sourceUnit = _gameManager.GetPlayerUnit(0);
-		var skill = new TestConcreteSkillSystem(range: 2, target: AovDataStructures.TargetTypes.SingleEnemy);
+        _gameManager.CallHandlePlayerSelectTarget(new Vector3I(2, 0, 0));
 
-		_turnManager!.SetCurrentUnit(sourceUnit);
+        AssertThat(skill.WasUsed).IsFalse();
+        AssertThat(_battleInputSystem!.InputEnabled).IsTrue();
+    }
 
-		_gameManager.SetSelectedSkill(skill);
-		// Include both Y=0 and Y=-1 since the code tries Y-1 when Y=0 fails
-		_gameManager.SetCurrentUnitReachableCells(new List<Vector3I> { new Vector3I(2, 0, 0) });
+    [TestCase]
+    public void HandlePlayerSelectTarget_RejectsEmptyCell()
+    {
+        SetupGameManagerDependencies();
+        _gameManager!.CallInitialize();
 
-		// Reset InputEnabled before the test
-		_battleInputSystem!.SetInputEnabled(false);
+        var sourceUnit = _gameManager.GetPlayerUnit(0);
+        var skill = new TestConcreteSkillSystem(range: 2, target: AovDataStructures.TargetTypes.SingleEnemy);
 
-		// Cell (1,0,0) has no unit
-		_gameManager.CallHandlePlayerSelectTarget(new Vector3I(2, 0, 0));
+        _turnManager!.SetCurrentUnit(sourceUnit);
 
-		AssertThat(skill.WasUsed).IsFalse();
-		AssertThat(_battleInputSystem.InputEnabled).IsTrue(); // Should re-enable after error
-	}
+        _gameManager.SetSelectedSkill(skill);
+        // Include both Y=0 and Y=-1 since the code tries Y-1 when Y=0 fails
+        _gameManager.SetCurrentUnitReachableCells(new List<Vector3I> { new Vector3I(2, 0, 0) });
 
-	[TestCase]
+        // Reset InputEnabled before the test
+        _battleInputSystem!.SetInputEnabled(false);
+
+        // Cell (1,0,0) has no unit
+        _gameManager.CallHandlePlayerSelectTarget(new Vector3I(2, 0, 0));
+
+        AssertThat(skill.WasUsed).IsFalse();
+        AssertThat(_battleInputSystem.InputEnabled).IsTrue(); // Should re-enable after error
+    }
+
+    [TestCase]
     public void HandlePlayerSelectTarget_RejectsReviveOnAliveUnit()
     {
         SetupGameManagerDependencies();
@@ -439,9 +439,9 @@ public class GameManagerUtilsTest
 
         var sourceUnit = _gameManager.GetPlayerUnit(0);
         var targetUnit = _gameManager.GetPlayerUnit(1);
-        var skill = new TestConcreteSkillSystem 
-        ( 
-			name: "Test Revive",
+        var skill = new TestConcreteSkillSystem
+        (
+            name: "Test Revive",
             effect: AovDataStructures.EffectType.Revive,
             target: AovDataStructures.TargetTypes.SingleAlly
         );
@@ -456,14 +456,14 @@ public class GameManagerUtilsTest
 
         // Target is alive, can't revive
         AssertThat(targetUnit.IsAlive).IsTrue(); // Verify target is alive first
-        
+
         _gameManager.CallHandlePlayerSelectTarget(new Vector3I(1, 0, 0));
 
         AssertThat(skill.WasUsed).IsFalse(); // Skill should NOT be used
         AssertThat(_battleInputSystem!.InputEnabled).IsTrue(); // Input should be re-enabled
     }
 
-	[TestCase]
+    [TestCase]
     public void HandlePlayerSelectTarget_RejectsNonReviveOnDeadUnit()
     {
         SetupGameManagerDependencies();
@@ -471,8 +471,8 @@ public class GameManagerUtilsTest
 
         var sourceUnit = _gameManager.GetPlayerUnit(0);
         var targetUnit = _gameManager.GetPlayerUnit(1);
-        var skill = new TestConcreteSkillSystem 
-        ( 
+        var skill = new TestConcreteSkillSystem
+        (
             target: AovDataStructures.TargetTypes.SingleAlly,
             effect: AovDataStructures.EffectType.Heal // Not a revive
         );
@@ -481,7 +481,7 @@ public class GameManagerUtilsTest
         // Kill the target
         targetUnit.TakeDamage(200);
         targetUnit.SetIsAlive(false);
-        
+
         AssertThat(targetUnit.IsAlive).IsFalse(); // Verify target is dead
 
         _mapSystem!.CellsInformation[1].SetUnit(targetUnit);
@@ -497,57 +497,57 @@ public class GameManagerUtilsTest
         AssertThat(_battleInputSystem!.InputEnabled).IsTrue(); // Input should be re-enabled
     }
 
-	[TestCase]
-	public void HandlePlayerSelectTarget_HandlesYAxisAdjustment()
-	{
-		SetupGameManagerDependencies();
-		_gameManager!.CallInitialize();
+    [TestCase]
+    public void HandlePlayerSelectTarget_HandlesYAxisAdjustment()
+    {
+        SetupGameManagerDependencies();
+        _gameManager!.CallInitialize();
 
-		var sourceUnit = _gameManager.GetPlayerUnit(0);
-		var targetUnit = _gameManager.GetEnemyUnit(0);
-		var skill = new TestConcreteSkillSystem(target: AovDataStructures.TargetTypes.SingleEnemy);
-		sourceUnit.ActiveSkills.Add(skill);
+        var sourceUnit = _gameManager.GetPlayerUnit(0);
+        var targetUnit = _gameManager.GetEnemyUnit(0);
+        var skill = new TestConcreteSkillSystem(target: AovDataStructures.TargetTypes.SingleEnemy);
+        sourceUnit.ActiveSkills.Add(skill);
 
-		// Add a cell one level down
-		_mapSystem!.AddWalkableCell(1, -1, 0);
-		int index = _mapSystem.CellsInformation.Count - 1;
-		_mapSystem.CellsInformation[index].SetUnit(targetUnit);
+        // Add a cell one level down
+        _mapSystem!.AddWalkableCell(1, -1, 0);
+        int index = _mapSystem.CellsInformation.Count - 1;
+        _mapSystem.CellsInformation[index].SetUnit(targetUnit);
 
-		_turnManager!.SetCurrentUnit(sourceUnit);
+        _turnManager!.SetCurrentUnit(sourceUnit);
 
-		_gameManager.SetSelectedSkill(skill);
-		// Allow targeting at Y=0, but unit is at Y=-1
-		_gameManager.SetCurrentUnitReachableCells(new List<Vector3I> { new Vector3I(1, 0, 0) });
+        _gameManager.SetSelectedSkill(skill);
+        // Allow targeting at Y=0, but unit is at Y=-1
+        _gameManager.SetCurrentUnitReachableCells(new List<Vector3I> { new Vector3I(1, 0, 0) });
 
-		// Try Y=0 first, should adjust to Y=-1
-		_gameManager.CallHandlePlayerSelectTarget(new Vector3I(1, 0, 0));
+        // Try Y=0 first, should adjust to Y=-1
+        _gameManager.CallHandlePlayerSelectTarget(new Vector3I(1, 0, 0));
 
-		AssertThat(skill.WasUsed).IsTrue();
-	}
+        AssertThat(skill.WasUsed).IsTrue();
+    }
 
-	#endregion
+    #endregion
 
-	#region CheckUnitsLife Tests
+    #region CheckUnitsLife Tests
 
-	[TestCase]
-	public void CheckUnitsLife_KeepsAliveUnitsAlive()
-	{
-		SetupGameManagerDependencies();
-		_gameManager!.CallInitialize();
+    [TestCase]
+    public void CheckUnitsLife_KeepsAliveUnitsAlive()
+    {
+        SetupGameManagerDependencies();
+        _gameManager!.CallInitialize();
 
-		var unit = _gameManager.GetPlayerUnit(0);
-		
-		// Don't kill the unit
-		_gameManager.CallCheckUnitsLife(_gameManager.GetPlayerUnitsList());
+        var unit = _gameManager.GetPlayerUnit(0);
 
-		AssertThat(unit.IsAlive).IsTrue();
-	}
+        // Don't kill the unit
+        _gameManager.CallCheckUnitsLife(_gameManager.GetPlayerUnitsList());
 
-	#endregion
+        AssertThat(unit.IsAlive).IsTrue();
+    }
 
-	#region CheckWinLoseCondition Tests
+    #endregion
 
-	[TestCase]
+    #region CheckWinLoseCondition Tests
+
+    [TestCase]
     public void CheckWinLoseCondition_DetectsDefeat_WhenAllPlayersDead()
     {
         SetupGameManagerDependencies();
@@ -570,7 +570,7 @@ public class GameManagerUtilsTest
         AssertThat(_turnManager!.TurnLoopEnded).IsTrue();
     }
 
-	[TestCase]
+    [TestCase]
     public void CheckWinLoseCondition_DetectsVictory_WhenAllEnemiesDead()
     {
         SetupGameManagerDependencies();
@@ -593,7 +593,7 @@ public class GameManagerUtilsTest
         AssertThat(_turnManager!.TurnLoopEnded).IsTrue();
     }
 
-	[TestCase]
+    [TestCase]
     public void CheckWinLoseCondition_Ongoing_WhenBothSidesAlive()
     {
         SetupGameManagerDependencies();
@@ -610,66 +610,66 @@ public class GameManagerUtilsTest
         AssertThat(_turnManager!.TurnLoopEnded).IsFalse();
     }
 
-	[TestCase]
-	public void CheckWinLoseCondition_Ongoing_WhenSomeUnitsDead()
-	{
-		SetupGameManagerDependencies();
-		_gameManager!.CallInitialize();
+    [TestCase]
+    public void CheckWinLoseCondition_Ongoing_WhenSomeUnitsDead()
+    {
+        SetupGameManagerDependencies();
+        _gameManager!.CallInitialize();
 
-		// Kill one player, one enemy
-		var player = _gameManager.GetPlayerUnit(0);
-		var enemy = _gameManager.GetEnemyUnit(0);
-		
-		player.TakeDamage(200);
-		player.SetIsAlive(false);
-		enemy.TakeDamage(200);
-		enemy.SetIsAlive(false);
+        // Kill one player, one enemy
+        var player = _gameManager.GetPlayerUnit(0);
+        var enemy = _gameManager.GetEnemyUnit(0);
 
-		_gameManager.CallCheckWinLoseCondition();
+        player.TakeDamage(200);
+        player.SetIsAlive(false);
+        enemy.TakeDamage(200);
+        enemy.SetIsAlive(false);
 
-		AssertThat(_gameManager.GetGameOutcome()).IsEqual(AovDataStructures.GameOutcome.Ongoing);
-	}
+        _gameManager.CallCheckWinLoseCondition();
 
-	#endregion
+        AssertThat(_gameManager.GetGameOutcome()).IsEqual(AovDataStructures.GameOutcome.Ongoing);
+    }
 
-	#region CheckUnitTurnEnd Tests
+    #endregion
 
-	[TestCase]
-	public void CheckUnitTurnEnd_UpdatesAllUnitsLife()
-	{
-		SetupGameManagerDependencies();
-		_gameManager!.CallInitialize();
+    #region CheckUnitTurnEnd Tests
 
-		var player = _gameManager.GetPlayerUnit(0);
-		var enemy = _gameManager.GetEnemyUnit(0);
+    [TestCase]
+    public void CheckUnitTurnEnd_UpdatesAllUnitsLife()
+    {
+        SetupGameManagerDependencies();
+        _gameManager!.CallInitialize();
 
-		// Damage but don't kill
-		player.TakeDamage(50);
-		enemy.TakeDamage(50);
+        var player = _gameManager.GetPlayerUnit(0);
+        var enemy = _gameManager.GetEnemyUnit(0);
 
-		_gameManager.CallCheckUnitTurnEnd();
+        // Damage but don't kill
+        player.TakeDamage(50);
+        enemy.TakeDamage(50);
 
-		// Both should still be alive
-		AssertThat(player.IsAlive).IsTrue();
-		AssertThat(enemy.IsAlive).IsTrue();
-	}
+        _gameManager.CallCheckUnitTurnEnd();
 
-	[TestCase]
-	public void CheckUnitTurnEnd_ChecksWinLoseCondition()
-	{
-		SetupGameManagerDependencies();
-		_gameManager!.CallInitialize();
+        // Both should still be alive
+        AssertThat(player.IsAlive).IsTrue();
+        AssertThat(enemy.IsAlive).IsTrue();
+    }
 
-		// Kill all enemies
-		foreach (var unit in _gameManager.GetEnemyUnitsList())
-		{
-			unit.TakeDamage(200);
-		}
+    [TestCase]
+    public void CheckUnitTurnEnd_ChecksWinLoseCondition()
+    {
+        SetupGameManagerDependencies();
+        _gameManager!.CallInitialize();
 
-		_gameManager.CallCheckUnitTurnEnd();
+        // Kill all enemies
+        foreach (var unit in _gameManager.GetEnemyUnitsList())
+        {
+            unit.TakeDamage(200);
+        }
 
-		AssertThat(_gameManager.GetGameOutcome()).IsEqual(AovDataStructures.GameOutcome.Victory);
-	}
+        _gameManager.CallCheckUnitTurnEnd();
 
-	#endregion
+        AssertThat(_gameManager.GetGameOutcome()).IsEqual(AovDataStructures.GameOutcome.Victory);
+    }
+
+    #endregion
 }

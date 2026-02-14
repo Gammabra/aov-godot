@@ -17,12 +17,12 @@ public sealed partial class Map1 : MapSystem
             cells.Add((cell.X, cell.Y, cell.Z));
             SetStatusEffectOnCells(cells, new BurningCellEffect(10));
 
-			Vector3I pos = new(cell.X, cell.Y, cell.Z);
-			Vector3 worldPos = MapToLocal(pos);
-			worldPos.Y += CellSize.Y * 1.5f;
+            Vector3I pos = new(cell.X, cell.Y, cell.Z);
+            Vector3 worldPos = MapToLocal(pos);
+            worldPos.Y += CellSize.Y * 1.5f;
 
-			unit.GlobalPosition = worldPos;
-		}
+            unit.GlobalPosition = worldPos;
+        }
 
         foreach (UnitSystem unit in enemyUnits)
         {
@@ -30,11 +30,11 @@ public sealed partial class Map1 : MapSystem
             cell.SetUnit(unit);
             SetWalkable(cell.X, cell.Y, cell.Z);
 
-			Vector3I pos = new(cell.X, cell.Y, cell.Z);
-			Vector3 worldPos = MapToLocal(pos);
-			worldPos.Y += CellSize.Y * 1.5f;
+            Vector3I pos = new(cell.X, cell.Y, cell.Z);
+            Vector3 worldPos = MapToLocal(pos);
+            worldPos.Y += CellSize.Y * 1.5f;
 
-			unit.GlobalPosition = worldPos;
-		}
-	}
+            unit.GlobalPosition = worldPos;
+        }
+    }
 }

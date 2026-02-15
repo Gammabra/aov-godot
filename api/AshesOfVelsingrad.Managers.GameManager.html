@@ -6,7 +6,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <meta name="title" content="Class GameManager | Ashes of Velsingrad Documentation ">
       
-      <meta name="description" content="The conductor of a level. The GameManager handles everything that a level needs to work correctly.">
+      
       <link rel="icon" href="../favicon.ico">
       <link rel="stylesheet" href="../public/docfx.min.css">
       <link rel="stylesheet" href="../public/main.css">
@@ -89,7 +89,7 @@
 
 
   <h1 id="AshesOfVelsingrad_Managers_GameManager" data-uid="AshesOfVelsingrad.Managers.GameManager" class="text-break">
-Class GameManager  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptSignalsGenerator/AshesOfVelsingrad.Managers.GameManager_ScriptSignals.generated.cs/#L6"><i class="bi bi-code-slash"></i></a>
+Class GameManager  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptSerializationGenerator/AshesOfVelsingrad.Managers.GameManager_ScriptSerialization.generated.cs/#L6"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
@@ -97,8 +97,7 @@ Class GameManager  <a class="header-action link-secondary" title="View source" h
   <dl><dt>Assembly</dt><dd>Ashes of Velsingrad.dll</dd></dl>
   </div>
 
-  <div class="markdown summary"><p>The conductor of a level. The <code>GameManager</code> handles everything that a level needs to work correctly.</p>
-</div>
+  <div class="markdown summary"></div>
   <div class="markdown conceptual"></div>
 
   <div class="codewrapper">
@@ -313,9 +312,6 @@ public class GameManager : BaseManager, IDisposable</code></pre>
     </div>
     <div>
       <span class="xref">Node._GetFocusedAccessibilityElement()</span>
-    </div>
-    <div>
-      <span class="xref">Node._Input(InputEvent)</span>
     </div>
     <div>
       <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">Node._PhysicsProcess(double)</a>
@@ -1002,6 +998,75 @@ public class GameManager : BaseManager, IDisposable</code></pre>
 
 
 
+  <h2 class="section" id="properties">Properties
+</h2>
+
+
+  <a id="AshesOfVelsingrad_Managers_GameManager_AIManager_" data-uid="AshesOfVelsingrad.Managers.GameManager.AIManager*"></a>
+
+  <h3 id="AshesOfVelsingrad_Managers_GameManager_AIManager" data-uid="AshesOfVelsingrad.Managers.GameManager.AIManager">
+  AIManager
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/managers/game_manager/GameManager.cs/#L13"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public EnemyAIManager? AIManager { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="AshesOfVelsingrad.Managers.EnemyAIManager.html">EnemyAIManager</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="AshesOfVelsingrad_Managers_GameManager_EnableThreatMapDebug_" data-uid="AshesOfVelsingrad.Managers.GameManager.EnableThreatMapDebug*"></a>
+
+  <h3 id="AshesOfVelsingrad_Managers_GameManager_EnableThreatMapDebug" data-uid="AshesOfVelsingrad.Managers.GameManager.EnableThreatMapDebug">
+  EnableThreatMapDebug
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/managers/game_manager/GameManager.cs/#L52"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Toggle threat map visualization for all enemy units.
+Call this from a debug input or console command.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[Export(PropertyHint.None, &quot;&quot;)]
+public bool EnableThreatMapDebug { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
   <h2 class="section" id="methods">Methods
 </h2>
 
@@ -1010,11 +1075,11 @@ public class GameManager : BaseManager, IDisposable</code></pre>
 
   <h3 id="AshesOfVelsingrad_Managers_GameManager_Initialize" data-uid="AshesOfVelsingrad.Managers.GameManager.Initialize">
   Initialize()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/managers/game_manager/GameManager.cs/#L83"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/managers/game_manager/GameManager.cs/#L82"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Initializes the GameManager singleton instance.
-Ensures only one instance exists and sets up the initial state.</p>
+  <div class="markdown level1 summary"><p>Initializes the manager instance.
+This method should be overridden in derived classes to set up specific functionality.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -1031,9 +1096,9 @@ Ensures only one instance exists and sets up the initial state.</p>
 
 
   <h4 class="section" id="AshesOfVelsingrad_Managers_GameManager_Initialize_remarks">Remarks</h4>
-  <div class="markdown level1 remarks"><p>This method is called automatically by Godot when the node is ready.
-It checks for duplicate instances and initializes the game system.
-If a duplicate instance is found, it removes the duplicate.</p>
+  <div class="markdown level1 remarks"><p>This method is called by the _Ready method to initialize the manager.
+It should contain the logic necessary to set up the manager's state and functionality.
+Derived classes must implement this method to provide their specific initialization logic.</p>
 </div>
 
 
@@ -1043,7 +1108,7 @@ If a duplicate instance is found, it removes the duplicate.</p>
 
   <h3 id="AshesOfVelsingrad_Managers_GameManager_MoveUnit_Godot_Vector3I_" data-uid="AshesOfVelsingrad.Managers.GameManager.MoveUnit(Godot.Vector3I)">
   MoveUnit(Vector3I)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/managers/game_manager/GameManager.cs/#L388"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/managers/game_manager/GameManager.cs/#L423"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Moves the currently active unit to the specified cell on the map.</p>
@@ -1051,7 +1116,7 @@ If a duplicate instance is found, it removes the duplicate.</p>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public void MoveUnit(Vector3I cell)</code></pre>
+    <pre><code class="lang-csharp hljs">public virtual void MoveUnit(Vector3I cell)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -1086,7 +1151,7 @@ cell coordinates and the map’s cell size.</p>
 
   <h3 id="AshesOfVelsingrad_Managers_GameManager_UseSkill_AshesOfVelsingrad_Systems_UnitSystem_AshesOfVelsingrad_Systems_UnitSystem_AshesOfVelsingrad_Systems_SkillSystem_" data-uid="AshesOfVelsingrad.Managers.GameManager.UseSkill(AshesOfVelsingrad.Systems.UnitSystem,AshesOfVelsingrad.Systems.UnitSystem,AshesOfVelsingrad.Systems.SkillSystem)">
   UseSkill(UnitSystem, UnitSystem, SkillSystem)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/managers/game_manager/GameManager.cs/#L449"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/managers/game_manager/GameManager.cs/#L484"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Uses a skill from a source unit on a target unit, depending on the skill’s target type.</p>
@@ -1094,7 +1159,7 @@ cell coordinates and the map’s cell size.</p>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public void UseSkill(UnitSystem sourceUnit, UnitSystem targetUnit, SkillSystem skill)</code></pre>
+    <pre><code class="lang-csharp hljs">public virtual void UseSkill(UnitSystem sourceUnit, UnitSystem targetUnit, SkillSystem skill)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -1131,11 +1196,47 @@ and exits early.</p>
 
 
 
+  <a id="AshesOfVelsingrad_Managers_GameManager__Input_" data-uid="AshesOfVelsingrad.Managers.GameManager._Input*"></a>
+
+  <h3 id="AshesOfVelsingrad_Managers_GameManager__Input_Godot_InputEvent_" data-uid="AshesOfVelsingrad.Managers.GameManager._Input(Godot.InputEvent)">
+  _Input(InputEvent)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/managers/game_manager/GameManager.cs/#L571"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Called when there is an input event. The input event propagates up through the node tree until a node consumes it.</p>
+<p>It is only called if input processing is enabled, which is done automatically if this method is overridden, and can be toggled with <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">SetProcessInput(bool)</a>.</p>
+<p>To consume the input event and stop it propagating further to other nodes, <span class="xref">Godot.Viewport.SetInputAsHandled()</span> can be called.</p>
+<p>For gameplay input, <span class="xref">Godot.Node._UnhandledInput(Godot.InputEvent)</span> and <span class="xref">Godot.Node._UnhandledKeyInput(Godot.InputEvent)</span> are usually a better fit as they allow the GUI to intercept the events first.</p>
+<p><b>Note:</b> This method is only called if the node is present in the scene tree (i.e. if it's not an orphan).</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override void _Input(InputEvent @event)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>event</code> <span class="xref">InputEvent</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
   <a id="AshesOfVelsingrad_Managers_GameManager__Ready_" data-uid="AshesOfVelsingrad.Managers.GameManager._Ready*"></a>
 
   <h3 id="AshesOfVelsingrad_Managers_GameManager__Ready" data-uid="AshesOfVelsingrad.Managers.GameManager._Ready">
   _Ready()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/managers/game_manager/GameManager.cs/#L68"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/managers/game_manager/GameManager.cs/#L76"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Called when the node is added to the scene tree.
@@ -1168,7 +1269,7 @@ If a duplicate instance is found, it removes the duplicate.</p>
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/Gammabra/aov-godot/blob/develop/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptSignalsGenerator/AshesOfVelsingrad.Managers.GameManager_ScriptSignals.generated.cs/#L6" class="edit-link">Edit this page</a>
+          <a href="https://github.com/Gammabra/aov-godot/blob/develop/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptSerializationGenerator/AshesOfVelsingrad.Managers.GameManager_ScriptSerialization.generated.cs/#L6" class="edit-link">Edit this page</a>
         </div>
 
 

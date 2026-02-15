@@ -12,6 +12,146 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.AI.AIAction.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.AI.AIAction.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.AI.AIAction",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.AI.AIAction.yml\" sourcestartlinenumber=\"1\">Represents the types of actions an AI can take.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.AI.AIDebugVisualizer.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.AI.AIDebugVisualizer.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.AI.AIDebugVisualizer",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.AI.AIDebugVisualizer.yml\" sourcestartlinenumber=\"1\">Provides visual debugging tools for AI decision-making.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.AI.AIDecision.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.AI.AIDecision.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.AI.AIDecision",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.AI.AIDecision.yml\" sourcestartlinenumber=\"1\">Represents a decision made by the AI, including the action and relevant parameters.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.AI.AIDecisionGenerator.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.AI.AIDecisionGenerator.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.AI.AIDecisionGenerator",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.AI.AIDecisionGenerator.yml\" sourcestartlinenumber=\"1\">Generates all possible AI actions for evaluation.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.AI.AIEvaluator.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.AI.AIEvaluator.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.AI.AIEvaluator",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.AI.AIEvaluator.yml\" sourcestartlinenumber=\"1\">Evaluates and scores AI actions and targets.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.AI.AIPersonality.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.AI.AIPersonality.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.AI.AIPersonality",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.AI.AIPersonality.yml\" sourcestartlinenumber=\"1\">Defines different AI personality types that determine decision-making behavior.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.AI.AIUtilities.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.AI.AIUtilities.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.AI.AIUtilities",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.AI.AIUtilities.yml\" sourcestartlinenumber=\"1\">Static utility methods for AI decision-making.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.AI.EnemyAIBehavior.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.AI.EnemyAIBehavior.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.AI.EnemyAIBehavior",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.AI.EnemyAIBehavior.yml\" sourcestartlinenumber=\"1\">Base class for enemy AI behaviors. Attach this as a child node to enemy UnitSystem nodes.\nEncapsulates decision-making logic for a single enemy unit.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.AI.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.AI.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.AI",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.BasicAttackSkill.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.BasicAttackSkill.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.BasicAttackSkill",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.BasicAttackSkill.yml\" sourcestartlinenumber=\"1\">Basic ranged attack skill for the archer enemy.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "documentation/api/AshesOfVelsingrad.Data.AtkBuffer.yml",
       "output": {
         ".html": {
@@ -124,6 +264,20 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.EnemyArcher.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.EnemyArcher.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.EnemyArcher",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.EnemyArcher.yml\" sourcestartlinenumber=\"1\">Archer enemy unit with ranged attack AI behavior.\nUses the existing AI system to make tactical decisions.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "documentation/api/AshesOfVelsingrad.Main.yml",
       "output": {
         ".html": {
@@ -152,6 +306,34 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.Managers.BattleState.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.Managers.BattleState.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.Managers.BattleState",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.Managers.BattleState.yml\" sourcestartlinenumber=\"1\">Represents a snapshot of the battle state at a specific moment.\nUsed by AI to make decisions based on current conditions.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.Managers.EnemyAIManager.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.Managers.EnemyAIManager.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.Managers.EnemyAIManager",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.Managers.EnemyAIManager.yml\" sourcestartlinenumber=\"1\">Manages AI decision-making for enemy units during combat.\nThis is NOT a singleton - it's created per battle by GameManager.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "documentation/api/AshesOfVelsingrad.Managers.GameManager.yml",
       "output": {
         ".html": {
@@ -162,7 +344,7 @@
       "Uid": null,
       "IsMRef": true,
       "Title": "AshesOfVelsingrad.Managers.GameManager",
-      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.Managers.GameManager.yml\" sourcestartlinenumber=\"1\">The conductor of a level. The <code>GameManager</code> handles everything that a level needs to work correctly.</p>\n"
+      "Summary": null
     },
     {
       "type": "ManagedReference",

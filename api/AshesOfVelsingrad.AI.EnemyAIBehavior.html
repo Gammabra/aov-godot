@@ -2,11 +2,11 @@
 <html>
   <head>
     <meta charset="utf-8">
-      <title>Class BaseManager | Ashes of Velsingrad Documentation </title>
+      <title>Class EnemyAIBehavior | Ashes of Velsingrad Documentation </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content="Class BaseManager | Ashes of Velsingrad Documentation ">
+      <meta name="title" content="Class EnemyAIBehavior | Ashes of Velsingrad Documentation ">
       
-      <meta name="description" content="Base class for all manager singletons in the game. Implements the Manager Pattern from your architecture documentation.">
+      <meta name="description" content="Base class for enemy AI behaviors. Attach this as a child node to enemy UnitSystem nodes. Encapsulates decision-making logic for a single enemy unit.">
       <link rel="icon" href="../favicon.ico">
       <link rel="stylesheet" href="../public/docfx.min.css">
       <link rel="stylesheet" href="../public/main.css">
@@ -16,7 +16,7 @@
       <meta name="docfx:rel" content="../">
       
       
-      <meta name="docfx:docurl" content="https://github.com/Gammabra/aov-godot/new/develop/apiSpec/new?filename=AshesOfVelsingrad_Managers_BaseManager.md&amp;value=---%0Auid%3A%20AshesOfVelsingrad.Managers.BaseManager%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="docfx:docurl" content="https://github.com/Gammabra/aov-godot/new/develop/apiSpec/new?filename=AshesOfVelsingrad_AI_EnemyAIBehavior.md&amp;value=---%0Auid%3A%20AshesOfVelsingrad.AI.EnemyAIBehavior%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -84,27 +84,27 @@
           <nav id="breadcrumb"></nav>
         </div>
 
-        <article data-uid="AshesOfVelsingrad.Managers.BaseManager">
+        <article data-uid="AshesOfVelsingrad.AI.EnemyAIBehavior">
 
 
 
-  <h1 id="AshesOfVelsingrad_Managers_BaseManager" data-uid="AshesOfVelsingrad.Managers.BaseManager" class="text-break">
-Class BaseManager  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptPropertyDefValGenerator/AshesOfVelsingrad.Managers.BaseManager_ScriptPropertyDefVal.generated.cs/#L3"><i class="bi bi-code-slash"></i></a>
+  <h1 id="AshesOfVelsingrad_AI_EnemyAIBehavior" data-uid="AshesOfVelsingrad.AI.EnemyAIBehavior" class="text-break">
+Class EnemyAIBehavior  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptMethodsGenerator/AshesOfVelsingrad.AI.EnemyAIBehavior_ScriptMethods.generated.cs/#L6"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
-    <dl><dt>Namespace</dt><dd><a class="xref" href="AshesOfVelsingrad.html">AshesOfVelsingrad</a>.<a class="xref" href="AshesOfVelsingrad.Managers.html">Managers</a></dd></dl>
+    <dl><dt>Namespace</dt><dd><a class="xref" href="AshesOfVelsingrad.html">AshesOfVelsingrad</a>.<a class="xref" href="AshesOfVelsingrad.AI.html">AI</a></dd></dl>
   <dl><dt>Assembly</dt><dd>Ashes of Velsingrad.dll</dd></dl>
   </div>
 
-  <div class="markdown summary"><p>Base class for all manager singletons in the game.
-Implements the Manager Pattern from your architecture documentation.</p>
+  <div class="markdown summary"><p>Base class for enemy AI behaviors. Attach this as a child node to enemy UnitSystem nodes.
+Encapsulates decision-making logic for a single enemy unit.</p>
 </div>
   <div class="markdown conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[ScriptPath(&quot;res://scripts/managers/BaseManager.cs&quot;)]
-public abstract class BaseManager : Node, IDisposable</code></pre>
+    <pre><code class="lang-csharp hljs">[ScriptPath(&quot;res://scripts/AI/EnemyAIBehavior.cs&quot;)]
+public class EnemyAIBehavior : Node, IDisposable</code></pre>
   </div>
 
 
@@ -116,7 +116,7 @@ public abstract class BaseManager : Node, IDisposable</code></pre>
       <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
       <div><span class="xref">GodotObject</span></div>
       <div><span class="xref">Node</span></div>
-      <div><span class="xref">BaseManager</span></div>
+      <div><span class="xref">EnemyAIBehavior</span></div>
     </dd>
   </dl>
 
@@ -127,16 +127,6 @@ public abstract class BaseManager : Node, IDisposable</code></pre>
     </dd>
   </dl>
 
-  <dl class="typelist derived">
-    <dt>Derived</dt>
-    <dd>
-      <div><a class="xref" href="AshesOfVelsingrad.Managers.GameManager.html">GameManager</a></div>
-      <div><a class="xref" href="AshesOfVelsingrad.Managers.MenuManager.html">MenuManager</a></div>
-      <div><a class="xref" href="AshesOfVelsingrad.Managers.SceneManager.html">SceneManager</a></div>
-      <div><a class="xref" href="AshesOfVelsingrad.Managers.SettingsManager.html">SettingsManager</a></div>
-      <div><a class="xref" href="AshesOfVelsingrad.Managers.TurnManager.html">TurnManager</a></div>
-    </dd>
-  </dl>
 
   <dl class="typelist inheritedMembers">
     <dt>Inherited Members</dt>
@@ -305,6 +295,9 @@ public abstract class BaseManager : Node, IDisposable</code></pre>
     </div>
     <div>
       <span class="xref">Node._EnterTree()</span>
+    </div>
+    <div>
+      <span class="xref">Node._ExitTree()</span>
     </div>
     <div>
       <span class="xref">Node._GetAccessibilityConfigurationWarnings()</span>
@@ -1001,29 +994,64 @@ public abstract class BaseManager : Node, IDisposable</code></pre>
 
 
 
-  <h2 id="AshesOfVelsingrad_Managers_BaseManager_remarks">Remarks</h2>
-  <div class="markdown level0 remarks"><p>This class serves as a base for all manager classes, ensuring that only one instance exists.
-It provides a common initialization and cleanup mechanism for all managers.
-Derived classes should implement the Initialize method to set up their specific functionality.</p>
+  <h2 id="AshesOfVelsingrad_AI_EnemyAIBehavior_remarks">Remarks</h2>
+  <div class="markdown level0 remarks"><p>This component pattern allows each enemy to have customized AI behavior
+without modifying the core UnitSystem class. The AI makes decisions based
+on the current BattleState and executes actions through the GameManager.</p>
 </div>
 
 
-  <h2 class="section" id="properties">Properties
+  <h2 class="section" id="fields">Fields
 </h2>
 
 
-  <a id="AshesOfVelsingrad_Managers_BaseManager_Instance_" data-uid="AshesOfVelsingrad.Managers.BaseManager.Instance*"></a>
 
-  <h3 id="AshesOfVelsingrad_Managers_BaseManager_Instance" data-uid="AshesOfVelsingrad.Managers.BaseManager.Instance">
-  Instance
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/managers/BaseManager.cs/#L16"><i class="bi bi-code-slash"></i></a>
+  <h3 id="AshesOfVelsingrad_AI_EnemyAIBehavior__unit" data-uid="AshesOfVelsingrad.AI.EnemyAIBehavior._unit">
+  _unit
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/AI/EnemyAIBehavior.cs/#L95"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static BaseManager? Instance { get; protected set; }</code></pre>
+    <pre><code class="lang-csharp hljs">public UnitSystem? _unit</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="AshesOfVelsingrad.Systems.UnitSystem.html">UnitSystem</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+  <h2 class="section" id="properties">Properties
+</h2>
+
+
+  <a id="AshesOfVelsingrad_AI_EnemyAIBehavior_EnableDebugVisualization_" data-uid="AshesOfVelsingrad.AI.EnemyAIBehavior.EnableDebugVisualization*"></a>
+
+  <h3 id="AshesOfVelsingrad_AI_EnemyAIBehavior_EnableDebugVisualization" data-uid="AshesOfVelsingrad.AI.EnemyAIBehavior.EnableDebugVisualization">
+  EnableDebugVisualization
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/AI/EnemyAIBehavior.cs/#L88"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[Export(PropertyHint.None, &quot;&quot;)]
+public bool EnableDebugVisualization { get; set; }</code></pre>
   </div>
 
 
@@ -1032,7 +1060,104 @@ Derived classes should implement the Initialize method to set up their specific 
 
   <h4 class="section">Property Value</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="AshesOfVelsingrad.Managers.BaseManager.html">BaseManager</a></dt>
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="AshesOfVelsingrad_AI_EnemyAIBehavior_ThinkingDelayMax_" data-uid="AshesOfVelsingrad.AI.EnemyAIBehavior.ThinkingDelayMax*"></a>
+
+  <h3 id="AshesOfVelsingrad_AI_EnemyAIBehavior_ThinkingDelayMax" data-uid="AshesOfVelsingrad.AI.EnemyAIBehavior.ThinkingDelayMax">
+  ThinkingDelayMax
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/AI/EnemyAIBehavior.cs/#L85"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[Export(PropertyHint.None, &quot;&quot;)]
+public float ThinkingDelayMax { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="AshesOfVelsingrad_AI_EnemyAIBehavior_ThinkingDelayMin_" data-uid="AshesOfVelsingrad.AI.EnemyAIBehavior.ThinkingDelayMin*"></a>
+
+  <h3 id="AshesOfVelsingrad_AI_EnemyAIBehavior_ThinkingDelayMin" data-uid="AshesOfVelsingrad.AI.EnemyAIBehavior.ThinkingDelayMin">
+  ThinkingDelayMin
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/AI/EnemyAIBehavior.cs/#L82"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[Export(PropertyHint.None, &quot;&quot;)]
+public float ThinkingDelayMin { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="AshesOfVelsingrad_AI_EnemyAIBehavior_Unit_" data-uid="AshesOfVelsingrad.AI.EnemyAIBehavior.Unit*"></a>
+
+  <h3 id="AshesOfVelsingrad_AI_EnemyAIBehavior_Unit" data-uid="AshesOfVelsingrad.AI.EnemyAIBehavior.Unit">
+  Unit
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/AI/EnemyAIBehavior.cs/#L113"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Read-only access to the UnitSystem this AI is attached to.
+Useful for external systems that need to query the AI's unit.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public UnitSystem? Unit { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="AshesOfVelsingrad.Systems.UnitSystem.html">UnitSystem</a></dt>
     <dd></dd>
   </dl>
 
@@ -1047,55 +1172,34 @@ Derived classes should implement the Initialize method to set up their specific 
 </h2>
 
 
-  <a id="AshesOfVelsingrad_Managers_BaseManager_Cleanup_" data-uid="AshesOfVelsingrad.Managers.BaseManager.Cleanup*"></a>
+  <a id="AshesOfVelsingrad_AI_EnemyAIBehavior_ExecuteTurn_" data-uid="AshesOfVelsingrad.AI.EnemyAIBehavior.ExecuteTurn*"></a>
 
-  <h3 id="AshesOfVelsingrad_Managers_BaseManager_Cleanup" data-uid="AshesOfVelsingrad.Managers.BaseManager.Cleanup">
-  Cleanup()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/managers/BaseManager.cs/#L85"><i class="bi bi-code-slash"></i></a>
+  <h3 id="AshesOfVelsingrad_AI_EnemyAIBehavior_ExecuteTurn_AshesOfVelsingrad_Managers_BattleState_" data-uid="AshesOfVelsingrad.AI.EnemyAIBehavior.ExecuteTurn(AshesOfVelsingrad.Managers.BattleState)">
+  ExecuteTurn(BattleState)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/AI/EnemyAIBehavior.cs/#L158"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Cleans up the manager instance.
-This method can be overridden in derived classes to implement specific cleanup logic.</p>
+  <div class="markdown level1 summary"><p>Executes the AI's turn logic based on the current battle state.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">protected virtual void Cleanup()</code></pre>
+    <pre><code class="lang-csharp hljs">public virtual Task ExecuteTurn(BattleState battleState)</code></pre>
   </div>
 
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>battleState</code> <a class="xref" href="AshesOfVelsingrad.Managers.BattleState.html">BattleState</a></dt>
+    <dd><p>Snapshot of the current battle situation.</p>
+</dd>
+  </dl>
 
-
-
-
-
-
-
-
-  <h4 class="section" id="AshesOfVelsingrad_Managers_BaseManager_Cleanup_remarks">Remarks</h4>
-  <div class="markdown level1 remarks"><p>This method is called when the manager is removed from the scene tree.
-It provides a place for derived classes to implement any necessary cleanup logic,
-such as disconnecting signals or releasing resources.
-By default, it does nothing, but derived classes can override it to perform specific cleanup tasks.</p>
-</div>
-
-
-
-
-  <a id="AshesOfVelsingrad_Managers_BaseManager_Initialize_" data-uid="AshesOfVelsingrad.Managers.BaseManager.Initialize*"></a>
-
-  <h3 id="AshesOfVelsingrad_Managers_BaseManager_Initialize" data-uid="AshesOfVelsingrad.Managers.BaseManager.Initialize">
-  Initialize()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/managers/BaseManager.cs/#L55"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Initializes the manager instance.
-This method should be overridden in derived classes to set up specific functionality.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">protected abstract void Initialize()</code></pre>
-  </div>
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></dt>
+    <dd><p>A task that completes when the AI has finished its turn.</p>
+</dd>
+  </dl>
 
 
 
@@ -1105,57 +1209,19 @@ This method should be overridden in derived classes to set up specific functiona
 
 
 
-  <h4 class="section" id="AshesOfVelsingrad_Managers_BaseManager_Initialize_remarks">Remarks</h4>
-  <div class="markdown level1 remarks"><p>This method is called by the _Ready method to initialize the manager.
-It should contain the logic necessary to set up the manager's state and functionality.
-Derived classes must implement this method to provide their specific initialization logic.</p>
-</div>
 
 
+  <a id="AshesOfVelsingrad_AI_EnemyAIBehavior__Ready_" data-uid="AshesOfVelsingrad.AI.EnemyAIBehavior._Ready*"></a>
 
-
-  <a id="AshesOfVelsingrad_Managers_BaseManager__ExitTree_" data-uid="AshesOfVelsingrad.Managers.BaseManager._ExitTree*"></a>
-
-  <h3 id="AshesOfVelsingrad_Managers_BaseManager__ExitTree" data-uid="AshesOfVelsingrad.Managers.BaseManager._ExitTree">
-  _ExitTree()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/managers/BaseManager.cs/#L66"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Called when the node is removed from the scene tree.
-Cleans up the manager instance and sets it to null.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public override void _ExitTree()</code></pre>
-  </div>
-
-
-
-
-
-
-
-
-
-  <h4 class="section" id="AshesOfVelsingrad_Managers_BaseManager__ExitTree_remarks">Remarks</h4>
-  <div class="markdown level1 remarks"><p>This method is called automatically by Godot when the node is removed from the scene tree.
-It ensures that the manager instance is properly cleaned up and set to null.
-This is important for preventing memory leaks and ensuring that the manager can be re-initialized later if needed.</p>
-</div>
-
-
-
-
-  <a id="AshesOfVelsingrad_Managers_BaseManager__Ready_" data-uid="AshesOfVelsingrad.Managers.BaseManager._Ready*"></a>
-
-  <h3 id="AshesOfVelsingrad_Managers_BaseManager__Ready" data-uid="AshesOfVelsingrad.Managers.BaseManager._Ready">
+  <h3 id="AshesOfVelsingrad_AI_EnemyAIBehavior__Ready" data-uid="AshesOfVelsingrad.AI.EnemyAIBehavior._Ready">
   _Ready()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/managers/BaseManager.cs/#L27"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/AI/EnemyAIBehavior.cs/#L119"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Called when the node is added to the scene tree.
-Initializes the manager instance and checks for duplicates.</p>
+  <div class="markdown level1 summary"><p>Called when the node is "ready", i.e. when both the node and its children have entered the scene tree. If the node has children, their <span class="xref">Godot.Node._Ready()</span> callbacks get triggered first, and the parent node will receive the ready notification afterwards.</p>
+<p>Corresponds to the <span class="xref">Godot.Node.NotificationReady</span> notification in <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">_Notification(int)</a>. See also the <code>@onready</code> annotation for variables.</p>
+<p>Usually used for initialization. For even earlier initialization, <span class="xref">Godot.GodotObject.GodotObject()</span> may be used. See also <span class="xref">Godot.Node._EnterTree()</span>.</p>
+<p><b>Note:</b> This method may be called only once for each node. After removing a node from the scene tree and adding it again, <span class="xref">Godot.Node._Ready()</span> will <b>not</b> be called a second time. This can be bypassed by requesting another call with <span class="xref">Godot.Node.RequestReady()</span>, which may be called anywhere before adding the node again.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -1171,11 +1237,6 @@ Initializes the manager instance and checks for duplicates.</p>
 
 
 
-  <h4 class="section" id="AshesOfVelsingrad_Managers_BaseManager__Ready_remarks">Remarks</h4>
-  <div class="markdown level1 remarks"><p>This method is called automatically by Godot when the node is ready.
-It ensures that only one instance of the manager exists in the scene tree.
-If a duplicate instance is found, it removes the duplicate.</p>
-</div>
 
 
 
@@ -1184,7 +1245,7 @@ If a duplicate instance is found, it removes the duplicate.</p>
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/Gammabra/aov-godot/blob/develop/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptPropertyDefValGenerator/AshesOfVelsingrad.Managers.BaseManager_ScriptPropertyDefVal.generated.cs/#L3" class="edit-link">Edit this page</a>
+          <a href="https://github.com/Gammabra/aov-godot/blob/develop/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptMethodsGenerator/AshesOfVelsingrad.AI.EnemyAIBehavior_ScriptMethods.generated.cs/#L6" class="edit-link">Edit this page</a>
         </div>
 
 

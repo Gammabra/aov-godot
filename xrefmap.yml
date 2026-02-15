@@ -7,6 +7,671 @@ references:
   commentId: N:AshesOfVelsingrad
   fullName: AshesOfVelsingrad
   nameWithType: AshesOfVelsingrad
+- uid: AshesOfVelsingrad.AI
+  name: AshesOfVelsingrad.AI
+  href: api/AshesOfVelsingrad.AI.html
+  commentId: N:AshesOfVelsingrad.AI
+  fullName: AshesOfVelsingrad.AI
+  nameWithType: AshesOfVelsingrad.AI
+- uid: AshesOfVelsingrad.AI.AIAction
+  name: AIAction
+  href: api/AshesOfVelsingrad.AI.AIAction.html
+  commentId: T:AshesOfVelsingrad.AI.AIAction
+  fullName: AshesOfVelsingrad.AI.AIAction
+  nameWithType: AIAction
+- uid: AshesOfVelsingrad.AI.AIAction.Move
+  name: Move
+  href: api/AshesOfVelsingrad.AI.AIAction.html#AshesOfVelsingrad_AI_AIAction_Move
+  commentId: F:AshesOfVelsingrad.AI.AIAction.Move
+  fullName: AshesOfVelsingrad.AI.AIAction.Move
+  nameWithType: AIAction.Move
+- uid: AshesOfVelsingrad.AI.AIAction.MoveAndSkill
+  name: MoveAndSkill
+  href: api/AshesOfVelsingrad.AI.AIAction.html#AshesOfVelsingrad_AI_AIAction_MoveAndSkill
+  commentId: F:AshesOfVelsingrad.AI.AIAction.MoveAndSkill
+  fullName: AshesOfVelsingrad.AI.AIAction.MoveAndSkill
+  nameWithType: AIAction.MoveAndSkill
+- uid: AshesOfVelsingrad.AI.AIAction.Pass
+  name: Pass
+  href: api/AshesOfVelsingrad.AI.AIAction.html#AshesOfVelsingrad_AI_AIAction_Pass
+  commentId: F:AshesOfVelsingrad.AI.AIAction.Pass
+  fullName: AshesOfVelsingrad.AI.AIAction.Pass
+  nameWithType: AIAction.Pass
+- uid: AshesOfVelsingrad.AI.AIAction.UseSkill
+  name: UseSkill
+  href: api/AshesOfVelsingrad.AI.AIAction.html#AshesOfVelsingrad_AI_AIAction_UseSkill
+  commentId: F:AshesOfVelsingrad.AI.AIAction.UseSkill
+  fullName: AshesOfVelsingrad.AI.AIAction.UseSkill
+  nameWithType: AIAction.UseSkill
+- uid: AshesOfVelsingrad.AI.AIDebugVisualizer
+  name: AIDebugVisualizer
+  href: api/AshesOfVelsingrad.AI.AIDebugVisualizer.html
+  commentId: T:AshesOfVelsingrad.AI.AIDebugVisualizer
+  fullName: AshesOfVelsingrad.AI.AIDebugVisualizer
+  nameWithType: AIDebugVisualizer
+- uid: AshesOfVelsingrad.AI.AIDebugVisualizer.ShowReasoningText(System.String,Godot.Vector3,System.Single)
+  name: ShowReasoningText(string, Vector3, float)
+  href: api/AshesOfVelsingrad.AI.AIDebugVisualizer.html#AshesOfVelsingrad_AI_AIDebugVisualizer_ShowReasoningText_System_String_Godot_Vector3_System_Single_
+  commentId: M:AshesOfVelsingrad.AI.AIDebugVisualizer.ShowReasoningText(System.String,Godot.Vector3,System.Single)
+  name.vb: ShowReasoningText(String, Vector3, Single)
+  fullName: AshesOfVelsingrad.AI.AIDebugVisualizer.ShowReasoningText(string, Godot.Vector3, float)
+  fullName.vb: AshesOfVelsingrad.AI.AIDebugVisualizer.ShowReasoningText(String, Godot.Vector3, Single)
+  nameWithType: AIDebugVisualizer.ShowReasoningText(string, Vector3, float)
+  nameWithType.vb: AIDebugVisualizer.ShowReasoningText(String, Vector3, Single)
+- uid: AshesOfVelsingrad.AI.AIDebugVisualizer.ShowReasoningText*
+  name: ShowReasoningText
+  href: api/AshesOfVelsingrad.AI.AIDebugVisualizer.html#AshesOfVelsingrad_AI_AIDebugVisualizer_ShowReasoningText_
+  commentId: Overload:AshesOfVelsingrad.AI.AIDebugVisualizer.ShowReasoningText
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.AI.AIDebugVisualizer.ShowReasoningText
+  nameWithType: AIDebugVisualizer.ShowReasoningText
+- uid: AshesOfVelsingrad.AI.AIDebugVisualizer.VisualizeActionScores(System.Collections.Generic.List{AshesOfVelsingrad.AI.AIDecision},AshesOfVelsingrad.Managers.BattleState)
+  name: VisualizeActionScores(List<AIDecision>, BattleState)
+  href: api/AshesOfVelsingrad.AI.AIDebugVisualizer.html#AshesOfVelsingrad_AI_AIDebugVisualizer_VisualizeActionScores_System_Collections_Generic_List_AshesOfVelsingrad_AI_AIDecision__AshesOfVelsingrad_Managers_BattleState_
+  commentId: M:AshesOfVelsingrad.AI.AIDebugVisualizer.VisualizeActionScores(System.Collections.Generic.List{AshesOfVelsingrad.AI.AIDecision},AshesOfVelsingrad.Managers.BattleState)
+  name.vb: VisualizeActionScores(List(Of AIDecision), BattleState)
+  fullName: AshesOfVelsingrad.AI.AIDebugVisualizer.VisualizeActionScores(System.Collections.Generic.List<AshesOfVelsingrad.AI.AIDecision>, AshesOfVelsingrad.Managers.BattleState)
+  fullName.vb: AshesOfVelsingrad.AI.AIDebugVisualizer.VisualizeActionScores(System.Collections.Generic.List(Of AshesOfVelsingrad.AI.AIDecision), AshesOfVelsingrad.Managers.BattleState)
+  nameWithType: AIDebugVisualizer.VisualizeActionScores(List<AIDecision>, BattleState)
+  nameWithType.vb: AIDebugVisualizer.VisualizeActionScores(List(Of AIDecision), BattleState)
+- uid: AshesOfVelsingrad.AI.AIDebugVisualizer.VisualizeActionScores*
+  name: VisualizeActionScores
+  href: api/AshesOfVelsingrad.AI.AIDebugVisualizer.html#AshesOfVelsingrad_AI_AIDebugVisualizer_VisualizeActionScores_
+  commentId: Overload:AshesOfVelsingrad.AI.AIDebugVisualizer.VisualizeActionScores
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.AI.AIDebugVisualizer.VisualizeActionScores
+  nameWithType: AIDebugVisualizer.VisualizeActionScores
+- uid: AshesOfVelsingrad.AI.AIDebugVisualizer.VisualizeDecision(AshesOfVelsingrad.AI.AIDecision,AshesOfVelsingrad.Managers.BattleState)
+  name: VisualizeDecision(AIDecision, BattleState)
+  href: api/AshesOfVelsingrad.AI.AIDebugVisualizer.html#AshesOfVelsingrad_AI_AIDebugVisualizer_VisualizeDecision_AshesOfVelsingrad_AI_AIDecision_AshesOfVelsingrad_Managers_BattleState_
+  commentId: M:AshesOfVelsingrad.AI.AIDebugVisualizer.VisualizeDecision(AshesOfVelsingrad.AI.AIDecision,AshesOfVelsingrad.Managers.BattleState)
+  fullName: AshesOfVelsingrad.AI.AIDebugVisualizer.VisualizeDecision(AshesOfVelsingrad.AI.AIDecision, AshesOfVelsingrad.Managers.BattleState)
+  nameWithType: AIDebugVisualizer.VisualizeDecision(AIDecision, BattleState)
+- uid: AshesOfVelsingrad.AI.AIDebugVisualizer.VisualizeDecision*
+  name: VisualizeDecision
+  href: api/AshesOfVelsingrad.AI.AIDebugVisualizer.html#AshesOfVelsingrad_AI_AIDebugVisualizer_VisualizeDecision_
+  commentId: Overload:AshesOfVelsingrad.AI.AIDebugVisualizer.VisualizeDecision
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.AI.AIDebugVisualizer.VisualizeDecision
+  nameWithType: AIDebugVisualizer.VisualizeDecision
+- uid: AshesOfVelsingrad.AI.AIDebugVisualizer.VisualizeThreatMap(AshesOfVelsingrad.Systems.UnitSystem,AshesOfVelsingrad.Managers.BattleState,System.Int32)
+  name: VisualizeThreatMap(UnitSystem, BattleState, int)
+  href: api/AshesOfVelsingrad.AI.AIDebugVisualizer.html#AshesOfVelsingrad_AI_AIDebugVisualizer_VisualizeThreatMap_AshesOfVelsingrad_Systems_UnitSystem_AshesOfVelsingrad_Managers_BattleState_System_Int32_
+  commentId: M:AshesOfVelsingrad.AI.AIDebugVisualizer.VisualizeThreatMap(AshesOfVelsingrad.Systems.UnitSystem,AshesOfVelsingrad.Managers.BattleState,System.Int32)
+  name.vb: VisualizeThreatMap(UnitSystem, BattleState, Integer)
+  fullName: AshesOfVelsingrad.AI.AIDebugVisualizer.VisualizeThreatMap(AshesOfVelsingrad.Systems.UnitSystem, AshesOfVelsingrad.Managers.BattleState, int)
+  fullName.vb: AshesOfVelsingrad.AI.AIDebugVisualizer.VisualizeThreatMap(AshesOfVelsingrad.Systems.UnitSystem, AshesOfVelsingrad.Managers.BattleState, Integer)
+  nameWithType: AIDebugVisualizer.VisualizeThreatMap(UnitSystem, BattleState, int)
+  nameWithType.vb: AIDebugVisualizer.VisualizeThreatMap(UnitSystem, BattleState, Integer)
+- uid: AshesOfVelsingrad.AI.AIDebugVisualizer.VisualizeThreatMap*
+  name: VisualizeThreatMap
+  href: api/AshesOfVelsingrad.AI.AIDebugVisualizer.html#AshesOfVelsingrad_AI_AIDebugVisualizer_VisualizeThreatMap_
+  commentId: Overload:AshesOfVelsingrad.AI.AIDebugVisualizer.VisualizeThreatMap
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.AI.AIDebugVisualizer.VisualizeThreatMap
+  nameWithType: AIDebugVisualizer.VisualizeThreatMap
+- uid: AshesOfVelsingrad.AI.AIDebugVisualizer._ExitTree
+  name: _ExitTree()
+  href: api/AshesOfVelsingrad.AI.AIDebugVisualizer.html#AshesOfVelsingrad_AI_AIDebugVisualizer__ExitTree
+  commentId: M:AshesOfVelsingrad.AI.AIDebugVisualizer._ExitTree
+  fullName: AshesOfVelsingrad.AI.AIDebugVisualizer._ExitTree()
+  nameWithType: AIDebugVisualizer._ExitTree()
+- uid: AshesOfVelsingrad.AI.AIDebugVisualizer._ExitTree*
+  name: _ExitTree
+  href: api/AshesOfVelsingrad.AI.AIDebugVisualizer.html#AshesOfVelsingrad_AI_AIDebugVisualizer__ExitTree_
+  commentId: Overload:AshesOfVelsingrad.AI.AIDebugVisualizer._ExitTree
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.AI.AIDebugVisualizer._ExitTree
+  nameWithType: AIDebugVisualizer._ExitTree
+- uid: AshesOfVelsingrad.AI.AIDebugVisualizer._Ready
+  name: _Ready()
+  href: api/AshesOfVelsingrad.AI.AIDebugVisualizer.html#AshesOfVelsingrad_AI_AIDebugVisualizer__Ready
+  commentId: M:AshesOfVelsingrad.AI.AIDebugVisualizer._Ready
+  fullName: AshesOfVelsingrad.AI.AIDebugVisualizer._Ready()
+  nameWithType: AIDebugVisualizer._Ready()
+- uid: AshesOfVelsingrad.AI.AIDebugVisualizer._Ready*
+  name: _Ready
+  href: api/AshesOfVelsingrad.AI.AIDebugVisualizer.html#AshesOfVelsingrad_AI_AIDebugVisualizer__Ready_
+  commentId: Overload:AshesOfVelsingrad.AI.AIDebugVisualizer._Ready
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.AI.AIDebugVisualizer._Ready
+  nameWithType: AIDebugVisualizer._Ready
+- uid: AshesOfVelsingrad.AI.AIDecision
+  name: AIDecision
+  href: api/AshesOfVelsingrad.AI.AIDecision.html
+  commentId: T:AshesOfVelsingrad.AI.AIDecision
+  fullName: AshesOfVelsingrad.AI.AIDecision
+  nameWithType: AIDecision
+- uid: AshesOfVelsingrad.AI.AIDecision.Action
+  name: Action
+  href: api/AshesOfVelsingrad.AI.AIDecision.html#AshesOfVelsingrad_AI_AIDecision_Action
+  commentId: P:AshesOfVelsingrad.AI.AIDecision.Action
+  fullName: AshesOfVelsingrad.AI.AIDecision.Action
+  nameWithType: AIDecision.Action
+- uid: AshesOfVelsingrad.AI.AIDecision.Action*
+  name: Action
+  href: api/AshesOfVelsingrad.AI.AIDecision.html#AshesOfVelsingrad_AI_AIDecision_Action_
+  commentId: Overload:AshesOfVelsingrad.AI.AIDecision.Action
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.AI.AIDecision.Action
+  nameWithType: AIDecision.Action
+- uid: AshesOfVelsingrad.AI.AIDecision.MovePosition
+  name: MovePosition
+  href: api/AshesOfVelsingrad.AI.AIDecision.html#AshesOfVelsingrad_AI_AIDecision_MovePosition
+  commentId: P:AshesOfVelsingrad.AI.AIDecision.MovePosition
+  fullName: AshesOfVelsingrad.AI.AIDecision.MovePosition
+  nameWithType: AIDecision.MovePosition
+- uid: AshesOfVelsingrad.AI.AIDecision.MovePosition*
+  name: MovePosition
+  href: api/AshesOfVelsingrad.AI.AIDecision.html#AshesOfVelsingrad_AI_AIDecision_MovePosition_
+  commentId: Overload:AshesOfVelsingrad.AI.AIDecision.MovePosition
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.AI.AIDecision.MovePosition
+  nameWithType: AIDecision.MovePosition
+- uid: AshesOfVelsingrad.AI.AIDecision.Reasoning
+  name: Reasoning
+  href: api/AshesOfVelsingrad.AI.AIDecision.html#AshesOfVelsingrad_AI_AIDecision_Reasoning
+  commentId: P:AshesOfVelsingrad.AI.AIDecision.Reasoning
+  fullName: AshesOfVelsingrad.AI.AIDecision.Reasoning
+  nameWithType: AIDecision.Reasoning
+- uid: AshesOfVelsingrad.AI.AIDecision.Reasoning*
+  name: Reasoning
+  href: api/AshesOfVelsingrad.AI.AIDecision.html#AshesOfVelsingrad_AI_AIDecision_Reasoning_
+  commentId: Overload:AshesOfVelsingrad.AI.AIDecision.Reasoning
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.AI.AIDecision.Reasoning
+  nameWithType: AIDecision.Reasoning
+- uid: AshesOfVelsingrad.AI.AIDecision.Score
+  name: Score
+  href: api/AshesOfVelsingrad.AI.AIDecision.html#AshesOfVelsingrad_AI_AIDecision_Score
+  commentId: P:AshesOfVelsingrad.AI.AIDecision.Score
+  fullName: AshesOfVelsingrad.AI.AIDecision.Score
+  nameWithType: AIDecision.Score
+- uid: AshesOfVelsingrad.AI.AIDecision.Score*
+  name: Score
+  href: api/AshesOfVelsingrad.AI.AIDecision.html#AshesOfVelsingrad_AI_AIDecision_Score_
+  commentId: Overload:AshesOfVelsingrad.AI.AIDecision.Score
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.AI.AIDecision.Score
+  nameWithType: AIDecision.Score
+- uid: AshesOfVelsingrad.AI.AIDecision.Skill
+  name: Skill
+  href: api/AshesOfVelsingrad.AI.AIDecision.html#AshesOfVelsingrad_AI_AIDecision_Skill
+  commentId: P:AshesOfVelsingrad.AI.AIDecision.Skill
+  fullName: AshesOfVelsingrad.AI.AIDecision.Skill
+  nameWithType: AIDecision.Skill
+- uid: AshesOfVelsingrad.AI.AIDecision.Skill*
+  name: Skill
+  href: api/AshesOfVelsingrad.AI.AIDecision.html#AshesOfVelsingrad_AI_AIDecision_Skill_
+  commentId: Overload:AshesOfVelsingrad.AI.AIDecision.Skill
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.AI.AIDecision.Skill
+  nameWithType: AIDecision.Skill
+- uid: AshesOfVelsingrad.AI.AIDecision.Target
+  name: Target
+  href: api/AshesOfVelsingrad.AI.AIDecision.html#AshesOfVelsingrad_AI_AIDecision_Target
+  commentId: P:AshesOfVelsingrad.AI.AIDecision.Target
+  fullName: AshesOfVelsingrad.AI.AIDecision.Target
+  nameWithType: AIDecision.Target
+- uid: AshesOfVelsingrad.AI.AIDecision.Target*
+  name: Target
+  href: api/AshesOfVelsingrad.AI.AIDecision.html#AshesOfVelsingrad_AI_AIDecision_Target_
+  commentId: Overload:AshesOfVelsingrad.AI.AIDecision.Target
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.AI.AIDecision.Target
+  nameWithType: AIDecision.Target
+- uid: AshesOfVelsingrad.AI.AIDecisionGenerator
+  name: AIDecisionGenerator
+  href: api/AshesOfVelsingrad.AI.AIDecisionGenerator.html
+  commentId: T:AshesOfVelsingrad.AI.AIDecisionGenerator
+  fullName: AshesOfVelsingrad.AI.AIDecisionGenerator
+  nameWithType: AIDecisionGenerator
+- uid: AshesOfVelsingrad.AI.AIDecisionGenerator.#ctor(AshesOfVelsingrad.Systems.UnitSystem)
+  name: AIDecisionGenerator(UnitSystem)
+  href: api/AshesOfVelsingrad.AI.AIDecisionGenerator.html#AshesOfVelsingrad_AI_AIDecisionGenerator__ctor_AshesOfVelsingrad_Systems_UnitSystem_
+  commentId: M:AshesOfVelsingrad.AI.AIDecisionGenerator.#ctor(AshesOfVelsingrad.Systems.UnitSystem)
+  name.vb: New(UnitSystem)
+  fullName: AshesOfVelsingrad.AI.AIDecisionGenerator.AIDecisionGenerator(AshesOfVelsingrad.Systems.UnitSystem)
+  fullName.vb: AshesOfVelsingrad.AI.AIDecisionGenerator.New(AshesOfVelsingrad.Systems.UnitSystem)
+  nameWithType: AIDecisionGenerator.AIDecisionGenerator(UnitSystem)
+  nameWithType.vb: AIDecisionGenerator.New(UnitSystem)
+- uid: AshesOfVelsingrad.AI.AIDecisionGenerator.#ctor*
+  name: AIDecisionGenerator
+  href: api/AshesOfVelsingrad.AI.AIDecisionGenerator.html#AshesOfVelsingrad_AI_AIDecisionGenerator__ctor_
+  commentId: Overload:AshesOfVelsingrad.AI.AIDecisionGenerator.#ctor
+  isSpec: "True"
+  name.vb: New
+  fullName: AshesOfVelsingrad.AI.AIDecisionGenerator.AIDecisionGenerator
+  fullName.vb: AshesOfVelsingrad.AI.AIDecisionGenerator.New
+  nameWithType: AIDecisionGenerator.AIDecisionGenerator
+  nameWithType.vb: AIDecisionGenerator.New
+- uid: AshesOfVelsingrad.AI.AIDecisionGenerator.GenerateAllPossibleActions(AshesOfVelsingrad.Managers.BattleState)
+  name: GenerateAllPossibleActions(BattleState)
+  href: api/AshesOfVelsingrad.AI.AIDecisionGenerator.html#AshesOfVelsingrad_AI_AIDecisionGenerator_GenerateAllPossibleActions_AshesOfVelsingrad_Managers_BattleState_
+  commentId: M:AshesOfVelsingrad.AI.AIDecisionGenerator.GenerateAllPossibleActions(AshesOfVelsingrad.Managers.BattleState)
+  fullName: AshesOfVelsingrad.AI.AIDecisionGenerator.GenerateAllPossibleActions(AshesOfVelsingrad.Managers.BattleState)
+  nameWithType: AIDecisionGenerator.GenerateAllPossibleActions(BattleState)
+- uid: AshesOfVelsingrad.AI.AIDecisionGenerator.GenerateAllPossibleActions*
+  name: GenerateAllPossibleActions
+  href: api/AshesOfVelsingrad.AI.AIDecisionGenerator.html#AshesOfVelsingrad_AI_AIDecisionGenerator_GenerateAllPossibleActions_
+  commentId: Overload:AshesOfVelsingrad.AI.AIDecisionGenerator.GenerateAllPossibleActions
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.AI.AIDecisionGenerator.GenerateAllPossibleActions
+  nameWithType: AIDecisionGenerator.GenerateAllPossibleActions
+- uid: AshesOfVelsingrad.AI.AIEvaluator
+  name: AIEvaluator
+  href: api/AshesOfVelsingrad.AI.AIEvaluator.html
+  commentId: T:AshesOfVelsingrad.AI.AIEvaluator
+  fullName: AshesOfVelsingrad.AI.AIEvaluator
+  nameWithType: AIEvaluator
+- uid: AshesOfVelsingrad.AI.AIEvaluator.#ctor(AshesOfVelsingrad.Systems.UnitSystem)
+  name: AIEvaluator(UnitSystem)
+  href: api/AshesOfVelsingrad.AI.AIEvaluator.html#AshesOfVelsingrad_AI_AIEvaluator__ctor_AshesOfVelsingrad_Systems_UnitSystem_
+  commentId: M:AshesOfVelsingrad.AI.AIEvaluator.#ctor(AshesOfVelsingrad.Systems.UnitSystem)
+  name.vb: New(UnitSystem)
+  fullName: AshesOfVelsingrad.AI.AIEvaluator.AIEvaluator(AshesOfVelsingrad.Systems.UnitSystem)
+  fullName.vb: AshesOfVelsingrad.AI.AIEvaluator.New(AshesOfVelsingrad.Systems.UnitSystem)
+  nameWithType: AIEvaluator.AIEvaluator(UnitSystem)
+  nameWithType.vb: AIEvaluator.New(UnitSystem)
+- uid: AshesOfVelsingrad.AI.AIEvaluator.#ctor*
+  name: AIEvaluator
+  href: api/AshesOfVelsingrad.AI.AIEvaluator.html#AshesOfVelsingrad_AI_AIEvaluator__ctor_
+  commentId: Overload:AshesOfVelsingrad.AI.AIEvaluator.#ctor
+  isSpec: "True"
+  name.vb: New
+  fullName: AshesOfVelsingrad.AI.AIEvaluator.AIEvaluator
+  fullName.vb: AshesOfVelsingrad.AI.AIEvaluator.New
+  nameWithType: AIEvaluator.AIEvaluator
+  nameWithType.vb: AIEvaluator.New
+- uid: AshesOfVelsingrad.AI.AIEvaluator.EvaluateDefensiveAction(Godot.Vector3I,Godot.Vector3I,AshesOfVelsingrad.Managers.BattleState)
+  name: EvaluateDefensiveAction(Vector3I, Vector3I, BattleState)
+  href: api/AshesOfVelsingrad.AI.AIEvaluator.html#AshesOfVelsingrad_AI_AIEvaluator_EvaluateDefensiveAction_Godot_Vector3I_Godot_Vector3I_AshesOfVelsingrad_Managers_BattleState_
+  commentId: M:AshesOfVelsingrad.AI.AIEvaluator.EvaluateDefensiveAction(Godot.Vector3I,Godot.Vector3I,AshesOfVelsingrad.Managers.BattleState)
+  fullName: AshesOfVelsingrad.AI.AIEvaluator.EvaluateDefensiveAction(Godot.Vector3I, Godot.Vector3I, AshesOfVelsingrad.Managers.BattleState)
+  nameWithType: AIEvaluator.EvaluateDefensiveAction(Vector3I, Vector3I, BattleState)
+- uid: AshesOfVelsingrad.AI.AIEvaluator.EvaluateDefensiveAction*
+  name: EvaluateDefensiveAction
+  href: api/AshesOfVelsingrad.AI.AIEvaluator.html#AshesOfVelsingrad_AI_AIEvaluator_EvaluateDefensiveAction_
+  commentId: Overload:AshesOfVelsingrad.AI.AIEvaluator.EvaluateDefensiveAction
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.AI.AIEvaluator.EvaluateDefensiveAction
+  nameWithType: AIEvaluator.EvaluateDefensiveAction
+- uid: AshesOfVelsingrad.AI.AIEvaluator.EvaluateOffensiveAction(AshesOfVelsingrad.Systems.UnitSystem,AshesOfVelsingrad.Systems.SkillSystem,Godot.Vector3I,Godot.Vector3I,AshesOfVelsingrad.Managers.BattleState,System.Boolean)
+  name: EvaluateOffensiveAction(UnitSystem, SkillSystem, Vector3I, Vector3I, BattleState, bool)
+  href: api/AshesOfVelsingrad.AI.AIEvaluator.html#AshesOfVelsingrad_AI_AIEvaluator_EvaluateOffensiveAction_AshesOfVelsingrad_Systems_UnitSystem_AshesOfVelsingrad_Systems_SkillSystem_Godot_Vector3I_Godot_Vector3I_AshesOfVelsingrad_Managers_BattleState_System_Boolean_
+  commentId: M:AshesOfVelsingrad.AI.AIEvaluator.EvaluateOffensiveAction(AshesOfVelsingrad.Systems.UnitSystem,AshesOfVelsingrad.Systems.SkillSystem,Godot.Vector3I,Godot.Vector3I,AshesOfVelsingrad.Managers.BattleState,System.Boolean)
+  name.vb: EvaluateOffensiveAction(UnitSystem, SkillSystem, Vector3I, Vector3I, BattleState, Boolean)
+  fullName: AshesOfVelsingrad.AI.AIEvaluator.EvaluateOffensiveAction(AshesOfVelsingrad.Systems.UnitSystem, AshesOfVelsingrad.Systems.SkillSystem, Godot.Vector3I, Godot.Vector3I, AshesOfVelsingrad.Managers.BattleState, bool)
+  fullName.vb: AshesOfVelsingrad.AI.AIEvaluator.EvaluateOffensiveAction(AshesOfVelsingrad.Systems.UnitSystem, AshesOfVelsingrad.Systems.SkillSystem, Godot.Vector3I, Godot.Vector3I, AshesOfVelsingrad.Managers.BattleState, Boolean)
+  nameWithType: AIEvaluator.EvaluateOffensiveAction(UnitSystem, SkillSystem, Vector3I, Vector3I, BattleState, bool)
+  nameWithType.vb: AIEvaluator.EvaluateOffensiveAction(UnitSystem, SkillSystem, Vector3I, Vector3I, BattleState, Boolean)
+- uid: AshesOfVelsingrad.AI.AIEvaluator.EvaluateOffensiveAction*
+  name: EvaluateOffensiveAction
+  href: api/AshesOfVelsingrad.AI.AIEvaluator.html#AshesOfVelsingrad_AI_AIEvaluator_EvaluateOffensiveAction_
+  commentId: Overload:AshesOfVelsingrad.AI.AIEvaluator.EvaluateOffensiveAction
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.AI.AIEvaluator.EvaluateOffensiveAction
+  nameWithType: AIEvaluator.EvaluateOffensiveAction
+- uid: AshesOfVelsingrad.AI.AIEvaluator.EvaluateSupportAction(AshesOfVelsingrad.Systems.UnitSystem,AshesOfVelsingrad.Systems.SkillSystem,Godot.Vector3I,Godot.Vector3I,AshesOfVelsingrad.Managers.BattleState,System.Boolean)
+  name: EvaluateSupportAction(UnitSystem, SkillSystem, Vector3I, Vector3I, BattleState, bool)
+  href: api/AshesOfVelsingrad.AI.AIEvaluator.html#AshesOfVelsingrad_AI_AIEvaluator_EvaluateSupportAction_AshesOfVelsingrad_Systems_UnitSystem_AshesOfVelsingrad_Systems_SkillSystem_Godot_Vector3I_Godot_Vector3I_AshesOfVelsingrad_Managers_BattleState_System_Boolean_
+  commentId: M:AshesOfVelsingrad.AI.AIEvaluator.EvaluateSupportAction(AshesOfVelsingrad.Systems.UnitSystem,AshesOfVelsingrad.Systems.SkillSystem,Godot.Vector3I,Godot.Vector3I,AshesOfVelsingrad.Managers.BattleState,System.Boolean)
+  name.vb: EvaluateSupportAction(UnitSystem, SkillSystem, Vector3I, Vector3I, BattleState, Boolean)
+  fullName: AshesOfVelsingrad.AI.AIEvaluator.EvaluateSupportAction(AshesOfVelsingrad.Systems.UnitSystem, AshesOfVelsingrad.Systems.SkillSystem, Godot.Vector3I, Godot.Vector3I, AshesOfVelsingrad.Managers.BattleState, bool)
+  fullName.vb: AshesOfVelsingrad.AI.AIEvaluator.EvaluateSupportAction(AshesOfVelsingrad.Systems.UnitSystem, AshesOfVelsingrad.Systems.SkillSystem, Godot.Vector3I, Godot.Vector3I, AshesOfVelsingrad.Managers.BattleState, Boolean)
+  nameWithType: AIEvaluator.EvaluateSupportAction(UnitSystem, SkillSystem, Vector3I, Vector3I, BattleState, bool)
+  nameWithType.vb: AIEvaluator.EvaluateSupportAction(UnitSystem, SkillSystem, Vector3I, Vector3I, BattleState, Boolean)
+- uid: AshesOfVelsingrad.AI.AIEvaluator.EvaluateSupportAction*
+  name: EvaluateSupportAction
+  href: api/AshesOfVelsingrad.AI.AIEvaluator.html#AshesOfVelsingrad_AI_AIEvaluator_EvaluateSupportAction_
+  commentId: Overload:AshesOfVelsingrad.AI.AIEvaluator.EvaluateSupportAction
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.AI.AIEvaluator.EvaluateSupportAction
+  nameWithType: AIEvaluator.EvaluateSupportAction
+- uid: AshesOfVelsingrad.AI.AIPersonality
+  name: AIPersonality
+  href: api/AshesOfVelsingrad.AI.AIPersonality.html
+  commentId: T:AshesOfVelsingrad.AI.AIPersonality
+  fullName: AshesOfVelsingrad.AI.AIPersonality
+  nameWithType: AIPersonality
+- uid: AshesOfVelsingrad.AI.AIPersonality.Aggressive
+  name: Aggressive
+  href: api/AshesOfVelsingrad.AI.AIPersonality.html#AshesOfVelsingrad_AI_AIPersonality_Aggressive
+  commentId: F:AshesOfVelsingrad.AI.AIPersonality.Aggressive
+  fullName: AshesOfVelsingrad.AI.AIPersonality.Aggressive
+  nameWithType: AIPersonality.Aggressive
+- uid: AshesOfVelsingrad.AI.AIPersonality.Balanced
+  name: Balanced
+  href: api/AshesOfVelsingrad.AI.AIPersonality.html#AshesOfVelsingrad_AI_AIPersonality_Balanced
+  commentId: F:AshesOfVelsingrad.AI.AIPersonality.Balanced
+  fullName: AshesOfVelsingrad.AI.AIPersonality.Balanced
+  nameWithType: AIPersonality.Balanced
+- uid: AshesOfVelsingrad.AI.AIPersonality.Defensive
+  name: Defensive
+  href: api/AshesOfVelsingrad.AI.AIPersonality.html#AshesOfVelsingrad_AI_AIPersonality_Defensive
+  commentId: F:AshesOfVelsingrad.AI.AIPersonality.Defensive
+  fullName: AshesOfVelsingrad.AI.AIPersonality.Defensive
+  nameWithType: AIPersonality.Defensive
+- uid: AshesOfVelsingrad.AI.AIPersonality.Opportunistic
+  name: Opportunistic
+  href: api/AshesOfVelsingrad.AI.AIPersonality.html#AshesOfVelsingrad_AI_AIPersonality_Opportunistic
+  commentId: F:AshesOfVelsingrad.AI.AIPersonality.Opportunistic
+  fullName: AshesOfVelsingrad.AI.AIPersonality.Opportunistic
+  nameWithType: AIPersonality.Opportunistic
+- uid: AshesOfVelsingrad.AI.AIUtilities
+  name: AIUtilities
+  href: api/AshesOfVelsingrad.AI.AIUtilities.html
+  commentId: T:AshesOfVelsingrad.AI.AIUtilities
+  fullName: AshesOfVelsingrad.AI.AIUtilities
+  nameWithType: AIUtilities
+- uid: AshesOfVelsingrad.AI.AIUtilities.CalculateManhattanDistance(Godot.Vector3I,Godot.Vector3I)
+  name: CalculateManhattanDistance(Vector3I, Vector3I)
+  href: api/AshesOfVelsingrad.AI.AIUtilities.html#AshesOfVelsingrad_AI_AIUtilities_CalculateManhattanDistance_Godot_Vector3I_Godot_Vector3I_
+  commentId: M:AshesOfVelsingrad.AI.AIUtilities.CalculateManhattanDistance(Godot.Vector3I,Godot.Vector3I)
+  fullName: AshesOfVelsingrad.AI.AIUtilities.CalculateManhattanDistance(Godot.Vector3I, Godot.Vector3I)
+  nameWithType: AIUtilities.CalculateManhattanDistance(Vector3I, Vector3I)
+- uid: AshesOfVelsingrad.AI.AIUtilities.CalculateManhattanDistance*
+  name: CalculateManhattanDistance
+  href: api/AshesOfVelsingrad.AI.AIUtilities.html#AshesOfVelsingrad_AI_AIUtilities_CalculateManhattanDistance_
+  commentId: Overload:AshesOfVelsingrad.AI.AIUtilities.CalculateManhattanDistance
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.AI.AIUtilities.CalculateManhattanDistance
+  nameWithType: AIUtilities.CalculateManhattanDistance
+- uid: AshesOfVelsingrad.AI.AIUtilities.CalculateMoveAway(AshesOfVelsingrad.Systems.UnitSystem,AshesOfVelsingrad.Managers.BattleState,Godot.Vector3I,System.Int32)
+  name: CalculateMoveAway(UnitSystem, BattleState, Vector3I, int)
+  href: api/AshesOfVelsingrad.AI.AIUtilities.html#AshesOfVelsingrad_AI_AIUtilities_CalculateMoveAway_AshesOfVelsingrad_Systems_UnitSystem_AshesOfVelsingrad_Managers_BattleState_Godot_Vector3I_System_Int32_
+  commentId: M:AshesOfVelsingrad.AI.AIUtilities.CalculateMoveAway(AshesOfVelsingrad.Systems.UnitSystem,AshesOfVelsingrad.Managers.BattleState,Godot.Vector3I,System.Int32)
+  name.vb: CalculateMoveAway(UnitSystem, BattleState, Vector3I, Integer)
+  fullName: AshesOfVelsingrad.AI.AIUtilities.CalculateMoveAway(AshesOfVelsingrad.Systems.UnitSystem, AshesOfVelsingrad.Managers.BattleState, Godot.Vector3I, int)
+  fullName.vb: AshesOfVelsingrad.AI.AIUtilities.CalculateMoveAway(AshesOfVelsingrad.Systems.UnitSystem, AshesOfVelsingrad.Managers.BattleState, Godot.Vector3I, Integer)
+  nameWithType: AIUtilities.CalculateMoveAway(UnitSystem, BattleState, Vector3I, int)
+  nameWithType.vb: AIUtilities.CalculateMoveAway(UnitSystem, BattleState, Vector3I, Integer)
+- uid: AshesOfVelsingrad.AI.AIUtilities.CalculateMoveAway*
+  name: CalculateMoveAway
+  href: api/AshesOfVelsingrad.AI.AIUtilities.html#AshesOfVelsingrad_AI_AIUtilities_CalculateMoveAway_
+  commentId: Overload:AshesOfVelsingrad.AI.AIUtilities.CalculateMoveAway
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.AI.AIUtilities.CalculateMoveAway
+  nameWithType: AIUtilities.CalculateMoveAway
+- uid: AshesOfVelsingrad.AI.AIUtilities.CalculateMoveToRange(AshesOfVelsingrad.Systems.UnitSystem,AshesOfVelsingrad.Managers.BattleState,Godot.Vector3I,System.Int32)
+  name: CalculateMoveToRange(UnitSystem, BattleState, Vector3I, int)
+  href: api/AshesOfVelsingrad.AI.AIUtilities.html#AshesOfVelsingrad_AI_AIUtilities_CalculateMoveToRange_AshesOfVelsingrad_Systems_UnitSystem_AshesOfVelsingrad_Managers_BattleState_Godot_Vector3I_System_Int32_
+  commentId: M:AshesOfVelsingrad.AI.AIUtilities.CalculateMoveToRange(AshesOfVelsingrad.Systems.UnitSystem,AshesOfVelsingrad.Managers.BattleState,Godot.Vector3I,System.Int32)
+  name.vb: CalculateMoveToRange(UnitSystem, BattleState, Vector3I, Integer)
+  fullName: AshesOfVelsingrad.AI.AIUtilities.CalculateMoveToRange(AshesOfVelsingrad.Systems.UnitSystem, AshesOfVelsingrad.Managers.BattleState, Godot.Vector3I, int)
+  fullName.vb: AshesOfVelsingrad.AI.AIUtilities.CalculateMoveToRange(AshesOfVelsingrad.Systems.UnitSystem, AshesOfVelsingrad.Managers.BattleState, Godot.Vector3I, Integer)
+  nameWithType: AIUtilities.CalculateMoveToRange(UnitSystem, BattleState, Vector3I, int)
+  nameWithType.vb: AIUtilities.CalculateMoveToRange(UnitSystem, BattleState, Vector3I, Integer)
+- uid: AshesOfVelsingrad.AI.AIUtilities.CalculateMoveToRange*
+  name: CalculateMoveToRange
+  href: api/AshesOfVelsingrad.AI.AIUtilities.html#AshesOfVelsingrad_AI_AIUtilities_CalculateMoveToRange_
+  commentId: Overload:AshesOfVelsingrad.AI.AIUtilities.CalculateMoveToRange
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.AI.AIUtilities.CalculateMoveToRange
+  nameWithType: AIUtilities.CalculateMoveToRange
+- uid: AshesOfVelsingrad.AI.AIUtilities.CalculateThreatLevel(Godot.Vector3I,AshesOfVelsingrad.Managers.BattleState,System.Int32)
+  name: CalculateThreatLevel(Vector3I, BattleState, int)
+  href: api/AshesOfVelsingrad.AI.AIUtilities.html#AshesOfVelsingrad_AI_AIUtilities_CalculateThreatLevel_Godot_Vector3I_AshesOfVelsingrad_Managers_BattleState_System_Int32_
+  commentId: M:AshesOfVelsingrad.AI.AIUtilities.CalculateThreatLevel(Godot.Vector3I,AshesOfVelsingrad.Managers.BattleState,System.Int32)
+  name.vb: CalculateThreatLevel(Vector3I, BattleState, Integer)
+  fullName: AshesOfVelsingrad.AI.AIUtilities.CalculateThreatLevel(Godot.Vector3I, AshesOfVelsingrad.Managers.BattleState, int)
+  fullName.vb: AshesOfVelsingrad.AI.AIUtilities.CalculateThreatLevel(Godot.Vector3I, AshesOfVelsingrad.Managers.BattleState, Integer)
+  nameWithType: AIUtilities.CalculateThreatLevel(Vector3I, BattleState, int)
+  nameWithType.vb: AIUtilities.CalculateThreatLevel(Vector3I, BattleState, Integer)
+- uid: AshesOfVelsingrad.AI.AIUtilities.CalculateThreatLevel*
+  name: CalculateThreatLevel
+  href: api/AshesOfVelsingrad.AI.AIUtilities.html#AshesOfVelsingrad_AI_AIUtilities_CalculateThreatLevel_
+  commentId: Overload:AshesOfVelsingrad.AI.AIUtilities.CalculateThreatLevel
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.AI.AIUtilities.CalculateThreatLevel
+  nameWithType: AIUtilities.CalculateThreatLevel
+- uid: AshesOfVelsingrad.AI.AIUtilities.CanKillThisTurn(AshesOfVelsingrad.Systems.UnitSystem,AshesOfVelsingrad.Systems.UnitSystem)
+  name: CanKillThisTurn(UnitSystem, UnitSystem)
+  href: api/AshesOfVelsingrad.AI.AIUtilities.html#AshesOfVelsingrad_AI_AIUtilities_CanKillThisTurn_AshesOfVelsingrad_Systems_UnitSystem_AshesOfVelsingrad_Systems_UnitSystem_
+  commentId: M:AshesOfVelsingrad.AI.AIUtilities.CanKillThisTurn(AshesOfVelsingrad.Systems.UnitSystem,AshesOfVelsingrad.Systems.UnitSystem)
+  fullName: AshesOfVelsingrad.AI.AIUtilities.CanKillThisTurn(AshesOfVelsingrad.Systems.UnitSystem, AshesOfVelsingrad.Systems.UnitSystem)
+  nameWithType: AIUtilities.CanKillThisTurn(UnitSystem, UnitSystem)
+- uid: AshesOfVelsingrad.AI.AIUtilities.CanKillThisTurn*
+  name: CanKillThisTurn
+  href: api/AshesOfVelsingrad.AI.AIUtilities.html#AshesOfVelsingrad_AI_AIUtilities_CanKillThisTurn_
+  commentId: Overload:AshesOfVelsingrad.AI.AIUtilities.CanKillThisTurn
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.AI.AIUtilities.CanKillThisTurn
+  nameWithType: AIUtilities.CanKillThisTurn
+- uid: AshesOfVelsingrad.AI.AIUtilities.CountEnemyAlliesNear(AshesOfVelsingrad.Systems.UnitSystem,Godot.Vector3I,AshesOfVelsingrad.Managers.BattleState,System.Int32)
+  name: CountEnemyAlliesNear(UnitSystem, Vector3I, BattleState, int)
+  href: api/AshesOfVelsingrad.AI.AIUtilities.html#AshesOfVelsingrad_AI_AIUtilities_CountEnemyAlliesNear_AshesOfVelsingrad_Systems_UnitSystem_Godot_Vector3I_AshesOfVelsingrad_Managers_BattleState_System_Int32_
+  commentId: M:AshesOfVelsingrad.AI.AIUtilities.CountEnemyAlliesNear(AshesOfVelsingrad.Systems.UnitSystem,Godot.Vector3I,AshesOfVelsingrad.Managers.BattleState,System.Int32)
+  name.vb: CountEnemyAlliesNear(UnitSystem, Vector3I, BattleState, Integer)
+  fullName: AshesOfVelsingrad.AI.AIUtilities.CountEnemyAlliesNear(AshesOfVelsingrad.Systems.UnitSystem, Godot.Vector3I, AshesOfVelsingrad.Managers.BattleState, int)
+  fullName.vb: AshesOfVelsingrad.AI.AIUtilities.CountEnemyAlliesNear(AshesOfVelsingrad.Systems.UnitSystem, Godot.Vector3I, AshesOfVelsingrad.Managers.BattleState, Integer)
+  nameWithType: AIUtilities.CountEnemyAlliesNear(UnitSystem, Vector3I, BattleState, int)
+  nameWithType.vb: AIUtilities.CountEnemyAlliesNear(UnitSystem, Vector3I, BattleState, Integer)
+- uid: AshesOfVelsingrad.AI.AIUtilities.CountEnemyAlliesNear*
+  name: CountEnemyAlliesNear
+  href: api/AshesOfVelsingrad.AI.AIUtilities.html#AshesOfVelsingrad_AI_AIUtilities_CountEnemyAlliesNear_
+  commentId: Overload:AshesOfVelsingrad.AI.AIUtilities.CountEnemyAlliesNear
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.AI.AIUtilities.CountEnemyAlliesNear
+  nameWithType: AIUtilities.CountEnemyAlliesNear
+- uid: AshesOfVelsingrad.AI.AIUtilities.CountPlayerUnitsNear(AshesOfVelsingrad.Systems.UnitSystem,Godot.Vector3I,AshesOfVelsingrad.Managers.BattleState,System.Int32)
+  name: CountPlayerUnitsNear(UnitSystem, Vector3I, BattleState, int)
+  href: api/AshesOfVelsingrad.AI.AIUtilities.html#AshesOfVelsingrad_AI_AIUtilities_CountPlayerUnitsNear_AshesOfVelsingrad_Systems_UnitSystem_Godot_Vector3I_AshesOfVelsingrad_Managers_BattleState_System_Int32_
+  commentId: M:AshesOfVelsingrad.AI.AIUtilities.CountPlayerUnitsNear(AshesOfVelsingrad.Systems.UnitSystem,Godot.Vector3I,AshesOfVelsingrad.Managers.BattleState,System.Int32)
+  name.vb: CountPlayerUnitsNear(UnitSystem, Vector3I, BattleState, Integer)
+  fullName: AshesOfVelsingrad.AI.AIUtilities.CountPlayerUnitsNear(AshesOfVelsingrad.Systems.UnitSystem, Godot.Vector3I, AshesOfVelsingrad.Managers.BattleState, int)
+  fullName.vb: AshesOfVelsingrad.AI.AIUtilities.CountPlayerUnitsNear(AshesOfVelsingrad.Systems.UnitSystem, Godot.Vector3I, AshesOfVelsingrad.Managers.BattleState, Integer)
+  nameWithType: AIUtilities.CountPlayerUnitsNear(UnitSystem, Vector3I, BattleState, int)
+  nameWithType.vb: AIUtilities.CountPlayerUnitsNear(UnitSystem, Vector3I, BattleState, Integer)
+- uid: AshesOfVelsingrad.AI.AIUtilities.CountPlayerUnitsNear*
+  name: CountPlayerUnitsNear
+  href: api/AshesOfVelsingrad.AI.AIUtilities.html#AshesOfVelsingrad_AI_AIUtilities_CountPlayerUnitsNear_
+  commentId: Overload:AshesOfVelsingrad.AI.AIUtilities.CountPlayerUnitsNear
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.AI.AIUtilities.CountPlayerUnitsNear
+  nameWithType: AIUtilities.CountPlayerUnitsNear
+- uid: AshesOfVelsingrad.AI.AIUtilities.EvaluatePositionDefensibility(Godot.Vector3I,AshesOfVelsingrad.Managers.BattleState)
+  name: EvaluatePositionDefensibility(Vector3I, BattleState)
+  href: api/AshesOfVelsingrad.AI.AIUtilities.html#AshesOfVelsingrad_AI_AIUtilities_EvaluatePositionDefensibility_Godot_Vector3I_AshesOfVelsingrad_Managers_BattleState_
+  commentId: M:AshesOfVelsingrad.AI.AIUtilities.EvaluatePositionDefensibility(Godot.Vector3I,AshesOfVelsingrad.Managers.BattleState)
+  fullName: AshesOfVelsingrad.AI.AIUtilities.EvaluatePositionDefensibility(Godot.Vector3I, AshesOfVelsingrad.Managers.BattleState)
+  nameWithType: AIUtilities.EvaluatePositionDefensibility(Vector3I, BattleState)
+- uid: AshesOfVelsingrad.AI.AIUtilities.EvaluatePositionDefensibility*
+  name: EvaluatePositionDefensibility
+  href: api/AshesOfVelsingrad.AI.AIUtilities.html#AshesOfVelsingrad_AI_AIUtilities_EvaluatePositionDefensibility_
+  commentId: Overload:AshesOfVelsingrad.AI.AIUtilities.EvaluatePositionDefensibility
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.AI.AIUtilities.EvaluatePositionDefensibility
+  nameWithType: AIUtilities.EvaluatePositionDefensibility
+- uid: AshesOfVelsingrad.AI.AIUtilities.FindCenterPoint(System.Collections.Generic.List{AshesOfVelsingrad.Systems.UnitSystem},AshesOfVelsingrad.Systems.MapSystem)
+  name: FindCenterPoint(List<UnitSystem>, MapSystem)
+  href: api/AshesOfVelsingrad.AI.AIUtilities.html#AshesOfVelsingrad_AI_AIUtilities_FindCenterPoint_System_Collections_Generic_List_AshesOfVelsingrad_Systems_UnitSystem__AshesOfVelsingrad_Systems_MapSystem_
+  commentId: M:AshesOfVelsingrad.AI.AIUtilities.FindCenterPoint(System.Collections.Generic.List{AshesOfVelsingrad.Systems.UnitSystem},AshesOfVelsingrad.Systems.MapSystem)
+  name.vb: FindCenterPoint(List(Of UnitSystem), MapSystem)
+  fullName: AshesOfVelsingrad.AI.AIUtilities.FindCenterPoint(System.Collections.Generic.List<AshesOfVelsingrad.Systems.UnitSystem>, AshesOfVelsingrad.Systems.MapSystem)
+  fullName.vb: AshesOfVelsingrad.AI.AIUtilities.FindCenterPoint(System.Collections.Generic.List(Of AshesOfVelsingrad.Systems.UnitSystem), AshesOfVelsingrad.Systems.MapSystem)
+  nameWithType: AIUtilities.FindCenterPoint(List<UnitSystem>, MapSystem)
+  nameWithType.vb: AIUtilities.FindCenterPoint(List(Of UnitSystem), MapSystem)
+- uid: AshesOfVelsingrad.AI.AIUtilities.FindCenterPoint*
+  name: FindCenterPoint
+  href: api/AshesOfVelsingrad.AI.AIUtilities.html#AshesOfVelsingrad_AI_AIUtilities_FindCenterPoint_
+  commentId: Overload:AshesOfVelsingrad.AI.AIUtilities.FindCenterPoint
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.AI.AIUtilities.FindCenterPoint
+  nameWithType: AIUtilities.FindCenterPoint
+- uid: AshesOfVelsingrad.AI.AIUtilities.FindNearestThreat(AshesOfVelsingrad.Systems.UnitSystem,AshesOfVelsingrad.Managers.BattleState)
+  name: FindNearestThreat(UnitSystem, BattleState)
+  href: api/AshesOfVelsingrad.AI.AIUtilities.html#AshesOfVelsingrad_AI_AIUtilities_FindNearestThreat_AshesOfVelsingrad_Systems_UnitSystem_AshesOfVelsingrad_Managers_BattleState_
+  commentId: M:AshesOfVelsingrad.AI.AIUtilities.FindNearestThreat(AshesOfVelsingrad.Systems.UnitSystem,AshesOfVelsingrad.Managers.BattleState)
+  fullName: AshesOfVelsingrad.AI.AIUtilities.FindNearestThreat(AshesOfVelsingrad.Systems.UnitSystem, AshesOfVelsingrad.Managers.BattleState)
+  nameWithType: AIUtilities.FindNearestThreat(UnitSystem, BattleState)
+- uid: AshesOfVelsingrad.AI.AIUtilities.FindNearestThreat*
+  name: FindNearestThreat
+  href: api/AshesOfVelsingrad.AI.AIUtilities.html#AshesOfVelsingrad_AI_AIUtilities_FindNearestThreat_
+  commentId: Overload:AshesOfVelsingrad.AI.AIUtilities.FindNearestThreat
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.AI.AIUtilities.FindNearestThreat
+  nameWithType: AIUtilities.FindNearestThreat
+- uid: AshesOfVelsingrad.AI.AIUtilities.GetUnitsInRange(Godot.Vector3I,System.Int32,System.Collections.Generic.List{AshesOfVelsingrad.Systems.UnitSystem},AshesOfVelsingrad.Systems.MapSystem)
+  name: GetUnitsInRange(Vector3I, int, List<UnitSystem>, MapSystem)
+  href: api/AshesOfVelsingrad.AI.AIUtilities.html#AshesOfVelsingrad_AI_AIUtilities_GetUnitsInRange_Godot_Vector3I_System_Int32_System_Collections_Generic_List_AshesOfVelsingrad_Systems_UnitSystem__AshesOfVelsingrad_Systems_MapSystem_
+  commentId: M:AshesOfVelsingrad.AI.AIUtilities.GetUnitsInRange(Godot.Vector3I,System.Int32,System.Collections.Generic.List{AshesOfVelsingrad.Systems.UnitSystem},AshesOfVelsingrad.Systems.MapSystem)
+  name.vb: GetUnitsInRange(Vector3I, Integer, List(Of UnitSystem), MapSystem)
+  fullName: AshesOfVelsingrad.AI.AIUtilities.GetUnitsInRange(Godot.Vector3I, int, System.Collections.Generic.List<AshesOfVelsingrad.Systems.UnitSystem>, AshesOfVelsingrad.Systems.MapSystem)
+  fullName.vb: AshesOfVelsingrad.AI.AIUtilities.GetUnitsInRange(Godot.Vector3I, Integer, System.Collections.Generic.List(Of AshesOfVelsingrad.Systems.UnitSystem), AshesOfVelsingrad.Systems.MapSystem)
+  nameWithType: AIUtilities.GetUnitsInRange(Vector3I, int, List<UnitSystem>, MapSystem)
+  nameWithType.vb: AIUtilities.GetUnitsInRange(Vector3I, Integer, List(Of UnitSystem), MapSystem)
+- uid: AshesOfVelsingrad.AI.AIUtilities.GetUnitsInRange*
+  name: GetUnitsInRange
+  href: api/AshesOfVelsingrad.AI.AIUtilities.html#AshesOfVelsingrad_AI_AIUtilities_GetUnitsInRange_
+  commentId: Overload:AshesOfVelsingrad.AI.AIUtilities.GetUnitsInRange
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.AI.AIUtilities.GetUnitsInRange
+  nameWithType: AIUtilities.GetUnitsInRange
+- uid: AshesOfVelsingrad.AI.AIUtilities.HasLineOfSight(Godot.Vector3I,Godot.Vector3I,AshesOfVelsingrad.Systems.MapSystem)
+  name: HasLineOfSight(Vector3I, Vector3I, MapSystem)
+  href: api/AshesOfVelsingrad.AI.AIUtilities.html#AshesOfVelsingrad_AI_AIUtilities_HasLineOfSight_Godot_Vector3I_Godot_Vector3I_AshesOfVelsingrad_Systems_MapSystem_
+  commentId: M:AshesOfVelsingrad.AI.AIUtilities.HasLineOfSight(Godot.Vector3I,Godot.Vector3I,AshesOfVelsingrad.Systems.MapSystem)
+  fullName: AshesOfVelsingrad.AI.AIUtilities.HasLineOfSight(Godot.Vector3I, Godot.Vector3I, AshesOfVelsingrad.Systems.MapSystem)
+  nameWithType: AIUtilities.HasLineOfSight(Vector3I, Vector3I, MapSystem)
+- uid: AshesOfVelsingrad.AI.AIUtilities.HasLineOfSight*
+  name: HasLineOfSight
+  href: api/AshesOfVelsingrad.AI.AIUtilities.html#AshesOfVelsingrad_AI_AIUtilities_HasLineOfSight_
+  commentId: Overload:AshesOfVelsingrad.AI.AIUtilities.HasLineOfSight
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.AI.AIUtilities.HasLineOfSight
+  nameWithType: AIUtilities.HasLineOfSight
+- uid: AshesOfVelsingrad.AI.EnemyAIBehavior
+  name: EnemyAIBehavior
+  href: api/AshesOfVelsingrad.AI.EnemyAIBehavior.html
+  commentId: T:AshesOfVelsingrad.AI.EnemyAIBehavior
+  fullName: AshesOfVelsingrad.AI.EnemyAIBehavior
+  nameWithType: EnemyAIBehavior
+- uid: AshesOfVelsingrad.AI.EnemyAIBehavior.EnableDebugVisualization
+  name: EnableDebugVisualization
+  href: api/AshesOfVelsingrad.AI.EnemyAIBehavior.html#AshesOfVelsingrad_AI_EnemyAIBehavior_EnableDebugVisualization
+  commentId: P:AshesOfVelsingrad.AI.EnemyAIBehavior.EnableDebugVisualization
+  fullName: AshesOfVelsingrad.AI.EnemyAIBehavior.EnableDebugVisualization
+  nameWithType: EnemyAIBehavior.EnableDebugVisualization
+- uid: AshesOfVelsingrad.AI.EnemyAIBehavior.EnableDebugVisualization*
+  name: EnableDebugVisualization
+  href: api/AshesOfVelsingrad.AI.EnemyAIBehavior.html#AshesOfVelsingrad_AI_EnemyAIBehavior_EnableDebugVisualization_
+  commentId: Overload:AshesOfVelsingrad.AI.EnemyAIBehavior.EnableDebugVisualization
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.AI.EnemyAIBehavior.EnableDebugVisualization
+  nameWithType: EnemyAIBehavior.EnableDebugVisualization
+- uid: AshesOfVelsingrad.AI.EnemyAIBehavior.ExecuteTurn(AshesOfVelsingrad.Managers.BattleState)
+  name: ExecuteTurn(BattleState)
+  href: api/AshesOfVelsingrad.AI.EnemyAIBehavior.html#AshesOfVelsingrad_AI_EnemyAIBehavior_ExecuteTurn_AshesOfVelsingrad_Managers_BattleState_
+  commentId: M:AshesOfVelsingrad.AI.EnemyAIBehavior.ExecuteTurn(AshesOfVelsingrad.Managers.BattleState)
+  fullName: AshesOfVelsingrad.AI.EnemyAIBehavior.ExecuteTurn(AshesOfVelsingrad.Managers.BattleState)
+  nameWithType: EnemyAIBehavior.ExecuteTurn(BattleState)
+- uid: AshesOfVelsingrad.AI.EnemyAIBehavior.ExecuteTurn*
+  name: ExecuteTurn
+  href: api/AshesOfVelsingrad.AI.EnemyAIBehavior.html#AshesOfVelsingrad_AI_EnemyAIBehavior_ExecuteTurn_
+  commentId: Overload:AshesOfVelsingrad.AI.EnemyAIBehavior.ExecuteTurn
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.AI.EnemyAIBehavior.ExecuteTurn
+  nameWithType: EnemyAIBehavior.ExecuteTurn
+- uid: AshesOfVelsingrad.AI.EnemyAIBehavior.ThinkingDelayMax
+  name: ThinkingDelayMax
+  href: api/AshesOfVelsingrad.AI.EnemyAIBehavior.html#AshesOfVelsingrad_AI_EnemyAIBehavior_ThinkingDelayMax
+  commentId: P:AshesOfVelsingrad.AI.EnemyAIBehavior.ThinkingDelayMax
+  fullName: AshesOfVelsingrad.AI.EnemyAIBehavior.ThinkingDelayMax
+  nameWithType: EnemyAIBehavior.ThinkingDelayMax
+- uid: AshesOfVelsingrad.AI.EnemyAIBehavior.ThinkingDelayMax*
+  name: ThinkingDelayMax
+  href: api/AshesOfVelsingrad.AI.EnemyAIBehavior.html#AshesOfVelsingrad_AI_EnemyAIBehavior_ThinkingDelayMax_
+  commentId: Overload:AshesOfVelsingrad.AI.EnemyAIBehavior.ThinkingDelayMax
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.AI.EnemyAIBehavior.ThinkingDelayMax
+  nameWithType: EnemyAIBehavior.ThinkingDelayMax
+- uid: AshesOfVelsingrad.AI.EnemyAIBehavior.ThinkingDelayMin
+  name: ThinkingDelayMin
+  href: api/AshesOfVelsingrad.AI.EnemyAIBehavior.html#AshesOfVelsingrad_AI_EnemyAIBehavior_ThinkingDelayMin
+  commentId: P:AshesOfVelsingrad.AI.EnemyAIBehavior.ThinkingDelayMin
+  fullName: AshesOfVelsingrad.AI.EnemyAIBehavior.ThinkingDelayMin
+  nameWithType: EnemyAIBehavior.ThinkingDelayMin
+- uid: AshesOfVelsingrad.AI.EnemyAIBehavior.ThinkingDelayMin*
+  name: ThinkingDelayMin
+  href: api/AshesOfVelsingrad.AI.EnemyAIBehavior.html#AshesOfVelsingrad_AI_EnemyAIBehavior_ThinkingDelayMin_
+  commentId: Overload:AshesOfVelsingrad.AI.EnemyAIBehavior.ThinkingDelayMin
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.AI.EnemyAIBehavior.ThinkingDelayMin
+  nameWithType: EnemyAIBehavior.ThinkingDelayMin
+- uid: AshesOfVelsingrad.AI.EnemyAIBehavior.Unit
+  name: Unit
+  href: api/AshesOfVelsingrad.AI.EnemyAIBehavior.html#AshesOfVelsingrad_AI_EnemyAIBehavior_Unit
+  commentId: P:AshesOfVelsingrad.AI.EnemyAIBehavior.Unit
+  fullName: AshesOfVelsingrad.AI.EnemyAIBehavior.Unit
+  nameWithType: EnemyAIBehavior.Unit
+- uid: AshesOfVelsingrad.AI.EnemyAIBehavior.Unit*
+  name: Unit
+  href: api/AshesOfVelsingrad.AI.EnemyAIBehavior.html#AshesOfVelsingrad_AI_EnemyAIBehavior_Unit_
+  commentId: Overload:AshesOfVelsingrad.AI.EnemyAIBehavior.Unit
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.AI.EnemyAIBehavior.Unit
+  nameWithType: EnemyAIBehavior.Unit
+- uid: AshesOfVelsingrad.AI.EnemyAIBehavior._Ready
+  name: _Ready()
+  href: api/AshesOfVelsingrad.AI.EnemyAIBehavior.html#AshesOfVelsingrad_AI_EnemyAIBehavior__Ready
+  commentId: M:AshesOfVelsingrad.AI.EnemyAIBehavior._Ready
+  fullName: AshesOfVelsingrad.AI.EnemyAIBehavior._Ready()
+  nameWithType: EnemyAIBehavior._Ready()
+- uid: AshesOfVelsingrad.AI.EnemyAIBehavior._Ready*
+  name: _Ready
+  href: api/AshesOfVelsingrad.AI.EnemyAIBehavior.html#AshesOfVelsingrad_AI_EnemyAIBehavior__Ready_
+  commentId: Overload:AshesOfVelsingrad.AI.EnemyAIBehavior._Ready
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.AI.EnemyAIBehavior._Ready
+  nameWithType: EnemyAIBehavior._Ready
+- uid: AshesOfVelsingrad.AI.EnemyAIBehavior._unit
+  name: _unit
+  href: api/AshesOfVelsingrad.AI.EnemyAIBehavior.html#AshesOfVelsingrad_AI_EnemyAIBehavior__unit
+  commentId: F:AshesOfVelsingrad.AI.EnemyAIBehavior._unit
+  fullName: AshesOfVelsingrad.AI.EnemyAIBehavior._unit
+  nameWithType: EnemyAIBehavior._unit
+- uid: AshesOfVelsingrad.BasicAttackSkill
+  name: BasicAttackSkill
+  href: api/AshesOfVelsingrad.BasicAttackSkill.html
+  commentId: T:AshesOfVelsingrad.BasicAttackSkill
+  fullName: AshesOfVelsingrad.BasicAttackSkill
+  nameWithType: BasicAttackSkill
+- uid: AshesOfVelsingrad.BasicAttackSkill.#ctor
+  name: BasicAttackSkill()
+  href: api/AshesOfVelsingrad.BasicAttackSkill.html#AshesOfVelsingrad_BasicAttackSkill__ctor
+  commentId: M:AshesOfVelsingrad.BasicAttackSkill.#ctor
+  name.vb: New()
+  fullName: AshesOfVelsingrad.BasicAttackSkill.BasicAttackSkill()
+  fullName.vb: AshesOfVelsingrad.BasicAttackSkill.New()
+  nameWithType: BasicAttackSkill.BasicAttackSkill()
+  nameWithType.vb: BasicAttackSkill.New()
+- uid: AshesOfVelsingrad.BasicAttackSkill.#ctor*
+  name: BasicAttackSkill
+  href: api/AshesOfVelsingrad.BasicAttackSkill.html#AshesOfVelsingrad_BasicAttackSkill__ctor_
+  commentId: Overload:AshesOfVelsingrad.BasicAttackSkill.#ctor
+  isSpec: "True"
+  name.vb: New
+  fullName: AshesOfVelsingrad.BasicAttackSkill.BasicAttackSkill
+  fullName.vb: AshesOfVelsingrad.BasicAttackSkill.New
+  nameWithType: BasicAttackSkill.BasicAttackSkill
+  nameWithType.vb: BasicAttackSkill.New
+- uid: AshesOfVelsingrad.BasicAttackSkill.Use(AshesOfVelsingrad.Systems.UnitSystem,System.Collections.Generic.List{AshesOfVelsingrad.Systems.UnitSystem},AshesOfVelsingrad.Systems.MapSystem)
+  name: Use(UnitSystem, List<UnitSystem>, MapSystem?)
+  href: api/AshesOfVelsingrad.BasicAttackSkill.html#AshesOfVelsingrad_BasicAttackSkill_Use_AshesOfVelsingrad_Systems_UnitSystem_System_Collections_Generic_List_AshesOfVelsingrad_Systems_UnitSystem__AshesOfVelsingrad_Systems_MapSystem_
+  commentId: M:AshesOfVelsingrad.BasicAttackSkill.Use(AshesOfVelsingrad.Systems.UnitSystem,System.Collections.Generic.List{AshesOfVelsingrad.Systems.UnitSystem},AshesOfVelsingrad.Systems.MapSystem)
+  name.vb: Use(UnitSystem, List(Of UnitSystem), MapSystem)
+  fullName: AshesOfVelsingrad.BasicAttackSkill.Use(AshesOfVelsingrad.Systems.UnitSystem, System.Collections.Generic.List<AshesOfVelsingrad.Systems.UnitSystem>, AshesOfVelsingrad.Systems.MapSystem?)
+  fullName.vb: AshesOfVelsingrad.BasicAttackSkill.Use(AshesOfVelsingrad.Systems.UnitSystem, System.Collections.Generic.List(Of AshesOfVelsingrad.Systems.UnitSystem), AshesOfVelsingrad.Systems.MapSystem)
+  nameWithType: BasicAttackSkill.Use(UnitSystem, List<UnitSystem>, MapSystem?)
+  nameWithType.vb: BasicAttackSkill.Use(UnitSystem, List(Of UnitSystem), MapSystem)
+- uid: AshesOfVelsingrad.BasicAttackSkill.Use*
+  name: Use
+  href: api/AshesOfVelsingrad.BasicAttackSkill.html#AshesOfVelsingrad_BasicAttackSkill_Use_
+  commentId: Overload:AshesOfVelsingrad.BasicAttackSkill.Use
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.BasicAttackSkill.Use
+  nameWithType: BasicAttackSkill.Use
 - uid: AshesOfVelsingrad.Data
   name: AshesOfVelsingrad.Data
   href: api/AshesOfVelsingrad.Data.html
@@ -240,6 +905,73 @@ references:
   isSpec: "True"
   fullName: AshesOfVelsingrad.Enemy1Data.Initialize
   nameWithType: Enemy1Data.Initialize
+- uid: AshesOfVelsingrad.Enemy1Data.Play(System.Collections.Generic.List{AshesOfVelsingrad.Systems.UnitSystem},AshesOfVelsingrad.Systems.MapSystem,AshesOfVelsingrad.Systems.SkillSystem)
+  name: Play(List<UnitSystem>, MapSystem?, SkillSystem)
+  href: api/AshesOfVelsingrad.Enemy1Data.html#AshesOfVelsingrad_Enemy1Data_Play_System_Collections_Generic_List_AshesOfVelsingrad_Systems_UnitSystem__AshesOfVelsingrad_Systems_MapSystem_AshesOfVelsingrad_Systems_SkillSystem_
+  commentId: M:AshesOfVelsingrad.Enemy1Data.Play(System.Collections.Generic.List{AshesOfVelsingrad.Systems.UnitSystem},AshesOfVelsingrad.Systems.MapSystem,AshesOfVelsingrad.Systems.SkillSystem)
+  name.vb: Play(List(Of UnitSystem), MapSystem, SkillSystem)
+  fullName: AshesOfVelsingrad.Enemy1Data.Play(System.Collections.Generic.List<AshesOfVelsingrad.Systems.UnitSystem>, AshesOfVelsingrad.Systems.MapSystem?, AshesOfVelsingrad.Systems.SkillSystem)
+  fullName.vb: AshesOfVelsingrad.Enemy1Data.Play(System.Collections.Generic.List(Of AshesOfVelsingrad.Systems.UnitSystem), AshesOfVelsingrad.Systems.MapSystem, AshesOfVelsingrad.Systems.SkillSystem)
+  nameWithType: Enemy1Data.Play(List<UnitSystem>, MapSystem?, SkillSystem)
+  nameWithType.vb: Enemy1Data.Play(List(Of UnitSystem), MapSystem, SkillSystem)
+- uid: AshesOfVelsingrad.Enemy1Data.Play*
+  name: Play
+  href: api/AshesOfVelsingrad.Enemy1Data.html#AshesOfVelsingrad_Enemy1Data_Play_
+  commentId: Overload:AshesOfVelsingrad.Enemy1Data.Play
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.Enemy1Data.Play
+  nameWithType: Enemy1Data.Play
+- uid: AshesOfVelsingrad.Enemy1Data.TakeDamage(System.Single)
+  name: TakeDamage(float)
+  href: api/AshesOfVelsingrad.Enemy1Data.html#AshesOfVelsingrad_Enemy1Data_TakeDamage_System_Single_
+  commentId: M:AshesOfVelsingrad.Enemy1Data.TakeDamage(System.Single)
+  name.vb: TakeDamage(Single)
+  fullName: AshesOfVelsingrad.Enemy1Data.TakeDamage(float)
+  fullName.vb: AshesOfVelsingrad.Enemy1Data.TakeDamage(Single)
+  nameWithType: Enemy1Data.TakeDamage(float)
+  nameWithType.vb: Enemy1Data.TakeDamage(Single)
+- uid: AshesOfVelsingrad.Enemy1Data.TakeDamage*
+  name: TakeDamage
+  href: api/AshesOfVelsingrad.Enemy1Data.html#AshesOfVelsingrad_Enemy1Data_TakeDamage_
+  commentId: Overload:AshesOfVelsingrad.Enemy1Data.TakeDamage
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.Enemy1Data.TakeDamage
+  nameWithType: Enemy1Data.TakeDamage
+- uid: AshesOfVelsingrad.EnemyArcher
+  name: EnemyArcher
+  href: api/AshesOfVelsingrad.EnemyArcher.html
+  commentId: T:AshesOfVelsingrad.EnemyArcher
+  fullName: AshesOfVelsingrad.EnemyArcher
+  nameWithType: EnemyArcher
+- uid: AshesOfVelsingrad.EnemyArcher.Initialize
+  name: Initialize()
+  href: api/AshesOfVelsingrad.EnemyArcher.html#AshesOfVelsingrad_EnemyArcher_Initialize
+  commentId: M:AshesOfVelsingrad.EnemyArcher.Initialize
+  fullName: AshesOfVelsingrad.EnemyArcher.Initialize()
+  nameWithType: EnemyArcher.Initialize()
+- uid: AshesOfVelsingrad.EnemyArcher.Initialize*
+  name: Initialize
+  href: api/AshesOfVelsingrad.EnemyArcher.html#AshesOfVelsingrad_EnemyArcher_Initialize_
+  commentId: Overload:AshesOfVelsingrad.EnemyArcher.Initialize
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.EnemyArcher.Initialize
+  nameWithType: EnemyArcher.Initialize
+- uid: AshesOfVelsingrad.EnemyArcher.TakeDamage(System.Single)
+  name: TakeDamage(float)
+  href: api/AshesOfVelsingrad.EnemyArcher.html#AshesOfVelsingrad_EnemyArcher_TakeDamage_System_Single_
+  commentId: M:AshesOfVelsingrad.EnemyArcher.TakeDamage(System.Single)
+  name.vb: TakeDamage(Single)
+  fullName: AshesOfVelsingrad.EnemyArcher.TakeDamage(float)
+  fullName.vb: AshesOfVelsingrad.EnemyArcher.TakeDamage(Single)
+  nameWithType: EnemyArcher.TakeDamage(float)
+  nameWithType.vb: EnemyArcher.TakeDamage(Single)
+- uid: AshesOfVelsingrad.EnemyArcher.TakeDamage*
+  name: TakeDamage
+  href: api/AshesOfVelsingrad.EnemyArcher.html#AshesOfVelsingrad_EnemyArcher_TakeDamage_
+  commentId: Overload:AshesOfVelsingrad.EnemyArcher.TakeDamage
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.EnemyArcher.TakeDamage
+  nameWithType: EnemyArcher.TakeDamage
 - uid: AshesOfVelsingrad.Main
   name: Main
   href: api/AshesOfVelsingrad.Main.html
@@ -380,12 +1112,228 @@ references:
   isSpec: "True"
   fullName: AshesOfVelsingrad.Managers.BaseManager._Ready
   nameWithType: BaseManager._Ready
+- uid: AshesOfVelsingrad.Managers.BattleState
+  name: BattleState
+  href: api/AshesOfVelsingrad.Managers.BattleState.html
+  commentId: T:AshesOfVelsingrad.Managers.BattleState
+  fullName: AshesOfVelsingrad.Managers.BattleState
+  nameWithType: BattleState
+- uid: AshesOfVelsingrad.Managers.BattleState.ActingUnit
+  name: ActingUnit
+  href: api/AshesOfVelsingrad.Managers.BattleState.html#AshesOfVelsingrad_Managers_BattleState_ActingUnit
+  commentId: P:AshesOfVelsingrad.Managers.BattleState.ActingUnit
+  fullName: AshesOfVelsingrad.Managers.BattleState.ActingUnit
+  nameWithType: BattleState.ActingUnit
+- uid: AshesOfVelsingrad.Managers.BattleState.ActingUnit*
+  name: ActingUnit
+  href: api/AshesOfVelsingrad.Managers.BattleState.html#AshesOfVelsingrad_Managers_BattleState_ActingUnit_
+  commentId: Overload:AshesOfVelsingrad.Managers.BattleState.ActingUnit
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.Managers.BattleState.ActingUnit
+  nameWithType: BattleState.ActingUnit
+- uid: AshesOfVelsingrad.Managers.BattleState.EnemyUnits
+  name: EnemyUnits
+  href: api/AshesOfVelsingrad.Managers.BattleState.html#AshesOfVelsingrad_Managers_BattleState_EnemyUnits
+  commentId: P:AshesOfVelsingrad.Managers.BattleState.EnemyUnits
+  fullName: AshesOfVelsingrad.Managers.BattleState.EnemyUnits
+  nameWithType: BattleState.EnemyUnits
+- uid: AshesOfVelsingrad.Managers.BattleState.EnemyUnits*
+  name: EnemyUnits
+  href: api/AshesOfVelsingrad.Managers.BattleState.html#AshesOfVelsingrad_Managers_BattleState_EnemyUnits_
+  commentId: Overload:AshesOfVelsingrad.Managers.BattleState.EnemyUnits
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.Managers.BattleState.EnemyUnits
+  nameWithType: BattleState.EnemyUnits
+- uid: AshesOfVelsingrad.Managers.BattleState.GameManager
+  name: GameManager
+  href: api/AshesOfVelsingrad.Managers.BattleState.html#AshesOfVelsingrad_Managers_BattleState_GameManager
+  commentId: P:AshesOfVelsingrad.Managers.BattleState.GameManager
+  fullName: AshesOfVelsingrad.Managers.BattleState.GameManager
+  nameWithType: BattleState.GameManager
+- uid: AshesOfVelsingrad.Managers.BattleState.GameManager*
+  name: GameManager
+  href: api/AshesOfVelsingrad.Managers.BattleState.html#AshesOfVelsingrad_Managers_BattleState_GameManager_
+  commentId: Overload:AshesOfVelsingrad.Managers.BattleState.GameManager
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.Managers.BattleState.GameManager
+  nameWithType: BattleState.GameManager
+- uid: AshesOfVelsingrad.Managers.BattleState.MapSystem
+  name: MapSystem
+  href: api/AshesOfVelsingrad.Managers.BattleState.html#AshesOfVelsingrad_Managers_BattleState_MapSystem
+  commentId: P:AshesOfVelsingrad.Managers.BattleState.MapSystem
+  fullName: AshesOfVelsingrad.Managers.BattleState.MapSystem
+  nameWithType: BattleState.MapSystem
+- uid: AshesOfVelsingrad.Managers.BattleState.MapSystem*
+  name: MapSystem
+  href: api/AshesOfVelsingrad.Managers.BattleState.html#AshesOfVelsingrad_Managers_BattleState_MapSystem_
+  commentId: Overload:AshesOfVelsingrad.Managers.BattleState.MapSystem
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.Managers.BattleState.MapSystem
+  nameWithType: BattleState.MapSystem
+- uid: AshesOfVelsingrad.Managers.BattleState.MoveUnitTo(Godot.Vector3I)
+  name: MoveUnitTo(Vector3I)
+  href: api/AshesOfVelsingrad.Managers.BattleState.html#AshesOfVelsingrad_Managers_BattleState_MoveUnitTo_Godot_Vector3I_
+  commentId: M:AshesOfVelsingrad.Managers.BattleState.MoveUnitTo(Godot.Vector3I)
+  fullName: AshesOfVelsingrad.Managers.BattleState.MoveUnitTo(Godot.Vector3I)
+  nameWithType: BattleState.MoveUnitTo(Vector3I)
+- uid: AshesOfVelsingrad.Managers.BattleState.MoveUnitTo*
+  name: MoveUnitTo
+  href: api/AshesOfVelsingrad.Managers.BattleState.html#AshesOfVelsingrad_Managers_BattleState_MoveUnitTo_
+  commentId: Overload:AshesOfVelsingrad.Managers.BattleState.MoveUnitTo
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.Managers.BattleState.MoveUnitTo
+  nameWithType: BattleState.MoveUnitTo
+- uid: AshesOfVelsingrad.Managers.BattleState.PlayerUnits
+  name: PlayerUnits
+  href: api/AshesOfVelsingrad.Managers.BattleState.html#AshesOfVelsingrad_Managers_BattleState_PlayerUnits
+  commentId: P:AshesOfVelsingrad.Managers.BattleState.PlayerUnits
+  fullName: AshesOfVelsingrad.Managers.BattleState.PlayerUnits
+  nameWithType: BattleState.PlayerUnits
+- uid: AshesOfVelsingrad.Managers.BattleState.PlayerUnits*
+  name: PlayerUnits
+  href: api/AshesOfVelsingrad.Managers.BattleState.html#AshesOfVelsingrad_Managers_BattleState_PlayerUnits_
+  commentId: Overload:AshesOfVelsingrad.Managers.BattleState.PlayerUnits
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.Managers.BattleState.PlayerUnits
+  nameWithType: BattleState.PlayerUnits
+- uid: AshesOfVelsingrad.Managers.BattleState.UseSkillOn(AshesOfVelsingrad.Systems.UnitSystem,AshesOfVelsingrad.Systems.SkillSystem)
+  name: UseSkillOn(UnitSystem, SkillSystem)
+  href: api/AshesOfVelsingrad.Managers.BattleState.html#AshesOfVelsingrad_Managers_BattleState_UseSkillOn_AshesOfVelsingrad_Systems_UnitSystem_AshesOfVelsingrad_Systems_SkillSystem_
+  commentId: M:AshesOfVelsingrad.Managers.BattleState.UseSkillOn(AshesOfVelsingrad.Systems.UnitSystem,AshesOfVelsingrad.Systems.SkillSystem)
+  fullName: AshesOfVelsingrad.Managers.BattleState.UseSkillOn(AshesOfVelsingrad.Systems.UnitSystem, AshesOfVelsingrad.Systems.SkillSystem)
+  nameWithType: BattleState.UseSkillOn(UnitSystem, SkillSystem)
+- uid: AshesOfVelsingrad.Managers.BattleState.UseSkillOn*
+  name: UseSkillOn
+  href: api/AshesOfVelsingrad.Managers.BattleState.html#AshesOfVelsingrad_Managers_BattleState_UseSkillOn_
+  commentId: Overload:AshesOfVelsingrad.Managers.BattleState.UseSkillOn
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.Managers.BattleState.UseSkillOn
+  nameWithType: BattleState.UseSkillOn
+- uid: AshesOfVelsingrad.Managers.EnemyAIManager
+  name: EnemyAIManager
+  href: api/AshesOfVelsingrad.Managers.EnemyAIManager.html
+  commentId: T:AshesOfVelsingrad.Managers.EnemyAIManager
+  fullName: AshesOfVelsingrad.Managers.EnemyAIManager
+  nameWithType: EnemyAIManager
+- uid: AshesOfVelsingrad.Managers.EnemyAIManager.#ctor(AshesOfVelsingrad.Managers.GameManager)
+  name: EnemyAIManager(GameManager)
+  href: api/AshesOfVelsingrad.Managers.EnemyAIManager.html#AshesOfVelsingrad_Managers_EnemyAIManager__ctor_AshesOfVelsingrad_Managers_GameManager_
+  commentId: M:AshesOfVelsingrad.Managers.EnemyAIManager.#ctor(AshesOfVelsingrad.Managers.GameManager)
+  name.vb: New(GameManager)
+  fullName: AshesOfVelsingrad.Managers.EnemyAIManager.EnemyAIManager(AshesOfVelsingrad.Managers.GameManager)
+  fullName.vb: AshesOfVelsingrad.Managers.EnemyAIManager.New(AshesOfVelsingrad.Managers.GameManager)
+  nameWithType: EnemyAIManager.EnemyAIManager(GameManager)
+  nameWithType.vb: EnemyAIManager.New(GameManager)
+- uid: AshesOfVelsingrad.Managers.EnemyAIManager.#ctor*
+  name: EnemyAIManager
+  href: api/AshesOfVelsingrad.Managers.EnemyAIManager.html#AshesOfVelsingrad_Managers_EnemyAIManager__ctor_
+  commentId: Overload:AshesOfVelsingrad.Managers.EnemyAIManager.#ctor
+  isSpec: "True"
+  name.vb: New
+  fullName: AshesOfVelsingrad.Managers.EnemyAIManager.EnemyAIManager
+  fullName.vb: AshesOfVelsingrad.Managers.EnemyAIManager.New
+  nameWithType: EnemyAIManager.EnemyAIManager
+  nameWithType.vb: EnemyAIManager.New
+- uid: AshesOfVelsingrad.Managers.EnemyAIManager.ExecuteAITurn(AshesOfVelsingrad.Systems.UnitSystem)
+  name: ExecuteAITurn(UnitSystem)
+  href: api/AshesOfVelsingrad.Managers.EnemyAIManager.html#AshesOfVelsingrad_Managers_EnemyAIManager_ExecuteAITurn_AshesOfVelsingrad_Systems_UnitSystem_
+  commentId: M:AshesOfVelsingrad.Managers.EnemyAIManager.ExecuteAITurn(AshesOfVelsingrad.Systems.UnitSystem)
+  fullName: AshesOfVelsingrad.Managers.EnemyAIManager.ExecuteAITurn(AshesOfVelsingrad.Systems.UnitSystem)
+  nameWithType: EnemyAIManager.ExecuteAITurn(UnitSystem)
+- uid: AshesOfVelsingrad.Managers.EnemyAIManager.ExecuteAITurn*
+  name: ExecuteAITurn
+  href: api/AshesOfVelsingrad.Managers.EnemyAIManager.html#AshesOfVelsingrad_Managers_EnemyAIManager_ExecuteAITurn_
+  commentId: Overload:AshesOfVelsingrad.Managers.EnemyAIManager.ExecuteAITurn
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.Managers.EnemyAIManager.ExecuteAITurn
+  nameWithType: EnemyAIManager.ExecuteAITurn
+- uid: AshesOfVelsingrad.Managers.EnemyAIManager.GetAliveEnemyUnits
+  name: GetAliveEnemyUnits()
+  href: api/AshesOfVelsingrad.Managers.EnemyAIManager.html#AshesOfVelsingrad_Managers_EnemyAIManager_GetAliveEnemyUnits
+  commentId: M:AshesOfVelsingrad.Managers.EnemyAIManager.GetAliveEnemyUnits
+  fullName: AshesOfVelsingrad.Managers.EnemyAIManager.GetAliveEnemyUnits()
+  nameWithType: EnemyAIManager.GetAliveEnemyUnits()
+- uid: AshesOfVelsingrad.Managers.EnemyAIManager.GetAliveEnemyUnits*
+  name: GetAliveEnemyUnits
+  href: api/AshesOfVelsingrad.Managers.EnemyAIManager.html#AshesOfVelsingrad_Managers_EnemyAIManager_GetAliveEnemyUnits_
+  commentId: Overload:AshesOfVelsingrad.Managers.EnemyAIManager.GetAliveEnemyUnits
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.Managers.EnemyAIManager.GetAliveEnemyUnits
+  nameWithType: EnemyAIManager.GetAliveEnemyUnits
+- uid: AshesOfVelsingrad.Managers.EnemyAIManager.GetAlivePlayerUnits
+  name: GetAlivePlayerUnits()
+  href: api/AshesOfVelsingrad.Managers.EnemyAIManager.html#AshesOfVelsingrad_Managers_EnemyAIManager_GetAlivePlayerUnits
+  commentId: M:AshesOfVelsingrad.Managers.EnemyAIManager.GetAlivePlayerUnits
+  fullName: AshesOfVelsingrad.Managers.EnemyAIManager.GetAlivePlayerUnits()
+  nameWithType: EnemyAIManager.GetAlivePlayerUnits()
+- uid: AshesOfVelsingrad.Managers.EnemyAIManager.GetAlivePlayerUnits*
+  name: GetAlivePlayerUnits
+  href: api/AshesOfVelsingrad.Managers.EnemyAIManager.html#AshesOfVelsingrad_Managers_EnemyAIManager_GetAlivePlayerUnits_
+  commentId: Overload:AshesOfVelsingrad.Managers.EnemyAIManager.GetAlivePlayerUnits
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.Managers.EnemyAIManager.GetAlivePlayerUnits
+  nameWithType: EnemyAIManager.GetAlivePlayerUnits
+- uid: AshesOfVelsingrad.Managers.EnemyAIManager.SetMapSystem(AshesOfVelsingrad.Systems.MapSystem)
+  name: SetMapSystem(MapSystem)
+  href: api/AshesOfVelsingrad.Managers.EnemyAIManager.html#AshesOfVelsingrad_Managers_EnemyAIManager_SetMapSystem_AshesOfVelsingrad_Systems_MapSystem_
+  commentId: M:AshesOfVelsingrad.Managers.EnemyAIManager.SetMapSystem(AshesOfVelsingrad.Systems.MapSystem)
+  fullName: AshesOfVelsingrad.Managers.EnemyAIManager.SetMapSystem(AshesOfVelsingrad.Systems.MapSystem)
+  nameWithType: EnemyAIManager.SetMapSystem(MapSystem)
+- uid: AshesOfVelsingrad.Managers.EnemyAIManager.SetMapSystem*
+  name: SetMapSystem
+  href: api/AshesOfVelsingrad.Managers.EnemyAIManager.html#AshesOfVelsingrad_Managers_EnemyAIManager_SetMapSystem_
+  commentId: Overload:AshesOfVelsingrad.Managers.EnemyAIManager.SetMapSystem
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.Managers.EnemyAIManager.SetMapSystem
+  nameWithType: EnemyAIManager.SetMapSystem
+- uid: AshesOfVelsingrad.Managers.EnemyAIManager.SetUnitReferences(System.Collections.Generic.List{AshesOfVelsingrad.Systems.UnitSystem},System.Collections.Generic.List{AshesOfVelsingrad.Systems.UnitSystem})
+  name: SetUnitReferences(List<UnitSystem>, List<UnitSystem>)
+  href: api/AshesOfVelsingrad.Managers.EnemyAIManager.html#AshesOfVelsingrad_Managers_EnemyAIManager_SetUnitReferences_System_Collections_Generic_List_AshesOfVelsingrad_Systems_UnitSystem__System_Collections_Generic_List_AshesOfVelsingrad_Systems_UnitSystem__
+  commentId: M:AshesOfVelsingrad.Managers.EnemyAIManager.SetUnitReferences(System.Collections.Generic.List{AshesOfVelsingrad.Systems.UnitSystem},System.Collections.Generic.List{AshesOfVelsingrad.Systems.UnitSystem})
+  name.vb: SetUnitReferences(List(Of UnitSystem), List(Of UnitSystem))
+  fullName: AshesOfVelsingrad.Managers.EnemyAIManager.SetUnitReferences(System.Collections.Generic.List<AshesOfVelsingrad.Systems.UnitSystem>, System.Collections.Generic.List<AshesOfVelsingrad.Systems.UnitSystem>)
+  fullName.vb: AshesOfVelsingrad.Managers.EnemyAIManager.SetUnitReferences(System.Collections.Generic.List(Of AshesOfVelsingrad.Systems.UnitSystem), System.Collections.Generic.List(Of AshesOfVelsingrad.Systems.UnitSystem))
+  nameWithType: EnemyAIManager.SetUnitReferences(List<UnitSystem>, List<UnitSystem>)
+  nameWithType.vb: EnemyAIManager.SetUnitReferences(List(Of UnitSystem), List(Of UnitSystem))
+- uid: AshesOfVelsingrad.Managers.EnemyAIManager.SetUnitReferences*
+  name: SetUnitReferences
+  href: api/AshesOfVelsingrad.Managers.EnemyAIManager.html#AshesOfVelsingrad_Managers_EnemyAIManager_SetUnitReferences_
+  commentId: Overload:AshesOfVelsingrad.Managers.EnemyAIManager.SetUnitReferences
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.Managers.EnemyAIManager.SetUnitReferences
+  nameWithType: EnemyAIManager.SetUnitReferences
 - uid: AshesOfVelsingrad.Managers.GameManager
   name: GameManager
   href: api/AshesOfVelsingrad.Managers.GameManager.html
   commentId: T:AshesOfVelsingrad.Managers.GameManager
   fullName: AshesOfVelsingrad.Managers.GameManager
   nameWithType: GameManager
+- uid: AshesOfVelsingrad.Managers.GameManager.AIManager
+  name: AIManager
+  href: api/AshesOfVelsingrad.Managers.GameManager.html#AshesOfVelsingrad_Managers_GameManager_AIManager
+  commentId: P:AshesOfVelsingrad.Managers.GameManager.AIManager
+  fullName: AshesOfVelsingrad.Managers.GameManager.AIManager
+  nameWithType: GameManager.AIManager
+- uid: AshesOfVelsingrad.Managers.GameManager.AIManager*
+  name: AIManager
+  href: api/AshesOfVelsingrad.Managers.GameManager.html#AshesOfVelsingrad_Managers_GameManager_AIManager_
+  commentId: Overload:AshesOfVelsingrad.Managers.GameManager.AIManager
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.Managers.GameManager.AIManager
+  nameWithType: GameManager.AIManager
+- uid: AshesOfVelsingrad.Managers.GameManager.EnableThreatMapDebug
+  name: EnableThreatMapDebug
+  href: api/AshesOfVelsingrad.Managers.GameManager.html#AshesOfVelsingrad_Managers_GameManager_EnableThreatMapDebug
+  commentId: P:AshesOfVelsingrad.Managers.GameManager.EnableThreatMapDebug
+  fullName: AshesOfVelsingrad.Managers.GameManager.EnableThreatMapDebug
+  nameWithType: GameManager.EnableThreatMapDebug
+- uid: AshesOfVelsingrad.Managers.GameManager.EnableThreatMapDebug*
+  name: EnableThreatMapDebug
+  href: api/AshesOfVelsingrad.Managers.GameManager.html#AshesOfVelsingrad_Managers_GameManager_EnableThreatMapDebug_
+  commentId: Overload:AshesOfVelsingrad.Managers.GameManager.EnableThreatMapDebug
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.Managers.GameManager.EnableThreatMapDebug
+  nameWithType: GameManager.EnableThreatMapDebug
 - uid: AshesOfVelsingrad.Managers.GameManager.Initialize
   name: Initialize()
   href: api/AshesOfVelsingrad.Managers.GameManager.html#AshesOfVelsingrad_Managers_GameManager_Initialize
@@ -425,6 +1373,19 @@ references:
   isSpec: "True"
   fullName: AshesOfVelsingrad.Managers.GameManager.UseSkill
   nameWithType: GameManager.UseSkill
+- uid: AshesOfVelsingrad.Managers.GameManager._Input(Godot.InputEvent)
+  name: _Input(InputEvent)
+  href: api/AshesOfVelsingrad.Managers.GameManager.html#AshesOfVelsingrad_Managers_GameManager__Input_Godot_InputEvent_
+  commentId: M:AshesOfVelsingrad.Managers.GameManager._Input(Godot.InputEvent)
+  fullName: AshesOfVelsingrad.Managers.GameManager._Input(Godot.InputEvent)
+  nameWithType: GameManager._Input(InputEvent)
+- uid: AshesOfVelsingrad.Managers.GameManager._Input*
+  name: _Input
+  href: api/AshesOfVelsingrad.Managers.GameManager.html#AshesOfVelsingrad_Managers_GameManager__Input_
+  commentId: Overload:AshesOfVelsingrad.Managers.GameManager._Input
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.Managers.GameManager._Input
+  nameWithType: GameManager._Input
 - uid: AshesOfVelsingrad.Managers.GameManager._Ready
   name: _Ready()
   href: api/AshesOfVelsingrad.Managers.GameManager.html#AshesOfVelsingrad_Managers_GameManager__Ready
@@ -1021,6 +1982,19 @@ references:
   commentId: E:AshesOfVelsingrad.Managers.TurnManager.OnPlayerTurnEnd
   fullName: AshesOfVelsingrad.Managers.TurnManager.OnPlayerTurnEnd
   nameWithType: TurnManager.OnPlayerTurnEnd
+- uid: AshesOfVelsingrad.Managers.TurnManager.SetAIManager(AshesOfVelsingrad.Managers.EnemyAIManager)
+  name: SetAIManager(EnemyAIManager)
+  href: api/AshesOfVelsingrad.Managers.TurnManager.html#AshesOfVelsingrad_Managers_TurnManager_SetAIManager_AshesOfVelsingrad_Managers_EnemyAIManager_
+  commentId: M:AshesOfVelsingrad.Managers.TurnManager.SetAIManager(AshesOfVelsingrad.Managers.EnemyAIManager)
+  fullName: AshesOfVelsingrad.Managers.TurnManager.SetAIManager(AshesOfVelsingrad.Managers.EnemyAIManager)
+  nameWithType: TurnManager.SetAIManager(EnemyAIManager)
+- uid: AshesOfVelsingrad.Managers.TurnManager.SetAIManager*
+  name: SetAIManager
+  href: api/AshesOfVelsingrad.Managers.TurnManager.html#AshesOfVelsingrad_Managers_TurnManager_SetAIManager_
+  commentId: Overload:AshesOfVelsingrad.Managers.TurnManager.SetAIManager
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.Managers.TurnManager.SetAIManager
+  nameWithType: TurnManager.SetAIManager
 - uid: AshesOfVelsingrad.Managers.TurnManager.StartBattle
   name: StartBattle()
   href: api/AshesOfVelsingrad.Managers.TurnManager.html#AshesOfVelsingrad_Managers_TurnManager_StartBattle
@@ -1053,6 +2027,38 @@ references:
   isSpec: "True"
   fullName: AshesOfVelsingrad.Player1Data.Initialize
   nameWithType: Player1Data.Initialize
+- uid: AshesOfVelsingrad.Player1Data.Play(System.Collections.Generic.List{AshesOfVelsingrad.Systems.UnitSystem},AshesOfVelsingrad.Systems.MapSystem,AshesOfVelsingrad.Systems.SkillSystem)
+  name: Play(List<UnitSystem>, MapSystem?, SkillSystem)
+  href: api/AshesOfVelsingrad.Player1Data.html#AshesOfVelsingrad_Player1Data_Play_System_Collections_Generic_List_AshesOfVelsingrad_Systems_UnitSystem__AshesOfVelsingrad_Systems_MapSystem_AshesOfVelsingrad_Systems_SkillSystem_
+  commentId: M:AshesOfVelsingrad.Player1Data.Play(System.Collections.Generic.List{AshesOfVelsingrad.Systems.UnitSystem},AshesOfVelsingrad.Systems.MapSystem,AshesOfVelsingrad.Systems.SkillSystem)
+  name.vb: Play(List(Of UnitSystem), MapSystem, SkillSystem)
+  fullName: AshesOfVelsingrad.Player1Data.Play(System.Collections.Generic.List<AshesOfVelsingrad.Systems.UnitSystem>, AshesOfVelsingrad.Systems.MapSystem?, AshesOfVelsingrad.Systems.SkillSystem)
+  fullName.vb: AshesOfVelsingrad.Player1Data.Play(System.Collections.Generic.List(Of AshesOfVelsingrad.Systems.UnitSystem), AshesOfVelsingrad.Systems.MapSystem, AshesOfVelsingrad.Systems.SkillSystem)
+  nameWithType: Player1Data.Play(List<UnitSystem>, MapSystem?, SkillSystem)
+  nameWithType.vb: Player1Data.Play(List(Of UnitSystem), MapSystem, SkillSystem)
+- uid: AshesOfVelsingrad.Player1Data.Play*
+  name: Play
+  href: api/AshesOfVelsingrad.Player1Data.html#AshesOfVelsingrad_Player1Data_Play_
+  commentId: Overload:AshesOfVelsingrad.Player1Data.Play
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.Player1Data.Play
+  nameWithType: Player1Data.Play
+- uid: AshesOfVelsingrad.Player1Data.TakeDamage(System.Single)
+  name: TakeDamage(float)
+  href: api/AshesOfVelsingrad.Player1Data.html#AshesOfVelsingrad_Player1Data_TakeDamage_System_Single_
+  commentId: M:AshesOfVelsingrad.Player1Data.TakeDamage(System.Single)
+  name.vb: TakeDamage(Single)
+  fullName: AshesOfVelsingrad.Player1Data.TakeDamage(float)
+  fullName.vb: AshesOfVelsingrad.Player1Data.TakeDamage(Single)
+  nameWithType: Player1Data.TakeDamage(float)
+  nameWithType.vb: Player1Data.TakeDamage(Single)
+- uid: AshesOfVelsingrad.Player1Data.TakeDamage*
+  name: TakeDamage
+  href: api/AshesOfVelsingrad.Player1Data.html#AshesOfVelsingrad_Player1Data_TakeDamage_
+  commentId: Overload:AshesOfVelsingrad.Player1Data.TakeDamage
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.Player1Data.TakeDamage
+  nameWithType: Player1Data.TakeDamage
 - uid: AshesOfVelsingrad.Skill1
   name: Skill1
   href: api/AshesOfVelsingrad.Skill1.html
@@ -1865,6 +2871,19 @@ references:
   isSpec: "True"
   fullName: AshesOfVelsingrad.Systems.MapSystem.Depth
   nameWithType: MapSystem.Depth
+- uid: AshesOfVelsingrad.Systems.MapSystem.GetCellType(Godot.Vector3I)
+  name: GetCellType(Vector3I)
+  href: api/AshesOfVelsingrad.Systems.MapSystem.html#AshesOfVelsingrad_Systems_MapSystem_GetCellType_Godot_Vector3I_
+  commentId: M:AshesOfVelsingrad.Systems.MapSystem.GetCellType(Godot.Vector3I)
+  fullName: AshesOfVelsingrad.Systems.MapSystem.GetCellType(Godot.Vector3I)
+  nameWithType: MapSystem.GetCellType(Vector3I)
+- uid: AshesOfVelsingrad.Systems.MapSystem.GetCellType*
+  name: GetCellType
+  href: api/AshesOfVelsingrad.Systems.MapSystem.html#AshesOfVelsingrad_Systems_MapSystem_GetCellType_
+  commentId: Overload:AshesOfVelsingrad.Systems.MapSystem.GetCellType
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.Systems.MapSystem.GetCellType
+  nameWithType: MapSystem.GetCellType
 - uid: AshesOfVelsingrad.Systems.MapSystem.GetUnitAt(System.Int32,System.Int32,System.Int32)
   name: GetUnitAt(int, int, int)
   href: api/AshesOfVelsingrad.Systems.MapSystem.html#AshesOfVelsingrad_Systems_MapSystem_GetUnitAt_System_Int32_System_Int32_System_Int32_
@@ -2902,19 +3921,32 @@ references:
   isSpec: "True"
   fullName: AshesOfVelsingrad.Systems.UnitSystem.IsControlled
   nameWithType: UnitSystem.IsControlled
-- uid: AshesOfVelsingrad.Systems.UnitSystem.ManaPoint
-  name: ManaPoint
-  href: api/AshesOfVelsingrad.Systems.UnitSystem.html#AshesOfVelsingrad_Systems_UnitSystem_ManaPoint
-  commentId: P:AshesOfVelsingrad.Systems.UnitSystem.ManaPoint
-  fullName: AshesOfVelsingrad.Systems.UnitSystem.ManaPoint
-  nameWithType: UnitSystem.ManaPoint
-- uid: AshesOfVelsingrad.Systems.UnitSystem.ManaPoint*
-  name: ManaPoint
-  href: api/AshesOfVelsingrad.Systems.UnitSystem.html#AshesOfVelsingrad_Systems_UnitSystem_ManaPoint_
-  commentId: Overload:AshesOfVelsingrad.Systems.UnitSystem.ManaPoint
+- uid: AshesOfVelsingrad.Systems.UnitSystem.Mana
+  name: Mana
+  href: api/AshesOfVelsingrad.Systems.UnitSystem.html#AshesOfVelsingrad_Systems_UnitSystem_Mana
+  commentId: P:AshesOfVelsingrad.Systems.UnitSystem.Mana
+  fullName: AshesOfVelsingrad.Systems.UnitSystem.Mana
+  nameWithType: UnitSystem.Mana
+- uid: AshesOfVelsingrad.Systems.UnitSystem.Mana*
+  name: Mana
+  href: api/AshesOfVelsingrad.Systems.UnitSystem.html#AshesOfVelsingrad_Systems_UnitSystem_Mana_
+  commentId: Overload:AshesOfVelsingrad.Systems.UnitSystem.Mana
   isSpec: "True"
-  fullName: AshesOfVelsingrad.Systems.UnitSystem.ManaPoint
-  nameWithType: UnitSystem.ManaPoint
+  fullName: AshesOfVelsingrad.Systems.UnitSystem.Mana
+  nameWithType: UnitSystem.Mana
+- uid: AshesOfVelsingrad.Systems.UnitSystem.ManaMax
+  name: ManaMax
+  href: api/AshesOfVelsingrad.Systems.UnitSystem.html#AshesOfVelsingrad_Systems_UnitSystem_ManaMax
+  commentId: P:AshesOfVelsingrad.Systems.UnitSystem.ManaMax
+  fullName: AshesOfVelsingrad.Systems.UnitSystem.ManaMax
+  nameWithType: UnitSystem.ManaMax
+- uid: AshesOfVelsingrad.Systems.UnitSystem.ManaMax*
+  name: ManaMax
+  href: api/AshesOfVelsingrad.Systems.UnitSystem.html#AshesOfVelsingrad_Systems_UnitSystem_ManaMax_
+  commentId: Overload:AshesOfVelsingrad.Systems.UnitSystem.ManaMax
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.Systems.UnitSystem.ManaMax
+  nameWithType: UnitSystem.ManaMax
 - uid: AshesOfVelsingrad.Systems.UnitSystem.MaxHp
   name: MaxHp
   href: api/AshesOfVelsingrad.Systems.UnitSystem.html#AshesOfVelsingrad_Systems_UnitSystem_MaxHp
@@ -3076,6 +4108,19 @@ references:
   isSpec: "True"
   fullName: AshesOfVelsingrad.Systems.UnitSystem.PassiveSkills
   nameWithType: UnitSystem.PassiveSkills
+- uid: AshesOfVelsingrad.Systems.UnitSystem.Personality
+  name: Personality
+  href: api/AshesOfVelsingrad.Systems.UnitSystem.html#AshesOfVelsingrad_Systems_UnitSystem_Personality
+  commentId: P:AshesOfVelsingrad.Systems.UnitSystem.Personality
+  fullName: AshesOfVelsingrad.Systems.UnitSystem.Personality
+  nameWithType: UnitSystem.Personality
+- uid: AshesOfVelsingrad.Systems.UnitSystem.Personality*
+  name: Personality
+  href: api/AshesOfVelsingrad.Systems.UnitSystem.html#AshesOfVelsingrad_Systems_UnitSystem_Personality_
+  commentId: Overload:AshesOfVelsingrad.Systems.UnitSystem.Personality
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.Systems.UnitSystem.Personality
+  nameWithType: UnitSystem.Personality
 - uid: AshesOfVelsingrad.Systems.UnitSystem.Play(System.Collections.Generic.List{AshesOfVelsingrad.Systems.UnitSystem},AshesOfVelsingrad.Systems.MapSystem,AshesOfVelsingrad.Systems.SkillSystem)
   name: Play(List<UnitSystem>, MapSystem?, SkillSystem)
   href: api/AshesOfVelsingrad.Systems.UnitSystem.html#AshesOfVelsingrad_Systems_UnitSystem_Play_System_Collections_Generic_List_AshesOfVelsingrad_Systems_UnitSystem__AshesOfVelsingrad_Systems_MapSystem_AshesOfVelsingrad_Systems_SkillSystem_
@@ -3512,6 +4557,12 @@ references:
   commentId: F:AshesOfVelsingrad.Utilities.AovDataStructures.EffectType.ApplyModifier
   fullName: AshesOfVelsingrad.Utilities.AovDataStructures.EffectType.ApplyModifier
   nameWithType: AovDataStructures.EffectType.ApplyModifier
+- uid: AshesOfVelsingrad.Utilities.AovDataStructures.EffectType.Buff
+  name: Buff
+  href: api/AshesOfVelsingrad.Utilities.AovDataStructures.EffectType.html#AshesOfVelsingrad_Utilities_AovDataStructures_EffectType_Buff
+  commentId: F:AshesOfVelsingrad.Utilities.AovDataStructures.EffectType.Buff
+  fullName: AshesOfVelsingrad.Utilities.AovDataStructures.EffectType.Buff
+  nameWithType: AovDataStructures.EffectType.Buff
 - uid: AshesOfVelsingrad.Utilities.AovDataStructures.EffectType.Control
   name: Control
   href: api/AshesOfVelsingrad.Utilities.AovDataStructures.EffectType.html#AshesOfVelsingrad_Utilities_AovDataStructures_EffectType_Control
@@ -3524,6 +4575,12 @@ references:
   commentId: F:AshesOfVelsingrad.Utilities.AovDataStructures.EffectType.Damage
   fullName: AshesOfVelsingrad.Utilities.AovDataStructures.EffectType.Damage
   nameWithType: AovDataStructures.EffectType.Damage
+- uid: AshesOfVelsingrad.Utilities.AovDataStructures.EffectType.Debuff
+  name: Debuff
+  href: api/AshesOfVelsingrad.Utilities.AovDataStructures.EffectType.html#AshesOfVelsingrad_Utilities_AovDataStructures_EffectType_Debuff
+  commentId: F:AshesOfVelsingrad.Utilities.AovDataStructures.EffectType.Debuff
+  fullName: AshesOfVelsingrad.Utilities.AovDataStructures.EffectType.Debuff
+  nameWithType: AovDataStructures.EffectType.Debuff
 - uid: AshesOfVelsingrad.Utilities.AovDataStructures.EffectType.Heal
   name: Heal
   href: api/AshesOfVelsingrad.Utilities.AovDataStructures.EffectType.html#AshesOfVelsingrad_Utilities_AovDataStructures_EffectType_Heal

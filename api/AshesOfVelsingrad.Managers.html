@@ -101,9 +101,20 @@ Implements the Manager Pattern from your architecture documentation.</p>
 </dd>
     </dl>
     <dl class="jumplist">
-      <dt><a class="xref" href="AshesOfVelsingrad.Managers.GameManager.html">GameManager</a></dt>
-      <dd><p>The conductor of a level. The <code>GameManager</code> handles everything that a level needs to work correctly.</p>
+      <dt><a class="xref" href="AshesOfVelsingrad.Managers.BattleState.html">BattleState</a></dt>
+      <dd><p>Represents a snapshot of the battle state at a specific moment.
+Used by AI to make decisions based on current conditions.</p>
 </dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="AshesOfVelsingrad.Managers.EnemyAIManager.html">EnemyAIManager</a></dt>
+      <dd><p>Manages AI decision-making for enemy units during combat.
+This is NOT a singleton - it's created per battle by GameManager.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="AshesOfVelsingrad.Managers.GameManager.html">GameManager</a></dt>
+      <dd></dd>
     </dl>
     <dl class="jumplist">
       <dt><a class="xref" href="AshesOfVelsingrad.Managers.MenuManager.html">MenuManager</a></dt>

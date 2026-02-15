@@ -1518,7 +1518,7 @@ It enforces a single active instance through the <a class="xref" href="AshesOfVe
 
   <h3 id="AshesOfVelsingrad_Systems_MapSystem_Cleanup" data-uid="AshesOfVelsingrad.Systems.MapSystem.Cleanup">
   Cleanup()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/systems/map_system/MapSystem.cs/#L240"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/systems/map_system/MapSystem.cs/#L247"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Cleans up the map instance.
@@ -1548,11 +1548,47 @@ By default, it does nothing, but derived classes can override it to perform spec
 
 
 
+  <a id="AshesOfVelsingrad_Systems_MapSystem_GetCellType_" data-uid="AshesOfVelsingrad.Systems.MapSystem.GetCellType*"></a>
+
+  <h3 id="AshesOfVelsingrad_Systems_MapSystem_GetCellType_Godot_Vector3I_" data-uid="AshesOfVelsingrad.Systems.MapSystem.GetCellType(Godot.Vector3I)">
+  GetCellType(Vector3I)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/systems/map_system/MapSystem.cs/#L209"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual AovDataStructures.CellType GetCellType(Vector3I position)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>position</code> <span class="xref">Vector3I</span></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="AshesOfVelsingrad.Utilities.AovDataStructures.html">AovDataStructures</a>.<a class="xref" href="AshesOfVelsingrad.Utilities.AovDataStructures.CellType.html">CellType</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="AshesOfVelsingrad_Systems_MapSystem_GetUnitAt_" data-uid="AshesOfVelsingrad.Systems.MapSystem.GetUnitAt*"></a>
 
   <h3 id="AshesOfVelsingrad_Systems_MapSystem_GetUnitAt_System_Int32_System_Int32_System_Int32_" data-uid="AshesOfVelsingrad.Systems.MapSystem.GetUnitAt(System.Int32,System.Int32,System.Int32)">
   GetUnitAt(int, int, int)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/systems/map_system/MapSystemUnitsHandling.cs/#L58"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/systems/map_system/MapSystemUnitsHandling.cs/#L59"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Gets the unit currently occupying map cell at the given position.</p>
@@ -1597,7 +1633,7 @@ By default, it does nothing, but derived classes can override it to perform spec
 
   <h3 id="AshesOfVelsingrad_Systems_MapSystem_GetUnitPosition_AshesOfVelsingrad_Systems_UnitSystem_" data-uid="AshesOfVelsingrad.Systems.MapSystem.GetUnitPosition(AshesOfVelsingrad.Systems.UnitSystem)">
   GetUnitPosition(UnitSystem)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/systems/map_system/MapSystemUnitsHandling.cs/#L72"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/systems/map_system/MapSystemUnitsHandling.cs/#L73"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Gets the unit currently position on map.</p>
@@ -1605,7 +1641,7 @@ By default, it does nothing, but derived classes can override it to perform spec
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public virtual (int, int, int)? GetUnitPosition(UnitSystem unit)</code></pre>
+    <pre><code class="lang-csharp hljs">public virtual Vector3I? GetUnitPosition(UnitSystem unit)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -1617,7 +1653,7 @@ By default, it does nothing, but derived classes can override it to perform spec
 
   <h4 class="section">Returns</h4>
   <dl class="parameters">
-    <dt>(<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>)?</dt>
+    <dt><span class="xref">Vector3I</span>?</dt>
     <dd><p>The (x, y, z) position of the unit at the specified map, or <code>null</code> if the unit is not found.</p>
 </dd>
   </dl>
@@ -1792,7 +1828,7 @@ Derived classes must implement this method to provide their specific initializat
 
   <h3 id="AshesOfVelsingrad_Systems_MapSystem_MoveUnit_AshesOfVelsingrad_Systems_UnitSystem_System_Int32_System_Int32_System_Int32_" data-uid="AshesOfVelsingrad.Systems.MapSystem.MoveUnit(AshesOfVelsingrad.Systems.UnitSystem,System.Int32,System.Int32,System.Int32)">
   MoveUnit(UnitSystem, int, int, int)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/systems/map_system/MapSystemUnitsHandling.cs/#L29"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/systems/map_system/MapSystemUnitsHandling.cs/#L30"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Moves a unit to a new position in the map.</p>
@@ -1839,7 +1875,7 @@ target cell is walkable, which should be verified beforehand.</p>
 
   <h3 id="AshesOfVelsingrad_Systems_MapSystem_PlaceUnits_System_Collections_Generic_List_AshesOfVelsingrad_Systems_UnitSystem__System_Collections_Generic_List_AshesOfVelsingrad_Systems_UnitSystem__" data-uid="AshesOfVelsingrad.Systems.MapSystem.PlaceUnits(System.Collections.Generic.List{AshesOfVelsingrad.Systems.UnitSystem},System.Collections.Generic.List{AshesOfVelsingrad.Systems.UnitSystem})">
   PlaceUnits(List&lt;UnitSystem&gt;, List&lt;UnitSystem&gt;)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/systems/map_system/MapSystemUnitsHandling.cs/#L15"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/systems/map_system/MapSystemUnitsHandling.cs/#L16"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Place every unit in the map.</p>
@@ -1878,7 +1914,7 @@ target cell is walkable, which should be verified beforehand.</p>
 
   <h3 id="AshesOfVelsingrad_Systems_MapSystem_RemoveUnit_System_Int32_System_Int32_System_Int32_" data-uid="AshesOfVelsingrad.Systems.MapSystem.RemoveUnit(System.Int32,System.Int32,System.Int32)">
   RemoveUnit(int, int, int)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/systems/map_system/MapSystemUnitsHandling.cs/#L90"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/systems/map_system/MapSystemUnitsHandling.cs/#L91"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Removes any unit present at the given map cell.</p>
@@ -1996,7 +2032,7 @@ If the cell is already empty, this method does nothing.</p>
 
   <h3 id="AshesOfVelsingrad_Systems_MapSystem__ExitTree" data-uid="AshesOfVelsingrad.Systems.MapSystem._ExitTree">
   _ExitTree()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/systems/map_system/MapSystem.cs/#L222"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/systems/map_system/MapSystem.cs/#L229"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Called when the node is removed from the scene tree.

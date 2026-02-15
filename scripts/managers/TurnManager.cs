@@ -25,6 +25,7 @@ public partial class TurnManager : BaseManager
     private int _turn;
     private List<KeyValuePair<UnitSystem, AovDataStructures.TurnState>> _unitsTurnOrder = [];
     private int _currentIndex;
+    private EnemyAIManager? _aiManager;
 
     #endregion
 
@@ -46,9 +47,9 @@ public partial class TurnManager : BaseManager
     public event Action? OnPlayerTurn;
 
     /// <summary>
-    ///     Triggered when the player's turn ends.
-    /// </summary>
-    public event Action? OnPlayerTurnEnd;
+	///     Triggered when the player's turn ends.
+	/// </summary>
+	public event Action? OnPlayerTurnEnd;
 
     /// <summary>
     ///     Triggered when the enemy's turn ends
@@ -148,18 +149,26 @@ public partial class TurnManager : BaseManager
     }
 
     /// <summary>
-    ///     Simulates an enemy action asynchronously.
+    /// Executes enemy AI logic asynchronously.
     /// </summary>
     /// <param name="unit">The enemy unit performing the action.</param>
     /// <returns>A task that completes when the enemy finishes its action.</returns>
-    /// <remarks>
-    ///     Currently, this method is a placeholder with a delay.
-    ///     Replace with the actual AI logic in future implementations.
-    /// </remarks>
-    private static async Task WaitForEnemyAction(UnitSystem unit)
+    private async Task WaitForEnemyAction(UnitSystem unit)
     {
         GD.Print($"{unit.Name} start thinking...");
-        await Task.Delay(10000); // TODO: Replace by the real ai method
+
+        //Get the EnemyAIManager instance
+        if (_aiManager != null)
+        {
+            await _aiManager.ExecuteAITurn(unit);
+        }
+        else
+        {
+            GD.PrintErr("EnemyAIManager not found, using fallback delay");
+            await Task.Delay(2000);
+            unit.PassTurn();
+        }
+
         GD.Print($"{unit.Name} played.");
     }
 
@@ -168,15 +177,24 @@ public partial class TurnManager : BaseManager
     #region Public Methods
 
     /// <summary>
+    /// Sets the reference to the EnemyAIManager instance.
+    /// </summary>
+    /// <param name="aiManager">The EnemyAIManager instance to use.</param>
+    public void SetAIManager(EnemyAIManager aiManager)
+    {
+        _aiManager = aiManager;
+    }
+
+    /// <summary>
     ///     Initializes the turn order list based on all participating units.
     /// </summary>
     /// <param name="playerUnits">List of all player-controlled units.</param>
     /// <param name="enemyUnits">List of all enemy-controlled units.</param>
     /// <remarks>
-    ///     The order is determined by each unit's <see cref="UnitSystem.BaseSpeed" /> value,
-    ///     sorted from highest to lowest.
-    /// </remarks>
-    public void InitializeTurnOrder(List<UnitSystem> playerUnits, List<UnitSystem> enemyUnits)
+	///     The order is determined by each unit's <see cref="UnitSystem.BaseSpeed" /> value,
+	///     sorted from highest to lowest.
+	/// </remarks>
+	public void InitializeTurnOrder(List<UnitSystem> playerUnits, List<UnitSystem> enemyUnits)
     {
         foreach (UnitSystem unit in playerUnits)
             _unitsTurnOrder.Add(
@@ -206,11 +224,23 @@ public partial class TurnManager : BaseManager
     }
 
     /// <summary>
-    ///     Gets the unit currently taking its turn.
+    /// Gets the unit currently taking its turn.
     /// </summary>
-    /// <returns>The <see cref="UnitSystem" /> that is currently active.</returns>
+    /// <returns>The <see cref="UnitSystem"/> that is currently active.</returns>
     public UnitSystem GetCurrentUnit()
     {
+        if (_unitsTurnOrder.Count == 0)
+        {
+            GD.PrintErr("No units in turn order!");
+            throw new InvalidOperationException("Turn order is not initialized or is empty.");
+        }
+
+        if (_currentIndex < 0 || _currentIndex >= _unitsTurnOrder.Count)
+        {
+            GD.PrintErr($"Current index {_currentIndex} out of range for turn order of size {_unitsTurnOrder.Count}");
+            throw new IndexOutOfRangeException($"Current index is out of range");
+        }
+
         return _unitsTurnOrder[_currentIndex].Key;
     }
 
@@ -218,7 +248,7 @@ public partial class TurnManager : BaseManager
     ///     Called by the <see cref="GameManager" /> to inform the <see cref="TurnManager" />
     ///     the game is finished
     /// </summary>
-    public void EndTurnManagerLoop()
+    public virtual void EndTurnManagerLoop()
     {
         _currentTurnState = AovDataStructures.TurnState.Finished;
     }

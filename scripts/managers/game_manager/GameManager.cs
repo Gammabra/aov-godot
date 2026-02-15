@@ -1,26 +1,27 @@
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using AshesOfVelsingrad.AI;
 using AshesOfVelsingrad.Systems;
 using AshesOfVelsingrad.Utilities;
 using Godot;
 
 namespace AshesOfVelsingrad.Managers;
 
-/// <summary>
-///     The conductor of a level. The <c>GameManager</c> handles everything that a level needs to work correctly.
-/// </summary>
 public partial class GameManager : BaseManager
 {
+    public EnemyAIManager? AIManager { get; private set; }
+
     #region Private Fields
 
     private AovDataStructures.GameOutcome _gameOutcome = AovDataStructures.GameOutcome.Ongoing;
     private bool _isPlayerTurn;
     private bool _unitMoved;
     private AovDataStructures.ClickOnMapContext _clickOnMapContext = AovDataStructures.ClickOnMapContext.MoveUnit;
-    private readonly List<UnitSystem> _playerUnits = [];
-    private readonly List<UnitSystem> _enemyUnits = [];
-    private List<(int, int, int)> _currentUnitPossibleMoves = [];
-    private List<(int, int, int)> _currentUnitReachableCellsForCurrentSelectedSkill = [];
+    private readonly List<UnitSystem> _playerUnits = new List<UnitSystem>();
+    private readonly List<UnitSystem> _enemyUnits = new List<UnitSystem>();
+    private List<Vector3I> _currentUnitPossibleMoves = new List<Vector3I>();
+    private List<Vector3I> _currentUnitReachableCellsForCurrentSelectedSkill = new List<Vector3I>();
     private SkillSystem? _selectedSkill;
     private UnitSystem? _selectedUnitForPlayedSkill;
     private readonly StatusEffectSystem _statusEffectSystem = new();
@@ -43,6 +44,13 @@ public partial class GameManager : BaseManager
 
     [Export]
     private NodePath? _battleInputSystemPath;
+
+    /// <summary>
+    /// Toggle threat map visualization for all enemy units.
+    /// Call this from a debug input or console command.
+    /// </summary>
+    [Export]
+    public bool EnableThreatMapDebug { get; set; } = false;
 
     private Node? _playerUnitsContainer;
     private Node? _enemyUnitsContainer;
@@ -71,15 +79,6 @@ public partial class GameManager : BaseManager
         _ = StartBattleWhenReady();
     }
 
-    /// <summary>
-    ///     Initializes the GameManager singleton instance.
-    ///     Ensures only one instance exists and sets up the initial state.
-    /// </summary>
-    /// <remarks>
-    ///     This method is called automatically by Godot when the node is ready.
-    ///     It checks for duplicate instances and initializes the game system.
-    ///     If a duplicate instance is found, it removes the duplicate.
-    /// </remarks>
     protected override void Initialize()
     {
         if (Instance != null && Instance != this)
@@ -110,7 +109,9 @@ public partial class GameManager : BaseManager
         _battleInputSystemContainer.OnSelectMovePressed += PlayerSelectedMove;
         _playerUnitsContainer = GetNode<Node>(_playerUnitsPath);
         _enemyUnitsContainer = GetNode<Node>(_enemyUnitsPath);
+
         LoadUnits();
+
         _mapSystemContainer = GetNode<MapSystem>(_mapSystemPath);
         _mapSystemContainer.InjectDependencies(_statusEffectSystem);
         _mapSystemContainer.PlaceUnits(_playerUnits, _enemyUnits);
@@ -120,10 +121,43 @@ public partial class GameManager : BaseManager
         _turnManagerContainer.OnEnemyTurnEnd += EnemyTurnEnded;
         _turnManagerContainer.OnCurrentTurnEnd += CurrentTurnEnded;
         _turnManagerContainer.InitializeTurnOrder(_playerUnits, _enemyUnits);
-        if (_enemyUnits.Contains(_turnManagerContainer.GetCurrentUnit()))
-            DeactivatePlayerUnit();
+
+        // Debug: show unit counts to help diagnose empty turn order
+        GD.Print($"[DEBUG] Players: {_playerUnits.Count}, Enemies: {_enemyUnits.Count}");
+
+        bool hasUnits = (_playerUnits.Count + _enemyUnits.Count) > 0;
+
+        if (hasUnits)
+        {
+            try
+            {
+                if (_enemyUnits.Contains(_turnManagerContainer.GetCurrentUnit()))
+                    DeactivatePlayerUnit();
+                else
+                    ActivatePlayerUnit();
+            }
+            catch (Exception ex)
+            {
+                GD.PrintErr($"TurnManager.GetCurrentUnit() failed: {ex.Message}");
+                // Fallback: ensure player unit is deactivated to avoid undefined state
+                DeactivatePlayerUnit();
+            }
+        }
         else
-            ActivatePlayerUnit();
+        {
+            GD.PrintErr("No units found; skipping turn activation.");
+        }
+
+        // Create EnemyAIManager as a battle-scoped instance (NOT a global singleton)
+        AIManager = new EnemyAIManager(this);
+        AIManager.SetUnitReferences(_playerUnits, _enemyUnits);
+
+        if (_mapSystemContainer != null)
+            AIManager.SetMapSystem(_mapSystemContainer);
+        else
+            GD.PrintErr("EnemyAIManager: MapSystem not available when setting up AI manager");
+
+        _turnManagerContainer.SetAIManager(AIManager);
     }
 
     #endregion
@@ -251,9 +285,10 @@ public partial class GameManager : BaseManager
         GD.Print($"Selected Skill {skillId}");
         _clickOnMapContext = AovDataStructures.ClickOnMapContext.SelectUnitTarget;
         _selectedSkill = _turnManagerContainer.GetCurrentUnit().ActiveSkills[skillId];
-        _currentUnitReachableCellsForCurrentSelectedSkill = _turnManagerContainer
+        var reachableTuples = _turnManagerContainer
             .GetCurrentUnit()
             .GetReachableCellsForSkills(_mapSystemContainer, _selectedSkill);
+        _currentUnitReachableCellsForCurrentSelectedSkill = reachableTuples.ConvertAll(t => new Vector3I(t.X, t.Y, t.Z));
         GD.Print(
             "Current Unit Reachable cells: " + string.Join(", ", _currentUnitReachableCellsForCurrentSelectedSkill)
         );
@@ -385,7 +420,7 @@ public partial class GameManager : BaseManager
     /// gameManager.MoveUnit(targetCell);
     /// </code>
     /// </example>
-    public void MoveUnit(Vector3I cell)
+    public virtual void MoveUnit(Vector3I cell)
     {
         if (_mapSystemContainer == null)
         {
@@ -446,11 +481,11 @@ public partial class GameManager : BaseManager
     /// gameManager.UseSkill(playerUnit, allyUnit, healSkill);
     /// </code>
     /// </example>
-    public void UseSkill(UnitSystem sourceUnit, UnitSystem targetUnit, SkillSystem skill)
+    public virtual void UseSkill(UnitSystem sourceUnit, UnitSystem targetUnit, SkillSystem skill)
     {
-        List<UnitSystem> allyUnits = [];
-        List<UnitSystem> enemyUnits = [];
-        List<UnitSystem> targetUnits = [];
+        List<UnitSystem> allyUnits = new List<UnitSystem>();
+        List<UnitSystem> enemyUnits = new List<UnitSystem>();
+        List<UnitSystem> targetUnits = new List<UnitSystem>();
 
         if (_turnManagerContainer == null)
         {
@@ -464,6 +499,11 @@ public partial class GameManager : BaseManager
         {
             allyUnits = _playerUnits;
             enemyUnits = _enemyUnits;
+        }
+        else
+        {
+            allyUnits = _enemyUnits;
+            enemyUnits = _playerUnits;
         }
 
         switch (skill.TargetType)
@@ -522,6 +562,127 @@ public partial class GameManager : BaseManager
                 _turnManagerContainer.GetCurrentUnit().Play(enemyUnits, _mapSystemContainer, skill);
                 break;
         }
+    }
+
+    #endregion
+
+    #region Debug Methods
+
+    public override void _Input(InputEvent @event)
+    {
+        base._Input(@event);
+
+        // Press F1 to toggle threat map visualization
+        if (@event is InputEventKey keyEvent && keyEvent.Pressed && !keyEvent.Echo)
+        {
+            if (keyEvent.Keycode == Key.F1)
+            {
+                EnableThreatMapDebug = !EnableThreatMapDebug;
+                GD.Print($"Threat Map Debug: {(EnableThreatMapDebug ? "ON" : "OFF")}");
+
+                if (EnableThreatMapDebug)
+                {
+                    ShowAllThreatMaps();
+                }
+            }
+
+            // Press F2 to show action scores for current AI unit
+            if (keyEvent.Keycode == Key.F2)
+            {
+                ShowCurrentAIActionScores();
+            }
+        }
+    }
+
+    /// <summary>
+    /// Visualizes threat maps for all enemy units.
+    /// </summary>
+    private void ShowAllThreatMaps()
+    {
+        if (_mapSystemContainer == null || AIManager == null)
+        {
+            GD.PrintErr("Cannot show threat maps - systems not initialized");
+            return;
+        }
+
+        foreach (var enemy in _enemyUnits)
+        {
+            if (!enemy.IsAlive)
+                continue;
+
+            // Find the AIDebugVisualizer for this enemy
+            var aiBehavior = FindAIBehavior(enemy);
+            if (aiBehavior != null)
+            {
+                var visualizer = aiBehavior.GetNodeOrNull<AIDebugVisualizer>("AIDebugVisualizer");
+                if (visualizer != null)
+                {
+                    var battleState = new BattleState
+                    {
+                        ActingUnit = enemy,
+                        MapSystem = _mapSystemContainer,
+                        PlayerUnits = AIManager.GetAlivePlayerUnits(),
+                        EnemyUnits = AIManager.GetAliveEnemyUnits(),
+                        GameManager = this
+                    };
+
+                    visualizer.VisualizeThreatMap(enemy, battleState, 5);
+                    GD.Print($"Showing threat map for {enemy.Name}");
+                }
+            }
+        }
+    }
+
+    /// <summary>
+    /// Shows action scores for the current unit if it's an AI unit.
+    /// </summary>
+    private void ShowCurrentAIActionScores()
+    {
+        if (_turnManagerContainer == null || _mapSystemContainer == null || AIManager == null)
+        {
+            GD.PrintErr("Cannot show action scores - systems not initialized");
+            return;
+        }
+
+        var currentUnit = _turnManagerContainer.GetCurrentUnit();
+
+        // Only works for enemy units
+        if (!_enemyUnits.Contains(currentUnit))
+        {
+            GD.Print("Current unit is not an enemy - no AI to visualize");
+            return;
+        }
+
+        var aiBehavior = FindAIBehavior(currentUnit);
+        if (aiBehavior == null)
+        {
+            GD.PrintErr($"No AI behavior found for {currentUnit.Name}");
+            return;
+        }
+
+        // This would require making some methods public in AIDecisionGenerator
+        // For now, just enable the visualizer and let it show on next turn
+        GD.Print("Action scores will be shown automatically if debug visualization is enabled");
+    }
+
+    /// <summary>
+    /// Finds the EnemyAIBehavior component attached to a unit.
+    /// </summary>
+    private EnemyAIBehavior? FindAIBehavior(UnitSystem unit)
+    {
+        foreach (Node child in unit.GetChildren())
+        {
+            if (child is EnemyAIBehavior behavior)
+                return behavior;
+
+            // Also check children of children (in case it's under a Node)
+            foreach (Node grandchild in child.GetChildren())
+            {
+                if (grandchild is EnemyAIBehavior behaviorNested)
+                    return behaviorNested;
+            }
+        }
+        return null;
     }
 
     #endregion

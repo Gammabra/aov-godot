@@ -27,7 +27,7 @@ public abstract class StatusEffect<TTarget>(
     /// <summary>
     ///     The display name of the effect.
     /// </summary>
-    public string Name { get; } = name;
+    public string Name { get; protected set; } = name;
 
     /// <summary>
     ///     A description of what this effect does.

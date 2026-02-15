@@ -45,8 +45,6 @@ public partial class GameManager
                 unit.InjectDependencies(_statusEffectSystem);
                 _enemyUnits.Add(unit);
             }
-
-        GD.Print($"Players count : {_playerUnits.Count} | Enemies count : {_enemyUnits.Count}");
     }
 
     /// <summary>
@@ -73,7 +71,7 @@ public partial class GameManager
             return;
         }
 
-        if (!_currentUnitPossibleMoves.Contains((cell.X, cell.Y, cell.Z)))
+        if (!_currentUnitPossibleMoves.Contains(new Vector3I(cell.X, cell.Y, cell.Z)))
         {
             _battleInputSystemContainer.SetInputEnabled(true);
             return;
@@ -143,7 +141,7 @@ public partial class GameManager
             }
         }
 
-        if (!_currentUnitReachableCellsForCurrentSelectedSkill.Contains((cell.X, cell.Y, cell.Z)))
+        if (!_currentUnitReachableCellsForCurrentSelectedSkill.Contains(new Vector3I(cell.X, cell.Y, cell.Z)))
         {
             GD.PrintErr("The cell/target is not reachable.");
             _battleInputSystemContainer.SetInputEnabled(true);
@@ -189,6 +187,7 @@ public partial class GameManager
     /// </summary>
     private static void CheckUnitsLife(List<UnitSystem> units)
     {
+        GD.Print("Checking units life...");
         foreach (UnitSystem unit in units)
             unit.SetIsAlive(false);
     }

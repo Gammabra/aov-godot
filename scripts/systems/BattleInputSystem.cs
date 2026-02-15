@@ -258,7 +258,7 @@ public partial class BattleInputSystem : Node
     ///     Set the input to enabled or not.
     /// </summary>
     /// <param name="enabled">A boolean that set the input to enabled or not.</param>
-    public void SetInputEnabled(bool enabled)
+    public virtual void SetInputEnabled(bool enabled)
     {
         _inputEnabled = enabled;
     }

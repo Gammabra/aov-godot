@@ -1,4 +1,6 @@
 using System.Collections.Generic;
+using System.Reflection;
+using AshesOfVelsingrad.AI;
 using AshesOfVelsingrad.Systems;
 using AshesOfVelsingrad.Utilities;
 using Godot;
@@ -9,15 +11,88 @@ namespace UnitTests;
 /// Concrete test-double for UnitSystem.
 /// Matches the testing style and philosophy of TestConcreteMapSystem.
 /// </summary>
-public sealed partial class TestConcreteUnitSystem : UnitSystem
+public partial class TestConcreteUnitSystem : UnitSystem
 {
     public bool IsInitialized { get; private set; }
     public bool IsCleanedUp { get; private set; }
+    public List<string> Log { get; } = new();
 
-    public StatusEffectSystem? InjectedStatusEffectSystem => _injectedStatusEffectSystem;
-    private StatusEffectSystem? _injectedStatusEffectSystem;
+    public new AIPersonality Personality
+    {
+        get => base.Personality;
+        set
+        {
+            var property = typeof(UnitSystem).GetProperty("Personality");
+            property?.SetValue(this, value);
+        }
+    }
 
-    public readonly List<string> Log = [];
+    // Expose the private _statusEffectSystem field for testing
+    public StatusEffectSystem? InjectedStatusEffectSystem
+    {
+        get
+        {
+            var field = typeof(UnitSystem).GetField("_statusEffectSystem",
+                BindingFlags.NonPublic | BindingFlags.Instance);
+            return (StatusEffectSystem?)field?.GetValue(this);
+        }
+    }
+
+    // Add public setters for testing
+    public new int PossibleMovesRange
+    {
+        get => base.PossibleMovesRange;
+        set
+        {
+            var field = typeof(UnitSystem).GetProperty("PossibleMovesRange",
+                BindingFlags.Public | BindingFlags.Instance);
+            field?.SetValue(this, value);
+        }
+    }
+
+    public new float Hp
+    {
+        get => base.Hp;
+        set
+        {
+            var field = typeof(UnitSystem).GetProperty("Hp",
+                BindingFlags.Public | BindingFlags.Instance);
+            field?.SetValue(this, value);
+        }
+    }
+
+    public new float Mana
+    {
+        get => base.Mana;
+        set
+        {
+            var field = typeof(UnitSystem).GetProperty("Mana",
+                BindingFlags.Public | BindingFlags.Instance);
+            field?.SetValue(this, value);
+        }
+    }
+
+    public new float BaseAtk
+    {
+        get => base.BaseAtk;
+        set
+        {
+            var field = typeof(UnitSystem).GetProperty("BaseAtk",
+                BindingFlags.Public | BindingFlags.Instance);
+            field?.SetValue(this, value);
+        }
+    }
+
+    public new float BaseDef
+    {
+        get => base.BaseDef;
+        set
+        {
+            var field = typeof(UnitSystem).GetProperty("BaseDef",
+                BindingFlags.Public | BindingFlags.Instance);
+            field?.SetValue(this, value);
+        }
+    }
 
     public TestConcreteUnitSystem(
         string unitName = "TestUnit",
@@ -40,7 +115,8 @@ public sealed partial class TestConcreteUnitSystem : UnitSystem
         BaseAtk = baseAtk;
         BaseDef = baseDef;
         BaseSpeed = baseSpeed;
-        ManaPoint = manaPoint;
+        ManaMax = manaPoint;
+        Mana = manaPoint;
         PossibleMovesRange = possibleMovesRange;
         IsAlive = isAlive;
         Type = AovDataStructures.UnitType.Player;
@@ -62,20 +138,17 @@ public sealed partial class TestConcreteUnitSystem : UnitSystem
     public override void InjectDependencies(StatusEffectSystem statusEffectSystem)
     {
         base.InjectDependencies(statusEffectSystem);
-        _injectedStatusEffectSystem = statusEffectSystem;
 
         Log.Add("StatusEffectSystem injected");
     }
 
     protected override void Cleanup()
     {
+        base.Cleanup();
         IsCleanedUp = true;
         Log.Add("CleanedUp");
-
         GD.Print("[TEST] TestConcreteUnitSystem cleanup called");
     }
-
-    // ---------- Public test helpers ----------
 
     public void CallInitialize()
     {

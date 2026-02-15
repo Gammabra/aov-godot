@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using AshesOfVelsingrad.Utilities;
+using Godot;
 
 namespace AshesOfVelsingrad.Systems;
 
@@ -18,12 +19,12 @@ public abstract class SkillSystem
     /// <summary>
     ///     The name of the skill.
     /// </summary>
-    public string Name { get; protected init; }
+    public string Name { get; protected init; } = string.Empty;
 
     /// <summary>
     ///     A description of the skill, used for tooltips or UI.
     /// </summary>
-    public string Description { get; protected init; }
+    public string Description { get; protected init; } = string.Empty;
 
     /// <summary>
     ///     The amount of mana consumed when using this skill.
@@ -48,7 +49,7 @@ public abstract class SkillSystem
     /// <summary>
     ///     The cells affected relative to the target position (area of effect).
     /// </summary>
-    public List<(int, int, int)> AreaEffect { get; protected init; }
+    public List<Vector3I> AreaEffect { get; protected init; } = [];
 
     /// <summary>
     ///     The magical element type of this skill (e.g., Fire, Water, Light).

@@ -166,7 +166,7 @@ public class UnitSystemTest
         unit.Play(new List<UnitSystem>(), null, skill);
 
         AssertThat(skill.WasUsed).IsTrue();
-        AssertThat(unit.ManaPoint).IsEqual(95);
+        AssertThat(unit.Mana).IsEqual(90);
     }
 
     [TestCase]
@@ -235,9 +235,9 @@ public class UnitSystemTest
         map.AddWalkableCell(1, 0, 0);
         map.AddUnit(unit);
 
-        List<(int, int, int)> moves = unit.GetPossibleMoves(map);
-        AssertThat(moves.Contains((1, 0, 0))).IsTrue();
-        AssertThat(moves.Contains((0, 0, 0))).IsFalse();
+        List<Vector3I> moves = unit.GetPossibleMoves(map);
+        AssertThat(moves.Contains(new Vector3I(1, 0, 0))).IsTrue();
+        AssertThat(moves.Contains(new Vector3I(0, 0, 0))).IsFalse();
     }
 
     [TestCase]
@@ -253,8 +253,8 @@ public class UnitSystemTest
         map.AddWalkableCell(1, 0, 0);
         map.AddUnit(unit);
 
-        List<(int, int, int)> reachable = unit.GetReachableCellsForSkills(map, skill);
-        AssertThat(reachable.Contains((1, 0, 0))).IsTrue();
+        List<Vector3I> reachable = unit.GetReachableCellsForSkills(map, skill);
+        AssertThat(reachable.Contains(new Vector3I(1, 0, 0))).IsTrue();
     }
 
     [TestCase]

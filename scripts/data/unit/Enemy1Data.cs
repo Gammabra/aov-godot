@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using AshesOfVelsingrad.Systems;
 
 namespace AshesOfVelsingrad;
@@ -14,9 +15,19 @@ public sealed partial class Enemy1Data : UnitSystem
         BaseDef = 0;
         BaseSpeed = 100;
         Intelligence = 100;
-        ManaPoint = 100;
+        ManaMax = 100;
+        Mana = ManaMax;
         IsAlive = true;
         PossibleMovesRange = 2;
         Curse = 0;
+    }
+
+    public override void Play(List<UnitSystem> targets, MapSystem? map, SkillSystem skill)
+    {
+        ReportSystemUnitHasPlayed();
+    }
+
+    public override void TakeDamage(float damage)
+    {
     }
 }

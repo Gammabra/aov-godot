@@ -1,3 +1,5 @@
+using AshesOfVelsingrad.AI;
+
 namespace AshesOfVelsingrad.Systems;
 
 public abstract partial class UnitSystem
@@ -23,10 +25,16 @@ public abstract partial class UnitSystem
     public float Intelligence { get; protected set; }
 
     /// <summary>The unit's available mana points for casting skills.</summary>
-    public float ManaPoint { get; protected set; }
+    public float ManaMax { get; protected set; }
+
+    /// <summary>The current mana points of the unit.</summary>
+    public float Mana { get; protected set; }
 
     /// <summary>The unit’s curse value (used for status mechanics or debuffs).</summary>
     public float Curse { get; protected set; }
+
+    /// <summary>The default AI personality type of the unit.</summary>
+    public AIPersonality Personality { get; protected set; } = AIPersonality.Defensive;
 
     /// <summary>Indicates whether the unit is alive.</summary>
     public bool IsAlive { get; protected set; } = true;
@@ -37,15 +45,13 @@ public abstract partial class UnitSystem
     /// <param name="isAlive">A boolean to set unit <see cref="IsAlive" /> value</param>
     public void SetIsAlive(bool isAlive)
     {
-        if (!isAlive)
+        if (!isAlive && Hp <= 0)
         {
-            if (Hp <= 0)
-                IsAlive = isAlive;
+            IsAlive = isAlive;
         }
-        else
+        else if (isAlive && Hp > 0)
         {
-            if (Hp >= 0)
-                IsAlive = isAlive;
+            IsAlive = isAlive;
         }
     }
 

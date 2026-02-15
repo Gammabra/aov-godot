@@ -248,7 +248,7 @@ public class GameManagerTest
         SetPrivateField(
             manager,
             "_currentUnitPossibleMoves",
-            new List<(int, int, int)>()
+            new List<Vector3I>()
         );
         CallPrivateMethod(
             manager,
@@ -273,7 +273,7 @@ public class GameManagerTest
         SetPrivateField(
             manager,
             "_currentUnitPossibleMoves",
-            new List<(int, int, int)> { (1, 0, 1) }
+            new List<Vector3I> { new Vector3I(1, 0, 1) }
         );
         CallPrivateMethod(
             manager,
@@ -298,7 +298,7 @@ public class GameManagerTest
         SetPrivateField(
             manager,
             "_currentUnitReachableCellsForCurrentSelectedSkill",
-            new List<(int, int, int)>()
+            new List<Vector3I>()
         );
         CallPrivateMethod(
             manager,
@@ -412,8 +412,8 @@ public class GameManagerTest
         SetPrivateField(manager, "_isPlayerTurn", true);
         SetPrivateField(manager, "_selectedSkill", new TestConcreteSkillSystem());
         SetPrivateField(manager, "_unitMoved", true);
-        List<(int, int, int)> tupleList = [];
-        tupleList.Add((1, 1, 1));
+        List<Vector3I> tupleList = [];
+        tupleList.Add(new Vector3I(1, 1, 1));
         SetPrivateField(manager, "_currentUnitPossibleMoves", tupleList);
         SetPrivateField(manager, "_currentUnitReachableCellsForCurrentSelectedSkill", tupleList);
         inputSystem.SetInputEnabled(true);
@@ -430,9 +430,9 @@ public class GameManagerTest
         AssertThat(GetPrivateField<bool>(manager, "_isPlayerTurn")).IsFalse();
         AssertThat(GetPrivateField<SkillSystem?>(manager, "_selectedSkill")).IsNull();
         AssertThat(GetPrivateField<bool>(manager, "_unitMoved")).IsFalse();
-        AssertThat(GetPrivateField<List<(int, int, int)>>(manager, "_currentUnitPossibleMoves").Count).IsEqual(0);
+        AssertThat(GetPrivateField<List<Vector3I>>(manager, "_currentUnitPossibleMoves").Count).IsEqual(0);
         AssertThat(
-                GetPrivateField<List<(int, int, int)>>(manager, "_currentUnitReachableCellsForCurrentSelectedSkill")
+                GetPrivateField<List<Vector3I>>(manager, "_currentUnitReachableCellsForCurrentSelectedSkill")
                     .Count
             )
             .IsEqual(0);

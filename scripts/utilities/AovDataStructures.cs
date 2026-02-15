@@ -50,7 +50,9 @@ public static class AovDataStructures
         ApplyModifier,
         RemoveModifier,
         Control,
-        Summon
+        Summon,
+        Buff,
+        Debuff
     }
 
     /// <summary>

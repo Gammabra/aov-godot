@@ -4,10 +4,10 @@
 [ext_resource type="Script" uid="uid://dycsfdky6wocx" path="res://scripts/data/map/Map1.cs" id="2_p4llj"]
 [ext_resource type="MeshLibrary" uid="uid://du0rgaffn5bkl" path="res://assets/mesh_library/3DMesh.tres" id="2_so6rl"]
 [ext_resource type="Script" uid="uid://dkhfwdhsqvki4" path="res://scripts/managers/TurnManager.cs" id="3_p4llj"]
-[ext_resource type="Script" uid="uid://ch3yx81605e7t" path="res://scripts/data/unit/Player1Data.cs" id="4_so6rl"]
+[ext_resource type="Script" uid="uid://i5d2lk3ipef8" path="res://scripts/data/unit/characters/Player1Data.cs" id="4_so6rl"]
 [ext_resource type="Texture2D" uid="uid://d2o6v40ln62ci" path="res://assets/aov-logo-transparent.png" id="6_l5nkq"]
 [ext_resource type="Texture2D" uid="uid://ddwok17vhh08j" path="res://assets/icon.svg" id="6_lhig6"]
-[ext_resource type="Script" uid="uid://bfi5ppgft55u7" path="res://scripts/data/EnemyArcher.cs" id="7_ctjmi"]
+[ext_resource type="Script" uid="uid://6cen22ws8xam" path="res://scripts/data/unit/enemies/EnemyArcher.cs" id="7_ctjmi"]
 [ext_resource type="Script" uid="uid://buj6bdu8gkf0j" path="res://scripts/systems/BattleInputSystem.cs" id="7_nvgwb"]
 [ext_resource type="Script" uid="uid://dvsd81c4l1hgb" path="res://scripts/AI/EnemyAIBehavior.cs" id="9_ctjmi"]
 

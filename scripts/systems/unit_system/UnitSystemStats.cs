@@ -72,5 +72,14 @@ public abstract partial class UnitSystem
         Hp -= realDamage;
     }
 
+    /// <summary>
+    ///      Applies damage that bypasses defense to the unit and updates HP.
+    /// </summary>
+    /// <param name="damage">The amount of damage to apply.</param>
+    public virtual void BypassDamage(float damage)
+    {
+        Hp -= damage;
+    }
+
     #endregion
 }

@@ -37,117 +37,117 @@ namespace AshesOfVelsingrad.Systems;
 /// </remarks>
 public partial class BattleInputSystem : Node
 {
-    #region Godot Private Fields
+	#region Godot Private Fields
 
-    [Export]
-    private NodePath? _mapSystemPath;
+	[Export]
+	private NodePath? _mapSystemPath;
 
-    [Export]
-    private NodePath? _camera3DPath;
+	[Export]
+	private NodePath? _camera3DPath;
 
-    private MapSystem? _mapSystemContainer;
-    private Camera3D? _camera3DContainer;
+	private MapSystem? _mapSystemContainer;
+	private Camera3D? _camera3DContainer;
 
-    #endregion
+	#endregion
 
-    #region Private Fields
+	#region Private Fields
 
-    private bool _inputEnabled = true;
+	private bool _inputEnabled = true;
 
-    #endregion
+	#endregion
 
-    #region Private Properties
+	#region Private Properties
 
-    private static BattleInputSystem? Instance { get; set; }
+	private static BattleInputSystem? Instance { get; set; }
 
-    #endregion
+	#endregion
 
-    #region Godot Public Events
+	#region Godot Public Events
 
-    /// <summary>
-    ///     Emitted when the player presses the "pass turn" input action.
-    /// </summary>
-    /// <remarks>
-    ///     Used by the <see cref="GameManager" /> to indicate that the player
-    ///     has chosen to skip their current turn and let control pass to the next entity.
-    /// </remarks>
-    [Signal]
-    public delegate void OnPassTurnPressedEventHandler();
+	/// <summary>
+	///     Emitted when the player presses the "pass turn" input action.
+	/// </summary>
+	/// <remarks>
+	///     Used by the <see cref="GameManager" /> to indicate that the player
+	///     has chosen to skip their current turn and let control pass to the next entity.
+	/// </remarks>
+	[Signal]
+	public delegate void OnPassTurnPressedEventHandler();
 
-    /// <summary>
-    ///     Emitted when the player clicks on a map cell
-    ///     to move a unit or select a target.
-    /// </summary>
-    /// <param name="dest">
-    ///     The target cell position on the grid, in map coordinates (<see cref="Vector3I" />).
-    /// </param>
-    /// <remarks>
-    ///     This signal notifies systems responsible for unit movement or selection
-    ///     that the player has requested a move or target action.
-    /// </remarks>
-    [Signal]
-    public delegate void OnMoveUnitOrSelectTargetPressedEventHandler(Vector3I dest);
+	/// <summary>
+	///     Emitted when the player clicks on a map cell
+	///     to move a unit or select a target.
+	/// </summary>
+	/// <param name="dest">
+	///     The target cell position on the grid, in map coordinates (<see cref="Vector3I" />).
+	/// </param>
+	/// <remarks>
+	///     This signal notifies systems responsible for unit movement or selection
+	///     that the player has requested a move or target action.
+	/// </remarks>
+	[Signal]
+	public delegate void OnMoveUnitOrSelectTargetPressedEventHandler(Vector3I dest);
 
-    /// <summary>
-    ///     Emitted when the player selects a specific skill.
-    /// </summary>
-    /// <param name="skillId">The numerical identifier of the selected skill.</param>
-    /// <remarks>
-    ///     Used by the combat system or skill management system to determine which
-    ///     skill the player intends to use. Skills are indexed from 0 to 4.
-    /// </remarks>
-    [Signal]
-    public delegate void OnSelectedSkillPressedEventHandler(int skillId);
+	/// <summary>
+	///     Emitted when the player selects a specific skill.
+	/// </summary>
+	/// <param name="skillId">The numerical identifier of the selected skill.</param>
+	/// <remarks>
+	///     Used by the combat system or skill management system to determine which
+	///     skill the player intends to use. Skills are indexed from 0 to 4.
+	/// </remarks>
+	[Signal]
+	public delegate void OnSelectedSkillPressedEventHandler(int skillId);
 
-    /// <summary>
-    ///     Emitted when the player selects the move action
-    /// </summary>
-    /// <remarks>
-    ///     This signal is used to notify systems handling unit commands
-    ///     that the player has initiated a move selection.
-    /// </remarks>
-    [Signal]
-    public delegate void OnSelectMovePressedEventHandler();
+	/// <summary>
+	///     Emitted when the player selects the move action
+	/// </summary>
+	/// <remarks>
+	///     This signal is used to notify systems handling unit commands
+	///     that the player has initiated a move selection.
+	/// </remarks>
+	[Signal]
+	public delegate void OnSelectMovePressedEventHandler();
 
-    #endregion
+	#endregion
 
-    #region Class Initialization
+	#region Class Initialization
 
-    /// <summary>
-    ///     Called when the node is added to the scene tree.
-    ///     Initializes the <see cref="BattleInputSystem" /> instance and checks for duplicates.
-    /// </summary>
-    /// <remarks>
-    ///     This method is called automatically by Godot when the node is ready.
-    ///     It ensures that only one instance of the <see cref="BattleInputSystem" /> exists in the scene tree.
-    ///     If a duplicate instance is found, it removes the duplicate.
-    /// </remarks>
-    public override void _Ready()
-    {
-        // For AutoLoad, the initialization does immediately
-        if (IsInsideTree() && GetParent() == GetTree().Root)
-        {
-            Initialize();
-        }
-        // For manual instances, check for duplicates.
-        else if (Instance == null)
-        {
-            Initialize();
-        }
-        else
-        {
-            GD.PrintErr($"Multiple instances of {GetType().Name} detected. Removing duplicate.");
-            QueueFree();
-        }
-    }
+	/// <summary>
+	///     Called when the node is added to the scene tree.
+	///     Initializes the <see cref="BattleInputSystem" /> instance and checks for duplicates.
+	/// </summary>
+	/// <remarks>
+	///     This method is called automatically by Godot when the node is ready.
+	///     It ensures that only one instance of the <see cref="BattleInputSystem" /> exists in the scene tree.
+	///     If a duplicate instance is found, it removes the duplicate.
+	/// </remarks>
+	public override void _Ready()
+	{
+		// For AutoLoad, the initialization does immediately
+		if (IsInsideTree() && GetParent() == GetTree().Root)
+		{
+			Initialize();
+		}
+		// For manual instances, check for duplicates.
+		else if (Instance == null)
+		{
+			Initialize();
+		}
+		else
+		{
+			GD.PrintErr($"Multiple instances of {GetType().Name} detected. Removing duplicate.");
+			QueueFree();
+		}
+	}
 
-    /// <summary>
-    ///     Initializes the <see cref="BattleInputSystem" /> instance
-    ///     This method should be overridden in derived classes to set up specific functionality.
-    /// </summary>
-    /// <remarks>
-    ///     This method is called by the _Ready method to initialize the map.
-    ///     It should contain the logic necessary to set up the map's state and functionality.
+	/// <summary>
+	///     Initializes the <see cref="BattleInputSystem" /> instance
+	///     This method should be overridden in derived classes to set up specific functionality.
+	/// </summary>
+	/// <remarks>
+	///     This method is called by the _Ready method to initialize the map.
+	///     It should contain the logic necessary to set up the map's state and functionality.
     ///     Derived classes must implement this method to provide their specific initialization logic.
     /// </remarks>
     protected virtual void Initialize()

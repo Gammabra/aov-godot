@@ -47,7 +47,7 @@ public sealed class EnemyPoisonStrike : SkillSystem
 		TotalCooldown = 3;
 		Cooldown    = 0;
 		Range       = 1;
-		MagicType   = AovDataStructures.MagicType.None;
+		MagicType   = AovDataStructures.MagicType.None; //TODO change to Poison when implemented
 		EffectType  = AovDataStructures.EffectType.Debuff;
 		TargetType  = AovDataStructures.TargetTypes.SingleEnemy;
 	}

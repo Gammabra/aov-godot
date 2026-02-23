@@ -82,7 +82,7 @@ public sealed class ShadowStrike : SkillSystem
 		TotalCooldown = 2;
 		Cooldown    = 0;
 		Range       = 2;
-		MagicType   = AovDataStructures.MagicType.None;
+		MagicType   = AovDataStructures.MagicType.Dark;
 		EffectType  = AovDataStructures.EffectType.Damage;
 		TargetType  = AovDataStructures.TargetTypes.SingleEnemy;
 	}
@@ -142,7 +142,7 @@ public sealed class PoisonBlade : SkillSystem
 		TotalCooldown = 2;
 		Cooldown    = 0;
 		Range       = 1;
-		MagicType   = AovDataStructures.MagicType.None;
+		MagicType   = AovDataStructures.MagicType.None; // TODO: change to Poison when implemented
 		EffectType  = AovDataStructures.EffectType.Debuff;
 		TargetType  = AovDataStructures.TargetTypes.SingleEnemy;
 	}

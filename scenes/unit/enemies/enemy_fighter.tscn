@@ -18,3 +18,4 @@ shape = SubResource("SphereShape3D_k3vm1")
 
 [node name="AIBehavior" type="Node" parent="." unique_id=625692246]
 script = ExtResource("3_i5fo6")
+EnableDebugVisualization = true

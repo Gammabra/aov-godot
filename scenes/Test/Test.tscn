@@ -4,8 +4,8 @@
 [ext_resource type="Script" uid="uid://dycsfdky6wocx" path="res://scripts/data/map/Map1.cs" id="2_p4llj"]
 [ext_resource type="MeshLibrary" uid="uid://du0rgaffn5bkl" path="res://assets/mesh_library/3DMesh.tres" id="2_so6rl"]
 [ext_resource type="Script" uid="uid://dkhfwdhsqvki4" path="res://scripts/managers/TurnManager.cs" id="3_p4llj"]
-[ext_resource type="PackedScene" uid="uid://ckrham06bmo0o" path="res://scenes/unit/characters/player_1.tscn" id="5_nvgwb"]
-[ext_resource type="PackedScene" uid="uid://cfyy3fr225ux1" path="res://scenes/unit/enemies/enemy_archer.tscn" id="7_lhig6"]
+[ext_resource type="PackedScene" uid="uid://bex5piqwga44l" path="res://scenes/unit/characters/assassin.tscn" id="5_nvgwb"]
+[ext_resource type="PackedScene" uid="uid://cwlr1semki1nx" path="res://scenes/unit/enemies/enemy_fighter.tscn" id="6_lhig6"]
 [ext_resource type="Script" uid="uid://buj6bdu8gkf0j" path="res://scripts/systems/BattleInputSystem.cs" id="7_nvgwb"]
 
 [node name="Test" type="Node" unique_id=1730310334]
@@ -25,6 +25,7 @@ _enemyUnitsPath = NodePath("EnemyUnits")
 _mapSystemPath = NodePath("GridMap")
 _turnManagerPath = NodePath("TurnManager")
 _battleInputSystemPath = NodePath("../Inputs")
+EnableThreatMapDebug = true
 
 [node name="GridMap" type="GridMap" parent="GameManager" unique_id=680451959]
 mesh_library = ExtResource("2_so6rl")
@@ -35,11 +36,11 @@ script = ExtResource("2_p4llj")
 
 [node name="PlayerUnits" type="Node" parent="GameManager" unique_id=728972834]
 
-[node name="Player1" parent="GameManager/PlayerUnits" unique_id=1843229144 instance=ExtResource("5_nvgwb")]
+[node name="Assassin" parent="GameManager/PlayerUnits" unique_id=1843229144 instance=ExtResource("5_nvgwb")]
 
 [node name="EnemyUnits" type="Node" parent="GameManager" unique_id=992960182]
 
-[node name="Archer" parent="GameManager/EnemyUnits" unique_id=181515361 instance=ExtResource("7_lhig6")]
+[node name="Fighter" parent="GameManager/EnemyUnits" unique_id=181515361 instance=ExtResource("6_lhig6")]
 
 [node name="TurnManager" type="Node" parent="GameManager" unique_id=1988093598]
 script = ExtResource("3_p4llj")

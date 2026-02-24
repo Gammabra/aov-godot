@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
-using AshesOfVelsingrad.Utilities;
 using AshesOfVelsingrad.Data;
+using AshesOfVelsingrad.Utilities;
 using Godot;
 
 namespace AshesOfVelsingrad.Systems;
@@ -101,7 +101,7 @@ public abstract partial class UnitSystem : IEffectTarget<UnitSystem>, IStatusEff
     {
         _effectTarget.RemoveEffect(statusEffect);
         GD.Print($"{UnitName} had {statusEffect.Name} removed.");
-        
+
         if (statusEffect is Stun)
         {
             GD.Print($"{UnitName} is no longer stunned.");

@@ -26,7 +26,9 @@ public sealed class CriticalStrike : SkillSystem
 
 	public override void Use(UnitSystem caster, List<UnitSystem> targets, MapSystem? map)
 	{
-		if (targets.Count == 0) return;
+		if (targets.Count == 0)
+			return;
+
 		targets[0].TakeDamage(caster.TotalAtk * 2.0f);
 		GD.Print($"{caster.UnitName}: {Name} – double strike on {targets[0].UnitName}");
 	}
@@ -53,13 +55,15 @@ public sealed class InstantKill : SkillSystem
 
 	public override void Use(UnitSystem caster, List<UnitSystem> targets, MapSystem? map)
 	{
-		if (targets.Count == 0) return;
+		if (targets.Count == 0)
+			return;
+
 		UnitSystem target = targets[0];
-		bool belowThreshold = target.Hp / target.MaxHp < 0.15f;
+		bool belowThreshold = target.Hp / target.MaxHp <= 0.15f;
+
 		if (belowThreshold)
 		{
 			target.BypassDamage(target.Hp);
-			target.SetIsAlive(false);
 			GD.Print($"{caster.UnitName}: {Name} – instantly defeated {target.UnitName}!");
 		}
 		else
@@ -165,8 +169,6 @@ public sealed partial class AssassinData : UnitSystem
 {
 	protected override void Initialize()
 	{
-		base.Initialize();
-
 		UnitName    = "Assassin";
 		Description = "A deadly shadow operative who eliminates targets before they can react.";
 		Type        = AovDataStructures.UnitType.Assassin;
@@ -187,21 +189,11 @@ public sealed partial class AssassinData : UnitSystem
 		ActiveSkills.Add(new ShadowStrike());
 		ActiveSkills.Add(new BloodDrain());
 		ActiveSkills.Add(new PoisonBlade());
-	}
 
-	public override void TakeDamage(float damage)
-	{
-		float realDamage = damage - TotalDef;
-		if (realDamage < 0) realDamage = 0;
+		base.Initialize();
 
-		Hp -= realDamage;
-		GD.Print($"{UnitName} took {realDamage} damage (raw: {damage}), HP: {Hp}/{MaxHp}");
-
-		if (Hp <= 0)
-		{
-			Hp = 0;
-			IsAlive = false;
-			GD.Print($"{UnitName} has been defeated!");
-		}
+		// Create and inject StatusEffectSystem so buffs/heals work
+		var statusEffectSystem = new StatusEffectSystem();
+		InjectDependencies(statusEffectSystem);
 	}
 }

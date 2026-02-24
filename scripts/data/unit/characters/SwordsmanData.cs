@@ -158,8 +158,6 @@ public sealed partial class SwordsmanData : UnitSystem
 {
 	protected override void Initialize()
 	{
-		base.Initialize();
-
 		UnitName    = "Swordsman";
 		Description = "A versatile blade fighter who adapts to any situation on the battlefield.";
 		Type        = AovDataStructures.UnitType.Swordsman;
@@ -180,21 +178,11 @@ public sealed partial class SwordsmanData : UnitSystem
 		ActiveSkills.Add(new ExecutionBlade());
 		ActiveSkills.Add(new CounterStance());
 		ActiveSkills.Add(new BurningSlash());
-	}
 
-	public override void TakeDamage(float damage)
-	{
-		float realDamage = damage - TotalDef;
-		if (realDamage < 0) realDamage = 0;
+		base.Initialize();
 
-		Hp -= realDamage;
-		GD.Print($"{UnitName} took {realDamage} damage (raw: {damage}), HP: {Hp}/{MaxHp}");
-
-		if (Hp <= 0)
-		{
-			Hp = 0;
-			IsAlive = false;
-			GD.Print($"{UnitName} has been defeated!");
-		}
+		// Create and inject StatusEffectSystem so buffs/heals work
+		var statusEffectSystem = new StatusEffectSystem();
+		InjectDependencies(statusEffectSystem);
 	}
 }

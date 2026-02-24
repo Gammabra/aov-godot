@@ -261,7 +261,7 @@ public class UnitSystemTest
     public void OnEffectDamageFlat()
     {
         TestConcreteUnitSystem unit1 = AddNodeToTestRoot(new TestConcreteUnitSystem());
-        TestConcreteUnitSystem unit2 = AddNodeToTestRoot(new TestConcreteUnitSystem(maxHp: 150, hp: 150));
+        TestConcreteUnitSystem unit2 = AddNodeToTestRoot(new TestConcreteUnitSystem(maxHp: 150));
         unit1.CallInitialize();
 
         unit1.OnEffectDamage(AovDataStructures.ModifierType.Flat, 10);
@@ -274,7 +274,7 @@ public class UnitSystemTest
     public void OnEffectDamagePercent()
     {
         TestConcreteUnitSystem unit1 = AddNodeToTestRoot(new TestConcreteUnitSystem());
-        TestConcreteUnitSystem unit2 = AddNodeToTestRoot(new TestConcreteUnitSystem(maxHp: 150, hp: 150));
+        TestConcreteUnitSystem unit2 = AddNodeToTestRoot(new TestConcreteUnitSystem(maxHp: 150));
         unit1.CallInitialize();
 
         unit1.OnEffectDamage(AovDataStructures.ModifierType.Percent, 10);
@@ -286,20 +286,27 @@ public class UnitSystemTest
     [TestCase]
     public void OnEffectHeal()
     {
-        TestConcreteUnitSystem unit1 = AddNodeToTestRoot(new TestConcreteUnitSystem(hp: 40));
-        TestConcreteUnitSystem unit2 = AddNodeToTestRoot(new TestConcreteUnitSystem(hp: 90));
+        TestConcreteUnitSystem unit1 = AddNodeToTestRoot(new TestConcreteUnitSystem(maxHp: 40, baseDef: 0));
+        TestConcreteUnitSystem unit2 = AddNodeToTestRoot(new TestConcreteUnitSystem(maxHp: 90, baseDef: 0));
         unit1.CallInitialize();
+
+        unit1.TakeDamage(30);
+        unit2.TakeDamage(50);
+
+        AssertThat(unit1.Hp).IsEqual(10);
+        AssertThat(unit2.Hp).IsEqual(40);
 
         unit1.OnEffectHeal(30);
         unit2.OnEffectHeal(100);
-        AssertThat(unit1.Hp).IsEqual(70);
-        AssertThat(unit2.Hp).IsEqual(100);
+
+        AssertThat(unit1.Hp).IsEqual(40);
+        AssertThat(unit2.Hp).IsEqual(90);
     }
 
     [TestCase]
     public void OnEffectHeal_UnitNotAlive()
     {
-        TestConcreteUnitSystem unit1 = AddNodeToTestRoot(new TestConcreteUnitSystem(hp: 0, isAlive: false));
+        TestConcreteUnitSystem unit1 = AddNodeToTestRoot(new TestConcreteUnitSystem(maxHp: 0, isAlive: false));
         unit1.CallInitialize();
 
         unit1.OnEffectHeal(30);
@@ -309,8 +316,8 @@ public class UnitSystemTest
     [TestCase]
     public void OnEffectRevive()
     {
-        TestConcreteUnitSystem unit1 = AddNodeToTestRoot(new TestConcreteUnitSystem(hp: 0, isAlive: false));
-        TestConcreteUnitSystem unit2 = AddNodeToTestRoot(new TestConcreteUnitSystem(maxHp: 241, hp: 0, isAlive: false));
+        TestConcreteUnitSystem unit1 = AddNodeToTestRoot(new TestConcreteUnitSystem(maxHp: 0, isAlive: false));
+        TestConcreteUnitSystem unit2 = AddNodeToTestRoot(new TestConcreteUnitSystem(maxHp: 241, isAlive: false));
         unit1.CallInitialize();
 
         unit1.OnEffectRevive(AovDataStructures.ModifierType.Flat, 30);
@@ -324,7 +331,7 @@ public class UnitSystemTest
     [TestCase]
     public void OnEffectRevive_UnitAlreadyAlive()
     {
-        TestConcreteUnitSystem unit1 = AddNodeToTestRoot(new TestConcreteUnitSystem(hp: 40));
+        TestConcreteUnitSystem unit1 = AddNodeToTestRoot(new TestConcreteUnitSystem(maxHp: 40));
         unit1.CallInitialize();
 
         unit1.OnEffectRevive(AovDataStructures.ModifierType.Flat, 10);

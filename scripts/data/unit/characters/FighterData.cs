@@ -152,8 +152,6 @@ public sealed partial class FighterData : UnitSystem
 {
 	protected override void Initialize()
 	{
-		base.Initialize();
-
 		UnitName    = "Fighter";
 		Description = "A stalwart melee combatant built to absorb punishment and disrupt enemies.";
 		Type        = AovDataStructures.UnitType.Fighter;
@@ -174,21 +172,11 @@ public sealed partial class FighterData : UnitSystem
 		ActiveSkills.Add(new StaggeringBlow());
 		ActiveSkills.Add(new ShieldBash());
 		ActiveSkills.Add(new CircularStrike());
-	}
 
-	public override void TakeDamage(float damage)
-	{
-		float realDamage = damage - TotalDef;
-		if (realDamage < 0) realDamage = 0;
+		base.Initialize();
 
-		Hp -= realDamage;
-		GD.Print($"{UnitName} took {realDamage} damage (raw: {damage}), HP: {Hp}/{MaxHp}");
-
-		if (Hp <= 0)
-		{
-			Hp = 0;
-			IsAlive = false;
-			GD.Print($"{UnitName} has been defeated!");
-		}
+		// Create and inject StatusEffectSystem so buffs/heals work
+		var statusEffectSystem = new StatusEffectSystem();
+		InjectDependencies(statusEffectSystem);
 	}
 }

@@ -1,4 +1,5 @@
 using AshesOfVelsingrad.AI;
+using Godot;
 
 namespace AshesOfVelsingrad.Systems;
 
@@ -63,13 +64,22 @@ public abstract partial class UnitSystem
     ///     Applies incoming damage to the unit and updates HP.
     /// </summary>
     /// <param name="damage">The amount of damage received.</param>
-    public virtual void TakeDamage(float damage)
+    public void TakeDamage(float damage)
     {
         float realDamage = damage - TotalDef;
 
         if (realDamage < 0)
             realDamage = 0;
+
         Hp -= realDamage;
+		GD.Print($"{UnitName} took {realDamage} damage (raw: {damage}), HP: {Hp}/{MaxHp}");
+
+        if (Hp <= 0)
+        {
+            Hp = 0;
+            SetIsAlive(false);
+            GD.Print($"{UnitName} has died.");
+        }
     }
 
     /// <summary>
@@ -79,6 +89,13 @@ public abstract partial class UnitSystem
     public virtual void BypassDamage(float damage)
     {
         Hp -= damage;
+        
+        if (Hp <= 0)
+        {
+            Hp = 0;
+            SetIsAlive(false);
+            GD.Print($"{UnitName} has died.");
+        }
     }
 
     #endregion

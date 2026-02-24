@@ -98,14 +98,16 @@ public sealed partial class Player1Data : UnitSystem
 		ActiveSkills.Add(new Skill3());
 		ActiveSkills.Add(new Skill4());
 		ActiveSkills.Add(new Skill5());
+
+		base.Initialize();
+
+		// Create and inject StatusEffectSystem so buffs/heals work
+		var statusEffectSystem = new StatusEffectSystem();
+		InjectDependencies(statusEffectSystem);
 	}
 
 	public override void Play(List<UnitSystem> targets, MapSystem? map, SkillSystem skill)
 	{
 		ReportSystemUnitHasPlayed();
-	}
-
-	public override void TakeDamage(float damage)
-	{
 	}
 }

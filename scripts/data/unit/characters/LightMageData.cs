@@ -82,12 +82,18 @@ public sealed class CleansingLight : SkillSystem
 
 	public override void Use(UnitSystem caster, List<UnitSystem> targets, MapSystem? map)
 	{
-		if (targets.Count == 0) return;
+		if (targets.Count == 0)
+			return;
+
 		UnitSystem target = targets[0];
 		var effects = target.GetActiveEffects();
-		foreach (var effect in effects)
+		int effectCount = effects.Count;
+		var effectsCopy = new List<StatusEffect<UnitSystem>>(effects);
+
+		foreach (var effect in effectsCopy)
 			target.RemoveEffect(effect);
-		GD.Print($"{caster.UnitName}: {Name} – cleansed {target.UnitName} ({effects.Count} effects removed)");
+			
+		GD.Print($"{caster.UnitName}: {Name} – cleansed {target.UnitName} ({effectCount} effects removed)");
 	}
 }
 
@@ -156,8 +162,6 @@ public sealed partial class LightMageData : UnitSystem
 {
 	protected override void Initialize()
 	{
-		base.Initialize();
-
 		UnitName    = "Light Mage";
 		Description = "A radiant spellcaster dedicated to protecting and restoring allies.";
 		Type        = AovDataStructures.UnitType.Mage;
@@ -178,21 +182,11 @@ public sealed partial class LightMageData : UnitSystem
 		ActiveSkills.Add(new CleansingLight());
 		ActiveSkills.Add(new Resurrection());
 		ActiveSkills.Add(new DivinePrayer());
-	}
 
-	public override void TakeDamage(float damage)
-	{
-		float realDamage = damage - TotalDef;
-		if (realDamage < 0) realDamage = 0;
+		base.Initialize();
 
-		Hp -= realDamage;
-		GD.Print($"{UnitName} took {realDamage} damage (raw: {damage}), HP: {Hp}/{MaxHp}");
-
-		if (Hp <= 0)
-		{
-			Hp = 0;
-			IsAlive = false;
-			GD.Print($"{UnitName} has been defeated!");
-		}
+		// Create and inject StatusEffectSystem so buffs/heals work
+		var statusEffectSystem = new StatusEffectSystem();
+		InjectDependencies(statusEffectSystem);
 	}
 }

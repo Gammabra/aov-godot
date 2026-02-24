@@ -70,8 +70,6 @@ public sealed partial class EnemyAssassin : UnitSystem
 {
 	protected override void Initialize()
 	{
-		base.Initialize();
-
 		UnitName    = "Enemy Assassin";
 		Description = "A swift enemy rogue who strikes fast and poisons their prey.";
 		Type        = AovDataStructures.UnitType.Assassin;
@@ -92,21 +90,10 @@ public sealed partial class EnemyAssassin : UnitSystem
 		ActiveSkills.Add(new EnemyPoisonStrike());
 
 		GD.Print($"{UnitName} initialized with {ActiveSkills.Count} skills");
-	}
 
-	public override void TakeDamage(float damage)
-	{
-		float realDamage = damage - TotalDef;
-		if (realDamage < 0) realDamage = 0;
+		base.Initialize();
 
-		Hp -= realDamage;
-		GD.Print($"{UnitName} took {realDamage} damage (raw: {damage}), HP: {Hp}/{MaxHp}");
-
-		if (Hp <= 0)
-		{
-			Hp = 0;
-			IsAlive = false;
-			GD.Print($"{UnitName} has been defeated!");
-		}
+		var statusEffectSystem = new StatusEffectSystem();
+		InjectDependencies(statusEffectSystem);
 	}
 }

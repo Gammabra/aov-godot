@@ -68,8 +68,6 @@ public sealed partial class EnemyFighter : UnitSystem
 {
 	protected override void Initialize()
 	{
-		base.Initialize();
-
 		UnitName    = "Enemy Fighter";
 		Description = "A heavily armoured enemy bruiser who crushes and stuns opponents.";
 		Type        = AovDataStructures.UnitType.Fighter;
@@ -90,21 +88,10 @@ public sealed partial class EnemyFighter : UnitSystem
 		ActiveSkills.Add(new EnemyStaggeringBlow());
 
 		GD.Print($"{UnitName} initialized with {ActiveSkills.Count} skills");
-	}
 
-	public override void TakeDamage(float damage)
-	{
-		float realDamage = damage - TotalDef;
-		if (realDamage < 0) realDamage = 0;
+		base.Initialize();
 
-		Hp -= realDamage;
-		GD.Print($"{UnitName} took {realDamage} damage (raw: {damage}), HP: {Hp}/{MaxHp}");
-
-		if (Hp <= 0)
-		{
-			Hp = 0;
-			IsAlive = false;
-			GD.Print($"{UnitName} has been defeated!");
-		}
+		var statusEffectSystem = new StatusEffectSystem();
+		InjectDependencies(statusEffectSystem);
 	}
 }

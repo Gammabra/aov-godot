@@ -68,8 +68,6 @@ public sealed partial class EnemySwordsman : UnitSystem
 {
 	protected override void Initialize()
 	{
-		base.Initialize();
-
 		UnitName    = "Enemy Swordsman";
 		Description = "A skilled enemy blade fighter who pressures with fire.";
 		Type        = AovDataStructures.UnitType.Swordsman;
@@ -90,21 +88,10 @@ public sealed partial class EnemySwordsman : UnitSystem
 		ActiveSkills.Add(new EnemyBurningSlash());
 
 		GD.Print($"{UnitName} initialized with {ActiveSkills.Count} skills");
-	}
 
-	public override void TakeDamage(float damage)
-	{
-		float realDamage = damage - TotalDef;
-		if (realDamage < 0) realDamage = 0;
+		base.Initialize();
 
-		Hp -= realDamage;
-		GD.Print($"{UnitName} took {realDamage} damage (raw: {damage}), HP: {Hp}/{MaxHp}");
-
-		if (Hp <= 0)
-		{
-			Hp = 0;
-			IsAlive = false;
-			GD.Print($"{UnitName} has been defeated!");
-		}
+		var statusEffectSystem = new StatusEffectSystem();
+		InjectDependencies(statusEffectSystem);
 	}
 }

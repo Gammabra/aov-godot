@@ -68,8 +68,6 @@ public sealed partial class EnemyLightMage : UnitSystem
 {
 	protected override void Initialize()
 	{
-		base.Initialize();
-
 		UnitName    = "Enemy Light Mage";
 		Description = "A radiant enemy healer who keeps the enemy team alive.";
 		Type        = AovDataStructures.UnitType.Mage;
@@ -90,21 +88,10 @@ public sealed partial class EnemyLightMage : UnitSystem
 		ActiveSkills.Add(new EnemyHealAlly());
 
 		GD.Print($"{UnitName} initialized with {ActiveSkills.Count} skills");
-	}
 
-	public override void TakeDamage(float damage)
-	{
-		float realDamage = damage - TotalDef;
-		if (realDamage < 0) realDamage = 0;
+		base.Initialize();
 
-		Hp -= realDamage;
-		GD.Print($"{UnitName} took {realDamage} damage (raw: {damage}), HP: {Hp}/{MaxHp}");
-
-		if (Hp <= 0)
-		{
-			Hp = 0;
-			IsAlive = false;
-			GD.Print($"{UnitName} has been defeated!");
-		}
+		var statusEffectSystem = new StatusEffectSystem();
+		InjectDependencies(statusEffectSystem);
 	}
 }

@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
-using AshesOfVelsingrad.Utilities;
 using AshesOfVelsingrad.Data;
+using AshesOfVelsingrad.Utilities;
 
 namespace AshesOfVelsingrad.Systems;
 

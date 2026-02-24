@@ -72,7 +72,7 @@ public abstract partial class UnitSystem
             realDamage = 0;
 
         Hp -= realDamage;
-		GD.Print($"{UnitName} took {realDamage} damage (raw: {damage}), HP: {Hp}/{MaxHp}");
+        GD.Print($"{UnitName} took {realDamage} damage (raw: {damage}), HP: {Hp}/{MaxHp}");
 
         if (Hp <= 0)
         {
@@ -89,7 +89,7 @@ public abstract partial class UnitSystem
     public virtual void BypassDamage(float damage)
     {
         Hp -= damage;
-        
+
         if (Hp <= 0)
         {
             Hp = 0;

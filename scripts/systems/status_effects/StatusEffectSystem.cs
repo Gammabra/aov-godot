@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using AshesOfVelsingrad.Data;
 using AshesOfVelsingrad.Utilities;
 
 namespace AshesOfVelsingrad.Systems;
@@ -99,6 +100,11 @@ public sealed class StatusEffectSystem
         {
             target.ApplyEffect(newEffect);
             newEffect.OnApply(target);
+
+            if (newEffect is Stun)
+            {
+                newEffect.OnApply(target);
+            }
         }
     }
 

@@ -37,21 +37,11 @@ public sealed partial class EnemyArcher : UnitSystem
         ActiveSkills = new List<SkillSystem> { _basicAttack };
 
         GD.Print($"EnemyArcher {UnitName} initialized with {ActiveSkills.Count} skills");
-    }
 
-    public override void TakeDamage(float damage)
-    {
-        float realDamage = damage - BaseDef;
-        if (realDamage < 0) realDamage = 0;
+        base.Initialize();
 
-        Hp -= realDamage;
-        GD.Print($"{UnitName} took {realDamage} damage, HP: {Hp}/{MaxHp}");
-
-        if (Hp <= 0)
-        {
-            IsAlive = false;
-            GD.Print($"{UnitName} has been defeated!");
-        }
+        var statusEffectSystem = new StatusEffectSystem();
+        InjectDependencies(statusEffectSystem);
     }
 }
 

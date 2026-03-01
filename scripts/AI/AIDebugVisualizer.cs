@@ -113,12 +113,15 @@ public partial class AIDebugVisualizer : Node3D
             Color threatColor = new Color(intensity, 1f - intensity, 0f, 0.3f);
 
             var indicator = CreateIndicatorSphere(0.15f, threatColor);
+
+            // Add to tree first
+            AddChild(indicator);
+            _rangeIndicators.Add(indicator);
+
+            // Then set position
             Vector3 worldPos = battleState.MapSystem.MapToLocal(move);
             worldPos.Y += battleState.MapSystem.CellSize.Y * 0.1f;
             indicator.GlobalPosition = worldPos;
-
-            AddChild(indicator);
-            _rangeIndicators.Add(indicator);
         }
 
         // Auto-clear after 3 seconds
@@ -159,11 +162,15 @@ public partial class AIDebugVisualizer : Node3D
                     Text = $"#{index + 1}: {decision.Score:F0}",
                     PixelSize = 0.008f,
                     OutlineSize = 2,
-                    Modulate = GetColorForRank(index),
-                    GlobalPosition = targetPos.Value + new Vector3(0, 1.5f + index * 0.3f, 0)
+                    Modulate = GetColorForRank(index)
                 };
+
+                // Add to tree FIRST
                 AddChild(label);
-                _debugNodes.Add(label); // Fixed: Add to _debugNodes instead
+                _debugNodes.Add(label);
+
+                // THEN set position (now that it's in the tree)
+                label.GlobalPosition = targetPos.Value + new Vector3(0, 1.5f + index * 0.3f, 0);
             }
 
             index++;
@@ -218,9 +225,10 @@ public partial class AIDebugVisualizer : Node3D
         {
             Vector3 labelPos = battleState.MapSystem.MapToLocal(targetGridPos.Value);
             labelPos.Y += battleState.MapSystem.CellSize.Y * 1.5f;
-            _scoreLabel.GlobalPosition = labelPos;
+
+            _scoreLabel.Visible = true; // Make visible first
+            _scoreLabel.GlobalPosition = labelPos; // Then set position
             _scoreLabel.Text = $"Score: {decision.Score:F1}\n{decision.Reasoning}";
-            _scoreLabel.Visible = true;
         }
 
         // Auto-hide after 2 seconds
@@ -239,9 +247,10 @@ public partial class AIDebugVisualizer : Node3D
         {
             Vector3 destPos = battleState.MapSystem.MapToLocal(decision.MovePosition.Value);
             destPos.Y += battleState.MapSystem.CellSize.Y * 1.0f;
-            _scoreLabel.GlobalPosition = destPos;
+
+            _scoreLabel.Visible = true; // Make visible first
+            _scoreLabel.GlobalPosition = destPos; // Then set position
             _scoreLabel.Text = $"Move Score: {decision.Score:F1}";
-            _scoreLabel.Visible = true;
         }
 
         // Auto-hide after 2 seconds
@@ -256,11 +265,19 @@ public partial class AIDebugVisualizer : Node3D
 
         Vector3 startPos = battleState.MapSystem.MapToLocal(startGridPos.Value);
         Vector3 endPos = battleState.MapSystem.MapToLocal(destination);
+        var midpoint = (startPos + endPos) / 2;
 
-        // Create arrow from start to end
+        // Create arrow (without transforms set)
         var arrow = CreateArrow(startPos, endPos, new Color(0, 1, 0, 0.6f));
+
+        // Add to tree FIRST
         AddChild(arrow);
         _rangeIndicators.Add(arrow);
+
+        // NOW set transforms (after it's in the tree)
+        arrow.GlobalPosition = midpoint;
+        arrow.LookAt(endPos, Vector3.Up);
+        arrow.RotateObjectLocal(Vector3.Right, Mathf.Pi / 2);
     }
 
     private void VisualizeSkillRange(UnitSystem target, SkillSystem skill, BattleState battleState)
@@ -279,9 +296,13 @@ public partial class AIDebugVisualizer : Node3D
                 worldPos.Y += battleState.MapSystem.CellSize.Y * 0.1f;
 
                 var indicator = CreateIndicatorSphere(0.2f, new Color(1, 0.5f, 0, 0.4f));
-                indicator.GlobalPosition = worldPos;
+
+                // Add to tree first
                 AddChild(indicator);
                 _rangeIndicators.Add(indicator);
+
+                // Then set position
+                indicator.GlobalPosition = worldPos;
             }
         }
     }
@@ -361,15 +382,13 @@ public partial class AIDebugVisualizer : Node3D
 
         var meshInstance = new MeshInstance3D
         {
-            Mesh = mesh,
-            GlobalPosition = midpoint
+            Mesh = mesh
+            // DON'T set GlobalPosition here yet
         };
         meshInstance.SetSurfaceOverrideMaterial(0, material);
 
-        // Rotate to point from start to end
-        meshInstance.LookAt(to, Vector3.Up);
-        meshInstance.RotateObjectLocal(Vector3.Right, Mathf.Pi / 2);
-
+        // Return the mesh WITHOUT setting transforms
+        // The caller will add it to tree, then set position/rotation
         return meshInstance;
     }
 

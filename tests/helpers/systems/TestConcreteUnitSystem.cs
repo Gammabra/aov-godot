@@ -98,7 +98,6 @@ public partial class TestConcreteUnitSystem : UnitSystem
         string unitName = "TestUnit",
         string description = "Unit used only for unit testing.",
         float maxHp = 100,
-        float hp = 100,
         float baseAtk = 10,
         float baseDef = 5,
         float baseSpeed = 4,
@@ -111,7 +110,7 @@ public partial class TestConcreteUnitSystem : UnitSystem
         UnitName = unitName;
         Description = description;
         MaxHp = maxHp;
-        Hp = hp;
+        Hp = maxHp;
         BaseAtk = baseAtk;
         BaseDef = baseDef;
         BaseSpeed = baseSpeed;
@@ -130,6 +129,13 @@ public partial class TestConcreteUnitSystem : UnitSystem
         IsInitialized = true;
 
         base.Initialize();
+
+        // Create and inject a StatusEffectSystem so effects actually work
+        var statusEffectSystem = new StatusEffectSystem();
+        InjectDependencies(statusEffectSystem);
+
+        IsInitialized = true;
+        Log.Add("Initialized");
         GD.Print($"[TEST] Total atk is {TotalAtk}");
         GD.Print($"[TEST] Total def is {TotalDef}");
         GD.Print("[TEST] TestConcreteUnitSystem initialized");

@@ -138,6 +138,34 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.AssassinData.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.AssassinData.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.AssassinData",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.AssassinData.yml\" sourcestartlinenumber=\"1\">Assassin – Glass cannon unit. Extremely high ATK with low HP and DEF.\nSpecialises in burst damage, execution, and life steal.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.AssassinStab.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.AssassinStab.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.AssassinStab",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.AssassinStab.yml\" sourcestartlinenumber=\"1\">Enemy Assassin's basic ranged stab (slightly extended reach).</p>\n"
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "documentation/api/AshesOfVelsingrad.BasicAttackSkill.yml",
       "output": {
         ".html": {
@@ -149,6 +177,118 @@
       "IsMRef": true,
       "Title": "AshesOfVelsingrad.BasicAttackSkill",
       "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.BasicAttackSkill.yml\" sourcestartlinenumber=\"1\">Basic ranged attack skill for the archer enemy.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.BladeDance.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.BladeDance.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.BladeDance",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.BladeDance.yml\" sourcestartlinenumber=\"1\">Blade Dance – Attacks up to 3 adjacent enemies in sequence.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.BloodDrain.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.BloodDrain.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.BloodDrain",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.BloodDrain.yml\" sourcestartlinenumber=\"1\">Blood Drain – Drains life from the target: deals ATK damage and heals caster for 30%.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.BurningSlash.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.BurningSlash.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.BurningSlash",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.BurningSlash.yml\" sourcestartlinenumber=\"1\">Burning Slash – Slashes the enemy and applies Burning for 2 turns.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.CircularStrike.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.CircularStrike.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.CircularStrike",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.CircularStrike.yml\" sourcestartlinenumber=\"1\">Circular Strike – Deals damage to ALL adjacent enemies (AOE melee).</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.CleansingLight.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.CleansingLight.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.CleansingLight",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.CleansingLight.yml\" sourcestartlinenumber=\"1\">Cleansing Light – Removes all status effects from one ally.\nCurrently removes all active effects via the effect list.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.CounterStance.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.CounterStance.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.CounterStance",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.CounterStance.yml\" sourcestartlinenumber=\"1\">Counter Stance – Boosts own DEF and ATK for 2 turns (self-buff).</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.CriticalStrike.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.CriticalStrike.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.CriticalStrike",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.CriticalStrike.yml\" sourcestartlinenumber=\"1\">Critical Strike – Deals 200% ATK to a single enemy. 3-turn cooldown.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.CrushingStrike.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.CrushingStrike.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.CrushingStrike",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.CrushingStrike.yml\" sourcestartlinenumber=\"1\">Crushing Strike – Deals heavy damage to a single adjacent enemy.\nScaling: 150% of TotalAtk.</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -250,17 +390,17 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "documentation/api/AshesOfVelsingrad.Enemy1Data.yml",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.DivinePrayer.yml",
       "output": {
         ".html": {
-          "relative_path": "api/AshesOfVelsingrad.Enemy1Data.html"
+          "relative_path": "api/AshesOfVelsingrad.DivinePrayer.html"
         }
       },
       "version": "",
       "Uid": null,
       "IsMRef": true,
-      "Title": "AshesOfVelsingrad.Enemy1Data",
-      "Summary": null
+      "Title": "AshesOfVelsingrad.DivinePrayer",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.DivinePrayer.yml\" sourcestartlinenumber=\"1\">Divine Prayer – Boosts ATK of all allies for 3 turns.</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -275,6 +415,216 @@
       "IsMRef": true,
       "Title": "AshesOfVelsingrad.EnemyArcher",
       "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.EnemyArcher.yml\" sourcestartlinenumber=\"1\">Archer enemy unit with ranged attack AI behavior.\nUses the existing AI system to make tactical decisions.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.EnemyAssassin.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.EnemyAssassin.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.EnemyAssassin",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.EnemyAssassin.yml\" sourcestartlinenumber=\"1\">Enemy Assassin – Fast, fragile enemy that poisons and deals burst damage.\nMirrors <xref href=\"AshesOfVelsingrad.AssassinData\" data-throw-if-not-resolved=\"false\"></xref> in role and stat profile.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.EnemyBurningSlash.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.EnemyBurningSlash.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.EnemyBurningSlash",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.EnemyBurningSlash.yml\" sourcestartlinenumber=\"1\">Enemy Swordsman's special: a burning slash with fire damage-over-time.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.EnemyFighter.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.EnemyFighter.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.EnemyFighter",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.EnemyFighter.yml\" sourcestartlinenumber=\"1\">Enemy Fighter – Melee tank enemy with high HP, DEF, and a stun special.\nMirrors <xref href=\"AshesOfVelsingrad.FighterData\" data-throw-if-not-resolved=\"false\"></xref> in role and stat profile.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.EnemyHealAlly.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.EnemyHealAlly.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.EnemyHealAlly",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.EnemyHealAlly.yml\" sourcestartlinenumber=\"1\">Enemy Light Mage's special: heals the most wounded ally.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.EnemyLightMage.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.EnemyLightMage.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.EnemyLightMage",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.EnemyLightMage.yml\" sourcestartlinenumber=\"1\">Enemy Light Mage – Support enemy that heals allies and fires light bolts.\nMirrors <xref href=\"AshesOfVelsingrad.LightMageData\" data-throw-if-not-resolved=\"false\"></xref> in role and stat profile.\nAssigned Defensive personality so the AI prioritises keeping allies alive.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.EnemyPoisonStrike.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.EnemyPoisonStrike.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.EnemyPoisonStrike",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.EnemyPoisonStrike.yml\" sourcestartlinenumber=\"1\">Enemy Assassin's special: a poison-laced strike (placeholder using BurningEffect).\nReplace with PoisonEffect when implemented.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.EnemyStaggeringBlow.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.EnemyStaggeringBlow.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.EnemyStaggeringBlow",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.EnemyStaggeringBlow.yml\" sourcestartlinenumber=\"1\">Enemy Fighter's special: a stun blow that also deals damage.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.EnemySwordsman.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.EnemySwordsman.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.EnemySwordsman",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.EnemySwordsman.yml\" sourcestartlinenumber=\"1\">Enemy Swordsman – Balanced melee enemy with a burning slash special.\nMirrors <xref href=\"AshesOfVelsingrad.SwordsmanData\" data-throw-if-not-resolved=\"false\"></xref> in role and stat profile.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.ExecutionBlade.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.ExecutionBlade.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.ExecutionBlade",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.ExecutionBlade.yml\" sourcestartlinenumber=\"1\">Execution Blade – Deals 200% ATK to a target below 30% HP.\nNo bonus if the target is above the threshold.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.FighterData.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.FighterData.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.FighterData",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.FighterData.yml\" sourcestartlinenumber=\"1\">Fighter – Melee tank unit with high HP and DEF.\nExcels at absorbing damage and controlling nearby enemies.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.FighterMeleeAttack.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.FighterMeleeAttack.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.FighterMeleeAttack",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.FighterMeleeAttack.yml\" sourcestartlinenumber=\"1\">Enemy Fighter's melee basic attack.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.HealingTouch.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.HealingTouch.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.HealingTouch",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.HealingTouch.yml\" sourcestartlinenumber=\"1\">Healing Touch – Restores a flat amount of HP to one ally.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.InstantKill.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.InstantKill.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.InstantKill",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.InstantKill.yml\" sourcestartlinenumber=\"1\">Instant Kill – Instantly defeats a target below 15% HP.\nDeals normal ATK damage otherwise.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.LightBolt.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.LightBolt.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.LightBolt",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.LightBolt.yml\" sourcestartlinenumber=\"1\">Enemy Light Mage's basic magic attack.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.LightMageData.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.LightMageData.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.LightMageData",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.LightMageData.yml\" sourcestartlinenumber=\"1\">Light Mage – Support/healer unit. Low ATK and DEF but high Intelligence and Mana.\nSpecialises in healing, cleansing, reviving and buffing allies.</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -432,6 +782,20 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.PhantomStrike.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.PhantomStrike.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.PhantomStrike",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.PhantomStrike.yml\" sourcestartlinenumber=\"1\">Phantom Strike – Ranged sword slash that ignores DEF partially.\nDeals 120% ATK at range 2 with a DEF penetration flavour (implemented as raw damage).</p>\n"
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "documentation/api/AshesOfVelsingrad.Player1Data.yml",
       "output": {
         ".html": {
@@ -443,6 +807,76 @@
       "IsMRef": true,
       "Title": "AshesOfVelsingrad.Player1Data",
       "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.PoisonBlade.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.PoisonBlade.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.PoisonBlade",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.PoisonBlade.yml\" sourcestartlinenumber=\"1\">Poison Blade – Deals light damage and applies BurningEffect as a stand-in for Poison\n(to be replaced with PoisonEffect once implemented).</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.Resurrection.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.Resurrection.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.Resurrection",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.Resurrection.yml\" sourcestartlinenumber=\"1\">Resurrection – Revives a fallen ally with 50% HP.\nUses OnEffectRevive which checks IsAlive internally.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.SacredRay.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.SacredRay.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.SacredRay",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.SacredRay.yml\" sourcestartlinenumber=\"1\">Sacred Ray – Deals Light damage to one enemy and heals the first ally in line.\nImplemented as a targeted damage + self-heal hybrid.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.ShadowStrike.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.ShadowStrike.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.ShadowStrike",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.ShadowStrike.yml\" sourcestartlinenumber=\"1\">Shadow Strike – Attacks at range 2 from stealth (raw damage, no DEF reduction).</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.ShieldBash.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.ShieldBash.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.ShieldBash",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.ShieldBash.yml\" sourcestartlinenumber=\"1\">Shield Bash – Reduces the target's DEF for 2 turns.\nUses a DefDebuffer (simple flat DEF reduction via AtkBuffer pattern on Def stat).</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -513,6 +947,48 @@
       "IsMRef": true,
       "Title": "AshesOfVelsingrad.Skill5",
       "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.StaggeringBlow.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.StaggeringBlow.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.StaggeringBlow",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.StaggeringBlow.yml\" sourcestartlinenumber=\"1\">Staggering Blow – Deals damage and stuns the target for 1 turn.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.SwordsmanData.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.SwordsmanData.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.SwordsmanData",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.SwordsmanData.yml\" sourcestartlinenumber=\"1\">Swordsman – Balanced melee unit with solid offense and versatile skills.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.SwordsmanSlash.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.SwordsmanSlash.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.SwordsmanSlash",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.SwordsmanSlash.yml\" sourcestartlinenumber=\"1\">Enemy Swordsman's basic melee attack.</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -905,6 +1381,20 @@
       "IsMRef": true,
       "Title": "AshesOfVelsingrad.Utilities",
       "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.WarCry.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.WarCry.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.WarCry",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.WarCry.yml\" sourcestartlinenumber=\"1\">War Cry – Boosts the ATK of all nearby allies for 3 turns.</p>\n"
     },
     {
       "type": "ManagedReference",

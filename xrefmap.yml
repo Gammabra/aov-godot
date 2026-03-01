@@ -631,6 +631,66 @@ references:
   commentId: F:AshesOfVelsingrad.AI.EnemyAIBehavior._unit
   fullName: AshesOfVelsingrad.AI.EnemyAIBehavior._unit
   nameWithType: EnemyAIBehavior._unit
+- uid: AshesOfVelsingrad.AssassinData
+  name: AssassinData
+  href: api/AshesOfVelsingrad.AssassinData.html
+  commentId: T:AshesOfVelsingrad.AssassinData
+  fullName: AshesOfVelsingrad.AssassinData
+  nameWithType: AssassinData
+- uid: AshesOfVelsingrad.AssassinData.Initialize
+  name: Initialize()
+  href: api/AshesOfVelsingrad.AssassinData.html#AshesOfVelsingrad_AssassinData_Initialize
+  commentId: M:AshesOfVelsingrad.AssassinData.Initialize
+  fullName: AshesOfVelsingrad.AssassinData.Initialize()
+  nameWithType: AssassinData.Initialize()
+- uid: AshesOfVelsingrad.AssassinData.Initialize*
+  name: Initialize
+  href: api/AshesOfVelsingrad.AssassinData.html#AshesOfVelsingrad_AssassinData_Initialize_
+  commentId: Overload:AshesOfVelsingrad.AssassinData.Initialize
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.AssassinData.Initialize
+  nameWithType: AssassinData.Initialize
+- uid: AshesOfVelsingrad.AssassinStab
+  name: AssassinStab
+  href: api/AshesOfVelsingrad.AssassinStab.html
+  commentId: T:AshesOfVelsingrad.AssassinStab
+  fullName: AshesOfVelsingrad.AssassinStab
+  nameWithType: AssassinStab
+- uid: AshesOfVelsingrad.AssassinStab.#ctor
+  name: AssassinStab()
+  href: api/AshesOfVelsingrad.AssassinStab.html#AshesOfVelsingrad_AssassinStab__ctor
+  commentId: M:AshesOfVelsingrad.AssassinStab.#ctor
+  name.vb: New()
+  fullName: AshesOfVelsingrad.AssassinStab.AssassinStab()
+  fullName.vb: AshesOfVelsingrad.AssassinStab.New()
+  nameWithType: AssassinStab.AssassinStab()
+  nameWithType.vb: AssassinStab.New()
+- uid: AshesOfVelsingrad.AssassinStab.#ctor*
+  name: AssassinStab
+  href: api/AshesOfVelsingrad.AssassinStab.html#AshesOfVelsingrad_AssassinStab__ctor_
+  commentId: Overload:AshesOfVelsingrad.AssassinStab.#ctor
+  isSpec: "True"
+  name.vb: New
+  fullName: AshesOfVelsingrad.AssassinStab.AssassinStab
+  fullName.vb: AshesOfVelsingrad.AssassinStab.New
+  nameWithType: AssassinStab.AssassinStab
+  nameWithType.vb: AssassinStab.New
+- uid: AshesOfVelsingrad.AssassinStab.Use(AshesOfVelsingrad.Systems.UnitSystem,System.Collections.Generic.List{AshesOfVelsingrad.Systems.UnitSystem},AshesOfVelsingrad.Systems.MapSystem)
+  name: Use(UnitSystem, List<UnitSystem>, MapSystem?)
+  href: api/AshesOfVelsingrad.AssassinStab.html#AshesOfVelsingrad_AssassinStab_Use_AshesOfVelsingrad_Systems_UnitSystem_System_Collections_Generic_List_AshesOfVelsingrad_Systems_UnitSystem__AshesOfVelsingrad_Systems_MapSystem_
+  commentId: M:AshesOfVelsingrad.AssassinStab.Use(AshesOfVelsingrad.Systems.UnitSystem,System.Collections.Generic.List{AshesOfVelsingrad.Systems.UnitSystem},AshesOfVelsingrad.Systems.MapSystem)
+  name.vb: Use(UnitSystem, List(Of UnitSystem), MapSystem)
+  fullName: AshesOfVelsingrad.AssassinStab.Use(AshesOfVelsingrad.Systems.UnitSystem, System.Collections.Generic.List<AshesOfVelsingrad.Systems.UnitSystem>, AshesOfVelsingrad.Systems.MapSystem?)
+  fullName.vb: AshesOfVelsingrad.AssassinStab.Use(AshesOfVelsingrad.Systems.UnitSystem, System.Collections.Generic.List(Of AshesOfVelsingrad.Systems.UnitSystem), AshesOfVelsingrad.Systems.MapSystem)
+  nameWithType: AssassinStab.Use(UnitSystem, List<UnitSystem>, MapSystem?)
+  nameWithType.vb: AssassinStab.Use(UnitSystem, List(Of UnitSystem), MapSystem)
+- uid: AshesOfVelsingrad.AssassinStab.Use*
+  name: Use
+  href: api/AshesOfVelsingrad.AssassinStab.html#AshesOfVelsingrad_AssassinStab_Use_
+  commentId: Overload:AshesOfVelsingrad.AssassinStab.Use
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.AssassinStab.Use
+  nameWithType: AssassinStab.Use
 - uid: AshesOfVelsingrad.BasicAttackSkill
   name: BasicAttackSkill
   href: api/AshesOfVelsingrad.BasicAttackSkill.html
@@ -672,6 +732,334 @@ references:
   isSpec: "True"
   fullName: AshesOfVelsingrad.BasicAttackSkill.Use
   nameWithType: BasicAttackSkill.Use
+- uid: AshesOfVelsingrad.BladeDance
+  name: BladeDance
+  href: api/AshesOfVelsingrad.BladeDance.html
+  commentId: T:AshesOfVelsingrad.BladeDance
+  fullName: AshesOfVelsingrad.BladeDance
+  nameWithType: BladeDance
+- uid: AshesOfVelsingrad.BladeDance.#ctor
+  name: BladeDance()
+  href: api/AshesOfVelsingrad.BladeDance.html#AshesOfVelsingrad_BladeDance__ctor
+  commentId: M:AshesOfVelsingrad.BladeDance.#ctor
+  name.vb: New()
+  fullName: AshesOfVelsingrad.BladeDance.BladeDance()
+  fullName.vb: AshesOfVelsingrad.BladeDance.New()
+  nameWithType: BladeDance.BladeDance()
+  nameWithType.vb: BladeDance.New()
+- uid: AshesOfVelsingrad.BladeDance.#ctor*
+  name: BladeDance
+  href: api/AshesOfVelsingrad.BladeDance.html#AshesOfVelsingrad_BladeDance__ctor_
+  commentId: Overload:AshesOfVelsingrad.BladeDance.#ctor
+  isSpec: "True"
+  name.vb: New
+  fullName: AshesOfVelsingrad.BladeDance.BladeDance
+  fullName.vb: AshesOfVelsingrad.BladeDance.New
+  nameWithType: BladeDance.BladeDance
+  nameWithType.vb: BladeDance.New
+- uid: AshesOfVelsingrad.BladeDance.Use(AshesOfVelsingrad.Systems.UnitSystem,System.Collections.Generic.List{AshesOfVelsingrad.Systems.UnitSystem},AshesOfVelsingrad.Systems.MapSystem)
+  name: Use(UnitSystem, List<UnitSystem>, MapSystem?)
+  href: api/AshesOfVelsingrad.BladeDance.html#AshesOfVelsingrad_BladeDance_Use_AshesOfVelsingrad_Systems_UnitSystem_System_Collections_Generic_List_AshesOfVelsingrad_Systems_UnitSystem__AshesOfVelsingrad_Systems_MapSystem_
+  commentId: M:AshesOfVelsingrad.BladeDance.Use(AshesOfVelsingrad.Systems.UnitSystem,System.Collections.Generic.List{AshesOfVelsingrad.Systems.UnitSystem},AshesOfVelsingrad.Systems.MapSystem)
+  name.vb: Use(UnitSystem, List(Of UnitSystem), MapSystem)
+  fullName: AshesOfVelsingrad.BladeDance.Use(AshesOfVelsingrad.Systems.UnitSystem, System.Collections.Generic.List<AshesOfVelsingrad.Systems.UnitSystem>, AshesOfVelsingrad.Systems.MapSystem?)
+  fullName.vb: AshesOfVelsingrad.BladeDance.Use(AshesOfVelsingrad.Systems.UnitSystem, System.Collections.Generic.List(Of AshesOfVelsingrad.Systems.UnitSystem), AshesOfVelsingrad.Systems.MapSystem)
+  nameWithType: BladeDance.Use(UnitSystem, List<UnitSystem>, MapSystem?)
+  nameWithType.vb: BladeDance.Use(UnitSystem, List(Of UnitSystem), MapSystem)
+- uid: AshesOfVelsingrad.BladeDance.Use*
+  name: Use
+  href: api/AshesOfVelsingrad.BladeDance.html#AshesOfVelsingrad_BladeDance_Use_
+  commentId: Overload:AshesOfVelsingrad.BladeDance.Use
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.BladeDance.Use
+  nameWithType: BladeDance.Use
+- uid: AshesOfVelsingrad.BloodDrain
+  name: BloodDrain
+  href: api/AshesOfVelsingrad.BloodDrain.html
+  commentId: T:AshesOfVelsingrad.BloodDrain
+  fullName: AshesOfVelsingrad.BloodDrain
+  nameWithType: BloodDrain
+- uid: AshesOfVelsingrad.BloodDrain.#ctor
+  name: BloodDrain()
+  href: api/AshesOfVelsingrad.BloodDrain.html#AshesOfVelsingrad_BloodDrain__ctor
+  commentId: M:AshesOfVelsingrad.BloodDrain.#ctor
+  name.vb: New()
+  fullName: AshesOfVelsingrad.BloodDrain.BloodDrain()
+  fullName.vb: AshesOfVelsingrad.BloodDrain.New()
+  nameWithType: BloodDrain.BloodDrain()
+  nameWithType.vb: BloodDrain.New()
+- uid: AshesOfVelsingrad.BloodDrain.#ctor*
+  name: BloodDrain
+  href: api/AshesOfVelsingrad.BloodDrain.html#AshesOfVelsingrad_BloodDrain__ctor_
+  commentId: Overload:AshesOfVelsingrad.BloodDrain.#ctor
+  isSpec: "True"
+  name.vb: New
+  fullName: AshesOfVelsingrad.BloodDrain.BloodDrain
+  fullName.vb: AshesOfVelsingrad.BloodDrain.New
+  nameWithType: BloodDrain.BloodDrain
+  nameWithType.vb: BloodDrain.New
+- uid: AshesOfVelsingrad.BloodDrain.Use(AshesOfVelsingrad.Systems.UnitSystem,System.Collections.Generic.List{AshesOfVelsingrad.Systems.UnitSystem},AshesOfVelsingrad.Systems.MapSystem)
+  name: Use(UnitSystem, List<UnitSystem>, MapSystem?)
+  href: api/AshesOfVelsingrad.BloodDrain.html#AshesOfVelsingrad_BloodDrain_Use_AshesOfVelsingrad_Systems_UnitSystem_System_Collections_Generic_List_AshesOfVelsingrad_Systems_UnitSystem__AshesOfVelsingrad_Systems_MapSystem_
+  commentId: M:AshesOfVelsingrad.BloodDrain.Use(AshesOfVelsingrad.Systems.UnitSystem,System.Collections.Generic.List{AshesOfVelsingrad.Systems.UnitSystem},AshesOfVelsingrad.Systems.MapSystem)
+  name.vb: Use(UnitSystem, List(Of UnitSystem), MapSystem)
+  fullName: AshesOfVelsingrad.BloodDrain.Use(AshesOfVelsingrad.Systems.UnitSystem, System.Collections.Generic.List<AshesOfVelsingrad.Systems.UnitSystem>, AshesOfVelsingrad.Systems.MapSystem?)
+  fullName.vb: AshesOfVelsingrad.BloodDrain.Use(AshesOfVelsingrad.Systems.UnitSystem, System.Collections.Generic.List(Of AshesOfVelsingrad.Systems.UnitSystem), AshesOfVelsingrad.Systems.MapSystem)
+  nameWithType: BloodDrain.Use(UnitSystem, List<UnitSystem>, MapSystem?)
+  nameWithType.vb: BloodDrain.Use(UnitSystem, List(Of UnitSystem), MapSystem)
+- uid: AshesOfVelsingrad.BloodDrain.Use*
+  name: Use
+  href: api/AshesOfVelsingrad.BloodDrain.html#AshesOfVelsingrad_BloodDrain_Use_
+  commentId: Overload:AshesOfVelsingrad.BloodDrain.Use
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.BloodDrain.Use
+  nameWithType: BloodDrain.Use
+- uid: AshesOfVelsingrad.BurningSlash
+  name: BurningSlash
+  href: api/AshesOfVelsingrad.BurningSlash.html
+  commentId: T:AshesOfVelsingrad.BurningSlash
+  fullName: AshesOfVelsingrad.BurningSlash
+  nameWithType: BurningSlash
+- uid: AshesOfVelsingrad.BurningSlash.#ctor
+  name: BurningSlash()
+  href: api/AshesOfVelsingrad.BurningSlash.html#AshesOfVelsingrad_BurningSlash__ctor
+  commentId: M:AshesOfVelsingrad.BurningSlash.#ctor
+  name.vb: New()
+  fullName: AshesOfVelsingrad.BurningSlash.BurningSlash()
+  fullName.vb: AshesOfVelsingrad.BurningSlash.New()
+  nameWithType: BurningSlash.BurningSlash()
+  nameWithType.vb: BurningSlash.New()
+- uid: AshesOfVelsingrad.BurningSlash.#ctor*
+  name: BurningSlash
+  href: api/AshesOfVelsingrad.BurningSlash.html#AshesOfVelsingrad_BurningSlash__ctor_
+  commentId: Overload:AshesOfVelsingrad.BurningSlash.#ctor
+  isSpec: "True"
+  name.vb: New
+  fullName: AshesOfVelsingrad.BurningSlash.BurningSlash
+  fullName.vb: AshesOfVelsingrad.BurningSlash.New
+  nameWithType: BurningSlash.BurningSlash
+  nameWithType.vb: BurningSlash.New
+- uid: AshesOfVelsingrad.BurningSlash.Use(AshesOfVelsingrad.Systems.UnitSystem,System.Collections.Generic.List{AshesOfVelsingrad.Systems.UnitSystem},AshesOfVelsingrad.Systems.MapSystem)
+  name: Use(UnitSystem, List<UnitSystem>, MapSystem?)
+  href: api/AshesOfVelsingrad.BurningSlash.html#AshesOfVelsingrad_BurningSlash_Use_AshesOfVelsingrad_Systems_UnitSystem_System_Collections_Generic_List_AshesOfVelsingrad_Systems_UnitSystem__AshesOfVelsingrad_Systems_MapSystem_
+  commentId: M:AshesOfVelsingrad.BurningSlash.Use(AshesOfVelsingrad.Systems.UnitSystem,System.Collections.Generic.List{AshesOfVelsingrad.Systems.UnitSystem},AshesOfVelsingrad.Systems.MapSystem)
+  name.vb: Use(UnitSystem, List(Of UnitSystem), MapSystem)
+  fullName: AshesOfVelsingrad.BurningSlash.Use(AshesOfVelsingrad.Systems.UnitSystem, System.Collections.Generic.List<AshesOfVelsingrad.Systems.UnitSystem>, AshesOfVelsingrad.Systems.MapSystem?)
+  fullName.vb: AshesOfVelsingrad.BurningSlash.Use(AshesOfVelsingrad.Systems.UnitSystem, System.Collections.Generic.List(Of AshesOfVelsingrad.Systems.UnitSystem), AshesOfVelsingrad.Systems.MapSystem)
+  nameWithType: BurningSlash.Use(UnitSystem, List<UnitSystem>, MapSystem?)
+  nameWithType.vb: BurningSlash.Use(UnitSystem, List(Of UnitSystem), MapSystem)
+- uid: AshesOfVelsingrad.BurningSlash.Use*
+  name: Use
+  href: api/AshesOfVelsingrad.BurningSlash.html#AshesOfVelsingrad_BurningSlash_Use_
+  commentId: Overload:AshesOfVelsingrad.BurningSlash.Use
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.BurningSlash.Use
+  nameWithType: BurningSlash.Use
+- uid: AshesOfVelsingrad.CircularStrike
+  name: CircularStrike
+  href: api/AshesOfVelsingrad.CircularStrike.html
+  commentId: T:AshesOfVelsingrad.CircularStrike
+  fullName: AshesOfVelsingrad.CircularStrike
+  nameWithType: CircularStrike
+- uid: AshesOfVelsingrad.CircularStrike.#ctor
+  name: CircularStrike()
+  href: api/AshesOfVelsingrad.CircularStrike.html#AshesOfVelsingrad_CircularStrike__ctor
+  commentId: M:AshesOfVelsingrad.CircularStrike.#ctor
+  name.vb: New()
+  fullName: AshesOfVelsingrad.CircularStrike.CircularStrike()
+  fullName.vb: AshesOfVelsingrad.CircularStrike.New()
+  nameWithType: CircularStrike.CircularStrike()
+  nameWithType.vb: CircularStrike.New()
+- uid: AshesOfVelsingrad.CircularStrike.#ctor*
+  name: CircularStrike
+  href: api/AshesOfVelsingrad.CircularStrike.html#AshesOfVelsingrad_CircularStrike__ctor_
+  commentId: Overload:AshesOfVelsingrad.CircularStrike.#ctor
+  isSpec: "True"
+  name.vb: New
+  fullName: AshesOfVelsingrad.CircularStrike.CircularStrike
+  fullName.vb: AshesOfVelsingrad.CircularStrike.New
+  nameWithType: CircularStrike.CircularStrike
+  nameWithType.vb: CircularStrike.New
+- uid: AshesOfVelsingrad.CircularStrike.Use(AshesOfVelsingrad.Systems.UnitSystem,System.Collections.Generic.List{AshesOfVelsingrad.Systems.UnitSystem},AshesOfVelsingrad.Systems.MapSystem)
+  name: Use(UnitSystem, List<UnitSystem>, MapSystem?)
+  href: api/AshesOfVelsingrad.CircularStrike.html#AshesOfVelsingrad_CircularStrike_Use_AshesOfVelsingrad_Systems_UnitSystem_System_Collections_Generic_List_AshesOfVelsingrad_Systems_UnitSystem__AshesOfVelsingrad_Systems_MapSystem_
+  commentId: M:AshesOfVelsingrad.CircularStrike.Use(AshesOfVelsingrad.Systems.UnitSystem,System.Collections.Generic.List{AshesOfVelsingrad.Systems.UnitSystem},AshesOfVelsingrad.Systems.MapSystem)
+  name.vb: Use(UnitSystem, List(Of UnitSystem), MapSystem)
+  fullName: AshesOfVelsingrad.CircularStrike.Use(AshesOfVelsingrad.Systems.UnitSystem, System.Collections.Generic.List<AshesOfVelsingrad.Systems.UnitSystem>, AshesOfVelsingrad.Systems.MapSystem?)
+  fullName.vb: AshesOfVelsingrad.CircularStrike.Use(AshesOfVelsingrad.Systems.UnitSystem, System.Collections.Generic.List(Of AshesOfVelsingrad.Systems.UnitSystem), AshesOfVelsingrad.Systems.MapSystem)
+  nameWithType: CircularStrike.Use(UnitSystem, List<UnitSystem>, MapSystem?)
+  nameWithType.vb: CircularStrike.Use(UnitSystem, List(Of UnitSystem), MapSystem)
+- uid: AshesOfVelsingrad.CircularStrike.Use*
+  name: Use
+  href: api/AshesOfVelsingrad.CircularStrike.html#AshesOfVelsingrad_CircularStrike_Use_
+  commentId: Overload:AshesOfVelsingrad.CircularStrike.Use
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.CircularStrike.Use
+  nameWithType: CircularStrike.Use
+- uid: AshesOfVelsingrad.CleansingLight
+  name: CleansingLight
+  href: api/AshesOfVelsingrad.CleansingLight.html
+  commentId: T:AshesOfVelsingrad.CleansingLight
+  fullName: AshesOfVelsingrad.CleansingLight
+  nameWithType: CleansingLight
+- uid: AshesOfVelsingrad.CleansingLight.#ctor
+  name: CleansingLight()
+  href: api/AshesOfVelsingrad.CleansingLight.html#AshesOfVelsingrad_CleansingLight__ctor
+  commentId: M:AshesOfVelsingrad.CleansingLight.#ctor
+  name.vb: New()
+  fullName: AshesOfVelsingrad.CleansingLight.CleansingLight()
+  fullName.vb: AshesOfVelsingrad.CleansingLight.New()
+  nameWithType: CleansingLight.CleansingLight()
+  nameWithType.vb: CleansingLight.New()
+- uid: AshesOfVelsingrad.CleansingLight.#ctor*
+  name: CleansingLight
+  href: api/AshesOfVelsingrad.CleansingLight.html#AshesOfVelsingrad_CleansingLight__ctor_
+  commentId: Overload:AshesOfVelsingrad.CleansingLight.#ctor
+  isSpec: "True"
+  name.vb: New
+  fullName: AshesOfVelsingrad.CleansingLight.CleansingLight
+  fullName.vb: AshesOfVelsingrad.CleansingLight.New
+  nameWithType: CleansingLight.CleansingLight
+  nameWithType.vb: CleansingLight.New
+- uid: AshesOfVelsingrad.CleansingLight.Use(AshesOfVelsingrad.Systems.UnitSystem,System.Collections.Generic.List{AshesOfVelsingrad.Systems.UnitSystem},AshesOfVelsingrad.Systems.MapSystem)
+  name: Use(UnitSystem, List<UnitSystem>, MapSystem?)
+  href: api/AshesOfVelsingrad.CleansingLight.html#AshesOfVelsingrad_CleansingLight_Use_AshesOfVelsingrad_Systems_UnitSystem_System_Collections_Generic_List_AshesOfVelsingrad_Systems_UnitSystem__AshesOfVelsingrad_Systems_MapSystem_
+  commentId: M:AshesOfVelsingrad.CleansingLight.Use(AshesOfVelsingrad.Systems.UnitSystem,System.Collections.Generic.List{AshesOfVelsingrad.Systems.UnitSystem},AshesOfVelsingrad.Systems.MapSystem)
+  name.vb: Use(UnitSystem, List(Of UnitSystem), MapSystem)
+  fullName: AshesOfVelsingrad.CleansingLight.Use(AshesOfVelsingrad.Systems.UnitSystem, System.Collections.Generic.List<AshesOfVelsingrad.Systems.UnitSystem>, AshesOfVelsingrad.Systems.MapSystem?)
+  fullName.vb: AshesOfVelsingrad.CleansingLight.Use(AshesOfVelsingrad.Systems.UnitSystem, System.Collections.Generic.List(Of AshesOfVelsingrad.Systems.UnitSystem), AshesOfVelsingrad.Systems.MapSystem)
+  nameWithType: CleansingLight.Use(UnitSystem, List<UnitSystem>, MapSystem?)
+  nameWithType.vb: CleansingLight.Use(UnitSystem, List(Of UnitSystem), MapSystem)
+- uid: AshesOfVelsingrad.CleansingLight.Use*
+  name: Use
+  href: api/AshesOfVelsingrad.CleansingLight.html#AshesOfVelsingrad_CleansingLight_Use_
+  commentId: Overload:AshesOfVelsingrad.CleansingLight.Use
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.CleansingLight.Use
+  nameWithType: CleansingLight.Use
+- uid: AshesOfVelsingrad.CounterStance
+  name: CounterStance
+  href: api/AshesOfVelsingrad.CounterStance.html
+  commentId: T:AshesOfVelsingrad.CounterStance
+  fullName: AshesOfVelsingrad.CounterStance
+  nameWithType: CounterStance
+- uid: AshesOfVelsingrad.CounterStance.#ctor
+  name: CounterStance()
+  href: api/AshesOfVelsingrad.CounterStance.html#AshesOfVelsingrad_CounterStance__ctor
+  commentId: M:AshesOfVelsingrad.CounterStance.#ctor
+  name.vb: New()
+  fullName: AshesOfVelsingrad.CounterStance.CounterStance()
+  fullName.vb: AshesOfVelsingrad.CounterStance.New()
+  nameWithType: CounterStance.CounterStance()
+  nameWithType.vb: CounterStance.New()
+- uid: AshesOfVelsingrad.CounterStance.#ctor*
+  name: CounterStance
+  href: api/AshesOfVelsingrad.CounterStance.html#AshesOfVelsingrad_CounterStance__ctor_
+  commentId: Overload:AshesOfVelsingrad.CounterStance.#ctor
+  isSpec: "True"
+  name.vb: New
+  fullName: AshesOfVelsingrad.CounterStance.CounterStance
+  fullName.vb: AshesOfVelsingrad.CounterStance.New
+  nameWithType: CounterStance.CounterStance
+  nameWithType.vb: CounterStance.New
+- uid: AshesOfVelsingrad.CounterStance.Use(AshesOfVelsingrad.Systems.UnitSystem,System.Collections.Generic.List{AshesOfVelsingrad.Systems.UnitSystem},AshesOfVelsingrad.Systems.MapSystem)
+  name: Use(UnitSystem, List<UnitSystem>, MapSystem?)
+  href: api/AshesOfVelsingrad.CounterStance.html#AshesOfVelsingrad_CounterStance_Use_AshesOfVelsingrad_Systems_UnitSystem_System_Collections_Generic_List_AshesOfVelsingrad_Systems_UnitSystem__AshesOfVelsingrad_Systems_MapSystem_
+  commentId: M:AshesOfVelsingrad.CounterStance.Use(AshesOfVelsingrad.Systems.UnitSystem,System.Collections.Generic.List{AshesOfVelsingrad.Systems.UnitSystem},AshesOfVelsingrad.Systems.MapSystem)
+  name.vb: Use(UnitSystem, List(Of UnitSystem), MapSystem)
+  fullName: AshesOfVelsingrad.CounterStance.Use(AshesOfVelsingrad.Systems.UnitSystem, System.Collections.Generic.List<AshesOfVelsingrad.Systems.UnitSystem>, AshesOfVelsingrad.Systems.MapSystem?)
+  fullName.vb: AshesOfVelsingrad.CounterStance.Use(AshesOfVelsingrad.Systems.UnitSystem, System.Collections.Generic.List(Of AshesOfVelsingrad.Systems.UnitSystem), AshesOfVelsingrad.Systems.MapSystem)
+  nameWithType: CounterStance.Use(UnitSystem, List<UnitSystem>, MapSystem?)
+  nameWithType.vb: CounterStance.Use(UnitSystem, List(Of UnitSystem), MapSystem)
+- uid: AshesOfVelsingrad.CounterStance.Use*
+  name: Use
+  href: api/AshesOfVelsingrad.CounterStance.html#AshesOfVelsingrad_CounterStance_Use_
+  commentId: Overload:AshesOfVelsingrad.CounterStance.Use
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.CounterStance.Use
+  nameWithType: CounterStance.Use
+- uid: AshesOfVelsingrad.CriticalStrike
+  name: CriticalStrike
+  href: api/AshesOfVelsingrad.CriticalStrike.html
+  commentId: T:AshesOfVelsingrad.CriticalStrike
+  fullName: AshesOfVelsingrad.CriticalStrike
+  nameWithType: CriticalStrike
+- uid: AshesOfVelsingrad.CriticalStrike.#ctor
+  name: CriticalStrike()
+  href: api/AshesOfVelsingrad.CriticalStrike.html#AshesOfVelsingrad_CriticalStrike__ctor
+  commentId: M:AshesOfVelsingrad.CriticalStrike.#ctor
+  name.vb: New()
+  fullName: AshesOfVelsingrad.CriticalStrike.CriticalStrike()
+  fullName.vb: AshesOfVelsingrad.CriticalStrike.New()
+  nameWithType: CriticalStrike.CriticalStrike()
+  nameWithType.vb: CriticalStrike.New()
+- uid: AshesOfVelsingrad.CriticalStrike.#ctor*
+  name: CriticalStrike
+  href: api/AshesOfVelsingrad.CriticalStrike.html#AshesOfVelsingrad_CriticalStrike__ctor_
+  commentId: Overload:AshesOfVelsingrad.CriticalStrike.#ctor
+  isSpec: "True"
+  name.vb: New
+  fullName: AshesOfVelsingrad.CriticalStrike.CriticalStrike
+  fullName.vb: AshesOfVelsingrad.CriticalStrike.New
+  nameWithType: CriticalStrike.CriticalStrike
+  nameWithType.vb: CriticalStrike.New
+- uid: AshesOfVelsingrad.CriticalStrike.Use(AshesOfVelsingrad.Systems.UnitSystem,System.Collections.Generic.List{AshesOfVelsingrad.Systems.UnitSystem},AshesOfVelsingrad.Systems.MapSystem)
+  name: Use(UnitSystem, List<UnitSystem>, MapSystem?)
+  href: api/AshesOfVelsingrad.CriticalStrike.html#AshesOfVelsingrad_CriticalStrike_Use_AshesOfVelsingrad_Systems_UnitSystem_System_Collections_Generic_List_AshesOfVelsingrad_Systems_UnitSystem__AshesOfVelsingrad_Systems_MapSystem_
+  commentId: M:AshesOfVelsingrad.CriticalStrike.Use(AshesOfVelsingrad.Systems.UnitSystem,System.Collections.Generic.List{AshesOfVelsingrad.Systems.UnitSystem},AshesOfVelsingrad.Systems.MapSystem)
+  name.vb: Use(UnitSystem, List(Of UnitSystem), MapSystem)
+  fullName: AshesOfVelsingrad.CriticalStrike.Use(AshesOfVelsingrad.Systems.UnitSystem, System.Collections.Generic.List<AshesOfVelsingrad.Systems.UnitSystem>, AshesOfVelsingrad.Systems.MapSystem?)
+  fullName.vb: AshesOfVelsingrad.CriticalStrike.Use(AshesOfVelsingrad.Systems.UnitSystem, System.Collections.Generic.List(Of AshesOfVelsingrad.Systems.UnitSystem), AshesOfVelsingrad.Systems.MapSystem)
+  nameWithType: CriticalStrike.Use(UnitSystem, List<UnitSystem>, MapSystem?)
+  nameWithType.vb: CriticalStrike.Use(UnitSystem, List(Of UnitSystem), MapSystem)
+- uid: AshesOfVelsingrad.CriticalStrike.Use*
+  name: Use
+  href: api/AshesOfVelsingrad.CriticalStrike.html#AshesOfVelsingrad_CriticalStrike_Use_
+  commentId: Overload:AshesOfVelsingrad.CriticalStrike.Use
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.CriticalStrike.Use
+  nameWithType: CriticalStrike.Use
+- uid: AshesOfVelsingrad.CrushingStrike
+  name: CrushingStrike
+  href: api/AshesOfVelsingrad.CrushingStrike.html
+  commentId: T:AshesOfVelsingrad.CrushingStrike
+  fullName: AshesOfVelsingrad.CrushingStrike
+  nameWithType: CrushingStrike
+- uid: AshesOfVelsingrad.CrushingStrike.#ctor
+  name: CrushingStrike()
+  href: api/AshesOfVelsingrad.CrushingStrike.html#AshesOfVelsingrad_CrushingStrike__ctor
+  commentId: M:AshesOfVelsingrad.CrushingStrike.#ctor
+  name.vb: New()
+  fullName: AshesOfVelsingrad.CrushingStrike.CrushingStrike()
+  fullName.vb: AshesOfVelsingrad.CrushingStrike.New()
+  nameWithType: CrushingStrike.CrushingStrike()
+  nameWithType.vb: CrushingStrike.New()
+- uid: AshesOfVelsingrad.CrushingStrike.#ctor*
+  name: CrushingStrike
+  href: api/AshesOfVelsingrad.CrushingStrike.html#AshesOfVelsingrad_CrushingStrike__ctor_
+  commentId: Overload:AshesOfVelsingrad.CrushingStrike.#ctor
+  isSpec: "True"
+  name.vb: New
+  fullName: AshesOfVelsingrad.CrushingStrike.CrushingStrike
+  fullName.vb: AshesOfVelsingrad.CrushingStrike.New
+  nameWithType: CrushingStrike.CrushingStrike
+  nameWithType.vb: CrushingStrike.New
+- uid: AshesOfVelsingrad.CrushingStrike.Use(AshesOfVelsingrad.Systems.UnitSystem,System.Collections.Generic.List{AshesOfVelsingrad.Systems.UnitSystem},AshesOfVelsingrad.Systems.MapSystem)
+  name: Use(UnitSystem, List<UnitSystem>, MapSystem?)
+  href: api/AshesOfVelsingrad.CrushingStrike.html#AshesOfVelsingrad_CrushingStrike_Use_AshesOfVelsingrad_Systems_UnitSystem_System_Collections_Generic_List_AshesOfVelsingrad_Systems_UnitSystem__AshesOfVelsingrad_Systems_MapSystem_
+  commentId: M:AshesOfVelsingrad.CrushingStrike.Use(AshesOfVelsingrad.Systems.UnitSystem,System.Collections.Generic.List{AshesOfVelsingrad.Systems.UnitSystem},AshesOfVelsingrad.Systems.MapSystem)
+  name.vb: Use(UnitSystem, List(Of UnitSystem), MapSystem)
+  fullName: AshesOfVelsingrad.CrushingStrike.Use(AshesOfVelsingrad.Systems.UnitSystem, System.Collections.Generic.List<AshesOfVelsingrad.Systems.UnitSystem>, AshesOfVelsingrad.Systems.MapSystem?)
+  fullName.vb: AshesOfVelsingrad.CrushingStrike.Use(AshesOfVelsingrad.Systems.UnitSystem, System.Collections.Generic.List(Of AshesOfVelsingrad.Systems.UnitSystem), AshesOfVelsingrad.Systems.MapSystem)
+  nameWithType: CrushingStrike.Use(UnitSystem, List<UnitSystem>, MapSystem?)
+  nameWithType.vb: CrushingStrike.Use(UnitSystem, List(Of UnitSystem), MapSystem)
+- uid: AshesOfVelsingrad.CrushingStrike.Use*
+  name: Use
+  href: api/AshesOfVelsingrad.CrushingStrike.html#AshesOfVelsingrad_CrushingStrike_Use_
+  commentId: Overload:AshesOfVelsingrad.CrushingStrike.Use
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.CrushingStrike.Use
+  nameWithType: CrushingStrike.Use
 - uid: AshesOfVelsingrad.Data
   name: AshesOfVelsingrad.Data
   href: api/AshesOfVelsingrad.Data.html
@@ -886,57 +1274,47 @@ references:
   isSpec: "True"
   fullName: AshesOfVelsingrad.Data.Stun.OnRemove
   nameWithType: Stun.OnRemove
-- uid: AshesOfVelsingrad.Enemy1Data
-  name: Enemy1Data
-  href: api/AshesOfVelsingrad.Enemy1Data.html
-  commentId: T:AshesOfVelsingrad.Enemy1Data
-  fullName: AshesOfVelsingrad.Enemy1Data
-  nameWithType: Enemy1Data
-- uid: AshesOfVelsingrad.Enemy1Data.Initialize
-  name: Initialize()
-  href: api/AshesOfVelsingrad.Enemy1Data.html#AshesOfVelsingrad_Enemy1Data_Initialize
-  commentId: M:AshesOfVelsingrad.Enemy1Data.Initialize
-  fullName: AshesOfVelsingrad.Enemy1Data.Initialize()
-  nameWithType: Enemy1Data.Initialize()
-- uid: AshesOfVelsingrad.Enemy1Data.Initialize*
-  name: Initialize
-  href: api/AshesOfVelsingrad.Enemy1Data.html#AshesOfVelsingrad_Enemy1Data_Initialize_
-  commentId: Overload:AshesOfVelsingrad.Enemy1Data.Initialize
+- uid: AshesOfVelsingrad.DivinePrayer
+  name: DivinePrayer
+  href: api/AshesOfVelsingrad.DivinePrayer.html
+  commentId: T:AshesOfVelsingrad.DivinePrayer
+  fullName: AshesOfVelsingrad.DivinePrayer
+  nameWithType: DivinePrayer
+- uid: AshesOfVelsingrad.DivinePrayer.#ctor
+  name: DivinePrayer()
+  href: api/AshesOfVelsingrad.DivinePrayer.html#AshesOfVelsingrad_DivinePrayer__ctor
+  commentId: M:AshesOfVelsingrad.DivinePrayer.#ctor
+  name.vb: New()
+  fullName: AshesOfVelsingrad.DivinePrayer.DivinePrayer()
+  fullName.vb: AshesOfVelsingrad.DivinePrayer.New()
+  nameWithType: DivinePrayer.DivinePrayer()
+  nameWithType.vb: DivinePrayer.New()
+- uid: AshesOfVelsingrad.DivinePrayer.#ctor*
+  name: DivinePrayer
+  href: api/AshesOfVelsingrad.DivinePrayer.html#AshesOfVelsingrad_DivinePrayer__ctor_
+  commentId: Overload:AshesOfVelsingrad.DivinePrayer.#ctor
   isSpec: "True"
-  fullName: AshesOfVelsingrad.Enemy1Data.Initialize
-  nameWithType: Enemy1Data.Initialize
-- uid: AshesOfVelsingrad.Enemy1Data.Play(System.Collections.Generic.List{AshesOfVelsingrad.Systems.UnitSystem},AshesOfVelsingrad.Systems.MapSystem,AshesOfVelsingrad.Systems.SkillSystem)
-  name: Play(List<UnitSystem>, MapSystem?, SkillSystem)
-  href: api/AshesOfVelsingrad.Enemy1Data.html#AshesOfVelsingrad_Enemy1Data_Play_System_Collections_Generic_List_AshesOfVelsingrad_Systems_UnitSystem__AshesOfVelsingrad_Systems_MapSystem_AshesOfVelsingrad_Systems_SkillSystem_
-  commentId: M:AshesOfVelsingrad.Enemy1Data.Play(System.Collections.Generic.List{AshesOfVelsingrad.Systems.UnitSystem},AshesOfVelsingrad.Systems.MapSystem,AshesOfVelsingrad.Systems.SkillSystem)
-  name.vb: Play(List(Of UnitSystem), MapSystem, SkillSystem)
-  fullName: AshesOfVelsingrad.Enemy1Data.Play(System.Collections.Generic.List<AshesOfVelsingrad.Systems.UnitSystem>, AshesOfVelsingrad.Systems.MapSystem?, AshesOfVelsingrad.Systems.SkillSystem)
-  fullName.vb: AshesOfVelsingrad.Enemy1Data.Play(System.Collections.Generic.List(Of AshesOfVelsingrad.Systems.UnitSystem), AshesOfVelsingrad.Systems.MapSystem, AshesOfVelsingrad.Systems.SkillSystem)
-  nameWithType: Enemy1Data.Play(List<UnitSystem>, MapSystem?, SkillSystem)
-  nameWithType.vb: Enemy1Data.Play(List(Of UnitSystem), MapSystem, SkillSystem)
-- uid: AshesOfVelsingrad.Enemy1Data.Play*
-  name: Play
-  href: api/AshesOfVelsingrad.Enemy1Data.html#AshesOfVelsingrad_Enemy1Data_Play_
-  commentId: Overload:AshesOfVelsingrad.Enemy1Data.Play
+  name.vb: New
+  fullName: AshesOfVelsingrad.DivinePrayer.DivinePrayer
+  fullName.vb: AshesOfVelsingrad.DivinePrayer.New
+  nameWithType: DivinePrayer.DivinePrayer
+  nameWithType.vb: DivinePrayer.New
+- uid: AshesOfVelsingrad.DivinePrayer.Use(AshesOfVelsingrad.Systems.UnitSystem,System.Collections.Generic.List{AshesOfVelsingrad.Systems.UnitSystem},AshesOfVelsingrad.Systems.MapSystem)
+  name: Use(UnitSystem, List<UnitSystem>, MapSystem?)
+  href: api/AshesOfVelsingrad.DivinePrayer.html#AshesOfVelsingrad_DivinePrayer_Use_AshesOfVelsingrad_Systems_UnitSystem_System_Collections_Generic_List_AshesOfVelsingrad_Systems_UnitSystem__AshesOfVelsingrad_Systems_MapSystem_
+  commentId: M:AshesOfVelsingrad.DivinePrayer.Use(AshesOfVelsingrad.Systems.UnitSystem,System.Collections.Generic.List{AshesOfVelsingrad.Systems.UnitSystem},AshesOfVelsingrad.Systems.MapSystem)
+  name.vb: Use(UnitSystem, List(Of UnitSystem), MapSystem)
+  fullName: AshesOfVelsingrad.DivinePrayer.Use(AshesOfVelsingrad.Systems.UnitSystem, System.Collections.Generic.List<AshesOfVelsingrad.Systems.UnitSystem>, AshesOfVelsingrad.Systems.MapSystem?)
+  fullName.vb: AshesOfVelsingrad.DivinePrayer.Use(AshesOfVelsingrad.Systems.UnitSystem, System.Collections.Generic.List(Of AshesOfVelsingrad.Systems.UnitSystem), AshesOfVelsingrad.Systems.MapSystem)
+  nameWithType: DivinePrayer.Use(UnitSystem, List<UnitSystem>, MapSystem?)
+  nameWithType.vb: DivinePrayer.Use(UnitSystem, List(Of UnitSystem), MapSystem)
+- uid: AshesOfVelsingrad.DivinePrayer.Use*
+  name: Use
+  href: api/AshesOfVelsingrad.DivinePrayer.html#AshesOfVelsingrad_DivinePrayer_Use_
+  commentId: Overload:AshesOfVelsingrad.DivinePrayer.Use
   isSpec: "True"
-  fullName: AshesOfVelsingrad.Enemy1Data.Play
-  nameWithType: Enemy1Data.Play
-- uid: AshesOfVelsingrad.Enemy1Data.TakeDamage(System.Single)
-  name: TakeDamage(float)
-  href: api/AshesOfVelsingrad.Enemy1Data.html#AshesOfVelsingrad_Enemy1Data_TakeDamage_System_Single_
-  commentId: M:AshesOfVelsingrad.Enemy1Data.TakeDamage(System.Single)
-  name.vb: TakeDamage(Single)
-  fullName: AshesOfVelsingrad.Enemy1Data.TakeDamage(float)
-  fullName.vb: AshesOfVelsingrad.Enemy1Data.TakeDamage(Single)
-  nameWithType: Enemy1Data.TakeDamage(float)
-  nameWithType.vb: Enemy1Data.TakeDamage(Single)
-- uid: AshesOfVelsingrad.Enemy1Data.TakeDamage*
-  name: TakeDamage
-  href: api/AshesOfVelsingrad.Enemy1Data.html#AshesOfVelsingrad_Enemy1Data_TakeDamage_
-  commentId: Overload:AshesOfVelsingrad.Enemy1Data.TakeDamage
-  isSpec: "True"
-  fullName: AshesOfVelsingrad.Enemy1Data.TakeDamage
-  nameWithType: Enemy1Data.TakeDamage
+  fullName: AshesOfVelsingrad.DivinePrayer.Use
+  nameWithType: DivinePrayer.Use
 - uid: AshesOfVelsingrad.EnemyArcher
   name: EnemyArcher
   href: api/AshesOfVelsingrad.EnemyArcher.html
@@ -956,22 +1334,489 @@ references:
   isSpec: "True"
   fullName: AshesOfVelsingrad.EnemyArcher.Initialize
   nameWithType: EnemyArcher.Initialize
-- uid: AshesOfVelsingrad.EnemyArcher.TakeDamage(System.Single)
-  name: TakeDamage(float)
-  href: api/AshesOfVelsingrad.EnemyArcher.html#AshesOfVelsingrad_EnemyArcher_TakeDamage_System_Single_
-  commentId: M:AshesOfVelsingrad.EnemyArcher.TakeDamage(System.Single)
-  name.vb: TakeDamage(Single)
-  fullName: AshesOfVelsingrad.EnemyArcher.TakeDamage(float)
-  fullName.vb: AshesOfVelsingrad.EnemyArcher.TakeDamage(Single)
-  nameWithType: EnemyArcher.TakeDamage(float)
-  nameWithType.vb: EnemyArcher.TakeDamage(Single)
-- uid: AshesOfVelsingrad.EnemyArcher.TakeDamage*
-  name: TakeDamage
-  href: api/AshesOfVelsingrad.EnemyArcher.html#AshesOfVelsingrad_EnemyArcher_TakeDamage_
-  commentId: Overload:AshesOfVelsingrad.EnemyArcher.TakeDamage
+- uid: AshesOfVelsingrad.EnemyAssassin
+  name: EnemyAssassin
+  href: api/AshesOfVelsingrad.EnemyAssassin.html
+  commentId: T:AshesOfVelsingrad.EnemyAssassin
+  fullName: AshesOfVelsingrad.EnemyAssassin
+  nameWithType: EnemyAssassin
+- uid: AshesOfVelsingrad.EnemyAssassin.Initialize
+  name: Initialize()
+  href: api/AshesOfVelsingrad.EnemyAssassin.html#AshesOfVelsingrad_EnemyAssassin_Initialize
+  commentId: M:AshesOfVelsingrad.EnemyAssassin.Initialize
+  fullName: AshesOfVelsingrad.EnemyAssassin.Initialize()
+  nameWithType: EnemyAssassin.Initialize()
+- uid: AshesOfVelsingrad.EnemyAssassin.Initialize*
+  name: Initialize
+  href: api/AshesOfVelsingrad.EnemyAssassin.html#AshesOfVelsingrad_EnemyAssassin_Initialize_
+  commentId: Overload:AshesOfVelsingrad.EnemyAssassin.Initialize
   isSpec: "True"
-  fullName: AshesOfVelsingrad.EnemyArcher.TakeDamage
-  nameWithType: EnemyArcher.TakeDamage
+  fullName: AshesOfVelsingrad.EnemyAssassin.Initialize
+  nameWithType: EnemyAssassin.Initialize
+- uid: AshesOfVelsingrad.EnemyBurningSlash
+  name: EnemyBurningSlash
+  href: api/AshesOfVelsingrad.EnemyBurningSlash.html
+  commentId: T:AshesOfVelsingrad.EnemyBurningSlash
+  fullName: AshesOfVelsingrad.EnemyBurningSlash
+  nameWithType: EnemyBurningSlash
+- uid: AshesOfVelsingrad.EnemyBurningSlash.#ctor
+  name: EnemyBurningSlash()
+  href: api/AshesOfVelsingrad.EnemyBurningSlash.html#AshesOfVelsingrad_EnemyBurningSlash__ctor
+  commentId: M:AshesOfVelsingrad.EnemyBurningSlash.#ctor
+  name.vb: New()
+  fullName: AshesOfVelsingrad.EnemyBurningSlash.EnemyBurningSlash()
+  fullName.vb: AshesOfVelsingrad.EnemyBurningSlash.New()
+  nameWithType: EnemyBurningSlash.EnemyBurningSlash()
+  nameWithType.vb: EnemyBurningSlash.New()
+- uid: AshesOfVelsingrad.EnemyBurningSlash.#ctor*
+  name: EnemyBurningSlash
+  href: api/AshesOfVelsingrad.EnemyBurningSlash.html#AshesOfVelsingrad_EnemyBurningSlash__ctor_
+  commentId: Overload:AshesOfVelsingrad.EnemyBurningSlash.#ctor
+  isSpec: "True"
+  name.vb: New
+  fullName: AshesOfVelsingrad.EnemyBurningSlash.EnemyBurningSlash
+  fullName.vb: AshesOfVelsingrad.EnemyBurningSlash.New
+  nameWithType: EnemyBurningSlash.EnemyBurningSlash
+  nameWithType.vb: EnemyBurningSlash.New
+- uid: AshesOfVelsingrad.EnemyBurningSlash.Use(AshesOfVelsingrad.Systems.UnitSystem,System.Collections.Generic.List{AshesOfVelsingrad.Systems.UnitSystem},AshesOfVelsingrad.Systems.MapSystem)
+  name: Use(UnitSystem, List<UnitSystem>, MapSystem?)
+  href: api/AshesOfVelsingrad.EnemyBurningSlash.html#AshesOfVelsingrad_EnemyBurningSlash_Use_AshesOfVelsingrad_Systems_UnitSystem_System_Collections_Generic_List_AshesOfVelsingrad_Systems_UnitSystem__AshesOfVelsingrad_Systems_MapSystem_
+  commentId: M:AshesOfVelsingrad.EnemyBurningSlash.Use(AshesOfVelsingrad.Systems.UnitSystem,System.Collections.Generic.List{AshesOfVelsingrad.Systems.UnitSystem},AshesOfVelsingrad.Systems.MapSystem)
+  name.vb: Use(UnitSystem, List(Of UnitSystem), MapSystem)
+  fullName: AshesOfVelsingrad.EnemyBurningSlash.Use(AshesOfVelsingrad.Systems.UnitSystem, System.Collections.Generic.List<AshesOfVelsingrad.Systems.UnitSystem>, AshesOfVelsingrad.Systems.MapSystem?)
+  fullName.vb: AshesOfVelsingrad.EnemyBurningSlash.Use(AshesOfVelsingrad.Systems.UnitSystem, System.Collections.Generic.List(Of AshesOfVelsingrad.Systems.UnitSystem), AshesOfVelsingrad.Systems.MapSystem)
+  nameWithType: EnemyBurningSlash.Use(UnitSystem, List<UnitSystem>, MapSystem?)
+  nameWithType.vb: EnemyBurningSlash.Use(UnitSystem, List(Of UnitSystem), MapSystem)
+- uid: AshesOfVelsingrad.EnemyBurningSlash.Use*
+  name: Use
+  href: api/AshesOfVelsingrad.EnemyBurningSlash.html#AshesOfVelsingrad_EnemyBurningSlash_Use_
+  commentId: Overload:AshesOfVelsingrad.EnemyBurningSlash.Use
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.EnemyBurningSlash.Use
+  nameWithType: EnemyBurningSlash.Use
+- uid: AshesOfVelsingrad.EnemyFighter
+  name: EnemyFighter
+  href: api/AshesOfVelsingrad.EnemyFighter.html
+  commentId: T:AshesOfVelsingrad.EnemyFighter
+  fullName: AshesOfVelsingrad.EnemyFighter
+  nameWithType: EnemyFighter
+- uid: AshesOfVelsingrad.EnemyFighter.Initialize
+  name: Initialize()
+  href: api/AshesOfVelsingrad.EnemyFighter.html#AshesOfVelsingrad_EnemyFighter_Initialize
+  commentId: M:AshesOfVelsingrad.EnemyFighter.Initialize
+  fullName: AshesOfVelsingrad.EnemyFighter.Initialize()
+  nameWithType: EnemyFighter.Initialize()
+- uid: AshesOfVelsingrad.EnemyFighter.Initialize*
+  name: Initialize
+  href: api/AshesOfVelsingrad.EnemyFighter.html#AshesOfVelsingrad_EnemyFighter_Initialize_
+  commentId: Overload:AshesOfVelsingrad.EnemyFighter.Initialize
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.EnemyFighter.Initialize
+  nameWithType: EnemyFighter.Initialize
+- uid: AshesOfVelsingrad.EnemyHealAlly
+  name: EnemyHealAlly
+  href: api/AshesOfVelsingrad.EnemyHealAlly.html
+  commentId: T:AshesOfVelsingrad.EnemyHealAlly
+  fullName: AshesOfVelsingrad.EnemyHealAlly
+  nameWithType: EnemyHealAlly
+- uid: AshesOfVelsingrad.EnemyHealAlly.#ctor
+  name: EnemyHealAlly()
+  href: api/AshesOfVelsingrad.EnemyHealAlly.html#AshesOfVelsingrad_EnemyHealAlly__ctor
+  commentId: M:AshesOfVelsingrad.EnemyHealAlly.#ctor
+  name.vb: New()
+  fullName: AshesOfVelsingrad.EnemyHealAlly.EnemyHealAlly()
+  fullName.vb: AshesOfVelsingrad.EnemyHealAlly.New()
+  nameWithType: EnemyHealAlly.EnemyHealAlly()
+  nameWithType.vb: EnemyHealAlly.New()
+- uid: AshesOfVelsingrad.EnemyHealAlly.#ctor*
+  name: EnemyHealAlly
+  href: api/AshesOfVelsingrad.EnemyHealAlly.html#AshesOfVelsingrad_EnemyHealAlly__ctor_
+  commentId: Overload:AshesOfVelsingrad.EnemyHealAlly.#ctor
+  isSpec: "True"
+  name.vb: New
+  fullName: AshesOfVelsingrad.EnemyHealAlly.EnemyHealAlly
+  fullName.vb: AshesOfVelsingrad.EnemyHealAlly.New
+  nameWithType: EnemyHealAlly.EnemyHealAlly
+  nameWithType.vb: EnemyHealAlly.New
+- uid: AshesOfVelsingrad.EnemyHealAlly.Use(AshesOfVelsingrad.Systems.UnitSystem,System.Collections.Generic.List{AshesOfVelsingrad.Systems.UnitSystem},AshesOfVelsingrad.Systems.MapSystem)
+  name: Use(UnitSystem, List<UnitSystem>, MapSystem?)
+  href: api/AshesOfVelsingrad.EnemyHealAlly.html#AshesOfVelsingrad_EnemyHealAlly_Use_AshesOfVelsingrad_Systems_UnitSystem_System_Collections_Generic_List_AshesOfVelsingrad_Systems_UnitSystem__AshesOfVelsingrad_Systems_MapSystem_
+  commentId: M:AshesOfVelsingrad.EnemyHealAlly.Use(AshesOfVelsingrad.Systems.UnitSystem,System.Collections.Generic.List{AshesOfVelsingrad.Systems.UnitSystem},AshesOfVelsingrad.Systems.MapSystem)
+  name.vb: Use(UnitSystem, List(Of UnitSystem), MapSystem)
+  fullName: AshesOfVelsingrad.EnemyHealAlly.Use(AshesOfVelsingrad.Systems.UnitSystem, System.Collections.Generic.List<AshesOfVelsingrad.Systems.UnitSystem>, AshesOfVelsingrad.Systems.MapSystem?)
+  fullName.vb: AshesOfVelsingrad.EnemyHealAlly.Use(AshesOfVelsingrad.Systems.UnitSystem, System.Collections.Generic.List(Of AshesOfVelsingrad.Systems.UnitSystem), AshesOfVelsingrad.Systems.MapSystem)
+  nameWithType: EnemyHealAlly.Use(UnitSystem, List<UnitSystem>, MapSystem?)
+  nameWithType.vb: EnemyHealAlly.Use(UnitSystem, List(Of UnitSystem), MapSystem)
+- uid: AshesOfVelsingrad.EnemyHealAlly.Use*
+  name: Use
+  href: api/AshesOfVelsingrad.EnemyHealAlly.html#AshesOfVelsingrad_EnemyHealAlly_Use_
+  commentId: Overload:AshesOfVelsingrad.EnemyHealAlly.Use
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.EnemyHealAlly.Use
+  nameWithType: EnemyHealAlly.Use
+- uid: AshesOfVelsingrad.EnemyLightMage
+  name: EnemyLightMage
+  href: api/AshesOfVelsingrad.EnemyLightMage.html
+  commentId: T:AshesOfVelsingrad.EnemyLightMage
+  fullName: AshesOfVelsingrad.EnemyLightMage
+  nameWithType: EnemyLightMage
+- uid: AshesOfVelsingrad.EnemyLightMage.Initialize
+  name: Initialize()
+  href: api/AshesOfVelsingrad.EnemyLightMage.html#AshesOfVelsingrad_EnemyLightMage_Initialize
+  commentId: M:AshesOfVelsingrad.EnemyLightMage.Initialize
+  fullName: AshesOfVelsingrad.EnemyLightMage.Initialize()
+  nameWithType: EnemyLightMage.Initialize()
+- uid: AshesOfVelsingrad.EnemyLightMage.Initialize*
+  name: Initialize
+  href: api/AshesOfVelsingrad.EnemyLightMage.html#AshesOfVelsingrad_EnemyLightMage_Initialize_
+  commentId: Overload:AshesOfVelsingrad.EnemyLightMage.Initialize
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.EnemyLightMage.Initialize
+  nameWithType: EnemyLightMage.Initialize
+- uid: AshesOfVelsingrad.EnemyPoisonStrike
+  name: EnemyPoisonStrike
+  href: api/AshesOfVelsingrad.EnemyPoisonStrike.html
+  commentId: T:AshesOfVelsingrad.EnemyPoisonStrike
+  fullName: AshesOfVelsingrad.EnemyPoisonStrike
+  nameWithType: EnemyPoisonStrike
+- uid: AshesOfVelsingrad.EnemyPoisonStrike.#ctor
+  name: EnemyPoisonStrike()
+  href: api/AshesOfVelsingrad.EnemyPoisonStrike.html#AshesOfVelsingrad_EnemyPoisonStrike__ctor
+  commentId: M:AshesOfVelsingrad.EnemyPoisonStrike.#ctor
+  name.vb: New()
+  fullName: AshesOfVelsingrad.EnemyPoisonStrike.EnemyPoisonStrike()
+  fullName.vb: AshesOfVelsingrad.EnemyPoisonStrike.New()
+  nameWithType: EnemyPoisonStrike.EnemyPoisonStrike()
+  nameWithType.vb: EnemyPoisonStrike.New()
+- uid: AshesOfVelsingrad.EnemyPoisonStrike.#ctor*
+  name: EnemyPoisonStrike
+  href: api/AshesOfVelsingrad.EnemyPoisonStrike.html#AshesOfVelsingrad_EnemyPoisonStrike__ctor_
+  commentId: Overload:AshesOfVelsingrad.EnemyPoisonStrike.#ctor
+  isSpec: "True"
+  name.vb: New
+  fullName: AshesOfVelsingrad.EnemyPoisonStrike.EnemyPoisonStrike
+  fullName.vb: AshesOfVelsingrad.EnemyPoisonStrike.New
+  nameWithType: EnemyPoisonStrike.EnemyPoisonStrike
+  nameWithType.vb: EnemyPoisonStrike.New
+- uid: AshesOfVelsingrad.EnemyPoisonStrike.Use(AshesOfVelsingrad.Systems.UnitSystem,System.Collections.Generic.List{AshesOfVelsingrad.Systems.UnitSystem},AshesOfVelsingrad.Systems.MapSystem)
+  name: Use(UnitSystem, List<UnitSystem>, MapSystem?)
+  href: api/AshesOfVelsingrad.EnemyPoisonStrike.html#AshesOfVelsingrad_EnemyPoisonStrike_Use_AshesOfVelsingrad_Systems_UnitSystem_System_Collections_Generic_List_AshesOfVelsingrad_Systems_UnitSystem__AshesOfVelsingrad_Systems_MapSystem_
+  commentId: M:AshesOfVelsingrad.EnemyPoisonStrike.Use(AshesOfVelsingrad.Systems.UnitSystem,System.Collections.Generic.List{AshesOfVelsingrad.Systems.UnitSystem},AshesOfVelsingrad.Systems.MapSystem)
+  name.vb: Use(UnitSystem, List(Of UnitSystem), MapSystem)
+  fullName: AshesOfVelsingrad.EnemyPoisonStrike.Use(AshesOfVelsingrad.Systems.UnitSystem, System.Collections.Generic.List<AshesOfVelsingrad.Systems.UnitSystem>, AshesOfVelsingrad.Systems.MapSystem?)
+  fullName.vb: AshesOfVelsingrad.EnemyPoisonStrike.Use(AshesOfVelsingrad.Systems.UnitSystem, System.Collections.Generic.List(Of AshesOfVelsingrad.Systems.UnitSystem), AshesOfVelsingrad.Systems.MapSystem)
+  nameWithType: EnemyPoisonStrike.Use(UnitSystem, List<UnitSystem>, MapSystem?)
+  nameWithType.vb: EnemyPoisonStrike.Use(UnitSystem, List(Of UnitSystem), MapSystem)
+- uid: AshesOfVelsingrad.EnemyPoisonStrike.Use*
+  name: Use
+  href: api/AshesOfVelsingrad.EnemyPoisonStrike.html#AshesOfVelsingrad_EnemyPoisonStrike_Use_
+  commentId: Overload:AshesOfVelsingrad.EnemyPoisonStrike.Use
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.EnemyPoisonStrike.Use
+  nameWithType: EnemyPoisonStrike.Use
+- uid: AshesOfVelsingrad.EnemyStaggeringBlow
+  name: EnemyStaggeringBlow
+  href: api/AshesOfVelsingrad.EnemyStaggeringBlow.html
+  commentId: T:AshesOfVelsingrad.EnemyStaggeringBlow
+  fullName: AshesOfVelsingrad.EnemyStaggeringBlow
+  nameWithType: EnemyStaggeringBlow
+- uid: AshesOfVelsingrad.EnemyStaggeringBlow.#ctor
+  name: EnemyStaggeringBlow()
+  href: api/AshesOfVelsingrad.EnemyStaggeringBlow.html#AshesOfVelsingrad_EnemyStaggeringBlow__ctor
+  commentId: M:AshesOfVelsingrad.EnemyStaggeringBlow.#ctor
+  name.vb: New()
+  fullName: AshesOfVelsingrad.EnemyStaggeringBlow.EnemyStaggeringBlow()
+  fullName.vb: AshesOfVelsingrad.EnemyStaggeringBlow.New()
+  nameWithType: EnemyStaggeringBlow.EnemyStaggeringBlow()
+  nameWithType.vb: EnemyStaggeringBlow.New()
+- uid: AshesOfVelsingrad.EnemyStaggeringBlow.#ctor*
+  name: EnemyStaggeringBlow
+  href: api/AshesOfVelsingrad.EnemyStaggeringBlow.html#AshesOfVelsingrad_EnemyStaggeringBlow__ctor_
+  commentId: Overload:AshesOfVelsingrad.EnemyStaggeringBlow.#ctor
+  isSpec: "True"
+  name.vb: New
+  fullName: AshesOfVelsingrad.EnemyStaggeringBlow.EnemyStaggeringBlow
+  fullName.vb: AshesOfVelsingrad.EnemyStaggeringBlow.New
+  nameWithType: EnemyStaggeringBlow.EnemyStaggeringBlow
+  nameWithType.vb: EnemyStaggeringBlow.New
+- uid: AshesOfVelsingrad.EnemyStaggeringBlow.Use(AshesOfVelsingrad.Systems.UnitSystem,System.Collections.Generic.List{AshesOfVelsingrad.Systems.UnitSystem},AshesOfVelsingrad.Systems.MapSystem)
+  name: Use(UnitSystem, List<UnitSystem>, MapSystem?)
+  href: api/AshesOfVelsingrad.EnemyStaggeringBlow.html#AshesOfVelsingrad_EnemyStaggeringBlow_Use_AshesOfVelsingrad_Systems_UnitSystem_System_Collections_Generic_List_AshesOfVelsingrad_Systems_UnitSystem__AshesOfVelsingrad_Systems_MapSystem_
+  commentId: M:AshesOfVelsingrad.EnemyStaggeringBlow.Use(AshesOfVelsingrad.Systems.UnitSystem,System.Collections.Generic.List{AshesOfVelsingrad.Systems.UnitSystem},AshesOfVelsingrad.Systems.MapSystem)
+  name.vb: Use(UnitSystem, List(Of UnitSystem), MapSystem)
+  fullName: AshesOfVelsingrad.EnemyStaggeringBlow.Use(AshesOfVelsingrad.Systems.UnitSystem, System.Collections.Generic.List<AshesOfVelsingrad.Systems.UnitSystem>, AshesOfVelsingrad.Systems.MapSystem?)
+  fullName.vb: AshesOfVelsingrad.EnemyStaggeringBlow.Use(AshesOfVelsingrad.Systems.UnitSystem, System.Collections.Generic.List(Of AshesOfVelsingrad.Systems.UnitSystem), AshesOfVelsingrad.Systems.MapSystem)
+  nameWithType: EnemyStaggeringBlow.Use(UnitSystem, List<UnitSystem>, MapSystem?)
+  nameWithType.vb: EnemyStaggeringBlow.Use(UnitSystem, List(Of UnitSystem), MapSystem)
+- uid: AshesOfVelsingrad.EnemyStaggeringBlow.Use*
+  name: Use
+  href: api/AshesOfVelsingrad.EnemyStaggeringBlow.html#AshesOfVelsingrad_EnemyStaggeringBlow_Use_
+  commentId: Overload:AshesOfVelsingrad.EnemyStaggeringBlow.Use
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.EnemyStaggeringBlow.Use
+  nameWithType: EnemyStaggeringBlow.Use
+- uid: AshesOfVelsingrad.EnemySwordsman
+  name: EnemySwordsman
+  href: api/AshesOfVelsingrad.EnemySwordsman.html
+  commentId: T:AshesOfVelsingrad.EnemySwordsman
+  fullName: AshesOfVelsingrad.EnemySwordsman
+  nameWithType: EnemySwordsman
+- uid: AshesOfVelsingrad.EnemySwordsman.Initialize
+  name: Initialize()
+  href: api/AshesOfVelsingrad.EnemySwordsman.html#AshesOfVelsingrad_EnemySwordsman_Initialize
+  commentId: M:AshesOfVelsingrad.EnemySwordsman.Initialize
+  fullName: AshesOfVelsingrad.EnemySwordsman.Initialize()
+  nameWithType: EnemySwordsman.Initialize()
+- uid: AshesOfVelsingrad.EnemySwordsman.Initialize*
+  name: Initialize
+  href: api/AshesOfVelsingrad.EnemySwordsman.html#AshesOfVelsingrad_EnemySwordsman_Initialize_
+  commentId: Overload:AshesOfVelsingrad.EnemySwordsman.Initialize
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.EnemySwordsman.Initialize
+  nameWithType: EnemySwordsman.Initialize
+- uid: AshesOfVelsingrad.ExecutionBlade
+  name: ExecutionBlade
+  href: api/AshesOfVelsingrad.ExecutionBlade.html
+  commentId: T:AshesOfVelsingrad.ExecutionBlade
+  fullName: AshesOfVelsingrad.ExecutionBlade
+  nameWithType: ExecutionBlade
+- uid: AshesOfVelsingrad.ExecutionBlade.#ctor
+  name: ExecutionBlade()
+  href: api/AshesOfVelsingrad.ExecutionBlade.html#AshesOfVelsingrad_ExecutionBlade__ctor
+  commentId: M:AshesOfVelsingrad.ExecutionBlade.#ctor
+  name.vb: New()
+  fullName: AshesOfVelsingrad.ExecutionBlade.ExecutionBlade()
+  fullName.vb: AshesOfVelsingrad.ExecutionBlade.New()
+  nameWithType: ExecutionBlade.ExecutionBlade()
+  nameWithType.vb: ExecutionBlade.New()
+- uid: AshesOfVelsingrad.ExecutionBlade.#ctor*
+  name: ExecutionBlade
+  href: api/AshesOfVelsingrad.ExecutionBlade.html#AshesOfVelsingrad_ExecutionBlade__ctor_
+  commentId: Overload:AshesOfVelsingrad.ExecutionBlade.#ctor
+  isSpec: "True"
+  name.vb: New
+  fullName: AshesOfVelsingrad.ExecutionBlade.ExecutionBlade
+  fullName.vb: AshesOfVelsingrad.ExecutionBlade.New
+  nameWithType: ExecutionBlade.ExecutionBlade
+  nameWithType.vb: ExecutionBlade.New
+- uid: AshesOfVelsingrad.ExecutionBlade.Use(AshesOfVelsingrad.Systems.UnitSystem,System.Collections.Generic.List{AshesOfVelsingrad.Systems.UnitSystem},AshesOfVelsingrad.Systems.MapSystem)
+  name: Use(UnitSystem, List<UnitSystem>, MapSystem?)
+  href: api/AshesOfVelsingrad.ExecutionBlade.html#AshesOfVelsingrad_ExecutionBlade_Use_AshesOfVelsingrad_Systems_UnitSystem_System_Collections_Generic_List_AshesOfVelsingrad_Systems_UnitSystem__AshesOfVelsingrad_Systems_MapSystem_
+  commentId: M:AshesOfVelsingrad.ExecutionBlade.Use(AshesOfVelsingrad.Systems.UnitSystem,System.Collections.Generic.List{AshesOfVelsingrad.Systems.UnitSystem},AshesOfVelsingrad.Systems.MapSystem)
+  name.vb: Use(UnitSystem, List(Of UnitSystem), MapSystem)
+  fullName: AshesOfVelsingrad.ExecutionBlade.Use(AshesOfVelsingrad.Systems.UnitSystem, System.Collections.Generic.List<AshesOfVelsingrad.Systems.UnitSystem>, AshesOfVelsingrad.Systems.MapSystem?)
+  fullName.vb: AshesOfVelsingrad.ExecutionBlade.Use(AshesOfVelsingrad.Systems.UnitSystem, System.Collections.Generic.List(Of AshesOfVelsingrad.Systems.UnitSystem), AshesOfVelsingrad.Systems.MapSystem)
+  nameWithType: ExecutionBlade.Use(UnitSystem, List<UnitSystem>, MapSystem?)
+  nameWithType.vb: ExecutionBlade.Use(UnitSystem, List(Of UnitSystem), MapSystem)
+- uid: AshesOfVelsingrad.ExecutionBlade.Use*
+  name: Use
+  href: api/AshesOfVelsingrad.ExecutionBlade.html#AshesOfVelsingrad_ExecutionBlade_Use_
+  commentId: Overload:AshesOfVelsingrad.ExecutionBlade.Use
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.ExecutionBlade.Use
+  nameWithType: ExecutionBlade.Use
+- uid: AshesOfVelsingrad.FighterData
+  name: FighterData
+  href: api/AshesOfVelsingrad.FighterData.html
+  commentId: T:AshesOfVelsingrad.FighterData
+  fullName: AshesOfVelsingrad.FighterData
+  nameWithType: FighterData
+- uid: AshesOfVelsingrad.FighterData.Initialize
+  name: Initialize()
+  href: api/AshesOfVelsingrad.FighterData.html#AshesOfVelsingrad_FighterData_Initialize
+  commentId: M:AshesOfVelsingrad.FighterData.Initialize
+  fullName: AshesOfVelsingrad.FighterData.Initialize()
+  nameWithType: FighterData.Initialize()
+- uid: AshesOfVelsingrad.FighterData.Initialize*
+  name: Initialize
+  href: api/AshesOfVelsingrad.FighterData.html#AshesOfVelsingrad_FighterData_Initialize_
+  commentId: Overload:AshesOfVelsingrad.FighterData.Initialize
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.FighterData.Initialize
+  nameWithType: FighterData.Initialize
+- uid: AshesOfVelsingrad.FighterMeleeAttack
+  name: FighterMeleeAttack
+  href: api/AshesOfVelsingrad.FighterMeleeAttack.html
+  commentId: T:AshesOfVelsingrad.FighterMeleeAttack
+  fullName: AshesOfVelsingrad.FighterMeleeAttack
+  nameWithType: FighterMeleeAttack
+- uid: AshesOfVelsingrad.FighterMeleeAttack.#ctor
+  name: FighterMeleeAttack()
+  href: api/AshesOfVelsingrad.FighterMeleeAttack.html#AshesOfVelsingrad_FighterMeleeAttack__ctor
+  commentId: M:AshesOfVelsingrad.FighterMeleeAttack.#ctor
+  name.vb: New()
+  fullName: AshesOfVelsingrad.FighterMeleeAttack.FighterMeleeAttack()
+  fullName.vb: AshesOfVelsingrad.FighterMeleeAttack.New()
+  nameWithType: FighterMeleeAttack.FighterMeleeAttack()
+  nameWithType.vb: FighterMeleeAttack.New()
+- uid: AshesOfVelsingrad.FighterMeleeAttack.#ctor*
+  name: FighterMeleeAttack
+  href: api/AshesOfVelsingrad.FighterMeleeAttack.html#AshesOfVelsingrad_FighterMeleeAttack__ctor_
+  commentId: Overload:AshesOfVelsingrad.FighterMeleeAttack.#ctor
+  isSpec: "True"
+  name.vb: New
+  fullName: AshesOfVelsingrad.FighterMeleeAttack.FighterMeleeAttack
+  fullName.vb: AshesOfVelsingrad.FighterMeleeAttack.New
+  nameWithType: FighterMeleeAttack.FighterMeleeAttack
+  nameWithType.vb: FighterMeleeAttack.New
+- uid: AshesOfVelsingrad.FighterMeleeAttack.Use(AshesOfVelsingrad.Systems.UnitSystem,System.Collections.Generic.List{AshesOfVelsingrad.Systems.UnitSystem},AshesOfVelsingrad.Systems.MapSystem)
+  name: Use(UnitSystem, List<UnitSystem>, MapSystem?)
+  href: api/AshesOfVelsingrad.FighterMeleeAttack.html#AshesOfVelsingrad_FighterMeleeAttack_Use_AshesOfVelsingrad_Systems_UnitSystem_System_Collections_Generic_List_AshesOfVelsingrad_Systems_UnitSystem__AshesOfVelsingrad_Systems_MapSystem_
+  commentId: M:AshesOfVelsingrad.FighterMeleeAttack.Use(AshesOfVelsingrad.Systems.UnitSystem,System.Collections.Generic.List{AshesOfVelsingrad.Systems.UnitSystem},AshesOfVelsingrad.Systems.MapSystem)
+  name.vb: Use(UnitSystem, List(Of UnitSystem), MapSystem)
+  fullName: AshesOfVelsingrad.FighterMeleeAttack.Use(AshesOfVelsingrad.Systems.UnitSystem, System.Collections.Generic.List<AshesOfVelsingrad.Systems.UnitSystem>, AshesOfVelsingrad.Systems.MapSystem?)
+  fullName.vb: AshesOfVelsingrad.FighterMeleeAttack.Use(AshesOfVelsingrad.Systems.UnitSystem, System.Collections.Generic.List(Of AshesOfVelsingrad.Systems.UnitSystem), AshesOfVelsingrad.Systems.MapSystem)
+  nameWithType: FighterMeleeAttack.Use(UnitSystem, List<UnitSystem>, MapSystem?)
+  nameWithType.vb: FighterMeleeAttack.Use(UnitSystem, List(Of UnitSystem), MapSystem)
+- uid: AshesOfVelsingrad.FighterMeleeAttack.Use*
+  name: Use
+  href: api/AshesOfVelsingrad.FighterMeleeAttack.html#AshesOfVelsingrad_FighterMeleeAttack_Use_
+  commentId: Overload:AshesOfVelsingrad.FighterMeleeAttack.Use
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.FighterMeleeAttack.Use
+  nameWithType: FighterMeleeAttack.Use
+- uid: AshesOfVelsingrad.HealingTouch
+  name: HealingTouch
+  href: api/AshesOfVelsingrad.HealingTouch.html
+  commentId: T:AshesOfVelsingrad.HealingTouch
+  fullName: AshesOfVelsingrad.HealingTouch
+  nameWithType: HealingTouch
+- uid: AshesOfVelsingrad.HealingTouch.#ctor
+  name: HealingTouch()
+  href: api/AshesOfVelsingrad.HealingTouch.html#AshesOfVelsingrad_HealingTouch__ctor
+  commentId: M:AshesOfVelsingrad.HealingTouch.#ctor
+  name.vb: New()
+  fullName: AshesOfVelsingrad.HealingTouch.HealingTouch()
+  fullName.vb: AshesOfVelsingrad.HealingTouch.New()
+  nameWithType: HealingTouch.HealingTouch()
+  nameWithType.vb: HealingTouch.New()
+- uid: AshesOfVelsingrad.HealingTouch.#ctor*
+  name: HealingTouch
+  href: api/AshesOfVelsingrad.HealingTouch.html#AshesOfVelsingrad_HealingTouch__ctor_
+  commentId: Overload:AshesOfVelsingrad.HealingTouch.#ctor
+  isSpec: "True"
+  name.vb: New
+  fullName: AshesOfVelsingrad.HealingTouch.HealingTouch
+  fullName.vb: AshesOfVelsingrad.HealingTouch.New
+  nameWithType: HealingTouch.HealingTouch
+  nameWithType.vb: HealingTouch.New
+- uid: AshesOfVelsingrad.HealingTouch.Use(AshesOfVelsingrad.Systems.UnitSystem,System.Collections.Generic.List{AshesOfVelsingrad.Systems.UnitSystem},AshesOfVelsingrad.Systems.MapSystem)
+  name: Use(UnitSystem, List<UnitSystem>, MapSystem?)
+  href: api/AshesOfVelsingrad.HealingTouch.html#AshesOfVelsingrad_HealingTouch_Use_AshesOfVelsingrad_Systems_UnitSystem_System_Collections_Generic_List_AshesOfVelsingrad_Systems_UnitSystem__AshesOfVelsingrad_Systems_MapSystem_
+  commentId: M:AshesOfVelsingrad.HealingTouch.Use(AshesOfVelsingrad.Systems.UnitSystem,System.Collections.Generic.List{AshesOfVelsingrad.Systems.UnitSystem},AshesOfVelsingrad.Systems.MapSystem)
+  name.vb: Use(UnitSystem, List(Of UnitSystem), MapSystem)
+  fullName: AshesOfVelsingrad.HealingTouch.Use(AshesOfVelsingrad.Systems.UnitSystem, System.Collections.Generic.List<AshesOfVelsingrad.Systems.UnitSystem>, AshesOfVelsingrad.Systems.MapSystem?)
+  fullName.vb: AshesOfVelsingrad.HealingTouch.Use(AshesOfVelsingrad.Systems.UnitSystem, System.Collections.Generic.List(Of AshesOfVelsingrad.Systems.UnitSystem), AshesOfVelsingrad.Systems.MapSystem)
+  nameWithType: HealingTouch.Use(UnitSystem, List<UnitSystem>, MapSystem?)
+  nameWithType.vb: HealingTouch.Use(UnitSystem, List(Of UnitSystem), MapSystem)
+- uid: AshesOfVelsingrad.HealingTouch.Use*
+  name: Use
+  href: api/AshesOfVelsingrad.HealingTouch.html#AshesOfVelsingrad_HealingTouch_Use_
+  commentId: Overload:AshesOfVelsingrad.HealingTouch.Use
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.HealingTouch.Use
+  nameWithType: HealingTouch.Use
+- uid: AshesOfVelsingrad.InstantKill
+  name: InstantKill
+  href: api/AshesOfVelsingrad.InstantKill.html
+  commentId: T:AshesOfVelsingrad.InstantKill
+  fullName: AshesOfVelsingrad.InstantKill
+  nameWithType: InstantKill
+- uid: AshesOfVelsingrad.InstantKill.#ctor
+  name: InstantKill()
+  href: api/AshesOfVelsingrad.InstantKill.html#AshesOfVelsingrad_InstantKill__ctor
+  commentId: M:AshesOfVelsingrad.InstantKill.#ctor
+  name.vb: New()
+  fullName: AshesOfVelsingrad.InstantKill.InstantKill()
+  fullName.vb: AshesOfVelsingrad.InstantKill.New()
+  nameWithType: InstantKill.InstantKill()
+  nameWithType.vb: InstantKill.New()
+- uid: AshesOfVelsingrad.InstantKill.#ctor*
+  name: InstantKill
+  href: api/AshesOfVelsingrad.InstantKill.html#AshesOfVelsingrad_InstantKill__ctor_
+  commentId: Overload:AshesOfVelsingrad.InstantKill.#ctor
+  isSpec: "True"
+  name.vb: New
+  fullName: AshesOfVelsingrad.InstantKill.InstantKill
+  fullName.vb: AshesOfVelsingrad.InstantKill.New
+  nameWithType: InstantKill.InstantKill
+  nameWithType.vb: InstantKill.New
+- uid: AshesOfVelsingrad.InstantKill.Use(AshesOfVelsingrad.Systems.UnitSystem,System.Collections.Generic.List{AshesOfVelsingrad.Systems.UnitSystem},AshesOfVelsingrad.Systems.MapSystem)
+  name: Use(UnitSystem, List<UnitSystem>, MapSystem?)
+  href: api/AshesOfVelsingrad.InstantKill.html#AshesOfVelsingrad_InstantKill_Use_AshesOfVelsingrad_Systems_UnitSystem_System_Collections_Generic_List_AshesOfVelsingrad_Systems_UnitSystem__AshesOfVelsingrad_Systems_MapSystem_
+  commentId: M:AshesOfVelsingrad.InstantKill.Use(AshesOfVelsingrad.Systems.UnitSystem,System.Collections.Generic.List{AshesOfVelsingrad.Systems.UnitSystem},AshesOfVelsingrad.Systems.MapSystem)
+  name.vb: Use(UnitSystem, List(Of UnitSystem), MapSystem)
+  fullName: AshesOfVelsingrad.InstantKill.Use(AshesOfVelsingrad.Systems.UnitSystem, System.Collections.Generic.List<AshesOfVelsingrad.Systems.UnitSystem>, AshesOfVelsingrad.Systems.MapSystem?)
+  fullName.vb: AshesOfVelsingrad.InstantKill.Use(AshesOfVelsingrad.Systems.UnitSystem, System.Collections.Generic.List(Of AshesOfVelsingrad.Systems.UnitSystem), AshesOfVelsingrad.Systems.MapSystem)
+  nameWithType: InstantKill.Use(UnitSystem, List<UnitSystem>, MapSystem?)
+  nameWithType.vb: InstantKill.Use(UnitSystem, List(Of UnitSystem), MapSystem)
+- uid: AshesOfVelsingrad.InstantKill.Use*
+  name: Use
+  href: api/AshesOfVelsingrad.InstantKill.html#AshesOfVelsingrad_InstantKill_Use_
+  commentId: Overload:AshesOfVelsingrad.InstantKill.Use
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.InstantKill.Use
+  nameWithType: InstantKill.Use
+- uid: AshesOfVelsingrad.LightBolt
+  name: LightBolt
+  href: api/AshesOfVelsingrad.LightBolt.html
+  commentId: T:AshesOfVelsingrad.LightBolt
+  fullName: AshesOfVelsingrad.LightBolt
+  nameWithType: LightBolt
+- uid: AshesOfVelsingrad.LightBolt.#ctor
+  name: LightBolt()
+  href: api/AshesOfVelsingrad.LightBolt.html#AshesOfVelsingrad_LightBolt__ctor
+  commentId: M:AshesOfVelsingrad.LightBolt.#ctor
+  name.vb: New()
+  fullName: AshesOfVelsingrad.LightBolt.LightBolt()
+  fullName.vb: AshesOfVelsingrad.LightBolt.New()
+  nameWithType: LightBolt.LightBolt()
+  nameWithType.vb: LightBolt.New()
+- uid: AshesOfVelsingrad.LightBolt.#ctor*
+  name: LightBolt
+  href: api/AshesOfVelsingrad.LightBolt.html#AshesOfVelsingrad_LightBolt__ctor_
+  commentId: Overload:AshesOfVelsingrad.LightBolt.#ctor
+  isSpec: "True"
+  name.vb: New
+  fullName: AshesOfVelsingrad.LightBolt.LightBolt
+  fullName.vb: AshesOfVelsingrad.LightBolt.New
+  nameWithType: LightBolt.LightBolt
+  nameWithType.vb: LightBolt.New
+- uid: AshesOfVelsingrad.LightBolt.Use(AshesOfVelsingrad.Systems.UnitSystem,System.Collections.Generic.List{AshesOfVelsingrad.Systems.UnitSystem},AshesOfVelsingrad.Systems.MapSystem)
+  name: Use(UnitSystem, List<UnitSystem>, MapSystem?)
+  href: api/AshesOfVelsingrad.LightBolt.html#AshesOfVelsingrad_LightBolt_Use_AshesOfVelsingrad_Systems_UnitSystem_System_Collections_Generic_List_AshesOfVelsingrad_Systems_UnitSystem__AshesOfVelsingrad_Systems_MapSystem_
+  commentId: M:AshesOfVelsingrad.LightBolt.Use(AshesOfVelsingrad.Systems.UnitSystem,System.Collections.Generic.List{AshesOfVelsingrad.Systems.UnitSystem},AshesOfVelsingrad.Systems.MapSystem)
+  name.vb: Use(UnitSystem, List(Of UnitSystem), MapSystem)
+  fullName: AshesOfVelsingrad.LightBolt.Use(AshesOfVelsingrad.Systems.UnitSystem, System.Collections.Generic.List<AshesOfVelsingrad.Systems.UnitSystem>, AshesOfVelsingrad.Systems.MapSystem?)
+  fullName.vb: AshesOfVelsingrad.LightBolt.Use(AshesOfVelsingrad.Systems.UnitSystem, System.Collections.Generic.List(Of AshesOfVelsingrad.Systems.UnitSystem), AshesOfVelsingrad.Systems.MapSystem)
+  nameWithType: LightBolt.Use(UnitSystem, List<UnitSystem>, MapSystem?)
+  nameWithType.vb: LightBolt.Use(UnitSystem, List(Of UnitSystem), MapSystem)
+- uid: AshesOfVelsingrad.LightBolt.Use*
+  name: Use
+  href: api/AshesOfVelsingrad.LightBolt.html#AshesOfVelsingrad_LightBolt_Use_
+  commentId: Overload:AshesOfVelsingrad.LightBolt.Use
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.LightBolt.Use
+  nameWithType: LightBolt.Use
+- uid: AshesOfVelsingrad.LightMageData
+  name: LightMageData
+  href: api/AshesOfVelsingrad.LightMageData.html
+  commentId: T:AshesOfVelsingrad.LightMageData
+  fullName: AshesOfVelsingrad.LightMageData
+  nameWithType: LightMageData
+- uid: AshesOfVelsingrad.LightMageData.Initialize
+  name: Initialize()
+  href: api/AshesOfVelsingrad.LightMageData.html#AshesOfVelsingrad_LightMageData_Initialize
+  commentId: M:AshesOfVelsingrad.LightMageData.Initialize
+  fullName: AshesOfVelsingrad.LightMageData.Initialize()
+  nameWithType: LightMageData.Initialize()
+- uid: AshesOfVelsingrad.LightMageData.Initialize*
+  name: Initialize
+  href: api/AshesOfVelsingrad.LightMageData.html#AshesOfVelsingrad_LightMageData_Initialize_
+  commentId: Overload:AshesOfVelsingrad.LightMageData.Initialize
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.LightMageData.Initialize
+  nameWithType: LightMageData.Initialize
 - uid: AshesOfVelsingrad.Main
   name: Main
   href: api/AshesOfVelsingrad.Main.html
@@ -2008,6 +2853,47 @@ references:
   isSpec: "True"
   fullName: AshesOfVelsingrad.Managers.TurnManager.StartBattle
   nameWithType: TurnManager.StartBattle
+- uid: AshesOfVelsingrad.PhantomStrike
+  name: PhantomStrike
+  href: api/AshesOfVelsingrad.PhantomStrike.html
+  commentId: T:AshesOfVelsingrad.PhantomStrike
+  fullName: AshesOfVelsingrad.PhantomStrike
+  nameWithType: PhantomStrike
+- uid: AshesOfVelsingrad.PhantomStrike.#ctor
+  name: PhantomStrike()
+  href: api/AshesOfVelsingrad.PhantomStrike.html#AshesOfVelsingrad_PhantomStrike__ctor
+  commentId: M:AshesOfVelsingrad.PhantomStrike.#ctor
+  name.vb: New()
+  fullName: AshesOfVelsingrad.PhantomStrike.PhantomStrike()
+  fullName.vb: AshesOfVelsingrad.PhantomStrike.New()
+  nameWithType: PhantomStrike.PhantomStrike()
+  nameWithType.vb: PhantomStrike.New()
+- uid: AshesOfVelsingrad.PhantomStrike.#ctor*
+  name: PhantomStrike
+  href: api/AshesOfVelsingrad.PhantomStrike.html#AshesOfVelsingrad_PhantomStrike__ctor_
+  commentId: Overload:AshesOfVelsingrad.PhantomStrike.#ctor
+  isSpec: "True"
+  name.vb: New
+  fullName: AshesOfVelsingrad.PhantomStrike.PhantomStrike
+  fullName.vb: AshesOfVelsingrad.PhantomStrike.New
+  nameWithType: PhantomStrike.PhantomStrike
+  nameWithType.vb: PhantomStrike.New
+- uid: AshesOfVelsingrad.PhantomStrike.Use(AshesOfVelsingrad.Systems.UnitSystem,System.Collections.Generic.List{AshesOfVelsingrad.Systems.UnitSystem},AshesOfVelsingrad.Systems.MapSystem)
+  name: Use(UnitSystem, List<UnitSystem>, MapSystem?)
+  href: api/AshesOfVelsingrad.PhantomStrike.html#AshesOfVelsingrad_PhantomStrike_Use_AshesOfVelsingrad_Systems_UnitSystem_System_Collections_Generic_List_AshesOfVelsingrad_Systems_UnitSystem__AshesOfVelsingrad_Systems_MapSystem_
+  commentId: M:AshesOfVelsingrad.PhantomStrike.Use(AshesOfVelsingrad.Systems.UnitSystem,System.Collections.Generic.List{AshesOfVelsingrad.Systems.UnitSystem},AshesOfVelsingrad.Systems.MapSystem)
+  name.vb: Use(UnitSystem, List(Of UnitSystem), MapSystem)
+  fullName: AshesOfVelsingrad.PhantomStrike.Use(AshesOfVelsingrad.Systems.UnitSystem, System.Collections.Generic.List<AshesOfVelsingrad.Systems.UnitSystem>, AshesOfVelsingrad.Systems.MapSystem?)
+  fullName.vb: AshesOfVelsingrad.PhantomStrike.Use(AshesOfVelsingrad.Systems.UnitSystem, System.Collections.Generic.List(Of AshesOfVelsingrad.Systems.UnitSystem), AshesOfVelsingrad.Systems.MapSystem)
+  nameWithType: PhantomStrike.Use(UnitSystem, List<UnitSystem>, MapSystem?)
+  nameWithType.vb: PhantomStrike.Use(UnitSystem, List(Of UnitSystem), MapSystem)
+- uid: AshesOfVelsingrad.PhantomStrike.Use*
+  name: Use
+  href: api/AshesOfVelsingrad.PhantomStrike.html#AshesOfVelsingrad_PhantomStrike_Use_
+  commentId: Overload:AshesOfVelsingrad.PhantomStrike.Use
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.PhantomStrike.Use
+  nameWithType: PhantomStrike.Use
 - uid: AshesOfVelsingrad.Player1Data
   name: Player1Data
   href: api/AshesOfVelsingrad.Player1Data.html
@@ -2043,22 +2929,211 @@ references:
   isSpec: "True"
   fullName: AshesOfVelsingrad.Player1Data.Play
   nameWithType: Player1Data.Play
-- uid: AshesOfVelsingrad.Player1Data.TakeDamage(System.Single)
-  name: TakeDamage(float)
-  href: api/AshesOfVelsingrad.Player1Data.html#AshesOfVelsingrad_Player1Data_TakeDamage_System_Single_
-  commentId: M:AshesOfVelsingrad.Player1Data.TakeDamage(System.Single)
-  name.vb: TakeDamage(Single)
-  fullName: AshesOfVelsingrad.Player1Data.TakeDamage(float)
-  fullName.vb: AshesOfVelsingrad.Player1Data.TakeDamage(Single)
-  nameWithType: Player1Data.TakeDamage(float)
-  nameWithType.vb: Player1Data.TakeDamage(Single)
-- uid: AshesOfVelsingrad.Player1Data.TakeDamage*
-  name: TakeDamage
-  href: api/AshesOfVelsingrad.Player1Data.html#AshesOfVelsingrad_Player1Data_TakeDamage_
-  commentId: Overload:AshesOfVelsingrad.Player1Data.TakeDamage
+- uid: AshesOfVelsingrad.PoisonBlade
+  name: PoisonBlade
+  href: api/AshesOfVelsingrad.PoisonBlade.html
+  commentId: T:AshesOfVelsingrad.PoisonBlade
+  fullName: AshesOfVelsingrad.PoisonBlade
+  nameWithType: PoisonBlade
+- uid: AshesOfVelsingrad.PoisonBlade.#ctor
+  name: PoisonBlade()
+  href: api/AshesOfVelsingrad.PoisonBlade.html#AshesOfVelsingrad_PoisonBlade__ctor
+  commentId: M:AshesOfVelsingrad.PoisonBlade.#ctor
+  name.vb: New()
+  fullName: AshesOfVelsingrad.PoisonBlade.PoisonBlade()
+  fullName.vb: AshesOfVelsingrad.PoisonBlade.New()
+  nameWithType: PoisonBlade.PoisonBlade()
+  nameWithType.vb: PoisonBlade.New()
+- uid: AshesOfVelsingrad.PoisonBlade.#ctor*
+  name: PoisonBlade
+  href: api/AshesOfVelsingrad.PoisonBlade.html#AshesOfVelsingrad_PoisonBlade__ctor_
+  commentId: Overload:AshesOfVelsingrad.PoisonBlade.#ctor
   isSpec: "True"
-  fullName: AshesOfVelsingrad.Player1Data.TakeDamage
-  nameWithType: Player1Data.TakeDamage
+  name.vb: New
+  fullName: AshesOfVelsingrad.PoisonBlade.PoisonBlade
+  fullName.vb: AshesOfVelsingrad.PoisonBlade.New
+  nameWithType: PoisonBlade.PoisonBlade
+  nameWithType.vb: PoisonBlade.New
+- uid: AshesOfVelsingrad.PoisonBlade.Use(AshesOfVelsingrad.Systems.UnitSystem,System.Collections.Generic.List{AshesOfVelsingrad.Systems.UnitSystem},AshesOfVelsingrad.Systems.MapSystem)
+  name: Use(UnitSystem, List<UnitSystem>, MapSystem?)
+  href: api/AshesOfVelsingrad.PoisonBlade.html#AshesOfVelsingrad_PoisonBlade_Use_AshesOfVelsingrad_Systems_UnitSystem_System_Collections_Generic_List_AshesOfVelsingrad_Systems_UnitSystem__AshesOfVelsingrad_Systems_MapSystem_
+  commentId: M:AshesOfVelsingrad.PoisonBlade.Use(AshesOfVelsingrad.Systems.UnitSystem,System.Collections.Generic.List{AshesOfVelsingrad.Systems.UnitSystem},AshesOfVelsingrad.Systems.MapSystem)
+  name.vb: Use(UnitSystem, List(Of UnitSystem), MapSystem)
+  fullName: AshesOfVelsingrad.PoisonBlade.Use(AshesOfVelsingrad.Systems.UnitSystem, System.Collections.Generic.List<AshesOfVelsingrad.Systems.UnitSystem>, AshesOfVelsingrad.Systems.MapSystem?)
+  fullName.vb: AshesOfVelsingrad.PoisonBlade.Use(AshesOfVelsingrad.Systems.UnitSystem, System.Collections.Generic.List(Of AshesOfVelsingrad.Systems.UnitSystem), AshesOfVelsingrad.Systems.MapSystem)
+  nameWithType: PoisonBlade.Use(UnitSystem, List<UnitSystem>, MapSystem?)
+  nameWithType.vb: PoisonBlade.Use(UnitSystem, List(Of UnitSystem), MapSystem)
+- uid: AshesOfVelsingrad.PoisonBlade.Use*
+  name: Use
+  href: api/AshesOfVelsingrad.PoisonBlade.html#AshesOfVelsingrad_PoisonBlade_Use_
+  commentId: Overload:AshesOfVelsingrad.PoisonBlade.Use
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.PoisonBlade.Use
+  nameWithType: PoisonBlade.Use
+- uid: AshesOfVelsingrad.Resurrection
+  name: Resurrection
+  href: api/AshesOfVelsingrad.Resurrection.html
+  commentId: T:AshesOfVelsingrad.Resurrection
+  fullName: AshesOfVelsingrad.Resurrection
+  nameWithType: Resurrection
+- uid: AshesOfVelsingrad.Resurrection.#ctor
+  name: Resurrection()
+  href: api/AshesOfVelsingrad.Resurrection.html#AshesOfVelsingrad_Resurrection__ctor
+  commentId: M:AshesOfVelsingrad.Resurrection.#ctor
+  name.vb: New()
+  fullName: AshesOfVelsingrad.Resurrection.Resurrection()
+  fullName.vb: AshesOfVelsingrad.Resurrection.New()
+  nameWithType: Resurrection.Resurrection()
+  nameWithType.vb: Resurrection.New()
+- uid: AshesOfVelsingrad.Resurrection.#ctor*
+  name: Resurrection
+  href: api/AshesOfVelsingrad.Resurrection.html#AshesOfVelsingrad_Resurrection__ctor_
+  commentId: Overload:AshesOfVelsingrad.Resurrection.#ctor
+  isSpec: "True"
+  name.vb: New
+  fullName: AshesOfVelsingrad.Resurrection.Resurrection
+  fullName.vb: AshesOfVelsingrad.Resurrection.New
+  nameWithType: Resurrection.Resurrection
+  nameWithType.vb: Resurrection.New
+- uid: AshesOfVelsingrad.Resurrection.Use(AshesOfVelsingrad.Systems.UnitSystem,System.Collections.Generic.List{AshesOfVelsingrad.Systems.UnitSystem},AshesOfVelsingrad.Systems.MapSystem)
+  name: Use(UnitSystem, List<UnitSystem>, MapSystem?)
+  href: api/AshesOfVelsingrad.Resurrection.html#AshesOfVelsingrad_Resurrection_Use_AshesOfVelsingrad_Systems_UnitSystem_System_Collections_Generic_List_AshesOfVelsingrad_Systems_UnitSystem__AshesOfVelsingrad_Systems_MapSystem_
+  commentId: M:AshesOfVelsingrad.Resurrection.Use(AshesOfVelsingrad.Systems.UnitSystem,System.Collections.Generic.List{AshesOfVelsingrad.Systems.UnitSystem},AshesOfVelsingrad.Systems.MapSystem)
+  name.vb: Use(UnitSystem, List(Of UnitSystem), MapSystem)
+  fullName: AshesOfVelsingrad.Resurrection.Use(AshesOfVelsingrad.Systems.UnitSystem, System.Collections.Generic.List<AshesOfVelsingrad.Systems.UnitSystem>, AshesOfVelsingrad.Systems.MapSystem?)
+  fullName.vb: AshesOfVelsingrad.Resurrection.Use(AshesOfVelsingrad.Systems.UnitSystem, System.Collections.Generic.List(Of AshesOfVelsingrad.Systems.UnitSystem), AshesOfVelsingrad.Systems.MapSystem)
+  nameWithType: Resurrection.Use(UnitSystem, List<UnitSystem>, MapSystem?)
+  nameWithType.vb: Resurrection.Use(UnitSystem, List(Of UnitSystem), MapSystem)
+- uid: AshesOfVelsingrad.Resurrection.Use*
+  name: Use
+  href: api/AshesOfVelsingrad.Resurrection.html#AshesOfVelsingrad_Resurrection_Use_
+  commentId: Overload:AshesOfVelsingrad.Resurrection.Use
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.Resurrection.Use
+  nameWithType: Resurrection.Use
+- uid: AshesOfVelsingrad.SacredRay
+  name: SacredRay
+  href: api/AshesOfVelsingrad.SacredRay.html
+  commentId: T:AshesOfVelsingrad.SacredRay
+  fullName: AshesOfVelsingrad.SacredRay
+  nameWithType: SacredRay
+- uid: AshesOfVelsingrad.SacredRay.#ctor
+  name: SacredRay()
+  href: api/AshesOfVelsingrad.SacredRay.html#AshesOfVelsingrad_SacredRay__ctor
+  commentId: M:AshesOfVelsingrad.SacredRay.#ctor
+  name.vb: New()
+  fullName: AshesOfVelsingrad.SacredRay.SacredRay()
+  fullName.vb: AshesOfVelsingrad.SacredRay.New()
+  nameWithType: SacredRay.SacredRay()
+  nameWithType.vb: SacredRay.New()
+- uid: AshesOfVelsingrad.SacredRay.#ctor*
+  name: SacredRay
+  href: api/AshesOfVelsingrad.SacredRay.html#AshesOfVelsingrad_SacredRay__ctor_
+  commentId: Overload:AshesOfVelsingrad.SacredRay.#ctor
+  isSpec: "True"
+  name.vb: New
+  fullName: AshesOfVelsingrad.SacredRay.SacredRay
+  fullName.vb: AshesOfVelsingrad.SacredRay.New
+  nameWithType: SacredRay.SacredRay
+  nameWithType.vb: SacredRay.New
+- uid: AshesOfVelsingrad.SacredRay.Use(AshesOfVelsingrad.Systems.UnitSystem,System.Collections.Generic.List{AshesOfVelsingrad.Systems.UnitSystem},AshesOfVelsingrad.Systems.MapSystem)
+  name: Use(UnitSystem, List<UnitSystem>, MapSystem?)
+  href: api/AshesOfVelsingrad.SacredRay.html#AshesOfVelsingrad_SacredRay_Use_AshesOfVelsingrad_Systems_UnitSystem_System_Collections_Generic_List_AshesOfVelsingrad_Systems_UnitSystem__AshesOfVelsingrad_Systems_MapSystem_
+  commentId: M:AshesOfVelsingrad.SacredRay.Use(AshesOfVelsingrad.Systems.UnitSystem,System.Collections.Generic.List{AshesOfVelsingrad.Systems.UnitSystem},AshesOfVelsingrad.Systems.MapSystem)
+  name.vb: Use(UnitSystem, List(Of UnitSystem), MapSystem)
+  fullName: AshesOfVelsingrad.SacredRay.Use(AshesOfVelsingrad.Systems.UnitSystem, System.Collections.Generic.List<AshesOfVelsingrad.Systems.UnitSystem>, AshesOfVelsingrad.Systems.MapSystem?)
+  fullName.vb: AshesOfVelsingrad.SacredRay.Use(AshesOfVelsingrad.Systems.UnitSystem, System.Collections.Generic.List(Of AshesOfVelsingrad.Systems.UnitSystem), AshesOfVelsingrad.Systems.MapSystem)
+  nameWithType: SacredRay.Use(UnitSystem, List<UnitSystem>, MapSystem?)
+  nameWithType.vb: SacredRay.Use(UnitSystem, List(Of UnitSystem), MapSystem)
+- uid: AshesOfVelsingrad.SacredRay.Use*
+  name: Use
+  href: api/AshesOfVelsingrad.SacredRay.html#AshesOfVelsingrad_SacredRay_Use_
+  commentId: Overload:AshesOfVelsingrad.SacredRay.Use
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.SacredRay.Use
+  nameWithType: SacredRay.Use
+- uid: AshesOfVelsingrad.ShadowStrike
+  name: ShadowStrike
+  href: api/AshesOfVelsingrad.ShadowStrike.html
+  commentId: T:AshesOfVelsingrad.ShadowStrike
+  fullName: AshesOfVelsingrad.ShadowStrike
+  nameWithType: ShadowStrike
+- uid: AshesOfVelsingrad.ShadowStrike.#ctor
+  name: ShadowStrike()
+  href: api/AshesOfVelsingrad.ShadowStrike.html#AshesOfVelsingrad_ShadowStrike__ctor
+  commentId: M:AshesOfVelsingrad.ShadowStrike.#ctor
+  name.vb: New()
+  fullName: AshesOfVelsingrad.ShadowStrike.ShadowStrike()
+  fullName.vb: AshesOfVelsingrad.ShadowStrike.New()
+  nameWithType: ShadowStrike.ShadowStrike()
+  nameWithType.vb: ShadowStrike.New()
+- uid: AshesOfVelsingrad.ShadowStrike.#ctor*
+  name: ShadowStrike
+  href: api/AshesOfVelsingrad.ShadowStrike.html#AshesOfVelsingrad_ShadowStrike__ctor_
+  commentId: Overload:AshesOfVelsingrad.ShadowStrike.#ctor
+  isSpec: "True"
+  name.vb: New
+  fullName: AshesOfVelsingrad.ShadowStrike.ShadowStrike
+  fullName.vb: AshesOfVelsingrad.ShadowStrike.New
+  nameWithType: ShadowStrike.ShadowStrike
+  nameWithType.vb: ShadowStrike.New
+- uid: AshesOfVelsingrad.ShadowStrike.Use(AshesOfVelsingrad.Systems.UnitSystem,System.Collections.Generic.List{AshesOfVelsingrad.Systems.UnitSystem},AshesOfVelsingrad.Systems.MapSystem)
+  name: Use(UnitSystem, List<UnitSystem>, MapSystem?)
+  href: api/AshesOfVelsingrad.ShadowStrike.html#AshesOfVelsingrad_ShadowStrike_Use_AshesOfVelsingrad_Systems_UnitSystem_System_Collections_Generic_List_AshesOfVelsingrad_Systems_UnitSystem__AshesOfVelsingrad_Systems_MapSystem_
+  commentId: M:AshesOfVelsingrad.ShadowStrike.Use(AshesOfVelsingrad.Systems.UnitSystem,System.Collections.Generic.List{AshesOfVelsingrad.Systems.UnitSystem},AshesOfVelsingrad.Systems.MapSystem)
+  name.vb: Use(UnitSystem, List(Of UnitSystem), MapSystem)
+  fullName: AshesOfVelsingrad.ShadowStrike.Use(AshesOfVelsingrad.Systems.UnitSystem, System.Collections.Generic.List<AshesOfVelsingrad.Systems.UnitSystem>, AshesOfVelsingrad.Systems.MapSystem?)
+  fullName.vb: AshesOfVelsingrad.ShadowStrike.Use(AshesOfVelsingrad.Systems.UnitSystem, System.Collections.Generic.List(Of AshesOfVelsingrad.Systems.UnitSystem), AshesOfVelsingrad.Systems.MapSystem)
+  nameWithType: ShadowStrike.Use(UnitSystem, List<UnitSystem>, MapSystem?)
+  nameWithType.vb: ShadowStrike.Use(UnitSystem, List(Of UnitSystem), MapSystem)
+- uid: AshesOfVelsingrad.ShadowStrike.Use*
+  name: Use
+  href: api/AshesOfVelsingrad.ShadowStrike.html#AshesOfVelsingrad_ShadowStrike_Use_
+  commentId: Overload:AshesOfVelsingrad.ShadowStrike.Use
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.ShadowStrike.Use
+  nameWithType: ShadowStrike.Use
+- uid: AshesOfVelsingrad.ShieldBash
+  name: ShieldBash
+  href: api/AshesOfVelsingrad.ShieldBash.html
+  commentId: T:AshesOfVelsingrad.ShieldBash
+  fullName: AshesOfVelsingrad.ShieldBash
+  nameWithType: ShieldBash
+- uid: AshesOfVelsingrad.ShieldBash.#ctor
+  name: ShieldBash()
+  href: api/AshesOfVelsingrad.ShieldBash.html#AshesOfVelsingrad_ShieldBash__ctor
+  commentId: M:AshesOfVelsingrad.ShieldBash.#ctor
+  name.vb: New()
+  fullName: AshesOfVelsingrad.ShieldBash.ShieldBash()
+  fullName.vb: AshesOfVelsingrad.ShieldBash.New()
+  nameWithType: ShieldBash.ShieldBash()
+  nameWithType.vb: ShieldBash.New()
+- uid: AshesOfVelsingrad.ShieldBash.#ctor*
+  name: ShieldBash
+  href: api/AshesOfVelsingrad.ShieldBash.html#AshesOfVelsingrad_ShieldBash__ctor_
+  commentId: Overload:AshesOfVelsingrad.ShieldBash.#ctor
+  isSpec: "True"
+  name.vb: New
+  fullName: AshesOfVelsingrad.ShieldBash.ShieldBash
+  fullName.vb: AshesOfVelsingrad.ShieldBash.New
+  nameWithType: ShieldBash.ShieldBash
+  nameWithType.vb: ShieldBash.New
+- uid: AshesOfVelsingrad.ShieldBash.Use(AshesOfVelsingrad.Systems.UnitSystem,System.Collections.Generic.List{AshesOfVelsingrad.Systems.UnitSystem},AshesOfVelsingrad.Systems.MapSystem)
+  name: Use(UnitSystem, List<UnitSystem>, MapSystem?)
+  href: api/AshesOfVelsingrad.ShieldBash.html#AshesOfVelsingrad_ShieldBash_Use_AshesOfVelsingrad_Systems_UnitSystem_System_Collections_Generic_List_AshesOfVelsingrad_Systems_UnitSystem__AshesOfVelsingrad_Systems_MapSystem_
+  commentId: M:AshesOfVelsingrad.ShieldBash.Use(AshesOfVelsingrad.Systems.UnitSystem,System.Collections.Generic.List{AshesOfVelsingrad.Systems.UnitSystem},AshesOfVelsingrad.Systems.MapSystem)
+  name.vb: Use(UnitSystem, List(Of UnitSystem), MapSystem)
+  fullName: AshesOfVelsingrad.ShieldBash.Use(AshesOfVelsingrad.Systems.UnitSystem, System.Collections.Generic.List<AshesOfVelsingrad.Systems.UnitSystem>, AshesOfVelsingrad.Systems.MapSystem?)
+  fullName.vb: AshesOfVelsingrad.ShieldBash.Use(AshesOfVelsingrad.Systems.UnitSystem, System.Collections.Generic.List(Of AshesOfVelsingrad.Systems.UnitSystem), AshesOfVelsingrad.Systems.MapSystem)
+  nameWithType: ShieldBash.Use(UnitSystem, List<UnitSystem>, MapSystem?)
+  nameWithType.vb: ShieldBash.Use(UnitSystem, List(Of UnitSystem), MapSystem)
+- uid: AshesOfVelsingrad.ShieldBash.Use*
+  name: Use
+  href: api/AshesOfVelsingrad.ShieldBash.html#AshesOfVelsingrad_ShieldBash_Use_
+  commentId: Overload:AshesOfVelsingrad.ShieldBash.Use
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.ShieldBash.Use
+  nameWithType: ShieldBash.Use
 - uid: AshesOfVelsingrad.Skill1
   name: Skill1
   href: api/AshesOfVelsingrad.Skill1.html
@@ -2264,6 +3339,107 @@ references:
   isSpec: "True"
   fullName: AshesOfVelsingrad.Skill5.Use
   nameWithType: Skill5.Use
+- uid: AshesOfVelsingrad.StaggeringBlow
+  name: StaggeringBlow
+  href: api/AshesOfVelsingrad.StaggeringBlow.html
+  commentId: T:AshesOfVelsingrad.StaggeringBlow
+  fullName: AshesOfVelsingrad.StaggeringBlow
+  nameWithType: StaggeringBlow
+- uid: AshesOfVelsingrad.StaggeringBlow.#ctor
+  name: StaggeringBlow()
+  href: api/AshesOfVelsingrad.StaggeringBlow.html#AshesOfVelsingrad_StaggeringBlow__ctor
+  commentId: M:AshesOfVelsingrad.StaggeringBlow.#ctor
+  name.vb: New()
+  fullName: AshesOfVelsingrad.StaggeringBlow.StaggeringBlow()
+  fullName.vb: AshesOfVelsingrad.StaggeringBlow.New()
+  nameWithType: StaggeringBlow.StaggeringBlow()
+  nameWithType.vb: StaggeringBlow.New()
+- uid: AshesOfVelsingrad.StaggeringBlow.#ctor*
+  name: StaggeringBlow
+  href: api/AshesOfVelsingrad.StaggeringBlow.html#AshesOfVelsingrad_StaggeringBlow__ctor_
+  commentId: Overload:AshesOfVelsingrad.StaggeringBlow.#ctor
+  isSpec: "True"
+  name.vb: New
+  fullName: AshesOfVelsingrad.StaggeringBlow.StaggeringBlow
+  fullName.vb: AshesOfVelsingrad.StaggeringBlow.New
+  nameWithType: StaggeringBlow.StaggeringBlow
+  nameWithType.vb: StaggeringBlow.New
+- uid: AshesOfVelsingrad.StaggeringBlow.Use(AshesOfVelsingrad.Systems.UnitSystem,System.Collections.Generic.List{AshesOfVelsingrad.Systems.UnitSystem},AshesOfVelsingrad.Systems.MapSystem)
+  name: Use(UnitSystem, List<UnitSystem>, MapSystem?)
+  href: api/AshesOfVelsingrad.StaggeringBlow.html#AshesOfVelsingrad_StaggeringBlow_Use_AshesOfVelsingrad_Systems_UnitSystem_System_Collections_Generic_List_AshesOfVelsingrad_Systems_UnitSystem__AshesOfVelsingrad_Systems_MapSystem_
+  commentId: M:AshesOfVelsingrad.StaggeringBlow.Use(AshesOfVelsingrad.Systems.UnitSystem,System.Collections.Generic.List{AshesOfVelsingrad.Systems.UnitSystem},AshesOfVelsingrad.Systems.MapSystem)
+  name.vb: Use(UnitSystem, List(Of UnitSystem), MapSystem)
+  fullName: AshesOfVelsingrad.StaggeringBlow.Use(AshesOfVelsingrad.Systems.UnitSystem, System.Collections.Generic.List<AshesOfVelsingrad.Systems.UnitSystem>, AshesOfVelsingrad.Systems.MapSystem?)
+  fullName.vb: AshesOfVelsingrad.StaggeringBlow.Use(AshesOfVelsingrad.Systems.UnitSystem, System.Collections.Generic.List(Of AshesOfVelsingrad.Systems.UnitSystem), AshesOfVelsingrad.Systems.MapSystem)
+  nameWithType: StaggeringBlow.Use(UnitSystem, List<UnitSystem>, MapSystem?)
+  nameWithType.vb: StaggeringBlow.Use(UnitSystem, List(Of UnitSystem), MapSystem)
+- uid: AshesOfVelsingrad.StaggeringBlow.Use*
+  name: Use
+  href: api/AshesOfVelsingrad.StaggeringBlow.html#AshesOfVelsingrad_StaggeringBlow_Use_
+  commentId: Overload:AshesOfVelsingrad.StaggeringBlow.Use
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.StaggeringBlow.Use
+  nameWithType: StaggeringBlow.Use
+- uid: AshesOfVelsingrad.SwordsmanData
+  name: SwordsmanData
+  href: api/AshesOfVelsingrad.SwordsmanData.html
+  commentId: T:AshesOfVelsingrad.SwordsmanData
+  fullName: AshesOfVelsingrad.SwordsmanData
+  nameWithType: SwordsmanData
+- uid: AshesOfVelsingrad.SwordsmanData.Initialize
+  name: Initialize()
+  href: api/AshesOfVelsingrad.SwordsmanData.html#AshesOfVelsingrad_SwordsmanData_Initialize
+  commentId: M:AshesOfVelsingrad.SwordsmanData.Initialize
+  fullName: AshesOfVelsingrad.SwordsmanData.Initialize()
+  nameWithType: SwordsmanData.Initialize()
+- uid: AshesOfVelsingrad.SwordsmanData.Initialize*
+  name: Initialize
+  href: api/AshesOfVelsingrad.SwordsmanData.html#AshesOfVelsingrad_SwordsmanData_Initialize_
+  commentId: Overload:AshesOfVelsingrad.SwordsmanData.Initialize
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.SwordsmanData.Initialize
+  nameWithType: SwordsmanData.Initialize
+- uid: AshesOfVelsingrad.SwordsmanSlash
+  name: SwordsmanSlash
+  href: api/AshesOfVelsingrad.SwordsmanSlash.html
+  commentId: T:AshesOfVelsingrad.SwordsmanSlash
+  fullName: AshesOfVelsingrad.SwordsmanSlash
+  nameWithType: SwordsmanSlash
+- uid: AshesOfVelsingrad.SwordsmanSlash.#ctor
+  name: SwordsmanSlash()
+  href: api/AshesOfVelsingrad.SwordsmanSlash.html#AshesOfVelsingrad_SwordsmanSlash__ctor
+  commentId: M:AshesOfVelsingrad.SwordsmanSlash.#ctor
+  name.vb: New()
+  fullName: AshesOfVelsingrad.SwordsmanSlash.SwordsmanSlash()
+  fullName.vb: AshesOfVelsingrad.SwordsmanSlash.New()
+  nameWithType: SwordsmanSlash.SwordsmanSlash()
+  nameWithType.vb: SwordsmanSlash.New()
+- uid: AshesOfVelsingrad.SwordsmanSlash.#ctor*
+  name: SwordsmanSlash
+  href: api/AshesOfVelsingrad.SwordsmanSlash.html#AshesOfVelsingrad_SwordsmanSlash__ctor_
+  commentId: Overload:AshesOfVelsingrad.SwordsmanSlash.#ctor
+  isSpec: "True"
+  name.vb: New
+  fullName: AshesOfVelsingrad.SwordsmanSlash.SwordsmanSlash
+  fullName.vb: AshesOfVelsingrad.SwordsmanSlash.New
+  nameWithType: SwordsmanSlash.SwordsmanSlash
+  nameWithType.vb: SwordsmanSlash.New
+- uid: AshesOfVelsingrad.SwordsmanSlash.Use(AshesOfVelsingrad.Systems.UnitSystem,System.Collections.Generic.List{AshesOfVelsingrad.Systems.UnitSystem},AshesOfVelsingrad.Systems.MapSystem)
+  name: Use(UnitSystem, List<UnitSystem>, MapSystem?)
+  href: api/AshesOfVelsingrad.SwordsmanSlash.html#AshesOfVelsingrad_SwordsmanSlash_Use_AshesOfVelsingrad_Systems_UnitSystem_System_Collections_Generic_List_AshesOfVelsingrad_Systems_UnitSystem__AshesOfVelsingrad_Systems_MapSystem_
+  commentId: M:AshesOfVelsingrad.SwordsmanSlash.Use(AshesOfVelsingrad.Systems.UnitSystem,System.Collections.Generic.List{AshesOfVelsingrad.Systems.UnitSystem},AshesOfVelsingrad.Systems.MapSystem)
+  name.vb: Use(UnitSystem, List(Of UnitSystem), MapSystem)
+  fullName: AshesOfVelsingrad.SwordsmanSlash.Use(AshesOfVelsingrad.Systems.UnitSystem, System.Collections.Generic.List<AshesOfVelsingrad.Systems.UnitSystem>, AshesOfVelsingrad.Systems.MapSystem?)
+  fullName.vb: AshesOfVelsingrad.SwordsmanSlash.Use(AshesOfVelsingrad.Systems.UnitSystem, System.Collections.Generic.List(Of AshesOfVelsingrad.Systems.UnitSystem), AshesOfVelsingrad.Systems.MapSystem)
+  nameWithType: SwordsmanSlash.Use(UnitSystem, List<UnitSystem>, MapSystem?)
+  nameWithType.vb: SwordsmanSlash.Use(UnitSystem, List(Of UnitSystem), MapSystem)
+- uid: AshesOfVelsingrad.SwordsmanSlash.Use*
+  name: Use
+  href: api/AshesOfVelsingrad.SwordsmanSlash.html#AshesOfVelsingrad_SwordsmanSlash_Use_
+  commentId: Overload:AshesOfVelsingrad.SwordsmanSlash.Use
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.SwordsmanSlash.Use
+  nameWithType: SwordsmanSlash.Use
 - uid: AshesOfVelsingrad.Systems
   name: AshesOfVelsingrad.Systems
   href: api/AshesOfVelsingrad.Systems.html
@@ -3685,6 +4861,22 @@ references:
   isSpec: "True"
   fullName: AshesOfVelsingrad.Systems.UnitSystem.BaseSpeed
   nameWithType: UnitSystem.BaseSpeed
+- uid: AshesOfVelsingrad.Systems.UnitSystem.BypassDamage(System.Single)
+  name: BypassDamage(float)
+  href: api/AshesOfVelsingrad.Systems.UnitSystem.html#AshesOfVelsingrad_Systems_UnitSystem_BypassDamage_System_Single_
+  commentId: M:AshesOfVelsingrad.Systems.UnitSystem.BypassDamage(System.Single)
+  name.vb: BypassDamage(Single)
+  fullName: AshesOfVelsingrad.Systems.UnitSystem.BypassDamage(float)
+  fullName.vb: AshesOfVelsingrad.Systems.UnitSystem.BypassDamage(Single)
+  nameWithType: UnitSystem.BypassDamage(float)
+  nameWithType.vb: UnitSystem.BypassDamage(Single)
+- uid: AshesOfVelsingrad.Systems.UnitSystem.BypassDamage*
+  name: BypassDamage
+  href: api/AshesOfVelsingrad.Systems.UnitSystem.html#AshesOfVelsingrad_Systems_UnitSystem_BypassDamage_
+  commentId: Overload:AshesOfVelsingrad.Systems.UnitSystem.BypassDamage
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.Systems.UnitSystem.BypassDamage
+  nameWithType: UnitSystem.BypassDamage
 - uid: AshesOfVelsingrad.Systems.UnitSystem.CanMoveTo(System.Int32,System.Int32,System.Int32,AshesOfVelsingrad.Systems.MapSystem)
   name: CanMoveTo(int, int, int, MapSystem)
   href: api/AshesOfVelsingrad.Systems.UnitSystem.html#AshesOfVelsingrad_Systems_UnitSystem_CanMoveTo_System_Int32_System_Int32_System_Int32_AshesOfVelsingrad_Systems_MapSystem_
@@ -4827,3 +6019,44 @@ references:
   commentId: F:AshesOfVelsingrad.Utilities.Constants.PermanentStatusEffect
   fullName: AshesOfVelsingrad.Utilities.Constants.PermanentStatusEffect
   nameWithType: Constants.PermanentStatusEffect
+- uid: AshesOfVelsingrad.WarCry
+  name: WarCry
+  href: api/AshesOfVelsingrad.WarCry.html
+  commentId: T:AshesOfVelsingrad.WarCry
+  fullName: AshesOfVelsingrad.WarCry
+  nameWithType: WarCry
+- uid: AshesOfVelsingrad.WarCry.#ctor
+  name: WarCry()
+  href: api/AshesOfVelsingrad.WarCry.html#AshesOfVelsingrad_WarCry__ctor
+  commentId: M:AshesOfVelsingrad.WarCry.#ctor
+  name.vb: New()
+  fullName: AshesOfVelsingrad.WarCry.WarCry()
+  fullName.vb: AshesOfVelsingrad.WarCry.New()
+  nameWithType: WarCry.WarCry()
+  nameWithType.vb: WarCry.New()
+- uid: AshesOfVelsingrad.WarCry.#ctor*
+  name: WarCry
+  href: api/AshesOfVelsingrad.WarCry.html#AshesOfVelsingrad_WarCry__ctor_
+  commentId: Overload:AshesOfVelsingrad.WarCry.#ctor
+  isSpec: "True"
+  name.vb: New
+  fullName: AshesOfVelsingrad.WarCry.WarCry
+  fullName.vb: AshesOfVelsingrad.WarCry.New
+  nameWithType: WarCry.WarCry
+  nameWithType.vb: WarCry.New
+- uid: AshesOfVelsingrad.WarCry.Use(AshesOfVelsingrad.Systems.UnitSystem,System.Collections.Generic.List{AshesOfVelsingrad.Systems.UnitSystem},AshesOfVelsingrad.Systems.MapSystem)
+  name: Use(UnitSystem, List<UnitSystem>, MapSystem?)
+  href: api/AshesOfVelsingrad.WarCry.html#AshesOfVelsingrad_WarCry_Use_AshesOfVelsingrad_Systems_UnitSystem_System_Collections_Generic_List_AshesOfVelsingrad_Systems_UnitSystem__AshesOfVelsingrad_Systems_MapSystem_
+  commentId: M:AshesOfVelsingrad.WarCry.Use(AshesOfVelsingrad.Systems.UnitSystem,System.Collections.Generic.List{AshesOfVelsingrad.Systems.UnitSystem},AshesOfVelsingrad.Systems.MapSystem)
+  name.vb: Use(UnitSystem, List(Of UnitSystem), MapSystem)
+  fullName: AshesOfVelsingrad.WarCry.Use(AshesOfVelsingrad.Systems.UnitSystem, System.Collections.Generic.List<AshesOfVelsingrad.Systems.UnitSystem>, AshesOfVelsingrad.Systems.MapSystem?)
+  fullName.vb: AshesOfVelsingrad.WarCry.Use(AshesOfVelsingrad.Systems.UnitSystem, System.Collections.Generic.List(Of AshesOfVelsingrad.Systems.UnitSystem), AshesOfVelsingrad.Systems.MapSystem)
+  nameWithType: WarCry.Use(UnitSystem, List<UnitSystem>, MapSystem?)
+  nameWithType.vb: WarCry.Use(UnitSystem, List(Of UnitSystem), MapSystem)
+- uid: AshesOfVelsingrad.WarCry.Use*
+  name: Use
+  href: api/AshesOfVelsingrad.WarCry.html#AshesOfVelsingrad_WarCry_Use_
+  commentId: Overload:AshesOfVelsingrad.WarCry.Use
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.WarCry.Use
+  nameWithType: WarCry.Use

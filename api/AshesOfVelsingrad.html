@@ -95,18 +95,157 @@
 Classes
 </h3>
     <dl class="jumplist">
+      <dt><a class="xref" href="AshesOfVelsingrad.AssassinData.html">AssassinData</a></dt>
+      <dd><p>Assassin – Glass cannon unit. Extremely high ATK with low HP and DEF.
+Specialises in burst damage, execution, and life steal.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="AshesOfVelsingrad.AssassinStab.html">AssassinStab</a></dt>
+      <dd><p>Enemy Assassin's basic ranged stab (slightly extended reach).</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
       <dt><a class="xref" href="AshesOfVelsingrad.BasicAttackSkill.html">BasicAttackSkill</a></dt>
       <dd><p>Basic ranged attack skill for the archer enemy.</p>
 </dd>
     </dl>
     <dl class="jumplist">
-      <dt><a class="xref" href="AshesOfVelsingrad.Enemy1Data.html">Enemy1Data</a></dt>
-      <dd></dd>
+      <dt><a class="xref" href="AshesOfVelsingrad.BladeDance.html">BladeDance</a></dt>
+      <dd><p>Blade Dance – Attacks up to 3 adjacent enemies in sequence.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="AshesOfVelsingrad.BloodDrain.html">BloodDrain</a></dt>
+      <dd><p>Blood Drain – Drains life from the target: deals ATK damage and heals caster for 30%.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="AshesOfVelsingrad.BurningSlash.html">BurningSlash</a></dt>
+      <dd><p>Burning Slash – Slashes the enemy and applies Burning for 2 turns.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="AshesOfVelsingrad.CircularStrike.html">CircularStrike</a></dt>
+      <dd><p>Circular Strike – Deals damage to ALL adjacent enemies (AOE melee).</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="AshesOfVelsingrad.CleansingLight.html">CleansingLight</a></dt>
+      <dd><p>Cleansing Light – Removes all status effects from one ally.
+Currently removes all active effects via the effect list.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="AshesOfVelsingrad.CounterStance.html">CounterStance</a></dt>
+      <dd><p>Counter Stance – Boosts own DEF and ATK for 2 turns (self-buff).</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="AshesOfVelsingrad.CriticalStrike.html">CriticalStrike</a></dt>
+      <dd><p>Critical Strike – Deals 200% ATK to a single enemy. 3-turn cooldown.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="AshesOfVelsingrad.CrushingStrike.html">CrushingStrike</a></dt>
+      <dd><p>Crushing Strike – Deals heavy damage to a single adjacent enemy.
+Scaling: 150% of TotalAtk.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="AshesOfVelsingrad.DivinePrayer.html">DivinePrayer</a></dt>
+      <dd><p>Divine Prayer – Boosts ATK of all allies for 3 turns.</p>
+</dd>
     </dl>
     <dl class="jumplist">
       <dt><a class="xref" href="AshesOfVelsingrad.EnemyArcher.html">EnemyArcher</a></dt>
       <dd><p>Archer enemy unit with ranged attack AI behavior.
 Uses the existing AI system to make tactical decisions.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="AshesOfVelsingrad.EnemyAssassin.html">EnemyAssassin</a></dt>
+      <dd><p>Enemy Assassin – Fast, fragile enemy that poisons and deals burst damage.
+Mirrors <a class="xref" href="AshesOfVelsingrad.AssassinData.html">AssassinData</a> in role and stat profile.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="AshesOfVelsingrad.EnemyBurningSlash.html">EnemyBurningSlash</a></dt>
+      <dd><p>Enemy Swordsman's special: a burning slash with fire damage-over-time.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="AshesOfVelsingrad.EnemyFighter.html">EnemyFighter</a></dt>
+      <dd><p>Enemy Fighter – Melee tank enemy with high HP, DEF, and a stun special.
+Mirrors <a class="xref" href="AshesOfVelsingrad.FighterData.html">FighterData</a> in role and stat profile.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="AshesOfVelsingrad.EnemyHealAlly.html">EnemyHealAlly</a></dt>
+      <dd><p>Enemy Light Mage's special: heals the most wounded ally.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="AshesOfVelsingrad.EnemyLightMage.html">EnemyLightMage</a></dt>
+      <dd><p>Enemy Light Mage – Support enemy that heals allies and fires light bolts.
+Mirrors <a class="xref" href="AshesOfVelsingrad.LightMageData.html">LightMageData</a> in role and stat profile.
+Assigned Defensive personality so the AI prioritises keeping allies alive.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="AshesOfVelsingrad.EnemyPoisonStrike.html">EnemyPoisonStrike</a></dt>
+      <dd><p>Enemy Assassin's special: a poison-laced strike (placeholder using BurningEffect).
+Replace with PoisonEffect when implemented.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="AshesOfVelsingrad.EnemyStaggeringBlow.html">EnemyStaggeringBlow</a></dt>
+      <dd><p>Enemy Fighter's special: a stun blow that also deals damage.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="AshesOfVelsingrad.EnemySwordsman.html">EnemySwordsman</a></dt>
+      <dd><p>Enemy Swordsman – Balanced melee enemy with a burning slash special.
+Mirrors <a class="xref" href="AshesOfVelsingrad.SwordsmanData.html">SwordsmanData</a> in role and stat profile.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="AshesOfVelsingrad.ExecutionBlade.html">ExecutionBlade</a></dt>
+      <dd><p>Execution Blade – Deals 200% ATK to a target below 30% HP.
+No bonus if the target is above the threshold.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="AshesOfVelsingrad.FighterData.html">FighterData</a></dt>
+      <dd><p>Fighter – Melee tank unit with high HP and DEF.
+Excels at absorbing damage and controlling nearby enemies.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="AshesOfVelsingrad.FighterMeleeAttack.html">FighterMeleeAttack</a></dt>
+      <dd><p>Enemy Fighter's melee basic attack.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="AshesOfVelsingrad.HealingTouch.html">HealingTouch</a></dt>
+      <dd><p>Healing Touch – Restores a flat amount of HP to one ally.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="AshesOfVelsingrad.InstantKill.html">InstantKill</a></dt>
+      <dd><p>Instant Kill – Instantly defeats a target below 15% HP.
+Deals normal ATK damage otherwise.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="AshesOfVelsingrad.LightBolt.html">LightBolt</a></dt>
+      <dd><p>Enemy Light Mage's basic magic attack.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="AshesOfVelsingrad.LightMageData.html">LightMageData</a></dt>
+      <dd><p>Light Mage – Support/healer unit. Low ATK and DEF but high Intelligence and Mana.
+Specialises in healing, cleansing, reviving and buffing allies.</p>
 </dd>
     </dl>
     <dl class="jumplist">
@@ -116,8 +255,43 @@ Follows the Component-Based Architecture and event-driven communication.</p>
 </dd>
     </dl>
     <dl class="jumplist">
+      <dt><a class="xref" href="AshesOfVelsingrad.PhantomStrike.html">PhantomStrike</a></dt>
+      <dd><p>Phantom Strike – Ranged sword slash that ignores DEF partially.
+Deals 120% ATK at range 2 with a DEF penetration flavour (implemented as raw damage).</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
       <dt><a class="xref" href="AshesOfVelsingrad.Player1Data.html">Player1Data</a></dt>
       <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="AshesOfVelsingrad.PoisonBlade.html">PoisonBlade</a></dt>
+      <dd><p>Poison Blade – Deals light damage and applies BurningEffect as a stand-in for Poison
+(to be replaced with PoisonEffect once implemented).</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="AshesOfVelsingrad.Resurrection.html">Resurrection</a></dt>
+      <dd><p>Resurrection – Revives a fallen ally with 50% HP.
+Uses OnEffectRevive which checks IsAlive internally.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="AshesOfVelsingrad.SacredRay.html">SacredRay</a></dt>
+      <dd><p>Sacred Ray – Deals Light damage to one enemy and heals the first ally in line.
+Implemented as a targeted damage + self-heal hybrid.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="AshesOfVelsingrad.ShadowStrike.html">ShadowStrike</a></dt>
+      <dd><p>Shadow Strike – Attacks at range 2 from stealth (raw damage, no DEF reduction).</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="AshesOfVelsingrad.ShieldBash.html">ShieldBash</a></dt>
+      <dd><p>Shield Bash – Reduces the target's DEF for 2 turns.
+Uses a DefDebuffer (simple flat DEF reduction via AtkBuffer pattern on Def stat).</p>
+</dd>
     </dl>
     <dl class="jumplist">
       <dt><a class="xref" href="AshesOfVelsingrad.Skill1.html">Skill1</a></dt>
@@ -138,6 +312,26 @@ Follows the Component-Based Architecture and event-driven communication.</p>
     <dl class="jumplist">
       <dt><a class="xref" href="AshesOfVelsingrad.Skill5.html">Skill5</a></dt>
       <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="AshesOfVelsingrad.StaggeringBlow.html">StaggeringBlow</a></dt>
+      <dd><p>Staggering Blow – Deals damage and stuns the target for 1 turn.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="AshesOfVelsingrad.SwordsmanData.html">SwordsmanData</a></dt>
+      <dd><p>Swordsman – Balanced melee unit with solid offense and versatile skills.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="AshesOfVelsingrad.SwordsmanSlash.html">SwordsmanSlash</a></dt>
+      <dd><p>Enemy Swordsman's basic melee attack.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="AshesOfVelsingrad.WarCry.html">WarCry</a></dt>
+      <dd><p>War Cry – Boosts the ATK of all nearby allies for 3 turns.</p>
+</dd>
     </dl>
 
 

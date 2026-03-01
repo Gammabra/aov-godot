@@ -16,7 +16,7 @@
       <meta name="docfx:rel" content="../">
       
       
-      <meta name="docfx:docurl" content="https://github.com/Gammabra/aov-godot/new/develop/apiSpec/new?filename=AshesOfVelsingrad_EnemyArcher.md&amp;value=---%0Auid%3A%20AshesOfVelsingrad.EnemyArcher%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -89,7 +89,7 @@
 
 
   <h1 id="AshesOfVelsingrad_EnemyArcher" data-uid="AshesOfVelsingrad.EnemyArcher" class="text-break">
-Class EnemyArcher  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptPropertyDefValGenerator/AshesOfVelsingrad.EnemyArcher_ScriptPropertyDefVal.generated.cs/#L3"><i class="bi bi-code-slash"></i></a>
+Class EnemyArcher  
   </h1>
 
   <div class="facts text-secondary">
@@ -103,7 +103,7 @@ Uses the existing AI system to make tactical decisions.</p>
   <div class="markdown conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[ScriptPath(&quot;res://scripts/data/EnemyArcher.cs&quot;)]
+    <pre><code class="lang-csharp hljs">[ScriptPath(&quot;res://scripts/data/unit/enemies/EnemyArcher.cs&quot;)]
 public sealed class EnemyArcher : UnitSystem, IDisposable, IEffectTarget&lt;UnitSystem&gt;, IStatusEffectBehavior</code></pre>
   </div>
 
@@ -233,6 +233,12 @@ public sealed class EnemyArcher : UnitSystem, IDisposable, IEffectTarget&lt;Unit
     </div>
     <div>
       <a class="xref" href="AshesOfVelsingrad.Systems.UnitSystem.html#AshesOfVelsingrad_Systems_UnitSystem_SetIsAlive_System_Boolean_">UnitSystem.SetIsAlive(bool)</a>
+    </div>
+    <div>
+      <a class="xref" href="AshesOfVelsingrad.Systems.UnitSystem.html#AshesOfVelsingrad_Systems_UnitSystem_TakeDamage_System_Single_">UnitSystem.TakeDamage(float)</a>
+    </div>
+    <div>
+      <a class="xref" href="AshesOfVelsingrad.Systems.UnitSystem.html#AshesOfVelsingrad_Systems_UnitSystem_BypassDamage_System_Single_">UnitSystem.BypassDamage(float)</a>
     </div>
     <div>
       <a class="xref" href="AshesOfVelsingrad.Systems.UnitSystem.html#AshesOfVelsingrad_Systems_UnitSystem_TotalAtk">UnitSystem.TotalAtk</a>
@@ -1512,7 +1518,7 @@ public sealed class EnemyArcher : UnitSystem, IDisposable, IEffectTarget&lt;Unit
 
   <h3 id="AshesOfVelsingrad_EnemyArcher_Initialize" data-uid="AshesOfVelsingrad.EnemyArcher.Initialize">
   Initialize()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/data/EnemyArcher.cs/#L17"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/data/unit/enemies/EnemyArcher.cs/#L17"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Initializes the unit instance
@@ -1541,44 +1547,10 @@ Derived classes must implement this method to provide their specific initializat
 
 
 
-  <a id="AshesOfVelsingrad_EnemyArcher_TakeDamage_" data-uid="AshesOfVelsingrad.EnemyArcher.TakeDamage*"></a>
-
-  <h3 id="AshesOfVelsingrad_EnemyArcher_TakeDamage_System_Single_" data-uid="AshesOfVelsingrad.EnemyArcher.TakeDamage(System.Single)">
-  TakeDamage(float)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/data/EnemyArcher.cs/#L42"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Applies incoming damage to the unit and updates HP.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public override void TakeDamage(float damage)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>damage</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
-    <dd><p>The amount of damage received.</p>
-</dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-
-
 
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/Gammabra/aov-godot/blob/develop/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptPropertyDefValGenerator/AshesOfVelsingrad.EnemyArcher_ScriptPropertyDefVal.generated.cs/#L3" class="edit-link">Edit this page</a>
         </div>
 
 

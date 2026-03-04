@@ -125,4 +125,4 @@ We welcome contributions! Please read our guides to get started:
 
 ---
 
-© 2025 Gammabra Studios. All Rights Reserved.
+© 2026 Gammabra Studios. All Rights Reserved.

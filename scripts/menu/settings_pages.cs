@@ -10,11 +10,11 @@ public partial class settings_pages : Node
 
 	// ---------- SUBTITLE ----------
 	public bool subtitles_enabled = false;
-	public float subtitle_size = 50.0f;
+	public float subtitle_size = 30.0f;
 	public int subtitle_font_index = 0;
 	public int subtitle_text_color = 0;
 	public int subtitle_bg_color = 0;
-	public string subtitle_language = "English";
+	public int subtitle_language = 0;
 	public float subtitle_opacity = 50.0f;
 
 	// ---------- VIDEO ----------
@@ -82,17 +82,62 @@ public partial class settings_pages : Node
 	// SUBTITLE
 	// =================================================
 
-	public void _on_subtitles_toggled(bool enabled) => subtitles_enabled = enabled;
-	public void _on_subtitle_size_changed(double value) => subtitle_size = (float)value;
-	public void _on_subtitle_font_item_selected(long index) => subtitle_font_index = (int)index;
-	public void _on_subtitle_text_color_changed(long index) => subtitle_text_color = (int)index;
-	public void _on_subtitle_bg_color_changed(long index) => subtitle_bg_color = (int)index;
-	public void _on_subtitle_opacity_changed(double value) => subtitle_opacity = (float)value;
+	public void _on_subtitles_toggled(bool enabled)        { subtitles_enabled = enabled;     UpdateSubtitlePreview(); }
+	public void _on_subtitle_size_changed(double value)    { subtitle_size = (float)value;    UpdateSubtitlePreview(); }
+	public void _on_subtitle_font_item_selected(long index){ subtitle_font_index = (int)index; UpdateSubtitlePreview(); }
+	public void _on_subtitle_text_color_changed(long index){ subtitle_text_color = (int)index; UpdateSubtitlePreview(); }
+	public void _on_subtitle_bg_color_changed(long index)  { subtitle_bg_color = (int)index;  UpdateSubtitlePreview(); }
+	public void _on_subtitle_opacity_changed(double value) { subtitle_opacity = (float)value; UpdateSubtitlePreview(); }
+	public void _on_subtitle_language_item_selected(long index) { subtitle_language = (int)index; UpdateSubtitlePreview(); }
 
-	public void _on_subtitle_language_item_selected(long index)
+	private void UpdateSubtitlePreview()
 	{
-		var btn = GetNode<OptionButton>("PageSubtitle/Langage/OptionButton");
-		subtitle_language = btn.GetItemText((int)index);
+		var label = GetNodeOrNull<Label>("PageSubtitle/ExampleLabel");
+		if (label == null) return;
+
+		label.Visible = true;
+		var style = new StyleBoxFlat();
+		style.BorderColor = Colors.Red;
+		style.SetBorderWidthAll(2);
+		if (!subtitles_enabled)
+		{
+			style.BgColor = new Color(0, 0, 0, 0);
+			label.AddThemeColorOverride("font_color", new Color(0, 0, 0, 0));
+			label.AddThemeStyleboxOverride("normal", style);
+			return;
+		}
+
+		label.AddThemeFontSizeOverride("font_size", (int)subtitle_size);
+
+		float alpha = subtitle_opacity / 100.0f;
+
+		Color[] textColors = { Colors.White, Colors.Red, Colors.Green };
+		Color textColor = textColors[subtitle_text_color];
+		label.AddThemeColorOverride("font_color", textColor);
+
+		if (subtitle_bg_color == 4)
+		{
+			style.BgColor = new Color(0, 0, 0, 0);
+		}
+		else
+		{
+			Color[] bgColors = { Colors.White, Colors.Red, Colors.Green, Colors.Black };
+			Color bgColor = bgColors[subtitle_bg_color];
+			bgColor.A = alpha;
+			style.BgColor = bgColor;
+		}
+
+		label.AddThemeStyleboxOverride("normal", style);
+
+		var fontBtn = GetNodeOrNull<OptionButton>("PageSubtitle/Font/OptionButton");
+		if (fontBtn != null)
+		{
+			var font = fontBtn.GetItemMetadata(subtitle_font_index).As<FontFile>();
+			if (font != null) label.AddThemeFontOverride("font", font);
+		}
+
+		string[] previewTexts = { "Subtitle", "Sous-Titre" };
+		label.Text = subtitle_language < previewTexts.Length ? previewTexts[subtitle_language] : "Subtitle";
 	}
 
 	// =================================================
@@ -232,6 +277,7 @@ public partial class settings_pages : Node
 		var fontBtn = GetNode<OptionButton>("PageSubtitle/Font/OptionButton");
 		if (fontBtn.ItemCount > 0)
 			fontBtn.Select(subtitle_font_index);
+		UpdateSubtitlePreview();
 	}
 
 	public void apply_settings_to_ui()
@@ -241,6 +287,7 @@ public partial class settings_pages : Node
 		GetNode<OptionButton>("PageSubtitle/TextColor/OptionButton").Select(subtitle_text_color);
 		GetNode<OptionButton>("PageSubtitle/BgColor/OptionButton").Select(subtitle_bg_color);
 		GetNode<HSlider>("PageSubtitle/Opacity/HSlider").Value = subtitle_opacity;
+		GetNode<OptionButton>("PageSubtitle/Langage/OptionButton").Select(subtitle_language);
 
 		GetNode<HSlider>("PageVideo/Contrast/HSlider").Value = contrast;
 		GetNode<HSlider>("PageVideo/Brightness/HSlider").Value = brightness;
@@ -254,6 +301,7 @@ public partial class settings_pages : Node
 		GetNode<CheckBox>("PageVisual/VisualIndicators/CheckBox").ButtonPressed = visual_indicators_enabled;
 
 		apply_audio_to_ui();
+		UpdateSubtitlePreview();
 	}
 
 	public void apply_audio_to_ui()

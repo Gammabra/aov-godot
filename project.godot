@@ -15,7 +15,7 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 [application]
 
 config/name="Ashes of Velsingrad"
-run/main_scene="uid://dly7v2pb0m006"
+run/main_scene="uid://geowrsurjvqo"
 config/features=PackedStringArray("4.6", "C#", "Forward Plus")
 config/icon="uid://d2o6v40ln62ci"
 

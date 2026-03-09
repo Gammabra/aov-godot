@@ -181,16 +181,36 @@ offset_top = 211.0
 offset_right = 1152.0
 offset_bottom = 211.0
 
+[node name="ColorRect" type="ColorRect" parent="MainContent/PageSubtitle" unique_id=1175340787]
+layout_mode = 0
+offset_left = 472.0
+offset_right = 697.0
+offset_bottom = 79.0
+color = Color(0.4, 0.4, 0.28, 0)
+
+[node name="ExampleLabel" type="Label" parent="MainContent/PageSubtitle" unique_id=1947172413]
+layout_mode = 0
+offset_left = 489.0
+offset_top = 10.0
+offset_right = 682.0
+offset_bottom = 69.0
+theme_override_fonts/font = ExtResource("3_tlijc")
+theme_override_font_sizes/font_size = 30
+text = "Subtitles"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="Subtitles" type="Label" parent="MainContent/PageSubtitle" unique_id=1486823530]
 layout_mode = 0
 offset_left = 428.0
-offset_top = 20.0
+offset_top = 93.0
 offset_right = 576.0
-offset_bottom = 55.0
+offset_bottom = 128.0
 theme_override_fonts/font = ExtResource("3_tlijc")
 theme_override_font_sizes/font_size = 30
 text = "Subtitles"
 horizontal_alignment = 2
+vertical_alignment = 1
 
 [node name="CheckBox" type="CheckBox" parent="MainContent/PageSubtitle/Subtitles" unique_id=2012841433]
 layout_mode = 0
@@ -205,13 +225,14 @@ theme_override_colors/checkbox_unchecked_color = Color(0, 0, 0, 1)
 [node name="Size" type="Label" parent="MainContent/PageSubtitle" unique_id=422695664]
 layout_mode = 0
 offset_left = 428.0
-offset_top = 55.0
+offset_top = 128.0
 offset_right = 576.0
-offset_bottom = 90.0
+offset_bottom = 163.0
 theme_override_fonts/font = ExtResource("3_tlijc")
 theme_override_font_sizes/font_size = 30
 text = "Size"
 horizontal_alignment = 2
+vertical_alignment = 1
 
 [node name="HSlider" type="HSlider" parent="MainContent/PageSubtitle/Size" unique_id=1195506009]
 layout_mode = 0
@@ -219,8 +240,10 @@ offset_left = 171.0
 offset_top = 9.0
 offset_right = 321.0
 offset_bottom = 25.0
-step = 25.0
-value = 50.0
+min_value = 10.0
+max_value = 50.0
+step = 10.0
+value = 30.0
 rounded = true
 tick_count = 5
 ticks_on_borders = true
@@ -229,13 +252,14 @@ ticks_position = 3
 [node name="Font" type="Label" parent="MainContent/PageSubtitle" unique_id=1018975612]
 layout_mode = 0
 offset_left = 428.0
-offset_top = 90.0
+offset_top = 163.0
 offset_right = 576.0
-offset_bottom = 125.0
+offset_bottom = 198.0
 theme_override_fonts/font = ExtResource("3_tlijc")
 theme_override_font_sizes/font_size = 30
 text = "Font"
 horizontal_alignment = 2
+vertical_alignment = 1
 
 [node name="OptionButton" type="OptionButton" parent="MainContent/PageSubtitle/Font" unique_id=1573501405]
 custom_minimum_size = Vector2(150, 0)
@@ -250,13 +274,14 @@ script = ExtResource("5_t01jc")
 [node name="TextColor" type="Label" parent="MainContent/PageSubtitle" unique_id=616290397]
 layout_mode = 0
 offset_left = 428.0
-offset_top = 125.0
+offset_top = 198.0
 offset_right = 576.0
-offset_bottom = 160.0
+offset_bottom = 233.0
 theme_override_fonts/font = ExtResource("3_tlijc")
 theme_override_font_sizes/font_size = 30
 text = "Text Color"
 horizontal_alignment = 2
+vertical_alignment = 1
 
 [node name="OptionButton" type="OptionButton" parent="MainContent/PageSubtitle/TextColor" unique_id=717680413]
 custom_minimum_size = Vector2(150, 0)
@@ -277,13 +302,14 @@ popup/item_2/id = 2
 [node name="BgColor" type="Label" parent="MainContent/PageSubtitle" unique_id=2023977199]
 layout_mode = 0
 offset_left = 363.0
-offset_top = 160.0
+offset_top = 233.0
 offset_right = 576.0
-offset_bottom = 195.0
+offset_bottom = 268.0
 theme_override_fonts/font = ExtResource("3_tlijc")
 theme_override_font_sizes/font_size = 30
 text = "Background Color"
 horizontal_alignment = 2
+vertical_alignment = 1
 
 [node name="OptionButton" type="OptionButton" parent="MainContent/PageSubtitle/BgColor" unique_id=483542218]
 custom_minimum_size = Vector2(150, 0)
@@ -309,13 +335,14 @@ popup/item_4/id = 4
 [node name="Opacity" type="Label" parent="MainContent/PageSubtitle" unique_id=2128204355]
 layout_mode = 0
 offset_left = 428.0
-offset_top = 195.0
+offset_top = 268.0
 offset_right = 576.0
-offset_bottom = 230.0
+offset_bottom = 303.0
 theme_override_fonts/font = ExtResource("3_tlijc")
 theme_override_font_sizes/font_size = 30
 text = "Opacity"
 horizontal_alignment = 2
+vertical_alignment = 1
 
 [node name="HSlider" type="HSlider" parent="MainContent/PageSubtitle/Opacity" unique_id=1450134565]
 layout_mode = 0
@@ -323,23 +350,25 @@ offset_left = 171.0
 offset_top = 9.0
 offset_right = 321.0
 offset_bottom = 25.0
+min_value = 25.0
 step = 25.0
 value = 50.0
 rounded = true
-tick_count = 5
+tick_count = 4
 ticks_on_borders = true
 ticks_position = 3
 
 [node name="Langage" type="Label" parent="MainContent/PageSubtitle" unique_id=1864710212]
 layout_mode = 0
 offset_left = 428.0
-offset_top = 230.0
+offset_top = 303.0
 offset_right = 576.0
-offset_bottom = 265.0
+offset_bottom = 338.0
 theme_override_fonts/font = ExtResource("3_tlijc")
 theme_override_font_sizes/font_size = 30
 text = "Langage"
 horizontal_alignment = 2
+vertical_alignment = 1
 
 [node name="OptionButton" type="OptionButton" parent="MainContent/PageSubtitle/Langage" unique_id=1265949244]
 custom_minimum_size = Vector2(130, 0)
@@ -375,6 +404,7 @@ theme_override_fonts/font = ExtResource("3_tlijc")
 theme_override_font_sizes/font_size = 30
 text = "Contrast"
 horizontal_alignment = 2
+vertical_alignment = 1
 
 [node name="HSlider" type="HSlider" parent="MainContent/PageVideo/Contrast" unique_id=1346903287]
 layout_mode = 0
@@ -399,6 +429,7 @@ theme_override_fonts/font = ExtResource("3_tlijc")
 theme_override_font_sizes/font_size = 30
 text = "Brightness"
 horizontal_alignment = 2
+vertical_alignment = 1
 
 [node name="HSlider" type="HSlider" parent="MainContent/PageVideo/Brightness" unique_id=1597598506]
 layout_mode = 0
@@ -423,6 +454,7 @@ theme_override_fonts/font = ExtResource("3_tlijc")
 theme_override_font_sizes/font_size = 30
 text = "Animations"
 horizontal_alignment = 2
+vertical_alignment = 1
 
 [node name="CheckBox" type="CheckBox" parent="MainContent/PageVideo/Animations" unique_id=1928812872]
 layout_mode = 0
@@ -445,6 +477,7 @@ theme_override_fonts/font = ExtResource("3_tlijc")
 theme_override_font_sizes/font_size = 30
 text = "Resolution"
 horizontal_alignment = 2
+vertical_alignment = 1
 
 [node name="OptionButton" type="OptionButton" parent="MainContent/PageVideo/Resolution" unique_id=1706943346]
 custom_minimum_size = Vector2(130, 0)
@@ -472,6 +505,7 @@ theme_override_fonts/font = ExtResource("3_tlijc")
 theme_override_font_sizes/font_size = 30
 text = "Texture"
 horizontal_alignment = 2
+vertical_alignment = 1
 
 [node name="OptionButton" type="OptionButton" parent="MainContent/PageVideo/Texture" unique_id=1352717392]
 custom_minimum_size = Vector2(130, 0)
@@ -509,6 +543,7 @@ theme_override_fonts/font = ExtResource("3_tlijc")
 theme_override_font_sizes/font_size = 30
 text = "Interface Size"
 horizontal_alignment = 2
+vertical_alignment = 1
 
 [node name="HSlider" type="HSlider" parent="MainContent/PageVisual/InterfaceSize" unique_id=377516815]
 layout_mode = 0
@@ -533,6 +568,7 @@ theme_override_fonts/font = ExtResource("3_tlijc")
 theme_override_font_sizes/font_size = 30
 text = "Blurry"
 horizontal_alignment = 2
+vertical_alignment = 1
 
 [node name="CheckBox" type="CheckBox" parent="MainContent/PageVisual/Blurry" unique_id=922108861]
 layout_mode = 0
@@ -554,6 +590,7 @@ theme_override_fonts/font = ExtResource("3_tlijc")
 theme_override_font_sizes/font_size = 30
 text = "Camera Shake"
 horizontal_alignment = 2
+vertical_alignment = 1
 
 [node name="CheckBox" type="CheckBox" parent="MainContent/PageVisual/CameraShake" unique_id=885079687]
 layout_mode = 0
@@ -576,6 +613,7 @@ theme_override_fonts/font = ExtResource("3_tlijc")
 theme_override_font_sizes/font_size = 30
 text = "Visual Indicators"
 horizontal_alignment = 2
+vertical_alignment = 1
 
 [node name="CheckBox" type="CheckBox" parent="MainContent/PageVisual/VisualIndicators" unique_id=815631265]
 layout_mode = 0
@@ -598,6 +636,7 @@ theme_override_fonts/font = ExtResource("3_tlijc")
 theme_override_font_sizes/font_size = 30
 text = "Color Blindness"
 horizontal_alignment = 2
+vertical_alignment = 1
 
 [node name="OptionButton" type="OptionButton" parent="MainContent/PageVisual/ColorBlindness" unique_id=380108627]
 custom_minimum_size = Vector2(130, 0)
@@ -637,6 +676,7 @@ theme_override_fonts/font = ExtResource("3_tlijc")
 theme_override_font_sizes/font_size = 30
 text = "Move Up"
 horizontal_alignment = 2
+vertical_alignment = 1
 
 [node name="Button" type="Button" parent="MainContent/PageCommand/move_up" unique_id=1847816118]
 layout_mode = 0
@@ -655,6 +695,7 @@ theme_override_fonts/font = ExtResource("3_tlijc")
 theme_override_font_sizes/font_size = 30
 text = "Move Down"
 horizontal_alignment = 2
+vertical_alignment = 1
 
 [node name="Button" type="Button" parent="MainContent/PageCommand/move_down" unique_id=2065158127]
 layout_mode = 0
@@ -673,6 +714,7 @@ theme_override_fonts/font = ExtResource("3_tlijc")
 theme_override_font_sizes/font_size = 30
 text = "Move Left"
 horizontal_alignment = 2
+vertical_alignment = 1
 
 [node name="Button" type="Button" parent="MainContent/PageCommand/move_left" unique_id=797909869]
 layout_mode = 0
@@ -691,6 +733,7 @@ theme_override_fonts/font = ExtResource("3_tlijc")
 theme_override_font_sizes/font_size = 30
 text = "Move Right"
 horizontal_alignment = 2
+vertical_alignment = 1
 
 [node name="Button" type="Button" parent="MainContent/PageCommand/move_right" unique_id=1574154671]
 layout_mode = 0
@@ -709,6 +752,7 @@ theme_override_fonts/font = ExtResource("3_tlijc")
 theme_override_font_sizes/font_size = 30
 text = "Battle Move To"
 horizontal_alignment = 2
+vertical_alignment = 1
 
 [node name="Button" type="Button" parent="MainContent/PageCommand/battle_move_unit_to" unique_id=1258817591]
 layout_mode = 0
@@ -727,6 +771,7 @@ theme_override_fonts/font = ExtResource("3_tlijc")
 theme_override_font_sizes/font_size = 30
 text = "Battle Skill 1"
 horizontal_alignment = 2
+vertical_alignment = 1
 
 [node name="Button" type="Button" parent="MainContent/PageCommand/battle_select_skill1" unique_id=426154838]
 layout_mode = 0
@@ -745,6 +790,7 @@ theme_override_fonts/font = ExtResource("3_tlijc")
 theme_override_font_sizes/font_size = 30
 text = "Battle Skill 2"
 horizontal_alignment = 2
+vertical_alignment = 1
 
 [node name="Button" type="Button" parent="MainContent/PageCommand/battle_select_skill2" unique_id=718627339]
 layout_mode = 0
@@ -763,6 +809,7 @@ theme_override_fonts/font = ExtResource("3_tlijc")
 theme_override_font_sizes/font_size = 30
 text = "Battle Skill 3"
 horizontal_alignment = 2
+vertical_alignment = 1
 
 [node name="Button" type="Button" parent="MainContent/PageCommand/battle_select_skill3" unique_id=298160172]
 layout_mode = 0
@@ -781,6 +828,7 @@ theme_override_fonts/font = ExtResource("3_tlijc")
 theme_override_font_sizes/font_size = 30
 text = "Battle Skill 4"
 horizontal_alignment = 2
+vertical_alignment = 1
 
 [node name="Button" type="Button" parent="MainContent/PageCommand/battle_select_skill4" unique_id=351853212]
 layout_mode = 0
@@ -799,6 +847,7 @@ theme_override_fonts/font = ExtResource("3_tlijc")
 theme_override_font_sizes/font_size = 30
 text = "Battle Skill 5"
 horizontal_alignment = 2
+vertical_alignment = 1
 
 [node name="Button" type="Button" parent="MainContent/PageCommand/battle_select_skill5" unique_id=1183845358]
 layout_mode = 0
@@ -817,6 +866,7 @@ theme_override_fonts/font = ExtResource("3_tlijc")
 theme_override_font_sizes/font_size = 30
 text = "Battle Pass Turn"
 horizontal_alignment = 2
+vertical_alignment = 1
 
 [node name="Button" type="Button" parent="MainContent/PageCommand/battle_pass_turn" unique_id=1086420496]
 layout_mode = 0
@@ -835,6 +885,7 @@ theme_override_fonts/font = ExtResource("3_tlijc")
 theme_override_font_sizes/font_size = 30
 text = "Toggle Options"
 horizontal_alignment = 2
+vertical_alignment = 1
 
 [node name="Button" type="Button" parent="MainContent/PageCommand/toggle_options" unique_id=1171487983]
 layout_mode = 0
@@ -862,6 +913,7 @@ theme_override_fonts/font = ExtResource("3_tlijc")
 theme_override_font_sizes/font_size = 30
 text = "Volume"
 horizontal_alignment = 2
+vertical_alignment = 1
 
 [node name="HSlider" type="HSlider" parent="MainContent/PageAudio/Master" unique_id=601207339]
 layout_mode = 0
@@ -886,6 +938,7 @@ theme_override_fonts/font = ExtResource("3_tlijc")
 theme_override_font_sizes/font_size = 30
 text = "Music"
 horizontal_alignment = 2
+vertical_alignment = 1
 
 [node name="HSlider" type="HSlider" parent="MainContent/PageAudio/Music" unique_id=297934133]
 layout_mode = 0
@@ -910,6 +963,7 @@ theme_override_fonts/font = ExtResource("3_tlijc")
 theme_override_font_sizes/font_size = 30
 text = "Voices"
 horizontal_alignment = 2
+vertical_alignment = 1
 
 [node name="HSlider" type="HSlider" parent="MainContent/PageAudio/Voices" unique_id=300571768]
 layout_mode = 0
@@ -934,6 +988,7 @@ theme_override_fonts/font = ExtResource("3_tlijc")
 theme_override_font_sizes/font_size = 30
 text = "Sound Effects"
 horizontal_alignment = 2
+vertical_alignment = 1
 
 [node name="HSlider" type="HSlider" parent="MainContent/PageAudio/SFX" unique_id=296336438]
 layout_mode = 0
@@ -964,16 +1019,16 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_sjfrx")
 text = "X"
 script = ExtResource("3_qi5fe")
 
-[connection signal="pressed" from="PageManager/VBoxContainer/HBoxContainer/ButtonSubtitle" to="MainContent" method="_on_button_subtitle_pressed"]
 [connection signal="pressed" from="PageManager/VBoxContainer/HBoxContainer/ButtonSubtitle" to="PageManager" method="_on_button_subtitle_pressed"]
-[connection signal="pressed" from="PageManager/VBoxContainer/HBoxContainer/ButtonVideo" to="MainContent" method="_on_button_video_pressed"]
+[connection signal="pressed" from="PageManager/VBoxContainer/HBoxContainer/ButtonSubtitle" to="MainContent" method="_on_button_subtitle_pressed"]
 [connection signal="pressed" from="PageManager/VBoxContainer/HBoxContainer/ButtonVideo" to="PageManager" method="_on_button_video_pressed"]
-[connection signal="pressed" from="PageManager/VBoxContainer/HBoxContainer/ButtonVisual" to="MainContent" method="_on_button_visual_pressed"]
+[connection signal="pressed" from="PageManager/VBoxContainer/HBoxContainer/ButtonVideo" to="MainContent" method="_on_button_video_pressed"]
 [connection signal="pressed" from="PageManager/VBoxContainer/HBoxContainer/ButtonVisual" to="PageManager" method="_on_button_visual_pressed"]
-[connection signal="pressed" from="PageManager/VBoxContainer/HBoxContainer/ButtonCommand" to="MainContent" method="_on_button_command_pressed"]
+[connection signal="pressed" from="PageManager/VBoxContainer/HBoxContainer/ButtonVisual" to="MainContent" method="_on_button_visual_pressed"]
 [connection signal="pressed" from="PageManager/VBoxContainer/HBoxContainer/ButtonCommand" to="PageManager" method="_on_button_command_pressed"]
-[connection signal="pressed" from="PageManager/VBoxContainer/HBoxContainer/ButtonAudio" to="MainContent" method="_on_button_audio_pressed"]
+[connection signal="pressed" from="PageManager/VBoxContainer/HBoxContainer/ButtonCommand" to="MainContent" method="_on_button_command_pressed"]
 [connection signal="pressed" from="PageManager/VBoxContainer/HBoxContainer/ButtonAudio" to="PageManager" method="_on_button_audio_pressed"]
+[connection signal="pressed" from="PageManager/VBoxContainer/HBoxContainer/ButtonAudio" to="MainContent" method="_on_button_audio_pressed"]
 [connection signal="toggled" from="MainContent/PageSubtitle/Subtitles/CheckBox" to="MainContent" method="_on_subtitles_toggled"]
 [connection signal="value_changed" from="MainContent/PageSubtitle/Size/HSlider" to="MainContent" method="_on_subtitle_size_changed"]
 [connection signal="item_selected" from="MainContent/PageSubtitle/Font/OptionButton" to="MainContent" method="_on_subtitle_font_item_selected"]

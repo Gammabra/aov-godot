@@ -39,27 +39,27 @@ public sealed class AssassinStab : SkillSystem
 /// </summary>
 public sealed class EnemyPoisonStrike : SkillSystem
 {
-    public EnemyPoisonStrike()
-    {
-        Name = "Venomous Fang";
-        Description = "Deal 80% ATK and apply poison (DOT) for 3 turns.";
-        ManaCost = 15;
-        TotalCooldown = 3;
-        Cooldown = 0;
-        Range = 1;
-        MagicType = AovDataStructures.MagicType.None; //TODO change to Poison when implemented
-        EffectType = AovDataStructures.EffectType.Debuff;
-        TargetType = AovDataStructures.TargetTypes.SingleEnemy;
-    }
+	public EnemyPoisonStrike()
+	{
+		Name = "Venomous Fang";
+		Description = "Deal 80% ATK and apply poison (DOT) for 3 turns.";
+		ManaCost = 15;
+		TotalCooldown = 3;
+		Cooldown = 0;
+		Range = 1;
+		MagicType = AovDataStructures.MagicType.None; //TODO change to Poison when implemented
+		EffectType = AovDataStructures.EffectType.Debuff;
+		TargetType = AovDataStructures.TargetTypes.SingleEnemy;
+	}
 
-    public override void Use(UnitSystem caster, List<UnitSystem> targets, MapSystem? map)
-    {
-        if (targets.Count == 0) return;
-        targets[0].TakeDamage(caster.TotalAtk * 0.8f);
-        // Placeholder: replace with PoisonEffect when implemented
-        targets[0].SetStatusEffectOnUnit(new BurningEffect(3, AovDataStructures.ModifierType.Flat, 10));
-        GD.Print($"{caster.UnitName}: {Name} poisoned {targets[0].UnitName}");
-    }
+	public override void Use(UnitSystem caster, List<UnitSystem> targets, MapSystem? map)
+	{
+		if (targets.Count == 0) return;
+		targets[0].TakeDamage(caster.TotalAtk * 0.8f);
+		// Placeholder: replace with PoisonEffect when implemented
+		targets[0].SetStatusEffectOnUnit(new BurningEffect(3, AovDataStructures.ModifierType.Flat, 10));
+		GD.Print($"{caster.UnitName}: {Name} poisoned {targets[0].UnitName}");
+	}
 }
 
 /// <summary>
@@ -68,32 +68,32 @@ public sealed class EnemyPoisonStrike : SkillSystem
 /// </summary>
 public sealed partial class EnemyAssassin : UnitSystem
 {
-    protected override void Initialize()
-    {
-        UnitName = "Enemy Assassin";
-        Description = "A swift enemy rogue who strikes fast and poisons their prey.";
-        Type = AovDataStructures.UnitType.Assassin;
-        MaxHp = 500;
-        Hp = MaxHp;
-        BaseAtk = 230;
-        BaseDef = 10;
-        BaseSpeed = 190;
-        Intelligence = 50;
-        ManaMax = 120;
-        Mana = ManaMax;
-        IsAlive = true;
-        PossibleMovesRange = 4;
-        Curse = 0;
-        Personality = AIPersonality.Opportunistic;
+	protected override void Initialize()
+	{
+		UnitName = "Enemy Assassin";
+		Description = "A swift enemy rogue who strikes fast and poisons their prey.";
+		Type = AovDataStructures.UnitType.Assassin;
+		MaxHp = 500;
+		Hp = MaxHp;
+		BaseAtk = 230;
+		BaseDef = 10;
+		BaseSpeed = 190;
+		Intelligence = 50;
+		ManaMax = 120;
+		Mana = ManaMax;
+		IsAlive = true;
+		PossibleMovesRange = 4;
+		Curse = 0;
+		Personality = AIPersonality.Opportunistic;
 
-        ActiveSkills.Add(new AssassinStab());
-        ActiveSkills.Add(new EnemyPoisonStrike());
+		ActiveSkills.Add(new AssassinStab());
+		ActiveSkills.Add(new EnemyPoisonStrike());
 
-        GD.Print($"{UnitName} initialized with {ActiveSkills.Count} skills");
+		GD.Print($"{UnitName} initialized with {ActiveSkills.Count} skills");
 
-        base.Initialize();
+		base.Initialize();
 
-        var statusEffectSystem = new StatusEffectSystem();
-        InjectDependencies(statusEffectSystem);
-    }
+		var statusEffectSystem = new StatusEffectSystem();
+		InjectDependencies(statusEffectSystem);
+	}
 }

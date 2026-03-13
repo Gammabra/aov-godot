@@ -32,11 +32,13 @@
     <!-- Data Collection for Code Coverage -->
     <DataCollectionRunSettings>
         <DataCollectors>
-            <DataCollector friendlyName="XPlat code coverage" uri="datacollector://Microsoft/CodeCoverage/2.0" assemblyQualifiedName="Microsoft.VisualStudio.Coverage.DynamicCoverageDataCollector, Microsoft.VisualStudio.TraceCollector, Version=11.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+            <DataCollector friendlyName="XPlat Code Coverage">
                 <Configuration>
                     <Format>cobertura</Format>
-                    <Exclude>[*.Tests?]*</Exclude>
+                    <Exclude>[GodotSharp]*,[GdUnit4*]*,[gdUnit4*]*,[Microsoft*]*,[testhost]*,[Castle*]*,[Mono*]*,[Newtonsoft*]*,[Humanizer]*,[CommandLine]*,[Moq]*</Exclude>
+                    <ExcludeByFile>**/tests/**/*.cs,**/addons/**/*.cs</ExcludeByFile>
                     <ExcludeByAttribute>Obsolete,GeneratedCodeAttribute,CompilerGeneratedAttribute</ExcludeByAttribute>
+                    <IncludeTestAssembly>true</IncludeTestAssembly>
                 </Configuration>
             </DataCollector>
         </DataCollectors>

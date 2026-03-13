@@ -38,26 +38,26 @@ public sealed class FighterMeleeAttack : SkillSystem
 /// </summary>
 public sealed class EnemyStaggeringBlow : SkillSystem
 {
-    public EnemyStaggeringBlow()
-    {
-        Name = "Iron Bash";
-        Description = "Deal 90% ATK damage and stun the target for 1 turn.";
-        ManaCost = 20;
-        TotalCooldown = 3;
-        Cooldown = 0;
-        Range = 1;
-        MagicType = AovDataStructures.MagicType.None;
-        EffectType = AovDataStructures.EffectType.Control;
-        TargetType = AovDataStructures.TargetTypes.SingleEnemy;
-    }
+	public EnemyStaggeringBlow()
+	{
+		Name = "Iron Bash";
+		Description = "Deal 90% ATK damage and stun the target for 1 turn.";
+		ManaCost = 20;
+		TotalCooldown = 3;
+		Cooldown = 0;
+		Range = 1;
+		MagicType = AovDataStructures.MagicType.None;
+		EffectType = AovDataStructures.EffectType.Control;
+		TargetType = AovDataStructures.TargetTypes.SingleEnemy;
+	}
 
-    public override void Use(UnitSystem caster, List<UnitSystem> targets, MapSystem? map)
-    {
-        if (targets.Count == 0) return;
-        targets[0].TakeDamage(caster.TotalAtk * 0.9f);
-        targets[0].SetStatusEffectOnUnit(new Stun(1));
-        GD.Print($"{caster.UnitName}: {Name} stunned {targets[0].UnitName}");
-    }
+	public override void Use(UnitSystem caster, List<UnitSystem> targets, MapSystem? map)
+	{
+		if (targets.Count == 0) return;
+		targets[0].TakeDamage(caster.TotalAtk * 0.9f);
+		targets[0].SetStatusEffectOnUnit(new Stun(1));
+		GD.Print($"{caster.UnitName}: {Name} stunned {targets[0].UnitName}");
+	}
 }
 
 /// <summary>
@@ -66,32 +66,32 @@ public sealed class EnemyStaggeringBlow : SkillSystem
 /// </summary>
 public sealed partial class EnemyFighter : UnitSystem
 {
-    protected override void Initialize()
-    {
-        UnitName = "Enemy Fighter";
-        Description = "A heavily armoured enemy bruiser who crushes and stuns opponents.";
-        Type = AovDataStructures.UnitType.Fighter;
-        MaxHp = 1000;
-        Hp = MaxHp;
-        BaseAtk = 150;
-        BaseDef = 50;
-        BaseSpeed = 70;
-        Intelligence = 20;
-        ManaMax = 80;
-        Mana = ManaMax;
-        IsAlive = true;
-        PossibleMovesRange = 2;
-        Curse = 0;
-        Personality = AIPersonality.Aggressive;
+	protected override void Initialize()
+	{
+		UnitName = "Enemy Fighter";
+		Description = "A heavily armoured enemy bruiser who crushes and stuns opponents.";
+		Type = AovDataStructures.UnitType.Fighter;
+		MaxHp = 1000;
+		Hp = MaxHp;
+		BaseAtk = 150;
+		BaseDef = 50;
+		BaseSpeed = 70;
+		Intelligence = 20;
+		ManaMax = 80;
+		Mana = ManaMax;
+		IsAlive = true;
+		PossibleMovesRange = 2;
+		Curse = 0;
+		Personality = AIPersonality.Aggressive;
 
-        ActiveSkills.Add(new FighterMeleeAttack());
-        ActiveSkills.Add(new EnemyStaggeringBlow());
+		ActiveSkills.Add(new FighterMeleeAttack());
+		ActiveSkills.Add(new EnemyStaggeringBlow());
 
-        GD.Print($"{UnitName} initialized with {ActiveSkills.Count} skills");
+		GD.Print($"{UnitName} initialized with {ActiveSkills.Count} skills");
 
-        base.Initialize();
+		base.Initialize();
 
-        var statusEffectSystem = new StatusEffectSystem();
-        InjectDependencies(statusEffectSystem);
-    }
+		var statusEffectSystem = new StatusEffectSystem();
+		InjectDependencies(statusEffectSystem);
+	}
 }

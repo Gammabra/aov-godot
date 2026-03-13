@@ -12,25 +12,25 @@ namespace AshesOfVelsingrad;
 /// </summary>
 public sealed class CrushingStrike : SkillSystem
 {
-    public CrushingStrike()
-    {
-        Name = "Crushing Strike";
-        Description = "Deal 150% ATK damage to one adjacent enemy.";
-        ManaCost = 15;
-        TotalCooldown = 2;
-        Cooldown = 0;
-        Range = 1;
-        MagicType = AovDataStructures.MagicType.None;
-        EffectType = AovDataStructures.EffectType.Damage;
-        TargetType = AovDataStructures.TargetTypes.SingleEnemy;
-    }
+	public CrushingStrike()
+	{
+		Name = "Crushing Strike";
+		Description = "Deal 150% ATK damage to one adjacent enemy.";
+		ManaCost = 15;
+		TotalCooldown = 2;
+		Cooldown = 0;
+		Range = 1;
+		MagicType = AovDataStructures.MagicType.None;
+		EffectType = AovDataStructures.EffectType.Damage;
+		TargetType = AovDataStructures.TargetTypes.SingleEnemy;
+	}
 
-    public override void Use(UnitSystem caster, List<UnitSystem> targets, MapSystem? map)
-    {
-        if (targets.Count == 0) return;
-        targets[0].TakeDamage(caster.TotalAtk * 1.5f);
-        GD.Print($"{caster.UnitName} used {Name} on {targets[0].UnitName}");
-    }
+	public override void Use(UnitSystem caster, List<UnitSystem> targets, MapSystem? map)
+	{
+		if (targets.Count == 0) return;
+		targets[0].TakeDamage(caster.TotalAtk * 1.5f);
+		GD.Print($"{caster.UnitName} used {Name} on {targets[0].UnitName}");
+	}
 }
 
 /// <summary>
@@ -38,27 +38,27 @@ public sealed class CrushingStrike : SkillSystem
 /// </summary>
 public sealed class WarCry : SkillSystem
 {
-    public WarCry()
-    {
-        Name = "War Cry";
-        Description = "Boost ATK of all allies by 30 (flat) for 3 turns.";
-        ManaCost = 20;
-        TotalCooldown = 4;
-        Cooldown = 0;
-        Range = 0; // targets self/allies list
-        MagicType = AovDataStructures.MagicType.None;
-        EffectType = AovDataStructures.EffectType.Buff;
-        TargetType = AovDataStructures.TargetTypes.AllAllies;
-    }
+	public WarCry()
+	{
+		Name = "War Cry";
+		Description = "Boost ATK of all allies by 30 (flat) for 3 turns.";
+		ManaCost = 20;
+		TotalCooldown = 4;
+		Cooldown = 0;
+		Range = 0; // targets self/allies list
+		MagicType = AovDataStructures.MagicType.None;
+		EffectType = AovDataStructures.EffectType.Buff;
+		TargetType = AovDataStructures.TargetTypes.AllAllies;
+	}
 
-    public override void Use(UnitSystem caster, List<UnitSystem> targets, MapSystem? map)
-    {
-        foreach (UnitSystem ally in targets)
-        {
-            ally.SetStatusEffectOnUnit(new AtkBuffer(3, AovDataStructures.ModifierType.Flat, 30));
-            GD.Print($"{caster.UnitName}: War Cry buffed {ally.UnitName}");
-        }
-    }
+	public override void Use(UnitSystem caster, List<UnitSystem> targets, MapSystem? map)
+	{
+		foreach (UnitSystem ally in targets)
+		{
+			ally.SetStatusEffectOnUnit(new AtkBuffer(3, AovDataStructures.ModifierType.Flat, 30));
+			GD.Print($"{caster.UnitName}: War Cry buffed {ally.UnitName}");
+		}
+	}
 }
 
 /// <summary>
@@ -66,26 +66,26 @@ public sealed class WarCry : SkillSystem
 /// </summary>
 public sealed class StaggeringBlow : SkillSystem
 {
-    public StaggeringBlow()
-    {
-        Name = "Staggering Blow";
-        Description = "Deal ATK damage and stun the target for 1 turn.";
-        ManaCost = 25;
-        TotalCooldown = 3;
-        Cooldown = 0;
-        Range = 1;
-        MagicType = AovDataStructures.MagicType.None;
-        EffectType = AovDataStructures.EffectType.Control;
-        TargetType = AovDataStructures.TargetTypes.SingleEnemy;
-    }
+	public StaggeringBlow()
+	{
+		Name = "Staggering Blow";
+		Description = "Deal ATK damage and stun the target for 1 turn.";
+		ManaCost = 25;
+		TotalCooldown = 3;
+		Cooldown = 0;
+		Range = 1;
+		MagicType = AovDataStructures.MagicType.None;
+		EffectType = AovDataStructures.EffectType.Control;
+		TargetType = AovDataStructures.TargetTypes.SingleEnemy;
+	}
 
-    public override void Use(UnitSystem caster, List<UnitSystem> targets, MapSystem? map)
-    {
-        if (targets.Count == 0) return;
-        targets[0].TakeDamage(caster.TotalAtk);
-        targets[0].SetStatusEffectOnUnit(new Stun(1));
-        GD.Print($"{caster.UnitName} used {Name}: dealt damage and stunned {targets[0].UnitName}");
-    }
+	public override void Use(UnitSystem caster, List<UnitSystem> targets, MapSystem? map)
+	{
+		if (targets.Count == 0) return;
+		targets[0].TakeDamage(caster.TotalAtk);
+		targets[0].SetStatusEffectOnUnit(new Stun(1));
+		GD.Print($"{caster.UnitName} used {Name}: dealt damage and stunned {targets[0].UnitName}");
+	}
 }
 
 /// <summary>

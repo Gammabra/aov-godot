@@ -13,52 +13,52 @@ namespace AshesOfVelsingrad.UI.Menus;
 /// </summary>
 public partial class OptionsMenu : Control
 {
-    [Export] private PackedScene? _inputButtonScene;
-    [Export] private PackedScene? _notifUnboundScene;
-    [Export] private Slider? _dialogueSizeSlider;
-    [Export] private Label? _dialogueSizeLabel;
-    [Export] private Button? _resetButton;
-    [Export] private Button? _backButton;
-    [Export] private Control? _previewDialogue;
-    [Export] private Label? _previewText;
-    [Export] private VBoxContainer? _actionList;
+	[Export] private PackedScene? _inputButtonScene;
+	[Export] private PackedScene? _notifUnboundScene;
+	[Export] private Slider? _dialogueSizeSlider;
+	[Export] private Label? _dialogueSizeLabel;
+	[Export] private Button? _resetButton;
+	[Export] private Button? _backButton;
+	[Export] private Control? _previewDialogue;
+	[Export] private Label? _previewText;
+	[Export] private VBoxContainer? _actionList;
 
-    [Signal]
-    public delegate void BackRequestedEventHandler();
+	[Signal]
+	public delegate void BackRequestedEventHandler();
 
-    private bool _isRemapping = false;
-    private string? _actionToRemap;
-    private Button? _remappingButton;
-    private List<CanvasLayer> _notifUnboundList = new List<CanvasLayer>();
+	private bool _isRemapping = false;
+	private string? _actionToRemap;
+	private Button? _remappingButton;
+	private List<CanvasLayer> _notifUnboundList = new List<CanvasLayer>();
 
-    // Dictionary mapping internal action names to display names
-    private Dictionary<string, string> _inputActions = new Dictionary<string, string>
-    {
-        { "attack", "Attack" },
-        { "move_up", "Move Up" },
-        { "move_left", "Move Left" },
-        { "move_down", "Move Down" },
-        { "move_right", "Move Right" },
-    };
+	// Dictionary mapping internal action names to display names
+	private Dictionary<string, string> _inputActions = new Dictionary<string, string>
+	{
+		{ "attack", "Attack" },
+		{ "move_up", "Move Up" },
+		{ "move_left", "Move Left" },
+		{ "move_down", "Move Down" },
+		{ "move_right", "Move Right" },
+	};
 
-    /// <summary>
-    /// Called when the node is ready. Initializes the options menu by calling deferred setup.
-    /// </summary>
-    /// <remarks>
-    /// This method is called when both the node and its children have entered the scene tree.
-    /// It uses CallDeferred to ensure all UI elements are properly initialized.
-    /// </remarks>
-    public override void _Ready()
-    {
-        CallDeferred(MethodName.DeferredReady);
-    }
+	/// <summary>
+	/// Called when the node is ready. Initializes the options menu by calling deferred setup.
+	/// </summary>
+	/// <remarks>
+	/// This method is called when both the node and its children have entered the scene tree.
+	/// It uses CallDeferred to ensure all UI elements are properly initialized.
+	/// </remarks>
+	public override void _Ready()
+	{
+		CallDeferred(MethodName.DeferredReady);
+	}
 
-    /// <summary>
-    /// Deferred initialization to ensure all UI elements are ready.
-    /// </summary>
-    /// <remarks>
-    /// This method connects signals and initializes UI elements.
-    /// It's called after _Ready() to ensure proper initialization order.
+	/// <summary>
+	/// Deferred initialization to ensure all UI elements are ready.
+	/// </summary>
+	/// <remarks>
+	/// This method connects signals and initializes UI elements.
+	/// It's called after _Ready() to ensure proper initialization order.
     /// </remarks>
     private void DeferredReady()
     {
@@ -144,7 +144,7 @@ public partial class OptionsMenu : Control
                 else
                 {
                     inputLabel.Text = "Unbound";
-                    GD.Print($"Action '{action.Key}' is unbound");
+					GD.Print($"Action '{action.Key}' is unbound");
                 }
 
                 _actionList.AddChild(button);
@@ -264,7 +264,7 @@ public partial class OptionsMenu : Control
             return;
 
         GetTree().Root.AddChild(notifInstance);
-        notifInstance.GetNode<Label>("Panel/Label").Text = $"The action '{action}' is now unbound.";
+		notifInstance.GetNode<Label>("Panel/Label").Text = $"The action '{action}' is now unbound.";
         _notifUnboundList.Add(notifInstance);
 
         PlaceNotifUnbound();

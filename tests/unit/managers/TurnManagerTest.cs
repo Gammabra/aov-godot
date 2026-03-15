@@ -107,7 +107,6 @@ public class TurnManagerTest
     public void EndTurnManagerLoop_SetsFinishedState()
     {
         TurnManager manager = AddNode(new TurnManager());
-        manager.InitializeTurnOrder(new List<UnitSystem>(), new List<UnitSystem>());
 
         manager.EndTurnManagerLoop();
 

@@ -52,6 +52,11 @@ public partial class TurnManager : BaseManager
     public event Action? OnPlayerTurnEnd;
 
     /// <summary>
+    /// Triggered when the enemy's turn begins.
+    /// </summary>
+    public event Action? OnEnemyTurn;
+
+    /// <summary>
     ///     Triggered when the enemy's turn ends
     /// </summary>
     public event Action? OnEnemyTurnEnd;
@@ -118,6 +123,7 @@ public partial class TurnManager : BaseManager
                     OnPlayerTurnEnd?.Invoke();
                     break;
                 case AovDataStructures.TurnState.EnemyTurn:
+                    OnEnemyTurn?.Invoke();
                     if (!_unitsTurnOrder[_currentIndex].Key.IsControlled)
                         await WaitForEnemyAction(_unitsTurnOrder[_currentIndex].Key);
                     OnEnemyTurnEnd?.Invoke();

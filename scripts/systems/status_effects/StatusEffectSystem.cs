@@ -24,7 +24,7 @@ public sealed class StatusEffectSystem
     #region Private Methods
 
     /// <summary>
-    ///     Updates all active status effects on the given target at the end of a turn.
+    ///     Updates all active status effects on the given target.
     /// </summary>
     /// <typeparam name="TTarget">
     ///     The concrete type of the effect target (e.g. <see cref="UnitSystem" /> or
@@ -34,7 +34,7 @@ public sealed class StatusEffectSystem
     ///     The target whose active <see cref="StatusEffect{TTarget}" /> instances
     ///     should be updated.
     /// </param>
-    private void RefreshTargetEffectsOnTurnEnd<TTarget>(IEffectTarget<TTarget> target)
+    private void RefreshTargetEffects<TTarget>(IEffectTarget<TTarget> target)
     {
         foreach (StatusEffect<TTarget> statusEffect in
             target.GetActiveEffects().ToList()) // Copy to avoid foreach/remove issues
@@ -103,7 +103,7 @@ public sealed class StatusEffectSystem
     }
 
     /// <summary>
-    ///     Processes end-of-turn updates for a single target.
+    ///     Processes status effect updates for a single target.
     /// </summary>
     /// <param name="target">
     ///     The target whose status effects should be updated.
@@ -113,12 +113,12 @@ public sealed class StatusEffectSystem
     ///     and expired effects are removed automatically. If a target has no more active effects,
     ///     it is removed from the tracking list.
     /// </remarks>
-    public void ProcessUnitTurnEnd(IEffectTarget<UnitSystem>? target)
+    public void ProcessUnitStatusEffects(IEffectTarget<UnitSystem>? target)
     {
         if (target is null)
             return;
 
-        RefreshTargetEffectsOnTurnEnd(target);
+        RefreshTargetEffects(target);
     }
 
     /// <summary>
@@ -136,7 +136,7 @@ public sealed class StatusEffectSystem
         {
             if (target is not IEffectTarget<CellInformation> cell)
                 continue;
-            RefreshTargetEffectsOnTurnEnd(cell);
+            RefreshTargetEffects(cell);
         }
     }
 

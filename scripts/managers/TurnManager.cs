@@ -114,9 +114,9 @@ public partial class TurnManager : BaseManager
             switch (_currentTurnState)
             {
                 case AovDataStructures.TurnState.PlayerTurn:
+                    OnPlayerTurn?.Invoke();
                     if (!_unitsTurnOrder[_currentIndex].Key.IsControlled)
                     {
-                        OnPlayerTurn?.Invoke();
                         await _unitsTurnOrder[_currentIndex].Key.WaitForActionAsync();
                     }
 

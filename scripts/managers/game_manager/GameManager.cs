@@ -283,7 +283,7 @@ public partial class GameManager : BaseManager
             return;
         }
 
-        GD.Print($"Selected Skill {skillId}");
+        GD.Print($"Selected Skill {skillId + 1}");
         _clickOnMapContext = AovDataStructures.ClickOnMapContext.SelectUnitTarget;
         _selectedSkill = _turnManagerContainer.GetCurrentUnit().ActiveSkills[skillId];
         var reachableTuples = _turnManagerContainer

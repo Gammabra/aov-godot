@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://cwlr1semki1nx"]
+
+[ext_resource type="Script" uid="uid://bcuslo1ldtoal" path="res://scripts/data/unit/enemies/EnemyFighter.cs" id="1_4f74k"]
+[ext_resource type="Texture2D" uid="uid://ddwok17vhh08j" path="res://assets/icon.svg" id="2_05llh"]
+[ext_resource type="Script" uid="uid://dvsd81c4l1hgb" path="res://scripts/AI/EnemyAIBehavior.cs" id="3_i5fo6"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_k3vm1"]
+
+[node name="Archer" type="CharacterBody3D" unique_id=181515361]
+script = ExtResource("1_4f74k")
+
+[node name="Sprite3D" type="Sprite3D" parent="." unique_id=1712387895]
+billboard = 1
+texture = ExtResource("2_05llh")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=735666014]
+shape = SubResource("SphereShape3D_k3vm1")
+
+[node name="AIBehavior" type="Node" parent="." unique_id=625692246]
+script = ExtResource("3_i5fo6")
+EnableDebugVisualization = true

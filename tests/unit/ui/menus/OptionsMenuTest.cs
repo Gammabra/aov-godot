@@ -35,13 +35,14 @@ public class OptionsMenuTest
         GD.Print("[TEST] Starting OptionsMenu SetUp...");
 
         ClearAllSingletonInstances();
+        CleanupGlobalOrphans();
 
         _root = new Node { Name = "TestRoot" };
         ((SceneTree)Godot.Engine.GetMainLoop()).Root.AddChild(_root);
         _testNodes.Add(_root);
 
         _testSettingsManager = CreateTestSettingsManager();
-        _optionsMenu = AutoFree(new OptionsMenu { Name = "OptionsMenu" });
+        _optionsMenu = new OptionsMenu { Name = "OptionsMenu" };
 
         if (_optionsMenu == null)
             throw new System.InvalidOperationException("Failed to create OptionsMenu instance.");
@@ -51,6 +52,52 @@ public class OptionsMenuTest
         AddToTestRoot(_optionsMenu);
 
         GD.Print("[TEST] OptionsMenu SetUp completed");
+    }
+
+    private void CleanupGlobalOrphans()
+    {
+        var root = ((SceneTree)Godot.Engine.GetMainLoop()).Root;
+        foreach (var child in root.GetChildren())
+        {
+            // Don't free the test runner or the root itself! 
+            // Only free things your tests might have leaked.
+            if (child is AcceptDialog || child.Name == "TestRoot")
+            {
+                root.RemoveChild(child);
+                child.Free();
+            }
+        }
+    }
+    
+    [AfterTest]
+    public void TearDown()
+    {
+        GD.Print("[TEST] Starting OptionsMenu TearDown...");
+
+        TestSettingsManager.ClearTempFiles();
+
+        // 1. Remove the root from the SceneTree first
+        if (GodotObject.IsInstanceValid(_root))
+        {
+            var parent = _root.GetParent();
+            if (parent != null)
+            {
+                parent.RemoveChild(_root);
+            }
+            
+            // 2. Force immediate deletion of the entire tree
+            _root.Free(); 
+        }
+
+        _root = null;
+        _optionsMenu = null;
+        _testNodes.Clear();
+        _inputButtonScene?.Dispose(); 
+        _inputButtonScene = null;
+
+        ClearAllSingletonInstances();
+
+        GD.Print("[TEST] OptionsMenu TearDown completed");
     }
 
     // === INITIALIZATION TESTS ===
@@ -282,21 +329,23 @@ public class OptionsMenuTest
     {
         _optionsMenu!._Ready();
 
-        // Create a test button
-        var testButton = new Button();
+        // Attach the test button to the root so TearDown cleans it up automatically
+        var testButton = AddToTestRoot(new Button()); 
+        var marginContainer = new MarginContainer { Name = "MarginContainer" };
         var hbox = new HBoxContainer();
         var inputLabel = new Label { Name = "LabelInput" };
-        hbox.AddChild(inputLabel);
-        var marginContainer = new MarginContainer { Name = "MarginContainer" };
-        marginContainer.AddChild(hbox);
+
+        // Build the hierarchy
         testButton.AddChild(marginContainer);
+        marginContainer.AddChild(hbox);
+        hbox.AddChild(inputLabel);
 
         CallPrivateMethod(_optionsMenu, "OnInputButtonPressed", testButton, "test_action");
 
         var isRemapping = GetPrivateField<bool>(_optionsMenu, "_isRemapping");
         AssertThat(isRemapping).IsTrue();
 
-        testButton.QueueFree();
+        // No need for manual QueueFree() here; TearDown handles _root
     }
 
     [TestCase]
@@ -594,31 +643,18 @@ public class OptionsMenuTest
 
     private void CreateUIComponents()
     {
-        _dialogueSizeSlider = AutoFree(new HSlider
-        {
-            Name = "DialogueSizeSlider",
-            MinValue = 0.5,
-            MaxValue = 2.0,
-            Step = 0.1,
-            Value = 1.0
-        });
-
-        _dialogueSizeLabel = AutoFree(new Label { Name = "DialogueSizeLabel" });
-        _resetButton = AutoFree(new Button { Name = "ResetButton", Text = "Reset" });
-        _backButton = AutoFree(new Button { Name = "BackButton", Text = "Back" });
-        _previewDialogue = AutoFree(new Control { Name = "PreviewDialogue" });
-        _previewText = AutoFree(new Label { Name = "PreviewText", Text = "Sample dialogue text" });
-        _actionList = AutoFree(new VBoxContainer { Name = "ActionList" });
-
-        // Create a simple input button scene for testing
-        _inputButtonScene = CreateMockInputButtonScene();
-
-        if (_dialogueSizeSlider == null || _dialogueSizeLabel == null || _resetButton == null ||
-            _backButton == null || _previewDialogue == null || _previewText == null || _actionList == null)
-            throw new System.InvalidOperationException("Failed to create one or more UI components.");
+        // Plain instantiation. No AutoFree.
+        _dialogueSizeSlider = new HSlider { Name = "DialogueSizeSlider" };
+        _dialogueSizeLabel = new Label { Name = "DialogueSizeLabel" };
+        _resetButton = new Button { Name = "ResetButton" };
+        _backButton = new Button { Name = "BackButton" };
+        _previewDialogue = new Control { Name = "PreviewDialogue" };
+        _previewText = new Label { Name = "PreviewText" };
+        _actionList = new VBoxContainer { Name = "ActionList" };
 
         _previewDialogue.AddChild(_previewText);
 
+        // Attach them to the menu
         _optionsMenu!.AddChild(_dialogueSizeSlider);
         _optionsMenu.AddChild(_dialogueSizeLabel);
         _optionsMenu.AddChild(_resetButton);
@@ -702,27 +738,5 @@ public class OptionsMenuTest
         }
 
         method.Invoke(instance, parameters);
-    }
-
-    [AfterTest]
-    public void TearDown()
-    {
-        GD.Print("[TEST] Starting OptionsMenu TearDown...");
-
-        // Clean up temp files from TestSettingsManager
-        TestSettingsManager.ClearTempFiles();
-
-        foreach (var node in _testNodes)
-        {
-            if (GodotObject.IsInstanceValid(node) && !node.IsQueuedForDeletion())
-            {
-                node.QueueFree();
-            }
-        }
-        _testNodes.Clear();
-
-        ClearAllSingletonInstances();
-
-        GD.Print("[TEST] OptionsMenu TearDown completed");
     }
 }

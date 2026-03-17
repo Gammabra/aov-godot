@@ -156,10 +156,10 @@ public partial class EnemyAIBehaviorTest
     [TestCase]
     public async Task ExecuteTurn_HandlesNullUnit()
     {
-        _aiBehavior = new TestConcreteEnemyAIBehavior();
+        // Use the helper to track the node
+        _aiBehavior = AddNodeToTestRoot(new TestConcreteEnemyAIBehavior());
         _aiBehavior._unit = null;
 
-        // Should not crash
         await _aiBehavior.ExecuteTurn(_mockBattleState!);
 
         AssertThat(_aiBehavior.Unit).IsNull();
@@ -193,11 +193,12 @@ public partial class EnemyAIBehaviorTest
     [TestCase]
     public void ThinkingDelay_CanBeSetAndRetrieved()
     {
-        _aiBehavior = new TestConcreteEnemyAIBehavior
+        // Use the helper to track the node
+        _aiBehavior = AddNodeToTestRoot(new TestConcreteEnemyAIBehavior
         {
             ThinkingDelayMin = 0.5f,
             ThinkingDelayMax = 2.0f
-        };
+        });
 
         AssertThat(_aiBehavior.ThinkingDelayMin).IsEqual(0.5f);
         AssertThat(_aiBehavior.ThinkingDelayMax).IsEqual(2.0f);
@@ -206,7 +207,8 @@ public partial class EnemyAIBehaviorTest
     [TestCase]
     public void EnableDebugVisualization_DefaultsToFalse()
     {
-        _aiBehavior = new TestConcreteEnemyAIBehavior();
+        // Use the helper to track the node
+        _aiBehavior = AddNodeToTestRoot(new TestConcreteEnemyAIBehavior());
         AssertThat(_aiBehavior.EnableDebugVisualization).IsFalse();
     }
 

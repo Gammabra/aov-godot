@@ -41,6 +41,8 @@ public class GameManagerTest
     {
         TestConcreteUnitSystem unit = new(maxHp: hp, baseSpeed: speed);
         unit.Name = name;
+        // CRITICAL: Track the unit so Cleanup can find it
+        _testNodes.Add(unit); 
         return unit;
     }
 
@@ -61,8 +63,17 @@ public class GameManagerTest
     [AfterTest]
     public void Cleanup()
     {
-        foreach (Node node in _testNodes)
-            node.QueueFree();
+        // Iterate backwards to free children before parents if they are in the same list
+        for (int i = _testNodes.Count - 1; i >= 0; i--)
+        {
+            Node node = _testNodes[i];
+            if (GodotObject.IsInstanceValid(node))
+            {
+                if (node.GetParent() != null)
+                    node.GetParent().RemoveChild(node);
+                node.Free(); 
+            }
+        }
         _testNodes.Clear();
         ResetSingleton();
     }
@@ -462,7 +473,8 @@ public class GameManagerTest
     public void PlayerSelectedSkill_InvalidSkillId_DoesNothing()
     {
         GameManager manager = AddNode(new GameManager());
-        TurnManager turnManager = new();
+        // Use AddNode instead of new TurnManager()
+        TurnManager turnManager = AddNode(new TurnManager()); 
         TestConcreteMapSystem mapSystem = AddNode(new TestConcreteMapSystem());
         TestConcreteUnitSystem unit = CreateUnit("Player");
 

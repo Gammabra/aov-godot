@@ -40,7 +40,7 @@ public class GameManagerTest
 
     private TestConcreteUnitSystem CreateUnit(string name, float hp = 100, int speed = 4)
     {
-        TestConcreteUnitSystem unit = new(hp: hp, baseSpeed: speed);
+        TestConcreteUnitSystem unit = new(maxHp: hp, baseSpeed: speed);
         unit.Name = name;
         return unit;
     }

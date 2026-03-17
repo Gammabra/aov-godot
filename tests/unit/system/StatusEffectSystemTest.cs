@@ -104,7 +104,7 @@ public class StatusEffectSystemTest
 
         sys.ApplyEffect(unitTarget, effect);
 
-        sys.ProcessUnitTurnEnd(unitTarget);
+        sys.ProcessUnitStatusEffects(unitTarget);
 
         AssertThat(effect.Duration).IsEqual(1);
         AssertThat(effect.TurnPassedCalled).IsTrue();
@@ -119,8 +119,8 @@ public class StatusEffectSystemTest
 
         sys.ApplyEffect(unitTarget, effect);
 
-        sys.ProcessUnitTurnEnd(unitTarget); // Duration -> 0
-        sys.ProcessUnitTurnEnd(unitTarget); // Should remove
+        sys.ProcessUnitStatusEffects(unitTarget); // Duration -> 0
+        sys.ProcessUnitStatusEffects(unitTarget); // Should remove
 
         AssertThat(unitTarget.GetActiveEffects().Count).IsEqual(0);
     }
@@ -135,7 +135,7 @@ public class StatusEffectSystemTest
         sys.ApplyEffect(target, effect);
 
         // Should do nothing because type mismatch
-        sys.ProcessUnitTurnEnd(target as IEffectTarget<UnitSystem>);
+        sys.ProcessUnitStatusEffects(target as IEffectTarget<UnitSystem>);
 
         AssertThat(effect.Duration).IsEqual(2);
         AssertThat(effect.TurnPassedCalled).IsFalse();

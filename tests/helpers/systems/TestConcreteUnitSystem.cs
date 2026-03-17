@@ -32,8 +32,10 @@ public partial class TestConcreteUnitSystem : UnitSystem
     {
         get
         {
-            var field = typeof(UnitSystem).GetField("_statusEffectSystem",
-                BindingFlags.NonPublic | BindingFlags.Instance);
+            var field = typeof(UnitSystem).GetField(
+                "_statusEffectSystem",
+                BindingFlags.NonPublic | BindingFlags.Instance
+            );
             return (StatusEffectSystem?)field?.GetValue(this);
         }
     }
@@ -44,8 +46,10 @@ public partial class TestConcreteUnitSystem : UnitSystem
         get => base.PossibleMovesRange;
         set
         {
-            var field = typeof(UnitSystem).GetProperty("PossibleMovesRange",
-                BindingFlags.Public | BindingFlags.Instance);
+            var field = typeof(UnitSystem).GetProperty(
+                "PossibleMovesRange",
+                BindingFlags.Public | BindingFlags.Instance
+            );
             field?.SetValue(this, value);
         }
     }
@@ -55,8 +59,10 @@ public partial class TestConcreteUnitSystem : UnitSystem
         get => base.Hp;
         set
         {
-            var field = typeof(UnitSystem).GetProperty("Hp",
-                BindingFlags.Public | BindingFlags.Instance);
+            var field = typeof(UnitSystem).GetProperty(
+                "Hp",
+                BindingFlags.Public | BindingFlags.Instance
+            );
             field?.SetValue(this, value);
         }
     }
@@ -66,8 +72,10 @@ public partial class TestConcreteUnitSystem : UnitSystem
         get => base.Mana;
         set
         {
-            var field = typeof(UnitSystem).GetProperty("Mana",
-                BindingFlags.Public | BindingFlags.Instance);
+            var field = typeof(UnitSystem).GetProperty(
+                "Mana",
+                BindingFlags.Public | BindingFlags.Instance
+            );
             field?.SetValue(this, value);
         }
     }
@@ -77,8 +85,10 @@ public partial class TestConcreteUnitSystem : UnitSystem
         get => base.BaseAtk;
         set
         {
-            var field = typeof(UnitSystem).GetProperty("BaseAtk",
-                BindingFlags.Public | BindingFlags.Instance);
+            var field = typeof(UnitSystem).GetProperty(
+                "BaseAtk",
+                BindingFlags.Public | BindingFlags.Instance
+            );
             field?.SetValue(this, value);
         }
     }
@@ -88,8 +98,23 @@ public partial class TestConcreteUnitSystem : UnitSystem
         get => base.BaseDef;
         set
         {
-            var field = typeof(UnitSystem).GetProperty("BaseDef",
-                BindingFlags.Public | BindingFlags.Instance);
+            var field = typeof(UnitSystem).GetProperty(
+                "BaseDef",
+                BindingFlags.Public | BindingFlags.Instance
+            );
+            field?.SetValue(this, value);
+        }
+    }
+
+    public new float BaseSpeed
+    {
+        get => base.BaseSpeed;
+        set
+        {
+            var field = typeof(UnitSystem).GetProperty(
+                "BaseSpeed",
+                BindingFlags.Public | BindingFlags.Instance
+            );
             field?.SetValue(this, value);
         }
     }

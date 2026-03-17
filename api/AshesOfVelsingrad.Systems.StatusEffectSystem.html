@@ -236,19 +236,19 @@ Only targets of type <a class="xref" href="AshesOfVelsingrad.Systems.CellInforma
 
 
 
-  <a id="AshesOfVelsingrad_Systems_StatusEffectSystem_ProcessUnitTurnEnd_" data-uid="AshesOfVelsingrad.Systems.StatusEffectSystem.ProcessUnitTurnEnd*"></a>
+  <a id="AshesOfVelsingrad_Systems_StatusEffectSystem_ProcessUnitStatusEffects_" data-uid="AshesOfVelsingrad.Systems.StatusEffectSystem.ProcessUnitStatusEffects*"></a>
 
-  <h3 id="AshesOfVelsingrad_Systems_StatusEffectSystem_ProcessUnitTurnEnd_AshesOfVelsingrad_Systems_IEffectTarget_AshesOfVelsingrad_Systems_UnitSystem__" data-uid="AshesOfVelsingrad.Systems.StatusEffectSystem.ProcessUnitTurnEnd(AshesOfVelsingrad.Systems.IEffectTarget{AshesOfVelsingrad.Systems.UnitSystem})">
-  ProcessUnitTurnEnd(IEffectTarget&lt;UnitSystem&gt;?)
+  <h3 id="AshesOfVelsingrad_Systems_StatusEffectSystem_ProcessUnitStatusEffects_AshesOfVelsingrad_Systems_IEffectTarget_AshesOfVelsingrad_Systems_UnitSystem__" data-uid="AshesOfVelsingrad.Systems.StatusEffectSystem.ProcessUnitStatusEffects(AshesOfVelsingrad.Systems.IEffectTarget{AshesOfVelsingrad.Systems.UnitSystem})">
+  ProcessUnitStatusEffects(IEffectTarget&lt;UnitSystem&gt;?)
   <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/systems/status_effects/StatusEffectSystem.cs/#L122"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Processes end-of-turn updates for a single target.</p>
+  <div class="markdown level1 summary"><p>Processes status effect updates for a single target.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public void ProcessUnitTurnEnd(IEffectTarget&lt;UnitSystem&gt;? target)</code></pre>
+    <pre><code class="lang-csharp hljs">public void ProcessUnitStatusEffects(IEffectTarget&lt;UnitSystem&gt;? target)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -265,7 +265,7 @@ Only targets of type <a class="xref" href="AshesOfVelsingrad.Systems.CellInforma
 
 
 
-  <h4 class="section" id="AshesOfVelsingrad_Systems_StatusEffectSystem_ProcessUnitTurnEnd_AshesOfVelsingrad_Systems_IEffectTarget_AshesOfVelsingrad_Systems_UnitSystem___remarks">Remarks</h4>
+  <h4 class="section" id="AshesOfVelsingrad_Systems_StatusEffectSystem_ProcessUnitStatusEffects_AshesOfVelsingrad_Systems_IEffectTarget_AshesOfVelsingrad_Systems_UnitSystem___remarks">Remarks</h4>
   <div class="markdown level1 remarks"><p>Each status effect has its <a class="xref" href="AshesOfVelsingrad.Systems.StatusEffect-1.html#AshesOfVelsingrad_Systems_StatusEffect_1_OnTurnPassed_AshesOfVelsingrad_Systems_IEffectTarget__0__">OnTurnPassed(IEffectTarget&lt;TTarget&gt;)</a> method called,
 and expired effects are removed automatically. If a target has no more active effects,
 it is removed from the tracking list.</p>

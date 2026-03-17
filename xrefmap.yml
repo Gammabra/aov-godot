@@ -2809,6 +2809,12 @@ references:
   commentId: E:AshesOfVelsingrad.Managers.TurnManager.OnCurrentTurnEnd
   fullName: AshesOfVelsingrad.Managers.TurnManager.OnCurrentTurnEnd
   nameWithType: TurnManager.OnCurrentTurnEnd
+- uid: AshesOfVelsingrad.Managers.TurnManager.OnEnemyTurn
+  name: OnEnemyTurn
+  href: api/AshesOfVelsingrad.Managers.TurnManager.html#AshesOfVelsingrad_Managers_TurnManager_OnEnemyTurn
+  commentId: E:AshesOfVelsingrad.Managers.TurnManager.OnEnemyTurn
+  fullName: AshesOfVelsingrad.Managers.TurnManager.OnEnemyTurn
+  nameWithType: TurnManager.OnEnemyTurn
 - uid: AshesOfVelsingrad.Managers.TurnManager.OnEnemyTurnEnd
   name: OnEnemyTurnEnd
   href: api/AshesOfVelsingrad.Managers.TurnManager.html#AshesOfVelsingrad_Managers_TurnManager_OnEnemyTurnEnd
@@ -4518,22 +4524,22 @@ references:
   isSpec: "True"
   fullName: AshesOfVelsingrad.Systems.StatusEffectSystem.ProcessTurnEnd
   nameWithType: StatusEffectSystem.ProcessTurnEnd
-- uid: AshesOfVelsingrad.Systems.StatusEffectSystem.ProcessUnitTurnEnd(AshesOfVelsingrad.Systems.IEffectTarget{AshesOfVelsingrad.Systems.UnitSystem})
-  name: ProcessUnitTurnEnd(IEffectTarget<UnitSystem>?)
-  href: api/AshesOfVelsingrad.Systems.StatusEffectSystem.html#AshesOfVelsingrad_Systems_StatusEffectSystem_ProcessUnitTurnEnd_AshesOfVelsingrad_Systems_IEffectTarget_AshesOfVelsingrad_Systems_UnitSystem__
-  commentId: M:AshesOfVelsingrad.Systems.StatusEffectSystem.ProcessUnitTurnEnd(AshesOfVelsingrad.Systems.IEffectTarget{AshesOfVelsingrad.Systems.UnitSystem})
-  name.vb: ProcessUnitTurnEnd(IEffectTarget(Of UnitSystem))
-  fullName: AshesOfVelsingrad.Systems.StatusEffectSystem.ProcessUnitTurnEnd(AshesOfVelsingrad.Systems.IEffectTarget<AshesOfVelsingrad.Systems.UnitSystem>?)
-  fullName.vb: AshesOfVelsingrad.Systems.StatusEffectSystem.ProcessUnitTurnEnd(AshesOfVelsingrad.Systems.IEffectTarget(Of AshesOfVelsingrad.Systems.UnitSystem))
-  nameWithType: StatusEffectSystem.ProcessUnitTurnEnd(IEffectTarget<UnitSystem>?)
-  nameWithType.vb: StatusEffectSystem.ProcessUnitTurnEnd(IEffectTarget(Of UnitSystem))
-- uid: AshesOfVelsingrad.Systems.StatusEffectSystem.ProcessUnitTurnEnd*
-  name: ProcessUnitTurnEnd
-  href: api/AshesOfVelsingrad.Systems.StatusEffectSystem.html#AshesOfVelsingrad_Systems_StatusEffectSystem_ProcessUnitTurnEnd_
-  commentId: Overload:AshesOfVelsingrad.Systems.StatusEffectSystem.ProcessUnitTurnEnd
+- uid: AshesOfVelsingrad.Systems.StatusEffectSystem.ProcessUnitStatusEffects(AshesOfVelsingrad.Systems.IEffectTarget{AshesOfVelsingrad.Systems.UnitSystem})
+  name: ProcessUnitStatusEffects(IEffectTarget<UnitSystem>?)
+  href: api/AshesOfVelsingrad.Systems.StatusEffectSystem.html#AshesOfVelsingrad_Systems_StatusEffectSystem_ProcessUnitStatusEffects_AshesOfVelsingrad_Systems_IEffectTarget_AshesOfVelsingrad_Systems_UnitSystem__
+  commentId: M:AshesOfVelsingrad.Systems.StatusEffectSystem.ProcessUnitStatusEffects(AshesOfVelsingrad.Systems.IEffectTarget{AshesOfVelsingrad.Systems.UnitSystem})
+  name.vb: ProcessUnitStatusEffects(IEffectTarget(Of UnitSystem))
+  fullName: AshesOfVelsingrad.Systems.StatusEffectSystem.ProcessUnitStatusEffects(AshesOfVelsingrad.Systems.IEffectTarget<AshesOfVelsingrad.Systems.UnitSystem>?)
+  fullName.vb: AshesOfVelsingrad.Systems.StatusEffectSystem.ProcessUnitStatusEffects(AshesOfVelsingrad.Systems.IEffectTarget(Of AshesOfVelsingrad.Systems.UnitSystem))
+  nameWithType: StatusEffectSystem.ProcessUnitStatusEffects(IEffectTarget<UnitSystem>?)
+  nameWithType.vb: StatusEffectSystem.ProcessUnitStatusEffects(IEffectTarget(Of UnitSystem))
+- uid: AshesOfVelsingrad.Systems.StatusEffectSystem.ProcessUnitStatusEffects*
+  name: ProcessUnitStatusEffects
+  href: api/AshesOfVelsingrad.Systems.StatusEffectSystem.html#AshesOfVelsingrad_Systems_StatusEffectSystem_ProcessUnitStatusEffects_
+  commentId: Overload:AshesOfVelsingrad.Systems.StatusEffectSystem.ProcessUnitStatusEffects
   isSpec: "True"
-  fullName: AshesOfVelsingrad.Systems.StatusEffectSystem.ProcessUnitTurnEnd
-  nameWithType: StatusEffectSystem.ProcessUnitTurnEnd
+  fullName: AshesOfVelsingrad.Systems.StatusEffectSystem.ProcessUnitStatusEffects
+  nameWithType: StatusEffectSystem.ProcessUnitStatusEffects
 - uid: AshesOfVelsingrad.Systems.StatusEffect`1
   name: StatusEffect<TTarget>
   href: api/AshesOfVelsingrad.Systems.StatusEffect-1.html

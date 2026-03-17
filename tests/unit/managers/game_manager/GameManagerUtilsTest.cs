@@ -70,10 +70,10 @@ public class GameManagerUtilsTest
         Node enemyUnitsContainer = AddNodeToTestRoot(new Node { Name = "EnemyUnits" });
 
         // Create test units and add them as children BEFORE creating GameManager
-        TestConcreteUnitSystem playerUnit1 = new TestConcreteUnitSystem { Name = "PlayerUnit1" };
-        TestConcreteUnitSystem playerUnit2 = new TestConcreteUnitSystem { Name = "PlayerUnit2" };
-        TestConcreteUnitSystem enemyUnit1 = new TestConcreteUnitSystem { Name = "EnemyUnit1" };
-        TestConcreteUnitSystem enemyUnit2 = new TestConcreteUnitSystem { Name = "EnemyUnit2" };
+        TestConcreteUnitSystem playerUnit1 = new() { Name = "PlayerUnit1", BaseSpeed = 200 };
+        TestConcreteUnitSystem playerUnit2 = new() { Name = "PlayerUnit2", BaseSpeed = 190 };
+        TestConcreteUnitSystem enemyUnit1 = new() { Name = "EnemyUnit1", BaseSpeed = 180 };
+        TestConcreteUnitSystem enemyUnit2 = new() { Name = "EnemyUnit2", BaseSpeed = 170 };
 
         playerUnit1.CallInitialize();
         playerUnit2.CallInitialize();
@@ -175,7 +175,7 @@ public class GameManagerUtilsTest
     [TestCase]
     public void LoadUnits_HandlesEmptyPlayerContainer()
     {
-        // Create empty player container  
+        // Create empty player container
         Node emptyPlayerContainer = AddNodeToTestRoot(new Node { Name = "EmptyPlayers" });
         Node enemyContainer = AddNodeToTestRoot(new Node { Name = "Enemies" });
 
@@ -185,7 +185,7 @@ public class GameManagerUtilsTest
 
         // Add to container, THEN track for cleanup
         enemyContainer.AddChild(enemyUnit);
-        _testNodes.Add(enemyUnit);  // Add to cleanup list manually
+        _testNodes.Add(enemyUnit); // Add to cleanup list manually
 
         _mapSystem = AddNodeToTestRoot(new TestConcreteMapSystem());
         _mapSystem.CallInitialize();
@@ -259,7 +259,7 @@ public class GameManagerUtilsTest
         // Add a non-UnitSystem node
         var nonUnitNode = new Node { Name = "NotAUnit" };
         playerContainer.AddChild(nonUnitNode);
-        _testNodes.Add(nonUnitNode);  // Track for cleanup
+        _testNodes.Add(nonUnitNode); // Track for cleanup
 
         _mapSystem = AddNodeToTestRoot(new TestConcreteMapSystem());
         _mapSystem.CallInitialize();
@@ -439,8 +439,7 @@ public class GameManagerUtilsTest
 
         var sourceUnit = _gameManager.GetPlayerUnit(0);
         var targetUnit = _gameManager.GetPlayerUnit(1);
-        var skill = new TestConcreteSkillSystem
-        (
+        var skill = new TestConcreteSkillSystem(
             name: "Test Revive",
             effect: AovDataStructures.EffectType.Revive,
             target: AovDataStructures.TargetTypes.SingleAlly
@@ -471,8 +470,7 @@ public class GameManagerUtilsTest
 
         var sourceUnit = _gameManager.GetPlayerUnit(0);
         var targetUnit = _gameManager.GetPlayerUnit(1);
-        var skill = new TestConcreteSkillSystem
-        (
+        var skill = new TestConcreteSkillSystem(
             target: AovDataStructures.TargetTypes.SingleAlly,
             effect: AovDataStructures.EffectType.Heal // Not a revive
         );

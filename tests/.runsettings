@@ -2,21 +2,12 @@
 <RunSettings>
   <DataCollectionRunSettings>
     <DataCollectors>
-      <DataCollector friendlyName="Code Coverage">
+      <DataCollector friendlyName="XPlat Code Coverage">
         <Configuration>
-          <Format>Cobertura</Format>
-          <CodeCoverage>
-            <CollectChildProcessData>True</CollectChildProcessData>
-            <UseVerifiableInstrumentation>True</UseVerifiableInstrumentation>
-            <AllowLowIntegrityProcesses>True</AllowLowIntegrityProcesses>
-            <CollectFromChildProcesses>True</CollectFromChildProcesses>
-            
-            <ModulePaths>
-              <Include>
-                <ModulePath>.*</ModulePath>
-              </Include>
-            </ModulePaths>
-          </CodeCoverage>
+          <Format>cobertura</Format>
+          <Include>[AshesofVelsingrad]*</Include>
+          <UseSourceLink>false</UseSourceLink>
+          <IncludeTestAssembly>true</IncludeTestAssembly>
         </Configuration>
       </DataCollector>
     </DataCollectors>
@@ -24,7 +15,8 @@
 
   <GdUnit4>
     <Parameters>
-      <Parameter name="godot-parameters" value="--headless --verbose --no-build" />
+      <Parameter name="godot-parameters" value="--headless --no-build --no-import" />
+      <Parameter name="CompileProcessTimeout" value="120000" />
     </Parameters>
   </GdUnit4>
 </RunSettings>

@@ -1,70 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RunSettings>
-    <RunConfiguration>
-        <MaxCpuCount>1</MaxCpuCount>
-        <TestAdaptersPaths>.</TestAdaptersPaths>
-        <ResultsDirectory>./TestResults</ResultsDirectory>
-        <TestSessionTimeout>1800000</TestSessionTimeout>
-        <TreatNoTestsAsError>false</TreatNoTestsAsError>
-    </RunConfiguration>
+  <DataCollectionRunSettings>
+    <DataCollectors>
+      <DataCollector friendlyName="Code Coverage">
+        <Configuration>
+          <Format>Cobertura</Format>
+          <CodeCoverage>
+            <CollectChildProcessData>True</CollectChildProcessData>
+            <UseVerifiableInstrumentation>True</UseVerifiableInstrumentation>
+            <AllowLowIntegrityProcesses>True</AllowLowIntegrityProcesses>
+            <CollectFromChildProcesses>True</CollectFromChildProcesses>
+            
+            <ModulePaths>
+              <Include>
+                <ModulePath>.*</ModulePath>
+              </Include>
+            </ModulePaths>
+          </CodeCoverage>
+        </Configuration>
+      </DataCollector>
+    </DataCollectors>
+  </DataCollectionRunSettings>
 
-    <!-- Test result loggers -->
-    <LoggerRunSettings>
-        <Loggers>
-            <Logger friendlyName="console" enabled="True">
-                <Configuration>
-                    <Verbosity>normal</Verbosity>
-                </Configuration>
-            </Logger>
-            <Logger friendlyName="html" enabled="True">
-                <Configuration>
-                    <LogFileName>test-result.html</LogFileName>
-                </Configuration>
-            </Logger>
-            <Logger friendlyName="trx" enabled="True">
-                <Configuration>
-                    <LogFileName>test-result.trx</LogFileName>
-                </Configuration>
-            </Logger>
-        </Loggers>
-    </LoggerRunSettings>
-
-    <!-- Data Collection for Code Coverage -->
-    <DataCollectionRunSettings>
-        <DataCollectors>
-            <DataCollector friendlyName="XPlat Code Coverage">
-                <Configuration>
-                    <Format>cobertura</Format>
-                    <Exclude>[GodotSharp]*,[GdUnit4*]*,[gdUnit4*]*,[Microsoft*]*,[testhost]*,[Castle*]*,[Mono*]*,[Newtonsoft*]*,[Humanizer]*,[CommandLine]*,[Moq]*</Exclude>
-                    <ExcludeByFile>**/tests/**/*.cs,**/addons/**/*.cs</ExcludeByFile>
-                    <ExcludeByAttribute>Obsolete,GeneratedCodeAttribute,CompilerGeneratedAttribute</ExcludeByAttribute>
-                    <IncludeTestAssembly>true</IncludeTestAssembly>
-                </Configuration>
-            </DataCollector>
-        </DataCollectors>
-    </DataCollectionRunSettings>
-
-    <!-- GdUnit4-specific configuration -->
-    <GdUnit4>
-        <!-- Additional Godot runtime parameters -->
-        <Parameters>--verbose --headless</Parameters>
-
-        <!-- Test display name format: SimpleName or FullyQualifiedName -->
-        <DisplayName>FullyQualifiedName</DisplayName>
-
-        <!-- Capture stdout from test cases -->
-        <CaptureStdOut>true</CaptureStdOut>
-
-        <!-- Compilation timeout for large projects (milliseconds) -->
-        <CompileProcessTimeout>20000</CompileProcessTimeout>
-
-        <!-- Settings to handle orphan nodes and improve stability -->
-        <Settings>
-            <OrphanNodesReportEnabled>false</OrphanNodesReportEnabled>
-            <VerboseOrphanNodesEnabled>false</VerboseOrphanNodesEnabled>
-            <VerboseAsserts>false</VerboseAsserts>
-            <ReportOrphanNodesEnabled>false</ReportOrphanNodesEnabled>
-            <FailOnOrphanNodes>false</FailOnOrphanNodes>
-        </Settings>
-    </GdUnit4>
+  <GdUnit4>
+    <Parameters>
+      <Parameter name="godot-parameters" value="--headless --verbose --no-build" />
+    </Parameters>
+  </GdUnit4>
 </RunSettings>

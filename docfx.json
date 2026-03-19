@@ -4,7 +4,7 @@
       "src": [
         {
           "files": [
-            "Ashes of Velsingrad.csproj"
+            "AshesofVelsingrad.csproj"
           ],
           "exclude": [
             "**/bin/**",

@@ -1,6 +1,6 @@
 ﻿Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ashes of Velsingrad", "Ashes of Velsingrad.csproj", "{CB6F4D6E-9BED-460A-B557-DC3CF4D76D40}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AshesofVelsingrad", "AshesofVelsingrad.csproj", "{CB6F4D6E-9BED-460A-B557-DC3CF4D76D40}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

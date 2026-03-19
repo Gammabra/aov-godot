@@ -88,7 +88,7 @@ Or use the GdUnit4 tab in Godot to run tests within the editor.
 
 ```json
 {
-  "dotnet.defaultSolution": "Ashes of Velsingrad.sln",
+  "dotnet.defaultSolution": "AshesofVelsingrad.sln",
   "files.exclude": {
     "**/.godot/": true,
     "**/.import/": true,

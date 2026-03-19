@@ -29,7 +29,7 @@
    Create a `.vscode/settings.json` file at the project root:
    ```json
    {
-     "dotnet.defaultSolution": "Ashes of Velsingrad.sln",
+     "dotnet.defaultSolution": "AshesofVelsingrad.sln",
      "files.exclude": {
        "**/.godot/": true,
        "**/.import/": true

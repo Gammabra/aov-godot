@@ -49,11 +49,11 @@ jobs:
 
       - name: Check code formatting
         if: steps.check_csharp.outputs.has_csharp == 'true'
-        run: dotnet format --verify-no-changes --verbosity diagnostic "Ashes of Velsingrad.csproj"
+        run: dotnet format --verify-no-changes --verbosity diagnostic "AshesofVelsingrad.csproj"
 
       - name: Build project
         if: steps.check_csharp.outputs.has_csharp == 'true'
-        run: dotnet build "Ashes of Velsingrad.csproj" --configuration ExportRelease /p:Platform="AnyCPU"
+        run: dotnet build "AshesofVelsingrad.csproj" --configuration ExportRelease /p:Platform="AnyCPU"
 
       - name: Import project assets
         run: |

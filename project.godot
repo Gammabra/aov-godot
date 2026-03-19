@@ -14,7 +14,7 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 
 [application]
 
-config/name="Ashes of Velsingrad"
+config/name="AshesofVelsingrad"
 run/main_scene="uid://cuadq8eeoqg7j"
 config/features=PackedStringArray("4.6", "C#", "Forward Plus")
 config/icon="uid://d2o6v40ln62ci"
@@ -26,7 +26,7 @@ MenuManager="*res://scripts/managers/MenuManager.cs"
 
 [dotnet]
 
-project/assembly_name="Ashes of Velsingrad"
+project/assembly_name="AshesofVelsingrad"
 
 [editor_plugins]
 

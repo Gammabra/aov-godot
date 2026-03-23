@@ -33,6 +33,7 @@ data = {
 "cells": PackedInt32Array(2, 3, 0, 1, 3, 0, 1, 2, 0, 0, 2, 0, 3, 2, 0, 3, 1, 0, 2, 1, 0, 1, 1, 0, 0, 1, 0, 1, 0, 0, 2, 0, 0, 2, 2, 0, 4, 1, 0, 4, 2, 0, 5, 2, 0, 5, 1, 0, 5, 0, 0, 5, 3, 0, 1, 65535, 0, 1, 65534, 0, 0, 65534, 0, 65535, 65534, 0, 65534, 65534, 0, 65534, 65535, 0, 65534, 0, 0, 65534, 1, 0, 65534, 2, 0, 65534, 3, 0, 65534, 4, 0, 1, 4, 0, 1, 5, 0, 0, 5, 0, 65535, 5, 0, 65534, 5, 0)
 }
 script = ExtResource("2_p4llj")
+metadata/_editor_floor_ = Vector3(0, 0, 0)
 
 [node name="PlayerUnits" type="Node" parent="GameManager" unique_id=728972834]
 
@@ -44,5 +45,3 @@ script = ExtResource("2_p4llj")
 
 [node name="TurnManager" type="Node" parent="GameManager" unique_id=1988093598]
 script = ExtResource("3_p4llj")
-
-[node name="BillboardManager" type="Node" parent="." unique_id=959868507]

@@ -37,6 +37,8 @@ public partial class settings_pages : Node
 
 	private string waiting_action = "";
 	private Button waiting_button = null;
+	private string waiting_action_pad = "";
+	private Button waiting_button_pad = null;
 
 	public Dictionary actions = new Dictionary
 	{
@@ -75,6 +77,15 @@ public partial class settings_pages : Node
 
 			btn.Text = GetActionKey(action);
 			btn.Pressed += () => OnRebindPressed(action, btn);
+		}
+
+		foreach (string action in actions.Keys)
+		{
+			var label = page_command.GetNode<Label>((string)actions[action]);
+			var btn2 = label.GetNode<Button>("Button2");
+
+			btn2.Text = GetActionKeyPad(action);
+			btn2.Pressed += () => OnRebindPadPressed(action, btn2);
 		}
 	}
 
@@ -130,7 +141,7 @@ public partial class settings_pages : Node
 		label.AddThemeStyleboxOverride("normal", style);
 
 		var fontBtn = GetNodeOrNull<OptionButton>("PageSubtitle/Font/OptionButton");
-		if (fontBtn != null)
+		if (fontBtn != null && fontBtn.ItemCount > 0 && subtitle_font_index < fontBtn.ItemCount)
 		{
 			var font = fontBtn.GetItemMetadata(subtitle_font_index).As<FontFile>();
 			if (font != null) label.AddThemeFontOverride("font", font);
@@ -199,6 +210,11 @@ public partial class settings_pages : Node
 
 		if (@event is InputEventMouseButton mouse && mouse.Pressed)
 			BindEvent(@event);
+
+		if (@event is InputEventJoypadButton pad && pad.Pressed) {
+			if (waiting_action_pad != "")
+				BindPadEvent(@event);
+		}
 	}
 
 	private void BindEvent(InputEvent @event)
@@ -226,6 +242,38 @@ public partial class settings_pages : Node
 			return "Mouse " + mouse.ButtonIndex;
 
 		return "Unknown";
+	}
+
+	private void OnRebindPadPressed(string action, Button btn)
+	{
+		waiting_action_pad = action;
+		waiting_button_pad = btn;
+		btn.Text = "Press button...";
+	}
+
+	public string GetActionKeyPad(string actionName)
+	{
+		var events = InputMap.ActionGetEvents(actionName);
+		foreach (var ev in events) {
+			if (ev is InputEventJoypadButton pad)
+				return ((JoyButton)pad.ButtonIndex).ToString();
+		}
+		return "None";
+	}
+
+	private void BindPadEvent(InputEvent @event)
+	{
+		var events = InputMap.ActionGetEvents(waiting_action_pad);
+		foreach (var ev in events) {
+			if (ev is InputEventJoypadButton)
+				InputMap.ActionEraseEvent(waiting_action_pad, ev);
+		}
+
+		InputMap.ActionAddEvent(waiting_action_pad, @event);
+
+		waiting_button_pad.Text = GetActionKeyPad(waiting_action_pad);
+		waiting_action_pad = "";
+		waiting_button_pad = null;
 	}
 
 	// =================================================

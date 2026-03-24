@@ -55,26 +55,14 @@ public partial class settings_save : Button
 		foreach (string action in actions.Keys)
 		{
 			var events = InputMap.ActionGetEvents(action);
-			if (events.Count == 0)
-				continue;
-
-			var ev = events[0];
-
-			if (ev is InputEventKey key)
+			foreach (var ev in events)
 			{
-				cfg.SetValue("input", action, new Dictionary
-				{
-					{ "type", "key" },
-					{ "keycode", (long)key.PhysicalKeycode }
-				});
-			}
-			else if (ev is InputEventMouseButton mouse)
-			{
-				cfg.SetValue("input", action, new Dictionary
-				{
-					{ "type", "mouse" },
-					{ "button", (long)mouse.ButtonIndex }
-				});
+				if (ev is InputEventKey key)
+					cfg.SetValue("input", action + "_key", new Dictionary { { "type", "key" }, { "keycode", (long)key.PhysicalKeycode } });
+				else if (ev is InputEventMouseButton mouse)
+					cfg.SetValue("input", action + "_key", new Dictionary { { "type", "mouse" }, { "button", (long)mouse.ButtonIndex } });
+				else if (ev is InputEventJoypadButton pad)
+					cfg.SetValue("input", action + "_pad", new Dictionary { { "type", "pad" }, { "button", (long)pad.ButtonIndex } });
 			}
 		}
 
@@ -124,30 +112,22 @@ public partial class settings_save : Button
 
 		foreach (string action in actions.Keys)
 		{
-			if (!cfg.HasSectionKey("input", action))
-				continue;
-
-			var data = (Dictionary)cfg.GetValue("input", action);
-
 			InputMap.ActionEraseEvents(action);
 
-			string type = (string)data["type"];
-
-			if (type == "key")
+			if (cfg.HasSectionKey("input", action + "_key"))
 			{
-				var ev = new InputEventKey
-				{
-					PhysicalKeycode = (Key)(long)data["keycode"]
-				};
-				InputMap.ActionAddEvent(action, ev);
+				var data = (Dictionary)cfg.GetValue("input", action + "_key");
+				string type = (string)data["type"];
+				if (type == "key")
+					InputMap.ActionAddEvent(action, new InputEventKey { PhysicalKeycode = (Key)(long)data["keycode"] });
+				else if (type == "mouse")
+					InputMap.ActionAddEvent(action, new InputEventMouseButton { ButtonIndex = (MouseButton)(long)data["button"] });
 			}
-			else if (type == "mouse")
+
+			if (cfg.HasSectionKey("input", action + "_pad"))
 			{
-				var ev = new InputEventMouseButton
-				{
-					ButtonIndex = (MouseButton)(long)data["button"]
-				};
-				InputMap.ActionAddEvent(action, ev);
+				var data = (Dictionary)cfg.GetValue("input", action + "_pad");
+				InputMap.ActionAddEvent(action, new InputEventJoypadButton { ButtonIndex = (JoyButton)(long)data["button"] });
 			}
 		}
 
@@ -160,6 +140,15 @@ public partial class settings_save : Button
 		settings.Call("apply_settings_to_ui");
 		settings.Call("apply_audio_to_ui");
 		settings.Call("apply_font_selection");
+		
+		var actionsDict = (Dictionary)settings.Get("actions");
+		var pageCmd = settings.GetNode("PageCommand");
+		foreach (string action in actionsDict.Keys)
+		{
+			var lbl = pageCmd.GetNode<Label>((string)actionsDict[action]);
+			var btn2 = lbl.GetNode<Button>("Button2");
+			btn2.Text = ((settings_pages)settings).GetActionKeyPad(action);
+		}
 
 		GD.Print("SETTINGS LOADED");
 	}

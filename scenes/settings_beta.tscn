@@ -175,6 +175,7 @@ icon_alignment = 1
 script = ExtResource("4_tlijc")
 
 [node name="PageSubtitle" type="Control" parent="MainContent" unique_id=893435252]
+visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_top = 211.0
@@ -241,11 +242,11 @@ offset_top = 9.0
 offset_right = 321.0
 offset_bottom = 25.0
 min_value = 10.0
-max_value = 50.0
+max_value = 40.0
 step = 10.0
 value = 30.0
 rounded = true
-tick_count = 5
+tick_count = 4
 ticks_on_borders = true
 ticks_position = 3
 
@@ -659,7 +660,6 @@ popup/item_3/text = "Tritanopia"
 popup/item_3/id = 3
 
 [node name="PageCommand" type="Control" parent="MainContent" unique_id=1689856365]
-visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_top = 223.0
@@ -685,6 +685,13 @@ offset_top = 2.0
 offset_right = 209.0
 offset_bottom = 17.0
 
+[node name="Button2" type="Button" parent="MainContent/PageCommand/move_up" unique_id=1309692055]
+layout_mode = 0
+offset_left = 305.0
+offset_top = 2.0
+offset_right = 321.0
+offset_bottom = 17.0
+
 [node name="move_down" type="Label" parent="MainContent/PageCommand" unique_id=689532528]
 layout_mode = 0
 offset_left = 403.0
@@ -702,6 +709,13 @@ layout_mode = 0
 offset_left = 193.0
 offset_top = 2.0
 offset_right = 209.0
+offset_bottom = 19.0
+
+[node name="Button2" type="Button" parent="MainContent/PageCommand/move_down" unique_id=1706111509]
+layout_mode = 0
+offset_left = 305.0
+offset_top = 2.0
+offset_right = 321.0
 offset_bottom = 19.0
 
 [node name="move_left" type="Label" parent="MainContent/PageCommand" unique_id=1164204733]
@@ -723,6 +737,13 @@ offset_top = 2.0
 offset_right = 209.0
 offset_bottom = 17.0
 
+[node name="Button2" type="Button" parent="MainContent/PageCommand/move_left" unique_id=163950116]
+layout_mode = 0
+offset_left = 305.0
+offset_top = 2.0
+offset_right = 321.0
+offset_bottom = 17.0
+
 [node name="move_right" type="Label" parent="MainContent/PageCommand" unique_id=1338653224]
 layout_mode = 0
 offset_left = 403.0
@@ -740,6 +761,13 @@ layout_mode = 0
 offset_left = 193.0
 offset_top = 2.0
 offset_right = 209.0
+offset_bottom = 18.0
+
+[node name="Button2" type="Button" parent="MainContent/PageCommand/move_right" unique_id=1935252702]
+layout_mode = 0
+offset_left = 305.0
+offset_top = 2.0
+offset_right = 321.0
 offset_bottom = 18.0
 
 [node name="battle_move_unit_to" type="Label" parent="MainContent/PageCommand" unique_id=1651936937]
@@ -761,6 +789,13 @@ offset_top = 2.0
 offset_right = 220.0
 offset_bottom = 19.0
 
+[node name="Button2" type="Button" parent="MainContent/PageCommand/battle_move_unit_to" unique_id=1889056444]
+layout_mode = 0
+offset_left = 316.0
+offset_top = 2.0
+offset_right = 332.0
+offset_bottom = 19.0
+
 [node name="battle_select_skill1" type="Label" parent="MainContent/PageCommand" unique_id=1989929865]
 layout_mode = 0
 offset_left = 403.0
@@ -778,6 +813,13 @@ layout_mode = 0
 offset_left = 193.0
 offset_top = 2.0
 offset_right = 209.0
+offset_bottom = 17.0
+
+[node name="Button2" type="Button" parent="MainContent/PageCommand/battle_select_skill1" unique_id=2105571444]
+layout_mode = 0
+offset_left = 305.0
+offset_top = 2.0
+offset_right = 321.0
 offset_bottom = 17.0
 
 [node name="battle_select_skill2" type="Label" parent="MainContent/PageCommand" unique_id=224097977]
@@ -799,6 +841,13 @@ offset_top = 2.0
 offset_right = 209.0
 offset_bottom = 18.0
 
+[node name="Button2" type="Button" parent="MainContent/PageCommand/battle_select_skill2" unique_id=1887816494]
+layout_mode = 0
+offset_left = 305.0
+offset_top = 2.0
+offset_right = 321.0
+offset_bottom = 18.0
+
 [node name="battle_select_skill3" type="Label" parent="MainContent/PageCommand" unique_id=359823432]
 layout_mode = 0
 offset_left = 403.0
@@ -816,6 +865,13 @@ layout_mode = 0
 offset_left = 193.0
 offset_top = 2.0
 offset_right = 209.0
+offset_bottom = 18.0
+
+[node name="Button2" type="Button" parent="MainContent/PageCommand/battle_select_skill3" unique_id=1518832418]
+layout_mode = 0
+offset_left = 305.0
+offset_top = 2.0
+offset_right = 321.0
 offset_bottom = 18.0
 
 [node name="battle_select_skill4" type="Label" parent="MainContent/PageCommand" unique_id=994169077]
@@ -837,6 +893,13 @@ offset_top = 2.0
 offset_right = 209.0
 offset_bottom = 18.0
 
+[node name="Button2" type="Button" parent="MainContent/PageCommand/battle_select_skill4" unique_id=938154668]
+layout_mode = 0
+offset_left = 305.0
+offset_top = 2.0
+offset_right = 321.0
+offset_bottom = 18.0
+
 [node name="battle_select_skill5" type="Label" parent="MainContent/PageCommand" unique_id=857453795]
 layout_mode = 0
 offset_left = 403.0
@@ -854,6 +917,13 @@ layout_mode = 0
 offset_left = 193.0
 offset_top = 2.0
 offset_right = 209.0
+offset_bottom = 17.0
+
+[node name="Button2" type="Button" parent="MainContent/PageCommand/battle_select_skill5" unique_id=869770110]
+layout_mode = 0
+offset_left = 305.0
+offset_top = 2.0
+offset_right = 321.0
 offset_bottom = 17.0
 
 [node name="battle_pass_turn" type="Label" parent="MainContent/PageCommand" unique_id=1511248290]
@@ -875,6 +945,13 @@ offset_top = 2.0
 offset_right = 236.0
 offset_bottom = 18.0
 
+[node name="Button2" type="Button" parent="MainContent/PageCommand/battle_pass_turn" unique_id=111262004]
+layout_mode = 0
+offset_left = 332.0
+offset_top = 2.0
+offset_right = 348.0
+offset_bottom = 18.0
+
 [node name="toggle_options" type="Label" parent="MainContent/PageCommand" unique_id=1514559153]
 layout_mode = 0
 offset_left = 395.0
@@ -892,6 +969,13 @@ layout_mode = 0
 offset_left = 201.0
 offset_top = 2.0
 offset_right = 217.0
+offset_bottom = 17.0
+
+[node name="Button2" type="Button" parent="MainContent/PageCommand/toggle_options" unique_id=808599930]
+layout_mode = 0
+offset_left = 313.0
+offset_top = 2.0
+offset_right = 329.0
 offset_bottom = 17.0
 
 [node name="PageAudio" type="Control" parent="MainContent" unique_id=817584571]

@@ -40,6 +40,7 @@ public partial class settings_save : Button
 		cfg.SetValue("video", "animations", settings.Get("animations_enabled"));
 		cfg.SetValue("video", "resolution_index", settings.Get("resolution_index"));
 		cfg.SetValue("video", "resolution", settings.Get("resolution"));
+		cfg.SetValue("video", "window_mode", settings.Get("window_mode"));
 		cfg.SetValue("video", "texture_quality", settings.Get("texture_quality"));
 
 		// ---------- VISUAL ----------
@@ -63,6 +64,13 @@ public partial class settings_save : Button
 					cfg.SetValue("input", action + "_key", new Dictionary { { "type", "mouse" }, { "button", (long)mouse.ButtonIndex } });
 				else if (ev is InputEventJoypadButton pad)
 					cfg.SetValue("input", action + "_pad", new Dictionary { { "type", "pad" }, { "button", (long)pad.ButtonIndex } });
+				else if (ev is InputEventJoypadMotion motion) {
+					cfg.SetValue("input", action + "_pad", new Dictionary {
+						{ "type", "motion" },
+						{ "axis", (long)motion.Axis },
+						{ "value", motion.AxisValue }
+					});
+				}
 			}
 		}
 
@@ -98,6 +106,7 @@ public partial class settings_save : Button
 		settings.Set("animations_enabled", cfg.GetValue("video", "animations", settings.Get("animations_enabled")));
 		settings.Set("resolution_index", cfg.GetValue("video", "resolution_index", settings.Get("resolution_index")));
 		settings.Set("resolution", cfg.GetValue("video", "resolution", settings.Get("resolution")));
+		settings.Set("window_mode", cfg.GetValue("video", "window_mode", settings.Get("window_mode")));
 		settings.Set("texture_quality", cfg.GetValue("video", "texture_quality", settings.Get("texture_quality")));
 
 		// ---------- VISUAL ----------
@@ -127,7 +136,14 @@ public partial class settings_save : Button
 			if (cfg.HasSectionKey("input", action + "_pad"))
 			{
 				var data = (Dictionary)cfg.GetValue("input", action + "_pad");
-				InputMap.ActionAddEvent(action, new InputEventJoypadButton { ButtonIndex = (JoyButton)(long)data["button"] });
+				string type = (string)data["type"];
+				if (type == "pad")
+					InputMap.ActionAddEvent(action, new InputEventJoypadButton { ButtonIndex = (JoyButton)(long)data["button"] });
+				else if (type == "motion")
+					InputMap.ActionAddEvent(action, new InputEventJoypadMotion {
+						Axis = (JoyAxis)(long)data["axis"],
+						AxisValue = (float)(double)data["value"]
+					});
 			}
 		}
 

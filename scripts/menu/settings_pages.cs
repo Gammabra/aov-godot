@@ -23,6 +23,7 @@ public partial class settings_pages : Node
 	public bool animations_enabled = false;
 	public int resolution_index = 0;
 	public Vector2I resolution = new Vector2I(1920, 1080);
+	public int window_mode = 0;
 	public int texture_quality = 0;
 
 	// ---------- VISUAL ----------
@@ -87,6 +88,8 @@ public partial class settings_pages : Node
 			btn2.Text = GetActionKeyPad(action);
 			btn2.Pressed += () => OnRebindPadPressed(action, btn2);
 		}
+
+		CallDeferred(nameof(UpdateSubtitlePreview));
 	}
 
 	// =================================================
@@ -172,6 +175,16 @@ public partial class settings_pages : Node
 		DisplayServer.WindowSetSize(resolution);
 	}
 
+		public void _on_window_mode_item_selected(long index)
+	{
+		window_mode = (int)index;
+		switch (index)
+		{
+			case 0: DisplayServer.WindowSetMode(DisplayServer.WindowMode.Windowed); break;
+			case 1: DisplayServer.WindowSetMode(DisplayServer.WindowMode.Fullscreen); break;
+		}
+	}
+
 	public void _on_texture_item_selected(long index) => texture_quality = (int)index;
 
 	// =================================================
@@ -195,6 +208,15 @@ public partial class settings_pages : Node
 
 	private void OnRebindPressed(string action, Button btn)
 	{
+		if (waiting_button_pad != null)
+		{
+			var prevBtn = waiting_button_pad;
+			var prevAction = waiting_action_pad;
+			waiting_action_pad = "";
+			waiting_button_pad = null;
+			prevBtn.Text = GetActionKeyPad(prevAction);
+		}
+
 		waiting_action = action;
 		waiting_button = btn;
 		btn.Text = "Press key...";
@@ -202,24 +224,41 @@ public partial class settings_pages : Node
 
 	public override void _Input(InputEvent @event)
 	{
-		if (waiting_action == "")
-			return;
+		if (waiting_action != "")
+		{
+			if (@event is InputEventKey key && key.Pressed)
+				BindEvent(@event);
+			if (@event is InputEventMouseButton mouse && mouse.Pressed)
+				BindEvent(@event);
+		}
 
-		if (@event is InputEventKey key && key.Pressed)
-			BindEvent(@event);
-
-		if (@event is InputEventMouseButton mouse && mouse.Pressed)
-			BindEvent(@event);
-
-		if (@event is InputEventJoypadButton pad && pad.Pressed) {
-			if (waiting_action_pad != "")
+		if (waiting_action_pad != "")
+		{
+			if (@event is InputEventJoypadButton pad && pad.Pressed)
+				BindPadEvent(@event);
+			if (@event is InputEventJoypadMotion motion && Mathf.Abs(motion.AxisValue) > 0.8f)
 				BindPadEvent(@event);
 		}
 	}
 
 	private void BindEvent(InputEvent @event)
 	{
-		InputMap.ActionEraseEvents(waiting_action);
+		if (@event is InputEventKey key)
+		{
+			Key kc = key.PhysicalKeycode;
+			if (kc == Key.Print ||
+				kc == Key.Meta || kc == Key.Menu ||
+				kc == Key.Pause || kc == Key.Scrolllock)
+				return;
+		}
+
+		var events = InputMap.ActionGetEvents(waiting_action);
+		foreach (var ev in new Godot.Collections.Array<InputEvent>(events))
+		{
+			if (ev is InputEventKey || ev is InputEventMouseButton)
+				InputMap.ActionEraseEvent(waiting_action, ev);
+		}
+
 		InputMap.ActionAddEvent(waiting_action, @event);
 
 		waiting_button.Text = GetActionKey(waiting_action);
@@ -230,22 +269,27 @@ public partial class settings_pages : Node
 	private string GetActionKey(string actionName)
 	{
 		var events = InputMap.ActionGetEvents(actionName);
-		if (events.Count == 0)
-			return "None";
-
-		var ev = events[0];
-
-		if (ev is InputEventKey key)
-			return OS.GetKeycodeString(key.PhysicalKeycode);
-
-		if (ev is InputEventMouseButton mouse)
-			return "Mouse " + mouse.ButtonIndex;
-
-		return "Unknown";
+		foreach (var ev in events)
+		{
+			if (ev is InputEventKey key)
+				return OS.GetKeycodeString(key.PhysicalKeycode);
+			if (ev is InputEventMouseButton mouse)
+				return "Mouse " + mouse.ButtonIndex;
+		}
+		return "None";
 	}
 
 	private void OnRebindPadPressed(string action, Button btn)
 	{
+		if (waiting_button != null)
+		{
+			var prevBtn = waiting_button;
+			var prevAction = waiting_action;
+			waiting_action = "";
+			waiting_button = null;
+			prevBtn.Text = GetActionKey(prevAction);
+		}
+
 		waiting_action_pad = action;
 		waiting_button_pad = btn;
 		btn.Text = "Press button...";
@@ -254,9 +298,12 @@ public partial class settings_pages : Node
 	public string GetActionKeyPad(string actionName)
 	{
 		var events = InputMap.ActionGetEvents(actionName);
-		foreach (var ev in events) {
+		foreach (var ev in events)
+		{
 			if (ev is InputEventJoypadButton pad)
 				return ((JoyButton)pad.ButtonIndex).ToString();
+			if (ev is InputEventJoypadMotion motion)
+				return "Axis " + (int)motion.Axis + (motion.AxisValue > 0 ? " +" : " -");
 		}
 		return "None";
 	}
@@ -264,16 +311,17 @@ public partial class settings_pages : Node
 	private void BindPadEvent(InputEvent @event)
 	{
 		var events = InputMap.ActionGetEvents(waiting_action_pad);
-		foreach (var ev in events) {
-			if (ev is InputEventJoypadButton)
+		foreach (var ev in new Godot.Collections.Array<InputEvent>(events))
+			if (ev is InputEventJoypadButton || ev is InputEventJoypadMotion)
 				InputMap.ActionEraseEvent(waiting_action_pad, ev);
-		}
 
 		InputMap.ActionAddEvent(waiting_action_pad, @event);
 
 		waiting_button_pad.Text = GetActionKeyPad(waiting_action_pad);
 		waiting_action_pad = "";
 		waiting_button_pad = null;
+
+		GetViewport().SetInputAsHandled();
 	}
 
 	// =================================================
@@ -341,6 +389,7 @@ public partial class settings_pages : Node
 		GetNode<HSlider>("PageVideo/Brightness/HSlider").Value = brightness;
 		GetNode<CheckBox>("PageVideo/Animations/CheckBox").ButtonPressed = animations_enabled;
 		GetNode<OptionButton>("PageVideo/Resolution/OptionButton").Select(resolution_index);
+		GetNode<OptionButton>("PageVideo/WindowMode/OptionButton").Select(window_mode);
 		GetNode<OptionButton>("PageVideo/Texture/OptionButton").Select(texture_quality);
 
 		GetNode<HSlider>("PageVisual/InterfaceSize/HSlider").Value = interface_size;
@@ -349,6 +398,7 @@ public partial class settings_pages : Node
 		GetNode<CheckBox>("PageVisual/VisualIndicators/CheckBox").ButtonPressed = visual_indicators_enabled;
 
 		apply_audio_to_ui();
+		_on_window_mode_item_selected(window_mode);
 		UpdateSubtitlePreview();
 	}
 

@@ -190,6 +190,7 @@ offset_bottom = 79.0
 color = Color(0.4, 0.4, 0.28, 0)
 
 [node name="ExampleLabel" type="Label" parent="MainContent/PageSubtitle" unique_id=1947172413]
+visible = false
 layout_mode = 0
 offset_left = 489.0
 offset_top = 10.0
@@ -292,6 +293,7 @@ offset_right = 321.0
 offset_bottom = 28.0
 theme_override_fonts/font = ExtResource("3_tlijc")
 theme_override_font_sizes/font_size = 20
+selected = 0
 item_count = 3
 popup/item_0/text = "White"
 popup/item_0/id = 0
@@ -321,6 +323,7 @@ offset_right = 386.0
 offset_bottom = 30.0
 theme_override_fonts/font = ExtResource("3_tlijc")
 theme_override_font_sizes/font_size = 20
+selected = 3
 item_count = 5
 popup/item_0/text = "White"
 popup/item_0/id = 0
@@ -388,7 +391,6 @@ popup/item_1/text = "French"
 popup/item_1/id = 1
 
 [node name="PageVideo" type="Control" parent="MainContent" unique_id=243791385]
-visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_top = 215.0
@@ -496,12 +498,40 @@ popup/item_0/id = 0
 popup/item_1/text = " 1280 x 720"
 popup/item_1/id = 1
 
+[node name="WindowMode" type="Label" parent="MainContent/PageVideo" unique_id=1633475845]
+layout_mode = 0
+offset_left = 363.0
+offset_top = 157.0
+offset_right = 575.0
+offset_bottom = 192.0
+theme_override_fonts/font = ExtResource("3_tlijc")
+theme_override_font_sizes/font_size = 30
+text = "Window Mode"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="OptionButton" type="OptionButton" parent="MainContent/PageVideo/WindowMode" unique_id=1077491393]
+custom_minimum_size = Vector2(130, 0)
+layout_mode = 0
+offset_left = 229.0
+offset_top = 2.0
+offset_right = 359.0
+offset_bottom = 30.0
+theme_override_fonts/font = ExtResource("3_tlijc")
+theme_override_font_sizes/font_size = 20
+selected = 0
+item_count = 2
+popup/item_0/text = "Windowed"
+popup/item_0/id = 0
+popup/item_1/text = "Fullscreen"
+popup/item_1/id = 1
+
 [node name="Texture" type="Label" parent="MainContent/PageVideo" unique_id=1558982895]
 layout_mode = 0
 offset_left = 427.0
-offset_top = 156.0
+offset_top = 190.0
 offset_right = 575.0
-offset_bottom = 191.0
+offset_bottom = 225.0
 theme_override_fonts/font = ExtResource("3_tlijc")
 theme_override_font_sizes/font_size = 30
 text = "Texture"
@@ -660,6 +690,7 @@ popup/item_3/text = "Tritanopia"
 popup/item_3/id = 3
 
 [node name="PageCommand" type="Control" parent="MainContent" unique_id=1689856365]
+visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_top = 223.0
@@ -1124,6 +1155,7 @@ script = ExtResource("3_qi5fe")
 [connection signal="value_changed" from="MainContent/PageVideo/Brightness/HSlider" to="MainContent" method="_on_brightness_changed"]
 [connection signal="toggled" from="MainContent/PageVideo/Animations/CheckBox" to="MainContent" method="_on_animations_toggled"]
 [connection signal="item_selected" from="MainContent/PageVideo/Resolution/OptionButton" to="MainContent" method="_on_resolution_item_selected"]
+[connection signal="item_selected" from="MainContent/PageVideo/WindowMode/OptionButton" to="MainContent" method="_on_window_mode_item_selected"]
 [connection signal="item_selected" from="MainContent/PageVideo/Texture/OptionButton" to="MainContent" method="_on_texture_item_selected"]
 [connection signal="value_changed" from="MainContent/PageVisual/InterfaceSize/HSlider" to="MainContent" method="_on_interface_size_changed"]
 [connection signal="toggled" from="MainContent/PageVisual/Blurry/CheckBox" to="MainContent" method="_on_blurry_toggled"]

@@ -12,19 +12,13 @@
     
     <NoWarn>NU1605;1591</NoWarn>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
-    
-    <!-- <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
-    <GenerateTargetFrameworkAttribute>false</GenerateTargetFrameworkAttribute> -->
 
     <DebugSymbols>true</DebugSymbols>
-    <DebugType>embedded</DebugType>
+    <DebugType>portable</DebugType>
+    <!-- Deterministic removed: false is the default, no need to set it -->
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="coverlet.collector" Version="8.0.1">
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-      <PrivateAssets>all</PrivateAssets>
-    </PackageReference>
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="18.3.0" />
     <PackageReference Include="gdUnit4.api" Version="5.0.0" />
     <PackageReference Include="gdUnit4.test.adapter" Version="3.0.0" />
@@ -32,8 +26,6 @@
       <PrivateAssets>none</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    
-    <PackageReference Include="Microsoft.CodeCoverage" Version="17.10.0" />
-
+    <ProjectReference Include="src/AshesofVelsingrad.Core.csproj" />
   </ItemGroup>
 </Project>

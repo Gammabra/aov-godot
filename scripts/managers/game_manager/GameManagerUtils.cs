@@ -51,7 +51,7 @@ public partial class GameManager
     ///     Executes logic for moving the active player unit to a new cell on the map.
     /// </summary>
     /// <param name="cell">The grid cell to move the unit to.</param>
-    private void HandlePlayerUnitMove(Vector3I cell)
+    private void HandlePlayerUnitMove((int, int, int) cell)
     {
         if (_mapSystemContainer == null)
         {
@@ -71,7 +71,7 @@ public partial class GameManager
             return;
         }
 
-        if (!_currentUnitPossibleMoves.Contains(new Vector3I(cell.X, cell.Y, cell.Z)))
+        if (!_currentUnitPossibleMoves.Contains(new Vector3I(cell.Item1, cell.Item2, cell.Item3)))
         {
             _battleInputSystemContainer.SetInputEnabled(true);
             return;
@@ -79,7 +79,7 @@ public partial class GameManager
 
         try
         {
-            if (!_turnManagerContainer.GetCurrentUnit().CanMoveTo(cell.X, cell.Y, cell.Z, _mapSystemContainer))
+            if (!_turnManagerContainer.GetCurrentUnit().CanMoveTo(cell.Item1, cell.Item2, cell.Item3, _mapSystemContainer))
             {
                 _battleInputSystemContainer.SetInputEnabled(true);
                 return;

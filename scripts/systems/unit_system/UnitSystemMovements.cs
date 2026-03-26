@@ -108,12 +108,12 @@ public abstract partial class UnitSystem
     ///     This method uses a Breadth-First Search (BFS) algorithm to evaluate all valid moves
     ///     considering walkable tiles and vertical traversal (e.g. stairs, cliffs).
     /// </remarks>
-    public virtual List<Vector3I> GetPossibleMoves(MapSystem map)
+    public virtual List<(int, int,int)> GetPossibleMoves(MapSystem map)
     {
-        List<Vector3I> possibleMoves = [];
-        Queue<(Vector3I pos, int dist)> toExplore = new();
-        Vector3I? unitPosition = map.GetUnitPosition(this);
-        List<Vector3I> visitedCells = [];
+        List<(int, int,int)> possibleMoves = [];
+        Queue<((int, int,int) pos, int dist)> toExplore = new();
+        (int, int,int)? unitPosition = map.GetUnitPosition(this);
+        List<(int, int,int)> visitedCells = [];
         Vector3I[] directions =
         [
             new Vector3I(-1, 0, 0), // Left

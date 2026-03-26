@@ -183,7 +183,7 @@ public class BattleState
     /// <summary>
     /// Moves the acting unit to a target position using GameManager.
     /// </summary>
-    public void MoveUnitTo(Vector3I targetCell)
+    public void MoveUnitTo((int, int,int) targetCell)
     {
         GameManager.MoveUnit(targetCell);
     }

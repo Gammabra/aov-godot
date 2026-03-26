@@ -99,10 +99,10 @@ public partial class AIDebugVisualizer : Node3D
 	/// </summary>
 	public void VisualizeThreatMap(UnitSystem unit, BattleState battleState, int range = 5)
 	{
-		Vector3I? unitPos = battleState.MapSystem.GetUnitPosition(unit);
+		(int, int, int)? unitPos = battleState.MapSystem.GetUnitPosition(unit);
 		if (unitPos == null) return;
 
-		List<Vector3I> possibleMoves = unit.GetPossibleMoves(battleState.MapSystem);
+		List<(int, int, int)> possibleMoves = unit.GetPossibleMoves(battleState.MapSystem);
 
 		foreach (var move in possibleMoves)
 		{
@@ -119,7 +119,7 @@ public partial class AIDebugVisualizer : Node3D
 			_rangeIndicators.Add(indicator);
 
 			// Then set position
-			Vector3 worldPos = battleState.MapSystem.MapToLocal(move);
+			Vector3 worldPos = battleState.MapSystem.MapToLocal(new Vector3I(move.Item1, move.Item2, move.Item3));
 			worldPos.Y += battleState.MapSystem.CellSize.Y * 0.1f;
 			indicator.GlobalPosition = worldPos;
 		}
@@ -145,13 +145,13 @@ public partial class AIDebugVisualizer : Node3D
 
 			if (decision.Target != null)
 			{
-				Vector3I? gridPos = battleState.MapSystem.GetUnitPosition(decision.Target);
+				(int, int, int)? gridPos = battleState.MapSystem.GetUnitPosition(decision.Target);
 				if (gridPos != null)
-					targetPos = battleState.MapSystem.MapToLocal(gridPos.Value);
+					targetPos = battleState.MapSystem.MapToLocal(new Vector3I(gridPos.Value.Item1, gridPos.Value.Item2, gridPos.Value.Item3));
 			}
 			else if (decision.MovePosition.HasValue)
 			{
-				targetPos = battleState.MapSystem.MapToLocal(decision.MovePosition.Value);
+				targetPos = battleState.MapSystem.MapToLocal(new Vector3I(decision.MovePosition.Value.Item1, decision.MovePosition.Value.Item2, decision.MovePosition.Value.Item3));
 			}
 
 			if (targetPos != null)
@@ -190,10 +190,10 @@ public partial class AIDebugVisualizer : Node3D
 			return;
 
 		// Show target indicator
-		Vector3I? targetGridPos = battleState.MapSystem.GetUnitPosition(decision.Target);
+		(int, int, int)? targetGridPos = battleState.MapSystem.GetUnitPosition(decision.Target);
 		if (targetGridPos != null)
 		{
-			Vector3 targetWorldPos = battleState.MapSystem.MapToLocal(targetGridPos.Value);
+			Vector3 targetWorldPos = battleState.MapSystem.MapToLocal(new Vector3I(targetGridPos.Value.Item1, targetGridPos.Value.Item2, targetGridPos.Value.Item3));
 			targetWorldPos.Y += battleState.MapSystem.CellSize.Y * 0.5f;
 			_targetIndicator.GlobalPosition = targetWorldPos;
 			_targetIndicator.Visible = true;
@@ -223,7 +223,7 @@ public partial class AIDebugVisualizer : Node3D
 		// Show score
 		if (_scoreLabel != null && targetGridPos != null)
 		{
-			Vector3 labelPos = battleState.MapSystem.MapToLocal(targetGridPos.Value);
+			Vector3 labelPos = battleState.MapSystem.MapToLocal(new Vector3I(targetGridPos.Value.Item1, targetGridPos.Value.Item2, targetGridPos.Value.Item3));
 			labelPos.Y += battleState.MapSystem.CellSize.Y * 1.5f;
 
 			_scoreLabel.Visible = true; // Make visible first
@@ -245,7 +245,7 @@ public partial class AIDebugVisualizer : Node3D
 		// Show score at destination
 		if (_scoreLabel != null)
 		{
-			Vector3 destPos = battleState.MapSystem.MapToLocal(decision.MovePosition.Value);
+			Vector3 destPos = battleState.MapSystem.MapToLocal(new Vector3I(decision.MovePosition.Value.Item1, decision.MovePosition.Value.Item2, decision.MovePosition.Value.Item3));
 			destPos.Y += battleState.MapSystem.CellSize.Y * 1.0f;
 
 			_scoreLabel.Visible = true; // Make visible first
@@ -257,14 +257,14 @@ public partial class AIDebugVisualizer : Node3D
 		GetTree().CreateTimer(2.0f).Timeout += ClearPreviousVisualization;
 	}
 
-	private void VisualizePath(UnitSystem unit, Vector3I destination, BattleState battleState)
+	private void VisualizePath(UnitSystem unit, (int, int, int) destination, BattleState battleState)
 	{
-		Vector3I? startGridPos = battleState.MapSystem.GetUnitPosition(unit);
+		(int, int, int)? startGridPos = battleState.MapSystem.GetUnitPosition(unit);
 		if (startGridPos == null)
 			return;
 
-		Vector3 startPos = battleState.MapSystem.MapToLocal(startGridPos.Value);
-		Vector3 endPos = battleState.MapSystem.MapToLocal(destination);
+		Vector3 startPos = battleState.MapSystem.MapToLocal(new Vector3I(startGridPos.Value.Item1, startGridPos.Value.Item2, startGridPos.Value.Item3));
+		Vector3 endPos = battleState.MapSystem.MapToLocal(new Vector3I(destination.Item1, destination.Item2, destination.Item3));
 		var midpoint = (startPos + endPos) / 2;
 
 		// Create arrow (without transforms set)
@@ -282,7 +282,7 @@ public partial class AIDebugVisualizer : Node3D
 
 	private void VisualizeSkillRange(UnitSystem target, SkillSystem skill, BattleState battleState)
 	{
-		Vector3I? targetPos = battleState.MapSystem.GetUnitPosition(target);
+		(int, int, int)? targetPos = battleState.MapSystem.GetUnitPosition(target);
 		if (targetPos == null)
 			return;
 
@@ -291,7 +291,7 @@ public partial class AIDebugVisualizer : Node3D
 		{
 			foreach (var offset in skill.AreaEffect)
 			{
-				Vector3I aoePos = targetPos.Value + offset;
+				Vector3I aoePos = new Vector3I(targetPos.Value.Item1, targetPos.Value.Item2, targetPos.Value.Item3) + new Vector3I(offset.Item1, offset.Item2, offset.Item3);
 				Vector3 worldPos = battleState.MapSystem.MapToLocal(aoePos);
 				worldPos.Y += battleState.MapSystem.CellSize.Y * 0.1f;
 

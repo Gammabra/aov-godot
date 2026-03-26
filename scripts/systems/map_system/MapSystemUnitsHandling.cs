@@ -70,11 +70,11 @@ public abstract partial class MapSystem
     /// <returns>
     ///     The (x, y, z) position of the unit at the specified map, or <c>null</c> if the unit is not found.
     /// </returns>
-    public virtual Vector3I? GetUnitPosition(UnitSystem unit)
+    public virtual (int, int,int)? GetUnitPosition(UnitSystem unit)
     {
         foreach (CellInformation cell in CellsInformation)
             if (cell.Unit == unit)
-                return new Vector3I(cell.X, cell.Y, cell.Z);
+                return (cell.X, cell.Y, cell.Z);
         return null;
     }
 

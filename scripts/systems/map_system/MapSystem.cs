@@ -206,9 +206,9 @@ public abstract partial class MapSystem : GridMap
             }
     }
 
-    public virtual AovDataStructures.CellType GetCellType(Vector3I position)
+    public virtual AovDataStructures.CellType GetCellType((int, int,int) position)
     {
-        int index = GetListIndex(position.X, position.Y, position.Z);
+        int index = GetListIndex(position.Item1, position.Item2, position.Item3);
 
         return CellsInformation[index].CellType;
     }

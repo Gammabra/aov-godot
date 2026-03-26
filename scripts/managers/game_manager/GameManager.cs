@@ -420,7 +420,7 @@ public partial class GameManager : BaseManager
     /// gameManager.MoveUnit(targetCell);
     /// </code>
     /// </example>
-    public virtual void MoveUnit(Vector3I cell)
+    public virtual void MoveUnit((int, int,int) cell)
     {
         if (_mapSystemContainer == null)
         {
@@ -447,12 +447,12 @@ public partial class GameManager : BaseManager
         }
 
         // TODO: Replace by the unit move animation instead of teleport him
-        Vector3I pos = new(cell.X, cell.Y, cell.Z);
+        Vector3I pos = new(cell.Item1, cell.Item2, cell.Item3);
         Vector3 worldPos = _mapSystemContainer.MapToLocal(pos);
         worldPos.Y += _mapSystemContainer.CellSize.Y * 0.5f;
         _turnManagerContainer.GetCurrentUnit().GlobalPosition = worldPos;
 
-        _turnManagerContainer.GetCurrentUnit().MoveTo(cell.X, cell.Y, cell.Z, _mapSystemContainer);
+        _turnManagerContainer.GetCurrentUnit().MoveTo(cell.Item1, cell.Item2, cell.Item3, _mapSystemContainer);
         _unitMoved = true;
         GD.Print("Unit moved");
     }

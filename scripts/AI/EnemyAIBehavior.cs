@@ -54,7 +54,7 @@ public class AIDecision
 	public UnitSystem? Target { get; set; }
 
 	/// <summary>The position to move to (for movement).</summary>
-	public Vector3I? MovePosition { get; set; }
+	public (int, int,int)? MovePosition { get; set; }
 
 	/// <summary>The skill to use (for skill actions).</summary>
 	public SkillSystem? Skill { get; set; }

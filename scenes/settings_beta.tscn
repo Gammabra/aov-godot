@@ -391,6 +391,7 @@ popup/item_1/text = "French"
 popup/item_1/id = 1
 
 [node name="PageVideo" type="Control" parent="MainContent" unique_id=243791385]
+visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_top = 215.0
@@ -690,7 +691,6 @@ popup/item_3/text = "Tritanopia"
 popup/item_3/id = 3
 
 [node name="PageCommand" type="Control" parent="MainContent" unique_id=1689856365]
-visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_top = 223.0
@@ -1008,6 +1008,16 @@ offset_left = 313.0
 offset_top = 2.0
 offset_right = 329.0
 offset_bottom = 17.0
+
+[node name="ButtonReset" type="Button" parent="MainContent/PageCommand" unique_id=1970241680]
+layout_mode = 0
+offset_left = 906.0
+offset_top = 360.0
+offset_right = 1010.0
+offset_bottom = 407.0
+theme_override_fonts/font = ExtResource("3_tlijc")
+theme_override_font_sizes/font_size = 30
+text = "Reset"
 
 [node name="PageAudio" type="Control" parent="MainContent" unique_id=817584571]
 visible = false

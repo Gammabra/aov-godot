@@ -89,6 +89,10 @@ public partial class settings_pages : Node
 			btn2.Pressed += () => OnRebindPadPressed(action, btn2);
 		}
 
+		var resetBtn = page_command.GetNodeOrNull<Button>("ButtonReset");
+		if (resetBtn != null)
+			resetBtn.Pressed += OnResetCommandsPressed;
+
 		CallDeferred(nameof(UpdateSubtitlePreview));
 	}
 
@@ -220,6 +224,7 @@ public partial class settings_pages : Node
 		waiting_action = action;
 		waiting_button = btn;
 		btn.Text = "Press key...";
+		btn.ReleaseFocus();
 	}
 
 	public override void _Input(InputEvent @event)
@@ -322,6 +327,18 @@ public partial class settings_pages : Node
 		waiting_button_pad = null;
 
 		GetViewport().SetInputAsHandled();
+	}
+
+		private void OnResetCommandsPressed()
+	{
+		InputMap.LoadFromProjectSettings();
+
+		foreach (string action in actions.Keys)
+		{
+			var label = page_command.GetNode<Label>((string)actions[action]);
+			label.GetNode<Button>("Button").Text = GetActionKey(action);
+			label.GetNode<Button>("Button2").Text = GetActionKeyPad(action);
+		}
 	}
 
 	// =================================================

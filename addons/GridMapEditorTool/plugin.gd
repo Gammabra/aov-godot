@@ -2,22 +2,28 @@
 extends EditorPlugin
 
 var gridmap: GridMap = null
-var root: Node = get_editor_interface().get_edited_scene_root()
+var root: Node = null
+var hoveredCell: HoveredCell = null
 
 func _enter_tree() -> void:
 	set_input_event_forwarding_always_enabled()
-	update_gridmap()
+	add_custom_type(
+		"HoveredCell",
+		"Node",
+		preload("res://addons/gridMapEditorTool/src/hovered_cell.gd"),
+		preload("res://addons/gridMapEditorTool/assets/icons/mouse.png")
+	)
+	gridmap = Utils.update_gridmap(root)
+
+func _exit_tree() -> void:
+	remove_custom_type("HoveredCell")
 
 func _process(delta: float) -> void:
 	var scene_root = get_editor_interface().get_edited_scene_root()
 	if root != scene_root:
 		root = scene_root
-		update_gridmap()
-
-func update_gridmap():
-	var root = get_editor_interface().get_edited_scene_root()
-	if root:
-		gridmap = find_gridmap(root)
+		gridmap = Utils.update_gridmap(root)
+		hoveredCell = Utils.find_hovered_cell(gridmap)
 
 func _forward_3d_gui_input(camera, event):
 	if event is InputEventMouseMotion:
@@ -33,15 +39,5 @@ func _forward_3d_gui_input(camera, event):
 
 		if result:
 			var cell = gridmap.local_to_map(result.position)
-			print(cell)
-
-func find_gridmap(node):
-	if node is GridMap:
-		return node
-
-	for child in node.get_children():
-		var result = find_gridmap(child)
-		if result:
-			return result
-
-	return null
+			if hoveredCell != null:
+				hoveredCell.set_hovered_cell(cell)

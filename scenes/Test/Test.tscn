@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://dycsfdky6wocx" path="res://scripts/data/map/Map1.cs" id="2_p4llj"]
 [ext_resource type="MeshLibrary" uid="uid://du0rgaffn5bkl" path="res://assets/mesh_library/3DMesh.tres" id="2_so6rl"]
 [ext_resource type="Script" uid="uid://dkhfwdhsqvki4" path="res://scripts/managers/TurnManager.cs" id="3_p4llj"]
+[ext_resource type="Script" uid="uid://drrf6bsew4wlq" path="res://addons/gridMapEditorTool/src/hovered_cell.gd" id="5_lhig6"]
 [ext_resource type="PackedScene" uid="uid://bex5piqwga44l" path="res://scenes/unit/characters/assassin.tscn" id="5_nvgwb"]
 [ext_resource type="PackedScene" uid="uid://cwlr1semki1nx" path="res://scenes/unit/enemies/enemy_fighter.tscn" id="6_lhig6"]
 [ext_resource type="Script" uid="uid://buj6bdu8gkf0j" path="res://scripts/systems/BattleInputSystem.cs" id="7_nvgwb"]
@@ -34,6 +35,10 @@ data = {
 }
 script = ExtResource("2_p4llj")
 metadata/_editor_floor_ = Vector3(0, 0, 0)
+
+[node name="(-1, 0, -3)" type="Node" parent="GameManager/GridMap" unique_id=560888153]
+script = ExtResource("5_lhig6")
+metadata/_custom_type_script = "uid://drrf6bsew4wlq"
 
 [node name="PlayerUnits" type="Node" parent="GameManager" unique_id=728972834]
 

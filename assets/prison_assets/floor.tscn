@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://clovyn8ti6ung"]
+
+[ext_resource type="PackedScene" uid="uid://1k6grq5uc544" path="res://assets/Blender/Pave Prison.glb" id="1_m2pqf"]
+
+[node name="Floor" type="Node3D" unique_id=122534438]
+
+[node name="Pave Prison" parent="." unique_id=1854554961 instance=ExtResource("1_m2pqf")]
+transform = Transform3D(0.55, 0, 0, 0, 0.55, 0, 0, 0, 0.55, 0, 0, 0)

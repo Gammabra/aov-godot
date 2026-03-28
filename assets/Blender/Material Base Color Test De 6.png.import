@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ode06ix6ongs"
-path.s3tc="res://.godot/imported/logo-doc.png-4ff93fb7719bcb28fc256285d6a477c8.s3tc.ctex"
+uid="uid://bghdke6o2c1s4"
+path.s3tc="res://.godot/imported/Material Base Color Test De 6.png-27f852538735106ad3d8785522f494b6.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://documentation/images/logo-doc.png"
-dest_files=["res://.godot/imported/logo-doc.png-4ff93fb7719bcb28fc256285d6a477c8.s3tc.ctex"]
+source_file="res://assets/Blender/Material Base Color Test De 6.png"
+dest_files=["res://.godot/imported/Material Base Color Test De 6.png-27f852538735106ad3d8785522f494b6.s3tc.ctex"]
 
 [params]
 

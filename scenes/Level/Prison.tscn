@@ -1,0 +1,47 @@
+[gd_scene format=3 uid="uid://cv6a5snma6luw"]
+
+[ext_resource type="Script" uid="uid://b0nykwsguly2d" path="res://scripts/camera_3d_mouvement_LR.gd" id="1_1dje1"]
+[ext_resource type="Texture2D" uid="uid://c3fhnshbrt41q" path="res://assets/Krita/ref_perso.png" id="1_426jf"]
+[ext_resource type="Script" uid="uid://df7ixck7nf2fd" path="res://scripts/player_mouvement.gd" id="3_3qxsn"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_ipatu"]
+
+[sub_resource type="MeshLibrary" id="MeshLibrary_atg6q"]
+
+[sub_resource type="Sky" id="Sky_3qxsn"]
+
+[sub_resource type="Environment" id="Environment_w1s1i"]
+sky = SubResource("Sky_3qxsn")
+
+[node name="Prison" type="Node3D" unique_id=878599033]
+
+[node name="floor" type="MeshInstance3D" parent="." unique_id=419210956]
+transform = Transform3D(-20, 0, 3.019916e-07, 0, 0.1, 0, -3.019916e-06, 0, -2, 0, 0, 0)
+mesh = SubResource("BoxMesh_ipatu")
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=424831403]
+transform = Transform3D(1, 0, 0, 0, 0.9612617, 0.27563736, 0, -0.27563736, 0.9612617, 0, 1.145, 1.8)
+script = ExtResource("1_1dje1")
+
+[node name="Sprite3D" type="Sprite3D" parent="." unique_id=1183467635]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.051890463, 0)
+centered = false
+offset = Vector2(-20, 0)
+texture = ExtResource("1_426jf")
+script = ExtResource("3_3qxsn")
+
+[node name="GridMap" type="GridMap" parent="." unique_id=1286432063]
+mesh_library = SubResource("MeshLibrary_atg6q")
+
+[node name="wall" type="MeshInstance3D" parent="." unique_id=1248570454]
+transform = Transform3D(20, 0, -1.6609533e-08, 0, 2, 0, 3.3219067e-06, 0, 0.1, 0, 0.95472, -1)
+mesh = SubResource("BoxMesh_ipatu")
+skeleton = NodePath("../floor")
+
+[node name="Environement" type="Node3D" parent="." unique_id=206120937]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Environement" unique_id=1723464840]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7230841, 0.9228741)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Environement" unique_id=1570903618]
+environment = SubResource("Environment_w1s1i")

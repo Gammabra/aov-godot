@@ -113,8 +113,7 @@ public class AIEvaluatorTest
             ActingUnit = _aiUnit,
             MapSystem = _mapSystem,
             PlayerUnits = _playerUnits,
-            EnemyUnits = _enemyUnits,
-            GameManager = _gameManager
+            EnemyUnits = _enemyUnits
         };
     }
 
@@ -184,8 +183,8 @@ public class AIEvaluatorTest
         float score = _evaluator!.EvaluateOffensiveAction(
             target,
             skill,
-            new Vector3I(2, 0, 2),
-            new Vector3I(4, 0, 4),
+            (2, 0, 2),
+            (4, 0, 4),
             _battleState!,
             false
         );
@@ -206,8 +205,8 @@ public class AIEvaluatorTest
         float score = _evaluator!.EvaluateOffensiveAction(
             target,
             skill,
-            new Vector3I(2, 0, 2),
-            new Vector3I(4, 0, 4),
+            (2, 0, 2),
+            (4, 0, 4),
             _battleState!,
             false
         );
@@ -224,16 +223,16 @@ public class AIEvaluatorTest
 
         float scoreWithoutMove = _evaluator!.EvaluateOffensiveAction(
             target, skill,
-            new Vector3I(2, 0, 2),
-            new Vector3I(4, 0, 4),
+            (2, 0, 2),
+            (4, 0, 4),
             _battleState!,
             false
         );
 
         float scoreWithMove = _evaluator!.EvaluateOffensiveAction(
             target, skill,
-            new Vector3I(3, 0, 3),
-            new Vector3I(4, 0, 4),
+            (3, 0, 3),
+            (4, 0, 4),
             _battleState!,
             true
         );
@@ -257,8 +256,8 @@ public class AIEvaluatorTest
         float score = _evaluator!.EvaluateOffensiveAction(
             target,
             skill,
-            new Vector3I(2, 0, 2),
-            new Vector3I(4, 0, 4),
+            (2, 0, 2),
+            (4, 0, 4),
             _battleState!,
             false
         );
@@ -284,8 +283,8 @@ public class AIEvaluatorTest
         float score = _evaluator!.EvaluateSupportAction(
             ally,
             healSkill,
-            new Vector3I(2, 0, 2),
-            new Vector3I(0, 0, 0),
+            (2, 0, 2),
+            (0, 0, 0),
             _battleState!,
             false
         );
@@ -305,8 +304,8 @@ public class AIEvaluatorTest
         float score = _evaluator!.EvaluateSupportAction(
             ally,
             healSkill,
-            new Vector3I(2, 0, 2),
-            new Vector3I(0, 0, 0),
+            (2, 0, 2),
+            (0, 0, 0),
             _battleState!,
             false
         );
@@ -328,8 +327,8 @@ public class AIEvaluatorTest
         float score = _evaluator!.EvaluateSupportAction(
             ally,
             healSkill,
-            new Vector3I(2, 0, 2),
-            new Vector3I(0, 0, 0),
+            (2, 0, 2),
+            (0, 0, 0),
             _battleState!,
             false
         );
@@ -352,8 +351,8 @@ public class AIEvaluatorTest
         float score = baseEval.EvaluateSupportAction(
             ally,
             healSkill,
-            new Vector3I(2, 0, 2),
-            new Vector3I(0, 0, 0),
+            (2, 0, 2),
+            (0, 0, 0),
             _battleState!,
             false
         );
@@ -374,8 +373,8 @@ public class AIEvaluatorTest
         _aiUnit!.TakeDamage(80); // 20% HP
 
         float score = _evaluator!.EvaluateDefensiveAction(
-            new Vector3I(2, 0, 2),
-            new Vector3I(0, 0, 0),
+            (2, 0, 2),
+            (0, 0, 0),
             _battleState!
         );
 
@@ -393,8 +392,8 @@ public class AIEvaluatorTest
         _playerUnits.Add(player2);
 
         float score = _evaluator!.EvaluateDefensiveAction(
-            new Vector3I(2, 0, 2), // Current (has threats)
-            new Vector3I(0, 0, 1), // New (fewer threats)
+            (2, 0, 2), // Current (has threats)
+            (0, 0, 1), // New (fewer threats)
             _battleState!
         );
 
@@ -407,8 +406,8 @@ public class AIEvaluatorTest
     {
         // Ally is at (0, 0, 0)
         float score = _evaluator!.EvaluateDefensiveAction(
-            new Vector3I(2, 0, 2),
-            new Vector3I(1, 0, 1), // Closer to ally
+            (2, 0, 2),
+            (1, 0, 1), // Closer to ally
             _battleState!
         );
 
@@ -422,8 +421,8 @@ public class AIEvaluatorTest
         _aiUnit!.Personality = AIPersonality.Defensive;
 
         float score = _evaluator!.EvaluateDefensiveAction(
-            new Vector3I(2, 0, 2),
-            new Vector3I(0, 0, 0),
+            (2, 0, 2),
+            (0, 0, 0),
             _battleState!
         );
 

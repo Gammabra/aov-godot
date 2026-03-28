@@ -15,7 +15,17 @@
 
     <DebugSymbols>true</DebugSymbols>
     <DebugType>portable</DebugType>
-    <!-- Deterministic removed: false is the default, no need to set it -->
+  
+    <!-- Prevent duplicate assembly attributes when referencing Core -->
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <GenerateAssemblyCompanyAttribute>false</GenerateAssemblyCompanyAttribute>
+    <GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
+    <GenerateAssemblyFileVersionAttribute>false</GenerateAssemblyFileVersionAttribute>
+    <GenerateAssemblyInformationalVersionAttribute>false</GenerateAssemblyInformationalVersionAttribute>
+    <GenerateAssemblyProductAttribute>false</GenerateAssemblyProductAttribute>
+    <GenerateAssemblyTitleAttribute>false</GenerateAssemblyTitleAttribute>
+    <GenerateAssemblyVersionAttribute>false</GenerateAssemblyVersionAttribute>
+    <GenerateTargetFrameworkAttribute>false</GenerateTargetFrameworkAttribute>
   </PropertyGroup>
 
   <ItemGroup>
@@ -27,5 +37,8 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <ProjectReference Include="src/AshesofVelsingrad.Core.csproj" />
+    <!-- Exclude Core test project files from Godot build -->
+    <Compile Remove="tests/Core/**/*.cs" />
+    <Compile Remove="src/**/*.cs" />
   </ItemGroup>
 </Project>

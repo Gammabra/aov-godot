@@ -214,10 +214,10 @@ public class MapSystemTest
         map.AddWalkableCell(5, 5, 5);
         map.CellsInformation[0].SetUnit(unit);
 
-        Vector3I? pos = map.GetUnitPosition(unit);
+        (int, int, int)? pos = map.GetUnitPosition(unit);
         AssertThat(pos.HasValue).IsTrue();
         if (pos != null)
-            AssertThat(pos.Value).IsEqual(new Vector3I(5, 5, 5));
+            AssertThat(pos.Value).IsEqual((5, 5, 5));
     }
 
     [TestCase]
@@ -322,8 +322,8 @@ public class MapSystemTest
         map.AddWalkableCell(0, 0, 0); // Grass type
         map.AddEmptyCell(1, 0, 0);    // Empty type
 
-        AssertThat(map.GetCellType(new Vector3I(0, 0, 0))).IsEqual(AovDataStructures.CellType.Grass);
-        AssertThat(map.GetCellType(new Vector3I(1, 0, 0))).IsEqual(AovDataStructures.CellType.Empty);
+        AssertThat(map.GetCellType((0, 0, 0))).IsEqual(AovDataStructures.CellType.Grass);
+        AssertThat(map.GetCellType((1, 0, 0))).IsEqual(AovDataStructures.CellType.Empty);
     }
 
     [TestCase]
@@ -333,7 +333,7 @@ public class MapSystemTest
         map.AddWalkableCell(0, 0, 0);
 
         AssertThrown(() =>
-            map.GetCellType(new Vector3I(99, 99, 99))
+            map.GetCellType((99, 99, 99))
         )
             .IsInstanceOf<ArgumentOutOfRangeException>()
             .HasPropertyValue("ParamName", "Out of range"); // Changed from HasMessage
@@ -348,7 +348,7 @@ public class MapSystemTest
         map.AddWalkableCell(0, 0, 0);
         // Don't place the unit on the map
 
-        Vector3I? pos = map.GetUnitPosition(unit);
+        (int, int, int)? pos = map.GetUnitPosition(unit);
         AssertThat(pos).IsNull();
     }
 

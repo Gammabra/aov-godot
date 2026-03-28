@@ -33,7 +33,7 @@ public abstract partial class UnitSystem
     {
         List<Vector3I> possibleCells = [];
         Queue<(Vector3I pos, int dist)> toExplore = new();
-        Vector3I? unitPosition = map.GetUnitPosition(this);
+        (int, int,int)? unitPosition = map.GetUnitPosition(this);
         List<Vector3I> visitedCells = [];
         Vector3I[] directions =
         [
@@ -48,11 +48,11 @@ public abstract partial class UnitSystem
         if (unitPosition == null)
             return possibleCells;
 
-        possibleCells.Add(unitPosition.Value);
+        possibleCells.Add(new Vector3I(unitPosition.Value.Item1, unitPosition.Value.Item2, unitPosition.Value.Item3));
 
         // Queue the unit position
-        visitedCells.Add(unitPosition.Value);
-        toExplore.Enqueue((unitPosition.Value, 0));
+        visitedCells.Add(new Vector3I(unitPosition.Value.Item1, unitPosition.Value.Item2, unitPosition.Value.Item3));
+        toExplore.Enqueue((new Vector3I(unitPosition.Value.Item1, unitPosition.Value.Item2, unitPosition.Value.Item3), 0));
         while (toExplore.Count > 0)
         {
             (Vector3I pos, int dist) currentPos = toExplore.Dequeue();
@@ -61,7 +61,7 @@ public abstract partial class UnitSystem
                 continue;
 
             // Set the current position to visited cells
-            if (currentPos.pos != unitPosition.Value && !visitedCells.Contains(currentPos.pos))
+            if (currentPos.pos != new Vector3I(unitPosition.Value.Item1, unitPosition.Value.Item2, unitPosition.Value.Item3) && !visitedCells.Contains(currentPos.pos))
             {
                 possibleCells.Add(currentPos.pos);
                 visitedCells.Add(currentPos.pos);

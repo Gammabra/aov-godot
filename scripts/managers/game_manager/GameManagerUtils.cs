@@ -71,7 +71,7 @@ public partial class GameManager
             return;
         }
 
-        if (!_currentUnitPossibleMoves.Contains(new Vector3I(cell.Item1, cell.Item2, cell.Item3)))
+        if (!_currentUnitPossibleMoves.Contains(cell))
         {
             _battleInputSystemContainer.SetInputEnabled(true);
             return;
@@ -100,7 +100,7 @@ public partial class GameManager
     ///     Handles logic when a player selects a cell as a skill target.
     /// </summary>
     /// <param name="cell">The grid position selected as a target.</param>
-    private void HandlePlayerSelectTarget(Vector3I cell)
+    private void HandlePlayerSelectTarget((int, int, int) cell)
     {
         UnitSystem? target;
 
@@ -124,14 +124,14 @@ public partial class GameManager
 
         try
         {
-            target = _mapSystemContainer.GetUnitAt(cell.X, cell.Y, cell.Z);
+            target = _mapSystemContainer.GetUnitAt(cell.Item1, cell.Item2, cell.Item3);
         }
         catch (ArgumentOutOfRangeException)
         {
-            cell.Y -= 1;
+            cell.Item2 -= 1;
             try
             {
-                target = _mapSystemContainer.GetUnitAt(cell.X, cell.Y, cell.Z);
+                target = _mapSystemContainer.GetUnitAt(cell.Item1, cell.Item2, cell.Item3);
             }
             catch (ArgumentOutOfRangeException)
             {
@@ -141,7 +141,7 @@ public partial class GameManager
             }
         }
 
-        if (!_currentUnitReachableCellsForCurrentSelectedSkill.Contains(new Vector3I(cell.X, cell.Y, cell.Z)))
+        if (!_currentUnitReachableCellsForCurrentSelectedSkill.Contains(new Vector3I(cell.Item1, cell.Item2, cell.Item3)))
         {
             GD.PrintErr("The cell/target is not reachable.");
             _battleInputSystemContainer.SetInputEnabled(true);

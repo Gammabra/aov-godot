@@ -20,7 +20,7 @@ public abstract partial class UnitSystem
     /// <param name="map">Reference to the map system.</param>
     /// <returns>A list of valid floor (Y) positions the unit can reach.</returns>
     private static List<int> GetPossibleFloorForUnitMoves(
-        Vector3I baseFloor,
+        (int, int,int) baseFloor,
         bool isNegate,
         Vector3I[] directions,
         MapSystem map
@@ -34,30 +34,30 @@ public abstract partial class UnitSystem
         try
         {
             while (map.IsWalkable(
-                    baseFloor.X,
-                    baseFloor.Y + floor,
-                    baseFloor.Z
+                    baseFloor.Item1,
+                    baseFloor.Item2 + floor,
+                    baseFloor.Item3
                 ))
             {
                 if (!map.IsWalkable( // Check Left
-                        baseFloor.X + directions[0].X,
-                        baseFloor.Y + floor,
-                        baseFloor.Z
+                        baseFloor.Item1 + directions[0].X,
+                        baseFloor.Item2 + floor,
+                        baseFloor.Item3
                     ) &&
                     !map.IsWalkable( // Check Right
-                        baseFloor.X + directions[1].X,
-                        baseFloor.Y + floor,
-                        baseFloor.Z
+                        baseFloor.Item1 + directions[1].X,
+                        baseFloor.Item2 + floor,
+                        baseFloor.Item3
                     ) &&
                     !map.IsWalkable( // Check Forward
-                        baseFloor.X,
-                        baseFloor.Y + floor,
-                        baseFloor.Z + directions[2].Z
+                        baseFloor.Item1,
+                        baseFloor.Item2 + floor,
+                        baseFloor.Item3 + directions[2].Z
                     ) &&
                     !map.IsWalkable( // Check Backward
-                        baseFloor.X,
-                        baseFloor.Y + floor,
-                        baseFloor.Z + directions[3].Z
+                        baseFloor.Item1,
+                        baseFloor.Item2 + floor,
+                        baseFloor.Item3 + directions[3].Z
                     )
                 )
                 {
@@ -65,7 +65,7 @@ public abstract partial class UnitSystem
                     continue;
                 }
 
-                possibleFloor.Add(baseFloor.Y + floor);
+                possibleFloor.Add(baseFloor.Item2 + floor);
                 floor += isNegate ? -1 : 1;
             }
         }
@@ -85,16 +85,16 @@ public abstract partial class UnitSystem
     /// <param name="distance">The current BFS distance.</param>
     /// <param name="basePosition">The base grid position.</param>
     private static void QueueNewFloors(
-        ref Queue<(Vector3I pos, int dist)> toExplore,
+        ref Queue<((int, int,int) pos, int dist)> toExplore,
         List<int> possibleFloors,
         int distance,
-        Vector3I basePosition
+        (int, int,int) basePosition
     )
     {
         foreach (int floor in possibleFloors)
         {
-            Vector3I newPos = basePosition;
-            newPos.Y = floor;
+            (int, int,int) newPos = basePosition;
+            newPos.Item2 = floor;
             toExplore.Enqueue((newPos, distance + 1));
         }
     }
@@ -130,7 +130,7 @@ public abstract partial class UnitSystem
         toExplore.Enqueue((unitPosition.Value, 0));
         while (toExplore.Count > 0)
         {
-            (Vector3I pos, int dist) currentPos = toExplore.Dequeue();
+            ((int, int,int) pos, int dist) currentPos = toExplore.Dequeue();
 
             if (currentPos.Item2 > PossibleMovesRange)
                 continue;
@@ -148,12 +148,12 @@ public abstract partial class UnitSystem
             {
                 foreach (Vector3I dir in directions)
                 {
-                    Vector3I pos = currentPos.Item1;
-                    pos.X += dir.X;
-                    pos.Y += upFloor;
-                    pos.Z += dir.Z;
+                    (int, int,int) pos = currentPos.Item1;
+                    pos.Item1 += dir.X;
+                    pos.Item2 += upFloor;
+                    pos.Item3 += dir.Z;
 
-                    if (map.IsWalkable(pos.X, pos.Y, pos.Z))
+                    if (map.IsWalkable(pos.Item1, pos.Item2, pos.Item3))
                         toExplore.Enqueue((pos, currentPos.Item2 + 1));
                 }
             }
@@ -161,10 +161,10 @@ public abstract partial class UnitSystem
             // Check the possible neighbor under the unit
             foreach (Vector3I dir in directions)
             {
-                Vector3I posForDown = new Vector3I(
-                    currentPos.Item1.X + dir.X,
-                    currentPos.Item1.Y,
-                    currentPos.Item1.Z + dir.Z
+                (int, int,int) posForDown = (
+                    currentPos.Item1.Item1 + dir.X,
+                    currentPos.Item1.Item2,
+                    currentPos.Item1.Item3 + dir.Z
                 );
 
                 List<int> possibleDownFloors = GetPossibleFloorForUnitMoves(posForDown, true, directions, map);
@@ -174,13 +174,13 @@ public abstract partial class UnitSystem
             // Check the possible neighbor at the level of the unit
             foreach (Vector3I dir in directions)
             {
-                Vector3I pos = currentPos.Item1;
-                pos.X += dir.X;
-                pos.Z += dir.Z;
+                (int, int,int) pos = currentPos.Item1;
+                pos.Item1 += dir.X;
+                pos.Item3 += dir.Z;
 
                 try
                 {
-                    if (map.IsWalkable(pos.X, pos.Y, pos.Z))
+                    if (map.IsWalkable(pos.Item1, pos.Item2, pos.Item3))
                         toExplore.Enqueue((pos, currentPos.Item2 + 1));
                 }
                 catch (ArgumentOutOfRangeException)

@@ -46,7 +46,7 @@ public sealed class CellInformation(
     /// <summary>
     ///     Set <see cref="IsWalkable" /> variable to the opposite one
     /// </summary>
-    internal void SetWalkable()
+    public void SetWalkable()
     {
         IsWalkable = !IsWalkable;
     }
@@ -55,7 +55,7 @@ public sealed class CellInformation(
     ///     Set <see cref="Unit" />
     /// </summary>
     /// <param name="unit">The unit that is on the cell</param>
-    internal void SetUnit(UnitSystem? unit = null)
+    public void SetUnit(UnitSystem? unit = null)
     {
         Unit = unit;
     }

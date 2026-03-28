@@ -8,4 +8,7 @@
     <!-- Match root namespace convention -->
     <RootNamespace>AshesofVelsingrad</RootNamespace>
   </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="GodotSharp" Version="4.6.0" />
+  </ItemGroup>
 </Project>

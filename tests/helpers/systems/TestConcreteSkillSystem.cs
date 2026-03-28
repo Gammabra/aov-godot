@@ -46,7 +46,7 @@ public partial class TestConcreteSkillSystem : SkillSystem
         Cooldown = 0;
         MagicType = magic;
 
-        AreaEffect = new List<Vector3I>();
+        AreaEffect = new List<(int, int, int)>();
     }
 
     // Add public setters for properties that need to be modified in tests

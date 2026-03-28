@@ -45,8 +45,7 @@ public partial class EnemyAIBehaviorTest
             ActingUnit = _enemyUnits[0],
             MapSystem = _mapSystem!,
             PlayerUnits = _playerUnits,
-            EnemyUnits = _enemyUnits,
-            GameManager = _gameManager!
+            EnemyUnits = _enemyUnits
         };
     }
 
@@ -160,7 +159,7 @@ public partial class EnemyAIBehaviorTest
         _aiBehavior = AddNodeToTestRoot(new TestConcreteEnemyAIBehavior());
         _aiBehavior._unit = null;
 
-        await _aiBehavior.ExecuteTurn(_mockBattleState!);
+        await _aiBehavior.DecideTurn(_mockBattleState!);
 
         AssertThat(_aiBehavior.Unit).IsNull();
     }
@@ -180,7 +179,7 @@ public partial class EnemyAIBehaviorTest
         // Remove all skills so no actions are available
         unit.ActiveSkills.Clear();
 
-        await _aiBehavior.ExecuteTurn(_mockBattleState!);
+        await _aiBehavior.DecideTurn(_mockBattleState!);
 
         // Verify turn completed (implicitly by not crashing)
         AssertThat(_aiBehavior.Unit).IsEqual(unit);
@@ -247,12 +246,12 @@ public partial class EnemyAIBehaviorTest
         var decision = new AIDecision
         {
             Action = AIAction.MoveAndSkill,
-            MovePosition = new Vector3I(5, 0, 5),
+            MovePosition = (5, 0, 5),
             Target = _playerUnits[0],
             Skill = new TestConcreteSkillSystem()
         };
 
-        AssertThat(decision.MovePosition).IsEqual(new Vector3I(5, 0, 5));
+        AssertThat(decision.MovePosition).IsEqual((5, 0, 5));
     }
 
     #endregion

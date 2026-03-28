@@ -18,7 +18,7 @@ public partial class TestConcreteGameManager : GameManager
     public int PlayerUnitsCount => _playerUnits.Count;
     public int EnemyUnitsCount => _enemyUnits.Count;
     public bool UnitMoved => _unitMoved;
-    public Vector3I? LastMovedToPosition { get; private set; }
+    public (int, int, int)? LastMovedToPosition { get; private set; }
     public SkillSystem? LastUsedSkill { get; private set; }
     public UnitSystem? LastSkillTarget { get; private set; }
     public UnitSystem? LastSkillSource { get; private set; }
@@ -100,7 +100,7 @@ public partial class TestConcreteGameManager : GameManager
     }
 
     // Override MoveUnit to track if unit moved
-    public override void MoveUnit(Vector3I cell)
+    public override void MoveUnit((int, int, int) cell)
     {
         LastMovedToPosition = cell;
         base.MoveUnit(cell);

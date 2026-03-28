@@ -20,7 +20,7 @@ public partial class GameManager : BaseManager
     private AovDataStructures.ClickOnMapContext _clickOnMapContext = AovDataStructures.ClickOnMapContext.MoveUnit;
     private readonly List<UnitSystem> _playerUnits = new List<UnitSystem>();
     private readonly List<UnitSystem> _enemyUnits = new List<UnitSystem>();
-    private List<Vector3I> _currentUnitPossibleMoves = new List<Vector3I>();
+    private List<(int, int, int)> _currentUnitPossibleMoves = new List<(int, int, int)>();
     private List<Vector3I> _currentUnitReachableCellsForCurrentSelectedSkill = new List<Vector3I>();
     private SkillSystem? _selectedSkill;
     private UnitSystem? _selectedUnitForPlayedSkill;
@@ -354,10 +354,10 @@ public partial class GameManager : BaseManager
         switch (_clickOnMapContext)
         {
             case AovDataStructures.ClickOnMapContext.MoveUnit:
-                HandlePlayerUnitMove(cell);
+                HandlePlayerUnitMove((cell.X, cell.Y, cell.Z));
                 break;
             case AovDataStructures.ClickOnMapContext.SelectUnitTarget:
-                HandlePlayerSelectTarget(cell);
+                HandlePlayerSelectTarget((cell.X, cell.Y, cell.Z));
                 break;
         }
     }
@@ -622,8 +622,7 @@ public partial class GameManager : BaseManager
                         ActingUnit = enemy,
                         MapSystem = _mapSystemContainer,
                         PlayerUnits = AIManager.GetAlivePlayerUnits(),
-                        EnemyUnits = AIManager.GetAliveEnemyUnits(),
-                        GameManager = this
+                        EnemyUnits = AIManager.GetAliveEnemyUnits()
                     };
 
                     visualizer.VisualizeThreatMap(enemy, battleState, 5);

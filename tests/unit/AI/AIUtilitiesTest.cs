@@ -103,8 +103,7 @@ public class AIUtilitiesTest
             ActingUnit = _aiUnit,
             MapSystem = _mapSystem,
             PlayerUnits = _playerUnits,
-            EnemyUnits = _enemyUnits,
-            GameManager = _gameManager
+            EnemyUnits = _enemyUnits
         };
     }
 
@@ -115,7 +114,7 @@ public class AIUtilitiesTest
     [TestCase]
     public void CalculateManhattanDistance_ReturnsZero_ForSamePosition()
     {
-        var pos = new Vector3I(2, 0, 2);
+        var pos = (2, 0, 2);
         int distance = AIUtilities.CalculateManhattanDistance(pos, pos);
 
         AssertThat(distance).IsEqual(0);
@@ -124,8 +123,8 @@ public class AIUtilitiesTest
     [TestCase]
     public void CalculateManhattanDistance_CalculatesHorizontalDistance()
     {
-        var pos1 = new Vector3I(0, 0, 0);
-        var pos2 = new Vector3I(3, 0, 0);
+        var pos1 = (0, 0, 0);
+        var pos2 = (3, 0, 0);
 
         int distance = AIUtilities.CalculateManhattanDistance(pos1, pos2);
 
@@ -135,8 +134,8 @@ public class AIUtilitiesTest
     [TestCase]
     public void CalculateManhattanDistance_CalculatesVerticalDistance()
     {
-        var pos1 = new Vector3I(0, 0, 0);
-        var pos2 = new Vector3I(0, 5, 0);
+        var pos1 = (0, 0, 0);
+        var pos2 = (0, 5, 0);
 
         int distance = AIUtilities.CalculateManhattanDistance(pos1, pos2);
 
@@ -146,8 +145,8 @@ public class AIUtilitiesTest
     [TestCase]
     public void CalculateManhattanDistance_CalculatesDiagonalDistance()
     {
-        var pos1 = new Vector3I(0, 0, 0);
-        var pos2 = new Vector3I(3, 0, 4);
+        var pos1 = (0, 0, 0);
+        var pos2 = (3, 0, 4);
 
         int distance = AIUtilities.CalculateManhattanDistance(pos1, pos2);
 
@@ -158,8 +157,8 @@ public class AIUtilitiesTest
     [TestCase]
     public void CalculateManhattanDistance_Calculates3DDistance()
     {
-        var pos1 = new Vector3I(0, 0, 0);
-        var pos2 = new Vector3I(2, 2, 1);
+        var pos1 = (0, 0, 0);
+        var pos2 = (2, 2, 1);
 
         int distance = AIUtilities.CalculateManhattanDistance(pos1, pos2);
 
@@ -181,7 +180,7 @@ public class AIUtilitiesTest
         var result = AIUtilities.CalculateMoveToRange(
             isolatedUnit,
             _battleState!,
-            new Vector3I(4, 0, 4),
+            (4, 0, 4),
             1
         );
 
@@ -191,7 +190,7 @@ public class AIUtilitiesTest
     [TestCase]
     public void CalculateMoveToRange_FindsOptimalPosition()
     {
-        var targetPos = new Vector3I(4, 0, 4);
+        var targetPos = (4, 0, 4);
         int skillRange = 2;
 
         var result = AIUtilities.CalculateMoveToRange(
@@ -215,7 +214,7 @@ public class AIUtilitiesTest
     [TestCase]
     public void CalculateMoveAway_FindsFarthestPosition()
     {
-        var threatPos = new Vector3I(4, 0, 4);
+        var threatPos = (4, 0, 4);
         int minDistance = 2;
 
         var result = AIUtilities.CalculateMoveAway(
@@ -242,7 +241,7 @@ public class AIUtilitiesTest
         var result = AIUtilities.CalculateMoveAway(
             isolatedUnit,
             _battleState!,
-            new Vector3I(4, 0, 4),
+            (4, 0, 4),
             2
         );
 
@@ -264,7 +263,7 @@ public class AIUtilitiesTest
 
         int count = AIUtilities.CountEnemyAlliesNear(
             _aiUnit!,
-            new Vector3I(2, 0, 2),
+            (2, 0, 2),
             _battleState!,
             2
         );
@@ -279,7 +278,7 @@ public class AIUtilitiesTest
     {
         int count = AIUtilities.CountEnemyAlliesNear(
             _aiUnit!,
-            new Vector3I(2, 0, 2), // AI's own position
+            (2, 0, 2), // AI's own position
             _battleState!,
             10 // Large range
         );
@@ -293,7 +292,7 @@ public class AIUtilitiesTest
     {
         int count = AIUtilities.CountEnemyAlliesNear(
             _aiUnit!,
-            new Vector3I(4, 0, 4),
+            (4, 0, 4),
             _battleState!,
             1
         );
@@ -316,7 +315,7 @@ public class AIUtilitiesTest
 
         int count = AIUtilities.CountPlayerUnitsNear(
             _aiUnit!,
-            new Vector3I(2, 0, 2),
+            (2, 0, 2),
             _battleState!,
             2
         );
@@ -331,7 +330,7 @@ public class AIUtilitiesTest
     {
         int count = AIUtilities.CountPlayerUnitsNear(
             _aiUnit!,
-            new Vector3I(0, 0, 0),
+            (0, 0, 0),
             _battleState!,
             1
         );
@@ -435,7 +434,7 @@ public class AIUtilitiesTest
     [TestCase]
     public void CalculateThreatLevel_CalculatesBasedOnProximity()
     {
-        var position = new Vector3I(2, 0, 2);
+        var position = (2, 0, 2);
 
         // Add enemy at distance 1
         var closeEnemy = AddNodeToTestRoot(new TestConcreteUnitSystem { Name = "Close" });
@@ -453,7 +452,7 @@ public class AIUtilitiesTest
     [TestCase]
     public void CalculateThreatLevel_ReturnsZero_WhenNoEnemiesInRange()
     {
-        var position = new Vector3I(0, 0, 0);
+        var position = (0, 0, 0);
 
         float threat = AIUtilities.CalculateThreatLevel(position, _battleState!, 1);
 
@@ -468,8 +467,8 @@ public class AIUtilitiesTest
     [TestCase]
     public void HasLineOfSight_ReturnsTrue_ForClosePositions()
     {
-        var from = new Vector3I(0, 0, 0);
-        var to = new Vector3I(3, 0, 3);
+        var from = (0, 0, 0);
+        var to = (3, 0, 3);
 
         bool los = AIUtilities.HasLineOfSight(from, to, _mapSystem!);
 
@@ -479,8 +478,8 @@ public class AIUtilitiesTest
     [TestCase]
     public void HasLineOfSight_ReturnsFalse_ForDistantPositions()
     {
-        var from = new Vector3I(0, 0, 0);
-        var to = new Vector3I(10, 0, 10);
+        var from = (0, 0, 0);
+        var to = (10, 0, 10);
 
         bool los = AIUtilities.HasLineOfSight(from, to, _mapSystem!);
 
@@ -494,7 +493,7 @@ public class AIUtilitiesTest
     [TestCase]
     public void GetUnitsInRange_ReturnsUnitsWithinRange()
     {
-        var position = new Vector3I(2, 0, 2);
+        var position = (2, 0, 2);
 
         // Add a close unit
         var closeUnit = AddNodeToTestRoot(new TestConcreteUnitSystem { Name = "Close" });
@@ -516,7 +515,7 @@ public class AIUtilitiesTest
     [TestCase]
     public void GetUnitsInRange_ReturnsEmpty_WhenNoUnitsInRange()
     {
-        var position = new Vector3I(0, 0, 0);
+        var position = (0, 0, 0);
 
         var unitsInRange = AIUtilities.GetUnitsInRange(
             position,
@@ -537,8 +536,8 @@ public class AIUtilitiesTest
     {
         _mapSystem!.AddWalkableCell(2, 2, 2);
 
-        var lowGround = new Vector3I(2, 0, 2);
-        var highGround = new Vector3I(2, 2, 2);
+        var lowGround = (2, 0, 2);
+        var highGround = (2, 2, 2);
 
         float scoreLow = AIUtilities.EvaluatePositionDefensibility(lowGround, _battleState!);
         float scoreHigh = AIUtilities.EvaluatePositionDefensibility(highGround, _battleState!);
@@ -551,8 +550,8 @@ public class AIUtilitiesTest
     {
         // Create a chokepoint by limiting walkable adjacent cells
         // Position (0,0,0) is a corner with fewer adjacent cells
-        var chokepoint = new Vector3I(0, 0, 0);
-        var openArea = new Vector3I(2, 0, 2);
+        var chokepoint = (0, 0, 0);
+        var openArea = (2, 0, 2);
 
         float scoreChoke = AIUtilities.EvaluatePositionDefensibility(chokepoint, _battleState!);
         float scoreOpen = AIUtilities.EvaluatePositionDefensibility(openArea, _battleState!);

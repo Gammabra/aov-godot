@@ -113,8 +113,7 @@ public class AIDecisionGeneratorTest
             ActingUnit = _aiUnit,
             MapSystem = _mapSystem,
             PlayerUnits = _playerUnits,
-            EnemyUnits = _enemyUnits,
-            GameManager = _gameManager
+            EnemyUnits = _enemyUnits
         };
     }
 

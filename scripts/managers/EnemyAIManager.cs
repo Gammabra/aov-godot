@@ -7,10 +7,6 @@ using Godot;
 
 namespace AshesOfVelsingrad.Managers;
 
-/// <summary>
-/// Manages AI decision-making for enemy units during combat.
-/// This is NOT a singleton - it's created per battle by GameManager.
-/// </summary>
 public class EnemyAIManager
 {
     #region Private Fields
@@ -24,10 +20,6 @@ public class EnemyAIManager
 
     #region Constructor
 
-    /// <summary>
-    /// Creates a new EnemyAIManager instance for a specific battle.
-    /// </summary>
-    /// <param name="gameManager">Reference to the GameManager controlling this battle.</param>
     public EnemyAIManager(GameManager gameManager)
     {
         _gameManager = gameManager;
@@ -38,18 +30,12 @@ public class EnemyAIManager
 
     #region Public Methods
 
-    /// <summary>
-    /// Sets the MapSystem reference for AI pathfinding and queries.
-    /// </summary>
     public void SetMapSystem(MapSystem map)
     {
         _mapSystem = map;
         GD.Print("EnemyAIManager: MapSystem reference set");
     }
 
-    /// <summary>
-    /// Sets the references to player and enemy unit collections.
-    /// </summary>
     public void SetUnitReferences(List<UnitSystem> playerUnits, List<UnitSystem> enemyUnits)
     {
         _playerUnits = playerUnits;
@@ -57,9 +43,6 @@ public class EnemyAIManager
         GD.Print($"EnemyAIManager: Tracking {_playerUnits.Count} player units and {_enemyUnits.Count} enemy units");
     }
 
-    /// <summary>
-    /// Executes AI logic for a specific enemy unit's turn.
-    /// </summary>
     public async Task ExecuteAITurn(UnitSystem unit)
     {
         if (_mapSystem == null)
@@ -77,11 +60,8 @@ public class EnemyAIManager
         }
 
         GD.Print($"EnemyAIManager: {unit.Name} is thinking...");
-
-        // Wait one frame to ensure children are loaded
         await unit.ToSignal(unit.GetTree(), SceneTree.SignalName.ProcessFrame);
 
-        // Get the AI component attached to this unit
         EnemyAIBehavior? aiBehavior = GetAIBehavior(unit);
 
         if (aiBehavior == null)
@@ -91,49 +71,32 @@ public class EnemyAIManager
             return;
         }
 
-        // Create battle state snapshot for AI decision-making
+        // BattleState is now the Core version - no GameManager reference
         BattleState battleState = CreateBattleState(unit);
 
-        // Let the AI behavior decide and execute
-        await aiBehavior.ExecuteTurn(battleState);
+        // aiBehavior returns a decision, EnemyAIManager executes it
+        AIDecision decision = await aiBehavior.DecideTurn(battleState);
+        await ExecuteDecision(decision, unit);
     }
 
-    /// <summary>
-    /// Gets all player units that are currently alive.
-    /// </summary>
-    public List<UnitSystem> GetAlivePlayerUnits()
-    {
-        return _playerUnits.Where(u => u.IsAlive).ToList();
-    }
+    public List<UnitSystem> GetAlivePlayerUnits() =>
+        _playerUnits.Where(u => u.IsAlive).ToList();
 
-    /// <summary>
-    /// Gets all enemy units that are currently alive.
-    /// </summary>
-    public List<UnitSystem> GetAliveEnemyUnits()
-    {
-        return _enemyUnits.Where(u => u.IsAlive).ToList();
-    }
+    public List<UnitSystem> GetAliveEnemyUnits() =>
+        _enemyUnits.Where(u => u.IsAlive).ToList();
 
     #endregion
 
     #region Private Methods
 
-    /// <summary>
-    /// Retrieves the AI behavior component attached to a unit.
-    /// </summary>
     private static EnemyAIBehavior? GetAIBehavior(UnitSystem unit)
     {
         foreach (Node child in unit.GetChildren())
-        {
             if (child is EnemyAIBehavior behavior)
                 return behavior;
-        }
         return null;
     }
 
-    /// <summary>
-    /// Creates a snapshot of the current battle state for AI decision-making.
-    /// </summary>
     private BattleState CreateBattleState(UnitSystem actingUnit)
     {
         return new BattleState
@@ -141,14 +104,40 @@ public class EnemyAIManager
             ActingUnit = actingUnit,
             MapSystem = _mapSystem!,
             PlayerUnits = GetAlivePlayerUnits(),
-            EnemyUnits = GetAliveEnemyUnits(),
-            GameManager = _gameManager!
+            EnemyUnits = GetAliveEnemyUnits()
+            // No GameManager here - Core BattleState is a pure data snapshot
         };
     }
 
-    /// <summary>
-    /// Executes a simple default AI behavior when no specific AI component is found.
-    /// </summary>
+    // GameManager actions now live here instead of inside BattleState
+    private async Task ExecuteDecision(AIDecision decision, UnitSystem unit)
+    {
+        switch (decision.Action)
+        {
+            case AIAction.MoveAndSkill:
+                if (decision.MovePosition.HasValue)
+                    _gameManager!.MoveUnit(decision.MovePosition.Value);
+                if (decision.Target != null && decision.Skill != null)
+                    _gameManager!.UseSkill(unit, decision.Target, decision.Skill);
+                break;
+            case AIAction.Move:
+                if (decision.MovePosition.HasValue)
+                    _gameManager!.MoveUnit(decision.MovePosition.Value);
+                break;
+            case AIAction.UseSkill:
+                if (decision.Target != null && decision.Skill != null)
+                    _gameManager!.UseSkill(unit, decision.Target, decision.Skill);
+                break;
+            case AIAction.Pass:
+            default:
+                GD.Print($"EnemyAIManager: {unit.Name} passes turn");
+                break;
+        }
+
+        await Task.Delay(500);
+        unit.PassTurn();
+    }
+
     private async Task ExecuteDefaultBehavior(UnitSystem unit)
     {
         await Task.Delay(1000);
@@ -157,42 +146,4 @@ public class EnemyAIManager
     }
 
     #endregion
-}
-
-/// <summary>
-/// Represents a snapshot of the battle state at a specific moment.
-/// Used by AI to make decisions based on current conditions.
-/// </summary>
-public class BattleState
-{
-    /// <summary>The unit currently making decisions.</summary>
-    public required UnitSystem ActingUnit { get; init; }
-
-    /// <summary>Reference to the map system for position queries.</summary>
-    public required MapSystem MapSystem { get; init; }
-
-    /// <summary>All alive player units.</summary>
-    public required List<UnitSystem> PlayerUnits { get; init; }
-
-    /// <summary>All alive enemy units.</summary>
-    public required List<UnitSystem> EnemyUnits { get; init; }
-
-    /// <summary>Reference to GameManager for executing actions.</summary>
-    public required GameManager GameManager { get; init; }
-
-    /// <summary>
-    /// Moves the acting unit to a target position using GameManager.
-    /// </summary>
-    public void MoveUnitTo((int, int,int) targetCell)
-    {
-        GameManager.MoveUnit(targetCell);
-    }
-
-    /// <summary>
-    /// Uses a skill on a target through GameManager.
-    /// </summary>
-    public void UseSkillOn(UnitSystem target, SkillSystem skill)
-    {
-        GameManager.UseSkill(ActingUnit, target, skill);
-    }
 }

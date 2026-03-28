@@ -235,9 +235,9 @@ public class UnitSystemTest
         map.AddWalkableCell(1, 0, 0);
         map.AddUnit(unit);
 
-        List<Vector3I> moves = unit.GetPossibleMoves(map);
-        AssertThat(moves.Contains(new Vector3I(1, 0, 0))).IsTrue();
-        AssertThat(moves.Contains(new Vector3I(0, 0, 0))).IsFalse();
+        List<(int, int, int)> moves = unit.GetPossibleMoves(map);
+        AssertThat(moves.Contains((1, 0, 0))).IsTrue();
+        AssertThat(moves.Contains((0, 0, 0))).IsFalse();
     }
 
     [TestCase]

@@ -4,6 +4,7 @@ using System.Reflection;
 using System.Threading.Tasks;
 using AshesOfVelsingrad.Managers;
 using AshesOfVelsingrad.Systems;
+using AshesOfVelsingrad.AI;
 using GdUnit4;
 using Godot;
 using static GdUnit4.Assertions;
@@ -370,56 +371,7 @@ public class EnemyAIManagerTest
         await _aiManager!.ExecuteAITurn(unit);
 
         // Verify AI behavior was executed
-        AssertThat(aiBehavior.ExecuteTurnWasCalled).IsTrue();
-    }
-
-    #endregion
-
-    #region BattleState Tests
-
-    [TestCase]
-    public void BattleState_MoveUnitTo_CallsGameManagerMoveUnit()
-    {
-        SetupBasicAIManager();
-
-        var battleState = new BattleState
-        {
-            ActingUnit = _enemyUnits[0],
-            MapSystem = _mapSystem!,
-            PlayerUnits = _playerUnits,
-            EnemyUnits = _enemyUnits,
-            GameManager = _gameManager!
-        };
-
-        var targetCell = new Vector3I(1, 0, 0);
-        battleState.MoveUnitTo(targetCell);
-
-        // Verify GameManager.MoveUnit was called with correct position
-        AssertThat(_gameManager!.LastMovedToPosition).IsEqual(targetCell);
-    }
-
-    [TestCase]
-    public void BattleState_UseSkillOn_CallsGameManagerUseSkill()
-    {
-        SetupBasicAIManager();
-
-        var battleState = new BattleState
-        {
-            ActingUnit = _enemyUnits[0],
-            MapSystem = _mapSystem!,
-            PlayerUnits = _playerUnits,
-            EnemyUnits = _enemyUnits,
-            GameManager = _gameManager!
-        };
-
-        var target = _playerUnits[0];
-        var skill = new TestConcreteSkillSystem();
-
-        battleState.UseSkillOn(target, skill);
-
-        // Verify GameManager.UseSkill was called
-        AssertThat(_gameManager!.LastUsedSkill).IsEqual(skill);
-        AssertThat(_gameManager.LastSkillTarget).IsEqual(target);
+        AssertThat(aiBehavior.DecideTurnWasCalled).IsTrue();
     }
 
     #endregion

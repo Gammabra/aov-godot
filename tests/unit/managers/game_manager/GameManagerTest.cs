@@ -328,7 +328,7 @@ public class GameManagerTest
         SetPrivateField(manager, "_battleInputSystemContainer", inputSystem);
         SetPrivateField(manager, "_isPlayerTurn", true);
 
-        manager.MoveUnit(new Vector3I(1, 0, 1));
+        manager.MoveUnit((1, 0, 1));
 
         AssertThat(GetPrivateField<bool>(inputSystem, "_inputEnabled")).IsTrue();
     }
@@ -343,7 +343,7 @@ public class GameManagerTest
         SetPrivateField(manager, "_unitMoved", true);
         SetPrivateField(manager, "_isPlayerTurn", true);
 
-        manager.MoveUnit(new Vector3I(1, 0, 1));
+        manager.MoveUnit((1, 0, 1));
 
         AssertThat(GetPrivateField<bool>(manager, "_unitMoved")).IsTrue();
         AssertThat(GetPrivateField<bool>(inputSystem, "_inputEnabled")).IsTrue();

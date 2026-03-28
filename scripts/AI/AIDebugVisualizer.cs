@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using AshesOfVelsingrad.AI;
 using AshesOfVelsingrad.Managers;
 using AshesOfVelsingrad.Systems;
 using AshesOfVelsingrad.Utilities;

@@ -84,19 +84,34 @@ func _create_popup():
 	popup.ok_button_text = "Return"
 	popup.exclusive = false
 
-	var add_spawner_btn: Button = Button.new()
-	add_spawner_btn.text = "Add a spawner"
-	add_spawner_btn.pressed.connect(_on_add_spawner_pressed)
-	popup.add_child(add_spawner_btn)
-
 	EditorInterface.get_base_control().add_child(popup)
 	popup.hide()
 
 func _show_popup(cell: Vector3i):
 	if popup == null or not is_instance_valid(popup):
 		return
-	popup.dialog_text = "Action on the %s cell" % str(cell)
+	var res: CellData = _get_or_create_resource()
+
+	if res:
+		var exists: bool = res.is_player_spawn_exist(current_cell)
+		if not exists:
+			_create_button_to_popup("Add a spawner at %s" % str(cell), _on_add_player_spawner_pressed)
+		else:
+			_create_button_to_popup("Remove a spawner at %s" % str(cell), _on_remove_player_spawner_pressed)
+
 	popup.popup_centered()
+
+func _create_button_to_popup(button_text: String, callable: Callable):
+	var remove_spawner_btn: Button = Button.new()
+	remove_spawner_btn.text = button_text
+	remove_spawner_btn.pressed.connect(callable)
+	popup.add_child(remove_spawner_btn)
+
+func _close_popup():
+	for child in popup.get_children():
+		if child is Button:
+			child.queue_free()
+	popup.hide()
 
 # --------------------------
 # .TRES Handling
@@ -115,9 +130,16 @@ func _get_or_create_resource() -> CellData:
 		ResourceSaver.save(res, tres_path)
 	return res
 
-func _on_add_spawner_pressed():
+func _on_add_player_spawner_pressed():
 	var res: CellData = _get_or_create_resource()
 	if res:
 		res.add_player_spawner(current_cell)
 		ResourceSaver.save(res, get_tree().edited_scene_root.scene_file_path.get_basename() + ".tres")
-	popup.hide()
+	_close_popup()
+
+func _on_remove_player_spawner_pressed():
+	var res: CellData = _get_or_create_resource()
+	if res:
+		res.remove_player_spawner(current_cell)
+		ResourceSaver.save(res, get_tree().edited_scene_root.scene_file_path.get_basename() + ".tres")
+	_close_popup()

@@ -754,6 +754,34 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.Managers.State.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.Managers.State.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.Managers.State",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.Managers.State.yml\" sourcestartlinenumber=\"1\">Base class for all states used in a <xref href=\"AshesOfVelsingrad.Managers.StateMachine\" data-throw-if-not-resolved=\"false\"></xref>.\nProvides a lifecycle and hooks for behavior implementation.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.Managers.StateMachine.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.Managers.StateMachine.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.Managers.StateMachine",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.Managers.StateMachine.yml\" sourcestartlinenumber=\"1\">Represents a finite state machine that manages transitions between different states.\nEach child node of this node is expected to be a <xref href=\"AshesOfVelsingrad.Managers.State\" data-throw-if-not-resolved=\"false\"></xref>.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "documentation/api/AshesOfVelsingrad.Managers.TurnManager.yml",
       "output": {
         ".html": {

@@ -139,6 +139,18 @@ Follows the Manager Pattern from your architecture.</p>
 </dd>
     </dl>
     <dl class="jumplist">
+      <dt><a class="xref" href="AshesOfVelsingrad.Managers.State.html">State</a></dt>
+      <dd><p>Base class for all states used in a <a class="xref" href="AshesOfVelsingrad.Managers.StateMachine.html">StateMachine</a>.
+Provides a lifecycle and hooks for behavior implementation.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="AshesOfVelsingrad.Managers.StateMachine.html">StateMachine</a></dt>
+      <dd><p>Represents a finite state machine that manages transitions between different states.
+Each child node of this node is expected to be a <a class="xref" href="AshesOfVelsingrad.Managers.State.html">State</a>.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
       <dt><a class="xref" href="AshesOfVelsingrad.Managers.TurnManager.html">TurnManager</a></dt>
       <dd><p>Manages the turn-based battle flow between player and enemy units.
 Handles turn order, state transitions, and async waiting for unit actions.</p>

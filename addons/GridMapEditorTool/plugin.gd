@@ -35,8 +35,7 @@ func _forward_3d_gui_input(camera: Camera3D, event: InputEvent):
 
 	elif event is InputEventMouseButton:
 		if event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
-			_handle_mouse_button_left_click(event)
-			return true
+			return _handle_mouse_button_left_click(event)
 
 # --------------------------
 # Forward 3D GUI Input Methods
@@ -61,9 +60,18 @@ func _handle_mouse_hovering(camera: Camera3D, event: InputEvent) -> void:
 		current_cell = null
 		hovered_cell.name = "No hovered cell"
 
-func _handle_mouse_button_left_click(event: InputEvent):
+func _handle_mouse_button_left_click(event: InputEvent) -> bool:
+	var selection: EditorSelection = EditorInterface.get_selection()
+	var selected_nodes: Array[Node] = selection.get_selected_nodes()
+
+	for node in selected_nodes:
+		if node == grid_map:
+			return false
+
 	if current_cell && hovered_cell:
 		_show_popup(current_cell)
+		return true
+	return false
 
 # --------------------------
 # POPUP

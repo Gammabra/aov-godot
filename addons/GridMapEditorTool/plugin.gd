@@ -67,6 +67,10 @@ func _handle_mouse_hovering(camera: Camera3D, event: InputEvent) -> void:
 
 	if result:
 		var cell: Vector3i = grid_map.local_to_map(result.position)
+		var cell_item: int = grid_map.get_cell_item(cell)
+		
+		if cell_item == grid_map.INVALID_CELL_ITEM:
+			return
 		current_cell = cell
 		if hovered_cell != null:
 			hovered_cell.set_hovered_cell(cell)

@@ -6,6 +6,7 @@ var root: Node = null
 var hovered_cell: HoveredCell = null
 var popup: AcceptDialog = null
 var current_cell: Variant = null
+var spawner_gizmo: SpawnerGizmo
 
 func _enter_tree() -> void:
 	set_input_event_forwarding_always_enabled()
@@ -16,11 +17,14 @@ func _enter_tree() -> void:
 		preload("res://addons/gridMapEditorTool/assets/icons/mouse.png")
 	)
 	_create_popup()
+	spawner_gizmo = SpawnerGizmo.new()
+	add_node_3d_gizmo_plugin(spawner_gizmo)
 
 func _exit_tree() -> void:
 	remove_custom_type("HoveredCell")
 	if popup:
 		popup.queue_free()
+	remove_node_3d_gizmo_plugin(spawner_gizmo)
 
 func _process(delta: float) -> void:
 	var scene_root: Node = EditorInterface.get_edited_scene_root()
@@ -93,7 +97,7 @@ func _show_popup(cell: Vector3i):
 	var res: CellData = _get_or_create_resource()
 
 	if res:
-		var exists: bool = res.is_player_spawn_exist(current_cell)
+		var exists: bool = res.is_player_spawner_exist(current_cell)
 		if not exists:
 			_create_button_to_popup("Add a spawner at %s" % str(cell), _on_add_player_spawner_pressed)
 		else:

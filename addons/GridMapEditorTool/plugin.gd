@@ -147,7 +147,8 @@ func _on_add_player_spawner_pressed():
 	if res:
 		res.add_player_spawner(current_cell, grid_map.map_to_local(current_cell))
 		ResourceSaver.save(res, get_tree().edited_scene_root.scene_file_path.get_basename() + ".tres")
-		spawner_visualizer.refresh_gizmos(spawner_gizmo, spawner_visualizer.get_gizmos())
+		if spawner_visualizer:
+			spawner_visualizer.refresh_gizmos(spawner_gizmo, spawner_visualizer.get_gizmos())
 	_close_popup()
 
 func _on_remove_player_spawner_pressed():
@@ -155,5 +156,6 @@ func _on_remove_player_spawner_pressed():
 	if res:
 		res.remove_player_spawner(current_cell)
 		ResourceSaver.save(res, get_tree().edited_scene_root.scene_file_path.get_basename() + ".tres")
-		spawner_visualizer.refresh_gizmos(spawner_gizmo, spawner_visualizer.get_gizmos())
+		if spawner_visualizer:
+			spawner_visualizer.refresh_gizmos(spawner_gizmo, spawner_visualizer.get_gizmos())
 	_close_popup()

@@ -141,7 +141,7 @@ func _get_or_create_resource() -> CellData:
 func _on_add_player_spawner_pressed():
 	var res: CellData = _get_or_create_resource()
 	if res:
-		res.add_player_spawner(current_cell)
+		res.add_player_spawner(current_cell, grid_map.map_to_local(current_cell))
 		ResourceSaver.save(res, get_tree().edited_scene_root.scene_file_path.get_basename() + ".tres")
 	_close_popup()
 

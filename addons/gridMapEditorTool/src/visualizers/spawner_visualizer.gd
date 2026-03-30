@@ -2,8 +2,8 @@
 extends Node3D
 class_name SpawnerVisualizer
 
-func get_player_spawner() -> Array[Vector3i]:
-	var result: Array[Vector3i] = []
+func get_player_spawner() -> Array[Dictionary]:
+	var result: Array[Dictionary] = []
 	var cell_data: CellData
 	var scene_root: Node = get_tree().edited_scene_root
 
@@ -17,7 +17,7 @@ func get_player_spawner() -> Array[Vector3i]:
 		return result
 
 	if cell_data != null and cell_data.player_spawners != null:
-		var player_spawners: Array[Vector3i] = cell_data.player_spawners
+		var player_spawners: Array[Dictionary] = cell_data.player_spawners
 
 		for spawner in player_spawners:
 			result.append(spawner)

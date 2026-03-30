@@ -21,7 +21,8 @@ func remove_player_spawner(cell: Vector3i) -> void:
 func get_player_spawners_length() -> int:
 	return player_spawners.size()
 
-func is_player_spawn_exist(cell: Vector3i) -> bool:
+## Check if a player spawner exists at a given cell
+func is_player_spawner_exist(cell: Vector3i) -> bool:
 	if cell not in player_spawners:
 		return false
 	return true

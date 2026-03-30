@@ -31,3 +31,11 @@ static func find_hovered_cell(grid_map: GridMap) -> HoveredCell:
 		if child is HoveredCell:
 			return child
 	return null
+
+static func find_spawner_visualizer(grid_map: GridMap) -> SpawnerVisualizer:
+	if grid_map == null:
+		return null
+	for child in grid_map.get_children():
+		if child is SpawnerVisualizer:
+			return child
+	return null

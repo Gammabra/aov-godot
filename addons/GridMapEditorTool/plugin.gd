@@ -7,9 +7,9 @@ var hovered_cell: HoveredCell = null
 var popup: AcceptDialog = null
 var current_cell: Variant = null
 var spawner_gizmo: SpawnerGizmo
+var spawner_visualizer: SpawnerVisualizer = null
 
 func _enter_tree() -> void:
-	set_input_event_forwarding_always_enabled()
 	add_custom_type(
 		"HoveredCell",
 		"Node",
@@ -25,6 +25,7 @@ func _enter_tree() -> void:
 	_create_popup()
 	spawner_gizmo = SpawnerGizmo.new()
 	add_node_3d_gizmo_plugin(spawner_gizmo)
+	set_input_event_forwarding_always_enabled()
 
 func _exit_tree() -> void:
 	remove_custom_type("HoveredCell")
@@ -35,10 +36,12 @@ func _exit_tree() -> void:
 
 func _process(delta: float) -> void:
 	var scene_root: Node = EditorInterface.get_edited_scene_root()
+
 	if root != scene_root:
 		root = scene_root
 		grid_map = Utils.try_find_gridmap(root)
 		hovered_cell = Utils.find_hovered_cell(grid_map)
+		spawner_visualizer = Utils.find_spawner_visualizer(grid_map)
 
 func _forward_3d_gui_input(camera: Camera3D, event: InputEvent):
 	if event is InputEventMouseMotion:
@@ -76,7 +79,7 @@ func _handle_mouse_button_left_click(event: InputEvent) -> bool:
 	var selected_nodes: Array[Node] = selection.get_selected_nodes()
 
 	for node in selected_nodes:
-		if node is HoveredCell && current_cell:
+		if (node is HoveredCell || node is SpawnerVisualizer) && current_cell:
 			_show_popup(current_cell)
 			return true
 	return false
@@ -110,6 +113,7 @@ func _show_popup(cell: Vector3i):
 	popup.popup_centered()
 
 func _create_button_to_popup(button_text: String, callable: Callable):
+	_close_popup()
 	var remove_spawner_btn: Button = Button.new()
 	remove_spawner_btn.text = button_text
 	remove_spawner_btn.pressed.connect(callable)
@@ -143,6 +147,7 @@ func _on_add_player_spawner_pressed():
 	if res:
 		res.add_player_spawner(current_cell, grid_map.map_to_local(current_cell))
 		ResourceSaver.save(res, get_tree().edited_scene_root.scene_file_path.get_basename() + ".tres")
+		spawner_visualizer.refresh_gizmos(spawner_gizmo, spawner_visualizer.get_gizmos())
 	_close_popup()
 
 func _on_remove_player_spawner_pressed():
@@ -150,4 +155,5 @@ func _on_remove_player_spawner_pressed():
 	if res:
 		res.remove_player_spawner(current_cell)
 		ResourceSaver.save(res, get_tree().edited_scene_root.scene_file_path.get_basename() + ".tres")
+		spawner_visualizer.refresh_gizmos(spawner_gizmo, spawner_visualizer.get_gizmos())
 	_close_popup()

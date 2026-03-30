@@ -22,3 +22,7 @@ func get_player_spawner() -> Array[Dictionary]:
 		for spawner in player_spawners:
 			result.append(spawner)
 	return result
+
+func refresh_gizmos(spawner_gizmo: SpawnerGizmo, gizmos: Array[Node3DGizmo]) -> void:
+	for gizmo in gizmos:
+		spawner_gizmo._redraw(gizmo)

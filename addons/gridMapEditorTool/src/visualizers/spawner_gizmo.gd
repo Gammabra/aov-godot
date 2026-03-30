@@ -2,8 +2,6 @@
 extends EditorNode3DGizmoPlugin
 class_name SpawnerGizmo
 
-var grid_map: GridMap = null
-
 func _init():
 	create_material("blue", Color.BLUE)
 
@@ -14,6 +12,7 @@ func _has_gizmo(for_node_3d: Node3D) -> bool:
 	return for_node_3d is SpawnerVisualizer
 
 func _redraw(gizmo: EditorNode3DGizmo) -> void:
+	gizmo.clear()
 	var node = gizmo.get_node_3d()
 
 	if not node or not node.has_method("get_player_spawner"):
@@ -29,7 +28,6 @@ func _redraw(gizmo: EditorNode3DGizmo) -> void:
 
 	for spawner in spawners:
 		var pos = spawner.get("world_pos", null)
-		print(pos)
 
 		var p0 = pos + Vector3(-size, -size, -size)
 		var p1 = pos + Vector3(size, -size, -size)

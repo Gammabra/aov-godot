@@ -1,5 +1,5 @@
-using AshesOfVelsingrad.Systems;
 using AshesOfVelsingrad.Utilities;
+using AshesOfVelsingrad.Systems;
 
 namespace AshesOfVelsingrad.Data;
 
@@ -8,11 +8,11 @@ public sealed class BurningEffect(
     AovDataStructures.ModifierType modifierType,
     float amount
 )
-    : StatusEffect<UnitSystem>("Burning", "BurningEffect", duration, false, modifierType, amount)
+    : StatusEffect<IUnitSystem>("Burning", "BurningEffect", duration, false, modifierType, amount)
 {
-    public override void OnTurnPassed(IEffectTarget<UnitSystem> target)
+    public override void OnTurnPassed(IUnitSystem target)
     {
-        if (target is UnitSystem unit)
+        if (target is IUnitSystem unit)
             unit.OnEffectDamage(ModifierType, Amount);
         base.OnTurnPassed(target);
     }

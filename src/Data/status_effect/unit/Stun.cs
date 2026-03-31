@@ -5,18 +5,20 @@ namespace AshesOfVelsingrad.Data;
 public sealed class Stun(
     int duration
 )
-    : StatusEffect<UnitSystem>("Stun", "Stun", duration, false)
+    : StatusEffect<IUnitSystem>("Stun", "Stun", duration, false)
 {
-    public override void OnApply(IEffectTarget<UnitSystem> target)
+    public override bool ShouldApplyTwice => true;  // ADD THIS
+
+    public override void OnApply(IUnitSystem target)
     {
-        if (target is UnitSystem unit)
+        if (target is IUnitSystem unit)
             unit.OnEffectControlApplied();
         base.OnApply(target);
     }
 
-    public override void OnRemove(IEffectTarget<UnitSystem> target)
+    public override void OnRemove(IUnitSystem target)
     {
-        if (target is UnitSystem unit)
+        if (target is IUnitSystem unit)
             unit.OnEffectControlRemoved();
         base.OnRemove(target);
     }

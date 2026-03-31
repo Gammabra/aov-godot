@@ -194,7 +194,7 @@ public partial class TurnManager : BaseManager
 	///     The order is determined by each unit's <see cref="UnitSystem.BaseSpeed" /> value,
 	///     sorted from highest to lowest.
 	/// </remarks>
-	public void InitializeTurnOrder(List<UnitSystem> playerUnits, List<UnitSystem> enemyUnits)
+	public void InitializeTurnOrder(List<IUnitSystem> playerUnits, List<IUnitSystem> enemyUnits)
 	{
 		foreach (UnitSystem unit in playerUnits)
 			_unitsTurnOrder.Add(
@@ -226,8 +226,8 @@ public partial class TurnManager : BaseManager
 	/// <summary>
 	/// Gets the unit currently taking its turn.
 	/// </summary>
-	/// <returns>The <see cref="UnitSystem"/> that is currently active.</returns>
-	public UnitSystem GetCurrentUnit()
+	/// <returns>The <see cref="IUnitSystem"/> that is currently active.</returns>
+	public IUnitSystem GetCurrentUnit()
 	{
 		if (_unitsTurnOrder.Count == 0)
 		{

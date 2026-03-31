@@ -11,13 +11,13 @@ public class AIDecision
 	public AIAction Action { get; set; }
 
 	/// <summary>The target unit (for attacks or skills).</summary>
-	public UnitSystem? Target { get; set; }
+	public IUnitSystem? Target { get; set; }
 
 	/// <summary>The position to move to (for movement).</summary>
 	public (int, int,int)? MovePosition { get; set; }
 
 	/// <summary>The skill to use (for skill actions).</summary>
-	public SkillSystem? Skill { get; set; }
+	public ISkillSystem? Skill { get; set; }
 
 	/// <summary>The evaluation score for this decision. Higher is better.</summary>
 	public float Score { get; set; }

@@ -9,10 +9,10 @@ namespace AshesOfVelsingrad.AI;
 /// </summary>
 public class AIDecisionGenerator
 {
-    private readonly UnitSystem _unit;
+    private readonly IUnitSystem _unit;
     private readonly AIEvaluator _evaluator;
 
-    public AIDecisionGenerator(UnitSystem unit)
+    public AIDecisionGenerator(IUnitSystem unit)
     {
         _unit = unit;
         _evaluator = new AIEvaluator(unit);
@@ -60,7 +60,7 @@ public class AIDecisionGenerator
     /// <param name="myPos">The AI unit's current position.</param>
     /// <param name="battleState">Current battle state.</param>
     /// <returns>List of possible offensive actions.</returns>
-    private List<AIDecision> GenerateOffensiveActions(UnitSystem target, (int, int,int) myPos, BattleState battleState)
+    private List<AIDecision> GenerateOffensiveActions(IUnitSystem target, (int, int,int) myPos, BattleState battleState)
     {
         List<AIDecision> actions = new();
         (int, int,int)? targetPos = battleState.MapSystem.GetUnitPosition(target);
@@ -74,9 +74,9 @@ public class AIDecisionGenerator
         foreach (var skill in _unit.ActiveSkills)
         {
             // Skip non-offensive skills
-            if (skill.EffectType != AovDataStructures.EffectType.Damage &&
-                skill.EffectType != AovDataStructures.EffectType.Debuff &&
-                skill.EffectType != AovDataStructures.EffectType.Control)
+            if (!skill.EffectType.Equals(AovDataStructures.EffectType.Damage) &&
+                !skill.EffectType.Equals(AovDataStructures.EffectType.Debuff) &&
+                !skill.EffectType.Equals(AovDataStructures.EffectType.Control))
                 continue;
 
             // Skip if can't afford or on cooldown
@@ -128,7 +128,7 @@ public class AIDecisionGenerator
     /// <param name="myPos">The AI unit's current position.</param>
     /// <param name="battleState">Current battle state.</param>
     /// <returns>List of possible support actions.</returns>
-    private List<AIDecision> GenerateSupportActions(UnitSystem ally, (int, int,int) myPos, BattleState battleState)
+    private List<AIDecision> GenerateSupportActions(IUnitSystem ally, (int, int,int) myPos, BattleState battleState)
     {
         List<AIDecision> actions = new();
 
@@ -146,9 +146,9 @@ public class AIDecisionGenerator
         foreach (var skill in _unit.ActiveSkills)
         {
             // Only consider support skills
-            if (skill.EffectType != AovDataStructures.EffectType.Heal &&
-                skill.EffectType != AovDataStructures.EffectType.Buff &&
-                skill.EffectType != AovDataStructures.EffectType.Revive)
+            if (!skill.EffectType.Equals(AovDataStructures.EffectType.Heal) &&
+                !skill.EffectType.Equals(AovDataStructures.EffectType.Buff) &&
+                !skill.EffectType.Equals(AovDataStructures.EffectType.Revive))
                 continue;
 
             // Skip if can't afford or on cooldown
@@ -212,7 +212,7 @@ public class AIDecisionGenerator
             return actions;
 
         // Find nearest threat to retreat from
-        UnitSystem? nearestThreat = AIUtilities.FindNearestThreat(_unit, battleState);
+        IUnitSystem? nearestThreat = AIUtilities.FindNearestThreat(_unit, battleState);
         if (nearestThreat == null)
             return actions;
 

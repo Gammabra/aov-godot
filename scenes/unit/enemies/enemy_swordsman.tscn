@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://54kfaw5d6yvx"]
 
-[ext_resource type="Script" uid="uid://wodkfgjj5gv3" path="res://scripts/data/unit/enemies/EnemySwordsman.cs" id="1_dfjx8"]
+[ext_resource type="Script" uid="uid://bjqq5cwsgd7l4" path="res://scripts/data/unit/enemies/EnemySwordsman.cs" id="1_dfjx8"]
 [ext_resource type="Texture2D" uid="uid://ddwok17vhh08j" path="res://assets/icon.svg" id="2_05llh"]
 [ext_resource type="Script" uid="uid://dvsd81c4l1hgb" path="res://scripts/AI/EnemyAIBehavior.cs" id="3_i5fo6"]
 

@@ -1,5 +1,5 @@
-using AshesOfVelsingrad.Systems;
 using AshesOfVelsingrad.Utilities;
+using AshesOfVelsingrad.Systems;
 
 namespace AshesOfVelsingrad.Data;
 
@@ -8,7 +8,7 @@ public sealed class AtkBuffer(
     AovDataStructures.ModifierType modifierType,
     float amount
 )
-    : StatusEffect<UnitSystem>(
+    : StatusEffect<IUnitSystem>(
         "AtkBuffer",
         "Buff Atk",
         duration,
@@ -17,16 +17,16 @@ public sealed class AtkBuffer(
         amount
     )
 {
-    public override void OnApply(IEffectTarget<UnitSystem> target)
+    public override void OnApply(IUnitSystem target)
     {
-        if (target is UnitSystem unit)
+        if (target is IUnitSystem unit)
             unit.OnEffectModifierApplied(AovDataStructures.StatTypeWithModifier.Atk, ModifierType, Amount);
         base.OnApply(target);
     }
 
-    public override void OnRemove(IEffectTarget<UnitSystem> target)
+    public override void OnRemove(IUnitSystem target)
     {
-        if (target is UnitSystem unit)
+        if (target is IUnitSystem unit)
             unit.OnEffectModifierRemoved(AovDataStructures.StatTypeWithModifier.Atk, ModifierType, Amount);
         base.OnRemove(target);
     }

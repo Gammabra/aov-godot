@@ -1,4 +1,6 @@
 using AshesOfVelsingrad.Utilities;
+using AshesOfVelsingrad.Systems;
+using AshesOfVelsingrad.Systems;
 
 namespace AshesOfVelsingrad.Systems;
 
@@ -26,7 +28,7 @@ public sealed class CellInformation(
     public int Z { get; } = z;
     public AovDataStructures.CellType CellType { get; } = cellType;
     public bool IsWalkable { get; private set; } = isWalkable;
-    public UnitSystem? Unit { get; private set; }
+    public IUnitSystem? Unit { get; private set; }
 
     #endregion
 
@@ -36,11 +38,11 @@ public sealed class CellInformation(
     ///     Set the logic when a unit has entered the cell
     /// </summary>
     /// <param name="unit">The unit that entered the cell</param>
-    public void OnUnitEntered(UnitSystem unit)
+    public void OnUnitEntered(IUnitSystem unit)
     {
         foreach (StatusEffect<CellInformation> effect in GetActiveEffects())
-            if (effect.EffectToSpread is StatusEffect<UnitSystem> unitEffect)
-                unit.SetStatusEffectOnUnit(unitEffect);
+            if (effect.EffectToSpread != null)
+                unit.SetStatusEffectOnUnit((StatusEffect<IUnitSystem>)(object)effect.EffectToSpread);
     }
 
     /// <summary>
@@ -55,7 +57,7 @@ public sealed class CellInformation(
     ///     Set <see cref="Unit" />
     /// </summary>
     /// <param name="unit">The unit that is on the cell</param>
-    public void SetUnit(UnitSystem? unit = null)
+    public void SetUnit(IUnitSystem? unit = null)
     {
         Unit = unit;
     }

@@ -28,10 +28,10 @@ public sealed partial class Map1 : MapSystem
             Vector3 worldPos = MapToLocal(pos);
             worldPos.Y += CellSize.Y * 1.5f;
 
-            unit.GlobalPosition = worldPos;
+            ((GridMap)unit).GlobalPosition = worldPos;
         }
 
-        foreach (UnitSystem unit in enemyUnits)
+        foreach (IUnitSystem unit in enemyUnits)
         {
             CellInformation cell = CellsInformation[1];
             cell.SetUnit(unit);
@@ -41,7 +41,7 @@ public sealed partial class Map1 : MapSystem
             Vector3 worldPos = MapToLocal(pos);
             worldPos.Y += CellSize.Y * 1.5f;
 
-            unit.GlobalPosition = worldPos;
+            ((GridMap)unit).GlobalPosition = worldPos;
         }
     }
 }

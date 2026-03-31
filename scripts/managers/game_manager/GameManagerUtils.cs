@@ -102,7 +102,7 @@ public partial class GameManager
     /// <param name="cell">The grid position selected as a target.</param>
     private void HandlePlayerSelectTarget((int, int, int) cell)
     {
-        UnitSystem? target;
+        IUnitSystem? target;
 
         if (_mapSystemContainer == null)
         {

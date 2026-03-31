@@ -100,6 +100,7 @@ func _create_popup():
 	popup.ok_button_text = "Return"
 	popup.exclusive = false
 	popup.close_requested.connect(_close_popup)
+	popup.confirmed.connect(_close_popup)
 	
 	container = VBoxContainer.new()
 	popup.add_child(container)

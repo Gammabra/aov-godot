@@ -1,7 +1,5 @@
 using System.Linq;
 using System.Threading.Tasks;
-using AshesOfVelsingrad.AI;
-using AshesOfVelsingrad.Managers;
 using AshesOfVelsingrad.Systems;
 using Godot;
 
@@ -41,7 +39,6 @@ public partial class EnemyAIBehavior : Node
 
 	private AIDecisionGenerator? _decisionGenerator;
 	private AIEvaluator? _evaluator;
-	private AIDebugVisualizer? _debugVisualizer;
 
 	#endregion
 
@@ -67,17 +64,6 @@ public partial class EnemyAIBehavior : Node
             // Initialize AI components
             _decisionGenerator = new AIDecisionGenerator(_unit);
             _evaluator = new AIEvaluator(_unit);
-
-            // Initialize debug visualizer if enabled
-            if (EnableDebugVisualization)
-            {
-                _debugVisualizer = new AIDebugVisualizer
-                {
-                    Name = "AIDebugVisualizer" // Give it a name for easier debugging
-                };
-                AddChild(_debugVisualizer);
-                GD.Print($"Debug visualizer enabled for {_unit.Name}");
-            }
 
             GD.Print($"EnemyAIBehavior attached to {_unit.Name} (Personality: {_unit.Personality})");
         }
@@ -107,9 +93,6 @@ public partial class EnemyAIBehavior : Node
 		await Task.Delay((int)(thinkingTime * 1000));
 
 		AIDecision decision = MakeDecision(battleState);
-
-		if (_debugVisualizer != null && EnableDebugVisualization)
-			_debugVisualizer.VisualizeDecision(decision, battleState);
 
 		return decision;
 	}
@@ -146,10 +129,6 @@ public partial class EnemyAIBehavior : Node
 
 		// Log decision
 		GD.Print($"{_unit.Name}: Chose {bestDecision.Action} (Score: {bestDecision.Score:F1}) - {bestDecision.Reasoning}");
-
-		// Debug output top options
-		if (_debugVisualizer != null && EnableDebugVisualization)
-			_debugVisualizer.VisualizeActionScores(possibleActions, battleState);
 
 		return bestDecision;
 	}

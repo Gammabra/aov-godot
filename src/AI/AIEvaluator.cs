@@ -1,6 +1,7 @@
 using System.Linq;
-using AshesOfVelsingrad.Systems;
 using AshesOfVelsingrad.Utilities;
+using AshesOfVelsingrad.Systems;
+using AshesOfVelsingrad.Systems;
 
 namespace AshesOfVelsingrad.AI;
 
@@ -9,9 +10,9 @@ namespace AshesOfVelsingrad.AI;
 /// </summary>
 public class AIEvaluator
 {
-    private readonly UnitSystem _unit;
+    private readonly IUnitSystem _unit;
 
-    public AIEvaluator(UnitSystem unit)
+    public AIEvaluator(IUnitSystem unit)
     {
         _unit = unit;
     }
@@ -29,8 +30,8 @@ public class AIEvaluator
     /// <param name="requiresMovement">Whether this action requires movement first.</param>
     /// <returns>Score representing the value of this action.</returns>
     public float EvaluateOffensiveAction(
-        UnitSystem target,
-        SkillSystem skill,
+        IUnitSystem target,
+        ISkillSystem skill,
         (int, int,int) attackerPos,
         (int, int,int) targetPos,
         BattleState battleState,
@@ -77,8 +78,8 @@ public class AIEvaluator
 	/// <param name="requiresMovement">Whether this action requires movement first.</param>
 	/// <returns>Score representing the value of this action.</returns>
 	public float EvaluateSupportAction(
-        UnitSystem ally,
-        SkillSystem skill,
+        IUnitSystem ally,
+        ISkillSystem skill,
         (int, int,int) casterPos,
         (int, int,int) targetPos,
         BattleState battleState,
@@ -116,9 +117,9 @@ public class AIEvaluator
             score -= 5f;
 
         // Personality modifier
-        if (_unit.Personality == AIPersonality.Defensive)
+        if (_unit.Personality.Equals(AIPersonality.Defensive))
             score *= 1.3f;
-        else if (_unit.Personality == AIPersonality.Aggressive)
+        else if (_unit.Personality.Equals(AIPersonality.Aggressive))
             score *= 0.7f;
 
         return score;
@@ -152,9 +153,9 @@ public class AIEvaluator
         score += alliesNearby * 15f;
 
         // Personality modifier
-        if (_unit.Personality == AIPersonality.Defensive)
+        if (_unit.Personality.Equals(AIPersonality.Defensive))
             score *= 1.5f;
-        else if (_unit.Personality == AIPersonality.Aggressive)
+        else if (_unit.Personality.Equals(AIPersonality.Aggressive))
             score *= 0.5f;
 
         return score;
@@ -171,7 +172,7 @@ public class AIEvaluator
     /// <param name="target">The target unit to score.</param>
     /// <param name="battleState">Current battle state.</param>
     /// <returns>A float score representing the desirability of targeting this unit.</returns>
-    private float ScoreTarget(UnitSystem target, BattleState battleState)
+    private float ScoreTarget(IUnitSystem target, BattleState battleState)
     {
         (int, int,int)? myPos = battleState.MapSystem.GetUnitPosition(_unit);
         (int, int,int)? targetPos = battleState.MapSystem.GetUnitPosition(target);
@@ -233,7 +234,7 @@ public class AIEvaluator
     /// <param name="target">The target unit.</param>
     /// <param name="battleState">Current battle state.</param>
     /// <returns>A float score representing the desirability of using the skill.</returns>
-    private float ScoreSkill(SkillSystem skill, UnitSystem target, BattleState battleState)
+    private float ScoreSkill(ISkillSystem skill, IUnitSystem target, BattleState battleState)
     {
         float score = 0f;
 
@@ -277,7 +278,7 @@ public class AIEvaluator
 	/// <param name="skill">The damage skill.</param>
 	/// <param name="target">The target unit.</param>
 	/// <returns>A float score representing the desirability of using the damage skill.</returns>
-	private float ScoreDamageSkill(SkillSystem skill, UnitSystem target)
+	private float ScoreDamageSkill(ISkillSystem skill, IUnitSystem target)
     {
         float score = 50f;
         float hpPercentage = target.Hp / target.MaxHp;
@@ -298,7 +299,7 @@ public class AIEvaluator
 	/// <param name="skill">The healing skill.</param>
 	/// <param name="battleState">Current battle state.</param>
 	/// <returns>A float score representing the desirability of using the healing skill.</returns>
-	private float ScoreHealSkill(SkillSystem skill, BattleState battleState)
+	private float ScoreHealSkill(ISkillSystem skill, BattleState battleState)
     {
         var mostDamagedAlly = battleState.EnemyUnits
             .OrderBy(u => u.Hp / u.MaxHp)
@@ -323,7 +324,7 @@ public class AIEvaluator
 	/// <param name="skill">The buff skill.</param>
 	/// <param name="battleState">Current battle state.</param>
 	/// <returns>A float score representing the desirability of using the buff skill.</returns>
-	private float ScoreBuffSkill(SkillSystem skill, BattleState battleState)
+	private float ScoreBuffSkill(ISkillSystem skill, BattleState battleState)
     {
         // Buffs are more valuable early in combat
         // TODO: Track turn count in BattleState
@@ -336,7 +337,7 @@ public class AIEvaluator
 	/// <param name="skill">The debuff/control skill.</param>
 	/// <param name="target">The target unit.</param>
 	/// <returns>A float score representing the desirability of using the debuff/control skill.</returns>
-	private float ScoreDebuffSkill(SkillSystem skill, UnitSystem target)
+	private float ScoreDebuffSkill(ISkillSystem skill, IUnitSystem target)
     {
         float score = 40f;
 
@@ -354,7 +355,7 @@ public class AIEvaluator
 	/// </summary>
 	/// <param name="skill">The skill being evaluated.</param>
 	/// <returns>A float multiplier to adjust skill score.</returns>
-	private float GetPersonalitySkillMultiplier(SkillSystem skill)
+	private float GetPersonalitySkillMultiplier(ISkillSystem skill)
     {
         return _unit.Personality switch
         {
@@ -374,7 +375,7 @@ public class AIEvaluator
 	/// <param name="primaryTarget">The primary target unit.</param>
 	/// <param name="battleState">Current battle state.</param>
 	/// <returns>The number of units affected by the skill's AOE.</returns>
-	private int CountTargetsInAOE(SkillSystem skill, UnitSystem primaryTarget, BattleState battleState)
+	private int CountTargetsInAOE(ISkillSystem skill, IUnitSystem primaryTarget, BattleState battleState)
     {
         (int, int,int)? targetPos = battleState.MapSystem.GetUnitPosition(primaryTarget);
         if (targetPos == null) return 0;
@@ -436,7 +437,7 @@ public class AIEvaluator
         }
 
         // Tactical positioning
-        if (_unit.Personality == AIPersonality.Defensive || _unit.Personality == AIPersonality.Balanced)
+        if (_unit.Personality.Equals(AIPersonality.Defensive) || _unit.Personality.Equals(AIPersonality.Balanced))
         {
             int alliesNearby = AIUtilities.CountEnemyAlliesNear(_unit, position, battleState, 2);
             score += alliesNearby * 5f;

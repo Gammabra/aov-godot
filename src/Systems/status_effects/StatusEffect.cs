@@ -8,7 +8,7 @@ namespace AshesOfVelsingrad.Systems;
 /// </summary>
 /// <typeparam name="TTarget">
 ///     The type of target this status effect can be applied to,
-///     such as <see cref="UnitSystem" /> or <see cref="MapSystem" />.
+///     such as <see cref="IUnitSystem" /> or <see cref="IMapSystem" />.
 /// </typeparam>
 /// <remarks>
 ///     This class provides core properties and methods for a status effect,
@@ -61,16 +61,23 @@ public abstract class StatusEffect<TTarget>(
     public bool IsStackable { get; } = isStackable;
 
     /// <summary>
+    ///     Whether this effect should be applied twice on initial application.
+    ///     Used for control effects like stuns that need immediate double application.
+    /// </summary>
+    public virtual bool ShouldApplyTwice => false;
+
+    /// <summary>
     ///     Store a effect status that can be spread
     /// </summary>
-    public IStatusEffect? EffectToSpread { get; protected init; }
+    public StatusEffect<TTarget>? EffectToSpread { get; protected init; }
+
 
     /// <summary>
     ///     Called when this effect is applied to a target.
     ///     Override this to implement custom logic (e.g., visual/audio feedback, stat changes).
     /// </summary>
     /// <param name="target">The target receiving the effect.</param>
-    public virtual void OnApply(IEffectTarget<TTarget> target)
+    public virtual void OnApply(TTarget target)
     {
         Console.WriteLine($"Applying {Name} on {target}");
     }
@@ -80,7 +87,7 @@ public abstract class StatusEffect<TTarget>(
     ///     Override this to implement cleanup logic (e.g., removing buffs, stopping visual/audio feedback).
     /// </summary>
     /// <param name="target">The target losing the effect.</param>
-    public virtual void OnRemove(IEffectTarget<TTarget> target)
+    public virtual void OnRemove(TTarget target)
     {
         Console.WriteLine($"Remove {Name} on {target}");
     }
@@ -89,12 +96,12 @@ public abstract class StatusEffect<TTarget>(
     ///     Called at the end of each turn to update the effect’s duration or apply ongoing logic.
     /// </summary>
     /// <param name="target">The target affected by this effect.</param>
-    public virtual void OnTurnPassed(IEffectTarget<TTarget> target)
+    public virtual void OnTurnPassed(TTarget target)
     {
         if (Duration == Constants.PermanentStatusEffect)
             return;
         Duration--;
-        if (target is UnitSystem unit)
+        if (target is IUnitSystem unit)
             Console.WriteLine($"Duration of {Name} on {unit.UnitName} is {Duration}");
         else if (target is CellInformation cell)
             Console.WriteLine($"Duration on cell ({cell.X}, {cell.Y}, {cell.Z}) is {Duration}");

@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
-using AshesOfVelsingrad.Systems;
 using AshesOfVelsingrad.Utilities;
+using AshesOfVelsingrad.Systems;
 
 namespace AshesOfVelsingrad.AI;
 
@@ -36,7 +36,7 @@ public static class AIUtilities
     /// Calculates the best position to move to get within skill range of the target.
     /// </summary>
     public static (int, int,int)? CalculateMoveToRange(
-        UnitSystem unit,
+        IUnitSystem unit,
         BattleState battleState,
         (int, int,int) targetPos,
         int skillRange = 0)
@@ -65,7 +65,7 @@ public static class AIUtilities
     /// Calculates the best position to move away from the target.
     /// </summary>
     public static (int, int,int)? CalculateMoveAway(
-        UnitSystem unit,
+        IUnitSystem unit,
         BattleState battleState,
         (int, int,int) targetPos,
         int minDistance)
@@ -91,7 +91,7 @@ public static class AIUtilities
     /// Scores a potential movement position.
     /// </summary>
     private static float ScoreMovePosition(
-        UnitSystem unit,
+        IUnitSystem unit,
         (int, int,int) position,
         (int, int,int) targetPos,
         int skillRange,
@@ -126,7 +126,7 @@ public static class AIUtilities
         }
 
         // Tactical positioning
-        if (unit.Personality == AIPersonality.Defensive || unit.Personality == AIPersonality.Balanced)
+        if (unit.Personality.Equals(AIPersonality.Defensive) || unit.Personality.Equals(AIPersonality.Balanced))
         {
             int alliesNearby = CountEnemyAlliesNear(unit, position, battleState, 2);
             score += alliesNearby * 5f;
@@ -151,7 +151,7 @@ public static class AIUtilities
     /// Counts the number of enemy allies near a given position within a specified range.
     /// </summary>
     public static int CountEnemyAlliesNear(
-        UnitSystem unit,
+        IUnitSystem unit,
         (int, int,int) position,
         BattleState battleState,
         int range)
@@ -171,7 +171,7 @@ public static class AIUtilities
     /// Counts the number of player units near a given position within a specified range.
     /// </summary>
     public static int CountPlayerUnitsNear(
-        UnitSystem unit,
+        IUnitSystem unit,
         (int, int,int) position,
         BattleState battleState,
         int range)
@@ -193,7 +193,7 @@ public static class AIUtilities
     /// <summary>
     /// Determines if the AI can likely kill the target this turn.
     /// </summary>
-    public static bool CanKillThisTurn(UnitSystem attacker, UnitSystem target)
+    public static bool CanKillThisTurn(IUnitSystem attacker, IUnitSystem target)
     {
         // Rough estimate: can we deal enough damage?
         float estimatedDamage = attacker.BaseAtk - target.BaseDef;
@@ -207,13 +207,13 @@ public static class AIUtilities
     /// <summary>
     /// Finds the nearest threatening enemy unit.
     /// </summary>
-    public static UnitSystem? FindNearestThreat(UnitSystem unit, BattleState battleState)
+    public static IUnitSystem? FindNearestThreat(IUnitSystem unit, BattleState battleState)
     {
         (int, int,int)? myPos = battleState.MapSystem.GetUnitPosition(unit);
         if (myPos == null)
             return null;
 
-        UnitSystem? nearestThreat = null;
+        IUnitSystem? nearestThreat = null;
         int minDistance = int.MaxValue;
 
         foreach (var enemy in battleState.PlayerUnits)
@@ -269,7 +269,7 @@ public static class AIUtilities
     public static bool HasLineOfSight(
         (int, int,int) from,
         (int, int,int) to,
-        MapSystem mapSystem)
+        IMapSystem mapSystem)
     {
         // Simple implementation - can be enhanced with actual raycasting
         int dx = Math.Abs(to.Item1 - from.Item1);
@@ -283,13 +283,13 @@ public static class AIUtilities
     /// <summary>
     /// Gets all units within a certain range of a position.
     /// </summary>
-    public static List<UnitSystem> GetUnitsInRange(
+    public static List<IUnitSystem> GetUnitsInRange(
         (int, int,int) position,
         int range,
-        List<UnitSystem> units,
-        MapSystem mapSystem)
+        List<IUnitSystem> units,
+        IMapSystem mapSystem)
     {
-        List<UnitSystem> unitsInRange = new();
+        List<IUnitSystem> unitsInRange = new();
 
         foreach (var unit in units)
         {
@@ -331,7 +331,7 @@ public static class AIUtilities
     /// <summary>
     /// Counts how many adjacent cells are walkable.
     /// </summary>
-    private static int CountAdjacentWalkableCells((int, int,int) position, MapSystem mapSystem)
+    private static int CountAdjacentWalkableCells((int, int,int) position, IMapSystem mapSystem)
     {
         int count = 0;
         (int, int,int)[] directions =
@@ -364,7 +364,7 @@ public static class AIUtilities
     /// <summary>
     /// Finds the center point between multiple units (useful for AOE positioning).
     /// </summary>
-    public static (int, int,int)? FindCenterPoint(List<UnitSystem> units, MapSystem mapSystem)
+    public static (int, int,int)? FindCenterPoint(List<IUnitSystem> units, IMapSystem mapSystem)
     {
         if (units.Count == 0)
             return null;

@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bd0av6niea8bt"]
 
-[ext_resource type="Script" uid="uid://c7mo0ynttjytb" path="res://scripts/data/unit/characters/FighterData.cs" id="1_d8dns"]
+[ext_resource type="Script" uid="uid://bruh4pkkktw3r" path="res://scripts/data/unit/characters/FighterData.cs" id="1_d8dns"]
 [ext_resource type="Texture2D" uid="uid://d2o6v40ln62ci" path="res://assets/aov-logo-transparent.png" id="2_o72a4"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_ctjmi"]

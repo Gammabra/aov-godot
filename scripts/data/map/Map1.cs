@@ -6,9 +6,16 @@ namespace AshesOfVelsingrad.Data.StatusEffect;
 
 public sealed partial class Map1 : MapSystem
 {
-    public override void PlaceUnits(List<UnitSystem> playerUnits, List<UnitSystem> enemyUnits)
+    public override void PlaceUnits(List<IUnitSystem> playerUnits, List<IUnitSystem> enemyUnits)
     {
-        foreach (UnitSystem unit in playerUnits)
+        if (playerUnits.Count == 0 || enemyUnits.Count == 0)
+        {
+            GD.PrintErr("Map1.PlaceUnits: No units to place. PlayerUnits: " 
+                + playerUnits.Count + ", EnemyUnits: " + enemyUnits.Count);
+            return;
+        }
+
+        foreach (IUnitSystem unit in playerUnits)
         {
             CellInformation cell = CellsInformation[0];
             cell.SetUnit(unit);

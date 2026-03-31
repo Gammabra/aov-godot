@@ -12,8 +12,8 @@ public class EnemyAIManager
     #region Private Fields
 
     private MapSystem? _mapSystem;
-    private List<UnitSystem> _playerUnits = [];
-    private List<UnitSystem> _enemyUnits = [];
+    private List<IUnitSystem> _playerUnits = [];
+    private List<IUnitSystem> _enemyUnits = [];
     private GameManager? _gameManager;
 
     #endregion
@@ -36,7 +36,7 @@ public class EnemyAIManager
         GD.Print("EnemyAIManager: MapSystem reference set");
     }
 
-    public void SetUnitReferences(List<UnitSystem> playerUnits, List<UnitSystem> enemyUnits)
+    public void SetUnitReferences(List<IUnitSystem> playerUnits, List<IUnitSystem> enemyUnits)
     {
         _playerUnits = playerUnits;
         _enemyUnits = enemyUnits;
@@ -79,10 +79,10 @@ public class EnemyAIManager
         await ExecuteDecision(decision, unit);
     }
 
-    public List<UnitSystem> GetAlivePlayerUnits() =>
+    public List<IUnitSystem> GetAlivePlayerUnits() =>
         _playerUnits.Where(u => u.IsAlive).ToList();
 
-    public List<UnitSystem> GetAliveEnemyUnits() =>
+    public List<IUnitSystem> GetAliveEnemyUnits() =>
         _enemyUnits.Where(u => u.IsAlive).ToList();
 
     #endregion

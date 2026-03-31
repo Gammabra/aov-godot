@@ -67,7 +67,7 @@ public partial class SettingsManager : BaseManager
 
             for (int i = 0; i < events.Count; i++)
             {
-                eventArray[i] = (InputEvent)events[i];
+                eventArray[i] = events[i];
             }
 
             _defaultInputBindings[actionName] = eventArray;
@@ -181,7 +181,7 @@ public partial class SettingsManager : BaseManager
             return null;
 
         var events = InputMap.ActionGetEvents(action);
-        return events.Count > 0 ? (InputEvent)events[0] : null;
+        return events.Count > 0 ? events[0] : null;
     }
 
     /// <summary>

@@ -6,7 +6,7 @@
     <DebugType>portable</DebugType>
     <Optimize>false</Optimize>
     <!-- Match root namespace convention -->
-    <RootNamespace>AshesofVelsingrad</RootNamespace>
+    <RootNamespace>AshesofVelsingrad.Core</RootNamespace>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="GodotSharp" Version="4.6.0" />

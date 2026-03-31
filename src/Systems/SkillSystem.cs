@@ -1,5 +1,7 @@
 using System.Collections.Generic;
 using AshesOfVelsingrad.Utilities;
+using AshesOfVelsingrad.Systems;
+using AshesOfVelsingrad.Systems;
 
 namespace AshesOfVelsingrad.Systems;
 
@@ -11,7 +13,7 @@ namespace AshesOfVelsingrad.Systems;
 ///     such as its cost, cooldown, range, type, and targeting logic.
 ///     Specific skills should inherit from this class and implement the <see cref="Use" /> method.
 /// </remarks>
-public abstract class SkillSystem
+public abstract class SkillSystem: ISkillSystem
 {
     #region Public Properties
 
@@ -76,7 +78,7 @@ public abstract class SkillSystem
     ///     This method must be implemented in derived classes
     ///     to define the actual effect of the skill (damage, healing, etc.).
     /// </remarks>
-    public abstract void Use(UnitSystem caster, List<UnitSystem> targets, MapSystem? map);
+    public abstract void Use(IUnitSystem caster, List<IUnitSystem> targets, IMapSystem? map);
 
     /// <summary>
     ///     Set the cooldown of the skill to the total cooldown

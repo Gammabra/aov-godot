@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bi2toclmrt52c"]
 
-[ext_resource type="Script" uid="uid://df3j34sjhdjce" path="res://scripts/data/unit/enemies/EnemyLightMage.cs" id="1_qyvm1"]
+[ext_resource type="Script" uid="uid://dl18wa3sodqoa" path="res://scripts/data/unit/enemies/EnemyLightMage.cs" id="1_qyvm1"]
 [ext_resource type="Texture2D" uid="uid://ddwok17vhh08j" path="res://assets/icon.svg" id="2_05llh"]
 [ext_resource type="Script" uid="uid://dvsd81c4l1hgb" path="res://scripts/AI/EnemyAIBehavior.cs" id="3_i5fo6"]
 

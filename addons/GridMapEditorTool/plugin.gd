@@ -8,6 +8,7 @@ var popup: AcceptDialog = null
 var current_cell: Variant = null
 var spawner_gizmo: SpawnerGizmo
 var spawner_visualizer: SpawnerVisualizer = null
+var container: VBoxContainer
 
 func _enter_tree() -> void:
 	add_custom_type(
@@ -68,7 +69,7 @@ func _handle_mouse_hovering(camera: Camera3D, event: InputEvent) -> void:
 	if result:
 		var cell: Vector3i = grid_map.local_to_map(result.position)
 		var cell_item: int = grid_map.get_cell_item(cell)
-		
+
 		if cell_item == grid_map.INVALID_CELL_ITEM:
 			return
 		current_cell = cell
@@ -98,6 +99,10 @@ func _create_popup():
 	popup.dialog_text = ""
 	popup.ok_button_text = "Return"
 	popup.exclusive = false
+	popup.close_requested.connect(_close_popup)
+	
+	container = VBoxContainer.new()
+	popup.add_child(container)
 
 	EditorInterface.get_base_control().add_child(popup)
 	popup.hide()
@@ -108,23 +113,29 @@ func _show_popup(cell: Vector3i):
 	var res: CellData = _get_or_create_resource()
 
 	if res:
-		var exists: bool = res.is_player_spawner_exist(current_cell)
-		if not exists:
-			_create_button_to_popup("Add a spawner at %s" % str(cell), _on_add_player_spawner_pressed)
-		else:
-			_create_button_to_popup("Remove a spawner at %s" % str(cell), _on_remove_player_spawner_pressed)
+		var player_spawner_exists: bool = res.check_if_spawner_exist(current_cell, res.SpawnerType.PLAYER)
+		var enemy_spawner_exists: bool = res.check_if_spawner_exist(current_cell, res.SpawnerType.ENEMY)
+		if player_spawner_exists:
+			_create_button_to_popup("Remove a player spawner at %s" % str(cell), _on_remove_player_spawner_pressed)
+			popup.popup_centered()
+			return
+		if enemy_spawner_exists:
+			_create_button_to_popup("Remove an enemy spawner at %s" % str(cell), _on_remove_enemy_spawner_pressed)
+			popup.popup_centered()
+			return
+		_create_button_to_popup("Add a player spawner at %s" % str(cell), _on_add_player_spawner_pressed)
+		_create_button_to_popup("Add an enemy spawner at %s" % str(cell), _on_add_enemy_spawner_pressed)
 
 	popup.popup_centered()
 
 func _create_button_to_popup(button_text: String, callable: Callable):
-	_close_popup()
-	var remove_spawner_btn: Button = Button.new()
-	remove_spawner_btn.text = button_text
-	remove_spawner_btn.pressed.connect(callable)
-	popup.add_child(remove_spawner_btn)
+	var btn: Button = Button.new()
+	btn.text = button_text
+	btn.pressed.connect(callable)
+	container.add_child(btn)
 
 func _close_popup():
-	for child in popup.get_children():
+	for child in container.get_children():
 		if child is Button:
 			child.queue_free()
 	popup.hide()
@@ -149,7 +160,7 @@ func _get_or_create_resource() -> CellData:
 func _on_add_player_spawner_pressed():
 	var res: CellData = _get_or_create_resource()
 	if res:
-		res.add_player_spawner(current_cell, grid_map.map_to_local(current_cell))
+		res.add_spawner(current_cell, grid_map.map_to_local(current_cell), res.SpawnerType.PLAYER)
 		ResourceSaver.save(res, get_tree().edited_scene_root.scene_file_path.get_basename() + ".tres")
 		if spawner_visualizer:
 			spawner_visualizer.refresh_gizmos(spawner_gizmo, spawner_visualizer.get_gizmos())
@@ -158,7 +169,25 @@ func _on_add_player_spawner_pressed():
 func _on_remove_player_spawner_pressed():
 	var res: CellData = _get_or_create_resource()
 	if res:
-		res.remove_player_spawner(current_cell)
+		res.remove_spawner(current_cell, res.SpawnerType.PLAYER)
+		ResourceSaver.save(res, get_tree().edited_scene_root.scene_file_path.get_basename() + ".tres")
+		if spawner_visualizer:
+			spawner_visualizer.refresh_gizmos(spawner_gizmo, spawner_visualizer.get_gizmos())
+	_close_popup()
+
+func _on_add_enemy_spawner_pressed():
+	var res: CellData = _get_or_create_resource()
+	if res:
+		res.add_spawner(current_cell, grid_map.map_to_local(current_cell), res.SpawnerType.ENEMY)
+		ResourceSaver.save(res, get_tree().edited_scene_root.scene_file_path.get_basename() + ".tres")
+		if spawner_visualizer:
+			spawner_visualizer.refresh_gizmos(spawner_gizmo, spawner_visualizer.get_gizmos())
+	_close_popup()
+
+func _on_remove_enemy_spawner_pressed():
+	var res: CellData = _get_or_create_resource()
+	if res:
+		res.remove_spawner(current_cell, res.SpawnerType.ENEMY)
 		ResourceSaver.save(res, get_tree().edited_scene_root.scene_file_path.get_basename() + ".tres")
 		if spawner_visualizer:
 			spawner_visualizer.refresh_gizmos(spawner_gizmo, spawner_visualizer.get_gizmos())

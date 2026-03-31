@@ -4,6 +4,7 @@ class_name SpawnerGizmo
 
 func _init():
 	create_material("blue", Color.BLUE)
+	create_material("red", Color.RED)
 
 func _get_gizmo_name() -> String:
 	return "Spawner Gizmo"
@@ -11,14 +12,12 @@ func _get_gizmo_name() -> String:
 func _has_gizmo(for_node_3d: Node3D) -> bool:
 	return for_node_3d is SpawnerVisualizer
 
-func _redraw(gizmo: EditorNode3DGizmo) -> void:
-	gizmo.clear()
-	var node = gizmo.get_node_3d()
-
-	if not node or not node.has_method("get_player_spawner"):
-		return
-
-	var spawners = node.get_player_spawner()
+func _draw_spawners(gizmo: EditorNode3DGizmo, node: Node3D, color: String) -> void:
+	var spawners = null
+	if color == "blue":
+		spawners = node.get_player_spawners()
+	if color == "red":
+		spawners = node.get_enemy_spawners()
 	if spawners == null:
 		return
 
@@ -47,4 +46,16 @@ func _redraw(gizmo: EditorNode3DGizmo) -> void:
 			p0,p4, p1,p5, p2,p6, p3,p7
 		])
 
-		gizmo.add_lines(lines, get_material("blue", gizmo))
+		gizmo.add_lines(lines, get_material(color, gizmo))
+
+func _redraw(gizmo: EditorNode3DGizmo) -> void:
+	gizmo.clear()
+	var node = gizmo.get_node_3d()
+
+	if not node or not node.has_method("get_player_spawners"):
+		return
+	_draw_spawners(gizmo, node, "blue")
+	
+	if not node or not node.has_method("get_enemy_spawners"):
+		return
+	_draw_spawners(gizmo, node, "red")

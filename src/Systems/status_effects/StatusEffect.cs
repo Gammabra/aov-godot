@@ -69,7 +69,7 @@ public abstract class StatusEffect<TTarget>(
     /// <summary>
     ///     Store a effect status that can be spread
     /// </summary>
-    public StatusEffect<TTarget>? EffectToSpread { get; protected init; }
+    public IStatusEffect? EffectToSpread { get; protected init; }
 
 
     /// <summary>

@@ -11,7 +11,7 @@ public class EnemyAIManager
 {
     #region Private Fields
 
-    private MapSystem? _mapSystem;
+    private IMapSystem? _mapSystem;
     private List<IUnitSystem> _playerUnits = [];
     private List<IUnitSystem> _enemyUnits = [];
     private GameManager? _gameManager;
@@ -30,7 +30,7 @@ public class EnemyAIManager
 
     #region Public Methods
 
-    public void SetMapSystem(MapSystem map)
+    public void SetMapSystem(IMapSystem map)
     {
         _mapSystem = map;
         GD.Print("EnemyAIManager: MapSystem reference set");

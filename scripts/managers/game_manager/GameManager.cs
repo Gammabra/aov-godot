@@ -448,9 +448,9 @@ public partial class GameManager : BaseManager
 
         // TODO: Replace by the unit move animation instead of teleport him
         Vector3I pos = new(cell.Item1, cell.Item2, cell.Item3);
-        Vector3 worldPos = _mapSystemContainer.MapToLocal(pos);
-        worldPos.Y += _mapSystemContainer.CellSize.Y * 0.5f;
-        _turnManagerContainer.GetCurrentUnit().GlobalPosition = worldPos;
+        Vector3 worldPos = ((GridMap)_mapSystemContainer).MapToLocal(pos);
+        worldPos.Y += ((GridMap)_mapSystemContainer).CellSize.Y * 0.5f;
+        ((CharacterBody3D)_turnManagerContainer.GetCurrentUnit()).GlobalPosition = worldPos;
 
         _turnManagerContainer.GetCurrentUnit().MoveTo(cell.Item1, cell.Item2, cell.Item3, _mapSystemContainer);
         _unitMoved = true;
@@ -579,11 +579,6 @@ public partial class GameManager : BaseManager
             {
                 EnableThreatMapDebug = !EnableThreatMapDebug;
                 GD.Print($"Threat Map Debug: {(EnableThreatMapDebug ? "ON" : "OFF")}");
-
-                if (EnableThreatMapDebug)
-                {
-                    ShowAllThreatMaps();
-                }
             }
 
             // Press F2 to show action scores for current AI unit
@@ -631,7 +626,7 @@ public partial class GameManager : BaseManager
     /// </summary>
     private EnemyAIBehavior? FindAIBehavior(IUnitSystem unit)
     {
-        foreach (Node child in unit.GetChildren())
+        foreach (Node child in ((CharacterBody3D)unit).GetChildren())
         {
             if (child is EnemyAIBehavior behavior)
                 return behavior;

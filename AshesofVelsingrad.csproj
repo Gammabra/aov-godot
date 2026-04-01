@@ -39,6 +39,5 @@
     <ProjectReference Include="src/AshesofVelsingrad.Core.csproj" />
     <!-- Exclude Core test project files from Godot build -->
     <Compile Remove="tests/Core/**/*.cs" />
-    <Compile Remove="src/**/*.cs" />
   </ItemGroup>
 </Project>

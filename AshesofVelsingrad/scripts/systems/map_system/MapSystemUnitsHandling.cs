@@ -1,6 +1,4 @@
-using System;
 using System.Collections.Generic;
-using AshesOfVelsingrad.Systems;
 
 namespace AshesOfVelsingrad.Systems;
 
@@ -33,14 +31,9 @@ public abstract partial class MapSystem
         // Remove from old position
         foreach (CellInformation cell in CellsInformation)
         {
-            if (cell.Unit == null)
-            {
-                Console.Error.WriteLine("MoveUnit called with null unit.");
-                return;
-            }
-
-            if (!cell.Unit.Equals(unit))
+            if (cell.Unit != unit)
                 continue;
+
             cell.SetUnit();
             SetWalkable(cell.X, cell.Y, cell.Z);
             break;

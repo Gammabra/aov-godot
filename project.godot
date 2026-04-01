@@ -30,7 +30,7 @@ project/assembly_name="Ashes of Velsingrad"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/gdUnit4/plugin.cfg")
+enabled=PackedStringArray("res://addons/gdUnit4/plugin.cfg", "res://addons/gridMapEditorTool/plugin.cfg")
 
 [gdunit4]
 

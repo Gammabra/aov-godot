@@ -242,6 +242,7 @@ public abstract partial class UnitSystem
         if (!CanMoveTo(x, y, z, map))
             return false;
         SetGridPosition(x, y, z, map);
+
         return true;
     }
 

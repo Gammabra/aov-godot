@@ -23,7 +23,6 @@ public partial class GameManager : BaseManager
     private List<(int, int, int)> _currentUnitPossibleMoves = new List<(int, int, int)>();
     private List<Vector3I> _currentUnitReachableCellsForCurrentSelectedSkill = new List<Vector3I>();
     private ISkillSystem? _selectedSkill;
-    private IUnitSystem? _selectedUnitForPlayedSkill;
     private readonly StatusEffectSystem _statusEffectSystem = new();
 
     #endregion

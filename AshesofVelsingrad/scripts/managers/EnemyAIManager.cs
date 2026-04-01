@@ -59,14 +59,14 @@ public class EnemyAIManager
             return;
         }
 
-        GD.Print($"EnemyAIManager: {unit.Name} is thinking...");
+        GD.Print($"EnemyAIManager: {unit.UnitName} is thinking...");
         await unit.ToSignal(unit.GetTree(), SceneTree.SignalName.ProcessFrame);
 
         EnemyAIBehavior? aiBehavior = GetAIBehavior(unit);
 
         if (aiBehavior == null)
         {
-            GD.PrintErr($"EnemyAIManager: No AI behavior found for {unit.Name}, using default behavior");
+            GD.PrintErr($"EnemyAIManager: No AI behavior found for {unit.UnitName}, using default behavior");
             await ExecuteDefaultBehavior(unit);
             return;
         }

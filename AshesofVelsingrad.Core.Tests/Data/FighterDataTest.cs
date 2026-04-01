@@ -1,6 +1,5 @@
 using NUnit.Framework;
-using AshesOfVelsingrad.Data; 
-using AshesOfVelsingrad.Systems;
+using AshesOfVelsingrad.Data;
 using AshesOfVelsingrad.Utilities;
 
 namespace AshesofVelsingrad.Tests.Data;

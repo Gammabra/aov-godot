@@ -110,7 +110,7 @@ public partial class TestConcreteGameManager : GameManager
         _unitMoved = (bool)field?.GetValue(this)!;
     }
 
-    public void SetCurrentUnitPossibleMoves(List<Vector3I> moves)
+    public void SetCurrentUnitPossibleMoves(List<(int, int, int)> moves)
     {
         var field = typeof(GameManager).GetField("_currentUnitPossibleMoves",
             BindingFlags.NonPublic | BindingFlags.Instance);
@@ -121,7 +121,7 @@ public partial class TestConcreteGameManager : GameManager
     {
         var field = typeof(GameManager).GetField("_currentUnitPossibleMoves",
             BindingFlags.NonPublic | BindingFlags.Instance);
-        var moves = (List<Vector3I>)field?.GetValue(this)!;
+        var moves = (List<(int, int, int)>)field?.GetValue(this)!;
         return moves?.Count ?? 0;
     }
 
@@ -139,14 +139,14 @@ public partial class TestConcreteGameManager : GameManager
         field?.SetValue(this, cells);
     }
 
-    public void CallHandlePlayerUnitMove(Vector3I cell)
+    public void CallHandlePlayerUnitMove((int, int, int) cell)
     {
         var method = typeof(GameManager).GetMethod("HandlePlayerUnitMove",
             BindingFlags.NonPublic | BindingFlags.Instance);
         method?.Invoke(this, new object[] { cell });
     }
 
-    public void CallHandlePlayerSelectTarget(Vector3I cell)
+    public void CallHandlePlayerSelectTarget((int, int, int) cell)
     {
         var method = typeof(GameManager).GetMethod("HandlePlayerSelectTarget",
             BindingFlags.NonPublic | BindingFlags.Instance);

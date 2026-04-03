@@ -55,7 +55,7 @@ public partial class TestConcreteSkillSystem : SkillSystem
         get => base.Name;
         set
         {
-            var field = typeof(ISkillSystem).GetProperty("Name");
+            var field = typeof(SkillSystem).GetProperty("Name");
             field?.SetValue(this, value);
         }
     }
@@ -65,7 +65,7 @@ public partial class TestConcreteSkillSystem : SkillSystem
         get => base.EffectType;
         set
         {
-            var field = typeof(ISkillSystem).GetProperty("EffectType");
+            var field = typeof(SkillSystem).GetProperty("EffectType");
             field?.SetValue(this, value);
         }
     }
@@ -75,7 +75,7 @@ public partial class TestConcreteSkillSystem : SkillSystem
         get => base.TargetType;
         set
         {
-            var field = typeof(ISkillSystem).GetProperty("TargetType");
+            var field = typeof(SkillSystem).GetProperty("TargetType");
             field?.SetValue(this, value);
         }
     }
@@ -85,7 +85,7 @@ public partial class TestConcreteSkillSystem : SkillSystem
         get => base.Range;
         set
         {
-            var field = typeof(ISkillSystem).GetProperty("Range");
+            var field = typeof(SkillSystem).GetProperty("Range");
             field?.SetValue(this, value);
         }
     }
@@ -95,7 +95,7 @@ public partial class TestConcreteSkillSystem : SkillSystem
         get => base.ManaCost;
         set
         {
-            var field = typeof(ISkillSystem).GetProperty("ManaCost");
+            var field = typeof(SkillSystem).GetProperty("ManaCost");
             field?.SetValue(this, value);
         }
     }
@@ -105,7 +105,7 @@ public partial class TestConcreteSkillSystem : SkillSystem
         get => base.Cooldown;
         set
         {
-            var field = typeof(ISkillSystem).GetProperty("Cooldown");
+            var field = typeof(SkillSystem).GetProperty("Cooldown");
             field?.SetValue(this, value);
         }
     }

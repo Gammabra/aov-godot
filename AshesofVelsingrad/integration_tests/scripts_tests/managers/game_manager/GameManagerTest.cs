@@ -259,12 +259,12 @@ public class GameManagerTest
         SetPrivateField(
             manager,
             "_currentUnitPossibleMoves",
-            new List<Vector3I>()
+            new List<(int, int, int)>()
         );
         CallPrivateMethod(
             manager,
             "HandlePlayerUnitMove",
-            new Vector3I(1, 0, 1)
+            (1, 0, 1)
         );
 
         AssertThat(GetPrivateField<bool>(inputSystem, "_inputEnabled")).IsTrue();
@@ -284,12 +284,12 @@ public class GameManagerTest
         SetPrivateField(
             manager,
             "_currentUnitPossibleMoves",
-            new List<Vector3I> { new Vector3I(1, 0, 1) }
+            new List<(int, int, int)> { (1, 0, 1) }
         );
         CallPrivateMethod(
             manager,
             "HandlePlayerUnitMove",
-            new Vector3I(1, 0, 1)
+            (1, 0, 1)
         );
 
         AssertThat(GetPrivateField<bool>(inputSystem, "_inputEnabled")).IsTrue();
@@ -314,7 +314,7 @@ public class GameManagerTest
         CallPrivateMethod(
             manager,
             "HandlePlayerSelectTarget",
-            new Vector3I(2, 0, 2)
+            (2, 0, 2)
         );
         AssertThat(GetPrivateField<bool>(inputSystem, "_inputEnabled")).IsTrue();
     }
@@ -423,10 +423,10 @@ public class GameManagerTest
         SetPrivateField(manager, "_isPlayerTurn", true);
         SetPrivateField(manager, "_selectedSkill", new TestConcreteSkillSystem());
         SetPrivateField(manager, "_unitMoved", true);
-        List<Vector3I> tupleList = [];
-        tupleList.Add(new Vector3I(1, 1, 1));
+        List<(int, int, int)> tupleList = [(1, 1, 1)];
+        List<Vector3I> vector3IList = [new Vector3I(1, 1, 1)];
         SetPrivateField(manager, "_currentUnitPossibleMoves", tupleList);
-        SetPrivateField(manager, "_currentUnitReachableCellsForCurrentSelectedSkill", tupleList);
+        SetPrivateField(manager, "_currentUnitReachableCellsForCurrentSelectedSkill", vector3IList);
         inputSystem.SetInputEnabled(true);
 
         CallPrivateMethod(manager, "LoadUnits");
@@ -441,7 +441,7 @@ public class GameManagerTest
         AssertThat(GetPrivateField<bool>(manager, "_isPlayerTurn")).IsFalse();
         AssertThat(GetPrivateField<ISkillSystem?>(manager, "_selectedSkill")).IsNull();
         AssertThat(GetPrivateField<bool>(manager, "_unitMoved")).IsFalse();
-        AssertThat(GetPrivateField<List<Vector3I>>(manager, "_currentUnitPossibleMoves").Count).IsEqual(0);
+        AssertThat(GetPrivateField<List<(int, int, int)>>(manager, "_currentUnitPossibleMoves").Count).IsEqual(0);
         AssertThat(
                 GetPrivateField<List<Vector3I>>(manager, "_currentUnitReachableCellsForCurrentSelectedSkill")
                     .Count

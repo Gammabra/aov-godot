@@ -578,7 +578,7 @@ public class AIEvaluatorTest
     [TestCase]
     public void ScorePosition_PrefersOptimalRange()
     {
-        var targetPos = new Vector3I(4, 0, 4);
+        var targetPos = (4, 0, 4);
         int skillRange = 2;
 
         var method = typeof(AIEvaluator).GetMethod("ScorePosition",
@@ -586,15 +586,15 @@ public class AIEvaluatorTest
 
         // Position at exactly skill range
         float scoreOptimal = (float)method!.Invoke(_evaluator,
-            new object[] { new Vector3I(2, 0, 4), targetPos, skillRange, _battleState! })!;
+            new object[] { (2, 0, 4), targetPos, skillRange, _battleState! })!;
 
         // Position too close
         float scoreTooClose = (float)method!.Invoke(_evaluator,
-            new object[] { new Vector3I(4, 0, 3), targetPos, skillRange, _battleState! })!;
+            new object[] { (4, 0, 3), targetPos, skillRange, _battleState! })!;
 
         // Position too far
         float scoreTooFar = (float)method!.Invoke(_evaluator,
-            new object[] { new Vector3I(0, 0, 0), targetPos, skillRange, _battleState! })!;
+            new object[] { (0, 0, 0), targetPos, skillRange, _battleState! })!;
 
         // Optimal range should score highest
         AssertThat(scoreOptimal).IsGreater(scoreTooClose);
@@ -608,17 +608,17 @@ public class AIEvaluatorTest
         _mapSystem!.AddWalkableCell(2, 1, 2);
         _mapSystem.AddWalkableCell(2, 2, 2);
 
-        var targetPos = new Vector3I(4, 0, 4);
+        var targetPos = (4, 0, 4);
         int skillRange = 5;
 
         var method = typeof(AIEvaluator).GetMethod("ScorePosition",
             BindingFlags.NonPublic | BindingFlags.Instance);
 
         float scoreLowGround = (float)method!.Invoke(_evaluator,
-            new object[] { new Vector3I(2, 0, 2), targetPos, skillRange, _battleState! })!;
+            new object[] { (2, 0, 2), targetPos, skillRange, _battleState! })!;
 
         float scoreHighGround = (float)method!.Invoke(_evaluator,
-            new object[] { new Vector3I(2, 2, 2), targetPos, skillRange, _battleState! })!;
+            new object[] { (2, 2, 2), targetPos, skillRange, _battleState! })!;
 
         // Higher ground should score better
         AssertThat(scoreHighGround).IsGreater(scoreLowGround);
@@ -627,20 +627,12 @@ public class AIEvaluatorTest
     [TestCase]
     public void ScorePosition_PenalizesBeingSurrounded()
     {
-        var targetPos = new Vector3I(4, 0, 4);
+        var targetPos = (4, 0, 4);
 
         // Create two positions at the SAME distance from target
         // to isolate the "surrounded" penalty
-        var surroundedPos = new Vector3I(2, 0, 2); // Distance to target = 4
-        var safePos = new Vector3I(1, 0, 1); // Distance to target = 6 (farther)
-
-        // Better test: Compare two positions at similar distances
-        // Surrounded position: (3, 0, 3) - distance 2 from target
-        // Safe position: (3, 0, 1) - distance 4 from target
-        // Actually, let's use positions equidistant from target
-
-        surroundedPos = new Vector3I(2, 0, 2); // Distance 4 from (4,0,4)
-        safePos = new Vector3I(2, 0, 0); // Distance 4 from (4,0,4) - same distance!
+        var surroundedPos = (2, 0, 2); // Distance to target = 4
+        var safePos = (1, 0, 1); // Distance to target = 6 (farther)
 
         // Add multiple enemies around SURROUNDED position only
         var player2 = AddNodeToTestRoot(new TestConcreteUnitSystem { Name = "Player2" });

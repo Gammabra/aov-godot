@@ -296,9 +296,9 @@ public class GameManagerUtilsTest
         _turnManager!.SetCurrentUnit(unit);
 
         // Set up possible moves
-        _gameManager.SetCurrentUnitPossibleMoves(new List<Vector3I> { new Vector3I(1, 0, 0) });
+        _gameManager.SetCurrentUnitPossibleMoves(new List<(int, int, int)> { (1, 0, 0) });
 
-        _gameManager.CallHandlePlayerUnitMove(new Vector3I(1, 0, 0));
+        _gameManager.CallHandlePlayerUnitMove((1, 0, 0));
 
         AssertThat(_mapSystem.GetUnitAt(1, 0, 0)).IsEqual(unit);
     }
@@ -314,9 +314,9 @@ public class GameManagerUtilsTest
         _turnManager!.SetCurrentUnit(unit);
 
         // Set up possible moves (not including 2,0,0)
-        _gameManager.SetCurrentUnitPossibleMoves(new List<Vector3I> { new Vector3I(1, 0, 0) });
+        _gameManager.SetCurrentUnitPossibleMoves(new List<(int, int, int)> { (1, 0, 0) });
 
-        _gameManager.CallHandlePlayerUnitMove(new Vector3I(2, 0, 0));
+        _gameManager.CallHandlePlayerUnitMove((2, 0, 0));
 
         // Unit should not have moved
         AssertThat(_mapSystem.GetUnitAt(2, 0, 0)).IsNull();
@@ -333,9 +333,9 @@ public class GameManagerUtilsTest
         _mapSystem!.CellsInformation[0].SetUnit(unit);
         _turnManager!.SetCurrentUnit(unit);
 
-        _gameManager.SetCurrentUnitPossibleMoves(new List<Vector3I> { new Vector3I(1, 0, 0) });
+        _gameManager.SetCurrentUnitPossibleMoves(new List<(int, int, int)> { (1, 0, 0) });
 
-        _gameManager.CallHandlePlayerUnitMove(new Vector3I(1, 0, 0));
+        _gameManager.CallHandlePlayerUnitMove((1, 0, 0));
 
         AssertThat(_gameManager.GetCurrentUnitPossibleMovesCount()).IsEqual(0);
     }
@@ -350,10 +350,10 @@ public class GameManagerUtilsTest
         _turnManager!.SetCurrentUnit(unit);
 
         // Try to move to a cell that doesn't exist
-        _gameManager.SetCurrentUnitPossibleMoves(new List<Vector3I> { new Vector3I(99, 99, 99) });
+        _gameManager.SetCurrentUnitPossibleMoves(new List<(int, int, int)> { (99, 99, 99) });
 
         // Should not throw
-        _gameManager.CallHandlePlayerUnitMove(new Vector3I(99, 99, 99));
+        _gameManager.CallHandlePlayerUnitMove((99, 99, 99));
 
         AssertThat(_battleInputSystem!.InputEnabled).IsTrue();
     }
@@ -379,7 +379,7 @@ public class GameManagerUtilsTest
         _gameManager.SetSelectedSkill(skill);
         _gameManager.SetCurrentUnitReachableCells(new List<Vector3I> { new Vector3I(1, 0, 0) });
 
-        _gameManager.CallHandlePlayerSelectTarget(new Vector3I(1, 0, 0));
+        _gameManager.CallHandlePlayerSelectTarget((1, 0, 0));
 
         AssertThat(skill.WasUsed).IsTrue();
     }
@@ -400,7 +400,7 @@ public class GameManagerUtilsTest
         _gameManager.SetSelectedSkill(skill);
         _gameManager.SetCurrentUnitReachableCells(new List<Vector3I> { new Vector3I(1, 0, 0) });
 
-        _gameManager.CallHandlePlayerSelectTarget(new Vector3I(2, 0, 0));
+        _gameManager.CallHandlePlayerSelectTarget((2, 0, 0));
 
         AssertThat(skill.WasUsed).IsFalse();
         AssertThat(_battleInputSystem!.InputEnabled).IsTrue();
@@ -425,7 +425,7 @@ public class GameManagerUtilsTest
         _battleInputSystem!.SetInputEnabled(false);
 
         // Cell (1,0,0) has no unit
-        _gameManager.CallHandlePlayerSelectTarget(new Vector3I(2, 0, 0));
+        _gameManager.CallHandlePlayerSelectTarget((2, 0, 0));
 
         AssertThat(skill.WasUsed).IsFalse();
         AssertThat(_battleInputSystem.InputEnabled).IsTrue(); // Should re-enable after error
@@ -457,7 +457,7 @@ public class GameManagerUtilsTest
         // Target is alive, can't revive
         AssertThat(targetUnit.IsAlive).IsTrue(); // Verify target is alive first
 
-        _gameManager.CallHandlePlayerSelectTarget(new Vector3I(1, 0, 0));
+        _gameManager.CallHandlePlayerSelectTarget((1, 0, 0));
 
         AssertThat(skill.WasUsed).IsFalse(); // Skill should NOT be used
         AssertThat(_battleInputSystem!.InputEnabled).IsTrue(); // Input should be re-enabled
@@ -491,7 +491,7 @@ public class GameManagerUtilsTest
         _gameManager.SetCurrentUnitReachableCells(new List<Vector3I> { new Vector3I(1, 0, 0) });
 
         // Target is dead, can't heal
-        _gameManager.CallHandlePlayerSelectTarget(new Vector3I(1, 0, 0));
+        _gameManager.CallHandlePlayerSelectTarget((1, 0, 0));
 
         AssertThat(skill.WasUsed).IsFalse(); // Skill should NOT be used
         AssertThat(_battleInputSystem!.InputEnabled).IsTrue(); // Input should be re-enabled
@@ -520,7 +520,7 @@ public class GameManagerUtilsTest
         _gameManager.SetCurrentUnitReachableCells(new List<Vector3I> { new Vector3I(1, 0, 0) });
 
         // Try Y=0 first, should adjust to Y=-1
-        _gameManager.CallHandlePlayerSelectTarget(new Vector3I(1, 0, 0));
+        _gameManager.CallHandlePlayerSelectTarget((1, 0, 0));
 
         AssertThat(skill.WasUsed).IsTrue();
     }

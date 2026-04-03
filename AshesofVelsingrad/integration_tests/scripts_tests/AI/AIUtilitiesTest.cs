@@ -577,7 +577,7 @@ public class AIUtilitiesTest
 
         AssertThat(center).IsNotNull();
         // Average: (4+0)/2=2, (0+0)/2=0, (4+0)/2=2
-        AssertThat(center!.Value).IsEqual(new Vector3I(2, 0, 2));
+        AssertThat(center!.Value).IsEqual((2, 0, 2));
     }
 
     [TestCase]
@@ -602,7 +602,7 @@ public class AIUtilitiesTest
         var center = AIUtilities.FindCenterPoint(units, _mapSystem!);
 
         // Should only consider the on-map unit
-        AssertThat(center).IsEqual(new Vector3I(4, 0, 4));
+        AssertThat(center).IsEqual((4, 0, 4));
     }
 
     #endregion

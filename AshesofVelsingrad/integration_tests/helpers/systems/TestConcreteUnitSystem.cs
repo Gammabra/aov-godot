@@ -22,7 +22,7 @@ public partial class TestConcreteUnitSystem : UnitSystem
         get => base.Personality;
         set
         {
-            var property = typeof(IUnitSystem).GetProperty("Personality");
+            var property = typeof(UnitSystem).GetProperty("Personality");
             property?.SetValue(this, value);
         }
     }
@@ -32,7 +32,7 @@ public partial class TestConcreteUnitSystem : UnitSystem
     {
         get
         {
-            var field = typeof(IUnitSystem).GetField("_statusEffectSystem",
+            var field = typeof(UnitSystem).GetField("_statusEffectSystem",
                 BindingFlags.NonPublic | BindingFlags.Instance);
             return (StatusEffectSystem?)field?.GetValue(this);
         }
@@ -44,7 +44,7 @@ public partial class TestConcreteUnitSystem : UnitSystem
         get => base.PossibleMovesRange;
         set
         {
-            var field = typeof(IUnitSystem).GetProperty("PossibleMovesRange",
+            var field = typeof(UnitSystem).GetProperty("PossibleMovesRange",
                 BindingFlags.Public | BindingFlags.Instance);
             field?.SetValue(this, value);
         }
@@ -55,7 +55,7 @@ public partial class TestConcreteUnitSystem : UnitSystem
         get => base.Hp;
         set
         {
-            var field = typeof(IUnitSystem).GetProperty("Hp",
+            var field = typeof(UnitSystem).GetProperty("Hp",
                 BindingFlags.Public | BindingFlags.Instance);
             field?.SetValue(this, value);
         }
@@ -66,7 +66,7 @@ public partial class TestConcreteUnitSystem : UnitSystem
         get => base.Mana;
         set
         {
-            var field = typeof(IUnitSystem).GetProperty("Mana",
+            var field = typeof(UnitSystem).GetProperty("Mana",
                 BindingFlags.Public | BindingFlags.Instance);
             field?.SetValue(this, value);
         }
@@ -77,7 +77,7 @@ public partial class TestConcreteUnitSystem : UnitSystem
         get => base.BaseAtk;
         set
         {
-            var field = typeof(IUnitSystem).GetProperty("BaseAtk",
+            var field = typeof(UnitSystem).GetProperty("BaseAtk",
                 BindingFlags.Public | BindingFlags.Instance);
             field?.SetValue(this, value);
         }
@@ -88,7 +88,7 @@ public partial class TestConcreteUnitSystem : UnitSystem
         get => base.BaseDef;
         set
         {
-            var field = typeof(IUnitSystem).GetProperty("BaseDef",
+            var field = typeof(UnitSystem).GetProperty("BaseDef",
                 BindingFlags.Public | BindingFlags.Instance);
             field?.SetValue(this, value);
         }

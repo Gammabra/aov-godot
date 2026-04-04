@@ -7,7 +7,7 @@ public sealed class Stun(
 )
     : StatusEffect<IUnitSystem>("Stun", "Stun", duration, false)
 {
-    public override bool ShouldApplyTwice => true;  // ADD THIS
+    public override bool ShouldApplyTwice => true;
 
     public override void OnApply(IUnitSystem target)
     {

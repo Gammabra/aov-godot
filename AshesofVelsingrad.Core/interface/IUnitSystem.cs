@@ -53,23 +53,23 @@ public interface IUnitSystem : IEffectTarget<IUnitSystem>, IStatusEffectBehavior
     void BypassDamage(float damage);
 
     // Methods from UnitSystemStatusEffectImplementation
-    void OnEffectHeal(float amount);
-    void OnEffectControlApplied();
-    void OnEffectControlRemoved();
-    void OnEffectDamage(AovDataStructures.ModifierType modifierType, float amount);
-    void OnEffectModifierApplied(
+    new void OnEffectHeal(float amount);
+    new void OnEffectControlApplied();
+    new void OnEffectControlRemoved();
+    new void OnEffectDamage(AovDataStructures.ModifierType modifierType, float amount);
+    new void OnEffectModifierApplied(
         AovDataStructures.StatTypeWithModifier statType,
         AovDataStructures.ModifierType modifierType,
         float amount
     );
-    void OnEffectModifierRemoved(
+    new void OnEffectModifierRemoved(
         AovDataStructures.StatTypeWithModifier statType,
         AovDataStructures.ModifierType modifierType,
         float amount
     );
     void InjectDependencies(StatusEffectSystem statusEffectSystem);
-    List<StatusEffect<IUnitSystem>> GetActiveEffects();
-    void RemoveEffect(StatusEffect<IUnitSystem> statusEffect);
-    void OnEffectRevive(AovDataStructures.ModifierType modifierType, float amount);
+    new List<StatusEffect<IUnitSystem>> GetActiveEffects();
+    new void RemoveEffect(StatusEffect<IUnitSystem> statusEffect);
+    new void OnEffectRevive(AovDataStructures.ModifierType modifierType, float amount);
     void SetStatusEffectOnUnit(StatusEffect<IUnitSystem> statusEffect);
 }

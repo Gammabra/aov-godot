@@ -3,8 +3,6 @@ using NUnit.Framework;
 using Moq;
 using AshesOfVelsingrad.AI;
 using AshesOfVelsingrad.Systems;
-using AshesOfVelsingrad.Utilities;
-using System;
 
 namespace AshesOfVelsingrad.Core.Tests.AI;
 

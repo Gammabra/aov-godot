@@ -1,8 +1,8 @@
 name: Build and Lint
 
 on:
-  push:
-    branches: [develop, canary, release]
+  # push:
+  #   branches: [develop, canary, release]
   pull_request:
     branches: [develop, canary, release]
 
@@ -37,23 +37,23 @@ jobs:
       - name: Check if C# project exists
         id: check_csharp
         run: |
-          if find . -name "*.csproj" -o -name "*.sln" | grep -q .; then
+          if ls *.sln 1> /dev/null 2>&1; then
             echo "has_csharp=true" >> $GITHUB_OUTPUT
           else
             echo "has_csharp=false" >> $GITHUB_OUTPUT
           fi
 
-      - name: Restore dependencies
+      - name: Restore dependencies (Solution level)
         if: steps.check_csharp.outputs.has_csharp == 'true'
         run: dotnet restore
 
       - name: Check code formatting
         if: steps.check_csharp.outputs.has_csharp == 'true'
-        run: dotnet format --verify-no-changes --verbosity diagnostic "AshesofVelsingrad/AshesofVelsingrad.csproj"
+        run: dotnet format --verify-no-changes --verbosity diagnostic
 
-      - name: Build project
+      - name: Build project (Solution level)
         if: steps.check_csharp.outputs.has_csharp == 'true'
-        run: dotnet build "AshesofVelsingrad/AshesofVelsingrad.csproj" --configuration ExportRelease /p:Platform="AnyCPU"
+        run: dotnet build --configuration ExportRelease /p:Platform="Any CPU"
 
       - name: Import project assets
         run: |

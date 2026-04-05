@@ -57,7 +57,7 @@ jobs:
 
       - name: Import project assets
         run: |
-          godot --headless --import --quit
+          godot --headless --editor --quit
 
       - name: Export project (Windows)
         run: |

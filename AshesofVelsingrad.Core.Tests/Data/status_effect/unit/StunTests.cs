@@ -76,4 +76,28 @@ public class StunTests
         Assert.That(stun.Duration, Is.EqualTo(_duration));
         // Note: Amount and ModifierType aren't used here, but they exist in the base
     }
+
+    [Test]
+    public void OnApply_WhenTargetIsNull_DoesNotCallUnitMethods()
+    {
+        // Arrange
+        var buffer = new Stun(_duration);
+
+        // Act & Assert
+        // We pass null. The 'is IUnitSystem' check will fail.
+        // We just want to ensure it doesn't throw an exception.
+        Assert.DoesNotThrow(() => buffer.OnApply(null!));
+    }
+
+    [Test]
+    public void OnRemove_WhenTargetIsNull_DoesNotCallUnitMethods()
+    {
+        // Arrange
+        var buffer = new Stun(_duration);
+
+        // Act & Assert
+        // We pass null. The 'is IUnitSystem' check will fail.
+        // We just want to ensure it doesn't throw an exception.
+        Assert.DoesNotThrow(() => buffer.OnRemove(null!));
+    }
 }

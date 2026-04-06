@@ -34,12 +34,12 @@ public partial class settings_pages : Node
 	public string color_blindness = "None";
 
 	// ---------- COMMAND ----------
-	private Node page_command;
+	private Node? page_command;
 
 	private string waiting_action = "";
-	private Button waiting_button = null;
+	private Button? waiting_button = null;
 	private string waiting_action_pad = "";
-	private Button waiting_button_pad = null;
+	private Button? waiting_button_pad = null;
 
 	public Dictionary actions = new Dictionary
 	{
@@ -69,7 +69,7 @@ public partial class settings_pages : Node
 
 	public override void _Ready()
 	{
-		page_command = GetNode("PageCommand");
+		page_command = GetNodeOrNull("PageCommand");
 
 		foreach (string action in actions.Keys)
 		{

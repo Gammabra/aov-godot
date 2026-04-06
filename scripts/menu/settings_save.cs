@@ -7,11 +7,13 @@ public partial class settings_save : Button
 {
 	private const string CONFIG_PATH = "user://settings.cfg";
 
-	private Node settings;
+	private Node? settings;
 
 	public override void _Ready()
 	{
-		settings = GetNode<Node>("../MainContent");
+		settings = GetNodeOrNull<Node>("../MainContent");
+		if (settings == null)
+			return;
 		LoadSettings();
 	}
 
@@ -24,6 +26,9 @@ public partial class settings_save : Button
 	private void SaveSettings()
 	{
 		var cfg = new ConfigFile();
+
+		if (settings == null)
+			return;
 
 		// ---------- SUBTITLE ----------
 		cfg.SetValue("subtitle", "enabled", settings.Get("subtitles_enabled"));
@@ -51,7 +56,9 @@ public partial class settings_save : Button
 		cfg.SetValue("visual", "color_blindness", settings.Get("color_blindness"));
 
 		// ---------- INPUT ----------
-		var actions = (Dictionary)settings.Get("actions");
+		var actions = settings?.Get("actions").As<Dictionary>();
+		if (actions == null)
+			return;
 
 		foreach (string action in actions.Keys)
 		{
@@ -91,6 +98,9 @@ public partial class settings_save : Button
 		if (cfg.Load(CONFIG_PATH) != Error.Ok)
 			return;
 
+		if (settings == null)
+			return;
+
 		// ---------- SUBTITLE ----------
 		settings.Set("subtitles_enabled", cfg.GetValue("subtitle", "enabled", settings.Get("subtitles_enabled")));
 		settings.Set("subtitle_size", cfg.GetValue("subtitle", "size", settings.Get("subtitle_size")));
@@ -117,7 +127,9 @@ public partial class settings_save : Button
 		settings.Set("color_blindness", cfg.GetValue("visual", "color_blindness", settings.Get("color_blindness")));
 
 		// ---------- INPUT ----------
-		var actions = (Dictionary)settings.Get("actions");
+		var actions = settings?.Get("actions").As<Dictionary>();
+		if (actions == null)
+			return;
 
 		foreach (string action in actions.Keys)
 		{
@@ -157,13 +169,19 @@ public partial class settings_save : Button
 		settings.Call("apply_audio_to_ui");
 		settings.Call("apply_font_selection");
 		
-		var actionsDict = (Dictionary)settings.Get("actions");
-		var pageCmd = settings.GetNode("PageCommand");
+		var actionsDict = settings?.Get("actions").As<Dictionary>();
+		if (actionsDict == null)
+			return;
+		var pageCmd = settings.GetNodeOrNull("PageCommand");
+		if (pageCmd == null)
+			return;
 		foreach (string action in actionsDict.Keys)
 		{
 			var lbl = pageCmd.GetNode<Label>((string)actionsDict[action]);
 			var btn2 = lbl.GetNode<Button>("Button2");
-			btn2.Text = ((settings_pages)settings).GetActionKeyPad(action);
+			var sp = settings as settings_pages;
+			if (sp != null)
+				btn2.Text = sp.GetActionKeyPad(action);((settings_pages)settings).GetActionKeyPad(action);
 		}
 
 		GD.Print("SETTINGS LOADED");

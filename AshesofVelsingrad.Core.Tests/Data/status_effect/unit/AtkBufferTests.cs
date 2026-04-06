@@ -78,4 +78,26 @@ public class AtkBufferTests
         Assert.That(buffer.Amount, Is.EqualTo(_buffAmount));
         Assert.That(buffer.ModifierType, Is.EqualTo(_modType));
     }
+
+    [Test]
+    public void OnApply_WhenTargetIsNull_DoesNotCallUnitMethods()
+    {
+        // Arrange
+        var buffer = new AtkBuffer(_duration, _modType, _buffAmount);
+
+        // Act & Assert
+        // We pass null. The 'is IUnitSystem' check will fail.
+        // We just want to ensure it doesn't throw an exception.
+        Assert.DoesNotThrow(() => buffer.OnApply(null!));
+    }
+
+    [Test]
+    public void OnRemove_WhenTargetIsNull_DoesNotCallUnitMethods()
+    {
+        // Arrange
+        var buffer = new AtkBuffer(_duration, _modType, _buffAmount);
+
+        // Act & Assert
+        Assert.DoesNotThrow(() => buffer.OnRemove(null!));
+    }
 }

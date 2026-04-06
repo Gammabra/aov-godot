@@ -23,12 +23,6 @@ public class BurningEffectTests
     [Test]
     public void OnTurnPassed_CallsUnitOnEffectDamageWithCorrectParameters()
     {
-        if (_mockUnit == null)
-        {
-            Assert.Fail("MockUnit not initialized properly.");
-            return;
-        }
-
         // Arrange
         var effect = new BurningEffect(_duration, _modType, _damageAmount);
 
@@ -55,12 +49,6 @@ public class BurningEffectTests
     [Test]
     public void OnTurnPassed_MultipleTurns_CallsDamageEachTime()
     {
-        if (_mockUnit == null)
-        {
-            Assert.Fail("MockUnit not initialized properly.");
-            return;
-        }
-
         // Arrange
         var effect = new BurningEffect(_duration, _modType, _damageAmount);
 

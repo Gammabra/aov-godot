@@ -20,12 +20,6 @@ public class StunTests
     [Test]
     public void OnApply_CallsUnitOnEffectControlApplied()
     {
-        if (_mockUnit == null)
-        {
-            Assert.Fail("MockUnit not initialized properly.");
-            return;
-        }
-
         // Arrange
         var stun = new Stun(_duration);
 
@@ -39,12 +33,6 @@ public class StunTests
     [Test]
     public void OnRemove_CallsUnitOnEffectControlRemoved()
     {
-        if (_mockUnit == null)
-        {
-            Assert.Fail("MockUnit not initialized properly.");
-            return;
-        }
-
         // Arrange
         var stun = new Stun(_duration);
 

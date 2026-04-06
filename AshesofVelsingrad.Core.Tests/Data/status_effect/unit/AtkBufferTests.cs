@@ -23,12 +23,6 @@ public class AtkBufferTests
     [Test]
     public void OnApply_CallsUnitEffectAppliedWithCorrectParameters()
     {
-        if (_mockUnit == null)
-        {
-            Assert.Fail("MockUnit not initialized properly.");
-            return;
-        }
-
         // Arrange
         var buffer = new AtkBuffer(_duration, _modType, _buffAmount);
 
@@ -46,12 +40,6 @@ public class AtkBufferTests
     [Test]
     public void OnRemove_CallsUnitEffectRemovedWithCorrectParameters()
     {
-        if (_mockUnit == null)
-        {
-            Assert.Fail("MockUnit not initialized properly.");
-            return;
-        }
-
         // Arrange
         var buffer = new AtkBuffer(_duration, _modType, _buffAmount);
 

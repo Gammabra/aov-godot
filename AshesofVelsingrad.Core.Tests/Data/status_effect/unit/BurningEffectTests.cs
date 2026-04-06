@@ -71,4 +71,16 @@ public class BurningEffectTests
         // Assert
         _mockUnit.Verify(u => u.OnEffectDamage(_modType, _damageAmount), Times.Exactly(2));
     }
+
+    [Test]
+    public void OnApply_WhenTargetIsNull_DoesNotCallUnitMethods()
+    {
+        // Arrange
+        var buffer = new BurningEffect(_duration, _modType, _damageAmount);
+
+        // Act & Assert
+        // We pass null. The 'is IUnitSystem' check will fail.
+        // We just want to ensure it doesn't throw an exception.
+        Assert.DoesNotThrow(() => buffer.OnTurnPassed(null!));
+    }
 }

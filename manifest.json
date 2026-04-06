@@ -1463,6 +1463,16 @@
     },
     {
       "type": "Conceptual",
+      "source_relative_path": "documentation/beta_test_plan2.md",
+      "output": {
+        ".html": {
+          "relative_path": "beta_test_plan2.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
       "source_relative_path": "documentation/docs/contributing.md",
       "output": {
         ".html": {

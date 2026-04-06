@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title> | Ashes of Velsingrad Documentation </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content=" | Ashes of Velsingrad Documentation ">
+      
+      
+      <link rel="icon" href="favicon.ico">
+      <link rel="stylesheet" href="public/docfx.min.css">
+      <link rel="stylesheet" href="public/main.css">
+      <meta name="docfx:navrel" content="toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/Gammabra/aov-godot/blob/develop/documentation/beta_test_plan2.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="index.html">
+            <img id="logo" class="svg" src="images/logo-doc.png" alt="Ashes of Velsingrad" style="height: 40px; width: auto;">
+            Ashes of Velsingrad
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+
+      <div class="content">
+        <div class="actionbar">
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+
+<h2 id="2-user-roles"><strong>2. User roles</strong></h2>
+<p>The following roles will be involved in the beta test.</p>
+<table>
+<thead>
+<tr>
+<th><strong>Role Name</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Player</td>
+<td>A tester playing the tutorial for the first time, discovering the controls, combat mechanics, and interface</td>
+</tr>
+<tr>
+<td>Companion NPC</td>
+<td>Young Mercenary guiding the player (tutorial + combat support)</td>
+</tr>
+<tr>
+<td>Ally NPC</td>
+<td>Soldiers or villagers assisting during combat</td>
+</tr>
+<tr>
+<td>Enemies</td>
+<td>Bandits encountered in the first combat</td>
+</tr>
+<tr>
+<td>System</td>
+<td>Handles core game logic such as turn management, combat flow, rule enforcement, and game state updates</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="3-feature-table"><strong>3. Feature table</strong></h2>
+<p>The following features represent the complete beta scope and will be demonstrated during the Greenlight defense. They are ordered according to a typical player tutorial flow, including exploration and combat phases.</p>
+<table>
+<thead>
+<tr>
+<th><strong>Feature ID</strong></th>
+<th><strong>User role</strong></th>
+<th><strong>Feature name</strong></th>
+<th><strong>Short description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>F1</td>
+<td>Player</td>
+<td>Start a new game</td>
+<td>Launch the game and enter the tutorial sequence</td>
+</tr>
+<tr>
+<td>F2</td>
+<td>Player</td>
+<td>Hear music and sound effects</td>
+<td>Background music and sound effects play during gameplay</td>
+</tr>
+<tr>
+<td>F3</td>
+<td>Player</td>
+<td>See visual effects</td>
+<td>See visual effects on each actions or events during gamelplay</td>
+</tr>
+<tr>
+<td>F4</td>
+<td>Player</td>
+<td>Move the player character</td>
+<td>Move freely in an exploration area between combat phases</td>
+</tr>
+<tr>
+<td>F5</td>
+<td>Player</td>
+<td>Interact with NPCs</td>
+<td>Talk to NPCs through dialogue interactions</td>
+</tr>
+<tr>
+<td>F6</td>
+<td>Player</td>
+<td>Collect items</td>
+<td>Pick up items from the environment and add them to the global inventory</td>
+</tr>
+<tr>
+<td>F7</td>
+<td>Player</td>
+<td>Open the inventory</td>
+<td>Access and view collected items</td>
+</tr>
+<tr>
+<td>F8</td>
+<td>Companion NPC</td>
+<td>Explain the inventory</td>
+<td>Explain how the inventory system works</td>
+</tr>
+<tr>
+<td>F9</td>
+<td>Player</td>
+<td>Escape the prison</td>
+<td>Pass to next level</td>
+</tr>
+<tr>
+<td>F10</td>
+<td>Player</td>
+<td>Choose a narrative action</td>
+<td>Decide between helping soldiers or villagers</td>
+</tr>
+<tr>
+<td>F11</td>
+<td>Player</td>
+<td>Enter a battle</td>
+<td>Transition from exploration to a tactical combat encounter</td>
+</tr>
+<tr>
+<td>F12</td>
+<td>Componion NPC</td>
+<td>Explain the combat system</td>
+<td>Provide tutorial guidance explaining combat mechanics and player actions</td>
+</tr>
+<tr>
+<td>F13</td>
+<td>System</td>
+<td>Turn-by-turn system</td>
+<td>Control the order of actions between player and enemies during combat</td>
+</tr>
+<tr>
+<td>F14</td>
+<td>Player + Companion NPC + Allies NPC + Enemies</td>
+<td>Move to a tile</td>
+<td>Move a unit to a selected tile during combat</td>
+</tr>
+<tr>
+<td>F15</td>
+<td>Player + Allies NPC</td>
+<td>Select a target</td>
+<td>Highlight enemies or interactable tiles during combat</td>
+</tr>
+<tr>
+<td>F16</td>
+<td>Player + Allies NPC</td>
+<td>Perform a basic attack</td>
+<td>Execute a simple combat action against an enemy</td>
+</tr>
+<tr>
+<td>F17</td>
+<td>Player</td>
+<td>Use an item</td>
+<td>Use an item from a character inventory during battle</td>
+</tr>
+<tr>
+<td>F18</td>
+<td>Player</td>
+<td>End a turn</td>
+<td>Confirm actions and pass control to the next turn</td>
+</tr>
+<tr>
+<td>F19</td>
+<td>Enemies</td>
+<td>Execute enemy AI behavior</td>
+<td>Enemies automatically choose targets, move, and attack based on decision rules during their turn</td>
+</tr>
+<tr>
+<td>F20</td>
+<td>Player</td>
+<td>Display tutorial success or failure feedback</td>
+<td>The game indicates whether the player successfully completes tutorial steps</td>
+</tr>
+<tr>
+<td>F21</td>
+<td>Player</td>
+<td>Handle character defeat</td>
+<td>Lose a character and receive appropriate feedback or consequences</td>
+</tr>
+<tr>
+<td>F22</td>
+<td>Player</td>
+<td>Complete the tutorial</td>
+<td>Finish the tutorial scenario and reach the end screen</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="4-success-criteria"><strong>4. Success criteria</strong></h2>
+<p>The table below defines how the maturity of the tutorial beta will be evaluated.</p>
+<table>
+<thead>
+<tr>
+<th><strong>Feature ID</strong></th>
+<th><strong>Key Success Criteria</strong></th>
+<th><strong>Indicator / Metric</strong></th>
+<th><strong>Result Achieved</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>F1</td>
+<td>The game starts and loads the tutorial</td>
+<td>10 launches, 0 crashes</td>
+<td>To be tested</td>
+</tr>
+<tr>
+<td>F2</td>
+<td>Music and SFX play correctly during gameplay</td>
+<td>Audio plays in 80% of sessions, no missing sounds</td>
+<td>To be tested</td>
+</tr>
+<tr>
+<td>F3</td>
+<td>Visual effects are displayed during actions</td>
+<td>15 actions tested, effects triggered each time</td>
+<td>To be tested</td>
+</tr>
+<tr>
+<td>F4</td>
+<td>Player can move freely in exploration</td>
+<td>10 sessions, no blocking or collision issues</td>
+<td>To be tested</td>
+</tr>
+<tr>
+<td>F5</td>
+<td>Dialogue triggers correctly with NPCs</td>
+<td>10 interactions, dialogue appears each time</td>
+<td>To be tested</td>
+</tr>
+<tr>
+<td>F6</td>
+<td>Items are collected and stored properly</td>
+<td>10 pickups, all items appear in inventory</td>
+<td>To be tested</td>
+</tr>
+<tr>
+<td>F7</td>
+<td>Inventory opens and displays items</td>
+<td>Opens in &lt; 1s, correct items shown</td>
+<td>To be tested</td>
+</tr>
+<tr>
+<td>F8</td>
+<td>Inventory tutorial is triggered and understandable</td>
+<td>90% trigger rate, user understands usage</td>
+<td>To be tested</td>
+</tr>
+<tr>
+<td>F9</td>
+<td>Player can exit the prison and reach next level</td>
+<td>10 runs, level transition works correctly</td>
+<td>To be tested</td>
+</tr>
+<tr>
+<td>F10</td>
+<td>Player can make a narrative choice</td>
+<td>Choice appears in 100% of cases and is selectable</td>
+<td>To be tested</td>
+</tr>
+<tr>
+<td>F11</td>
+<td>Combat starts correctly after trigger</td>
+<td>10 transitions, no freeze or bug</td>
+<td>To be tested</td>
+</tr>
+<tr>
+<td>F12</td>
+<td>Combat tutorial explains mechanics clearly</td>
+<td>80%+ users understand basic actions</td>
+<td>To be tested</td>
+</tr>
+<tr>
+<td>F13</td>
+<td>Turn order is respected during combat</td>
+<td>10 combats, no turn skips or duplicates</td>
+<td>To be tested</td>
+</tr>
+<tr>
+<td>F14</td>
+<td>Units move correctly on the grid</td>
+<td>20 moves, valid tiles only, no overlap</td>
+<td>To be tested</td>
+</tr>
+<tr>
+<td>F15</td>
+<td>Player can select valid targets</td>
+<td>20 selections, only valid targets selectable</td>
+<td>To be tested</td>
+</tr>
+<tr>
+<td>F16</td>
+<td>Basic attacks deal damage correctly</td>
+<td>20 attacks, damage applied each time</td>
+<td>To be tested</td>
+</tr>
+<tr>
+<td>F17</td>
+<td>Items can be used during combat</td>
+<td>10 uses, correct effect applied</td>
+<td>To be tested</td>
+</tr>
+<tr>
+<td>F18</td>
+<td>Turn ends and switches correctly</td>
+<td>20 turns, control passes correctly</td>
+<td>To be tested</td>
+</tr>
+<tr>
+<td>F19</td>
+<td>Enemies act automatically and logically</td>
+<td>10 combats, no idle turns, valid actions only</td>
+<td>To be tested</td>
+</tr>
+<tr>
+<td>F20</td>
+<td>Tutorial feedback is displayed correctly</td>
+<td>80% of actions show success/failure feedback</td>
+<td>To be tested</td>
+</tr>
+<tr>
+<td>F21</td>
+<td>Character defeat triggers feedback and consequences</td>
+<td>10 defeats, UI feedback and removal applied</td>
+<td>To be tested</td>
+</tr>
+<tr>
+<td>F22</td>
+<td>Tutorial can be completed fully</td>
+<td>80% completion rate without blocking bug</td>
+<td>To be tested</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<p><em>This Beta Test Plan intentionally limits its scope to the tutorial only. No advanced systems (progression, full narrative branching, or late-game mechanics) are included at this stage, as they are planned for later development phases.</em></p>
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/Gammabra/aov-godot/blob/develop/documentation/beta_test_plan2.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          © 2025 Gammabra Studios. All Rights Reserved.
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,34 @@
+[gd_scene format=3 uid="uid://x64n6yx3lj66"]
+
+[ext_resource type="Script" uid="uid://h17og0vho0y6" path="res://scripts/ui/inventory/InventoryUI.cs" id="1_vyf8a"]
+[ext_resource type="PackedScene" uid="uid://dmbckr66c1anr" path="res://scenes/ui/inventory/InventorySlotUI.tscn" id="2_bxwwy"]
+
+[node name="InventoryUI" type="Control" unique_id=642595375 node_paths=PackedStringArray("_slotContainer")]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_vyf8a")
+_slotContainer = NodePath("Background/SlotContainer")
+_slotScene = ExtResource("2_bxwwy")
+
+[node name="Background" type="Panel" parent="." unique_id=1627820511]
+layout_mode = 0
+offset_left = 92.0
+offset_top = 101.0
+offset_right = 1039.0
+offset_bottom = 580.0
+
+[node name="TitleLabel" type="Label" parent="Background" unique_id=851682925]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Inventory"
+
+[node name="SlotContainer" type="GridContainer" parent="Background" unique_id=201931206]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 63.0
+offset_right = 60.0
+offset_bottom = 103.0
+columns = 5

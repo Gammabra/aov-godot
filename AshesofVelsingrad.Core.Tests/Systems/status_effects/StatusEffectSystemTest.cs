@@ -180,4 +180,57 @@ public class StatusEffectSystemTests
         Assert.That(cellEffect.Duration, Is.EqualTo(0));
         Assert.That(cell.GetActiveEffects().Count, Is.EqualTo(0));
     }
+
+    [Test]
+    public void RefreshTargetEffects_HandlesPermanentAndRemainingDurations()
+    {
+        if (_system == null || _unit == null) return;
+
+        // Line 44: Permanent effect (-1 duration)
+        var permEffect = new TestEffect<IUnitSystem>("Eternal", Constants.PermanentStatusEffect, false);
+        
+        // Line 49: Effect with remaining duration after tick
+        var longEffect = new TestEffect<IUnitSystem>("Long", 5, false);
+
+        _unit.ApplyEffect(permEffect);
+        _unit.ApplyEffect(longEffect);
+
+        // Act
+        _system.ProcessUnitTurnEnd(_unit);
+
+        // Assert
+        // Permanent effect duration remains unchanged (-1)
+        Assert.That(permEffect.Duration, Is.EqualTo(Constants.PermanentStatusEffect));
+        
+        // Long effect duration decremented but still > 0
+        Assert.That(longEffect.Duration, Is.EqualTo(4));
+        
+        // Both should still be on the unit (triggered the 'continue' statements)
+        Assert.That(_unit.GetActiveEffects().Count, Is.EqualTo(2));
+    }
+
+    [Test]
+    public void ProcessUnitTurnEnd_WhenTargetIsNull_ReturnsImmediately()
+    {
+        if (_system == null) return;
+
+        // Line 118: Pass null
+        Assert.DoesNotThrow(() => _system.ProcessUnitTurnEnd(null));
+    }
+
+    [Test]
+    public void ApplyEffect_NonStackableExisting_ResetsDurationOnly()
+    {
+        if (_system == null || _unit == null) return;
+
+        var effect1 = new TestEffect<IUnitSystem>("Stun", 1, false);
+        var effect2 = new TestEffect<IUnitSystem>("Stun", 3, false);
+
+        _system.ApplyEffect(_unit, effect1);
+        // Line 89-91: existing is not null, not stackable
+        _system.ApplyEffect(_unit, effect2);
+
+        Assert.That(effect1.Duration, Is.EqualTo(3));
+        Assert.That(effect1.StackCount, Is.EqualTo(1)); // Did not stack
+    }
 }

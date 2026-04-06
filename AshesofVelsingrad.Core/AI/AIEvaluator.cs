@@ -208,6 +208,11 @@ public class AIEvaluator
                 score += (10 - distance) * 2f;
                 score += target.BaseAtk * 1.5f;
                 break;
+
+            default:
+                score += (10 - distance) * 3f;
+                score += target.BaseAtk * 2f;
+                break;
         }
 
         // General factors
@@ -250,8 +255,13 @@ public class AIEvaluator
                 score += ScoreBuffSkill(skill, battleState);
                 break;
             case AovDataStructures.EffectType.Debuff:
+                score += ScoreDebuffSkill(skill, target);
+                break;
             case AovDataStructures.EffectType.Control:
                 score += ScoreDebuffSkill(skill, target);
+                break;
+            default:
+                score += 20f;
                 break;
         }
 

@@ -1,6 +1,7 @@
 using NUnit.Framework;
 using System.Collections.Generic;
 using AshesOfVelsingrad.Systems;
+using AshesOfVelsingrad.Utilities;
 
 namespace AshesOfVelsingrad.Core.Tests.Systems;
 
@@ -14,8 +15,8 @@ public class EffectTargetTests
     // so we create a simple concrete version for testing.
     private class MockStatusEffect : StatusEffect<TestTarget>
     {
-        public MockStatusEffect(string name) : base(name, "Desc", 1, false) { }
-    }
+        public MockStatusEffect(string name) : base(name, "Desc", 1, true) { } // Make stackable for tests
+        public void SetDuration(int duration) => Duration = duration;    }
 
     private class DifferentStatusEffect : StatusEffect<TestTarget>
     {
@@ -33,12 +34,6 @@ public class EffectTargetTests
     [Test]
     public void ApplyEffect_AddsEffectToList()
     {
-        if (_target == null)
-        {
-            Assert.Fail("Target not initialized properly.");
-            return;
-        }
-
         // Arrange
         var effect = new MockStatusEffect("Burn");
 
@@ -53,12 +48,6 @@ public class EffectTargetTests
     [Test]
     public void RemoveEffect_RemovesSpecificEffectFromList()
     {
-        if (_target == null)
-        {
-            Assert.Fail("Target not initialized properly.");
-            return;
-        }
-
         // Arrange
         var effect = new MockStatusEffect("Burn");
         _target.ApplyEffect(effect);
@@ -74,12 +63,6 @@ public class EffectTargetTests
     [Test]
     public void HasEffect_ReturnsTrue_WhenEffectTypeExists()
     {
-        if (_target == null)
-        {
-            Assert.Fail("Target not initialized properly.");
-            return;
-        }
-
         // Arrange
         _target.ApplyEffect(new MockStatusEffect("Burn"));
         _target.ApplyEffect(new DifferentStatusEffect());
@@ -92,12 +75,6 @@ public class EffectTargetTests
     [Test]
     public void HasEffect_ReturnsFalse_WhenEffectTypeDoesNotExist()
     {
-        if (_target == null)
-        {
-            Assert.Fail("Target not initialized properly.");
-            return;
-        }
-
         // Arrange
         _target.ApplyEffect(new DifferentStatusEffect());
 
@@ -108,17 +85,68 @@ public class EffectTargetTests
     [Test]
     public void GetActiveEffects_ReturnsInternalListReference()
     {
-        if (_target == null)
-        {
-            Assert.Fail("Target not initialized properly.");
-            return;
-        }
-
         // Act
         var effects = _target.GetActiveEffects();
 
         // Assert
         Assert.That(effects, Is.Not.Null);
         Assert.That(effects, Is.InstanceOf<List<StatusEffect<TestTarget>>>());
+    }
+
+    [Test]
+    public void StatusEffect_OnTurnPassed_DoesNotLogForUnknownTargetType()
+    {
+        // Arrange
+        var effect = new MockStatusEffect("Test");
+        _target.ApplyEffect(effect);
+
+        // Act
+        effect.OnTurnPassed(_target);
+
+        // Assert
+        // Since TestTarget is not IUnitSystem or CellInformation, no logging occurs
+        // This covers the else branch in StatusEffect.OnTurnPassed
+        Assert.That(effect.Duration, Is.EqualTo(0)); // Duration decremented
+    }
+
+    [Test]
+    public void StatusEffect_AddStack_IncreasesStackCount_WhenStackable()
+    {
+        // Arrange
+        var effect = new MockStatusEffect("Stackable");
+
+        // Act
+        effect.AddStack();
+
+        // Assert
+        Assert.That(effect.StackCount, Is.EqualTo(2));
+    }
+
+    [Test]
+    public void StatusEffect_ResetDuration_UpdatesDuration_WhenNotPermanent()
+    {
+        // Arrange
+        var effect = new MockStatusEffect("Test");
+        effect.SetDuration(2);
+
+        // Act
+        effect.ResetDuration(5);
+
+        // Assert
+        Assert.That(effect.Duration, Is.EqualTo(5));
+    }
+
+    [Test]
+    public void StatusEffect_ResetDuration_DoesNotUpdate_WhenPermanent()
+    {
+        // Arrange
+        var effect = new MockStatusEffect("Test");
+        effect.SetDuration(Constants.PermanentStatusEffect);
+
+        // Act
+        effect.ResetDuration(5);
+
+        // Assert
+        Assert.That(effect.Duration, Is.EqualTo(Constants.PermanentStatusEffect));
     }
 }

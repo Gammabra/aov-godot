@@ -2,7 +2,7 @@ using Godot;
 using System;
 using Godot.Collections;
 
-public partial class settings_pages : Node
+public partial class SettingsPages : Node
 {
 	// =================================================
 	// VALUES
@@ -31,15 +31,15 @@ public partial class settings_pages : Node
 	public bool blurry_enabled = false;
 	public bool camera_shake_enabled = false;
 	public bool visual_indicators_enabled = false;
-	public string color_blindness = "None";
+	public int color_blindness = 0; // 0 = none, 1 = protanopia, 2 = deuteranopia, 3 = tritanopia, 4 = achromatopsia
 
 	// ---------- COMMAND ----------
-	private Node? page_command;
+	private Node? _page_command;
 
-	private string waiting_action = "";
-	private Button? waiting_button = null;
-	private string waiting_action_pad = "";
-	private Button? waiting_button_pad = null;
+	private string _waiting_action = "";
+	private Button? _waiting_button = null;
+	private string _waiting_action_pad = "";
+	private Button? _waiting_button_pad = null;
 
 	public Dictionary actions = new Dictionary
 	{
@@ -69,11 +69,11 @@ public partial class settings_pages : Node
 
 	public override void _Ready()
 	{
-		page_command = GetNodeOrNull("PageCommand");
+		_page_command = GetNodeOrNull("PageCommand");
 
 		foreach (string action in actions.Keys)
 		{
-			var label = page_command.GetNode<Label>((string)actions[action]);
+			var label = _page_command.GetNode<Label>((string)actions[action]);
 			var btn = label.GetNode<Button>("Button");
 
 			btn.Text = GetActionKey(action);
@@ -82,14 +82,14 @@ public partial class settings_pages : Node
 
 		foreach (string action in actions.Keys)
 		{
-			var label = page_command.GetNode<Label>((string)actions[action]);
+			var label = _page_command.GetNode<Label>((string)actions[action]);
 			var btn2 = label.GetNode<Button>("Button2");
 
 			btn2.Text = GetActionKeyPad(action);
 			btn2.Pressed += () => OnRebindPadPressed(action, btn2);
 		}
 
-		var resetBtn = page_command.GetNodeOrNull<Button>("ButtonReset");
+		var resetBtn = _page_command.GetNodeOrNull<Button>("ButtonReset");
 		if (resetBtn != null)
 			resetBtn.Pressed += OnResetCommandsPressed;
 
@@ -100,13 +100,13 @@ public partial class settings_pages : Node
 	// SUBTITLE
 	// =================================================
 
-	public void _on_subtitles_toggled(bool enabled)        { subtitles_enabled = enabled;     UpdateSubtitlePreview(); }
-	public void _on_subtitle_size_changed(double value)    { subtitle_size = (float)value;    UpdateSubtitlePreview(); }
-	public void _on_subtitle_font_item_selected(long index){ subtitle_font_index = (int)index; UpdateSubtitlePreview(); }
-	public void _on_subtitle_text_color_changed(long index){ subtitle_text_color = (int)index; UpdateSubtitlePreview(); }
-	public void _on_subtitle_bg_color_changed(long index)  { subtitle_bg_color = (int)index;  UpdateSubtitlePreview(); }
-	public void _on_subtitle_opacity_changed(double value) { subtitle_opacity = (float)value; UpdateSubtitlePreview(); }
-	public void _on_subtitle_language_item_selected(long index) { subtitle_language = (int)index; UpdateSubtitlePreview(); }
+	public void OnSubtitlesToggled(bool enabled)        { subtitles_enabled = enabled;     UpdateSubtitlePreview(); }
+	public void OnSubtitleSizeChanged(double value)    { subtitle_size = (float)value;    UpdateSubtitlePreview(); }
+	public void OnSubtitleFontItemSelected(long index){ subtitle_font_index = (int)index; UpdateSubtitlePreview(); }
+	public void OnSubtitleTextColorChanged(long index){ subtitle_text_color = (int)index; UpdateSubtitlePreview(); }
+	public void OnSubtitleBgColorChanged(long index)  { subtitle_bg_color = (int)index;  UpdateSubtitlePreview(); }
+	public void OnSubtitleOpacityChanged(double value) { subtitle_opacity = (float)value; UpdateSubtitlePreview(); }
+	public void OnSubtitleLanguageItemSelected(long index) { subtitle_language = (int)index; UpdateSubtitlePreview(); }
 
 	private void UpdateSubtitlePreview()
 	{
@@ -162,11 +162,11 @@ public partial class settings_pages : Node
 	// VIDEO
 	// =================================================
 
-	public void _on_contrast_changed(double value) => contrast = (float)value;
-	public void _on_brightness_changed(double value) => brightness = (float)value;
-	public void _on_animations_toggled(bool enabled) => animations_enabled = enabled;
+	public void OnContrastChanged(double value) => contrast = (float)value;
+	public void OnBrightnessChanged(double value) => brightness = (float)value;
+	public void OnAnimationsToggled(bool enabled) => animations_enabled = enabled;
 
-	public void _on_resolution_item_selected(long index)
+	public void OnResolutionItemSelected(long index)
 	{
 		resolution_index = (int)index;
 
@@ -179,7 +179,7 @@ public partial class settings_pages : Node
 		DisplayServer.WindowSetSize(resolution);
 	}
 
-		public void _on_window_mode_item_selected(long index)
+		public void OnWindowModeItemSelected(long index)
 	{
 		window_mode = (int)index;
 		switch (index)
@@ -189,21 +189,20 @@ public partial class settings_pages : Node
 		}
 	}
 
-	public void _on_texture_item_selected(long index) => texture_quality = (int)index;
+	public void OnTextureItemSelected(long index) => texture_quality = (int)index;
 
 	// =================================================
 	// VISUAL
 	// =================================================
 
-	public void _on_interface_size_changed(double value) => interface_size = (float)value;
-	public void _on_blurry_toggled(bool enabled) => blurry_enabled = enabled;
-	public void _on_camera_shake_toggled(bool enabled) => camera_shake_enabled = enabled;
-	public void _on_visual_indicators_toggled(bool enabled) => visual_indicators_enabled = enabled;
+	public void OnInterfaceSizeChanged(double value) => interface_size = (float)value;
+	public void OnBlurryToggled(bool enabled) => blurry_enabled = enabled;
+	public void OnCameraShakeToggled(bool enabled) => camera_shake_enabled = enabled;
+	public void OnVisualIndicatorsToggled(bool enabled) => visual_indicators_enabled = enabled;
 
-	public void _on_color_blindness_item_selected(long index)
+	public void OnColorBlindnessItemSelected(long index)
 	{
-		var btn = GetNode<OptionButton>("PageVisual/ColorBlindness/OptionButton");
-		color_blindness = btn.GetItemText((int)index);
+		color_blindness = (int)index;
 	}
 
 	// =================================================
@@ -212,24 +211,24 @@ public partial class settings_pages : Node
 
 	private void OnRebindPressed(string action, Button btn)
 	{
-		if (waiting_button_pad != null)
+		if (_waiting_button_pad != null)
 		{
-			var prevBtn = waiting_button_pad;
-			var prevAction = waiting_action_pad;
-			waiting_action_pad = "";
-			waiting_button_pad = null;
+			var prevBtn = _waiting_button_pad;
+			var prevAction = _waiting_action_pad;
+			_waiting_action_pad = "";
+			_waiting_button_pad = null;
 			prevBtn.Text = GetActionKeyPad(prevAction);
 		}
 
-		waiting_action = action;
-		waiting_button = btn;
+		_waiting_action = action;
+		_waiting_button = btn;
 		btn.Text = "Press key...";
 		btn.ReleaseFocus();
 	}
 
 	public override void _Input(InputEvent @event)
 	{
-		if (waiting_action != "")
+		if (_waiting_action != "")
 		{
 			if (@event is InputEventKey key && key.Pressed)
 				BindEvent(@event);
@@ -237,7 +236,7 @@ public partial class settings_pages : Node
 				BindEvent(@event);
 		}
 
-		if (waiting_action_pad != "")
+		if (_waiting_action_pad != "")
 		{
 			if (@event is InputEventJoypadButton pad && pad.Pressed)
 				BindPadEvent(@event);
@@ -257,18 +256,18 @@ public partial class settings_pages : Node
 				return;
 		}
 
-		var events = InputMap.ActionGetEvents(waiting_action);
+		var events = InputMap.ActionGetEvents(_waiting_action);
 		foreach (var ev in new Godot.Collections.Array<InputEvent>(events))
 		{
 			if (ev is InputEventKey || ev is InputEventMouseButton)
-				InputMap.ActionEraseEvent(waiting_action, ev);
+				InputMap.ActionEraseEvent(_waiting_action, ev);
 		}
 
-		InputMap.ActionAddEvent(waiting_action, @event);
+		InputMap.ActionAddEvent(_waiting_action, @event);
 
-		waiting_button.Text = GetActionKey(waiting_action);
-		waiting_action = "";
-		waiting_button = null;
+		_waiting_button.Text = GetActionKey(_waiting_action);
+		_waiting_action = "";
+		_waiting_button = null;
 	}
 
 	private string GetActionKey(string actionName)
@@ -286,17 +285,17 @@ public partial class settings_pages : Node
 
 	private void OnRebindPadPressed(string action, Button btn)
 	{
-		if (waiting_button != null)
+		if (_waiting_button != null)
 		{
-			var prevBtn = waiting_button;
-			var prevAction = waiting_action;
-			waiting_action = "";
-			waiting_button = null;
+			var prevBtn = _waiting_button;
+			var prevAction = _waiting_action;
+			_waiting_action = "";
+			_waiting_button = null;
 			prevBtn.Text = GetActionKey(prevAction);
 		}
 
-		waiting_action_pad = action;
-		waiting_button_pad = btn;
+		_waiting_action_pad = action;
+		_waiting_button_pad = btn;
 		btn.Text = "Press button...";
 	}
 
@@ -315,16 +314,16 @@ public partial class settings_pages : Node
 
 	private void BindPadEvent(InputEvent @event)
 	{
-		var events = InputMap.ActionGetEvents(waiting_action_pad);
+		var events = InputMap.ActionGetEvents(_waiting_action_pad);
 		foreach (var ev in new Godot.Collections.Array<InputEvent>(events))
 			if (ev is InputEventJoypadButton || ev is InputEventJoypadMotion)
-				InputMap.ActionEraseEvent(waiting_action_pad, ev);
+				InputMap.ActionEraseEvent(_waiting_action_pad, ev);
 
-		InputMap.ActionAddEvent(waiting_action_pad, @event);
+		InputMap.ActionAddEvent(_waiting_action_pad, @event);
 
-		waiting_button_pad.Text = GetActionKeyPad(waiting_action_pad);
-		waiting_action_pad = "";
-		waiting_button_pad = null;
+		_waiting_button_pad.Text = GetActionKeyPad(_waiting_action_pad);
+		_waiting_action_pad = "";
+		_waiting_button_pad = null;
 
 		GetViewport().SetInputAsHandled();
 	}
@@ -335,7 +334,7 @@ public partial class settings_pages : Node
 
 		foreach (string action in actions.Keys)
 		{
-			var label = page_command.GetNode<Label>((string)actions[action]);
+			var label = _page_command.GetNode<Label>((string)actions[action]);
 			label.GetNode<Button>("Button").Text = GetActionKey(action);
 			label.GetNode<Button>("Button2").Text = GetActionKeyPad(action);
 		}
@@ -354,25 +353,25 @@ public partial class settings_pages : Node
 		AudioServer.SetBusVolumeDb(idx, Mathf.LinearToDb(value));
 	}
 
-	public void _on_master_volume_changed(double value)
+	public void OnMasterVolumeChanged(double value)
 	{
 		master_volume = (float)value;
 		SetBusVolume("Master", master_volume);
 	}
 
-	public void _on_music_volume_changed(double value)
+	public void OnMusicVolumeChanged(double value)
 	{
 		music_volume = (float)value;
 		SetBusVolume("Music", music_volume);
 	}
 
-	public void _on_voices_volume_changed(double value)
+	public void OnVoicesVolumeChanged(double value)
 	{
 		voices_volume = (float)value;
 		SetBusVolume("Voices", voices_volume);
 	}
 
-	public void _on_sfx_volume_changed(double value)
+	public void OnSfxVolumeChanged(double value)
 	{
 		sfx_volume = (float)value;
 		SetBusVolume("SFX", sfx_volume);
@@ -382,7 +381,7 @@ public partial class settings_pages : Node
 	// APPLY VALUES
 	// =================================================
 
-	public async void apply_font_selection()
+	public async void ApplyFontSelection()
 	{
 		await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
 		await ToSignal(GetTree().CreateTimer(0.1f), SceneTreeTimer.SignalName.Timeout);
@@ -393,7 +392,7 @@ public partial class settings_pages : Node
 		UpdateSubtitlePreview();
 	}
 
-	public void apply_settings_to_ui()
+	public void ApplySettingsToUI()
 	{
 		GetNode<CheckBox>("PageSubtitle/Subtitles/CheckBox").ButtonPressed = subtitles_enabled;
 		GetNode<HSlider>("PageSubtitle/Size/HSlider").Value = subtitle_size;
@@ -413,13 +412,14 @@ public partial class settings_pages : Node
 		GetNode<CheckBox>("PageVisual/Blurry/CheckBox").ButtonPressed = blurry_enabled;
 		GetNode<CheckBox>("PageVisual/CameraShake/CheckBox").ButtonPressed = camera_shake_enabled;
 		GetNode<CheckBox>("PageVisual/VisualIndicators/CheckBox").ButtonPressed = visual_indicators_enabled;
+		GetNode<OptionButton>("PageVisual/ColorBlindness/OptionButton").Select(color_blindness);
 
-		apply_audio_to_ui();
-		_on_window_mode_item_selected(window_mode);
+		ApplyAudioToUi();
+		OnWindowModeItemSelected(window_mode);
 		UpdateSubtitlePreview();
 	}
 
-	public void apply_audio_to_ui()
+	public void ApplyAudioToUi()
 	{
 		GetNode<HSlider>("PageAudio/Master/HSlider").Value = master_volume;
 		GetNode<HSlider>("PageAudio/Music/HSlider").Value = music_volume;

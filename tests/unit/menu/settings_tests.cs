@@ -3,7 +3,7 @@ using static GdUnit4.Assertions;
 using System.Collections.Generic;
 
 // =====================================================
-// TESTS UNITAIRES - settings_pages & settings_save
+// TESTS UNITAIRES - SettingsPages & SettingsSave
 // =====================================================
 
 [TestSuite]
@@ -16,7 +16,7 @@ public class SettingsPagesTests
 	[TestCase]
 	public void SubtitleDefaultValues_AreCorrect()
 	{
-		var page = new settings_pages_mock();
+		var page = new SettingsPages_mock();
 		AssertThat(page.subtitles_enabled).IsFalse();
 		AssertThat(page.subtitle_size).IsEqual(30.0f);
 		AssertThat(page.subtitle_font_index).IsEqual(0);
@@ -29,7 +29,7 @@ public class SettingsPagesTests
 	[TestCase]
 	public void SubtitleToggle_UpdatesValue()
 	{
-		var page = new settings_pages_mock();
+		var page = new SettingsPages_mock();
 		page.subtitles_enabled = true;
 		AssertThat(page.subtitles_enabled).IsTrue();
 		page.subtitles_enabled = false;
@@ -39,7 +39,7 @@ public class SettingsPagesTests
 	[TestCase]
 	public void SubtitleSize_UpdatesCorrectly()
 	{
-		var page = new settings_pages_mock();
+		var page = new SettingsPages_mock();
 		page.subtitle_size = 10.0f;
 		AssertThat(page.subtitle_size).IsEqual(10.0f);
 		page.subtitle_size = 100.0f;
@@ -49,7 +49,7 @@ public class SettingsPagesTests
 	[TestCase]
 	public void SubtitleOpacity_NormalizesToAlpha()
 	{
-		var page = new settings_pages_mock();
+		var page = new SettingsPages_mock();
 		page.subtitle_opacity = 75.0f;
 		float alpha = page.subtitle_opacity / 100.0f;
 		AssertThat(alpha).IsEqual(0.75f);
@@ -58,7 +58,7 @@ public class SettingsPagesTests
 	[TestCase]
 	public void SubtitleOpacity_0_GivesAlpha0()
 	{
-		var page = new settings_pages_mock();
+		var page = new SettingsPages_mock();
 		page.subtitle_opacity = 0.0f;
 		float alpha = page.subtitle_opacity / 100.0f;
 		AssertThat(alpha).IsEqual(0.0f);
@@ -67,7 +67,7 @@ public class SettingsPagesTests
 	[TestCase]
 	public void SubtitleOpacity_100_GivesAlpha1()
 	{
-		var page = new settings_pages_mock();
+		var page = new SettingsPages_mock();
 		page.subtitle_opacity = 100.0f;
 		float alpha = page.subtitle_opacity / 100.0f;
 		AssertThat(alpha).IsEqual(1.0f);
@@ -76,7 +76,7 @@ public class SettingsPagesTests
 	[TestCase]
 	public void SubtitleLanguage_0_IsEnglish()
 	{
-		var page = new settings_pages_mock();
+		var page = new SettingsPages_mock();
 		page.subtitle_language = 0;
 		AssertThat(page.GetPreviewText()).IsEqual("Subtitle");
 	}
@@ -84,7 +84,7 @@ public class SettingsPagesTests
 	[TestCase]
 	public void SubtitleLanguage_1_IsFrench()
 	{
-		var page = new settings_pages_mock();
+		var page = new SettingsPages_mock();
 		page.subtitle_language = 1;
 		AssertThat(page.GetPreviewText()).IsEqual("Sous-Titre");
 	}
@@ -92,7 +92,7 @@ public class SettingsPagesTests
 	[TestCase]
 	public void SubtitleLanguage_OutOfBounds_FallsBackToEnglish()
 	{
-		var page = new settings_pages_mock();
+		var page = new SettingsPages_mock();
 		page.subtitle_language = 99;
 		AssertThat(page.GetPreviewText()).IsEqual("Subtitle");
 	}
@@ -100,7 +100,7 @@ public class SettingsPagesTests
 	[TestCase]
 	public void SubtitleBgColor_Index4_IsTransparent()
 	{
-		var page = new settings_pages_mock();
+		var page = new SettingsPages_mock();
 		page.subtitle_bg_color = 4;
 		AssertThat(page.IsBgTransparent()).IsTrue();
 	}
@@ -108,7 +108,7 @@ public class SettingsPagesTests
 	[TestCase]
 	public void SubtitleBgColor_Index0_IsNotTransparent()
 	{
-		var page = new settings_pages_mock();
+		var page = new SettingsPages_mock();
 		page.subtitle_bg_color = 0;
 		AssertThat(page.IsBgTransparent()).IsFalse();
 	}
@@ -116,7 +116,7 @@ public class SettingsPagesTests
 	[TestCase]
 	public void SubtitleBgColor_AllValidIndexes_AreNotTransparent()
 	{
-		var page = new settings_pages_mock();
+		var page = new SettingsPages_mock();
 		for (int i = 0; i < 4; i++)
 		{
 			page.subtitle_bg_color = i;
@@ -131,7 +131,7 @@ public class SettingsPagesTests
 	[TestCase]
 	public void VideoDefaultValues_AreCorrect()
 	{
-		var page = new settings_pages_mock();
+		var page = new SettingsPages_mock();
 		AssertThat(page.contrast).IsEqual(50.0f);
 		AssertThat(page.brightness).IsEqual(50.0f);
 		AssertThat(page.animations_enabled).IsFalse();
@@ -143,7 +143,7 @@ public class SettingsPagesTests
 	[TestCase]
 	public void Resolution_Index0_Is1920x1080()
 	{
-		var page = new settings_pages_mock();
+		var page = new SettingsPages_mock();
 		var res = page.GetResolutionForIndex(0);
 		AssertThat(res.X).IsEqual(1920);
 		AssertThat(res.Y).IsEqual(1080);
@@ -152,7 +152,7 @@ public class SettingsPagesTests
 	[TestCase]
 	public void Resolution_Index1_Is1280x720()
 	{
-		var page = new settings_pages_mock();
+		var page = new SettingsPages_mock();
 		var res = page.GetResolutionForIndex(1);
 		AssertThat(res.X).IsEqual(1280);
 		AssertThat(res.Y).IsEqual(720);
@@ -161,7 +161,7 @@ public class SettingsPagesTests
 	[TestCase]
 	public void Resolution_UnknownIndex_FallsBackTo1920x1080()
 	{
-		var page = new settings_pages_mock();
+		var page = new SettingsPages_mock();
 		var res = page.GetResolutionForIndex(99);
 		AssertThat(res.X).IsEqual(1920);
 		AssertThat(res.Y).IsEqual(1080);
@@ -170,14 +170,14 @@ public class SettingsPagesTests
 	[TestCase]
 	public void WindowMode_Default_IsWindowed()
 	{
-		var page = new settings_pages_mock();
+		var page = new SettingsPages_mock();
 		AssertThat(page.window_mode).IsEqual(0);
 	}
 
 	[TestCase]
 	public void WindowMode_1_IsFullscreen()
 	{
-		var page = new settings_pages_mock();
+		var page = new SettingsPages_mock();
 		page.window_mode = 1;
 		AssertThat(page.window_mode).IsEqual(1);
 	}
@@ -189,12 +189,12 @@ public class SettingsPagesTests
 	[TestCase]
 	public void VisualDefaultValues_AreCorrect()
 	{
-		var page = new settings_pages_mock();
+		var page = new SettingsPages_mock();
 		AssertThat(page.interface_size).IsEqual(1.0f);
 		AssertThat(page.blurry_enabled).IsFalse();
 		AssertThat(page.camera_shake_enabled).IsFalse();
 		AssertThat(page.visual_indicators_enabled).IsFalse();
-		AssertThat(page.color_blindness).IsEqual("None");
+		AssertThat(page.color_blindness).IsEqual(0);
 	}
 
 	// =================================================
@@ -204,7 +204,7 @@ public class SettingsPagesTests
 	[TestCase]
 	public void AudioDefaultValues_AreCorrect()
 	{
-		var page = new settings_pages_mock();
+		var page = new SettingsPages_mock();
 		AssertThat(page.master_volume).IsEqual(50.0f);
 		AssertThat(page.music_volume).IsEqual(50.0f);
 		AssertThat(page.voices_volume).IsEqual(50.0f);
@@ -214,7 +214,7 @@ public class SettingsPagesTests
 	[TestCase]
 	public void AudioVolume_UpdatesCorrectly()
 	{
-		var page = new settings_pages_mock();
+		var page = new SettingsPages_mock();
 		page.master_volume = 75.0f;
 		AssertThat(page.master_volume).IsEqual(75.0f);
 		page.sfx_volume = 0.0f;
@@ -229,7 +229,7 @@ public class SettingsPagesTests
 	[TestCase]
 	public void Actions_ContainsAllExpectedKeys()
 	{
-		var page = new settings_pages_mock();
+		var page = new SettingsPages_mock();
 		string[] expected = {
 			"move_up", "move_down", "move_left", "move_right",
 			"battle_move_unit_to",
@@ -246,7 +246,7 @@ public class SettingsPagesTests
 	[TestCase]
 	public void Actions_Count_Is12()
 	{
-		var page = new settings_pages_mock();
+		var page = new SettingsPages_mock();
 		AssertThat(page.actions.Count).IsEqual(12);
 	}
 }
@@ -254,7 +254,7 @@ public class SettingsPagesTests
 // =====================================================
 // MOCK - Reproduit la logique pure sans SceneTree
 // =====================================================
-public class settings_pages_mock
+public class SettingsPages_mock
 {
 	// SUBTITLE
 	public bool subtitles_enabled = false;
@@ -278,7 +278,7 @@ public class settings_pages_mock
 	public bool blurry_enabled = false;
 	public bool camera_shake_enabled = false;
 	public bool visual_indicators_enabled = false;
-	public string color_blindness = "None";
+	public int color_blindness = 0; // 0 = none, 1 = protanopia, 2 = deuteranopia, 3 = tritanopia, 4 = achromatopsia
 
 	// AUDIO
 	public float master_volume = 50.0f;

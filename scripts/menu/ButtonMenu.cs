@@ -1,18 +1,18 @@
 using Godot;
 
-public partial class button_menu : Button
+public partial class ButtonMenu : Button
 {
-	public void _on_OptionsButton_pressed()
+	public void OnOptionsButtonPressed()
 	{
 		GetTree().ChangeSceneToFile("res://scenes/settings_beta.tscn");
 	}
 
-	public void _on_ExitSettingsButton_pressed()
+	public void OnOptionsExitButtonPressed()
 	{
 		GetTree().ChangeSceneToFile("res://scenes/menu_beta.tscn");
 	}
 
-	public void _on_ExitButton_pressed()
+	public void OnExitButtonPressed()
 	{
 		GetTree().Quit();
 	}

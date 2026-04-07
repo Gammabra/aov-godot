@@ -1,6 +1,6 @@
 using Godot;
 
-public partial class button_settings_font : OptionButton
+public partial class ButtonSettingsFont : OptionButton
 {
 	public override void _Ready()
 	{

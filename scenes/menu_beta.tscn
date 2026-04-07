@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://b5g32aw86klf1" path="res://assets/menu_assets/MENU proto.png" id="1_crup6"]
 [ext_resource type="Texture2D" uid="uid://btapw4xgdwv57" path="res://assets/menu_assets/Logo AOV v2 white.png" id="2_xf5kf"]
 [ext_resource type="FontFile" uid="uid://dri86n5u6wvhn" path="res://font/abibas/Abibas.ttf" id="3_3mi6d"]
-[ext_resource type="Script" uid="uid://b8qswx3qw7x7g" path="res://scripts/menu/button_menu.cs" id="4_xf5kf"]
+[ext_resource type="Script" path="res://scripts/menu/ButtonMenu.cs" id="4_xf5kf"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xf5kf"]
 
@@ -79,5 +79,5 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_yu3h4")
 text = "Exit"
 script = ExtResource("4_xf5kf")
 
-[connection signal="pressed" from="HBoxContainer/VBoxContainer/ButtonOptions" to="HBoxContainer/VBoxContainer/ButtonOptions" method="_on_OptionsButton_pressed"]
-[connection signal="pressed" from="HBoxContainer/VBoxContainer/ButtonExit" to="HBoxContainer/VBoxContainer/ButtonExit" method="_on_ExitButton_pressed"]
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/ButtonOptions" to="HBoxContainer/VBoxContainer/ButtonOptions" method="OnOptionsButtonPressed"]
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/ButtonExit" to="HBoxContainer/VBoxContainer/ButtonExit" method="OnExitButtonPressed"]

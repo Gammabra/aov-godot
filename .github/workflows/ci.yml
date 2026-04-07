@@ -54,17 +54,16 @@ jobs:
           dotnet test AshesofVelsingrad.Core.Tests/AshesofVelsingrad.Core.Tests.csproj
           --configuration Release 
           --no-restore 
-          --results-directory ./TestResults 
           --logger "trx;LogFileName=dotnet_results.trx"
-          -- DataCollectionRunSettings.DataCollectors.DataCollector.Configuration.Format=cobertura
-          -- DataCollectionRunSettings.DataCollectors.DataCollector.Configuration.Threshold=90
+          --collect:"XPlat Code Coverage"
+          --DataCollectionRunSettings.DataCollectors.DataCollector.Configuration.Format=cobertura
 
       - name: Upload .NET Coverage Artifact
         uses: actions/upload-artifact@v4
         if: always()
         with:
           name: dotnet-coverage-report
-          path: ./TestResults/**/coverage.cobertura.xml
+          path: ./AshesofVelsingrad.Core.Tests/TestResults/**/coverage.cobertura.xml
 
       - name: Upload .NET Test Results
         uses: actions/upload-artifact@v4
@@ -77,7 +76,7 @@ jobs:
         uses: codecov/codecov-action@v5
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
-          files: ./TestResults/**/coverage.cobertura.xml
+          files: ./AshesofVelsingrad.Core.Tests/TestResults/**/coverage.cobertura.xml
           flags: core-logic 
           name: core-tests
           fail_ci_if_error: true
@@ -123,8 +122,8 @@ jobs:
       - name: Generate HTML Report
         run: >
           reportgenerator 
-          -reports:"${{ github.workspace }}/TestResults/**/coverage.cobertura.xml" 
-          -targetdir:"${{ github.workspace }}/TestResults/CoverageHTML" 
+          "-reports:AshesofVelsingrad.Core.Tests/TestResults/**/coverage.cobertura.xml" 
+          "-targetdir:TestResults/CoverageHTML" 
           -reporttypes:Html
 
       - name: Upload HTML Coverage Artifact

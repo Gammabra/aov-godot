@@ -48,11 +48,11 @@ public class AIDecisionGeneratorTests
     public void GenerateAllPossibleActions_WhenUnitPositionIsNull_ReturnsEmptyList()
     {
         // Arrange
-        _mockMapSystem.Setup(m => m.GetUnitPosition(_mockUnit.Object)).Returns(((int, int, int)?)null);
-        var generator = new AIDecisionGenerator(_mockUnit.Object);
+        _mockMapSystem!.Setup(m => m.GetUnitPosition(_mockUnit!.Object)).Returns(((int, int, int)?)null);
+        var generator = new AIDecisionGenerator(_mockUnit!.Object);
 
         // Act
-        var results = generator.GenerateAllPossibleActions(_battleState);
+        var results = generator.GenerateAllPossibleActions(_battleState!);
 
         // Assert
         Assert.That(results, Is.Empty);
@@ -62,11 +62,11 @@ public class AIDecisionGeneratorTests
     public void GenerateAllPossibleActions_WithNoContext_AlwaysIncludesPassAction()
     {
         // Arrange
-        _mockMapSystem.Setup(m => m.GetUnitPosition(_mockUnit.Object)).Returns((0, 0, 0));
-        var generator = new AIDecisionGenerator(_mockUnit.Object);
+        _mockMapSystem!.Setup(m => m.GetUnitPosition(_mockUnit!.Object)).Returns((0, 0, 0));
+        var generator = new AIDecisionGenerator(_mockUnit!.Object);
 
         // Act
-        var results = generator.GenerateAllPossibleActions(_battleState);
+        var results = generator.GenerateAllPossibleActions(_battleState!);
 
         // Assert
         Assert.That(results.Any(d => d.Action == AIAction.Pass), Is.True);
@@ -80,13 +80,13 @@ public class AIDecisionGeneratorTests
         // Arrange
         var myPos = (0, 0, 0);
         var targetPos = (1, 1, 0); // Manhattan distance = 2
-        _mockMapSystem.Setup(m => m.GetUnitPosition(_mockUnit.Object)).Returns(myPos);
+        _mockMapSystem!.Setup(m => m.GetUnitPosition(_mockUnit!.Object)).Returns(myPos);
 
         // Setup Enemy
         var mockEnemy = new Mock<IUnitSystem>();
         mockEnemy.Setup(e => e.UnitName).Returns("TargetDummy");
-        _battleState.PlayerUnits.Add(mockEnemy.Object);
-        _mockMapSystem.Setup(m => m.GetUnitPosition(mockEnemy.Object)).Returns(targetPos);
+        _battleState!.PlayerUnits.Add(mockEnemy.Object);
+        _mockMapSystem!.Setup(m => m.GetUnitPosition(mockEnemy.Object)).Returns(targetPos);
 
         // Setup Damage Skill (Range 3 > Distance 2)
         var mockSkill = new Mock<ISkillSystem>();
@@ -98,13 +98,13 @@ public class AIDecisionGeneratorTests
         mockSkill.Setup(s => s.Cooldown).Returns(0);
         
         // Ensure the AI unit has a Personality (otherwise _unit.Personality might be problematic)
-        _mockUnit.Setup(u => u.Personality).Returns(AIPersonality.Balanced);
-        _mockUnit.Setup(u => u.ActiveSkills).Returns(new List<ISkillSystem> { mockSkill.Object });
+        _mockUnit!.Setup(u => u.Personality).Returns(AIPersonality.Balanced);
+        _mockUnit!.Setup(u => u.ActiveSkills).Returns(new List<ISkillSystem> { mockSkill.Object });
 
-        var generator = new AIDecisionGenerator(_mockUnit.Object);
+        var generator = new AIDecisionGenerator(_mockUnit!.Object);
 
         // Act
-        var results = generator.GenerateAllPossibleActions(_battleState);
+        var results = generator.GenerateAllPossibleActions(_battleState!);
 
         // Assert
         Assert.That(results.Any(d => d.Action == AIAction.UseSkill), Is.True);
@@ -114,21 +114,21 @@ public class AIDecisionGeneratorTests
     public void GenerateDefensiveActions_WhenHpIsLow_AddsRetreatDecision()
     {
         // 1. Arrange - Setup HP and Personality
-        _mockUnit.Setup(u => u.Hp).Returns(10f); 
-        _mockUnit.Setup(u => u.MaxHp).Returns(100f);
-        _mockUnit.Setup(u => u.Personality).Returns(AIPersonality.Defensive);
-        _mockMapSystem.Setup(m => m.GetUnitPosition(_mockUnit.Object)).Returns((0, 0, 0));
+        _mockUnit!.Setup(u => u.Hp).Returns(10f); 
+        _mockUnit!.Setup(u => u.MaxHp).Returns(100f);
+        _mockUnit!.Setup(u => u.Personality).Returns(AIPersonality.Defensive);
+        _mockMapSystem!.Setup(m => m.GetUnitPosition(_mockUnit!.Object)).Returns((0, 0, 0));
 
         // 3. Setup a nearby threat
         var mockEnemy = new Mock<IUnitSystem>();
-        _battleState.PlayerUnits.Add(mockEnemy.Object);
-        _mockMapSystem.Setup(m => m.GetUnitPosition(mockEnemy.Object)).Returns((1, 0, 0));
+        _battleState!.PlayerUnits.Add(mockEnemy.Object);
+        _mockMapSystem!.Setup(m => m.GetUnitPosition(mockEnemy.Object)).Returns((1, 0, 0));
 
 
-        var generator = new AIDecisionGenerator(_mockUnit.Object);
+        var generator = new AIDecisionGenerator(_mockUnit!.Object);
 
         // Act
-        var results = generator.GenerateAllPossibleActions(_battleState);
+        var results = generator.GenerateAllPossibleActions(_battleState!);
 
         // Assert
         Assert.That(results.Any(d => d.Action == AIAction.Move && d.Reasoning.Contains("Retreat")), Is.True);
@@ -348,10 +348,10 @@ public class AIDecisionGeneratorTests
 
         var mockSkill = new Mock<ISkillSystem>();
         mockSkill.Setup(s => s.Cooldown).Returns(1); 
-        _mockUnit.Setup(u => u.ActiveSkills).Returns(new List<ISkillSystem> { mockSkill.Object });
+        _mockUnit!.Setup(u => u.ActiveSkills).Returns(new List<ISkillSystem> { mockSkill.Object });
 
         // Act
-        var results = new AIDecisionGenerator(_mockUnit.Object).GenerateAllPossibleActions(_battleState!);
+        var results = new AIDecisionGenerator(_mockUnit!.Object).GenerateAllPossibleActions(_battleState!);
 
         // Assert: Now it should find 1 action (Pass)
         Assert.That(results.Count, Is.EqualTo(1));
@@ -369,7 +369,7 @@ public class AIDecisionGeneratorTests
         _battleState!.PlayerUnits.Add(mockEnemy.Object);
         _mockMapSystem.Setup(m => m.GetUnitPosition(mockEnemy.Object)).Returns((10, 0, 10)); // Way too far
         
-        _mockUnit.Setup(u => u.GetPossibleMoves(It.IsAny<IMapSystem>())).Returns(new List<(int, int, int)>());
+        _mockUnit!.Setup(u => u.GetPossibleMoves(It.IsAny<IMapSystem>())).Returns(new List<(int, int, int)>());
 
         // Act
         var results = new AIDecisionGenerator(_mockUnit.Object).GenerateAllPossibleActions(_battleState!);
@@ -398,8 +398,8 @@ public class AIDecisionGeneratorTests
         mockHeal.Setup(s => s.EffectType).Returns(AovDataStructures.EffectType.Heal);
         mockHeal.Setup(s => s.ManaCost).Returns(100);
         
-        _mockUnit.Setup(u => u.Mana).Returns(10); // Too poor
-        _mockUnit.Setup(u => u.ActiveSkills).Returns(new List<ISkillSystem> { 
+        _mockUnit!.Setup(u => u.Mana).Returns(10); // Too poor
+        _mockUnit!.Setup(u => u.ActiveSkills).Returns(new List<ISkillSystem> { 
             mockDamage.Object, 
             mockHeal.Object 
         });
@@ -426,10 +426,10 @@ public class AIDecisionGeneratorTests
         var mockHeal = new Mock<ISkillSystem>();
         mockHeal.Setup(s => s.EffectType).Returns(AovDataStructures.EffectType.Heal);
         
-        _mockUnit.Setup(u => u.ActiveSkills).Returns(new List<ISkillSystem> { mockHeal.Object });
+        _mockUnit!.Setup(u => u.ActiveSkills).Returns(new List<ISkillSystem> { mockHeal.Object });
 
         // Act
-        var results = new AIDecisionGenerator(_mockUnit.Object).GenerateAllPossibleActions(_battleState);
+        var results = new AIDecisionGenerator(_mockUnit!.Object).GenerateAllPossibleActions(_battleState!);
 
         // Assert
         Assert.That(results.Any(d => d.Skill == mockHeal.Object), Is.False);

@@ -90,7 +90,7 @@ public class CellInformationTests
         var field = typeof(StatusEffect<CellInformation>)
             .GetField("<EffectToSpread>k__BackingField", BindingFlags.Instance | BindingFlags.NonPublic);
 
-        field.SetValue(cellEffect, unitEffect);
+        field!.SetValue(cellEffect, unitEffect);
 
         cell.ApplyEffect(cellEffect);
 

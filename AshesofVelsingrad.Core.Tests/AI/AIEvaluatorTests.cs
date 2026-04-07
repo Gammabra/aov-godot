@@ -44,14 +44,14 @@ public class AIEvaluatorTests
     public void EvaluateDefensiveAction_WhenHpIsCriticallyLow_ReturnsVeryHighScore()
     {
         // Arrange
-        _mockUnit.Setup(u => u.Hp).Returns(20f);
-        _mockUnit.Setup(u => u.MaxHp).Returns(100f); // 20% HP triggers the < 0.3f check (+100 score)
+        _mockUnit!.Setup(u => u.Hp).Returns(20f);
+        _mockUnit!.Setup(u => u.MaxHp).Returns(100f); // 20% HP triggers the < 0.3f check (+100 score)
         
         var currentPos = (0, 0, 0);
         var newPos = (-2, 0, -2); // Retreating position
         
         // Act
-        float score = _evaluator.EvaluateDefensiveAction(currentPos, newPos, _battleState);
+        float score = _evaluator!.EvaluateDefensiveAction(currentPos, newPos, _battleState!);
 
         // Assert
         // Base(50) + LowHP(100) + ThreatDiff(0) + Allies(0) + Terrain/Personality defaults

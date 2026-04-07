@@ -38,7 +38,7 @@ public class EffectTargetTests
         var effect = new MockStatusEffect("Burn");
 
         // Act
-        _target.ApplyEffect(effect);
+        _target!.ApplyEffect(effect);
 
         // Assert
         Assert.That(_target.GetActiveEffects(), Contains.Item(effect));
@@ -50,10 +50,10 @@ public class EffectTargetTests
     {
         // Arrange
         var effect = new MockStatusEffect("Burn");
-        _target.ApplyEffect(effect);
+        _target!.ApplyEffect(effect);
 
         // Act
-        _target.RemoveEffect(effect);
+        _target!.RemoveEffect(effect);
 
         // Assert
         Assert.That(_target.GetActiveEffects(), Does.Not.Contain(effect));
@@ -64,8 +64,8 @@ public class EffectTargetTests
     public void HasEffect_ReturnsTrue_WhenEffectTypeExists()
     {
         // Arrange
-        _target.ApplyEffect(new MockStatusEffect("Burn"));
-        _target.ApplyEffect(new DifferentStatusEffect());
+        _target!.ApplyEffect(new MockStatusEffect("Burn"));
+        _target!.ApplyEffect(new DifferentStatusEffect());
 
         // Act & Assert
         Assert.That(_target.HasEffect<MockStatusEffect>(), Is.True, "Should find MockStatusEffect");
@@ -76,7 +76,7 @@ public class EffectTargetTests
     public void HasEffect_ReturnsFalse_WhenEffectTypeDoesNotExist()
     {
         // Arrange
-        _target.ApplyEffect(new DifferentStatusEffect());
+        _target!.ApplyEffect(new DifferentStatusEffect());
 
         // Act & Assert
         Assert.That(_target.HasEffect<MockStatusEffect>(), Is.False, "Should not find MockStatusEffect if it wasn't added");
@@ -86,7 +86,7 @@ public class EffectTargetTests
     public void GetActiveEffects_ReturnsInternalListReference()
     {
         // Act
-        var effects = _target.GetActiveEffects();
+        var effects = _target!.GetActiveEffects();
 
         // Assert
         Assert.That(effects, Is.Not.Null);
@@ -98,10 +98,10 @@ public class EffectTargetTests
     {
         // Arrange
         var effect = new MockStatusEffect("Test");
-        _target.ApplyEffect(effect);
+        _target!.ApplyEffect(effect);
 
         // Act
-        effect.OnTurnPassed(_target);
+        effect.OnTurnPassed(_target!);
 
         // Assert
         // Since TestTarget is not IUnitSystem or CellInformation, no logging occurs

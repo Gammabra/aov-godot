@@ -54,7 +54,6 @@ jobs:
           dotnet test AshesofVelsingrad.Core.Tests/AshesofVelsingrad.Core.Tests.csproj
           --configuration Release 
           --no-restore 
-          --collect:"XPlat Code Coverage" 
           --results-directory ./TestResults 
           --logger "trx;LogFileName=dotnet_results.trx"
           -- DataCollectionRunSettings.DataCollectors.DataCollector.Configuration.Format=cobertura
@@ -115,14 +114,17 @@ jobs:
       - name: Install ReportGenerator
         run: dotnet tool install -g dotnet-reportgenerator-globaltool
 
+      - name: Find Coverage File
+        run: find . -name "coverage.cobertura.xml"
+
       - name: Debug - List Test Results
         run: ls -R ./TestResults
 
       - name: Generate HTML Report
         run: >
           reportgenerator 
-          "-reports:TestResults/**/coverage.cobertura.xml" 
-          "-targetdir:TestResults/CoverageHTML" 
+          -reports:"${{ github.workspace }}/TestResults/**/coverage.cobertura.xml" 
+          -targetdir:"${{ github.workspace }}/TestResults/CoverageHTML" 
           -reporttypes:Html
 
       - name: Upload HTML Coverage Artifact

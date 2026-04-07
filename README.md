@@ -1,8 +1,10 @@
 # 🏹 **Ashes Of Velsingrad**
 *A Dark Tactical RPG of Betrayal, Power, and Moral Choices*
 
-[![Build and Lint](https://github.com/Gammabra/aov-godot/actions/workflows/build.yml/badge.svg)](https://github.com/Gammabra/aov-godot/actions/workflows/build.yml)
-[![GdUnit Tests](https://github.com/Gammabra/aov-godot/actions/workflows/ci.yml/badge.svg)](https://github.com/Gammabra/aov-godot/actions/workflows/ci.yml)
+![Build Status](https://img.shields.io/github/actions/workflow/status/Gammabra/aov-godot/build.yml?label=Build%20%26%20Lint)
+![Core Coverage](https://img.shields.io/codecov/c/github/Gammabra/aov-godot?label=Core%20Logic%20Coverage&logo=codecov)
+![GdUnit4 Tests](https://img.shields.io/github/actions/workflow/status/Gammabra/aov-godot/ci.yml?label=Integration%20Tests&logo=godot-engine)
+![Docs](https://img.shields.io/badge/Docs-GitHub%20Pages-blue?logo=github)
 
 ---
 

@@ -242,7 +242,7 @@ public class AIUtilitiesTests
         var center = AIUtilities.FindCenterPoint(units, _mockMapSystem.Object);
 
         Assert.That(center, Is.Not.Null);
-        Assert.That(center.Value, Is.EqualTo((2, 2, 2)));
+        Assert.That(center!.Value, Is.EqualTo((2, 2, 2)));
     }
 
     [Test]

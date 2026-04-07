@@ -5,7 +5,7 @@ subtitle:       Ashes of Velsingrad
 author:         Eric XU
 module:         G-EIP-700
 version:        1.1
--------------------
+---
 
 ## **1. Project context**
 

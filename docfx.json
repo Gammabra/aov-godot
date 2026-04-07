@@ -58,16 +58,10 @@
     "resource": [
       {
         "files": [
-          "images/**"
+          "images/**",
+          "coverage/**"
         ],
         "src": "documentation"
-      },
-      {
-        "files": [
-          "**/*"
-        ],
-        "src": "coverage",
-        "dest": "coverage"
       }
     ],
     "postProcessors": [],

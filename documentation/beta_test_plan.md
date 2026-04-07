@@ -5,7 +5,7 @@ subtitle:       Ashes of Velsingrad
 author:         Louis Ferrari
 module:         G-EIP-700
 version:        1.0
--------------------
+---
 
 ## **1. Project context**
 

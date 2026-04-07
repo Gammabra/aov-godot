@@ -1,9 +1,8 @@
 name: Build DocFX Documentation
 
 on:
-  # Trigger this workflow AFTER "Tests and Coverage" completes
   workflow_run:
-    workflows: ["Tests and Coverage"] # Must match the 'name:' in ci.yml exactly
+    workflows: ["Tests and Coverage"]
     types:
       - completed
     branches: [develop, canary, release]
@@ -13,6 +12,8 @@ jobs:
   build-docs:
     if: ${{ github.event.workflow_run.conclusion == 'success' || github.event_name == 'workflow_dispatch' }}
     runs-on: windows-latest
+    permissions:
+      actions: read
     outputs:
       site-path: ${{ steps.upload.outputs.artifact-id }}
     steps:
@@ -24,13 +25,12 @@ jobs:
           dotnet-version: '9.0.x'
 
       # 1. Download the Coverage HTML from the other workflow
-      # Note: This works best if you merge the jobs or ensure the test workflow finished
       - name: Download Coverage Artifact
         uses: actions/download-artifact@v4
         with:
           name: coverage-html-site
-          path: coverage # Put it inside the docfx source folder
-          run-id: ${{ github.event.workflow_run.id }}
+          path: documentation/coverage
+          run-id: ${{ github.event.workflow_run.id|| github.run_id }}
           github-token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Build project

@@ -1,8 +1,8 @@
 @echo off
 setlocal
 
-set "RESULTS_PATH=%~dp0coverage\results"
-set "REPORT_PATH=%~dp0coverage\html"
+set "RESULTS_PATH=%~dp0documentation\coverage\results"
+set "REPORT_PATH=%~dp0documentation\coverage\html"
 
 echo [1/5] Cleaning previous build artifacts...
 dotnet clean

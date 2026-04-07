@@ -1,6 +1,6 @@
 using AshesOfVelsingrad.Systems;
 
-namespace UnitTests;
+namespace AshesOfVelsingrad.Helpers.Managers;
 
 public partial class TestConcreteBattleInputSystem : BattleInputSystem
 {

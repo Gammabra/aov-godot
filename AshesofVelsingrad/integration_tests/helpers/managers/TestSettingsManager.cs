@@ -4,7 +4,7 @@ using System.Text.Json;
 using AshesOfVelsingrad.Managers;
 using Godot;
 
-namespace UnitTests;
+namespace AshesOfVelsingrad.Helpers.Managers;
 
 public partial class TestSettingsManager : SettingsManager
 {

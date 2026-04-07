@@ -2,14 +2,16 @@ using System;
 using System.Collections.Generic;
 using System.Reflection;
 using System.Threading.Tasks;
-using AshesOfVelsingrad.AI;
+using AshesOfVelsingrad.Helpers.AI;
+using AshesOfVelsingrad.Helpers.Managers;
+using AshesOfVelsingrad.Helpers.Systems;
 using AshesOfVelsingrad.Managers;
 using AshesOfVelsingrad.Systems;
 using GdUnit4;
 using Godot;
 using static GdUnit4.Assertions;
 
-namespace UnitTests;
+namespace AshesOfVelsingrad.IntegrationTests.Managers;
 
 [TestSuite]
 [RequireGodotRuntime]

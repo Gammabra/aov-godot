@@ -1,6 +1,6 @@
 using AshesOfVelsingrad.Systems;
 
-namespace UnitTests;
+namespace AshesOfVelsingrad.Helpers.Systems;
 
 /// <summary>
 /// Test double for EffectTarget{TTarget}.

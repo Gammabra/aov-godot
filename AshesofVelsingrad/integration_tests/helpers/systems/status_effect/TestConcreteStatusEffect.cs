@@ -1,7 +1,7 @@
 using AshesOfVelsingrad.Systems;
 using AshesOfVelsingrad.Utilities;
 
-namespace UnitTests;
+namespace AshesOfVelsingrad.Helpers.Systems;
 
 public class TestConcreteStatusEffect<TTarget> : StatusEffect<TTarget>
 {

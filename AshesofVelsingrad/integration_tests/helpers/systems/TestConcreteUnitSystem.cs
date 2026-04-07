@@ -5,7 +5,7 @@ using AshesOfVelsingrad.Systems;
 using AshesOfVelsingrad.Utilities;
 using Godot;
 
-namespace UnitTests;
+namespace AshesOfVelsingrad.Helpers.Systems;
 
 /// <summary>
 /// Concrete test-double for IUnitSystem.

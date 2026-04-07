@@ -6,7 +6,7 @@ using AshesOfVelsingrad.Systems;
 using AshesOfVelsingrad.Utilities;
 using Godot;
 
-namespace UnitTests;
+namespace AshesOfVelsingrad.Helpers.Managers;
 
 public partial class TestConcreteGameManager : GameManager
 {

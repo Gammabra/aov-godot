@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Reflection;
 using AshesOfVelsingrad.Data;
+using AshesOfVelsingrad.Helpers.Systems;
 using AshesOfVelsingrad.Managers;
 using AshesOfVelsingrad.Systems;
 using AshesOfVelsingrad.Utilities;
@@ -9,7 +10,7 @@ using GdUnit4;
 using Godot;
 using static GdUnit4.Assertions;
 
-namespace UnitTests;
+namespace AshesOfVelsingrad.IntegrationTests.Managers;
 
 [TestSuite]
 [RequireGodotRuntime]

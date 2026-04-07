@@ -2,7 +2,7 @@ using AshesOfVelsingrad.Managers;
 using AshesOfVelsingrad.Systems;
 using Godot;
 
-namespace UnitTests;
+namespace AshesOfVelsingrad.Helpers.Managers;
 
 public partial class TestConcreteTurnManager : TurnManager
 {

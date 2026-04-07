@@ -1,12 +1,13 @@
 using System.Collections.Generic;
 using System.Reflection;
+using AshesOfVelsingrad.Helpers.Managers;
 using AshesOfVelsingrad.Managers;
 using AshesOfVelsingrad.UI.Menus;
 using GdUnit4;
 using Godot;
 using static GdUnit4.Assertions;
 
-namespace UnitTests;
+namespace AshesOfVelsingrad.IntegrationTests.UI;
 
 [TestSuite]
 [RequireGodotRuntime]

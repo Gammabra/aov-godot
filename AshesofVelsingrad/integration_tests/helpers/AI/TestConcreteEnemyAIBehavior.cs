@@ -1,7 +1,7 @@
 using System.Threading.Tasks;
 using AshesOfVelsingrad.AI;
 
-namespace UnitTests;
+namespace AshesOfVelsingrad.Helpers.AI;
 
 public partial class TestConcreteEnemyAIBehavior : EnemyAIBehavior
 {

@@ -3,7 +3,7 @@ using AshesOfVelsingrad.Systems;
 using AshesOfVelsingrad.Utilities;
 using Godot;
 
-namespace UnitTests;
+namespace AshesOfVelsingrad.Helpers.Systems;
 
 public sealed partial class TestConcreteMapSystem : MapSystem
 {

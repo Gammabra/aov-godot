@@ -51,7 +51,7 @@ public class StatusEffectSystemTest
     public void ApplyEffect_AddsTarget_AndEffect()
     {
         StatusEffectSystem sys = new();
-        IUnitSystem target = new TestConcreteUnitSystem();
+        IUnitSystem target = AddNode(new TestConcreteUnitSystem()); // AddNode instead of new
         TestConcreteStatusEffect<IUnitSystem> effect = new(duration: 2);
 
         sys.ApplyEffect(target, effect);
@@ -63,7 +63,7 @@ public class StatusEffectSystemTest
     public void ApplyEffect_Stacks_WhenStackable()
     {
         StatusEffectSystem sys = new();
-        IUnitSystem target = new TestConcreteUnitSystem();
+        IUnitSystem target = AddNode(new TestConcreteUnitSystem());
         TestConcreteStatusEffect<IUnitSystem> effect1 = new(duration: 1, isStackable: true);
         TestConcreteStatusEffect<IUnitSystem> effect2 = new(duration: 3, isStackable: true);
 
@@ -79,7 +79,7 @@ public class StatusEffectSystemTest
     public void ApplyEffect_DoesNotStack_WhenNotStackable()
     {
         StatusEffectSystem sys = new();
-        IUnitSystem target = new TestConcreteUnitSystem();
+        IUnitSystem target = AddNode(new TestConcreteUnitSystem());
         TestConcreteStatusEffect<IUnitSystem> e1 = new(duration: 2, isStackable: false);
         TestConcreteStatusEffect<IUnitSystem> e2 = new(duration: 1, isStackable: false);
 
@@ -99,12 +99,11 @@ public class StatusEffectSystemTest
     public void ProcessTargetTurnEnd_ProcessesUnitSystemEffects()
     {
         StatusEffectSystem sys = new();
-        IUnitSystem unitTarget = new TestConcreteUnitSystem();
+        IUnitSystem unitTarget = AddNode(new TestConcreteUnitSystem());
         TestConcreteStatusEffect<IUnitSystem> effect = new(duration: 2);
 
         sys.ApplyEffect(unitTarget, effect);
-
-        sys.ProcessUnitTurnEnd(unitTarget);
+        sys.ProcessUnitStatusEffects(unitTarget);
 
         AssertThat(effect.Duration).IsEqual(1);
         AssertThat(effect.TurnPassedCalled).IsTrue();
@@ -114,13 +113,12 @@ public class StatusEffectSystemTest
     public void ProcessTargetTurnEnd_RemovesExpiredEffect_AndUntracksTarget()
     {
         StatusEffectSystem sys = new();
-        IUnitSystem unitTarget = new TestConcreteUnitSystem();
+        IUnitSystem unitTarget = AddNode(new TestConcreteUnitSystem());
         TestConcreteStatusEffect<IUnitSystem> effect = new(duration: 1);
 
         sys.ApplyEffect(unitTarget, effect);
-
-        sys.ProcessUnitTurnEnd(unitTarget); // Duration -> 0
-        sys.ProcessUnitTurnEnd(unitTarget); // Should remove
+        sys.ProcessUnitStatusEffects(unitTarget);
+        sys.ProcessUnitStatusEffects(unitTarget);
 
         AssertThat(unitTarget.GetActiveEffects().Count).IsEqual(0);
     }
@@ -129,16 +127,13 @@ public class StatusEffectSystemTest
     public void ProcessTargetTurnEnd_IgnoresNonUnitSystemEffects()
     {
         StatusEffectSystem sys = new();
-
-        // Use a CellInformation to represent a non-unit target correctly
         CellInformation cellTarget = new(0, 0, 0, AovDataStructures.CellType.Grass, false);
         TestConcreteStatusEffect<CellInformation> cellEffect = new(duration: 2);
 
         sys.ApplyEffect(cellTarget, cellEffect);
 
-        // Process a unit turn end. It should not interact with the cell effect.
-        IUnitSystem dummyUnit = new TestConcreteUnitSystem();
-        sys.ProcessUnitTurnEnd(dummyUnit);
+        IUnitSystem dummyUnit = AddNode(new TestConcreteUnitSystem());
+        sys.ProcessUnitStatusEffects(dummyUnit);
 
         AssertThat(cellEffect.Duration).IsEqual(2);
         AssertThat(cellEffect.TurnPassedCalled).IsFalse();

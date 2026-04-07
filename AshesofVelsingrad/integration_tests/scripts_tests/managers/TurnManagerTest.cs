@@ -107,9 +107,8 @@ public class TurnManagerTest
     public void EndTurnManagerLoop_SetsFinishedState()
     {
         TurnManager manager = AddNode(new TurnManager());
-        manager.InitializeTurnOrder(new List<IUnitSystem>(), new List<IUnitSystem>());
-
-        manager.EndTurnManagerLoop();
+        manager.Call("Initialize");
+        manager.Call("EndTurnManagerLoop");
 
         object? currentState = typeof(TurnManager)
             .GetField("_currentTurnState", BindingFlags.NonPublic | BindingFlags.Instance)!

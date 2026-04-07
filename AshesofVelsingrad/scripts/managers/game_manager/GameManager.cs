@@ -117,6 +117,7 @@ public partial class GameManager : BaseManager
         _turnManagerContainer = GetNode<TurnManager>(_turnManagerPath);
         _turnManagerContainer.OnPlayerTurn += ActivatePlayerUnit;
         _turnManagerContainer.OnPlayerTurnEnd += DeactivatePlayerUnit;
+        _turnManagerContainer.OnEnemyTurn += EnemyTurnStarted;
         _turnManagerContainer.OnEnemyTurnEnd += EnemyTurnEnded;
         _turnManagerContainer.OnCurrentTurnEnd += CurrentTurnEnded;
         _turnManagerContainer.InitializeTurnOrder(_playerUnits, _enemyUnits);
@@ -205,6 +206,7 @@ public partial class GameManager : BaseManager
             return;
         }
 
+        _statusEffectSystem.ProcessUnitStatusEffects(_turnManagerContainer.GetCurrentUnit());
         _isPlayerTurn = true;
         if (_currentUnitPossibleMoves.Count == 0)
             _currentUnitPossibleMoves = _turnManagerContainer.GetCurrentUnit().GetPossibleMoves(_mapSystemContainer);
@@ -244,7 +246,6 @@ public partial class GameManager : BaseManager
         _currentUnitReachableCellsForCurrentSelectedSkill.Clear();
         _battleInputSystemContainer.SetInputEnabled(false);
         GD.Print("Deactivate input and player units");
-        _statusEffectSystem.ProcessUnitTurnEnd(_turnManagerContainer.GetCurrentUnit());
         CheckUnitTurnEnd();
     }
 
@@ -281,13 +282,14 @@ public partial class GameManager : BaseManager
             return;
         }
 
-        GD.Print($"Selected Skill {skillId}");
+        GD.Print($"Selected Skill {skillId + 1}");
         _clickOnMapContext = AovDataStructures.ClickOnMapContext.SelectUnitTarget;
         _selectedSkill = _turnManagerContainer.GetCurrentUnit().ActiveSkills[skillId];
         var reachableTuples = _turnManagerContainer
             .GetCurrentUnit()
             .GetReachableCellsForSkills(_mapSystemContainer, _selectedSkill);
-        _currentUnitReachableCellsForCurrentSelectedSkill = reachableTuples.ConvertAll(t => new Vector3I(t.Item1, t.Item2, t.Item3));
+        _currentUnitReachableCellsForCurrentSelectedSkill =
+            reachableTuples.ConvertAll(t => new Vector3I(t.Item1, t.Item2, t.Item3));
         GD.Print(
             "Current Unit Reachable cells: " + string.Join(", ", _currentUnitReachableCellsForCurrentSelectedSkill)
         );
@@ -307,7 +309,6 @@ public partial class GameManager : BaseManager
             return;
         }
 
-        _statusEffectSystem.ProcessUnitTurnEnd(_turnManagerContainer.GetCurrentUnit());
         _turnManagerContainer.GetCurrentUnit().PassTurn();
         CheckUnitTurnEnd();
     }
@@ -361,6 +362,17 @@ public partial class GameManager : BaseManager
         }
     }
 
+    private void EnemyTurnStarted()
+    {
+        if (_turnManagerContainer is null)
+        {
+            GD.PrintErr("TurnManagerContainer not set in GameManager.");
+            return;
+        }
+
+        _statusEffectSystem.ProcessUnitStatusEffects(_turnManagerContainer.GetCurrentUnit());
+    }
+
     /// <summary>
     ///     Resets movement flags when the enemy turn ends.
     /// </summary>
@@ -373,7 +385,6 @@ public partial class GameManager : BaseManager
         }
 
         _unitMoved = false;
-        _statusEffectSystem.ProcessUnitTurnEnd(_turnManagerContainer.GetCurrentUnit());
         CheckUnitTurnEnd();
     }
 
@@ -637,6 +648,7 @@ public partial class GameManager : BaseManager
                     return behaviorNested;
             }
         }
+
         return null;
     }
 

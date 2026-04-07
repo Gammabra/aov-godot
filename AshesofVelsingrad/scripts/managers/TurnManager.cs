@@ -47,9 +47,14 @@ public partial class TurnManager : BaseManager
     public event Action? OnPlayerTurn;
 
     /// <summary>
-	///     Triggered when the player's turn ends.
-	/// </summary>
-	public event Action? OnPlayerTurnEnd;
+    ///     Triggered when the player's turn ends.
+    /// </summary>
+    public event Action? OnPlayerTurnEnd;
+
+    /// <summary>
+    /// Triggered when the enemy's turn begins.
+    /// </summary>
+    public event Action? OnEnemyTurn;
 
     /// <summary>
     ///     Triggered when the enemy's turn ends
@@ -109,15 +114,16 @@ public partial class TurnManager : BaseManager
             switch (_currentTurnState)
             {
                 case AovDataStructures.TurnState.PlayerTurn:
+                    OnPlayerTurn?.Invoke();
                     if (!_unitsTurnOrder[_currentIndex].Key.IsControlled)
                     {
-                        OnPlayerTurn?.Invoke();
                         await _unitsTurnOrder[_currentIndex].Key.WaitForActionAsync();
                     }
 
                     OnPlayerTurnEnd?.Invoke();
                     break;
                 case AovDataStructures.TurnState.EnemyTurn:
+                    OnEnemyTurn?.Invoke();
                     if (!_unitsTurnOrder[_currentIndex].Key.IsControlled)
                         await WaitForEnemyAction(_unitsTurnOrder[_currentIndex].Key);
                     OnEnemyTurnEnd?.Invoke();
@@ -172,6 +178,66 @@ public partial class TurnManager : BaseManager
         GD.Print($"{unit.Name} played.");
     }
 
+    /// <summary>
+    /// Compute Fisher-Yates shuffle Algorithm
+    /// </summary>
+    /// <param name="unitsToRand">The unit list to randomize</param>
+    /// <param name="indexToStart">The index where the replacement start in <c>_unitsTurnOrder</c>.<br/>
+    /// NOTICE: The value is decremented</param>
+    /// <param name="r">The random class to use</param>
+    private void ComputeFisherYatesShuffleAlgorithm(
+        List<KeyValuePair<UnitSystem, AovDataStructures.TurnState>> unitsToRand,
+        int indexToStart,
+        Random r
+    )
+    {
+        if (unitsToRand.Count > 1)
+        {
+            for (int idx = unitsToRand.Count - 1; idx > 0; idx--)
+            {
+                int j = r.Next(0, idx + 1);
+
+                (unitsToRand[idx], unitsToRand[j]) = (unitsToRand[j], unitsToRand[idx]);
+            }
+
+            int indexToReplace = indexToStart;
+            for (int idx = unitsToRand.Count - 1; idx >= 0; idx--, indexToReplace--)
+            {
+                _unitsTurnOrder[indexToReplace] = unitsToRand[idx];
+            }
+        }
+    }
+
+    /// <summary>
+    /// Randomize the units turn orders with the same speed using the Fisher-Yates shuffle Algorithm
+    /// </summary>
+    private void RandTurnOrderOnSameSpeed()
+    {
+        Random r = new();
+        List<KeyValuePair<UnitSystem, AovDataStructures.TurnState>> unitsToRand = [];
+        float speed = 0;
+
+        unitsToRand.Add(_unitsTurnOrder.First());
+        speed = unitsToRand.First().Key.BaseSpeed;
+        for (int i = 1; i < _unitsTurnOrder.Count; i++)
+        {
+            if (Math.Abs(_unitsTurnOrder[i].Key.BaseSpeed - speed) < 0.0001)
+            {
+                unitsToRand.Add(_unitsTurnOrder[i]);
+            }
+            else
+            {
+                ComputeFisherYatesShuffleAlgorithm(unitsToRand, i - 1, r);
+
+                unitsToRand.Clear();
+                speed = _unitsTurnOrder[i].Key.BaseSpeed;
+            }
+        }
+
+        // Compute again if there is still units in "unitsToRand" list and the loop reached the end of "_unitsTurnOrder"
+        ComputeFisherYatesShuffleAlgorithm(unitsToRand, _unitsTurnOrder.Count - 1, r);
+    }
+
     #endregion
 
     #region Public Methods
@@ -206,6 +272,7 @@ public partial class TurnManager : BaseManager
             );
         _unitsTurnOrder = _unitsTurnOrder.OrderByDescending(unit => unit.Key.BaseSpeed).ToList();
 
+        RandTurnOrderOnSameSpeed();
         GD.Print("Turn order initialized:");
         foreach (KeyValuePair<UnitSystem, AovDataStructures.TurnState> unit in _unitsTurnOrder)
             GD.Print($"{unit.Key.Name} (Speed: {unit.Key.BaseSpeed})");

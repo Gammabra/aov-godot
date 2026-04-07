@@ -107,12 +107,12 @@ public class StatusEffectSystemTests
     }
 
     [Test]
-    public void ProcessUnitTurnEnd_DecrementsDurationAndRemovesExpired()
+    public void ProcessUnitStatusEffects_DecrementsDurationAndRemovesExpired()
     {
         var effect = new TestEffect<IUnitSystem>("Burn", 1, false);
         _unit.ApplyEffect(effect);
 
-        _system.ProcessUnitTurnEnd(_unit);
+        _system.ProcessUnitStatusEffects(_unit);
 
         Assert.That(effect.Duration, Is.EqualTo(0));
         Assert.That(_unit.GetActiveEffects().Count, Is.EqualTo(0));
@@ -144,7 +144,7 @@ public class StatusEffectSystemTests
         _unit.ApplyEffect(longEffect);
 
         // Act
-        _system.ProcessUnitTurnEnd(_unit);
+        _system.ProcessUnitStatusEffects(_unit);
 
         // Assert
         // Permanent effect duration remains unchanged (-1)
@@ -158,10 +158,10 @@ public class StatusEffectSystemTests
     }
 
     [Test]
-    public void ProcessUnitTurnEnd_WhenTargetIsNull_ReturnsImmediately()
+    public void ProcessUnitStatusEffects_WhenTargetIsNull_ReturnsImmediately()
     {
         // Line 118: Pass null
-        Assert.DoesNotThrow(() => _system.ProcessUnitTurnEnd(null));
+        Assert.DoesNotThrow(() => _system.ProcessUnitStatusEffects(null));
     }
 
     [Test]

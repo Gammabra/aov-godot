@@ -108,3 +108,20 @@ jobs:
           name: .NET & GdUnit4 Tests
           path: '**/TestResults/*.trx,**/gdunit_report.xml'
           reporter: dotnet-trx
+
+      # --- 3. GENERATE HTML REPORT ---
+      - name: Install ReportGenerator
+        run: dotnet tool install -g dotnet-reportgenerator-globaltool
+
+      - name: Generate HTML Report
+        run: >
+          reportgenerator 
+          -reports:"./TestResults/**/coverage.cobertura.xml" 
+          -targetdir:"./TestResults/CoverageHTML" 
+          -reporttypes:Html
+
+      - name: Upload HTML Coverage Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: coverage-html-site
+          path: ./TestResults/CoverageHTML

@@ -61,6 +61,13 @@
           "images/**"
         ],
         "src": "documentation"
+      },
+      {
+        "files": [
+          "**/*"
+        ],
+        "src": "coverage",
+        "dest": "coverage"
       }
     ],
     "postProcessors": [],

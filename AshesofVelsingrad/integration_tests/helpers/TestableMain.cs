@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using Godot;
 
-namespace UnitTests;
+namespace AshesOfVelsingrad.Helpers;
 
 public partial class TestableMain : AshesOfVelsingrad.Main
 {

@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using AshesOfVelsingrad.Managers;
 using Godot;
 
-namespace UnitTests;
+namespace AshesOfVelsingrad.Helpers.Managers;
 
 public partial class TestMenuManager : MenuManager
 {

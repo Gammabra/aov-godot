@@ -2,7 +2,7 @@ name: Build and Lint
 
 on:
   push:
-    branches: [develop, canary, release, chore/test-coverage]
+    branches: [develop, canary, release]
   pull_request:
     branches: [develop, canary, release]
 

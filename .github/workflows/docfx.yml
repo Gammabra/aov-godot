@@ -6,7 +6,7 @@ on:
     workflows: ["Tests and Coverage"] # Must match the 'name:' in ci.yml exactly
     types:
       - completed
-    branches: [ develop, canary, release, chore/test-coverage ]
+    branches: [develop, canary, release]
   workflow_dispatch:
 
 jobs:

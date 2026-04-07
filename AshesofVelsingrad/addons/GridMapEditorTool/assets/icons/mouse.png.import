@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dg07j0vrem3a2"
-path="res://.godot/imported/mouse.png-6414b988e2de5337e6e0e28d8ec0f66a.ctex"
+path="res://.godot/imported/mouse.png-fa7fb154f618d3ce510cb6cd20b2d230.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://addons/gridMapEditorTool/assets/icons/mouse.png"
-dest_files=["res://.godot/imported/mouse.png-6414b988e2de5337e6e0e28d8ec0f66a.ctex"]
+source_file="res://addons/GridMapEditorTool/assets/icons/mouse.png"
+dest_files=["res://.godot/imported/mouse.png-fa7fb154f618d3ce510cb6cd20b2d230.ctex"]
 
 [params]
 

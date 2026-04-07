@@ -21,7 +21,7 @@
   - name: Accessibility Checklist
     href: docs/technical/accessibility-checklist.md
 - name: Test Coverage
-  href: coverage/index.html
+  href: coverage/html/index.html
 - name: Contributing
   href: docs/contributing.md
 - name: API Documentation

@@ -7,31 +7,15 @@ Understanding this architecture will help you navigate the codebase, make inform
 ## Table of Contents
 
 - [Architectural Overview](#architectural-overview)
-- [Core Design Principles](#core-design-principles)
-- [Solution Structure](#solution-structure)
-- [System Architecture](#system-architecture)
-- [Component Patterns](#component-patterns)
-- [Data Flow](#data-flow)
-- [Scene Management](#scene-management)
-- [Performance Considerations](#performance-considerations)
-- [Integration Points](#integration-points)
-
-- [Architectural Overview](#architectural-overview)
-- [Project Segmentation](#projet-segementation)
+- [Project Segmentation](#project-segmentation)
 - [Dependency Flow](#dependency-flow)
 - [Core Design Principles](#core-design-principles)
 - [Folder Structure Legend](#folder-structure-legend)
 - [Solution Structure](#solution-structure)
-- [AutoLoad Configuration](#autoload-configuration)
-- [System Architecture](#system-architecture)
 - [Component Patterns](#component-patterns)
 - [Communication Patterns](#communication-patterns)
-- [Data Flow](#data-flow)
-- [Scene Management](#scene-management)
-- [Performance Considerations](#performance-considerations)
-- [Integration Points](#integration-points)
-- [Architectural Guidelines](#architectural-guidelines)
 - [Evolution Strategy](#evolution-strategy)
+- [Architectural Guidelines](#architectural-guidelines)
 
 ## Architectural Overview
 

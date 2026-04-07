@@ -8,8 +8,9 @@ This document outlines the testing strategy for **Ashes of Velsingrad**. We util
 2. [The Two-Tier Testing Strategy](#the-two-tier-testing-strategy)
 3. [Tier 1: Core Unit Testing (NUnit)](#tier-1-core-unit-testing-nunit)
 4. [Tier 2: Godot Integration Testing (GdUnit4)](#tier-2-godot-integration-testing-gdunit4)
-5. [Environment Configuration](#environment-configuration)
-6. [Best Practices & Troubleshooting](#best-practices--troubleshooting)
+5. [Project Structure](#project-structure)
+6. [Running Tests](#running-tests)
+7. [Best Practices](#best-practices)
 
 ## External Editor Configuration
 

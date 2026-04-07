@@ -114,12 +114,6 @@ jobs:
       - name: Install ReportGenerator
         run: dotnet tool install -g dotnet-reportgenerator-globaltool
 
-      - name: Find Coverage File
-        run: find . -name "coverage.cobertura.xml"
-
-      - name: Debug - List Test Results
-        run: ls -R ./TestResults
-
       - name: Generate HTML Report
         run: >
           reportgenerator 

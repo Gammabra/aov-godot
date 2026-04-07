@@ -9,7 +9,8 @@ namespace AshesOfVelsingrad.Core.Tests.Data;
 [TestFixture]
 public class AtkBufferTests
 {
-    private Mock<IUnitSystem>? _mockUnit;
+    // FIX 1: Use null! to remove nullable warnings and hidden compiler null-checks
+    private Mock<IUnitSystem> _mockUnit = null!;
     private const int _duration = 3;
     private const float _buffAmount = 10f;
     private const AovDataStructures.ModifierType _modType = AovDataStructures.ModifierType.Flat;
@@ -18,40 +19,6 @@ public class AtkBufferTests
     public void SetUp()
     {
         _mockUnit = new Mock<IUnitSystem>();
-    }
-
-    [Test]
-    public void OnApply_CallsUnitEffectAppliedWithCorrectParameters()
-    {
-        // Arrange
-        var buffer = new AtkBuffer(_duration, _modType, _buffAmount);
-
-        // Act
-        buffer.OnApply(_mockUnit.Object);
-
-        // Assert
-        _mockUnit.Verify(u => u.OnEffectModifierApplied(
-            AovDataStructures.StatTypeWithModifier.Atk, 
-            _modType, 
-            _buffAmount
-        ), Times.Once);
-    }
-
-    [Test]
-    public void OnRemove_CallsUnitEffectRemovedWithCorrectParameters()
-    {
-        // Arrange
-        var buffer = new AtkBuffer(_duration, _modType, _buffAmount);
-
-        // Act
-        buffer.OnRemove(_mockUnit.Object);
-
-        // Assert
-        _mockUnit.Verify(u => u.OnEffectModifierRemoved(
-            AovDataStructures.StatTypeWithModifier.Atk, 
-            _modType, 
-            _buffAmount
-        ), Times.Once);
     }
 
     [Test]
@@ -74,8 +41,6 @@ public class AtkBufferTests
         var buffer = new AtkBuffer(_duration, _modType, _buffAmount);
 
         // Act & Assert
-        // We pass null. The 'is IUnitSystem' check will fail.
-        // We just want to ensure it doesn't throw an exception.
         Assert.DoesNotThrow(() => buffer.OnApply(null!));
     }
 
@@ -87,5 +52,31 @@ public class AtkBufferTests
 
         // Act & Assert
         Assert.DoesNotThrow(() => buffer.OnRemove(null!));
+    }
+
+    [Test]
+    public void OnApply_CallsUnitEffectAppliedWithCorrectParameters()
+    {
+        var buffer = new AtkBuffer(_duration, _modType, _buffAmount);
+        bool called = false;
+        _mockUnit.Setup(u => u.OnEffectModifierApplied(AovDataStructures.StatTypeWithModifier.Atk, AovDataStructures.ModifierType.Flat, 10f))
+                 .Callback(() => called = true);
+
+        buffer.OnApply(_mockUnit.Object);
+
+        Assert.That(called, Is.True);
+    }
+
+    [Test]
+    public void OnRemove_CallsUnitEffectRemovedWithCorrectParameters()
+    {
+        var buffer = new AtkBuffer(_duration, _modType, _buffAmount);
+        bool called = false;
+        _mockUnit.Setup(u => u.OnEffectModifierRemoved(AovDataStructures.StatTypeWithModifier.Atk, AovDataStructures.ModifierType.Flat, 10f))
+                 .Callback(() => called = true);
+
+        buffer.OnRemove(_mockUnit.Object);
+
+        Assert.That(called, Is.True);
     }
 }

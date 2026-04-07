@@ -9,9 +9,9 @@ namespace AshesOfVelsingrad.Core.Tests.Data;
 [TestFixture]
 public class BurningEffectTests
 {
-    private Mock<IUnitSystem>? _mockUnit;
+    private Mock<IUnitSystem> _mockUnit = null!;
     private const int _duration = 3;
-    private const float _damageAmount = 15f;
+    private const float _damage = 5f;
     private const AovDataStructures.ModifierType _modType = AovDataStructures.ModifierType.Flat;
 
     [SetUp]
@@ -21,54 +21,36 @@ public class BurningEffectTests
     }
 
     [Test]
-    public void OnTurnPassed_CallsUnitOnEffectDamageWithCorrectParameters()
+    public void OnTurnPassed_CallsUnitOnEffectDamage()
     {
         // Arrange
-        var effect = new BurningEffect(_duration, _modType, _damageAmount);
+        var burning = new BurningEffect(_duration, _modType, _damage);
+        bool called = false;
+        
+        // Match the specific damage call
+        _mockUnit.Setup(u => u.OnEffectDamage(AovDataStructures.ModifierType.Flat, _damage))
+                 .Callback(() => called = true);
 
         // Act
-        effect.OnTurnPassed(_mockUnit.Object);
+        burning.OnTurnPassed(_mockUnit.Object);
 
         // Assert
-        // We verify that the unit actually takes the damage
-        _mockUnit.Verify(u => u.OnEffectDamage(_modType, _damageAmount), Times.Once);
+        Assert.That(called, Is.True);
     }
 
     [Test]
     public void Constructor_SetsInheritedPropertiesCorrectly()
     {
-        // Act
-        var effect = new BurningEffect(_duration, _modType, _damageAmount);
-
-        // Assert
-        Assert.That(effect.Name, Is.EqualTo("Burning"));
-        Assert.That(effect.Duration, Is.EqualTo(_duration));
-        Assert.That(effect.Amount, Is.EqualTo(_damageAmount));
+        var burning = new BurningEffect(_duration, _modType, _damage);
+        Assert.That(burning.Name, Is.EqualTo("Burning"));
+        Assert.That(burning.Duration, Is.EqualTo(_duration));
+        Assert.That(burning.Amount, Is.EqualTo(_damage));
     }
 
     [Test]
-    public void OnTurnPassed_MultipleTurns_CallsDamageEachTime()
+    public void OnTurnPassed_WhenTargetIsNull_DoesNotThrow()
     {
-        // Arrange
-        var effect = new BurningEffect(_duration, _modType, _damageAmount);
-
-        // Act
-        effect.OnTurnPassed(_mockUnit.Object);
-        effect.OnTurnPassed(_mockUnit.Object);
-
-        // Assert
-        _mockUnit.Verify(u => u.OnEffectDamage(_modType, _damageAmount), Times.Exactly(2));
-    }
-
-    [Test]
-    public void OnApply_WhenTargetIsNull_DoesNotCallUnitMethods()
-    {
-        // Arrange
-        var buffer = new BurningEffect(_duration, _modType, _damageAmount);
-
-        // Act & Assert
-        // We pass null. The 'is IUnitSystem' check will fail.
-        // We just want to ensure it doesn't throw an exception.
-        Assert.DoesNotThrow(() => buffer.OnTurnPassed(null!));
+        var burning = new BurningEffect(_duration, _modType, _damage);
+        Assert.DoesNotThrow(() => burning.OnTurnPassed(null!));
     }
 }

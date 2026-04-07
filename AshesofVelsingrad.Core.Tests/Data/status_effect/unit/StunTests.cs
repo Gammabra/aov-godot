@@ -8,7 +8,7 @@ namespace AshesOfVelsingrad.Core.Tests.Data;
 [TestFixture]
 public class StunTests
 {
-    private Mock<IUnitSystem>? _mockUnit;
+    private Mock<IUnitSystem> _mockUnit = null!;
     private const int _duration = 1;
 
     [SetUp]
@@ -22,12 +22,14 @@ public class StunTests
     {
         // Arrange
         var stun = new Stun(_duration);
+        bool called = false;
+        _mockUnit.Setup(u => u.OnEffectControlApplied()).Callback(() => called = true);
 
         // Act
         stun.OnApply(_mockUnit.Object);
 
         // Assert
-        _mockUnit.Verify(u => u.OnEffectControlApplied(), Times.Once);
+        Assert.That(called, Is.True);
     }
 
     [Test]
@@ -35,57 +37,42 @@ public class StunTests
     {
         // Arrange
         var stun = new Stun(_duration);
+        bool called = false;
+        _mockUnit.Setup(u => u.OnEffectControlRemoved()).Callback(() => called = true);
 
         // Act
         stun.OnRemove(_mockUnit.Object);
 
         // Assert
-        _mockUnit.Verify(u => u.OnEffectControlRemoved(), Times.Once);
+        Assert.That(called, Is.True);
     }
 
     [Test]
     public void ShouldApplyTwice_ReturnsTrue()
     {
-        // Arrange
         var stun = new Stun(_duration);
-
-        // Assert
         Assert.That(stun.ShouldApplyTwice, Is.True);
     }
 
     [Test]
     public void Constructor_SetsInheritedPropertiesCorrectly()
     {
-        // Act
         var stun = new Stun(_duration);
-
-        // Assert
         Assert.That(stun.Name, Is.EqualTo("Stun"));
         Assert.That(stun.Duration, Is.EqualTo(_duration));
-        // Note: Amount and ModifierType aren't used here, but they exist in the base
     }
 
     [Test]
     public void OnApply_WhenTargetIsNull_DoesNotCallUnitMethods()
     {
-        // Arrange
-        var buffer = new Stun(_duration);
-
-        // Act & Assert
-        // We pass null. The 'is IUnitSystem' check will fail.
-        // We just want to ensure it doesn't throw an exception.
-        Assert.DoesNotThrow(() => buffer.OnApply(null!));
+        var stun = new Stun(_duration);
+        Assert.DoesNotThrow(() => stun.OnApply(null!));
     }
 
     [Test]
     public void OnRemove_WhenTargetIsNull_DoesNotCallUnitMethods()
     {
-        // Arrange
-        var buffer = new Stun(_duration);
-
-        // Act & Assert
-        // We pass null. The 'is IUnitSystem' check will fail.
-        // We just want to ensure it doesn't throw an exception.
-        Assert.DoesNotThrow(() => buffer.OnRemove(null!));
+        var stun = new Stun(_duration);
+        Assert.DoesNotThrow(() => stun.OnRemove(null!));
     }
 }

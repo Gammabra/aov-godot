@@ -56,9 +56,7 @@ TemporaryDependencyNodeTargetIdentifier=net9.0
 /warnaserror+:NU1605,SYSLIB0011
 
 [sourceFiles]
-.godot/mono/temp/obj/Debug/
- .NETCoreApp,Version=v9.0.AssemblyAttributes.cs
- AshesofVelsingrad.AssemblyInfo.cs
+.godot/mono/temp/obj/Debug/AshesofVelsingrad.AssemblyInfo.cs
 <NUGET>/microsoft.net.test.sdk/18.3.0/build/net8.0/Microsoft.NET.Test.Sdk.Program.cs
 addons/gdUnit4/src/dotnet/GdUnit4CSharpApi.cs
 gdunit4_testadapter_v5/GdUnit4TestRunnerScene.cs
@@ -135,6 +133,9 @@ scripts/
   MenuManager.cs
   SceneManager.cs
   SettingsManager.cs
+  state_machines/
+   State.cs
+   StateMachine.cs
   TurnManager.cs
  systems/
   BattleInputSystem.cs

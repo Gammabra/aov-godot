@@ -24,7 +24,7 @@ public sealed class StatusEffectSystem
     #region Private Methods
 
     /// <summary>
-    ///     Updates all active status effects on the given target at the end of a turn.
+    ///     Updates all active status effects on the given target.
     /// </summary>
     /// <typeparam name="TTarget">
     ///     The concrete type of the effect target (e.g. <see cref="IUnitSystem" /> or
@@ -34,7 +34,7 @@ public sealed class StatusEffectSystem
     ///     The target whose active <see cref="StatusEffect{TTarget}" /> instances
     ///     should be updated.
     /// </param>
-    private void RefreshTargetEffectsOnTurnEnd<TTarget>(TTarget target)
+    private void RefreshTargetEffects<TTarget>(TTarget target)
         where TTarget : IEffectTarget<TTarget> // This is the constraint the error complained about
     {
         // We use ToList() to avoid "Collection Modified" errors during removal
@@ -103,7 +103,7 @@ public sealed class StatusEffectSystem
     }
 
     /// <summary>
-    ///     Processes end-of-turn updates for a single target.
+    ///     Processes status effect updates for a single target.
     /// </summary>
     /// <param name="target">
     ///     The target whose status effects should be updated.
@@ -113,12 +113,11 @@ public sealed class StatusEffectSystem
     ///     and expired effects are removed automatically. If a target has no more active effects,
     ///     it is removed from the tracking list.
     /// </remarks>
-    public void ProcessUnitTurnEnd(IUnitSystem? target)
+    public void ProcessUnitStatusEffects(IUnitSystem? target)
     {
         if (target is null) return;
 
-        // This call works ONLY if IUnitSystem : IEffectTarget<IUnitSystem>
-        RefreshTargetEffectsOnTurnEnd(target);
+        RefreshTargetEffects(target);
     }
 
     /// <summary>
@@ -136,9 +135,7 @@ public sealed class StatusEffectSystem
         {
             // If your cells also need effects, ensure CellInformation : IEffectTarget<CellInformation>
             if (target is CellInformation cell)
-            {
-                RefreshTargetEffectsOnTurnEnd(cell);
-            }
+                RefreshTargetEffects(cell);
         }
     }
 

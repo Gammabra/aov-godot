@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Reflection;
+using AshesOfVelsingrad.Data;
 using AshesOfVelsingrad.Managers;
 using AshesOfVelsingrad.Systems;
 using AshesOfVelsingrad.Utilities;
@@ -389,8 +390,13 @@ public class GameManagerTest
             GetPrivateField<List<IUnitSystem>>(manager, "_playerUnits"),
             GetPrivateField<List<IUnitSystem>>(manager, "_enemyUnits")
         );
+        turnManager
+            .GetCurrentUnit()
+            .SetStatusEffectOnUnit(new BurningEffect(2, AovDataStructures.ModifierType.Flat, 1));
         CallPrivateMethod(manager, "ActivatePlayerUnit");
 
+        List<StatusEffect<IUnitSystem>> statusEffects = turnManager.GetCurrentUnit().GetActiveEffects();
+        AssertThat(statusEffects[0].Duration).IsEqual(1);
         AssertThat(GetPrivateField<bool>(manager, "_isPlayerTurn")).IsTrue();
         AssertThat(GetPrivateField<bool>(inputSystem, "_inputEnabled")).IsTrue();
     }
@@ -513,6 +519,46 @@ public class GameManagerTest
         CallPrivateMethod(manager, "PlayerSelectedSkill", 0);
 
         AssertThat(GetPrivateField<ISkillSystem?>(manager, "_selectedSkill")).IsNull();
+    }
+
+    [TestCase]
+    public void EnemyTurnStarted()
+    {
+        GD.Print("[TEST] Start EnemyTurnStarted");
+
+        GameManager manager = AddNode(new GameManager());
+        Node playerContainer = AddNode(new Node());
+        Node enemyContainer = AddNode(new Node());
+        TestConcreteUnitSystem playerUnit = CreateUnit("Player", speed: 2);
+        TestConcreteUnitSystem enemyUnit = CreateUnit("Enemy", 1, speed: 4);
+        TestConcreteMapSystem mapSystem = AddNode(new TestConcreteMapSystem());
+        TurnManager turnManager = new();
+
+        playerContainer.AddChild(playerUnit);
+        enemyContainer.AddChild(enemyUnit);
+        manager.AddChild(turnManager);
+
+        SetPrivateField(manager, "_playerUnitsContainer", playerContainer);
+        SetPrivateField(manager, "_enemyUnitsContainer", enemyContainer);
+        SetPrivateField(manager, "_turnManagerContainer", turnManager);
+        SetPrivateField(manager, "_mapSystemContainer", mapSystem);
+
+        mapSystem.AddWalkableCell(0, 0, 0);
+        mapSystem.AddWalkableCell(1, 0, 0);
+        mapSystem.AddUnit(enemyUnit);
+
+        CallPrivateMethod(manager, "LoadUnits");
+        turnManager.InitializeTurnOrder(
+            GetPrivateField<List<IUnitSystem>>(manager, "_playerUnits"),
+            GetPrivateField<List<IUnitSystem>>(manager, "_enemyUnits")
+        );
+        turnManager
+            .GetCurrentUnit()
+            .SetStatusEffectOnUnit(new BurningEffect(2, AovDataStructures.ModifierType.Flat, 1));
+        CallPrivateMethod(manager, "EnemyTurnStarted");
+
+        List<StatusEffect<IUnitSystem>> statusEffects = turnManager.GetCurrentUnit().GetActiveEffects();
+        AssertThat(statusEffects[0].Duration).IsEqual(1);
     }
 
     [TestCase]

@@ -19,7 +19,7 @@ public abstract partial class UnitSystem
     /// <param name="map">Reference to the map system.</param>
     /// <returns>A list of valid floor (Y) positions the unit can reach.</returns>
     private static List<int> GetPossibleFloorForUnitMoves(
-        (int, int,int) baseFloor,
+        (int, int, int) baseFloor,
         bool isNegate,
         (int, int, int)[] directions,
         IMapSystem map
@@ -84,15 +84,15 @@ public abstract partial class UnitSystem
     /// <param name="distance">The current BFS distance.</param>
     /// <param name="basePosition">The base grid position.</param>
     private static void QueueNewFloors(
-        ref Queue<((int, int,int) pos, int dist)> toExplore,
+        ref Queue<((int, int, int) pos, int dist)> toExplore,
         List<int> possibleFloors,
         int distance,
-        (int, int,int) basePosition
+        (int, int, int) basePosition
     )
     {
         foreach (int floor in possibleFloors)
         {
-            (int, int,int) newPos = basePosition;
+            (int, int, int) newPos = basePosition;
             newPos.Item2 = floor;
             toExplore.Enqueue((newPos, distance + 1));
         }
@@ -107,12 +107,12 @@ public abstract partial class UnitSystem
     ///     This method uses a Breadth-First Search (BFS) algorithm to evaluate all valid moves
     ///     considering walkable tiles and vertical traversal (e.g. stairs, cliffs).
     /// </remarks>
-    public virtual List<(int, int,int)> GetPossibleMoves(IMapSystem map)
+    public virtual List<(int, int, int)> GetPossibleMoves(IMapSystem map)
     {
-        List<(int, int,int)> possibleMoves = [];
-        Queue<((int, int,int) pos, int dist)> toExplore = new();
-        (int, int,int)? unitPosition = map.GetUnitPosition(this);
-        List<(int, int,int)> visitedCells = [];
+        List<(int, int, int)> possibleMoves = [];
+        Queue<((int, int, int) pos, int dist)> toExplore = new();
+        (int, int, int)? unitPosition = map.GetUnitPosition(this);
+        List<(int, int, int)> visitedCells = [];
         (int, int, int)[] directions =
         [
             (-1, 0, 0), // Left
@@ -129,7 +129,7 @@ public abstract partial class UnitSystem
         toExplore.Enqueue((unitPosition.Value, 0));
         while (toExplore.Count > 0)
         {
-            ((int, int,int) pos, int dist) currentPos = toExplore.Dequeue();
+            ((int, int, int) pos, int dist) currentPos = toExplore.Dequeue();
 
             if (currentPos.Item2 > PossibleMovesRange)
                 continue;
@@ -147,7 +147,7 @@ public abstract partial class UnitSystem
             {
                 foreach ((int, int, int) dir in directions)
                 {
-                    (int, int,int) pos = currentPos.Item1;
+                    (int, int, int) pos = currentPos.Item1;
                     pos.Item1 += dir.Item1;
                     pos.Item2 += upFloor;
                     pos.Item3 += dir.Item3;
@@ -158,9 +158,9 @@ public abstract partial class UnitSystem
             }
 
             // Check the possible neighbor under the unit
-            foreach ( (int, int, int) dir in directions)
+            foreach ((int, int, int) dir in directions)
             {
-                (int, int,int) posForDown = (
+                (int, int, int) posForDown = (
                     currentPos.Item1.Item1 + dir.Item1,
                     currentPos.Item1.Item2,
                     currentPos.Item1.Item3 + dir.Item3
@@ -171,9 +171,9 @@ public abstract partial class UnitSystem
             }
 
             // Check the possible neighbor at the level of the unit
-            foreach ( (int, int, int) dir in directions)
+            foreach ((int, int, int) dir in directions)
             {
-                (int, int,int) pos = currentPos.Item1;
+                (int, int, int) pos = currentPos.Item1;
                 pos.Item1 += dir.Item1;
                 pos.Item3 += dir.Item3;
 

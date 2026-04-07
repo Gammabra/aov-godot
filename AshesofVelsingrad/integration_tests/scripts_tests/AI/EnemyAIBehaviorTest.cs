@@ -171,7 +171,7 @@ public partial class EnemyAIBehaviorTest
         _aiBehavior = new TestConcreteEnemyAIBehavior();
 
         if (unit == null)
-            throw new InvalidOperationException("Enemy unit is not initialized."); 
+            throw new InvalidOperationException("Enemy unit is not initialized.");
 
         (unit as Node)!.AddChild(_aiBehavior);
         _testNodes.Add(_aiBehavior);

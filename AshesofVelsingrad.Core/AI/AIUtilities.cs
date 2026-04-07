@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
-using AshesOfVelsingrad.Utilities;
 using AshesOfVelsingrad.Systems;
+using AshesOfVelsingrad.Utilities;
 
 namespace AshesOfVelsingrad.AI;
 
@@ -16,7 +16,7 @@ public static class AIUtilities
     /// Calculates Manhattan distance between two grid positions.
     /// Uses 3D Euclidean distance for more accurate pathfinding.
     /// </summary>
-    public static int CalculateManhattanDistance((int, int,int) pos1, (int, int,int) pos2)
+    public static int CalculateManhattanDistance((int, int, int) pos1, (int, int, int) pos2)
     {
         int dx = Math.Abs(pos1.Item1 - pos2.Item1);
         int dy = Math.Abs(pos1.Item2 - pos2.Item2);
@@ -35,20 +35,20 @@ public static class AIUtilities
     /// <summary>
     /// Calculates the best position to move to get within skill range of the target.
     /// </summary>
-    public static (int, int,int)? CalculateMoveToRange(
+    public static (int, int, int)? CalculateMoveToRange(
         IUnitSystem unit,
         BattleState battleState,
-        (int, int,int) targetPos,
+        (int, int, int) targetPos,
         int skillRange = 0)
     {
-        List<(int, int,int)> possibleMoves = unit.GetPossibleMoves(battleState.MapSystem);
+        List<(int, int, int)> possibleMoves = unit.GetPossibleMoves(battleState.MapSystem);
         if (possibleMoves.Count == 0)
             return null;
 
-        (int, int,int)? bestMove = null;
+        (int, int, int)? bestMove = null;
         float bestScore = float.MinValue;
 
-        foreach ((int, int,int) move in possibleMoves)
+        foreach ((int, int, int) move in possibleMoves)
         {
             float score = ScoreMovePosition(unit, move, targetPos, skillRange, battleState);
             if (score > bestScore)
@@ -64,14 +64,14 @@ public static class AIUtilities
     /// <summary>
     /// Calculates the best position to move away from the target.
     /// </summary>
-    public static (int, int,int)? CalculateMoveAway(
+    public static (int, int, int)? CalculateMoveAway(
         IUnitSystem unit,
         BattleState battleState,
-        (int, int,int) targetPos,
+        (int, int, int) targetPos,
         int minDistance)
     {
         var possibleMoves = unit.GetPossibleMoves(battleState.MapSystem);
-        (int, int,int)? bestMove = null;
+        (int, int, int)? bestMove = null;
         int maxDistance = 0;
 
         foreach (var move in possibleMoves)
@@ -92,8 +92,8 @@ public static class AIUtilities
     /// </summary>
     private static float ScoreMovePosition(
         IUnitSystem unit,
-        (int, int,int) position,
-        (int, int,int) targetPos,
+        (int, int, int) position,
+        (int, int, int) targetPos,
         int skillRange,
         BattleState battleState)
     {
@@ -152,7 +152,7 @@ public static class AIUtilities
     /// </summary>
     public static int CountEnemyAlliesNear(
         IUnitSystem unit,
-        (int, int,int) position,
+        (int, int, int) position,
         BattleState battleState,
         int range)
     {
@@ -160,7 +160,7 @@ public static class AIUtilities
         foreach (var ally in battleState.EnemyUnits)
         {
             if (ally == unit) continue;
-            (int, int,int)? allyPos = battleState.MapSystem.GetUnitPosition(ally);
+            (int, int, int)? allyPos = battleState.MapSystem.GetUnitPosition(ally);
             if (allyPos != null && CalculateManhattanDistance(position, allyPos.Value) <= range)
                 count++;
         }
@@ -172,14 +172,14 @@ public static class AIUtilities
     /// </summary>
     public static int CountPlayerUnitsNear(
         IUnitSystem unit,
-        (int, int,int) position,
+        (int, int, int) position,
         BattleState battleState,
         int range)
     {
         int count = 0;
         foreach (var enemy in battleState.PlayerUnits)
         {
-            (int, int,int)? enemyPos = battleState.MapSystem.GetUnitPosition(enemy);
+            (int, int, int)? enemyPos = battleState.MapSystem.GetUnitPosition(enemy);
             if (enemyPos != null && CalculateManhattanDistance(position, enemyPos.Value) <= range)
                 count++;
         }
@@ -209,7 +209,7 @@ public static class AIUtilities
     /// </summary>
     public static IUnitSystem? FindNearestThreat(IUnitSystem unit, BattleState battleState)
     {
-        (int, int,int)? myPos = battleState.MapSystem.GetUnitPosition(unit);
+        (int, int, int)? myPos = battleState.MapSystem.GetUnitPosition(unit);
         if (myPos == null)
             return null;
 
@@ -218,7 +218,7 @@ public static class AIUtilities
 
         foreach (var enemy in battleState.PlayerUnits)
         {
-            (int, int,int)? enemyPos = battleState.MapSystem.GetUnitPosition(enemy);
+            (int, int, int)? enemyPos = battleState.MapSystem.GetUnitPosition(enemy);
             if (enemyPos == null) continue;
 
             int distance = CalculateManhattanDistance(myPos.Value, enemyPos.Value);
@@ -236,7 +236,7 @@ public static class AIUtilities
     /// Calculates the total threat level of nearby enemies.
     /// </summary>
     public static float CalculateThreatLevel(
-        (int, int,int) position,
+        (int, int, int) position,
         BattleState battleState,
         int range)
     {
@@ -244,7 +244,7 @@ public static class AIUtilities
 
         foreach (var enemy in battleState.PlayerUnits)
         {
-            (int, int,int)? enemyPos = battleState.MapSystem.GetUnitPosition(enemy);
+            (int, int, int)? enemyPos = battleState.MapSystem.GetUnitPosition(enemy);
             if (enemyPos == null) continue;
 
             int distance = CalculateManhattanDistance(position, enemyPos.Value);
@@ -267,8 +267,8 @@ public static class AIUtilities
     /// Checks if there's a clear line of sight between two positions.
     /// </summary>
     public static bool HasLineOfSight(
-        (int, int,int) from,
-        (int, int,int) to,
+        (int, int, int) from,
+        (int, int, int) to,
         IMapSystem mapSystem)
     {
         // Simple implementation - can be enhanced with actual raycasting
@@ -284,7 +284,7 @@ public static class AIUtilities
     /// Gets all units within a certain range of a position.
     /// </summary>
     public static List<IUnitSystem> GetUnitsInRange(
-        (int, int,int) position,
+        (int, int, int) position,
         int range,
         List<IUnitSystem> units,
         IMapSystem mapSystem)
@@ -293,7 +293,7 @@ public static class AIUtilities
 
         foreach (var unit in units)
         {
-            (int, int,int)? unitPos = mapSystem.GetUnitPosition(unit);
+            (int, int, int)? unitPos = mapSystem.GetUnitPosition(unit);
             if (unitPos == null) continue;
 
             if (CalculateManhattanDistance(position, unitPos.Value) <= range)
@@ -313,7 +313,7 @@ public static class AIUtilities
     /// Evaluates how defensible a position is.
     /// </summary>
     public static float EvaluatePositionDefensibility(
-        (int, int,int) position,
+        (int, int, int) position,
         BattleState battleState)
     {
         float score = 0f;
@@ -331,10 +331,10 @@ public static class AIUtilities
     /// <summary>
     /// Counts how many adjacent cells are walkable.
     /// </summary>
-    private static int CountAdjacentWalkableCells((int, int,int) position, IMapSystem mapSystem)
+    private static int CountAdjacentWalkableCells((int, int, int) position, IMapSystem mapSystem)
     {
         int count = 0;
-        (int, int,int)[] directions =
+        (int, int, int)[] directions =
         [
             (-1, 0, 0),  // Left
 			(1, 0, 0),   // Right
@@ -346,7 +346,7 @@ public static class AIUtilities
 
         foreach (var dir in directions)
         {
-            (int, int,int) checkPos = (position.Item1 + dir.Item1, position.Item2 + dir.Item2, position.Item3 + dir.Item3);
+            (int, int, int) checkPos = (position.Item1 + dir.Item1, position.Item2 + dir.Item2, position.Item3 + dir.Item3);
             try
             {
                 if (mapSystem.IsWalkable(checkPos.Item1, checkPos.Item2, checkPos.Item3))
@@ -364,7 +364,7 @@ public static class AIUtilities
     /// <summary>
     /// Finds the center point between multiple units (useful for AOE positioning).
     /// </summary>
-    public static (int, int,int)? FindCenterPoint(List<IUnitSystem> units, IMapSystem mapSystem)
+    public static (int, int, int)? FindCenterPoint(List<IUnitSystem> units, IMapSystem mapSystem)
     {
         if (units.Count == 0)
             return null;
@@ -374,7 +374,7 @@ public static class AIUtilities
 
         foreach (var unit in units)
         {
-            (int, int,int)? pos = mapSystem.GetUnitPosition(unit);
+            (int, int, int)? pos = mapSystem.GetUnitPosition(unit);
             if (pos != null)
             {
                 sumX += pos.Value.Item1;

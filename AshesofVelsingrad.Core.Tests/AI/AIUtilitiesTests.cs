@@ -1,10 +1,10 @@
+using System;
 using System.Collections.Generic;
-using NUnit.Framework;
-using Moq;
 using AshesOfVelsingrad.AI;
 using AshesOfVelsingrad.Systems;
 using AshesOfVelsingrad.Utilities;
-using System;
+using Moq;
+using NUnit.Framework;
 
 namespace AshesOfVelsingrad.Core.Tests.AI;
 
@@ -20,7 +20,7 @@ public class AIUtilitiesTests
     {
         _mockUnit = new Mock<IUnitSystem>();
         _mockMapSystem = new Mock<IMapSystem>();
-        
+
         _battleState = new BattleState
         {
             MapSystem = _mockMapSystem.Object,
@@ -36,7 +36,7 @@ public class AIUtilitiesTests
     public void CalculateManhattanDistance_CalculatesCorrect3DDistance()
     {
         var pos1 = (0, 0, 0);
-        var pos2 = (3, 4, 0); 
+        var pos2 = (3, 4, 0);
 
         int distance = AIUtilities.CalculateManhattanDistance(pos1, pos2);
 
@@ -56,7 +56,7 @@ public class AIUtilitiesTests
     public void CalculateMoveToRange_WhenNoMovesPossible_ReturnsNull()
     {
         _mockUnit!.Setup(u => u.GetPossibleMoves(It.IsAny<IMapSystem>())).Returns(new List<(int, int, int)>());
-        var result = AIUtilities.CalculateMoveToRange(_mockUnit.Object, _battleState!, (0,0,0), 1);
+        var result = AIUtilities.CalculateMoveToRange(_mockUnit.Object, _battleState!, (0, 0, 0), 1);
         Assert.That(result, Is.Null);
     }
 
@@ -64,7 +64,7 @@ public class AIUtilitiesTests
     public void CalculateMoveToRange_FindsBestPositionForSkillRange()
     {
         var targetPos = (5, 0, 0);
-        var moves = new List<(int, int, int)> { (0,0,0), (3,0,0), (10,0,0) };
+        var moves = new List<(int, int, int)> { (0, 0, 0), (3, 0, 0), (10, 0, 0) };
         _mockUnit!.Setup(u => u.GetPossibleMoves(It.IsAny<IMapSystem>())).Returns(moves);
         _mockUnit.Setup(u => u.Personality).Returns(AIPersonality.Balanced);
         _mockMapSystem!.Setup(m => m.GetCellType(It.IsAny<(int, int, int)>())).Returns(AovDataStructures.CellType.Grass);
@@ -78,7 +78,7 @@ public class AIUtilitiesTests
     public void CalculateMoveAway_FindsFurthestValidPosition()
     {
         var targetPos = (0, 0, 0);
-        var moves = new List<(int, int, int)> { (1,0,0), (5,0,0), (2,0,0) };
+        var moves = new List<(int, int, int)> { (1, 0, 0), (5, 0, 0), (2, 0, 0) };
         _mockUnit!.Setup(u => u.GetPossibleMoves(It.IsAny<IMapSystem>())).Returns(moves);
 
         var bestMove = AIUtilities.CalculateMoveAway(_mockUnit.Object, _battleState!, targetPos, 3);
@@ -101,7 +101,7 @@ public class AIUtilitiesTests
         _battleState!.PlayerUnits.Add(enemy1.Object);
         _battleState.PlayerUnits.Add(enemy2.Object);
         _battleState.PlayerUnits.Add(enemy3.Object);
-        
+
         _mockMapSystem!.Setup(m => m.GetUnitPosition(enemy1.Object)).Returns((1, 1, 2));
         _mockMapSystem.Setup(m => m.GetUnitPosition(enemy2.Object)).Returns((1, 1, 2));
         _mockMapSystem.Setup(m => m.GetUnitPosition(enemy3.Object)).Returns((1, 1, 2));
@@ -141,7 +141,7 @@ public class AIUtilitiesTests
 
         var mockTarget = new Mock<IUnitSystem>();
         mockTarget.Setup(u => u.BaseDef).Returns(10f);
-        mockTarget.Setup(u => u.Hp).Returns(40f); 
+        mockTarget.Setup(u => u.Hp).Returns(40f);
 
         Assert.That(AIUtilities.CanKillThisTurn(mockAttacker.Object, mockTarget.Object), Is.True);
     }
@@ -154,7 +154,7 @@ public class AIUtilitiesTests
 
         var mockTarget = new Mock<IUnitSystem>();
         mockTarget.Setup(u => u.BaseDef).Returns(15f);
-        mockTarget.Setup(u => u.Hp).Returns(100f); 
+        mockTarget.Setup(u => u.Hp).Returns(100f);
 
         Assert.That(AIUtilities.CanKillThisTurn(mockAttacker.Object, mockTarget.Object), Is.False);
     }
@@ -170,10 +170,10 @@ public class AIUtilitiesTests
         _battleState!.PlayerUnits.Add(enemy1.Object);
         _battleState.PlayerUnits.Add(enemy2.Object);
 
-        _mockMapSystem!.Setup(m => m.GetUnitPosition(enemy1.Object)).Returns((0,0,0));
-        _mockMapSystem.Setup(m => m.GetUnitPosition(enemy2.Object)).Returns((10,10,10));
+        _mockMapSystem!.Setup(m => m.GetUnitPosition(enemy1.Object)).Returns((0, 0, 0));
+        _mockMapSystem.Setup(m => m.GetUnitPosition(enemy2.Object)).Returns((10, 10, 10));
 
-        float threat = AIUtilities.CalculateThreatLevel((0,0,0), _battleState, 5);
+        float threat = AIUtilities.CalculateThreatLevel((0, 0, 0), _battleState, 5);
 
         Assert.That(threat, Is.EqualTo(20f));
     }
@@ -190,7 +190,7 @@ public class AIUtilitiesTests
     {
         // Ignore self
         _battleState!.EnemyUnits.Add(_mockUnit!.Object);
-        Assert.That(AIUtilities.CountEnemyAlliesNear(_mockUnit.Object, (0,0,0), _battleState, 5), Is.EqualTo(0));
+        Assert.That(AIUtilities.CountEnemyAlliesNear(_mockUnit.Object, (0, 0, 0), _battleState, 5), Is.EqualTo(0));
 
         // Clamped Damage
         var weakAttacker = new Mock<IUnitSystem>();
@@ -212,8 +212,8 @@ public class AIUtilitiesTests
     [Test]
     public void EvaluatePositionDefensibility_CalculatesHeightAndChokepointBonuses()
     {
-        var testPos = (0, 2, 0); 
-        
+        var testPos = (0, 2, 0);
+
         // Setup explicit directions to avoid loop/lambda branches
         _mockMapSystem!.Setup(m => m.IsWalkable(1, 2, 0)).Returns(true);
         _mockMapSystem.Setup(m => m.IsWalkable(-1, 2, 0)).Returns(true);
@@ -251,7 +251,7 @@ public class AIUtilitiesTests
         _mockMapSystem!.Setup(m => m.IsWalkable(It.IsAny<int>(), It.IsAny<int>(), It.IsAny<int>()))
             .Throws<ArgumentOutOfRangeException>();
 
-        float score = AIUtilities.EvaluatePositionDefensibility((0,0,0), _battleState!);
+        float score = AIUtilities.EvaluatePositionDefensibility((0, 0, 0), _battleState!);
 
         Assert.That(score, Is.EqualTo(24f));
     }
@@ -268,8 +268,8 @@ public class AIUtilitiesTests
     [Test]
     public void HasLineOfSight_SimplePlaceholderTest()
     {
-        Assert.That(AIUtilities.HasLineOfSight((0,0,0), (1,0,1), _mockMapSystem!.Object), Is.True);
-        Assert.That(AIUtilities.HasLineOfSight((0,0,0), (10,0,10), _mockMapSystem!.Object), Is.False);
+        Assert.That(AIUtilities.HasLineOfSight((0, 0, 0), (1, 0, 1), _mockMapSystem!.Object), Is.True);
+        Assert.That(AIUtilities.HasLineOfSight((0, 0, 0), (10, 0, 10), _mockMapSystem!.Object), Is.False);
     }
 
     [Test]
@@ -280,7 +280,7 @@ public class AIUtilitiesTests
 
         _mockMapSystem!.Setup(m => m.GetUnitPosition(physicalUnit.Object)).Returns((0, 0, 0));
 
-        var inRange = AIUtilities.GetUnitsInRange((0,0,0), 5, units, _mockMapSystem.Object);
+        var inRange = AIUtilities.GetUnitsInRange((0, 0, 0), 5, units, _mockMapSystem.Object);
         var emptyCenter = AIUtilities.FindCenterPoint(new List<IUnitSystem>(), _mockMapSystem.Object);
 
         Assert.That(inRange.Count, Is.EqualTo(1));
@@ -294,8 +294,8 @@ public class AIUtilitiesTests
         _mockUnit!.Setup(u => u.GetPossibleMoves(It.IsAny<IMapSystem>())).Returns(new List<(int, int, int)> { movePos });
         _mockMapSystem!.Setup(m => m.GetCellType(movePos)).Returns((AovDataStructures.CellType)999);
 
-        var result = AIUtilities.CalculateMoveToRange(_mockUnit.Object, _battleState!, (5,5,5), 1);
-        
+        var result = AIUtilities.CalculateMoveToRange(_mockUnit.Object, _battleState!, (5, 5, 5), 1);
+
         Assert.That(result, Is.EqualTo(movePos));
     }
 

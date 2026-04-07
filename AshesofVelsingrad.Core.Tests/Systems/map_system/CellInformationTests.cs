@@ -1,8 +1,8 @@
-using NUnit.Framework;
-using Moq;
-using AshesOfVelsingrad.Systems;
 using System.Reflection;
+using AshesOfVelsingrad.Systems;
 using AshesOfVelsingrad.Utilities;
+using Moq;
+using NUnit.Framework;
 
 namespace AshesOfVelsingrad.Core.Tests.Systems;
 
@@ -17,9 +17,9 @@ public class CellInformationTests
     public class TestStatusEffect<T> : StatusEffect<T>
     {
         public TestStatusEffect(
-            string name, 
-            int duration, 
-            AovDataStructures.ModifierType modType, 
+            string name,
+            int duration,
+            AovDataStructures.ModifierType modType,
             float amount
         ) : base(name, "desc", duration, false, modType, amount) { }
     }
@@ -80,7 +80,7 @@ public class CellInformationTests
         // Arrange
         var cell = new CellInformation(_x, _y, _z, _defaultTerrain, true);
         var mockUnit = new Mock<IUnitSystem>();
-        
+
         // 1. Create a concrete instance of our stub
         var unitEffect = new TestStatusEffect<IUnitSystem>("Burning", 3, AovDataStructures.ModifierType.Flat, 5f);
         var cellEffect = new TestStatusEffect<CellInformation>("FireTile", 3, AovDataStructures.ModifierType.Flat, 0f);
@@ -108,13 +108,13 @@ public class CellInformationTests
         // Arrange
         var cell = new CellInformation(_x, _y, _z, _defaultTerrain, true);
         var mockUnit = new Mock<IUnitSystem>();
-        
+
         var nonSpreadingEffect = new TestStatusEffect<CellInformation>(
             "Static", 3,
             AovDataStructures.ModifierType.Flat, 0
         );
         // EffectToSpread is null by default
-        
+
         cell.ApplyEffect(nonSpreadingEffect);
 
         // Act

@@ -1,6 +1,6 @@
 using System.Collections.Generic;
-using NUnit.Framework;
 using AshesOfVelsingrad.Systems;
+using NUnit.Framework;
 
 namespace AshesOfVelsingrad.Core.Tests.Systems;
 
@@ -61,7 +61,7 @@ public class SkillSystemTests
         // Arrange
         var skill = new TestSkill("Heal", 5, 1);
         skill.SetCooldown(); // Sets to 5
-        
+
         // Act - Try to set it again while it's at 5
         skill.SetCooldown();
 

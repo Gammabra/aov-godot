@@ -16,34 +16,34 @@ namespace AshesOfVelsingrad.Systems;
 /// </remarks>
 public sealed class StatusEffectSystem
 {
-	/// <summary>
-	///     List of all targets currently having effects.
-	/// </summary>
-	private readonly List<object> _allTargets = [];
+    /// <summary>
+    ///     List of all targets currently having effects.
+    /// </summary>
+    private readonly List<object> _allTargets = [];
 
-	#region Private Methods
+    #region Private Methods
 
-	/// <summary>
-	///     Updates all active status effects on the given target at the end of a turn.
-	/// </summary>
-	/// <typeparam name="TTarget">
-	///     The concrete type of the effect target (e.g. <see cref="IUnitSystem" /> or
-	///     <see cref="CellInformation" />).
-	/// </typeparam>
-	/// <param name="target">
-	///     The target whose active <see cref="StatusEffect{TTarget}" /> instances
-	///     should be updated.
-	/// </param>
-	private void RefreshTargetEffectsOnTurnEnd<TTarget>(TTarget target) 
+    /// <summary>
+    ///     Updates all active status effects on the given target at the end of a turn.
+    /// </summary>
+    /// <typeparam name="TTarget">
+    ///     The concrete type of the effect target (e.g. <see cref="IUnitSystem" /> or
+    ///     <see cref="CellInformation" />).
+    /// </typeparam>
+    /// <param name="target">
+    ///     The target whose active <see cref="StatusEffect{TTarget}" /> instances
+    ///     should be updated.
+    /// </param>
+    private void RefreshTargetEffectsOnTurnEnd<TTarget>(TTarget target)
         where TTarget : IEffectTarget<TTarget> // This is the constraint the error complained about
     {
         // We use ToList() to avoid "Collection Modified" errors during removal
-        foreach (StatusEffect<TTarget> statusEffect in target.GetActiveEffects().ToList()) 
+        foreach (StatusEffect<TTarget> statusEffect in target.GetActiveEffects().ToList())
         {
             if (statusEffect.Duration == Constants.PermanentStatusEffect)
                 continue;
 
-            statusEffect.OnTurnPassed(target); 
+            statusEffect.OnTurnPassed(target);
 
             if (statusEffect.Duration > 0)
                 continue;
@@ -56,27 +56,27 @@ public sealed class StatusEffectSystem
             _allTargets.Remove(target);
     }
 
-	#endregion
+    #endregion
 
-	#region Public Methods
+    #region Public Methods
 
-	/// <summary>
-	///     Applies a new status effect to the given target, or stacks it if already present.
-	/// </summary>
-	/// <typeparam name="TTarget">
-	///     The type of the target, must be either <see cref="IUnitSystem" /> or <see cref="IMapSystem" />.
-	/// </typeparam>
-	/// <param name="target">
-	///     The target on which to apply the status effect.
-	/// </param>
-	/// <param name="newEffect">
-	///     The <see cref="StatusEffect{TTarget}" /> to apply.
-	/// </param>
-	/// <remarks>
-	///     If the target already has an effect of the same type and it is stackable,
-	///     the effect will be stacked instead of being applied again.
-	/// </remarks>
-	// CHANGE: Accept TTarget instead of EffectTarget<TTarget>
+    /// <summary>
+    ///     Applies a new status effect to the given target, or stacks it if already present.
+    /// </summary>
+    /// <typeparam name="TTarget">
+    ///     The type of the target, must be either <see cref="IUnitSystem" /> or <see cref="IMapSystem" />.
+    /// </typeparam>
+    /// <param name="target">
+    ///     The target on which to apply the status effect.
+    /// </param>
+    /// <param name="newEffect">
+    ///     The <see cref="StatusEffect{TTarget}" /> to apply.
+    /// </param>
+    /// <remarks>
+    ///     If the target already has an effect of the same type and it is stackable,
+    ///     the effect will be stacked instead of being applied again.
+    /// </remarks>
+    // CHANGE: Accept TTarget instead of EffectTarget<TTarget>
     public void ApplyEffect<TTarget>(TTarget target, StatusEffect<TTarget> newEffect)
         where TTarget : IEffectTarget<TTarget>
     {
@@ -102,37 +102,37 @@ public sealed class StatusEffectSystem
         }
     }
 
-	/// <summary>
-	///     Processes end-of-turn updates for a single target.
-	/// </summary>
-	/// <param name="target">
-	///     The target whose status effects should be updated.
-	/// </param>
-	/// <remarks>
-	///     Each status effect has its <see cref="StatusEffect{IUnitSystem}.OnTurnPassed" /> method called,
-	///     and expired effects are removed automatically. If a target has no more active effects,
-	///     it is removed from the tracking list.
-	/// </remarks>
-	public void ProcessUnitTurnEnd(IUnitSystem? target)
+    /// <summary>
+    ///     Processes end-of-turn updates for a single target.
+    /// </summary>
+    /// <param name="target">
+    ///     The target whose status effects should be updated.
+    /// </param>
+    /// <remarks>
+    ///     Each status effect has its <see cref="StatusEffect{IUnitSystem}.OnTurnPassed" /> method called,
+    ///     and expired effects are removed automatically. If a target has no more active effects,
+    ///     it is removed from the tracking list.
+    /// </remarks>
+    public void ProcessUnitTurnEnd(IUnitSystem? target)
     {
         if (target is null) return;
-        
+
         // This call works ONLY if IUnitSystem : IEffectTarget<IUnitSystem>
         RefreshTargetEffectsOnTurnEnd(target);
     }
 
-	/// <summary>
-	///     Processes end-of-turn updates for all tracked targets.
-	/// </summary>
-	/// <remarks>
-	///     Iterates over all tracked targets in <see cref="_allTargets" /> and updates
-	///     their status effects. Expired effects are removed, and targets with no remaining
-	///     effects are removed from the tracking list.
-	///     Only targets of type <see cref="CellInformation" /> are processed by this method.
-	/// </remarks>
-	public void ProcessTurnEnd()
+    /// <summary>
+    ///     Processes end-of-turn updates for all tracked targets.
+    /// </summary>
+    /// <remarks>
+    ///     Iterates over all tracked targets in <see cref="_allTargets" /> and updates
+    ///     their status effects. Expired effects are removed, and targets with no remaining
+    ///     effects are removed from the tracking list.
+    ///     Only targets of type <see cref="CellInformation" /> are processed by this method.
+    /// </remarks>
+    public void ProcessTurnEnd()
     {
-        foreach (object target in _allTargets.ToList()) 
+        foreach (object target in _allTargets.ToList())
         {
             // If your cells also need effects, ensure CellInformation : IEffectTarget<CellInformation>
             if (target is CellInformation cell)
@@ -142,5 +142,5 @@ public sealed class StatusEffectSystem
         }
     }
 
-	#endregion
+    #endregion
 }

@@ -129,7 +129,7 @@ public class StatusEffectSystemTest
     public void ProcessTargetTurnEnd_IgnoresNonUnitSystemEffects()
     {
         StatusEffectSystem sys = new();
-        
+
         // Use a CellInformation to represent a non-unit target correctly
         CellInformation cellTarget = new(0, 0, 0, AovDataStructures.CellType.Grass, false);
         TestConcreteStatusEffect<CellInformation> cellEffect = new(duration: 2);

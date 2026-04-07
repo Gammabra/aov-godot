@@ -32,7 +32,7 @@ public abstract partial class UnitSystem
     {
         List<(int, int, int)> possibleCells = [];
         Queue<((int, int, int) pos, int dist)> toExplore = new();
-        (int, int,int)? unitPosition = map.GetUnitPosition(this);
+        (int, int, int)? unitPosition = map.GetUnitPosition(this);
         List<(int, int, int)> visitedCells = [];
         (int, int, int)[] directions =
         [
@@ -67,7 +67,7 @@ public abstract partial class UnitSystem
             }
 
             // Check the possible neighbor at the current position
-            foreach ( (int, int, int) dir in directions)
+            foreach ((int, int, int) dir in directions)
             {
                 (int, int, int) pos = currentPos.pos;
                 pos.Item1 += dir.Item1;

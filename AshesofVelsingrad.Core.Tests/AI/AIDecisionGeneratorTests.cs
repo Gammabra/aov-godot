@@ -1,10 +1,10 @@
 using System.Collections.Generic;
 using System.Linq;
-using NUnit.Framework;
-using Moq;
 using AshesOfVelsingrad.AI;
 using AshesOfVelsingrad.Systems;
 using AshesOfVelsingrad.Utilities;
+using Moq;
+using NUnit.Framework;
 
 namespace AshesOfVelsingrad.Core.Tests.AI;
 
@@ -21,7 +21,7 @@ public class AIDecisionGeneratorTests
         _mockUnit = new Mock<IUnitSystem>();
         _mockMapSystem = new Mock<IMapSystem>();
 
-        _battleState = new BattleState 
+        _battleState = new BattleState
         {
             MapSystem = _mockMapSystem.Object,
             ActingUnit = _mockUnit.Object,
@@ -39,7 +39,7 @@ public class AIDecisionGeneratorTests
         _mockUnit.Setup(u => u.ActiveSkills).Returns(new List<ISkillSystem>());
         _mockUnit.Setup(u => u.GetPossibleMoves(It.IsAny<IMapSystem>()))
             .Returns(new List<(int, int, int)> { (0, 0, 0), (-1, 0, -1) });
-            
+
         _mockMapSystem.Setup(m => m.GetCellType(It.IsAny<(int, int, int)>()))
             .Returns(AovDataStructures.CellType.Grass);
     }
@@ -96,7 +96,7 @@ public class AIDecisionGeneratorTests
         mockSkill.Setup(s => s.Range).Returns(3);
         mockSkill.Setup(s => s.ManaCost).Returns(5);
         mockSkill.Setup(s => s.Cooldown).Returns(0);
-        
+
         // Ensure the AI unit has a Personality (otherwise _unit.Personality might be problematic)
         _mockUnit!.Setup(u => u.Personality).Returns(AIPersonality.Balanced);
         _mockUnit!.Setup(u => u.ActiveSkills).Returns(new List<ISkillSystem> { mockSkill.Object });
@@ -114,7 +114,7 @@ public class AIDecisionGeneratorTests
     public void GenerateDefensiveActions_WhenHpIsLow_AddsRetreatDecision()
     {
         // 1. Arrange - Setup HP and Personality
-        _mockUnit!.Setup(u => u.Hp).Returns(10f); 
+        _mockUnit!.Setup(u => u.Hp).Returns(10f);
         _mockUnit!.Setup(u => u.MaxHp).Returns(100f);
         _mockUnit!.Setup(u => u.Personality).Returns(AIPersonality.Defensive);
         _mockMapSystem!.Setup(m => m.GetUnitPosition(_mockUnit!.Object)).Returns((0, 0, 0));
@@ -153,7 +153,7 @@ public class AIDecisionGeneratorTests
     {
         var mockAlly = new Mock<IUnitSystem>();
         _battleState!.EnemyUnits.Add(mockAlly.Object);
-        
+
         _mockMapSystem!.Setup(m => m.GetUnitPosition(_mockUnit!.Object)).Returns((0, 0, 0));
         // Force the null branch
         _mockMapSystem.Setup(m => m.GetUnitPosition(mockAlly.Object)).Returns(((int, int, int)?)null);
@@ -238,7 +238,7 @@ public class AIDecisionGeneratorTests
     {
         var mockEnemy = new Mock<IUnitSystem>();
         _battleState!.PlayerUnits.Add(mockEnemy.Object);
-        
+
         _mockMapSystem!.Setup(m => m.GetUnitPosition(_mockUnit!.Object)).Returns((0, 0, 0));
         // Force the null branch
         _mockMapSystem.Setup(m => m.GetUnitPosition(mockEnemy.Object)).Returns(((int, int, int)?)null);
@@ -333,7 +333,7 @@ public class AIDecisionGeneratorTests
         var generator = new AIDecisionGenerator(_mockUnit!.Object);
         _mockUnit.Setup(u => u.ActiveSkills).Returns(new List<ISkillSystem> { mockAOE.Object });
         _mockMapSystem.Setup(m => m.GetUnitPosition(_mockUnit.Object)).Returns((0, 0, 0));
-        
+
         var results = generator.GenerateAllPossibleActions(_battleState);
 
         // Assert
@@ -347,7 +347,7 @@ public class AIDecisionGeneratorTests
         _mockMapSystem!.Setup(m => m.GetUnitPosition(_mockUnit!.Object)).Returns((0, 0, 0));
 
         var mockSkill = new Mock<ISkillSystem>();
-        mockSkill.Setup(s => s.Cooldown).Returns(1); 
+        mockSkill.Setup(s => s.Cooldown).Returns(1);
         _mockUnit!.Setup(u => u.ActiveSkills).Returns(new List<ISkillSystem> { mockSkill.Object });
 
         // Act
@@ -368,7 +368,7 @@ public class AIDecisionGeneratorTests
         var mockEnemy = new Mock<IUnitSystem>();
         _battleState!.PlayerUnits.Add(mockEnemy.Object);
         _mockMapSystem.Setup(m => m.GetUnitPosition(mockEnemy.Object)).Returns((10, 0, 10)); // Way too far
-        
+
         _mockUnit!.Setup(u => u.GetPossibleMoves(It.IsAny<IMapSystem>())).Returns(new List<(int, int, int)>());
 
         // Act
@@ -397,11 +397,11 @@ public class AIDecisionGeneratorTests
         var mockHeal = new Mock<ISkillSystem>();
         mockHeal.Setup(s => s.EffectType).Returns(AovDataStructures.EffectType.Heal);
         mockHeal.Setup(s => s.ManaCost).Returns(100);
-        
+
         _mockUnit!.Setup(u => u.Mana).Returns(10); // Too poor
-        _mockUnit!.Setup(u => u.ActiveSkills).Returns(new List<ISkillSystem> { 
-            mockDamage.Object, 
-            mockHeal.Object 
+        _mockUnit!.Setup(u => u.ActiveSkills).Returns(new List<ISkillSystem> {
+            mockDamage.Object,
+            mockHeal.Object
         });
 
         // Act
@@ -425,7 +425,7 @@ public class AIDecisionGeneratorTests
         // Skill: Support Type (Heal) -> Should hit Line 80 in Offensive loop
         var mockHeal = new Mock<ISkillSystem>();
         mockHeal.Setup(s => s.EffectType).Returns(AovDataStructures.EffectType.Heal);
-        
+
         _mockUnit!.Setup(u => u.ActiveSkills).Returns(new List<ISkillSystem> { mockHeal.Object });
 
         // Act
@@ -453,7 +453,8 @@ public class AIDecisionGeneratorTests
         // But return NULL specifically for the defensive check (Line 220)
         int callCount = 0;
         _mockMapSystem!.Setup(m => m.GetUnitPosition(_mockUnit.Object))
-            .Returns(() => {
+            .Returns(() =>
+            {
                 callCount++;
                 // The first few calls happen at the start of GenerateAllPossibleActions
                 // We want to return null ONLY when the code reaches the defensive section

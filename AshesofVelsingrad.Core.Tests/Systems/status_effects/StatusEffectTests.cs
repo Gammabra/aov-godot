@@ -1,6 +1,6 @@
-using NUnit.Framework;
 using AshesOfVelsingrad.Systems;
 using AshesOfVelsingrad.Utilities;
+using NUnit.Framework;
 
 namespace AshesOfVelsingrad.Core.Tests.Systems;
 
@@ -8,8 +8,9 @@ namespace AshesOfVelsingrad.Core.Tests.Systems;
 public class StatusEffectTests
 {
     // Concrete implementation for testing abstract base logic
-    private class TestEffect<T>(string name, int duration, bool stackable) 
-        : StatusEffect<T>(name, "Desc", duration, stackable) { }
+    private class TestEffect<T>(string name, int duration, bool stackable)
+        : StatusEffect<T>(name, "Desc", duration, stackable)
+    { }
 
     private class DummyTarget { }
 

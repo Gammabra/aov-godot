@@ -1,7 +1,7 @@
-using NUnit.Framework;
-using Moq;
 using AshesOfVelsingrad.Data;
 using AshesOfVelsingrad.Systems;
+using Moq;
+using NUnit.Framework;
 
 namespace AshesOfVelsingrad.Core.Tests.Data;
 

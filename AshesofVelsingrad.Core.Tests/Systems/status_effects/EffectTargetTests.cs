@@ -1,7 +1,7 @@
-using NUnit.Framework;
 using System.Collections.Generic;
 using AshesOfVelsingrad.Systems;
 using AshesOfVelsingrad.Utilities;
+using NUnit.Framework;
 
 namespace AshesOfVelsingrad.Core.Tests.Systems;
 
@@ -16,7 +16,8 @@ public class EffectTargetTests
     private class MockStatusEffect : StatusEffect<TestTarget>
     {
         public MockStatusEffect(string name) : base(name, "Desc", 1, true) { } // Make stackable for tests
-        public void SetDuration(int duration) => Duration = duration;    }
+        public void SetDuration(int duration) => Duration = duration;
+    }
 
     private class DifferentStatusEffect : StatusEffect<TestTarget>
     {

@@ -1,9 +1,9 @@
-﻿using NUnit.Framework;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 using AshesOfVelsingrad.AI;
 using AshesOfVelsingrad.Systems;
 using AshesOfVelsingrad.Utilities;
-using System.Collections.Generic;
-using System.Threading.Tasks;
+using NUnit.Framework;
 
 namespace AshesOfVelsingrad.Core.Tests.Systems;
 

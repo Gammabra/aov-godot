@@ -42,7 +42,7 @@ public class GameManagerTest
         TestConcreteUnitSystem unit = new(maxHp: hp, baseSpeed: speed);
         unit.Name = name;
         // CRITICAL: Track the unit so Cleanup can find it
-        _testNodes.Add(unit); 
+        _testNodes.Add(unit);
         return unit;
     }
 
@@ -71,7 +71,7 @@ public class GameManagerTest
             {
                 if (node.GetParent() != null)
                     node.GetParent().RemoveChild(node);
-                node.Free(); 
+                node.Free();
             }
         }
         _testNodes.Clear();
@@ -474,7 +474,7 @@ public class GameManagerTest
     {
         GameManager manager = AddNode(new GameManager());
         // Use AddNode instead of new TurnManager()
-        TurnManager turnManager = AddNode(new TurnManager()); 
+        TurnManager turnManager = AddNode(new TurnManager());
         TestConcreteMapSystem mapSystem = AddNode(new TestConcreteMapSystem());
         TestConcreteUnitSystem unit = CreateUnit("Player");
 

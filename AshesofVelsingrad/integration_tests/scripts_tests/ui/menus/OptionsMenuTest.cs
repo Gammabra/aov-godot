@@ -68,7 +68,7 @@ public class OptionsMenuTest
             }
         }
     }
-    
+
     [AfterTest]
     public void TearDown()
     {
@@ -84,15 +84,15 @@ public class OptionsMenuTest
             {
                 parent.RemoveChild(_root);
             }
-            
+
             // 2. Force immediate deletion of the entire tree
-            _root.Free(); 
+            _root.Free();
         }
 
         _root = null;
         _optionsMenu = null;
         _testNodes.Clear();
-        _inputButtonScene?.Dispose(); 
+        _inputButtonScene?.Dispose();
         _inputButtonScene = null;
 
         ClearAllSingletonInstances();
@@ -330,7 +330,7 @@ public class OptionsMenuTest
         _optionsMenu!._Ready();
 
         // Attach the test button to the root so TearDown cleans it up automatically
-        var testButton = AddToTestRoot(new Button()); 
+        var testButton = AddToTestRoot(new Button());
         var marginContainer = new MarginContainer { Name = "MarginContainer" };
         var hbox = new HBoxContainer();
         var inputLabel = new Label { Name = "LabelInput" };

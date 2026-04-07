@@ -26,7 +26,7 @@ public class AIDecisionGenerator
     public List<AIDecision> GenerateAllPossibleActions(BattleState battleState)
     {
         List<AIDecision> actions = new();
-        (int, int,int)? myPos = battleState.MapSystem.GetUnitPosition(_unit);
+        (int, int, int)? myPos = battleState.MapSystem.GetUnitPosition(_unit);
 
         if (myPos == null)
             return actions;
@@ -60,10 +60,10 @@ public class AIDecisionGenerator
     /// <param name="myPos">The AI unit's current position.</param>
     /// <param name="battleState">Current battle state.</param>
     /// <returns>List of possible offensive actions.</returns>
-    private List<AIDecision> GenerateOffensiveActions(IUnitSystem target, (int, int,int) myPos, BattleState battleState)
+    private List<AIDecision> GenerateOffensiveActions(IUnitSystem target, (int, int, int) myPos, BattleState battleState)
     {
         List<AIDecision> actions = new();
-        (int, int,int)? targetPos = battleState.MapSystem.GetUnitPosition(target);
+        (int, int, int)? targetPos = battleState.MapSystem.GetUnitPosition(target);
 
         if (targetPos == null)
             return actions;
@@ -100,7 +100,7 @@ public class AIDecisionGenerator
             // Option 2: Move closer and use skill
             if (distance <= _unit.PossibleMovesRange + skill.Range)
             {
-                (int, int,int)? movePos = AIUtilities.CalculateMoveToRange(_unit, battleState, targetPos.Value, skill.Range);
+                (int, int, int)? movePos = AIUtilities.CalculateMoveToRange(_unit, battleState, targetPos.Value, skill.Range);
 
                 if (movePos.HasValue)
                 {
@@ -128,7 +128,7 @@ public class AIDecisionGenerator
     /// <param name="myPos">The AI unit's current position.</param>
     /// <param name="battleState">Current battle state.</param>
     /// <returns>List of possible support actions.</returns>
-    private List<AIDecision> GenerateSupportActions(IUnitSystem ally, (int, int,int) myPos, BattleState battleState)
+    private List<AIDecision> GenerateSupportActions(IUnitSystem ally, (int, int, int) myPos, BattleState battleState)
     {
         List<AIDecision> actions = new();
 
@@ -136,7 +136,7 @@ public class AIDecisionGenerator
         if (ally == _unit)
             return actions;
 
-        (int, int,int)? allyPos = battleState.MapSystem.GetUnitPosition(ally);
+        (int, int, int)? allyPos = battleState.MapSystem.GetUnitPosition(ally);
         if (allyPos == null)
             return actions;
 
@@ -172,7 +172,7 @@ public class AIDecisionGenerator
             // Option 2: Move closer and use skill
             if (distance <= _unit.PossibleMovesRange + skill.Range)
             {
-                (int, int,int)? movePos = AIUtilities.CalculateMoveToRange(_unit, battleState, allyPos.Value, skill.Range);
+                (int, int, int)? movePos = AIUtilities.CalculateMoveToRange(_unit, battleState, allyPos.Value, skill.Range);
 
                 if (movePos.HasValue)
                 {
@@ -199,7 +199,7 @@ public class AIDecisionGenerator
 	/// <param name="myPos">The AI unit's current position.</param>
 	/// <param name="battleState">Current battle state.</param>
 	/// <returns>List of possible defensive actions.</returns>
-	private List<AIDecision> GenerateDefensiveActions((int, int,int) myPos, BattleState battleState)
+	private List<AIDecision> GenerateDefensiveActions((int, int, int) myPos, BattleState battleState)
     {
         List<AIDecision> actions = new();
 
@@ -216,12 +216,12 @@ public class AIDecisionGenerator
         if (nearestThreat == null)
             return actions;
 
-        (int, int,int)? threatPos = battleState.MapSystem.GetUnitPosition(nearestThreat);
+        (int, int, int)? threatPos = battleState.MapSystem.GetUnitPosition(nearestThreat);
         if (threatPos == null)
             return actions;
 
         // Generate retreat move
-        (int, int,int)? retreatPos = AIUtilities.CalculateMoveAway(_unit, battleState, threatPos.Value, 2);
+        (int, int, int)? retreatPos = AIUtilities.CalculateMoveAway(_unit, battleState, threatPos.Value, 2);
 
         if (retreatPos.HasValue)
         {

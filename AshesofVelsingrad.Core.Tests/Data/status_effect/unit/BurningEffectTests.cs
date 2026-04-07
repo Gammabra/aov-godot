@@ -1,8 +1,8 @@
-using NUnit.Framework;
-using Moq;
 using AshesOfVelsingrad.Data;
 using AshesOfVelsingrad.Systems;
 using AshesOfVelsingrad.Utilities;
+using Moq;
+using NUnit.Framework;
 
 namespace AshesOfVelsingrad.Core.Tests.Data;
 
@@ -26,7 +26,7 @@ public class BurningEffectTests
         // Arrange
         var burning = new BurningEffect(_duration, _modType, _damage);
         bool called = false;
-        
+
         // Match the specific damage call
         _mockUnit.Setup(u => u.OnEffectDamage(AovDataStructures.ModifierType.Flat, _damage))
                  .Callback(() => called = true);

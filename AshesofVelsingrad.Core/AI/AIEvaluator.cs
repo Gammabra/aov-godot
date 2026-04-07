@@ -1,6 +1,6 @@
 using System.Linq;
-using AshesOfVelsingrad.Utilities;
 using AshesOfVelsingrad.Systems;
+using AshesOfVelsingrad.Utilities;
 
 namespace AshesOfVelsingrad.AI;
 
@@ -31,8 +31,8 @@ public class AIEvaluator
     public float EvaluateOffensiveAction(
         IUnitSystem target,
         ISkillSystem skill,
-        (int, int,int) attackerPos,
-        (int, int,int) targetPos,
+        (int, int, int) attackerPos,
+        (int, int, int) targetPos,
         BattleState battleState,
         bool requiresMovement)
     {
@@ -79,8 +79,8 @@ public class AIEvaluator
 	public float EvaluateSupportAction(
         IUnitSystem ally,
         ISkillSystem skill,
-        (int, int,int) casterPos,
-        (int, int,int) targetPos,
+        (int, int, int) casterPos,
+        (int, int, int) targetPos,
         BattleState battleState,
         bool requiresMovement)
     {
@@ -131,7 +131,7 @@ public class AIEvaluator
 	/// <param name="newPos">Position to retreat to.</param>
 	/// <param name="battleState">Current battle state.</param>
 	/// <returns>Score representing the value of this action.</returns>
-	public float EvaluateDefensiveAction((int, int,int) currentPos, (int, int,int) newPos, BattleState battleState)
+	public float EvaluateDefensiveAction((int, int, int) currentPos, (int, int, int) newPos, BattleState battleState)
     {
         float score = 50f;
         float hpPercentage = _unit.Hp / _unit.MaxHp;
@@ -173,8 +173,8 @@ public class AIEvaluator
     /// <returns>A float score representing the desirability of targeting this unit.</returns>
     private float ScoreTarget(IUnitSystem target, BattleState battleState)
     {
-        (int, int,int)? myPos = battleState.MapSystem.GetUnitPosition(_unit);
-        (int, int,int)? targetPos = battleState.MapSystem.GetUnitPosition(target);
+        (int, int, int)? myPos = battleState.MapSystem.GetUnitPosition(_unit);
+        (int, int, int)? targetPos = battleState.MapSystem.GetUnitPosition(target);
 
         if (myPos == null || targetPos == null)
             return float.MinValue;
@@ -386,7 +386,7 @@ public class AIEvaluator
 	/// <returns>The number of units affected by the skill's AOE.</returns>
 	private int CountTargetsInAOE(ISkillSystem skill, IUnitSystem primaryTarget, BattleState battleState)
     {
-        (int, int,int)? targetPos = battleState.MapSystem.GetUnitPosition(primaryTarget);
+        (int, int, int)? targetPos = battleState.MapSystem.GetUnitPosition(primaryTarget);
         if (targetPos == null) return 0;
 
         int count = 0;
@@ -396,7 +396,7 @@ public class AIEvaluator
 
         foreach (var aoeOffset in skill.AreaEffect)
         {
-            (int, int,int) checkPos = (targetPos.Value.Item1 + aoeOffset.Item1, targetPos.Value.Item2 + aoeOffset.Item2, targetPos.Value.Item3 + aoeOffset.Item3);
+            (int, int, int) checkPos = (targetPos.Value.Item1 + aoeOffset.Item1, targetPos.Value.Item2 + aoeOffset.Item2, targetPos.Value.Item3 + aoeOffset.Item3);
             var unitAtPos = battleState.MapSystem.GetUnitAt(checkPos.Item1, checkPos.Item2, checkPos.Item3);
 
             if (unitAtPos != null && targetList.Contains(unitAtPos))
@@ -418,7 +418,7 @@ public class AIEvaluator
     /// <param name="skillRange">The range of the skill to get within.</param>
     /// <param name="battleState">Current battle state.</param>
     /// <returns>The score for the given position.</returns>
-    private float ScorePosition((int, int,int) position, (int, int,int) targetPos, int skillRange, BattleState battleState)
+    private float ScorePosition((int, int, int) position, (int, int, int) targetPos, int skillRange, BattleState battleState)
     {
         float score = 0f;
         int distance = AIUtilities.CalculateManhattanDistance(position, targetPos);

@@ -7,21 +7,21 @@ namespace AshesOfVelsingrad.AI;
 /// </summary>
 public class AIDecision
 {
-	/// <summary>The action to perform.</summary>
-	public AIAction Action { get; set; }
+    /// <summary>The action to perform.</summary>
+    public AIAction Action { get; set; }
 
-	/// <summary>The target unit (for attacks or skills).</summary>
-	public IUnitSystem? Target { get; set; }
+    /// <summary>The target unit (for attacks or skills).</summary>
+    public IUnitSystem? Target { get; set; }
 
-	/// <summary>The position to move to (for movement).</summary>
-	public (int, int,int)? MovePosition { get; set; }
+    /// <summary>The position to move to (for movement).</summary>
+    public (int, int, int)? MovePosition { get; set; }
 
-	/// <summary>The skill to use (for skill actions).</summary>
-	public ISkillSystem? Skill { get; set; }
+    /// <summary>The skill to use (for skill actions).</summary>
+    public ISkillSystem? Skill { get; set; }
 
-	/// <summary>The evaluation score for this decision. Higher is better.</summary>
-	public float Score { get; set; }
+    /// <summary>The evaluation score for this decision. Higher is better.</summary>
+    public float Score { get; set; }
 
-	/// <summary>Debug description of why this decision was scored this way.</summary>
-	public string Reasoning { get; set; } = string.Empty;
+    /// <summary>Debug description of why this decision was scored this way.</summary>
+    public string Reasoning { get; set; } = string.Empty;
 }

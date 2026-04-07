@@ -38,7 +38,7 @@ public interface IUnitSystem : IEffectTarget<IUnitSystem>, IStatusEffectBehavior
     void PassTurn();
 
     // Methods from UnitSystemMovements
-    List<(int, int,int)> GetPossibleMoves(IMapSystem map);
+    List<(int, int, int)> GetPossibleMoves(IMapSystem map);
     void SetGridPosition(int x, int y, int z, IMapSystem map);
     bool CanMoveTo(int x, int y, int z, IMapSystem map);
     bool MoveTo(int x, int y, int z, IMapSystem map);

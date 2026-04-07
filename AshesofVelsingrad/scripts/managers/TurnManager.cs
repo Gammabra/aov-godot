@@ -19,30 +19,30 @@ namespace AshesOfVelsingrad.Managers;
 /// </remarks>
 public partial class TurnManager : BaseManager
 {
-	#region Private Fields
+    #region Private Fields
 
-	private AovDataStructures.TurnState _currentTurnState = AovDataStructures.TurnState.Waiting;
-	private int _turn;
-	private List<KeyValuePair<UnitSystem, AovDataStructures.TurnState>> _unitsTurnOrder = [];
-	private int _currentIndex;
-	private EnemyAIManager? _aiManager;
+    private AovDataStructures.TurnState _currentTurnState = AovDataStructures.TurnState.Waiting;
+    private int _turn;
+    private List<KeyValuePair<UnitSystem, AovDataStructures.TurnState>> _unitsTurnOrder = [];
+    private int _currentIndex;
+    private EnemyAIManager? _aiManager;
 
-	#endregion
+    #endregion
 
-	#region Private Properties
+    #region Private Properties
 
-	/// <summary>
-	///     Singleton instance of the <see cref="TurnManager" />.
-	///     Ensures only one instance exists in the scene tree.
-	/// </summary>
-	private new static TurnManager? Instance { get; set; }
+    /// <summary>
+    ///     Singleton instance of the <see cref="TurnManager" />.
+    ///     Ensures only one instance exists in the scene tree.
+    /// </summary>
+    private new static TurnManager? Instance { get; set; }
 
-	#endregion
+    #endregion
 
-	#region Public Properties
+    #region Public Properties
 
-	/// <summary>
-	///     Triggered when the player's turn begins.
+    /// <summary>
+    ///     Triggered when the player's turn begins.
     /// </summary>
     public event Action? OnPlayerTurn;
 
@@ -51,8 +51,8 @@ public partial class TurnManager : BaseManager
 	/// </summary>
 	public event Action? OnPlayerTurnEnd;
 
-	/// <summary>
-	///     Triggered when the enemy's turn ends
+    /// <summary>
+    ///     Triggered when the enemy's turn ends
     /// </summary>
     public event Action? OnEnemyTurnEnd;
 
@@ -195,63 +195,63 @@ public partial class TurnManager : BaseManager
 	///     sorted from highest to lowest.
 	/// </remarks>
 	public void InitializeTurnOrder(List<IUnitSystem> playerUnits, List<IUnitSystem> enemyUnits)
-	{
-		foreach (UnitSystem unit in playerUnits)
-			_unitsTurnOrder.Add(
-				new KeyValuePair<UnitSystem, AovDataStructures.TurnState>(unit, AovDataStructures.TurnState.PlayerTurn)
-			);
-		foreach (UnitSystem unit in enemyUnits)
-			_unitsTurnOrder.Add(
-				new KeyValuePair<UnitSystem, AovDataStructures.TurnState>(unit, AovDataStructures.TurnState.EnemyTurn)
-			);
-		_unitsTurnOrder = _unitsTurnOrder.OrderByDescending(unit => unit.Key.BaseSpeed).ToList();
+    {
+        foreach (UnitSystem unit in playerUnits)
+            _unitsTurnOrder.Add(
+                new KeyValuePair<UnitSystem, AovDataStructures.TurnState>(unit, AovDataStructures.TurnState.PlayerTurn)
+            );
+        foreach (UnitSystem unit in enemyUnits)
+            _unitsTurnOrder.Add(
+                new KeyValuePair<UnitSystem, AovDataStructures.TurnState>(unit, AovDataStructures.TurnState.EnemyTurn)
+            );
+        _unitsTurnOrder = _unitsTurnOrder.OrderByDescending(unit => unit.Key.BaseSpeed).ToList();
 
-		GD.Print("Turn order initialized:");
-		foreach (KeyValuePair<UnitSystem, AovDataStructures.TurnState> unit in _unitsTurnOrder)
-			GD.Print($"{unit.Key.Name} (Speed: {unit.Key.BaseSpeed})");
-	}
+        GD.Print("Turn order initialized:");
+        foreach (KeyValuePair<UnitSystem, AovDataStructures.TurnState> unit in _unitsTurnOrder)
+            GD.Print($"{unit.Key.Name} (Speed: {unit.Key.BaseSpeed})");
+    }
 
-	/// <summary>
-	///     Starts the turn-based battle loop asynchronously.
-	/// </summary>
-	/// <returns>A task representing the battle loop’s lifetime.</returns>
-	public async Task StartBattle()
-	{
-		GD.Print("Starting Battle");
-		_currentTurnState = _unitsTurnOrder[_currentIndex].Value;
-		_turn++;
-		await Task.Run(async () => await ProcessTurn());
-	}
+    /// <summary>
+    ///     Starts the turn-based battle loop asynchronously.
+    /// </summary>
+    /// <returns>A task representing the battle loop’s lifetime.</returns>
+    public async Task StartBattle()
+    {
+        GD.Print("Starting Battle");
+        _currentTurnState = _unitsTurnOrder[_currentIndex].Value;
+        _turn++;
+        await Task.Run(async () => await ProcessTurn());
+    }
 
-	/// <summary>
-	/// Gets the unit currently taking its turn.
-	/// </summary>
-	/// <returns>The <see cref="IUnitSystem"/> that is currently active.</returns>
-	public IUnitSystem GetCurrentUnit()
-	{
-		if (_unitsTurnOrder.Count == 0)
-		{
-			GD.PrintErr("No units in turn order!");
-			throw new InvalidOperationException("Turn order is not initialized or is empty.");
-		}
+    /// <summary>
+    /// Gets the unit currently taking its turn.
+    /// </summary>
+    /// <returns>The <see cref="IUnitSystem"/> that is currently active.</returns>
+    public IUnitSystem GetCurrentUnit()
+    {
+        if (_unitsTurnOrder.Count == 0)
+        {
+            GD.PrintErr("No units in turn order!");
+            throw new InvalidOperationException("Turn order is not initialized or is empty.");
+        }
 
-		if (_currentIndex < 0 || _currentIndex >= _unitsTurnOrder.Count)
-		{
-			GD.PrintErr($"Current index {_currentIndex} out of range for turn order of size {_unitsTurnOrder.Count}");
-			throw new IndexOutOfRangeException($"Current index is out of range");
-		}
+        if (_currentIndex < 0 || _currentIndex >= _unitsTurnOrder.Count)
+        {
+            GD.PrintErr($"Current index {_currentIndex} out of range for turn order of size {_unitsTurnOrder.Count}");
+            throw new IndexOutOfRangeException($"Current index is out of range");
+        }
 
-		return _unitsTurnOrder[_currentIndex].Key;
-	}
+        return _unitsTurnOrder[_currentIndex].Key;
+    }
 
-	/// <summary>
-	///     Called by the <see cref="GameManager" /> to inform the <see cref="TurnManager" />
-	///     the game is finished
-	/// </summary>
-	public virtual void EndTurnManagerLoop()
-	{
-		_currentTurnState = AovDataStructures.TurnState.Finished;
-	}
+    /// <summary>
+    ///     Called by the <see cref="GameManager" /> to inform the <see cref="TurnManager" />
+    ///     the game is finished
+    /// </summary>
+    public virtual void EndTurnManagerLoop()
+    {
+        _currentTurnState = AovDataStructures.TurnState.Finished;
+    }
 
-	#endregion
+    #endregion
 }

@@ -11,7 +11,7 @@ namespace AshesOfVelsingrad.Systems;
 ///     such as its cost, cooldown, range, type, and targeting logic.
 ///     Specific skills should inherit from this class and implement the <see cref="Use" /> method.
 /// </remarks>
-public abstract class SkillSystem: ISkillSystem
+public abstract class SkillSystem : ISkillSystem
 {
     #region Public Properties
 

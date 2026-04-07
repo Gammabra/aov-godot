@@ -80,9 +80,9 @@ public abstract partial class UnitSystem
     /// </summary>
     /// <param name="statusEffect">The status effect to apply.</param>
     public virtual void SetStatusEffectOnUnit(StatusEffect<IUnitSystem> statusEffect)
-{
-    _statusEffectSystem?.ApplyEffect(this, statusEffect);
-}
+    {
+        _statusEffectSystem?.ApplyEffect(this, statusEffect);
+    }
 
     #endregion
 

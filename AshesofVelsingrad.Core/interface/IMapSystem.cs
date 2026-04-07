@@ -16,7 +16,7 @@ public interface IMapSystem
     bool IsWalkable(int x, int y, int z);
     void SetWalkable(int x, int y, int z);
     void SetStatusEffectOnCells(List<(int, int, int)> cells, StatusEffect<CellInformation> statusEffect);
-    AovDataStructures.CellType GetCellType((int, int,int) position);
+    AovDataStructures.CellType GetCellType((int, int, int) position);
 
     // Methods from MapSystemUnitsHandling
     void PlaceUnits(List<IUnitSystem> playerUnits, List<IUnitSystem> enemyUnits);

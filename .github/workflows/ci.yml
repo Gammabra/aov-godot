@@ -54,9 +54,10 @@ jobs:
           dotnet test AshesofVelsingrad.Core.Tests/AshesofVelsingrad.Core.Tests.csproj
           --configuration Release 
           --no-restore 
+          --results-directory "./TestResults" 
           --logger "trx;LogFileName=dotnet_results.trx"
           --collect:"XPlat Code Coverage"
-          --DataCollectionRunSettings.DataCollectors.DataCollector.Configuration.Format=cobertura
+          -- DataCollectionRunSettings.DataCollectors.DataCollector.Configuration.Format=cobertura
 
       - name: Upload .NET Coverage Artifact
         uses: actions/upload-artifact@v4

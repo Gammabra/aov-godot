@@ -2,7 +2,7 @@ name: Tests and Coverage
 
 on:
   push:
-    branches: [develop, canary, release]
+    branches: [develop, canary, release, chore/test-coverage]
     paths-ignore:
       - "**.md"
       - "documentation/**"
@@ -51,7 +51,7 @@ jobs:
       # --- 1. PURE C# UNIT TESTS & COVERAGE ---
       - name: Run .NET Unit Tests & Collect Coverage
         run: >
-          dotnet test AshesofVelsingrad.Core.Tests/AshesofVelsingrad.Core.Tests.csproj 
+          dotnet test AshesofVelsingrad.Core.Tests/AshesofVelsingrad.Core.Tests.csproj /p:CollectCoverage=true /p:Threshold=90 /p:ThresholdType=line
           --configuration Release 
           --no-restore 
           --collect:"XPlat Code Coverage" 
@@ -72,6 +72,15 @@ jobs:
           name: dotnet-test-results
           path: ./TestResults/dotnet_results.trx
 
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v5
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          files: ./TestResults/**/coverage.cobertura.xml
+          flags: core-logic 
+          name: core-tests
+          fail_ci_if_error: true
+
       # --- 2. GODOT INTEGRATION TESTS ---
       - name: Run GdUnit4 Integration Tests
         uses: MikeSchulze/gdunit4-action@v1
@@ -91,3 +100,11 @@ jobs:
         with:
           name: gdunit-test-results
           path: gdunit_report.xml
+
+      - name: Test Report
+        uses: dorny/test-reporter@v1
+        if: always()
+        with:
+          name: .NET & GdUnit4 Tests
+          path: '**/TestResults/*.trx,**/gdunit_report.xml'
+          reporter: dotnet-trx

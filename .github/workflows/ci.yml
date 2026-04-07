@@ -64,7 +64,7 @@ jobs:
         if: always()
         with:
           name: dotnet-coverage-report
-          path: ./AshesofVelsingrad.Core.Tests/TestResults/**/coverage.cobertura.xml
+          path: ./TestResults/**/coverage.cobertura.xml
 
       - name: Upload .NET Test Results
         uses: actions/upload-artifact@v4
@@ -77,7 +77,7 @@ jobs:
         uses: codecov/codecov-action@v5
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
-          files: ./AshesofVelsingrad.Core.Tests/TestResults/**/coverage.cobertura.xml
+          files: ./TestResults/**/coverage.cobertura.xml
           flags: core-logic 
           name: core-tests
           fail_ci_if_error: true
@@ -123,7 +123,7 @@ jobs:
       - name: Generate HTML Report
         run: >
           reportgenerator 
-          "-reports:AshesofVelsingrad.Core.Tests/TestResults/**/coverage.cobertura.xml" 
+          "-reports:TestResults/**/coverage.cobertura.xml" 
           "-targetdir:TestResults/CoverageHTML" 
           -reporttypes:Html
 

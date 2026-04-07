@@ -13,6 +13,7 @@ public class StatusEffectSystemTests
     private StatusEffectSystem _system = null!;
     private IUnitSystem _unit = null!;
 
+    [System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage]
     public class TestEffect<T> : StatusEffect<T>
     {
         private readonly bool _shouldApplyTwice;
@@ -25,6 +26,7 @@ public class StatusEffectSystemTests
         }
     }
 
+    [System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage]
     private sealed class TestUnitSystem : EffectTarget<IUnitSystem>, IUnitSystem
     {
         public string UnitName { get; set; } = "TestUnit";

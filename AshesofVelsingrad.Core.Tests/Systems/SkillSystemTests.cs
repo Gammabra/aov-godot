@@ -8,6 +8,7 @@ namespace AshesOfVelsingrad.Core.Tests.Systems;
 public class SkillSystemTests
 {
     // Concrete implementation for testing the abstract base
+    [System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage]
     private class TestSkill : SkillSystem
     {
         public TestSkill(string name, int totalCooldown, int range)

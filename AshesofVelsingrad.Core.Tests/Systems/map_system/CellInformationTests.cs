@@ -90,16 +90,7 @@ public class CellInformationTests
         var field = typeof(StatusEffect<CellInformation>)
             .GetField("<EffectToSpread>k__BackingField", BindingFlags.Instance | BindingFlags.NonPublic);
 
-        if (field != null)
-        {
-            field.SetValue(cellEffect, unitEffect);
-        }
-        else
-        {
-            // Fallback: Try setting via the property if the backing field name differs
-            var prop = typeof(StatusEffect<CellInformation>).GetProperty("EffectToSpread");
-            prop?.SetValue(cellEffect, unitEffect);
-        }
+        field.SetValue(cellEffect, unitEffect);
 
         cell.ApplyEffect(cellEffect);
 

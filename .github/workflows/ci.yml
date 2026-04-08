@@ -31,10 +31,7 @@ jobs:
 
     strategy:
       matrix:
-        dotnet-version: ['net9.0']
-        include:
-          - dotnet-version: 'net9.0'
-            display-name: '.NET 9.0'
+        dotnet-version: ['9.0.x']
       fail-fast: false
 
     steps:
@@ -42,11 +39,18 @@ jobs:
         uses: actions/checkout@v4
         with:
           lfs: true
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: ${{ matrix.dotnet-version }}
+
+      - name: Restore dependencies
+        run: dotnet restore
 
       - name: Run GdUnit4 Tests
         uses: MikeSchulze/gdunit4-action@v1
         with:
-          godot-version: '4.5.1'
+          godot-version: '4.6'
           godot-net: true
           dotnet-version: ${{ matrix.dotnet-version }}
           paths: 'res://tests/unit'

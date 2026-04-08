@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ctqbe7n02cqcp"
-path="res://.godot/imported/Pave Prison.png-83ceb260192452dc6b9f348f233f1359.ctex"
+uid="uid://bhrob6cobobw5"
+path="res://.godot/imported/apollo-8x.png-3d60d67da3cd7f9a75629fc0a210a39c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Blender/Pave Prison.png"
-dest_files=["res://.godot/imported/Pave Prison.png-83ceb260192452dc6b9f348f233f1359.ctex"]
+source_file="res://assets/Krita/apollo-8x.png"
+dest_files=["res://.godot/imported/apollo-8x.png-3d60d67da3cd7f9a75629fc0a210a39c.ctex"]
 
 [params]
 

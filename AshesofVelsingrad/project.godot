@@ -32,6 +32,10 @@ project/assembly_name="AshesofVelsingrad"
 
 enabled=PackedStringArray("res://addons/gdUnit4/plugin.cfg", "res://addons/gridMapEditorTool/plugin.cfg")
 
+[filesystem]
+
+import/blender/enabled=false
+
 [gdunit4]
 
 settings/test/test_lookup_folder="integration_tests"

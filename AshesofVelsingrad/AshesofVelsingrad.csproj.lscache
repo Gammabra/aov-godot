@@ -106,6 +106,7 @@ integration_tests/scripts_tests/
  ui/menus/
   MainMenuTest.cs
   OptionsMenuTest.cs
+  settings_tests.cs
 scripts/
  AI/EnemyAIBehavior.cs
  data/
@@ -150,8 +151,13 @@ scripts/
    UnitSystemStats.cs
    UnitSystemStatusEffectImplementation.cs
  ui/menus/
+  ButtonMenu.cs
+  ButtonSettingsFont.cs
   MainMenu.cs
   OptionsMenu.cs
+  SettingsPageManager.cs
+  SettingsPages.cs
+  SettingsSave.cs
 
 [metadataReferences]
 ../../../../../../../Program Files/dotnet/packs/Microsoft.NETCore.App.Ref/9.0.14/ref/net9.0/

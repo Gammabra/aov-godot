@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://0r72dab5wgj6"
-path="res://.godot/imported/apollo-8x.png-3d60d67da3cd7f9a75629fc0a210a39c.ctex"
+uid="uid://btapw4xgdwv57"
+path="res://.godot/imported/Logo AOV v2 white.png-77277d03ca3687532b5179b1d82051fd.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Krita/apollo-8x.png"
-dest_files=["res://.godot/imported/apollo-8x.png-3d60d67da3cd7f9a75629fc0a210a39c.ctex"]
+source_file="res://assets/menu_assets/Logo AOV v2 white.png"
+dest_files=["res://.godot/imported/Logo AOV v2 white.png-77277d03ca3687532b5179b1d82051fd.ctex"]
 
 [params]
 

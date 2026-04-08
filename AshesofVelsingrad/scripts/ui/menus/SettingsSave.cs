@@ -82,6 +82,9 @@ public partial class SettingsSave : Button
             }
         }
 
+        if (_settings == null)
+            return;
+
         // ---------- AUDIO ----------
         cfg.SetValue("audio", "master", _settings.Get("master_volume"));
         cfg.SetValue("audio", "music", _settings.Get("music_volume"));
@@ -161,6 +164,9 @@ public partial class SettingsSave : Button
             }
         }
 
+        if (_settings == null)
+            return;
+
         // ---------- AUDIO ----------
         _settings.Set("master_volume", cfg.GetValue("audio", "master", _settings.Get("master_volume")));
         _settings.Set("music_volume", cfg.GetValue("audio", "music", _settings.Get("music_volume")));
@@ -172,11 +178,15 @@ public partial class SettingsSave : Button
         _settings.Call("ApplyFontSelection");
 
         var actionsDict = _settings?.Get("actions").As<Dictionary>();
-        if (actionsDict == null)
+
+        if (actionsDict == null || _settings == null)
             return;
+
         var pageCmd = _settings.GetNodeOrNull("PageCommand");
+
         if (pageCmd == null)
             return;
+
         foreach (string action in actionsDict.Keys)
         {
             var lbl = pageCmd.GetNode<Label>((string)actionsDict[action]);

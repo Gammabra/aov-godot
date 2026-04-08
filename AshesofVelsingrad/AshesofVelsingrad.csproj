@@ -6,7 +6,6 @@
     <RootNamespace>AshesofVelsingrad</RootNamespace>
     <AssemblyName>AshesofVelsingrad</AssemblyName>
     <GenerateTargetFrameworkAttribute>false</GenerateTargetFrameworkAttribute>
-    <!-- TODO: check if it still work with this shit -->
     
     <Nullable>enable</Nullable>
     <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>

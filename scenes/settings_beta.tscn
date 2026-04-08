@@ -1,0 +1,1179 @@
+[gd_scene format=3 uid="uid://geowrsurjvqo"]
+
+[ext_resource type="Texture2D" uid="uid://b5g32aw86klf1" path="res://assets/menu_assets/MENU proto.png" id="1_ujhbt"]
+[ext_resource type="Script" uid="uid://b8qswx3qw7x7g" path="res://scripts/menu/ButtonMenu.cs" id="3_qi5fe"]
+[ext_resource type="Script" uid="uid://qkmc6tubh4dh" path="res://scripts/menu/SettingsSave.cs" id="3_t01jc"]
+[ext_resource type="FontFile" uid="uid://dri86n5u6wvhn" path="res://font/abibas/Abibas.ttf" id="3_tlijc"]
+[ext_resource type="Script" uid="uid://bmdj8jh7q5csj" path="res://scripts/menu/SettingsPageManager.cs" id="4_qi5fe"]
+[ext_resource type="Script" uid="uid://0d4ak6xjigui" path="res://scripts/menu/SettingsPages.cs" id="4_tlijc"]
+[ext_resource type="Script" uid="uid://crudjafba0x46" path="res://scripts/menu/ButtonSettingsFont.cs" id="5_t01jc"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_m7784"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iuawr"]
+bg_color = Color(0.07106302, 0.0339631, 0.1336748, 0)
+border_blend = true
+expand_margin_left = 10.0
+expand_margin_right = 10.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m7784"]
+bg_color = Color(0.18039216, 0.18039216, 0.18039216, 0)
+expand_margin_left = 10.0
+expand_margin_right = 10.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_t01jc"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ujhbt"]
+content_margin_left = 4.0
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t01jc"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qi5fe"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h5uks"]
+bg_color = Color(0, 0, 0, 0)
+draw_center = false
+border_blend = true
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_h5uks"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_sjfrx"]
+
+[node name="MenuBeta" type="Node2D" unique_id=675576821]
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=782571889]
+offset_left = 203.0
+offset_top = 193.0
+offset_right = 243.0
+offset_bottom = 233.0
+
+[node name="MenuProto" type="Sprite2D" parent="TextureRect" unique_id=2141476751]
+modulate = Color(0.29954743, 0.29954746, 0.29954734, 0.8392157)
+position = Vector2(0, -1)
+scale = Vector2(0.5999153, 0.5997711)
+texture = ExtResource("1_ujhbt")
+offset = Vector2(621, 219)
+
+[node name="LabelSettings" type="Label" parent="." unique_id=1713170725]
+offset_top = 59.0
+offset_right = 1151.0
+offset_bottom = 119.0
+theme_override_fonts/font = ExtResource("3_tlijc")
+theme_override_font_sizes/font_size = 60
+text = "Settings"
+horizontal_alignment = 1
+
+[node name="ButtonSave" type="Button" parent="." unique_id=1568461147]
+offset_left = 1028.0
+offset_top = 583.0
+offset_right = 1132.0
+offset_bottom = 630.0
+theme_override_fonts/font = ExtResource("3_tlijc")
+theme_override_font_sizes/font_size = 30
+text = "Save"
+script = ExtResource("3_t01jc")
+
+[node name="PageManager" type="Node" parent="." unique_id=885377501]
+script = ExtResource("4_qi5fe")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PageManager" unique_id=2023019499]
+custom_minimum_size = Vector2(300, 0)
+offset_right = 1151.0
+offset_bottom = 335.0
+alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PageManager/VBoxContainer" unique_id=1318815892]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="ButtonSubtitle" type="Button" parent="PageManager/VBoxContainer/HBoxContainer" unique_id=727346576]
+custom_minimum_size = Vector2(160, 55)
+layout_mode = 2
+theme_override_colors/font_focus_color = Color(0.8745098, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0.8745098, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0.8745098, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_tlijc")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxEmpty_m7784")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_iuawr")
+theme_override_styles/hover = SubResource("StyleBoxFlat_m7784")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_t01jc")
+text = "Subtitle"
+autowrap_trim_flags = 0
+icon_alignment = 1
+
+[node name="ButtonVideo" type="Button" parent="PageManager/VBoxContainer/HBoxContainer" unique_id=468110324]
+custom_minimum_size = Vector2(160, 55)
+layout_mode = 2
+theme_override_colors/font_focus_color = Color(0.8745098, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0.8745098, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0.8745098, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_tlijc")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxEmpty_m7784")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_iuawr")
+theme_override_styles/hover = SubResource("StyleBoxFlat_m7784")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_t01jc")
+text = "Video"
+autowrap_trim_flags = 0
+icon_alignment = 1
+
+[node name="ButtonVisual" type="Button" parent="PageManager/VBoxContainer/HBoxContainer" unique_id=925863024]
+custom_minimum_size = Vector2(160, 55)
+layout_mode = 2
+theme_override_colors/font_focus_color = Color(0.8745098, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0.8745098, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0.8745098, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_tlijc")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxEmpty_m7784")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_iuawr")
+theme_override_styles/hover = SubResource("StyleBoxFlat_m7784")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_t01jc")
+text = "Visual"
+autowrap_trim_flags = 0
+icon_alignment = 1
+
+[node name="ButtonCommand" type="Button" parent="PageManager/VBoxContainer/HBoxContainer" unique_id=1177699801]
+custom_minimum_size = Vector2(160, 55)
+layout_mode = 2
+theme_override_colors/font_focus_color = Color(0.8745098, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0.8745098, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0.8745098, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_tlijc")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxEmpty_m7784")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_iuawr")
+theme_override_styles/hover = SubResource("StyleBoxFlat_m7784")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_t01jc")
+text = "Command"
+autowrap_trim_flags = 0
+icon_alignment = 1
+
+[node name="ButtonAudio" type="Button" parent="PageManager/VBoxContainer/HBoxContainer" unique_id=2095731372]
+custom_minimum_size = Vector2(160, 55)
+layout_mode = 2
+theme_override_colors/font_focus_color = Color(0.8745098, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0.8745098, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0.8745098, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_tlijc")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxEmpty_m7784")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_iuawr")
+theme_override_styles/hover = SubResource("StyleBoxFlat_m7784")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_t01jc")
+text = "Audio"
+autowrap_trim_flags = 0
+icon_alignment = 1
+
+[node name="MainContent" type="Node" parent="." unique_id=108730012]
+script = ExtResource("4_tlijc")
+
+[node name="PageSubtitle" type="Control" parent="MainContent" unique_id=893435252]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_top = 211.0
+offset_right = 1152.0
+offset_bottom = 211.0
+
+[node name="ColorRect" type="ColorRect" parent="MainContent/PageSubtitle" unique_id=1175340787]
+layout_mode = 0
+offset_left = 472.0
+offset_right = 697.0
+offset_bottom = 79.0
+color = Color(0.4, 0.4, 0.28, 0)
+
+[node name="ExampleLabel" type="Label" parent="MainContent/PageSubtitle" unique_id=1947172413]
+visible = false
+layout_mode = 0
+offset_left = 489.0
+offset_top = 10.0
+offset_right = 682.0
+offset_bottom = 69.0
+theme_override_fonts/font = ExtResource("3_tlijc")
+theme_override_font_sizes/font_size = 30
+text = "Subtitles"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Subtitles" type="Label" parent="MainContent/PageSubtitle" unique_id=1486823530]
+layout_mode = 0
+offset_left = 428.0
+offset_top = 93.0
+offset_right = 576.0
+offset_bottom = 128.0
+theme_override_fonts/font = ExtResource("3_tlijc")
+theme_override_font_sizes/font_size = 30
+text = "Subtitles"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="CheckBox" type="CheckBox" parent="MainContent/PageSubtitle/Subtitles" unique_id=2012841433]
+layout_mode = 0
+offset_left = 171.0
+offset_right = 195.0
+offset_bottom = 24.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_ujhbt")
+theme_override_styles/hover = SubResource("StyleBoxFlat_t01jc")
+theme_override_colors/checkbox_checked_color = Color(0.4539004, 0, 0.04259321, 1)
+theme_override_colors/checkbox_unchecked_color = Color(0, 0, 0, 1)
+
+[node name="Size" type="Label" parent="MainContent/PageSubtitle" unique_id=422695664]
+layout_mode = 0
+offset_left = 428.0
+offset_top = 128.0
+offset_right = 576.0
+offset_bottom = 163.0
+theme_override_fonts/font = ExtResource("3_tlijc")
+theme_override_font_sizes/font_size = 30
+text = "Size"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="HSlider" type="HSlider" parent="MainContent/PageSubtitle/Size" unique_id=1195506009]
+layout_mode = 0
+offset_left = 171.0
+offset_top = 9.0
+offset_right = 321.0
+offset_bottom = 25.0
+min_value = 10.0
+max_value = 40.0
+step = 10.0
+value = 30.0
+rounded = true
+tick_count = 4
+ticks_on_borders = true
+ticks_position = 3
+
+[node name="Font" type="Label" parent="MainContent/PageSubtitle" unique_id=1018975612]
+layout_mode = 0
+offset_left = 428.0
+offset_top = 163.0
+offset_right = 576.0
+offset_bottom = 198.0
+theme_override_fonts/font = ExtResource("3_tlijc")
+theme_override_font_sizes/font_size = 30
+text = "Font"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="OptionButton" type="OptionButton" parent="MainContent/PageSubtitle/Font" unique_id=1573501405]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 0
+offset_left = 171.0
+offset_right = 321.0
+offset_bottom = 28.0
+theme_override_fonts/font = ExtResource("3_tlijc")
+theme_override_font_sizes/font_size = 20
+script = ExtResource("5_t01jc")
+
+[node name="TextColor" type="Label" parent="MainContent/PageSubtitle" unique_id=616290397]
+layout_mode = 0
+offset_left = 428.0
+offset_top = 198.0
+offset_right = 576.0
+offset_bottom = 233.0
+theme_override_fonts/font = ExtResource("3_tlijc")
+theme_override_font_sizes/font_size = 30
+text = "Text Color"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="OptionButton" type="OptionButton" parent="MainContent/PageSubtitle/TextColor" unique_id=717680413]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 0
+offset_left = 171.0
+offset_right = 321.0
+offset_bottom = 28.0
+theme_override_fonts/font = ExtResource("3_tlijc")
+theme_override_font_sizes/font_size = 20
+selected = 0
+item_count = 3
+popup/item_0/text = "White"
+popup/item_0/id = 0
+popup/item_1/text = "Red"
+popup/item_1/id = 1
+popup/item_2/text = "Green"
+popup/item_2/id = 2
+
+[node name="BgColor" type="Label" parent="MainContent/PageSubtitle" unique_id=2023977199]
+layout_mode = 0
+offset_left = 363.0
+offset_top = 233.0
+offset_right = 576.0
+offset_bottom = 268.0
+theme_override_fonts/font = ExtResource("3_tlijc")
+theme_override_font_sizes/font_size = 30
+text = "Background Color"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="OptionButton" type="OptionButton" parent="MainContent/PageSubtitle/BgColor" unique_id=483542218]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 0
+offset_left = 236.0
+offset_top = 2.0
+offset_right = 386.0
+offset_bottom = 30.0
+theme_override_fonts/font = ExtResource("3_tlijc")
+theme_override_font_sizes/font_size = 20
+selected = 3
+item_count = 5
+popup/item_0/text = "White"
+popup/item_0/id = 0
+popup/item_1/text = "Red"
+popup/item_1/id = 1
+popup/item_2/text = "Green"
+popup/item_2/id = 2
+popup/item_3/text = "Black"
+popup/item_3/id = 3
+popup/item_4/text = "None"
+popup/item_4/id = 4
+
+[node name="Opacity" type="Label" parent="MainContent/PageSubtitle" unique_id=2128204355]
+layout_mode = 0
+offset_left = 428.0
+offset_top = 268.0
+offset_right = 576.0
+offset_bottom = 303.0
+theme_override_fonts/font = ExtResource("3_tlijc")
+theme_override_font_sizes/font_size = 30
+text = "Opacity"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="HSlider" type="HSlider" parent="MainContent/PageSubtitle/Opacity" unique_id=1450134565]
+layout_mode = 0
+offset_left = 171.0
+offset_top = 9.0
+offset_right = 321.0
+offset_bottom = 25.0
+min_value = 25.0
+step = 25.0
+value = 50.0
+rounded = true
+tick_count = 4
+ticks_on_borders = true
+ticks_position = 3
+
+[node name="Langage" type="Label" parent="MainContent/PageSubtitle" unique_id=1864710212]
+layout_mode = 0
+offset_left = 428.0
+offset_top = 303.0
+offset_right = 576.0
+offset_bottom = 338.0
+theme_override_fonts/font = ExtResource("3_tlijc")
+theme_override_font_sizes/font_size = 30
+text = "Langage"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="OptionButton" type="OptionButton" parent="MainContent/PageSubtitle/Langage" unique_id=1265949244]
+custom_minimum_size = Vector2(130, 0)
+layout_mode = 0
+offset_left = 171.0
+offset_top = 3.0
+offset_right = 301.0
+offset_bottom = 31.0
+theme_override_fonts/font = ExtResource("3_tlijc")
+theme_override_font_sizes/font_size = 20
+selected = 0
+item_count = 2
+popup/item_0/text = "English"
+popup/item_0/id = 0
+popup/item_1/text = "French"
+popup/item_1/id = 1
+
+[node name="PageVideo" type="Control" parent="MainContent" unique_id=243791385]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_top = 215.0
+offset_right = 1152.0
+offset_bottom = 215.0
+
+[node name="Contrast" type="Label" parent="MainContent/PageVideo" unique_id=2103985989]
+layout_mode = 0
+offset_left = 427.0
+offset_top = 18.0
+offset_right = 575.0
+offset_bottom = 53.0
+theme_override_fonts/font = ExtResource("3_tlijc")
+theme_override_font_sizes/font_size = 30
+text = "Contrast"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="HSlider" type="HSlider" parent="MainContent/PageVideo/Contrast" unique_id=1346903287]
+layout_mode = 0
+offset_left = 165.0
+offset_top = 7.0
+offset_right = 315.0
+offset_bottom = 23.0
+step = 25.0
+value = 50.0
+rounded = true
+tick_count = 5
+ticks_on_borders = true
+ticks_position = 3
+
+[node name="Brightness" type="Label" parent="MainContent/PageVideo" unique_id=1931041370]
+layout_mode = 0
+offset_left = 427.0
+offset_top = 53.0
+offset_right = 575.0
+offset_bottom = 88.0
+theme_override_fonts/font = ExtResource("3_tlijc")
+theme_override_font_sizes/font_size = 30
+text = "Brightness"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="HSlider" type="HSlider" parent="MainContent/PageVideo/Brightness" unique_id=1597598506]
+layout_mode = 0
+offset_left = 165.0
+offset_top = 7.0
+offset_right = 315.0
+offset_bottom = 23.0
+step = 25.0
+value = 50.0
+rounded = true
+tick_count = 5
+ticks_on_borders = true
+ticks_position = 3
+
+[node name="Animations" type="Label" parent="MainContent/PageVideo" unique_id=2102627402]
+layout_mode = 0
+offset_left = 427.0
+offset_top = 87.0
+offset_right = 575.0
+offset_bottom = 122.0
+theme_override_fonts/font = ExtResource("3_tlijc")
+theme_override_font_sizes/font_size = 30
+text = "Animations"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="CheckBox" type="CheckBox" parent="MainContent/PageVideo/Animations" unique_id=1928812872]
+layout_mode = 0
+offset_left = 165.0
+offset_top = 2.0
+offset_right = 189.0
+offset_bottom = 26.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_ujhbt")
+theme_override_styles/hover = SubResource("StyleBoxFlat_t01jc")
+theme_override_colors/checkbox_checked_color = Color(0.4539004, 0, 0.04259321, 1)
+theme_override_colors/checkbox_unchecked_color = Color(0, 0, 0, 1)
+
+[node name="Resolution" type="Label" parent="MainContent/PageVideo" unique_id=996325924]
+layout_mode = 0
+offset_left = 427.0
+offset_top = 122.0
+offset_right = 575.0
+offset_bottom = 157.0
+theme_override_fonts/font = ExtResource("3_tlijc")
+theme_override_font_sizes/font_size = 30
+text = "Resolution"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="OptionButton" type="OptionButton" parent="MainContent/PageVideo/Resolution" unique_id=1706943346]
+custom_minimum_size = Vector2(130, 0)
+layout_mode = 0
+offset_left = 165.0
+offset_top = 3.0
+offset_right = 295.0
+offset_bottom = 31.0
+theme_override_fonts/font = ExtResource("3_tlijc")
+theme_override_font_sizes/font_size = 20
+selected = 0
+item_count = 2
+popup/item_0/text = "1920 x 1080"
+popup/item_0/id = 0
+popup/item_1/text = " 1280 x 720"
+popup/item_1/id = 1
+
+[node name="WindowMode" type="Label" parent="MainContent/PageVideo" unique_id=1633475845]
+layout_mode = 0
+offset_left = 363.0
+offset_top = 157.0
+offset_right = 575.0
+offset_bottom = 192.0
+theme_override_fonts/font = ExtResource("3_tlijc")
+theme_override_font_sizes/font_size = 30
+text = "Window Mode"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="OptionButton" type="OptionButton" parent="MainContent/PageVideo/WindowMode" unique_id=1077491393]
+custom_minimum_size = Vector2(130, 0)
+layout_mode = 0
+offset_left = 229.0
+offset_top = 2.0
+offset_right = 359.0
+offset_bottom = 30.0
+theme_override_fonts/font = ExtResource("3_tlijc")
+theme_override_font_sizes/font_size = 20
+selected = 0
+item_count = 2
+popup/item_0/text = "Windowed"
+popup/item_0/id = 0
+popup/item_1/text = "Fullscreen"
+popup/item_1/id = 1
+
+[node name="Texture" type="Label" parent="MainContent/PageVideo" unique_id=1558982895]
+layout_mode = 0
+offset_left = 427.0
+offset_top = 190.0
+offset_right = 575.0
+offset_bottom = 225.0
+theme_override_fonts/font = ExtResource("3_tlijc")
+theme_override_font_sizes/font_size = 30
+text = "Texture"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="OptionButton" type="OptionButton" parent="MainContent/PageVideo/Texture" unique_id=1352717392]
+custom_minimum_size = Vector2(130, 0)
+layout_mode = 0
+offset_left = 165.0
+offset_top = 2.0
+offset_right = 295.0
+offset_bottom = 30.0
+theme_override_fonts/font = ExtResource("3_tlijc")
+theme_override_font_sizes/font_size = 20
+selected = 0
+item_count = 3
+popup/item_0/text = "Low"
+popup/item_0/id = 0
+popup/item_1/text = "Medium"
+popup/item_1/id = 1
+popup/item_2/text = "High"
+popup/item_2/id = 2
+
+[node name="PageVisual" type="Control" parent="MainContent" unique_id=954433597]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_top = 219.0
+offset_right = 1152.0
+offset_bottom = 219.0
+
+[node name="InterfaceSize" type="Label" parent="MainContent/PageVisual" unique_id=1470325855]
+layout_mode = 0
+offset_left = 402.0
+offset_top = 12.0
+offset_right = 577.0
+offset_bottom = 47.0
+theme_override_fonts/font = ExtResource("3_tlijc")
+theme_override_font_sizes/font_size = 30
+text = "Interface Size"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="HSlider" type="HSlider" parent="MainContent/PageVisual/InterfaceSize" unique_id=377516815]
+layout_mode = 0
+offset_left = 195.0
+offset_top = 7.0
+offset_right = 345.0
+offset_bottom = 23.0
+step = 25.0
+value = 50.0
+rounded = true
+tick_count = 5
+ticks_on_borders = true
+ticks_position = 3
+
+[node name="Blurry" type="Label" parent="MainContent/PageVisual" unique_id=894213012]
+layout_mode = 0
+offset_left = 428.0
+offset_top = 45.0
+offset_right = 576.0
+offset_bottom = 80.0
+theme_override_fonts/font = ExtResource("3_tlijc")
+theme_override_font_sizes/font_size = 30
+text = "Blurry"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="CheckBox" type="CheckBox" parent="MainContent/PageVisual/Blurry" unique_id=922108861]
+layout_mode = 0
+offset_left = 169.0
+offset_right = 193.0
+offset_bottom = 24.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_ujhbt")
+theme_override_styles/hover = SubResource("StyleBoxFlat_t01jc")
+theme_override_colors/checkbox_checked_color = Color(0.4539004, 0, 0.04259321, 1)
+theme_override_colors/checkbox_unchecked_color = Color(0, 0, 0, 1)
+
+[node name="CameraShake" type="Label" parent="MainContent/PageVisual" unique_id=257544696]
+layout_mode = 0
+offset_left = 404.0
+offset_top = 81.0
+offset_right = 576.0
+offset_bottom = 116.0
+theme_override_fonts/font = ExtResource("3_tlijc")
+theme_override_font_sizes/font_size = 30
+text = "Camera Shake"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="CheckBox" type="CheckBox" parent="MainContent/PageVisual/CameraShake" unique_id=885079687]
+layout_mode = 0
+offset_left = 193.0
+offset_top = 2.0
+offset_right = 217.0
+offset_bottom = 26.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_ujhbt")
+theme_override_styles/hover = SubResource("StyleBoxFlat_t01jc")
+theme_override_colors/checkbox_checked_color = Color(0.4539004, 0, 0.04259321, 1)
+theme_override_colors/checkbox_unchecked_color = Color(0, 0, 0, 1)
+
+[node name="VisualIndicators" type="Label" parent="MainContent/PageVisual" unique_id=485491905]
+layout_mode = 0
+offset_left = 363.0
+offset_top = 116.0
+offset_right = 576.0
+offset_bottom = 151.0
+theme_override_fonts/font = ExtResource("3_tlijc")
+theme_override_font_sizes/font_size = 30
+text = "Visual Indicators"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="CheckBox" type="CheckBox" parent="MainContent/PageVisual/VisualIndicators" unique_id=815631265]
+layout_mode = 0
+offset_left = 234.0
+offset_top = 5.0
+offset_right = 258.0
+offset_bottom = 29.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_ujhbt")
+theme_override_styles/hover = SubResource("StyleBoxFlat_t01jc")
+theme_override_colors/checkbox_checked_color = Color(0.4539004, 0, 0.04259321, 1)
+theme_override_colors/checkbox_unchecked_color = Color(0, 0, 0, 1)
+
+[node name="ColorBlindness" type="Label" parent="MainContent/PageVisual" unique_id=347959885]
+layout_mode = 0
+offset_left = 385.0
+offset_top = 151.0
+offset_right = 577.0
+offset_bottom = 186.0
+theme_override_fonts/font = ExtResource("3_tlijc")
+theme_override_font_sizes/font_size = 30
+text = "Color Blindness"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="OptionButton" type="OptionButton" parent="MainContent/PageVisual/ColorBlindness" unique_id=380108627]
+custom_minimum_size = Vector2(130, 0)
+layout_mode = 0
+offset_left = 213.0
+offset_top = 2.0
+offset_right = 355.0
+offset_bottom = 30.0
+theme_override_fonts/font = ExtResource("3_tlijc")
+theme_override_font_sizes/font_size = 20
+selected = 0
+item_count = 4
+popup/item_0/text = "None"
+popup/item_0/id = 0
+popup/item_1/text = "Deuteranopia"
+popup/item_1/id = 1
+popup/item_2/text = "Protanopia"
+popup/item_2/id = 2
+popup/item_3/text = "Tritanopia"
+popup/item_3/id = 3
+
+[node name="PageCommand" type="Control" parent="MainContent" unique_id=1689856365]
+layout_mode = 3
+anchors_preset = 0
+offset_top = 223.0
+offset_right = 1152.0
+offset_bottom = 223.0
+
+[node name="move_up" type="Label" parent="MainContent/PageCommand" unique_id=1061923437]
+layout_mode = 0
+offset_left = 403.0
+offset_top = -11.0
+offset_right = 578.0
+offset_bottom = 24.0
+theme_override_fonts/font = ExtResource("3_tlijc")
+theme_override_font_sizes/font_size = 30
+text = "Move Up"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="MainContent/PageCommand/move_up" unique_id=1847816118]
+layout_mode = 0
+offset_left = 193.0
+offset_top = 2.0
+offset_right = 209.0
+offset_bottom = 17.0
+
+[node name="Button2" type="Button" parent="MainContent/PageCommand/move_up" unique_id=1309692055]
+layout_mode = 0
+offset_left = 305.0
+offset_top = 2.0
+offset_right = 321.0
+offset_bottom = 17.0
+
+[node name="move_down" type="Label" parent="MainContent/PageCommand" unique_id=689532528]
+layout_mode = 0
+offset_left = 403.0
+offset_top = 22.0
+offset_right = 578.0
+offset_bottom = 57.0
+theme_override_fonts/font = ExtResource("3_tlijc")
+theme_override_font_sizes/font_size = 30
+text = "Move Down"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="MainContent/PageCommand/move_down" unique_id=2065158127]
+layout_mode = 0
+offset_left = 193.0
+offset_top = 2.0
+offset_right = 209.0
+offset_bottom = 19.0
+
+[node name="Button2" type="Button" parent="MainContent/PageCommand/move_down" unique_id=1706111509]
+layout_mode = 0
+offset_left = 305.0
+offset_top = 2.0
+offset_right = 321.0
+offset_bottom = 19.0
+
+[node name="move_left" type="Label" parent="MainContent/PageCommand" unique_id=1164204733]
+layout_mode = 0
+offset_left = 403.0
+offset_top = 55.0
+offset_right = 578.0
+offset_bottom = 90.0
+theme_override_fonts/font = ExtResource("3_tlijc")
+theme_override_font_sizes/font_size = 30
+text = "Move Left"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="MainContent/PageCommand/move_left" unique_id=797909869]
+layout_mode = 0
+offset_left = 193.0
+offset_top = 2.0
+offset_right = 209.0
+offset_bottom = 17.0
+
+[node name="Button2" type="Button" parent="MainContent/PageCommand/move_left" unique_id=163950116]
+layout_mode = 0
+offset_left = 305.0
+offset_top = 2.0
+offset_right = 321.0
+offset_bottom = 17.0
+
+[node name="move_right" type="Label" parent="MainContent/PageCommand" unique_id=1338653224]
+layout_mode = 0
+offset_left = 403.0
+offset_top = 88.0
+offset_right = 578.0
+offset_bottom = 123.0
+theme_override_fonts/font = ExtResource("3_tlijc")
+theme_override_font_sizes/font_size = 30
+text = "Move Right"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="MainContent/PageCommand/move_right" unique_id=1574154671]
+layout_mode = 0
+offset_left = 193.0
+offset_top = 2.0
+offset_right = 209.0
+offset_bottom = 18.0
+
+[node name="Button2" type="Button" parent="MainContent/PageCommand/move_right" unique_id=1935252702]
+layout_mode = 0
+offset_left = 305.0
+offset_top = 2.0
+offset_right = 321.0
+offset_bottom = 18.0
+
+[node name="battle_move_unit_to" type="Label" parent="MainContent/PageCommand" unique_id=1651936937]
+layout_mode = 0
+offset_left = 392.0
+offset_top = 121.0
+offset_right = 578.0
+offset_bottom = 156.0
+theme_override_fonts/font = ExtResource("3_tlijc")
+theme_override_font_sizes/font_size = 30
+text = "Battle Move To"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="MainContent/PageCommand/battle_move_unit_to" unique_id=1258817591]
+layout_mode = 0
+offset_left = 204.0
+offset_top = 2.0
+offset_right = 220.0
+offset_bottom = 19.0
+
+[node name="Button2" type="Button" parent="MainContent/PageCommand/battle_move_unit_to" unique_id=1889056444]
+layout_mode = 0
+offset_left = 316.0
+offset_top = 2.0
+offset_right = 332.0
+offset_bottom = 19.0
+
+[node name="battle_select_skill1" type="Label" parent="MainContent/PageCommand" unique_id=1989929865]
+layout_mode = 0
+offset_left = 403.0
+offset_top = 153.0
+offset_right = 578.0
+offset_bottom = 188.0
+theme_override_fonts/font = ExtResource("3_tlijc")
+theme_override_font_sizes/font_size = 30
+text = "Battle Skill 1"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="MainContent/PageCommand/battle_select_skill1" unique_id=426154838]
+layout_mode = 0
+offset_left = 193.0
+offset_top = 2.0
+offset_right = 209.0
+offset_bottom = 17.0
+
+[node name="Button2" type="Button" parent="MainContent/PageCommand/battle_select_skill1" unique_id=2105571444]
+layout_mode = 0
+offset_left = 305.0
+offset_top = 2.0
+offset_right = 321.0
+offset_bottom = 17.0
+
+[node name="battle_select_skill2" type="Label" parent="MainContent/PageCommand" unique_id=224097977]
+layout_mode = 0
+offset_left = 403.0
+offset_top = 186.0
+offset_right = 578.0
+offset_bottom = 221.0
+theme_override_fonts/font = ExtResource("3_tlijc")
+theme_override_font_sizes/font_size = 30
+text = "Battle Skill 2"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="MainContent/PageCommand/battle_select_skill2" unique_id=718627339]
+layout_mode = 0
+offset_left = 193.0
+offset_top = 2.0
+offset_right = 209.0
+offset_bottom = 18.0
+
+[node name="Button2" type="Button" parent="MainContent/PageCommand/battle_select_skill2" unique_id=1887816494]
+layout_mode = 0
+offset_left = 305.0
+offset_top = 2.0
+offset_right = 321.0
+offset_bottom = 18.0
+
+[node name="battle_select_skill3" type="Label" parent="MainContent/PageCommand" unique_id=359823432]
+layout_mode = 0
+offset_left = 403.0
+offset_top = 219.0
+offset_right = 578.0
+offset_bottom = 254.0
+theme_override_fonts/font = ExtResource("3_tlijc")
+theme_override_font_sizes/font_size = 30
+text = "Battle Skill 3"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="MainContent/PageCommand/battle_select_skill3" unique_id=298160172]
+layout_mode = 0
+offset_left = 193.0
+offset_top = 2.0
+offset_right = 209.0
+offset_bottom = 18.0
+
+[node name="Button2" type="Button" parent="MainContent/PageCommand/battle_select_skill3" unique_id=1518832418]
+layout_mode = 0
+offset_left = 305.0
+offset_top = 2.0
+offset_right = 321.0
+offset_bottom = 18.0
+
+[node name="battle_select_skill4" type="Label" parent="MainContent/PageCommand" unique_id=994169077]
+layout_mode = 0
+offset_left = 403.0
+offset_top = 252.0
+offset_right = 578.0
+offset_bottom = 287.0
+theme_override_fonts/font = ExtResource("3_tlijc")
+theme_override_font_sizes/font_size = 30
+text = "Battle Skill 4"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="MainContent/PageCommand/battle_select_skill4" unique_id=351853212]
+layout_mode = 0
+offset_left = 193.0
+offset_top = 2.0
+offset_right = 209.0
+offset_bottom = 18.0
+
+[node name="Button2" type="Button" parent="MainContent/PageCommand/battle_select_skill4" unique_id=938154668]
+layout_mode = 0
+offset_left = 305.0
+offset_top = 2.0
+offset_right = 321.0
+offset_bottom = 18.0
+
+[node name="battle_select_skill5" type="Label" parent="MainContent/PageCommand" unique_id=857453795]
+layout_mode = 0
+offset_left = 403.0
+offset_top = 285.0
+offset_right = 578.0
+offset_bottom = 320.0
+theme_override_fonts/font = ExtResource("3_tlijc")
+theme_override_font_sizes/font_size = 30
+text = "Battle Skill 5"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="MainContent/PageCommand/battle_select_skill5" unique_id=1183845358]
+layout_mode = 0
+offset_left = 193.0
+offset_top = 2.0
+offset_right = 209.0
+offset_bottom = 17.0
+
+[node name="Button2" type="Button" parent="MainContent/PageCommand/battle_select_skill5" unique_id=869770110]
+layout_mode = 0
+offset_left = 305.0
+offset_top = 2.0
+offset_right = 321.0
+offset_bottom = 17.0
+
+[node name="battle_pass_turn" type="Label" parent="MainContent/PageCommand" unique_id=1511248290]
+layout_mode = 0
+offset_left = 376.0
+offset_top = 318.0
+offset_right = 578.0
+offset_bottom = 353.0
+theme_override_fonts/font = ExtResource("3_tlijc")
+theme_override_font_sizes/font_size = 30
+text = "Battle Pass Turn"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="MainContent/PageCommand/battle_pass_turn" unique_id=1086420496]
+layout_mode = 0
+offset_left = 220.0
+offset_top = 2.0
+offset_right = 236.0
+offset_bottom = 18.0
+
+[node name="Button2" type="Button" parent="MainContent/PageCommand/battle_pass_turn" unique_id=111262004]
+layout_mode = 0
+offset_left = 332.0
+offset_top = 2.0
+offset_right = 348.0
+offset_bottom = 18.0
+
+[node name="toggle_options" type="Label" parent="MainContent/PageCommand" unique_id=1514559153]
+layout_mode = 0
+offset_left = 395.0
+offset_top = 351.0
+offset_right = 578.0
+offset_bottom = 386.0
+theme_override_fonts/font = ExtResource("3_tlijc")
+theme_override_font_sizes/font_size = 30
+text = "Toggle Options"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="MainContent/PageCommand/toggle_options" unique_id=1171487983]
+layout_mode = 0
+offset_left = 201.0
+offset_top = 2.0
+offset_right = 217.0
+offset_bottom = 17.0
+
+[node name="Button2" type="Button" parent="MainContent/PageCommand/toggle_options" unique_id=808599930]
+layout_mode = 0
+offset_left = 313.0
+offset_top = 2.0
+offset_right = 329.0
+offset_bottom = 17.0
+
+[node name="ButtonReset" type="Button" parent="MainContent/PageCommand" unique_id=1970241680]
+layout_mode = 0
+offset_left = 906.0
+offset_top = 360.0
+offset_right = 1010.0
+offset_bottom = 407.0
+theme_override_fonts/font = ExtResource("3_tlijc")
+theme_override_font_sizes/font_size = 30
+text = "Reset"
+
+[node name="PageAudio" type="Control" parent="MainContent" unique_id=817584571]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_left = 24.0
+offset_top = 211.0
+offset_right = 1176.0
+offset_bottom = 211.0
+
+[node name="Master" type="Label" parent="MainContent/PageAudio" unique_id=16470335]
+layout_mode = 0
+offset_left = 406.0
+offset_top = 21.0
+offset_right = 554.0
+offset_bottom = 56.0
+theme_override_fonts/font = ExtResource("3_tlijc")
+theme_override_font_sizes/font_size = 30
+text = "Volume"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="HSlider" type="HSlider" parent="MainContent/PageAudio/Master" unique_id=601207339]
+layout_mode = 0
+offset_left = 165.0
+offset_top = 6.0
+offset_right = 315.0
+offset_bottom = 22.0
+step = 25.0
+value = 50.0
+rounded = true
+tick_count = 5
+ticks_on_borders = true
+ticks_position = 3
+
+[node name="Music" type="Label" parent="MainContent/PageAudio" unique_id=122552731]
+layout_mode = 0
+offset_left = 406.0
+offset_top = 56.0
+offset_right = 554.0
+offset_bottom = 91.0
+theme_override_fonts/font = ExtResource("3_tlijc")
+theme_override_font_sizes/font_size = 30
+text = "Music"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="HSlider" type="HSlider" parent="MainContent/PageAudio/Music" unique_id=297934133]
+layout_mode = 0
+offset_left = 165.0
+offset_top = 7.0
+offset_right = 315.0
+offset_bottom = 23.0
+step = 25.0
+value = 50.0
+rounded = true
+tick_count = 5
+ticks_on_borders = true
+ticks_position = 3
+
+[node name="Voices" type="Label" parent="MainContent/PageAudio" unique_id=754145137]
+layout_mode = 0
+offset_left = 406.0
+offset_top = 91.0
+offset_right = 554.0
+offset_bottom = 126.0
+theme_override_fonts/font = ExtResource("3_tlijc")
+theme_override_font_sizes/font_size = 30
+text = "Voices"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="HSlider" type="HSlider" parent="MainContent/PageAudio/Voices" unique_id=300571768]
+layout_mode = 0
+offset_left = 165.0
+offset_top = 8.0
+offset_right = 315.0
+offset_bottom = 24.0
+step = 25.0
+value = 50.0
+rounded = true
+tick_count = 5
+ticks_on_borders = true
+ticks_position = 3
+
+[node name="SFX" type="Label" parent="MainContent/PageAudio" unique_id=1414479563]
+layout_mode = 0
+offset_left = 387.0
+offset_top = 126.0
+offset_right = 554.0
+offset_bottom = 161.0
+theme_override_fonts/font = ExtResource("3_tlijc")
+theme_override_font_sizes/font_size = 30
+text = "Sound Effects"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="HSlider" type="HSlider" parent="MainContent/PageAudio/SFX" unique_id=296336438]
+layout_mode = 0
+offset_left = 184.0
+offset_top = 8.0
+offset_right = 334.0
+offset_bottom = 24.0
+step = 25.0
+value = 50.0
+rounded = true
+tick_count = 5
+ticks_on_borders = true
+ticks_position = 3
+
+[node name="ButtonExitSettings" type="Button" parent="." unique_id=120356062]
+offset_left = 24.0
+offset_top = 20.0
+offset_right = 76.0
+offset_bottom = 62.0
+theme_override_colors/font_focus_color = Color(0.8745098, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0.8745098, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0.8745098, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxEmpty_qi5fe")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_h5uks")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_h5uks")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_sjfrx")
+text = "X"
+script = ExtResource("3_qi5fe")
+
+[connection signal="pressed" from="PageManager/VBoxContainer/HBoxContainer/ButtonSubtitle" to="PageManager" method="OnButtonSubtitlePressed"]
+[connection signal="pressed" from="PageManager/VBoxContainer/HBoxContainer/ButtonSubtitle" to="MainContent" method="_OnButtonSubtitlePressed"]
+[connection signal="pressed" from="PageManager/VBoxContainer/HBoxContainer/ButtonVideo" to="PageManager" method="OnButtonVideoPressed"]
+[connection signal="pressed" from="PageManager/VBoxContainer/HBoxContainer/ButtonVideo" to="MainContent" method="_OnButtonVideoPressed"]
+[connection signal="pressed" from="PageManager/VBoxContainer/HBoxContainer/ButtonVisual" to="PageManager" method="OnButtonVisualPressed"]
+[connection signal="pressed" from="PageManager/VBoxContainer/HBoxContainer/ButtonVisual" to="MainContent" method="_OnButtonVisualPressed"]
+[connection signal="pressed" from="PageManager/VBoxContainer/HBoxContainer/ButtonCommand" to="PageManager" method="OnButtonCommandPressed"]
+[connection signal="pressed" from="PageManager/VBoxContainer/HBoxContainer/ButtonCommand" to="MainContent" method="_OnButtonCommandPressed"]
+[connection signal="pressed" from="PageManager/VBoxContainer/HBoxContainer/ButtonAudio" to="PageManager" method="OnButtonAudioPressed"]
+[connection signal="pressed" from="PageManager/VBoxContainer/HBoxContainer/ButtonAudio" to="MainContent" method="_OnButtonAudioPressed"]
+[connection signal="toggled" from="MainContent/PageSubtitle/Subtitles/CheckBox" to="MainContent" method="OnSubtitlesToggled"]
+[connection signal="value_changed" from="MainContent/PageSubtitle/Size/HSlider" to="MainContent" method="OnSubtitleSizeChanged"]
+[connection signal="item_selected" from="MainContent/PageSubtitle/Font/OptionButton" to="MainContent" method="OnSubtitleFontItemSelected"]
+[connection signal="item_selected" from="MainContent/PageSubtitle/TextColor/OptionButton" to="MainContent" method="OnSubtitleTextColorChanged"]
+[connection signal="item_selected" from="MainContent/PageSubtitle/BgColor/OptionButton" to="MainContent" method="OnSubtitleBgColorChanged"]
+[connection signal="value_changed" from="MainContent/PageSubtitle/Opacity/HSlider" to="MainContent" method="OnSubtitleOpacityChanged"]
+[connection signal="item_selected" from="MainContent/PageSubtitle/Langage/OptionButton" to="MainContent" method="OnSubtitleLanguageItemSelected"]
+[connection signal="value_changed" from="MainContent/PageVideo/Contrast/HSlider" to="MainContent" method="OnContrastChanged"]
+[connection signal="value_changed" from="MainContent/PageVideo/Brightness/HSlider" to="MainContent" method="OnBrightnessChanged"]
+[connection signal="toggled" from="MainContent/PageVideo/Animations/CheckBox" to="MainContent" method="OnAnimationsToggled"]
+[connection signal="item_selected" from="MainContent/PageVideo/Resolution/OptionButton" to="MainContent" method="OnResolutionItemSelected"]
+[connection signal="item_selected" from="MainContent/PageVideo/WindowMode/OptionButton" to="MainContent" method="OnWindowModeItemSelected"]
+[connection signal="item_selected" from="MainContent/PageVideo/Texture/OptionButton" to="MainContent" method="OnTextureItemSelected"]
+[connection signal="value_changed" from="MainContent/PageVisual/InterfaceSize/HSlider" to="MainContent" method="OnInterfaceSizeChanged"]
+[connection signal="toggled" from="MainContent/PageVisual/Blurry/CheckBox" to="MainContent" method="OnBlurryToggled"]
+[connection signal="toggled" from="MainContent/PageVisual/CameraShake/CheckBox" to="MainContent" method="OnCameraShakeToggled"]
+[connection signal="toggled" from="MainContent/PageVisual/VisualIndicators/CheckBox" to="MainContent" method="OnVisualIndicatorsToggled"]
+[connection signal="item_selected" from="MainContent/PageVisual/ColorBlindness/OptionButton" to="MainContent" method="OnColorBlindnessItemSelected"]
+[connection signal="value_changed" from="MainContent/PageAudio/Master/HSlider" to="MainContent" method="OnMasterVolumeChanged"]
+[connection signal="value_changed" from="MainContent/PageAudio/Music/HSlider" to="MainContent" method="OnMusicVolumeChanged"]
+[connection signal="value_changed" from="MainContent/PageAudio/Voices/HSlider" to="MainContent" method="OnVoicesVolumeChanged"]
+[connection signal="value_changed" from="MainContent/PageAudio/SFX/HSlider" to="MainContent" method="OnSfxVolumeChanged"]
+[connection signal="pressed" from="ButtonExitSettings" to="ButtonExitSettings" method="OnOptionsExitButtonPressed"]

@@ -1,8 +1,45 @@
 using System.Collections.Generic;
-using AshesOfVelsingrad.Utilities;
-using Godot;
 
-namespace AshesOfVelsingrad.Systems;
+namespace AshesOfVelsingrad.systems;
+
+/// <summary>
+///     Represents the elemental type of a skill.
+/// </summary>
+public enum MagicType
+{
+    None,
+    Fire,
+    Water,
+    Earth,
+    Wind,
+    Light,
+    Dark
+}
+
+/// <summary>
+///     Defines the type of effect a skill applies when used.
+/// </summary>
+public enum EffectType
+{
+    Damage,
+    Heal,
+    Buff,
+    Debuff,
+    Dot,
+    Control,
+    StatusEffect
+}
+
+/// <summary>
+///     Defines the targeting pattern of a skill.
+/// </summary>
+public enum TargetTypes
+{
+    SingleAlly,
+    AllAllies,
+    SingleEnemy,
+    AllEnemies
+}
 
 /// <summary>
 ///     Base class for all skills available in the game.
@@ -14,27 +51,25 @@ namespace AshesOfVelsingrad.Systems;
 /// </remarks>
 public abstract class SkillSystem
 {
-    #region Public Properties
-
     /// <summary>
     ///     The name of the skill.
     /// </summary>
-    public string Name { get; protected init; } = string.Empty;
+    public string Name { get; protected set; }
 
     /// <summary>
     ///     A description of the skill, used for tooltips or UI.
     /// </summary>
-    public string Description { get; protected init; } = string.Empty;
+    public string Description { get; protected set; }
 
     /// <summary>
     ///     The amount of mana consumed when using this skill.
     /// </summary>
-    public float ManaCost { get; protected init; }
+    public float ManaCost { get; protected set; }
 
     /// <summary>
     ///     The total cooldown duration (in turns) before the skill can be reused.
     /// </summary>
-    public int TotalCooldown { get; protected init; }
+    public int TotalCooldown { get; protected set; }
 
     /// <summary>
     ///     The remaining cooldown (in turns) before the skill becomes available again.
@@ -44,31 +79,27 @@ public abstract class SkillSystem
     /// <summary>
     ///     The maximum distance (in grid units) from which the skill can target.
     /// </summary>
-    public int Range { get; protected init; }
+    public int Range { get; protected set; }
 
     /// <summary>
     ///     The cells affected relative to the target position (area of effect).
     /// </summary>
-    public List<Vector3I> AreaEffect { get; protected init; } = [];
+    public List<(int, int, int)> AreaEffect { get; protected set; }
 
     /// <summary>
     ///     The magical element type of this skill (e.g., Fire, Water, Light).
     /// </summary>
-    public AovDataStructures.MagicType MagicType { get; protected init; }
+    public MagicType MagicType { get; protected set; }
 
     /// <summary>
     ///     The type of effect this skill applies (e.g., damage, heal, buff).
     /// </summary>
-    public AovDataStructures.EffectType EffectType { get; protected init; }
+    public EffectType EffectType { get; protected set; }
 
     /// <summary>
     ///     The type of target(s) this skill can be used on.
     /// </summary>
-    public AovDataStructures.TargetTypes TargetType { get; protected init; }
-
-    #endregion
-
-    #region Public Methods
+    public TargetTypes TargetType { get; protected set; }
 
     /// <summary>
     ///     Executes the skill logic when cast.
@@ -77,17 +108,7 @@ public abstract class SkillSystem
     ///     This method must be implemented in derived classes
     ///     to define the actual effect of the skill (damage, healing, etc.).
     /// </remarks>
-    public abstract void Use(UnitSystem caster, List<UnitSystem> targets, MapSystem? map);
-
-    /// <summary>
-    ///     Set the cooldown of the skill to the total cooldown
-    /// </summary>
-    public virtual void SetCooldown()
-    {
-        if (Cooldown != 0)
-            return;
-        Cooldown = TotalCooldown;
-    }
+    public abstract void Use(List<UnitSystem> targets, MapSystem? map);
 
     /// <summary>
     ///     Reduces the cooldown of the skill by one turn, if greater than zero.
@@ -98,6 +119,4 @@ public abstract class SkillSystem
             return;
         Cooldown--;
     }
-
-    #endregion
 }

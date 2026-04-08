@@ -8,55 +8,71 @@
 
 ## 🌍 **The World of Velsingrad**
 
-*Setting: The Year 1500*
+*Setting: 1146 After the Fall*
 
-Velsingrad believes itself impregnable. Behind its massive stone walls, a paranoid king reinforces his armies. But neither stone nor steel can halt the approaching shadow. A devastating epidemic looms on the horizon, threatening to consume a kingdom already rotting from within.
+Welcome to **Ashes of Velsingrad**, a dark tactical RPG that combines strategic combat, deep narrative choices, and complex character development in a war-torn fantasy world.
+
+Velsingrad stands as a broken kingdom, scarred by decades of conflict with the Empire of Solmire. Three catastrophic events have shaped this dying realm:
+
+- **🦠 The Plague** - A mysterious black fever that consumed entire cities, leaving ghost towns and scarred survivors
+- **⛪ The Inquisition** - The Order of the Broken Dawn emerged to purge sorcery, claiming countless lives in brutal hunts
+- **🌑 The Curse** - A malevolent force awakened beneath the land, corrupting those it touches while granting terrible power
 
 ---
 
 ## 🗡️ **Your Story: Kaelen Voss**
 
-You are Kaelen Voss, a former mercenary leader betrayed by one of his own brothers-in-arms. Recently liberated from captivity, you emerge into a world you no longer recognize.
+You are **Kaelen Voss**, former commander of the legendary mercenary company **the Iron Crows**. Once feared across battlefields for tactical brilliance and unwavering loyalty, you were betrayed during what should have been your greatest triumph.
 
-Your initial drive is simple: Vengeance. You seek to uncover the truth behind the betrayal and hunt down those who sold you out. However, as the plague spreads and the political landscape shifts, your choices will redefine your path. Will you stay consumed by hate, or will the weight of the world force you to find a new purpose?
+Left for dead, you awakened with a dark power coursing through your veins—the same curse the Inquisition fears and sorcerers covet. Now you must choose your path:
+
+### **Three Paths of Destiny**
+
+**⚔️ Vengeance**
+- Hunt down those who betrayed you
+- Embrace anger and the desire for retribution
+- Build your legacy through fear and blood
+- Risk losing yourself to the darkness within
+
+**🛡️ Redemption**
+- Seek to atone for past failures
+- Protect the innocent from the chaos engulfing the world
+- Use your power to heal rather than harm
+- Fight against the corruption spreading through the land
+
+**👑 Domination**
+- Embrace the dark power fully
+- Rise above the petty conflicts of others
+- Rule through strength and command respect through fear
+- Risk becoming the very monster the world fears
 
 ---
 
-## 🏆 Key Gameplay Pillars
+## 🏆 **What Makes This Game Unique**
 
-### ⚡ Dynamic Turn-Based Combat
+**🎭 Moral Ambiguity**
+There are no clear heroes or villains. Every faction has justifiable motivations, every choice carries consequences. The Inquisition may be brutal, but they genuinely believe they're saving the world.
 
-We are redefining the "slow" tactical RPG. Our combat system is designed to be fluid, nervous, and engaging without sacrificing strategic depth. Positioning and terrain interaction are central—the environment isn't just a backdrop; it's a tool for victory.
+**⚡ Power and Corruption**
+The curse offers incredible abilities, but at what cost? Every use of dark magic brings you closer to losing your humanity. Resurrection is possible, but comes at a terrible price.
 
-### 🔮 The Five Schools of Magic & Corruption
-Harness five unique schools of magic, each tied to a Corruption System.
+**🤝 Dynamic Relationships**
+Your companions aren't just stat blocks—they're complex individuals with their own goals, fears, and moral codes. Managing their loyalty is as crucial as any combat encounter.
 
-The Dilemma: Using these powers grants immediate, devastating strength.
+**🗺️ Living World**
+Your choices don't just affect story beats—they reshape the entire world. Factions rise and fall, companions may leave or betray you, and entire regions can be saved or damned by your decisions.
 
-The Cost: Frequent use influences your character's evolution and how the world perceives you. Every spell is a gamble between power and humanity.
-
-### 🤝 Mercenary Reputation & Branching Narrative
-Your standing in Velsingrad isn't just flavor—it’s a mechanic.
-
-Contracts: Complete mercenary quests to build your renown.
-
-Opportunities: High reputation unlocks exclusive alliances and story paths.
-
-Consequences: The narrative branches based on your decisions, ensuring that every playthrough reflects your unique moral compass.
-
-### 🗺️ Living Strategic Puzzles
-Every encounter is a puzzle. Managing resources, utilizing dynamic terrain, and balancing your party's loyalty requires constant tactical excellence.
+**⚔️ Tactical Depth**
+Combat is strategic puzzles requiring positioning, terrain usage, and careful planning. Every battle offers multiple viable approaches depending on your playstyle and moral alignment.
 
 ---
 
 ## 🛠️ **Development Status**
 
 **Tech Stack:**
-- **Engine:** Godot 4.6
+- **Engine:** Godot 4.5.1
 - **Language:** C# (.NET 9.0)
-- **Platform:** Steam (Primary), GOG (Planned)
-
-  **Note**: We are currently focusing on balancing deep tactical systems with accessibility to ensure a smooth experience for both veterans and newcomers to the genre.
+- **Platform:** Windows 10/11
 
 ---
 
@@ -88,12 +104,12 @@ Documentation is automatically generated on every push to `main` or `feat/docs-a
 
 | Name | Role | Contribution |
 |-------|------|--------------|
-| **Miguel Da Silva Andrade De Freitas** | Discussion Lead & Product Owner | |
-| **Amaury Baffreau** | Scrum Master & Documentation Lead | |
-| **Louis Ferrari** | Technical Decision Owner | |
+| **Thomas Lebouc** | Programmer | |
+| **Miguel Da Silva Andrade De Freitas** | Programmer | |
 | **Eric Xu** | Programmer | |
+| **Louis Ferrari** | Programmer | |
+| **Amaury Baffreau** | Programmer | |
 | **Nicolas Ferreira-Andre** | Programmer | |
-| **Anëlle Urbon** | Programmer | |
 
 ---
 
@@ -125,4 +141,4 @@ We welcome contributions! Please read our guides to get started:
 
 ---
 
-© 2026 Gammabra Studios. All Rights Reserved.
+© 2025 Gammabra Studios. All Rights Reserved.

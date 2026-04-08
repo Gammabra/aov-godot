@@ -265,6 +265,9 @@ public partial class SettingsPages : Node
 
         InputMap.ActionAddEvent(_waiting_action, @event);
 
+        if (_waiting_button == null)
+            return;
+
         _waiting_button.Text = GetActionKey(_waiting_action);
         _waiting_action = "";
         _waiting_button = null;
@@ -321,6 +324,9 @@ public partial class SettingsPages : Node
 
         InputMap.ActionAddEvent(_waiting_action_pad, @event);
 
+        if (_waiting_button_pad == null)
+            return;
+
         _waiting_button_pad.Text = GetActionKeyPad(_waiting_action_pad);
         _waiting_action_pad = "";
         _waiting_button_pad = null;
@@ -331,6 +337,9 @@ public partial class SettingsPages : Node
     private void OnResetCommandsPressed()
     {
         InputMap.LoadFromProjectSettings();
+
+        if (_page_command == null)
+            return;
 
         foreach (string action in actions.Keys)
         {

@@ -101,20 +101,9 @@ Implements the Manager Pattern from your architecture documentation.</p>
 </dd>
     </dl>
     <dl class="jumplist">
-      <dt><a class="xref" href="AshesOfVelsingrad.Managers.BattleState.html">BattleState</a></dt>
-      <dd><p>Represents a snapshot of the battle state at a specific moment.
-Used by AI to make decisions based on current conditions.</p>
-</dd>
-    </dl>
-    <dl class="jumplist">
-      <dt><a class="xref" href="AshesOfVelsingrad.Managers.EnemyAIManager.html">EnemyAIManager</a></dt>
-      <dd><p>Manages AI decision-making for enemy units during combat.
-This is NOT a singleton - it's created per battle by GameManager.</p>
-</dd>
-    </dl>
-    <dl class="jumplist">
       <dt><a class="xref" href="AshesOfVelsingrad.Managers.GameManager.html">GameManager</a></dt>
-      <dd></dd>
+      <dd><p>The conductor of a level. The <code>GameManager</code> handles everything that a level needs to work correctly.</p>
+</dd>
     </dl>
     <dl class="jumplist">
       <dt><a class="xref" href="AshesOfVelsingrad.Managers.MenuManager.html">MenuManager</a></dt>
@@ -139,21 +128,27 @@ Follows the Manager Pattern from your architecture.</p>
 </dd>
     </dl>
     <dl class="jumplist">
-      <dt><a class="xref" href="AshesOfVelsingrad.Managers.State.html">State</a></dt>
-      <dd><p>Base class for all states used in a <a class="xref" href="AshesOfVelsingrad.Managers.StateMachine.html">StateMachine</a>.
-Provides a lifecycle and hooks for behavior implementation.</p>
-</dd>
-    </dl>
-    <dl class="jumplist">
-      <dt><a class="xref" href="AshesOfVelsingrad.Managers.StateMachine.html">StateMachine</a></dt>
-      <dd><p>Represents a finite state machine that manages transitions between different states.
-Each child node of this node is expected to be a <a class="xref" href="AshesOfVelsingrad.Managers.State.html">State</a>.</p>
-</dd>
-    </dl>
-    <dl class="jumplist">
       <dt><a class="xref" href="AshesOfVelsingrad.Managers.TurnManager.html">TurnManager</a></dt>
       <dd><p>Manages the turn-based battle flow between player and enemy units.
 Handles turn order, state transitions, and async waiting for unit actions.</p>
+</dd>
+    </dl>
+    <h3 id="enums">
+Enums
+</h3>
+    <dl class="jumplist">
+      <dt><a class="xref" href="AshesOfVelsingrad.Managers.GameOutcome.html">GameOutcome</a></dt>
+      <dd><p>Represents the outcome of a battle.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="AshesOfVelsingrad.Managers.GameState.html">GameState</a></dt>
+      <dd><p>Represents the overall game state during a level.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="AshesOfVelsingrad.Managers.TurnState.html">TurnState</a></dt>
+      <dd><p>Defines the possible turn states in the battle system.</p>
 </dd>
     </dl>
 

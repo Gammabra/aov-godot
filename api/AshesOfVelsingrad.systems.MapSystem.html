@@ -2,11 +2,11 @@
 <html>
   <head>
     <meta charset="utf-8">
-      <title>Class Player1Data | Ashes of Velsingrad Documentation </title>
+      <title>Class MapSystem | Ashes of Velsingrad Documentation </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content="Class Player1Data | Ashes of Velsingrad Documentation ">
+      <meta name="title" content="Class MapSystem | Ashes of Velsingrad Documentation ">
       
-      
+      <meta name="description" content="Base class for all playable maps in the game.">
       <link rel="icon" href="../favicon.ico">
       <link rel="stylesheet" href="../public/docfx.min.css">
       <link rel="stylesheet" href="../public/main.css">
@@ -84,25 +84,26 @@
           <nav id="breadcrumb"></nav>
         </div>
 
-        <article data-uid="AshesOfVelsingrad.Player1Data">
+        <article data-uid="AshesOfVelsingrad.systems.MapSystem">
 
 
 
-  <h1 id="AshesOfVelsingrad_Player1Data" data-uid="AshesOfVelsingrad.Player1Data" class="text-break">
-Class Player1Data  
+  <h1 id="AshesOfVelsingrad_systems_MapSystem" data-uid="AshesOfVelsingrad.systems.MapSystem" class="text-break">
+Class MapSystem  
   </h1>
 
   <div class="facts text-secondary">
-    <dl><dt>Namespace</dt><dd><a class="xref" href="AshesOfVelsingrad.html">AshesOfVelsingrad</a></dd></dl>
+    <dl><dt>Namespace</dt><dd><a class="xref" href="AshesOfVelsingrad.html">AshesOfVelsingrad</a>.<a class="xref" href="AshesOfVelsingrad.systems.html">systems</a></dd></dl>
   <dl><dt>Assembly</dt><dd>Ashes of Velsingrad.dll</dd></dl>
   </div>
 
-  <div class="markdown summary"></div>
+  <div class="markdown summary"><p>Base class for all playable maps in the game.</p>
+</div>
   <div class="markdown conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[ScriptPath(&quot;res://scripts/data/Player1Data.cs&quot;)]
-public sealed class Player1Data : UnitSystem, IDisposable, IEffectTarget</code></pre>
+    <pre><code class="lang-csharp hljs">[ScriptPath(&quot;res://scripts/systems/MapSystem.cs&quot;)]
+public abstract class MapSystem : GridMap, IDisposable</code></pre>
   </div>
 
 
@@ -115,11 +116,8 @@ public sealed class Player1Data : UnitSystem, IDisposable, IEffectTarget</code><
       <div><span class="xref">GodotObject</span></div>
       <div><span class="xref">Node</span></div>
       <div><span class="xref">Node3D</span></div>
-      <div><span class="xref">CollisionObject3D</span></div>
-      <div><span class="xref">PhysicsBody3D</span></div>
-      <div><span class="xref">CharacterBody3D</span></div>
-      <div><a class="xref" href="AshesOfVelsingrad.systems.UnitSystem.html">UnitSystem</a></div>
-      <div><span class="xref">Player1Data</span></div>
+      <div><span class="xref">GridMap</span></div>
+      <div><span class="xref">MapSystem</span></div>
     </dd>
   </dl>
 
@@ -127,352 +125,147 @@ public sealed class Player1Data : UnitSystem, IDisposable, IEffectTarget</code><
     <dt>Implements</dt>
     <dd>
       <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.idisposable">IDisposable</a></div>
-      <div><a class="xref" href="AshesOfVelsingrad.systems.status_effects.IEffectTarget.html">IEffectTarget</a></div>
     </dd>
   </dl>
 
+  <dl class="typelist derived">
+    <dt>Derived</dt>
+    <dd>
+      <div><a class="xref" href="AshesOfVelsingrad.Map1.html">Map1</a></div>
+    </dd>
+  </dl>
 
   <dl class="typelist inheritedMembers">
     <dt>Inherited Members</dt>
     <dd>
     <div>
-      <a class="xref" href="AshesOfVelsingrad.systems.UnitSystem.html#AshesOfVelsingrad_systems_UnitSystem_PortraitTexture">UnitSystem.PortraitTexture</a>
+      <span class="xref">GridMap.InvalidCellItem</span>
     </div>
     <div>
-      <a class="xref" href="AshesOfVelsingrad.systems.UnitSystem.html#AshesOfVelsingrad_systems_UnitSystem_CharacterSprite">UnitSystem.CharacterSprite</a>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">GridMap.SetCollisionMaskValue(int, bool)</a>
     </div>
     <div>
-      <a class="xref" href="AshesOfVelsingrad.systems.UnitSystem.html#AshesOfVelsingrad_systems_UnitSystem_UnitName">UnitSystem.UnitName</a>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">GridMap.GetCollisionMaskValue(int)</a>
     </div>
     <div>
-      <a class="xref" href="AshesOfVelsingrad.systems.UnitSystem.html#AshesOfVelsingrad_systems_UnitSystem_Description">UnitSystem.Description</a>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">GridMap.SetCollisionLayerValue(int, bool)</a>
     </div>
     <div>
-      <a class="xref" href="AshesOfVelsingrad.systems.UnitSystem.html#AshesOfVelsingrad_systems_UnitSystem_Hp">UnitSystem.Hp</a>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">GridMap.GetCollisionLayerValue(int)</a>
     </div>
     <div>
-      <a class="xref" href="AshesOfVelsingrad.systems.UnitSystem.html#AshesOfVelsingrad_systems_UnitSystem_MaxHp">UnitSystem.MaxHp</a>
+      <span class="xref">GridMap.SetNavigationMap(Rid)</span>
     </div>
     <div>
-      <a class="xref" href="AshesOfVelsingrad.systems.UnitSystem.html#AshesOfVelsingrad_systems_UnitSystem_BaseAtk">UnitSystem.BaseAtk</a>
+      <span class="xref">GridMap.GetNavigationMap()</span>
     </div>
     <div>
-      <a class="xref" href="AshesOfVelsingrad.systems.UnitSystem.html#AshesOfVelsingrad_systems_UnitSystem_BaseDef">UnitSystem.BaseDef</a>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">GridMap.SetCellItem(Vector3I, int, int)</a>
     </div>
     <div>
-      <a class="xref" href="AshesOfVelsingrad.systems.UnitSystem.html#AshesOfVelsingrad_systems_UnitSystem_BaseSpeed">UnitSystem.BaseSpeed</a>
+      <span class="xref">GridMap.GetCellItem(Vector3I)</span>
     </div>
     <div>
-      <a class="xref" href="AshesOfVelsingrad.systems.UnitSystem.html#AshesOfVelsingrad_systems_UnitSystem_Intelligence">UnitSystem.Intelligence</a>
+      <span class="xref">GridMap.GetCellItemOrientation(Vector3I)</span>
     </div>
     <div>
-      <a class="xref" href="AshesOfVelsingrad.systems.UnitSystem.html#AshesOfVelsingrad_systems_UnitSystem_ManaPoint">UnitSystem.ManaPoint</a>
+      <span class="xref">GridMap.GetCellItemBasis(Vector3I)</span>
     </div>
     <div>
-      <a class="xref" href="AshesOfVelsingrad.systems.UnitSystem.html#AshesOfVelsingrad_systems_UnitSystem_Type">UnitSystem.Type</a>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">GridMap.GetBasisWithOrthogonalIndex(int)</a>
     </div>
     <div>
-      <a class="xref" href="AshesOfVelsingrad.systems.UnitSystem.html#AshesOfVelsingrad_systems_UnitSystem_IsAlive">UnitSystem.IsAlive</a>
+      <span class="xref">GridMap.GetOrthogonalIndexFromBasis(Basis)</span>
     </div>
     <div>
-      <a class="xref" href="AshesOfVelsingrad.systems.UnitSystem.html#AshesOfVelsingrad_systems_UnitSystem_HasPlayed">UnitSystem.HasPlayed</a>
+      <span class="xref">GridMap.LocalToMap(Vector3)</span>
     </div>
     <div>
-      <a class="xref" href="AshesOfVelsingrad.systems.UnitSystem.html#AshesOfVelsingrad_systems_UnitSystem_PossibleMovesRange">UnitSystem.PossibleMovesRange</a>
+      <span class="xref">GridMap.MapToLocal(Vector3I)</span>
     </div>
     <div>
-      <a class="xref" href="AshesOfVelsingrad.systems.UnitSystem.html#AshesOfVelsingrad_systems_UnitSystem_ActiveSkills">UnitSystem.ActiveSkills</a>
+      <span class="xref">GridMap.ResourceChanged(Resource)</span>
     </div>
     <div>
-      <a class="xref" href="AshesOfVelsingrad.systems.UnitSystem.html#AshesOfVelsingrad_systems_UnitSystem_PassiveSkills">UnitSystem.PassiveSkills</a>
+      <span class="xref">GridMap.Clear()</span>
     </div>
     <div>
-      <a class="xref" href="AshesOfVelsingrad.systems.UnitSystem.html#AshesOfVelsingrad_systems_UnitSystem_Curse">UnitSystem.Curse</a>
+      <span class="xref">GridMap.GetUsedCells()</span>
     </div>
     <div>
-      <a class="xref" href="AshesOfVelsingrad.systems.UnitSystem.html#AshesOfVelsingrad_systems_UnitSystem__Ready">UnitSystem._Ready()</a>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">GridMap.GetUsedCellsByItem(int)</a>
     </div>
     <div>
-      <a class="xref" href="AshesOfVelsingrad.systems.UnitSystem.html#AshesOfVelsingrad_systems_UnitSystem__PhysicsProcess_System_Double_">UnitSystem._PhysicsProcess(double)</a>
+      <span class="xref">GridMap.GetMeshes()</span>
     </div>
     <div>
-      <a class="xref" href="AshesOfVelsingrad.systems.UnitSystem.html#AshesOfVelsingrad_systems_UnitSystem_WaitForActionAsync">UnitSystem.WaitForActionAsync()</a>
+      <span class="xref">GridMap.GetBakeMeshes()</span>
     </div>
     <div>
-      <a class="xref" href="AshesOfVelsingrad.systems.UnitSystem.html#AshesOfVelsingrad_systems_UnitSystem_Play_System_Collections_Generic_List_AshesOfVelsingrad_systems_UnitSystem__AshesOfVelsingrad_systems_MapSystem_AshesOfVelsingrad_systems_SkillSystem_">UnitSystem.Play(List&lt;UnitSystem&gt;, MapSystem, SkillSystem)</a>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">GridMap.GetBakeMeshInstance(int)</a>
     </div>
     <div>
-      <a class="xref" href="AshesOfVelsingrad.systems.UnitSystem.html#AshesOfVelsingrad_systems_UnitSystem_TakeDamage_System_Single_">UnitSystem.TakeDamage(float)</a>
+      <span class="xref">GridMap.ClearBakedMeshes()</span>
     </div>
     <div>
-      <a class="xref" href="AshesOfVelsingrad.systems.UnitSystem.html#AshesOfVelsingrad_systems_UnitSystem_PassTurn">UnitSystem.PassTurn()</a>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">GridMap.MakeBakedMeshes(bool, float)</a>
     </div>
     <div>
-      <a class="xref" href="AshesOfVelsingrad.systems.UnitSystem.html#AshesOfVelsingrad_systems_UnitSystem_SetGridPosition_System_Int32_System_Int32_System_Int32_AshesOfVelsingrad_systems_MapSystem_">UnitSystem.SetGridPosition(int, int, int, MapSystem)</a>
+      <span class="xref">GridMap.EmitSignalCellSizeChanged(Vector3)</span>
     </div>
     <div>
-      <a class="xref" href="AshesOfVelsingrad.systems.UnitSystem.html#AshesOfVelsingrad_systems_UnitSystem_CanMoveTo_System_Int32_System_Int32_System_Int32_AshesOfVelsingrad_systems_MapSystem_">UnitSystem.CanMoveTo(int, int, int, MapSystem)</a>
+      <span class="xref">GridMap.EmitSignalChanged()</span>
     </div>
     <div>
-      <a class="xref" href="AshesOfVelsingrad.systems.UnitSystem.html#AshesOfVelsingrad_systems_UnitSystem_MoveTo_System_Int32_System_Int32_System_Int32_AshesOfVelsingrad_systems_MapSystem_">UnitSystem.MoveTo(int, int, int, MapSystem)</a>
+      <span class="xref">GridMap.InvokeGodotClassMethod(in godot_string_name, NativeVariantPtrArgs, out godot_variant)</span>
     </div>
     <div>
-      <a class="xref" href="AshesOfVelsingrad.systems.UnitSystem.html#AshesOfVelsingrad_systems_UnitSystem_GetPossibleMoves_AshesOfVelsingrad_systems_MapSystem_">UnitSystem.GetPossibleMoves(MapSystem)</a>
+      <span class="xref">GridMap.HasGodotClassMethod(in godot_string_name)</span>
     </div>
     <div>
-      <a class="xref" href="AshesOfVelsingrad.systems.UnitSystem.html#AshesOfVelsingrad_systems_UnitSystem_ApplyEffect_AshesOfVelsingrad_systems_status_effects_StatusEffect_">UnitSystem.ApplyEffect(StatusEffect)</a>
+      <span class="xref">GridMap.HasGodotClassSignal(in godot_string_name)</span>
     </div>
     <div>
-      <a class="xref" href="AshesOfVelsingrad.systems.UnitSystem.html#AshesOfVelsingrad_systems_UnitSystem_RemoveEffect_AshesOfVelsingrad_systems_status_effects_StatusEffect_">UnitSystem.RemoveEffect(StatusEffect)</a>
+      <span class="xref">GridMap.MeshLibrary</span>
     </div>
     <div>
-      <a class="xref" href="AshesOfVelsingrad.systems.UnitSystem.html#AshesOfVelsingrad_systems_UnitSystem_HasEffect__1">UnitSystem.HasEffect&lt;T&gt;()</a>
+      <span class="xref">GridMap.PhysicsMaterial</span>
     </div>
     <div>
-      <a class="xref" href="AshesOfVelsingrad.systems.UnitSystem.html#AshesOfVelsingrad_systems_UnitSystem_GetActiveEffects">UnitSystem.GetActiveEffects()</a>
+      <span class="xref">GridMap.CellSize</span>
     </div>
     <div>
-      <a class="xref" href="AshesOfVelsingrad.systems.UnitSystem.html#AshesOfVelsingrad_systems_UnitSystem__ExitTree">UnitSystem._ExitTree()</a>
+      <span class="xref">GridMap.CellOctantSize</span>
     </div>
     <div>
-      <a class="xref" href="AshesOfVelsingrad.systems.UnitSystem.html#AshesOfVelsingrad_systems_UnitSystem_PortraitChanged">UnitSystem.PortraitChanged</a>
+      <span class="xref">GridMap.CellCenterX</span>
     </div>
     <div>
-      <a class="xref" href="AshesOfVelsingrad.systems.UnitSystem.html#AshesOfVelsingrad_systems_UnitSystem_HealthChanged">UnitSystem.HealthChanged</a>
+      <span class="xref">GridMap.CellCenterY</span>
     </div>
     <div>
-      <span class="xref">CharacterBody3D.MoveAndSlide()</span>
+      <span class="xref">GridMap.CellCenterZ</span>
     </div>
     <div>
-      <span class="xref">CharacterBody3D.ApplyFloorSnap()</span>
+      <span class="xref">GridMap.CellScale</span>
     </div>
     <div>
-      <span class="xref">CharacterBody3D.IsOnFloor()</span>
+      <span class="xref">GridMap.CollisionLayer</span>
     </div>
     <div>
-      <span class="xref">CharacterBody3D.IsOnFloorOnly()</span>
+      <span class="xref">GridMap.CollisionMask</span>
     </div>
     <div>
-      <span class="xref">CharacterBody3D.IsOnCeiling()</span>
+      <span class="xref">GridMap.CollisionPriority</span>
     </div>
     <div>
-      <span class="xref">CharacterBody3D.IsOnCeilingOnly()</span>
+      <span class="xref">GridMap.BakeNavigation</span>
     </div>
     <div>
-      <span class="xref">CharacterBody3D.IsOnWall()</span>
+      <span class="xref">GridMap.CellSizeChanged</span>
     </div>
     <div>
-      <span class="xref">CharacterBody3D.IsOnWallOnly()</span>
-    </div>
-    <div>
-      <span class="xref">CharacterBody3D.GetFloorNormal()</span>
-    </div>
-    <div>
-      <span class="xref">CharacterBody3D.GetWallNormal()</span>
-    </div>
-    <div>
-      <span class="xref">CharacterBody3D.GetLastMotion()</span>
-    </div>
-    <div>
-      <span class="xref">CharacterBody3D.GetPositionDelta()</span>
-    </div>
-    <div>
-      <span class="xref">CharacterBody3D.GetRealVelocity()</span>
-    </div>
-    <div>
-      <span class="xref">CharacterBody3D.GetFloorAngle(Vector3?)</span>
-    </div>
-    <div>
-      <span class="xref">CharacterBody3D.GetPlatformVelocity()</span>
-    </div>
-    <div>
-      <span class="xref">CharacterBody3D.GetPlatformAngularVelocity()</span>
-    </div>
-    <div>
-      <span class="xref">CharacterBody3D.GetSlideCollisionCount()</span>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">CharacterBody3D.GetSlideCollision(int)</a>
-    </div>
-    <div>
-      <span class="xref">CharacterBody3D.GetLastSlideCollision()</span>
-    </div>
-    <div>
-      <span class="xref">CharacterBody3D.MotionMode</span>
-    </div>
-    <div>
-      <span class="xref">CharacterBody3D.UpDirection</span>
-    </div>
-    <div>
-      <span class="xref">CharacterBody3D.SlideOnCeiling</span>
-    </div>
-    <div>
-      <span class="xref">CharacterBody3D.Velocity</span>
-    </div>
-    <div>
-      <span class="xref">CharacterBody3D.MaxSlides</span>
-    </div>
-    <div>
-      <span class="xref">CharacterBody3D.WallMinSlideAngle</span>
-    </div>
-    <div>
-      <span class="xref">CharacterBody3D.FloorStopOnSlope</span>
-    </div>
-    <div>
-      <span class="xref">CharacterBody3D.FloorConstantSpeed</span>
-    </div>
-    <div>
-      <span class="xref">CharacterBody3D.FloorBlockOnWall</span>
-    </div>
-    <div>
-      <span class="xref">CharacterBody3D.FloorMaxAngle</span>
-    </div>
-    <div>
-      <span class="xref">CharacterBody3D.FloorSnapLength</span>
-    </div>
-    <div>
-      <span class="xref">CharacterBody3D.PlatformOnLeave</span>
-    </div>
-    <div>
-      <span class="xref">CharacterBody3D.PlatformFloorLayers</span>
-    </div>
-    <div>
-      <span class="xref">CharacterBody3D.PlatformWallLayers</span>
-    </div>
-    <div>
-      <span class="xref">CharacterBody3D.SafeMargin</span>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">PhysicsBody3D.MoveAndCollide(Vector3, bool, float, bool, int)</a>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">PhysicsBody3D.TestMove(Transform3D, Vector3, KinematicCollision3D, float, bool, int)</a>
-    </div>
-    <div>
-      <span class="xref">PhysicsBody3D.GetGravity()</span>
-    </div>
-    <div>
-      <span class="xref">PhysicsBody3D.GetCollisionExceptions()</span>
-    </div>
-    <div>
-      <span class="xref">PhysicsBody3D.AddCollisionExceptionWith(Node)</span>
-    </div>
-    <div>
-      <span class="xref">PhysicsBody3D.RemoveCollisionExceptionWith(Node)</span>
-    </div>
-    <div>
-      <span class="xref">PhysicsBody3D.AxisLockLinearX</span>
-    </div>
-    <div>
-      <span class="xref">PhysicsBody3D.AxisLockLinearY</span>
-    </div>
-    <div>
-      <span class="xref">PhysicsBody3D.AxisLockLinearZ</span>
-    </div>
-    <div>
-      <span class="xref">PhysicsBody3D.AxisLockAngularX</span>
-    </div>
-    <div>
-      <span class="xref">PhysicsBody3D.AxisLockAngularY</span>
-    </div>
-    <div>
-      <span class="xref">PhysicsBody3D.AxisLockAngularZ</span>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">CollisionObject3D._InputEvent(Camera3D, InputEvent, Vector3, Vector3, int)</a>
-    </div>
-    <div>
-      <span class="xref">CollisionObject3D._MouseEnter()</span>
-    </div>
-    <div>
-      <span class="xref">CollisionObject3D._MouseExit()</span>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">CollisionObject3D.SetCollisionLayerValue(int, bool)</a>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">CollisionObject3D.GetCollisionLayerValue(int)</a>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">CollisionObject3D.SetCollisionMaskValue(int, bool)</a>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">CollisionObject3D.GetCollisionMaskValue(int)</a>
-    </div>
-    <div>
-      <span class="xref">CollisionObject3D.GetRid()</span>
-    </div>
-    <div>
-      <span class="xref">CollisionObject3D.CreateShapeOwner(GodotObject)</span>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint32">CollisionObject3D.RemoveShapeOwner(uint)</a>
-    </div>
-    <div>
-      <span class="xref">CollisionObject3D.GetShapeOwners()</span>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint32">CollisionObject3D.ShapeOwnerSetTransform(uint, Transform3D)</a>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint32">CollisionObject3D.ShapeOwnerGetTransform(uint)</a>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint32">CollisionObject3D.ShapeOwnerGetOwner(uint)</a>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint32">CollisionObject3D.ShapeOwnerSetDisabled(uint, bool)</a>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint32">CollisionObject3D.IsShapeOwnerDisabled(uint)</a>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint32">CollisionObject3D.ShapeOwnerAddShape(uint, Shape3D)</a>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint32">CollisionObject3D.ShapeOwnerGetShapeCount(uint)</a>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint32">CollisionObject3D.ShapeOwnerGetShape(uint, int)</a>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint32">CollisionObject3D.ShapeOwnerGetShapeIndex(uint, int)</a>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint32">CollisionObject3D.ShapeOwnerRemoveShape(uint, int)</a>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint32">CollisionObject3D.ShapeOwnerClearShapes(uint)</a>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">CollisionObject3D.ShapeFindOwner(int)</a>
-    </div>
-    <div>
-      <span class="xref">CollisionObject3D.DisableMode</span>
-    </div>
-    <div>
-      <span class="xref">CollisionObject3D.CollisionLayer</span>
-    </div>
-    <div>
-      <span class="xref">CollisionObject3D.CollisionMask</span>
-    </div>
-    <div>
-      <span class="xref">CollisionObject3D.CollisionPriority</span>
-    </div>
-    <div>
-      <span class="xref">CollisionObject3D.InputRayPickable</span>
-    </div>
-    <div>
-      <span class="xref">CollisionObject3D.InputCaptureOnDrag</span>
-    </div>
-    <div>
-      <span class="xref">CollisionObject3D.InputEvent</span>
-    </div>
-    <div>
-      <span class="xref">CollisionObject3D.MouseEntered</span>
-    </div>
-    <div>
-      <span class="xref">CollisionObject3D.MouseExited</span>
+      <span class="xref">GridMap.Changed</span>
     </div>
     <div>
       <span class="xref">Node3D.NotificationTransformChanged</span>
@@ -599,6 +392,9 @@ public sealed class Player1Data : UnitSystem, IDisposable, IEffectTarget</code><
     </div>
     <div>
       <span class="xref">Node3D.ToGlobal(Vector3)</span>
+    </div>
+    <div>
+      <span class="xref">Node3D.EmitSignalVisibilityChanged()</span>
     </div>
     <div>
       <span class="xref">Node3D.Transform</span>
@@ -830,6 +626,9 @@ public sealed class Player1Data : UnitSystem, IDisposable, IEffectTarget</code><
     </div>
     <div>
       <span class="xref">Node._Input(InputEvent)</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">Node._PhysicsProcess(double)</a>
     </div>
     <div>
       <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">Node._Process(double)</a>
@@ -1138,6 +937,39 @@ public sealed class Player1Data : UnitSystem, IDisposable, IEffectTarget</code><
       <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Node.NotifyThreadSafe(int)</a>
     </div>
     <div>
+      <span class="xref">Node.EmitSignalReady()</span>
+    </div>
+    <div>
+      <span class="xref">Node.EmitSignalRenamed()</span>
+    </div>
+    <div>
+      <span class="xref">Node.EmitSignalTreeEntered()</span>
+    </div>
+    <div>
+      <span class="xref">Node.EmitSignalTreeExiting()</span>
+    </div>
+    <div>
+      <span class="xref">Node.EmitSignalTreeExited()</span>
+    </div>
+    <div>
+      <span class="xref">Node.EmitSignalChildEnteredTree(Node)</span>
+    </div>
+    <div>
+      <span class="xref">Node.EmitSignalChildExitingTree(Node)</span>
+    </div>
+    <div>
+      <span class="xref">Node.EmitSignalChildOrderChanged()</span>
+    </div>
+    <div>
+      <span class="xref">Node.EmitSignalReplacingBy(Node)</span>
+    </div>
+    <div>
+      <span class="xref">Node.EmitSignalEditorDescriptionChanged(Node)</span>
+    </div>
+    <div>
+      <span class="xref">Node.EmitSignalEditorStateChanged()</span>
+    </div>
+    <div>
       <span class="xref">Node.Name</span>
     </div>
     <div>
@@ -1235,6 +1067,9 @@ public sealed class Player1Data : UnitSystem, IDisposable, IEffectTarget</code><
     </div>
     <div>
       <span class="xref">GodotObject.Dispose()</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">GodotObject.Dispose(bool)</a>
     </div>
     <div>
       <span class="xref">GodotObject.ToString()</span>
@@ -1429,6 +1264,12 @@ public sealed class Player1Data : UnitSystem, IDisposable, IEffectTarget</code><
       <span class="xref">GodotObject.CancelFree()</span>
     </div>
     <div>
+      <span class="xref">GodotObject.EmitSignalScriptChanged()</span>
+    </div>
+    <div>
+      <span class="xref">GodotObject.EmitSignalPropertyListChanged()</span>
+    </div>
+    <div>
       <span class="xref">GodotObject.NativeInstance</span>
     </div>
     <div>
@@ -1450,9 +1291,249 @@ public sealed class Player1Data : UnitSystem, IDisposable, IEffectTarget</code><
       <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
     </div>
     <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone">object.MemberwiseClone()</a>
+    </div>
+    <div>
       <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
     </div>
   </dd></dl>
+
+
+
+
+  <h2 id="AshesOfVelsingrad_systems_MapSystem_remarks">Remarks</h2>
+  <div class="markdown level0 remarks"><p>This class extends Godot's <span class="xref">Godot.GridMap</span> and manages the grid layout,
+grid metadata (<a class="xref" href="AshesOfVelsingrad.systems.CellInformation.html">CellInformation</a>), and unit placement.
+It enforces a single active instance through the <a class="xref" href="AshesOfVelsingrad.systems.MapSystem.html#AshesOfVelsingrad_systems_MapSystem_Instance">Instance</a> property.</p>
+</div>
+
+
+  <h2 class="section" id="fields">Fields
+</h2>
+
+
+
+  <h3 id="AshesOfVelsingrad_systems_MapSystem_CellTypeWalkable" data-uid="AshesOfVelsingrad.systems.MapSystem.CellTypeWalkable">
+  CellTypeWalkable
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/systems/MapSystem.cs/#L98"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static readonly Dictionary&lt;CellType, bool&gt; CellTypeWalkable</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2">Dictionary</a>&lt;<a class="xref" href="AshesOfVelsingrad.systems.CellType.html">CellType</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="AshesOfVelsingrad_systems_MapSystem_CellsInformation" data-uid="AshesOfVelsingrad.systems.MapSystem.CellsInformation">
+  CellsInformation
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/systems/MapSystem.cs/#L72"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>List of information of every grid</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected readonly List&lt;CellInformation&gt; CellsInformation</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a class="xref" href="AshesOfVelsingrad.systems.CellInformation.html">CellInformation</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+  <h2 class="section" id="properties">Properties
+</h2>
+
+
+  <a id="AshesOfVelsingrad_systems_MapSystem_Depth_" data-uid="AshesOfVelsingrad.systems.MapSystem.Depth*"></a>
+
+  <h3 id="AshesOfVelsingrad_systems_MapSystem_Depth" data-uid="AshesOfVelsingrad.systems.MapSystem.Depth">
+  Depth
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/systems/MapSystem.cs/#L91"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>The total Z axis of the map (in number of cells)</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int Depth { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="AshesOfVelsingrad_systems_MapSystem_Height_" data-uid="AshesOfVelsingrad.systems.MapSystem.Height*"></a>
+
+  <h3 id="AshesOfVelsingrad_systems_MapSystem_Height" data-uid="AshesOfVelsingrad.systems.MapSystem.Height">
+  Height
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/systems/MapSystem.cs/#L86"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>The total Y axis of the map (in number of cells)</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int Height { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="AshesOfVelsingrad_systems_MapSystem_Instance_" data-uid="AshesOfVelsingrad.systems.MapSystem.Instance*"></a>
+
+  <h3 id="AshesOfVelsingrad_systems_MapSystem_Instance" data-uid="AshesOfVelsingrad.systems.MapSystem.Instance">
+  Instance
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/systems/MapSystem.cs/#L110"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Instance of a map system.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static MapSystem? Instance { get; protected set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="AshesOfVelsingrad.systems.MapSystem.html">MapSystem</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+  <h4 class="section" id="AshesOfVelsingrad_systems_MapSystem_Instance_remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>It will be used to check if there is only one instance.</p>
+</div>
+
+
+
+
+  <a id="AshesOfVelsingrad_systems_MapSystem_MapCellSize_" data-uid="AshesOfVelsingrad.systems.MapSystem.MapCellSize*"></a>
+
+  <h3 id="AshesOfVelsingrad_systems_MapSystem_MapCellSize" data-uid="AshesOfVelsingrad.systems.MapSystem.MapCellSize">
+  MapCellSize
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/systems/MapSystem.cs/#L96"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>The size of a single grid in the UI</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Vector3 MapCellSize { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">Vector3</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="AshesOfVelsingrad_systems_MapSystem_Width_" data-uid="AshesOfVelsingrad.systems.MapSystem.Width*"></a>
+
+  <h3 id="AshesOfVelsingrad_systems_MapSystem_Width" data-uid="AshesOfVelsingrad.systems.MapSystem.Width">
+  Width
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/systems/MapSystem.cs/#L81"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>The total X axis of the map (in number of cells)</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int Width { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
 
 
 
@@ -1463,20 +1544,20 @@ public sealed class Player1Data : UnitSystem, IDisposable, IEffectTarget</code><
 </h2>
 
 
-  <a id="AshesOfVelsingrad_Player1Data_Initialize_" data-uid="AshesOfVelsingrad.Player1Data.Initialize*"></a>
+  <a id="AshesOfVelsingrad_systems_MapSystem_Cleanup_" data-uid="AshesOfVelsingrad.systems.MapSystem.Cleanup*"></a>
 
-  <h3 id="AshesOfVelsingrad_Player1Data_Initialize" data-uid="AshesOfVelsingrad.Player1Data.Initialize">
-  Initialize()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/data/Player1Data.cs/#L8"><i class="bi bi-code-slash"></i></a>
+  <h3 id="AshesOfVelsingrad_systems_MapSystem_Cleanup" data-uid="AshesOfVelsingrad.systems.MapSystem.Cleanup">
+  Cleanup()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/systems/MapSystem.cs/#L384"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Initializes the unit instance
-This method should be overridden in derived classes to set up specific functionality.</p>
+  <div class="markdown level1 summary"><p>Cleans up the map instance.
+This method can be overridden in derived classes to implement specific cleanup logic.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">protected override void Initialize()</code></pre>
+    <pre><code class="lang-csharp hljs">protected virtual void Cleanup()</code></pre>
   </div>
 
 
@@ -1487,10 +1568,404 @@ This method should be overridden in derived classes to set up specific functiona
 
 
 
-  <h4 class="section" id="AshesOfVelsingrad_Player1Data_Initialize_remarks">Remarks</h4>
+  <h4 class="section" id="AshesOfVelsingrad_systems_MapSystem_Cleanup_remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>This method is called when the manager is removed from the scene tree.
+It provides a place for derived classes to implement any necessary cleanup logic,
+such as disconnecting signals or releasing resources.
+By default, it does nothing, but derived classes can override it to perform specific cleanup tasks.</p>
+</div>
+
+
+
+
+  <a id="AshesOfVelsingrad_systems_MapSystem_GetUnitAt_" data-uid="AshesOfVelsingrad.systems.MapSystem.GetUnitAt*"></a>
+
+  <h3 id="AshesOfVelsingrad_systems_MapSystem_GetUnitAt_System_Int32_System_Int32_System_Int32_" data-uid="AshesOfVelsingrad.systems.MapSystem.GetUnitAt(System.Int32,System.Int32,System.Int32)">
+  GetUnitAt(int, int, int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/systems/MapSystem.cs/#L321"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets the unit currently occupying the map cell at the given position.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual UnitSystem? GetUnitAt(int x, int y, int z)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>x</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>The x-coordinate of the map cell.</p>
+</dd>
+    <dt><code>y</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>The y-coordinate of the map cell.</p>
+</dd>
+    <dt><code>z</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>The z-coordinate of the map cell.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="AshesOfVelsingrad.systems.UnitSystem.html">UnitSystem</a></dt>
+    <dd><p>The unit at the specified map cell, or <code>null</code> if the cell is empty.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AshesOfVelsingrad_systems_MapSystem_GetUnitPosition_" data-uid="AshesOfVelsingrad.systems.MapSystem.GetUnitPosition*"></a>
+
+  <h3 id="AshesOfVelsingrad_systems_MapSystem_GetUnitPosition_AshesOfVelsingrad_systems_UnitSystem_" data-uid="AshesOfVelsingrad.systems.MapSystem.GetUnitPosition(AshesOfVelsingrad.systems.UnitSystem)">
+  GetUnitPosition(UnitSystem)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/systems/MapSystem.cs/#L328"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual (int, int, int)? GetUnitPosition(UnitSystem unit)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>unit</code> <a class="xref" href="AshesOfVelsingrad.systems.UnitSystem.html">UnitSystem</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt>(<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>)?</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AshesOfVelsingrad_systems_MapSystem_Initialize_" data-uid="AshesOfVelsingrad.systems.MapSystem.Initialize*"></a>
+
+  <h3 id="AshesOfVelsingrad_systems_MapSystem_Initialize" data-uid="AshesOfVelsingrad.systems.MapSystem.Initialize">
+  Initialize()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/systems/MapSystem.cs/#L153"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Initializes the map instance
+This method should be overridden in derived classes to set up specific functionality.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected virtual void Initialize()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+  <h4 class="section" id="AshesOfVelsingrad_systems_MapSystem_Initialize_remarks">Remarks</h4>
   <div class="markdown level1 remarks"><p>This method is called by the _Ready method to initialize the map.
-It should contain the logic necessary to set up the unit's state and functionality.
+It should contain the logic necessary to set up the map's state and functionality.
 Derived classes must implement this method to provide their specific initialization logic.</p>
+</div>
+
+
+
+
+  <a id="AshesOfVelsingrad_systems_MapSystem_IsWalkable_" data-uid="AshesOfVelsingrad.systems.MapSystem.IsWalkable*"></a>
+
+  <h3 id="AshesOfVelsingrad_systems_MapSystem_IsWalkable_System_Int32_System_Int32_System_Int32_" data-uid="AshesOfVelsingrad.systems.MapSystem.IsWalkable(System.Int32,System.Int32,System.Int32)">
+  IsWalkable(int, int, int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/systems/MapSystem.cs/#L251"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Getter to know if a cell is walkable.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual bool IsWalkable(int x, int y, int z)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>x</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>The x-axis</p>
+</dd>
+    <dt><code>y</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>The y-axis</p>
+</dd>
+    <dt><code>z</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>The z-axis</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p><code>True</code> if the cell is walkable, <code>False</code> otherwise</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AshesOfVelsingrad_systems_MapSystem_MoveUnit_" data-uid="AshesOfVelsingrad.systems.MapSystem.MoveUnit*"></a>
+
+  <h3 id="AshesOfVelsingrad_systems_MapSystem_MoveUnit_AshesOfVelsingrad_systems_UnitSystem_System_Int32_System_Int32_System_Int32_" data-uid="AshesOfVelsingrad.systems.MapSystem.MoveUnit(AshesOfVelsingrad.systems.UnitSystem,System.Int32,System.Int32,System.Int32)">
+  MoveUnit(UnitSystem, int, int, int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/systems/MapSystem.cs/#L293"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Moves a unit to a new position in the map.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual void MoveUnit(UnitSystem unit, int newX, int newY, int newZ)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>unit</code> <a class="xref" href="AshesOfVelsingrad.systems.UnitSystem.html">UnitSystem</a></dt>
+    <dd><p>The unit to move.</p>
+</dd>
+    <dt><code>newX</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>The target x-coordinate in the cell.</p>
+</dd>
+    <dt><code>newY</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>The target y-coordinate in the cell.</p>
+</dd>
+    <dt><code>newZ</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>The target z-coordinate in the cell.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h4 class="section" id="AshesOfVelsingrad_systems_MapSystem_MoveUnit_AshesOfVelsingrad_systems_UnitSystem_System_Int32_System_Int32_System_Int32__remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>Implementations should handle removing the unit from its current cell
+and assigning it to the new cell. This method does not check whether the
+target cell is walkable, which should be verified beforehand.</p>
+</div>
+
+
+
+
+  <a id="AshesOfVelsingrad_systems_MapSystem_PlaceUnits_" data-uid="AshesOfVelsingrad.systems.MapSystem.PlaceUnits*"></a>
+
+  <h3 id="AshesOfVelsingrad_systems_MapSystem_PlaceUnits_System_Collections_Generic_List_AshesOfVelsingrad_systems_UnitSystem__System_Collections_Generic_List_AshesOfVelsingrad_systems_UnitSystem__" data-uid="AshesOfVelsingrad.systems.MapSystem.PlaceUnits(System.Collections.Generic.List{AshesOfVelsingrad.systems.UnitSystem},System.Collections.Generic.List{AshesOfVelsingrad.systems.UnitSystem})">
+  PlaceUnits(List&lt;UnitSystem&gt;, List&lt;UnitSystem&gt;)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/systems/MapSystem.cs/#L279"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Place every unit in the map.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public abstract void PlaceUnits(List&lt;UnitSystem&gt; playerUnits, List&lt;UnitSystem&gt; enemyUnits)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>playerUnits</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a class="xref" href="AshesOfVelsingrad.systems.UnitSystem.html">UnitSystem</a>&gt;</dt>
+    <dd><p>List of every unit of the player</p>
+</dd>
+    <dt><code>enemyUnits</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a class="xref" href="AshesOfVelsingrad.systems.UnitSystem.html">UnitSystem</a>&gt;</dt>
+    <dd><p>List of every enemy on the maps</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h4 class="section" id="AshesOfVelsingrad_systems_MapSystem_PlaceUnits_System_Collections_Generic_List_AshesOfVelsingrad_systems_UnitSystem__System_Collections_Generic_List_AshesOfVelsingrad_systems_UnitSystem___remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>It must be called only for the class initialization.</p>
+</div>
+
+
+
+
+  <a id="AshesOfVelsingrad_systems_MapSystem_RemoveUnit_" data-uid="AshesOfVelsingrad.systems.MapSystem.RemoveUnit*"></a>
+
+  <h3 id="AshesOfVelsingrad_systems_MapSystem_RemoveUnit_System_Int32_System_Int32_System_Int32_" data-uid="AshesOfVelsingrad.systems.MapSystem.RemoveUnit(System.Int32,System.Int32,System.Int32)">
+  RemoveUnit(int, int, int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/systems/MapSystem.cs/#L346"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Removes any unit present at the given map cell.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual void RemoveUnit(int x, int y, int z)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>x</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>The x-coordinate of the map cell.</p>
+</dd>
+    <dt><code>y</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>The y-coordinate of the map cell.</p>
+</dd>
+    <dt><code>z</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>The z-coordinate of the map cell.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h4 class="section" id="AshesOfVelsingrad_systems_MapSystem_RemoveUnit_System_Int32_System_Int32_System_Int32__remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>Implementations should clear the reference to the unit from the cell.
+If the cell is already empty, this method does nothing.</p>
+</div>
+
+
+
+
+  <a id="AshesOfVelsingrad_systems_MapSystem_SetWalkable_" data-uid="AshesOfVelsingrad.systems.MapSystem.SetWalkable*"></a>
+
+  <h3 id="AshesOfVelsingrad_systems_MapSystem_SetWalkable_System_Int32_System_Int32_System_Int32_" data-uid="AshesOfVelsingrad.systems.MapSystem.SetWalkable(System.Int32,System.Int32,System.Int32)">
+  SetWalkable(int, int, int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/systems/MapSystem.cs/#L264"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Set the IsWalkable variable of a <a class="xref" href="AshesOfVelsingrad.systems.CellInformation.html">CellInformation</a> to the reverse value.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual void SetWalkable(int x, int y, int z)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>x</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>The x-axis</p>
+</dd>
+    <dt><code>y</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>The y-axis</p>
+</dd>
+    <dt><code>z</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>The z-axis</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AshesOfVelsingrad_systems_MapSystem__ExitTree_" data-uid="AshesOfVelsingrad.systems.MapSystem._ExitTree*"></a>
+
+  <h3 id="AshesOfVelsingrad_systems_MapSystem__ExitTree" data-uid="AshesOfVelsingrad.systems.MapSystem._ExitTree">
+  _ExitTree()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/systems/MapSystem.cs/#L366"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Called when the node is removed from the scene tree.
+Cleans up the manager instance and sets it to null.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override void _ExitTree()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+  <h4 class="section" id="AshesOfVelsingrad_systems_MapSystem__ExitTree_remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>This method is called automatically by Godot when the node is removed from the scene tree.
+It ensures that the map instance is properly cleaned up and set to null.
+This is important for preventing memory leaks and ensuring that the manager can be re-initialized later if needed.</p>
+</div>
+
+
+
+
+  <a id="AshesOfVelsingrad_systems_MapSystem__Ready_" data-uid="AshesOfVelsingrad.systems.MapSystem._Ready*"></a>
+
+  <h3 id="AshesOfVelsingrad_systems_MapSystem__Ready" data-uid="AshesOfVelsingrad.systems.MapSystem._Ready">
+  _Ready()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/systems/MapSystem.cs/#L125"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Called when the node is added to the scene tree.
+Initializes the map instance and checks for duplicates.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override void _Ready()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+  <h4 class="section" id="AshesOfVelsingrad_systems_MapSystem__Ready_remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>This method is called automatically by Godot when the node is ready.
+It ensures that only one instance of the map exists in the scene tree.
+If a duplicate instance is found, it removes the duplicate.</p>
 </div>
 
 

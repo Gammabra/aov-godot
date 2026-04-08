@@ -2,9 +2,9 @@
 <html>
   <head>
     <meta charset="utf-8">
-      <title>Namespace AshesOfVelsingrad | Ashes of Velsingrad Documentation </title>
+      <title>Namespace AshesOfVelsingrad.systems | Ashes of Velsingrad Documentation </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content="Namespace AshesOfVelsingrad | Ashes of Velsingrad Documentation ">
+      <meta name="title" content="Namespace AshesOfVelsingrad.systems | Ashes of Velsingrad Documentation ">
       
       
       <link rel="icon" href="../favicon.ico">
@@ -84,9 +84,9 @@
           <nav id="breadcrumb"></nav>
         </div>
 
-        <article data-uid="AshesOfVelsingrad">
+        <article data-uid="AshesOfVelsingrad.systems">
 
-  <h1 id="AshesOfVelsingrad" data-uid="AshesOfVelsingrad" class="text-break">Namespace AshesOfVelsingrad</h1>
+  <h1 id="AshesOfVelsingrad_systems" data-uid="AshesOfVelsingrad.systems" class="text-break">Namespace AshesOfVelsingrad.systems</h1>
   <div class="markdown level0 summary"></div>
   <div class="markdown level0 conceptual"></div>
   <div class="markdown level0 remarks"></div>
@@ -95,22 +95,58 @@
 Classes
 </h3>
     <dl class="jumplist">
-      <dt><a class="xref" href="AshesOfVelsingrad.Enemy1Data.html">Enemy1Data</a></dt>
+      <dt><a class="xref" href="AshesOfVelsingrad.systems.BattleInputSystem.html">BattleInputSystem</a></dt>
       <dd></dd>
     </dl>
     <dl class="jumplist">
-      <dt><a class="xref" href="AshesOfVelsingrad.Main.html">Main</a></dt>
-      <dd><p>Main scene controller that initializes the game systems.
-Follows the Component-Based Architecture and event-driven communication.</p>
+      <dt><a class="xref" href="AshesOfVelsingrad.systems.CellInformation.html">CellInformation</a></dt>
+      <dd><p>Represents the information for a single grid cell in the map,
+including its coordinates, ground type, walkability, and the unit occupying it.</p>
 </dd>
     </dl>
     <dl class="jumplist">
-      <dt><a class="xref" href="AshesOfVelsingrad.Map1.html">Map1</a></dt>
-      <dd></dd>
+      <dt><a class="xref" href="AshesOfVelsingrad.systems.MapSystem.html">MapSystem</a></dt>
+      <dd><p>Base class for all playable maps in the game.</p>
+</dd>
     </dl>
     <dl class="jumplist">
-      <dt><a class="xref" href="AshesOfVelsingrad.Player1Data.html">Player1Data</a></dt>
-      <dd></dd>
+      <dt><a class="xref" href="AshesOfVelsingrad.systems.SkillSystem.html">SkillSystem</a></dt>
+      <dd><p>Base class for all skills available in the game.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="AshesOfVelsingrad.systems.UnitSystem.html">UnitSystem</a></dt>
+      <dd><p>Base class for all units in the tactical grid-based system.
+Handles stats, movement, effects, and Godot integration.</p>
+</dd>
+    </dl>
+    <h3 id="enums">
+Enums
+</h3>
+    <dl class="jumplist">
+      <dt><a class="xref" href="AshesOfVelsingrad.systems.CellType.html">CellType</a></dt>
+      <dd><p>Enumeration of every cell type available in the game.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="AshesOfVelsingrad.systems.EffectType.html">EffectType</a></dt>
+      <dd><p>Defines the type of effect a skill applies when used.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="AshesOfVelsingrad.systems.MagicType.html">MagicType</a></dt>
+      <dd><p>Represents the elemental type of a skill.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="AshesOfVelsingrad.systems.TargetTypes.html">TargetTypes</a></dt>
+      <dd><p>Defines the targeting pattern of a skill.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="AshesOfVelsingrad.systems.UnitType.html">UnitType</a></dt>
+      <dd><p>Represents the different unit archetypes in the game.</p>
+</dd>
     </dl>
 
 

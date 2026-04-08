@@ -2,9 +2,9 @@
 <html>
   <head>
     <meta charset="utf-8">
-      <title>Class Player1Data | Ashes of Velsingrad Documentation </title>
+      <title>Class BattleInputSystem | Ashes of Velsingrad Documentation </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content="Class Player1Data | Ashes of Velsingrad Documentation ">
+      <meta name="title" content="Class BattleInputSystem | Ashes of Velsingrad Documentation ">
       
       
       <link rel="icon" href="../favicon.ico">
@@ -84,16 +84,16 @@
           <nav id="breadcrumb"></nav>
         </div>
 
-        <article data-uid="AshesOfVelsingrad.Player1Data">
+        <article data-uid="AshesOfVelsingrad.systems.BattleInputSystem">
 
 
 
-  <h1 id="AshesOfVelsingrad_Player1Data" data-uid="AshesOfVelsingrad.Player1Data" class="text-break">
-Class Player1Data  
+  <h1 id="AshesOfVelsingrad_systems_BattleInputSystem" data-uid="AshesOfVelsingrad.systems.BattleInputSystem" class="text-break">
+Class BattleInputSystem  
   </h1>
 
   <div class="facts text-secondary">
-    <dl><dt>Namespace</dt><dd><a class="xref" href="AshesOfVelsingrad.html">AshesOfVelsingrad</a></dd></dl>
+    <dl><dt>Namespace</dt><dd><a class="xref" href="AshesOfVelsingrad.html">AshesOfVelsingrad</a>.<a class="xref" href="AshesOfVelsingrad.systems.html">systems</a></dd></dl>
   <dl><dt>Assembly</dt><dd>Ashes of Velsingrad.dll</dd></dl>
   </div>
 
@@ -101,8 +101,8 @@ Class Player1Data
   <div class="markdown conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[ScriptPath(&quot;res://scripts/data/Player1Data.cs&quot;)]
-public sealed class Player1Data : UnitSystem, IDisposable, IEffectTarget</code></pre>
+    <pre><code class="lang-csharp hljs">[ScriptPath(&quot;res://scripts/systems/BattleInputSystem.cs&quot;)]
+public sealed class BattleInputSystem : Node, IDisposable</code></pre>
   </div>
 
 
@@ -114,12 +114,7 @@ public sealed class Player1Data : UnitSystem, IDisposable, IEffectTarget</code><
       <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
       <div><span class="xref">GodotObject</span></div>
       <div><span class="xref">Node</span></div>
-      <div><span class="xref">Node3D</span></div>
-      <div><span class="xref">CollisionObject3D</span></div>
-      <div><span class="xref">PhysicsBody3D</span></div>
-      <div><span class="xref">CharacterBody3D</span></div>
-      <div><a class="xref" href="AshesOfVelsingrad.systems.UnitSystem.html">UnitSystem</a></div>
-      <div><span class="xref">Player1Data</span></div>
+      <div><span class="xref">BattleInputSystem</span></div>
     </dd>
   </dl>
 
@@ -127,7 +122,6 @@ public sealed class Player1Data : UnitSystem, IDisposable, IEffectTarget</code><
     <dt>Implements</dt>
     <dd>
       <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.idisposable">IDisposable</a></div>
-      <div><a class="xref" href="AshesOfVelsingrad.systems.status_effects.IEffectTarget.html">IEffectTarget</a></div>
     </dd>
   </dl>
 
@@ -135,525 +129,6 @@ public sealed class Player1Data : UnitSystem, IDisposable, IEffectTarget</code><
   <dl class="typelist inheritedMembers">
     <dt>Inherited Members</dt>
     <dd>
-    <div>
-      <a class="xref" href="AshesOfVelsingrad.systems.UnitSystem.html#AshesOfVelsingrad_systems_UnitSystem_PortraitTexture">UnitSystem.PortraitTexture</a>
-    </div>
-    <div>
-      <a class="xref" href="AshesOfVelsingrad.systems.UnitSystem.html#AshesOfVelsingrad_systems_UnitSystem_CharacterSprite">UnitSystem.CharacterSprite</a>
-    </div>
-    <div>
-      <a class="xref" href="AshesOfVelsingrad.systems.UnitSystem.html#AshesOfVelsingrad_systems_UnitSystem_UnitName">UnitSystem.UnitName</a>
-    </div>
-    <div>
-      <a class="xref" href="AshesOfVelsingrad.systems.UnitSystem.html#AshesOfVelsingrad_systems_UnitSystem_Description">UnitSystem.Description</a>
-    </div>
-    <div>
-      <a class="xref" href="AshesOfVelsingrad.systems.UnitSystem.html#AshesOfVelsingrad_systems_UnitSystem_Hp">UnitSystem.Hp</a>
-    </div>
-    <div>
-      <a class="xref" href="AshesOfVelsingrad.systems.UnitSystem.html#AshesOfVelsingrad_systems_UnitSystem_MaxHp">UnitSystem.MaxHp</a>
-    </div>
-    <div>
-      <a class="xref" href="AshesOfVelsingrad.systems.UnitSystem.html#AshesOfVelsingrad_systems_UnitSystem_BaseAtk">UnitSystem.BaseAtk</a>
-    </div>
-    <div>
-      <a class="xref" href="AshesOfVelsingrad.systems.UnitSystem.html#AshesOfVelsingrad_systems_UnitSystem_BaseDef">UnitSystem.BaseDef</a>
-    </div>
-    <div>
-      <a class="xref" href="AshesOfVelsingrad.systems.UnitSystem.html#AshesOfVelsingrad_systems_UnitSystem_BaseSpeed">UnitSystem.BaseSpeed</a>
-    </div>
-    <div>
-      <a class="xref" href="AshesOfVelsingrad.systems.UnitSystem.html#AshesOfVelsingrad_systems_UnitSystem_Intelligence">UnitSystem.Intelligence</a>
-    </div>
-    <div>
-      <a class="xref" href="AshesOfVelsingrad.systems.UnitSystem.html#AshesOfVelsingrad_systems_UnitSystem_ManaPoint">UnitSystem.ManaPoint</a>
-    </div>
-    <div>
-      <a class="xref" href="AshesOfVelsingrad.systems.UnitSystem.html#AshesOfVelsingrad_systems_UnitSystem_Type">UnitSystem.Type</a>
-    </div>
-    <div>
-      <a class="xref" href="AshesOfVelsingrad.systems.UnitSystem.html#AshesOfVelsingrad_systems_UnitSystem_IsAlive">UnitSystem.IsAlive</a>
-    </div>
-    <div>
-      <a class="xref" href="AshesOfVelsingrad.systems.UnitSystem.html#AshesOfVelsingrad_systems_UnitSystem_HasPlayed">UnitSystem.HasPlayed</a>
-    </div>
-    <div>
-      <a class="xref" href="AshesOfVelsingrad.systems.UnitSystem.html#AshesOfVelsingrad_systems_UnitSystem_PossibleMovesRange">UnitSystem.PossibleMovesRange</a>
-    </div>
-    <div>
-      <a class="xref" href="AshesOfVelsingrad.systems.UnitSystem.html#AshesOfVelsingrad_systems_UnitSystem_ActiveSkills">UnitSystem.ActiveSkills</a>
-    </div>
-    <div>
-      <a class="xref" href="AshesOfVelsingrad.systems.UnitSystem.html#AshesOfVelsingrad_systems_UnitSystem_PassiveSkills">UnitSystem.PassiveSkills</a>
-    </div>
-    <div>
-      <a class="xref" href="AshesOfVelsingrad.systems.UnitSystem.html#AshesOfVelsingrad_systems_UnitSystem_Curse">UnitSystem.Curse</a>
-    </div>
-    <div>
-      <a class="xref" href="AshesOfVelsingrad.systems.UnitSystem.html#AshesOfVelsingrad_systems_UnitSystem__Ready">UnitSystem._Ready()</a>
-    </div>
-    <div>
-      <a class="xref" href="AshesOfVelsingrad.systems.UnitSystem.html#AshesOfVelsingrad_systems_UnitSystem__PhysicsProcess_System_Double_">UnitSystem._PhysicsProcess(double)</a>
-    </div>
-    <div>
-      <a class="xref" href="AshesOfVelsingrad.systems.UnitSystem.html#AshesOfVelsingrad_systems_UnitSystem_WaitForActionAsync">UnitSystem.WaitForActionAsync()</a>
-    </div>
-    <div>
-      <a class="xref" href="AshesOfVelsingrad.systems.UnitSystem.html#AshesOfVelsingrad_systems_UnitSystem_Play_System_Collections_Generic_List_AshesOfVelsingrad_systems_UnitSystem__AshesOfVelsingrad_systems_MapSystem_AshesOfVelsingrad_systems_SkillSystem_">UnitSystem.Play(List&lt;UnitSystem&gt;, MapSystem, SkillSystem)</a>
-    </div>
-    <div>
-      <a class="xref" href="AshesOfVelsingrad.systems.UnitSystem.html#AshesOfVelsingrad_systems_UnitSystem_TakeDamage_System_Single_">UnitSystem.TakeDamage(float)</a>
-    </div>
-    <div>
-      <a class="xref" href="AshesOfVelsingrad.systems.UnitSystem.html#AshesOfVelsingrad_systems_UnitSystem_PassTurn">UnitSystem.PassTurn()</a>
-    </div>
-    <div>
-      <a class="xref" href="AshesOfVelsingrad.systems.UnitSystem.html#AshesOfVelsingrad_systems_UnitSystem_SetGridPosition_System_Int32_System_Int32_System_Int32_AshesOfVelsingrad_systems_MapSystem_">UnitSystem.SetGridPosition(int, int, int, MapSystem)</a>
-    </div>
-    <div>
-      <a class="xref" href="AshesOfVelsingrad.systems.UnitSystem.html#AshesOfVelsingrad_systems_UnitSystem_CanMoveTo_System_Int32_System_Int32_System_Int32_AshesOfVelsingrad_systems_MapSystem_">UnitSystem.CanMoveTo(int, int, int, MapSystem)</a>
-    </div>
-    <div>
-      <a class="xref" href="AshesOfVelsingrad.systems.UnitSystem.html#AshesOfVelsingrad_systems_UnitSystem_MoveTo_System_Int32_System_Int32_System_Int32_AshesOfVelsingrad_systems_MapSystem_">UnitSystem.MoveTo(int, int, int, MapSystem)</a>
-    </div>
-    <div>
-      <a class="xref" href="AshesOfVelsingrad.systems.UnitSystem.html#AshesOfVelsingrad_systems_UnitSystem_GetPossibleMoves_AshesOfVelsingrad_systems_MapSystem_">UnitSystem.GetPossibleMoves(MapSystem)</a>
-    </div>
-    <div>
-      <a class="xref" href="AshesOfVelsingrad.systems.UnitSystem.html#AshesOfVelsingrad_systems_UnitSystem_ApplyEffect_AshesOfVelsingrad_systems_status_effects_StatusEffect_">UnitSystem.ApplyEffect(StatusEffect)</a>
-    </div>
-    <div>
-      <a class="xref" href="AshesOfVelsingrad.systems.UnitSystem.html#AshesOfVelsingrad_systems_UnitSystem_RemoveEffect_AshesOfVelsingrad_systems_status_effects_StatusEffect_">UnitSystem.RemoveEffect(StatusEffect)</a>
-    </div>
-    <div>
-      <a class="xref" href="AshesOfVelsingrad.systems.UnitSystem.html#AshesOfVelsingrad_systems_UnitSystem_HasEffect__1">UnitSystem.HasEffect&lt;T&gt;()</a>
-    </div>
-    <div>
-      <a class="xref" href="AshesOfVelsingrad.systems.UnitSystem.html#AshesOfVelsingrad_systems_UnitSystem_GetActiveEffects">UnitSystem.GetActiveEffects()</a>
-    </div>
-    <div>
-      <a class="xref" href="AshesOfVelsingrad.systems.UnitSystem.html#AshesOfVelsingrad_systems_UnitSystem__ExitTree">UnitSystem._ExitTree()</a>
-    </div>
-    <div>
-      <a class="xref" href="AshesOfVelsingrad.systems.UnitSystem.html#AshesOfVelsingrad_systems_UnitSystem_PortraitChanged">UnitSystem.PortraitChanged</a>
-    </div>
-    <div>
-      <a class="xref" href="AshesOfVelsingrad.systems.UnitSystem.html#AshesOfVelsingrad_systems_UnitSystem_HealthChanged">UnitSystem.HealthChanged</a>
-    </div>
-    <div>
-      <span class="xref">CharacterBody3D.MoveAndSlide()</span>
-    </div>
-    <div>
-      <span class="xref">CharacterBody3D.ApplyFloorSnap()</span>
-    </div>
-    <div>
-      <span class="xref">CharacterBody3D.IsOnFloor()</span>
-    </div>
-    <div>
-      <span class="xref">CharacterBody3D.IsOnFloorOnly()</span>
-    </div>
-    <div>
-      <span class="xref">CharacterBody3D.IsOnCeiling()</span>
-    </div>
-    <div>
-      <span class="xref">CharacterBody3D.IsOnCeilingOnly()</span>
-    </div>
-    <div>
-      <span class="xref">CharacterBody3D.IsOnWall()</span>
-    </div>
-    <div>
-      <span class="xref">CharacterBody3D.IsOnWallOnly()</span>
-    </div>
-    <div>
-      <span class="xref">CharacterBody3D.GetFloorNormal()</span>
-    </div>
-    <div>
-      <span class="xref">CharacterBody3D.GetWallNormal()</span>
-    </div>
-    <div>
-      <span class="xref">CharacterBody3D.GetLastMotion()</span>
-    </div>
-    <div>
-      <span class="xref">CharacterBody3D.GetPositionDelta()</span>
-    </div>
-    <div>
-      <span class="xref">CharacterBody3D.GetRealVelocity()</span>
-    </div>
-    <div>
-      <span class="xref">CharacterBody3D.GetFloorAngle(Vector3?)</span>
-    </div>
-    <div>
-      <span class="xref">CharacterBody3D.GetPlatformVelocity()</span>
-    </div>
-    <div>
-      <span class="xref">CharacterBody3D.GetPlatformAngularVelocity()</span>
-    </div>
-    <div>
-      <span class="xref">CharacterBody3D.GetSlideCollisionCount()</span>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">CharacterBody3D.GetSlideCollision(int)</a>
-    </div>
-    <div>
-      <span class="xref">CharacterBody3D.GetLastSlideCollision()</span>
-    </div>
-    <div>
-      <span class="xref">CharacterBody3D.MotionMode</span>
-    </div>
-    <div>
-      <span class="xref">CharacterBody3D.UpDirection</span>
-    </div>
-    <div>
-      <span class="xref">CharacterBody3D.SlideOnCeiling</span>
-    </div>
-    <div>
-      <span class="xref">CharacterBody3D.Velocity</span>
-    </div>
-    <div>
-      <span class="xref">CharacterBody3D.MaxSlides</span>
-    </div>
-    <div>
-      <span class="xref">CharacterBody3D.WallMinSlideAngle</span>
-    </div>
-    <div>
-      <span class="xref">CharacterBody3D.FloorStopOnSlope</span>
-    </div>
-    <div>
-      <span class="xref">CharacterBody3D.FloorConstantSpeed</span>
-    </div>
-    <div>
-      <span class="xref">CharacterBody3D.FloorBlockOnWall</span>
-    </div>
-    <div>
-      <span class="xref">CharacterBody3D.FloorMaxAngle</span>
-    </div>
-    <div>
-      <span class="xref">CharacterBody3D.FloorSnapLength</span>
-    </div>
-    <div>
-      <span class="xref">CharacterBody3D.PlatformOnLeave</span>
-    </div>
-    <div>
-      <span class="xref">CharacterBody3D.PlatformFloorLayers</span>
-    </div>
-    <div>
-      <span class="xref">CharacterBody3D.PlatformWallLayers</span>
-    </div>
-    <div>
-      <span class="xref">CharacterBody3D.SafeMargin</span>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">PhysicsBody3D.MoveAndCollide(Vector3, bool, float, bool, int)</a>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">PhysicsBody3D.TestMove(Transform3D, Vector3, KinematicCollision3D, float, bool, int)</a>
-    </div>
-    <div>
-      <span class="xref">PhysicsBody3D.GetGravity()</span>
-    </div>
-    <div>
-      <span class="xref">PhysicsBody3D.GetCollisionExceptions()</span>
-    </div>
-    <div>
-      <span class="xref">PhysicsBody3D.AddCollisionExceptionWith(Node)</span>
-    </div>
-    <div>
-      <span class="xref">PhysicsBody3D.RemoveCollisionExceptionWith(Node)</span>
-    </div>
-    <div>
-      <span class="xref">PhysicsBody3D.AxisLockLinearX</span>
-    </div>
-    <div>
-      <span class="xref">PhysicsBody3D.AxisLockLinearY</span>
-    </div>
-    <div>
-      <span class="xref">PhysicsBody3D.AxisLockLinearZ</span>
-    </div>
-    <div>
-      <span class="xref">PhysicsBody3D.AxisLockAngularX</span>
-    </div>
-    <div>
-      <span class="xref">PhysicsBody3D.AxisLockAngularY</span>
-    </div>
-    <div>
-      <span class="xref">PhysicsBody3D.AxisLockAngularZ</span>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">CollisionObject3D._InputEvent(Camera3D, InputEvent, Vector3, Vector3, int)</a>
-    </div>
-    <div>
-      <span class="xref">CollisionObject3D._MouseEnter()</span>
-    </div>
-    <div>
-      <span class="xref">CollisionObject3D._MouseExit()</span>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">CollisionObject3D.SetCollisionLayerValue(int, bool)</a>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">CollisionObject3D.GetCollisionLayerValue(int)</a>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">CollisionObject3D.SetCollisionMaskValue(int, bool)</a>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">CollisionObject3D.GetCollisionMaskValue(int)</a>
-    </div>
-    <div>
-      <span class="xref">CollisionObject3D.GetRid()</span>
-    </div>
-    <div>
-      <span class="xref">CollisionObject3D.CreateShapeOwner(GodotObject)</span>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint32">CollisionObject3D.RemoveShapeOwner(uint)</a>
-    </div>
-    <div>
-      <span class="xref">CollisionObject3D.GetShapeOwners()</span>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint32">CollisionObject3D.ShapeOwnerSetTransform(uint, Transform3D)</a>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint32">CollisionObject3D.ShapeOwnerGetTransform(uint)</a>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint32">CollisionObject3D.ShapeOwnerGetOwner(uint)</a>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint32">CollisionObject3D.ShapeOwnerSetDisabled(uint, bool)</a>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint32">CollisionObject3D.IsShapeOwnerDisabled(uint)</a>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint32">CollisionObject3D.ShapeOwnerAddShape(uint, Shape3D)</a>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint32">CollisionObject3D.ShapeOwnerGetShapeCount(uint)</a>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint32">CollisionObject3D.ShapeOwnerGetShape(uint, int)</a>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint32">CollisionObject3D.ShapeOwnerGetShapeIndex(uint, int)</a>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint32">CollisionObject3D.ShapeOwnerRemoveShape(uint, int)</a>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint32">CollisionObject3D.ShapeOwnerClearShapes(uint)</a>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">CollisionObject3D.ShapeFindOwner(int)</a>
-    </div>
-    <div>
-      <span class="xref">CollisionObject3D.DisableMode</span>
-    </div>
-    <div>
-      <span class="xref">CollisionObject3D.CollisionLayer</span>
-    </div>
-    <div>
-      <span class="xref">CollisionObject3D.CollisionMask</span>
-    </div>
-    <div>
-      <span class="xref">CollisionObject3D.CollisionPriority</span>
-    </div>
-    <div>
-      <span class="xref">CollisionObject3D.InputRayPickable</span>
-    </div>
-    <div>
-      <span class="xref">CollisionObject3D.InputCaptureOnDrag</span>
-    </div>
-    <div>
-      <span class="xref">CollisionObject3D.InputEvent</span>
-    </div>
-    <div>
-      <span class="xref">CollisionObject3D.MouseEntered</span>
-    </div>
-    <div>
-      <span class="xref">CollisionObject3D.MouseExited</span>
-    </div>
-    <div>
-      <span class="xref">Node3D.NotificationTransformChanged</span>
-    </div>
-    <div>
-      <span class="xref">Node3D.NotificationEnterWorld</span>
-    </div>
-    <div>
-      <span class="xref">Node3D.NotificationExitWorld</span>
-    </div>
-    <div>
-      <span class="xref">Node3D.NotificationVisibilityChanged</span>
-    </div>
-    <div>
-      <span class="xref">Node3D.NotificationLocalTransformChanged</span>
-    </div>
-    <div>
-      <span class="xref">Node3D.GetGlobalTransformInterpolated()</span>
-    </div>
-    <div>
-      <span class="xref">Node3D.GetParentNode3D()</span>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Node3D.SetIgnoreTransformNotification(bool)</a>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Node3D.SetDisableScale(bool)</a>
-    </div>
-    <div>
-      <span class="xref">Node3D.IsScaleDisabled()</span>
-    </div>
-    <div>
-      <span class="xref">Node3D.GetWorld3D()</span>
-    </div>
-    <div>
-      <span class="xref">Node3D.ForceUpdateTransform()</span>
-    </div>
-    <div>
-      <span class="xref">Node3D.UpdateGizmos()</span>
-    </div>
-    <div>
-      <span class="xref">Node3D.AddGizmo(Node3DGizmo)</span>
-    </div>
-    <div>
-      <span class="xref">Node3D.GetGizmos()</span>
-    </div>
-    <div>
-      <span class="xref">Node3D.ClearGizmos()</span>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Node3D.SetSubgizmoSelection(Node3DGizmo, int, Transform3D)</a>
-    </div>
-    <div>
-      <span class="xref">Node3D.ClearSubgizmoSelection()</span>
-    </div>
-    <div>
-      <span class="xref">Node3D.IsVisibleInTree()</span>
-    </div>
-    <div>
-      <span class="xref">Node3D.Show()</span>
-    </div>
-    <div>
-      <span class="xref">Node3D.Hide()</span>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Node3D.SetNotifyLocalTransform(bool)</a>
-    </div>
-    <div>
-      <span class="xref">Node3D.IsLocalTransformNotificationEnabled()</span>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Node3D.SetNotifyTransform(bool)</a>
-    </div>
-    <div>
-      <span class="xref">Node3D.IsTransformNotificationEnabled()</span>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">Node3D.Rotate(Vector3, float)</a>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">Node3D.GlobalRotate(Vector3, float)</a>
-    </div>
-    <div>
-      <span class="xref">Node3D.GlobalScale(Vector3)</span>
-    </div>
-    <div>
-      <span class="xref">Node3D.GlobalTranslate(Vector3)</span>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">Node3D.RotateObjectLocal(Vector3, float)</a>
-    </div>
-    <div>
-      <span class="xref">Node3D.ScaleObjectLocal(Vector3)</span>
-    </div>
-    <div>
-      <span class="xref">Node3D.TranslateObjectLocal(Vector3)</span>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">Node3D.RotateX(float)</a>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">Node3D.RotateY(float)</a>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">Node3D.RotateZ(float)</a>
-    </div>
-    <div>
-      <span class="xref">Node3D.Translate(Vector3)</span>
-    </div>
-    <div>
-      <span class="xref">Node3D.Orthonormalize()</span>
-    </div>
-    <div>
-      <span class="xref">Node3D.SetIdentity()</span>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Node3D.LookAt(Vector3, Vector3?, bool)</a>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Node3D.LookAtFromPosition(Vector3, Vector3, Vector3?, bool)</a>
-    </div>
-    <div>
-      <span class="xref">Node3D.ToLocal(Vector3)</span>
-    </div>
-    <div>
-      <span class="xref">Node3D.ToGlobal(Vector3)</span>
-    </div>
-    <div>
-      <span class="xref">Node3D.Transform</span>
-    </div>
-    <div>
-      <span class="xref">Node3D.GlobalTransform</span>
-    </div>
-    <div>
-      <span class="xref">Node3D.Position</span>
-    </div>
-    <div>
-      <span class="xref">Node3D.Rotation</span>
-    </div>
-    <div>
-      <span class="xref">Node3D.RotationDegrees</span>
-    </div>
-    <div>
-      <span class="xref">Node3D.Quaternion</span>
-    </div>
-    <div>
-      <span class="xref">Node3D.Basis</span>
-    </div>
-    <div>
-      <span class="xref">Node3D.Scale</span>
-    </div>
-    <div>
-      <span class="xref">Node3D.RotationEditMode</span>
-    </div>
-    <div>
-      <span class="xref">Node3D.RotationOrder</span>
-    </div>
-    <div>
-      <span class="xref">Node3D.TopLevel</span>
-    </div>
-    <div>
-      <span class="xref">Node3D.GlobalPosition</span>
-    </div>
-    <div>
-      <span class="xref">Node3D.GlobalBasis</span>
-    </div>
-    <div>
-      <span class="xref">Node3D.GlobalRotation</span>
-    </div>
-    <div>
-      <span class="xref">Node3D.GlobalRotationDegrees</span>
-    </div>
-    <div>
-      <span class="xref">Node3D.Visible</span>
-    </div>
-    <div>
-      <span class="xref">Node3D.VisibilityParent</span>
-    </div>
-    <div>
-      <span class="xref">Node3D.VisibilityChanged</span>
-    </div>
     <div>
       <span class="xref">Node.NotificationEnterTree</span>
     </div>
@@ -829,7 +304,7 @@ public sealed class Player1Data : UnitSystem, IDisposable, IEffectTarget</code><
       <span class="xref">Node._GetFocusedAccessibilityElement()</span>
     </div>
     <div>
-      <span class="xref">Node._Input(InputEvent)</span>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">Node._PhysicsProcess(double)</a>
     </div>
     <div>
       <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">Node._Process(double)</a>
@@ -1463,20 +938,53 @@ public sealed class Player1Data : UnitSystem, IDisposable, IEffectTarget</code><
 </h2>
 
 
-  <a id="AshesOfVelsingrad_Player1Data_Initialize_" data-uid="AshesOfVelsingrad.Player1Data.Initialize*"></a>
+  <a id="AshesOfVelsingrad_systems_BattleInputSystem_SetInputEnabled_" data-uid="AshesOfVelsingrad.systems.BattleInputSystem.SetInputEnabled*"></a>
 
-  <h3 id="AshesOfVelsingrad_Player1Data_Initialize" data-uid="AshesOfVelsingrad.Player1Data.Initialize">
-  Initialize()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/data/Player1Data.cs/#L8"><i class="bi bi-code-slash"></i></a>
+  <h3 id="AshesOfVelsingrad_systems_BattleInputSystem_SetInputEnabled_System_Boolean_" data-uid="AshesOfVelsingrad.systems.BattleInputSystem.SetInputEnabled(System.Boolean)">
+  SetInputEnabled(bool)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/systems/BattleInputSystem.cs/#L197"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Initializes the unit instance
-This method should be overridden in derived classes to set up specific functionality.</p>
+  <div class="markdown level1 summary"><p>Set the input to enabled or not.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">protected override void Initialize()</code></pre>
+    <pre><code class="lang-csharp hljs">public void SetInputEnabled(bool enabled)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>enabled</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>A boolean that set the input to enabled or not.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AshesOfVelsingrad_systems_BattleInputSystem__ExitTree_" data-uid="AshesOfVelsingrad.systems.BattleInputSystem._ExitTree*"></a>
+
+  <h3 id="AshesOfVelsingrad_systems_BattleInputSystem__ExitTree" data-uid="AshesOfVelsingrad.systems.BattleInputSystem._ExitTree">
+  _ExitTree()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/systems/BattleInputSystem.cs/#L215"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Called when the node is removed from the scene tree.
+Cleans up the <a class="xref" href="AshesOfVelsingrad.systems.BattleInputSystem.html">BattleInputSystem</a> instance and sets it to null.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override void _ExitTree()</code></pre>
   </div>
 
 
@@ -1487,10 +995,188 @@ This method should be overridden in derived classes to set up specific functiona
 
 
 
-  <h4 class="section" id="AshesOfVelsingrad_Player1Data_Initialize_remarks">Remarks</h4>
-  <div class="markdown level1 remarks"><p>This method is called by the _Ready method to initialize the map.
-It should contain the logic necessary to set up the unit's state and functionality.
-Derived classes must implement this method to provide their specific initialization logic.</p>
+  <h4 class="section" id="AshesOfVelsingrad_systems_BattleInputSystem__ExitTree_remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>This method is called automatically by Godot when the node is removed from the scene tree.
+It ensures that the <a class="xref" href="AshesOfVelsingrad.systems.BattleInputSystem.html">BattleInputSystem</a> instance is properly cleaned up and set to null.
+This is important for preventing memory leaks and ensuring that the manager can be re-initialized later if needed.</p>
+</div>
+
+
+
+
+  <a id="AshesOfVelsingrad_systems_BattleInputSystem__Input_" data-uid="AshesOfVelsingrad.systems.BattleInputSystem._Input*"></a>
+
+  <h3 id="AshesOfVelsingrad_systems_BattleInputSystem__Input_Godot_InputEvent_" data-uid="AshesOfVelsingrad.systems.BattleInputSystem._Input(Godot.InputEvent)">
+  _Input(InputEvent)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/systems/BattleInputSystem.cs/#L121"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Called when there is an input event. The input event propagates up through the node tree until a node consumes it.</p>
+<p>It is only called if input processing is enabled, which is done automatically if this method is overridden, and can be toggled with <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">SetProcessInput(bool)</a>.</p>
+<p>To consume the input event and stop it propagating further to other nodes, <span class="xref">Godot.Viewport.SetInputAsHandled()</span> can be called.</p>
+<p>For gameplay input, <span class="xref">Godot.Node._UnhandledInput(Godot.InputEvent)</span> and <span class="xref">Godot.Node._UnhandledKeyInput(Godot.InputEvent)</span> are usually a better fit as they allow the GUI to intercept the events first.</p>
+<p><b>Note:</b> This method is only called if the node is present in the scene tree (i.e. if it's not an orphan).</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override void _Input(InputEvent @event)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>event</code> <span class="xref">InputEvent</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AshesOfVelsingrad_systems_BattleInputSystem__Ready_" data-uid="AshesOfVelsingrad.systems.BattleInputSystem._Ready*"></a>
+
+  <h3 id="AshesOfVelsingrad_systems_BattleInputSystem__Ready" data-uid="AshesOfVelsingrad.systems.BattleInputSystem._Ready">
+  _Ready()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/systems/BattleInputSystem.cs/#L81"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Called when the node is added to the scene tree.
+Initializes the <a class="xref" href="AshesOfVelsingrad.systems.BattleInputSystem.html">BattleInputSystem</a> instance and checks for duplicates.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override void _Ready()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+  <h4 class="section" id="AshesOfVelsingrad_systems_BattleInputSystem__Ready_remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>This method is called automatically by Godot when the node is ready.
+It ensures that only one instance of the <a class="xref" href="AshesOfVelsingrad.systems.BattleInputSystem.html">BattleInputSystem</a> exists in the scene tree.
+If a duplicate instance is found, it removes the duplicate.</p>
+</div>
+
+
+
+
+  <h2 class="section" id="events">Events
+</h2>
+
+
+
+  <h3 id="AshesOfVelsingrad_systems_BattleInputSystem_OnMoveUnitToPressed" data-uid="AshesOfVelsingrad.systems.BattleInputSystem.OnMoveUnitToPressed">
+  OnMoveUnitToPressed
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Emitted when the player clicks on a map cell to move a unit there.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public event BattleInputSystem.OnMoveUnitToPressedEventHandler OnMoveUnitToPressed</code></pre>
+  </div>
+
+
+
+
+
+
+  <h4 class="section">Event Type</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="AshesOfVelsingrad.systems.BattleInputSystem.html">BattleInputSystem</a>.<a class="xref" href="AshesOfVelsingrad.systems.BattleInputSystem.html">OnMoveUnitToPressedEventHandler</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+  <h4 class="section" id="AshesOfVelsingrad_systems_BattleInputSystem_OnMoveUnitToPressed_remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>This signal is used to notify systems responsible for unit movement
+or selection that the player has requested a move to a specific location.</p>
+</div>
+
+
+
+
+
+  <h3 id="AshesOfVelsingrad_systems_BattleInputSystem_OnPassTurnPressed" data-uid="AshesOfVelsingrad.systems.BattleInputSystem.OnPassTurnPressed">
+  OnPassTurnPressed
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Emitted when the player presses the &quot;pass turn&quot; input action.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public event BattleInputSystem.OnPassTurnPressedEventHandler OnPassTurnPressed</code></pre>
+  </div>
+
+
+
+
+
+
+  <h4 class="section">Event Type</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="AshesOfVelsingrad.systems.BattleInputSystem.html">BattleInputSystem</a>.<a class="xref" href="AshesOfVelsingrad.systems.BattleInputSystem.html">OnPassTurnPressedEventHandler</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+  <h4 class="section" id="AshesOfVelsingrad_systems_BattleInputSystem_OnPassTurnPressed_remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>Used by the <a class="xref" href="AshesOfVelsingrad.Managers.GameManager.html">GameManager</a> to indicate that the player
+has chosen to skip their current turn and let control pass to the next entity.</p>
+</div>
+
+
+
+
+
+  <h3 id="AshesOfVelsingrad_systems_BattleInputSystem_OnSelectedSkillPressed" data-uid="AshesOfVelsingrad.systems.BattleInputSystem.OnSelectedSkillPressed">
+  OnSelectedSkillPressed
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Emitted when the player selects a specific skill.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public event BattleInputSystem.OnSelectedSkillPressedEventHandler OnSelectedSkillPressed</code></pre>
+  </div>
+
+
+
+
+
+
+  <h4 class="section">Event Type</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="AshesOfVelsingrad.systems.BattleInputSystem.html">BattleInputSystem</a>.<a class="xref" href="AshesOfVelsingrad.systems.BattleInputSystem.html">OnSelectedSkillPressedEventHandler</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+  <h4 class="section" id="AshesOfVelsingrad_systems_BattleInputSystem_OnSelectedSkillPressed_remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>Used by the combat system or skill management system to determine which
+skill the player intends to use. Skills are indexed from 0 to 4.</p>
 </div>
 
 

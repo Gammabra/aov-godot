@@ -2,11 +2,11 @@
 <html>
   <head>
     <meta charset="utf-8">
-      <title>Class OptionsMenu | Ashes of Velsingrad Documentation </title>
+      <title>Class ButtonSettingsFont | Ashes of Velsingrad Documentation </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content="Class OptionsMenu | Ashes of Velsingrad Documentation ">
+      <meta name="title" content="Class ButtonSettingsFont | Ashes of Velsingrad Documentation ">
       
-      <meta name="description" content="Options menu that allows players to configure game settings. Follows the Component-Based Architecture and event-driven communication. Implements the Manager Pattern for centralized settings management.">
+      
       <link rel="icon" href="../favicon.ico">
       <link rel="stylesheet" href="../public/docfx.min.css">
       <link rel="stylesheet" href="../public/main.css">
@@ -84,28 +84,25 @@
           <nav id="breadcrumb"></nav>
         </div>
 
-        <article data-uid="AshesOfVelsingrad.UI.Menus.OptionsMenu">
+        <article data-uid="Global.ButtonSettingsFont">
 
 
 
-  <h1 id="AshesOfVelsingrad_UI_Menus_OptionsMenu" data-uid="AshesOfVelsingrad.UI.Menus.OptionsMenu" class="text-break">
-Class OptionsMenu  
+  <h1 id="Global_ButtonSettingsFont" data-uid="Global.ButtonSettingsFont" class="text-break">
+Class ButtonSettingsFont  
   </h1>
 
   <div class="facts text-secondary">
-    <dl><dt>Namespace</dt><dd><a class="xref" href="AshesOfVelsingrad.html">AshesOfVelsingrad</a>.<a class="xref" href="AshesOfVelsingrad.UI.html">UI</a>.<a class="xref" href="AshesOfVelsingrad.UI.Menus.html">Menus</a></dd></dl>
+    <dl><dt>Namespace</dt><dd><a class="xref" href="Global.html">Global</a></dd></dl>
   <dl><dt>Assembly</dt><dd>Ashes of Velsingrad.dll</dd></dl>
   </div>
 
-  <div class="markdown summary"><p>Options menu that allows players to configure game settings.
-Follows the Component-Based Architecture and event-driven communication.
-Implements the Manager Pattern for centralized settings management.</p>
-</div>
+  <div class="markdown summary"></div>
   <div class="markdown conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[ScriptPath(&quot;res://scripts/ui/menus/OptionsMenu.cs&quot;)]
-public class OptionsMenu : Control, IDisposable</code></pre>
+    <pre><code class="lang-csharp hljs">[ScriptPath(&quot;res://scripts/menu/ButtonSettingsFont.cs&quot;)]
+public class ButtonSettingsFont : OptionButton, IDisposable</code></pre>
   </div>
 
 
@@ -119,7 +116,10 @@ public class OptionsMenu : Control, IDisposable</code></pre>
       <div><span class="xref">Node</span></div>
       <div><span class="xref">CanvasItem</span></div>
       <div><span class="xref">Control</span></div>
-      <div><span class="xref">OptionsMenu</span></div>
+      <div><span class="xref">BaseButton</span></div>
+      <div><span class="xref">Button</span></div>
+      <div><span class="xref">OptionButton</span></div>
+      <div><span class="xref">ButtonSettingsFont</span></div>
     </dd>
   </dl>
 
@@ -134,6 +134,234 @@ public class OptionsMenu : Control, IDisposable</code></pre>
   <dl class="typelist inheritedMembers">
     <dt>Inherited Members</dt>
     <dd>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">OptionButton.AddItem(string, int)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">OptionButton.AddIconItem(Texture2D, string, int)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">OptionButton.SetItemText(int, string)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">OptionButton.SetItemIcon(int, Texture2D)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">OptionButton.SetItemDisabled(int, bool)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">OptionButton.SetItemId(int, int)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">OptionButton.SetItemMetadata(int, Variant)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">OptionButton.SetItemTooltip(int, string)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">OptionButton.SetItemAutoTranslateMode(int, Node.AutoTranslateModeEnum)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">OptionButton.GetItemText(int)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">OptionButton.GetItemIcon(int)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">OptionButton.GetItemId(int)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">OptionButton.GetItemIndex(int)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">OptionButton.GetItemMetadata(int)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">OptionButton.GetItemTooltip(int)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">OptionButton.GetItemAutoTranslateMode(int)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">OptionButton.IsItemDisabled(int)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">OptionButton.IsItemSeparator(int)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">OptionButton.AddSeparator(string)</a>
+    </div>
+    <div>
+      <span class="xref">OptionButton.Clear()</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">OptionButton.Select(int)</a>
+    </div>
+    <div>
+      <span class="xref">OptionButton.GetSelectedId()</span>
+    </div>
+    <div>
+      <span class="xref">OptionButton.GetSelectedMetadata()</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">OptionButton.RemoveItem(int)</a>
+    </div>
+    <div>
+      <span class="xref">OptionButton.GetPopup()</span>
+    </div>
+    <div>
+      <span class="xref">OptionButton.ShowPopup()</span>
+    </div>
+    <div>
+      <span class="xref">OptionButton.HasSelectableItems()</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">OptionButton.GetSelectableItem(bool)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">OptionButton.SetDisableShortcuts(bool)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int64">OptionButton.EmitSignalItemSelected(long)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int64">OptionButton.EmitSignalItemFocused(long)</a>
+    </div>
+    <div>
+      <span class="xref">OptionButton.InvokeGodotClassMethod(in godot_string_name, NativeVariantPtrArgs, out godot_variant)</span>
+    </div>
+    <div>
+      <span class="xref">OptionButton.HasGodotClassMethod(in godot_string_name)</span>
+    </div>
+    <div>
+      <span class="xref">OptionButton.HasGodotClassSignal(in godot_string_name)</span>
+    </div>
+    <div>
+      <span class="xref">OptionButton.Selected</span>
+    </div>
+    <div>
+      <span class="xref">OptionButton.FitToLongestItem</span>
+    </div>
+    <div>
+      <span class="xref">OptionButton.AllowReselect</span>
+    </div>
+    <div>
+      <span class="xref">OptionButton.ItemCount</span>
+    </div>
+    <div>
+      <span class="xref">OptionButton.ItemSelected</span>
+    </div>
+    <div>
+      <span class="xref">OptionButton.ItemFocused</span>
+    </div>
+    <div>
+      <span class="xref">Button.Text</span>
+    </div>
+    <div>
+      <span class="xref">Button.Icon</span>
+    </div>
+    <div>
+      <span class="xref">Button.Flat</span>
+    </div>
+    <div>
+      <span class="xref">Button.Alignment</span>
+    </div>
+    <div>
+      <span class="xref">Button.TextOverrunBehavior</span>
+    </div>
+    <div>
+      <span class="xref">Button.AutowrapMode</span>
+    </div>
+    <div>
+      <span class="xref">Button.AutowrapTrimFlags</span>
+    </div>
+    <div>
+      <span class="xref">Button.ClipText</span>
+    </div>
+    <div>
+      <span class="xref">Button.IconAlignment</span>
+    </div>
+    <div>
+      <span class="xref">Button.VerticalIconAlignment</span>
+    </div>
+    <div>
+      <span class="xref">Button.ExpandIcon</span>
+    </div>
+    <div>
+      <span class="xref">Button.TextDirection</span>
+    </div>
+    <div>
+      <span class="xref">Button.Language</span>
+    </div>
+    <div>
+      <span class="xref">BaseButton._Pressed()</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">BaseButton._Toggled(bool)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">BaseButton.SetPressedNoSignal(bool)</a>
+    </div>
+    <div>
+      <span class="xref">BaseButton.IsHovered()</span>
+    </div>
+    <div>
+      <span class="xref">BaseButton.GetDrawMode()</span>
+    </div>
+    <div>
+      <span class="xref">BaseButton.EmitSignalPressed()</span>
+    </div>
+    <div>
+      <span class="xref">BaseButton.EmitSignalButtonUp()</span>
+    </div>
+    <div>
+      <span class="xref">BaseButton.EmitSignalButtonDown()</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">BaseButton.EmitSignalToggled(bool)</a>
+    </div>
+    <div>
+      <span class="xref">BaseButton.Disabled</span>
+    </div>
+    <div>
+      <span class="xref">BaseButton.ToggleMode</span>
+    </div>
+    <div>
+      <span class="xref">BaseButton.ButtonPressed</span>
+    </div>
+    <div>
+      <span class="xref">BaseButton.ActionMode</span>
+    </div>
+    <div>
+      <span class="xref">BaseButton.ButtonMask</span>
+    </div>
+    <div>
+      <span class="xref">BaseButton.KeepPressedOutside</span>
+    </div>
+    <div>
+      <span class="xref">BaseButton.ButtonGroup</span>
+    </div>
+    <div>
+      <span class="xref">BaseButton.Shortcut</span>
+    </div>
+    <div>
+      <span class="xref">BaseButton.ShortcutFeedback</span>
+    </div>
+    <div>
+      <span class="xref">BaseButton.ShortcutInTooltip</span>
+    </div>
+    <div>
+      <span class="xref">BaseButton.Pressed</span>
+    </div>
+    <div>
+      <span class="xref">BaseButton.ButtonUp</span>
+    </div>
+    <div>
+      <span class="xref">BaseButton.ButtonDown</span>
+    </div>
+    <div>
+      <span class="xref">BaseButton.Toggled</span>
+    </div>
     <div>
       <span class="xref">Control.NotificationResized</span>
     </div>
@@ -457,15 +685,6 @@ public class OptionsMenu : Control, IDisposable</code></pre>
     </div>
     <div>
       <span class="xref">Control.EmitSignalThemeChanged()</span>
-    </div>
-    <div>
-      <span class="xref">Control.InvokeGodotClassMethod(in godot_string_name, NativeVariantPtrArgs, out godot_variant)</span>
-    </div>
-    <div>
-      <span class="xref">Control.HasGodotClassMethod(in godot_string_name)</span>
-    </div>
-    <div>
-      <span class="xref">Control.HasGodotClassSignal(in godot_string_name)</span>
     </div>
     <div>
       <span class="xref">Control.ClipContents</span>
@@ -1107,6 +1326,9 @@ public class OptionsMenu : Control, IDisposable</code></pre>
       <span class="xref">Node._EnterTree()</span>
     </div>
     <div>
+      <span class="xref">Node._ExitTree()</span>
+    </div>
+    <div>
       <span class="xref">Node._GetAccessibilityConfigurationWarnings()</span>
     </div>
     <div>
@@ -1114,6 +1336,9 @@ public class OptionsMenu : Control, IDisposable</code></pre>
     </div>
     <div>
       <span class="xref">Node._GetFocusedAccessibilityElement()</span>
+    </div>
+    <div>
+      <span class="xref">Node._Input(InputEvent)</span>
     </div>
     <div>
       <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">Node._PhysicsProcess(double)</a>
@@ -1795,170 +2020,17 @@ public class OptionsMenu : Control, IDisposable</code></pre>
 </h2>
 
 
-  <a id="AshesOfVelsingrad_UI_Menus_OptionsMenu_EmitSignalBackRequested_" data-uid="AshesOfVelsingrad.UI.Menus.OptionsMenu.EmitSignalBackRequested*"></a>
+  <a id="Global_ButtonSettingsFont__Ready_" data-uid="Global.ButtonSettingsFont._Ready*"></a>
 
-  <h3 id="AshesOfVelsingrad_UI_Menus_OptionsMenu_EmitSignalBackRequested" data-uid="AshesOfVelsingrad.UI.Menus.OptionsMenu.EmitSignalBackRequested">
-  EmitSignalBackRequested()
-  
-  </h3>
-
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">protected void EmitSignalBackRequested()</code></pre>
-  </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-  <a id="AshesOfVelsingrad_UI_Menus_OptionsMenu_HideMenu_" data-uid="AshesOfVelsingrad.UI.Menus.OptionsMenu.HideMenu*"></a>
-
-  <h3 id="AshesOfVelsingrad_UI_Menus_OptionsMenu_HideMenu" data-uid="AshesOfVelsingrad.UI.Menus.OptionsMenu.HideMenu">
-  HideMenu()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/ui/menus/OptionsMenu.cs/#L547"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Hides the options menu with a fade-out animation effect.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public void HideMenu()</code></pre>
-  </div>
-
-
-
-
-
-
-
-
-
-  <h4 class="section" id="AshesOfVelsingrad_UI_Menus_OptionsMenu_HideMenu_remarks">Remarks</h4>
-  <div class="markdown level1 remarks"><p>This method animates the menu from fully visible to transparent, then hides it.
-Uses a Godot Tween for smooth visual transition over 0.3 seconds.
-The menu is actually hidden after the fade-out animation completes.
-Provides a polished user experience with smooth transitions.</p>
-</div>
-
-
-
-
-  <a id="AshesOfVelsingrad_UI_Menus_OptionsMenu_ShowMenu_" data-uid="AshesOfVelsingrad.UI.Menus.OptionsMenu.ShowMenu*"></a>
-
-  <h3 id="AshesOfVelsingrad_UI_Menus_OptionsMenu_ShowMenu" data-uid="AshesOfVelsingrad.UI.Menus.OptionsMenu.ShowMenu">
-  ShowMenu()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/ui/menus/OptionsMenu.cs/#L529"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Shows the options menu with a fade-in animation effect.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public void ShowMenu()</code></pre>
-  </div>
-
-
-
-
-
-
-
-
-
-  <h4 class="section" id="AshesOfVelsingrad_UI_Menus_OptionsMenu_ShowMenu_remarks">Remarks</h4>
-  <div class="markdown level1 remarks"><p>This method makes the menu visible and animates it from transparent to fully opaque.
-Uses a Godot Tween for smooth visual transition over 0.3 seconds.
-The menu starts completely transparent and fades to full visibility.</p>
-</div>
-
-
-
-
-  <a id="AshesOfVelsingrad_UI_Menus_OptionsMenu__ExitTree_" data-uid="AshesOfVelsingrad.UI.Menus.OptionsMenu._ExitTree*"></a>
-
-  <h3 id="AshesOfVelsingrad_UI_Menus_OptionsMenu__ExitTree" data-uid="AshesOfVelsingrad.UI.Menus.OptionsMenu._ExitTree">
-  _ExitTree()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/ui/menus/OptionsMenu.cs/#L557"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Cleanup when the node exits the tree.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public override void _ExitTree()</code></pre>
-  </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-  <a id="AshesOfVelsingrad_UI_Menus_OptionsMenu__Input_" data-uid="AshesOfVelsingrad.UI.Menus.OptionsMenu._Input*"></a>
-
-  <h3 id="AshesOfVelsingrad_UI_Menus_OptionsMenu__Input_Godot_InputEvent_" data-uid="AshesOfVelsingrad.UI.Menus.OptionsMenu._Input(Godot.InputEvent)">
-  _Input(InputEvent)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/ui/menus/OptionsMenu.cs/#L191"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Captures input for remapping actions.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public override void _Input(InputEvent inputEvent)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>inputEvent</code> <span class="xref">InputEvent</span></dt>
-    <dd><p>The input event to process.</p>
-</dd>
-  </dl>
-
-
-
-
-
-
-
-
-  <h4 class="section" id="AshesOfVelsingrad_UI_Menus_OptionsMenu__Input_Godot_InputEvent__remarks">Remarks</h4>
-  <div class="markdown level1 remarks"><p>This method listens for input events when remapping is active.
-It updates the binding in SettingsManager and refreshes the button display.
-It ignores certain inputs like Escape or specific joypad buttons to prevent unwanted bindings.</p>
-</div>
-
-
-
-
-  <a id="AshesOfVelsingrad_UI_Menus_OptionsMenu__Ready_" data-uid="AshesOfVelsingrad.UI.Menus.OptionsMenu._Ready*"></a>
-
-  <h3 id="AshesOfVelsingrad_UI_Menus_OptionsMenu__Ready" data-uid="AshesOfVelsingrad.UI.Menus.OptionsMenu._Ready">
+  <h3 id="Global_ButtonSettingsFont__Ready" data-uid="Global.ButtonSettingsFont._Ready">
   _Ready()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/ui/menus/OptionsMenu.cs/#L54"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/scripts/menu/ButtonSettingsFont.cs/#L5"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Called when the node is ready. Initializes the options menu by calling deferred setup.</p>
+  <div class="markdown level1 summary"><p>Called when the node is "ready", i.e. when both the node and its children have entered the scene tree. If the node has children, their <span class="xref">Godot.Node._Ready()</span> callbacks get triggered first, and the parent node will receive the ready notification afterwards.</p>
+<p>Corresponds to the <span class="xref">Godot.Node.NotificationReady</span> notification in <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">_Notification(int)</a>. See also the <code>@onready</code> annotation for variables.</p>
+<p>Usually used for initialization. For even earlier initialization, <span class="xref">Godot.GodotObject.GodotObject()</span> may be used. See also <span class="xref">Godot.Node._EnterTree()</span>.</p>
+<p><b>Note:</b> This method may be called only once for each node. After removing a node from the scene tree and adding it again, <span class="xref">Godot.Node._Ready()</span> will <b>not</b> be called a second time. This can be bypassed by requesting another call with <span class="xref">Godot.Node.RequestReady()</span>, which may be called anywhere before adding the node again.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -1971,44 +2043,6 @@ It ignores certain inputs like Escape or specific joypad buttons to prevent unwa
 
 
 
-
-
-
-  <h4 class="section" id="AshesOfVelsingrad_UI_Menus_OptionsMenu__Ready_remarks">Remarks</h4>
-  <div class="markdown level1 remarks"><p>This method is called when both the node and its children have entered the scene tree.
-It uses CallDeferred to ensure all UI elements are properly initialized.</p>
-</div>
-
-
-
-
-  <h2 class="section" id="events">Events
-</h2>
-
-
-
-  <h3 id="AshesOfVelsingrad_UI_Menus_OptionsMenu_BackRequested" data-uid="AshesOfVelsingrad.UI.Menus.OptionsMenu.BackRequested">
-  BackRequested
-  
-  </h3>
-
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public event OptionsMenu.BackRequestedEventHandler BackRequested</code></pre>
-  </div>
-
-
-
-
-
-
-  <h4 class="section">Event Type</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="AshesOfVelsingrad.UI.Menus.OptionsMenu.html">OptionsMenu</a>.<a class="xref" href="AshesOfVelsingrad.UI.Menus.OptionsMenu.html">BackRequestedEventHandler</a></dt>
-    <dd></dd>
-  </dl>
 
 
 

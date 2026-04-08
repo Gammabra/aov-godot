@@ -80,8 +80,8 @@ public partial class MainMenu : Control
     /// Exits the game application.
     /// </summary>
     /// <remarks>
-    /// This method is connected to the Exit button's "button_up" signal.
-    /// It calls the Godot engine's quit method to close the application.
+	/// This method is connected to the Exit button's "button_up" signal.
+	/// It calls the Godot engine's quit method to close the application.
     /// </remarks>
     private void OnExitButtonButtonUp()
     {

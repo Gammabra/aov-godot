@@ -2,40 +2,9 @@ using AshesOfVelsingrad.Managers;
 using Godot;
 using Godot.Collections;
 
-namespace AshesOfVelsingrad.Systems;
+namespace AshesOfVelsingrad.systems;
 
-/// <summary>
-///     Central system responsible for handling player inputs during battle phases.
-/// </summary>
-/// <remarks>
-///     <para>
-///         <see cref="BattleInputSystem" /> captures and interprets user actions
-///         (keyboard and mouse) related to combat gameplay, including:
-///     </para>
-///     <list type="bullet">
-///         <item>
-///             <description>Passing the turn</description>
-///         </item>
-///         <item>
-///             <description>Moving a unit or selecting a target on the map</description>
-///         </item>
-///         <item>
-///             <description>Selecting the move action</description>
-///         </item>
-///         <item>
-///             <description>Selecting a skill</description>
-///         </item>
-///     </list>
-///     <para>
-///         This system acts as a single entry point for battle-related inputs and
-///         communicates with other game systems through Godot signals.
-///     </para>
-///     <para>
-///         The class follows a singleton-like pattern to ensure that only one active
-///         instance exists within the scene tree.
-///     </para>
-/// </remarks>
-public partial class BattleInputSystem : Node
+public sealed partial class BattleInputSystem : Node
 {
     #region Godot Private Fields
 
@@ -68,25 +37,22 @@ public partial class BattleInputSystem : Node
     ///     Emitted when the player presses the "pass turn" input action.
     /// </summary>
     /// <remarks>
-    ///     Used by the <see cref="GameManager" /> to indicate that the player
+    ///     Used by the <see cref="GameManager"/> to indicate that the player
     ///     has chosen to skip their current turn and let control pass to the next entity.
     /// </remarks>
     [Signal]
     public delegate void OnPassTurnPressedEventHandler();
 
     /// <summary>
-    ///     Emitted when the player clicks on a map cell
-    ///     to move a unit or select a target.
+    ///     Emitted when the player clicks on a map cell to move a unit there.
     /// </summary>
-    /// <param name="dest">
-    ///     The target cell position on the grid, in map coordinates (<see cref="Vector3I" />).
-    /// </param>
+    /// <param name="dest">The target cell position on the grid, in map coordinates (<see cref="Vector3I" />).</param>
     /// <remarks>
-    ///     This signal notifies systems responsible for unit movement or selection
-    ///     that the player has requested a move or target action.
+    ///     This signal is used to notify systems responsible for unit movement
+    ///     or selection that the player has requested a move to a specific location.
     /// </remarks>
     [Signal]
-    public delegate void OnMoveUnitOrSelectTargetPressedEventHandler(Vector3I dest);
+    public delegate void OnMoveUnitToPressedEventHandler(Vector3I dest);
 
     /// <summary>
     ///     Emitted when the player selects a specific skill.
@@ -98,16 +64,6 @@ public partial class BattleInputSystem : Node
     /// </remarks>
     [Signal]
     public delegate void OnSelectedSkillPressedEventHandler(int skillId);
-
-    /// <summary>
-    ///     Emitted when the player selects the move action
-    /// </summary>
-    /// <remarks>
-    ///     This signal is used to notify systems handling unit commands
-    ///     that the player has initiated a move selection.
-    /// </remarks>
-    [Signal]
-    public delegate void OnSelectMovePressedEventHandler();
 
     #endregion
 
@@ -150,25 +106,11 @@ public partial class BattleInputSystem : Node
     ///     It should contain the logic necessary to set up the map's state and functionality.
     ///     Derived classes must implement this method to provide their specific initialization logic.
     /// </remarks>
-    protected virtual void Initialize()
+    private void Initialize()
     {
         _mapSystemContainer = GetNode<MapSystem>(_mapSystemPath);
         _camera3DContainer = GetNode<Camera3D>(_camera3DPath);
         GD.Print("BattleInputSystem initialized successfully");
-    }
-
-    #endregion
-
-    #region For testing methods
-
-    /// <summary>
-    ///     FOR TESTING ONLY: Manually sets the singleton instance.
-    ///     This method should only be used in unit tests.
-    /// </summary>
-    /// <param name="instance">The instance to set as the singleton.</param>
-    protected static void SetInstanceForTesting(BattleInputSystem? instance)
-    {
-        Instance = instance;
     }
 
     #endregion
@@ -178,8 +120,6 @@ public partial class BattleInputSystem : Node
     /// <inheritdoc />
     public override void _Input(InputEvent @event)
     {
-        // If an input must works even when the player inputs are disabled (like open settings input),
-        // place it before this condition
         if (!_inputEnabled)
             return;
         if (@event.IsActionPressed("battle_pass_turn"))
@@ -189,7 +129,7 @@ public partial class BattleInputSystem : Node
             return;
         }
 
-        if (@event.IsActionPressed("battle_move_unit_and_select_target"))
+        if (@event.IsActionPressed("battle_move_unit_to"))
         {
             if (GetViewport().GuiGetHoveredControl() is not null ||
                 _camera3DContainer is null ||
@@ -215,15 +155,11 @@ public partial class BattleInputSystem : Node
                 Vector3 worldPos = (Vector3)position;
                 Vector3I cell = _mapSystemContainer.LocalToMap(worldPos);
                 GD.Print($"Cellule cliquée : {cell}");
+                int item = _mapSystemContainer.GetCellItem(cell);
+                GD.Print($"Item index : {item}");
                 _inputEnabled = false;
-                EmitSignalOnMoveUnitOrSelectTargetPressed(cell);
+                EmitSignalOnMoveUnitToPressed(cell);
             }
-        }
-
-        if (@event.IsActionPressed("battle_select_move"))
-        {
-            EmitSignalOnSelectMovePressed();
-            return;
         }
 
         if (@event.IsActionPressed("battle_select_skill1"))
@@ -258,7 +194,7 @@ public partial class BattleInputSystem : Node
     ///     Set the input to enabled or not.
     /// </summary>
     /// <param name="enabled">A boolean that set the input to enabled or not.</param>
-    public virtual void SetInputEnabled(bool enabled)
+    public void SetInputEnabled(bool enabled)
     {
         _inputEnabled = enabled;
     }
@@ -280,7 +216,22 @@ public partial class BattleInputSystem : Node
     {
         if (Instance != this)
             return;
+        Cleanup();
         Instance = null;
+    }
+
+    /// <summary>
+    ///     Cleans up the <see cref="BattleInputSystem" /> instance.
+    ///     This method can be overridden in derived classes to implement specific cleanup logic.
+    /// </summary>
+    /// <remarks>
+    ///     This method is called when the system is removed from the scene tree.
+    ///     It provides a place for derived classes to implement any necessary cleanup logic,
+    ///     such as disconnecting signals or releasing resources.
+    ///     By default, it does nothing, but derived classes can override it to perform specific cleanup tasks.
+    /// </remarks>
+    private static void Cleanup()
+    {
     }
 
     #endregion

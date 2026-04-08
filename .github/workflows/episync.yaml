@@ -1,26 +1,26 @@
-name: Mirror to School Repository
-
+name: Sync to Epitech Mirror Repo
 on:
   push:
     branches:
       - release
-      - canary
-      - develop
-
+  workflow_dispatch:
 jobs:
-  mirror:
+  sync:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout repository
+      - name: Checkout first repository (aov-godot)
         uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-          token: ${{ secrets.GH_PAT }}
-
-      - name: Push to school repository
-        env:
-          SCHOOL_REPO_TOKEN: ${{ secrets.GH_PAT }}
+      - name: Clone second repository (aov-epitech)
         run: |
-          git remote add epitech https://x-access-token:${SCHOOL_REPO_TOKEN}@github.com/EpitechPGE45-2025/G-EIP-700-PAR-7-1-eip-99.git
-          git push epitech release canary develop
+          git clone https://x-access-token:${{ secrets.GH_PAT }}@github.com/Gammabra/aov-epitech.git second-repo
+      - name: Copy content
+        run: |
+          rm -rf second-repo/game/aov-godot/*
+          mkdir -p second-repo/game/aov-godot
+          cp -r $(ls -A | grep -v "second-repo" | grep -v "\.git" | grep -v "\.github") second-repo/game/aov-godot/
+          cd second-repo
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git config --global user.name "GitHub Action"
+          git add .
+          git commit -m "Sync from aov-godot repo" || echo "No changes to commit"
+          git push origin main

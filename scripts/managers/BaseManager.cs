@@ -49,10 +49,10 @@ public abstract partial class BaseManager : Node
     /// </summary>
     /// <remarks>
     /// This method is called by the _Ready method to initialize the manager.
-	/// It should contain the logic necessary to set up the manager's state and functionality.
-	/// Derived classes must implement this method to provide their specific initialization logic.
-	/// </remarks>
-	protected abstract void Initialize();
+    /// It should contain the logic necessary to set up the manager's state and functionality.
+    /// Derived classes must implement this method to provide their specific initialization logic.
+    /// </remarks>
+    protected abstract void Initialize();
 
     /// <summary>
     /// Called when the node is removed from the scene tree.

@@ -4,10 +4,10 @@ using System.Collections.Generic;
 
 public partial class InventoryUI : Control
 {
-	[Export] private GridContainer _slotContainer;
-	[Export] private PackedScene _slotScene;
+	[Export] private GridContainer? _slotContainer;
+	[Export] private PackedScene? _slotScene;
 
-	private InventorySystem _inventory;
+	private InventorySystem? _inventory;
 	private readonly List<InventorySlotUI> _slotUis = new();
 
 	public override void _Ready()
@@ -26,6 +26,9 @@ public partial class InventoryUI : Control
 
 	private void BuildSlots()
 	{
+		if (_slotContainer == null || _slotScene == null || _inventory == null)
+			return;
+
 		foreach (Node child in _slotContainer.GetChildren())
 			child.QueueFree();
 
@@ -42,13 +45,16 @@ public partial class InventoryUI : Control
 
 	private void RefreshAll()
 	{
+		if (_inventory == null)
+			return;
+		
 		for (int i = 0; i < _inventory.Slots.Length; i++)
 			_slotUis[i].Refresh(_inventory.Slots[i]);
 	}
 
 	private void OnSlotChanged(int index)
 	{
-		if (index < 0 || index >= _slotUis.Count)
+		if (index < 0 || index >= _slotUis.Count || _inventory == null)
 			return;
 
 		_slotUis[index].Refresh(_inventory.Slots[index]);

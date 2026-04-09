@@ -3,7 +3,7 @@ using AshesOfVelsingrad.systems;
 
 public partial class InventorySlotUI : PanelContainer
 {
-	[Export] private Label _label;
+	[Export] private Label? _label;
 
 	private int _slotIndex;
 
@@ -14,6 +14,9 @@ public partial class InventorySlotUI : PanelContainer
 
 	public void Refresh(InventorySlot slot)
 	{
+		if (_label == null)
+			return;
+
 		if (slot.IsEmpty)
 		{
 			_label.Text = $"[{_slotIndex}] Empty";

@@ -21,7 +21,7 @@ public static class ItemCatalog
 		return item;
 	}
 
-	public static bool TryGet(int id, out ItemSystem item) => _items.TryGetValue(id, out item);
+	public static bool TryGet(int id, out ItemSystem item) => _items.TryGetValue(id, out item!);
 
 	public static void Clear() => _items.Clear();
 }

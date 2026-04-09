@@ -247,6 +247,7 @@ public abstract partial class UnitSystem : CharacterBody3D, IEffectTarget
 		}
 		catch (ArgumentOutOfRangeException e)
 		{
+			Console.WriteLine(e.Message);
 			return possibleFloor;
 		}
 

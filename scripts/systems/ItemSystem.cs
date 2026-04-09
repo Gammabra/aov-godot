@@ -19,8 +19,8 @@ public enum ItemCategory
 public abstract class ItemSystem
 {
 	public int Id { get; protected set; }
-	public string Name { get; protected set; }
-	public string Description { get; protected set; }
+	public string? Name { get; protected set; }
+	public string? Description { get; protected set; }
 
 	public ItemCategory Category { get; protected set; } = ItemCategory.Misc;
 

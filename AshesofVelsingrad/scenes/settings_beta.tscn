@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://br1kfenb5sqp2" path="res://scripts/ui/menus/SettingsPageManager.cs" id="4_qi5fe"]
 [ext_resource type="Script" uid="uid://byetonq76go68" path="res://scripts/ui/menus/SettingsPages.cs" id="4_tlijc"]
 [ext_resource type="Script" uid="uid://0y2herwsrv5g" path="res://scripts/ui/menus/ButtonSettingsFont.cs" id="5_t01jc"]
+[ext_resource type="Script" path="res://scripts/ui/menus/BugasuraReportButton.cs" id="6_bugrp"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_m7784"]
 
@@ -74,6 +75,16 @@ theme_override_fonts/font = ExtResource("3_tlijc")
 theme_override_font_sizes/font_size = 30
 text = "Save"
 script = ExtResource("3_t01jc")
+
+[node name="ButtonReportBug" type="Button" parent="."]
+offset_left = 842.0
+offset_top = 583.0
+offset_right = 1017.0
+offset_bottom = 630.0
+theme_override_fonts/font = ExtResource("3_tlijc")
+theme_override_font_sizes/font_size = 30
+text = "Report Bug"
+script = ExtResource("6_bugrp")
 
 [node name="PageManager" type="Node" parent="." unique_id=885377501]
 script = ExtResource("4_qi5fe")

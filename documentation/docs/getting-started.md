@@ -48,6 +48,13 @@ setx GODOT_BIN "C:\path\to\Godot_v4.5.1-stable_mono_win64.exe"
 [Environment]::SetEnvironmentVariable("GODOT_BIN", "C:\path\to\Godot_v4.5.1-stable_mono_win64.exe", "Machine")
 ```
 
+For in-game Bugasura issue reporting, also configure:
+
+- `BUGASURA_API_KEY`: API key from your Bugasura profile.
+- `BUGASURA_TEAM_ID`: Team ID that owns your project.
+- `BUGASURA_SPRINT_ID`: Sprint ID where reports should be created.
+- `BUGASURA_ISSUES_ENDPOINT` (optional): Defaults to `https://api.bugasura.io/issues/add`.
+
 ### 3. Open the Project
 
 1. Launch Godot

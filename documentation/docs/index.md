@@ -12,8 +12,6 @@ This API documentation is automatically generated from XML documentation comment
 
 | Namespace | Description | Key Classes |
 |-----------|-------------|-------------|
-| **[AshesOfVelsingrad.Actors](~/documentation/api/AshesOfVelsingrad.Actors.yml)** | Game entities and characters | `BaseActor`, `Player`, `Enemy` |
-| **[AshesOfVelsingrad.Components](~/documentation/api/AshesOfVelsingrad.Components.yml)** | Reusable game components | `HealthComponent`, `MovementComponent` |
 | **[AshesOfVelsingrad.Systems](~/documentation/api/AshesOfVelsingrad.Systems.yml)** | Game logic systems | `CombatSystem`, `InventorySystem` |
 | **[AshesOfVelsingrad.Managers](~/documentation/api/AshesOfVelsingrad.Managers.yml)** | Global managers | `GameManager`, `AudioManager` |
 
@@ -22,8 +20,6 @@ This API documentation is automatically generated from XML documentation comment
 | Namespace | Description | Key Classes |
 |-----------|-------------|-------------|
 | **[AshesOfVelsingrad.UI.Menus](~/documentation/api/AshesOfVelsingrad.UI.Menus.yml)** | Game menus | `MainMenu`, `PauseMenu`, `SettingsMenu` |
-| **[AshesOfVelsingrad.UI.HUD](~/documentation/api/AshesOfVelsingrad.UI.HUD.yml)** | In-game interface | `HealthBar`, `MiniMap`, `InventoryPanel` |
-| **[AshesOfVelsingrad.UI.Dialogs](~/documentation/api/AshesOfVelsingrad.UI.Dialogs.yml)** | Modal dialogs | `DialogBox`, `ConfirmationDialog` |
 
 ### 📊 Data & Utilities
 

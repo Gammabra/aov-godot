@@ -1,0 +1,5 @@
+<Solution>
+  <Project Path="AshesofVelsingrad.Core.Tests/AshesofVelsingrad.Core.Tests.csproj" />
+  <Project Path="AshesofVelsingrad.Core/AshesofVelsingrad.Core.csproj" />
+  <Project Path="AshesofVelsingrad/AshesofVelsingrad.csproj" />
+</Solution>

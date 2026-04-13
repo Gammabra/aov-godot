@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://bd0av6niea8bt"]
+
+[ext_resource type="Script" uid="uid://bruh4pkkktw3r" path="res://scripts/data/unit/characters/FighterData.cs" id="1_d8dns"]
+[ext_resource type="Texture2D" uid="uid://d2o6v40ln62ci" path="res://assets/aov-logo-transparent.png" id="2_o72a4"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_ctjmi"]
+
+[node name="Player1" type="CharacterBody3D" unique_id=1843229144]
+script = ExtResource("1_d8dns")
+
+[node name="Sprite3D" type="Sprite3D" parent="." unique_id=1582811]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
+billboard = 1
+texture = ExtResource("2_o72a4")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=149485990]
+shape = SubResource("SphereShape3D_ctjmi")

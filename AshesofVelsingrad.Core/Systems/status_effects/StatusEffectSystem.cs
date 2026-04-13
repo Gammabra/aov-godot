@@ -1,0 +1,143 @@
+using System.Collections.Generic;
+using System.Linq;
+using AshesOfVelsingrad.Utilities;
+
+namespace AshesOfVelsingrad.Systems;
+
+/// <summary>
+///     Manages the lifecycle and application of <see cref="StatusEffect{TTarget}" />s
+///     for all tracked targets in the game, including units and map cells.
+/// </summary>
+/// <remarks>
+///     This system keeps track of every target that has active status effects,
+///     applies new effects, handles stacking, and processes end-of-turn updates.
+///     Targets must implement <see cref="IEffectTarget{TTarget}" /> and be either
+///     a <see cref="IUnitSystem" /> or a <see cref="IMapSystem" />.
+/// </remarks>
+public sealed class StatusEffectSystem
+{
+    /// <summary>
+    ///     List of all targets currently having effects.
+    /// </summary>
+    private readonly List<object> _allTargets = [];
+
+    #region Private Methods
+
+    /// <summary>
+    ///     Updates all active status effects on the given target.
+    /// </summary>
+    /// <typeparam name="TTarget">
+    ///     The concrete type of the effect target (e.g. <see cref="IUnitSystem" /> or
+    ///     <see cref="CellInformation" />).
+    /// </typeparam>
+    /// <param name="target">
+    ///     The target whose active <see cref="StatusEffect{TTarget}" /> instances
+    ///     should be updated.
+    /// </param>
+    private void RefreshTargetEffects<TTarget>(TTarget target)
+        where TTarget : IEffectTarget<TTarget> // This is the constraint the error complained about
+    {
+        // We use ToList() to avoid "Collection Modified" errors during removal
+        foreach (StatusEffect<TTarget> statusEffect in target.GetActiveEffects().ToList())
+        {
+            if (statusEffect.Duration == Constants.PermanentStatusEffect)
+                continue;
+
+            statusEffect.OnTurnPassed(target);
+
+            if (statusEffect.Duration > 0)
+                continue;
+
+            target.RemoveEffect(statusEffect);
+            statusEffect.OnRemove(target);
+        }
+
+        if (target.GetActiveEffects().Count == 0)
+            _allTargets.Remove(target);
+    }
+
+    #endregion
+
+    #region Public Methods
+
+    /// <summary>
+    ///     Applies a new status effect to the given target, or stacks it if already present.
+    /// </summary>
+    /// <typeparam name="TTarget">
+    ///     The type of the target, must be either <see cref="IUnitSystem" /> or <see cref="IMapSystem" />.
+    /// </typeparam>
+    /// <param name="target">
+    ///     The target on which to apply the status effect.
+    /// </param>
+    /// <param name="newEffect">
+    ///     The <see cref="StatusEffect{TTarget}" /> to apply.
+    /// </param>
+    /// <remarks>
+    ///     If the target already has an effect of the same type and it is stackable,
+    ///     the effect will be stacked instead of being applied again.
+    /// </remarks>
+    // CHANGE: Accept TTarget instead of EffectTarget<TTarget>
+    public void ApplyEffect<TTarget>(TTarget target, StatusEffect<TTarget> newEffect)
+        where TTarget : IEffectTarget<TTarget>
+    {
+        StatusEffect<TTarget>? existing = target.GetActiveEffects()
+            .FirstOrDefault(e => e.Name == newEffect.Name);
+
+        if (!_allTargets.Contains(target))
+            _allTargets.Add(target);
+
+        if (existing is not null)
+        {
+            if (existing.IsStackable)
+                existing.AddStack();
+            existing.ResetDuration(newEffect.Duration);
+        }
+        else
+        {
+            target.ApplyEffect(newEffect);
+            newEffect.OnApply(target);
+
+            if (newEffect.ShouldApplyTwice)
+                newEffect.OnApply(target);
+        }
+    }
+
+    /// <summary>
+    ///     Processes status effect updates for a single target.
+    /// </summary>
+    /// <param name="target">
+    ///     The target whose status effects should be updated.
+    /// </param>
+    /// <remarks>
+    ///     Each status effect has its <see cref="StatusEffect{IUnitSystem}.OnTurnPassed" /> method called,
+    ///     and expired effects are removed automatically. If a target has no more active effects,
+    ///     it is removed from the tracking list.
+    /// </remarks>
+    public void ProcessUnitStatusEffects(IUnitSystem? target)
+    {
+        if (target is null) return;
+
+        RefreshTargetEffects(target);
+    }
+
+    /// <summary>
+    ///     Processes end-of-turn updates for all tracked targets.
+    /// </summary>
+    /// <remarks>
+    ///     Iterates over all tracked targets in <see cref="_allTargets" /> and updates
+    ///     their status effects. Expired effects are removed, and targets with no remaining
+    ///     effects are removed from the tracking list.
+    ///     Only targets of type <see cref="CellInformation" /> are processed by this method.
+    /// </remarks>
+    public void ProcessTurnEnd()
+    {
+        foreach (object target in _allTargets.ToList())
+        {
+            // If your cells also need effects, ensure CellInformation : IEffectTarget<CellInformation>
+            if (target is CellInformation cell)
+                RefreshTargetEffects(cell);
+        }
+    }
+
+    #endregion
+}

@@ -4,7 +4,8 @@
       "src": [
         {
           "files": [
-            "Ashes of Velsingrad.csproj"
+            "AshesofVelsingrad/AshesofVelsingrad.csproj",
+            "AshesofVelsingrad.Core/AshesofVelsingrad.Core.csproj"
           ],
           "exclude": [
             "**/bin/**",
@@ -21,8 +22,8 @@
       "disableGitFeatures": false,
       "disableDefaultFilter": false,
       "references": [
-        ".godot/mono/temp/bin/Debug/GodotSharp.dll",
-        ".godot/mono/temp/bin/Debug/GodotSharpEditor.dll"
+        "AshesofVelsingrad/.godot/mono/temp/bin/Debug/GodotSharp.dll",
+        "AshesofVelsingrad/.godot/mono/temp/bin/Debug/GodotSharpEditor.dll"
       ],
       "properties": {
         "TargetFramework": "net9.0",
@@ -57,7 +58,8 @@
     "resource": [
       {
         "files": [
-          "images/**"
+          "images/**",
+          "coverage/**"
         ],
         "src": "documentation"
       }

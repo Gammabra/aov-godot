@@ -130,3 +130,5 @@ api/
 TestResults
 reports
 gdunit4_testadapter_v5
+coverage
+CoverageBuild

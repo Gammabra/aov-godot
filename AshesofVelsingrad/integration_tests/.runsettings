@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RunSettings>
+  <GdUnit4>
+    <Parameters>
+      <Parameter name="godot-parameters" value="--headless --no-import" />
+      <Parameter name="CompileProcessTimeout" value="120000" />
+      <Parameter name="GodotBin" value="C:\Program Files\Godot\Godot_v4.6-stable_mono_win64.exe" />
+    </Parameters>
+  </GdUnit4>
+</RunSettings>

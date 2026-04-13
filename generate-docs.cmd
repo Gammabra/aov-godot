@@ -35,7 +35,7 @@ echo.
 
 REM Check for Godot DLLs and update docfx.json if needed
 echo [3/6] Checking Godot DLL paths...
-set "DEBUG_PATH=.godot/mono/temp/bin/Debug"
+set "DEBUG_PATH=AshesofVelsingrad/.godot/mono/temp/bin/Debug"
 
 if exist "%DEBUG_PATH%/GodotSharp.dll" (
     echo Found Debug Godot DLLs, using Debug path

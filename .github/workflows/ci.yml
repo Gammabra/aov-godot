@@ -1,27 +1,27 @@
-name: GdUnit4 Tests
+name: Tests and Coverage
 
 on:
   push:
-    branches: [ develop, canary, release ]
+    branches: [develop, canary, release]
     paths-ignore:
-      - '**.md'
-      - 'documentation/**'
+      - "**.md"
+      - "documentation/**"
   pull_request:
-    branches: [ develop, canary, release ]
+    branches: [develop, canary, release]
     paths-ignore:
-      - '**.md'
-      - 'documentation/**'
+      - "**.md"
+      - "documentation/**"
   workflow_dispatch:
 
 concurrency:
-  group: gdunit4-tests-${{ github.ref }}
+  group: tests-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
-  unit-test:
-    name: "CI Unit Test"
+  test-and-coverage:
+    name: "Unit & Integration Tests"
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 15
     permissions:
       actions: write
       checks: write
@@ -31,7 +31,7 @@ jobs:
 
     strategy:
       matrix:
-        dotnet-version: ['9.0.x']
+        dotnet-version: ["9.0.x"]
       fail-fast: false
 
     steps:
@@ -39,6 +39,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           lfs: true
+
       - name: Setup .NET
         uses: actions/setup-dotnet@v4
         with:
@@ -47,20 +48,81 @@ jobs:
       - name: Restore dependencies
         run: dotnet restore
 
-      - name: Run GdUnit4 Tests
-        uses: MikeSchulze/gdunit4-action@v1
-        with:
-          godot-version: '4.6.1'
-          godot-net: true
-          dotnet-version: ${{ matrix.dotnet-version }}
-          paths: 'res://tests/unit'
-          version: 'latest'
-          arguments: '--verbose --continue-on-failed --settings=res://tests/.runsettings'
-          report-name: test_report_${{ matrix.dotnet-version }}.xml
+      # --- 1. PURE C# UNIT TESTS & COVERAGE ---
+      - name: Run .NET Unit Tests & Collect Coverage
+        run: >
+          dotnet test AshesofVelsingrad.Core.Tests/AshesofVelsingrad.Core.Tests.csproj
+          --configuration Release 
+          --no-restore 
+          --results-directory "./TestResults" 
+          --logger "trx;LogFileName=dotnet_results.trx"
+          --collect:"XPlat Code Coverage"
+          -- DataCollectionRunSettings.DataCollectors.DataCollector.Configuration.Format=cobertura
 
-      - name: Upload test results
+      - name: Upload .NET Coverage Artifact
         uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: test-results-${{ matrix.dotnet-version }}
-          path: test_report_${{ matrix.dotnet-version }}.xml
+          name: dotnet-coverage-report
+          path: ./TestResults/**/coverage.cobertura.xml
+
+      - name: Upload .NET Test Results
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: dotnet-test-results
+          path: ./TestResults/dotnet_results.trx
+
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v5
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          files: ./TestResults/**/coverage.cobertura.xml
+          flags: core-logic 
+          name: core-tests
+          fail_ci_if_error: true
+
+      # --- 2. GODOT INTEGRATION TESTS ---
+      - name: Run GdUnit4 Integration Tests
+        uses: MikeSchulze/gdunit4-action@v1
+        with:
+          godot-version: "4.6"
+          godot-net: true
+          dotnet-version: ${{ matrix.dotnet-version }}
+          # Assuming you moved your GdUnit tests to an integration folder. Adjust path if needed.
+          paths: "res://AshesofVelsingrad/integration_tests" 
+          version: "latest"
+          arguments: "--verbose --continue-on-failed --settings=res://AshesofVelsingrad/integration_tests/.runsettings"
+          report-name: gdunit_report.xml
+
+      - name: Upload GdUnit4 Test Results
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: gdunit-test-results
+          path: gdunit_report.xml
+
+      - name: Test Report
+        uses: dorny/test-reporter@v1
+        if: always()
+        with:
+          name: .NET & GdUnit4 Tests
+          path: '**/TestResults/*.trx,**/gdunit_report.xml'
+          reporter: dotnet-trx
+
+      # --- 3. GENERATE HTML REPORT ---
+      - name: Install ReportGenerator
+        run: dotnet tool install -g dotnet-reportgenerator-globaltool
+
+      - name: Generate HTML Report
+        run: >
+          reportgenerator 
+          "-reports:TestResults/**/coverage.cobertura.xml" 
+          "-targetdir:TestResults/CoverageHTML" 
+          -reporttypes:Html
+
+      - name: Upload HTML Coverage Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: coverage-html-site
+          path: ./TestResults/CoverageHTML

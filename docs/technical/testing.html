@@ -2,9 +2,9 @@
 <html>
   <head>
     <meta charset="utf-8">
-      <title>Godot 4.5.1 Testing Guide with C# and GdUnit4 | Ashes of Velsingrad Documentation </title>
+      <title>Testing Guide: Ashes of Velsingrad | Ashes of Velsingrad Documentation </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content="Godot 4.5.1 Testing Guide with C# and GdUnit4 | Ashes of Velsingrad Documentation ">
+      <meta name="title" content="Testing Guide: Ashes of Velsingrad | Ashes of Velsingrad Documentation ">
       
       
       <link rel="icon" href="../../favicon.ico">
@@ -71,533 +71,146 @@
         </div>
 
         <article data-uid="">
-<h1 id="godot-451-testing-guide-with-c-and-gdunit4">Godot 4.5.1 Testing Guide with C# and GdUnit4</h1>
+<h1 id="testing-guide-ashes-of-velsingrad">Testing Guide: Ashes of Velsingrad</h1>
 
+<p>This document outlines the testing strategy for <strong>Ashes of Velsingrad</strong>. We utilize a dual-layer testing approach to maintain 100% logic coverage while ensuring engine stability.</p>
 <h2 id="table-of-contents">Table of Contents</h2>
 <ol>
 <li><a href="#external-editor-configuration">External Editor Configuration</a></li>
-<li><a href="#unit-testing-configuration-with-gdunit4">Unit Testing Configuration with GdUnit4</a></li>
+<li><a href="#the-two-tier-testing-strategy">The Two-Tier Testing Strategy</a></li>
+<li><a href="#tier-1-core-unit-testing-nunit">Tier 1: Core Unit Testing (NUnit)</a></li>
+<li><a href="#tier-2-godot-integration-testing-gdunit4">Tier 2: Godot Integration Testing (GdUnit4)</a></li>
 <li><a href="#project-structure">Project Structure</a></li>
-<li><a href="#advanced-configuration">Advanced Configuration</a></li>
+<li><a href="#running-tests">Running Tests</a></li>
 <li><a href="#best-practices">Best Practices</a></li>
-<li><a href="#troubleshooting">Troubleshooting</a></li>
 </ol>
 <h2 id="external-editor-configuration">External Editor Configuration</h2>
 <h3 id="visual-studio-code-recommended">Visual Studio Code (Recommended)</h3>
 <ol>
-<li><p><strong>Install required extensions:</strong></p>
+<li><strong>Required Extensions</strong>:
 <ul>
-<li>C# Dev Kit (v1.5.12 (pre-release) recommended) (Microsoft)</li>
-<li>C# (Microsoft)</li>
-<li>godot-tools (optional, for .gd file syntax highlighting)</li>
+<li><strong>C# Dev Kit</strong> (Microsoft)</li>
+<li><strong>Godot Tools</strong> (For <code>.tscn</code> and <code>.gd</code> support)</li>
 </ul>
 </li>
-<li><p><strong>Configure in Godot:</strong></p>
-<ul>
-<li>In <code>Editor → Editor settings → Dotnet → Editor </code>, set:
-<ul>
-<li><strong>External Editor</strong>: <code>Visual Studio Code and VSCodium</code></li>
-<li><strong>Exec Path</strong>: Path to your VS Code executable
-<ul>
-<li>Windows: <code>C:\Users\[username]\AppData\Local\Programs\Microsoft VS Code\Code.exe</code></li>
-<li>Linux: <code>/usr/bin/code</code></li>
-<li>macOS: <code>/Applications/Visual Studio Code.app/Contents/Resources/app/bin/code</code></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p><strong>Configure VS Code workspace:</strong>
-Create a <code>.vscode/settings.json</code> file at the project root:</p>
+<li><strong>Workspace Settings</strong> (<code>.vscode/settings.json</code>):</li>
+</ol>
 <pre><code class="lang-json">{
-  &quot;dotnet.defaultSolution&quot;: &quot;Ashes of Velsingrad.sln&quot;,
+  &quot;dotnet.defaultSolution&quot;: &quot;AshesofVelsingrad.sln&quot;,
+  &quot;godotTools.editorPath.godot4&quot;: &quot;path/to/Godot_v4.6-stable_mono.exe&quot;,
+  &quot;dotnet.unitTests.runSettingsPath&quot;: &quot;./AshesofVelsingrad/integration_tests/.runsettings&quot;,
   &quot;files.exclude&quot;: {
     &quot;**/.godot/&quot;: true,
     &quot;**/.import/&quot;: true
-  },
-  &quot;godotTools.editorPath.godot4&quot;: &quot;path\\to\\your\\Godot_v4.5.1-stable_mono_win64.exe&quot;,
-  &quot;dotnet.unitTests.runSettingsPath&quot;: &quot;./tests/.runsettings&quot;
+  }
 }
 </code></pre>
-</li>
-</ol>
-<h3 id="visual-studio-alternative">Visual Studio (Alternative)</h3>
-<ol>
-<li><strong>Configure in Godot:</strong>
-<ul>
-<li><strong>External Editor</strong>: <code>Visual Studio</code></li>
-<li><strong>Exec Path</strong>: Path to devenv.exe
-<ul>
-<li>Example: <code>C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\devenv.exe</code></li>
-</ul>
-</li>
-<li><strong>Exec Flags</strong>: <code>{project} --goto {file}:{line}:{col}</code></li>
-</ul>
-</li>
-</ol>
-<h3 id="jetbrains-rider-alternative">JetBrains Rider (Alternative)</h3>
-<ol>
-<li><strong>Configure in Godot:</strong>
-<ul>
-<li><strong>External Editor</strong>: <code>JetBrains Rider and Fleet</code></li>
-<li><strong>Exec Path</strong>: Path to rider64.exe</li>
-<li><strong>Exec Flags</strong>: <code>{project} --line {line} {file}</code></li>
-</ul>
-</li>
-</ol>
-<h2 id="unit-testing-configuration-with-gdunit4">Unit Testing Configuration with GdUnit4</h2>
-<h3 id="environment-setup">Environment Setup</h3>
-<ol>
-<li><p><strong>Set the <code>GODOT_BIN</code> environment variable:</strong></p>
-<p>This variable must point to the Godot Mono executable (for example, <code>Godot_v4.5.1-stable_mono_win64.exe</code>). It is required to run C# tests with GdUnit4.
-You can set this variable:</p>
-<ul>
-<li><p>System-wide (recommended): via your operating system's environment variables:</p>
-</li>
-<li><p><strong>Variable name:</strong> <code>GODOT_BIN</code></p>
-</li>
-<li><p><strong>Value:</strong> Full path to the Godot Mono executable</p>
-</li>
-<li><p><strong>Example:</strong> <code>C:\Program Files\Godot\Godot_v4.5.1-stable_mono_win64.exe</code></p>
-</li>
-<li><p>Or locally for tests, by adding it to the <code>tests/.runsettings</code> file, inside <code>RunConfiguration</code>:</p>
-</li>
-</ul>
-<pre><code class="lang-xml">&lt;EnvironmentVariables&gt;
-     &lt;GODOT_BIN&gt;C:\path\to\Godot_v4.5.1-stable_mono_win64.exe&lt;/GODOT_BIN&gt;
-&lt;/EnvironmentVariables&gt;
-</code></pre>
-<blockquote>
-<p><strong>Tip:</strong> Prefer system-wide configuration to avoid updating the configuration file each time you change machines or installation paths.</p>
-</blockquote>
-</li>
-<li><p><strong>Add GdUnit4Net NuGet packages:</strong>
-Run these commands in your project directory:</p>
-<pre><code class="lang-bash">dotnet add package gdUnit4.api --version 5.0.0
-dotnet add package gdUnit4.test.adapter --version 3.0.0
-dotnet add package gdUnit4.analyzers --version 1.0.0
-</code></pre>
-</li>
-</ol>
-<h3 id="installation-verification">Installation Verification</h3>
-<p>Your project structure should look like this:</p>
-<pre><code>AshesOfVelsingrad/
-├── addons/
-│   └── gdUnit4/
-├── tests/
-│   ├── unit/
-│   │   └── TestTemp.cs
-│   ├── integration/
-│   └── .runsettings
-└── project.godot
-</code></pre>
-<h3 id="c-project-testing-configuration">C# Project Testing Configuration</h3>
-<ol>
-<li><p><strong>Verify NuGet packages</strong> in your <code>.csproj</code> file:</p>
-<pre><code class="lang-xml"> &lt;PackageReference Include=&quot;Microsoft.NET.Test.Sdk&quot; Version=&quot;17.14.1&quot; /&gt;
- &lt;PackageReference Include=&quot;gdUnit4.api&quot; Version=&quot;5.0.0&quot; /&gt;
- &lt;PackageReference Include=&quot;gdUnit4.test.adapter&quot; Version=&quot;3.0.0&quot; /&gt;
- &lt;PackageReference Include=&quot;gdUnit4.analyzers&quot; Version=&quot;1.0.0&quot;&gt;
-</code></pre>
-</li>
-<li><p><strong>Enhanced unit test example:</strong></p>
-<pre><code class="lang-csharp">using AshesofVelsingrad;
-using GdUnit4;
-using Godot;
-using static GdUnit4.Assertions;
-using System;
-
-namespace Tests.Unit
-{
-   [TestSuite]
-   public class UnitTestExample
-   {
-      [TestCase]
-      public void TestBasicAssertion()
-      {
-         AssertThat(2 + 2).IsEqual(4);
-      }
-
-      [TestCase]
-      [RequireGodotRuntime]
-      public void TestGodotNode()
-      {
-         var node = AutoFree(new Node());
-
-         AssertThat(node).IsNotNull();
-         AssertThat(node != null ? node.Name : throw new NullReferenceException(&quot;node is null&quot;)).IsEqual(&quot;&quot;);
-
-         node.Name = &quot;TestNode&quot;;
-         AssertThat(node.Name).IsEqual(&quot;TestNode&quot;);
-      }
-
-      [TestCase]
-      [RequireGodotRuntime]
-      public void TestGodotNodeWithManualCleanup()
-      {
-         Node? node = null;
-         try
-         {
-            node = new Node();
-            AssertThat(node).IsNotNull();
-
-            AssertThat(node.GetType().Name).IsEqual(&quot;Node&quot;);
-
-            node.Name = &quot;ManualTestNode&quot;;
-            AssertThat(node.Name).IsEqual(&quot;ManualTestNode&quot;);
-         }
-         finally
-         {
-            node?.QueueFree();
-         }
-      }
-
-      [TestCase]
-      [RequireGodotRuntime]
-      public void TestGodotNodeWithSceneTree()
-      {
-         var scene = AutoFree(new Node());
-         var child = AutoFree(new Node());
-
-         if (scene == null)
-            throw new NullReferenceException(&quot;scene is null&quot;);
-         if (child == null)
-            throw new NullReferenceException(&quot;child is null&quot;);
-
-         scene.AddChild(child);
-         AssertThat(scene.GetChildCount()).IsEqual(1);
-         AssertThat(scene.GetChild(0)).IsEqual(child);
-      }
-
-      [TestCase]
-      [RequireGodotRuntime]
-      public void TestNodeProperties()
-      {
-         var node = AutoFree(new Node());
-
-         if (node == null)
-            throw new NullReferenceException(&quot;node is null&quot;);
-
-         AssertThat(node.GetInstanceId()).IsGreater(0);
-         AssertThat(node.IsInsideTree()).IsFalse();
-
-         node.Name = &quot;TestNode&quot;;
-         AssertThat(node.Name).IsEqual(&quot;TestNode&quot;);
-      }
-
-      [TestCase]
-      [RequireGodotRuntime]
-      public void TestNodeHierarchy()
-      {
-         var parent = AutoFree(new Node());
-         var child1 = AutoFree(new Node());
-         var child2 = AutoFree(new Node());
-
-         if (parent == null)
-            throw new NullReferenceException(&quot;parent is null&quot;);
-         if (child1 == null)
-            throw new NullReferenceException(&quot;child1 is null&quot;);
-         if (child2 == null)
-            throw new NullReferenceException(&quot;child2 is null&quot;);
-
-         parent.Name = &quot;Parent&quot;;
-         child1.Name = &quot;Child1&quot;;
-         child2.Name = &quot;Child2&quot;;
-
-         parent.AddChild(child1);
-         parent.AddChild(child2);
-
-         AssertThat(parent.GetChildCount()).IsEqual(2);
-         AssertThat(child1.GetParent()).IsEqual(parent);
-         AssertThat(child2.GetParent()).IsEqual(parent);
-         AssertThat(parent.GetChild(0).Name).IsEqual(&quot;Child1&quot;);
-         AssertThat(parent.GetChild(1).Name).IsEqual(&quot;Child2&quot;);
-      }
-   }
+<h2 id="the-two-tier-testing-strategy">The Two-Tier Testing Strategy</h2>
+<table>
+<thead>
+<tr>
+<th><strong>Tier</strong></th>
+<th><strong>Target</strong></th>
+<th><strong>Framework</strong></th>
+<th><strong>Speed</strong></th>
+<th><strong>Requirement</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Tier 1: Logic</strong></td>
+<td><code>AshesofVelsingrad.Core,NUnit + Moq</code></td>
+<td><strong>Ultra Fast</strong></td>
+<td><strong>.NET SDK Only</strong></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>Tier 2: Engine</strong></td>
+<td><code>AshesofVelsingrad</code> (Adapter)</td>
+<td><strong>GdUnit4</strong></td>
+<td><strong>Moderate</strong></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="tier-1-core-unit-testing-nunit">Tier 1: Core Unit Testing (NUnit)</h2>
+<p>These tests validate your game rules, AI math, and data structures. They do <strong>not</strong> require Godot to run.</p>
+<p><strong>Location</strong>: <code>AshesofVelsingrad.Core.Tests/</code></p>
+<pre><code class="lang-csharp">[TestFixture]
+public class CombatLogicTests {
+    [Test]
+    public void Damage_ShouldBeMitigated_ByArmor() {
+        // Arrange
+        var defender = new HealthSystem(hp: 100, armor: 10);
+        
+        // Act
+        defender.TakeDamage(20);
+        
+        // Assert
+        Assert.That(defender.CurrentHealth, Is.EqualTo(90));
+    }
 }
 </code></pre>
-</li>
-<li><p><strong>Integration Testing Best Practices</strong></p>
-<pre><code class="lang-csharp">[TestSuite]
-public class PlayerCombatIntegrationTests
-{
-   [TestCase]
-   [RequireGodotRuntime]
-   public void Should_ApplyDamage_When_PlayerAttacksEnemy()
-   {
-      // Arrange: Set up player and enemy with components
-      var player = AutoFree(new Player());
-      var enemy = AutoFree(new Enemy());
-
-      if (player == null)
-         throw new NullReferenceException(&quot;player is null&quot;);
-      if (enemy == null)
-         throw new NullReferenceException(&quot;enemy is null&quot;);
-
-      // Act: Simulate combat interaction
-      player.Attack(enemy);
-
-      // Assert: Verify the complete interaction chain
-      AssertThat(enemy.GetComponent&lt;HealthComponent&gt;().CurrentHealth)
-            .IsLess(enemy.GetComponent&lt;HealthComponent&gt;().MaxHealth);
-   }
+<h2 id="tier-2-godot-integration-testing-gdunit4">Tier 2: Godot Integration Testing (GdUnit4)</h2>
+<p>These tests ensure that your Godot Nodes correctly wrap the Core logic and that signals/animations trigger as expected.
+<strong>Location</strong>: <code>AshesofVelsingrad/integration_tests/</code></p>
+<h3 id="environment-setup-godot_bin">Environment Setup (GODOT_BIN)</h3>
+<p>GdUnit4 requires the <code>GODOT_BIN</code> environment variable to point to your Godot Mono executable.</p>
+<ul>
+<li><strong>Windows</strong>: <code>setx GODOT_BIN &quot;C:\Path\To\Godot_v4.6_mono.exe&quot;</code></li>
+<li><strong>Linux/macOS</strong>: <code>export GODOT_BIN=&quot;/path/to/godot&quot;</code></li>
+</ul>
+<p>GdUnit4 Test Example</p>
+<pre><code class="lang-csharp">namespace Tests.Integration {
+    [TestSuite]
+    public class PlayerActorTests {
+        [TestCase]
+        [RequireGodotRuntime]
+        public async Task Player_ShouldPlayDeathAnimation_OnZeroHealth() {
+            // Arrange
+            var player = AutoFree(new PlayerActor());
+            var animPlayer = player.GetNode&lt;AnimationPlayer&gt;(&quot;Anim&quot;);
+            
+            // Act
+            player.CoreHealth.TakeDamage(999); // Trigger core logic
+            await ISceneRunner.Wait(100);     // Wait for frame
+            
+            // Assert
+            AssertThat(animPlayer.CurrentAnimation).IsEqual(&quot;death&quot;);
+        }
+    }
 }
 </code></pre>
-</li>
-</ol>
-<h3 id="running-tests">Running Tests</h3>
-<ol>
-<li><p><strong>From Godot</strong> (Recommended):</p>
-<ul>
-<li>Go to the &quot;MSBuild&quot; tab</li>
-<li>Rebuild the project</li>
-<li>Go to the &quot;GdUnit4&quot; tab</li>
-<li>Click &quot;Run discover tests&quot;</li>
-<li>Select your tests and click &quot;Run&quot;</li>
-</ul>
-</li>
-<li><p><strong>From VS Code:</strong></p>
-<ul>
-<li>Use the C# Dev Kit (v1.5.12 (pre-release) recommended) extension</li>
-<li>Open the &quot;Test Explorer&quot; panel</li>
-<li>Click &quot;Refresh Tests&quot;</li>
-<li>Click &quot;Run Test&quot;</li>
-</ul>
-</li>
-<li><p><strong>From command line:</strong></p>
-<pre><code class="lang-bash">dotnet test --settings tests/.runsettings
-</code></pre>
-</li>
-</ol>
 <h2 id="project-structure">Project Structure</h2>
-<h3 id="organization">Organization</h3>
-<pre><code>YourProject/
-├── addons/
-│   └── gdUnit4/
-├── docs/
-│   ├── docfx/
-│   │   ├── ...
-│   ├── CONTRIBUTING.md
-│   └── SETUP.md
-├── scripts/
-│   ├── player/
-│   ├── enemy/
-│   ├── gui/
-│   └── utils/
-├── tests/
-│   ├── unit/
-│   │   ├── player/
-│   │   ├── enemy/
-│   │   ├── gui/
-│   │   └── utils/
-│   ├── integration/
-│   └── .runsettings
-├── scenes/
-├── assets/
-├── .editorconfig (already configured)
-├── .gitignore (already configured)
-└── project.godot
+<pre><code>AshesofVelsingrad/
+├── AshesofVelsingrad.Core/            # Logic (Tested via NUnit)
+├── AshesofVelsingrad.Core.Tests/      # Logic Unit Tests
+└── AshesofVelsingrad/                 # Godot Adapter
+    ├── addons/gdUnit4/                # Plugin
+    └── integration_tests/             # GdUnit4 Tests
+        └── .runsettings               # Environment config
 </code></pre>
-<h3 id="file-organization-principles">File Organization Principles</h3>
+<h2 id="running-tests">Running Tests</h2>
+<h3 id="1-from-vs-code-all-tests">1. From VS Code (All Tests)</h3>
+<p>Open the <strong>Test Explorer</strong> (Beaker icon). C# Dev Kit will discover both NUnit and GdUnit4 tests. Use the &quot;Run All&quot; button.</p>
+<h3 id="2-from-godot-editor-integration-only">2. From Godot Editor (Integration Only)</h3>
 <ol>
-<li><strong>Mirror test structure</strong>: Test files should mirror your main script structure</li>
-<li><strong>Separate concerns</strong>: Keep unit tests and integration tests in separate folders</li>
-<li><strong>Follow naming conventions</strong>: Use clear, descriptive names following the project's contributing.md guidelines</li>
+<li>Open the <strong>GdUnit4</strong> bottom panel.</li>
+<li>Click <strong>Run All</strong> to see real-time execution within the engine.</li>
 </ol>
-<h2 id="advanced-configuration">Advanced Configuration</h2>
-<h3 id="debugger-configuration">Debugger Configuration</h3>
-<p>For VS Code, create <code>.vscode/launch.json</code>:</p>
-<pre><code class="lang-json">{
-  &quot;version&quot;: &quot;0.2.0&quot;,
-  &quot;configurations&quot;: [
-    {
-      &quot;name&quot;: &quot;Launch Godot&quot;,
-      &quot;type&quot;: &quot;coreclr&quot;,
-      &quot;request&quot;: &quot;launch&quot;,
-      &quot;preLaunchTask&quot;: &quot;build&quot;,
-      &quot;program&quot;: &quot;${env:GODOT_BIN}&quot;,
-      &quot;args&quot;: [&quot;--path&quot;, &quot;${workspaceFolder}&quot;],
-      &quot;cwd&quot;: &quot;${workspaceFolder}&quot;,
-      &quot;console&quot;: &quot;internalConsole&quot;,
-      &quot;stopAtEntry&quot;: false
-    }
-  ]
-}
-</code></pre>
-<h3 id="task-configuration">Task Configuration</h3>
-<p>Create <code>.vscode/tasks.json</code> for build tasks:</p>
-<pre><code class="lang-json">{
-  &quot;version&quot;: &quot;2.0.0&quot;,
-  &quot;tasks&quot;: [
-    {
-      &quot;label&quot;: &quot;build&quot;,
-      &quot;command&quot;: &quot;dotnet&quot;,
-      &quot;type&quot;: &quot;process&quot;,
-      &quot;args&quot;: [&quot;build&quot;],
-      &quot;group&quot;: &quot;build&quot;,
-      &quot;presentation&quot;: {
-        &quot;echo&quot;: true,
-        &quot;reveal&quot;: &quot;silent&quot;,
-        &quot;focus&quot;: false,
-        &quot;panel&quot;: &quot;shared&quot;
-      },
-      &quot;problemMatcher&quot;: &quot;$msCompile&quot;
-    },
-    {
-      &quot;label&quot;: &quot;test&quot;,
-      &quot;command&quot;: &quot;dotnet&quot;,
-      &quot;type&quot;: &quot;process&quot;,
-      &quot;args&quot;: [&quot;test&quot;, &quot;--settings&quot;, &quot;tests/.runsettings&quot;],
-      &quot;group&quot;: &quot;test&quot;,
-      &quot;presentation&quot;: {
-        &quot;echo&quot;: true,
-        &quot;reveal&quot;: &quot;always&quot;,
-        &quot;focus&quot;: false,
-        &quot;panel&quot;: &quot;shared&quot;
-      }
-    }
-  ]
-}
+<h3 id="3-command-line-cicd">3. Command Line (CI/CD)</h3>
+<pre><code class="lang-bash"># Run Core Tests
+dotnet test AshesofVelsingrad.Core.Tests
+
+# Run Integration Tests
+dotnet test AshesofVelsingrad --settings AshesofVelsingrad/integration_tests/.runsettings
 </code></pre>
 <h2 id="best-practices">Best Practices</h2>
-<h3 id="unit-testing">Unit Testing</h3>
-<ol>
-<li><p><strong>Test naming:</strong></p>
 <ul>
-<li>Use descriptive names: <code>Should_ReturnTrue_When_PlayerIsAlive</code></li>
-<li>Follow AAA pattern (Arrange, Act, Assert)</li>
+<li><strong>Mock the Boundary</strong>: When testing Godot Nodes, use <code>Mock&lt;IUnitSystem&gt;</code> to isolate the Node's behavior from the actual Core implementation.</li>
+<li><strong>AutoFree is Mandatory</strong>: In GdUnit4, always wrap Node creation in <code>AutoFree()</code> to prevent memory leaks in the Godot process.</li>
+<li><strong>No Godot in Core Tests</strong>: If a test in <code>Core.Tests fails</code> because it can't find <code>Godot.Vector3</code>, the logic is incorrectly coupled. Move the logic to a custom <code>struct</code> or move the test to the integration folder.</li>
 </ul>
-</li>
-<li><p><strong>Organization:</strong></p>
-<ul>
-<li>One test file per tested class</li>
-<li>Group tests by functionality</li>
-</ul>
-</li>
-<li><p><strong>Mocking:</strong></p>
-<pre><code class="lang-csharp">[TestCase]
-public void TestWithMock()
-{
-    var mockNode = AutoFree(Mock(Node.class));
-
-    // Configure mock
-    When(mockNode.GetName()).ThenReturn(&quot;MockedNode&quot;);
-
-    // Test
-    AssertThat(mockNode.GetName()).IsEqual(&quot;MockedNode&quot;);
-}
-</code></pre>
-</li>
-</ol>
-<h3 id="c-code-in-godot">C# Code in Godot</h3>
-<ol>
-<li><p><strong>Use Godot attributes:</strong></p>
-<pre><code class="lang-csharp">[Export] public int Health { get; set; } = 100;
-[Signal] public delegate void HealthChangedEventHandler(int newHealth);
-</code></pre>
-</li>
-<li><p><strong>Resource management:</strong></p>
-<pre><code class="lang-csharp">public override void _ExitTree()
-{
-    // Clean up resources
-    base._ExitTree();
-}
-</code></pre>
-</li>
-</ol>
-<h3 id="commit-messages">Commit Messages</h3>
-<p>Follow the project's CONTRIBUTING.md guidelines for commit message conventions. The project uses Conventional Commits with specific scopes like <code>player</code>, <code>combat</code>, <code>inventory</code>, <code>ui</code>, <code>audio</code>, <code>level</code>, <code>ai</code>, <code>save</code>, <code>network</code>, <code>build</code>, and <code>config</code>.</p>
-<h2 id="troubleshooting">Troubleshooting</h2>
-<h3 id="common-issues">Common Issues</h3>
-<ol>
-<li><p><strong>Tests don't run:</strong></p>
-<ul>
-<li>Check that the <code>GODOT_BIN</code> environment variable is correctly set</li>
-<li>Ensure GdUnit4 is enabled in the project plugins</li>
-<li>Verify the path points to the mono version: <code>Godot_v4.5.1-stable_mono_win64.exe</code></li>
-</ul>
-</li>
-<li><p><strong>IntelliSense not working:</strong></p>
-<ul>
-<li>Regenerate project files: <code>Project → Tools → C# → Sync C# Project</code></li>
-<li>Restart your editor</li>
-</ul>
-</li>
-<li><p><strong>Build errors:</strong></p>
-<ul>
-<li>Check that your .NET version is compatible (6.0+ recommended)</li>
-<li>Clean and rebuild: <code>dotnet clean &amp;&amp; dotnet build</code></li>
-</ul>
-</li>
-</ol>
-<h3 id="useful-commands">Useful Commands</h3>
-<pre><code class="lang-bash"># Clean project
-dotnet clean
-
-# Complete rebuild
-dotnet build --no-restore
-
-# Run tests with verbose output
-dotnet test --logger &quot;console;verbosity=detailed&quot;
-
-# Generate coverage report
-dotnet test --collect:&quot;XPlat Code Coverage&quot;
-
-# Add GdUnit4Net packages
-dotnet add package gdUnit4.api --version 5.0.0
-dotnet add package gdUnit4.test.adapter --version 3.0.0
-dotnet add package gdUnit4.analyzers --version 1.0.0
-</code></pre>
-<h3 id="logging-and-debugging">Logging and Debugging</h3>
-<ol>
-<li><p><strong>Enable detailed logs in Godot:</strong></p>
-<ul>
-<li><code>Project → Project Settings → Debug → Settings</code></li>
-<li>Enable &quot;Verbose stdout&quot;</li>
-</ul>
-</li>
-<li><p><strong>Logs in tests:</strong></p>
-<pre><code class="lang-csharp">[TestCase]
-public void TestWithLogging()
-{
-    GD.Print(&quot;Debug message from test&quot;);
-    AssertThat(true).IsTrue();
-}
-</code></pre>
-</li>
-</ol>
-<h3 id="environment-variable-setup-windows">Environment Variable Setup (Windows)</h3>
-<ol>
-<li><p><strong>Via System Properties:</strong></p>
-<ul>
-<li>Press <code>Win + R</code>, type <code>sysdm.cpl</code></li>
-<li>Go to &quot;Advanced&quot; tab → &quot;Environment Variables&quot;</li>
-<li>Add new system variable:
-<ul>
-<li>Name: <code>GODOT_BIN</code></li>
-<li>Value: <code>C:\path\to\Godot_v4.5.1-stable_mono_win64.exe</code></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p><strong>Via Command Line:</strong></p>
-<pre><code class="lang-cmd">setx GODOT_BIN &quot;C:\path\to\Godot_v4.5.1-stable_mono_win64.exe&quot;
-</code></pre>
-</li>
-<li><p><strong>Via PowerShell:</strong></p>
-<pre><code class="lang-powershell">[Environment]::SetEnvironmentVariable(&quot;GODOT_BIN&quot;, &quot;C:\path\to\Godot_v4.5.1-stable_mono_win64.exe&quot;, &quot;Machine&quot;)
-</code></pre>
-</li>
-</ol>
-<h2 id="additional-resources">Additional Resources</h2>
-<ul>
-<li><a href="https://mikeschulze.github.io/gdUnit4/">GdUnit4 Documentation</a></li>
-<li><a href="https://docs.godotengine.org/en/stable/tutorials/scripting/c_sharp/">Godot C# Documentation</a></li>
-<li><a href="https://github.com/MikeSchulze/gdUnit4Net">GdUnit4Net Documentation</a></li>
-<li><a href="../contributing.html">Project contributing.md</a> for commit conventions and project guidelines</li>
-</ul>
-<p>This documentation should help you effectively set up your development environment and tests. Don't hesitate to ask if you have specific questions about any of these aspects!</p>
 
 </article>
 

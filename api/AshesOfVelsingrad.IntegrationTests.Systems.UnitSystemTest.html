@@ -1,0 +1,938 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Class UnitSystemTest | Ashes of Velsingrad Documentation </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Class UnitSystemTest | Ashes of Velsingrad Documentation ">
+      
+      
+      <link rel="icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/Gammabra/aov-godot/new/develop/apiSpec/new?filename=AshesOfVelsingrad_IntegrationTests_Systems_UnitSystemTest.md&amp;value=---%0Auid%3A%20AshesOfVelsingrad.IntegrationTests.Systems.UnitSystemTest%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../images/logo-doc.png" alt="Ashes of Velsingrad" style="height: 40px; width: auto;">
+            Ashes of Velsingrad
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="AshesOfVelsingrad.IntegrationTests.Systems.UnitSystemTest">
+
+
+
+  <h1 id="AshesOfVelsingrad_IntegrationTests_Systems_UnitSystemTest" data-uid="AshesOfVelsingrad.IntegrationTests.Systems.UnitSystemTest" class="text-break">
+Class UnitSystemTest  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/integration_tests/scripts_tests/system/UnitSystemTest.cs/#L14"><i class="bi bi-code-slash"></i></a>
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="AshesOfVelsingrad.html">AshesOfVelsingrad</a>.<a class="xref" href="AshesOfVelsingrad.IntegrationTests.html">IntegrationTests</a>.<a class="xref" href="AshesOfVelsingrad.IntegrationTests.Systems.html">Systems</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>AshesofVelsingrad.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"></div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[TestSuite(14, &quot;&quot;)]
+[RequireGodotRuntime]
+public class UnitSystemTest</code></pre>
+  </div>
+
+
+
+
+  <dl class="typelist inheritance">
+    <dt>Inheritance</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+      <div><span class="xref">UnitSystemTest</span></div>
+    </dd>
+  </dl>
+
+
+
+  <dl class="typelist inheritedMembers">
+    <dt>Inherited Members</dt>
+    <dd>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode">object.GetHashCode()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone">object.MemberwiseClone()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring">object.ToString()</a>
+    </div>
+  </dd></dl>
+
+
+
+
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
+  <a id="AshesOfVelsingrad_IntegrationTests_Systems_UnitSystemTest_Cleanup_IsCalled_SetsFlag_" data-uid="AshesOfVelsingrad.IntegrationTests.Systems.UnitSystemTest.Cleanup_IsCalled_SetsFlag*"></a>
+
+  <h3 id="AshesOfVelsingrad_IntegrationTests_Systems_UnitSystemTest_Cleanup_IsCalled_SetsFlag" data-uid="AshesOfVelsingrad.IntegrationTests.Systems.UnitSystemTest.Cleanup_IsCalled_SetsFlag">
+  Cleanup_IsCalled_SetsFlag()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/integration_tests/scripts_tests/system/UnitSystemTest.cs/#L85"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[TestCase(new object?[] { })]
+public void Cleanup_IsCalled_SetsFlag()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AshesOfVelsingrad_IntegrationTests_Systems_UnitSystemTest_GetPossibleMoves_ReturnsExpectedCells_" data-uid="AshesOfVelsingrad.IntegrationTests.Systems.UnitSystemTest.GetPossibleMoves_ReturnsExpectedCells*"></a>
+
+  <h3 id="AshesOfVelsingrad_IntegrationTests_Systems_UnitSystemTest_GetPossibleMoves_ReturnsExpectedCells" data-uid="AshesOfVelsingrad.IntegrationTests.Systems.UnitSystemTest.GetPossibleMoves_ReturnsExpectedCells">
+  GetPossibleMoves_ReturnsExpectedCells()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/integration_tests/scripts_tests/system/UnitSystemTest.cs/#L228"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[TestCase(new object?[] { })]
+public void GetPossibleMoves_ReturnsExpectedCells()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AshesOfVelsingrad_IntegrationTests_Systems_UnitSystemTest_GetReachableCellsForSkills_ReturnsCellsWithinRange_" data-uid="AshesOfVelsingrad.IntegrationTests.Systems.UnitSystemTest.GetReachableCellsForSkills_ReturnsCellsWithinRange*"></a>
+
+  <h3 id="AshesOfVelsingrad_IntegrationTests_Systems_UnitSystemTest_GetReachableCellsForSkills_ReturnsCellsWithinRange" data-uid="AshesOfVelsingrad.IntegrationTests.Systems.UnitSystemTest.GetReachableCellsForSkills_ReturnsCellsWithinRange">
+  GetReachableCellsForSkills_ReturnsCellsWithinRange()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/integration_tests/scripts_tests/system/UnitSystemTest.cs/#L244"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[TestCase(new object?[] { })]
+public void GetReachableCellsForSkills_ReturnsCellsWithinRange()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AshesOfVelsingrad_IntegrationTests_Systems_UnitSystemTest_Initialize_IsCalled_SetsFlagsAndDefaults_" data-uid="AshesOfVelsingrad.IntegrationTests.Systems.UnitSystemTest.Initialize_IsCalled_SetsFlagsAndDefaults*"></a>
+
+  <h3 id="AshesOfVelsingrad_IntegrationTests_Systems_UnitSystemTest_Initialize_IsCalled_SetsFlagsAndDefaults" data-uid="AshesOfVelsingrad.IntegrationTests.Systems.UnitSystemTest.Initialize_IsCalled_SetsFlagsAndDefaults">
+  Initialize_IsCalled_SetsFlagsAndDefaults()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/integration_tests/scripts_tests/system/UnitSystemTest.cs/#L73"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[TestCase(new object?[] { })]
+public void Initialize_IsCalled_SetsFlagsAndDefaults()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AshesOfVelsingrad_IntegrationTests_Systems_UnitSystemTest_InjectDependencies_SetsStatusEffectSystem_" data-uid="AshesOfVelsingrad.IntegrationTests.Systems.UnitSystemTest.InjectDependencies_SetsStatusEffectSystem*"></a>
+
+  <h3 id="AshesOfVelsingrad_IntegrationTests_Systems_UnitSystemTest_InjectDependencies_SetsStatusEffectSystem" data-uid="AshesOfVelsingrad.IntegrationTests.Systems.UnitSystemTest.InjectDependencies_SetsStatusEffectSystem">
+  InjectDependencies_SetsStatusEffectSystem()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/integration_tests/scripts_tests/system/UnitSystemTest.cs/#L96"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[TestCase(new object?[] { })]
+public void InjectDependencies_SetsStatusEffectSystem()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AshesOfVelsingrad_IntegrationTests_Systems_UnitSystemTest_MoveTo_CallsSetGridPositionIfCanMove_" data-uid="AshesOfVelsingrad.IntegrationTests.Systems.UnitSystemTest.MoveTo_CallsSetGridPositionIfCanMove*"></a>
+
+  <h3 id="AshesOfVelsingrad_IntegrationTests_Systems_UnitSystemTest_MoveTo_CallsSetGridPositionIfCanMove" data-uid="AshesOfVelsingrad.IntegrationTests.Systems.UnitSystemTest.MoveTo_CallsSetGridPositionIfCanMove">
+  MoveTo_CallsSetGridPositionIfCanMove()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/integration_tests/scripts_tests/system/UnitSystemTest.cs/#L185"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[TestCase(new object?[] { })]
+public void MoveTo_CallsSetGridPositionIfCanMove()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AshesOfVelsingrad_IntegrationTests_Systems_UnitSystemTest_MoveTo_ReturnsFalseIfCannotMove_" data-uid="AshesOfVelsingrad.IntegrationTests.Systems.UnitSystemTest.MoveTo_ReturnsFalseIfCannotMove*"></a>
+
+  <h3 id="AshesOfVelsingrad_IntegrationTests_Systems_UnitSystemTest_MoveTo_ReturnsFalseIfCannotMove" data-uid="AshesOfVelsingrad.IntegrationTests.Systems.UnitSystemTest.MoveTo_ReturnsFalseIfCannotMove">
+  MoveTo_ReturnsFalseIfCannotMove()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/integration_tests/scripts_tests/system/UnitSystemTest.cs/#L199"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[TestCase(new object?[] { })]
+public void MoveTo_ReturnsFalseIfCannotMove()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AshesOfVelsingrad_IntegrationTests_Systems_UnitSystemTest_OnEffectControlApplied_" data-uid="AshesOfVelsingrad.IntegrationTests.Systems.UnitSystemTest.OnEffectControlApplied*"></a>
+
+  <h3 id="AshesOfVelsingrad_IntegrationTests_Systems_UnitSystemTest_OnEffectControlApplied" data-uid="AshesOfVelsingrad.IntegrationTests.Systems.UnitSystemTest.OnEffectControlApplied">
+  OnEffectControlApplied()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/integration_tests/scripts_tests/system/UnitSystemTest.cs/#L534"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[TestCase(new object?[] { })]
+public void OnEffectControlApplied()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AshesOfVelsingrad_IntegrationTests_Systems_UnitSystemTest_OnEffectControlRemoved_" data-uid="AshesOfVelsingrad.IntegrationTests.Systems.UnitSystemTest.OnEffectControlRemoved*"></a>
+
+  <h3 id="AshesOfVelsingrad_IntegrationTests_Systems_UnitSystemTest_OnEffectControlRemoved" data-uid="AshesOfVelsingrad.IntegrationTests.Systems.UnitSystemTest.OnEffectControlRemoved">
+  OnEffectControlRemoved()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/integration_tests/scripts_tests/system/UnitSystemTest.cs/#L544"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[TestCase(new object?[] { })]
+public void OnEffectControlRemoved()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AshesOfVelsingrad_IntegrationTests_Systems_UnitSystemTest_OnEffectDamageFlat_" data-uid="AshesOfVelsingrad.IntegrationTests.Systems.UnitSystemTest.OnEffectDamageFlat*"></a>
+
+  <h3 id="AshesOfVelsingrad_IntegrationTests_Systems_UnitSystemTest_OnEffectDamageFlat" data-uid="AshesOfVelsingrad.IntegrationTests.Systems.UnitSystemTest.OnEffectDamageFlat">
+  OnEffectDamageFlat()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/integration_tests/scripts_tests/system/UnitSystemTest.cs/#L261"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[TestCase(new object?[] { })]
+public void OnEffectDamageFlat()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AshesOfVelsingrad_IntegrationTests_Systems_UnitSystemTest_OnEffectDamagePercent_" data-uid="AshesOfVelsingrad.IntegrationTests.Systems.UnitSystemTest.OnEffectDamagePercent*"></a>
+
+  <h3 id="AshesOfVelsingrad_IntegrationTests_Systems_UnitSystemTest_OnEffectDamagePercent" data-uid="AshesOfVelsingrad.IntegrationTests.Systems.UnitSystemTest.OnEffectDamagePercent">
+  OnEffectDamagePercent()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/integration_tests/scripts_tests/system/UnitSystemTest.cs/#L274"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[TestCase(new object?[] { })]
+public void OnEffectDamagePercent()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AshesOfVelsingrad_IntegrationTests_Systems_UnitSystemTest_OnEffectHeal_" data-uid="AshesOfVelsingrad.IntegrationTests.Systems.UnitSystemTest.OnEffectHeal*"></a>
+
+  <h3 id="AshesOfVelsingrad_IntegrationTests_Systems_UnitSystemTest_OnEffectHeal" data-uid="AshesOfVelsingrad.IntegrationTests.Systems.UnitSystemTest.OnEffectHeal">
+  OnEffectHeal()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/integration_tests/scripts_tests/system/UnitSystemTest.cs/#L287"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[TestCase(new object?[] { })]
+public void OnEffectHeal()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AshesOfVelsingrad_IntegrationTests_Systems_UnitSystemTest_OnEffectHeal_UnitNotAlive_" data-uid="AshesOfVelsingrad.IntegrationTests.Systems.UnitSystemTest.OnEffectHeal_UnitNotAlive*"></a>
+
+  <h3 id="AshesOfVelsingrad_IntegrationTests_Systems_UnitSystemTest_OnEffectHeal_UnitNotAlive" data-uid="AshesOfVelsingrad.IntegrationTests.Systems.UnitSystemTest.OnEffectHeal_UnitNotAlive">
+  OnEffectHeal_UnitNotAlive()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/integration_tests/scripts_tests/system/UnitSystemTest.cs/#L307"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[TestCase(new object?[] { })]
+public void OnEffectHeal_UnitNotAlive()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AshesOfVelsingrad_IntegrationTests_Systems_UnitSystemTest_OnEffectModifierApplied_Atk_" data-uid="AshesOfVelsingrad.IntegrationTests.Systems.UnitSystemTest.OnEffectModifierApplied_Atk*"></a>
+
+  <h3 id="AshesOfVelsingrad_IntegrationTests_Systems_UnitSystemTest_OnEffectModifierApplied_Atk" data-uid="AshesOfVelsingrad.IntegrationTests.Systems.UnitSystemTest.OnEffectModifierApplied_Atk">
+  OnEffectModifierApplied_Atk()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/integration_tests/scripts_tests/system/UnitSystemTest.cs/#L342"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[TestCase(new object?[] { })]
+public void OnEffectModifierApplied_Atk()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AshesOfVelsingrad_IntegrationTests_Systems_UnitSystemTest_OnEffectModifierApplied_Def_" data-uid="AshesOfVelsingrad.IntegrationTests.Systems.UnitSystemTest.OnEffectModifierApplied_Def*"></a>
+
+  <h3 id="AshesOfVelsingrad_IntegrationTests_Systems_UnitSystemTest_OnEffectModifierApplied_Def" data-uid="AshesOfVelsingrad.IntegrationTests.Systems.UnitSystemTest.OnEffectModifierApplied_Def">
+  OnEffectModifierApplied_Def()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/integration_tests/scripts_tests/system/UnitSystemTest.cs/#L380"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[TestCase(new object?[] { })]
+public void OnEffectModifierApplied_Def()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AshesOfVelsingrad_IntegrationTests_Systems_UnitSystemTest_OnEffectModifierRemoved_Atk_" data-uid="AshesOfVelsingrad.IntegrationTests.Systems.UnitSystemTest.OnEffectModifierRemoved_Atk*"></a>
+
+  <h3 id="AshesOfVelsingrad_IntegrationTests_Systems_UnitSystemTest_OnEffectModifierRemoved_Atk" data-uid="AshesOfVelsingrad.IntegrationTests.Systems.UnitSystemTest.OnEffectModifierRemoved_Atk">
+  OnEffectModifierRemoved_Atk()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/integration_tests/scripts_tests/system/UnitSystemTest.cs/#L418"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[TestCase(new object?[] { })]
+public void OnEffectModifierRemoved_Atk()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AshesOfVelsingrad_IntegrationTests_Systems_UnitSystemTest_OnEffectModifierRemoved_Def_" data-uid="AshesOfVelsingrad.IntegrationTests.Systems.UnitSystemTest.OnEffectModifierRemoved_Def*"></a>
+
+  <h3 id="AshesOfVelsingrad_IntegrationTests_Systems_UnitSystemTest_OnEffectModifierRemoved_Def" data-uid="AshesOfVelsingrad.IntegrationTests.Systems.UnitSystemTest.OnEffectModifierRemoved_Def">
+  OnEffectModifierRemoved_Def()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/integration_tests/scripts_tests/system/UnitSystemTest.cs/#L476"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[TestCase(new object?[] { })]
+public void OnEffectModifierRemoved_Def()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AshesOfVelsingrad_IntegrationTests_Systems_UnitSystemTest_OnEffectRevive_" data-uid="AshesOfVelsingrad.IntegrationTests.Systems.UnitSystemTest.OnEffectRevive*"></a>
+
+  <h3 id="AshesOfVelsingrad_IntegrationTests_Systems_UnitSystemTest_OnEffectRevive" data-uid="AshesOfVelsingrad.IntegrationTests.Systems.UnitSystemTest.OnEffectRevive">
+  OnEffectRevive()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/integration_tests/scripts_tests/system/UnitSystemTest.cs/#L317"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[TestCase(new object?[] { })]
+public void OnEffectRevive()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AshesOfVelsingrad_IntegrationTests_Systems_UnitSystemTest_OnEffectRevive_UnitAlreadyAlive_" data-uid="AshesOfVelsingrad.IntegrationTests.Systems.UnitSystemTest.OnEffectRevive_UnitAlreadyAlive*"></a>
+
+  <h3 id="AshesOfVelsingrad_IntegrationTests_Systems_UnitSystemTest_OnEffectRevive_UnitAlreadyAlive" data-uid="AshesOfVelsingrad.IntegrationTests.Systems.UnitSystemTest.OnEffectRevive_UnitAlreadyAlive">
+  OnEffectRevive_UnitAlreadyAlive()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/integration_tests/scripts_tests/system/UnitSystemTest.cs/#L332"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[TestCase(new object?[] { })]
+public void OnEffectRevive_UnitAlreadyAlive()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AshesOfVelsingrad_IntegrationTests_Systems_UnitSystemTest_PassTurn_CompletesActionTask_" data-uid="AshesOfVelsingrad.IntegrationTests.Systems.UnitSystemTest.PassTurn_CompletesActionTask*"></a>
+
+  <h3 id="AshesOfVelsingrad_IntegrationTests_Systems_UnitSystemTest_PassTurn_CompletesActionTask" data-uid="AshesOfVelsingrad.IntegrationTests.Systems.UnitSystemTest.PassTurn_CompletesActionTask">
+  PassTurn_CompletesActionTask()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/integration_tests/scripts_tests/system/UnitSystemTest.cs/#L147"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[TestCase(new object?[] { })]
+public void PassTurn_CompletesActionTask()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AshesOfVelsingrad_IntegrationTests_Systems_UnitSystemTest_Play_SkillNotActive_DoesNotUseSkill_" data-uid="AshesOfVelsingrad.IntegrationTests.Systems.UnitSystemTest.Play_SkillNotActive_DoesNotUseSkill*"></a>
+
+  <h3 id="AshesOfVelsingrad_IntegrationTests_Systems_UnitSystemTest_Play_SkillNotActive_DoesNotUseSkill" data-uid="AshesOfVelsingrad.IntegrationTests.Systems.UnitSystemTest.Play_SkillNotActive_DoesNotUseSkill">
+  Play_SkillNotActive_DoesNotUseSkill()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/integration_tests/scripts_tests/system/UnitSystemTest.cs/#L173"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[TestCase(new object?[] { })]
+public void Play_SkillNotActive_DoesNotUseSkill()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AshesOfVelsingrad_IntegrationTests_Systems_UnitSystemTest_Play_UsesSkillAndReducesMana_" data-uid="AshesOfVelsingrad.IntegrationTests.Systems.UnitSystemTest.Play_UsesSkillAndReducesMana*"></a>
+
+  <h3 id="AshesOfVelsingrad_IntegrationTests_Systems_UnitSystemTest_Play_UsesSkillAndReducesMana" data-uid="AshesOfVelsingrad.IntegrationTests.Systems.UnitSystemTest.Play_UsesSkillAndReducesMana">
+  Play_UsesSkillAndReducesMana()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/integration_tests/scripts_tests/system/UnitSystemTest.cs/#L158"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[TestCase(new object?[] { })]
+public void Play_UsesSkillAndReducesMana()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AshesOfVelsingrad_IntegrationTests_Systems_UnitSystemTest_SetIsAlive_UpdatesIsAliveFlag_" data-uid="AshesOfVelsingrad.IntegrationTests.Systems.UnitSystemTest.SetIsAlive_UpdatesIsAliveFlag*"></a>
+
+  <h3 id="AshesOfVelsingrad_IntegrationTests_Systems_UnitSystemTest_SetIsAlive_UpdatesIsAliveFlag" data-uid="AshesOfVelsingrad.IntegrationTests.Systems.UnitSystemTest.SetIsAlive_UpdatesIsAliveFlag">
+  SetIsAlive_UpdatesIsAliveFlag()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/integration_tests/scripts_tests/system/UnitSystemTest.cs/#L109"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[TestCase(new object?[] { })]
+public void SetIsAlive_UpdatesIsAliveFlag()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AshesOfVelsingrad_IntegrationTests_Systems_UnitSystemTest_SetStatusEffectOnUnit_UsesInjectedStatusEffectSystem_" data-uid="AshesOfVelsingrad.IntegrationTests.Systems.UnitSystemTest.SetStatusEffectOnUnit_UsesInjectedStatusEffectSystem*"></a>
+
+  <h3 id="AshesOfVelsingrad_IntegrationTests_Systems_UnitSystemTest_SetStatusEffectOnUnit_UsesInjectedStatusEffectSystem" data-uid="AshesOfVelsingrad.IntegrationTests.Systems.UnitSystemTest.SetStatusEffectOnUnit_UsesInjectedStatusEffectSystem">
+  SetStatusEffectOnUnit_UsesInjectedStatusEffectSystem()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/integration_tests/scripts_tests/system/UnitSystemTest.cs/#L132"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[TestCase(new object?[] { })]
+public void SetStatusEffectOnUnit_UsesInjectedStatusEffectSystem()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AshesOfVelsingrad_IntegrationTests_Systems_UnitSystemTest_Setup_" data-uid="AshesOfVelsingrad.IntegrationTests.Systems.UnitSystemTest.Setup*"></a>
+
+  <h3 id="AshesOfVelsingrad_IntegrationTests_Systems_UnitSystemTest_Setup" data-uid="AshesOfVelsingrad.IntegrationTests.Systems.UnitSystemTest.Setup">
+  Setup()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/integration_tests/scripts_tests/system/UnitSystemTest.cs/#L62"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[BeforeTest(62, &quot;Setup&quot;)]
+public void Setup()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AshesOfVelsingrad_IntegrationTests_Systems_UnitSystemTest_StatusEffect_ApplyRemoveHasEffect_" data-uid="AshesOfVelsingrad.IntegrationTests.Systems.UnitSystemTest.StatusEffect_ApplyRemoveHasEffect*"></a>
+
+  <h3 id="AshesOfVelsingrad_IntegrationTests_Systems_UnitSystemTest_StatusEffect_ApplyRemoveHasEffect" data-uid="AshesOfVelsingrad.IntegrationTests.Systems.UnitSystemTest.StatusEffect_ApplyRemoveHasEffect">
+  StatusEffect_ApplyRemoveHasEffect()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/integration_tests/scripts_tests/system/UnitSystemTest.cs/#L213"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[TestCase(new object?[] { })]
+public void StatusEffect_ApplyRemoveHasEffect()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AshesOfVelsingrad_IntegrationTests_Systems_UnitSystemTest_TakeDamage_ReducesHpBasedOnDefense_" data-uid="AshesOfVelsingrad.IntegrationTests.Systems.UnitSystemTest.TakeDamage_ReducesHpBasedOnDefense*"></a>
+
+  <h3 id="AshesOfVelsingrad_IntegrationTests_Systems_UnitSystemTest_TakeDamage_ReducesHpBasedOnDefense" data-uid="AshesOfVelsingrad.IntegrationTests.Systems.UnitSystemTest.TakeDamage_ReducesHpBasedOnDefense">
+  TakeDamage_ReducesHpBasedOnDefense()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/integration_tests/scripts_tests/system/UnitSystemTest.cs/#L123"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[TestCase(new object?[] { })]
+public void TakeDamage_ReducesHpBasedOnDefense()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AshesOfVelsingrad_IntegrationTests_Systems_UnitSystemTest_TearDown_" data-uid="AshesOfVelsingrad.IntegrationTests.Systems.UnitSystemTest.TearDown*"></a>
+
+  <h3 id="AshesOfVelsingrad_IntegrationTests_Systems_UnitSystemTest_TearDown" data-uid="AshesOfVelsingrad.IntegrationTests.Systems.UnitSystemTest.TearDown">
+  TearDown()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/integration_tests/scripts_tests/system/UnitSystemTest.cs/#L554"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[AfterTest(554, &quot;TearDown&quot;)]
+public void TearDown()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/integration_tests/scripts_tests/system/UnitSystemTest.cs/#L14" class="edit-link">Edit this page</a>
+        </div>
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          © 2025 Gammabra Studios. All Rights Reserved.
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

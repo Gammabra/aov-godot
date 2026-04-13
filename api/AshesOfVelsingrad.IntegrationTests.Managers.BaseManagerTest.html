@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Class BaseManagerTest | Ashes of Velsingrad Documentation </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Class BaseManagerTest | Ashes of Velsingrad Documentation ">
+      
+      
+      <link rel="icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/Gammabra/aov-godot/new/develop/apiSpec/new?filename=AshesOfVelsingrad_IntegrationTests_Managers_BaseManagerTest.md&amp;value=---%0Auid%3A%20AshesOfVelsingrad.IntegrationTests.Managers.BaseManagerTest%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../images/logo-doc.png" alt="Ashes of Velsingrad" style="height: 40px; width: auto;">
+            Ashes of Velsingrad
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="AshesOfVelsingrad.IntegrationTests.Managers.BaseManagerTest">
+
+
+
+  <h1 id="AshesOfVelsingrad_IntegrationTests_Managers_BaseManagerTest" data-uid="AshesOfVelsingrad.IntegrationTests.Managers.BaseManagerTest" class="text-break">
+Class BaseManagerTest  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/integration_tests/scripts_tests/managers/BaseManagerTest.cs/#L11"><i class="bi bi-code-slash"></i></a>
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="AshesOfVelsingrad.html">AshesOfVelsingrad</a>.<a class="xref" href="AshesOfVelsingrad.IntegrationTests.html">IntegrationTests</a>.<a class="xref" href="AshesOfVelsingrad.IntegrationTests.Managers.html">Managers</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>AshesofVelsingrad.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"></div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[TestSuite(11, &quot;&quot;)]
+[RequireGodotRuntime]
+public class BaseManagerTest</code></pre>
+  </div>
+
+
+
+
+  <dl class="typelist inheritance">
+    <dt>Inheritance</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+      <div><span class="xref">BaseManagerTest</span></div>
+    </dd>
+  </dl>
+
+
+
+  <dl class="typelist inheritedMembers">
+    <dt>Inherited Members</dt>
+    <dd>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode">object.GetHashCode()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone">object.MemberwiseClone()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring">object.ToString()</a>
+    </div>
+  </dd></dl>
+
+
+
+
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
+  <a id="AshesOfVelsingrad_IntegrationTests_Managers_BaseManagerTest_BaseManager_ExitTreeMethod_CallsCleanup_" data-uid="AshesOfVelsingrad.IntegrationTests.Managers.BaseManagerTest.BaseManager_ExitTreeMethod_CallsCleanup*"></a>
+
+  <h3 id="AshesOfVelsingrad_IntegrationTests_Managers_BaseManagerTest_BaseManager_ExitTreeMethod_CallsCleanup" data-uid="AshesOfVelsingrad.IntegrationTests.Managers.BaseManagerTest.BaseManager_ExitTreeMethod_CallsCleanup">
+  BaseManager_ExitTreeMethod_CallsCleanup()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/integration_tests/scripts_tests/managers/BaseManagerTest.cs/#L210"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[TestCase(new object?[] { })]
+public Task BaseManager_ExitTreeMethod_CallsCleanup()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AshesOfVelsingrad_IntegrationTests_Managers_BaseManagerTest_BaseManager_HasAbstractInitializeMethod_" data-uid="AshesOfVelsingrad.IntegrationTests.Managers.BaseManagerTest.BaseManager_HasAbstractInitializeMethod*"></a>
+
+  <h3 id="AshesOfVelsingrad_IntegrationTests_Managers_BaseManagerTest_BaseManager_HasAbstractInitializeMethod" data-uid="AshesOfVelsingrad.IntegrationTests.Managers.BaseManagerTest.BaseManager_HasAbstractInitializeMethod">
+  BaseManager_HasAbstractInitializeMethod()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/integration_tests/scripts_tests/managers/BaseManagerTest.cs/#L38"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[TestCase(new object?[] { })]
+public void BaseManager_HasAbstractInitializeMethod()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AshesOfVelsingrad_IntegrationTests_Managers_BaseManagerTest_BaseManager_HasStaticInstanceProperty_" data-uid="AshesOfVelsingrad.IntegrationTests.Managers.BaseManagerTest.BaseManager_HasStaticInstanceProperty*"></a>
+
+  <h3 id="AshesOfVelsingrad_IntegrationTests_Managers_BaseManagerTest_BaseManager_HasStaticInstanceProperty" data-uid="AshesOfVelsingrad.IntegrationTests.Managers.BaseManagerTest.BaseManager_HasStaticInstanceProperty">
+  BaseManager_HasStaticInstanceProperty()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/integration_tests/scripts_tests/managers/BaseManagerTest.cs/#L62"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[TestCase(new object?[] { })]
+public void BaseManager_HasStaticInstanceProperty()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AshesOfVelsingrad_IntegrationTests_Managers_BaseManagerTest_BaseManager_HasVirtualCleanupMethod_" data-uid="AshesOfVelsingrad.IntegrationTests.Managers.BaseManagerTest.BaseManager_HasVirtualCleanupMethod*"></a>
+
+  <h3 id="AshesOfVelsingrad_IntegrationTests_Managers_BaseManagerTest_BaseManager_HasVirtualCleanupMethod" data-uid="AshesOfVelsingrad.IntegrationTests.Managers.BaseManagerTest.BaseManager_HasVirtualCleanupMethod">
+  BaseManager_HasVirtualCleanupMethod()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/integration_tests/scripts_tests/managers/BaseManagerTest.cs/#L50"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[TestCase(new object?[] { })]
+public void BaseManager_HasVirtualCleanupMethod()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AshesOfVelsingrad_IntegrationTests_Managers_BaseManagerTest_BaseManager_IsAbstractClass_CannotBeInstantiated_" data-uid="AshesOfVelsingrad.IntegrationTests.Managers.BaseManagerTest.BaseManager_IsAbstractClass_CannotBeInstantiated*"></a>
+
+  <h3 id="AshesOfVelsingrad_IntegrationTests_Managers_BaseManagerTest_BaseManager_IsAbstractClass_CannotBeInstantiated" data-uid="AshesOfVelsingrad.IntegrationTests.Managers.BaseManagerTest.BaseManager_IsAbstractClass_CannotBeInstantiated">
+  BaseManager_IsAbstractClass_CannotBeInstantiated()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/integration_tests/scripts_tests/managers/BaseManagerTest.cs/#L29"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[TestCase(new object?[] { })]
+public void BaseManager_IsAbstractClass_CannotBeInstantiated()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AshesOfVelsingrad_IntegrationTests_Managers_BaseManagerTest_BaseManager_PublicInterface_IsCorrect_" data-uid="AshesOfVelsingrad.IntegrationTests.Managers.BaseManagerTest.BaseManager_PublicInterface_IsCorrect*"></a>
+
+  <h3 id="AshesOfVelsingrad_IntegrationTests_Managers_BaseManagerTest_BaseManager_PublicInterface_IsCorrect" data-uid="AshesOfVelsingrad.IntegrationTests.Managers.BaseManagerTest.BaseManager_PublicInterface_IsCorrect">
+  BaseManager_PublicInterface_IsCorrect()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/integration_tests/scripts_tests/managers/BaseManagerTest.cs/#L245"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[TestCase(new object?[] { })]
+public void BaseManager_PublicInterface_IsCorrect()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AshesOfVelsingrad_IntegrationTests_Managers_BaseManagerTest_BaseManager_ReadyMethod_CallsInitialize_" data-uid="AshesOfVelsingrad.IntegrationTests.Managers.BaseManagerTest.BaseManager_ReadyMethod_CallsInitialize*"></a>
+
+  <h3 id="AshesOfVelsingrad_IntegrationTests_Managers_BaseManagerTest_BaseManager_ReadyMethod_CallsInitialize" data-uid="AshesOfVelsingrad.IntegrationTests.Managers.BaseManagerTest.BaseManager_ReadyMethod_CallsInitialize">
+  BaseManager_ReadyMethod_CallsInitialize()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/integration_tests/scripts_tests/managers/BaseManagerTest.cs/#L183"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[TestCase(new object?[] { })]
+public void BaseManager_ReadyMethod_CallsInitialize()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AshesOfVelsingrad_IntegrationTests_Managers_BaseManagerTest_ConcreteManager_CleanupImplementation_CanBeOverridden_" data-uid="AshesOfVelsingrad.IntegrationTests.Managers.BaseManagerTest.ConcreteManager_CleanupImplementation_CanBeOverridden*"></a>
+
+  <h3 id="AshesOfVelsingrad_IntegrationTests_Managers_BaseManagerTest_ConcreteManager_CleanupImplementation_CanBeOverridden" data-uid="AshesOfVelsingrad.IntegrationTests.Managers.BaseManagerTest.ConcreteManager_CleanupImplementation_CanBeOverridden">
+  ConcreteManager_CleanupImplementation_CanBeOverridden()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/integration_tests/scripts_tests/managers/BaseManagerTest.cs/#L87"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[TestCase(new object?[] { })]
+public void ConcreteManager_CleanupImplementation_CanBeOverridden()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AshesOfVelsingrad_IntegrationTests_Managers_BaseManagerTest_ConcreteManager_InitializeImplementation_SetsInstance_" data-uid="AshesOfVelsingrad.IntegrationTests.Managers.BaseManagerTest.ConcreteManager_InitializeImplementation_SetsInstance*"></a>
+
+  <h3 id="AshesOfVelsingrad_IntegrationTests_Managers_BaseManagerTest_ConcreteManager_InitializeImplementation_SetsInstance" data-uid="AshesOfVelsingrad.IntegrationTests.Managers.BaseManagerTest.ConcreteManager_InitializeImplementation_SetsInstance">
+  ConcreteManager_InitializeImplementation_SetsInstance()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/integration_tests/scripts_tests/managers/BaseManagerTest.cs/#L76"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[TestCase(new object?[] { })]
+public void ConcreteManager_InitializeImplementation_SetsInstance()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AshesOfVelsingrad_IntegrationTests_Managers_BaseManagerTest_DifferentManagerTypes_CanHaveIndependentInstances_" data-uid="AshesOfVelsingrad.IntegrationTests.Managers.BaseManagerTest.DifferentManagerTypes_CanHaveIndependentInstances*"></a>
+
+  <h3 id="AshesOfVelsingrad_IntegrationTests_Managers_BaseManagerTest_DifferentManagerTypes_CanHaveIndependentInstances" data-uid="AshesOfVelsingrad.IntegrationTests.Managers.BaseManagerTest.DifferentManagerTypes_CanHaveIndependentInstances">
+  DifferentManagerTypes_CanHaveIndependentInstances()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/integration_tests/scripts_tests/managers/BaseManagerTest.cs/#L141"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[TestCase(new object?[] { })]
+public void DifferentManagerTypes_CanHaveIndependentInstances()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AshesOfVelsingrad_IntegrationTests_Managers_BaseManagerTest_MenuManager_InheritsFromBaseManager_" data-uid="AshesOfVelsingrad.IntegrationTests.Managers.BaseManagerTest.MenuManager_InheritsFromBaseManager*"></a>
+
+  <h3 id="AshesOfVelsingrad_IntegrationTests_Managers_BaseManagerTest_MenuManager_InheritsFromBaseManager" data-uid="AshesOfVelsingrad.IntegrationTests.Managers.BaseManagerTest.MenuManager_InheritsFromBaseManager">
+  MenuManager_InheritsFromBaseManager()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/integration_tests/scripts_tests/managers/BaseManagerTest.cs/#L170"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[TestCase(new object?[] { })]
+public void MenuManager_InheritsFromBaseManager()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AshesOfVelsingrad_IntegrationTests_Managers_BaseManagerTest_SetUp_" data-uid="AshesOfVelsingrad.IntegrationTests.Managers.BaseManagerTest.SetUp*"></a>
+
+  <h3 id="AshesOfVelsingrad_IntegrationTests_Managers_BaseManagerTest_SetUp" data-uid="AshesOfVelsingrad.IntegrationTests.Managers.BaseManagerTest.SetUp">
+  SetUp()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/integration_tests/scripts_tests/managers/BaseManagerTest.cs/#L18"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[BeforeTest(18, &quot;SetUp&quot;)]
+public void SetUp()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AshesOfVelsingrad_IntegrationTests_Managers_BaseManagerTest_SettingsManager_InheritsFromBaseManager_" data-uid="AshesOfVelsingrad.IntegrationTests.Managers.BaseManagerTest.SettingsManager_InheritsFromBaseManager*"></a>
+
+  <h3 id="AshesOfVelsingrad_IntegrationTests_Managers_BaseManagerTest_SettingsManager_InheritsFromBaseManager" data-uid="AshesOfVelsingrad.IntegrationTests.Managers.BaseManagerTest.SettingsManager_InheritsFromBaseManager">
+  SettingsManager_InheritsFromBaseManager()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/integration_tests/scripts_tests/managers/BaseManagerTest.cs/#L156"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[TestCase(new object?[] { })]
+public void SettingsManager_InheritsFromBaseManager()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AshesOfVelsingrad_IntegrationTests_Managers_BaseManagerTest_SingletonPattern_OnlyOneInstanceAllowed_" data-uid="AshesOfVelsingrad.IntegrationTests.Managers.BaseManagerTest.SingletonPattern_OnlyOneInstanceAllowed*"></a>
+
+  <h3 id="AshesOfVelsingrad_IntegrationTests_Managers_BaseManagerTest_SingletonPattern_OnlyOneInstanceAllowed" data-uid="AshesOfVelsingrad.IntegrationTests.Managers.BaseManagerTest.SingletonPattern_OnlyOneInstanceAllowed">
+  SingletonPattern_OnlyOneInstanceAllowed()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/integration_tests/scripts_tests/managers/BaseManagerTest.cs/#L110"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[TestCase(new object?[] { })]
+public void SingletonPattern_OnlyOneInstanceAllowed()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AshesOfVelsingrad_IntegrationTests_Managers_BaseManagerTest_TearDown_" data-uid="AshesOfVelsingrad.IntegrationTests.Managers.BaseManagerTest.TearDown*"></a>
+
+  <h3 id="AshesOfVelsingrad_IntegrationTests_Managers_BaseManagerTest_TearDown" data-uid="AshesOfVelsingrad.IntegrationTests.Managers.BaseManagerTest.TearDown">
+  TearDown()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/integration_tests/scripts_tests/managers/BaseManagerTest.cs/#L317"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[AfterTest(317, &quot;TearDown&quot;)]
+public void TearDown()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/integration_tests/scripts_tests/managers/BaseManagerTest.cs/#L11" class="edit-link">Edit this page</a>
+        </div>
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          © 2025 Gammabra Studios. All Rights Reserved.
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

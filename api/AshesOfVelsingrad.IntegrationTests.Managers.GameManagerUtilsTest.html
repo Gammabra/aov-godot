@@ -1,0 +1,857 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Class GameManagerUtilsTest | Ashes of Velsingrad Documentation </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Class GameManagerUtilsTest | Ashes of Velsingrad Documentation ">
+      
+      
+      <link rel="icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/Gammabra/aov-godot/new/develop/apiSpec/new?filename=AshesOfVelsingrad_IntegrationTests_Managers_GameManagerUtilsTest.md&amp;value=---%0Auid%3A%20AshesOfVelsingrad.IntegrationTests.Managers.GameManagerUtilsTest%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../images/logo-doc.png" alt="Ashes of Velsingrad" style="height: 40px; width: auto;">
+            Ashes of Velsingrad
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="AshesOfVelsingrad.IntegrationTests.Managers.GameManagerUtilsTest">
+
+
+
+  <h1 id="AshesOfVelsingrad_IntegrationTests_Managers_GameManagerUtilsTest" data-uid="AshesOfVelsingrad.IntegrationTests.Managers.GameManagerUtilsTest" class="text-break">
+Class GameManagerUtilsTest  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/integration_tests/scripts_tests/managers/game_manager/GameManagerUtilsTest.cs/#L15"><i class="bi bi-code-slash"></i></a>
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="AshesOfVelsingrad.html">AshesOfVelsingrad</a>.<a class="xref" href="AshesOfVelsingrad.IntegrationTests.html">IntegrationTests</a>.<a class="xref" href="AshesOfVelsingrad.IntegrationTests.Managers.html">Managers</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>AshesofVelsingrad.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"></div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[TestSuite(15, &quot;&quot;)]
+[RequireGodotRuntime]
+public class GameManagerUtilsTest</code></pre>
+  </div>
+
+
+
+
+  <dl class="typelist inheritance">
+    <dt>Inheritance</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+      <div><span class="xref">GameManagerUtilsTest</span></div>
+    </dd>
+  </dl>
+
+
+
+  <dl class="typelist inheritedMembers">
+    <dt>Inherited Members</dt>
+    <dd>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode">object.GetHashCode()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone">object.MemberwiseClone()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring">object.ToString()</a>
+    </div>
+  </dd></dl>
+
+
+
+
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
+  <a id="AshesOfVelsingrad_IntegrationTests_Managers_GameManagerUtilsTest_CheckUnitTurnEnd_ChecksWinLoseCondition_" data-uid="AshesOfVelsingrad.IntegrationTests.Managers.GameManagerUtilsTest.CheckUnitTurnEnd_ChecksWinLoseCondition*"></a>
+
+  <h3 id="AshesOfVelsingrad_IntegrationTests_Managers_GameManagerUtilsTest_CheckUnitTurnEnd_ChecksWinLoseCondition" data-uid="AshesOfVelsingrad.IntegrationTests.Managers.GameManagerUtilsTest.CheckUnitTurnEnd_ChecksWinLoseCondition">
+  CheckUnitTurnEnd_ChecksWinLoseCondition()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/integration_tests/scripts_tests/managers/game_manager/GameManagerUtilsTest.cs/#L657"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[TestCase(new object?[] { })]
+public void CheckUnitTurnEnd_ChecksWinLoseCondition()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AshesOfVelsingrad_IntegrationTests_Managers_GameManagerUtilsTest_CheckUnitTurnEnd_UpdatesAllUnitsLife_" data-uid="AshesOfVelsingrad.IntegrationTests.Managers.GameManagerUtilsTest.CheckUnitTurnEnd_UpdatesAllUnitsLife*"></a>
+
+  <h3 id="AshesOfVelsingrad_IntegrationTests_Managers_GameManagerUtilsTest_CheckUnitTurnEnd_UpdatesAllUnitsLife" data-uid="AshesOfVelsingrad.IntegrationTests.Managers.GameManagerUtilsTest.CheckUnitTurnEnd_UpdatesAllUnitsLife">
+  CheckUnitTurnEnd_UpdatesAllUnitsLife()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/integration_tests/scripts_tests/managers/game_manager/GameManagerUtilsTest.cs/#L637"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[TestCase(new object?[] { })]
+public void CheckUnitTurnEnd_UpdatesAllUnitsLife()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AshesOfVelsingrad_IntegrationTests_Managers_GameManagerUtilsTest_CheckUnitsLife_KeepsAliveUnitsAlive_" data-uid="AshesOfVelsingrad.IntegrationTests.Managers.GameManagerUtilsTest.CheckUnitsLife_KeepsAliveUnitsAlive*"></a>
+
+  <h3 id="AshesOfVelsingrad_IntegrationTests_Managers_GameManagerUtilsTest_CheckUnitsLife_KeepsAliveUnitsAlive" data-uid="AshesOfVelsingrad.IntegrationTests.Managers.GameManagerUtilsTest.CheckUnitsLife_KeepsAliveUnitsAlive">
+  CheckUnitsLife_KeepsAliveUnitsAlive()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/integration_tests/scripts_tests/managers/game_manager/GameManagerUtilsTest.cs/#L532"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[TestCase(new object?[] { })]
+public void CheckUnitsLife_KeepsAliveUnitsAlive()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AshesOfVelsingrad_IntegrationTests_Managers_GameManagerUtilsTest_CheckWinLoseCondition_DetectsDefeat_WhenAllPlayersDead_" data-uid="AshesOfVelsingrad.IntegrationTests.Managers.GameManagerUtilsTest.CheckWinLoseCondition_DetectsDefeat_WhenAllPlayersDead*"></a>
+
+  <h3 id="AshesOfVelsingrad_IntegrationTests_Managers_GameManagerUtilsTest_CheckWinLoseCondition_DetectsDefeat_WhenAllPlayersDead" data-uid="AshesOfVelsingrad.IntegrationTests.Managers.GameManagerUtilsTest.CheckWinLoseCondition_DetectsDefeat_WhenAllPlayersDead">
+  CheckWinLoseCondition_DetectsDefeat_WhenAllPlayersDead()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/integration_tests/scripts_tests/managers/game_manager/GameManagerUtilsTest.cs/#L550"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[TestCase(new object?[] { })]
+public void CheckWinLoseCondition_DetectsDefeat_WhenAllPlayersDead()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AshesOfVelsingrad_IntegrationTests_Managers_GameManagerUtilsTest_CheckWinLoseCondition_DetectsVictory_WhenAllEnemiesDead_" data-uid="AshesOfVelsingrad.IntegrationTests.Managers.GameManagerUtilsTest.CheckWinLoseCondition_DetectsVictory_WhenAllEnemiesDead*"></a>
+
+  <h3 id="AshesOfVelsingrad_IntegrationTests_Managers_GameManagerUtilsTest_CheckWinLoseCondition_DetectsVictory_WhenAllEnemiesDead" data-uid="AshesOfVelsingrad.IntegrationTests.Managers.GameManagerUtilsTest.CheckWinLoseCondition_DetectsVictory_WhenAllEnemiesDead">
+  CheckWinLoseCondition_DetectsVictory_WhenAllEnemiesDead()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/integration_tests/scripts_tests/managers/game_manager/GameManagerUtilsTest.cs/#L573"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[TestCase(new object?[] { })]
+public void CheckWinLoseCondition_DetectsVictory_WhenAllEnemiesDead()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AshesOfVelsingrad_IntegrationTests_Managers_GameManagerUtilsTest_CheckWinLoseCondition_Ongoing_WhenBothSidesAlive_" data-uid="AshesOfVelsingrad.IntegrationTests.Managers.GameManagerUtilsTest.CheckWinLoseCondition_Ongoing_WhenBothSidesAlive*"></a>
+
+  <h3 id="AshesOfVelsingrad_IntegrationTests_Managers_GameManagerUtilsTest_CheckWinLoseCondition_Ongoing_WhenBothSidesAlive" data-uid="AshesOfVelsingrad.IntegrationTests.Managers.GameManagerUtilsTest.CheckWinLoseCondition_Ongoing_WhenBothSidesAlive">
+  CheckWinLoseCondition_Ongoing_WhenBothSidesAlive()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/integration_tests/scripts_tests/managers/game_manager/GameManagerUtilsTest.cs/#L596"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[TestCase(new object?[] { })]
+public void CheckWinLoseCondition_Ongoing_WhenBothSidesAlive()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AshesOfVelsingrad_IntegrationTests_Managers_GameManagerUtilsTest_CheckWinLoseCondition_Ongoing_WhenSomeUnitsDead_" data-uid="AshesOfVelsingrad.IntegrationTests.Managers.GameManagerUtilsTest.CheckWinLoseCondition_Ongoing_WhenSomeUnitsDead*"></a>
+
+  <h3 id="AshesOfVelsingrad_IntegrationTests_Managers_GameManagerUtilsTest_CheckWinLoseCondition_Ongoing_WhenSomeUnitsDead" data-uid="AshesOfVelsingrad.IntegrationTests.Managers.GameManagerUtilsTest.CheckWinLoseCondition_Ongoing_WhenSomeUnitsDead">
+  CheckWinLoseCondition_Ongoing_WhenSomeUnitsDead()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/integration_tests/scripts_tests/managers/game_manager/GameManagerUtilsTest.cs/#L613"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[TestCase(new object?[] { })]
+public void CheckWinLoseCondition_Ongoing_WhenSomeUnitsDead()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AshesOfVelsingrad_IntegrationTests_Managers_GameManagerUtilsTest_HandlePlayerSelectTarget_HandlesYAxisAdjustment_" data-uid="AshesOfVelsingrad.IntegrationTests.Managers.GameManagerUtilsTest.HandlePlayerSelectTarget_HandlesYAxisAdjustment*"></a>
+
+  <h3 id="AshesOfVelsingrad_IntegrationTests_Managers_GameManagerUtilsTest_HandlePlayerSelectTarget_HandlesYAxisAdjustment" data-uid="AshesOfVelsingrad.IntegrationTests.Managers.GameManagerUtilsTest.HandlePlayerSelectTarget_HandlesYAxisAdjustment">
+  HandlePlayerSelectTarget_HandlesYAxisAdjustment()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/integration_tests/scripts_tests/managers/game_manager/GameManagerUtilsTest.cs/#L500"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[TestCase(new object?[] { })]
+public void HandlePlayerSelectTarget_HandlesYAxisAdjustment()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AshesOfVelsingrad_IntegrationTests_Managers_GameManagerUtilsTest_HandlePlayerSelectTarget_RejectsEmptyCell_" data-uid="AshesOfVelsingrad.IntegrationTests.Managers.GameManagerUtilsTest.HandlePlayerSelectTarget_RejectsEmptyCell*"></a>
+
+  <h3 id="AshesOfVelsingrad_IntegrationTests_Managers_GameManagerUtilsTest_HandlePlayerSelectTarget_RejectsEmptyCell" data-uid="AshesOfVelsingrad.IntegrationTests.Managers.GameManagerUtilsTest.HandlePlayerSelectTarget_RejectsEmptyCell">
+  HandlePlayerSelectTarget_RejectsEmptyCell()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/integration_tests/scripts_tests/managers/game_manager/GameManagerUtilsTest.cs/#L411"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[TestCase(new object?[] { })]
+public void HandlePlayerSelectTarget_RejectsEmptyCell()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AshesOfVelsingrad_IntegrationTests_Managers_GameManagerUtilsTest_HandlePlayerSelectTarget_RejectsNonReachableCell_" data-uid="AshesOfVelsingrad.IntegrationTests.Managers.GameManagerUtilsTest.HandlePlayerSelectTarget_RejectsNonReachableCell*"></a>
+
+  <h3 id="AshesOfVelsingrad_IntegrationTests_Managers_GameManagerUtilsTest_HandlePlayerSelectTarget_RejectsNonReachableCell" data-uid="AshesOfVelsingrad.IntegrationTests.Managers.GameManagerUtilsTest.HandlePlayerSelectTarget_RejectsNonReachableCell">
+  HandlePlayerSelectTarget_RejectsNonReachableCell()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/integration_tests/scripts_tests/managers/game_manager/GameManagerUtilsTest.cs/#L389"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[TestCase(new object?[] { })]
+public void HandlePlayerSelectTarget_RejectsNonReachableCell()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AshesOfVelsingrad_IntegrationTests_Managers_GameManagerUtilsTest_HandlePlayerSelectTarget_RejectsNonReviveOnDeadUnit_" data-uid="AshesOfVelsingrad.IntegrationTests.Managers.GameManagerUtilsTest.HandlePlayerSelectTarget_RejectsNonReviveOnDeadUnit*"></a>
+
+  <h3 id="AshesOfVelsingrad_IntegrationTests_Managers_GameManagerUtilsTest_HandlePlayerSelectTarget_RejectsNonReviveOnDeadUnit" data-uid="AshesOfVelsingrad.IntegrationTests.Managers.GameManagerUtilsTest.HandlePlayerSelectTarget_RejectsNonReviveOnDeadUnit">
+  HandlePlayerSelectTarget_RejectsNonReviveOnDeadUnit()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/integration_tests/scripts_tests/managers/game_manager/GameManagerUtilsTest.cs/#L467"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[TestCase(new object?[] { })]
+public void HandlePlayerSelectTarget_RejectsNonReviveOnDeadUnit()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AshesOfVelsingrad_IntegrationTests_Managers_GameManagerUtilsTest_HandlePlayerSelectTarget_RejectsReviveOnAliveUnit_" data-uid="AshesOfVelsingrad.IntegrationTests.Managers.GameManagerUtilsTest.HandlePlayerSelectTarget_RejectsReviveOnAliveUnit*"></a>
+
+  <h3 id="AshesOfVelsingrad_IntegrationTests_Managers_GameManagerUtilsTest_HandlePlayerSelectTarget_RejectsReviveOnAliveUnit" data-uid="AshesOfVelsingrad.IntegrationTests.Managers.GameManagerUtilsTest.HandlePlayerSelectTarget_RejectsReviveOnAliveUnit">
+  HandlePlayerSelectTarget_RejectsReviveOnAliveUnit()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/integration_tests/scripts_tests/managers/game_manager/GameManagerUtilsTest.cs/#L436"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[TestCase(new object?[] { })]
+public void HandlePlayerSelectTarget_RejectsReviveOnAliveUnit()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AshesOfVelsingrad_IntegrationTests_Managers_GameManagerUtilsTest_HandlePlayerSelectTarget_UsesSkillOnValidTarget_" data-uid="AshesOfVelsingrad.IntegrationTests.Managers.GameManagerUtilsTest.HandlePlayerSelectTarget_UsesSkillOnValidTarget*"></a>
+
+  <h3 id="AshesOfVelsingrad_IntegrationTests_Managers_GameManagerUtilsTest_HandlePlayerSelectTarget_UsesSkillOnValidTarget" data-uid="AshesOfVelsingrad.IntegrationTests.Managers.GameManagerUtilsTest.HandlePlayerSelectTarget_UsesSkillOnValidTarget">
+  HandlePlayerSelectTarget_UsesSkillOnValidTarget()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/integration_tests/scripts_tests/managers/game_manager/GameManagerUtilsTest.cs/#L367"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[TestCase(new object?[] { })]
+public void HandlePlayerSelectTarget_UsesSkillOnValidTarget()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AshesOfVelsingrad_IntegrationTests_Managers_GameManagerUtilsTest_HandlePlayerUnitMove_ClearsPossibleMovesAfterMove_" data-uid="AshesOfVelsingrad.IntegrationTests.Managers.GameManagerUtilsTest.HandlePlayerUnitMove_ClearsPossibleMovesAfterMove*"></a>
+
+  <h3 id="AshesOfVelsingrad_IntegrationTests_Managers_GameManagerUtilsTest_HandlePlayerUnitMove_ClearsPossibleMovesAfterMove" data-uid="AshesOfVelsingrad.IntegrationTests.Managers.GameManagerUtilsTest.HandlePlayerUnitMove_ClearsPossibleMovesAfterMove">
+  HandlePlayerUnitMove_ClearsPossibleMovesAfterMove()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/integration_tests/scripts_tests/managers/game_manager/GameManagerUtilsTest.cs/#L328"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[TestCase(new object?[] { })]
+public void HandlePlayerUnitMove_ClearsPossibleMovesAfterMove()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AshesOfVelsingrad_IntegrationTests_Managers_GameManagerUtilsTest_HandlePlayerUnitMove_HandlesOutOfRangeException_" data-uid="AshesOfVelsingrad.IntegrationTests.Managers.GameManagerUtilsTest.HandlePlayerUnitMove_HandlesOutOfRangeException*"></a>
+
+  <h3 id="AshesOfVelsingrad_IntegrationTests_Managers_GameManagerUtilsTest_HandlePlayerUnitMove_HandlesOutOfRangeException" data-uid="AshesOfVelsingrad.IntegrationTests.Managers.GameManagerUtilsTest.HandlePlayerUnitMove_HandlesOutOfRangeException">
+  HandlePlayerUnitMove_HandlesOutOfRangeException()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/integration_tests/scripts_tests/managers/game_manager/GameManagerUtilsTest.cs/#L345"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[TestCase(new object?[] { })]
+public void HandlePlayerUnitMove_HandlesOutOfRangeException()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AshesOfVelsingrad_IntegrationTests_Managers_GameManagerUtilsTest_HandlePlayerUnitMove_MovesUnitToValidCell_" data-uid="AshesOfVelsingrad.IntegrationTests.Managers.GameManagerUtilsTest.HandlePlayerUnitMove_MovesUnitToValidCell*"></a>
+
+  <h3 id="AshesOfVelsingrad_IntegrationTests_Managers_GameManagerUtilsTest_HandlePlayerUnitMove_MovesUnitToValidCell" data-uid="AshesOfVelsingrad.IntegrationTests.Managers.GameManagerUtilsTest.HandlePlayerUnitMove_MovesUnitToValidCell">
+  HandlePlayerUnitMove_MovesUnitToValidCell()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/integration_tests/scripts_tests/managers/game_manager/GameManagerUtilsTest.cs/#L290"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[TestCase(new object?[] { })]
+public void HandlePlayerUnitMove_MovesUnitToValidCell()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AshesOfVelsingrad_IntegrationTests_Managers_GameManagerUtilsTest_HandlePlayerUnitMove_RejectsInvalidCell_" data-uid="AshesOfVelsingrad.IntegrationTests.Managers.GameManagerUtilsTest.HandlePlayerUnitMove_RejectsInvalidCell*"></a>
+
+  <h3 id="AshesOfVelsingrad_IntegrationTests_Managers_GameManagerUtilsTest_HandlePlayerUnitMove_RejectsInvalidCell" data-uid="AshesOfVelsingrad.IntegrationTests.Managers.GameManagerUtilsTest.HandlePlayerUnitMove_RejectsInvalidCell">
+  HandlePlayerUnitMove_RejectsInvalidCell()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/integration_tests/scripts_tests/managers/game_manager/GameManagerUtilsTest.cs/#L308"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[TestCase(new object?[] { })]
+public void HandlePlayerUnitMove_RejectsInvalidCell()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AshesOfVelsingrad_IntegrationTests_Managers_GameManagerUtilsTest_LoadUnits_HandlesEmptyEnemyContainer_" data-uid="AshesOfVelsingrad.IntegrationTests.Managers.GameManagerUtilsTest.LoadUnits_HandlesEmptyEnemyContainer*"></a>
+
+  <h3 id="AshesOfVelsingrad_IntegrationTests_Managers_GameManagerUtilsTest_LoadUnits_HandlesEmptyEnemyContainer" data-uid="AshesOfVelsingrad.IntegrationTests.Managers.GameManagerUtilsTest.LoadUnits_HandlesEmptyEnemyContainer">
+  LoadUnits_HandlesEmptyEnemyContainer()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/integration_tests/scripts_tests/managers/game_manager/GameManagerUtilsTest.cs/#L212"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[TestCase(new object?[] { })]
+public void LoadUnits_HandlesEmptyEnemyContainer()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AshesOfVelsingrad_IntegrationTests_Managers_GameManagerUtilsTest_LoadUnits_HandlesEmptyPlayerContainer_" data-uid="AshesOfVelsingrad.IntegrationTests.Managers.GameManagerUtilsTest.LoadUnits_HandlesEmptyPlayerContainer*"></a>
+
+  <h3 id="AshesOfVelsingrad_IntegrationTests_Managers_GameManagerUtilsTest_LoadUnits_HandlesEmptyPlayerContainer" data-uid="AshesOfVelsingrad.IntegrationTests.Managers.GameManagerUtilsTest.LoadUnits_HandlesEmptyPlayerContainer">
+  LoadUnits_HandlesEmptyPlayerContainer()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/integration_tests/scripts_tests/managers/game_manager/GameManagerUtilsTest.cs/#L177"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[TestCase(new object?[] { })]
+public void LoadUnits_HandlesEmptyPlayerContainer()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AshesOfVelsingrad_IntegrationTests_Managers_GameManagerUtilsTest_LoadUnits_IgnoresNonUnitSystemChildren_" data-uid="AshesOfVelsingrad.IntegrationTests.Managers.GameManagerUtilsTest.LoadUnits_IgnoresNonUnitSystemChildren*"></a>
+
+  <h3 id="AshesOfVelsingrad_IntegrationTests_Managers_GameManagerUtilsTest_LoadUnits_IgnoresNonUnitSystemChildren" data-uid="AshesOfVelsingrad.IntegrationTests.Managers.GameManagerUtilsTest.LoadUnits_IgnoresNonUnitSystemChildren">
+  LoadUnits_IgnoresNonUnitSystemChildren()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/integration_tests/scripts_tests/managers/game_manager/GameManagerUtilsTest.cs/#L247"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[TestCase(new object?[] { })]
+public void LoadUnits_IgnoresNonUnitSystemChildren()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AshesOfVelsingrad_IntegrationTests_Managers_GameManagerUtilsTest_LoadUnits_InjectsDependenciesToUnits_" data-uid="AshesOfVelsingrad.IntegrationTests.Managers.GameManagerUtilsTest.LoadUnits_InjectsDependenciesToUnits*"></a>
+
+  <h3 id="AshesOfVelsingrad_IntegrationTests_Managers_GameManagerUtilsTest_LoadUnits_InjectsDependenciesToUnits" data-uid="AshesOfVelsingrad.IntegrationTests.Managers.GameManagerUtilsTest.LoadUnits_InjectsDependenciesToUnits">
+  LoadUnits_InjectsDependenciesToUnits()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/integration_tests/scripts_tests/managers/game_manager/GameManagerUtilsTest.cs/#L160"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[TestCase(new object?[] { })]
+public void LoadUnits_InjectsDependenciesToUnits()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AshesOfVelsingrad_IntegrationTests_Managers_GameManagerUtilsTest_LoadUnits_LoadsEnemyUnits_" data-uid="AshesOfVelsingrad.IntegrationTests.Managers.GameManagerUtilsTest.LoadUnits_LoadsEnemyUnits*"></a>
+
+  <h3 id="AshesOfVelsingrad_IntegrationTests_Managers_GameManagerUtilsTest_LoadUnits_LoadsEnemyUnits" data-uid="AshesOfVelsingrad.IntegrationTests.Managers.GameManagerUtilsTest.LoadUnits_LoadsEnemyUnits">
+  LoadUnits_LoadsEnemyUnits()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/integration_tests/scripts_tests/managers/game_manager/GameManagerUtilsTest.cs/#L151"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[TestCase(new object?[] { })]
+public void LoadUnits_LoadsEnemyUnits()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AshesOfVelsingrad_IntegrationTests_Managers_GameManagerUtilsTest_LoadUnits_LoadsPlayerUnits_" data-uid="AshesOfVelsingrad.IntegrationTests.Managers.GameManagerUtilsTest.LoadUnits_LoadsPlayerUnits*"></a>
+
+  <h3 id="AshesOfVelsingrad_IntegrationTests_Managers_GameManagerUtilsTest_LoadUnits_LoadsPlayerUnits" data-uid="AshesOfVelsingrad.IntegrationTests.Managers.GameManagerUtilsTest.LoadUnits_LoadsPlayerUnits">
+  LoadUnits_LoadsPlayerUnits()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/integration_tests/scripts_tests/managers/game_manager/GameManagerUtilsTest.cs/#L142"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[TestCase(new object?[] { })]
+public void LoadUnits_LoadsPlayerUnits()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AshesOfVelsingrad_IntegrationTests_Managers_GameManagerUtilsTest_Setup_" data-uid="AshesOfVelsingrad.IntegrationTests.Managers.GameManagerUtilsTest.Setup*"></a>
+
+  <h3 id="AshesOfVelsingrad_IntegrationTests_Managers_GameManagerUtilsTest_Setup" data-uid="AshesOfVelsingrad.IntegrationTests.Managers.GameManagerUtilsTest.Setup">
+  Setup()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/integration_tests/scripts_tests/managers/game_manager/GameManagerUtilsTest.cs/#L114"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[BeforeTest(114, &quot;Setup&quot;)]
+public void Setup()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AshesOfVelsingrad_IntegrationTests_Managers_GameManagerUtilsTest_TearDown_" data-uid="AshesOfVelsingrad.IntegrationTests.Managers.GameManagerUtilsTest.TearDown*"></a>
+
+  <h3 id="AshesOfVelsingrad_IntegrationTests_Managers_GameManagerUtilsTest_TearDown" data-uid="AshesOfVelsingrad.IntegrationTests.Managers.GameManagerUtilsTest.TearDown">
+  TearDown()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/integration_tests/scripts_tests/managers/game_manager/GameManagerUtilsTest.cs/#L125"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[AfterTest(125, &quot;TearDown&quot;)]
+public void TearDown()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/integration_tests/scripts_tests/managers/game_manager/GameManagerUtilsTest.cs/#L15" class="edit-link">Edit this page</a>
+        </div>
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          © 2025 Gammabra Studios. All Rights Reserved.
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

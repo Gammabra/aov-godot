@@ -1,0 +1,830 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Class AIEvaluatorTest | Ashes of Velsingrad Documentation </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Class AIEvaluatorTest | Ashes of Velsingrad Documentation ">
+      
+      
+      <link rel="icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/Gammabra/aov-godot/new/develop/apiSpec/new?filename=AshesOfVelsingrad_IntegrationTests_AI_AIEvaluatorTest.md&amp;value=---%0Auid%3A%20AshesOfVelsingrad.IntegrationTests.AI.AIEvaluatorTest%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../images/logo-doc.png" alt="Ashes of Velsingrad" style="height: 40px; width: auto;">
+            Ashes of Velsingrad
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="AshesOfVelsingrad.IntegrationTests.AI.AIEvaluatorTest">
+
+
+
+  <h1 id="AshesOfVelsingrad_IntegrationTests_AI_AIEvaluatorTest" data-uid="AshesOfVelsingrad.IntegrationTests.AI.AIEvaluatorTest" class="text-break">
+Class AIEvaluatorTest  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/integration_tests/scripts_tests/AI/AIEvaluatorTest.cs/#L15"><i class="bi bi-code-slash"></i></a>
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="AshesOfVelsingrad.html">AshesOfVelsingrad</a>.<a class="xref" href="AshesOfVelsingrad.IntegrationTests.html">IntegrationTests</a>.<a class="xref" href="AshesOfVelsingrad.IntegrationTests.AI.html">AI</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>AshesofVelsingrad.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"></div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[TestSuite(15, &quot;&quot;)]
+[RequireGodotRuntime]
+public class AIEvaluatorTest</code></pre>
+  </div>
+
+
+
+
+  <dl class="typelist inheritance">
+    <dt>Inheritance</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+      <div><span class="xref">AIEvaluatorTest</span></div>
+    </dd>
+  </dl>
+
+
+
+  <dl class="typelist inheritedMembers">
+    <dt>Inherited Members</dt>
+    <dd>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode">object.GetHashCode()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone">object.MemberwiseClone()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring">object.ToString()</a>
+    </div>
+  </dd></dl>
+
+
+
+
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
+  <a id="AshesOfVelsingrad_IntegrationTests_AI_AIEvaluatorTest_Constructor_CreatesInstance_" data-uid="AshesOfVelsingrad.IntegrationTests.AI.AIEvaluatorTest.Constructor_CreatesInstance*"></a>
+
+  <h3 id="AshesOfVelsingrad_IntegrationTests_AI_AIEvaluatorTest_Constructor_CreatesInstance" data-uid="AshesOfVelsingrad.IntegrationTests.AI.AIEvaluatorTest.Constructor_CreatesInstance">
+  Constructor_CreatesInstance()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/integration_tests/scripts_tests/AI/AIEvaluatorTest.cs/#L147"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[TestCase(new object?[] { })]
+public void Constructor_CreatesInstance()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AshesOfVelsingrad_IntegrationTests_AI_AIEvaluatorTest_Constructor_StoresUnitReference_" data-uid="AshesOfVelsingrad.IntegrationTests.AI.AIEvaluatorTest.Constructor_StoresUnitReference*"></a>
+
+  <h3 id="AshesOfVelsingrad_IntegrationTests_AI_AIEvaluatorTest_Constructor_StoresUnitReference" data-uid="AshesOfVelsingrad.IntegrationTests.AI.AIEvaluatorTest.Constructor_StoresUnitReference">
+  Constructor_StoresUnitReference()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/integration_tests/scripts_tests/AI/AIEvaluatorTest.cs/#L158"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[TestCase(new object?[] { })]
+public void Constructor_StoresUnitReference()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AshesOfVelsingrad_IntegrationTests_AI_AIEvaluatorTest_EvaluateDefensiveAction_AppliesPersonalityModifier_" data-uid="AshesOfVelsingrad.IntegrationTests.AI.AIEvaluatorTest.EvaluateDefensiveAction_AppliesPersonalityModifier*"></a>
+
+  <h3 id="AshesOfVelsingrad_IntegrationTests_AI_AIEvaluatorTest_EvaluateDefensiveAction_AppliesPersonalityModifier" data-uid="AshesOfVelsingrad.IntegrationTests.AI.AIEvaluatorTest.EvaluateDefensiveAction_AppliesPersonalityModifier">
+  EvaluateDefensiveAction_AppliesPersonalityModifier()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/integration_tests/scripts_tests/AI/AIEvaluatorTest.cs/#L419"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[TestCase(new object?[] { })]
+public void EvaluateDefensiveAction_AppliesPersonalityModifier()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AshesOfVelsingrad_IntegrationTests_AI_AIEvaluatorTest_EvaluateDefensiveAction_FavorsPositionsNearAllies_" data-uid="AshesOfVelsingrad.IntegrationTests.AI.AIEvaluatorTest.EvaluateDefensiveAction_FavorsPositionsNearAllies*"></a>
+
+  <h3 id="AshesOfVelsingrad_IntegrationTests_AI_AIEvaluatorTest_EvaluateDefensiveAction_FavorsPositionsNearAllies" data-uid="AshesOfVelsingrad.IntegrationTests.AI.AIEvaluatorTest.EvaluateDefensiveAction_FavorsPositionsNearAllies">
+  EvaluateDefensiveAction_FavorsPositionsNearAllies()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/integration_tests/scripts_tests/AI/AIEvaluatorTest.cs/#L405"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[TestCase(new object?[] { })]
+public void EvaluateDefensiveAction_FavorsPositionsNearAllies()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AshesOfVelsingrad_IntegrationTests_AI_AIEvaluatorTest_EvaluateDefensiveAction_FavorsPositionsWithFewerThreats_" data-uid="AshesOfVelsingrad.IntegrationTests.AI.AIEvaluatorTest.EvaluateDefensiveAction_FavorsPositionsWithFewerThreats*"></a>
+
+  <h3 id="AshesOfVelsingrad_IntegrationTests_AI_AIEvaluatorTest_EvaluateDefensiveAction_FavorsPositionsWithFewerThreats" data-uid="AshesOfVelsingrad.IntegrationTests.AI.AIEvaluatorTest.EvaluateDefensiveAction_FavorsPositionsWithFewerThreats">
+  EvaluateDefensiveAction_FavorsPositionsWithFewerThreats()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/integration_tests/scripts_tests/AI/AIEvaluatorTest.cs/#L386"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[TestCase(new object?[] { })]
+public void EvaluateDefensiveAction_FavorsPositionsWithFewerThreats()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AshesOfVelsingrad_IntegrationTests_AI_AIEvaluatorTest_EvaluateDefensiveAction_ReturnsHighScore_WhenLowHealth_" data-uid="AshesOfVelsingrad.IntegrationTests.AI.AIEvaluatorTest.EvaluateDefensiveAction_ReturnsHighScore_WhenLowHealth*"></a>
+
+  <h3 id="AshesOfVelsingrad_IntegrationTests_AI_AIEvaluatorTest_EvaluateDefensiveAction_ReturnsHighScore_WhenLowHealth" data-uid="AshesOfVelsingrad.IntegrationTests.AI.AIEvaluatorTest.EvaluateDefensiveAction_ReturnsHighScore_WhenLowHealth">
+  EvaluateDefensiveAction_ReturnsHighScore_WhenLowHealth()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/integration_tests/scripts_tests/AI/AIEvaluatorTest.cs/#L370"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[TestCase(new object?[] { })]
+public void EvaluateDefensiveAction_ReturnsHighScore_WhenLowHealth()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AshesOfVelsingrad_IntegrationTests_AI_AIEvaluatorTest_EvaluateOffensiveAction_AppliesMovementPenalty_" data-uid="AshesOfVelsingrad.IntegrationTests.AI.AIEvaluatorTest.EvaluateOffensiveAction_AppliesMovementPenalty*"></a>
+
+  <h3 id="AshesOfVelsingrad_IntegrationTests_AI_AIEvaluatorTest_EvaluateOffensiveAction_AppliesMovementPenalty" data-uid="AshesOfVelsingrad.IntegrationTests.AI.AIEvaluatorTest.EvaluateOffensiveAction_AppliesMovementPenalty">
+  EvaluateOffensiveAction_AppliesMovementPenalty()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/integration_tests/scripts_tests/AI/AIEvaluatorTest.cs/#L219"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[TestCase(new object?[] { })]
+public void EvaluateOffensiveAction_AppliesMovementPenalty()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AshesOfVelsingrad_IntegrationTests_AI_AIEvaluatorTest_EvaluateOffensiveAction_GivesBonusForKillPotential_" data-uid="AshesOfVelsingrad.IntegrationTests.AI.AIEvaluatorTest.EvaluateOffensiveAction_GivesBonusForKillPotential*"></a>
+
+  <h3 id="AshesOfVelsingrad_IntegrationTests_AI_AIEvaluatorTest_EvaluateOffensiveAction_GivesBonusForKillPotential" data-uid="AshesOfVelsingrad.IntegrationTests.AI.AIEvaluatorTest.EvaluateOffensiveAction_GivesBonusForKillPotential">
+  EvaluateOffensiveAction_GivesBonusForKillPotential()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/integration_tests/scripts_tests/AI/AIEvaluatorTest.cs/#L196"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[TestCase(new object?[] { })]
+public void EvaluateOffensiveAction_GivesBonusForKillPotential()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AshesOfVelsingrad_IntegrationTests_AI_AIEvaluatorTest_EvaluateOffensiveAction_PenalizesHighThreatPositions_" data-uid="AshesOfVelsingrad.IntegrationTests.AI.AIEvaluatorTest.EvaluateOffensiveAction_PenalizesHighThreatPositions*"></a>
+
+  <h3 id="AshesOfVelsingrad_IntegrationTests_AI_AIEvaluatorTest_EvaluateOffensiveAction_PenalizesHighThreatPositions" data-uid="AshesOfVelsingrad.IntegrationTests.AI.AIEvaluatorTest.EvaluateOffensiveAction_PenalizesHighThreatPositions">
+  EvaluateOffensiveAction_PenalizesHighThreatPositions()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/integration_tests/scripts_tests/AI/AIEvaluatorTest.cs/#L245"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[TestCase(new object?[] { })]
+public void EvaluateOffensiveAction_PenalizesHighThreatPositions()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AshesOfVelsingrad_IntegrationTests_AI_AIEvaluatorTest_EvaluateOffensiveAction_ReturnsPositiveScore_ForValidTarget_" data-uid="AshesOfVelsingrad.IntegrationTests.AI.AIEvaluatorTest.EvaluateOffensiveAction_ReturnsPositiveScore_ForValidTarget*"></a>
+
+  <h3 id="AshesOfVelsingrad_IntegrationTests_AI_AIEvaluatorTest_EvaluateOffensiveAction_ReturnsPositiveScore_ForValidTarget" data-uid="AshesOfVelsingrad.IntegrationTests.AI.AIEvaluatorTest.EvaluateOffensiveAction_ReturnsPositiveScore_ForValidTarget">
+  EvaluateOffensiveAction_ReturnsPositiveScore_ForValidTarget()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/integration_tests/scripts_tests/AI/AIEvaluatorTest.cs/#L178"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[TestCase(new object?[] { })]
+public void EvaluateOffensiveAction_ReturnsPositiveScore_ForValidTarget()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AshesOfVelsingrad_IntegrationTests_AI_AIEvaluatorTest_EvaluateSupportAction_AppliesPersonalityModifier_Aggressive_" data-uid="AshesOfVelsingrad.IntegrationTests.AI.AIEvaluatorTest.EvaluateSupportAction_AppliesPersonalityModifier_Aggressive*"></a>
+
+  <h3 id="AshesOfVelsingrad_IntegrationTests_AI_AIEvaluatorTest_EvaluateSupportAction_AppliesPersonalityModifier_Aggressive" data-uid="AshesOfVelsingrad.IntegrationTests.AI.AIEvaluatorTest.EvaluateSupportAction_AppliesPersonalityModifier_Aggressive">
+  EvaluateSupportAction_AppliesPersonalityModifier_Aggressive()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/integration_tests/scripts_tests/AI/AIEvaluatorTest.cs/#L341"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[TestCase(new object?[] { })]
+public void EvaluateSupportAction_AppliesPersonalityModifier_Aggressive()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AshesOfVelsingrad_IntegrationTests_AI_AIEvaluatorTest_EvaluateSupportAction_AppliesPersonalityModifier_Defensive_" data-uid="AshesOfVelsingrad.IntegrationTests.AI.AIEvaluatorTest.EvaluateSupportAction_AppliesPersonalityModifier_Defensive*"></a>
+
+  <h3 id="AshesOfVelsingrad_IntegrationTests_AI_AIEvaluatorTest_EvaluateSupportAction_AppliesPersonalityModifier_Defensive" data-uid="AshesOfVelsingrad.IntegrationTests.AI.AIEvaluatorTest.EvaluateSupportAction_AppliesPersonalityModifier_Defensive">
+  EvaluateSupportAction_AppliesPersonalityModifier_Defensive()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/integration_tests/scripts_tests/AI/AIEvaluatorTest.cs/#L318"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[TestCase(new object?[] { })]
+public void EvaluateSupportAction_AppliesPersonalityModifier_Defensive()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AshesOfVelsingrad_IntegrationTests_AI_AIEvaluatorTest_EvaluateSupportAction_ReturnsHighScore_ForCriticalAlly_" data-uid="AshesOfVelsingrad.IntegrationTests.AI.AIEvaluatorTest.EvaluateSupportAction_ReturnsHighScore_ForCriticalAlly*"></a>
+
+  <h3 id="AshesOfVelsingrad_IntegrationTests_AI_AIEvaluatorTest_EvaluateSupportAction_ReturnsHighScore_ForCriticalAlly" data-uid="AshesOfVelsingrad.IntegrationTests.AI.AIEvaluatorTest.EvaluateSupportAction_ReturnsHighScore_ForCriticalAlly">
+  EvaluateSupportAction_ReturnsHighScore_ForCriticalAlly()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/integration_tests/scripts_tests/AI/AIEvaluatorTest.cs/#L274"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[TestCase(new object?[] { })]
+public void EvaluateSupportAction_ReturnsHighScore_ForCriticalAlly()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AshesOfVelsingrad_IntegrationTests_AI_AIEvaluatorTest_EvaluateSupportAction_ReturnsLowScore_ForHealthyAlly_" data-uid="AshesOfVelsingrad.IntegrationTests.AI.AIEvaluatorTest.EvaluateSupportAction_ReturnsLowScore_ForHealthyAlly*"></a>
+
+  <h3 id="AshesOfVelsingrad_IntegrationTests_AI_AIEvaluatorTest_EvaluateSupportAction_ReturnsLowScore_ForHealthyAlly" data-uid="AshesOfVelsingrad.IntegrationTests.AI.AIEvaluatorTest.EvaluateSupportAction_ReturnsLowScore_ForHealthyAlly">
+  EvaluateSupportAction_ReturnsLowScore_ForHealthyAlly()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/integration_tests/scripts_tests/AI/AIEvaluatorTest.cs/#L297"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[TestCase(new object?[] { })]
+public void EvaluateSupportAction_ReturnsLowScore_ForHealthyAlly()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AshesOfVelsingrad_IntegrationTests_AI_AIEvaluatorTest_ScorePosition_PenalizesBeingSurrounded_" data-uid="AshesOfVelsingrad.IntegrationTests.AI.AIEvaluatorTest.ScorePosition_PenalizesBeingSurrounded*"></a>
+
+  <h3 id="AshesOfVelsingrad_IntegrationTests_AI_AIEvaluatorTest_ScorePosition_PenalizesBeingSurrounded" data-uid="AshesOfVelsingrad.IntegrationTests.AI.AIEvaluatorTest.ScorePosition_PenalizesBeingSurrounded">
+  ScorePosition_PenalizesBeingSurrounded()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/integration_tests/scripts_tests/AI/AIEvaluatorTest.cs/#L628"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[TestCase(new object?[] { })]
+public void ScorePosition_PenalizesBeingSurrounded()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AshesOfVelsingrad_IntegrationTests_AI_AIEvaluatorTest_ScorePosition_PrefersHigherGround_" data-uid="AshesOfVelsingrad.IntegrationTests.AI.AIEvaluatorTest.ScorePosition_PrefersHigherGround*"></a>
+
+  <h3 id="AshesOfVelsingrad_IntegrationTests_AI_AIEvaluatorTest_ScorePosition_PrefersHigherGround" data-uid="AshesOfVelsingrad.IntegrationTests.AI.AIEvaluatorTest.ScorePosition_PrefersHigherGround">
+  ScorePosition_PrefersHigherGround()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/integration_tests/scripts_tests/AI/AIEvaluatorTest.cs/#L605"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[TestCase(new object?[] { })]
+public void ScorePosition_PrefersHigherGround()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AshesOfVelsingrad_IntegrationTests_AI_AIEvaluatorTest_ScorePosition_PrefersOptimalRange_" data-uid="AshesOfVelsingrad.IntegrationTests.AI.AIEvaluatorTest.ScorePosition_PrefersOptimalRange*"></a>
+
+  <h3 id="AshesOfVelsingrad_IntegrationTests_AI_AIEvaluatorTest_ScorePosition_PrefersOptimalRange" data-uid="AshesOfVelsingrad.IntegrationTests.AI.AIEvaluatorTest.ScorePosition_PrefersOptimalRange">
+  ScorePosition_PrefersOptimalRange()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/integration_tests/scripts_tests/AI/AIEvaluatorTest.cs/#L579"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[TestCase(new object?[] { })]
+public void ScorePosition_PrefersOptimalRange()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AshesOfVelsingrad_IntegrationTests_AI_AIEvaluatorTest_ScoreSkill_AggressivePersonality_PrefersDamage_" data-uid="AshesOfVelsingrad.IntegrationTests.AI.AIEvaluatorTest.ScoreSkill_AggressivePersonality_PrefersDamage*"></a>
+
+  <h3 id="AshesOfVelsingrad_IntegrationTests_AI_AIEvaluatorTest_ScoreSkill_AggressivePersonality_PrefersDamage" data-uid="AshesOfVelsingrad.IntegrationTests.AI.AIEvaluatorTest.ScoreSkill_AggressivePersonality_PrefersDamage">
+  ScoreSkill_AggressivePersonality_PrefersDamage()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/integration_tests/scripts_tests/AI/AIEvaluatorTest.cs/#L530"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[TestCase(new object?[] { })]
+public void ScoreSkill_AggressivePersonality_PrefersDamage()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AshesOfVelsingrad_IntegrationTests_AI_AIEvaluatorTest_ScoreSkill_DefensivePersonality_PrefersHealing_" data-uid="AshesOfVelsingrad.IntegrationTests.AI.AIEvaluatorTest.ScoreSkill_DefensivePersonality_PrefersHealing*"></a>
+
+  <h3 id="AshesOfVelsingrad_IntegrationTests_AI_AIEvaluatorTest_ScoreSkill_DefensivePersonality_PrefersHealing" data-uid="AshesOfVelsingrad.IntegrationTests.AI.AIEvaluatorTest.ScoreSkill_DefensivePersonality_PrefersHealing">
+  ScoreSkill_DefensivePersonality_PrefersHealing()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/integration_tests/scripts_tests/AI/AIEvaluatorTest.cs/#L551"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[TestCase(new object?[] { })]
+public void ScoreSkill_DefensivePersonality_PrefersHealing()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AshesOfVelsingrad_IntegrationTests_AI_AIEvaluatorTest_ScoreSkill_LowerManaCost_HigherScore_" data-uid="AshesOfVelsingrad.IntegrationTests.AI.AIEvaluatorTest.ScoreSkill_LowerManaCost_HigherScore*"></a>
+
+  <h3 id="AshesOfVelsingrad_IntegrationTests_AI_AIEvaluatorTest_ScoreSkill_LowerManaCost_HigherScore" data-uid="AshesOfVelsingrad.IntegrationTests.AI.AIEvaluatorTest.ScoreSkill_LowerManaCost_HigherScore">
+  ScoreSkill_LowerManaCost_HigherScore()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/integration_tests/scripts_tests/AI/AIEvaluatorTest.cs/#L511"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[TestCase(new object?[] { })]
+public void ScoreSkill_LowerManaCost_HigherScore()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AshesOfVelsingrad_IntegrationTests_AI_AIEvaluatorTest_ScoreTarget_AggressivePersonality_PrefersCloseTargets_Debug_" data-uid="AshesOfVelsingrad.IntegrationTests.AI.AIEvaluatorTest.ScoreTarget_AggressivePersonality_PrefersCloseTargets_Debug*"></a>
+
+  <h3 id="AshesOfVelsingrad_IntegrationTests_AI_AIEvaluatorTest_ScoreTarget_AggressivePersonality_PrefersCloseTargets_Debug" data-uid="AshesOfVelsingrad.IntegrationTests.AI.AIEvaluatorTest.ScoreTarget_AggressivePersonality_PrefersCloseTargets_Debug">
+  ScoreTarget_AggressivePersonality_PrefersCloseTargets_Debug()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/integration_tests/scripts_tests/AI/AIEvaluatorTest.cs/#L438"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[TestCase(new object?[] { })]
+public void ScoreTarget_AggressivePersonality_PrefersCloseTargets_Debug()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AshesOfVelsingrad_IntegrationTests_AI_AIEvaluatorTest_ScoreTarget_OpportunisticPersonality_PrefersWeakTargets_Debug_" data-uid="AshesOfVelsingrad.IntegrationTests.AI.AIEvaluatorTest.ScoreTarget_OpportunisticPersonality_PrefersWeakTargets_Debug*"></a>
+
+  <h3 id="AshesOfVelsingrad_IntegrationTests_AI_AIEvaluatorTest_ScoreTarget_OpportunisticPersonality_PrefersWeakTargets_Debug" data-uid="AshesOfVelsingrad.IntegrationTests.AI.AIEvaluatorTest.ScoreTarget_OpportunisticPersonality_PrefersWeakTargets_Debug">
+  ScoreTarget_OpportunisticPersonality_PrefersWeakTargets_Debug()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/integration_tests/scripts_tests/AI/AIEvaluatorTest.cs/#L475"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[TestCase(new object?[] { })]
+public void ScoreTarget_OpportunisticPersonality_PrefersWeakTargets_Debug()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AshesOfVelsingrad_IntegrationTests_AI_AIEvaluatorTest_Setup_" data-uid="AshesOfVelsingrad.IntegrationTests.AI.AIEvaluatorTest.Setup*"></a>
+
+  <h3 id="AshesOfVelsingrad_IntegrationTests_AI_AIEvaluatorTest_Setup" data-uid="AshesOfVelsingrad.IntegrationTests.AI.AIEvaluatorTest.Setup">
+  Setup()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/integration_tests/scripts_tests/AI/AIEvaluatorTest.cs/#L31"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[BeforeTest(31, &quot;Setup&quot;)]
+public void Setup()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AshesOfVelsingrad_IntegrationTests_AI_AIEvaluatorTest_TearDown_" data-uid="AshesOfVelsingrad.IntegrationTests.AI.AIEvaluatorTest.TearDown*"></a>
+
+  <h3 id="AshesOfVelsingrad_IntegrationTests_AI_AIEvaluatorTest_TearDown" data-uid="AshesOfVelsingrad.IntegrationTests.AI.AIEvaluatorTest.TearDown">
+  TearDown()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/integration_tests/scripts_tests/AI/AIEvaluatorTest.cs/#L45"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[AfterTest(45, &quot;TearDown&quot;)]
+public void TearDown()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/integration_tests/scripts_tests/AI/AIEvaluatorTest.cs/#L15" class="edit-link">Edit this page</a>
+        </div>
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          © 2025 Gammabra Studios. All Rights Reserved.
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

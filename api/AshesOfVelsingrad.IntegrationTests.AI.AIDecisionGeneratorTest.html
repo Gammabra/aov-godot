@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Class AIDecisionGeneratorTest | Ashes of Velsingrad Documentation </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Class AIDecisionGeneratorTest | Ashes of Velsingrad Documentation ">
+      
+      
+      <link rel="icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/Gammabra/aov-godot/new/develop/apiSpec/new?filename=AshesOfVelsingrad_IntegrationTests_AI_AIDecisionGeneratorTest.md&amp;value=---%0Auid%3A%20AshesOfVelsingrad.IntegrationTests.AI.AIDecisionGeneratorTest%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../images/logo-doc.png" alt="Ashes of Velsingrad" style="height: 40px; width: auto;">
+            Ashes of Velsingrad
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="AshesOfVelsingrad.IntegrationTests.AI.AIDecisionGeneratorTest">
+
+
+
+  <h1 id="AshesOfVelsingrad_IntegrationTests_AI_AIDecisionGeneratorTest" data-uid="AshesOfVelsingrad.IntegrationTests.AI.AIDecisionGeneratorTest" class="text-break">
+Class AIDecisionGeneratorTest  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/integration_tests/scripts_tests/AI/AIDecisionGeneratorTest.cs/#L16"><i class="bi bi-code-slash"></i></a>
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="AshesOfVelsingrad.html">AshesOfVelsingrad</a>.<a class="xref" href="AshesOfVelsingrad.IntegrationTests.html">IntegrationTests</a>.<a class="xref" href="AshesOfVelsingrad.IntegrationTests.AI.html">AI</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>AshesofVelsingrad.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"></div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[TestSuite(16, &quot;&quot;)]
+[RequireGodotRuntime]
+public class AIDecisionGeneratorTest</code></pre>
+  </div>
+
+
+
+
+  <dl class="typelist inheritance">
+    <dt>Inheritance</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+      <div><span class="xref">AIDecisionGeneratorTest</span></div>
+    </dd>
+  </dl>
+
+
+
+  <dl class="typelist inheritedMembers">
+    <dt>Inherited Members</dt>
+    <dd>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode">object.GetHashCode()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone">object.MemberwiseClone()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring">object.ToString()</a>
+    </div>
+  </dd></dl>
+
+
+
+
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
+  <a id="AshesOfVelsingrad_IntegrationTests_AI_AIDecisionGeneratorTest_Constructor_CreatesInstance_" data-uid="AshesOfVelsingrad.IntegrationTests.AI.AIDecisionGeneratorTest.Constructor_CreatesInstance*"></a>
+
+  <h3 id="AshesOfVelsingrad_IntegrationTests_AI_AIDecisionGeneratorTest_Constructor_CreatesInstance" data-uid="AshesOfVelsingrad.IntegrationTests.AI.AIDecisionGeneratorTest.Constructor_CreatesInstance">
+  Constructor_CreatesInstance()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/integration_tests/scripts_tests/AI/AIDecisionGeneratorTest.cs/#L149"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[TestCase(new object?[] { })]
+public void Constructor_CreatesInstance()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AshesOfVelsingrad_IntegrationTests_AI_AIDecisionGeneratorTest_Constructor_StoresUnitReference_" data-uid="AshesOfVelsingrad.IntegrationTests.AI.AIDecisionGeneratorTest.Constructor_StoresUnitReference*"></a>
+
+  <h3 id="AshesOfVelsingrad_IntegrationTests_AI_AIDecisionGeneratorTest_Constructor_StoresUnitReference" data-uid="AshesOfVelsingrad.IntegrationTests.AI.AIDecisionGeneratorTest.Constructor_StoresUnitReference">
+  Constructor_StoresUnitReference()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/integration_tests/scripts_tests/AI/AIDecisionGeneratorTest.cs/#L160"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[TestCase(new object?[] { })]
+public void Constructor_StoresUnitReference()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AshesOfVelsingrad_IntegrationTests_AI_AIDecisionGeneratorTest_GenerateAllPossibleActions_AlwaysIncludesPassAction_" data-uid="AshesOfVelsingrad.IntegrationTests.AI.AIDecisionGeneratorTest.GenerateAllPossibleActions_AlwaysIncludesPassAction*"></a>
+
+  <h3 id="AshesOfVelsingrad_IntegrationTests_AI_AIDecisionGeneratorTest_GenerateAllPossibleActions_AlwaysIncludesPassAction" data-uid="AshesOfVelsingrad.IntegrationTests.AI.AIDecisionGeneratorTest.GenerateAllPossibleActions_AlwaysIncludesPassAction">
+  GenerateAllPossibleActions_AlwaysIncludesPassAction()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/integration_tests/scripts_tests/AI/AIDecisionGeneratorTest.cs/#L180"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[TestCase(new object?[] { })]
+public void GenerateAllPossibleActions_AlwaysIncludesPassAction()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AshesOfVelsingrad_IntegrationTests_AI_AIDecisionGeneratorTest_GenerateAllPossibleActions_IncludesDefensiveActions_WhenInDanger_" data-uid="AshesOfVelsingrad.IntegrationTests.AI.AIDecisionGeneratorTest.GenerateAllPossibleActions_IncludesDefensiveActions_WhenInDanger*"></a>
+
+  <h3 id="AshesOfVelsingrad_IntegrationTests_AI_AIDecisionGeneratorTest_GenerateAllPossibleActions_IncludesDefensiveActions_WhenInDanger" data-uid="AshesOfVelsingrad.IntegrationTests.AI.AIDecisionGeneratorTest.GenerateAllPossibleActions_IncludesDefensiveActions_WhenInDanger">
+  GenerateAllPossibleActions_IncludesDefensiveActions_WhenInDanger()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/integration_tests/scripts_tests/AI/AIDecisionGeneratorTest.cs/#L238"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[TestCase(new object?[] { })]
+public void GenerateAllPossibleActions_IncludesDefensiveActions_WhenInDanger()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AshesOfVelsingrad_IntegrationTests_AI_AIDecisionGeneratorTest_GenerateAllPossibleActions_IncludesOffensiveActions_WhenEnemiesPresent_" data-uid="AshesOfVelsingrad.IntegrationTests.AI.AIDecisionGeneratorTest.GenerateAllPossibleActions_IncludesOffensiveActions_WhenEnemiesPresent*"></a>
+
+  <h3 id="AshesOfVelsingrad_IntegrationTests_AI_AIDecisionGeneratorTest_GenerateAllPossibleActions_IncludesOffensiveActions_WhenEnemiesPresent" data-uid="AshesOfVelsingrad.IntegrationTests.AI.AIDecisionGeneratorTest.GenerateAllPossibleActions_IncludesOffensiveActions_WhenEnemiesPresent">
+  GenerateAllPossibleActions_IncludesOffensiveActions_WhenEnemiesPresent()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/integration_tests/scripts_tests/AI/AIDecisionGeneratorTest.cs/#L201"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[TestCase(new object?[] { })]
+public void GenerateAllPossibleActions_IncludesOffensiveActions_WhenEnemiesPresent()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AshesOfVelsingrad_IntegrationTests_AI_AIDecisionGeneratorTest_GenerateAllPossibleActions_IncludesSupportActions_WhenAlliesNeedHealing_" data-uid="AshesOfVelsingrad.IntegrationTests.AI.AIDecisionGeneratorTest.GenerateAllPossibleActions_IncludesSupportActions_WhenAlliesNeedHealing*"></a>
+
+  <h3 id="AshesOfVelsingrad_IntegrationTests_AI_AIDecisionGeneratorTest_GenerateAllPossibleActions_IncludesSupportActions_WhenAlliesNeedHealing" data-uid="AshesOfVelsingrad.IntegrationTests.AI.AIDecisionGeneratorTest.GenerateAllPossibleActions_IncludesSupportActions_WhenAlliesNeedHealing">
+  GenerateAllPossibleActions_IncludesSupportActions_WhenAlliesNeedHealing()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/integration_tests/scripts_tests/AI/AIDecisionGeneratorTest.cs/#L218"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[TestCase(new object?[] { })]
+public void GenerateAllPossibleActions_IncludesSupportActions_WhenAlliesNeedHealing()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AshesOfVelsingrad_IntegrationTests_AI_AIDecisionGeneratorTest_GenerateAllPossibleActions_ReturnsEmptyWhenUnitNotOnMap_" data-uid="AshesOfVelsingrad.IntegrationTests.AI.AIDecisionGeneratorTest.GenerateAllPossibleActions_ReturnsEmptyWhenUnitNotOnMap*"></a>
+
+  <h3 id="AshesOfVelsingrad_IntegrationTests_AI_AIDecisionGeneratorTest_GenerateAllPossibleActions_ReturnsEmptyWhenUnitNotOnMap" data-uid="AshesOfVelsingrad.IntegrationTests.AI.AIDecisionGeneratorTest.GenerateAllPossibleActions_ReturnsEmptyWhenUnitNotOnMap">
+  GenerateAllPossibleActions_ReturnsEmptyWhenUnitNotOnMap()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/integration_tests/scripts_tests/AI/AIDecisionGeneratorTest.cs/#L190"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[TestCase(new object?[] { })]
+public void GenerateAllPossibleActions_ReturnsEmptyWhenUnitNotOnMap()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AshesOfVelsingrad_IntegrationTests_AI_AIDecisionGeneratorTest_GenerateDefensiveActions_CreatesRetreatAction_WhenInDanger_" data-uid="AshesOfVelsingrad.IntegrationTests.AI.AIDecisionGeneratorTest.GenerateDefensiveActions_CreatesRetreatAction_WhenInDanger*"></a>
+
+  <h3 id="AshesOfVelsingrad_IntegrationTests_AI_AIDecisionGeneratorTest_GenerateDefensiveActions_CreatesRetreatAction_WhenInDanger" data-uid="AshesOfVelsingrad.IntegrationTests.AI.AIDecisionGeneratorTest.GenerateDefensiveActions_CreatesRetreatAction_WhenInDanger">
+  GenerateDefensiveActions_CreatesRetreatAction_WhenInDanger()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/integration_tests/scripts_tests/AI/AIDecisionGeneratorTest.cs/#L365"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[TestCase(new object?[] { })]
+public void GenerateDefensiveActions_CreatesRetreatAction_WhenInDanger()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AshesOfVelsingrad_IntegrationTests_AI_AIDecisionGeneratorTest_GenerateDefensiveActions_ReturnsEmpty_WhenNotInDanger_" data-uid="AshesOfVelsingrad.IntegrationTests.AI.AIDecisionGeneratorTest.GenerateDefensiveActions_ReturnsEmpty_WhenNotInDanger*"></a>
+
+  <h3 id="AshesOfVelsingrad_IntegrationTests_AI_AIDecisionGeneratorTest_GenerateDefensiveActions_ReturnsEmpty_WhenNotInDanger" data-uid="AshesOfVelsingrad.IntegrationTests.AI.AIDecisionGeneratorTest.GenerateDefensiveActions_ReturnsEmpty_WhenNotInDanger">
+  GenerateDefensiveActions_ReturnsEmpty_WhenNotInDanger()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/integration_tests/scripts_tests/AI/AIDecisionGeneratorTest.cs/#L350"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[TestCase(new object?[] { })]
+public void GenerateDefensiveActions_ReturnsEmpty_WhenNotInDanger()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AshesOfVelsingrad_IntegrationTests_AI_AIDecisionGeneratorTest_GenerateOffensiveActions_CreatesUseSkillAction_WhenInRange_" data-uid="AshesOfVelsingrad.IntegrationTests.AI.AIDecisionGeneratorTest.GenerateOffensiveActions_CreatesUseSkillAction_WhenInRange*"></a>
+
+  <h3 id="AshesOfVelsingrad_IntegrationTests_AI_AIDecisionGeneratorTest_GenerateOffensiveActions_CreatesUseSkillAction_WhenInRange" data-uid="AshesOfVelsingrad.IntegrationTests.AI.AIDecisionGeneratorTest.GenerateOffensiveActions_CreatesUseSkillAction_WhenInRange">
+  GenerateOffensiveActions_CreatesUseSkillAction_WhenInRange()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/integration_tests/scripts_tests/AI/AIDecisionGeneratorTest.cs/#L257"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[TestCase(new object?[] { })]
+public void GenerateOffensiveActions_CreatesUseSkillAction_WhenInRange()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AshesOfVelsingrad_IntegrationTests_AI_AIDecisionGeneratorTest_GenerateOffensiveActions_SkipsSkillsOnCooldown_" data-uid="AshesOfVelsingrad.IntegrationTests.AI.AIDecisionGeneratorTest.GenerateOffensiveActions_SkipsSkillsOnCooldown*"></a>
+
+  <h3 id="AshesOfVelsingrad_IntegrationTests_AI_AIDecisionGeneratorTest_GenerateOffensiveActions_SkipsSkillsOnCooldown" data-uid="AshesOfVelsingrad.IntegrationTests.AI.AIDecisionGeneratorTest.GenerateOffensiveActions_SkipsSkillsOnCooldown">
+  GenerateOffensiveActions_SkipsSkillsOnCooldown()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/integration_tests/scripts_tests/AI/AIDecisionGeneratorTest.cs/#L278"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[TestCase(new object?[] { })]
+public void GenerateOffensiveActions_SkipsSkillsOnCooldown()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AshesOfVelsingrad_IntegrationTests_AI_AIDecisionGeneratorTest_GenerateOffensiveActions_SkipsSkillsWithInsufficientMana_" data-uid="AshesOfVelsingrad.IntegrationTests.AI.AIDecisionGeneratorTest.GenerateOffensiveActions_SkipsSkillsWithInsufficientMana*"></a>
+
+  <h3 id="AshesOfVelsingrad_IntegrationTests_AI_AIDecisionGeneratorTest_GenerateOffensiveActions_SkipsSkillsWithInsufficientMana" data-uid="AshesOfVelsingrad.IntegrationTests.AI.AIDecisionGeneratorTest.GenerateOffensiveActions_SkipsSkillsWithInsufficientMana">
+  GenerateOffensiveActions_SkipsSkillsWithInsufficientMana()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/integration_tests/scripts_tests/AI/AIDecisionGeneratorTest.cs/#L292"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[TestCase(new object?[] { })]
+public void GenerateOffensiveActions_SkipsSkillsWithInsufficientMana()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AshesOfVelsingrad_IntegrationTests_AI_AIDecisionGeneratorTest_GenerateSupportActions_CreatesHealAction_ForDamagedAlly_" data-uid="AshesOfVelsingrad.IntegrationTests.AI.AIDecisionGeneratorTest.GenerateSupportActions_CreatesHealAction_ForDamagedAlly*"></a>
+
+  <h3 id="AshesOfVelsingrad_IntegrationTests_AI_AIDecisionGeneratorTest_GenerateSupportActions_CreatesHealAction_ForDamagedAlly" data-uid="AshesOfVelsingrad.IntegrationTests.AI.AIDecisionGeneratorTest.GenerateSupportActions_CreatesHealAction_ForDamagedAlly">
+  GenerateSupportActions_CreatesHealAction_ForDamagedAlly()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/integration_tests/scripts_tests/AI/AIDecisionGeneratorTest.cs/#L327"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[TestCase(new object?[] { })]
+public void GenerateSupportActions_CreatesHealAction_ForDamagedAlly()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AshesOfVelsingrad_IntegrationTests_AI_AIDecisionGeneratorTest_GenerateSupportActions_DoesNotSupportSelf_" data-uid="AshesOfVelsingrad.IntegrationTests.AI.AIDecisionGeneratorTest.GenerateSupportActions_DoesNotSupportSelf*"></a>
+
+  <h3 id="AshesOfVelsingrad_IntegrationTests_AI_AIDecisionGeneratorTest_GenerateSupportActions_DoesNotSupportSelf" data-uid="AshesOfVelsingrad.IntegrationTests.AI.AIDecisionGeneratorTest.GenerateSupportActions_DoesNotSupportSelf">
+  GenerateSupportActions_DoesNotSupportSelf()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/integration_tests/scripts_tests/AI/AIDecisionGeneratorTest.cs/#L311"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[TestCase(new object?[] { })]
+public void GenerateSupportActions_DoesNotSupportSelf()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AshesOfVelsingrad_IntegrationTests_AI_AIDecisionGeneratorTest_Setup_" data-uid="AshesOfVelsingrad.IntegrationTests.AI.AIDecisionGeneratorTest.Setup*"></a>
+
+  <h3 id="AshesOfVelsingrad_IntegrationTests_AI_AIDecisionGeneratorTest_Setup" data-uid="AshesOfVelsingrad.IntegrationTests.AI.AIDecisionGeneratorTest.Setup">
+  Setup()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/integration_tests/scripts_tests/AI/AIDecisionGeneratorTest.cs/#L32"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[BeforeTest(32, &quot;Setup&quot;)]
+public void Setup()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AshesOfVelsingrad_IntegrationTests_AI_AIDecisionGeneratorTest_TearDown_" data-uid="AshesOfVelsingrad.IntegrationTests.AI.AIDecisionGeneratorTest.TearDown*"></a>
+
+  <h3 id="AshesOfVelsingrad_IntegrationTests_AI_AIDecisionGeneratorTest_TearDown" data-uid="AshesOfVelsingrad.IntegrationTests.AI.AIDecisionGeneratorTest.TearDown">
+  TearDown()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/integration_tests/scripts_tests/AI/AIDecisionGeneratorTest.cs/#L46"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[AfterTest(46, &quot;TearDown&quot;)]
+public void TearDown()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/integration_tests/scripts_tests/AI/AIDecisionGeneratorTest.cs/#L16" class="edit-link">Edit this page</a>
+        </div>
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          © 2025 Gammabra Studios. All Rights Reserved.
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

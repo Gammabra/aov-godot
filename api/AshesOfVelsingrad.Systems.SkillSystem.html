@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Class SkillSystem | Ashes of Velsingrad Documentation </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Class SkillSystem | Ashes of Velsingrad Documentation ">
+      
+      <meta name="description" content="Base class for all skills available in the game.">
+      <link rel="icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/Gammabra/aov-godot/new/develop/apiSpec/new?filename=AshesOfVelsingrad_Systems_SkillSystem.md&amp;value=---%0Auid%3A%20AshesOfVelsingrad.Systems.SkillSystem%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../images/logo-doc.png" alt="Ashes of Velsingrad" style="height: 40px; width: auto;">
+            Ashes of Velsingrad
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="AshesOfVelsingrad.Systems.SkillSystem">
+
+
+
+  <h1 id="AshesOfVelsingrad_Systems_SkillSystem" data-uid="AshesOfVelsingrad.Systems.SkillSystem" class="text-break">
+Class SkillSystem  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad.Core/Systems/SkillSystem.cs/#L14"><i class="bi bi-code-slash"></i></a>
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="AshesOfVelsingrad.html">AshesOfVelsingrad</a>.<a class="xref" href="AshesOfVelsingrad.Systems.html">Systems</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>AshesofVelsingrad.Core.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"><p>Base class for all skills available in the game.</p>
+</div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public abstract class SkillSystem : ISkillSystem</code></pre>
+  </div>
+
+
+
+
+  <dl class="typelist inheritance">
+    <dt>Inheritance</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+      <div><span class="xref">SkillSystem</span></div>
+    </dd>
+  </dl>
+
+  <dl class="typelist implements">
+    <dt>Implements</dt>
+    <dd>
+      <div><a class="xref" href="AshesOfVelsingrad.Systems.ISkillSystem.html">ISkillSystem</a></div>
+    </dd>
+  </dl>
+
+  <dl class="typelist derived">
+    <dt>Derived</dt>
+    <dd>
+      <div><a class="xref" href="AshesOfVelsingrad.AssassinStab.html">AssassinStab</a></div>
+      <div><a class="xref" href="AshesOfVelsingrad.BasicAttackSkill.html">BasicAttackSkill</a></div>
+      <div><a class="xref" href="AshesOfVelsingrad.BladeDance.html">BladeDance</a></div>
+      <div><a class="xref" href="AshesOfVelsingrad.BloodDrain.html">BloodDrain</a></div>
+      <div><a class="xref" href="AshesOfVelsingrad.BurningSlash.html">BurningSlash</a></div>
+      <div><a class="xref" href="AshesOfVelsingrad.CircularStrike.html">CircularStrike</a></div>
+      <div><a class="xref" href="AshesOfVelsingrad.CleansingLight.html">CleansingLight</a></div>
+      <div><a class="xref" href="AshesOfVelsingrad.CounterStance.html">CounterStance</a></div>
+      <div><a class="xref" href="AshesOfVelsingrad.CriticalStrike.html">CriticalStrike</a></div>
+      <div><a class="xref" href="AshesOfVelsingrad.CrushingStrike.html">CrushingStrike</a></div>
+      <div><a class="xref" href="AshesOfVelsingrad.DivinePrayer.html">DivinePrayer</a></div>
+      <div><a class="xref" href="AshesOfVelsingrad.EnemyBurningSlash.html">EnemyBurningSlash</a></div>
+      <div><a class="xref" href="AshesOfVelsingrad.EnemyHealAlly.html">EnemyHealAlly</a></div>
+      <div><a class="xref" href="AshesOfVelsingrad.EnemyPoisonStrike.html">EnemyPoisonStrike</a></div>
+      <div><a class="xref" href="AshesOfVelsingrad.EnemyStaggeringBlow.html">EnemyStaggeringBlow</a></div>
+      <div><a class="xref" href="AshesOfVelsingrad.ExecutionBlade.html">ExecutionBlade</a></div>
+      <div><a class="xref" href="AshesOfVelsingrad.FighterMeleeAttack.html">FighterMeleeAttack</a></div>
+      <div><a class="xref" href="AshesOfVelsingrad.HealingTouch.html">HealingTouch</a></div>
+      <div><a class="xref" href="AshesOfVelsingrad.Helpers.Systems.TestConcreteSkillSystem.html">TestConcreteSkillSystem</a></div>
+      <div><a class="xref" href="AshesOfVelsingrad.InstantKill.html">InstantKill</a></div>
+      <div><a class="xref" href="AshesOfVelsingrad.LightBolt.html">LightBolt</a></div>
+      <div><a class="xref" href="AshesOfVelsingrad.PhantomStrike.html">PhantomStrike</a></div>
+      <div><a class="xref" href="AshesOfVelsingrad.PoisonBlade.html">PoisonBlade</a></div>
+      <div><a class="xref" href="AshesOfVelsingrad.Resurrection.html">Resurrection</a></div>
+      <div><a class="xref" href="AshesOfVelsingrad.SacredRay.html">SacredRay</a></div>
+      <div><a class="xref" href="AshesOfVelsingrad.ShadowStrike.html">ShadowStrike</a></div>
+      <div><a class="xref" href="AshesOfVelsingrad.ShieldBash.html">ShieldBash</a></div>
+      <div><a class="xref" href="AshesOfVelsingrad.Skill1.html">Skill1</a></div>
+      <div><a class="xref" href="AshesOfVelsingrad.Skill2.html">Skill2</a></div>
+      <div><a class="xref" href="AshesOfVelsingrad.Skill3.html">Skill3</a></div>
+      <div><a class="xref" href="AshesOfVelsingrad.Skill4.html">Skill4</a></div>
+      <div><a class="xref" href="AshesOfVelsingrad.Skill5.html">Skill5</a></div>
+      <div><a class="xref" href="AshesOfVelsingrad.StaggeringBlow.html">StaggeringBlow</a></div>
+      <div><a class="xref" href="AshesOfVelsingrad.SwordsmanSlash.html">SwordsmanSlash</a></div>
+      <div><a class="xref" href="AshesOfVelsingrad.WarCry.html">WarCry</a></div>
+    </dd>
+  </dl>
+
+  <dl class="typelist inheritedMembers">
+    <dt>Inherited Members</dt>
+    <dd>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode">object.GetHashCode()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone">object.MemberwiseClone()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring">object.ToString()</a>
+    </div>
+  </dd></dl>
+
+
+
+
+  <h2 id="AshesOfVelsingrad_Systems_SkillSystem_remarks">Remarks</h2>
+  <div class="markdown level0 remarks"><p>This class defines the common properties and behaviors of every skill,
+such as its cost, cooldown, range, type, and targeting logic.
+Specific skills should inherit from this class and implement the <a class="xref" href="AshesOfVelsingrad.Systems.SkillSystem.html#AshesOfVelsingrad_Systems_SkillSystem_Use_AshesOfVelsingrad_Systems_IUnitSystem_System_Collections_Generic_List_AshesOfVelsingrad_Systems_IUnitSystem__AshesOfVelsingrad_Systems_IMapSystem_">Use(IUnitSystem, List&lt;IUnitSystem&gt;, IMapSystem?)</a> method.</p>
+</div>
+
+
+  <h2 class="section" id="properties">Properties
+</h2>
+
+
+  <a id="AshesOfVelsingrad_Systems_SkillSystem_AreaEffect_" data-uid="AshesOfVelsingrad.Systems.SkillSystem.AreaEffect*"></a>
+
+  <h3 id="AshesOfVelsingrad_Systems_SkillSystem_AreaEffect" data-uid="AshesOfVelsingrad.Systems.SkillSystem.AreaEffect">
+  AreaEffect
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad.Core/Systems/SkillSystem.cs/#L51"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>The cells affected relative to the target position (area of effect).</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public List&lt;(int, int, int)&gt; AreaEffect { get; protected init; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;(<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>)&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="AshesOfVelsingrad_Systems_SkillSystem_Cooldown_" data-uid="AshesOfVelsingrad.Systems.SkillSystem.Cooldown*"></a>
+
+  <h3 id="AshesOfVelsingrad_Systems_SkillSystem_Cooldown" data-uid="AshesOfVelsingrad.Systems.SkillSystem.Cooldown">
+  Cooldown
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad.Core/Systems/SkillSystem.cs/#L41"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>The remaining cooldown (in turns) before the skill becomes available again.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int Cooldown { get; protected set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="AshesOfVelsingrad_Systems_SkillSystem_Description_" data-uid="AshesOfVelsingrad.Systems.SkillSystem.Description*"></a>
+
+  <h3 id="AshesOfVelsingrad_Systems_SkillSystem_Description" data-uid="AshesOfVelsingrad.Systems.SkillSystem.Description">
+  Description
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad.Core/Systems/SkillSystem.cs/#L26"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>A description of the skill, used for tooltips or UI.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string Description { get; protected init; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="AshesOfVelsingrad_Systems_SkillSystem_EffectType_" data-uid="AshesOfVelsingrad.Systems.SkillSystem.EffectType*"></a>
+
+  <h3 id="AshesOfVelsingrad_Systems_SkillSystem_EffectType" data-uid="AshesOfVelsingrad.Systems.SkillSystem.EffectType">
+  EffectType
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad.Core/Systems/SkillSystem.cs/#L61"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>The type of effect this skill applies (e.g., damage, heal, buff).</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public AovDataStructures.EffectType EffectType { get; protected init; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="AshesOfVelsingrad.Utilities.AovDataStructures.html">AovDataStructures</a>.<a class="xref" href="AshesOfVelsingrad.Utilities.AovDataStructures.EffectType.html">EffectType</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="AshesOfVelsingrad_Systems_SkillSystem_MagicType_" data-uid="AshesOfVelsingrad.Systems.SkillSystem.MagicType*"></a>
+
+  <h3 id="AshesOfVelsingrad_Systems_SkillSystem_MagicType" data-uid="AshesOfVelsingrad.Systems.SkillSystem.MagicType">
+  MagicType
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad.Core/Systems/SkillSystem.cs/#L56"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>The magical element type of this skill (e.g., Fire, Water, Light).</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public AovDataStructures.MagicType MagicType { get; protected init; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="AshesOfVelsingrad.Utilities.AovDataStructures.html">AovDataStructures</a>.<a class="xref" href="AshesOfVelsingrad.Utilities.AovDataStructures.MagicType.html">MagicType</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="AshesOfVelsingrad_Systems_SkillSystem_ManaCost_" data-uid="AshesOfVelsingrad.Systems.SkillSystem.ManaCost*"></a>
+
+  <h3 id="AshesOfVelsingrad_Systems_SkillSystem_ManaCost" data-uid="AshesOfVelsingrad.Systems.SkillSystem.ManaCost">
+  ManaCost
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad.Core/Systems/SkillSystem.cs/#L31"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>The amount of mana consumed when using this skill.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public float ManaCost { get; protected init; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="AshesOfVelsingrad_Systems_SkillSystem_Name_" data-uid="AshesOfVelsingrad.Systems.SkillSystem.Name*"></a>
+
+  <h3 id="AshesOfVelsingrad_Systems_SkillSystem_Name" data-uid="AshesOfVelsingrad.Systems.SkillSystem.Name">
+  Name
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad.Core/Systems/SkillSystem.cs/#L21"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>The name of the skill.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string Name { get; protected init; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="AshesOfVelsingrad_Systems_SkillSystem_Range_" data-uid="AshesOfVelsingrad.Systems.SkillSystem.Range*"></a>
+
+  <h3 id="AshesOfVelsingrad_Systems_SkillSystem_Range" data-uid="AshesOfVelsingrad.Systems.SkillSystem.Range">
+  Range
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad.Core/Systems/SkillSystem.cs/#L46"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>The maximum distance (in grid units) from which the skill can target.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int Range { get; protected init; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="AshesOfVelsingrad_Systems_SkillSystem_TargetType_" data-uid="AshesOfVelsingrad.Systems.SkillSystem.TargetType*"></a>
+
+  <h3 id="AshesOfVelsingrad_Systems_SkillSystem_TargetType" data-uid="AshesOfVelsingrad.Systems.SkillSystem.TargetType">
+  TargetType
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad.Core/Systems/SkillSystem.cs/#L66"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>The type of target(s) this skill can be used on.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public AovDataStructures.TargetTypes TargetType { get; protected init; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="AshesOfVelsingrad.Utilities.AovDataStructures.html">AovDataStructures</a>.<a class="xref" href="AshesOfVelsingrad.Utilities.AovDataStructures.TargetTypes.html">TargetTypes</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="AshesOfVelsingrad_Systems_SkillSystem_TotalCooldown_" data-uid="AshesOfVelsingrad.Systems.SkillSystem.TotalCooldown*"></a>
+
+  <h3 id="AshesOfVelsingrad_Systems_SkillSystem_TotalCooldown" data-uid="AshesOfVelsingrad.Systems.SkillSystem.TotalCooldown">
+  TotalCooldown
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad.Core/Systems/SkillSystem.cs/#L36"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>The total cooldown duration (in turns) before the skill can be reused.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int TotalCooldown { get; protected init; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
+  <a id="AshesOfVelsingrad_Systems_SkillSystem_ReduceCooldown_" data-uid="AshesOfVelsingrad.Systems.SkillSystem.ReduceCooldown*"></a>
+
+  <h3 id="AshesOfVelsingrad_Systems_SkillSystem_ReduceCooldown" data-uid="AshesOfVelsingrad.Systems.SkillSystem.ReduceCooldown">
+  ReduceCooldown()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad.Core/Systems/SkillSystem.cs/#L94"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Reduces the cooldown of the skill by one turn, if greater than zero.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual void ReduceCooldown()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AshesOfVelsingrad_Systems_SkillSystem_SetCooldown_" data-uid="AshesOfVelsingrad.Systems.SkillSystem.SetCooldown*"></a>
+
+  <h3 id="AshesOfVelsingrad_Systems_SkillSystem_SetCooldown" data-uid="AshesOfVelsingrad.Systems.SkillSystem.SetCooldown">
+  SetCooldown()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad.Core/Systems/SkillSystem.cs/#L84"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Set the cooldown of the skill to the total cooldown</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual void SetCooldown()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AshesOfVelsingrad_Systems_SkillSystem_Use_" data-uid="AshesOfVelsingrad.Systems.SkillSystem.Use*"></a>
+
+  <h3 id="AshesOfVelsingrad_Systems_SkillSystem_Use_AshesOfVelsingrad_Systems_IUnitSystem_System_Collections_Generic_List_AshesOfVelsingrad_Systems_IUnitSystem__AshesOfVelsingrad_Systems_IMapSystem_" data-uid="AshesOfVelsingrad.Systems.SkillSystem.Use(AshesOfVelsingrad.Systems.IUnitSystem,System.Collections.Generic.List{AshesOfVelsingrad.Systems.IUnitSystem},AshesOfVelsingrad.Systems.IMapSystem)">
+  Use(IUnitSystem, List&lt;IUnitSystem&gt;, IMapSystem?)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad.Core/Systems/SkillSystem.cs/#L79"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Executes the skill logic when cast.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public abstract void Use(IUnitSystem caster, List&lt;IUnitSystem&gt; targets, IMapSystem? map)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>caster</code> <a class="xref" href="AshesOfVelsingrad.Systems.IUnitSystem.html">IUnitSystem</a></dt>
+    <dd></dd>
+    <dt><code>targets</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a class="xref" href="AshesOfVelsingrad.Systems.IUnitSystem.html">IUnitSystem</a>&gt;</dt>
+    <dd></dd>
+    <dt><code>map</code> <a class="xref" href="AshesOfVelsingrad.Systems.IMapSystem.html">IMapSystem</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h4 class="section" id="AshesOfVelsingrad_Systems_SkillSystem_Use_AshesOfVelsingrad_Systems_IUnitSystem_System_Collections_Generic_List_AshesOfVelsingrad_Systems_IUnitSystem__AshesOfVelsingrad_Systems_IMapSystem__remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>This method must be implemented in derived classes
+to define the actual effect of the skill (damage, healing, etc.).</p>
+</div>
+
+
+
+
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad.Core/Systems/SkillSystem.cs/#L14" class="edit-link">Edit this page</a>
+        </div>
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          © 2025 Gammabra Studios. All Rights Reserved.
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

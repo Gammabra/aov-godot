@@ -1,0 +1,943 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Class MenuManagerTest | Ashes of Velsingrad Documentation </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Class MenuManagerTest | Ashes of Velsingrad Documentation ">
+      
+      
+      <link rel="icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/Gammabra/aov-godot/new/develop/apiSpec/new?filename=AshesOfVelsingrad_IntegrationTests_Managers_MenuManagerTest.md&amp;value=---%0Auid%3A%20AshesOfVelsingrad.IntegrationTests.Managers.MenuManagerTest%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../images/logo-doc.png" alt="Ashes of Velsingrad" style="height: 40px; width: auto;">
+            Ashes of Velsingrad
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="AshesOfVelsingrad.IntegrationTests.Managers.MenuManagerTest">
+
+
+
+  <h1 id="AshesOfVelsingrad_IntegrationTests_Managers_MenuManagerTest" data-uid="AshesOfVelsingrad.IntegrationTests.Managers.MenuManagerTest" class="text-break">
+Class MenuManagerTest  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/integration_tests/scripts_tests/managers/MenuManagerTest.cs/#L11"><i class="bi bi-code-slash"></i></a>
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="AshesOfVelsingrad.html">AshesOfVelsingrad</a>.<a class="xref" href="AshesOfVelsingrad.IntegrationTests.html">IntegrationTests</a>.<a class="xref" href="AshesOfVelsingrad.IntegrationTests.Managers.html">Managers</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>AshesofVelsingrad.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"></div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[TestSuite(11, &quot;&quot;)]
+[RequireGodotRuntime]
+public class MenuManagerTest</code></pre>
+  </div>
+
+
+
+
+  <dl class="typelist inheritance">
+    <dt>Inheritance</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+      <div><span class="xref">MenuManagerTest</span></div>
+    </dd>
+  </dl>
+
+
+
+  <dl class="typelist inheritedMembers">
+    <dt>Inherited Members</dt>
+    <dd>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode">object.GetHashCode()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone">object.MemberwiseClone()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring">object.ToString()</a>
+    </div>
+  </dd></dl>
+
+
+
+
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
+  <a id="AshesOfVelsingrad_IntegrationTests_Managers_MenuManagerTest_ClearHistory_RemovesAllHistoryEntries_" data-uid="AshesOfVelsingrad.IntegrationTests.Managers.MenuManagerTest.ClearHistory_RemovesAllHistoryEntries*"></a>
+
+  <h3 id="AshesOfVelsingrad_IntegrationTests_Managers_MenuManagerTest_ClearHistory_RemovesAllHistoryEntries" data-uid="AshesOfVelsingrad.IntegrationTests.Managers.MenuManagerTest.ClearHistory_RemovesAllHistoryEntries">
+  ClearHistory_RemovesAllHistoryEntries()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/integration_tests/scripts_tests/managers/MenuManagerTest.cs/#L287"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[TestCase(new object?[] { })]
+public void ClearHistory_RemovesAllHistoryEntries()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AshesOfVelsingrad_IntegrationTests_Managers_MenuManagerTest_FullWorkflow_RegisterShowNavigate_WorksCorrectly_" data-uid="AshesOfVelsingrad.IntegrationTests.Managers.MenuManagerTest.FullWorkflow_RegisterShowNavigate_WorksCorrectly*"></a>
+
+  <h3 id="AshesOfVelsingrad_IntegrationTests_Managers_MenuManagerTest_FullWorkflow_RegisterShowNavigate_WorksCorrectly" data-uid="AshesOfVelsingrad.IntegrationTests.Managers.MenuManagerTest.FullWorkflow_RegisterShowNavigate_WorksCorrectly">
+  FullWorkflow_RegisterShowNavigate_WorksCorrectly()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/integration_tests/scripts_tests/managers/MenuManagerTest.cs/#L484"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[TestCase(new object?[] { })]
+public void FullWorkflow_RegisterShowNavigate_WorksCorrectly()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AshesOfVelsingrad_IntegrationTests_Managers_MenuManagerTest_GetCurrentMenu_MenuActive_ReturnsCorrectName_" data-uid="AshesOfVelsingrad.IntegrationTests.Managers.MenuManagerTest.GetCurrentMenu_MenuActive_ReturnsCorrectName*"></a>
+
+  <h3 id="AshesOfVelsingrad_IntegrationTests_Managers_MenuManagerTest_GetCurrentMenu_MenuActive_ReturnsCorrectName" data-uid="AshesOfVelsingrad.IntegrationTests.Managers.MenuManagerTest.GetCurrentMenu_MenuActive_ReturnsCorrectName">
+  GetCurrentMenu_MenuActive_ReturnsCorrectName()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/integration_tests/scripts_tests/managers/MenuManagerTest.cs/#L316"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[TestCase(new object?[] { })]
+public void GetCurrentMenu_MenuActive_ReturnsCorrectName()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AshesOfVelsingrad_IntegrationTests_Managers_MenuManagerTest_GetCurrentMenu_NoMenuActive_ReturnsNull_" data-uid="AshesOfVelsingrad.IntegrationTests.Managers.MenuManagerTest.GetCurrentMenu_NoMenuActive_ReturnsNull*"></a>
+
+  <h3 id="AshesOfVelsingrad_IntegrationTests_Managers_MenuManagerTest_GetCurrentMenu_NoMenuActive_ReturnsNull" data-uid="AshesOfVelsingrad.IntegrationTests.Managers.MenuManagerTest.GetCurrentMenu_NoMenuActive_ReturnsNull">
+  GetCurrentMenu_NoMenuActive_ReturnsNull()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/integration_tests/scripts_tests/managers/MenuManagerTest.cs/#L306"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[TestCase(new object?[] { })]
+public void GetCurrentMenu_NoMenuActive_ReturnsNull()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AshesOfVelsingrad_IntegrationTests_Managers_MenuManagerTest_GoBack_MultipleMenus_NavigatesInCorrectOrder_" data-uid="AshesOfVelsingrad.IntegrationTests.Managers.MenuManagerTest.GoBack_MultipleMenus_NavigatesInCorrectOrder*"></a>
+
+  <h3 id="AshesOfVelsingrad_IntegrationTests_Managers_MenuManagerTest_GoBack_MultipleMenus_NavigatesInCorrectOrder" data-uid="AshesOfVelsingrad.IntegrationTests.Managers.MenuManagerTest.GoBack_MultipleMenus_NavigatesInCorrectOrder">
+  GoBack_MultipleMenus_NavigatesInCorrectOrder()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/integration_tests/scripts_tests/managers/MenuManagerTest.cs/#L259"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[TestCase(new object?[] { })]
+public void GoBack_MultipleMenus_NavigatesInCorrectOrder()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AshesOfVelsingrad_IntegrationTests_Managers_MenuManagerTest_GoBack_WithHistory_NavigatesToPreviousMenu_" data-uid="AshesOfVelsingrad.IntegrationTests.Managers.MenuManagerTest.GoBack_WithHistory_NavigatesToPreviousMenu*"></a>
+
+  <h3 id="AshesOfVelsingrad_IntegrationTests_Managers_MenuManagerTest_GoBack_WithHistory_NavigatesToPreviousMenu" data-uid="AshesOfVelsingrad.IntegrationTests.Managers.MenuManagerTest.GoBack_WithHistory_NavigatesToPreviousMenu">
+  GoBack_WithHistory_NavigatesToPreviousMenu()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/integration_tests/scripts_tests/managers/MenuManagerTest.cs/#L215"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[TestCase(new object?[] { })]
+public void GoBack_WithHistory_NavigatesToPreviousMenu()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AshesOfVelsingrad_IntegrationTests_Managers_MenuManagerTest_GoBack_WithoutHistory_DoesNotChangeMenu_" data-uid="AshesOfVelsingrad.IntegrationTests.Managers.MenuManagerTest.GoBack_WithoutHistory_DoesNotChangeMenu*"></a>
+
+  <h3 id="AshesOfVelsingrad_IntegrationTests_Managers_MenuManagerTest_GoBack_WithoutHistory_DoesNotChangeMenu" data-uid="AshesOfVelsingrad.IntegrationTests.Managers.MenuManagerTest.GoBack_WithoutHistory_DoesNotChangeMenu">
+  GoBack_WithoutHistory_DoesNotChangeMenu()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/integration_tests/scripts_tests/managers/MenuManagerTest.cs/#L235"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[TestCase(new object?[] { })]
+public void GoBack_WithoutHistory_DoesNotChangeMenu()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AshesOfVelsingrad_IntegrationTests_Managers_MenuManagerTest_Initialize_FirstInstance_SetsInstanceCorrectly_" data-uid="AshesOfVelsingrad.IntegrationTests.Managers.MenuManagerTest.Initialize_FirstInstance_SetsInstanceCorrectly*"></a>
+
+  <h3 id="AshesOfVelsingrad_IntegrationTests_Managers_MenuManagerTest_Initialize_FirstInstance_SetsInstanceCorrectly" data-uid="AshesOfVelsingrad.IntegrationTests.Managers.MenuManagerTest.Initialize_FirstInstance_SetsInstanceCorrectly">
+  Initialize_FirstInstance_SetsInstanceCorrectly()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/integration_tests/scripts_tests/managers/MenuManagerTest.cs/#L43"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[TestCase(new object?[] { })]
+public void Initialize_FirstInstance_SetsInstanceCorrectly()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AshesOfVelsingrad_IntegrationTests_Managers_MenuManagerTest_Initialize_SecondInstance_RemovesDuplicate_" data-uid="AshesOfVelsingrad.IntegrationTests.Managers.MenuManagerTest.Initialize_SecondInstance_RemovesDuplicate*"></a>
+
+  <h3 id="AshesOfVelsingrad_IntegrationTests_Managers_MenuManagerTest_Initialize_SecondInstance_RemovesDuplicate" data-uid="AshesOfVelsingrad.IntegrationTests.Managers.MenuManagerTest.Initialize_SecondInstance_RemovesDuplicate">
+  Initialize_SecondInstance_RemovesDuplicate()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/integration_tests/scripts_tests/managers/MenuManagerTest.cs/#L54"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[TestCase(new object?[] { })]
+public void Initialize_SecondInstance_RemovesDuplicate()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AshesOfVelsingrad_IntegrationTests_Managers_MenuManagerTest_IsMenuActive_CurrentMenu_ReturnsTrue_" data-uid="AshesOfVelsingrad.IntegrationTests.Managers.MenuManagerTest.IsMenuActive_CurrentMenu_ReturnsTrue*"></a>
+
+  <h3 id="AshesOfVelsingrad_IntegrationTests_Managers_MenuManagerTest_IsMenuActive_CurrentMenu_ReturnsTrue" data-uid="AshesOfVelsingrad.IntegrationTests.Managers.MenuManagerTest.IsMenuActive_CurrentMenu_ReturnsTrue">
+  IsMenuActive_CurrentMenu_ReturnsTrue()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/integration_tests/scripts_tests/managers/MenuManagerTest.cs/#L328"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[TestCase(new object?[] { })]
+public void IsMenuActive_CurrentMenu_ReturnsTrue()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AshesOfVelsingrad_IntegrationTests_Managers_MenuManagerTest_IsMenuActive_NoMenuActive_ReturnsFalse_" data-uid="AshesOfVelsingrad.IntegrationTests.Managers.MenuManagerTest.IsMenuActive_NoMenuActive_ReturnsFalse*"></a>
+
+  <h3 id="AshesOfVelsingrad_IntegrationTests_Managers_MenuManagerTest_IsMenuActive_NoMenuActive_ReturnsFalse" data-uid="AshesOfVelsingrad.IntegrationTests.Managers.MenuManagerTest.IsMenuActive_NoMenuActive_ReturnsFalse">
+  IsMenuActive_NoMenuActive_ReturnsFalse()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/integration_tests/scripts_tests/managers/MenuManagerTest.cs/#L353"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[TestCase(new object?[] { })]
+public void IsMenuActive_NoMenuActive_ReturnsFalse()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AshesOfVelsingrad_IntegrationTests_Managers_MenuManagerTest_IsMenuActive_NotCurrentMenu_ReturnsFalse_" data-uid="AshesOfVelsingrad.IntegrationTests.Managers.MenuManagerTest.IsMenuActive_NotCurrentMenu_ReturnsFalse*"></a>
+
+  <h3 id="AshesOfVelsingrad_IntegrationTests_Managers_MenuManagerTest_IsMenuActive_NotCurrentMenu_ReturnsFalse" data-uid="AshesOfVelsingrad.IntegrationTests.Managers.MenuManagerTest.IsMenuActive_NotCurrentMenu_ReturnsFalse">
+  IsMenuActive_NotCurrentMenu_ReturnsFalse()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/integration_tests/scripts_tests/managers/MenuManagerTest.cs/#L340"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[TestCase(new object?[] { })]
+public void IsMenuActive_NotCurrentMenu_ReturnsFalse()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AshesOfVelsingrad_IntegrationTests_Managers_MenuManagerTest_MenuConstants_HaveCorrectValues_" data-uid="AshesOfVelsingrad.IntegrationTests.Managers.MenuManagerTest.MenuConstants_HaveCorrectValues*"></a>
+
+  <h3 id="AshesOfVelsingrad_IntegrationTests_Managers_MenuManagerTest_MenuConstants_HaveCorrectValues" data-uid="AshesOfVelsingrad.IntegrationTests.Managers.MenuManagerTest.MenuConstants_HaveCorrectValues">
+  MenuConstants_HaveCorrectValues()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/integration_tests/scripts_tests/managers/MenuManagerTest.cs/#L475"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[TestCase(new object?[] { })]
+public void MenuConstants_HaveCorrectValues()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AshesOfVelsingrad_IntegrationTests_Managers_MenuManagerTest_OptionsMenuBackRequested_CallsGoBack_" data-uid="AshesOfVelsingrad.IntegrationTests.Managers.MenuManagerTest.OptionsMenuBackRequested_CallsGoBack*"></a>
+
+  <h3 id="AshesOfVelsingrad_IntegrationTests_Managers_MenuManagerTest_OptionsMenuBackRequested_CallsGoBack" data-uid="AshesOfVelsingrad.IntegrationTests.Managers.MenuManagerTest.OptionsMenuBackRequested_CallsGoBack">
+  OptionsMenuBackRequested_CallsGoBack()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/integration_tests/scripts_tests/managers/MenuManagerTest.cs/#L429"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[TestCase(new object?[] { })]
+public void OptionsMenuBackRequested_CallsGoBack()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AshesOfVelsingrad_IntegrationTests_Managers_MenuManagerTest_RegisterMenu_DuplicateMenu_DoesNotAddDuplicate_" data-uid="AshesOfVelsingrad.IntegrationTests.Managers.MenuManagerTest.RegisterMenu_DuplicateMenu_DoesNotAddDuplicate*"></a>
+
+  <h3 id="AshesOfVelsingrad_IntegrationTests_Managers_MenuManagerTest_RegisterMenu_DuplicateMenu_DoesNotAddDuplicate" data-uid="AshesOfVelsingrad.IntegrationTests.Managers.MenuManagerTest.RegisterMenu_DuplicateMenu_DoesNotAddDuplicate">
+  RegisterMenu_DuplicateMenu_DoesNotAddDuplicate()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/integration_tests/scripts_tests/managers/MenuManagerTest.cs/#L84"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[TestCase(new object?[] { })]
+public void RegisterMenu_DuplicateMenu_DoesNotAddDuplicate()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AshesOfVelsingrad_IntegrationTests_Managers_MenuManagerTest_RegisterMenu_OptionsMenu_ConnectsBackSignal_" data-uid="AshesOfVelsingrad.IntegrationTests.Managers.MenuManagerTest.RegisterMenu_OptionsMenu_ConnectsBackSignal*"></a>
+
+  <h3 id="AshesOfVelsingrad_IntegrationTests_Managers_MenuManagerTest_RegisterMenu_OptionsMenu_ConnectsBackSignal" data-uid="AshesOfVelsingrad.IntegrationTests.Managers.MenuManagerTest.RegisterMenu_OptionsMenu_ConnectsBackSignal">
+  RegisterMenu_OptionsMenu_ConnectsBackSignal()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/integration_tests/scripts_tests/managers/MenuManagerTest.cs/#L101"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[TestCase(new object?[] { })]
+public void RegisterMenu_OptionsMenu_ConnectsBackSignal()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AshesOfVelsingrad_IntegrationTests_Managers_MenuManagerTest_RegisterMenu_ValidMenu_AddsToCollection_" data-uid="AshesOfVelsingrad.IntegrationTests.Managers.MenuManagerTest.RegisterMenu_ValidMenu_AddsToCollection*"></a>
+
+  <h3 id="AshesOfVelsingrad_IntegrationTests_Managers_MenuManagerTest_RegisterMenu_ValidMenu_AddsToCollection" data-uid="AshesOfVelsingrad.IntegrationTests.Managers.MenuManagerTest.RegisterMenu_ValidMenu_AddsToCollection">
+  RegisterMenu_ValidMenu_AddsToCollection()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/integration_tests/scripts_tests/managers/MenuManagerTest.cs/#L70"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[TestCase(new object?[] { })]
+public void RegisterMenu_ValidMenu_AddsToCollection()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AshesOfVelsingrad_IntegrationTests_Managers_MenuManagerTest_SetUp_" data-uid="AshesOfVelsingrad.IntegrationTests.Managers.MenuManagerTest.SetUp*"></a>
+
+  <h3 id="AshesOfVelsingrad_IntegrationTests_Managers_MenuManagerTest_SetUp" data-uid="AshesOfVelsingrad.IntegrationTests.Managers.MenuManagerTest.SetUp">
+  SetUp()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/integration_tests/scripts_tests/managers/MenuManagerTest.cs/#L22"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[BeforeTest(22, &quot;SetUp&quot;)]
+public void SetUp()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AshesOfVelsingrad_IntegrationTests_Managers_MenuManagerTest_ShowMenu_EmitsMenuChangedSignal_" data-uid="AshesOfVelsingrad.IntegrationTests.Managers.MenuManagerTest.ShowMenu_EmitsMenuChangedSignal*"></a>
+
+  <h3 id="AshesOfVelsingrad_IntegrationTests_Managers_MenuManagerTest_ShowMenu_EmitsMenuChangedSignal" data-uid="AshesOfVelsingrad.IntegrationTests.Managers.MenuManagerTest.ShowMenu_EmitsMenuChangedSignal">
+  ShowMenu_EmitsMenuChangedSignal()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/integration_tests/scripts_tests/managers/MenuManagerTest.cs/#L401"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[TestCase(new object?[] { })]
+public Task ShowMenu_EmitsMenuChangedSignal()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AshesOfVelsingrad_IntegrationTests_Managers_MenuManagerTest_ShowMenu_NonExistentMenu_DoesNotChangeCurrentMenu_" data-uid="AshesOfVelsingrad.IntegrationTests.Managers.MenuManagerTest.ShowMenu_NonExistentMenu_DoesNotChangeCurrentMenu*"></a>
+
+  <h3 id="AshesOfVelsingrad_IntegrationTests_Managers_MenuManagerTest_ShowMenu_NonExistentMenu_DoesNotChangeCurrentMenu" data-uid="AshesOfVelsingrad.IntegrationTests.Managers.MenuManagerTest.ShowMenu_NonExistentMenu_DoesNotChangeCurrentMenu">
+  ShowMenu_NonExistentMenu_DoesNotChangeCurrentMenu()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/integration_tests/scripts_tests/managers/MenuManagerTest.cs/#L153"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[TestCase(new object?[] { })]
+public void ShowMenu_NonExistentMenu_DoesNotChangeCurrentMenu()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AshesOfVelsingrad_IntegrationTests_Managers_MenuManagerTest_ShowMenu_OptionsMenuWithCurrentOptionsMenu_UsesHideMenuMethod_" data-uid="AshesOfVelsingrad.IntegrationTests.Managers.MenuManagerTest.ShowMenu_OptionsMenuWithCurrentOptionsMenu_UsesHideMenuMethod*"></a>
+
+  <h3 id="AshesOfVelsingrad_IntegrationTests_Managers_MenuManagerTest_ShowMenu_OptionsMenuWithCurrentOptionsMenu_UsesHideMenuMethod" data-uid="AshesOfVelsingrad.IntegrationTests.Managers.MenuManagerTest.ShowMenu_OptionsMenuWithCurrentOptionsMenu_UsesHideMenuMethod">
+  ShowMenu_OptionsMenuWithCurrentOptionsMenu_UsesHideMenuMethod()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/integration_tests/scripts_tests/managers/MenuManagerTest.cs/#L447"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[TestCase(new object?[] { })]
+public void ShowMenu_OptionsMenuWithCurrentOptionsMenu_UsesHideMenuMethod()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AshesOfVelsingrad_IntegrationTests_Managers_MenuManagerTest_ShowMenu_OptionsMenu_UsesShowMenuMethod_" data-uid="AshesOfVelsingrad.IntegrationTests.Managers.MenuManagerTest.ShowMenu_OptionsMenu_UsesShowMenuMethod*"></a>
+
+  <h3 id="AshesOfVelsingrad_IntegrationTests_Managers_MenuManagerTest_ShowMenu_OptionsMenu_UsesShowMenuMethod" data-uid="AshesOfVelsingrad.IntegrationTests.Managers.MenuManagerTest.ShowMenu_OptionsMenu_UsesShowMenuMethod">
+  ShowMenu_OptionsMenu_UsesShowMenuMethod()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/integration_tests/scripts_tests/managers/MenuManagerTest.cs/#L137"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[TestCase(new object?[] { })]
+public void ShowMenu_OptionsMenu_UsesShowMenuMethod()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AshesOfVelsingrad_IntegrationTests_Managers_MenuManagerTest_ShowMenu_ValidMenu_ShowsAndHidesPrevious_" data-uid="AshesOfVelsingrad.IntegrationTests.Managers.MenuManagerTest.ShowMenu_ValidMenu_ShowsAndHidesPrevious*"></a>
+
+  <h3 id="AshesOfVelsingrad_IntegrationTests_Managers_MenuManagerTest_ShowMenu_ValidMenu_ShowsAndHidesPrevious" data-uid="AshesOfVelsingrad.IntegrationTests.Managers.MenuManagerTest.ShowMenu_ValidMenu_ShowsAndHidesPrevious">
+  ShowMenu_ValidMenu_ShowsAndHidesPrevious()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/integration_tests/scripts_tests/managers/MenuManagerTest.cs/#L115"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[TestCase(new object?[] { })]
+public void ShowMenu_ValidMenu_ShowsAndHidesPrevious()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AshesOfVelsingrad_IntegrationTests_Managers_MenuManagerTest_ShowMenu_WithHistory_AddsToHistoryStack_" data-uid="AshesOfVelsingrad.IntegrationTests.Managers.MenuManagerTest.ShowMenu_WithHistory_AddsToHistoryStack*"></a>
+
+  <h3 id="AshesOfVelsingrad_IntegrationTests_Managers_MenuManagerTest_ShowMenu_WithHistory_AddsToHistoryStack" data-uid="AshesOfVelsingrad.IntegrationTests.Managers.MenuManagerTest.ShowMenu_WithHistory_AddsToHistoryStack">
+  ShowMenu_WithHistory_AddsToHistoryStack()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/integration_tests/scripts_tests/managers/MenuManagerTest.cs/#L176"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[TestCase(new object?[] { })]
+public void ShowMenu_WithHistory_AddsToHistoryStack()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AshesOfVelsingrad_IntegrationTests_Managers_MenuManagerTest_ShowMenu_WithoutHistory_DoesNotAddToHistoryStack_" data-uid="AshesOfVelsingrad.IntegrationTests.Managers.MenuManagerTest.ShowMenu_WithoutHistory_DoesNotAddToHistoryStack*"></a>
+
+  <h3 id="AshesOfVelsingrad_IntegrationTests_Managers_MenuManagerTest_ShowMenu_WithoutHistory_DoesNotAddToHistoryStack" data-uid="AshesOfVelsingrad.IntegrationTests.Managers.MenuManagerTest.ShowMenu_WithoutHistory_DoesNotAddToHistoryStack">
+  ShowMenu_WithoutHistory_DoesNotAddToHistoryStack()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/integration_tests/scripts_tests/managers/MenuManagerTest.cs/#L197"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[TestCase(new object?[] { })]
+public void ShowMenu_WithoutHistory_DoesNotAddToHistoryStack()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AshesOfVelsingrad_IntegrationTests_Managers_MenuManagerTest_TearDown_" data-uid="AshesOfVelsingrad.IntegrationTests.Managers.MenuManagerTest.TearDown*"></a>
+
+  <h3 id="AshesOfVelsingrad_IntegrationTests_Managers_MenuManagerTest_TearDown" data-uid="AshesOfVelsingrad.IntegrationTests.Managers.MenuManagerTest.TearDown">
+  TearDown()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/integration_tests/scripts_tests/managers/MenuManagerTest.cs/#L546"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[AfterTest(546, &quot;TearDown&quot;)]
+public void TearDown()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AshesOfVelsingrad_IntegrationTests_Managers_MenuManagerTest_UnregisterMenu_ExistingMenu_RemovesFromCollection_" data-uid="AshesOfVelsingrad.IntegrationTests.Managers.MenuManagerTest.UnregisterMenu_ExistingMenu_RemovesFromCollection*"></a>
+
+  <h3 id="AshesOfVelsingrad_IntegrationTests_Managers_MenuManagerTest_UnregisterMenu_ExistingMenu_RemovesFromCollection" data-uid="AshesOfVelsingrad.IntegrationTests.Managers.MenuManagerTest.UnregisterMenu_ExistingMenu_RemovesFromCollection">
+  UnregisterMenu_ExistingMenu_RemovesFromCollection()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/integration_tests/scripts_tests/managers/MenuManagerTest.cs/#L364"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[TestCase(new object?[] { })]
+public void UnregisterMenu_ExistingMenu_RemovesFromCollection()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AshesOfVelsingrad_IntegrationTests_Managers_MenuManagerTest_UnregisterMenu_NonExistentMenu_DoesNothing_" data-uid="AshesOfVelsingrad.IntegrationTests.Managers.MenuManagerTest.UnregisterMenu_NonExistentMenu_DoesNothing*"></a>
+
+  <h3 id="AshesOfVelsingrad_IntegrationTests_Managers_MenuManagerTest_UnregisterMenu_NonExistentMenu_DoesNothing" data-uid="AshesOfVelsingrad.IntegrationTests.Managers.MenuManagerTest.UnregisterMenu_NonExistentMenu_DoesNothing">
+  UnregisterMenu_NonExistentMenu_DoesNothing()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/integration_tests/scripts_tests/managers/MenuManagerTest.cs/#L388"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[TestCase(new object?[] { })]
+public void UnregisterMenu_NonExistentMenu_DoesNothing()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/integration_tests/scripts_tests/managers/MenuManagerTest.cs/#L11" class="edit-link">Edit this page</a>
+        </div>
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          © 2025 Gammabra Studios. All Rights Reserved.
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

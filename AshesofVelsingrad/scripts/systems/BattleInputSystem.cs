@@ -45,6 +45,9 @@ public partial class BattleInputSystem : Node
 	[Export]
 	private NodePath? _camera3DPath;
 
+    [Signal]
+    public delegate void OnUseItemPressedEventHandler(int slotIndex);
+
 	private MapSystem? _mapSystemContainer;
 	private Camera3D? _camera3DContainer;
 
@@ -108,6 +111,9 @@ public partial class BattleInputSystem : Node
     /// </remarks>
     [Signal]
     public delegate void OnSelectMovePressedEventHandler();
+
+    [Signal]
+    public delegate void OnOpenInventoryPressedEventHandler();
 
 	#endregion
 
@@ -251,7 +257,15 @@ public partial class BattleInputSystem : Node
 		}
 
 		if (@event.IsActionPressed("battle_select_skill5"))
+        {
 			EmitSignalOnSelectedSkillPressed(4);
+            return;
+		}
+
+        if (@event.IsActionPressed("open_inventory"))
+        {
+            EmitSignalOnOpenInventoryPressed();
+        }
 	}
 
     /// <summary>

@@ -1,4 +1,5 @@
-namespace AshesOfVelsingrad.systems;
+using AshesOfVelsingrad.Utilities;
+namespace AshesOfVelsingrad.Systems;
 
 // TODO: Remove it when the Tactical combat branch is merged because it is defined in the skill system
 public enum TargetType
@@ -16,7 +17,7 @@ public enum ItemCategory
 	Armor
 }
 
-public abstract class ItemSystem
+public abstract class ItemSystem: IItemSystem
 {
 	public int Id { get; protected set; }
 	public string? Name { get; protected set; }
@@ -24,9 +25,13 @@ public abstract class ItemSystem
 
 	public ItemCategory Category { get; protected set; } = ItemCategory.Misc;
 
-	public TargetType TargetType { get; protected set; } = TargetType.None;
+	public AovDataStructures.TargetTypes TargetType { get; protected set; }
 	public string Icon { get; protected set; } = string.Empty;
 
 	public bool IsStackable { get; protected set; } = false;
 	public int MaxStack { get; protected set; } = 0;
+
+    public virtual bool ConsumesTurn => Category == ItemCategory.Consumable;
+
+	public abstract void Use(IUnitSystem user, IUnitSystem? target, IMapSystem? map);
 }

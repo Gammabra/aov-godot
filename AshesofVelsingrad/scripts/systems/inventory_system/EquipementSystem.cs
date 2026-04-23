@@ -1,6 +1,6 @@
 using System;
 
-namespace AshesOfVelsingrad.systems;
+namespace AshesOfVelsingrad.Systems;
 
 public enum EquipSlot
 {

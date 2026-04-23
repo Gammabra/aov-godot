@@ -1,29 +1,43 @@
 using Godot;
-using AshesOfVelsingrad.systems;
+using AshesOfVelsingrad.Systems;
 
 public partial class InventorySlotUI : PanelContainer
 {
-	[Export] private Label? _label;
+    [Export] private Label? _label;
+    [Export] private Button? _useButton;
 
-	private int _slotIndex;
+    private int _slotIndex;
+    private InventoryUI? _inventoryUI;
 
-	public void Setup(int slotIndex)
-	{
-		_slotIndex = slotIndex;
-	}
+    public void Setup(int slotIndex, InventoryUI inventoryUI)
+    {
+        _slotIndex = slotIndex;
+        _inventoryUI = inventoryUI;
 
-	public void Refresh(InventorySlot slot)
-	{
-		if (_label == null)
-			return;
+        if (_useButton != null)
+            _useButton.Pressed += OnUsePressed;
+    }
 
-		if (slot.IsEmpty)
-		{
-			_label.Text = $"[{_slotIndex}] Empty";
-			return;
-		}
+    public void Refresh(InventorySlot slot)
+    {
+        if (_label == null) return;
 
-		var item = ItemCatalog.Get(slot.ItemId);
-		_label.Text = $"[{_slotIndex}] {item.Name} x{slot.Quantity}";
-	}
+        bool isEmpty = slot.IsEmpty;
+
+        if (isEmpty)
+            _label.Text = $"[{_slotIndex}] Empty";
+        else
+        {
+            var item = ItemCatalog.Get(slot.ItemId);
+            _label.Text = $"[{_slotIndex}] {item.Name} x{slot.Quantity}";
+        }
+
+        if (_useButton != null)
+            _useButton.Visible = !isEmpty;
+    }
+
+    private void OnUsePressed()
+    {
+        _inventoryUI?.NotifyUseItemPressed(_slotIndex);
+    }
 }

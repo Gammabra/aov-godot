@@ -1,67 +1,78 @@
 using Godot;
-using AshesOfVelsingrad.systems;
+using AshesOfVelsingrad.Systems;
 using System.Collections.Generic;
 
 public partial class InventoryUI : Control
 {
-	[Export] private GridContainer? _slotContainer;
-	[Export] private PackedScene? _slotScene;
+    [Export] private GridContainer? _slotContainer;
+    [Export] private PackedScene? _slotScene;
 
-	private InventorySystem? _inventory;
-	private readonly List<InventorySlotUI> _slotUis = new();
+    // ADD: reference to input system so we can emit through it
+    private BattleInputSystem? _battleInputSystem;
 
-	public override void _Ready()
-	{
-		Visible = false;
-	}
+    private InventorySystem? _inventory;
+    private readonly List<InventorySlotUI> _slotUis = new();
 
-	public void BindInventory(InventorySystem inventory)
-	{
-		_inventory = inventory;
-		_inventory.SlotChanged += OnSlotChanged;
+    public override void _Ready()
+    {
+        Visible = false;
+    }
 
-		BuildSlots();
-		RefreshAll();
-	}
+    // ADD: called by GameManager during setup
+    public void SetBattleInputSystem(BattleInputSystem bis)
+    {
+        _battleInputSystem = bis;
+    }
 
-	private void BuildSlots()
-	{
-		if (_slotContainer == null || _slotScene == null || _inventory == null)
-			return;
+    public void BindInventory(InventorySystem inventory)
+    {
+        _inventory = inventory;
+        _inventory.SlotChanged += OnSlotChanged;
+        BuildSlots();
+        RefreshAll();
+    }
 
-		foreach (Node child in _slotContainer.GetChildren())
-			child.QueueFree();
+    // Called by InventorySlotUI when the player clicks "Use"
+    public void NotifyUseItemPressed(int slotIndex)
+    {
+        _battleInputSystem?.EmitSignal(BattleInputSystem.SignalName.OnUseItemPressed, slotIndex);
+        Toggle(); // close the panel after using
+    }
 
-		_slotUis.Clear();
+    private void BuildSlots()
+    {
+        if (_slotContainer == null || _slotScene == null || _inventory == null)
+            return;
 
-		for (int i = 0; i < _inventory.Slots.Length; i++)
-		{
-			var slotUi = _slotScene.Instantiate<InventorySlotUI>();
-			slotUi.Setup(i);
-			_slotContainer.AddChild(slotUi);
-			_slotUis.Add(slotUi);
-		}
-	}
+        foreach (Node child in _slotContainer.GetChildren())
+            child.QueueFree();
 
-	private void RefreshAll()
-	{
-		if (_inventory == null)
-			return;
-		
-		for (int i = 0; i < _inventory.Slots.Length; i++)
-			_slotUis[i].Refresh(_inventory.Slots[i]);
-	}
+        _slotUis.Clear();
 
-	private void OnSlotChanged(int index)
-	{
-		if (index < 0 || index >= _slotUis.Count || _inventory == null)
-			return;
+        for (int i = 0; i < _inventory.Slots.Length; i++)
+        {
+            var slotUi = _slotScene.Instantiate<InventorySlotUI>();
+            slotUi.Setup(i, this); // pass reference so slot can call back
+            _slotContainer.AddChild(slotUi);
+            _slotUis.Add(slotUi);
+        }
+    }
 
-		_slotUis[index].Refresh(_inventory.Slots[index]);
-	}
+    private void RefreshAll()
+    {
+        if (_inventory == null) return;
+        for (int i = 0; i < _inventory.Slots.Length; i++)
+            _slotUis[i].Refresh(_inventory.Slots[i]);
+    }
 
-	public void Toggle()
-	{
-		Visible = !Visible;
-	}
+    private void OnSlotChanged(int index)
+    {
+        if (index < 0 || index >= _slotUis.Count || _inventory == null) return;
+        _slotUis[index].Refresh(_inventory.Slots[index]);
+    }
+
+    public void Toggle()
+    {
+        Visible = !Visible;
+    }
 }

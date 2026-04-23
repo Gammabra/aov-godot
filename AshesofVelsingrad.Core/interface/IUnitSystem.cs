@@ -27,6 +27,7 @@ public interface IUnitSystem : IEffectTarget<IUnitSystem>, IStatusEffectBehavior
     bool IsAlive { get; }
     AIPersonality Personality { get; }
     List<ISkillSystem> ActiveSkills { get; }
+    IInventorySystem Inventory { get; }
 
     //var from UnitSystemStatusEffectImplementation
     float TotalAtk { get; }
@@ -72,4 +73,6 @@ public interface IUnitSystem : IEffectTarget<IUnitSystem>, IStatusEffectBehavior
     new void RemoveEffect(StatusEffect<IUnitSystem> statusEffect);
     new void OnEffectRevive(AovDataStructures.ModifierType modifierType, float amount);
     void SetStatusEffectOnUnit(StatusEffect<IUnitSystem> statusEffect);
+    void UseItem(int slotIndex, IUnitSystem? target, IMapSystem? map);
+
 }

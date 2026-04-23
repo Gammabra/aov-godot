@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace AshesOfVelsingrad.systems;
+namespace AshesOfVelsingrad.Systems;
 
 public static class ItemCatalog
 {

@@ -44,6 +44,10 @@ public partial class GameManager : BaseManager
     [Export]
     private NodePath? _battleInputSystemPath;
 
+    [Export]
+    private NodePath? _inventoryUIPath;
+
+
     /// <summary>
     /// Toggle threat map visualization for all enemy units.
     /// Call this from a debug input or console command.
@@ -56,6 +60,7 @@ public partial class GameManager : BaseManager
     private IMapSystem? _mapSystemContainer;
     private TurnManager? _turnManagerContainer;
     private BattleInputSystem? _battleInputSystemContainer;
+    private InventoryUI? _inventoryUIContainer;
 
     #endregion
 
@@ -108,6 +113,10 @@ public partial class GameManager : BaseManager
         _battleInputSystemContainer.OnSelectMovePressed += PlayerSelectedMove;
         _playerUnitsContainer = GetNode<Node>(_playerUnitsPath);
         _enemyUnitsContainer = GetNode<Node>(_enemyUnitsPath);
+        _battleInputSystemContainer.OnOpenInventoryPressed += OpenInventory;
+        _battleInputSystemContainer.OnUseItemPressed += PlayerUsedItem;
+        _inventoryUIContainer = GetNode<InventoryUI>(_inventoryUIPath);
+        _inventoryUIContainer.SetBattleInputSystem(_battleInputSystemContainer);
 
         LoadUnits();
 
@@ -406,6 +415,54 @@ public partial class GameManager : BaseManager
         }
 
         _statusEffectSystem.ProcessTurnEnd();
+    }
+
+    /// <summary>
+    /// Opens the inventory for the currently active unit.
+    /// </summary>
+    private void OpenInventory()
+    {
+        if (_turnManagerContainer == null)
+            return;
+
+        var currentUnit = _turnManagerContainer.GetCurrentUnit();
+        _inventoryUIContainer?.BindInventory((InventorySystem)currentUnit.Inventory);
+        _inventoryUIContainer?.Toggle();
+    }
+
+    /// <summary>
+    /// Called when the player confirms using an item from the inventory.
+    /// For now uses no map target (self/no-target items only).
+    /// Target-requiring items can be extended like skills.
+    /// </summary>
+    private void PlayerUsedItem(int slotIndex)
+    {
+        if (_turnManagerContainer == null)
+        {
+            GD.PrintErr("TurnManagerContainer not set in GameManager.");
+            return;
+        }
+
+        var currentUnit = _turnManagerContainer.GetCurrentUnit();
+        var slot = currentUnit.Inventory.GetSlot(slotIndex);
+
+        if (slot.IsEmpty)
+        {
+            GD.PrintErr($"Slot {slotIndex} is empty.");
+            _battleInputSystemContainer?.SetInputEnabled(true);
+            return;
+        }
+
+        // For items that need a target, you'd set _clickOnMapContext here
+        // and wait for PlayerMovedUnitOrSelectedTarget, exactly like skills.
+        // For now: no-target / self-target items only.
+        currentUnit.UseItem(slotIndex, target: null, _mapSystemContainer);
+
+        // If the item consumed the turn, input is already disabled by
+        // ReportSystemUnitHasPlayed → CompleteAction → TurnManager advancing.
+        // If it didn't (e.g. equip), re-enable input so the player can still act.
+        if (!ItemCatalog.TryGet(slot.ItemId, out var item) || !item.ConsumesTurn)
+            _battleInputSystemContainer?.SetInputEnabled(true);
     }
 
     #endregion

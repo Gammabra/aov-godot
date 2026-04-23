@@ -1,4 +1,5 @@
-using AshesOfVelsingrad.systems;
+using AshesOfVelsingrad.Systems;
+using AshesOfVelsingrad.Utilities;
 
 namespace AshesOfVelsingrad.items;
 
@@ -12,6 +13,12 @@ public sealed class PotionItem : ItemSystem
 		Category = ItemCategory.Consumable;
 		IsStackable = true;
 		MaxStack = 10;
-		TargetType = TargetType.Allies;
+		TargetType = AovDataStructures.TargetTypes.SingleAlly;
+	}
+
+	public override void Use(IUnitSystem user, IUnitSystem? target, IMapSystem? map)
+	{
+		if (target == null)
+			return;
 	}
 }

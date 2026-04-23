@@ -1,11 +1,11 @@
 using System;
 
-namespace AshesOfVelsingrad.systems;
+namespace AshesOfVelsingrad.Systems;
 
-public struct InventorySlot
+public struct InventorySlot: IReadOnlyInventorySlot
 {
-	public int ItemId;
-	public int Quantity;
+	public int ItemId { get; set; }
+	public int Quantity { get; set; }
 
 	public bool IsEmpty => ItemId == 0 || Quantity <= 0;
 
@@ -16,7 +16,7 @@ public struct InventorySlot
 	}
 }
 
-public sealed class InventorySystem
+public sealed class InventorySystem: IInventorySystem
 {
 	public int Capacity { get; }
 	public InventorySlot[] Slots { get; }
@@ -24,6 +24,7 @@ public sealed class InventorySystem
 	public event Action<int>? SlotChanged;
 
 	private readonly Func<ItemSystem, bool>? _accept;
+    public IReadOnlyInventorySlot GetSlot(int index) => Slots[index];
 
 	public InventorySystem(int capacity, Func<ItemSystem, bool>? acceptFilter = null)
 	{
@@ -151,4 +152,20 @@ public sealed class InventorySystem
 		SlotChanged?.Invoke(fromIndex);
 		SlotChanged?.Invoke(toIndex);
 	}
+
+	/// <summary>
+    /// Uses the item in the given slot. Returns false if the slot is empty or item use failed.
+    /// Does NOT call ReportSystemUnitHasPlayed — that is the caller's responsibility.
+    /// </summary>
+    public bool TryUseItem(int slotIndex, IUnitSystem user, IUnitSystem? target, IMapSystem? map)
+    {
+        if (slotIndex < 0 || slotIndex >= Slots.Length) return false;
+        var slot = Slots[slotIndex];
+        if (slot.IsEmpty) return false;
+        if (!ItemCatalog.TryGet(slot.ItemId, out var item)) return false;
+
+        item.Use(user, target, map);   // apply effect (heal, buff, etc.)
+        RemoveItem(slot.ItemId, 1);    // consume one from stack
+        return true;
+    }
 }

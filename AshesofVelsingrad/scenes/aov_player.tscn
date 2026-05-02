@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://c40qs8x1egpy7"]
+
+[ext_resource type="Texture2D" uid="uid://c3fhnshbrt41q" path="res://assets/Krita/ref_perso.png" id="1_7elhi"]
+[ext_resource type="Script" uid="uid://3kcmpk5x2mx0" path="res://scripts/player/AovPlayer.cs" id="2_x6mcw"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_cy5km"]
+
+[node name="AovPlayer" type="CharacterBody3D" unique_id=1117119690]
+script = ExtResource("2_x6mcw")
+_spritePath = NodePath("Sprite3D")
+_springArm3DPath = NodePath("SpringArm3D")
+
+[node name="Sprite3D" type="Sprite3D" parent="." unique_id=1975111519]
+billboard = 1
+texture = ExtResource("1_7elhi")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=446419558]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+shape = SubResource("CapsuleShape3D_cy5km")
+
+[node name="SpringArm3D" type="SpringArm3D" parent="." unique_id=417669318]
+transform = Transform3D(1, 0, 0, 0, 0.96363044, 0.26723838, 0, -0.26723838, 0.96363044, 0, 0.25, 0)
+spring_length = 2.0
+
+[node name="Camera3D" type="Camera3D" parent="SpringArm3D" unique_id=732970999]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)

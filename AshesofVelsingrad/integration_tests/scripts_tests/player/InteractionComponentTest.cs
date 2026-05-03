@@ -13,217 +13,217 @@ namespace AshesOfVelsingrad.IntegrationTests.Player;
 [RequireGodotRuntime]
 public partial class InteractionComponentTest
 {
-	private readonly List<Node> _testNodes = [];
-	private Node? _root;
+    private readonly List<Node> _testNodes = [];
+    private Node? _root;
 
-	#region Helpers
+    #region Helpers
 
-	private T AddToTestRoot<T>(T node) where T : Node
-	{
-		if (_root == null)
-			throw new InvalidOperationException("Root not initialized");
+    private T AddToTestRoot<T>(T node) where T : Node
+    {
+        if (_root == null)
+            throw new InvalidOperationException("Root not initialized");
 
-		_root.AddChild(node);
-		_testNodes.Add(node);
-		return node;
-	}
+        _root.AddChild(node);
+        _testNodes.Add(node);
+        return node;
+    }
 
-	private InteractionComponent CreateComponent(out AnimatedSprite3D sprite)
-	{
-		InteractionComponent component = new();
-		sprite = new AnimatedSprite3D();
+    private InteractionComponent CreateComponent(out AnimatedSprite3D sprite)
+    {
+        InteractionComponent component = new();
+        sprite = new AnimatedSprite3D();
 
-		AddToTestRoot(component);
-		component.AddChild(sprite);
+        AddToTestRoot(component);
+        component.AddChild(sprite);
 
-		component.Set("_animatedSprite3DPath", sprite.GetPath());
+        component.Set("_animatedSprite3DPath", sprite.GetPath());
 
-		component._Ready();
-		return component;
-	}
+        component._Ready();
+        return component;
+    }
 
-	private void InvokePrivate(object obj, string method, params object[] args)
-	{
-		MethodInfo? m = obj.GetType()
-			.GetMethod(method, BindingFlags.Instance | BindingFlags.NonPublic);
+    private void InvokePrivate(object obj, string method, params object[] args)
+    {
+        MethodInfo? m = obj.GetType()
+            .GetMethod(method, BindingFlags.Instance | BindingFlags.NonPublic);
 
-		m?.Invoke(obj, args);
-	}
+        m?.Invoke(obj, args);
+    }
 
-	#endregion
+    #endregion
 
-	[BeforeTest]
-	public void SetUp()
-	{
-		_testNodes.Clear();
+    [BeforeTest]
+    public void SetUp()
+    {
+        _testNodes.Clear();
 
-		_root = new Node { Name = "TestRoot" };
-		((SceneTree)Engine.GetMainLoop()).Root.AddChild(_root);
-		_testNodes.Add(_root);
-	}
+        _root = new Node { Name = "TestRoot" };
+        ((SceneTree)Engine.GetMainLoop()).Root.AddChild(_root);
+        _testNodes.Add(_root);
+    }
 
-	// --------------------------------------------------
-	// ENTRY / EXIT
-	// --------------------------------------------------
+    // --------------------------------------------------
+    // ENTRY / EXIT
+    // --------------------------------------------------
 
-	[TestCase]
-	public void BodyEntered_AddsInteractable()
-	{
-		InteractionComponent component = CreateComponent(out _);
-		TestInteractable obj = AddToTestRoot(new TestInteractable());
+    [TestCase]
+    public void BodyEntered_AddsInteractable()
+    {
+        InteractionComponent component = CreateComponent(out _);
+        TestInteractable obj = AddToTestRoot(new TestInteractable());
 
-		InvokePrivate(component, "OnBodyEntered", obj);
+        InvokePrivate(component, "OnBodyEntered", obj);
 
-		component._Process(0.1);
+        component._Process(0.1);
 
-		AssertThat(component.ClosestInteractable).IsEqual(obj);
-	}
+        AssertThat(component.ClosestInteractable).IsEqual(obj);
+    }
 
-	[TestCase]
-	public void BodyEntered_IgnoresNonInteractable()
-	{
-		InteractionComponent component = CreateComponent(out _);
-		Node3D obj = AddToTestRoot(new Node3D());
+    [TestCase]
+    public void BodyEntered_IgnoresNonInteractable()
+    {
+        InteractionComponent component = CreateComponent(out _);
+        Node3D obj = AddToTestRoot(new Node3D());
 
-		InvokePrivate(component, "OnBodyEntered", obj);
+        InvokePrivate(component, "OnBodyEntered", obj);
 
-		component._Process(0.1);
+        component._Process(0.1);
 
-		AssertThat(component.ClosestInteractable).IsNull();
-	}
+        AssertThat(component.ClosestInteractable).IsNull();
+    }
 
-	[TestCase]
-	public void BodyExited_RemovesInteractable()
-	{
-		InteractionComponent component = CreateComponent(out _);
-		TestInteractable obj = AddToTestRoot(new TestInteractable());
+    [TestCase]
+    public void BodyExited_RemovesInteractable()
+    {
+        InteractionComponent component = CreateComponent(out _);
+        TestInteractable obj = AddToTestRoot(new TestInteractable());
 
-		InvokePrivate(component, "OnBodyEntered", obj);
-		InvokePrivate(component, "OnBodyExited", obj);
+        InvokePrivate(component, "OnBodyEntered", obj);
+        InvokePrivate(component, "OnBodyExited", obj);
 
-		component._Process(0.1);
+        component._Process(0.1);
 
-		AssertThat(component.ClosestInteractable).IsNull();
-	}
+        AssertThat(component.ClosestInteractable).IsNull();
+    }
 
-	// --------------------------------------------------
-	// CLOSEST SELECTION
-	// --------------------------------------------------
+    // --------------------------------------------------
+    // CLOSEST SELECTION
+    // --------------------------------------------------
 
-	[TestCase]
-	public void Process_SelectsClosestInteractable()
-	{
-		InteractionComponent component = CreateComponent(out AnimatedSprite3D sprite);
+    [TestCase]
+    public void Process_SelectsClosestInteractable()
+    {
+        InteractionComponent component = CreateComponent(out AnimatedSprite3D sprite);
 
-		TestInteractable near = AddToTestRoot(new TestInteractable());
-		TestInteractable far = AddToTestRoot(new TestInteractable());
+        TestInteractable near = AddToTestRoot(new TestInteractable());
+        TestInteractable far = AddToTestRoot(new TestInteractable());
 
-		sprite.GlobalPosition = Vector3.Zero;
-		near.GlobalPosition = new Vector3(1, 0, 0);
-		far.GlobalPosition = new Vector3(10, 0, 0);
+        sprite.GlobalPosition = Vector3.Zero;
+        near.GlobalPosition = new Vector3(1, 0, 0);
+        far.GlobalPosition = new Vector3(10, 0, 0);
 
-		InvokePrivate(component, "OnBodyEntered", near);
-		InvokePrivate(component, "OnBodyEntered", far);
+        InvokePrivate(component, "OnBodyEntered", near);
+        InvokePrivate(component, "OnBodyEntered", far);
 
-		component._Process(0.1);
+        component._Process(0.1);
 
-		AssertThat(component.ClosestInteractable).IsEqual(near);
-	}
+        AssertThat(component.ClosestInteractable).IsEqual(near);
+    }
 
-	// --------------------------------------------------
-	// PROMPT MANAGEMENT
-	// --------------------------------------------------
+    // --------------------------------------------------
+    // PROMPT MANAGEMENT
+    // --------------------------------------------------
 
-	[TestCase]
-	public void Process_ShowsPrompt_OnClosest()
-	{
-		InteractionComponent component = CreateComponent(out AnimatedSprite3D sprite);
+    [TestCase]
+    public void Process_ShowsPrompt_OnClosest()
+    {
+        InteractionComponent component = CreateComponent(out AnimatedSprite3D sprite);
 
-		TestInteractable obj = AddToTestRoot(new TestInteractable());
+        TestInteractable obj = AddToTestRoot(new TestInteractable());
 
-		sprite.GlobalPosition = Vector3.Zero;
-		obj.GlobalPosition = new Vector3(1, 0, 0);
+        sprite.GlobalPosition = Vector3.Zero;
+        obj.GlobalPosition = new Vector3(1, 0, 0);
 
-		InvokePrivate(component, "OnBodyEntered", obj);
+        InvokePrivate(component, "OnBodyEntered", obj);
 
-		component._Process(0.1);
+        component._Process(0.1);
 
-		AssertThat(obj.ShowCalled).IsTrue();
-		AssertThat(obj.HideCalled).IsFalse();
-	}
+        AssertThat(obj.ShowCalled).IsTrue();
+        AssertThat(obj.HideCalled).IsFalse();
+    }
 
-	[TestCase]
-	public void Process_HidesPrompt_OnNonClosest()
-	{
-		InteractionComponent component = CreateComponent(out AnimatedSprite3D sprite);
+    [TestCase]
+    public void Process_HidesPrompt_OnNonClosest()
+    {
+        InteractionComponent component = CreateComponent(out AnimatedSprite3D sprite);
 
-		TestInteractable near = AddToTestRoot(new TestInteractable());
-		TestInteractable far = AddToTestRoot(new TestInteractable());
+        TestInteractable near = AddToTestRoot(new TestInteractable());
+        TestInteractable far = AddToTestRoot(new TestInteractable());
 
-		sprite.GlobalPosition = Vector3.Zero;
-		near.GlobalPosition = new Vector3(1, 0, 0);
-		far.GlobalPosition = new Vector3(10, 0, 0);
+        sprite.GlobalPosition = Vector3.Zero;
+        near.GlobalPosition = new Vector3(1, 0, 0);
+        far.GlobalPosition = new Vector3(10, 0, 0);
 
-		InvokePrivate(component, "OnBodyEntered", near);
-		InvokePrivate(component, "OnBodyEntered", far);
+        InvokePrivate(component, "OnBodyEntered", near);
+        InvokePrivate(component, "OnBodyEntered", far);
 
-		component._Process(0.1);
+        component._Process(0.1);
 
-		AssertThat(near.ShowCalled).IsTrue();
-		AssertThat(far.HideCalled).IsTrue();
-	}
+        AssertThat(near.ShowCalled).IsTrue();
+        AssertThat(far.HideCalled).IsTrue();
+    }
 
-	// --------------------------------------------------
-	// EXIT BEHAVIOR
-	// --------------------------------------------------
+    // --------------------------------------------------
+    // EXIT BEHAVIOR
+    // --------------------------------------------------
 
-	[TestCase]
-	public void BodyExited_ClearsClosest_WhenEmpty()
-	{
-		InteractionComponent component = CreateComponent(out _);
-		TestInteractable obj = AddToTestRoot(new TestInteractable());
+    [TestCase]
+    public void BodyExited_ClearsClosest_WhenEmpty()
+    {
+        InteractionComponent component = CreateComponent(out _);
+        TestInteractable obj = AddToTestRoot(new TestInteractable());
 
-		InvokePrivate(component, "OnBodyEntered", obj);
-		InvokePrivate(component, "OnBodyExited", obj);
+        InvokePrivate(component, "OnBodyEntered", obj);
+        InvokePrivate(component, "OnBodyExited", obj);
 
-		component._Process(0.1);
+        component._Process(0.1);
 
-		AssertThat(component.ClosestInteractable).IsNull();
-	}
+        AssertThat(component.ClosestInteractable).IsNull();
+    }
 
-	#region Test Double
+    #region Test Double
 
-	private partial class TestInteractable : Node3D, IInteractable
-	{
-		public bool ShowCalled { get; private set; }
-		public bool HideCalled { get; private set; }
+    private partial class TestInteractable : Node3D, IInteractable
+    {
+        public bool ShowCalled { get; private set; }
+        public bool HideCalled { get; private set; }
 
-		public bool CanInteract() => true;
+        public bool CanInteract() => true;
 
-		public void Interact(IInteractor interactor) { }
+        public void Interact(IInteractor interactor) { }
 
-		public void ShowPrompt()
-		{
-			ShowCalled = true;
-		}
+        public void ShowPrompt()
+        {
+            ShowCalled = true;
+        }
 
-		public void HidePrompt()
-		{
-			HideCalled = true;
-		}
-	}
+        public void HidePrompt()
+        {
+            HideCalled = true;
+        }
+    }
 
-	#endregion
+    #endregion
 
-	[AfterTest]
-	public void TearDown()
-	{
-		foreach (Node node in _testNodes)
-		{
-			if (GodotObject.IsInstanceValid(node) && !node.IsQueuedForDeletion())
-				node.QueueFree();
-		}
+    [AfterTest]
+    public void TearDown()
+    {
+        foreach (Node node in _testNodes)
+        {
+            if (GodotObject.IsInstanceValid(node) && !node.IsQueuedForDeletion())
+                node.QueueFree();
+        }
 
-		_testNodes.Clear();
-	}
+        _testNodes.Clear();
+    }
 }

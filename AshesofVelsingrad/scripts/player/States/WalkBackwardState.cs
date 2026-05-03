@@ -1,9 +1,9 @@
-﻿using Godot;
 using AshesOfVelsingrad.Managers;
+using Godot;
 
 namespace AshesOfVelsingrad.player.States;
 
-public partial class WalkBackwardState: State
+public partial class WalkBackwardState : State
 {
     [Export]
     private NodePath? _animatedSprite3DPath;

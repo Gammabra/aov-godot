@@ -17,6 +17,7 @@ public sealed partial class Player1Data : UnitSystem
         BaseSpeed = 200;
         Intelligence = 200;
         ManaPoint = 200;
+        MaxMana = 200;
         IsAlive = true;
         HasPlayed = false;
         PossibleMovesRange = 2;

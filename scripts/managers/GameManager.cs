@@ -138,6 +138,29 @@ public partial class GameManager : BaseManager
     }
 
     /// <inheritdoc />
+    public override void _UnhandledInput(InputEvent @event)
+    {
+        // Cancel skill targeting on Esc or right-click anywhere.
+        if (_gameState != GameState.TargetingSkill) return;
+
+        bool cancelled = false;
+        if (@event is InputEventKey { Pressed: true, Keycode: Key.Escape })
+        {
+            cancelled = true;
+        }
+        else if (@event is InputEventMouseButton { Pressed: true, ButtonIndex: MouseButton.Right })
+        {
+            cancelled = true;
+        }
+
+        if (cancelled)
+        {
+            CancelSkillTargeting();
+            GetViewport().SetInputAsHandled();
+        }
+    }
+
+    /// <inheritdoc />
     protected override void Initialize()
     {
         if (Instance != null && Instance != this)
@@ -310,13 +333,14 @@ public partial class GameManager : BaseManager
     {
         if (_battleHud is null) return;
 
-        // ActionMenu: Attack / Skill / Item / Pass / Flee.
+        // ActionMenu: Attack / Skill / Item / Pass / Flee + Cancel.
         if (_battleHud.ActionMenu is { } menu)
         {
             menu.OnAttackPressed += OnHudAttackPressed;
             menu.OnSkillPressed += OnHudSkillPressed;
             menu.OnItemPressed += OnHudItemPressed;
             menu.OnFleePressed += OnHudFleePressed;
+            menu.OnCancelPressed += CancelSkillTargeting;
             // Pass is already handled internally by the ActionMenu (calls unit.PassTurn()).
         }
 
@@ -327,6 +351,24 @@ public partial class GameManager : BaseManager
         // InventoryPanel: an item was chosen.
         if (_battleHud.InventoryPanel is { } inv)
             inv.OnItemChosen += OnHudItemChosen;
+    }
+
+    /// <summary>
+    ///     Cancel skill-targeting mode and return to the regular player turn.
+    /// </summary>
+    /// <remarks>
+    ///     Called by the Cancel button in <see cref="ActionMenu" />, by the Escape key,
+    ///     and by right-click. Idempotent — safe to call when no skill is selected.
+    /// </remarks>
+    private void CancelSkillTargeting()
+    {
+        if (_gameState != GameState.TargetingSkill) return;
+        _selectedSkill = null;
+        _gameState = GameState.PlayerTurn;
+        HideAllIndicators();
+        _battleHud?.ActionMenu?.ShowCancel(false);
+        BattleEventBus.Instance?.Publish(new BattleEvents.LogMessage("Skill targeting cancelled.", LogSeverity.Info));
+        ActivatePlayerUnit();
     }
 
     #endregion
@@ -745,6 +787,7 @@ public partial class GameManager : BaseManager
         _selectedSkill = null;
         _gameState = GameState.PlayerTurn;
         HideAllIndicators();
+        _battleHud?.ActionMenu?.ShowCancel(false);
     }
 
     /// <summary>
@@ -830,9 +873,26 @@ public partial class GameManager : BaseManager
     {
         _selectedSkill = skill;
         _gameState = GameState.TargetingSkill;
+        string cost = BuildSkillCostBlurb(skill);
         BattleEventBus.Instance?.Publish(new BattleEvents.LogMessage(
-            $"Choose a target for {skill.Name}.", LogSeverity.Info));
+            $"Choose a target for {skill.Name}{cost}. Right-click or press Esc to cancel.",
+            LogSeverity.Info));
         ShowTargetIndicators();
+        _battleHud?.ActionMenu?.ShowCancel(true);
+    }
+
+    /// <summary>
+    ///     Build a "(MP X, CD Y)" suffix for a skill, omitted parts when zero.
+    /// </summary>
+    /// <param name="skill">The skill to describe.</param>
+    /// <returns>A leading-space string ready to concatenate, or empty.</returns>
+    private static string BuildSkillCostBlurb(SkillSystem skill)
+    {
+        bool mp = skill.ManaCost > 0;
+        bool cd = skill.TotalCooldown > 0;
+        if (!mp && !cd) return string.Empty;
+        if (mp && cd) return $"  (MP {skill.ManaCost:F0}, CD {skill.TotalCooldown})";
+        return mp ? $"  (MP {skill.ManaCost:F0})" : $"  (CD {skill.TotalCooldown})";
     }
 
     #endregion

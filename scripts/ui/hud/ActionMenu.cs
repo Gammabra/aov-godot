@@ -39,6 +39,11 @@ public sealed partial class ActionMenu : Control
     /// <summary>Fired when the player flees.</summary>
     public event Action? OnFleePressed;
 
+    /// <summary>Fired when the player cancels skill targeting (Cancel button / Esc / right-click).</summary>
+    public event Action? OnCancelPressed;
+
+    private Button? _cancelButton;
+
     /// <inheritdoc />
     public override void _Ready()
     {
@@ -96,8 +101,31 @@ public sealed partial class ActionMenu : Control
         });
         AddButton(row, "Flee", () => OnFleePressed?.Invoke());
 
+        // Cancel is hidden until the player enters skill-targeting mode.
+        _cancelButton = new Button
+        {
+            Text = "Cancel",
+            CustomMinimumSize = new Vector2(92, 40),
+            SizeFlagsHorizontal = SizeFlags.ExpandFill,
+            Visible = false,
+        };
+        HudStyle.StyleButton(_cancelButton);
+        _cancelButton.AddThemeColorOverride("font_color", new Color(1f, 0.7f, 0.5f));
+        _cancelButton.Pressed += () => OnCancelPressed?.Invoke();
+        row.AddChild(_cancelButton);
+
         // Begin hidden until the first player turn starts.
         Visible = false;
+    }
+
+    /// <summary>
+    ///     Toggle the visibility of the Cancel button (used when entering / leaving
+    ///     skill-targeting mode).
+    /// </summary>
+    /// <param name="show">Whether to show the button.</param>
+    public void ShowCancel(bool show)
+    {
+        if (_cancelButton is not null) _cancelButton.Visible = show;
     }
 
     private static void AddButton(Container parent, string label, Action onPressed)

@@ -174,6 +174,12 @@ public abstract partial class UnitSystem : CharacterBody3D, IEffectTarget
     public CharacterProfile? Profile { get; set; }
 
     /// <summary>
+    ///     Optional display metadata (portrait, name, level, class) for HUD widgets.
+    ///     Falls back to <see cref="UnitName" /> / "Lv 1" when null.
+    /// </summary>
+    public EntityProfile? EntityProfile { get; set; }
+
+    /// <summary>
     ///     Optional per-unit AI override (boss patterns, scripted minibosses, etc.).
     ///     If null, <see cref="AiRegistry.ResolveFor" /> picks the default for the faction.
     /// </summary>

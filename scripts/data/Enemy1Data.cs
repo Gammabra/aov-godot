@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Godot;
 using AshesOfVelsingrad.systems;
 
 namespace AshesOfVelsingrad;
@@ -20,5 +21,11 @@ public sealed partial class Enemy1Data : UnitSystem
         HasPlayed = false;
         PossibleMovesRange = 2;
         Curse = 0;
+        // Assign portrait from assets
+        EntityProfile = new EntityProfile
+        {
+            DisplayName = "Poussacha",
+            Portrait = GD.Load<Texture2D>("res://assets/portraits/poussacha.png")
+        };
     }
 }

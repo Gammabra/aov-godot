@@ -41,6 +41,9 @@ public sealed partial class BattleHud : CanvasLayer
     /// <summary>Battle log widget.</summary>
     public BattleLog? Log { get; private set; }
 
+    /// <summary>Player status panel (portrait, name, HP/MP/corruption) at bottom-left.</summary>
+    public PlayerStatusPanel? PlayerStatus { get; private set; }
+
     /// <inheritdoc />
     public override void _Ready()
     {
@@ -53,6 +56,7 @@ public sealed partial class BattleHud : CanvasLayer
         TurnQueue = GetOrCreate<TurnOrderQueue>("TurnQueue");
         CorruptionGauge = GetOrCreate<CorruptionGauge>("CorruptionGauge");
         Log = GetOrCreate<BattleLog>("BattleLog");
+        PlayerStatus = GetOrCreate<PlayerStatusPanel>("PlayerStatus");
 
         // Defer the bus subscription — by the time the helper resolves, every singleton's
         // _Ready has run and Instance is populated.

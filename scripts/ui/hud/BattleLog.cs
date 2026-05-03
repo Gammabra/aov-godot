@@ -51,20 +51,31 @@ public sealed partial class BattleLog : Control
         OffsetBottom = -100;
         MouseFilter = MouseFilterEnum.Ignore;
 
-        Control inner = new() { MouseFilter = MouseFilterEnum.Ignore };
+        VBoxContainer inner = new() { MouseFilter = MouseFilterEnum.Ignore };
+        inner.AddThemeConstantOverride("separation", 4);
         inner.SetAnchorsAndOffsetsPreset(LayoutPreset.FullRect);
         AddChild(HudStyle.MakePanel(inner));
 
+        Label header = new() { Text = "Log" };
+        HudStyle.StyleLabel(header);
+        header.AddThemeColorOverride("font_color", HudStyle.DimText);
+        inner.AddChild(header);
+
+        // RichTextLabel handles its own scrolling when ScrollActive is true and FitContent
+        // is false — the scroll bar appears automatically once the text exceeds the visible
+        // area. Wrapping it in an extra ScrollContainer would interfere with that.
         _text = new RichTextLabel
         {
             BbcodeEnabled = true,
+            ScrollActive = true,
             ScrollFollowing = true,
-            FitContent = true,
-            // Stop on the text so the player can scroll/read it without the click going through.
+            FitContent = false,
+            SizeFlagsHorizontal = SizeFlags.ExpandFill,
+            SizeFlagsVertical = SizeFlags.ExpandFill,
             MouseFilter = MouseFilterEnum.Stop,
+            AutowrapMode = TextServer.AutowrapMode.WordSmart,
         };
         _text.AddThemeFontSizeOverride("normal_font_size", 13);
-        _text.SetAnchorsAndOffsetsPreset(LayoutPreset.FullRect);
         inner.AddChild(_text);
     }
 

@@ -110,6 +110,9 @@ public sealed partial class SkillSelector : Control
             string cd = skill.Cooldown > 0 ? $"  CD {skill.Cooldown}" : "";
             _buttons[i].Text = $"{i + 1}. {skill.Name}\n{mana}{cd}".TrimEnd();
             _buttons[i].Disabled = skill.Cooldown > 0 || skill.ManaCost > unit.ManaPoint;
+            // Tooltip: full description + balance numbers, shown on hover.
+            string desc = string.IsNullOrEmpty(skill.Description) ? skill.Name : skill.Description;
+            _buttons[i].TooltipText = $"{skill.Name}\n{desc}\n\nMP {skill.ManaCost:F0}  •  CD {skill.TotalCooldown}  •  Range {skill.Range}";
         }
     }
 

@@ -6,9 +6,9 @@
 [ext_resource type="Script" uid="uid://dkhfwdhsqvki4" path="res://scripts/managers/TurnManager.cs" id="3_p4llj"]
 [ext_resource type="Script" uid="uid://ch3yx81605e7t" path="res://scripts/data/Player1Data.cs" id="4_so6rl"]
 [ext_resource type="Script" uid="uid://c7tb4cc8xrwme" path="res://scripts/data/Enemy1Data.cs" id="5_nvgwb"]
-[ext_resource type="Texture2D" uid="uid://d2o6v40ln62ci" path="res://assets/aov-logo-transparent.png" id="6_l5nkq"]
-[ext_resource type="Texture2D" uid="uid://ddwok17vhh08j" path="res://assets/icon.svg" id="6_lhig6"]
+[ext_resource type="Texture2D" uid="uid://bi17rova4t1r8" path="res://assets/portraits/meowth.png" id="6_l5nkq"]
 [ext_resource type="Script" uid="uid://buj6bdu8gkf0j" path="res://scripts/systems/BattleInputSystem.cs" id="7_nvgwb"]
+[ext_resource type="Texture2D" uid="uid://nw4s8grmmh5d" path="res://assets/portraits/poussacha.png" id="8_ctjmi"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_ctjmi"]
 
@@ -48,7 +48,6 @@ script = ExtResource("2_p4llj")
 script = ExtResource("4_so6rl")
 
 [node name="Sprite3D" type="Sprite3D" parent="GameManager/PlayerUnits/Player1" unique_id=1566906663]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 billboard = 1
 texture = ExtResource("6_l5nkq")
 
@@ -62,7 +61,7 @@ script = ExtResource("5_nvgwb")
 
 [node name="Sprite3D" type="Sprite3D" parent="GameManager/EnemyUnits/Enemy1" unique_id=174030928]
 billboard = 1
-texture = ExtResource("6_lhig6")
+texture = ExtResource("8_ctjmi")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="GameManager/EnemyUnits/Enemy1" unique_id=1180714607]
 shape = SubResource("SphereShape3D_k3vm1")
@@ -72,4 +71,3 @@ script = ExtResource("3_p4llj")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=223344555]
 transform = Transform3D(0.8660254, 0, 0.5, 0, 1, 0, -0.5, 0, 0.8660254, 0, 4, 0)
-light_energy = 1.0

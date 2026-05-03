@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using AshesOfVelsingrad.Systems;
 using Godot;
 
@@ -59,7 +59,8 @@ public partial class InteractionComponent : Area3D
         foreach (Node3D body in _interactableObjects)
         {
             IInteractable? interactable = body as IInteractable;
-            if (body == ClosestInteractable) {
+            if (body == ClosestInteractable)
+            {
                 interactable?.ShowPrompt();
                 continue;
             }

@@ -180,15 +180,25 @@ public partial class GameManager : BaseManager
     }
 
     /// <summary>
-    ///     Add a node of type <typeparamref name="T" /> to the scene root if none exists.
+    ///     Add a node of type <typeparamref name="T" /> to the scene root if none exists,
+    ///     and force its <c>_Ready</c> to run synchronously so its <c>Instance</c> static
+    ///     is set before the next bootstrap step depends on it.
     /// </summary>
     /// <typeparam name="T">A <see cref="Node" /> subclass with a parameterless constructor.</typeparam>
     /// <param name="name">Name to give the node when freshly created.</param>
     /// <remarks>
-    ///     Adds directly (not deferred) so that <c>Instance</c> singletons are populated
-    ///     before the next bootstrap step runs. Godot fires <c>_Ready</c> on the new child
-    ///     at the next idle frame, which we wait for explicitly in
-    ///     <see cref="StartBattleWhenReady" />.
+    ///     <para>
+    ///         Godot 4 .NET defers <c>_Ready</c> for nodes added via <c>AddChild</c> while
+    ///         another node is mid-<c>_Ready</c>. The defer can stretch beyond a few frames
+    ///         in practice, so the rest of the bootstrap (especially
+    ///         <see cref="DefaultDatabaseSeeder" /> reading the registries) would race.
+    ///     </para>
+    ///     <para>
+    ///         Force-calling <c>_Ready</c> right after <c>AddChild</c> makes the lifecycle
+    ///         deterministic: every singleton is fully usable by the time the next line runs.
+    ///         If Godot eventually fires its own <c>_Ready</c>, our duplicate-detection in each
+    ///         singleton's <c>_Ready</c> body short-circuits gracefully (idempotent assignment).
+    ///     </para>
     /// </remarks>
     private void EnsureSingleton<T>(string name) where T : Node, new()
     {
@@ -199,7 +209,22 @@ public partial class GameManager : BaseManager
 
         T node = new() { Name = name };
         root.AddChild(node);
-        GD.Print($"GameManager: bootstrapped {typeof(T).Name}.");
+
+        // Force _Ready synchronously. IsNodeReady() returns false until Godot's own _Ready
+        // dispatch has completed, so this is a no-op when Godot already invoked it.
+        if (!node.IsNodeReady())
+        {
+            try
+            {
+                node._Ready();
+            }
+            catch (System.Exception e)
+            {
+                GD.PrintErr($"GameManager: forced _Ready threw on {typeof(T).Name}: {e.Message}");
+            }
+        }
+
+        GD.Print($"GameManager: bootstrapped {typeof(T).Name} (NodeReady={node.IsNodeReady()}).");
     }
 
     /// <summary>

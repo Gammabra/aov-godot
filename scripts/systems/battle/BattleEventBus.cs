@@ -68,6 +68,7 @@ public sealed partial class BattleEventBus : Node
         }
 
         Instance = this;
+        GD.Print("BattleEventBus._Ready: Instance set.");
     }
 
     #endregion

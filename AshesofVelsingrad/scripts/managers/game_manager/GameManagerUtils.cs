@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
 using AshesOfVelsingrad.Systems;
+using AshesOfVelsingrad.Systems.Battle;
+using AshesOfVelsingrad.UI.Hud;
 using AshesOfVelsingrad.Utilities;
 using Godot;
 
@@ -92,7 +94,12 @@ public partial class GameManager
         }
 
         _currentUnitPossibleMoves.Clear();
-        MoveUnit(cell);
+        _ = AnimateUnitMove(cell);
+        _unitMoved = true;
+        _turnManagerContainer.GetCurrentUnit().MoveTo(cell.Item1, cell.Item2, cell.Item3, _mapSystemContainer);
+        HideAllIndicators();
+        _battleHud?.ContextInfo?.ShowMovement(0,
+            _turnManagerContainer.GetCurrentUnit().PossibleMovesRange, canMove: false);
         _battleInputSystemContainer.SetInputEnabled(true);
     }
 
@@ -135,7 +142,7 @@ public partial class GameManager
             }
             catch (ArgumentOutOfRangeException)
             {
-                GD.PrintErr($"No target on the cell {cell}.");
+                Warn("No unit on that cell.");
                 _battleInputSystemContainer.SetInputEnabled(true);
                 return;
             }
@@ -143,35 +150,49 @@ public partial class GameManager
 
         if (!_currentUnitReachableCellsForCurrentSelectedSkill.Contains(new Vector3I(cell.Item1, cell.Item2, cell.Item3)))
         {
-            GD.PrintErr("The cell/target is not reachable.");
+            Warn("Target out of range.");
             _battleInputSystemContainer.SetInputEnabled(true);
             return;
         }
 
         if (target is null)
         {
-            GD.PrintErr($"No target on the cell {cell}.");
+            Warn("No unit on that cell.");
             _battleInputSystemContainer.SetInputEnabled(true);
             return;
         }
 
         if (_selectedSkill == null)
         {
-            GD.PrintErr("No selected skill.");
+            Warn("No skill selected.");
             _battleInputSystemContainer.SetInputEnabled(true);
             return;
         }
 
         if (_selectedSkill.EffectType == AovDataStructures.EffectType.Revive && target.IsAlive)
         {
-            GD.PrintErr("Target is already alive.");
+            Warn("Target is not dead.");
             _battleInputSystemContainer.SetInputEnabled(true);
             return;
         }
 
         if (_selectedSkill.EffectType != AovDataStructures.EffectType.Revive && !target.IsAlive)
         {
-            GD.PrintErr("Target is dead.");
+            Warn("Target is dead — pick another.");
+            _battleInputSystemContainer.SetInputEnabled(true);
+            return;
+        }
+
+        if (_selectedSkill.Cooldown > 0)
+        {
+            Warn($"{_selectedSkill.Name} is on cooldown.");
+            _battleInputSystemContainer.SetInputEnabled(true);
+            return;
+        }
+
+        if (_turnManagerContainer.GetCurrentUnit().Mana < _selectedSkill.ManaCost)
+        {
+            Warn("Not enough mana.");
             _battleInputSystemContainer.SetInputEnabled(true);
             return;
         }

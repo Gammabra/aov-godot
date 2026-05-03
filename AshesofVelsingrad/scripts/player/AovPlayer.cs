@@ -32,6 +32,7 @@ public sealed partial class AovPlayer : CharacterBody3D, IInteractor
 		_sprite3D = GetNode<Sprite3D>(_spritePath);
 		_springArm3D = GetNode<SpringArm3D>(_springArm3DPath);
 		_interactionComponent = GetNode<InteractionComponent>(_interactionComponentPath);
+		_instance = this;
 	}
 
 	public override void _Ready()

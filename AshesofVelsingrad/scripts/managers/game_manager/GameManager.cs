@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using AshesOfVelsingrad.AI;
 using AshesOfVelsingrad.Systems;
+using AshesOfVelsingrad.Systems.Battle;
+using AshesOfVelsingrad.UI.Hud;
 using AshesOfVelsingrad.Utilities;
 using Godot;
 
@@ -119,6 +121,8 @@ public partial class GameManager : BaseManager
         _turnManagerContainer.OnPlayerTurnEnd += DeactivatePlayerUnit;
         _turnManagerContainer.OnEnemyTurn += EnemyTurnStarted;
         _turnManagerContainer.OnEnemyTurnEnd += EnemyTurnEnded;
+        _turnManagerContainer.OnAllyTurn += AllyTurnStarted;
+        _turnManagerContainer.OnAllyTurnEnd += AllyTurnEnded;
         _turnManagerContainer.OnCurrentTurnEnd += CurrentTurnEnded;
         _turnManagerContainer.InitializeTurnOrder(_playerUnits, _enemyUnits);
 
@@ -158,6 +162,10 @@ public partial class GameManager : BaseManager
             GD.PrintErr("EnemyAIManager: MapSystem not available when setting up AI manager");
 
         _turnManagerContainer.SetAIManager(AIManager);
+        
+        EnsureHud();
+        EnsureIndicators();
+        CallDeferred(nameof(WireHudEvents));
     }
 
     #endregion
@@ -213,6 +221,10 @@ public partial class GameManager : BaseManager
         GD.Print("Current Unit Possible Moves: " + string.Join(", ", _currentUnitPossibleMoves));
         _battleInputSystemContainer.SetInputEnabled(true);
         GD.Print("Activate input");
+        RefreshHudForActiveUnit(_turnManagerContainer.GetCurrentUnit());
+        ShowMoveIndicators(_currentUnitPossibleMoves);
+        _battleHud?.ContextInfo?.ShowMovement(_currentUnitPossibleMoves.Count,
+            _turnManagerContainer.GetCurrentUnit().PossibleMovesRange, canMove: !_unitMoved);
     }
 
     /// <summary>
@@ -246,6 +258,8 @@ public partial class GameManager : BaseManager
         _currentUnitReachableCellsForCurrentSelectedSkill.Clear();
         _battleInputSystemContainer.SetInputEnabled(false);
         GD.Print("Deactivate input and player units");
+        HideAllIndicators();
+        _battleHud?.ActionMenu?.ShowCancel(false);
         CheckUnitTurnEnd();
     }
 
@@ -293,6 +307,9 @@ public partial class GameManager : BaseManager
         GD.Print(
             "Current Unit Reachable cells: " + string.Join(", ", _currentUnitReachableCellsForCurrentSelectedSkill)
         );
+        ShowTargetIndicators(_currentUnitReachableCellsForCurrentSelectedSkill);
+        _battleHud?.ContextInfo?.ShowSkill(_selectedSkill);
+        _battleHud?.ActionMenu?.ShowCancel(true);
     }
 
     /// <summary>
@@ -372,6 +389,10 @@ public partial class GameManager : BaseManager
 
         _statusEffectSystem.ProcessUnitStatusEffects(_turnManagerContainer.GetCurrentUnit());
     }
+
+    private void AllyTurnStarted() => EnemyTurnStarted();
+
+    private void AllyTurnEnded() => EnemyTurnEnded();
 
     /// <summary>
     ///     Resets movement flags when the enemy turn ends.

@@ -10,7 +10,7 @@ namespace AshesOfVelsingrad.Systems;
 ///     <para>
 ///         Faction is <see cref="Systems.Faction.Player" /> by default; set it from the unit's
 ///         <c>Initialize()</c> override (<c>Faction = Faction.Enemy</c>) or via
-///         <see cref="AssignFaction" /> from <c>GameManager.LoadUnits</c> based on which
+///         <see cref="SetFaction" /> from <c>GameManager.LoadUnits</c> based on which
 ///         container the unit lives in.
 ///     </para>
 ///     <para>
@@ -31,9 +31,18 @@ public abstract partial class UnitSystem
     ///     scene-tree container the unit was found in.
     /// </summary>
     /// <param name="faction">Faction to assign.</param>
-    public void AssignFaction(Faction faction)
+    public void SetFaction(Faction faction)
     {
         Faction = faction;
+    }
+
+    /// <summary>
+    ///     Backward-compatible alias for <see cref="SetFaction" />.
+    /// </summary>
+    /// <param name="faction">Faction to assign.</param>
+    public void AssignFaction(Faction faction)
+    {
+        SetFaction(faction);
     }
 
     /// <summary>

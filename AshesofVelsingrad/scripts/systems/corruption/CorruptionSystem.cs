@@ -2,7 +2,6 @@ using System.Collections.Generic;
 using AshesOfVelsingrad.Managers;
 using AshesOfVelsingrad.Systems;
 using AshesOfVelsingrad.Systems.Battle;
-using AshesOfVelsingrad.Utilities;
 using Godot;
 
 namespace AshesOfVelsingrad.Data.Corruption;

@@ -59,10 +59,11 @@ public sealed partial class PlayerStatusPanel : Control
 
     private void BuildLayout()
     {
+        // Bottom-left, sized generously so the portrait + 3 bars + corruption strip all fit.
         SetAnchorsAndOffsetsPreset(LayoutPreset.BottomLeft);
         OffsetLeft = 12;
-        OffsetTop = -160;
-        OffsetRight = 280;
+        OffsetTop = -210;
+        OffsetRight = 320;
         OffsetBottom = -12;
         MouseFilter = MouseFilterEnum.Ignore;
 
@@ -78,7 +79,7 @@ public sealed partial class PlayerStatusPanel : Control
 
         _portrait = new TextureRect
         {
-            CustomMinimumSize = new Vector2(56, 56),
+            CustomMinimumSize = new Vector2(48, 48),
             ExpandMode = TextureRect.ExpandModeEnum.IgnoreSize,
             StretchMode = TextureRect.StretchModeEnum.KeepAspectCentered,
             MouseFilter = MouseFilterEnum.Ignore,

@@ -35,8 +35,8 @@ public sealed partial class BattleHud : CanvasLayer
     /// <summary>Turn-order queue showing the next units to act.</summary>
     public TurnOrderQueue? TurnQueue { get; private set; }
 
-    /// <summary>Corruption gauge for the active player unit.</summary>
-    public CorruptionGauge? CorruptionGauge { get; private set; }
+    /// <summary>Top-left context panel — movement budget or selected-skill details.</summary>
+    public ContextInfoPanel? ContextInfo { get; private set; }
 
     /// <summary>Battle log widget.</summary>
     public BattleLog? Log { get; private set; }
@@ -54,7 +54,7 @@ public sealed partial class BattleHud : CanvasLayer
         InventoryPanel = GetOrCreate<InventoryPanel>("InventoryPanel");
         EnemyRoster = GetOrCreate<EnemyRoster>("EnemyRoster");
         TurnQueue = GetOrCreate<TurnOrderQueue>("TurnQueue");
-        CorruptionGauge = GetOrCreate<CorruptionGauge>("CorruptionGauge");
+        ContextInfo = GetOrCreate<ContextInfoPanel>("ContextInfo");
         Log = GetOrCreate<BattleLog>("BattleLog");
         PlayerStatus = GetOrCreate<PlayerStatusPanel>("PlayerStatus");
 

@@ -86,6 +86,12 @@ public partial class GameManager : BaseManager
     /// <summary>World-space indicator for skill targets (red).</summary>
     private MoveIndicator? _targetIndicator;
 
+    /// <summary>Single-tile hover overlay that follows the mouse cursor.</summary>
+    private MoveIndicator? _hoverIndicator;
+
+    /// <summary>Cached camera reference used for hover ray-casting.</summary>
+    private Camera3D? _camera;
+
     #endregion
 
     #region Godot Private Fields
@@ -140,6 +146,13 @@ public partial class GameManager : BaseManager
     /// <inheritdoc />
     public override void _UnhandledInput(InputEvent @event)
     {
+        // Hover: every mouse move during a player turn updates the yellow tile under the cursor.
+        if (@event is InputEventMouseMotion motion)
+        {
+            UpdateHoverFromMouse(motion.Position);
+            return;
+        }
+
         // Cancel skill targeting on Esc or right-click anywhere.
         if (_gameState != GameState.TargetingSkill) return;
 
@@ -158,6 +171,56 @@ public partial class GameManager : BaseManager
             CancelSkillTargeting();
             GetViewport().SetInputAsHandled();
         }
+    }
+
+    /// <summary>
+    ///     Cast a ray from the mouse cursor and light up the cell it hits.
+    /// </summary>
+    /// <param name="screenPos">Mouse position in viewport coordinates.</param>
+    /// <remarks>
+    ///     Cheap: only runs while a player faction unit is acting and the bus / map are alive.
+    ///     During <see cref="GameState.PlayerTurn" /> the indicator only lights tiles in
+    ///     <see cref="_currentUnitPossibleMoves" />; during <see cref="GameState.TargetingSkill" />
+    ///     it lights any tile that has a unit on it. Otherwise the indicator is hidden.
+    /// </remarks>
+    private void UpdateHoverFromMouse(Vector2 screenPos)
+    {
+        if (_hoverIndicator is null || _mapSystemContainer is null) return;
+        if (_gameState is not (GameState.PlayerTurn or GameState.TargetingSkill))
+        {
+            _hoverIndicator.Hide();
+            return;
+        }
+
+        Camera3D? cam = _camera ?? GetViewport().GetCamera3D();
+        if (cam is null) { _hoverIndicator.Hide(); return; }
+        _camera = cam;
+
+        Vector3 from = cam.ProjectRayOrigin(screenPos);
+        Vector3 dir = cam.ProjectRayNormal(screenPos);
+        Vector3 to = from + dir * 2000f;
+
+        PhysicsDirectSpaceState3D space = cam.GetWorld3D().DirectSpaceState;
+        PhysicsRayQueryParameters3D query = PhysicsRayQueryParameters3D.Create(from, to);
+        Godot.Collections.Dictionary? result = space.IntersectRay(query);
+        if (result is null || result.Count == 0 || !result.TryGetValue("position", out Variant posV))
+        {
+            _hoverIndicator.Hide();
+            return;
+        }
+
+        Vector3I cell = _mapSystemContainer.LocalToMap((Vector3)posV);
+        bool eligible = _gameState switch
+        {
+            GameState.PlayerTurn => _currentUnitPossibleMoves.Contains((cell.X, cell.Y, cell.Z)),
+            GameState.TargetingSkill => FindUnitAtCellXZ(cell.X, cell.Z) is not null,
+            _ => false,
+        };
+
+        if (eligible)
+            _hoverIndicator.Show([(cell.X, 0, cell.Z)]);
+        else
+            _hoverIndicator.Hide();
     }
 
     /// <inheritdoc />
@@ -517,7 +580,7 @@ public partial class GameManager : BaseManager
         for (int i = 0; i < _enemyUnits.Count; i++)
             GD.Print($"[GameManager] Enemy  {i}: {_enemyUnits[i].UnitName} at {_enemyUnits[i].GlobalPosition}");
 
-        // Spawn world-space indicators (move tiles + skill targets) as children of the map.
+        // Spawn world-space indicators (move tiles + skill targets + hover) as children of the map.
         _moveIndicator = new MoveIndicator { Name = "MoveIndicator" };
         _mapSystemContainer.AddChild(_moveIndicator);
         _moveIndicator.Bind(_mapSystemContainer);
@@ -529,6 +592,18 @@ public partial class GameManager : BaseManager
         };
         _mapSystemContainer.AddChild(_targetIndicator);
         _targetIndicator.Bind(_mapSystemContainer);
+
+        _hoverIndicator = new MoveIndicator
+        {
+            Name = "HoverIndicator",
+            TileColor = new Color(0.95f, 0.85f, 0.30f, 0.65f),
+            Height = 0.08f, // sit slightly above the move/target tiles so it's always visible
+        };
+        _mapSystemContainer.AddChild(_hoverIndicator);
+        _hoverIndicator.Bind(_mapSystemContainer);
+
+        // Cache the camera once for hover ray-casts. Falls back to viewport's active camera.
+        _camera = GetViewport().GetCamera3D();
 
         _turnManagerContainer = GetNode<TurnManager>(_turnManagerPath);
         _turnManagerContainer.OnPlayerTurn += ActivatePlayerUnit;
@@ -597,6 +672,7 @@ public partial class GameManager : BaseManager
         if (!ValidateContainers()) return;
 
         _gameState = GameState.PlayerTurn;
+        UnitSystem current = _turnManagerContainer!.GetCurrentUnit();
         if (_hasMovedThisTurn)
         {
             // Already moved — keep the move overlay empty so the player can't move again,
@@ -605,11 +681,16 @@ public partial class GameManager : BaseManager
         }
         else
         {
-            _currentUnitPossibleMoves = _turnManagerContainer!.GetCurrentUnit().GetPossibleMoves(_mapSystemContainer!);
+            _currentUnitPossibleMoves = current.GetPossibleMoves(_mapSystemContainer!);
         }
         GD.Print("Current Unit Possible Moves: " + string.Join(", ", _currentUnitPossibleMoves));
         _battleInputSystemContainer!.SetInputEnabled(true);
         ShowMoveIndicators();
+        // Update the top-left context panel to show movement / action state.
+        _battleHud?.ContextInfo?.ShowMovement(
+            _currentUnitPossibleMoves.Count,
+            current.PossibleMovesRange,
+            !_hasMovedThisTurn);
         GD.Print("Activate input");
     }
 
@@ -651,11 +732,12 @@ public partial class GameManager : BaseManager
         _moveIndicator?.Hide();
     }
 
-    /// <summary>Clear both indicator overlays.</summary>
+    /// <summary>Clear every indicator overlay (move, target, hover).</summary>
     private void HideAllIndicators()
     {
         _moveIndicator?.Hide();
         _targetIndicator?.Hide();
+        _hoverIndicator?.Hide();
     }
 
     private bool ValidateContainers()
@@ -743,10 +825,13 @@ public partial class GameManager : BaseManager
 
         MoveUnit(cell);
         _hasMovedThisTurn = true;
+        BattleEventBus.Instance?.Publish(new BattleEvents.LogMessage(
+            "Move complete. Pick a skill, use an item, or pass.", LogSeverity.Positive));
 
         // Per the design, movement does NOT end the turn — the player still needs to
         // choose an action (skill, item, basic attack, pass). Re-enable input; the move
-        // overlay clears itself because _hasMovedThisTurn is now set.
+        // overlay clears itself because _hasMovedThisTurn is now set, and ContextInfoPanel
+        // updates to "Action phase".
         ActivatePlayerUnit();
     }
 
@@ -879,6 +964,7 @@ public partial class GameManager : BaseManager
             LogSeverity.Info));
         ShowTargetIndicators();
         _battleHud?.ActionMenu?.ShowCancel(true);
+        _battleHud?.ContextInfo?.ShowSkill(skill);
     }
 
     /// <summary>

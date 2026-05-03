@@ -40,12 +40,12 @@ public sealed partial class SkillSelector : Control
 
     private void BuildLayout()
     {
-        // Bottom-centre strip placed just above the ActionMenu; tight width so empty viewport
-        // area passes through to the map.
+        // Bottom-centre strip placed just above the ActionMenu; wider than ActionMenu to
+        // fit 5 skill slots comfortably and grow with viewport via the buttons' SizeFlags.
         SetAnchorsAndOffsetsPreset(LayoutPreset.CenterBottom);
-        OffsetLeft = -300;
-        OffsetRight = 300;
-        OffsetTop = -140;
+        OffsetLeft = -360;
+        OffsetRight = 360;
+        OffsetTop = -134;
         OffsetBottom = -76;
         MouseFilter = MouseFilterEnum.Ignore;
 
@@ -68,10 +68,15 @@ public sealed partial class SkillSelector : Control
             int slot = i;
             Button b = new()
             {
-                Text = $"{i + 1}\n—",
-                CustomMinimumSize = new Vector2(100, 56),
+                Text = $"{i + 1}. —",
+                // Min size kept narrow so the row can shrink on small viewports;
+                // SizeFlagsStretchRatio keeps the five slots equally wide.
+                CustomMinimumSize = new Vector2(60, 48),
                 Disabled = true,
                 SizeFlagsHorizontal = SizeFlags.ExpandFill,
+                SizeFlagsStretchRatio = 1.0f,
+                ClipText = true,
+                AutowrapMode = TextServer.AutowrapMode.Off,
             };
             HudStyle.StyleButton(b);
             b.Pressed += () => HandlePress(slot);
@@ -90,8 +95,9 @@ public sealed partial class SkillSelector : Control
         {
             for (int i = 0; i < SlotCount; i++)
             {
-                _buttons[i].Text = $"{i + 1}\n—";
+                _buttons[i].Text = $"{i + 1}. —";
                 _buttons[i].Disabled = true;
+                _buttons[i].TooltipText = "";
             }
             return;
         }
@@ -101,18 +107,18 @@ public sealed partial class SkillSelector : Control
             SkillSystem? skill = i < unit.ActiveSkills.Count ? unit.ActiveSkills[i] : null;
             if (skill is null)
             {
-                _buttons[i].Text = $"{i + 1}\n—";
+                _buttons[i].Text = $"{i + 1}. —";
                 _buttons[i].Disabled = true;
+                _buttons[i].TooltipText = "(empty slot)";
                 continue;
             }
 
-            string mana = skill.ManaCost > 0 ? $"  MP {skill.ManaCost:F0}" : "";
-            string cd = skill.Cooldown > 0 ? $"  CD {skill.Cooldown}" : "";
-            _buttons[i].Text = $"{i + 1}. {skill.Name}\n{mana}{cd}".TrimEnd();
+            // Single line, clipped — full info lives in the tooltip so the button never overflows.
+            _buttons[i].Text = $"{i + 1}. {skill.Name}";
             _buttons[i].Disabled = skill.Cooldown > 0 || skill.ManaCost > unit.ManaPoint;
-            // Tooltip: full description + balance numbers, shown on hover.
             string desc = string.IsNullOrEmpty(skill.Description) ? skill.Name : skill.Description;
-            _buttons[i].TooltipText = $"{skill.Name}\n{desc}\n\nMP {skill.ManaCost:F0}  •  CD {skill.TotalCooldown}  •  Range {skill.Range}";
+            string cdText = skill.Cooldown > 0 ? $"  ⏱ on cooldown ({skill.Cooldown})" : $"  CD {skill.TotalCooldown}";
+            _buttons[i].TooltipText = $"{skill.Name}\n{desc}\n\nMP {skill.ManaCost:F0}{cdText}  •  Range {skill.Range}";
         }
     }
 

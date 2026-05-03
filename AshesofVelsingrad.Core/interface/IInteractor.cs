@@ -1,4 +1,4 @@
-﻿namespace AshesOfVelsingrad.Systems;
+namespace AshesOfVelsingrad.Systems;
 
 /// <summary>
 /// Represents an entity capable of initiating interactions with interactable objects.

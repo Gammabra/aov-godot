@@ -1,4 +1,4 @@
-﻿namespace AshesOfVelsingrad.Systems;
+namespace AshesOfVelsingrad.Systems;
 
 /// <summary>
 /// Defines a contract for objects that can be interacted with by the player.

@@ -51,12 +51,37 @@ public sealed partial class UnitHealthBar : Control
         box.AddChild(_name);
 
         _hp = new ProgressBar { MinValue = 0, MaxValue = 1, Value = 1, ShowPercentage = false, CustomMinimumSize = new Vector2(0, 12) };
-        _hp.AddThemeColorOverride("fill_color", HudStyle.HpFill);
+        ApplyBarStyle(_hp, HudStyle.HpFill);
         box.AddChild(_hp);
 
         _mp = new ProgressBar { MinValue = 0, MaxValue = 1, Value = 1, ShowPercentage = false, CustomMinimumSize = new Vector2(0, 8) };
-        _mp.AddThemeColorOverride("fill_color", HudStyle.ManaFill);
+        ApplyBarStyle(_mp, HudStyle.ManaFill);
         box.AddChild(_mp);
+    }
+
+    /// <summary>
+    ///     Apply background + fill stylebox overrides to a <see cref="ProgressBar" />.
+    /// </summary>
+    /// <param name="bar">The bar to style.</param>
+    /// <param name="fillColor">Colour for the filled portion.</param>
+    private static void ApplyBarStyle(ProgressBar bar, Color fillColor)
+    {
+        StyleBoxFlat bg = new()
+        {
+            BgColor = new Color(0.10f, 0.09f, 0.10f, 0.85f),
+            BorderColor = new Color(0, 0, 0, 0.5f),
+            BorderWidthLeft = 1, BorderWidthRight = 1, BorderWidthTop = 1, BorderWidthBottom = 1,
+            CornerRadiusBottomLeft = 3, CornerRadiusBottomRight = 3,
+            CornerRadiusTopLeft = 3, CornerRadiusTopRight = 3,
+        };
+        StyleBoxFlat fill = new()
+        {
+            BgColor = fillColor,
+            CornerRadiusBottomLeft = 3, CornerRadiusBottomRight = 3,
+            CornerRadiusTopLeft = 3, CornerRadiusTopRight = 3,
+        };
+        bar.AddThemeStyleboxOverride("background", bg);
+        bar.AddThemeStyleboxOverride("fill", fill);
     }
 
     /// <summary>Bind the bar to a specific unit and refresh.</summary>

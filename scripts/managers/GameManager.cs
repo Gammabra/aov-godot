@@ -74,10 +74,17 @@ public partial class GameManager : BaseManager
     private readonly List<UnitSystem> _enemyUnits = [];
     private List<(int, int, int)> _currentUnitPossibleMoves = [];
     private SkillSystem? _selectedSkill;
+    private bool _hasMovedThisTurn;
     private readonly StatusEffectSystem _statusEffectSystem = new();
 
     /// <summary>HUD root, lazily spawned in <see cref="EnsureBattleHud" />.</summary>
     private BattleHud? _battleHud;
+
+    /// <summary>World-space indicator for valid move tiles.</summary>
+    private MoveIndicator? _moveIndicator;
+
+    /// <summary>World-space indicator for skill targets (red).</summary>
+    private MoveIndicator? _targetIndicator;
 
     #endregion
 
@@ -468,6 +475,19 @@ public partial class GameManager : BaseManager
         for (int i = 0; i < _enemyUnits.Count; i++)
             GD.Print($"[GameManager] Enemy  {i}: {_enemyUnits[i].UnitName} at {_enemyUnits[i].GlobalPosition}");
 
+        // Spawn world-space indicators (move tiles + skill targets) as children of the map.
+        _moveIndicator = new MoveIndicator { Name = "MoveIndicator" };
+        _mapSystemContainer.AddChild(_moveIndicator);
+        _moveIndicator.Bind(_mapSystemContainer);
+
+        _targetIndicator = new MoveIndicator
+        {
+            Name = "TargetIndicator",
+            TileColor = new Color(0.95f, 0.30f, 0.30f, 0.55f),
+        };
+        _mapSystemContainer.AddChild(_targetIndicator);
+        _targetIndicator.Bind(_mapSystemContainer);
+
         _turnManagerContainer = GetNode<TurnManager>(_turnManagerPath);
         _turnManagerContainer.OnPlayerTurn += ActivatePlayerUnit;
         _turnManagerContainer.OnPlayerEndTurn += DeactivatePlayerUnit;
@@ -535,10 +555,19 @@ public partial class GameManager : BaseManager
         if (!ValidateContainers()) return;
 
         _gameState = GameState.PlayerTurn;
-        if (_currentUnitPossibleMoves.Count == 0)
+        if (_hasMovedThisTurn)
+        {
+            // Already moved — keep the move overlay empty so the player can't move again,
+            // but leave input enabled so they can still pick a skill, item, or pass.
+            _currentUnitPossibleMoves.Clear();
+        }
+        else
+        {
             _currentUnitPossibleMoves = _turnManagerContainer!.GetCurrentUnit().GetPossibleMoves(_mapSystemContainer!);
+        }
         GD.Print("Current Unit Possible Moves: " + string.Join(", ", _currentUnitPossibleMoves));
         _battleInputSystemContainer!.SetInputEnabled(true);
+        ShowMoveIndicators();
         GD.Print("Activate input");
     }
 
@@ -549,8 +578,42 @@ public partial class GameManager : BaseManager
         _gameState = GameState.EnemyTurn;
         _currentUnitPossibleMoves.Clear();
         _selectedSkill = null;
+        _hasMovedThisTurn = false; // reset for the next time this player unit acts
+        HideAllIndicators();
         GD.Print("Deactivate input");
         _battleInputSystemContainer!.SetInputEnabled(false);
+    }
+
+    /// <summary>Show the move-tile overlay using the cached <see cref="_currentUnitPossibleMoves" />.</summary>
+    private void ShowMoveIndicators()
+    {
+        if (_moveIndicator is null) return;
+        _moveIndicator.Show(_currentUnitPossibleMoves);
+        _targetIndicator?.Hide();
+    }
+
+    /// <summary>
+    ///     Show red target overlay over hostile units when the player has selected a skill.
+    /// </summary>
+    private void ShowTargetIndicators()
+    {
+        if (_targetIndicator is null || _mapSystemContainer is null) return;
+        List<(int, int, int)> tiles = [];
+        foreach (UnitSystem enemy in _enemyUnits)
+        {
+            if (!enemy.IsAlive) continue;
+            (int, int, int)? pos = _mapSystemContainer.GetUnitPosition(enemy);
+            if (pos is { } p) tiles.Add(p);
+        }
+        _targetIndicator.Show(tiles);
+        _moveIndicator?.Hide();
+    }
+
+    /// <summary>Clear both indicator overlays.</summary>
+    private void HideAllIndicators()
+    {
+        _moveIndicator?.Hide();
+        _targetIndicator?.Hide();
     }
 
     private bool ValidateContainers()
@@ -637,22 +700,42 @@ public partial class GameManager : BaseManager
         }
 
         MoveUnit(cell);
+        _hasMovedThisTurn = true;
+
+        // Per the design, movement does NOT end the turn — the player still needs to
+        // choose an action (skill, item, basic attack, pass). Re-enable input; the move
+        // overlay clears itself because _hasMovedThisTurn is now set.
+        ActivatePlayerUnit();
     }
 
     /// <summary>
     ///     Resolve a click while the player is in skill-targeting mode.
     /// </summary>
     /// <param name="cell">Clicked grid cell.</param>
+    /// <remarks>
+    ///     <para>
+    ///         The click ray hits whatever collider is under the cursor, which for unit
+    ///         sprites is a collision shape that sits a cell or two above the ground.
+    ///         <see cref="MapSystem.LocalToMap" /> therefore reports a cell at <c>Y &gt; 0</c>
+    ///         for unit clicks, and <see cref="MapSystem.GetUnitAt" /> on that cell either
+    ///         returns null (no <see cref="CellInformation" /> there) or throws.
+    ///     </para>
+    ///     <para>
+    ///         To work around it we ignore the click's <c>Y</c> and search every combatant
+    ///         whose registered grid X/Z matches the click's X/Z.
+    ///     </para>
+    /// </remarks>
     private void ResolveSkillClick(Vector3I cell)
     {
         if (_mapSystemContainer == null || _turnManagerContainer == null || _selectedSkill is null)
             return;
 
-        UnitSystem? clicked = _mapSystemContainer.GetUnitAt(cell.X, cell.Y, cell.Z);
+        UnitSystem? clicked = FindUnitAtCellXZ(cell.X, cell.Z);
         if (clicked is null)
         {
-            GD.Print("No unit on that cell — skill cast cancelled.");
+            GD.Print($"No unit at cell ({cell.X}, *, {cell.Z}) — skill cast cancelled.");
             _gameState = GameState.PlayerTurn;
+            HideAllIndicators();
             ActivatePlayerUnit();
             return;
         }
@@ -661,6 +744,34 @@ public partial class GameManager : BaseManager
         UseSkill(source, clicked, _selectedSkill);
         _selectedSkill = null;
         _gameState = GameState.PlayerTurn;
+        HideAllIndicators();
+    }
+
+    /// <summary>
+    ///     Find a combatant whose grid X/Z column matches the clicked cell, regardless of Y.
+    /// </summary>
+    /// <param name="x">Grid X coordinate.</param>
+    /// <param name="z">Grid Z coordinate.</param>
+    /// <returns>The first matching unit, or null.</returns>
+    private UnitSystem? FindUnitAtCellXZ(int x, int z)
+    {
+        if (_mapSystemContainer is null) return null;
+        foreach (UnitSystem u in EnumerateAllCombatants())
+        {
+            if (!u.IsAlive) continue;
+            (int, int, int)? pos;
+            try
+            {
+                pos = _mapSystemContainer.GetUnitPosition(u);
+            }
+            catch (ArgumentOutOfRangeException)
+            {
+                continue;
+            }
+            if (pos is { } p && p.Item1 == x && p.Item3 == z)
+                return u;
+        }
+        return null;
     }
 
     #endregion
@@ -721,6 +832,7 @@ public partial class GameManager : BaseManager
         _gameState = GameState.TargetingSkill;
         BattleEventBus.Instance?.Publish(new BattleEvents.LogMessage(
             $"Choose a target for {skill.Name}.", LogSeverity.Info));
+        ShowTargetIndicators();
     }
 
     #endregion

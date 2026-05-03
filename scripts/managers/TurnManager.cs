@@ -7,6 +7,7 @@ using AshesOfVelsingrad.systems.ai;
 using AshesOfVelsingrad.systems.battle;
 using AshesOfVelsingrad.systems.status_effects;
 using AshesOfVelsingrad.systems.status_effects.effects;
+using AshesOfVelsingrad.utilities;
 using Godot;
 
 namespace AshesOfVelsingrad.Managers;
@@ -299,8 +300,12 @@ public partial class TurnManager : BaseManager
 
                 BattleEventBus.Instance?.Publish(new BattleEvents.TurnEnded(unit));
 
-                // Post-turn: tick status effects (DoTs, debuff durations).
-                _statusEffectSystem.ProcessTurnEnd();
+                // Post-turn: tick this unit's effects only. We deliberately do NOT tick
+                // every combatant on every turn — that would cause a stun(1) applied during
+                // an enemy turn to expire before the player's turn ever starts (the famous
+                // "self-purifying status" bug). Per-unit ticking preserves the standard
+                // convention: an effect with duration N applies for N of the bearer's turns.
+                TickEffectsOn(unit);
 
                 // Victory check.
                 BattleStateSnapshot snapshot = new(_playerUnits, _allyUnits, _enemyUnits, _turn);
@@ -391,6 +396,28 @@ public partial class TurnManager : BaseManager
         Faction.Ally => TurnState.AllyTurn,
         _ => TurnState.EnemyTurn
     };
+
+    /// <summary>
+    ///     Tick every active status effect on a single unit, removing expired ones.
+    /// </summary>
+    /// <param name="unit">The unit whose effects should advance one tick.</param>
+    /// <remarks>
+    ///     Permanent effects (Duration == <see cref="Constants.PermanentStatusEffect" />)
+    ///     are skipped. Iterating over a snapshot list lets effects safely call
+    ///     <see cref="UnitSystem.RemoveEffect" /> from inside their callbacks if needed.
+    /// </remarks>
+    private static void TickEffectsOn(UnitSystem unit)
+    {
+        if (!unit.IsAlive) return;
+        foreach (StatusEffect effect in unit.GetActiveEffects().ToList())
+        {
+            if (effect.Duration == Constants.PermanentStatusEffect)
+                continue;
+            effect.OnTurnPassed(unit);
+            if (effect.Duration <= 0)
+                unit.RemoveEffect(effect);
+        }
+    }
 
     /// <summary>
     ///     Returns up to 8 alive units in activation order, starting with the active one.

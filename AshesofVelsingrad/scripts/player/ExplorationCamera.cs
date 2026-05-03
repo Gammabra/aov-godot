@@ -2,6 +2,10 @@
 
 namespace AshesOfVelsingrad.player;
 
+/// <summary>
+/// Camera controller for exploration mode.
+/// Handles mouse input to rotate the camera using a SpringArm3D.
+/// </summary>
 public partial class ExplorationCamera : SpringArm3D
 {
     private float _mouseSensitivity = 0.1f;

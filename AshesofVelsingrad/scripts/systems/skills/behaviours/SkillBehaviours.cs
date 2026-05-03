@@ -1,7 +1,9 @@
 using System;
+using AshesOfVelsingrad.Data.Corruption;
+using AshesOfVelsingrad.Systems;
 using AshesOfVelsingrad.systems.battle;
-using AshesOfVelsingrad.systems.corruption;
 using AshesOfVelsingrad.systems.status_effects;
+using Faction = AshesOfVelsingrad.Systems.Faction;
 
 namespace AshesOfVelsingrad.systems.skills.behaviours;
 
@@ -186,7 +188,7 @@ public sealed class CleanseBehaviour : ISkillBehaviour
         foreach (UnitSystem target in context.Targets)
         {
             // Iterate over a copy because RemoveEffect mutates the underlying list.
-            foreach (StatusEffect effect in target.GetActiveEffects().ToArray())
+            foreach (StatusEffect<IUnitSystem> effect in target.GetActiveEffects().ToArray())
             {
                 if (effect.IsPurifiable)
                 {

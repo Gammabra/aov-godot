@@ -1,5 +1,6 @@
+using AshesOfVelsingrad.Data.Corruption;
+using AshesOfVelsingrad.Systems;
 using AshesOfVelsingrad.systems.battle;
-using AshesOfVelsingrad.systems.corruption;
 using AshesOfVelsingrad.systems.status_effects;
 
 namespace AshesOfVelsingrad.systems.items.behaviours;
@@ -42,7 +43,7 @@ public sealed class CleanseItemBehaviour : IItemBehaviour
     {
         foreach (UnitSystem target in context.Targets)
         {
-            foreach (StatusEffect effect in target.GetActiveEffects().ToArray())
+            foreach (StatusEffect<IUnitSystem> effect in target.GetActiveEffects().ToArray())
             {
                 if (!effect.IsPurifiable) continue;
                 target.RemoveEffect(effect);
@@ -69,7 +70,7 @@ public sealed class PurifyingElixirBehaviour : IItemBehaviour
             CorruptionSystem.Cleanse(target);
 
             // Bonus: also strip purifiable statuses.
-            foreach (StatusEffect effect in target.GetActiveEffects().ToArray())
+            foreach (StatusEffect<IUnitSystem> effect in target.GetActiveEffects().ToArray())
             {
                 if (!effect.IsPurifiable) continue;
                 target.RemoveEffect(effect);

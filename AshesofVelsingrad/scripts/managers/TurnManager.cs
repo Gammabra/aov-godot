@@ -37,6 +37,77 @@ public partial class TurnManager : BaseManager
     /// </summary>
     private new static TurnManager? Instance { get; set; }
 
+    /// <summary>
+    ///     Public accessor for the active <see cref="TurnManager" /> in the scene.
+    ///     Returns null when no battle is active.
+    /// </summary>
+    public static TurnManager? Active => Instance;
+
+    #endregion
+
+    #region Battle wiring (used by BattleLauncher / HUD)
+
+    /// <summary>
+    ///     The unit currently taking its turn, or null if the turn order is not set up yet.
+    /// </summary>
+    public UnitSystem? CurrentUnit =>
+        _unitsTurnOrder.Count > 0
+        && _currentIndex >= 0
+        && _currentIndex < _unitsTurnOrder.Count
+            ? _unitsTurnOrder[_currentIndex].Key
+            : null;
+
+    /// <summary>
+    ///     Active victory condition installed by <see cref="SetVictoryCondition" />.
+    ///     The battle loop checks this each turn to decide whether to end the fight.
+    /// </summary>
+    private systems.battle.VictoryCondition? _victoryCondition;
+
+    /// <summary>
+    ///     Optional outcome request set by <see cref="RequestAbort" />.
+    /// </summary>
+    private systems.battle.BattleOutcome? _pendingAbort;
+
+    /// <summary>
+    ///     Install the victory condition the battle loop should evaluate each turn.
+    /// </summary>
+    /// <param name="condition">Condition implementation, or <c>null</c> to clear.</param>
+    public void SetVictoryCondition(systems.battle.VictoryCondition? condition)
+    {
+        _victoryCondition = condition;
+    }
+
+    /// <summary>
+    ///     Run the battle loop and return the final result.
+    /// </summary>
+    /// <remarks>
+    ///     Bridges <see cref="StartBattle" /> (the legacy entry point) to the
+    ///     <see cref="BattleResult" /> contract that <c>BattleLauncher</c> expects.
+    /// </remarks>
+    /// <returns>The outcome of the battle once the loop terminates.</returns>
+    public async Task<systems.battle.BattleResult> RunBattleLoop()
+    {
+        await StartBattle();
+
+        if (_pendingAbort is { } aborted)
+        {
+            _pendingAbort = null;
+            return new systems.battle.BattleResult { Outcome = aborted };
+        }
+
+        return new systems.battle.BattleResult { Outcome = systems.battle.BattleOutcome.Victory };
+    }
+
+    /// <summary>
+    ///     Request the battle loop to terminate with a specific outcome.
+    /// </summary>
+    /// <param name="outcome">Outcome to surface to the caller.</param>
+    public void RequestAbort(systems.battle.BattleOutcome outcome)
+    {
+        _pendingAbort = outcome;
+        EndTurnManagerLoop();
+    }
+
     #endregion
 
     #region Public Properties

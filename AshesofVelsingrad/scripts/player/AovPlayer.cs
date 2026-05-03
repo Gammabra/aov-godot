@@ -1,8 +1,13 @@
+using AshesOfVelsingrad.Systems;
 using Godot;
 
 namespace AshesOfVelsingrad.player;
 
-public sealed partial class AovPlayer : CharacterBody3D
+/// <summary>
+/// Represents the main player character in the game.
+/// Handles movement, gravity, and initialization of required nodes.
+/// </summary>
+public sealed partial class AovPlayer : CharacterBody3D, IInteractor
 {
 	[Export]
 	private NodePath? _spritePath;
@@ -11,12 +16,23 @@ public sealed partial class AovPlayer : CharacterBody3D
 	private NodePath? _springArm3DPath;
 
 	[Export]
+	private NodePath? _interactionComponentPath;
+
+	[Export]
 	private float _speed = 4;
 
 	private float _gravity = ProjectSettings.GetSetting("physics/3d/default_gravity").AsSingle();
 	private Sprite3D? _sprite3D;
 	private SpringArm3D? _springArm3D;
+	private InteractionComponent? _interactionComponent;
 	private static AovPlayer? _instance;
+
+	private void Initialize()
+	{
+		_sprite3D = GetNode<Sprite3D>(_spritePath);
+		_springArm3D = GetNode<SpringArm3D>(_springArm3DPath);
+		_interactionComponent = GetNode<InteractionComponent>(_interactionComponentPath);
+	}
 
 	public override void _Ready()
 	{
@@ -36,10 +52,17 @@ public sealed partial class AovPlayer : CharacterBody3D
 		}
 	}
 
-	private void Initialize()
+	public override void _Input(InputEvent @event)
 	{
-		_sprite3D = GetNode<Sprite3D>(_spritePath);
-		_springArm3D = GetNode<SpringArm3D>(_springArm3DPath);
+		if (@event.IsActionPressed("interact"))
+		{
+			IInteractable? interactable = _interactionComponent?.ClosestInteractable as IInteractable;
+
+			if (interactable?.CanInteract() == true)
+			{
+				interactable.Interact(this);
+			}
+		}
 	}
 
 	public override void _PhysicsProcess(double delta)

@@ -1,7 +1,10 @@
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using AshesOfVelsingrad.Managers;
+using AshesOfVelsingrad.Systems;
 using Godot;
+using Faction = AshesOfVelsingrad.Systems.Faction;
 
 namespace AshesOfVelsingrad.systems.battle;
 
@@ -121,8 +124,9 @@ public sealed partial class BattleLauncher : Node
         // Place units on the map (delegated to MapSystem).
         if (MapSystem.Instance is not null)
         {
-            List<UnitSystem> friendly = [.._playerUnits, .._allyUnits];
-            MapSystem.Instance.PlaceUnits(friendly, _enemyUnits);
+            List<IUnitSystem> friendly = [.._playerUnits, .._allyUnits];
+            List<IUnitSystem> enemies = _enemyUnits.Cast<IUnitSystem>().ToList();
+            MapSystem.Instance.PlaceUnits(friendly, enemies);
         }
         else
         {
@@ -139,10 +143,11 @@ public sealed partial class BattleLauncher : Node
             return aborted;
         }
 
-        var playerAndAllies = new List<UnitSystem>();
+        var playerAndAllies = new List<IUnitSystem>();
         playerAndAllies.AddRange(_playerUnits);
         playerAndAllies.AddRange(_allyUnits);
-        turn.InitializeTurnOrder(playerAndAllies, _enemyUnits);
+        var enemiesAsInterface = _enemyUnits.Cast<IUnitSystem>().ToList();
+        turn.InitializeTurnOrder(playerAndAllies, enemiesAsInterface);
         turn.SetVictoryCondition(config.VictoryCondition ?? _defaultCondition);
 
         BattleEventBus.Instance?.Publish(new BattleEvents.BattleStarted(_playerUnits, _allyUnits, _enemyUnits));

@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using AshesOfVelsingrad.Systems;
 using AshesOfVelsingrad.systems.battle;
 using Godot;
 
@@ -83,23 +84,36 @@ public sealed class DataDrivenSkill : SkillSystem
     }
 
     /// <inheritdoc />
-    public override void Use(List<UnitSystem> targets, MapSystem? map)
+    public override void Use(IUnitSystem caster, List<IUnitSystem> targets, IMapSystem? map)
     {
         // Validate target list. Behaviours can assume non-null targets.
         targets ??= [];
 
+        // Project the interface lists/refs onto the concrete UnitSystem / MapSystem
+        // types that SkillExecutionContext (and the behaviours) work with. Targets
+        // that aren't UnitSystem instances are silently skipped — they have no
+        // meaningful in-battle representation for behaviours to act on.
+        List<UnitSystem> concreteTargets = new(targets.Count);
+        foreach (IUnitSystem t in targets)
+        {
+            if (t is UnitSystem cu)
+                concreteTargets.Add(cu);
+        }
+
+        UnitSystem? concreteCaster = caster as UnitSystem
+                                     ?? SkillExecutionScope.CurrentCaster
+                                     ?? (concreteTargets.Count > 0 ? concreteTargets[0] : null);
+        if (concreteCaster is null)
+            return;
+
+        MapSystem? concreteMap = map as MapSystem;
+
         SkillExecutionContext ctx = new(
-            (UnitSystem)null!, // populated below; struct must be reconstructed because Caster isn't passed in.
-            targets,
-            map,
+            concreteCaster,
+            concreteTargets,
+            concreteMap,
             _definition
         );
-
-        // The Caster isn't part of the SkillSystem.Use signature, so we reconstruct
-        // it from the targets's nearest friendly unit only when needed by the
-        // behaviour. The expected flow is via UnitSystem.PlaySkill which sets
-        // a thread-static caster before delegating here.
-        ctx = ctx with { Caster = SkillExecutionScope.CurrentCaster ?? targets[0] };
 
         _behaviour.Execute(ctx);
 
@@ -108,7 +122,9 @@ public sealed class DataDrivenSkill : SkillSystem
         StartCooldown();
 
         // Tell the world a skill was used.
-        BattleEventBus.Instance?.Publish(new BattleEvents.SkillUsed(ctx.Caster, _definition.SkillId, targets));
+        BattleEventBus.Instance?.Publish(
+            new BattleEvents.SkillUsed(ctx.Caster, _definition.SkillId, concreteTargets)
+        );
     }
 
     /// <summary>

@@ -1,5 +1,7 @@
+using AshesOfVelsingrad.Utilities;
 using Godot;
 using Godot.Collections;
+using static AshesOfVelsingrad.Utilities.AovDataStructures;
 
 namespace AshesOfVelsingrad.systems.skills;
 

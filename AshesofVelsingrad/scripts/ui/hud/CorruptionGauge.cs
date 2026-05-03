@@ -1,3 +1,6 @@
+using AshesOfVelsingrad.Managers;
+using AshesOfVelsingrad.Systems;
+using AshesOfVelsingrad.UI.Hud;
 using AshesOfVelsingrad.systems;
 using AshesOfVelsingrad.systems.battle;
 using AshesOfVelsingrad.systems.progression;
@@ -74,8 +77,8 @@ public sealed partial class CorruptionGauge : Control
 
     private void RefreshFromCurrent()
     {
-        UnitSystem? unit = AshesOfVelsingrad.Managers.TurnManager.Active?.CurrentUnit;
-        if (unit is null || unit.Profile is null)
+        UnitSystem? unit = TurnManager.Active?.CurrentUnit;
+        if (unit is null)
         {
             for (int i = 0; i < _segments.Length; i++)
                 _segments[i].Color = new Color(0.18f, 0.18f, 0.18f);
@@ -83,9 +86,9 @@ public sealed partial class CorruptionGauge : Control
             return;
         }
 
-        int level = unit.Profile.CorruptionLevel;
+        int level = unit.CorruptionLevel;
         if (_label is not null)
-            _label.Text = $"Corruption: {level} ({unit.Profile.CorruptionPoints}/{CharacterProfile.CorruptionPointsPerLevel})";
+            _label.Text = $"Corruption: {level} ({unit.CorruptionPoints}/{UnitSystem.CorruptionPointsPerLevel})";
 
         for (int i = 0; i < _segments.Length; i++)
         {

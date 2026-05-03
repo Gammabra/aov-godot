@@ -1,5 +1,5 @@
-﻿using Godot;
 using AshesOfVelsingrad.Managers;
+using Godot;
 
 namespace AshesOfVelsingrad.player.States;
 

@@ -7,11 +7,11 @@ public partial class SettingsSave : Button
 {
     private const string _configPath = "user://settings.cfg";
 
-    private Node? _settings;
+    private SettingsPages? _settings;
 
     public override void _Ready()
     {
-        _settings = GetNodeOrNull<Node>("../MainContent");
+        _settings = GetNodeOrNull<SettingsPages>("../MainContent");
         if (_settings == null)
             return;
         LoadSettings();
@@ -183,7 +183,7 @@ public partial class SettingsSave : Button
             var btn2 = lbl.GetNode<Button>("Button2");
             var sp = _settings as SettingsPages;
             if (sp != null)
-                btn2.Text = sp.GetActionKeyPad(action); ((SettingsPages)_settings).GetActionKeyPad(action);
+                btn2.Text = sp.GetActionKeyPad(action);
         }
 
         GD.Print("SETTINGS LOADED");

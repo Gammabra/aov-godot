@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bee2drrspdtgi"]
+[gd_scene format=3 uid="uid://bee2drrspdtgi"]
 
 [ext_resource type="Script" uid="uid://du2xlh41m2cd" path="res://scripts/managers/GameManager.cs" id="1_bc6e8"]
 [ext_resource type="Script" uid="uid://dycsfdky6wocx" path="res://scripts/data/Map1.cs" id="2_p4llj"]
@@ -14,17 +14,18 @@
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_k3vm1"]
 
-[node name="Test" type="Node"]
+[node name="Test" type="Node" unique_id=1735130440]
 
-[node name="Camera3D" type="Camera3D" parent="."]
+[node name="Camera3D" type="Camera3D" parent="." unique_id=150789697]
 transform = Transform3D(1, 0, 0, 0, 0.8170543, 0.57656074, 0, -0.57656074, 0.8170543, 4, 6.757878, 10.624343)
+current = true
 
-[node name="Inputs" type="Node" parent="."]
+[node name="Inputs" type="Node" parent="." unique_id=457337038]
 script = ExtResource("7_nvgwb")
 _mapSystemPath = NodePath("../GameManager/GridMap")
 _camera3DPath = NodePath("../Camera3D")
 
-[node name="GameManager" type="Node" parent="."]
+[node name="GameManager" type="Node" parent="." unique_id=1517845513]
 script = ExtResource("1_bc6e8")
 _playerUnitsPath = NodePath("PlayerUnits")
 _enemyUnitsPath = NodePath("EnemyUnits")
@@ -32,7 +33,7 @@ _mapSystemPath = NodePath("GridMap")
 _turnManagerPath = NodePath("TurnManager")
 _battleInputSystemPath = NodePath("../Inputs")
 
-[node name="GridMap" type="GridMap" parent="GameManager"]
+[node name="GridMap" type="GridMap" parent="GameManager" unique_id=199102040]
 mesh_library = ExtResource("2_so6rl")
 collision_layer = 3
 collision_mask = 3
@@ -41,30 +42,34 @@ data = {
 }
 script = ExtResource("2_p4llj")
 
-[node name="PlayerUnits" type="Node" parent="GameManager"]
+[node name="PlayerUnits" type="Node" parent="GameManager" unique_id=906978408]
 
-[node name="Player1" type="CharacterBody3D" parent="GameManager/PlayerUnits"]
+[node name="Player1" type="CharacterBody3D" parent="GameManager/PlayerUnits" unique_id=1165425536]
 script = ExtResource("4_so6rl")
 
-[node name="Sprite3D" type="Sprite3D" parent="GameManager/PlayerUnits/Player1"]
-transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
+[node name="Sprite3D" type="Sprite3D" parent="GameManager/PlayerUnits/Player1" unique_id=1566906663]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 billboard = 1
 texture = ExtResource("6_l5nkq")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="GameManager/PlayerUnits/Player1"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="GameManager/PlayerUnits/Player1" unique_id=656537018]
 shape = SubResource("SphereShape3D_ctjmi")
 
-[node name="EnemyUnits" type="Node" parent="GameManager"]
+[node name="EnemyUnits" type="Node" parent="GameManager" unique_id=678856157]
 
-[node name="Enemy1" type="CharacterBody3D" parent="GameManager/EnemyUnits"]
+[node name="Enemy1" type="CharacterBody3D" parent="GameManager/EnemyUnits" unique_id=76290901]
 script = ExtResource("5_nvgwb")
 
-[node name="Sprite3D" type="Sprite3D" parent="GameManager/EnemyUnits/Enemy1"]
+[node name="Sprite3D" type="Sprite3D" parent="GameManager/EnemyUnits/Enemy1" unique_id=174030928]
 billboard = 1
 texture = ExtResource("6_lhig6")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="GameManager/EnemyUnits/Enemy1"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="GameManager/EnemyUnits/Enemy1" unique_id=1180714607]
 shape = SubResource("SphereShape3D_k3vm1")
 
-[node name="TurnManager" type="Node" parent="GameManager"]
+[node name="TurnManager" type="Node" parent="GameManager" unique_id=609030499]
 script = ExtResource("3_p4llj")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=223344555]
+transform = Transform3D(0.8660254, 0, 0.5, 0, 1, 0, -0.5, 0, 0.8660254, 0, 4, 0)
+light_energy = 1.0

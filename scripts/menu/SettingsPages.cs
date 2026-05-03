@@ -71,6 +71,12 @@ public partial class SettingsPages : Node
     {
         _page_command = GetNodeOrNull("PageCommand");
 
+        if (_page_command == null)
+        {
+            CallDeferred(nameof(UpdateSubtitlePreview));
+            return;
+        }
+
         foreach (string action in actions.Keys)
         {
             var label = _page_command.GetNode<Label>((string)actions[action]);
@@ -331,6 +337,8 @@ public partial class SettingsPages : Node
     private void OnResetCommandsPressed()
     {
         InputMap.LoadFromProjectSettings();
+        if (_page_command == null)
+            return;
 
         foreach (string action in actions.Keys)
         {

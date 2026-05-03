@@ -54,12 +54,12 @@ public abstract class SkillSystem
     /// <summary>
     ///     The name of the skill.
     /// </summary>
-    public string Name { get; protected set; }
+    public string Name { get; protected set; } = string.Empty;
 
     /// <summary>
     ///     A description of the skill, used for tooltips or UI.
     /// </summary>
-    public string Description { get; protected set; }
+    public string Description { get; protected set; } = string.Empty;
 
     /// <summary>
     ///     The amount of mana consumed when using this skill.
@@ -84,7 +84,7 @@ public abstract class SkillSystem
     /// <summary>
     ///     The cells affected relative to the target position (area of effect).
     /// </summary>
-    public List<(int, int, int)> AreaEffect { get; protected set; }
+    public List<(int, int, int)> AreaEffect { get; protected set; } = new List<(int, int, int)>();
 
     /// <summary>
     ///     The magical element type of this skill (e.g., Fire, Water, Light).

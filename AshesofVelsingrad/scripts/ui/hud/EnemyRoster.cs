@@ -1,16 +1,16 @@
 using System.Collections.Generic;
-using AshesOfVelsingrad.systems;
-using AshesOfVelsingrad.systems.battle;
+using AshesOfVelsingrad.Systems;
 using Godot;
 
-namespace AshesOfVelsingrad.ui.hud;
+namespace AshesOfVelsingrad.UI.Hud;
 
 /// <summary>
-///     Vertical stack of <see cref="UnitHealthBar" />s, one per alive enemy.
+///     Top-right column showing one <see cref="UnitHealthBar" /> per enemy.
 /// </summary>
 /// <remarks>
-///     Anchored to the top-right with a tight bounded width so map clicks pass through the
-///     empty viewport beside the panel.
+///     The owning <see cref="BattleHud" /> calls <see cref="Bind" /> once at battle start with
+///     the enemy roster. The widget then refreshes itself when asked
+///     (<see cref="RefreshAll" />) — typically from a TurnManager event hook in <c>GameManager</c>.
 /// </remarks>
 public sealed partial class EnemyRoster : Control
 {
@@ -21,22 +21,6 @@ public sealed partial class EnemyRoster : Control
     public override void _Ready()
     {
         BuildLayout();
-
-        _ = HudBusHelper.WhenReadyAsync(this, bus =>
-        {
-            bus.Subscribe<BattleEvents.BattleStarted>(OnBattleStarted);
-            bus.Subscribe<BattleEvents.UnitDied>(OnUnitDied);
-            bus.Subscribe<BattleEvents.HpChanged>(_ => RefreshAll());
-        });
-    }
-
-    /// <inheritdoc />
-    public override void _ExitTree()
-    {
-        BattleEventBus? bus = BattleEventBus.Instance;
-        if (bus is null) return;
-        bus.Unsubscribe<BattleEvents.BattleStarted>(OnBattleStarted);
-        bus.Unsubscribe<BattleEvents.UnitDied>(OnUnitDied);
     }
 
     private void BuildLayout()
@@ -62,27 +46,29 @@ public sealed partial class EnemyRoster : Control
         outer.AddChild(_box);
     }
 
-    private void OnBattleStarted(BattleEvents.BattleStarted e)
+    /// <summary>
+    ///     Replace the roster of tracked enemies. Called once at battle start.
+    /// </summary>
+    /// <param name="enemies">Enemy unit list.</param>
+    public void Bind(IReadOnlyList<IUnitSystem> enemies)
     {
         if (_box is null) return;
-        foreach (UnitHealthBar b in _bars) b.QueueFree();
+
+        foreach (UnitHealthBar bar in _bars)
+            bar.QueueFree();
         _bars.Clear();
 
-        foreach (UnitSystem enemy in e.Enemies)
+        foreach (IUnitSystem enemy in enemies)
         {
-            UnitHealthBar bar = new() { Name = $"Bar_{enemy.Name}" };
+            UnitHealthBar bar = new() { Name = $"Bar_{((Node)enemy).Name}" };
             _box.AddChild(bar);
             bar.Bind(enemy);
             _bars.Add(bar);
         }
     }
 
-    private void OnUnitDied(BattleEvents.UnitDied _)
-    {
-        RefreshAll();
-    }
-
-    private void RefreshAll()
+    /// <summary>Force every bound bar to re-read its unit's state.</summary>
+    public void RefreshAll()
     {
         foreach (UnitHealthBar bar in _bars) bar.Refresh();
     }

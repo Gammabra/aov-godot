@@ -1,15 +1,24 @@
-using AshesOfVelsingrad.systems;
-using AshesOfVelsingrad.systems.battle;
+using System.Collections.Generic;
+using AshesOfVelsingrad.Systems;
 using Godot;
 
-namespace AshesOfVelsingrad.ui.hud;
+namespace AshesOfVelsingrad.UI.Hud;
 
 /// <summary>
-///     Horizontal turn-order strip showing the next units to act.
+///     Top-centre strip showing the next units to act, rendered as portrait chips with a
+///     faction-coloured border.
 /// </summary>
 /// <remarks>
-///     Tight 600×52 strip at the top centre. Each upcoming unit is rendered as a coloured
-///     pill with its name, colour-coded by faction (cyan / green / red).
+///     <para>
+///         Cyan border = <see cref="Faction.Player" />, green = <see cref="Faction.Ally" />,
+///         red = <see cref="Faction.Enemy" />. The first chip is highlighted as the currently
+///         acting unit. When a unit's <see cref="IUnitSystem.EntityProfile" /> has a portrait,
+///         it's shown inside the chip; otherwise a coloured square fallback fills the space.
+///     </para>
+///     <para>
+///         <see cref="UpdateOrder" /> is called by <c>GameManager</c> after every turn
+///         transition with the upcoming units (typically from <c>TurnManager.GetUpcomingUnits</c>).
+///     </para>
 /// </remarks>
 public sealed partial class TurnOrderQueue : Control
 {
@@ -19,19 +28,6 @@ public sealed partial class TurnOrderQueue : Control
     public override void _Ready()
     {
         BuildLayout();
-
-        _ = HudBusHelper.WhenReadyAsync(this, bus =>
-        {
-            bus.Subscribe<BattleEvents.TurnOrderChanged>(OnOrderChanged);
-        });
-    }
-
-    /// <inheritdoc />
-    public override void _ExitTree()
-    {
-        BattleEventBus? bus = BattleEventBus.Instance;
-        if (bus is null) return;
-        bus.Unsubscribe<BattleEvents.TurnOrderChanged>(OnOrderChanged);
     }
 
     private void BuildLayout()
@@ -57,28 +53,22 @@ public sealed partial class TurnOrderQueue : Control
         _row.AddChild(header);
     }
 
-    private void OnOrderChanged(BattleEvents.TurnOrderChanged e)
+    /// <summary>
+    ///     Replace the current chip strip with the given upcoming units.
+    /// </summary>
+    /// <param name="upcomingUnits">Units to show, in activation order. Index 0 is currently acting.</param>
+    public void UpdateOrder(IReadOnlyList<IUnitSystem> upcomingUnits)
     {
         if (_row is null) return;
         // Clear children except the header.
         for (int i = _row.GetChildCount() - 1; i > 0; i--)
             _row.GetChild(i).QueueFree();
 
-        for (int i = 0; i < e.UpcomingUnits.Count; i++)
-        {
-            UnitSystem unit = e.UpcomingUnits[i];
-            _row.AddChild(BuildPortraitChip(unit, isActive: i == 0));
-        }
+        for (int i = 0; i < upcomingUnits.Count; i++)
+            _row.AddChild(BuildPortraitChip(upcomingUnits[i], isActive: i == 0));
     }
 
-    /// <summary>
-    ///     Build a single portrait chip: a square panel with a faction-coloured border,
-    ///     the unit's portrait inside, and a name label below.
-    /// </summary>
-    /// <param name="unit">The unit to render.</param>
-    /// <param name="isActive">If true, the chip is highlighted as the currently-acting unit.</param>
-    /// <returns>The composed chip control.</returns>
-    private static Control BuildPortraitChip(UnitSystem unit, bool isActive)
+    private static Control BuildPortraitChip(IUnitSystem unit, bool isActive)
     {
         const int size = 40;
         Color borderColor = ColorFor(unit.Faction);
@@ -112,7 +102,6 @@ public sealed partial class TurnOrderQueue : Control
         border.AddThemeStyleboxOverride("panel", sb);
         wrapper.AddChild(border);
 
-        // Portrait inside the border (or a colour fallback when no portrait is set).
         Texture2D? portrait = unit.EntityProfile?.Portrait;
         if (portrait is not null)
         {
@@ -139,7 +128,6 @@ public sealed partial class TurnOrderQueue : Control
             border.AddChild(fallback);
         }
 
-        // Name label below the portrait.
         string display = unit.EntityProfile?.DisplayName is { Length: > 0 } n ? n : unit.UnitName;
         Label nameLabel = new()
         {
@@ -159,7 +147,7 @@ public sealed partial class TurnOrderQueue : Control
     private static Color ColorFor(Faction f) => f switch
     {
         Faction.Player => HudStyle.PlayerColor,
-        Faction.Ally => HudStyle.AllyColor,
+        Faction.Ally => new Color(0.30f, 0.90f, 0.30f, 1f),
         Faction.Enemy => HudStyle.EnemyColor,
         _ => Colors.Gray,
     };

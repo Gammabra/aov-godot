@@ -1,14 +1,15 @@
-using AshesOfVelsingrad.systems.battle;
+using AshesOfVelsingrad.Systems.Battle;
 using Godot;
 
-namespace AshesOfVelsingrad.ui.hud;
+namespace AshesOfVelsingrad.UI.Hud;
 
 /// <summary>
-///     Scrolling battle log that records significant combat events.
+///     Scrolling log subscribed to <see cref="BattleNotifications" />.
 /// </summary>
 /// <remarks>
-///     Bottom-right column. Subscribes to bus events for free-form lines, deaths, skill casts,
-///     and item uses. Keeps the most recent <see cref="MaxLines" /> entries.
+///     Producers (<c>GameManager</c>, skills, status effects) call
+///     <c>BattleNotifications.Post(message, severity)</c> and the log appends a colour-coded
+///     line. Caps at <see cref="MaxLines" /> entries.
 /// </remarks>
 public sealed partial class BattleLog : Control
 {
@@ -21,25 +22,13 @@ public sealed partial class BattleLog : Control
     public override void _Ready()
     {
         BuildLayout();
-
-        _ = HudBusHelper.WhenReadyAsync(this, bus =>
-        {
-            bus.Subscribe<BattleEvents.LogMessage>(OnLog);
-            bus.Subscribe<BattleEvents.UnitDied>(OnUnitDied);
-            bus.Subscribe<BattleEvents.SkillUsed>(OnSkillUsed);
-            bus.Subscribe<BattleEvents.ItemUsed>(OnItemUsed);
-        });
+        BattleNotifications.Posted += OnNotification;
     }
 
     /// <inheritdoc />
     public override void _ExitTree()
     {
-        BattleEventBus? bus = BattleEventBus.Instance;
-        if (bus is null) return;
-        bus.Unsubscribe<BattleEvents.LogMessage>(OnLog);
-        bus.Unsubscribe<BattleEvents.UnitDied>(OnUnitDied);
-        bus.Unsubscribe<BattleEvents.SkillUsed>(OnSkillUsed);
-        bus.Unsubscribe<BattleEvents.ItemUsed>(OnItemUsed);
+        BattleNotifications.Posted -= OnNotification;
     }
 
     private void BuildLayout()
@@ -61,9 +50,6 @@ public sealed partial class BattleLog : Control
         header.AddThemeColorOverride("font_color", HudStyle.DimText);
         inner.AddChild(header);
 
-        // RichTextLabel handles its own scrolling when ScrollActive is true and FitContent
-        // is false — the scroll bar appears automatically once the text exceeds the visible
-        // area. Wrapping it in an extra ScrollContainer would interfere with that.
         _text = new RichTextLabel
         {
             BbcodeEnabled = true,
@@ -79,10 +65,10 @@ public sealed partial class BattleLog : Control
         inner.AddChild(_text);
     }
 
-    private void OnLog(BattleEvents.LogMessage e) => Append(ColorFor(e.Severity), e.Message);
-    private void OnUnitDied(BattleEvents.UnitDied e) => Append("#cc3333", $"{e.Unit.UnitName} fell.");
-    private void OnSkillUsed(BattleEvents.SkillUsed e) => Append("#cccccc", $"{e.Caster.UnitName} casts {e.SkillId}.");
-    private void OnItemUsed(BattleEvents.ItemUsed e) => Append("#aaccff", $"{e.User.UnitName} uses {e.ItemId}.");
+    private void OnNotification(string message, BattleNotifications.Severity severity)
+    {
+        Append(ColorFor(severity), message);
+    }
 
     private void Append(string colorHex, string message)
     {
@@ -101,11 +87,11 @@ public sealed partial class BattleLog : Control
         }
     }
 
-    private static string ColorFor(LogSeverity sev) => sev switch
+    private static string ColorFor(BattleNotifications.Severity severity) => severity switch
     {
-        LogSeverity.Positive => "#33cc77",
-        LogSeverity.Negative => "#cc7733",
-        LogSeverity.Critical => "#cc3333",
+        BattleNotifications.Severity.Positive => "#33cc77",
+        BattleNotifications.Severity.Negative => "#cc7733",
+        BattleNotifications.Severity.Critical => "#cc3333",
         _ => "#cccccc",
     };
 }

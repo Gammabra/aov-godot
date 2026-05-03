@@ -1,51 +1,46 @@
 using Godot;
 
-namespace AshesOfVelsingrad.ui.hud;
+namespace AshesOfVelsingrad.UI.Hud;
 
 /// <summary>
-///     Shared visual constants and helpers for the battle HUD widgets.
+///     Shared visual constants and helpers for every HUD widget — colours, panel styles,
+///     bar styles, label / button theme overrides.
 /// </summary>
 /// <remarks>
-///     Keeps every widget's look-and-feel in one place. Update colours / corner radii here
-///     and every widget rebuilt from these helpers picks up the change. A future iteration can
-///     replace this with a proper Godot <see cref="Theme" /> resource without changing widget code.
+///     Keeps the HUD's look-and-feel in one file. A future iteration can replace this with a
+///     Godot <see cref="Theme" /> resource without changing widget code.
 /// </remarks>
 public static class HudStyle
 {
-    /// <summary>Semi-transparent dark background used by every panel.</summary>
+    /// <summary>Translucent dark background used by every HUD panel.</summary>
     public static Color PanelBackground => new(0.08f, 0.07f, 0.10f, 0.78f);
 
-    /// <summary>Subtle border colour to outline panels.</summary>
+    /// <summary>Subtle border colour around panels.</summary>
     public static Color PanelBorder => new(0.55f, 0.45f, 0.30f, 0.85f);
 
     /// <summary>Foreground text colour.</summary>
     public static Color TextColor => new(0.95f, 0.92f, 0.84f, 1f);
 
-    /// <summary>Disabled / dimmed text colour.</summary>
+    /// <summary>Dimmed text colour (used for placeholders / labels).</summary>
     public static Color DimText => new(0.55f, 0.52f, 0.48f, 1f);
 
-    /// <summary>Healthy HP bar colour.</summary>
+    /// <summary>Healthy HP bar fill.</summary>
     public static Color HpFill => new(0.78f, 0.18f, 0.20f, 1f);
 
-    /// <summary>Mana bar colour.</summary>
+    /// <summary>Mana bar fill.</summary>
     public static Color ManaFill => new(0.20f, 0.45f, 0.85f, 1f);
 
-    /// <summary>Player faction chip colour for the turn queue.</summary>
+    /// <summary>Player chip colour for the turn queue.</summary>
     public static Color PlayerColor => new(0.30f, 0.80f, 0.95f, 1f);
 
-    /// <summary>Ally faction chip colour.</summary>
-    public static Color AllyColor => new(0.30f, 0.90f, 0.30f, 1f);
-
-    /// <summary>Enemy faction chip colour.</summary>
+    /// <summary>Enemy chip colour for the turn queue.</summary>
     public static Color EnemyColor => new(0.90f, 0.30f, 0.30f, 1f);
 
-    /// <summary>
-    ///     Build a translucent rounded panel background.
-    /// </summary>
-    /// <returns>A reusable <see cref="StyleBoxFlat" /> instance.</returns>
+    /// <summary>Build a translucent rounded panel <see cref="StyleBoxFlat" />.</summary>
+    /// <returns>A reusable stylebox.</returns>
     public static StyleBoxFlat MakePanelStyle()
     {
-        StyleBoxFlat sb = new()
+        return new StyleBoxFlat
         {
             BgColor = PanelBackground,
             BorderColor = PanelBorder,
@@ -62,20 +57,14 @@ public static class HudStyle
             ContentMarginTop = 6,
             ContentMarginBottom = 6,
         };
-        return sb;
     }
 
     /// <summary>
     ///     Wrap <paramref name="content" /> in a styled <see cref="PanelContainer" /> filling the parent.
     /// </summary>
-    /// <param name="content">The control to host inside the panel.</param>
-    /// <returns>A styled panel containing <paramref name="content" />.</returns>
-    /// <remarks>
-    ///     The panel's <see cref="Control.MouseFilter" /> is set to
-    ///     <see cref="Control.MouseFilterEnum.Ignore" /> so empty space inside HUD widgets
-    ///     does not catch mouse events — interactive children (buttons etc.) keep their own
-    ///     default <c>Stop</c> filter and continue to receive clicks.
-    /// </remarks>
+    /// <param name="content">Control to host inside the panel.</param>
+    /// <returns>A panel containing <paramref name="content" />, with <c>MouseFilter.Ignore</c>
+    ///     so empty space lets clicks through to the map.</returns>
     public static PanelContainer MakePanel(Control content)
     {
         PanelContainer panel = new()
@@ -89,24 +78,43 @@ public static class HudStyle
         return panel;
     }
 
-    /// <summary>
-    ///     Apply default text colour to a label.
-    /// </summary>
-    /// <param name="label">The label to style.</param>
+    /// <summary>Apply default text colour and font size to a <see cref="Label" />.</summary>
+    /// <param name="label">Label to style.</param>
     public static void StyleLabel(Label label)
     {
         label.AddThemeColorOverride("font_color", TextColor);
         label.AddThemeFontSizeOverride("font_size", 14);
     }
 
-    /// <summary>
-    ///     Apply default text colour to a button.
-    /// </summary>
-    /// <param name="button">The button to style.</param>
+    /// <summary>Apply default text colour and font size to a <see cref="Button" />.</summary>
+    /// <param name="button">Button to style.</param>
     public static void StyleButton(Button button)
     {
         button.AddThemeColorOverride("font_color", TextColor);
-        button.AddThemeColorOverride("font_hover_color", new Color(1, 0.95f, 0.7f));
+        button.AddThemeColorOverride("font_hover_color", new Color(1f, 0.95f, 0.7f));
         button.AddThemeFontSizeOverride("font_size", 14);
+    }
+
+    /// <summary>Build a HP/MP-style stylebox pair for a <see cref="ProgressBar" />.</summary>
+    /// <param name="bar">The progress bar to style.</param>
+    /// <param name="fillColor">Colour for the filled portion.</param>
+    public static void ApplyBarStyle(ProgressBar bar, Color fillColor)
+    {
+        StyleBoxFlat bg = new()
+        {
+            BgColor = new Color(0.10f, 0.09f, 0.10f, 0.85f),
+            BorderColor = new Color(0, 0, 0, 0.5f),
+            BorderWidthLeft = 1, BorderWidthRight = 1, BorderWidthTop = 1, BorderWidthBottom = 1,
+            CornerRadiusBottomLeft = 3, CornerRadiusBottomRight = 3,
+            CornerRadiusTopLeft = 3, CornerRadiusTopRight = 3,
+        };
+        StyleBoxFlat fill = new()
+        {
+            BgColor = fillColor,
+            CornerRadiusBottomLeft = 3, CornerRadiusBottomRight = 3,
+            CornerRadiusTopLeft = 3, CornerRadiusTopRight = 3,
+        };
+        bar.AddThemeStyleboxOverride("background", bg);
+        bar.AddThemeStyleboxOverride("fill", fill);
     }
 }

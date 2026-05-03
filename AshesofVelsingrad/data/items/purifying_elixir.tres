@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="ItemDefinition" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/systems/items/ItemDefinition.cs" id="1_ItemDefinition"]
+
+[resource]
+script = ExtResource("1_ItemDefinition")
+ItemId = "purifying_elixir"
+DisplayName = "Purifying Elixir"
+Description = "Reduces an ally's corruption by one level and removes purifiable status effects."
+BehaviourId = "purifying_elixir"
+TargetType = 1
+Magnitude = 0.0
+Price = 200
+Consumable = true

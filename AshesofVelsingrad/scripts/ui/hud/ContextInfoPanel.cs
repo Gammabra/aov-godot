@@ -1,23 +1,22 @@
-using AshesOfVelsingrad.systems;
-using AshesOfVelsingrad.systems.skills;
+using AshesOfVelsingrad.Systems;
+using AshesOfVelsingrad.Utilities;
 using Godot;
 
-namespace AshesOfVelsingrad.ui.hud;
+namespace AshesOfVelsingrad.UI.Hud;
 
 /// <summary>
-///     Top-left panel that swaps content based on the active player input mode.
+///     Top-left context panel that swaps content based on the player's input mode.
 /// </summary>
 /// <remarks>
 ///     <list type="bullet">
-///         <item><description>Idle / movement mode → shows movement budget and a hint
-///         "Click a green tile to move, or pick a skill / item / pass."</description></item>
-///         <item><description>Skill targeting mode → shows the selected skill's name,
-///         description, mana / cooldown / range, and target rule.</description></item>
+///         <item><description>Movement mode: shows reachable-tile budget and a one-line hint.</description></item>
+///         <item><description>Action phase (after a move): shows "move spent, pick an action".</description></item>
+///         <item><description>Skill targeting: shows the selected skill's full details + cancel hint.</description></item>
 ///     </list>
 ///     <para>
-///         Driven directly by <see cref="Managers.GameManager" /> via <see cref="ShowMovement" />
-///         and <see cref="ShowSkill" />. Doesn't subscribe to the bus — keeps the
-///         coupling explicit since it's tied to the input state machine, not battle events.
+///         Driven directly by <c>GameManager</c> through <see cref="ShowMovement" /> and
+///         <see cref="ShowSkill" /> — no event subscription, since the panel is a pure view of
+///         the input state machine.
 ///     </para>
 /// </remarks>
 public sealed partial class ContextInfoPanel : Control
@@ -67,36 +66,40 @@ public sealed partial class ContextInfoPanel : Control
     /// <summary>
     ///     Display the movement summary for the active turn.
     /// </summary>
-    /// <param name="rangeAvailable">Tiles currently reachable. 0 means already moved.</param>
-    /// <param name="rangeBudget">Maximum tiles the unit can move per turn.</param>
-    /// <param name="canMove">Whether movement is still allowed this turn.</param>
-    public void ShowMovement(int rangeAvailable, int rangeBudget, bool canMove)
+    /// <param name="reachableCount">Number of reachable tiles shown on the map.</param>
+    /// <param name="rangeBudget">The unit's <see cref="IUnitSystem.PossibleMovesRange" />.</param>
+    /// <param name="canMove">Whether the unit can still move this turn.</param>
+    public void ShowMovement(int reachableCount, int rangeBudget, bool canMove)
     {
         if (_title is null || _detail is null) return;
         _title.Text = canMove ? "Movement" : "Action phase";
         _detail.Text = canMove
-            ? $"Reachable tiles: {rangeAvailable}/{rangeBudget}\nClick a green tile to move, or use a skill, item, or pass."
-            : "Move spent for this turn.\nUse a skill, item, basic attack, or pass.";
+            ? $"Reachable tiles: {reachableCount}/{rangeBudget}\nClick a green tile to move, or pick a skill / pass."
+            : "Move spent for this turn.\nPick a skill or pass.";
     }
 
     /// <summary>
     ///     Display details for a queued skill while the player picks a target.
     /// </summary>
-    /// <param name="skill">The skill being targeted.</param>
-    public void ShowSkill(SkillSystem skill)
+    /// <param name="skill">Skill currently being targeted.</param>
+    public void ShowSkill(ISkillSystem skill)
     {
         if (_title is null || _detail is null) return;
-        _title.Text = skill.Name;
+
         string targetLabel = skill.TargetType switch
         {
-            TargetTypes.SingleAlly => "Single ally",
-            TargetTypes.AllAllies => "All allies",
-            TargetTypes.SingleEnemy => "Single enemy",
-            TargetTypes.AllEnemies => "All enemies",
+            AovDataStructures.TargetTypes.SingleAlly => "Single ally",
+            AovDataStructures.TargetTypes.AllAllies => "All allies",
+            AovDataStructures.TargetTypes.SingleEnemy => "Single enemy",
+            AovDataStructures.TargetTypes.AllEnemies => "All enemies",
             _ => skill.TargetType.ToString(),
         };
         string desc = string.IsNullOrEmpty(skill.Description) ? "(no description)" : skill.Description;
-        _detail.Text = $"{desc}\n\nMP {skill.ManaCost:F0}  •  CD {skill.TotalCooldown}  •  Range {skill.Range}\nTarget: {targetLabel}\nRight-click or Esc to cancel.";
+
+        _title.Text = string.IsNullOrEmpty(skill.Name) ? "Skill" : skill.Name;
+        _detail.Text =
+            $"{desc}\n\nMP {skill.ManaCost:F0}  •  CD {skill.TotalCooldown}  •  Range {skill.Range}\n" +
+            $"Target: {targetLabel}\nRight-click or Esc to cancel.";
     }
 
     /// <summary>Reset to a placeholder state when no battle is active.</summary>

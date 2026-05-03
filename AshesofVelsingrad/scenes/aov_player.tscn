@@ -2,22 +2,35 @@
 
 [ext_resource type="Texture2D" uid="uid://c3fhnshbrt41q" path="res://assets/Krita/ref_perso.png" id="1_7elhi"]
 [ext_resource type="Script" uid="uid://3kcmpk5x2mx0" path="res://scripts/player/AovPlayer.cs" id="2_x6mcw"]
+[ext_resource type="Script" uid="uid://chw0te1ob2xlt" path="res://scripts/player/InteractionComponent.cs" id="3_mjuyt"]
 [ext_resource type="Script" uid="uid://c3g1sexj1wrtr" path="res://scripts/player/ExplorationCamera.cs" id="3_wwxp1"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_cy5km"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_wwxp1"]
 
 [node name="AovPlayer" type="CharacterBody3D" unique_id=1117119690]
 script = ExtResource("2_x6mcw")
 _spritePath = NodePath("Sprite3D")
 _springArm3DPath = NodePath("SpringArm3D")
+_interactionComponentPath = NodePath("InteractionArea")
 
 [node name="Sprite3D" type="Sprite3D" parent="." unique_id=1975111519]
 billboard = 2
 texture = ExtResource("1_7elhi")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=446419558]
+[node name="PlayerCollision" type="CollisionShape3D" parent="." unique_id=446419558]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
 shape = SubResource("CapsuleShape3D_cy5km")
+
+[node name="InteractionArea" type="Area3D" parent="." unique_id=1952076679]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.05505383, 0)
+collision_mask = 2
+script = ExtResource("3_mjuyt")
+_spritePath = NodePath("../Sprite3D")
+
+[node name="InteractionCollision" type="CollisionShape3D" parent="InteractionArea" unique_id=1649506564]
+shape = SubResource("BoxShape3D_wwxp1")
 
 [node name="SpringArm3D" type="SpringArm3D" parent="." unique_id=417669318]
 transform = Transform3D(1, 0, 0, 0, 0.96363044, 0.26723838, 0, -0.26723838, 0.96363044, 0, 0.25, 0)

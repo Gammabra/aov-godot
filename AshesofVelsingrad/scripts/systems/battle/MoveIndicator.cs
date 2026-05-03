@@ -1,30 +1,29 @@
 using System.Collections.Generic;
 using Godot;
 
-namespace AshesOfVelsingrad.systems.battle;
+namespace AshesOfVelsingrad.Systems.Battle;
 
 /// <summary>
-///     World-space overlay that highlights tiles a unit can move to.
+///     World-space overlay that draws a translucent quad above each cell in a list.
 /// </summary>
 /// <remarks>
 ///     <para>
-///         A pool of translucent quads spawned as children of the active map. Call
-///         <see cref="Show" /> with the result of <c>UnitSystem.GetPossibleMoves(map)</c> to
-///         display the indicators; call <see cref="Hide" /> to clear them.
+///         Used for move-tile, skill-target and hover overlays. A pool of mesh instances is
+///         maintained internally and reused between calls so the indicator can be flipped on
+///         and off many times per turn without alloc churn.
 ///     </para>
 ///     <para>
-///         Reuses meshes via a simple pool to avoid alloc churn between turns. The default
-///         tile colour is friendly cyan-green; <see cref="TargetIndicator" /> uses the same
-///         class with a hostile-red palette to highlight skill targets.
+///         Bind once with <see cref="Bind" /> after the map exists, then call <see cref="Show" />
+///         with the cells to highlight or <see cref="Hide" /> to clear.
 ///     </para>
 /// </remarks>
 public partial class MoveIndicator : Node3D
 {
-    /// <summary>Colour of each move tile. Defaults to a translucent friendly green.</summary>
+    /// <summary>Translucent fill colour. Defaults to a friendly green.</summary>
     [Export]
     public Color TileColor { get; set; } = new(0.30f, 0.95f, 0.55f, 0.50f);
 
-    /// <summary>How high above the cell the indicator hovers (in world units).</summary>
+    /// <summary>Vertical offset above the cell so the quad isn't z-fighting with the floor.</summary>
     [Export]
     public float Height { get; set; } = 0.05f;
 
@@ -33,16 +32,18 @@ public partial class MoveIndicator : Node3D
     private StandardMaterial3D? _material;
 
     /// <summary>
-    ///     Bind the indicator to the active map. Must be called once before <see cref="Show" />.
+    ///     Attach the indicator to a map. Must be called before <see cref="Show" />.
     /// </summary>
-    /// <param name="map">The map whose cell coordinates we'll convert to world space.</param>
+    /// <param name="map">The active <see cref="MapSystem" />.</param>
     public void Bind(MapSystem map)
     {
         _map = map;
     }
 
-    /// <summary>Display indicators on every tile in <paramref name="tiles" />.</summary>
-    /// <param name="tiles">Cell coordinates as (x, y, z) tuples.</param>
+    /// <summary>
+    ///     Display indicators on every tile in <paramref name="tiles" />, hiding extras.
+    /// </summary>
+    /// <param name="tiles">Cell coordinates to highlight.</param>
     public void Show(IReadOnlyList<(int X, int Y, int Z)> tiles)
     {
         if (_map is null)
@@ -71,7 +72,7 @@ public partial class MoveIndicator : Node3D
         }
     }
 
-    /// <summary>Hide all indicators.</summary>
+    /// <summary>Hide every indicator.</summary>
     public new void Hide()
     {
         foreach (MeshInstance3D mesh in _pool)
@@ -103,7 +104,6 @@ public partial class MoveIndicator : Node3D
             ShadingMode = BaseMaterial3D.ShadingModeEnum.Unshaded,
             DisableReceiveShadows = true,
             CullMode = BaseMaterial3D.CullModeEnum.Disabled,
-            // Faintly emissive so the tile reads at any lighting.
             EmissionEnabled = true,
             Emission = new Color(TileColor.R, TileColor.G, TileColor.B, 1f) * 0.4f,
         };
@@ -115,18 +115,5 @@ public partial class MoveIndicator : Node3D
             Visible = false,
             CastShadow = GeometryInstance3D.ShadowCastingSetting.Off,
         };
-    }
-}
-
-/// <summary>
-///     Reuses <see cref="MoveIndicator" /> with a hostile-red palette to highlight skill targets.
-/// </summary>
-public sealed partial class TargetIndicator : MoveIndicator
-{
-    /// <inheritdoc />
-    public override void _Ready()
-    {
-        TileColor = new Color(0.95f, 0.30f, 0.30f, 0.55f);
-        base._Ready();
     }
 }

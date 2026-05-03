@@ -1,265 +1,166 @@
+using System.Collections.Generic;
 using AshesOfVelsingrad.Managers;
-using AshesOfVelsingrad.systems.battle;
-using AshesOfVelsingrad.systems.progression;
-using AshesOfVelsingrad.systems.status_effects;
+using AshesOfVelsingrad.Systems;
+using AshesOfVelsingrad.Systems.Battle;
+using AshesOfVelsingrad.Utilities;
 using Godot;
 
-namespace AshesOfVelsingrad.systems.corruption;
+namespace AshesOfVelsingrad.Data.Corruption;
 
 /// <summary>
-///     Static facade that orchestrates corruption mechanics: backlash rolls, level changes,
-///     transformation, and faction conversion.
+///     Static facade owning every corruption mechanic: backlash rolls, level changes,
+///     transformation, faction conversion.
 /// </summary>
-/// <remarks>
-///     <para>
-///         This is the only place that mutates <see cref="CharacterProfile.CorruptionLevel" />
-///         and <see cref="CharacterProfile.CorruptionPoints" />. Other systems should call
-///         <see cref="RollBacklash" /> when a corruption-source skill is cast and
-///         <see cref="Cleanse" /> when an item / Light spell mitigates corruption.
-///     </para>
-///     <para>
-///         Karma modulation: per the design, negative karma (more corrupt-leaning)
-///         <b>reduces</b> backlash chance — the character has embraced the dark arts.
-///         Positive karma (virtuous) <b>increases</b> backlash. The factor is a linear
-///         shift of <c>±0.5</c> across the karma range, applied on top of the spell's
-///         configured base chance.
-///     </para>
-/// </remarks>
 public static class CorruptionSystem
 {
-    /// <summary>
-    ///     Maximum karma-driven shift applied to a backlash roll.
-    ///     A unit at +100 karma rolls 0.5 higher than its base chance; -100 rolls 0.5 lower.
-    /// </summary>
+    /// <summary>Maximum karma-driven shift to a backlash chance roll.</summary>
     public const float MaxKarmaShift = 0.5f;
 
-    #region Public API
-
-    /// <summary>
-    ///     Roll a corruption backlash for a dark-magic cast.
-    /// </summary>
-    /// <param name="caster">The unit that just cast the spell.</param>
-    /// <param name="baseChance">Base probability in <c>[0, 1]</c> from the skill definition.</param>
-    /// <returns><c>true</c> if a backlash occurred and corruption was added.</returns>
-    public static bool RollBacklash(UnitSystem caster, float baseChance)
+    /// <summary>Roll a corruption backlash for a dark-magic cast.</summary>
+    /// <param name="caster">Unit that just cast the spell.</param>
+    /// <param name="baseChance">Base probability in [0, 1] from the skill definition.</param>
+    /// <returns><c>true</c> when a backlash occurred and corruption was added.</returns>
+    public static bool RollBacklash(IUnitSystem caster, float baseChance)
     {
-        CharacterProfile? profile = caster.Profile;
-        if (profile is null)
-            return false;
+        int karma = KarmaManager.Instance?.Karma ?? 0;
+        float adjusted = AdjustChanceWithKarma(baseChance, karma);
+        if (adjusted <= 0f) return false;
+        if (GD.Randf() > adjusted) return false;
 
-        float adjusted = AdjustChanceWithKarma(baseChance, profile.Karma);
-        if (adjusted <= 0f)
-            return false;
-
-        if (GD.Randf() > adjusted)
-            return false;
-
-        AddCorruptionPoint(caster, profile);
+        AddCorruptionPoint(caster);
+        BattleNotifications.Post(
+            $"{caster.UnitName} suffers a corruption backlash.",
+            BattleNotifications.Severity.Negative);
         return true;
     }
 
-    /// <summary>
-    ///     Reduce corruption by one full level on the given unit (clamped at 0).
-    /// </summary>
-    /// <param name="unit">The unit being purified.</param>
-    /// <remarks>
-    ///     Used by the Purifying Elixir item and the Light spell <c>Éclat Purificateur</c>
-    ///     (when configured with the <c>cleanse_corruption</c> flag).
-    /// </remarks>
-    public static void Cleanse(UnitSystem unit)
+    /// <summary>Reduce corruption by one tier on the unit (clamped at 0).</summary>
+    /// <param name="unit">Unit being purified.</param>
+    public static void Cleanse(IUnitSystem unit)
     {
-        CharacterProfile? profile = unit.Profile;
-        if (profile is null) return;
+        if (unit is not UnitSystem u) return;
+        int oldLevel = u.CorruptionLevel;
+        if (oldLevel <= 0) return;
 
-        int oldLevel = profile.CorruptionLevel;
-        if (oldLevel <= 0)
-            return;
+        u.CorruptionLevel = oldLevel - 1;
+        u.CorruptionPoints = 0;
 
-        profile.CorruptionLevel = oldLevel - 1;
-        profile.CorruptionPoints = 0;
-
-        SyncRuntimeEffects(unit, oldLevel, profile.CorruptionLevel);
-        BattleEventBus.Instance?.Publish(new BattleEvents.CorruptionChanged(
-            unit, oldLevel, profile.CorruptionLevel
-        ));
+        SyncRuntimeMarker(unit, oldLevel, u.CorruptionLevel);
+        BattleNotifications.Post(
+            $"{u.UnitName} is purified — corruption now level {u.CorruptionLevel}.",
+            BattleNotifications.Severity.Positive);
     }
 
-    /// <summary>
-    ///     Set the corruption level directly. Used by save/load and tests.
-    /// </summary>
-    /// <param name="unit">The unit to mutate.</param>
-    /// <param name="level">Target level in <c>[0, MaxCorruptionLevel]</c>.</param>
-    public static void SetLevel(UnitSystem unit, int level)
+    /// <summary>Set the corruption level directly. Used by save/load and tests.</summary>
+    /// <param name="unit">Unit to mutate.</param>
+    /// <param name="level">Target level in [0, MaxCorruptionLevel].</param>
+    public static void SetLevel(IUnitSystem unit, int level)
     {
-        CharacterProfile? profile = unit.Profile;
-        if (profile is null) return;
-        int clamped = Mathf.Clamp(level, 0, CharacterProfile.MaxCorruptionLevel);
-        int old = profile.CorruptionLevel;
+        if (unit is not UnitSystem u) return;
+        int clamped = Mathf.Clamp(level, 0, UnitSystem.MaxCorruptionLevel);
+        int old = u.CorruptionLevel;
         if (old == clamped) return;
 
-        profile.CorruptionLevel = clamped;
-        profile.CorruptionPoints = 0;
-
-        SyncRuntimeEffects(unit, old, clamped);
-        BattleEventBus.Instance?.Publish(new BattleEvents.CorruptionChanged(unit, old, clamped));
+        u.CorruptionLevel = clamped;
+        u.CorruptionPoints = 0;
+        SyncRuntimeMarker(unit, old, clamped);
     }
 
-    /// <summary>
-    ///     Apply a temporary faction conversion to a unit.
-    /// </summary>
+    /// <summary>Apply a temporary faction conversion (for the "Conversion Corrompue" spell).</summary>
     /// <param name="target">Unit to convert.</param>
-    /// <param name="newFaction">Faction the unit becomes (typically <see cref="Faction.Enemy" />).</param>
+    /// <param name="newFaction">Faction the unit becomes.</param>
     /// <param name="duration">Number of turns the conversion lasts.</param>
-    /// <remarks>
-    ///     Implements the user-requested "corrupted ally" mechanic. The conversion is
-    ///     attached as a <see cref="CorruptedTransformationEffect" /> so the
-    ///     <see cref="StatusEffectSystem" /> automatically reverts it when its duration
-    ///     expires. Adds 1 corruption level to the affected unit on top of the conversion
-    ///     so the spell has a lasting consequence.
-    /// </remarks>
-    public static void ApplyTemporaryConversion(UnitSystem target, Faction newFaction, int duration)
+    public static void ApplyTemporaryConversion(IUnitSystem target, Faction newFaction, int duration)
     {
-        Faction original = target.Faction;
-        if (original == newFaction)
-            return;
+        if (target is not UnitSystem u) return;
+        Faction original = u.Faction;
+        if (original == newFaction) return;
 
         CorruptedTransformationEffect effect = new(original, duration);
-        target.ApplyEffect(effect);
+        target.SetStatusEffectOnUnit(effect);
 
-        target.AssignFaction(newFaction);
-        BattleEventBus.Instance?.Publish(new BattleEvents.FactionChanged(target, original, newFaction, duration));
+        u.SetFaction(newFaction);
+        BattleNotifications.Post(
+            $"{u.UnitName} is twisted to {newFaction} for {duration} turns!",
+            BattleNotifications.Severity.Critical);
 
-        // Lasting cost: target gains a corruption point.
-        if (target.Profile is { } profile)
-            AddCorruptionPoint(target, profile);
+        AddCorruptionPoint(target);
     }
 
-    /// <summary>
-    ///     Internal: called by <see cref="CorruptedTransformationEffect.OnApply" />.
-    /// </summary>
-    /// <param name="unit">The unit just transformed.</param>
-    public static void OnTransformationStart(UnitSystem unit)
+    /// <summary>Internal: called by <see cref="CorruptedTransformationEffect.OnApply" />.</summary>
+    public static void OnTransformationStart(IUnitSystem unit)
     {
-        BattleEventBus.Instance?.Publish(new BattleEvents.LogMessage(
-            $"{unit.UnitName} succumbs to corruption!", LogSeverity.Critical
-        ));
+        BattleNotifications.Post(
+            $"{unit.UnitName} succumbs to corruption!",
+            BattleNotifications.Severity.Critical);
     }
 
-    /// <summary>
-    ///     Internal: called by <see cref="CorruptedTransformationEffect.OnRemove" />.
-    /// </summary>
-    /// <param name="unit">The unit returning to normal.</param>
-    /// <param name="originalFaction">The faction to restore.</param>
-    public static void OnTransformationEnd(UnitSystem unit, Faction originalFaction)
+    /// <summary>Internal: called by <see cref="CorruptedTransformationEffect.OnRemove" />.</summary>
+    public static void OnTransformationEnd(IUnitSystem unit, Faction originalFaction)
     {
-        Faction current = unit.Faction;
-        unit.AssignFaction(originalFaction);
-        BattleEventBus.Instance?.Publish(new BattleEvents.FactionChanged(unit, current, originalFaction, 0));
-        BattleEventBus.Instance?.Publish(new BattleEvents.LogMessage(
-            $"{unit.UnitName} regains their senses.", LogSeverity.Positive
-        ));
+        if (unit is not UnitSystem u) return;
+        u.SetFaction(originalFaction);
+        BattleNotifications.Post(
+            $"{u.UnitName} regains their senses.",
+            BattleNotifications.Severity.Positive);
     }
 
-    #endregion
-
-    #region Private helpers
-
-    /// <summary>
-    ///     Apply karma to a base backlash chance.
-    /// </summary>
-    /// <param name="baseChance">Spell-defined base chance.</param>
-    /// <param name="karma">Caster's karma in <c>[-100, +100]</c>.</param>
-    /// <returns>Adjusted chance, clamped to <c>[0, 1]</c>.</returns>
     private static float AdjustChanceWithKarma(float baseChance, int karma)
     {
-        // Linear mapping: karma = +100 -> +MaxKarmaShift; karma = -100 -> -MaxKarmaShift.
         float shift = karma / 100.0f * MaxKarmaShift;
         return Mathf.Clamp(baseChance + shift, 0f, 1f);
     }
 
-    /// <summary>
-    ///     Increase the unit's corruption point counter, advancing its level when full.
-    /// </summary>
-    /// <param name="unit">Affected unit.</param>
-    /// <param name="profile">Cached profile reference.</param>
-    private static void AddCorruptionPoint(UnitSystem unit, CharacterProfile profile)
+    private static void AddCorruptionPoint(IUnitSystem unit)
     {
-        if (profile.CorruptionLevel >= CharacterProfile.MaxCorruptionLevel)
+        if (unit is not UnitSystem u) return;
+
+        if (u.CorruptionLevel >= UnitSystem.MaxCorruptionLevel)
         {
-            // Already at max: trigger the transformation if not already berserk.
-            if (!unit.HasEffect<CorruptedTransformationEffect>())
+            if (!u.HasEffect<CorruptedTransformationEffect>())
             {
-                CorruptedTransformationEffect effect = new(unit.Faction, 2);
-                unit.ApplyEffect(effect);
-                Faction original = unit.Faction;
-                unit.AssignFaction(Faction.Enemy);
-                BattleEventBus.Instance?.Publish(new BattleEvents.FactionChanged(unit, original, Faction.Enemy, 2));
+                Faction original = u.Faction;
+                CorruptedTransformationEffect effect = new(original, 2);
+                u.SetStatusEffectOnUnit(effect);
+                u.SetFaction(Faction.Enemy);
             }
             return;
         }
 
-        profile.CorruptionPoints++;
-        if (profile.CorruptionPoints < CharacterProfile.CorruptionPointsPerLevel)
+        u.CorruptionPoints++;
+        if (u.CorruptionPoints < UnitSystem.CorruptionPointsPerLevel) return;
+
+        int oldLevel = u.CorruptionLevel;
+        u.CorruptionLevel = oldLevel + 1;
+        u.CorruptionPoints = 0;
+        SyncRuntimeMarker(unit, oldLevel, u.CorruptionLevel);
+
+        if (u.CorruptionLevel >= UnitSystem.MaxCorruptionLevel)
         {
-            // Same level, just more points.
-            BattleEventBus.Instance?.Publish(new BattleEvents.CorruptionChanged(
-                unit, profile.CorruptionLevel, profile.CorruptionLevel
-            ));
-            return;
+            Faction original = u.Faction;
+            CorruptedTransformationEffect effect = new(original, 2);
+            u.SetStatusEffectOnUnit(effect);
+            u.SetFaction(Faction.Enemy);
         }
-
-        // Level up corruption.
-        int oldLevel = profile.CorruptionLevel;
-        profile.CorruptionLevel = oldLevel + 1;
-        profile.CorruptionPoints = 0;
-
-        SyncRuntimeEffects(unit, oldLevel, profile.CorruptionLevel);
-
-        BattleEventBus.Instance?.Publish(new BattleEvents.CorruptionChanged(unit, oldLevel, profile.CorruptionLevel));
-        BattleEventBus.Instance?.Publish(new BattleEvents.LogMessage(
-            $"{unit.UnitName}'s corruption rises to level {profile.CorruptionLevel}.",
-            profile.CorruptionLevel >= CharacterProfile.MaxCorruptionLevel ? LogSeverity.Critical : LogSeverity.Negative
-        ));
-
-        if (profile.CorruptionLevel >= CharacterProfile.MaxCorruptionLevel)
-        {
-            // Tipping over to level 3 immediately triggers the transformation.
-            CorruptedTransformationEffect effect = new(unit.Faction, 2);
-            unit.ApplyEffect(effect);
-            Faction original = unit.Faction;
-            unit.AssignFaction(Faction.Enemy);
-            BattleEventBus.Instance?.Publish(new BattleEvents.FactionChanged(unit, original, Faction.Enemy, 2));
-        }
-
-        // KarmaManager no longer required here; previously this forced initialization.
     }
 
-    /// <summary>
-    ///     Replace the runtime "level" status effect on the unit so the level matches the profile.
-    /// </summary>
-    /// <param name="unit">The affected unit.</param>
-    /// <param name="oldLevel">Previous level.</param>
-    /// <param name="newLevel">New level.</param>
-    private static void SyncRuntimeEffects(UnitSystem unit, int oldLevel, int newLevel)
+    private static void SyncRuntimeMarker(IUnitSystem unit, int oldLevel, int newLevel)
     {
-        // Remove the old level marker.
-        foreach (StatusEffect existing in unit.GetActiveEffects().ToArray())
+        var snapshot = new List<StatusEffect<IUnitSystem>>(unit.GetActiveEffects());
+        foreach (StatusEffect<IUnitSystem> existing in snapshot)
         {
             if (existing is CorruptionLevelEffect)
                 unit.RemoveEffect(existing);
         }
 
-        // Add the new one (if any).
-        StatusEffect? marker = newLevel switch
+        StatusEffect<IUnitSystem>? marker = newLevel switch
         {
             1 => new CorruptionLevel1Effect(),
             2 => new CorruptionLevel2Effect(),
             3 => new CorruptionLevel3Effect(),
-            _ => null
+            _ => null,
         };
         if (marker is not null)
-            unit.ApplyEffect(marker);
+            unit.SetStatusEffectOnUnit(marker);
     }
-
-    #endregion
 }

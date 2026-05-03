@@ -1,64 +1,75 @@
-using AshesOfVelsingrad.systems.battle;
-using AshesOfVelsingrad.systems.status_effects;
+using AshesOfVelsingrad.Systems;
+using AshesOfVelsingrad.Utilities;
 
-namespace AshesOfVelsingrad.systems.corruption;
+namespace AshesOfVelsingrad.Data.Corruption;
+
+// =============================================================================
+// Corruption tier marker effects.
+// One concrete subclass per level (1/2/3). They live on the unit as long as the
+// unit's CorruptionLevel matches their level — CorruptionSystem.SyncRuntimeMarker
+// adds/removes them to keep them in sync. Game logic that wants to ask
+// "is this unit corruption-1?" calls unit.HasEffect<CorruptionLevel1Effect>().
+// =============================================================================
 
 /// <summary>
-///     Time-limited effect that turns the bearer into an uncontrollable monster.
+///     Base class for the three corruption-tier marker effects. Permanent (duration -1) and
+///     non-stackable; <see cref="CorruptionSystem" /> swaps them in/out as the tier changes.
 /// </summary>
-/// <remarks>
-///     <para>
-///         Triggered by reaching corruption level 3 (or by the dedicated
-///         <c>Corrupted Conversion</c> dark spell, which uses the same effect with
-///         a 3-turn duration). While active:
-///         <list type="bullet">
-///             <item>The unit's <see cref="UnitSystem.Faction" /> is overridden to <see cref="Faction.Enemy" />.</item>
-///             <item>The unit is AI-controlled.</item>
-///             <item>The unit attacks the nearest target regardless of original faction.</item>
-///         </list>
-///     </para>
-///     <para>
-///         When the effect expires, <see cref="CorruptionSystem" /> restores the
-///         <see cref="OriginalFaction" /> on the unit (still corrupt — its
-///         <see cref="systems.progression.CharacterProfile.CorruptionLevel" /> stays
-///         at the level that caused the transformation).
-///     </para>
-/// </remarks>
-public sealed class CorruptedTransformationEffect : StatusEffect
+public abstract class CorruptionLevelEffect : StatusEffect<IUnitSystem>
 {
-    /// <summary>The faction the unit had before transformation, restored on expiration.</summary>
-    public Faction OriginalFaction { get; }
+    /// <summary>The tier this effect represents (1, 2, or 3).</summary>
+    public abstract int Level { get; }
 
-    /// <inheritdoc />
-    public override bool IsStackable => false;
-
-    /// <inheritdoc />
-    public override bool IsPurifiable => false;
-
-    /// <summary>
-    ///     Build a new transformation effect.
-    /// </summary>
-    /// <param name="originalFaction">Faction to restore when the effect expires.</param>
-    /// <param name="duration">Number of turns to remain transformed. Defaults to 3.</param>
-    public CorruptedTransformationEffect(Faction originalFaction, int duration = 3)
+    protected CorruptionLevelEffect(string name, string description)
+        : base(name, description, -1, false)
     {
-        Name = "Corrupted Transformation";
-        Description = "Berserk: faction overridden, attacks nearest target.";
-        Duration = duration;
-        OriginalFaction = originalFaction;
     }
+}
 
+/// <summary>Level 1 corruption: -10% healing received, -1 range to all skills.</summary>
+public sealed class CorruptionLevel1Effect : CorruptionLevelEffect
+{
     /// <inheritdoc />
-    public override void OnApply(IEffectTarget target)
+    public override int Level => 1;
+
+    /// <summary>Multiplier applied to incoming healing (read by heal skills / GameManager).</summary>
+    public const float HealingMultiplier = 0.9f;
+
+    /// <summary>Range penalty applied to every skill the unit casts.</summary>
+    public const int RangePenalty = 1;
+
+    public CorruptionLevel1Effect()
+        : base("Corruption (lvl 1)", "Healing received -10%. Skill range -1.")
     {
-        if (target is UnitSystem unit)
-            CorruptionSystem.OnTransformationStart(unit);
     }
+}
 
+/// <summary>Level 2 corruption: -15% speed, chance to attack a random ally on its turn.</summary>
+public sealed class CorruptionLevel2Effect : CorruptionLevelEffect
+{
     /// <inheritdoc />
-    public override void OnRemove(IEffectTarget target)
+    public override int Level => 2;
+
+    /// <summary>Multiplier applied to base speed while the effect is active.</summary>
+    public const float SpeedMultiplier = 0.85f;
+
+    /// <summary>Probability the unit attacks a random ally on its turn (in [0, 1]).</summary>
+    public const float MisdirectChance = 0.30f;
+
+    public CorruptionLevel2Effect()
+        : base("Corruption (lvl 2)", "Speed -15%. May attack an ally by mistake.")
     {
-        if (target is UnitSystem unit)
-            CorruptionSystem.OnTransformationEnd(unit, OriginalFaction);
+    }
+}
+
+/// <summary>Level 3 corruption: imminent transformation into an uncontrollable monster.</summary>
+public sealed class CorruptionLevel3Effect : CorruptionLevelEffect
+{
+    /// <inheritdoc />
+    public override int Level => 3;
+
+    public CorruptionLevel3Effect()
+        : base("Corruption (lvl 3)", "On the brink: transforms into a monster for 2 turns when triggered.")
+    {
     }
 }

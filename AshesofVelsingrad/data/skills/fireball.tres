@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="SkillDefinition" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/systems/skills/SkillDefinition.cs" id="1_SkillDefinition"]
+
+[resource]
+script = ExtResource("1_SkillDefinition")
+SkillId = "boule_de_feu"
+DisplayName = "Boule de Feu"
+Description = "Fireball: deals damage and burns the target for 3 turns."
+ManaCost = 10.0
+TotalCooldown = 1
+Range = 6
+MagicType = 1
+EffectType = 4
+TargetType = 2
+BehaviourId = "dot"
+BasePower = 18.0
+Scaling = 2
+ScalingFactor = 1.0
+StatusEffectIdOnHit = "burn"
+StatusEffectChance = 1.0
+StatusEffectDuration = 3
+IsCorruptionSource = false
+BaseCorruptionChance = 0.25
+IsPassive = false

@@ -1,47 +1,44 @@
 using System;
-using AshesOfVelsingrad.Managers;
-using AshesOfVelsingrad.systems;
-using AshesOfVelsingrad.systems.battle;
-using AshesOfVelsingrad.systems.skills;
+using AshesOfVelsingrad.Systems;
 using Godot;
 
-namespace AshesOfVelsingrad.ui.hud;
+namespace AshesOfVelsingrad.UI.Hud;
 
 /// <summary>
-///     Five-slot skill bar matching <see cref="systems.BattleInputSystem" />'s hot-keys.
+///     Five-slot skill bar matching <see cref="BattleInputSystem" />'s hot-keys
+///     (<c>battle_select_skill1</c> .. <c>battle_select_skill5</c>).
 /// </summary>
 /// <remarks>
-///     Bottom-left strip. Each slot shows the skill's name, mana cost, and current cooldown.
-///     Disabled when cooldown &gt; 0, when the caster lacks mana, or when it's not a player turn.
+///     <para>
+///         Reads from the active player unit's <see cref="IUnitSystem.ActiveSkills" /> list.
+///         Each slot's button is disabled when the skill is on cooldown or the caster has
+///         insufficient mana. Hover tooltips carry the full description / MP / CD / Range.
+///     </para>
+///     <para>
+///         The widget is purely presentational — it raises <see cref="OnSkillSelected" /> with
+///         the slot index and the resolved skill, and the consumer (<c>GameManager</c>) decides
+///         what to do (enter targeting, etc.).
+///     </para>
 /// </remarks>
 public sealed partial class SkillSelector : Control
 {
     /// <summary>Number of slots, fixed at 5.</summary>
     public const int SlotCount = 5;
 
-    /// <summary>Fired when a slot is selected. Carries the slot index (0-4) and the resolved skill.</summary>
-    public event Action<int, DataDrivenSkill>? OnSkillSelected;
+    /// <summary>Fired when a slot is clicked. Carries the slot index (0-4) and the skill.</summary>
+    public event Action<int, ISkillSystem>? OnSkillSelected;
 
     private readonly Button[] _buttons = new Button[SlotCount];
+    private IUnitSystem? _bound;
 
     /// <inheritdoc />
     public override void _Ready()
     {
         BuildLayout();
-
-        _ = HudBusHelper.WhenReadyAsync(this, bus =>
-        {
-            bus.Subscribe<BattleEvents.TurnStarted>(_ => RefreshFromCurrentUnit());
-            bus.Subscribe<BattleEvents.SkillUsed>(_ => RefreshFromCurrentUnit());
-            bus.Subscribe<BattleEvents.ManaChanged>(_ => RefreshFromCurrentUnit());
-            RefreshFromCurrentUnit();
-        });
     }
 
     private void BuildLayout()
     {
-        // Bottom-centre strip placed just above the ActionMenu; wider than ActionMenu to
-        // fit 5 skill slots comfortably and grow with viewport via the buttons' SizeFlags.
         SetAnchorsAndOffsetsPreset(LayoutPreset.CenterBottom);
         OffsetLeft = -360;
         OffsetRight = 360;
@@ -49,9 +46,8 @@ public sealed partial class SkillSelector : Control
         OffsetBottom = -76;
         MouseFilter = MouseFilterEnum.Ignore;
 
-        Control panelContent = new();
+        Control panelContent = new() { MouseFilter = MouseFilterEnum.Ignore };
         panelContent.SetAnchorsAndOffsetsPreset(LayoutPreset.FullRect);
-        panelContent.MouseFilter = MouseFilterEnum.Ignore;
         AddChild(HudStyle.MakePanel(panelContent));
 
         HBoxContainer row = new()
@@ -69,12 +65,9 @@ public sealed partial class SkillSelector : Control
             Button b = new()
             {
                 Text = $"{i + 1}. —",
-                // Min size kept narrow so the row can shrink on small viewports;
-                // SizeFlagsStretchRatio keeps the five slots equally wide.
                 CustomMinimumSize = new Vector2(60, 48),
                 Disabled = true,
                 SizeFlagsHorizontal = SizeFlags.ExpandFill,
-                SizeFlagsStretchRatio = 1.0f,
                 ClipText = true,
                 AutowrapMode = TextServer.AutowrapMode.Off,
             };
@@ -86,12 +79,19 @@ public sealed partial class SkillSelector : Control
     }
 
     /// <summary>
-    ///     Re-read the active player unit's loadout and update slot visuals.
+    ///     Bind the selector to the unit whose loadout to display. Refreshes immediately.
     /// </summary>
-    public void RefreshFromCurrentUnit()
+    /// <param name="unit">Unit to track, or null to clear.</param>
+    public void Bind(IUnitSystem? unit)
     {
-        UnitSystem? unit = TurnManager.Active?.CurrentUnit;
-        if (unit is null || unit.Faction != Faction.Player)
+        _bound = unit;
+        Refresh();
+    }
+
+    /// <summary>Re-read the bound unit's skills and refresh slot text + disabled state.</summary>
+    public void Refresh()
+    {
+        if (_bound is null)
         {
             for (int i = 0; i < SlotCount; i++)
             {
@@ -104,7 +104,7 @@ public sealed partial class SkillSelector : Control
 
         for (int i = 0; i < SlotCount; i++)
         {
-            SkillSystem? skill = i < unit.ActiveSkills.Count ? unit.ActiveSkills[i] : null;
+            ISkillSystem? skill = i < _bound.ActiveSkills.Count ? _bound.ActiveSkills[i] : null;
             if (skill is null)
             {
                 _buttons[i].Text = $"{i + 1}. —";
@@ -113,20 +113,21 @@ public sealed partial class SkillSelector : Control
                 continue;
             }
 
-            // Single line, clipped — full info lives in the tooltip so the button never overflows.
             _buttons[i].Text = $"{i + 1}. {skill.Name}";
-            _buttons[i].Disabled = skill.Cooldown > 0 || skill.ManaCost > unit.ManaPoint;
+            _buttons[i].Disabled = skill.Cooldown > 0 || skill.ManaCost > _bound.Mana;
+
             string desc = string.IsNullOrEmpty(skill.Description) ? skill.Name : skill.Description;
-            string cdText = skill.Cooldown > 0 ? $"  ⏱ on cooldown ({skill.Cooldown})" : $"  CD {skill.TotalCooldown}";
-            _buttons[i].TooltipText = $"{skill.Name}\n{desc}\n\nMP {skill.ManaCost:F0}{cdText}  •  Range {skill.Range}";
+            string cdText = skill.Cooldown > 0
+                ? $"  ⏱ on cooldown ({skill.Cooldown})"
+                : $"  CD {skill.TotalCooldown}";
+            _buttons[i].TooltipText =
+                $"{skill.Name}\n{desc}\n\nMP {skill.ManaCost:F0}{cdText}  •  Range {skill.Range}";
         }
     }
 
     private void HandlePress(int slot)
     {
-        UnitSystem? unit = TurnManager.Active?.CurrentUnit;
-        if (unit is null || slot >= unit.ActiveSkills.Count) return;
-        if (unit.ActiveSkills[slot] is DataDrivenSkill dds)
-            OnSkillSelected?.Invoke(slot, dds);
+        if (_bound is null || slot >= _bound.ActiveSkills.Count) return;
+        OnSkillSelected?.Invoke(slot, _bound.ActiveSkills[slot]);
     }
 }

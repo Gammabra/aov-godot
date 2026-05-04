@@ -68,15 +68,19 @@ public class PathfinderTests
     [Test]
     public void FindPath_NoPathAvailable_ReturnsNull()
     {
-        // Surround the destination with non-walkable cells.
+        // 3×3 grid where the destination at (2, 2) is surrounded on all four cardinal
+        // neighbours by non-walkable cells. We also clip every query outside the [0..2]
+        // range to non-walkable, otherwise the BFS would happily detour through
+        // (3, 1) → (3, 2) → (2, 2) since the delegate would default to "walkable" out
+        // of bounds.
         StubMap map = new(3, 3, (x, _, z) =>
         {
-            // start is walkable
-            if (x == 0 && z == 0) return true;
-            // destination is walkable BUT every neighbour around it is blocked.
-            if (x == 2 && z == 2) return true;
-            // block direct neighbours of destination
-            if ((x == 1 && z == 2) || (x == 2 && z == 1)) return false;
+            if (x < 0 || x >= 3 || z < 0 || z >= 3) return false;
+            if (x == 2 && z == 2) return true;          // destination itself
+            if (x == 0 && z == 0) return true;          // start
+            // Block every cardinal neighbour of (2, 2): (1,2), (3,2), (2,1), (2,3).
+            if ((x, z) is (1, 2) or (2, 1)) return false;
+            // (3, 2) and (2, 3) are off-grid and already blocked by the bounds check above.
             return true;
         });
         List<(int X, int Y, int Z)>? path = Pathfinder.FindPath(map, (0, 0, 0), (2, 0, 2));

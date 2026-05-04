@@ -16,10 +16,19 @@ public sealed partial class EnemyRoster : Control
 {
     private VBoxContainer? _box;
     private readonly List<UnitHealthBar> _bars = [];
+    private bool _built;
 
     /// <inheritdoc />
     public override void _Ready()
     {
+        EnsureBuilt();
+    }
+
+    /// <summary>Idempotent build — safe to call before <c>_Ready</c> fires.</summary>
+    public void EnsureBuilt()
+    {
+        if (_built) return;
+        _built = true;
         BuildLayout();
     }
 

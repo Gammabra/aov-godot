@@ -13,6 +13,12 @@ namespace AshesOfVelsingrad.UI.Hud;
 /// </remarks>
 public sealed partial class BattleHud : CanvasLayer
 {
+    /// <summary>
+    ///     CanvasLayer index. Pinned high so the HUD always renders above the 3D viewport
+    ///     content and any other CanvasLayers in the scene.
+    /// </summary>
+    public const int HudLayer = 100;
+
     /// <summary>Action menu (Move / Attack / Skill / Pass / Cancel).</summary>
     public ActionMenu? ActionMenu { get; private set; }
 
@@ -38,16 +44,41 @@ public sealed partial class BattleHud : CanvasLayer
     public override void _Ready()
     {
         GD.Print($"BattleHud._Ready running. Layer={Layer}");
+        Build();
+    }
 
-        ActionMenu = GetOrCreate<ActionMenu>("ActionMenu");
-        SkillSelector = GetOrCreate<SkillSelector>("SkillSelector");
-        PlayerStatus = GetOrCreate<PlayerStatusPanel>("PlayerStatus");
-        EnemyRoster = GetOrCreate<EnemyRoster>("EnemyRoster");
-        TurnQueue = GetOrCreate<TurnOrderQueue>("TurnQueue");
-        ContextInfo = GetOrCreate<ContextInfoPanel>("ContextInfo");
-        Log = GetOrCreate<BattleLog>("BattleLog");
-
+    /// <summary>
+    ///     Build (or re-resolve) the child widget references, pin the layer's render order,
+    ///     and force every child widget's own layout to run synchronously. Idempotent — safe
+    ///     to call from <c>GameManager.EnsureHud</c> right after <c>AddChild</c> so the HUD
+    ///     is fully usable without waiting for <c>_Ready</c> to fire.
+    /// </summary>
+    public void Build()
+    {
+        Layer = HudLayer;
         Visible = true;
+
+        ActionMenu ??= GetOrCreate<ActionMenu>("ActionMenu");
+        SkillSelector ??= GetOrCreate<SkillSelector>("SkillSelector");
+        PlayerStatus ??= GetOrCreate<PlayerStatusPanel>("PlayerStatus");
+        EnemyRoster ??= GetOrCreate<EnemyRoster>("EnemyRoster");
+        TurnQueue ??= GetOrCreate<TurnOrderQueue>("TurnQueue");
+        ContextInfo ??= GetOrCreate<ContextInfoPanel>("ContextInfo");
+        Log ??= GetOrCreate<BattleLog>("BattleLog");
+
+        // Force each widget to build its own layout NOW. This is what makes the HUD
+        // independent of Godot's _Ready timing — if AddChild-during-_Ready quirks delay
+        // their _Ready, EnsureBuilt() runs the layout immediately. Each widget's own
+        // EnsureBuilt is idempotent (guarded by a _built flag), so calling _Ready later
+        // is harmless.
+        ActionMenu.EnsureBuilt();
+        SkillSelector.EnsureBuilt();
+        PlayerStatus.EnsureBuilt();
+        EnemyRoster.EnsureBuilt();
+        TurnQueue.EnsureBuilt();
+        ContextInfo.EnsureBuilt();
+        Log.EnsureBuilt();
+        GD.Print("BattleHud.Build completed — all child widgets built.");
     }
 
     private T GetOrCreate<T>(string name) where T : Control, new()

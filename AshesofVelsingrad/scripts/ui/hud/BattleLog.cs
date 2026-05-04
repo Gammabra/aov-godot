@@ -17,10 +17,19 @@ public sealed partial class BattleLog : Control
     public const int MaxLines = 60;
 
     private RichTextLabel? _text;
+    private bool _built;
 
     /// <inheritdoc />
     public override void _Ready()
     {
+        EnsureBuilt();
+    }
+
+    /// <summary>Idempotent build — safe to call before <c>_Ready</c> fires.</summary>
+    public void EnsureBuilt()
+    {
+        if (_built) return;
+        _built = true;
         BuildLayout();
         BattleNotifications.Posted += OnNotification;
     }

@@ -132,6 +132,14 @@ public partial class GameManager : BaseManager
         friendlies.AddRange(_playerUnits);
         friendlies.AddRange(_allyUnits);
         _mapSystemContainer.PlaceUnits(friendlies, _enemyUnits);
+
+        // HUD + indicator overlays must exist BEFORE the first ActivatePlayerUnit call,
+        // otherwise the initial move tiles never get drawn and the status / context panels
+        // never get bound. The BattleHud's child widgets still need a deferred
+        // refresh once their _Ready has fired (see RefreshHudOnReady below).
+        EnsureHud();
+        EnsureIndicators();
+
         _turnManagerContainer = GetNode<TurnManager>(_turnManagerPath);
         _turnManagerContainer.OnPlayerTurn += ActivatePlayerUnit;
         _turnManagerContainer.OnPlayerTurnEnd += DeactivatePlayerUnit;
@@ -159,7 +167,10 @@ public partial class GameManager : BaseManager
             }
             catch (Exception ex)
             {
-                GD.PrintErr($"TurnManager.GetCurrentUnit() failed: {ex.Message}");
+                // The whole try-block is wrapped, so this catch can fire from anywhere
+                // inside ActivatePlayerUnit / DeactivatePlayerUnit too — log the type and
+                // a stack trace so the next failure is debuggable instead of misleading.
+                GD.PrintErr($"Initial-turn activation failed [{ex.GetType().Name}]: {ex.Message}\n{ex.StackTrace}");
                 // Fallback: ensure player unit is deactivated to avoid undefined state
                 DeactivatePlayerUnit();
             }
@@ -180,11 +191,12 @@ public partial class GameManager : BaseManager
             GD.PrintErr("EnemyAIManager: MapSystem not available when setting up AI manager");
 
         _turnManagerContainer.SetAIManager(AIManager);
-        
-        EnsureHud();
-        EnsureIndicators();
+
+        // BattleHud._Ready (and therefore its child widget references) only fires next frame
+        // after AddChild. Defer everything that touches those children.
         CallDeferred(nameof(WireHudEvents));
         CallDeferred(nameof(BindHudRosters));
+        CallDeferred(nameof(RefreshHudOnReady));
     }
 
     #endregion

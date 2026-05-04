@@ -23,10 +23,19 @@ public sealed partial class ContextInfoPanel : Control
 {
     private Label? _title;
     private Label? _detail;
+    private bool _built;
 
     /// <inheritdoc />
     public override void _Ready()
     {
+        EnsureBuilt();
+    }
+
+    /// <summary>Idempotent build — safe to call before <c>_Ready</c> fires.</summary>
+    public void EnsureBuilt()
+    {
+        if (_built) return;
+        _built = true;
         BuildLayout();
         ShowMovement(0, 0, false);
     }

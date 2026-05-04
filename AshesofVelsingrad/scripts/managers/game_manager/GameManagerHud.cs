@@ -27,6 +27,11 @@ public partial class GameManager
     private string _battleHudScenePath = string.Empty;
 
     /// <summary>Find an existing <see cref="BattleHud" /> in the scene or spawn one.</summary>
+    /// <remarks>
+    ///     Widget internals are only built when the BattleHud's <c>_Ready</c> fires next frame,
+    ///     so any code that touches <c>_battleHud.PlayerStatus.Bind(...)</c>, etc. must run via
+    ///     <c>CallDeferred</c> (see <see cref="RefreshHudOnReady" />) rather than synchronously.
+    /// </remarks>
     protected void EnsureHud()
     {
         if (_battleHud is not null && IsInstanceValid(_battleHud)) return;
@@ -41,7 +46,17 @@ public partial class GameManager
             if (scene is not null) _battleHud = scene.Instantiate<BattleHud>();
         }
         _battleHud ??= new BattleHud { Name = "BattleHud" };
+        // Pin layer + visibility BEFORE adding to the tree so the very first paint already
+        // shows the HUD on top of the 3D viewport.
+        _battleHud.Layer = BattleHud.HudLayer;
+        _battleHud.Visible = true;
         host.AddChild(_battleHud);
+        // Build all widgets synchronously — every child widget's EnsureBuilt is idempotent,
+        // so even if Godot fires _Ready later on its own, the second call is a no-op.
+        // This means RefreshHudOnReady can bind to fully-built widgets immediately rather
+        // than waiting for a frame yield that, on this branch, was never actually arriving.
+        _battleHud.Build();
+        GD.Print($"BattleHud spawned under '{host.Name}', layer={_battleHud.Layer}, visible={_battleHud.Visible}, built children: {_battleHud.GetChildCount()}");
     }
 
     /// <summary>Spawn the move/target/hover indicator overlay parented to the map.</summary>
@@ -87,6 +102,36 @@ public partial class GameManager
     {
         if (_battleHud is null) return;
         _battleHud.EnemyRoster?.Bind(_enemyUnits);
+    }
+
+    /// <summary>
+    ///     One-shot first-turn HUD refresh — runs AFTER <see cref="EnsureHud" /> finishes
+    ///     spawning the <see cref="BattleHud" /> and its <c>_Ready</c> populates the child
+    ///     widget references. Re-binds the active unit, redraws move tiles and updates the
+    ///     context info panel — all of which silently no-op'd on the very first
+    ///     <see cref="ActivatePlayerUnit" /> call because <c>_battleHud</c>'s children
+    ///     hadn't been built yet.
+    /// </summary>
+    /// <remarks>Scheduled via <c>CallDeferred</c> at the end of <c>InitializeGameManager</c>.</remarks>
+    protected void RefreshHudOnReady()
+    {
+        if (_turnManagerContainer is null) return;
+
+        IUnitSystem? active;
+        try { active = _turnManagerContainer.GetCurrentUnit(); }
+        catch { return; }
+
+        RefreshHudForActiveUnit(active);
+
+        // Only redraw move-tile indicators + context-info movement summary when it's
+        // actually a player turn — AI turns don't get tile previews.
+        if (!_playerUnits.Contains(active)) return;
+
+        ShowMoveIndicators(_currentUnitPossibleMoves);
+        _battleHud?.ContextInfo?.ShowMovement(
+            _currentUnitPossibleMoves.Count,
+            active.PossibleMovesRange,
+            canMove: !_unitMoved);
     }
 
     /// <summary>

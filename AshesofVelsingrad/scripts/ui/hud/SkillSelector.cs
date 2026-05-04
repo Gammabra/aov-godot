@@ -30,10 +30,19 @@ public sealed partial class SkillSelector : Control
 
     private readonly Button[] _buttons = new Button[SlotCount];
     private IUnitSystem? _bound;
+    private bool _built;
 
     /// <inheritdoc />
     public override void _Ready()
     {
+        EnsureBuilt();
+    }
+
+    /// <summary>Idempotent build — safe to call before <c>_Ready</c> fires.</summary>
+    public void EnsureBuilt()
+    {
+        if (_built) return;
+        _built = true;
         BuildLayout();
     }
 
@@ -91,6 +100,12 @@ public sealed partial class SkillSelector : Control
     /// <summary>Re-read the bound unit's skills and refresh slot text + disabled state.</summary>
     public void Refresh()
     {
+        // Guard: BuildLayout populates _buttons[]; if Bind() is called before _Ready fires
+        // (e.g. on the very first turn while still inside InitializeGameManager) the array
+        // entries are still null. Skip — the deferred RefreshHudOnReady re-runs Bind once
+        // the widget has built itself.
+        if (_buttons[0] is null) return;
+
         if (_bound is null)
         {
             for (int i = 0; i < SlotCount; i++)

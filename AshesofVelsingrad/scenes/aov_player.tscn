@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" uid="uid://3kcmpk5x2mx0" path="res://scripts/player/AovPlayer.cs" id="2_x6mcw"]
 [ext_resource type="Script" uid="uid://chw0te1ob2xlt" path="res://scripts/player/InteractionComponent.cs" id="3_mjuyt"]
-[ext_resource type="Script" uid="uid://c3g1sexj1wrtr" path="res://scripts/player/ExplorationCamera.cs" id="3_wwxp1"]
 [ext_resource type="Texture2D" uid="uid://daii755sg2tdc" path="res://assets/Krita/sprite_player.png" id="5_ggc04"]
 [ext_resource type="Script" uid="uid://dotytx100nxai" path="res://scripts/managers/state_machines/StateMachine.cs" id="5_uqaem"]
 [ext_resource type="Script" uid="uid://cbra7nuuruj2p" path="res://scripts/player/States/IdleState.cs" id="6_uqaem"]
@@ -175,7 +174,7 @@ _interactionComponentPath = NodePath("InteractionArea")
 _animatedSprite3DPath = NodePath("AnimatedSprite3D")
 
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="." unique_id=255960198]
-transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0, 0, 0)
+transform = Transform3D(1.1, 0, 0, 0, 1.1, 0, 0, 0, 1.1, 0, 0, 0)
 offset = Vector2(54, 0)
 billboard = 2
 texture_filter = 0
@@ -184,7 +183,7 @@ animation = &"Idle"
 frame_progress = 0.113481626
 
 [node name="PlayerCollision" type="CollisionShape3D" parent="." unique_id=446419558]
-transform = Transform3D(0.44, 0, 0, 0, 0.44, 0, 0, 0, 0.44, 0, 0, 0)
+transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0, 0, 0)
 shape = SubResource("CapsuleShape3D_mjuyt")
 
 [node name="InteractionArea" type="Area3D" parent="." unique_id=1952076679]
@@ -194,13 +193,13 @@ script = ExtResource("3_mjuyt")
 _animatedSprite3DPath = NodePath("../AnimatedSprite3D")
 
 [node name="InteractionCollision" type="CollisionShape3D" parent="InteractionArea" unique_id=1649506564]
+transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, 0, -0.05264087, 0)
 shape = SubResource("BoxShape3D_wwxp1")
 
 [node name="SpringArm3D" type="SpringArm3D" parent="." unique_id=417669318]
 transform = Transform3D(1, 0, 0, 0, 0.96363044, 0.26723838, 0, -0.26723838, 0.96363044, 0, 0.25, 0)
 spring_length = 2.0
 margin = 0.2
-script = ExtResource("3_wwxp1")
 
 [node name="Camera3D" type="Camera3D" parent="SpringArm3D" unique_id=732970999]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)

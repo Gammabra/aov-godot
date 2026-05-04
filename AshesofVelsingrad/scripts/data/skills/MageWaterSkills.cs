@@ -13,7 +13,7 @@ public sealed class JetDEau : SkillSystem
 {
     public JetDEau()
     {
-        Name = "Jet d'Eau";
+        Name = SkillStrings.WaterJetName;
         Description = "Strike for 80% INT and slow the target.";
         ManaCost = 8; TotalCooldown = 1; Cooldown = 0; Range = 5;
         MagicType = AovDataStructures.MagicType.Water;
@@ -34,7 +34,7 @@ public sealed class PluieGuerisseuse : SkillSystem
 {
     public PluieGuerisseuse()
     {
-        Name = "Pluie Guérisseuse";
+        Name = "Healing Rain";
         Description = "Heal every ally for 60% INT.";
         ManaCost = 16; TotalCooldown = 4; Cooldown = 0; Range = 0;
         MagicType = AovDataStructures.MagicType.Water;
@@ -55,7 +55,7 @@ public sealed class VagueDeferlante : SkillSystem
 {
     public VagueDeferlante()
     {
-        Name = "Vague Déferlante";
+        Name = "Crashing Wave";
         Description = "Wash a wave dealing 70% INT to every enemy in range.";
         ManaCost = 12; TotalCooldown = 3; Cooldown = 0; Range = 4;
         MagicType = AovDataStructures.MagicType.Water;
@@ -76,7 +76,7 @@ public sealed class BulleDeProtection : SkillSystem
 {
     public BulleDeProtection()
     {
-        Name = "Bulle de Protection";
+        Name = "Protective Bubble";
         Description = "Wrap an ally in a bubble: +100 DEF for 1 turn.";
         ManaCost = 10; TotalCooldown = 4; Cooldown = 0; Range = 3;
         MagicType = AovDataStructures.MagicType.Water;
@@ -96,7 +96,7 @@ public sealed class GlaciationInstantanee : SkillSystem
 {
     public GlaciationInstantanee()
     {
-        Name = "Glaciation Instantanée";
+        Name = "Flash Freeze";
         Description = "Freeze a small zone for 50% INT and a 50% chance to stun for 1 turn.";
         ManaCost = 14; TotalCooldown = 4; Cooldown = 0; Range = 4;
         MagicType = AovDataStructures.MagicType.Water;

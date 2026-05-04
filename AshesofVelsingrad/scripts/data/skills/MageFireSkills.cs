@@ -13,8 +13,8 @@ public sealed class BouleDeFeu : SkillSystem
 {
     public BouleDeFeu()
     {
-        Name = "Boule de Feu";
-        Description = "Hurl a fireball for 100% INT damage and burn for 3 turns.";
+        Name = SkillStrings.FireballName;
+        Description = SkillStrings.FireballDesc;
         ManaCost = 10; TotalCooldown = 1; Cooldown = 0; Range = 6;
         MagicType = AovDataStructures.MagicType.Fire;
         EffectType = AovDataStructures.EffectType.Damage;
@@ -34,8 +34,8 @@ public sealed class TempeteArdente : SkillSystem
 {
     public TempeteArdente()
     {
-        Name = "Tempête Ardente";
-        Description = "Rain flames over a 3×3 area for 80% INT and ignite each tile.";
+        Name = SkillStrings.FlamestormName;
+        Description = SkillStrings.FlamestormDesc;
         ManaCost = 18; TotalCooldown = 4; Cooldown = 0; Range = 6;
         MagicType = AovDataStructures.MagicType.Fire;
         EffectType = AovDataStructures.EffectType.Damage;
@@ -58,7 +58,7 @@ public sealed class SouffleDuDragon : SkillSystem
 {
     public SouffleDuDragon()
     {
-        Name = "Souffle du Dragon";
+        Name = "Dragon's Breath";
         Description = "Wide fiery cone, 130% INT damage to every enemy in front.";
         ManaCost = 16; TotalCooldown = 3; Cooldown = 0; Range = 4;
         MagicType = AovDataStructures.MagicType.Fire;
@@ -82,7 +82,7 @@ public sealed class MurDeFlammes : SkillSystem
 {
     public MurDeFlammes()
     {
-        Name = "Mur de Flammes";
+        Name = "Wall of Flames";
         Description = "Burning barrier blocking passage. (Terrain-effect TODO — currently buffs caster INT.)";
         ManaCost = 14; TotalCooldown = 5; Cooldown = 0; Range = 5;
         MagicType = AovDataStructures.MagicType.Fire;
@@ -101,7 +101,7 @@ public sealed class ExplosionPyromantique : SkillSystem
 {
     public ExplosionPyromantique()
     {
-        Name = "Explosion Pyromantique";
+        Name = "Pyromantic Burst";
         Description = "Consume ALL mana to deal massive damage scaled by the mana spent.";
         // Set ManaCost = 0 so the engine doesn't reject the cast — we drain manually below.
         ManaCost = 0; TotalCooldown = 6; Cooldown = 0; Range = 5;

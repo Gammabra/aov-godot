@@ -15,7 +15,7 @@ public sealed class OrbeMaudit : SkillSystem
 {
     public OrbeMaudit()
     {
-        Name = "Orbe Maudit";
+        Name = SkillStrings.CursedOrbName;
         Description = "Hurl a cursed orb for 80% INT and reduce target ATK by 20 for 3 turns.";
         ManaCost = 10; TotalCooldown = 2; Cooldown = 0; Range = 5;
         MagicType = AovDataStructures.MagicType.Dark;
@@ -37,7 +37,7 @@ public sealed class LameDOmbre : SkillSystem
 {
     public LameDOmbre()
     {
-        Name = "Lame d'Ombre";
+        Name = "Shadow Chains";
         Description = "Strike for 130% INT bypassing DEF. Heal caster for 25% damage dealt.";
         ManaCost = 12; TotalCooldown = 2; Cooldown = 0; Range = 1;
         MagicType = AovDataStructures.MagicType.Dark;
@@ -60,7 +60,7 @@ public sealed class PacteSombre : SkillSystem
 {
     public PacteSombre()
     {
-        Name = "Pacte Sombre";
+        Name = "Dark Pact";
         Description = "Sacrifice 15% max HP for +40 ATK and +40 INT for 3 turns. Heavy backlash risk.";
         ManaCost = 0; TotalCooldown = 5; Cooldown = 0; Range = 0;
         MagicType = AovDataStructures.MagicType.Dark;
@@ -83,7 +83,7 @@ public sealed class SangCorrompu : SkillSystem
 {
     public SangCorrompu()
     {
-        Name = "Sang Corrompu";
+        Name = "Tainted Blood";
         Description = "Bleed the target for 12 damage / turn over 4 turns.";
         ManaCost = 8; TotalCooldown = 3; Cooldown = 0; Range = 5;
         MagicType = AovDataStructures.MagicType.Dark;
@@ -105,7 +105,7 @@ public sealed class ArmeeDesMorts : SkillSystem
 {
     public ArmeeDesMorts()
     {
-        Name = "Armée des Morts";
+        Name = "Army of the Dead";
         Description = "Summon spectral allies. (Summon system TODO — currently buffs every ally.)";
         ManaCost = 22; TotalCooldown = 6; Cooldown = 0; Range = 0;
         MagicType = AovDataStructures.MagicType.Dark;

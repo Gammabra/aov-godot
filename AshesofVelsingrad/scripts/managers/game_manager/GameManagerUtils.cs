@@ -291,6 +291,8 @@ public partial class GameManager
             _gameOutcome = AovDataStructures.GameOutcome.Defeat;
             _turnManagerContainer?.EndTurnManagerLoop();
             GD.Print("Lose!");
+            BattleNotifications.Post("Defeat — your party has fallen.", BattleNotifications.Severity.Critical);
+            ShowGameOverScreen();
             return;
         }
 
@@ -302,6 +304,8 @@ public partial class GameManager
             _gameOutcome = AovDataStructures.GameOutcome.Victory;
             _turnManagerContainer?.EndTurnManagerLoop();
             GD.Print("Win!");
+            BattleNotifications.Post("Victory!", BattleNotifications.Severity.Positive);
+            ShowVictoryScreen();
         }
     }
 

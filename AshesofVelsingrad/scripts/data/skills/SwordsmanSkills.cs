@@ -15,8 +15,8 @@ public sealed class FrappeEclair : SkillSystem
 {
     public FrappeEclair()
     {
-        Name = "Frappe Éclair";
-        Description = "Lightning rush: close 5 tiles and strike for 120% ATK.";
+        Name = SkillStrings.LightningStrikeName;
+        Description = SkillStrings.LightningStrikeDesc;
         ManaCost = 10; TotalCooldown = 2; Cooldown = 0; Range = 5;
         MagicType = AovDataStructures.MagicType.None;
         EffectType = AovDataStructures.EffectType.Damage;
@@ -35,8 +35,8 @@ public sealed class DanseDesLames : SkillSystem
 {
     public DanseDesLames()
     {
-        Name = "Danse des Lames";
-        Description = "Sweep up to 3 adjacent enemies for 100% ATK each.";
+        Name = SkillStrings.BladeDanceName;
+        Description = SkillStrings.BladeDanceDesc;
         ManaCost = 14; TotalCooldown = 3; Cooldown = 0; Range = 1;
         MagicType = AovDataStructures.MagicType.None;
         EffectType = AovDataStructures.EffectType.Damage;
@@ -60,8 +60,8 @@ public sealed class CoupDeBravoure : SkillSystem
 {
     public CoupDeBravoure()
     {
-        Name = "Coup de Bravoure";
-        Description = "Steel yourself: +80 DEF for 1 turn. Counterattack on next hit (handled by Riposte).";
+        Name = SkillStrings.GallantStrikeName;
+        Description = SkillStrings.GallantStrikeDesc;
         ManaCost = 8; TotalCooldown = 4; Cooldown = 0; Range = 0;
         MagicType = AovDataStructures.MagicType.None;
         EffectType = AovDataStructures.EffectType.Buff;
@@ -79,8 +79,8 @@ public sealed class FrappeFantome : SkillSystem
 {
     public FrappeFantome()
     {
-        Name = "Frappe Fantôme";
-        Description = "Spectral reach: strike a target up to 2 tiles away for 130% ATK.";
+        Name = SkillStrings.PhantomStrikeName;
+        Description = SkillStrings.PhantomStrikeDesc;
         ManaCost = 6; TotalCooldown = 1; Cooldown = 0; Range = 2;
         MagicType = AovDataStructures.MagicType.None;
         EffectType = AovDataStructures.EffectType.Damage;
@@ -99,8 +99,8 @@ public sealed class LameDExecution : SkillSystem
 {
     public LameDExecution()
     {
-        Name = "Lame d'Exécution";
-        Description = "Strike for 100% ATK; 250% ATK on targets below 30% HP.";
+        Name = SkillStrings.ExecutionerBladeName;
+        Description = SkillStrings.ExecutionerBladeDesc;
         ManaCost = 12; TotalCooldown = 3; Cooldown = 0; Range = 1;
         MagicType = AovDataStructures.MagicType.None;
         EffectType = AovDataStructures.EffectType.Damage;
@@ -125,8 +125,8 @@ public sealed class Riposte : SkillSystem
 {
     public Riposte()
     {
-        Name = "Riposte";
-        Description = "Passive — 30% chance to counterattack after taking a melee hit.";
+        Name = SkillStrings.RiposteName;
+        Description = SkillStrings.RiposteDesc;
         ManaCost = 0; TotalCooldown = 0; Cooldown = 0; Range = 0;
         MagicType = AovDataStructures.MagicType.None;
         EffectType = AovDataStructures.EffectType.Buff;
@@ -141,8 +141,8 @@ public sealed class DanseDuLame : SkillSystem
 {
     public DanseDuLame()
     {
-        Name = "Danse du Lame";
-        Description = "Passive — +10% crit chance when attacking after a move.";
+        Name = SkillStrings.BladeDancePassiveName;
+        Description = SkillStrings.BladeDancePassiveDesc;
         ManaCost = 0; TotalCooldown = 0; Cooldown = 0; Range = 0;
         MagicType = AovDataStructures.MagicType.None;
         EffectType = AovDataStructures.EffectType.Buff;
@@ -157,8 +157,8 @@ public sealed class LameSpectrale : SkillSystem
 {
     public LameSpectrale()
     {
-        Name = "Lame Spectrale";
-        Description = "Passive — your attacks ignore 15% of enemy DEF.";
+        Name = SkillStrings.SpectralBladePassiveName;
+        Description = SkillStrings.SpectralBladePassiveDesc;
         ManaCost = 0; TotalCooldown = 0; Cooldown = 0; Range = 0;
         MagicType = AovDataStructures.MagicType.None;
         EffectType = AovDataStructures.EffectType.Buff;

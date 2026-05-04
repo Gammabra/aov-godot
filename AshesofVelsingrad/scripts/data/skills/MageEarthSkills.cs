@@ -13,7 +13,7 @@ public sealed class LanceDeRoc : SkillSystem
 {
     public LanceDeRoc()
     {
-        Name = "Lance de Roc";
+        Name = SkillStrings.StoneSpikeName;
         Description = "Pierce a target for 110% INT (ignores DEF).";
         ManaCost = 10; TotalCooldown = 2; Cooldown = 0; Range = 5;
         MagicType = AovDataStructures.MagicType.Earth;
@@ -33,7 +33,7 @@ public sealed class OndeSismique : SkillSystem
 {
     public OndeSismique()
     {
-        Name = "Onde Sismique";
+        Name = "Seismic Wave";
         Description = "Quake a line for 80% INT with a 70% chance to stun for 1 turn.";
         ManaCost = 14; TotalCooldown = 4; Cooldown = 0; Range = 5;
         MagicType = AovDataStructures.MagicType.Earth;
@@ -57,7 +57,7 @@ public sealed class ForteresseDePierre : SkillSystem
 {
     public ForteresseDePierre()
     {
-        Name = "Forteresse de Pierre";
+        Name = "Stone Fortress";
         Description = "Raise a stone wall blocking movement. (Terrain TODO — currently buffs caster DEF.)";
         ManaCost = 12; TotalCooldown = 5; Cooldown = 0; Range = 4;
         MagicType = AovDataStructures.MagicType.Earth;
@@ -76,7 +76,7 @@ public sealed class PeauDeGranit : SkillSystem
 {
     public PeauDeGranit()
     {
-        Name = "Peau de Granit";
+        Name = "Granite Skin";
         Description = "Toughen an ally: +60 DEF for 3 turns.";
         ManaCost = 8; TotalCooldown = 4; Cooldown = 0; Range = 3;
         MagicType = AovDataStructures.MagicType.Earth;
@@ -96,7 +96,7 @@ public sealed class AvatarDuTitan : SkillSystem
 {
     public AvatarDuTitan()
     {
-        Name = "Avatar du Titan";
+        Name = "Titan Avatar";
         Description = "Become a colossus: +100 ATK and +100 DEF for 3 turns.";
         ManaCost = 24; TotalCooldown = 6; Cooldown = 0; Range = 0;
         MagicType = AovDataStructures.MagicType.Earth;

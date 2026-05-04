@@ -23,7 +23,7 @@ public sealed class ConversionCorrompue : SkillSystem
 
     public ConversionCorrompue()
     {
-        Name = "Conversion Corrompue";
+        Name = SkillStrings.CorruptedConversionName;
         Description =
             $"Twist an ally's mind: target ally fights as an enemy for {ConversionTurns} turns. Heavy corruption backlash.";
         ManaCost = 24; TotalCooldown = 8; Cooldown = 0; Range = 5;

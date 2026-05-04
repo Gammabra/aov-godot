@@ -163,6 +163,22 @@ public partial class TurnManager : BaseManager
         GD.Print("TurnManager initialized successfully");
     }
 
+    /// <inheritdoc />
+    /// <remarks>
+    ///     Clear the static singleton when this node leaves the tree (e.g. on
+    ///     <c>ReloadCurrentScene</c>) so the new <see cref="TurnManager" /> on the new
+    ///     scene's first <c>_Ready</c> doesn't see a stale <c>Instance</c> and self-destruct
+    ///     as a duplicate.
+    /// </remarks>
+    public override void _ExitTree()
+    {
+        if (Instance == this) Instance = null;
+        // Tell the async ProcessTurn loop to exit at the next iteration so we don't
+        // continue invoking events on dead unit references after the scene unloaded.
+        _currentTurnState = AovDataStructures.TurnState.Finished;
+        base._ExitTree();
+    }
+
     #endregion
 
     #region Private Methods

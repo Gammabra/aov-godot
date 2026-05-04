@@ -12,7 +12,7 @@ public sealed class ConcentrationMagique : SkillSystem
 {
     public ConcentrationMagique()
     {
-        Name = "Concentration Magique";
+        Name = SkillStrings.ArcaneFocusName;
         Description = "Passive — +10% magic damage when the unit didn't move this turn.";
         ManaCost = 0; TotalCooldown = 0; Cooldown = 0; Range = 0;
         MagicType = AovDataStructures.MagicType.None;
@@ -27,7 +27,7 @@ public sealed class MaitriseElementaire : SkillSystem
 {
     public MaitriseElementaire()
     {
-        Name = "Maîtrise Élémentaire";
+        Name = SkillStrings.ElementalAttunementName;
         Description = "Passive — elemental skills apply a stronger status alteration.";
         ManaCost = 0; TotalCooldown = 0; Cooldown = 0; Range = 0;
         MagicType = AovDataStructures.MagicType.None;
@@ -42,7 +42,7 @@ public sealed class AbsorptionDeMana : SkillSystem
 {
     public AbsorptionDeMana()
     {
-        Name = "Absorption de Mana";
+        Name = SkillStrings.ManaWellName;
         Description = "Passive — recover 5% MP whenever you apply a status alteration.";
         ManaCost = 0; TotalCooldown = 0; Cooldown = 0; Range = 0;
         MagicType = AovDataStructures.MagicType.None;

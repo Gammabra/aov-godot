@@ -1,5 +1,3 @@
-using Godot;
-
 namespace AshesOfVelsingrad.Data;
 
 /// <summary>
@@ -7,32 +5,51 @@ namespace AshesOfVelsingrad.Data;
 /// </summary>
 /// <remarks>
 ///     <para>
-///         Pure presentation data — name, portrait, class, level, flavour text — used by HUD
-///         widgets (<c>PlayerStatusPanel</c>, <c>TurnOrderQueue</c>) to render unit identity.
-///         Does NOT carry gameplay state; that lives on <see cref="Systems.IUnitSystem" />.
+///         Pure C# data — name, portrait <em>path</em>, class, level, flavour text — used by
+///         HUD widgets (<c>PlayerStatusPanel</c>, <c>TurnOrderQueue</c>, <c>VictoryScreen</c>)
+///         to render unit identity. Does NOT carry gameplay state; that lives on
+///         <see cref="Systems.IUnitSystem" />.
 ///     </para>
 ///     <para>
-///         Author one as a <c>.tres</c> resource in the editor and assign it to a unit's
-///         <c>EntityProfile</c> field — or build it inline inside the unit's
-///         <c>Initialize()</c> if you prefer code-only data.
+///         The portrait is stored as a <c>res://</c> path string rather than a
+///         <c>Godot.Texture2D</c>: this keeps <c>AshesofVelsingrad.Core</c> Godot-free and
+///         unit-testable. The Godot adapter (HUD widgets, in-world sprites) calls
+///         <c>ResourceLoader.Load&lt;Texture2D&gt;(profile.PortraitPath)</c> at render time
+///         to materialise the texture. Lazy loading also avoids forcing every saved profile
+///         to drag a texture handle around.
+///     </para>
+///     <para>
+///         Build one inline in a unit's <c>Initialize()</c>:
+///         <code>
+///             SetEntityProfile(new EntityProfile
+///             {
+///                 DisplayName = "Pikachu",
+///                 ClassName = "Combattant",
+///                 Level = 1,
+///                 PortraitPath = "res://assets/portraits/Pikachu.png",
+///             });
+///         </code>
 ///     </para>
 /// </remarks>
-[GlobalClass]
-public sealed partial class EntityProfile : Resource
+public sealed class EntityProfile
 {
     /// <summary>Name shown in HUD widgets and dialogue prompts.</summary>
-    [Export] public string DisplayName { get; set; } = string.Empty;
+    public string DisplayName { get; set; } = string.Empty;
 
-    /// <summary>Portrait icon. Recommended 96×96 px.</summary>
-    [Export] public Texture2D? Portrait { get; set; }
+    /// <summary>
+    ///     Godot resource path to the portrait texture (e.g. <c>res://assets/portraits/Pikachu.png</c>).
+    ///     The Godot adapter loads it lazily — Core stays free of <c>Godot.Texture2D</c> so
+    ///     this class is testable without a Godot runtime. Empty string means no portrait;
+    ///     HUD widgets fall back to a coloured placeholder.
+    /// </summary>
+    public string PortraitPath { get; set; } = string.Empty;
 
     /// <summary>Level shown next to the name.</summary>
-    [Export] public int Level { get; set; } = 1;
+    public int Level { get; set; } = 1;
 
     /// <summary>Class label ("Combattant", "Mage Feu", ...) for tooltips and roster screens.</summary>
-    [Export] public string ClassName { get; set; } = string.Empty;
+    public string ClassName { get; set; } = string.Empty;
 
     /// <summary>Optional flavour text for hover tooltips.</summary>
-    [Export(PropertyHint.MultilineText)]
     public string Bio { get; set; } = string.Empty;
 }

@@ -58,7 +58,7 @@ public sealed partial class Player1Data : UnitSystem
             DisplayName = "Pikachu",
             ClassName = "Combattant",
             Level = 1,
-            Portrait = ResourceLoader.Load<Texture2D>("res://assets/portraits/Pikachu.png"),
+            PortraitPath = "res://assets/portraits/Pikachu.png",
         });
     }
 

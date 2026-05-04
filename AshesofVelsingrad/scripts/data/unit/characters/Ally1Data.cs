@@ -50,7 +50,7 @@ public sealed partial class Ally1Data : UnitSystem
             DisplayName = "Poussacha",
             ClassName = "Mage Lumière",
             Level = 1,
-            Portrait = ResourceLoader.Load<Texture2D>("res://assets/portraits/poussacha.png"),
+            PortraitPath = "res://assets/portraits/poussacha.png",
         });
     }
 }

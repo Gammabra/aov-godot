@@ -1,63 +1,36 @@
 [gd_scene format=4 uid="uid://8jsp7b3bi66t"]
 
-[ext_resource type="Texture2D" uid="uid://c50jnm1re45tp" path="res://GTLF/Medieval_Voxel_Assets_Example_Shop_Closed.png" id="1_306wk"]
-[ext_resource type="Texture2D" uid="uid://nri07cgqsa6m" path="res://GTLF/Medieval_Voxel_Assets_Example_Kiosk.png" id="2_me6wc"]
-[ext_resource type="Texture2D" uid="uid://dek7py6ffxfy5" path="res://GTLF/Medieval_Voxel_Assets_Example_House_3.png" id="3_yv1nk"]
-[ext_resource type="Texture2D" uid="uid://b1qcx2nxg5ivo" path="res://GTLF/Medieval_Voxel_Assets_Example_House_2.png" id="4_b1mw0"]
-[ext_resource type="Texture2D" uid="uid://bhonjx3qw1r4" path="res://GTLF/Medieval_Voxel_Assets_Example_House_1.png" id="5_a460r"]
-[ext_resource type="Texture2D" uid="uid://ckytprd4v1ly5" path="res://GTLF/Medieval_Voxel_Assets_Example_Cart_Straight.png" id="6_g2euc"]
-[ext_resource type="Texture2D" uid="uid://csne4x50fonif" path="res://GTLF/Medieval_Voxel_Assets_Example_Cart_Inclined.png" id="7_i3q1t"]
-[ext_resource type="Texture2D" uid="uid://ddk0m7g8j6ilp" path="res://GTLF/Medieval_Voxel_Assets_Example_Letters.png" id="8_a75yl"]
-[ext_resource type="Texture2D" uid="uid://dh3yiwfut82r0" path="res://GTLF/Medieval_Voxel_Assets_Example_Base_Banner_Blue.png" id="9_2dw5b"]
-[ext_resource type="Texture2D" uid="uid://ba1pp1cxb2gnn" path="res://GTLF/Medieval_Voxel_Assets_Example_Wall_L_Ext.png" id="10_0fl4i"]
-[ext_resource type="Texture2D" uid="uid://cooa15ogox120" path="res://GTLF/Medieval_Voxel_Assets_Example_Wall_L_Int.png" id="11_dc3xx"]
-[ext_resource type="Texture2D" uid="uid://cjs3o30o85pi3" path="res://GTLF/Medieval_Voxel_Assets_Example_Wall_Stairs.png" id="12_4uleq"]
-[ext_resource type="Texture2D" uid="uid://bfayhkcnp2iip" path="res://GTLF/Medieval_Voxel_Assets_Example_Tower_Simple.png" id="13_wyd5r"]
-[ext_resource type="Texture2D" uid="uid://bhevhw37ae0nq" path="res://GTLF/Medieval_Voxel_Assets_Example_Tower_Door.png" id="14_17hws"]
-[ext_resource type="Texture2D" uid="uid://me3seohjbbpm" path="res://GTLF/Medieval_Voxel_Assets_Example_Wall_Simple.png" id="15_ojdfr"]
-[ext_resource type="Texture2D" uid="uid://gj6sakx6o85k" path="res://GTLF/Medieval_Voxel_Assets_Example_Wall_Entrance.png" id="16_2bpy1"]
-[ext_resource type="Texture2D" uid="uid://ht1j6rlu7xg1" path="res://GTLF/Medieval_Voxel_Assets_Example_Wall_Entrance_Door.png" id="17_wpear"]
-[ext_resource type="Texture2D" uid="uid://k1b3now656gn" path="res://GTLF/Medieval_Voxel_Assets_Example_Entrance_Bridge_Close.png" id="18_1chy7"]
-[ext_resource type="Texture2D" uid="uid://cg0mivutvl2hi" path="res://GTLF/Medieval_Voxel_Assets_Example_Simple_Banner_Blue.png" id="19_e4018"]
-[ext_resource type="Texture2D" uid="uid://dmjoaae280oth" path="res://GTLF/Medieval_Voxel_Assets_Example_Entrance_Bridge_Open.png" id="20_e5x41"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_iqrwa"]
-resource_name = "Ground"
-cull_mode = 2
-albedo_color = Color(0.4145852, 0.4145852, 0.4145852, 1)
-roughness = 0.54545456
-
-[sub_resource type="ArrayMesh" id="ArrayMesh_n16fq"]
-_surfaces = [{
-"aabb": AABB(-44.600925, -0.6839364, -44.600925, 89.20185, 1.3678728, 89.20185),
-"format": 34896613377,
-"index_count": 36,
-"index_data": PackedByteArray("AAABAAIAAAADAAEABAACAAEAAwAEAAEABQAAAAIAAwAAAAUABAAGAAIABQACAAYAAwAHAAQAAwAFAAcABwAGAAQABwAFAAYA"),
-"name": "Ground",
-"primitive": 3,
-"uv_scale": Vector4(0, 0, 0, 0),
-"vertex_count": 8,
-"vertex_data": PackedByteArray("AAAAAP//AAAAAP//AAAAAAAA/////wAAAAAAAAAAAAD/////AAAAAP//AAD//wAA////////AAD//wAAAAAAAA==")
-}]
-blend_shape_mode = 0
-
-[sub_resource type="ArrayMesh" id="ArrayMesh_2s0qn"]
-resource_name = "Medieval_Voxel_Assets_Example_Cube"
-_surfaces = [{
-"aabb": AABB(-44.600925, -0.6839364, -44.600925, 89.20185, 1.3678728, 89.20185),
-"attribute_data": PackedByteArray("/1////+f/7//n////1//v/9f/7//n/9//5//v/9f/3//X/9//5//P/+f/3//X/8//1//P/+fAAD/n/8//18AAP8f/3//X/8//1//f/8f/z//n/9//9//P//f/3//n/8/"),
-"format": 34896613399,
-"index_count": 36,
-"index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUACAAJAAoACAALAAkADAANAA4ADAAPAA0AEAARABIAEAATABEAFAAVABYAFAAXABUA"),
-"material": SubResource("StandardMaterial3D_iqrwa"),
-"name": "Ground",
-"primitive": 3,
-"uv_scale": Vector4(0, 0, 0, 0),
-"vertex_count": 24,
-"vertex_data": PackedByteArray("AAAAAP//VNUAAP//AABU1QAA/////1TVAAAAAAAAVNUAAAAAAAD///////8AAP//AAD//wAA/////wAAAAD/////AAAAAFTV////////VNX/////AABU1f//AAD//1TV//8AAP///78AAP//////v/////////+/AAAAAP///78AAAAAAAD/v///AAD///+///8AAAAA/78AAAAA////v/////8AAP//AAD///////8AAP//AAD/////////////VNVU1VTVVNVU1VTVVNVU1f+//7//v/+//7//v/+//7+qKqoqqiqqKqoqqiqqKqoq/////////////////////wAA/38AAP9/AAD/fwAA/3//f/+//3//v/9//7//f/+/")
-}]
-blend_shape_mode = 0
-shadow_mesh = SubResource("ArrayMesh_n16fq")
+[ext_resource type="Texture2D" uid="uid://c50jnm1re45tp" path="res://mapAssets/Castle Assets/Medieval_Voxel_Assets_Example_Shop_Closed.png" id="1_306wk"]
+[ext_resource type="Texture2D" uid="uid://nri07cgqsa6m" path="res://mapAssets/Castle Assets/Medieval_Voxel_Assets_Example_Kiosk.png" id="2_me6wc"]
+[ext_resource type="Texture2D" uid="uid://dek7py6ffxfy5" path="res://mapAssets/Castle Assets/Medieval_Voxel_Assets_Example_House_3.png" id="3_yv1nk"]
+[ext_resource type="Texture2D" uid="uid://b1qcx2nxg5ivo" path="res://mapAssets/Castle Assets/Medieval_Voxel_Assets_Example_House_2.png" id="4_b1mw0"]
+[ext_resource type="Texture2D" uid="uid://bhonjx3qw1r4" path="res://mapAssets/Castle Assets/Medieval_Voxel_Assets_Example_House_1.png" id="5_a460r"]
+[ext_resource type="Texture2D" uid="uid://ckytprd4v1ly5" path="res://mapAssets/Castle Assets/Medieval_Voxel_Assets_Example_Cart_Straight.png" id="6_g2euc"]
+[ext_resource type="Texture2D" uid="uid://csne4x50fonif" path="res://mapAssets/Castle Assets/Medieval_Voxel_Assets_Example_Cart_Inclined.png" id="7_i3q1t"]
+[ext_resource type="Texture2D" uid="uid://ddk0m7g8j6ilp" path="res://mapAssets/Castle Assets/Medieval_Voxel_Assets_Example_Letters.png" id="8_a75yl"]
+[ext_resource type="Texture2D" uid="uid://dh3yiwfut82r0" path="res://mapAssets/Castle Assets/Medieval_Voxel_Assets_Example_Base_Banner_Blue.png" id="9_2dw5b"]
+[ext_resource type="Texture2D" uid="uid://ba1pp1cxb2gnn" path="res://mapAssets/Castle Assets/Medieval_Voxel_Assets_Example_Wall_L_Ext.png" id="10_0fl4i"]
+[ext_resource type="Texture2D" uid="uid://cooa15ogox120" path="res://mapAssets/Castle Assets/Medieval_Voxel_Assets_Example_Wall_L_Int.png" id="11_dc3xx"]
+[ext_resource type="Texture2D" uid="uid://cjs3o30o85pi3" path="res://mapAssets/Castle Assets/Medieval_Voxel_Assets_Example_Wall_Stairs.png" id="12_4uleq"]
+[ext_resource type="Texture2D" uid="uid://bfayhkcnp2iip" path="res://mapAssets/Castle Assets/Medieval_Voxel_Assets_Example_Tower_Simple.png" id="13_wyd5r"]
+[ext_resource type="Texture2D" uid="uid://bhevhw37ae0nq" path="res://mapAssets/Castle Assets/Medieval_Voxel_Assets_Example_Tower_Door.png" id="14_17hws"]
+[ext_resource type="Texture2D" uid="uid://me3seohjbbpm" path="res://mapAssets/Castle Assets/Medieval_Voxel_Assets_Example_Wall_Simple.png" id="15_ojdfr"]
+[ext_resource type="Texture2D" uid="uid://gj6sakx6o85k" path="res://mapAssets/Castle Assets/Medieval_Voxel_Assets_Example_Wall_Entrance.png" id="16_2bpy1"]
+[ext_resource type="Texture2D" uid="uid://ht1j6rlu7xg1" path="res://mapAssets/Castle Assets/Medieval_Voxel_Assets_Example_Wall_Entrance_Door.png" id="17_wpear"]
+[ext_resource type="Texture2D" uid="uid://k1b3now656gn" path="res://mapAssets/Castle Assets/Medieval_Voxel_Assets_Example_Entrance_Bridge_Close.png" id="18_1chy7"]
+[ext_resource type="Texture2D" uid="uid://cg0mivutvl2hi" path="res://mapAssets/Castle Assets/Medieval_Voxel_Assets_Example_Simple_Banner_Blue.png" id="19_e4018"]
+[ext_resource type="Texture2D" uid="uid://dmjoaae280oth" path="res://mapAssets/Castle Assets/Medieval_Voxel_Assets_Example_Entrance_Bridge_Open.png" id="20_e5x41"]
+[ext_resource type="PackedScene" uid="uid://c1gelnbt10f3h" path="res://mapAssets/Stylized Nature MegaKit[Standard]/glTF/Mushroom_Common.gltf" id="21_dc3xx"]
+[ext_resource type="PackedScene" uid="uid://cu70rhgfdtdda" path="res://mapAssets/Stylized Nature MegaKit[Standard]/glTF/RockPath_Round_Small_1.gltf" id="22_4uleq"]
+[ext_resource type="PackedScene" uid="uid://ek4ey7mkxuq6" path="res://mapAssets/Stylized Nature MegaKit[Standard]/glTF/RockPath_Round_Small_3.gltf" id="23_wyd5r"]
+[ext_resource type="PackedScene" uid="uid://dqsgfel7rf7od" path="res://mapAssets/Stylized Nature MegaKit[Standard]/glTF/RockPath_Round_Thin.gltf" id="24_17hws"]
+[ext_resource type="PackedScene" uid="uid://dexf6v5cc27i" path="res://mapAssets/Stylized Nature MegaKit[Standard]/glTF/DeadTree_1.gltf" id="25_ojdfr"]
+[ext_resource type="PackedScene" uid="uid://brqcxik1js41k" path="res://mapAssets/Stylized Nature MegaKit[Standard]/glTF/DeadTree_2.gltf" id="26_2bpy1"]
+[ext_resource type="PackedScene" uid="uid://wt1pssruy235" path="res://mapAssets/Stylized Nature MegaKit[Standard]/glTF/Grass_Wispy_Short.gltf" id="27_wpear"]
+[ext_resource type="PackedScene" uid="uid://clbe7cl4m1yqf" path="res://mapAssets/Stylized Nature MegaKit[Standard]/glTF/DeadTree_5.gltf" id="28_1chy7"]
+[ext_resource type="PackedScene" uid="uid://baakauy7wylb1" path="res://mapAssets/Stylized Nature MegaKit[Standard]/glTF/DeadTree_4.gltf" id="29_e4018"]
+[ext_resource type="PackedScene" uid="uid://rorbyeb0k1vk" path="res://mapAssets/Stylized Nature MegaKit[Standard]/glTF/DeadTree_3.gltf" id="30_e5x41"]
+[ext_resource type="Texture2D" uid="uid://xb8g3ceo22pp" path="res://mapAssets/Free Sky Backgrounds/Painterly Sky BGs (167).png" id="31_4uleq"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_skf66"]
 resource_name = "Shop_Closed"
@@ -820,11 +793,38 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_8w5hp")
 
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_wyd5r"]
+panorama = ExtResource("31_4uleq")
+
+[sub_resource type="Sky" id="Sky_17hws"]
+sky_material = SubResource("PanoramaSkyMaterial_wyd5r")
+
+[sub_resource type="Environment" id="Environment_ojdfr"]
+background_mode = 2
+background_energy_multiplier = 1.09
+sky = SubResource("Sky_17hws")
+ambient_light_sky_contribution = 0.42
+ambient_light_energy = 0.0
+fog_mode = 1
+fog_light_color = Color(0.50102776, 0.22304443, 0, 1)
+fog_light_energy = 1.53
+fog_density = 1.0
+fog_sky_affect = 0.479
+fog_height = -8.46
+fog_height_density = 0.2645
+fog_depth_curve = 0.6155713
+fog_depth_begin = 0.0
+fog_depth_end = 760.3
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.005
+volumetric_fog_length = 131.7
+volumetric_fog_detail_spread = 1.1095697
+volumetric_fog_ambient_inject = 0.51
+
 [node name="Fight" type="Node3D" unique_id=2032490020]
 
 [node name="Ground" type="MeshInstance3D" parent="." unique_id=44284641]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.4607735, -1.5000384, -19.46025)
-mesh = SubResource("ArrayMesh_2s0qn")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5110238, -1.4991915, -19.490753)
 skeleton = NodePath("")
 
 [node name="IN" type="Node3D" parent="." unique_id=295012285]
@@ -1070,3 +1070,122 @@ skeleton = NodePath("")
 transform = Transform3D(1, 0, 0, 0, 0.9999999, 0, 0, 0, 0.9999999, -3.6797566, 1.9850969, 4.051128)
 mesh = SubResource("ArrayMesh_3wnwt")
 skeleton = NodePath("")
+
+[node name="ENV" type="Node3D" parent="." unique_id=1137244901]
+
+[node name="Mushroom_Common2" parent="ENV" unique_id=107590431 instance=ExtResource("21_dc3xx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.9081097, -0.8494073, -17.411808)
+
+[node name="RockPath_Round_Small_12" parent="ENV" unique_id=1522354867 instance=ExtResource("22_4uleq")]
+transform = Transform3D(0.84583026, 0, 0.5334521, 0, 1, 0, -0.5334521, 0, 0.84583026, 16.768757, -0.7972052, -25.571665)
+
+[node name="RockPath_Round_Small_32" parent="ENV" unique_id=1847201295 instance=ExtResource("23_wyd5r")]
+transform = Transform3D(0.84172755, 0, -0.5399025, 0, 1, 0, 0.5399025, 0, 0.84172755, 1.890729, -0.82204473, -27.038189)
+
+[node name="RockPath_Round_Small_33" parent="ENV" unique_id=285019662 instance=ExtResource("23_wyd5r")]
+transform = Transform3D(0.9832263, 0, -0.18238997, 0, 1, 0, 0.18238997, 0, 0.9832263, 3.0461965, -0.8180856, -26.720018)
+
+[node name="RockPath_Round_Thin2" parent="ENV" unique_id=573770642 instance=ExtResource("24_17hws")]
+transform = Transform3D(0.005009055, 0, 0.9999874, 0, 1, 0, -0.9999874, 0, 0.005009055, 4.5930133, -0.80386657, -26.497925)
+
+[node name="RockPath_Round_Thin3" parent="ENV" unique_id=1073465886 instance=ExtResource("24_17hws")]
+transform = Transform3D(-0.009791188, 0, 0.999952, 0, 1, 0, -0.999952, 0, -0.009791188, 6.5300593, -0.8034763, -26.412287)
+
+[node name="RockPath_Round_Small_13" parent="ENV" unique_id=2141789134 instance=ExtResource("22_4uleq")]
+transform = Transform3D(-0.98076487, 0, -0.19519287, 0, 1, 0, 0.19519287, 0, -0.98076487, 7.988225, -0.81016934, -26.292904)
+
+[node name="RockPath_Round_Small_34" parent="ENV" unique_id=2137253090 instance=ExtResource("23_wyd5r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.507468, -0.78271973, -27.3128)
+
+[node name="DeadTree_12" parent="ENV" unique_id=1508944586 instance=ExtResource("25_ojdfr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.462986, -0.71097946, -26.15416)
+
+[node name="DeadTree_22" parent="ENV" unique_id=1363769099 instance=ExtResource("26_2bpy1")]
+transform = Transform3D(-0.9983519, 0, 0.057389807, 0, 1, 0, -0.057389807, 0, -0.9983519, -9.117701, -0.51581097, -16.02449)
+
+[node name="Grass_Wispy_Short2" parent="ENV" unique_id=446765777 instance=ExtResource("27_wpear")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.143261, -0.8369992, -23.0487)
+
+[node name="Grass_Wispy_Short3" parent="ENV" unique_id=273869303 instance=ExtResource("27_wpear")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.800262, -0.8369992, -27.26755)
+
+[node name="Grass_Wispy_Short4" parent="ENV" unique_id=1437588173 instance=ExtResource("27_wpear")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.858703, -0.8369992, -15.259383)
+
+[node name="Grass_Wispy_Short5" parent="ENV" unique_id=2125907552 instance=ExtResource("27_wpear")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5226626, -0.8369992, -25.319843)
+
+[node name="Grass_Wispy_Short6" parent="ENV" unique_id=192942471 instance=ExtResource("27_wpear")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.161907, -0.8369992, -17.154306)
+
+[node name="Grass_Wispy_Short7" parent="ENV" unique_id=790194194 instance=ExtResource("27_wpear")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.448164, -0.8369992, -29.433487)
+
+[node name="Grass_Wispy_Short8" parent="ENV" unique_id=1288383979 instance=ExtResource("27_wpear")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.877876, -0.8369992, -10.703576)
+
+[node name="DeadTree_52" parent="ENV" unique_id=164916676 instance=ExtResource("28_1chy7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.259722, -0.8410282, -44.412014)
+
+[node name="DeadTree_42" parent="ENV" unique_id=550202553 instance=ExtResource("29_e4018")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.956372, -0.8410301, -50.45176)
+
+[node name="DeadTree_43" parent="ENV" unique_id=1081920915 instance=ExtResource("29_e4018")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.628954, -0.8410301, -44.52118)
+
+[node name="DeadTree_53" parent="ENV" unique_id=764209846 instance=ExtResource("28_1chy7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.40083, -0.8410301, -35.187225)
+
+[node name="DeadTree_32" parent="ENV" unique_id=871655214 instance=ExtResource("30_e5x41")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.483593, -0.8410301, -21.587984)
+
+[node name="DeadTree_44" parent="ENV" unique_id=1807556121 instance=ExtResource("29_e4018")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.6749, -0.8410301, -13.428548)
+
+[node name="DeadTree_23" parent="ENV" unique_id=743534664 instance=ExtResource("26_2bpy1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.957202, -0.8410301, -0.033224106)
+
+[node name="DeadTree_45" parent="ENV" unique_id=1472726253 instance=ExtResource("29_e4018")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.7981586, -0.8410301, 1.6354866)
+
+[node name="DeadTree_33" parent="ENV" unique_id=1995597448 instance=ExtResource("30_e5x41")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.872631, -0.8410301, -7.9103603)
+
+[node name="DeadTree_13" parent="ENV" unique_id=569028140 instance=ExtResource("25_ojdfr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.93642, -0.8410301, -23.394644)
+
+[node name="DeadTree_34" parent="ENV" unique_id=1915729376 instance=ExtResource("30_e5x41")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.70623, -0.8410301, -30.197775)
+
+[node name="DeadTree_54" parent="ENV" unique_id=1504101120 instance=ExtResource("28_1chy7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36.034966, -0.8410301, -10.186783)
+
+[node name="DeadTree_24" parent="ENV" unique_id=119344464 instance=ExtResource("26_2bpy1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.45806, -0.8410301, 9.769973)
+
+[node name="DeadTree_35" parent="ENV" unique_id=368844733 instance=ExtResource("30_e5x41")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.48627, -0.8410301, 14.77668)
+
+[node name="DeadTree_14" parent="ENV" unique_id=50536801 instance=ExtResource("25_ojdfr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33.540897, -0.8410301, 6.5445633)
+
+[node name="DeadTree_36" parent="ENV" unique_id=1133686214 instance=ExtResource("30_e5x41")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37.872147, -0.8410301, -43.353756)
+
+[node name="DeadTree_55" parent="ENV" unique_id=1933998416 instance=ExtResource("28_1chy7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.89932, -0.8410301, -56.54047)
+
+[node name="DeadTree_37" parent="ENV" unique_id=1984128905 instance=ExtResource("30_e5x41")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.767601, -0.841032, -52.602757)
+
+[node name="DeadTree_38" parent="ENV" unique_id=1038023961 instance=ExtResource("30_e5x41")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32.851463, -0.8410301, -39.95317)
+
+[node name="DeadTree_56" parent="ENV" unique_id=499574395 instance=ExtResource("28_1chy7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -35.752663, -0.8410301, -57.230743)
+
+[node name="DeadTree_39" parent="ENV" unique_id=1262364125 instance=ExtResource("30_e5x41")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34.499374, -0.8410301, 4.541274)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=875029585]
+environment = SubResource("Environment_ojdfr")

@@ -212,6 +212,37 @@ public partial class GameManager
             return;
         }
 
+        // Faction validation — a SingleEnemy / AllEnemies skill must hit a hostile target;
+        // a SingleAlly / AllAllies skill must hit a friendly (or self). Without this, the
+        // click reaches UseSkill which then silently bails via GD.PrintErr, leaving the
+        // player wondering why nothing happened.
+        IUnitSystem caster = _turnManagerContainer.GetCurrentUnit();
+        bool isHostile = caster.Faction.IsHostileTo(target.Faction);
+        bool isFriendly = caster.Faction.IsFriendlyTo(target.Faction);
+        switch (_selectedSkill.TargetType)
+        {
+            case AovDataStructures.TargetTypes.SingleEnemy:
+            case AovDataStructures.TargetTypes.AllEnemies:
+                if (!isHostile)
+                {
+                    Warn(target == caster
+                        ? "You can't target yourself with an offensive skill."
+                        : $"{target.UnitName} is on your side.");
+                    _battleInputSystemContainer.SetInputEnabled(true);
+                    return;
+                }
+                break;
+            case AovDataStructures.TargetTypes.SingleAlly:
+            case AovDataStructures.TargetTypes.AllAllies:
+                if (!isFriendly)
+                {
+                    Warn($"{target.UnitName} is hostile — can't use a friendly skill on them.");
+                    _battleInputSystemContainer.SetInputEnabled(true);
+                    return;
+                }
+                break;
+        }
+
         UseSkill(_turnManagerContainer.GetCurrentUnit(), target, _selectedSkill);
     }
 

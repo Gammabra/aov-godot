@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="SkillDefinition" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/systems/skills/SkillDefinition.cs" id="1_SkillDefinition"]
+
+[resource]
+script = ExtResource("1_SkillDefinition")
+SkillId = "corrupted_conversion"
+DisplayName = "Conversion Corrompue"
+Description = "Twists an ally's mind: target ally fights as an enemy for 3 turns. Heavy corruption backlash."
+ManaCost = 24.0
+TotalCooldown = 8
+Range = 5
+MagicType = 6
+EffectType = 5
+TargetType = 0
+BehaviourId = "corrupted_conversion"
+BasePower = 0.0
+Scaling = 0
+ScalingFactor = 1.0
+StatusEffectIdOnHit = ""
+StatusEffectChance = 1.0
+StatusEffectDuration = 3
+IsCorruptionSource = true
+BaseCorruptionChance = 0.85
+IsPassive = false

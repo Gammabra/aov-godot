@@ -1,86 +1,26 @@
-using System.Collections.Generic;
 using AshesOfVelsingrad.Data;
+using AshesOfVelsingrad.Data.Skills;
 using AshesOfVelsingrad.Systems;
-using AshesOfVelsingrad.Utilities;
+using Godot;
 
 namespace AshesOfVelsingrad;
 
-public sealed class Skill1 : SkillSystem
-{
-    public Skill1()
-    {
-        TargetType = AovDataStructures.TargetTypes.SingleEnemy;
-        Range = 1;
-    }
-
-    public override void Use(IUnitSystem caster, List<IUnitSystem> targets, IMapSystem? map)
-    {
-        targets[0].SetStatusEffectOnUnit(new BurningEffect(1, AovDataStructures.ModifierType.Flat, 10));
-    }
-}
-
-public sealed class Skill2 : SkillSystem
-{
-    public Skill2()
-    {
-        TargetType = AovDataStructures.TargetTypes.SingleAlly;
-        Range = 0;
-    }
-
-    public override void Use(IUnitSystem caster, List<IUnitSystem> targets, IMapSystem? map)
-    {
-        targets[0].SetStatusEffectOnUnit(new AtkBuffer(10, AovDataStructures.ModifierType.Flat, 10));
-    }
-}
-
-public sealed class Skill3 : SkillSystem
-{
-    public Skill3()
-    {
-        TargetType = AovDataStructures.TargetTypes.SingleEnemy;
-        Range = 2;
-    }
-
-    public override void Use(IUnitSystem caster, List<IUnitSystem> targets, IMapSystem? map)
-    {
-        targets[0].SetStatusEffectOnUnit(new Stun(1));
-    }
-}
-
-public sealed class Skill4 : SkillSystem
-{
-    public Skill4()
-    {
-        TargetType = AovDataStructures.TargetTypes.SingleEnemy;
-        Range = 2;
-    }
-
-    public override void Use(IUnitSystem caster, List<IUnitSystem> targets, IMapSystem? map)
-    {
-        targets[0].TakeDamage(caster.TotalAtk);
-    }
-}
-
-public sealed class Skill5 : SkillSystem
-{
-    public Skill5()
-    {
-        TargetType = AovDataStructures.TargetTypes.SingleEnemy;
-        Range = 5;
-    }
-
-    public override void Use(IUnitSystem caster, List<IUnitSystem> targets, IMapSystem? map)
-    {
-        targets[0].TakeDamage(5);
-    }
-}
-
+/// <summary>
+///     Player1 — the test scene's player-controlled fighter.
+/// </summary>
+/// <remarks>
+///     Active skill slots map to the Fighter feature-doc catalogue
+///     (<see cref="CrushingStrike" />, <see cref="WarCry" />, <see cref="Charge" />,
+///     <see cref="Block" />, <see cref="CircularStrike" />). Passives are wired into
+///     <c>PassiveSkills</c> for the relevant systems to read; their <c>Use</c> methods are
+///     intentional no-ops since they're handled in damage-formula / status-effect code paths.
+/// </remarks>
 public sealed partial class Player1Data : UnitSystem
 {
     protected override void Initialize()
     {
         UnitName = "Player1";
-        Description = "Test player unit";
+        Description = "Test player unit — Fighter loadout";
         MaxHp = 1000;
         Hp = MaxHp;
         BaseAtk = 200;
@@ -92,21 +32,38 @@ public sealed partial class Player1Data : UnitSystem
         IsAlive = true;
         PossibleMovesRange = 2;
         Curse = 0;
-        ActiveSkills.Add(new Skill1());
-        ActiveSkills.Add(new Skill2());
-        ActiveSkills.Add(new Skill3());
-        ActiveSkills.Add(new Skill4());
-        ActiveSkills.Add(new Skill5());
+
+        // Five active slots (matches BattleInputSystem's 1-5 hot-keys and the
+        // SkillSelector's 5-button bar).
+        ActiveSkills.Add(new CrushingStrike());
+        ActiveSkills.Add(new WarCry());
+        ActiveSkills.Add(new Charge());
+        ActiveSkills.Add(new Block());
+        ActiveSkills.Add(new CircularStrike());
+
+        // Passives — present so other systems (damage formula, end-of-turn hooks)
+        // can detect them. Their Use() is a no-op.
+        PassiveSkills.Add(new BruteForce());
+        PassiveSkills.Add(new Recklessness());
+        PassiveSkills.Add(new WarriorEndurance());
 
         base.Initialize();
 
-        // Create and inject StatusEffectSystem so buffs/heals work
+        // Status-effect system needed for the Stun / AtkBuffer effects the actives apply.
         var statusEffectSystem = new StatusEffectSystem();
         InjectDependencies(statusEffectSystem);
+
+        SetEntityProfile(new EntityProfile
+        {
+            DisplayName = "Pikachu",
+            ClassName = "Combattant",
+            Level = 1,
+            PortraitPath = "res://assets/portraits/Pikachu.png",
+        });
     }
 
-    public override void Play(List<IUnitSystem> targets, IMapSystem? map, ISkillSystem skill)
-    {
-        ReportSystemUnitHasPlayed();
-    }
+    // No Play() override — we want the base UnitSystem.Play implementation, which calls
+    // skill.Use(this, targets, map) (applies damage / effects), decrements mana, and
+    // reports the turn played. The previous override only called ReportSystemUnitHasPlayed
+    // and silently skipped skill.Use, which is why enemies took no damage.
 }

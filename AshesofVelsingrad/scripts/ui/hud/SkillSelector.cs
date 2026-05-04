@@ -89,11 +89,15 @@ public sealed partial class SkillSelector : Control
 
     /// <summary>
     ///     Bind the selector to the unit whose loadout to display. Refreshes immediately.
+    ///     Also hides the widget entirely on non-player turns — the player can only act on
+    ///     <see cref="Faction.Player" /> units, so showing AI-driven skills would be misleading.
     /// </summary>
     /// <param name="unit">Unit to track, or null to clear.</param>
     public void Bind(IUnitSystem? unit)
     {
         _bound = unit;
+        // Skill bar is only meaningful when a player-controlled unit is acting.
+        Visible = unit is not null && unit.Faction == Faction.Player;
         Refresh();
     }
 

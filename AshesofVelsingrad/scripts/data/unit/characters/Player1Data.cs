@@ -1,5 +1,7 @@
+using AshesOfVelsingrad.Data;
 using AshesOfVelsingrad.Data.Skills;
 using AshesOfVelsingrad.Systems;
+using Godot;
 
 namespace AshesOfVelsingrad;
 
@@ -50,6 +52,14 @@ public sealed partial class Player1Data : UnitSystem
         // Status-effect system needed for the Stun / AtkBuffer effects the actives apply.
         var statusEffectSystem = new StatusEffectSystem();
         InjectDependencies(statusEffectSystem);
+
+        SetEntityProfile(new EntityProfile
+        {
+            DisplayName = "Pikachu",
+            ClassName = "Combattant",
+            Level = 1,
+            Portrait = ResourceLoader.Load<Texture2D>("res://assets/portraits/Pikachu.png"),
+        });
     }
 
     // No Play() override — we want the base UnitSystem.Play implementation, which calls

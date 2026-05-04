@@ -21,6 +21,7 @@ public partial class GameManager : BaseManager
     private bool _unitMoved;
     private AovDataStructures.ClickOnMapContext _clickOnMapContext = AovDataStructures.ClickOnMapContext.MoveUnit;
     private readonly List<IUnitSystem> _playerUnits = new List<IUnitSystem>();
+    private readonly List<IUnitSystem> _allyUnits = new List<IUnitSystem>();
     private readonly List<IUnitSystem> _enemyUnits = new List<IUnitSystem>();
     private List<(int, int, int)> _currentUnitPossibleMoves = new List<(int, int, int)>();
     private List<Vector3I> _currentUnitReachableCellsForCurrentSelectedSkill = new List<Vector3I>();
@@ -36,6 +37,13 @@ public partial class GameManager : BaseManager
 
     [Export]
     private NodePath? _enemyUnitsPath;
+
+    /// <summary>
+    ///     Optional sibling container for AI-controlled friendly guest units (recruited mercs,
+    ///     summoned creatures, scripted helpers). Leave empty for battles with no allies.
+    /// </summary>
+    [Export]
+    private NodePath? _alliedUnitsPath;
 
     [Export]
     private NodePath? _mapSystemPath;
@@ -55,6 +63,7 @@ public partial class GameManager : BaseManager
 
     private Node? _playerUnitsContainer;
     private Node? _enemyUnitsContainer;
+    private Node? _alliedUnitsContainer;
     private IMapSystem? _mapSystemContainer;
     private TurnManager? _turnManagerContainer;
     private BattleInputSystem? _battleInputSystemContainer;
@@ -110,12 +119,19 @@ public partial class GameManager : BaseManager
         _battleInputSystemContainer.OnSelectMovePressed += PlayerSelectedMove;
         _playerUnitsContainer = GetNode<Node>(_playerUnitsPath);
         _enemyUnitsContainer = GetNode<Node>(_enemyUnitsPath);
+        if (_alliedUnitsPath is not null && !_alliedUnitsPath.IsEmpty)
+            _alliedUnitsContainer = GetNodeOrNull<Node>(_alliedUnitsPath);
 
         LoadUnits();
 
         _mapSystemContainer = GetNode<MapSystem>(_mapSystemPath);
         _mapSystemContainer.InjectDependencies(_statusEffectSystem);
-        _mapSystemContainer.PlaceUnits(_playerUnits, _enemyUnits);
+        // PlaceUnits only distinguishes friendlies vs hostiles — merge allies into the
+        // friendly list so they get placed alongside the player party.
+        List<IUnitSystem> friendlies = new(_playerUnits.Count + _allyUnits.Count);
+        friendlies.AddRange(_playerUnits);
+        friendlies.AddRange(_allyUnits);
+        _mapSystemContainer.PlaceUnits(friendlies, _enemyUnits);
         _turnManagerContainer = GetNode<TurnManager>(_turnManagerPath);
         _turnManagerContainer.OnPlayerTurn += ActivatePlayerUnit;
         _turnManagerContainer.OnPlayerTurnEnd += DeactivatePlayerUnit;
@@ -124,21 +140,22 @@ public partial class GameManager : BaseManager
         _turnManagerContainer.OnAllyTurn += AllyTurnStarted;
         _turnManagerContainer.OnAllyTurnEnd += AllyTurnEnded;
         _turnManagerContainer.OnCurrentTurnEnd += CurrentTurnEnded;
-        _turnManagerContainer.InitializeTurnOrder(_playerUnits, _enemyUnits);
+        _turnManagerContainer.InitializeTurnOrder(_playerUnits, _allyUnits, _enemyUnits);
 
         // Debug: show unit counts to help diagnose empty turn order
-        GD.Print($"[DEBUG] Players: {_playerUnits.Count}, Enemies: {_enemyUnits.Count}");
+        GD.Print($"[DEBUG] Players: {_playerUnits.Count}, Allies: {_allyUnits.Count}, Enemies: {_enemyUnits.Count}");
 
-        bool hasUnits = (_playerUnits.Count + _enemyUnits.Count) > 0;
+        bool hasUnits = (_playerUnits.Count + _allyUnits.Count + _enemyUnits.Count) > 0;
 
         if (hasUnits)
         {
             try
             {
-                if (_enemyUnits.Contains(_turnManagerContainer.GetCurrentUnit()))
-                    DeactivatePlayerUnit();
-                else
+                IUnitSystem first = _turnManagerContainer.GetCurrentUnit();
+                if (_playerUnits.Contains(first))
                     ActivatePlayerUnit();
+                else
+                    DeactivatePlayerUnit();
             }
             catch (Exception ex)
             {
@@ -153,8 +170,9 @@ public partial class GameManager : BaseManager
         }
 
         // Create EnemyAIManager as a battle-scoped instance (NOT a global singleton)
+        // Allies are valid targets for hostile AI, so they go into the "friendly" list here.
         AIManager = new EnemyAIManager(this);
-        AIManager.SetUnitReferences(_playerUnits, _enemyUnits);
+        AIManager.SetUnitReferences(friendlies, _enemyUnits);
 
         if (_mapSystemContainer != null)
             AIManager.SetMapSystem(_mapSystemContainer);
@@ -166,6 +184,7 @@ public partial class GameManager : BaseManager
         EnsureHud();
         EnsureIndicators();
         CallDeferred(nameof(WireHudEvents));
+        CallDeferred(nameof(BindHudRosters));
     }
 
     #endregion
@@ -477,12 +496,9 @@ public partial class GameManager : BaseManager
             return;
         }
 
-        // TODO: Replace by the unit move animation instead of teleport him
-        Vector3I pos = new(cell.Item1, cell.Item2, cell.Item3);
-        Vector3 worldPos = ((GridMap)_mapSystemContainer).MapToLocal(pos);
-        worldPos.Y += ((GridMap)_mapSystemContainer).CellSize.Y * 0.5f;
-        ((CharacterBody3D)_turnManagerContainer.GetCurrentUnit()).GlobalPosition = worldPos;
-
+        // Animate via A* + tween instead of teleporting. Logical state updates immediately
+        // (MoveTo) so subsequent decisions don't see a stale grid position; visuals trail.
+        _ = AnimateUnitMove(cell);
         _turnManagerContainer.GetCurrentUnit().MoveTo(cell.Item1, cell.Item2, cell.Item3, _mapSystemContainer);
         _unitMoved = true;
         GD.Print("Unit moved");

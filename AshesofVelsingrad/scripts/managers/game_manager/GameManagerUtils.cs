@@ -32,12 +32,14 @@ public partial class GameManager
         }
 
         _playerUnits.Clear();
+        _allyUnits.Clear();
         _enemyUnits.Clear();
 
         foreach (Node child in _playerUnitsContainer.GetChildren())
             if (child is UnitSystem unit)
             {
                 unit.InjectDependencies(_statusEffectSystem);
+                unit.SetFaction(Faction.Player);
                 _playerUnits.Add(unit);
             }
 
@@ -45,8 +47,18 @@ public partial class GameManager
             if (child is UnitSystem unit)
             {
                 unit.InjectDependencies(_statusEffectSystem);
+                unit.SetFaction(Faction.Enemy);
                 _enemyUnits.Add(unit);
             }
+
+        if (_alliedUnitsContainer is not null)
+            foreach (Node child in _alliedUnitsContainer.GetChildren())
+                if (child is UnitSystem unit)
+                {
+                    unit.InjectDependencies(_statusEffectSystem);
+                    unit.SetFaction(Faction.Ally);
+                    _allyUnits.Add(unit);
+                }
     }
 
     /// <summary>

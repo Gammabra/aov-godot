@@ -23,6 +23,15 @@ public sealed partial class UnitHealthBar : Control
     public override void _Ready()
     {
         BuildLayout();
+        // Auto-refresh each frame so HP/MP bars reflect damage taken without callers
+        // having to invoke Refresh() manually after every event.
+        SetProcess(true);
+    }
+
+    /// <inheritdoc />
+    public override void _Process(double delta)
+    {
+        if (_bound is not null) Refresh();
     }
 
     private void BuildLayout()

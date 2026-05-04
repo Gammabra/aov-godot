@@ -34,6 +34,15 @@ public sealed partial class PlayerStatusPanel : Control
         if (_built) return;
         _built = true;
         BuildLayout();
+        // Refresh every frame so HP/MP bars track damage taken without GameManager
+        // having to call Bind() again after every event.
+        SetProcess(true);
+    }
+
+    /// <inheritdoc />
+    public override void _Process(double delta)
+    {
+        if (_bound is not null) Refresh();
     }
 
     private void BuildLayout()

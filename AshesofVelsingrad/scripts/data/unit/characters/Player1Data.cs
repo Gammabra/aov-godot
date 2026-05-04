@@ -52,8 +52,8 @@ public sealed partial class Player1Data : UnitSystem
         InjectDependencies(statusEffectSystem);
     }
 
-    public override void Play(System.Collections.Generic.List<IUnitSystem> targets, IMapSystem? map, ISkillSystem skill)
-    {
-        ReportSystemUnitHasPlayed();
-    }
+    // No Play() override — we want the base UnitSystem.Play implementation, which calls
+    // skill.Use(this, targets, map) (applies damage / effects), decrements mana, and
+    // reports the turn played. The previous override only called ReportSystemUnitHasPlayed
+    // and silently skipped skill.Use, which is why enemies took no damage.
 }

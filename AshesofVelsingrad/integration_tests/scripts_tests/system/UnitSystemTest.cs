@@ -606,7 +606,11 @@ public class UnitSystemTest
     public void TearDown()
     {
         foreach (Node node in _testNodes)
-            node.QueueFree();
+        {
+            // Defensive: tests may have manually freed nodes (e.g. to exercise _ExitTree).
+            if (GodotObject.IsInstanceValid(node))
+                node.QueueFree();
+        }
 
         _testNodes.Clear();
         ResetSingletons();

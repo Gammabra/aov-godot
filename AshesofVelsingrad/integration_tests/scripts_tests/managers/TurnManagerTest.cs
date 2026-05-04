@@ -63,7 +63,13 @@ public class TurnManagerTest
     public void Cleanup()
     {
         foreach (Node node in _testNodes)
-            node.QueueFree();
+        {
+            // Tests may have already freed nodes manually (e.g.
+            // ExitTree_ClearsStaticInstance). IsInstanceValid is the canonical Godot way
+            // to check whether a C# wrapper is still pointing at a live native node.
+            if (GodotObject.IsInstanceValid(node))
+                node.QueueFree();
+        }
 
         _testNodes.Clear();
         ResetSingleton();
@@ -132,9 +138,13 @@ public class TurnManagerTest
             .GetValue(null);
         AssertThat(instanceBefore).IsNotNull();
 
-        // Simulate the scene unload by removing the node from the tree.
+        // Simulate the scene unload by removing the node from the tree. RemoveChild fires
+        // _ExitTree synchronously — that's all we need to test the static-clear behaviour.
+        // We then Free() the node here (synchronous) and drop it from _testNodes so the
+        // AfterTest cleanup doesn't double-free it.
         manager.GetParent().RemoveChild(manager);
-        manager.QueueFree();
+        _testNodes.Remove(manager);
+        manager.Free();
 
         object? instanceAfter = typeof(TurnManager)
             .GetProperty("Instance", BindingFlags.Static | BindingFlags.NonPublic)!

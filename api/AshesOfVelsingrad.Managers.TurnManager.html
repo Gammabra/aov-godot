@@ -6,7 +6,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <meta name="title" content="Class TurnManager | Ashes of Velsingrad Documentation ">
       
-      <meta name="description" content="Manages the turn-based battle flow between player and enemy units. Handles turn order, state transitions, and async waiting for unit actions.">
+      <meta name="description" content="partial — adds three-faction support, an upcoming-queue getter for the HUD turn-order widget, and an  event.">
       <link rel="icon" href="../favicon.ico">
       <link rel="stylesheet" href="../public/docfx.min.css">
       <link rel="stylesheet" href="../public/main.css">
@@ -97,8 +97,8 @@ Class TurnManager
   <dl><dt>Assembly</dt><dd>AshesofVelsingrad.dll</dd></dl>
   </div>
 
-  <div class="markdown summary"><p>Manages the turn-based battle flow between player and enemy units.
-Handles turn order, state transitions, and async waiting for unit actions.</p>
+  <div class="markdown summary"><p><a class="xref" href="AshesOfVelsingrad.Managers.TurnManager.html">TurnManager</a> partial — adds three-faction support, an upcoming-queue
+getter for the HUD turn-order widget, and an <a class="xref" href="AshesOfVelsingrad.Managers.TurnManager.html#AshesOfVelsingrad_Managers_TurnManager_OnAllyTurn">OnAllyTurn</a> event.</p>
 </div>
   <div class="markdown conceptual"></div>
 
@@ -143,9 +143,6 @@ public class TurnManager : BaseManager, IDisposable</code></pre>
     </div>
     <div>
       <a class="xref" href="AshesOfVelsingrad.Managers.BaseManager.html#AshesOfVelsingrad_Managers_BaseManager__Ready">BaseManager._Ready()</a>
-    </div>
-    <div>
-      <a class="xref" href="AshesOfVelsingrad.Managers.BaseManager.html#AshesOfVelsingrad_Managers_BaseManager__ExitTree">BaseManager._ExitTree()</a>
     </div>
     <div>
       <a class="xref" href="AshesOfVelsingrad.Managers.BaseManager.html#AshesOfVelsingrad_Managers_BaseManager_Cleanup">BaseManager.Cleanup()</a>
@@ -1011,10 +1008,85 @@ public class TurnManager : BaseManager, IDisposable</code></pre>
 
 
   <h2 id="AshesOfVelsingrad_Managers_TurnManager_remarks">Remarks</h2>
-  <div class="markdown level0 remarks"><p>This class acts as the core of the turn-based combat loop.
-It determines which unit acts next, triggers player input events,
-and handles asynchronous waiting for both player and AI actions.</p>
+  <div class="markdown level0 remarks"><p>
+    The base <a class="xref" href="AshesOfVelsingrad.Managers.TurnManager.html">TurnManager</a> distinguishes player vs enemy turns via
+    <a class="xref" href="AshesOfVelsingrad.Utilities.AovDataStructures.TurnState.html">AovDataStructures.TurnState</a>. Allied (guest) units are still tagged with
+    <a class="xref" href="AshesOfVelsingrad.Utilities.AovDataStructures.TurnState.html#AshesOfVelsingrad_Utilities_AovDataStructures_TurnState_EnemyTurn">EnemyTurn</a> internally because they're
+    AI-driven, but this partial fires <a class="xref" href="AshesOfVelsingrad.Managers.TurnManager.html#AshesOfVelsingrad_Managers_TurnManager_OnAllyTurn">OnAllyTurn</a> instead of
+    <a class="xref" href="AshesOfVelsingrad.Managers.TurnManager.html#AshesOfVelsingrad_Managers_TurnManager_OnEnemyTurn">OnEnemyTurn</a> when the active unit's
+    <a class="xref" href="AshesOfVelsingrad.Systems.UnitSystem.html#AshesOfVelsingrad_Systems_UnitSystem_Faction">Faction</a> is <a class="xref" href="AshesOfVelsingrad.Systems.Faction.html#AshesOfVelsingrad_Systems_Faction_Ally">Ally</a>. <code>GameManager</code>
+    routes the dispatch.
+</p>
 </div>
+
+
+  <h2 class="section" id="properties">Properties
+</h2>
+
+
+  <a id="AshesOfVelsingrad_Managers_TurnManager_Active_" data-uid="AshesOfVelsingrad.Managers.TurnManager.Active*"></a>
+
+  <h3 id="AshesOfVelsingrad_Managers_TurnManager_Active" data-uid="AshesOfVelsingrad.Managers.TurnManager.Active">
+  Active
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/managers/TurnManager.cs/#L44"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Public accessor for the active <a class="xref" href="AshesOfVelsingrad.Managers.TurnManager.html">TurnManager</a> in the scene.
+Returns null when no battle is active.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static TurnManager? Active { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="AshesOfVelsingrad.Managers.TurnManager.html">TurnManager</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="AshesOfVelsingrad_Managers_TurnManager_CurrentUnit_" data-uid="AshesOfVelsingrad.Managers.TurnManager.CurrentUnit*"></a>
+
+  <h3 id="AshesOfVelsingrad_Managers_TurnManager_CurrentUnit" data-uid="AshesOfVelsingrad.Managers.TurnManager.CurrentUnit">
+  CurrentUnit
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/managers/TurnManager.cs/#L53"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>The unit currently taking its turn, or null if the turn order is not set up yet.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public UnitSystem? CurrentUnit { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="AshesOfVelsingrad.Systems.UnitSystem.html">UnitSystem</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
 
 
   <h2 class="section" id="methods">Methods
@@ -1025,7 +1097,7 @@ and handles asynchronous waiting for both player and AI actions.</p>
 
   <h3 id="AshesOfVelsingrad_Managers_TurnManager_EndTurnManagerLoop" data-uid="AshesOfVelsingrad.Managers.TurnManager.EndTurnManagerLoop">
   EndTurnManagerLoop()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/managers/TurnManager.cs/#L318"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/managers/TurnManager.cs/#L443"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Called by the <a class="xref" href="AshesOfVelsingrad.Managers.GameManager.html">GameManager</a> to inform the <a class="xref" href="AshesOfVelsingrad.Managers.TurnManager.html">TurnManager</a>
@@ -1053,7 +1125,7 @@ the game is finished</p>
 
   <h3 id="AshesOfVelsingrad_Managers_TurnManager_GetCurrentUnit" data-uid="AshesOfVelsingrad.Managers.TurnManager.GetCurrentUnit">
   GetCurrentUnit()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/managers/TurnManager.cs/#L297"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/managers/TurnManager.cs/#L422"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Gets the unit currently taking its turn.</p>
@@ -1082,11 +1154,51 @@ the game is finished</p>
 
 
 
+  <a id="AshesOfVelsingrad_Managers_TurnManager_GetUpcomingUnits_" data-uid="AshesOfVelsingrad.Managers.TurnManager.GetUpcomingUnits*"></a>
+
+  <h3 id="AshesOfVelsingrad_Managers_TurnManager_GetUpcomingUnits_System_Int32_" data-uid="AshesOfVelsingrad.Managers.TurnManager.GetUpcomingUnits(System.Int32)">
+  GetUpcomingUnits(int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/managers/game_manager/TurnManagerHelpers.cs/#L72"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Returns the next <code class="paramref">count</code> alive units in activation order, starting
+with the currently-acting unit. Used by the HUD turn-queue widget.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IReadOnlyList&lt;IUnitSystem&gt; GetUpcomingUnits(int count = 8)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>count</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>Maximum number of units to return.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1">IReadOnlyList</a>&lt;<a class="xref" href="AshesOfVelsingrad.Systems.IUnitSystem.html">IUnitSystem</a>&gt;</dt>
+    <dd><p>Read-only list of upcoming units.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="AshesOfVelsingrad_Managers_TurnManager_Initialize_" data-uid="AshesOfVelsingrad.Managers.TurnManager.Initialize*"></a>
 
   <h3 id="AshesOfVelsingrad_Managers_TurnManager_Initialize" data-uid="AshesOfVelsingrad.Managers.TurnManager.Initialize">
   Initialize()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/managers/TurnManager.cs/#L82"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/managers/TurnManager.cs/#L153"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Initializes the TurnManager singleton instance.
@@ -1119,7 +1231,7 @@ If a duplicate instance is found, it removes the duplicate.</p>
 
   <h3 id="AshesOfVelsingrad_Managers_TurnManager_InitializeTurnOrder_System_Collections_Generic_List_AshesOfVelsingrad_Systems_IUnitSystem__System_Collections_Generic_List_AshesOfVelsingrad_Systems_IUnitSystem__" data-uid="AshesOfVelsingrad.Managers.TurnManager.InitializeTurnOrder(System.Collections.Generic.List{AshesOfVelsingrad.Systems.IUnitSystem},System.Collections.Generic.List{AshesOfVelsingrad.Systems.IUnitSystem})">
   InitializeTurnOrder(List&lt;IUnitSystem&gt;, List&lt;IUnitSystem&gt;)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/managers/TurnManager.cs/#L263"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/managers/TurnManager.cs/#L381"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Initializes the turn order list based on all participating units.</p>
@@ -1155,11 +1267,161 @@ sorted from highest to lowest.</p>
 
 
 
+  <a id="AshesOfVelsingrad_Managers_TurnManager_InitializeTurnOrder_" data-uid="AshesOfVelsingrad.Managers.TurnManager.InitializeTurnOrder*"></a>
+
+  <h3 id="AshesOfVelsingrad_Managers_TurnManager_InitializeTurnOrder_System_Collections_Generic_List_AshesOfVelsingrad_Systems_IUnitSystem__System_Collections_Generic_List_AshesOfVelsingrad_Systems_IUnitSystem__System_Collections_Generic_List_AshesOfVelsingrad_Systems_IUnitSystem__" data-uid="AshesOfVelsingrad.Managers.TurnManager.InitializeTurnOrder(System.Collections.Generic.List{AshesOfVelsingrad.Systems.IUnitSystem},System.Collections.Generic.List{AshesOfVelsingrad.Systems.IUnitSystem},System.Collections.Generic.List{AshesOfVelsingrad.Systems.IUnitSystem})">
+  InitializeTurnOrder(List&lt;IUnitSystem&gt;, List&lt;IUnitSystem&gt;, List&lt;IUnitSystem&gt;)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/managers/game_manager/TurnManagerHelpers.cs/#L44"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Initialise the turn order with three factions. Allies are AI-driven friendly guests
+(recruited mercs, summoned creatures, scripted helpers).</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void InitializeTurnOrder(List&lt;IUnitSystem&gt; playerUnits, List&lt;IUnitSystem&gt; allyUnits, List&lt;IUnitSystem&gt; enemyUnits)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>playerUnits</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a class="xref" href="AshesOfVelsingrad.Systems.IUnitSystem.html">IUnitSystem</a>&gt;</dt>
+    <dd><p>Player-controlled units.</p>
+</dd>
+    <dt><code>allyUnits</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a class="xref" href="AshesOfVelsingrad.Systems.IUnitSystem.html">IUnitSystem</a>&gt;</dt>
+    <dd><p>AI-controlled friendly units (may be empty).</p>
+</dd>
+    <dt><code>enemyUnits</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a class="xref" href="AshesOfVelsingrad.Systems.IUnitSystem.html">IUnitSystem</a>&gt;</dt>
+    <dd><p>AI-controlled hostile units.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h4 class="section" id="AshesOfVelsingrad_Managers_TurnManager_InitializeTurnOrder_System_Collections_Generic_List_AshesOfVelsingrad_Systems_IUnitSystem__System_Collections_Generic_List_AshesOfVelsingrad_Systems_IUnitSystem__System_Collections_Generic_List_AshesOfVelsingrad_Systems_IUnitSystem___remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>Internally allied units are stored as <a class="xref" href="AshesOfVelsingrad.Utilities.AovDataStructures.TurnState.html#AshesOfVelsingrad_Utilities_AovDataStructures_TurnState_EnemyTurn">EnemyTurn</a>
+(so the existing turn loop dispatches to AI), but <code>GameManager</code> consults
+<a class="xref" href="AshesOfVelsingrad.Systems.UnitSystem.html#AshesOfVelsingrad_Systems_UnitSystem_Faction">Faction</a> to fire the right HUD events.</p>
+</div>
+
+
+
+
+  <a id="AshesOfVelsingrad_Managers_TurnManager_RaiseAllyTurn_" data-uid="AshesOfVelsingrad.Managers.TurnManager.RaiseAllyTurn*"></a>
+
+  <h3 id="AshesOfVelsingrad_Managers_TurnManager_RaiseAllyTurn_System_Boolean_" data-uid="AshesOfVelsingrad.Managers.TurnManager.RaiseAllyTurn(System.Boolean)">
+  RaiseAllyTurn(bool)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/managers/game_manager/TurnManagerHelpers.cs/#L91"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Dispatch helper for <code>GameManager</code> — fires <a class="xref" href="AshesOfVelsingrad.Managers.TurnManager.html#AshesOfVelsingrad_Managers_TurnManager_OnAllyTurn">OnAllyTurn</a> /
+<a class="xref" href="AshesOfVelsingrad.Managers.TurnManager.html#AshesOfVelsingrad_Managers_TurnManager_OnAllyTurnEnd">OnAllyTurnEnd</a> when an AI-faction turn belongs to an ally rather
+than an enemy.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void RaiseAllyTurn(bool isStart)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>isStart</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>True for turn start, false for turn end.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AshesOfVelsingrad_Managers_TurnManager_RequestAbort_" data-uid="AshesOfVelsingrad.Managers.TurnManager.RequestAbort*"></a>
+
+  <h3 id="AshesOfVelsingrad_Managers_TurnManager_RequestAbort_AshesOfVelsingrad_systems_battle_BattleOutcome_" data-uid="AshesOfVelsingrad.Managers.TurnManager.RequestAbort(AshesOfVelsingrad.systems.battle.BattleOutcome)">
+  RequestAbort(BattleOutcome)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/managers/TurnManager.cs/#L105"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Request the battle loop to terminate with a specific outcome.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void RequestAbort(BattleOutcome outcome)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>outcome</code> <a class="xref" href="AshesOfVelsingrad.systems.battle.BattleOutcome.html">BattleOutcome</a></dt>
+    <dd><p>Outcome to surface to the caller.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AshesOfVelsingrad_Managers_TurnManager_RunBattleLoop_" data-uid="AshesOfVelsingrad.Managers.TurnManager.RunBattleLoop*"></a>
+
+  <h3 id="AshesOfVelsingrad_Managers_TurnManager_RunBattleLoop" data-uid="AshesOfVelsingrad.Managers.TurnManager.RunBattleLoop">
+  RunBattleLoop()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/managers/TurnManager.cs/#L88"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Run the battle loop and return the final result.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;BattleResult&gt; RunBattleLoop()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="AshesOfVelsingrad.systems.battle.BattleResult.html">BattleResult</a>&gt;</dt>
+    <dd><p>The outcome of the battle once the loop terminates.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+  <h4 class="section" id="AshesOfVelsingrad_Managers_TurnManager_RunBattleLoop_remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>Bridges <a class="xref" href="AshesOfVelsingrad.Managers.TurnManager.html#AshesOfVelsingrad_Managers_TurnManager_StartBattle">StartBattle()</a> (the legacy entry point) to the
+BattleResult contract that <code>BattleLauncher</code> expects.</p>
+</div>
+
+
+
+
   <a id="AshesOfVelsingrad_Managers_TurnManager_SetAIManager_" data-uid="AshesOfVelsingrad.Managers.TurnManager.SetAIManager*"></a>
 
   <h3 id="AshesOfVelsingrad_Managers_TurnManager_SetAIManager_AshesOfVelsingrad_Managers_EnemyAIManager_" data-uid="AshesOfVelsingrad.Managers.TurnManager.SetAIManager(AshesOfVelsingrad.Managers.EnemyAIManager)">
   SetAIManager(EnemyAIManager)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/managers/TurnManager.cs/#L249"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/managers/TurnManager.cs/#L367"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Sets the reference to the EnemyAIManager instance.</p>
@@ -1188,11 +1450,44 @@ sorted from highest to lowest.</p>
 
 
 
+  <a id="AshesOfVelsingrad_Managers_TurnManager_SetVictoryCondition_" data-uid="AshesOfVelsingrad.Managers.TurnManager.SetVictoryCondition*"></a>
+
+  <h3 id="AshesOfVelsingrad_Managers_TurnManager_SetVictoryCondition_AshesOfVelsingrad_systems_battle_VictoryCondition_" data-uid="AshesOfVelsingrad.Managers.TurnManager.SetVictoryCondition(AshesOfVelsingrad.systems.battle.VictoryCondition)">
+  SetVictoryCondition(VictoryCondition?)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/managers/TurnManager.cs/#L75"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Install the victory condition the battle loop should evaluate each turn.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetVictoryCondition(VictoryCondition? condition)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>condition</code> <a class="xref" href="AshesOfVelsingrad.systems.battle.VictoryCondition.html">VictoryCondition</a></dt>
+    <dd><p>Condition implementation, or <code>null</code> to clear.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
   <a id="AshesOfVelsingrad_Managers_TurnManager_StartBattle_" data-uid="AshesOfVelsingrad.Managers.TurnManager.StartBattle*"></a>
 
   <h3 id="AshesOfVelsingrad_Managers_TurnManager_StartBattle" data-uid="AshesOfVelsingrad.Managers.TurnManager.StartBattle">
   StartBattle()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/managers/TurnManager.cs/#L285"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/managers/TurnManager.cs/#L403"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Starts the turn-based battle loop asynchronously.</p>
@@ -1221,14 +1516,109 @@ sorted from highest to lowest.</p>
 
 
 
+  <a id="AshesOfVelsingrad_Managers_TurnManager__ExitTree_" data-uid="AshesOfVelsingrad.Managers.TurnManager._ExitTree*"></a>
+
+  <h3 id="AshesOfVelsingrad_Managers_TurnManager__ExitTree" data-uid="AshesOfVelsingrad.Managers.TurnManager._ExitTree">
+  _ExitTree()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/managers/TurnManager.cs/#L173"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Called when the node is removed from the scene tree.
+Cleans up the manager instance and sets it to null.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override void _ExitTree()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+  <h4 class="section" id="AshesOfVelsingrad_Managers_TurnManager__ExitTree_remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>This method is called automatically by Godot when the node is removed from the scene tree.
+It ensures that the manager instance is properly cleaned up and set to null.
+This is important for preventing memory leaks and ensuring that the manager can be re-initialized later if needed.</p>
+</div>
+
+
+
+
   <h2 class="section" id="events">Events
 </h2>
 
 
 
+  <h3 id="AshesOfVelsingrad_Managers_TurnManager_OnAllyTurn" data-uid="AshesOfVelsingrad.Managers.TurnManager.OnAllyTurn">
+  OnAllyTurn
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/managers/game_manager/TurnManagerHelpers.cs/#L27"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Triggered when an Ally-faction unit's turn begins.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public event Action? OnAllyTurn</code></pre>
+  </div>
+
+
+
+
+
+
+  <h4 class="section">Event Type</h4>
+  <dl class="parameters">
+    <dt><span class="xref">Action</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h3 id="AshesOfVelsingrad_Managers_TurnManager_OnAllyTurnEnd" data-uid="AshesOfVelsingrad.Managers.TurnManager.OnAllyTurnEnd">
+  OnAllyTurnEnd
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/managers/game_manager/TurnManagerHelpers.cs/#L30"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Triggered when an Ally-faction unit's turn ends.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public event Action? OnAllyTurnEnd</code></pre>
+  </div>
+
+
+
+
+
+
+  <h4 class="section">Event Type</h4>
+  <dl class="parameters">
+    <dt><span class="xref">Action</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
   <h3 id="AshesOfVelsingrad_Managers_TurnManager_OnCurrentTurnEnd" data-uid="AshesOfVelsingrad.Managers.TurnManager.OnCurrentTurnEnd">
   OnCurrentTurnEnd
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/managers/TurnManager.cs/#L67"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/managers/TurnManager.cs/#L138"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Triggered when the current turn ends.</p>
@@ -1259,7 +1649,7 @@ sorted from highest to lowest.</p>
 
   <h3 id="AshesOfVelsingrad_Managers_TurnManager_OnEnemyTurn" data-uid="AshesOfVelsingrad.Managers.TurnManager.OnEnemyTurn">
   OnEnemyTurn
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/managers/TurnManager.cs/#L57"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/managers/TurnManager.cs/#L128"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Triggered when the enemy's turn begins.</p>
@@ -1290,7 +1680,7 @@ sorted from highest to lowest.</p>
 
   <h3 id="AshesOfVelsingrad_Managers_TurnManager_OnEnemyTurnEnd" data-uid="AshesOfVelsingrad.Managers.TurnManager.OnEnemyTurnEnd">
   OnEnemyTurnEnd
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/managers/TurnManager.cs/#L62"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/managers/TurnManager.cs/#L133"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Triggered when the enemy's turn ends</p>
@@ -1321,7 +1711,7 @@ sorted from highest to lowest.</p>
 
   <h3 id="AshesOfVelsingrad_Managers_TurnManager_OnPlayerTurn" data-uid="AshesOfVelsingrad.Managers.TurnManager.OnPlayerTurn">
   OnPlayerTurn
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/managers/TurnManager.cs/#L47"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/managers/TurnManager.cs/#L118"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Triggered when the player's turn begins.</p>
@@ -1352,7 +1742,7 @@ sorted from highest to lowest.</p>
 
   <h3 id="AshesOfVelsingrad_Managers_TurnManager_OnPlayerTurnEnd" data-uid="AshesOfVelsingrad.Managers.TurnManager.OnPlayerTurnEnd">
   OnPlayerTurnEnd
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/managers/TurnManager.cs/#L52"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/managers/TurnManager.cs/#L123"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Triggered when the player's turn ends.</p>

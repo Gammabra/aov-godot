@@ -297,11 +297,14 @@ var assemblies = [
       { "name": "AshesOfVelsingrad.AI.BattleState", "rp": "AshesofVelsingrad.Core_BattleState.html", "cl": 4, "ucl": 0, "cal": 4, "tl": 20, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "AshesOfVelsingrad.Data.AtkBuffer", "rp": "AshesofVelsingrad.Core_AtkBuffer.html", "cl": 18, "ucl": 0, "cal": 18, "tl": 33, "cb": 8, "tb": 8, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "AshesOfVelsingrad.Data.BurningEffect", "rp": "AshesofVelsingrad.Core_BurningEffect.html", "cl": 6, "ucl": 0, "cal": 6, "tl": 19, "cb": 4, "tb": 4, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
+      { "name": "AshesOfVelsingrad.Data.EntityProfile", "rp": "AshesofVelsingrad.Core_EntityProfile.html", "cl": 5, "ucl": 0, "cal": 5, "tl": 54, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "AshesOfVelsingrad.Data.Stun", "rp": "AshesofVelsingrad.Core_Stun.html", "cl": 12, "ucl": 0, "cal": 12, "tl": 25, "cb": 8, "tb": 8, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
+      { "name": "AshesOfVelsingrad.Systems.Battle.Pathfinder", "rp": "AshesofVelsingrad.Core_Pathfinder.html", "cl": 51, "ucl": 0, "cal": 51, "tl": 135, "cb": 28, "tb": 28, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "AshesOfVelsingrad.Systems.CellInformation", "rp": "AshesofVelsingrad.Core_CellInformation.html", "cl": 24, "ucl": 0, "cal": 24, "tl": 64, "cb": 4, "tb": 4, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "AshesOfVelsingrad.Systems.EffectTarget\u003CT\u003E", "rp": "AshesofVelsingrad.Core_EffectTarget_1.html", "cl": 16, "ucl": 0, "cal": 16, "tl": 45, "cb": 4, "tb": 4, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
-      { "name": "AshesOfVelsingrad.Systems.SkillSystem", "rp": "AshesofVelsingrad.Core_SkillSystem.html", "cl": 16, "ucl": 4, "cal": 20, "tl": 102, "cb": 4, "tb": 4, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
-      { "name": "AshesOfVelsingrad.Systems.StatusEffect\u003CT\u003E", "rp": "AshesofVelsingrad.Core_StatusEffect_1.html", "cl": 42, "ucl": 0, "cal": 42, "tl": 126, "cb": 12, "tb": 12, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
+      { "name": "AshesOfVelsingrad.Systems.FactionExtensions", "rp": "AshesofVelsingrad.Core_FactionExtensions.html", "cl": 7, "ucl": 0, "cal": 7, "tl": 57, "cb": 8, "tb": 8, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
+      { "name": "AshesOfVelsingrad.Systems.SkillSystem", "rp": "AshesofVelsingrad.Core_SkillSystem.html", "cl": 20, "ucl": 3, "cal": 23, "tl": 119, "cb": 4, "tb": 4, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
+      { "name": "AshesOfVelsingrad.Systems.StatusEffect\u003CT\u003E", "rp": "AshesofVelsingrad.Core_StatusEffect_1.html", "cl": 43, "ucl": 0, "cal": 43, "tl": 136, "cb": 12, "tb": 12, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "AshesOfVelsingrad.Systems.StatusEffectSystem", "rp": "AshesofVelsingrad.Core_StatusEffectSystem.html", "cl": 44, "ucl": 0, "cal": 44, "tl": 143, "cb": 22, "tb": 22, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
     ]},
 ];
@@ -318,6 +321,12 @@ var riskHotspotMetrics = [
 var riskHotspots = [
   {
     "assembly": "AshesofVelsingrad.Core", "class": "AshesOfVelsingrad.AI.AIDecisionGenerator", "reportPath": "AshesofVelsingrad.Core_AIDecisionGenerator.html", "methodName": "GenerateSupportActions(AshesOfVelsingrad.Systems.IUnitSystem,System.ValueTuple\u00603\u003CSystem.Int32,System.Int32,System.Int32\u003E,AshesOfVelsingrad.AI.BattleState)", "methodShortName": "GenerateSupportActions(...)", "fileIndex": 0, "line": 132,
+    "metrics": [
+      { "value": 22, "exceeded": false },
+      { "value": 22, "exceeded": true },
+    ]},
+  {
+    "assembly": "AshesofVelsingrad.Core", "class": "AshesOfVelsingrad.Systems.Battle.Pathfinder", "reportPath": "AshesofVelsingrad.Core_Pathfinder.html", "methodName": "FindPath(AshesOfVelsingrad.Systems.IMapSystem,System.ValueTuple\u00603\u003CSystem.Int32,System.Int32,System.Int32\u003E,System.ValueTuple\u00603\u003CSystem.Int32,System.Int32,System.Int32\u003E)", "methodShortName": "FindPath(...)", "fileIndex": 0, "line": 43,
     "metrics": [
       { "value": 22, "exceeded": false },
       { "value": 22, "exceeded": true },

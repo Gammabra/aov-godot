@@ -138,6 +138,20 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.Ally1Data.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.Ally1Data.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.Ally1Data",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.Ally1Data.yml\" sourcestartlinenumber=\"1\">Ally1 — friendly AI-controlled guest unit, Light-magic supporter.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "documentation/api/AshesOfVelsingrad.AssassinData.yml",
       "output": {
         ".html": {
@@ -330,6 +344,1014 @@
       "Uid": null,
       "IsMRef": true,
       "Title": "AshesOfVelsingrad.Data.BurningEffect",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.Data.Corruption.CorruptedTransformationEffect.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.Data.Corruption.CorruptedTransformationEffect.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.Data.Corruption.CorruptedTransformationEffect",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.Data.Corruption.CorruptedTransformationEffect.yml\" sourcestartlinenumber=\"1\">Time-limited effect that turns its bearer into an uncontrollable monster.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.Data.Corruption.CorruptionLevel1Effect.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.Data.Corruption.CorruptionLevel1Effect.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.Data.Corruption.CorruptionLevel1Effect",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.Data.Corruption.CorruptionLevel1Effect.yml\" sourcestartlinenumber=\"1\">Level 1 corruption: -10% healing received, -1 range to all skills.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.Data.Corruption.CorruptionLevel2Effect.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.Data.Corruption.CorruptionLevel2Effect.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.Data.Corruption.CorruptionLevel2Effect",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.Data.Corruption.CorruptionLevel2Effect.yml\" sourcestartlinenumber=\"1\">Level 2 corruption: -15% speed, chance to attack a random ally on its turn.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.Data.Corruption.CorruptionLevel3Effect.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.Data.Corruption.CorruptionLevel3Effect.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.Data.Corruption.CorruptionLevel3Effect",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.Data.Corruption.CorruptionLevel3Effect.yml\" sourcestartlinenumber=\"1\">Level 3 corruption: imminent transformation into an uncontrollable monster.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.Data.Corruption.CorruptionLevelEffect.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.Data.Corruption.CorruptionLevelEffect.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.Data.Corruption.CorruptionLevelEffect",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.Data.Corruption.CorruptionLevelEffect.yml\" sourcestartlinenumber=\"1\">Base class for the three corruption-tier marker effects. Permanent (duration -1) and\nnon-stackable; <xref href=\"AshesOfVelsingrad.Data.Corruption.CorruptionSystem\" data-throw-if-not-resolved=\"false\"></xref> swaps them in/out as the tier changes.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.Data.Corruption.CorruptionSystem.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.Data.Corruption.CorruptionSystem.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.Data.Corruption.CorruptionSystem",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.Data.Corruption.CorruptionSystem.yml\" sourcestartlinenumber=\"1\">Static facade owning every corruption mechanic: backlash rolls, level changes,\ntransformation, faction conversion.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.Data.Corruption.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.Data.Corruption.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.Data.Corruption",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.Data.EntityProfile.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.Data.EntityProfile.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.Data.EntityProfile",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.Data.EntityProfile.yml\" sourcestartlinenumber=\"1\">Designer-authored display metadata attached to a combatant.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.Data.Skills.ArcaneFocus.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.Data.Skills.ArcaneFocus.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.Data.Skills.ArcaneFocus",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.Data.Skills.ArmyOfTheDead.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.Data.Skills.ArmyOfTheDead.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.Data.Skills.ArmyOfTheDead",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.Data.Skills.ArmyOfTheDead.yml\" sourcestartlinenumber=\"1\">Armée des Morts — Army of the Dead. Temporarily summons corpses (placeholder).</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.Data.Skills.BladeDance.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.Data.Skills.BladeDance.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.Data.Skills.BladeDance",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.Data.Skills.BladeDance.yml\" sourcestartlinenumber=\"1\">Danse des Lames — Dance of Blades. Strikes up to 3 adjacent enemies.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.Data.Skills.Block.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.Data.Skills.Block.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.Data.Skills.Block",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.Data.Skills.Block.yml\" sourcestartlinenumber=\"1\">Block — Block. Apply a 50% damage-reduction shield to self for 1 turn.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.Data.Skills.BloodStrike.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.Data.Skills.BloodStrike.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.Data.Skills.BloodStrike",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.Data.Skills.BloodStrike.yml\" sourcestartlinenumber=\"1\">Frappe Sanguine — Blood Strike. Damages and heals the caster for 20% of damage dealt.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.Data.Skills.BruteForce.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.Data.Skills.BruteForce.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.Data.Skills.BruteForce",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.Data.Skills.BruteForce.yml\" sourcestartlinenumber=\"1\">Force Brute — +10% melee damage. Apply at battle start; not invoked.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.Data.Skills.Charge.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.Data.Skills.Charge.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.Data.Skills.Charge",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.Data.Skills.Charge.yml\" sourcestartlinenumber=\"1\">Charge — linear movement + attack. The target MUST be on the same row or column\nas the caster (no diagonals). The caster slides along that axis and stops on the\ntile immediately before the target, then strikes for 120% ATK.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.Data.Skills.CircularStrike.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.Data.Skills.CircularStrike.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.Data.Skills.CircularStrike",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.Data.Skills.CircularStrike.yml\" sourcestartlinenumber=\"1\">Frappe Circulaire — Circular Strike. Hits every adjacent enemy.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.Data.Skills.CorruptedConversion.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.Data.Skills.CorruptedConversion.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.Data.Skills.CorruptedConversion",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.Data.Skills.CorruptedConversion.yml\" sourcestartlinenumber=\"1\">Conversion Corrompue — the hallmark Darkness-school spell.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.Data.Skills.CrashingWave.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.Data.Skills.CrashingWave.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.Data.Skills.CrashingWave",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.Data.Skills.CrashingWave.yml\" sourcestartlinenumber=\"1\">Vague Déferlante — Crashing Wave. Knocks enemies back, extinguishes fires.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.Data.Skills.CriticalStrike.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.Data.Skills.CriticalStrike.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.Data.Skills.CriticalStrike",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.Data.Skills.CriticalStrike.yml\" sourcestartlinenumber=\"1\">Coup Critique — Critical Strike. Double damage. CD 3 (doc-fixed).</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.Data.Skills.CrushingStrike.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.Data.Skills.CrushingStrike.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.Data.Skills.CrushingStrike",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.Data.Skills.CrushingStrike.yml\" sourcestartlinenumber=\"1\">Frappe Écrasante — Crushing Strike. +50% damage; can stun the target.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.Data.Skills.CursedOrb.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.Data.Skills.CursedOrb.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.Data.Skills.CursedOrb",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.Data.Skills.CursedOrb.yml\" sourcestartlinenumber=\"1\">Orbe Maudit — Cursed Orb. Weakens the target.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.Data.Skills.DarkPact.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.Data.Skills.DarkPact.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.Data.Skills.DarkPact",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.Data.Skills.DarkPact.yml\" sourcestartlinenumber=\"1\">Pacte Sombre — Dark Pact. Sacrifice HP to boost magic.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.Data.Skills.DeadlyToxins.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.Data.Skills.DeadlyToxins.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.Data.Skills.DeadlyToxins",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.Data.Skills.DivineJudgment.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.Data.Skills.DivineJudgment.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.Data.Skills.DivineJudgment",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.Data.Skills.DivineJudgment.yml\" sourcestartlinenumber=\"1\">Jugement Divin — Divine Judgment. Lightning strike, +200% damage vs corrupted.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.Data.Skills.DivinePrayer.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.Data.Skills.DivinePrayer.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.Data.Skills.DivinePrayer",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.Data.Skills.DivinePrayer.yml\" sourcestartlinenumber=\"1\">Prière Divine — Divine Prayer. +Status resistance for 3 turns.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.Data.Skills.DragonsBreath.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.Data.Skills.DragonsBreath.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.Data.Skills.DragonsBreath",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.Data.Skills.DragonsBreath.yml\" sourcestartlinenumber=\"1\">Souffle du Dragon — Dragon's Breath. Wide cone of fire.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.Data.Skills.ElementalAttunement.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.Data.Skills.ElementalAttunement.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.Data.Skills.ElementalAttunement",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.Data.Skills.Execution.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.Data.Skills.Execution.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.Data.Skills.Execution",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.Data.Skills.Execution.yml\" sourcestartlinenumber=\"1\">Exécution — Execute. Instantly kills an enemy below 15% HP.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.Data.Skills.ExecutionerBlade.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.Data.Skills.ExecutionerBlade.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.Data.Skills.ExecutionerBlade",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.Data.Skills.ExecutionerBlade.yml\" sourcestartlinenumber=\"1\">Lame d'Exécution — Execution Blade. +50% damage to targets below 30% HP.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.Data.Skills.Fireball.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.Data.Skills.Fireball.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.Data.Skills.Fireball",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.Data.Skills.Fireball.yml\" sourcestartlinenumber=\"1\">Boule de Feu — Fireball. Damage + burn for 3 turns.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.Data.Skills.Flamestorm.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.Data.Skills.Flamestorm.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.Data.Skills.Flamestorm",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.Data.Skills.Flamestorm.yml\" sourcestartlinenumber=\"1\">Tempête Ardente — Burning Storm. 3×3 area damage that ignites the terrain.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.Data.Skills.FlashFreeze.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.Data.Skills.FlashFreeze.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.Data.Skills.FlashFreeze",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.Data.Skills.FlashFreeze.yml\" sourcestartlinenumber=\"1\">Glaciation Instantanée — Instant Glaciation. 50% chance to stun in a small area.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.Data.Skills.FrostArrow.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.Data.Skills.FrostArrow.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.Data.Skills.FrostArrow",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.Data.Skills.FrostArrow.yml\" sourcestartlinenumber=\"1\">Flèche de Givre — Frost Arrow. Stuns the target for 1 turn.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.Data.Skills.GallantStrike.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.Data.Skills.GallantStrike.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.Data.Skills.GallantStrike",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.Data.Skills.GallantStrike.yml\" sourcestartlinenumber=\"1\">Coup de Bravoure — Brave Strike. Self-buff: -50% damage taken + counter for 1 turn.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.Data.Skills.GraniteSkin.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.Data.Skills.GraniteSkin.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.Data.Skills.GraniteSkin",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.Data.Skills.GraniteSkin.yml\" sourcestartlinenumber=\"1\">Peau de Granit — Granite Skin. +DEF to ally for 3 turns.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.Data.Skills.HawkEye.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.Data.Skills.HawkEye.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.Data.Skills.HawkEye",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.Data.Skills.HawkEye.yml\" sourcestartlinenumber=\"1\">Œil de Faucon — Hawk's Eye. +2 range for 1 turn (modelled as ATK buff stand-in).</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.Data.Skills.HealingRain.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.Data.Skills.HealingRain.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.Data.Skills.HealingRain",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.Data.Skills.HealingRain.yml\" sourcestartlinenumber=\"1\">Pluie Guérisseuse — Healing Rain. Light heal on every ally.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.Data.Skills.L10n.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.Data.Skills.L10n.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.Data.Skills.L10n",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.Data.Skills.L10n.yml\" sourcestartlinenumber=\"1\">Tiny localisation indirection so future i18n is a 1-line swap per call site.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.Data.Skills.LethalAim.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.Data.Skills.LethalAim.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.Data.Skills.LethalAim",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.Data.Skills.LightningStrike.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.Data.Skills.LightningStrike.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.Data.Skills.LightningStrike",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.Data.Skills.LightningStrike.yml\" sourcestartlinenumber=\"1\">Frappe Éclair — Lightning Strike. Rush + +20% damage at range 5.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.Data.Skills.ManaWell.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.Data.Skills.ManaWell.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.Data.Skills.ManaWell",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.Data.Skills.MobileShot.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.Data.Skills.MobileShot.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.Data.Skills.MobileShot",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.Data.Skills.MultiShot.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.Data.Skills.MultiShot.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.Data.Skills.MultiShot",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.Data.Skills.MultiShot.yml\" sourcestartlinenumber=\"1\">Pluie de Flèches — Arrow Rain. AoE damage in a 3×3 zone.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.Data.Skills.PhantomStrike.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.Data.Skills.PhantomStrike.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.Data.Skills.PhantomStrike",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.Data.Skills.PhantomStrike.yml\" sourcestartlinenumber=\"1\">Frappe Fantôme — Phantom Strike. Reach attack at 2 tiles distance.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.Data.Skills.PiercingShot.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.Data.Skills.PiercingShot.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.Data.Skills.PiercingShot",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.Data.Skills.PiercingShot.yml\" sourcestartlinenumber=\"1\">Flèche Perforante — Piercing Arrow. Pierces up to 2 aligned enemies.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.Data.Skills.PoisonArrow.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.Data.Skills.PoisonArrow.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.Data.Skills.PoisonArrow",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.Data.Skills.PoisonArrow.yml\" sourcestartlinenumber=\"1\">Flèche Empoisonnée — Poison Arrow. Burning DOT 3 turns (poison stand-in).</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.Data.Skills.PreciseShot.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.Data.Skills.PreciseShot.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.Data.Skills.PreciseShot",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.Data.Skills.ProtectiveBubble.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.Data.Skills.ProtectiveBubble.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.Data.Skills.ProtectiveBubble",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.Data.Skills.ProtectiveBubble.yml\" sourcestartlinenumber=\"1\">Bulle de Protection — Protection Bubble. Shield an ally for 1 turn.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.Data.Skills.PurifyingFlash.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.Data.Skills.PurifyingFlash.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.Data.Skills.PurifyingFlash",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.Data.Skills.PurifyingFlash.yml\" sourcestartlinenumber=\"1\">Éclat Purificateur — Purifying Burst. Removes every status effect from one ally.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.Data.Skills.PyromanticBurst.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.Data.Skills.PyromanticBurst.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.Data.Skills.PyromanticBurst",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.Data.Skills.PyromanticBurst.yml\" sourcestartlinenumber=\"1\">Explosion Pyromantique — Pyromantic Explosion. Consumes ALL mana for devastating damage.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.Data.Skills.Recklessness.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.Data.Skills.Recklessness.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.Data.Skills.Recklessness",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.Data.Skills.Recklessness.yml\" sourcestartlinenumber=\"1\">Témérité — +5% damage per 25% missing HP. Wired in damage formula, not as a Use().</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.Data.Skills.Resurrection.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.Data.Skills.Resurrection.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.Data.Skills.Resurrection",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.Data.Skills.Resurrection.yml\" sourcestartlinenumber=\"1\">Résurrection — Resurrection. Revives a fallen ally with 50% HP.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.Data.Skills.Riposte.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.Data.Skills.Riposte.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.Data.Skills.Riposte",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.Data.Skills.Riposte.yml\" sourcestartlinenumber=\"1\">Riposte — 30% chance to counterattack after a melee hit.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.Data.Skills.SacredRay.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.Data.Skills.SacredRay.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.Data.Skills.SacredRay",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.Data.Skills.SacredRay.yml\" sourcestartlinenumber=\"1\">Rayon Sacré — Sacred Ray. Damages enemies, heals allies in its line.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.Data.Skills.SeismicWave.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.Data.Skills.SeismicWave.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.Data.Skills.SeismicWave",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.Data.Skills.SeismicWave.yml\" sourcestartlinenumber=\"1\">Onde Sismique — Seismic Wave. Knocks enemies down in a line; 70% Stun chance.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.Data.Skills.ShadowChains.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.Data.Skills.ShadowChains.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.Data.Skills.ShadowChains",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.Data.Skills.ShadowChains.yml\" sourcestartlinenumber=\"1\">Lame d'Ombre — Shadow Blade. Ignores defense, drains life.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.Data.Skills.ShadowStrike.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.Data.Skills.ShadowStrike.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.Data.Skills.ShadowStrike",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.Data.Skills.ShadowStrike.yml\" sourcestartlinenumber=\"1\">Coup d'Ombre — Shadow Strike. Attacks without breaking invisibility.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.Data.Skills.SkillStrings.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.Data.Skills.SkillStrings.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.Data.Skills.SkillStrings",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.Data.Skills.SkillStrings.yml\" sourcestartlinenumber=\"1\">Single source of truth for every skill's display name and description string.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.Data.Skills.SneakStrike.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.Data.Skills.SneakStrike.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.Data.Skills.SneakStrike",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.Data.Skills.SpectralBlade.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.Data.Skills.SpectralBlade.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.Data.Skills.SpectralBlade",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.Data.Skills.SpectralBlade.yml\" sourcestartlinenumber=\"1\">Lame Spectrale — ignores 15% of enemy armor.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.Data.Skills.StealthyShadow.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.Data.Skills.StealthyShadow.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.Data.Skills.StealthyShadow",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.Data.Skills.StoneFortress.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.Data.Skills.StoneFortress.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.Data.Skills.StoneFortress",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.Data.Skills.StoneFortress.yml\" sourcestartlinenumber=\"1\">Forteresse de Pierre — Stone Fortress. Wall blocking movement (placeholder).</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.Data.Skills.StoneSpike.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.Data.Skills.StoneSpike.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.Data.Skills.StoneSpike",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.Data.Skills.StoneSpike.yml\" sourcestartlinenumber=\"1\">Lance de Roc — Rock Spear. Pierces armor.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.Data.Skills.TaintedBlood.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.Data.Skills.TaintedBlood.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.Data.Skills.TaintedBlood",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.Data.Skills.TaintedBlood.yml\" sourcestartlinenumber=\"1\">Sang Corrompu — Corrupted Blood. Reduces regen and healing on target.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.Data.Skills.TitanAvatar.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.Data.Skills.TitanAvatar.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.Data.Skills.TitanAvatar",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.Data.Skills.TitanAvatar.yml\" sourcestartlinenumber=\"1\">Avatar du Titan — Titan Avatar. Temporary stone-colossus form.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.Data.Skills.Vanish.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.Data.Skills.Vanish.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.Data.Skills.Vanish",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.Data.Skills.Vanish.yml\" sourcestartlinenumber=\"1\">Vanish — Vanish. Become invisible until end of next turn.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.Data.Skills.WallOfFlames.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.Data.Skills.WallOfFlames.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.Data.Skills.WallOfFlames",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.Data.Skills.WallOfFlames.yml\" sourcestartlinenumber=\"1\">Mur de Flammes — Wall of Flames. Barrier; placeholder until terrain effects land.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.Data.Skills.WarCry.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.Data.Skills.WarCry.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.Data.Skills.WarCry",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.Data.Skills.WarCry.yml\" sourcestartlinenumber=\"1\">Cri de Guerre — War Cry. +15% Atk/Def to nearby allies for 3 turns.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.Data.Skills.WarriorEndurance.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.Data.Skills.WarriorEndurance.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.Data.Skills.WarriorEndurance",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.Data.Skills.WarriorEndurance.yml\" sourcestartlinenumber=\"1\">Endurance Guerrière — -15% damage taken after a successful melee strike.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.Data.Skills.WaterJet.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.Data.Skills.WaterJet.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.Data.Skills.WaterJet",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.Data.Skills.WaterJet.yml\" sourcestartlinenumber=\"1\">Jet d'Eau — Water Jet. Moderate damage + slow.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.Data.Skills.WayOfTheBlade.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.Data.Skills.WayOfTheBlade.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.Data.Skills.WayOfTheBlade",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.Data.Skills.WayOfTheBlade.yml\" sourcestartlinenumber=\"1\">Danse du Lame (passive) — +10% crit chance if the unit moved before attacking.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.Data.Skills.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.Data.Skills.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.Data.Skills",
       "Summary": null
     },
     {
@@ -1132,6 +2154,20 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.IntegrationTests.Systems.FactionMarkerTest.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.IntegrationTests.Systems.FactionMarkerTest.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.IntegrationTests.Systems.FactionMarkerTest",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.IntegrationTests.Systems.FactionMarkerTest.yml\" sourcestartlinenumber=\"1\">Coverage for <xref href=\"AshesOfVelsingrad.Systems.Battle.FactionMarker\" data-throw-if-not-resolved=\"false\"></xref> — the small floating arrow above each\nunit that's colour-coded by faction. The marker itself has no gameplay logic, but\nit's how the player visually identifies whose side a unit is on, so a regression\nhere makes the battlefield unreadable. Tests verify:</p>\n<ul><li><xref href=\"AshesOfVelsingrad.Systems.Battle.FactionMarker.Bind(AshesOfVelsingrad.Systems.Faction)\" data-throw-if-not-resolved=\"false\"></xref> assigns a faction-distinct colour.</li><li><xref href=\"AshesOfVelsingrad.Systems.Battle.FactionMarker.SetActive(System.Boolean)\" data-throw-if-not-resolved=\"false\"></xref> brightens the marker for the active turn.</li><li>The marker mounts a child <xref href=\"Godot.MeshInstance3D\" data-throw-if-not-resolved=\"false\"></xref> and floats above its parent.</li></ul>\n"
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "documentation/api/AshesOfVelsingrad.IntegrationTests.Systems.MapSystemTest.yml",
       "output": {
         ".html": {
@@ -1199,6 +2235,34 @@
       "IsMRef": true,
       "Title": "AshesOfVelsingrad.IntegrationTests.Systems",
       "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.IntegrationTests.UI.BattleHudTest.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.IntegrationTests.UI.BattleHudTest.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.IntegrationTests.UI.BattleHudTest",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.IntegrationTests.UI.BattleHudTest.yml\" sourcestartlinenumber=\"1\">Coverage for <xref href=\"AshesOfVelsingrad.UI.Hud.BattleHud\" data-throw-if-not-resolved=\"false\"></xref> — the programmatic HUD root.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.IntegrationTests.UI.GameOverScreenTest.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.IntegrationTests.UI.GameOverScreenTest.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.IntegrationTests.UI.GameOverScreenTest",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.IntegrationTests.UI.GameOverScreenTest.yml\" sourcestartlinenumber=\"1\">Coverage for <xref href=\"AshesOfVelsingrad.UI.Hud.GameOverScreen\" data-throw-if-not-resolved=\"false\"></xref> — the Defeat overlay shown when the\nentire player party falls. Specifically tests the spam-click guard added after\nthe user reported triple-firing the <em>Try Again</em> handler. Without it,\na fast triple-click queued three <code>ReloadCurrentScene</code> calls in a row.</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -1338,7 +2402,21 @@
       "Uid": null,
       "IsMRef": true,
       "Title": "AshesOfVelsingrad.Managers.GameManager",
-      "Summary": null
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.Managers.GameManager.yml\" sourcestartlinenumber=\"1\"><xref href=\"AshesOfVelsingrad.Managers.GameManager\" data-throw-if-not-resolved=\"false\"></xref> partial — indicator updates, hover ray-cast, cancel,\nwarnings, A* tween-animated movement, and the HUD event handlers wired by\nGameManagerHud.WireHudEvents.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.Managers.KarmaManager.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.Managers.KarmaManager.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.Managers.KarmaManager",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.Managers.KarmaManager.yml\" sourcestartlinenumber=\"1\">Holds the player party's global karma value in <code>[-100, +100]</code>.</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -1436,7 +2514,7 @@
       "Uid": null,
       "IsMRef": true,
       "Title": "AshesOfVelsingrad.Managers.TurnManager",
-      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.Managers.TurnManager.yml\" sourcestartlinenumber=\"1\">Manages the turn-based battle flow between player and enemy units.\nHandles turn order, state transitions, and async waiting for unit actions.</p>\n"
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.Managers.TurnManager.yml\" sourcestartlinenumber=\"1\"><xref href=\"AshesOfVelsingrad.Managers.TurnManager\" data-throw-if-not-resolved=\"false\"></xref> partial — adds three-faction support, an upcoming-queue\ngetter for the HUD turn-order widget, and an <xref href=\"AshesOfVelsingrad.Managers.TurnManager.OnAllyTurn\" data-throw-if-not-resolved=\"false\"></xref> event.</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -1478,7 +2556,21 @@
       "Uid": null,
       "IsMRef": true,
       "Title": "AshesOfVelsingrad.Player1Data",
-      "Summary": null
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.Player1Data.yml\" sourcestartlinenumber=\"1\">Player1 — the test scene's player-controlled fighter.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.Player2Data.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.Player2Data.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.Player2Data",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.Player2Data.yml\" sourcestartlinenumber=\"1\">Player2 — second player-controlled unit, Swordsman loadout.</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -1552,76 +2644,6 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "documentation/api/AshesOfVelsingrad.Skill1.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/AshesOfVelsingrad.Skill1.html"
-        }
-      },
-      "version": "",
-      "Uid": null,
-      "IsMRef": true,
-      "Title": "AshesOfVelsingrad.Skill1",
-      "Summary": null
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "documentation/api/AshesOfVelsingrad.Skill2.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/AshesOfVelsingrad.Skill2.html"
-        }
-      },
-      "version": "",
-      "Uid": null,
-      "IsMRef": true,
-      "Title": "AshesOfVelsingrad.Skill2",
-      "Summary": null
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "documentation/api/AshesOfVelsingrad.Skill3.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/AshesOfVelsingrad.Skill3.html"
-        }
-      },
-      "version": "",
-      "Uid": null,
-      "IsMRef": true,
-      "Title": "AshesOfVelsingrad.Skill3",
-      "Summary": null
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "documentation/api/AshesOfVelsingrad.Skill4.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/AshesOfVelsingrad.Skill4.html"
-        }
-      },
-      "version": "",
-      "Uid": null,
-      "IsMRef": true,
-      "Title": "AshesOfVelsingrad.Skill4",
-      "Summary": null
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "documentation/api/AshesOfVelsingrad.Skill5.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/AshesOfVelsingrad.Skill5.html"
-        }
-      },
-      "version": "",
-      "Uid": null,
-      "IsMRef": true,
-      "Title": "AshesOfVelsingrad.Skill5",
-      "Summary": null
-    },
-    {
-      "type": "ManagedReference",
       "source_relative_path": "documentation/api/AshesOfVelsingrad.StaggeringBlow.yml",
       "output": {
         ".html": {
@@ -1664,6 +2686,104 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.Systems.Battle.BattleNotifications.Severity.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.Systems.Battle.BattleNotifications.Severity.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.Systems.Battle.BattleNotifications.Severity",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.Systems.Battle.BattleNotifications.Severity.yml\" sourcestartlinenumber=\"1\">Severity tag — the HUD usually colour-codes the line based on this.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.Systems.Battle.BattleNotifications.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.Systems.Battle.BattleNotifications.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.Systems.Battle.BattleNotifications",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.Systems.Battle.BattleNotifications.yml\" sourcestartlinenumber=\"1\">Simple decoupled notification hub used to surface user-facing battle messages\n(warnings, info, deaths, etc.) without coupling producers to the HUD widgets.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.Systems.Battle.FactionMarker.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.Systems.Battle.FactionMarker.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.Systems.Battle.FactionMarker",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.Systems.Battle.FactionMarker.yml\" sourcestartlinenumber=\"1\">Small downward-pointing arrow that floats above a unit, colour-coded by faction.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.Systems.Battle.IndicatorOverlay.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.Systems.Battle.IndicatorOverlay.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.Systems.Battle.IndicatorOverlay",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.Systems.Battle.IndicatorOverlay.yml\" sourcestartlinenumber=\"1\">Bundles three world-space tile overlays — move (green), skill target (red),\nhover (yellow) — under a single facade.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.Systems.Battle.MoveIndicator.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.Systems.Battle.MoveIndicator.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.Systems.Battle.MoveIndicator",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.Systems.Battle.MoveIndicator.yml\" sourcestartlinenumber=\"1\">World-space overlay that draws a translucent quad above each cell in a list.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.Systems.Battle.Pathfinder.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.Systems.Battle.Pathfinder.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.Systems.Battle.Pathfinder",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.Systems.Battle.Pathfinder.yml\" sourcestartlinenumber=\"1\">Stateless grid path-finder. Runs BFS with parent tracking on an\n<xref href=\"AshesOfVelsingrad.Systems.IMapSystem\" data-throw-if-not-resolved=\"false\"></xref> to find the shortest walkable path between two cells.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.Systems.Battle.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.Systems.Battle.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.Systems.Battle",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "documentation/api/AshesOfVelsingrad.Systems.BattleInputSystem.yml",
       "output": {
         ".html": {
@@ -1703,6 +2823,34 @@
       "IsMRef": true,
       "Title": "AshesOfVelsingrad.Systems.EffectTarget<TTarget>",
       "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.Systems.EffectTarget-1.yml\" sourcestartlinenumber=\"1\">Base class for any entity that can receive and manage <xref href=\"AshesOfVelsingrad.Systems.StatusEffect%601\" data-throw-if-not-resolved=\"false\"></xref>s.\nProvides default implementations for applying, removing, and querying effects.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.Systems.Faction.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.Systems.Faction.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.Systems.Faction",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.Systems.Faction.yml\" sourcestartlinenumber=\"1\">Identifies which side a combatant fights for.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.Systems.FactionExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.Systems.FactionExtensions.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.Systems.FactionExtensions",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.Systems.FactionExtensions.yml\" sourcestartlinenumber=\"1\">Convenience helpers for reasoning about <xref href=\"AshesOfVelsingrad.Systems.Faction\" data-throw-if-not-resolved=\"false\"></xref> relationships.</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -1786,7 +2934,7 @@
       "Uid": null,
       "IsMRef": true,
       "Title": "AshesOfVelsingrad.Systems.IUnitSystem",
-      "Summary": null
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.Systems.IUnitSystem.yml\" sourcestartlinenumber=\"1\">Contract for every combatant in the battle layer.</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -1870,6 +3018,188 @@
       "Uid": null,
       "IsMRef": true,
       "Title": "AshesOfVelsingrad.Systems",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.UI.Hud.ActionMenu.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.UI.Hud.ActionMenu.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.UI.Hud.ActionMenu",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.UI.Hud.ActionMenu.yml\" sourcestartlinenumber=\"1\">Bottom-centre action bar for the active player unit.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.UI.Hud.BattleHud.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.UI.Hud.BattleHud.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.UI.Hud.BattleHud",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.UI.Hud.BattleHud.yml\" sourcestartlinenumber=\"1\">Root <xref href=\"Godot.CanvasLayer\" data-throw-if-not-resolved=\"false\"></xref> that hosts every battle HUD widget.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.UI.Hud.BattleLog.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.UI.Hud.BattleLog.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.UI.Hud.BattleLog",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.UI.Hud.BattleLog.yml\" sourcestartlinenumber=\"1\">Scrolling log subscribed to <xref href=\"AshesOfVelsingrad.Systems.Battle.BattleNotifications\" data-throw-if-not-resolved=\"false\"></xref>.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.UI.Hud.ContextInfoPanel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.UI.Hud.ContextInfoPanel.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.UI.Hud.ContextInfoPanel",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.UI.Hud.ContextInfoPanel.yml\" sourcestartlinenumber=\"1\">Top-left context panel that swaps content based on the player's input mode.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.UI.Hud.EnemyRoster.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.UI.Hud.EnemyRoster.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.UI.Hud.EnemyRoster",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.UI.Hud.EnemyRoster.yml\" sourcestartlinenumber=\"1\">Top-right column showing one <xref href=\"AshesOfVelsingrad.UI.Hud.UnitHealthBar\" data-throw-if-not-resolved=\"false\"></xref> per enemy.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.UI.Hud.GameOverScreen.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.UI.Hud.GameOverScreen.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.UI.Hud.GameOverScreen",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.UI.Hud.GameOverScreen.yml\" sourcestartlinenumber=\"1\">Full-screen Game-Over overlay shown when the entire player party is defeated.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.UI.Hud.HudStyle.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.UI.Hud.HudStyle.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.UI.Hud.HudStyle",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.UI.Hud.HudStyle.yml\" sourcestartlinenumber=\"1\">Shared visual constants and helpers for every HUD widget — colours, panel styles,\nbar styles, label / button theme overrides.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.UI.Hud.PlayerStatusPanel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.UI.Hud.PlayerStatusPanel.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.UI.Hud.PlayerStatusPanel",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.UI.Hud.PlayerStatusPanel.yml\" sourcestartlinenumber=\"1\">Bottom-left panel showing the active controlled unit's name, HP and MP.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.UI.Hud.SkillSelector.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.UI.Hud.SkillSelector.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.UI.Hud.SkillSelector",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.UI.Hud.SkillSelector.yml\" sourcestartlinenumber=\"1\">Five-slot skill bar matching <xref href=\"AshesOfVelsingrad.Systems.BattleInputSystem\" data-throw-if-not-resolved=\"false\"></xref>'s hot-keys\n(<code>battle_select_skill1</code> .. <code>battle_select_skill5</code>).</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.UI.Hud.TurnOrderQueue.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.UI.Hud.TurnOrderQueue.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.UI.Hud.TurnOrderQueue",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.UI.Hud.TurnOrderQueue.yml\" sourcestartlinenumber=\"1\">Top-centre strip showing the next units to act, rendered as portrait chips with a\nfaction-coloured border.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.UI.Hud.UnitHealthBar.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.UI.Hud.UnitHealthBar.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.UI.Hud.UnitHealthBar",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.UI.Hud.UnitHealthBar.yml\" sourcestartlinenumber=\"1\">Compact HP/MP indicator bound to a single <xref href=\"AshesOfVelsingrad.Systems.IUnitSystem\" data-throw-if-not-resolved=\"false\"></xref>.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.UI.Hud.VictoryScreen.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.UI.Hud.VictoryScreen.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.UI.Hud.VictoryScreen",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.UI.Hud.VictoryScreen.yml\" sourcestartlinenumber=\"1\">Full-screen victory overlay shown when the player wins a battle.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.UI.Hud.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.UI.Hud.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.UI.Hud",
       "Summary": null
     },
     {
@@ -2109,6 +3439,1182 @@
       "IsMRef": true,
       "Title": "AshesOfVelsingrad.WarCry",
       "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.WarCry.yml\" sourcestartlinenumber=\"1\">War Cry – Boosts the ATK of all nearby allies for 3 turns.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.systems.battle.BattleConfig.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.systems.battle.BattleConfig.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.systems.battle.BattleConfig",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.systems.battle.BattleConfig.yml\" sourcestartlinenumber=\"1\">Declarative description of a battle encounter.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.systems.battle.BattleEventBus.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.systems.battle.BattleEventBus.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.systems.battle.BattleEventBus",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.systems.battle.BattleEventBus.yml\" sourcestartlinenumber=\"1\">Central typed event dispatcher for the combat layer.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.systems.battle.BattleEvents.BattleEnded.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.systems.battle.BattleEvents.BattleEnded.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.systems.battle.BattleEvents.BattleEnded",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.systems.battle.BattleEvents.BattleEnded.yml\" sourcestartlinenumber=\"1\">Emitted when the battle ends (victory, defeat, retreat).</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.systems.battle.BattleEvents.BattleStarted.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.systems.battle.BattleEvents.BattleStarted.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.systems.battle.BattleEvents.BattleStarted",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.systems.battle.BattleEvents.BattleStarted.yml\" sourcestartlinenumber=\"1\">Emitted once when a battle begins, after units and HUD are ready.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.systems.battle.BattleEvents.CorruptionChanged.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.systems.battle.BattleEvents.CorruptionChanged.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.systems.battle.BattleEvents.CorruptionChanged",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.systems.battle.BattleEvents.CorruptionChanged.yml\" sourcestartlinenumber=\"1\">Emitted when a unit's corruption level changes.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.systems.battle.BattleEvents.FactionChanged.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.systems.battle.BattleEvents.FactionChanged.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.systems.battle.BattleEvents.FactionChanged",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.systems.battle.BattleEvents.FactionChanged.yml\" sourcestartlinenumber=\"1\">Emitted when a unit switches faction\n(e.g. a corruption spell turning an ally into an enemy for 3 turns).</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.systems.battle.BattleEvents.HpChanged.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.systems.battle.BattleEvents.HpChanged.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.systems.battle.BattleEvents.HpChanged",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.systems.battle.BattleEvents.HpChanged.yml\" sourcestartlinenumber=\"1\">Emitted whenever a unit's HP changes.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.systems.battle.BattleEvents.ItemUsed.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.systems.battle.BattleEvents.ItemUsed.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.systems.battle.BattleEvents.ItemUsed",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.systems.battle.BattleEvents.ItemUsed.yml\" sourcestartlinenumber=\"1\">Emitted when a unit consumes an item from the shared inventory.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.systems.battle.BattleEvents.KarmaChanged.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.systems.battle.BattleEvents.KarmaChanged.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.systems.battle.BattleEvents.KarmaChanged",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.systems.battle.BattleEvents.KarmaChanged.yml\" sourcestartlinenumber=\"1\">Emitted when global karma changes (mostly outside combat,\nbut the HUD may want to display it in case dialogue happens mid-fight).</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.systems.battle.BattleEvents.LogMessage.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.systems.battle.BattleEvents.LogMessage.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.systems.battle.BattleEvents.LogMessage",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.systems.battle.BattleEvents.LogMessage.yml\" sourcestartlinenumber=\"1\">Free-form log line for the on-screen battle log.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.systems.battle.BattleEvents.ManaChanged.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.systems.battle.BattleEvents.ManaChanged.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.systems.battle.BattleEvents.ManaChanged",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.systems.battle.BattleEvents.ManaChanged.yml\" sourcestartlinenumber=\"1\">Emitted whenever a unit's mana changes.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.systems.battle.BattleEvents.SkillUsed.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.systems.battle.BattleEvents.SkillUsed.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.systems.battle.BattleEvents.SkillUsed",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.systems.battle.BattleEvents.SkillUsed.yml\" sourcestartlinenumber=\"1\">Emitted when a unit casts a skill.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.systems.battle.BattleEvents.StatusEffectApplied.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.systems.battle.BattleEvents.StatusEffectApplied.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.systems.battle.BattleEvents.StatusEffectApplied",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.systems.battle.BattleEvents.StatusEffectApplied.yml\" sourcestartlinenumber=\"1\">Emitted when a status effect is applied to a unit.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.systems.battle.BattleEvents.StatusEffectRemoved.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.systems.battle.BattleEvents.StatusEffectRemoved.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.systems.battle.BattleEvents.StatusEffectRemoved",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.systems.battle.BattleEvents.StatusEffectRemoved.yml\" sourcestartlinenumber=\"1\">Emitted when a status effect ends or is cleansed.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.systems.battle.BattleEvents.TurnEnded.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.systems.battle.BattleEvents.TurnEnded.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.systems.battle.BattleEvents.TurnEnded",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.systems.battle.BattleEvents.TurnEnded.yml\" sourcestartlinenumber=\"1\">Emitted when the active unit finishes its turn.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.systems.battle.BattleEvents.TurnOrderChanged.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.systems.battle.BattleEvents.TurnOrderChanged.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.systems.battle.BattleEvents.TurnOrderChanged",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.systems.battle.BattleEvents.TurnOrderChanged.yml\" sourcestartlinenumber=\"1\">Emitted when the recomputed turn order changes\n(initial sort, speed change, unit death, etc.). HUD turn-queue uses this.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.systems.battle.BattleEvents.TurnStarted.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.systems.battle.BattleEvents.TurnStarted.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.systems.battle.BattleEvents.TurnStarted",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.systems.battle.BattleEvents.TurnStarted.yml\" sourcestartlinenumber=\"1\">Emitted when a new unit's turn begins.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.systems.battle.BattleEvents.UnitDied.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.systems.battle.BattleEvents.UnitDied.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.systems.battle.BattleEvents.UnitDied",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.systems.battle.BattleEvents.UnitDied.yml\" sourcestartlinenumber=\"1\">Emitted when a unit dies (HP reaches zero).</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.systems.battle.BattleEvents.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.systems.battle.BattleEvents.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.systems.battle.BattleEvents",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.systems.battle.BattleEvents.yml\" sourcestartlinenumber=\"1\">Strongly-typed event payloads emitted by <xref href=\"AshesOfVelsingrad.systems.battle.BattleEventBus\" data-throw-if-not-resolved=\"false\"></xref>.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.systems.battle.BattleLauncher.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.systems.battle.BattleLauncher.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.systems.battle.BattleLauncher",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.systems.battle.BattleLauncher.yml\" sourcestartlinenumber=\"1\">Service that turns a <xref href=\"AshesOfVelsingrad.systems.battle.BattleConfig\" data-throw-if-not-resolved=\"false\"></xref> into a running battle.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.systems.battle.BattleOutcome.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.systems.battle.BattleOutcome.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.systems.battle.BattleOutcome",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.systems.battle.BattleOutcome.yml\" sourcestartlinenumber=\"1\">The outcome of a battle, returned by <xref href=\"AshesOfVelsingrad.systems.battle.BattleLauncher\" data-throw-if-not-resolved=\"false\"></xref>\nand embedded in the <xref href=\"AshesOfVelsingrad.systems.battle.BattleEvents.BattleEnded\" data-throw-if-not-resolved=\"false\"></xref> event.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.systems.battle.BattleResult.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.systems.battle.BattleResult.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.systems.battle.BattleResult",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.systems.battle.BattleResult.yml\" sourcestartlinenumber=\"1\">Snapshot of a finished battle. Carries the data exploration code needs\nto award XP, drop loot, and trigger follow-up dialogue.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.systems.battle.BattleStateSnapshot.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.systems.battle.BattleStateSnapshot.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.systems.battle.BattleStateSnapshot",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.systems.battle.BattleStateSnapshot.yml\" sourcestartlinenumber=\"1\">Snapshot passed to victory conditions on each evaluation.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.systems.battle.DefeatAllEnemiesCondition.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.systems.battle.DefeatAllEnemiesCondition.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.systems.battle.DefeatAllEnemiesCondition",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.systems.battle.DefeatAllEnemiesCondition.yml\" sourcestartlinenumber=\"1\">Default condition: victory when every enemy is dead, defeat when every player unit is dead.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.systems.battle.DefeatBossCondition.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.systems.battle.DefeatBossCondition.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.systems.battle.DefeatBossCondition",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.systems.battle.DefeatBossCondition.yml\" sourcestartlinenumber=\"1\">Victory once a specific designated enemy (&quot;boss&quot;) is defeated.\nOther enemies may still be alive.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.systems.battle.LogSeverity.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.systems.battle.LogSeverity.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.systems.battle.LogSeverity",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.systems.battle.LogSeverity.yml\" sourcestartlinenumber=\"1\">Severity of a battle log entry, used by the HUD to colourize lines.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.systems.battle.SurviveTurnsCondition.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.systems.battle.SurviveTurnsCondition.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.systems.battle.SurviveTurnsCondition",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.systems.battle.SurviveTurnsCondition.yml\" sourcestartlinenumber=\"1\">Survive a number of turns, then victory is awarded regardless of enemy state.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.systems.battle.UnitSpawn.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.systems.battle.UnitSpawn.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.systems.battle.UnitSpawn",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.systems.battle.UnitSpawn.yml\" sourcestartlinenumber=\"1\">A single non-player unit to spawn at a fixed grid position.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.systems.battle.VictoryCondition.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.systems.battle.VictoryCondition.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.systems.battle.VictoryCondition",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.systems.battle.VictoryCondition.yml\" sourcestartlinenumber=\"1\">Base class for victory conditions, defined as Godot Resources so designers\ncan compose them in the editor and assign them to a <xref href=\"AshesOfVelsingrad.systems.battle.BattleConfig\" data-throw-if-not-resolved=\"false\"></xref>.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.systems.battle_1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.systems.battle_1.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.systems.battle",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.systems.items.IItemBehaviour.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.systems.items.IItemBehaviour.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.systems.items.IItemBehaviour",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.systems.items.IItemBehaviour.yml\" sourcestartlinenumber=\"1\">Strategy interface for item behaviours.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.systems.items.ItemDefinition.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.systems.items.ItemDefinition.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.systems.items.ItemDefinition",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.systems.items.ItemDefinition.yml\" sourcestartlinenumber=\"1\">Authored data for a usable item.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.systems.items.ItemRegistry.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.systems.items.ItemRegistry.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.systems.items.ItemRegistry",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.systems.items.ItemRegistry.yml\" sourcestartlinenumber=\"1\">Singleton lookup for item definitions and behaviours.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.systems.items.ItemTargetType.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.systems.items.ItemTargetType.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.systems.items.ItemTargetType",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.systems.items.ItemTargetType.yml\" sourcestartlinenumber=\"1\">Targeting pattern for an item. Mirrors TargetTypes but adds a\n&quot;self only&quot; option (most healing potions).</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.systems.items.ItemUseContext.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.systems.items.ItemUseContext.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.systems.items.ItemUseContext",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.systems.items.ItemUseContext.yml\" sourcestartlinenumber=\"1\">Context passed to an item behaviour at use time.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.systems.items.PartyInventory.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.systems.items.PartyInventory.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.systems.items.PartyInventory",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.systems.items.PartyInventory.yml\" sourcestartlinenumber=\"1\">Shared bag of items available to the player party during combat and exploration.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.systems.items.behaviours.CleanseItemBehaviour.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.systems.items.behaviours.CleanseItemBehaviour.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.systems.items.behaviours.CleanseItemBehaviour",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.systems.items.behaviours.CleanseItemBehaviour.yml\" sourcestartlinenumber=\"1\">Removes every purifiable status effect from the target.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.systems.items.behaviours.DamageItemBehaviour.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.systems.items.behaviours.DamageItemBehaviour.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.systems.items.behaviours.DamageItemBehaviour",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.systems.items.behaviours.DamageItemBehaviour.yml\" sourcestartlinenumber=\"1\">Deals <xref href=\"AshesOfVelsingrad.systems.items.ItemDefinition.Magnitude\" data-throw-if-not-resolved=\"false\"></xref> raw damage to every target.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.systems.items.behaviours.HealingItemBehaviour.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.systems.items.behaviours.HealingItemBehaviour.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.systems.items.behaviours.HealingItemBehaviour",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.systems.items.behaviours.HealingItemBehaviour.yml\" sourcestartlinenumber=\"1\">Restores HP equal to <xref href=\"AshesOfVelsingrad.systems.items.ItemDefinition.Magnitude\" data-throw-if-not-resolved=\"false\"></xref> on every target.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.systems.items.behaviours.ManaItemBehaviour.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.systems.items.behaviours.ManaItemBehaviour.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.systems.items.behaviours.ManaItemBehaviour",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.systems.items.behaviours.ManaItemBehaviour.yml\" sourcestartlinenumber=\"1\">Restores mana equal to <xref href=\"AshesOfVelsingrad.systems.items.ItemDefinition.Magnitude\" data-throw-if-not-resolved=\"false\"></xref> on every target.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.systems.items.behaviours.PurifyingElixirBehaviour.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.systems.items.behaviours.PurifyingElixirBehaviour.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.systems.items.behaviours.PurifyingElixirBehaviour",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.systems.items.behaviours.PurifyingElixirBehaviour.yml\" sourcestartlinenumber=\"1\">Reduces the target's corruption by one level (down to 0).</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.systems.items.behaviours.ReviveItemBehaviour.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.systems.items.behaviours.ReviveItemBehaviour.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.systems.items.behaviours.ReviveItemBehaviour",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.systems.items.behaviours.ReviveItemBehaviour.yml\" sourcestartlinenumber=\"1\">Revives the target with a percentage of MaxHp encoded in <xref href=\"AshesOfVelsingrad.systems.items.ItemDefinition.Magnitude\" data-throw-if-not-resolved=\"false\"></xref>.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.systems.items.behaviours.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.systems.items.behaviours.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.systems.items.behaviours",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.systems.items.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.systems.items.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.systems.items",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.systems.progression.CharacterClassDefinition.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.systems.progression.CharacterClassDefinition.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.systems.progression.CharacterClassDefinition",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.systems.progression.CharacterClassDefinition.yml\" sourcestartlinenumber=\"1\">Defines the progression curve and skill catalogue for a class\n(Combattant, Épéiste, Assassin, Archer, Mage-Fire, Mage-Water, ...).</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.systems.progression.CharacterProfile.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.systems.progression.CharacterProfile.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.systems.progression.CharacterProfile",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.systems.progression.CharacterProfile.yml\" sourcestartlinenumber=\"1\">Persistent state attached to a single character.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.systems.progression.ExperienceCalculator.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.systems.progression.ExperienceCalculator.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.systems.progression.ExperienceCalculator",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.systems.progression.ExperienceCalculator.yml\" sourcestartlinenumber=\"1\">Stateless helpers for converting raw experience points into character levels.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.systems.progression.SkillLoadout.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.systems.progression.SkillLoadout.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.systems.progression.SkillLoadout",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.systems.progression.SkillLoadout.yml\" sourcestartlinenumber=\"1\">The set of active skills the player has chosen to take into battle.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.systems.progression.SkillUnlock.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.systems.progression.SkillUnlock.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.systems.progression.SkillUnlock",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.systems.progression.SkillUnlock.yml\" sourcestartlinenumber=\"1\">Pair of (level, skillId) describing when a skill becomes available to a class.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.systems.progression.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.systems.progression.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.systems.progression",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.systems.skills.DataDrivenSkill.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.systems.skills.DataDrivenSkill.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.systems.skills.DataDrivenSkill",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.systems.skills.DataDrivenSkill.yml\" sourcestartlinenumber=\"1\">Concrete <xref href=\"AshesOfVelsingrad.Systems.SkillSystem\" data-throw-if-not-resolved=\"false\"></xref> implementation that defers all logic\nto a <xref href=\"AshesOfVelsingrad.systems.skills.SkillDefinition\" data-throw-if-not-resolved=\"false\"></xref> + <xref href=\"AshesOfVelsingrad.systems.skills.ISkillBehaviour\" data-throw-if-not-resolved=\"false\"></xref> pair.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.systems.skills.ISkillBehaviour.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.systems.skills.ISkillBehaviour.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.systems.skills.ISkillBehaviour",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.systems.skills.ISkillBehaviour.yml\" sourcestartlinenumber=\"1\">Strategy interface for runtime skill behaviour.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.systems.skills.ScalingStat.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.systems.skills.ScalingStat.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.systems.skills.ScalingStat",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.systems.skills.ScalingStat.yml\" sourcestartlinenumber=\"1\">The stat used to scale a skill's base power.\nThe runtime behaviour reads UnitSystem.BaseAtk or\nUnitSystem.Intelligence accordingly.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.systems.skills.SkillDefinition.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.systems.skills.SkillDefinition.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.systems.skills.SkillDefinition",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.systems.skills.SkillDefinition.yml\" sourcestartlinenumber=\"1\">Authored data for a skill (active or passive).</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.systems.skills.SkillExecutionContext.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.systems.skills.SkillExecutionContext.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.systems.skills.SkillExecutionContext",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.systems.skills.SkillExecutionContext.yml\" sourcestartlinenumber=\"1\">Context passed to a skill behaviour at execution time.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.systems.skills.SkillRegistry.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.systems.skills.SkillRegistry.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.systems.skills.SkillRegistry",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.systems.skills.SkillRegistry.yml\" sourcestartlinenumber=\"1\">Singleton lookup that resolves skill ids to <xref href=\"AshesOfVelsingrad.systems.skills.SkillDefinition\" data-throw-if-not-resolved=\"false\"></xref>\nand behaviour ids to <xref href=\"AshesOfVelsingrad.systems.skills.ISkillBehaviour\" data-throw-if-not-resolved=\"false\"></xref> instances.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.systems.skills.behaviours.CleanseBehaviour.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.systems.skills.behaviours.CleanseBehaviour.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.systems.skills.behaviours.CleanseBehaviour",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.systems.skills.behaviours.CleanseBehaviour.yml\" sourcestartlinenumber=\"1\">Cleanse behaviour: removes purifiable status effects from each target.\nUsed by Light spells like &quot;Éclat Purificateur&quot;.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.systems.skills.behaviours.ControlBehaviour.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.systems.skills.behaviours.ControlBehaviour.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.systems.skills.behaviours.ControlBehaviour",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.systems.skills.behaviours.ControlBehaviour.yml\" sourcestartlinenumber=\"1\">Control behaviour: applies a stun / freeze / immobilize effect with no damage,\nor low damage plus the control effect.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.systems.skills.behaviours.CorruptedConversionBehaviour.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.systems.skills.behaviours.CorruptedConversionBehaviour.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.systems.skills.behaviours.CorruptedConversionBehaviour",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.systems.skills.behaviours.CorruptedConversionBehaviour.yml\" sourcestartlinenumber=\"1\">Corrupted-conversion behaviour: turns target ally into an enemy for a\nfixed duration. The hallmark Darkness-school crowd-control spell that\nalso corrupts the caster strongly.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.systems.skills.behaviours.DamageBehaviour.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.systems.skills.behaviours.DamageBehaviour.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.systems.skills.behaviours.DamageBehaviour",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.systems.skills.behaviours.DamageBehaviour.yml\" sourcestartlinenumber=\"1\">Generic damage behaviour: deals scaled damage to every target, optionally\napplies a status effect, optionally rolls corruption backlash.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.systems.skills.behaviours.DamageOverTimeBehaviour.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.systems.skills.behaviours.DamageOverTimeBehaviour.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.systems.skills.behaviours.DamageOverTimeBehaviour",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.systems.skills.behaviours.DamageOverTimeBehaviour.yml\" sourcestartlinenumber=\"1\">Damage-over-time behaviour: ticks initial damage then applies a DoT effect.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.systems.skills.behaviours.HealBehaviour.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.systems.skills.behaviours.HealBehaviour.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.systems.skills.behaviours.HealBehaviour",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.systems.skills.behaviours.HealBehaviour.yml\" sourcestartlinenumber=\"1\">Heal behaviour: restores HP to every target by the scaled power.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.systems.skills.behaviours.ResurrectBehaviour.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.systems.skills.behaviours.ResurrectBehaviour.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.systems.skills.behaviours.ResurrectBehaviour",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.systems.skills.behaviours.ResurrectBehaviour.yml\" sourcestartlinenumber=\"1\">Resurrection behaviour: revives each target unit with a percentage of MaxHp.\nThe percentage is encoded in <xref href=\"AshesOfVelsingrad.systems.skills.SkillDefinition.BasePower\" data-throw-if-not-resolved=\"false\"></xref> as a\nvalue in <code>[0, 1]</code> (0.5 = 50% HP).</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.systems.skills.behaviours.StatusOnlyBehaviour.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.systems.skills.behaviours.StatusOnlyBehaviour.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.systems.skills.behaviours.StatusOnlyBehaviour",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.systems.skills.behaviours.StatusOnlyBehaviour.yml\" sourcestartlinenumber=\"1\">Buff / debuff behaviour: applies a status effect to each target without\ndealing damage. Useful for War Cry, Granite Skin, Hawk's Eye, etc.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.systems.skills.behaviours.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.systems.skills.behaviours.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.systems.skills.behaviours",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.systems.skills.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.systems.skills.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.systems.skills",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.systems.status_effects.EffectTarget.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.systems.status_effects.EffectTarget.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.systems.status_effects.EffectTarget",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.systems.status_effects.EffectTarget.yml\" sourcestartlinenumber=\"1\">Base class for any entity that can receive and manage <xref href=\"AshesOfVelsingrad.systems.status_effects.StatusEffect\" data-throw-if-not-resolved=\"false\"></xref>s.\nProvides default implementations for applying, removing, and querying effects.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.systems.status_effects.IEffectTarget.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.systems.status_effects.IEffectTarget.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.systems.status_effects.IEffectTarget",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.systems.status_effects.IEffectTarget.yml\" sourcestartlinenumber=\"1\">Represents an entity that can receive and manage status effects.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.systems.status_effects.StatusEffect.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.systems.status_effects.StatusEffect.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.systems.status_effects.StatusEffect",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.systems.status_effects.StatusEffect.yml\" sourcestartlinenumber=\"1\">Base class for all status effects that can be applied to an <xref href=\"AshesOfVelsingrad.systems.status_effects.IEffectTarget\" data-throw-if-not-resolved=\"false\"></xref>.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.systems.status_effects.StatusEffectFactory.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.systems.status_effects.StatusEffectFactory.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.systems.status_effects.StatusEffectFactory",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.systems.status_effects.StatusEffectFactory.yml\" sourcestartlinenumber=\"1\">Creates <xref href=\"AshesOfVelsingrad.systems.status_effects.StatusEffect\" data-throw-if-not-resolved=\"false\"></xref> instances from string identifiers.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.systems.status_effects.StatusEffectSystem.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.systems.status_effects.StatusEffectSystem.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.systems.status_effects.StatusEffectSystem",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.systems.status_effects.StatusEffectSystem.yml\" sourcestartlinenumber=\"1\">Manages the application and lifecycle of status effects on all tracked targets.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.systems.status_effects.effects.BleedEffect.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.systems.status_effects.effects.BleedEffect.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.systems.status_effects.effects.BleedEffect",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.systems.status_effects.effects.BleedEffect.yml\" sourcestartlinenumber=\"1\">Damage-over-time effect that prevents healing while active.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.systems.status_effects.effects.BurnEffect.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.systems.status_effects.effects.BurnEffect.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.systems.status_effects.effects.BurnEffect",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.systems.status_effects.effects.BurnEffect.yml\" sourcestartlinenumber=\"1\">Damage-over-time + armor reduction effect.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.systems.status_effects.effects.ConfusionEffect.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.systems.status_effects.effects.ConfusionEffect.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.systems.status_effects.effects.ConfusionEffect",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.systems.status_effects.effects.ConfusionEffect.yml\" sourcestartlinenumber=\"1\">Causes the affected unit to attack a random unit (ally or enemy) on its turn.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.systems.status_effects.effects.CurseEffect.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.systems.status_effects.effects.CurseEffect.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.systems.status_effects.effects.CurseEffect",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.systems.status_effects.effects.CurseEffect.yml\" sourcestartlinenumber=\"1\">Permanently reduces one of the target's stats by a random amount.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.systems.status_effects.effects.CursedStat.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.systems.status_effects.effects.CursedStat.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.systems.status_effects.effects.CursedStat",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.systems.status_effects.effects.CursedStat.yml\" sourcestartlinenumber=\"1\">The stat a curse can target.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.systems.status_effects.effects.PoisonEffect.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.systems.status_effects.effects.PoisonEffect.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.systems.status_effects.effects.PoisonEffect",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.systems.status_effects.effects.PoisonEffect.yml\" sourcestartlinenumber=\"1\">Damage-over-time effect that ticks at the end of each affected unit's turn.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.systems.status_effects.effects.StunEffect.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.systems.status_effects.effects.StunEffect.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.systems.status_effects.effects.StunEffect",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.systems.status_effects.effects.StunEffect.yml\" sourcestartlinenumber=\"1\">Prevents the affected unit from acting on its turn.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.systems.status_effects.effects.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.systems.status_effects.effects.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.systems.status_effects.effects",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.systems.status_effects.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.systems.status_effects.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.systems.status_effects",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.ui.hud.CorruptionGauge.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.ui.hud.CorruptionGauge.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.ui.hud.CorruptionGauge",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.ui.hud.CorruptionGauge.yml\" sourcestartlinenumber=\"1\">Three-segment gauge showing the active player unit's corruption level.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.ui.hud.HudBusHelper.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.ui.hud.HudBusHelper.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.ui.hud.HudBusHelper",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.ui.hud.HudBusHelper.yml\" sourcestartlinenumber=\"1\">Shared helpers for HUD widgets that need to subscribe to <xref href=\"AshesOfVelsingrad.systems.battle.BattleEventBus\" data-throw-if-not-resolved=\"false\"></xref>.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.ui.hud.InventoryPanel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.ui.hud.InventoryPanel.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.ui.hud.InventoryPanel",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.ui.hud.InventoryPanel.yml\" sourcestartlinenumber=\"1\">Modal panel listing the shared <xref href=\"AshesOfVelsingrad.systems.items.PartyInventory\" data-throw-if-not-resolved=\"false\"></xref>.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.ui.hud_1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.ui.hud_1.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.ui.hud",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
@@ -2355,6 +4861,36 @@
       "output": {
         "resource": {
           "relative_path": "coverage/AshesofVelsingrad.Core_EffectTarget_1.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "documentation/coverage/AshesofVelsingrad.Core_EntityProfile.html",
+      "output": {
+        "resource": {
+          "relative_path": "coverage/AshesofVelsingrad.Core_EntityProfile.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "documentation/coverage/AshesofVelsingrad.Core_FactionExtensions.html",
+      "output": {
+        "resource": {
+          "relative_path": "coverage/AshesofVelsingrad.Core_FactionExtensions.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "documentation/coverage/AshesofVelsingrad.Core_Pathfinder.html",
+      "output": {
+        "resource": {
+          "relative_path": "coverage/AshesofVelsingrad.Core_Pathfinder.html"
         }
       },
       "version": ""

@@ -99,6 +99,15 @@ Classes
       <dd></dd>
     </dl>
     <dl class="jumplist">
+      <dt><a class="xref" href="AshesOfVelsingrad.IntegrationTests.Systems.FactionMarkerTest.html">FactionMarkerTest</a></dt>
+      <dd><p>Coverage for <a class="xref" href="AshesOfVelsingrad.Systems.Battle.FactionMarker.html">FactionMarker</a> — the small floating arrow above each
+unit that's colour-coded by faction. The marker itself has no gameplay logic, but
+it's how the player visually identifies whose side a unit is on, so a regression
+here makes the battlefield unreadable. Tests verify:</p>
+<ul><li><a class="xref" href="AshesOfVelsingrad.Systems.Battle.FactionMarker.html#AshesOfVelsingrad_Systems_Battle_FactionMarker_Bind_AshesOfVelsingrad_Systems_Faction_">Bind(Faction)</a> assigns a faction-distinct colour.</li><li><a class="xref" href="AshesOfVelsingrad.Systems.Battle.FactionMarker.html#AshesOfVelsingrad_Systems_Battle_FactionMarker_SetActive_System_Boolean_">SetActive(bool)</a> brightens the marker for the active turn.</li><li>The marker mounts a child <span class="xref">Godot.MeshInstance3D</span> and floats above its parent.</li></ul>
+</dd>
+    </dl>
+    <dl class="jumplist">
       <dt><a class="xref" href="AshesOfVelsingrad.IntegrationTests.Systems.MapSystemTest.html">MapSystemTest</a></dt>
       <dd></dd>
     </dl>

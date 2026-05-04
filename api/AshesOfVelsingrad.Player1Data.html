@@ -6,7 +6,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <meta name="title" content="Class Player1Data | Ashes of Velsingrad Documentation ">
       
-      
+      <meta name="description" content="Player1 — the test scene&#39;s player-controlled fighter.">
       <link rel="icon" href="../favicon.ico">
       <link rel="stylesheet" href="../public/docfx.min.css">
       <link rel="stylesheet" href="../public/main.css">
@@ -97,12 +97,13 @@ Class Player1Data
   <dl><dt>Assembly</dt><dd>AshesofVelsingrad.dll</dd></dl>
   </div>
 
-  <div class="markdown summary"></div>
+  <div class="markdown summary"><p>Player1 — the test scene's player-controlled fighter.</p>
+</div>
   <div class="markdown conceptual"></div>
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[ScriptPath(&quot;res://scripts/data/unit/characters/Player1Data.cs&quot;)]
-public sealed class Player1Data : UnitSystem, IDisposable, IUnitSystem, IEffectTarget&lt;IUnitSystem&gt;, IStatusEffectBehavior</code></pre>
+public sealed class Player1Data : UnitSystem, IDisposable, IUnitSystem, IEffectTarget&lt;IUnitSystem&gt;, IStatusEffectBehavior, IEffectTarget</code></pre>
   </div>
 
 
@@ -130,6 +131,7 @@ public sealed class Player1Data : UnitSystem, IDisposable, IUnitSystem, IEffectT
       <div><a class="xref" href="AshesOfVelsingrad.Systems.IUnitSystem.html">IUnitSystem</a></div>
       <div><a class="xref" href="AshesOfVelsingrad.Systems.IEffectTarget-1.html">IEffectTarget</a>&lt;<a class="xref" href="AshesOfVelsingrad.Systems.IUnitSystem.html">IUnitSystem</a>&gt;</div>
       <div><a class="xref" href="AshesOfVelsingrad.Systems.IStatusEffectBehavior.html">IStatusEffectBehavior</a></div>
+      <div><a class="xref" href="AshesOfVelsingrad.systems.status_effects.IEffectTarget.html">IEffectTarget</a></div>
     </dd>
   </dl>
 
@@ -171,6 +173,63 @@ public sealed class Player1Data : UnitSystem, IDisposable, IUnitSystem, IEffectT
       <a class="xref" href="AshesOfVelsingrad.Systems.UnitSystem.html#AshesOfVelsingrad_Systems_UnitSystem__ExitTree">UnitSystem._ExitTree()</a>
     </div>
     <div>
+      <a class="xref" href="AshesOfVelsingrad.Systems.UnitSystem.html#AshesOfVelsingrad_Systems_UnitSystem_Heal_System_Single_">UnitSystem.Heal(float)</a>
+    </div>
+    <div>
+      <a class="xref" href="AshesOfVelsingrad.Systems.UnitSystem.html#AshesOfVelsingrad_Systems_UnitSystem_Revive_System_Single_">UnitSystem.Revive(float)</a>
+    </div>
+    <div>
+      <a class="xref" href="AshesOfVelsingrad.Systems.UnitSystem.html#AshesOfVelsingrad_Systems_UnitSystem_SpendMana_System_Single_">UnitSystem.SpendMana(float)</a>
+    </div>
+    <div>
+      <a class="xref" href="AshesOfVelsingrad.Systems.UnitSystem.html#AshesOfVelsingrad_Systems_UnitSystem_RestoreMana_System_Single_">UnitSystem.RestoreMana(float)</a>
+    </div>
+    <div>
+      <a class="xref" href="AshesOfVelsingrad.Systems.UnitSystem.html#AshesOfVelsingrad_Systems_UnitSystem_AdjustAttack_System_Single_">UnitSystem.AdjustAttack(float)</a>
+    </div>
+    <div>
+      <a class="xref" href="AshesOfVelsingrad.Systems.UnitSystem.html#AshesOfVelsingrad_Systems_UnitSystem_AdjustDefense_System_Single_">UnitSystem.AdjustDefense(float)</a>
+    </div>
+    <div>
+      <a class="xref" href="AshesOfVelsingrad.Systems.UnitSystem.html#AshesOfVelsingrad_Systems_UnitSystem_AdjustSpeed_System_Single_">UnitSystem.AdjustSpeed(float)</a>
+    </div>
+    <div>
+      <a class="xref" href="AshesOfVelsingrad.Systems.UnitSystem.html#AshesOfVelsingrad_Systems_UnitSystem_OverrideDisplayName_System_String_">UnitSystem.OverrideDisplayName(string)</a>
+    </div>
+    <div>
+      <a class="xref" href="AshesOfVelsingrad.Systems.UnitSystem.html#AshesOfVelsingrad_Systems_UnitSystem_CorruptionPointsPerLevel">UnitSystem.CorruptionPointsPerLevel</a>
+    </div>
+    <div>
+      <a class="xref" href="AshesOfVelsingrad.Systems.UnitSystem.html#AshesOfVelsingrad_Systems_UnitSystem_MaxCorruptionLevel">UnitSystem.MaxCorruptionLevel</a>
+    </div>
+    <div>
+      <a class="xref" href="AshesOfVelsingrad.Systems.UnitSystem.html#AshesOfVelsingrad_Systems_UnitSystem_CorruptionLevel">UnitSystem.CorruptionLevel</a>
+    </div>
+    <div>
+      <a class="xref" href="AshesOfVelsingrad.Systems.UnitSystem.html#AshesOfVelsingrad_Systems_UnitSystem_CorruptionPoints">UnitSystem.CorruptionPoints</a>
+    </div>
+    <div>
+      <a class="xref" href="AshesOfVelsingrad.Systems.UnitSystem.html#AshesOfVelsingrad_Systems_UnitSystem_Faction">UnitSystem.Faction</a>
+    </div>
+    <div>
+      <a class="xref" href="AshesOfVelsingrad.Systems.UnitSystem.html#AshesOfVelsingrad_Systems_UnitSystem_EntityProfile">UnitSystem.EntityProfile</a>
+    </div>
+    <div>
+      <a class="xref" href="AshesOfVelsingrad.Systems.UnitSystem.html#AshesOfVelsingrad_Systems_UnitSystem_SetFaction_AshesOfVelsingrad_Systems_Faction_">UnitSystem.SetFaction(Faction)</a>
+    </div>
+    <div>
+      <a class="xref" href="AshesOfVelsingrad.Systems.UnitSystem.html#AshesOfVelsingrad_Systems_UnitSystem_AssignFaction_AshesOfVelsingrad_Systems_Faction_">UnitSystem.AssignFaction(Faction)</a>
+    </div>
+    <div>
+      <a class="xref" href="AshesOfVelsingrad.Systems.UnitSystem.html#AshesOfVelsingrad_Systems_UnitSystem_SetEntityProfile_AshesOfVelsingrad_Data_EntityProfile_">UnitSystem.SetEntityProfile(EntityProfile)</a>
+    </div>
+    <div>
+      <a class="xref" href="AshesOfVelsingrad.Systems.UnitSystem.html#AshesOfVelsingrad_Systems_UnitSystem_ApplyEffect_AshesOfVelsingrad_systems_status_effects_StatusEffect_">UnitSystem.ApplyEffect(StatusEffect)</a>
+    </div>
+    <div>
+      <a class="xref" href="AshesOfVelsingrad.Systems.UnitSystem.html#AshesOfVelsingrad_Systems_UnitSystem_RemoveEffect_AshesOfVelsingrad_systems_status_effects_StatusEffect_">UnitSystem.RemoveEffect(StatusEffect)</a>
+    </div>
+    <div>
       <a class="xref" href="AshesOfVelsingrad.Systems.UnitSystem.html#AshesOfVelsingrad_Systems_UnitSystem_PossibleMovesRange">UnitSystem.PossibleMovesRange</a>
     </div>
     <div>
@@ -193,6 +252,9 @@ public sealed class Player1Data : UnitSystem, IDisposable, IUnitSystem, IEffectT
     </div>
     <div>
       <a class="xref" href="AshesOfVelsingrad.Systems.UnitSystem.html#AshesOfVelsingrad_Systems_UnitSystem_GetReachableCellsForSkills_AshesOfVelsingrad_Systems_IMapSystem_AshesOfVelsingrad_Systems_ISkillSystem_">UnitSystem.GetReachableCellsForSkills(IMapSystem, ISkillSystem)</a>
+    </div>
+    <div>
+      <a class="xref" href="AshesOfVelsingrad.Systems.UnitSystem.html#AshesOfVelsingrad_Systems_UnitSystem_Play_System_Collections_Generic_List_AshesOfVelsingrad_Systems_IUnitSystem__AshesOfVelsingrad_Systems_IMapSystem_AshesOfVelsingrad_Systems_ISkillSystem_">UnitSystem.Play(List&lt;IUnitSystem&gt;, IMapSystem, ISkillSystem)</a>
     </div>
     <div>
       <a class="xref" href="AshesOfVelsingrad.Systems.UnitSystem.html#AshesOfVelsingrad_Systems_UnitSystem_Hp">UnitSystem.Hp</a>
@@ -1504,6 +1566,13 @@ public sealed class Player1Data : UnitSystem, IDisposable, IUnitSystem, IEffectT
 
 
 
+  <h2 id="AshesOfVelsingrad_Player1Data_remarks">Remarks</h2>
+  <div class="markdown level0 remarks"><p>Active skill slots map to the Fighter feature-doc catalogue
+(<a class="xref" href="AshesOfVelsingrad.CrushingStrike.html">CrushingStrike</a>, <a class="xref" href="AshesOfVelsingrad.WarCry.html">WarCry</a>, <a class="xref" href="AshesOfVelsingrad.Data.Skills.Charge.html">Charge</a>,
+<a class="xref" href="AshesOfVelsingrad.Data.Skills.Block.html">Block</a>, <a class="xref" href="AshesOfVelsingrad.CircularStrike.html">CircularStrike</a>). Passives are wired into
+<code>PassiveSkills</code> for the relevant systems to read; their <code>Use</code> methods are
+intentional no-ops since they're handled in damage-formula / status-effect code paths.</p>
+</div>
 
 
   <h2 class="section" id="methods">Methods
@@ -1514,7 +1583,7 @@ public sealed class Player1Data : UnitSystem, IDisposable, IUnitSystem, IEffectT
 
   <h3 id="AshesOfVelsingrad_Player1Data_Initialize" data-uid="AshesOfVelsingrad.Player1Data.Initialize">
   Initialize()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/data/unit/characters/Player1Data.cs/#L80"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/data/unit/characters/Player1Data.cs/#L20"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Initializes the unit instance
@@ -1539,45 +1608,6 @@ This method should be overridden in derived classes to set up specific functiona
 It should contain the logic necessary to set up the unit's state and functionality.
 Derived classes must implement this method to provide their specific initialization logic.</p>
 </div>
-
-
-
-
-  <a id="AshesOfVelsingrad_Player1Data_Play_" data-uid="AshesOfVelsingrad.Player1Data.Play*"></a>
-
-  <h3 id="AshesOfVelsingrad_Player1Data_Play_System_Collections_Generic_List_AshesOfVelsingrad_Systems_IUnitSystem__AshesOfVelsingrad_Systems_IMapSystem_AshesOfVelsingrad_Systems_ISkillSystem_" data-uid="AshesOfVelsingrad.Player1Data.Play(System.Collections.Generic.List{AshesOfVelsingrad.Systems.IUnitSystem},AshesOfVelsingrad.Systems.IMapSystem,AshesOfVelsingrad.Systems.ISkillSystem)">
-  Play(List&lt;IUnitSystem&gt;, IMapSystem?, ISkillSystem)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/data/unit/characters/Player1Data.cs/#L108"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Performs an attack on the specified targets.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public override void Play(List&lt;IUnitSystem&gt; targets, IMapSystem? map, ISkillSystem skill)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>targets</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a class="xref" href="AshesOfVelsingrad.Systems.IUnitSystem.html">IUnitSystem</a>&gt;</dt>
-    <dd><p>List of target units to attack.</p>
-</dd>
-    <dt><code>map</code> <a class="xref" href="AshesOfVelsingrad.Systems.IMapSystem.html">IMapSystem</a></dt>
-    <dd><p>Reference to the map system for positional logic.</p>
-</dd>
-    <dt><code>skill</code> <a class="xref" href="AshesOfVelsingrad.Systems.ISkillSystem.html">ISkillSystem</a></dt>
-    <dd><p>Tells which active skill to use</p>
-</dd>
-  </dl>
-
-
-
-
-
-
-
-
 
 
 

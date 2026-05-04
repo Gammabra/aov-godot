@@ -136,6 +136,8 @@ such as <a class="xref" href="AshesOfVelsingrad.Systems.IUnitSystem.html">IUnitS
       <div><a class="xref" href="AshesOfVelsingrad.Data.AtkBuffer.html">AtkBuffer</a></div>
       <div><a class="xref" href="AshesOfVelsingrad.Data.BurningCellEffect.html">BurningCellEffect</a></div>
       <div><a class="xref" href="AshesOfVelsingrad.Data.BurningEffect.html">BurningEffect</a></div>
+      <div><a class="xref" href="AshesOfVelsingrad.Data.Corruption.CorruptedTransformationEffect.html">CorruptedTransformationEffect</a></div>
+      <div><a class="xref" href="AshesOfVelsingrad.Data.Corruption.CorruptionLevelEffect.html">CorruptionLevelEffect</a></div>
       <div><a class="xref" href="AshesOfVelsingrad.Data.Stun.html">Stun</a></div>
       <div><a class="xref" href="AshesOfVelsingrad.Helpers.Systems.TestConcreteStatusEffect-1.html">TestConcreteStatusEffect&lt;TTarget&gt;</a></div>
     </dd>
@@ -333,7 +335,7 @@ A value of <code>-1</code> means the effect is permanent.</p>
 
   <h3 id="AshesOfVelsingrad_Systems_StatusEffect_1_EffectToSpread" data-uid="AshesOfVelsingrad.Systems.StatusEffect`1.EffectToSpread">
   EffectToSpread
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad.Core/Systems/status_effects/StatusEffect.cs/#L72"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad.Core/Systems/status_effects/StatusEffect.cs/#L82"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Store a effect status that can be spread</p>
@@ -357,6 +359,43 @@ A value of <code>-1</code> means the effect is permanent.</p>
 
 
 
+
+
+
+
+  <a id="AshesOfVelsingrad_Systems_StatusEffect_1_IsPurifiable_" data-uid="AshesOfVelsingrad.Systems.StatusEffect`1.IsPurifiable*"></a>
+
+  <h3 id="AshesOfVelsingrad_Systems_StatusEffect_1_IsPurifiable" data-uid="AshesOfVelsingrad.Systems.StatusEffect`1.IsPurifiable">
+  IsPurifiable
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad.Core/Systems/status_effects/StatusEffect.cs/#L71"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Whether this effect can be removed by a &quot;purify&quot; / cleanse skill or item.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual bool IsPurifiable { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+  <h4 class="section" id="AshesOfVelsingrad_Systems_StatusEffect_1_IsPurifiable_remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>Per the design's status table, every status except <code>Curse</code> is
+purifiable. Override to return <code>false</code> on permanent / curse-style
+effects so they are skipped by cleanse routines.</p>
+</div>
 
 
 
@@ -461,7 +500,7 @@ A value of <code>-1</code> means the effect is permanent.</p>
 
   <h3 id="AshesOfVelsingrad_Systems_StatusEffect_1_ShouldApplyTwice" data-uid="AshesOfVelsingrad.Systems.StatusEffect`1.ShouldApplyTwice">
   ShouldApplyTwice
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad.Core/Systems/status_effects/StatusEffect.cs/#L67"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad.Core/Systems/status_effects/StatusEffect.cs/#L77"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Whether this effect should be applied twice on initial application.
@@ -530,7 +569,7 @@ Used for control effects like stuns that need immediate double application.</p>
 
   <h3 id="AshesOfVelsingrad_Systems_StatusEffect_1_AddStack" data-uid="AshesOfVelsingrad.Systems.StatusEffect`1.AddStack">
   AddStack()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad.Core/Systems/status_effects/StatusEffect.cs/#L113"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad.Core/Systems/status_effects/StatusEffect.cs/#L123"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Increases the stack count of the effect if it is stackable.</p>
@@ -557,7 +596,7 @@ Used for control effects like stuns that need immediate double application.</p>
 
   <h3 id="AshesOfVelsingrad_Systems_StatusEffect_1_OnApply__0_" data-uid="AshesOfVelsingrad.Systems.StatusEffect`1.OnApply(`0)">
   OnApply(TTarget)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad.Core/Systems/status_effects/StatusEffect.cs/#L80"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad.Core/Systems/status_effects/StatusEffect.cs/#L90"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Called when this effect is applied to a target.
@@ -591,7 +630,7 @@ Override this to implement custom logic (e.g., visual/audio feedback, stat chang
 
   <h3 id="AshesOfVelsingrad_Systems_StatusEffect_1_OnRemove__0_" data-uid="AshesOfVelsingrad.Systems.StatusEffect`1.OnRemove(`0)">
   OnRemove(TTarget)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad.Core/Systems/status_effects/StatusEffect.cs/#L90"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad.Core/Systems/status_effects/StatusEffect.cs/#L100"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Called when this effect is removed from a target.
@@ -625,7 +664,7 @@ Override this to implement cleanup logic (e.g., removing buffs, stopping visual/
 
   <h3 id="AshesOfVelsingrad_Systems_StatusEffect_1_OnTurnPassed__0_" data-uid="AshesOfVelsingrad.Systems.StatusEffect`1.OnTurnPassed(`0)">
   OnTurnPassed(TTarget)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad.Core/Systems/status_effects/StatusEffect.cs/#L99"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad.Core/Systems/status_effects/StatusEffect.cs/#L109"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Called at the end of each turn to update the effect’s duration or apply ongoing logic.</p>
@@ -658,7 +697,7 @@ Override this to implement cleanup logic (e.g., removing buffs, stopping visual/
 
   <h3 id="AshesOfVelsingrad_Systems_StatusEffect_1_ResetDuration_System_Int32_" data-uid="AshesOfVelsingrad.Systems.StatusEffect`1.ResetDuration(System.Int32)">
   ResetDuration(int)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad.Core/Systems/status_effects/StatusEffect.cs/#L119"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad.Core/Systems/status_effects/StatusEffect.cs/#L129"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"></div>

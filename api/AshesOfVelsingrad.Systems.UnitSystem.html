@@ -104,7 +104,7 @@ Handles stats, movement, effects, and Godot integration.</p>
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[ScriptPath(&quot;res://scripts/systems/unit_system/UnitSystem.cs&quot;)]
-public abstract class UnitSystem : CharacterBody3D, IDisposable, IUnitSystem, IEffectTarget&lt;IUnitSystem&gt;, IStatusEffectBehavior</code></pre>
+public abstract class UnitSystem : CharacterBody3D, IDisposable, IUnitSystem, IEffectTarget&lt;IUnitSystem&gt;, IStatusEffectBehavior, IEffectTarget</code></pre>
   </div>
 
 
@@ -131,12 +131,14 @@ public abstract class UnitSystem : CharacterBody3D, IDisposable, IUnitSystem, IE
       <div><a class="xref" href="AshesOfVelsingrad.Systems.IUnitSystem.html">IUnitSystem</a></div>
       <div><a class="xref" href="AshesOfVelsingrad.Systems.IEffectTarget-1.html">IEffectTarget</a>&lt;<a class="xref" href="AshesOfVelsingrad.Systems.IUnitSystem.html">IUnitSystem</a>&gt;</div>
       <div><a class="xref" href="AshesOfVelsingrad.Systems.IStatusEffectBehavior.html">IStatusEffectBehavior</a></div>
+      <div><a class="xref" href="AshesOfVelsingrad.systems.status_effects.IEffectTarget.html">IEffectTarget</a></div>
     </dd>
   </dl>
 
   <dl class="typelist derived">
     <dt>Derived</dt>
     <dd>
+      <div><a class="xref" href="AshesOfVelsingrad.Ally1Data.html">Ally1Data</a></div>
       <div><a class="xref" href="AshesOfVelsingrad.AssassinData.html">AssassinData</a></div>
       <div><a class="xref" href="AshesOfVelsingrad.EnemyArcher.html">EnemyArcher</a></div>
       <div><a class="xref" href="AshesOfVelsingrad.EnemyAssassin.html">EnemyAssassin</a></div>
@@ -147,6 +149,7 @@ public abstract class UnitSystem : CharacterBody3D, IDisposable, IUnitSystem, IE
       <div><a class="xref" href="AshesOfVelsingrad.Helpers.Systems.TestConcreteUnitSystem.html">TestConcreteUnitSystem</a></div>
       <div><a class="xref" href="AshesOfVelsingrad.LightMageData.html">LightMageData</a></div>
       <div><a class="xref" href="AshesOfVelsingrad.Player1Data.html">Player1Data</a></div>
+      <div><a class="xref" href="AshesOfVelsingrad.Player2Data.html">Player2Data</a></div>
       <div><a class="xref" href="AshesOfVelsingrad.SwordsmanData.html">SwordsmanData</a></div>
     </dd>
   </dl>
@@ -1448,6 +1451,72 @@ public abstract class UnitSystem : CharacterBody3D, IDisposable, IUnitSystem, IE
 </div>
 
 
+  <h2 class="section" id="fields">Fields
+</h2>
+
+
+
+  <h3 id="AshesOfVelsingrad_Systems_UnitSystem_CorruptionPointsPerLevel" data-uid="AshesOfVelsingrad.Systems.UnitSystem.CorruptionPointsPerLevel">
+  CorruptionPointsPerLevel
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/systems/unit_system/UnitSystemCorruption.cs/#L20"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Number of corruption points required to advance one corruption level.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int CorruptionPointsPerLevel = 4</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="AshesOfVelsingrad_Systems_UnitSystem_MaxCorruptionLevel" data-uid="AshesOfVelsingrad.Systems.UnitSystem.MaxCorruptionLevel">
+  MaxCorruptionLevel
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/systems/unit_system/UnitSystemCorruption.cs/#L25"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Maximum corruption level. Per the feature document.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int MaxCorruptionLevel = 3</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
   <h2 class="section" id="properties">Properties
 </h2>
 
@@ -1612,6 +1681,71 @@ public abstract class UnitSystem : CharacterBody3D, IDisposable, IUnitSystem, IE
 
 
 
+  <a id="AshesOfVelsingrad_Systems_UnitSystem_CorruptionLevel_" data-uid="AshesOfVelsingrad.Systems.UnitSystem.CorruptionLevel*"></a>
+
+  <h3 id="AshesOfVelsingrad_Systems_UnitSystem_CorruptionLevel" data-uid="AshesOfVelsingrad.Systems.UnitSystem.CorruptionLevel">
+  CorruptionLevel
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/systems/unit_system/UnitSystemCorruption.cs/#L28"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Persistent corruption tier (0..3). 0 = clean, 3 = transformed.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int CorruptionLevel { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="AshesOfVelsingrad_Systems_UnitSystem_CorruptionPoints_" data-uid="AshesOfVelsingrad.Systems.UnitSystem.CorruptionPoints*"></a>
+
+  <h3 id="AshesOfVelsingrad_Systems_UnitSystem_CorruptionPoints" data-uid="AshesOfVelsingrad.Systems.UnitSystem.CorruptionPoints">
+  CorruptionPoints
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/systems/unit_system/UnitSystemCorruption.cs/#L34"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Corruption-point counter within the current tier; advances the tier when it reaches
+<a class="xref" href="AshesOfVelsingrad.Systems.UnitSystem.html#AshesOfVelsingrad_Systems_UnitSystem_CorruptionPointsPerLevel">CorruptionPointsPerLevel</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int CorruptionPoints { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
   <a id="AshesOfVelsingrad_Systems_UnitSystem_Curse_" data-uid="AshesOfVelsingrad.Systems.UnitSystem.Curse*"></a>
 
   <h3 id="AshesOfVelsingrad_Systems_UnitSystem_Curse" data-uid="AshesOfVelsingrad.Systems.UnitSystem.Curse">
@@ -1666,6 +1800,70 @@ public abstract class UnitSystem : CharacterBody3D, IDisposable, IUnitSystem, IE
   <h4 class="section">Property Value</h4>
   <dl class="parameters">
     <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="AshesOfVelsingrad_Systems_UnitSystem_EntityProfile_" data-uid="AshesOfVelsingrad.Systems.UnitSystem.EntityProfile*"></a>
+
+  <h3 id="AshesOfVelsingrad_Systems_UnitSystem_EntityProfile" data-uid="AshesOfVelsingrad.Systems.UnitSystem.EntityProfile">
+  EntityProfile
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/systems/unit_system/UnitSystemIdentity.cs/#L27"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Designer-authored display metadata (portrait, class, level). Optional.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public EntityProfile? EntityProfile { get; protected set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="AshesOfVelsingrad.Data.EntityProfile.html">EntityProfile</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="AshesOfVelsingrad_Systems_UnitSystem_Faction_" data-uid="AshesOfVelsingrad.Systems.UnitSystem.Faction*"></a>
+
+  <h3 id="AshesOfVelsingrad_Systems_UnitSystem_Faction" data-uid="AshesOfVelsingrad.Systems.UnitSystem.Faction">
+  Faction
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/systems/unit_system/UnitSystemIdentity.cs/#L24"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Faction this unit fights for.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Faction Faction { get; protected set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="AshesOfVelsingrad.Systems.Faction.html">Faction</a></dt>
     <dd></dd>
   </dl>
 
@@ -2158,6 +2356,106 @@ public abstract class UnitSystem : CharacterBody3D, IDisposable, IUnitSystem, IE
 </h2>
 
 
+  <a id="AshesOfVelsingrad_Systems_UnitSystem_AdjustAttack_" data-uid="AshesOfVelsingrad.Systems.UnitSystem.AdjustAttack*"></a>
+
+  <h3 id="AshesOfVelsingrad_Systems_UnitSystem_AdjustAttack_System_Single_" data-uid="AshesOfVelsingrad.Systems.UnitSystem.AdjustAttack(System.Single)">
+  AdjustAttack(float)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/systems/unit_system/UnitSystemActions.cs/#L73"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Adjust the unit's base attack by <code class="paramref">delta</code> (signed).
+Used by curse / buff effects that shift raw stats persistently.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual void AdjustAttack(float delta)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>delta</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd><p>Signed delta. Negative reduces, positive increases.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AshesOfVelsingrad_Systems_UnitSystem_AdjustDefense_" data-uid="AshesOfVelsingrad.Systems.UnitSystem.AdjustDefense*"></a>
+
+  <h3 id="AshesOfVelsingrad_Systems_UnitSystem_AdjustDefense_System_Single_" data-uid="AshesOfVelsingrad.Systems.UnitSystem.AdjustDefense(System.Single)">
+  AdjustDefense(float)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/systems/unit_system/UnitSystemActions.cs/#L83"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Adjust the unit's base defense by <code class="paramref">delta</code> (signed).</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual void AdjustDefense(float delta)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>delta</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd><p>Signed delta. Negative reduces, positive increases.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AshesOfVelsingrad_Systems_UnitSystem_AdjustSpeed_" data-uid="AshesOfVelsingrad.Systems.UnitSystem.AdjustSpeed*"></a>
+
+  <h3 id="AshesOfVelsingrad_Systems_UnitSystem_AdjustSpeed_System_Single_" data-uid="AshesOfVelsingrad.Systems.UnitSystem.AdjustSpeed(System.Single)">
+  AdjustSpeed(float)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/systems/unit_system/UnitSystemActions.cs/#L93"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Adjust the unit's base speed by <code class="paramref">delta</code> (signed).</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual void AdjustSpeed(float delta)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>delta</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd><p>Signed delta. Negative reduces, positive increases.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
   <a id="AshesOfVelsingrad_Systems_UnitSystem_ApplyEffect_" data-uid="AshesOfVelsingrad.Systems.UnitSystem.ApplyEffect*"></a>
 
   <h3 id="AshesOfVelsingrad_Systems_UnitSystem_ApplyEffect_AshesOfVelsingrad_Systems_StatusEffect_AshesOfVelsingrad_Systems_IUnitSystem__" data-uid="AshesOfVelsingrad.Systems.UnitSystem.ApplyEffect(AshesOfVelsingrad.Systems.StatusEffect{AshesOfVelsingrad.Systems.IUnitSystem})">
@@ -2191,11 +2489,78 @@ public abstract class UnitSystem : CharacterBody3D, IDisposable, IUnitSystem, IE
 
 
 
+  <a id="AshesOfVelsingrad_Systems_UnitSystem_ApplyEffect_" data-uid="AshesOfVelsingrad.Systems.UnitSystem.ApplyEffect*"></a>
+
+  <h3 id="AshesOfVelsingrad_Systems_UnitSystem_ApplyEffect_AshesOfVelsingrad_systems_status_effects_StatusEffect_" data-uid="AshesOfVelsingrad.Systems.UnitSystem.ApplyEffect(AshesOfVelsingrad.systems.status_effects.StatusEffect)">
+  ApplyEffect(StatusEffect)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/systems/unit_system/UnitSystemLegacyEffects.cs/#L41"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Apply a legacy non-generic status effect to this unit. Stacks if already present
+and stackable; otherwise stores it and fires <code>OnApply</code>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void ApplyEffect(StatusEffect statusEffect)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>statusEffect</code> <a class="xref" href="AshesOfVelsingrad.systems.status_effects.StatusEffect.html">StatusEffect</a></dt>
+    <dd><p>Legacy effect instance.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AshesOfVelsingrad_Systems_UnitSystem_AssignFaction_" data-uid="AshesOfVelsingrad.Systems.UnitSystem.AssignFaction*"></a>
+
+  <h3 id="AshesOfVelsingrad_Systems_UnitSystem_AssignFaction_AshesOfVelsingrad_Systems_Faction_" data-uid="AshesOfVelsingrad.Systems.UnitSystem.AssignFaction(AshesOfVelsingrad.Systems.Faction)">
+  AssignFaction(Faction)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/systems/unit_system/UnitSystemIdentity.cs/#L43"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Backward-compatible alias for <a class="xref" href="AshesOfVelsingrad.Systems.UnitSystem.html#AshesOfVelsingrad_Systems_UnitSystem_SetFaction_AshesOfVelsingrad_Systems_Faction_">SetFaction(Faction)</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void AssignFaction(Faction faction)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>faction</code> <a class="xref" href="AshesOfVelsingrad.Systems.Faction.html">Faction</a></dt>
+    <dd><p>Faction to assign.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
   <a id="AshesOfVelsingrad_Systems_UnitSystem_BypassDamage_" data-uid="AshesOfVelsingrad.Systems.UnitSystem.BypassDamage*"></a>
 
   <h3 id="AshesOfVelsingrad_Systems_UnitSystem_BypassDamage_System_Single_" data-uid="AshesOfVelsingrad.Systems.UnitSystem.BypassDamage(System.Single)">
   BypassDamage(float)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/systems/unit_system/UnitSystemStats.cs/#L89"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/systems/unit_system/UnitSystemStats.cs/#L99"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Applies damage that bypasses defense to the unit and updates HP.</p>
@@ -2519,6 +2884,40 @@ considering vertical traversal (e.g. stairs, cliffs).</p>
     <dd><p>The type of <a class="xref" href="AshesOfVelsingrad.Systems.StatusEffect-1.html">StatusEffect&lt;TTarget&gt;</a> to check for.</p>
 </dd>
   </dl>
+
+
+
+
+
+
+
+
+
+
+  <a id="AshesOfVelsingrad_Systems_UnitSystem_Heal_" data-uid="AshesOfVelsingrad.Systems.UnitSystem.Heal*"></a>
+
+  <h3 id="AshesOfVelsingrad_Systems_UnitSystem_Heal_System_Single_" data-uid="AshesOfVelsingrad.Systems.UnitSystem.Heal(System.Single)">
+  Heal(float)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/systems/unit_system/UnitSystemActions.cs/#L20"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Restore HP by <code class="paramref">amount</code>, clamped to <a class="xref" href="AshesOfVelsingrad.Systems.UnitSystem.html#AshesOfVelsingrad_Systems_UnitSystem_MaxHp">MaxHp</a>.
+A no-op when the unit is dead.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual void Heal(float amount)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>amount</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd><p>Amount of HP to restore. Negative values are ignored.</p>
+</dd>
+  </dl>
+
+
 
 
 
@@ -2862,6 +3261,40 @@ Derived classes must implement this method to provide their specific initializat
 
 
 
+  <a id="AshesOfVelsingrad_Systems_UnitSystem_OverrideDisplayName_" data-uid="AshesOfVelsingrad.Systems.UnitSystem.OverrideDisplayName*"></a>
+
+  <h3 id="AshesOfVelsingrad_Systems_UnitSystem_OverrideDisplayName_System_String_" data-uid="AshesOfVelsingrad.Systems.UnitSystem.OverrideDisplayName(System.String)">
+  OverrideDisplayName(string)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/systems/unit_system/UnitSystemActions.cs/#L104"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Replace the unit's display name. Called by spawners that want to give a unit
+a designer-authored override instead of the data-class default.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual void OverrideDisplayName(string newName)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>newName</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The override name. Empty strings are ignored.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
   <a id="AshesOfVelsingrad_Systems_UnitSystem_PassTurn_" data-uid="AshesOfVelsingrad.Systems.UnitSystem.PassTurn*"></a>
 
   <h3 id="AshesOfVelsingrad_Systems_UnitSystem_PassTurn" data-uid="AshesOfVelsingrad.Systems.UnitSystem.PassTurn">
@@ -2959,6 +3392,39 @@ Derived classes must implement this method to provide their specific initializat
 
 
 
+  <a id="AshesOfVelsingrad_Systems_UnitSystem_RemoveEffect_" data-uid="AshesOfVelsingrad.Systems.UnitSystem.RemoveEffect*"></a>
+
+  <h3 id="AshesOfVelsingrad_Systems_UnitSystem_RemoveEffect_AshesOfVelsingrad_systems_status_effects_StatusEffect_" data-uid="AshesOfVelsingrad.Systems.UnitSystem.RemoveEffect(AshesOfVelsingrad.systems.status_effects.StatusEffect)">
+  RemoveEffect(StatusEffect)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/systems/unit_system/UnitSystemLegacyEffects.cs/#L65"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Remove a legacy non-generic status effect from this unit (no-op if absent).</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void RemoveEffect(StatusEffect statusEffect)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>statusEffect</code> <a class="xref" href="AshesOfVelsingrad.systems.status_effects.StatusEffect.html">StatusEffect</a></dt>
+    <dd><p>The effect to remove.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
   <a id="AshesOfVelsingrad_Systems_UnitSystem_ReportSystemUnitHasPlayed_" data-uid="AshesOfVelsingrad.Systems.UnitSystem.ReportSystemUnitHasPlayed*"></a>
 
   <h3 id="AshesOfVelsingrad_Systems_UnitSystem_ReportSystemUnitHasPlayed" data-uid="AshesOfVelsingrad.Systems.UnitSystem.ReportSystemUnitHasPlayed">
@@ -2974,6 +3440,140 @@ Derived classes must implement this method to provide their specific initializat
     <pre><code class="lang-csharp hljs">protected void ReportSystemUnitHasPlayed()</code></pre>
   </div>
 
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AshesOfVelsingrad_Systems_UnitSystem_RestoreMana_" data-uid="AshesOfVelsingrad.Systems.UnitSystem.RestoreMana*"></a>
+
+  <h3 id="AshesOfVelsingrad_Systems_UnitSystem_RestoreMana_System_Single_" data-uid="AshesOfVelsingrad.Systems.UnitSystem.RestoreMana(System.Single)">
+  RestoreMana(float)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/systems/unit_system/UnitSystemActions.cs/#L60"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Restore <code class="paramref">amount</code> mana, clamped to <a class="xref" href="AshesOfVelsingrad.Systems.UnitSystem.html#AshesOfVelsingrad_Systems_UnitSystem_ManaMax">ManaMax</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual void RestoreMana(float amount)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>amount</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd><p>Mana to restore. Negative values are ignored.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AshesOfVelsingrad_Systems_UnitSystem_Revive_" data-uid="AshesOfVelsingrad.Systems.UnitSystem.Revive*"></a>
+
+  <h3 id="AshesOfVelsingrad_Systems_UnitSystem_Revive_System_Single_" data-uid="AshesOfVelsingrad.Systems.UnitSystem.Revive(System.Single)">
+  Revive(float)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/systems/unit_system/UnitSystemActions.cs/#L35"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Revive a dead unit, restoring HP up to <code class="paramref">hpRestored</code>
+(clamped to <a class="xref" href="AshesOfVelsingrad.Systems.UnitSystem.html#AshesOfVelsingrad_Systems_UnitSystem_MaxHp">MaxHp</a>). A no-op when the unit is alive.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual void Revive(float hpRestored)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>hpRestored</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd><p>Absolute HP to set after revival (e.g. <code>MaxHp * 0.5f</code>).</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AshesOfVelsingrad_Systems_UnitSystem_SetEntityProfile_" data-uid="AshesOfVelsingrad.Systems.UnitSystem.SetEntityProfile*"></a>
+
+  <h3 id="AshesOfVelsingrad_Systems_UnitSystem_SetEntityProfile_AshesOfVelsingrad_Data_EntityProfile_" data-uid="AshesOfVelsingrad.Systems.UnitSystem.SetEntityProfile(AshesOfVelsingrad.Data.EntityProfile)">
+  SetEntityProfile(EntityProfile?)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/systems/unit_system/UnitSystemIdentity.cs/#L52"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Replace the entity profile at runtime (e.g. when level-up changes the displayed level).</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetEntityProfile(EntityProfile? profile)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>profile</code> <a class="xref" href="AshesOfVelsingrad.Data.EntityProfile.html">EntityProfile</a></dt>
+    <dd><p>New profile, or null to clear.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AshesOfVelsingrad_Systems_UnitSystem_SetFaction_" data-uid="AshesOfVelsingrad.Systems.UnitSystem.SetFaction*"></a>
+
+  <h3 id="AshesOfVelsingrad_Systems_UnitSystem_SetFaction_AshesOfVelsingrad_Systems_Faction_" data-uid="AshesOfVelsingrad.Systems.UnitSystem.SetFaction(AshesOfVelsingrad.Systems.Faction)">
+  SetFaction(Faction)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/systems/unit_system/UnitSystemIdentity.cs/#L34"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Set the faction at runtime — called by <code>GameManager.LoadUnits</code> based on which
+scene-tree container the unit was found in.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetFaction(Faction faction)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>faction</code> <a class="xref" href="AshesOfVelsingrad.Systems.Faction.html">Faction</a></dt>
+    <dd><p>Faction to assign.</p>
+</dd>
+  </dl>
 
 
 
@@ -3094,11 +3694,44 @@ Derived classes must implement this method to provide their specific initializat
 
 
 
+  <a id="AshesOfVelsingrad_Systems_UnitSystem_SpendMana_" data-uid="AshesOfVelsingrad.Systems.UnitSystem.SpendMana*"></a>
+
+  <h3 id="AshesOfVelsingrad_Systems_UnitSystem_SpendMana_System_Single_" data-uid="AshesOfVelsingrad.Systems.UnitSystem.SpendMana(System.Single)">
+  SpendMana(float)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/systems/unit_system/UnitSystemActions.cs/#L48"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Deduct <code class="paramref">amount</code> from the unit's mana pool, clamped at 0.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual void SpendMana(float amount)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>amount</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd><p>Mana cost. Negative values are ignored.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
   <a id="AshesOfVelsingrad_Systems_UnitSystem_TakeDamage_" data-uid="AshesOfVelsingrad.Systems.UnitSystem.TakeDamage*"></a>
 
   <h3 id="AshesOfVelsingrad_Systems_UnitSystem_TakeDamage_System_Single_" data-uid="AshesOfVelsingrad.Systems.UnitSystem.TakeDamage(System.Single)">
   TakeDamage(float)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/systems/unit_system/UnitSystemStats.cs/#L67"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/systems/unit_system/UnitSystemStats.cs/#L77"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Applies incoming damage to the unit and updates HP.</p>

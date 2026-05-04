@@ -104,7 +104,7 @@ Mirrors <a class="xref" href="AshesOfVelsingrad.FighterData.html">FighterData</a
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[ScriptPath(&quot;res://scripts/data/unit/enemies/EnemyFighter.cs&quot;)]
-public sealed class EnemyFighter : UnitSystem, IDisposable, IUnitSystem, IEffectTarget&lt;IUnitSystem&gt;, IStatusEffectBehavior</code></pre>
+public sealed class EnemyFighter : UnitSystem, IDisposable, IUnitSystem, IEffectTarget&lt;IUnitSystem&gt;, IStatusEffectBehavior, IEffectTarget</code></pre>
   </div>
 
 
@@ -132,6 +132,7 @@ public sealed class EnemyFighter : UnitSystem, IDisposable, IUnitSystem, IEffect
       <div><a class="xref" href="AshesOfVelsingrad.Systems.IUnitSystem.html">IUnitSystem</a></div>
       <div><a class="xref" href="AshesOfVelsingrad.Systems.IEffectTarget-1.html">IEffectTarget</a>&lt;<a class="xref" href="AshesOfVelsingrad.Systems.IUnitSystem.html">IUnitSystem</a>&gt;</div>
       <div><a class="xref" href="AshesOfVelsingrad.Systems.IStatusEffectBehavior.html">IStatusEffectBehavior</a></div>
+      <div><a class="xref" href="AshesOfVelsingrad.systems.status_effects.IEffectTarget.html">IEffectTarget</a></div>
     </dd>
   </dl>
 
@@ -171,6 +172,63 @@ public sealed class EnemyFighter : UnitSystem, IDisposable, IUnitSystem, IEffect
     </div>
     <div>
       <a class="xref" href="AshesOfVelsingrad.Systems.UnitSystem.html#AshesOfVelsingrad_Systems_UnitSystem__ExitTree">UnitSystem._ExitTree()</a>
+    </div>
+    <div>
+      <a class="xref" href="AshesOfVelsingrad.Systems.UnitSystem.html#AshesOfVelsingrad_Systems_UnitSystem_Heal_System_Single_">UnitSystem.Heal(float)</a>
+    </div>
+    <div>
+      <a class="xref" href="AshesOfVelsingrad.Systems.UnitSystem.html#AshesOfVelsingrad_Systems_UnitSystem_Revive_System_Single_">UnitSystem.Revive(float)</a>
+    </div>
+    <div>
+      <a class="xref" href="AshesOfVelsingrad.Systems.UnitSystem.html#AshesOfVelsingrad_Systems_UnitSystem_SpendMana_System_Single_">UnitSystem.SpendMana(float)</a>
+    </div>
+    <div>
+      <a class="xref" href="AshesOfVelsingrad.Systems.UnitSystem.html#AshesOfVelsingrad_Systems_UnitSystem_RestoreMana_System_Single_">UnitSystem.RestoreMana(float)</a>
+    </div>
+    <div>
+      <a class="xref" href="AshesOfVelsingrad.Systems.UnitSystem.html#AshesOfVelsingrad_Systems_UnitSystem_AdjustAttack_System_Single_">UnitSystem.AdjustAttack(float)</a>
+    </div>
+    <div>
+      <a class="xref" href="AshesOfVelsingrad.Systems.UnitSystem.html#AshesOfVelsingrad_Systems_UnitSystem_AdjustDefense_System_Single_">UnitSystem.AdjustDefense(float)</a>
+    </div>
+    <div>
+      <a class="xref" href="AshesOfVelsingrad.Systems.UnitSystem.html#AshesOfVelsingrad_Systems_UnitSystem_AdjustSpeed_System_Single_">UnitSystem.AdjustSpeed(float)</a>
+    </div>
+    <div>
+      <a class="xref" href="AshesOfVelsingrad.Systems.UnitSystem.html#AshesOfVelsingrad_Systems_UnitSystem_OverrideDisplayName_System_String_">UnitSystem.OverrideDisplayName(string)</a>
+    </div>
+    <div>
+      <a class="xref" href="AshesOfVelsingrad.Systems.UnitSystem.html#AshesOfVelsingrad_Systems_UnitSystem_CorruptionPointsPerLevel">UnitSystem.CorruptionPointsPerLevel</a>
+    </div>
+    <div>
+      <a class="xref" href="AshesOfVelsingrad.Systems.UnitSystem.html#AshesOfVelsingrad_Systems_UnitSystem_MaxCorruptionLevel">UnitSystem.MaxCorruptionLevel</a>
+    </div>
+    <div>
+      <a class="xref" href="AshesOfVelsingrad.Systems.UnitSystem.html#AshesOfVelsingrad_Systems_UnitSystem_CorruptionLevel">UnitSystem.CorruptionLevel</a>
+    </div>
+    <div>
+      <a class="xref" href="AshesOfVelsingrad.Systems.UnitSystem.html#AshesOfVelsingrad_Systems_UnitSystem_CorruptionPoints">UnitSystem.CorruptionPoints</a>
+    </div>
+    <div>
+      <a class="xref" href="AshesOfVelsingrad.Systems.UnitSystem.html#AshesOfVelsingrad_Systems_UnitSystem_Faction">UnitSystem.Faction</a>
+    </div>
+    <div>
+      <a class="xref" href="AshesOfVelsingrad.Systems.UnitSystem.html#AshesOfVelsingrad_Systems_UnitSystem_EntityProfile">UnitSystem.EntityProfile</a>
+    </div>
+    <div>
+      <a class="xref" href="AshesOfVelsingrad.Systems.UnitSystem.html#AshesOfVelsingrad_Systems_UnitSystem_SetFaction_AshesOfVelsingrad_Systems_Faction_">UnitSystem.SetFaction(Faction)</a>
+    </div>
+    <div>
+      <a class="xref" href="AshesOfVelsingrad.Systems.UnitSystem.html#AshesOfVelsingrad_Systems_UnitSystem_AssignFaction_AshesOfVelsingrad_Systems_Faction_">UnitSystem.AssignFaction(Faction)</a>
+    </div>
+    <div>
+      <a class="xref" href="AshesOfVelsingrad.Systems.UnitSystem.html#AshesOfVelsingrad_Systems_UnitSystem_SetEntityProfile_AshesOfVelsingrad_Data_EntityProfile_">UnitSystem.SetEntityProfile(EntityProfile)</a>
+    </div>
+    <div>
+      <a class="xref" href="AshesOfVelsingrad.Systems.UnitSystem.html#AshesOfVelsingrad_Systems_UnitSystem_ApplyEffect_AshesOfVelsingrad_systems_status_effects_StatusEffect_">UnitSystem.ApplyEffect(StatusEffect)</a>
+    </div>
+    <div>
+      <a class="xref" href="AshesOfVelsingrad.Systems.UnitSystem.html#AshesOfVelsingrad_Systems_UnitSystem_RemoveEffect_AshesOfVelsingrad_systems_status_effects_StatusEffect_">UnitSystem.RemoveEffect(StatusEffect)</a>
     </div>
     <div>
       <a class="xref" href="AshesOfVelsingrad.Systems.UnitSystem.html#AshesOfVelsingrad_Systems_UnitSystem_PossibleMovesRange">UnitSystem.PossibleMovesRange</a>
@@ -1519,7 +1577,7 @@ public sealed class EnemyFighter : UnitSystem, IDisposable, IUnitSystem, IEffect
 
   <h3 id="AshesOfVelsingrad_EnemyFighter_Initialize" data-uid="AshesOfVelsingrad.EnemyFighter.Initialize">
   Initialize()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/data/unit/enemies/EnemyFighter.cs/#L69"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/data/unit/enemies/EnemyFighter.cs/#L70"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Initializes the unit instance

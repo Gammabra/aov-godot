@@ -434,6 +434,52 @@ Interface ISkillSystem  <a class="header-action link-secondary" title="View sour
 </h2>
 
 
+  <a id="AshesOfVelsingrad_Systems_ISkillSystem_IsTargetCellValid_" data-uid="AshesOfVelsingrad.Systems.ISkillSystem.IsTargetCellValid*"></a>
+
+  <h3 id="AshesOfVelsingrad_Systems_ISkillSystem_IsTargetCellValid_AshesOfVelsingrad_Systems_IUnitSystem_System_Int32_System_Int32_System_Int32_AshesOfVelsingrad_Systems_IMapSystem_" data-uid="AshesOfVelsingrad.Systems.ISkillSystem.IsTargetCellValid(AshesOfVelsingrad.Systems.IUnitSystem,System.Int32,System.Int32,System.Int32,AshesOfVelsingrad.Systems.IMapSystem)">
+  IsTargetCellValid(IUnitSystem, int, int, int, IMapSystem)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad.Core/interface/ISkillSystem.cs/#L27"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Optional cell-level targeting predicate (e.g. cardinal-only Charge, line-of-sight,
+cone). Default implementation in <a class="xref" href="AshesOfVelsingrad.Systems.SkillSystem.html">SkillSystem</a> returns <code>true</code>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool IsTargetCellValid(IUnitSystem caster, int x, int y, int z, IMapSystem map)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>caster</code> <a class="xref" href="AshesOfVelsingrad.Systems.IUnitSystem.html">IUnitSystem</a></dt>
+    <dd></dd>
+    <dt><code>x</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+    <dt><code>y</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+    <dt><code>z</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+    <dt><code>map</code> <a class="xref" href="AshesOfVelsingrad.Systems.IMapSystem.html">IMapSystem</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="AshesOfVelsingrad_Systems_ISkillSystem_ReduceCooldown_" data-uid="AshesOfVelsingrad.Systems.ISkillSystem.ReduceCooldown*"></a>
 
   <h3 id="AshesOfVelsingrad_Systems_ISkillSystem_ReduceCooldown" data-uid="AshesOfVelsingrad.Systems.ISkillSystem.ReduceCooldown">

@@ -2,11 +2,11 @@
 <html>
   <head>
     <meta charset="utf-8">
-      <title>Class Skill5 | Ashes of Velsingrad Documentation </title>
+      <title>Class Charge | Ashes of Velsingrad Documentation </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content="Class Skill5 | Ashes of Velsingrad Documentation ">
+      <meta name="title" content="Class Charge | Ashes of Velsingrad Documentation ">
       
-      
+      <meta name="description" content="Charge — linear movement + attack. The target MUST be on the same row or column as the caster (no diagonals). The caster slides along that axis and stops on the tile immediately before the target, then strikes for 120% ATK.">
       <link rel="icon" href="../favicon.ico">
       <link rel="stylesheet" href="../public/docfx.min.css">
       <link rel="stylesheet" href="../public/main.css">
@@ -16,7 +16,7 @@
       <meta name="docfx:rel" content="../">
       
       
-      <meta name="docfx:docurl" content="https://github.com/Gammabra/aov-godot/new/develop/apiSpec/new?filename=AshesOfVelsingrad_Skill5.md&amp;value=---%0Auid%3A%20AshesOfVelsingrad.Skill5%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="docfx:docurl" content="https://github.com/Gammabra/aov-godot/new/develop/apiSpec/new?filename=AshesOfVelsingrad_Data_Skills_Charge.md&amp;value=---%0Auid%3A%20AshesOfVelsingrad.Data.Skills.Charge%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -84,24 +84,27 @@
           <nav id="breadcrumb"></nav>
         </div>
 
-        <article data-uid="AshesOfVelsingrad.Skill5">
+        <article data-uid="AshesOfVelsingrad.Data.Skills.Charge">
 
 
 
-  <h1 id="AshesOfVelsingrad_Skill5" data-uid="AshesOfVelsingrad.Skill5" class="text-break">
-Class Skill5  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/data/unit/characters/Player1Data.cs/#L64"><i class="bi bi-code-slash"></i></a>
+  <h1 id="AshesOfVelsingrad_Data_Skills_Charge" data-uid="AshesOfVelsingrad.Data.Skills.Charge" class="text-break">
+Class Charge  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/data/skills/FighterSkills.cs/#L69"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
-    <dl><dt>Namespace</dt><dd><a class="xref" href="AshesOfVelsingrad.html">AshesOfVelsingrad</a></dd></dl>
+    <dl><dt>Namespace</dt><dd><a class="xref" href="AshesOfVelsingrad.html">AshesOfVelsingrad</a>.<a class="xref" href="AshesOfVelsingrad.Data.html">Data</a>.<a class="xref" href="AshesOfVelsingrad.Data.Skills.html">Skills</a></dd></dl>
   <dl><dt>Assembly</dt><dd>AshesofVelsingrad.dll</dd></dl>
   </div>
 
-  <div class="markdown summary"></div>
+  <div class="markdown summary"><p>Charge — linear movement + attack. The target MUST be on the same row or column
+as the caster (no diagonals). The caster slides along that axis and stops on the
+tile immediately before the target, then strikes for 120% ATK.</p>
+</div>
   <div class="markdown conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public sealed class Skill5 : SkillSystem, ISkillSystem</code></pre>
+    <pre><code class="lang-csharp hljs">public sealed class Charge : SkillSystem, ISkillSystem</code></pre>
   </div>
 
 
@@ -112,7 +115,7 @@ Class Skill5  <a class="header-action link-secondary" title="View source" href="
     <dd>
       <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
       <div><a class="xref" href="AshesOfVelsingrad.Systems.SkillSystem.html">SkillSystem</a></div>
-      <div><span class="xref">Skill5</span></div>
+      <div><span class="xref">Charge</span></div>
     </dd>
   </dl>
 
@@ -192,18 +195,18 @@ Class Skill5  <a class="header-action link-secondary" title="View source" href="
 </h2>
 
 
-  <a id="AshesOfVelsingrad_Skill5__ctor_" data-uid="AshesOfVelsingrad.Skill5.#ctor*"></a>
+  <a id="AshesOfVelsingrad_Data_Skills_Charge__ctor_" data-uid="AshesOfVelsingrad.Data.Skills.Charge.#ctor*"></a>
 
-  <h3 id="AshesOfVelsingrad_Skill5__ctor" data-uid="AshesOfVelsingrad.Skill5.#ctor">
-  Skill5()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/data/unit/characters/Player1Data.cs/#L66"><i class="bi bi-code-slash"></i></a>
+  <h3 id="AshesOfVelsingrad_Data_Skills_Charge__ctor" data-uid="AshesOfVelsingrad.Data.Skills.Charge.#ctor">
+  Charge()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/data/skills/FighterSkills.cs/#L71"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Skill5()</code></pre>
+    <pre><code class="lang-csharp hljs">public Charge()</code></pre>
   </div>
 
 
@@ -222,11 +225,65 @@ Class Skill5  <a class="header-action link-secondary" title="View source" href="
 </h2>
 
 
-  <a id="AshesOfVelsingrad_Skill5_Use_" data-uid="AshesOfVelsingrad.Skill5.Use*"></a>
+  <a id="AshesOfVelsingrad_Data_Skills_Charge_IsTargetCellValid_" data-uid="AshesOfVelsingrad.Data.Skills.Charge.IsTargetCellValid*"></a>
 
-  <h3 id="AshesOfVelsingrad_Skill5_Use_AshesOfVelsingrad_Systems_IUnitSystem_System_Collections_Generic_List_AshesOfVelsingrad_Systems_IUnitSystem__AshesOfVelsingrad_Systems_IMapSystem_" data-uid="AshesOfVelsingrad.Skill5.Use(AshesOfVelsingrad.Systems.IUnitSystem,System.Collections.Generic.List{AshesOfVelsingrad.Systems.IUnitSystem},AshesOfVelsingrad.Systems.IMapSystem)">
+  <h3 id="AshesOfVelsingrad_Data_Skills_Charge_IsTargetCellValid_AshesOfVelsingrad_Systems_IUnitSystem_System_Int32_System_Int32_System_Int32_AshesOfVelsingrad_Systems_IMapSystem_" data-uid="AshesOfVelsingrad.Data.Skills.Charge.IsTargetCellValid(AshesOfVelsingrad.Systems.IUnitSystem,System.Int32,System.Int32,System.Int32,AshesOfVelsingrad.Systems.IMapSystem)">
+  IsTargetCellValid(IUnitSystem, int, int, int, IMapSystem)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/data/skills/FighterSkills.cs/#L85"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Optional cell-level targeting predicate. Default returns <code>true</code> — any cell
+in <a class="xref" href="AshesOfVelsingrad.Systems.SkillSystem.html#AshesOfVelsingrad_Systems_SkillSystem_Range">Range</a> can be targeted. Skills with extra rules (cardinal-only
+charges, line-of-sight, cone area) override this to filter the red target tiles
+before the player ever clicks. Called by <code>GameManager.PlayerSelectedSkill</code>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override bool IsTargetCellValid(IUnitSystem caster, int x, int y, int z, IMapSystem map)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>caster</code> <a class="xref" href="AshesOfVelsingrad.Systems.IUnitSystem.html">IUnitSystem</a></dt>
+    <dd><p>Unit that's about to cast this skill.</p>
+</dd>
+    <dt><code>x</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>Target cell X.</p>
+</dd>
+    <dt><code>y</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>Target cell Y.</p>
+</dd>
+    <dt><code>z</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>Target cell Z.</p>
+</dd>
+    <dt><code>map</code> <a class="xref" href="AshesOfVelsingrad.Systems.IMapSystem.html">IMapSystem</a></dt>
+    <dd><p>Active map.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p><code>true</code> if the cell is a legal target for this skill.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AshesOfVelsingrad_Data_Skills_Charge_Use_" data-uid="AshesOfVelsingrad.Data.Skills.Charge.Use*"></a>
+
+  <h3 id="AshesOfVelsingrad_Data_Skills_Charge_Use_AshesOfVelsingrad_Systems_IUnitSystem_System_Collections_Generic_List_AshesOfVelsingrad_Systems_IUnitSystem__AshesOfVelsingrad_Systems_IMapSystem_" data-uid="AshesOfVelsingrad.Data.Skills.Charge.Use(AshesOfVelsingrad.Systems.IUnitSystem,System.Collections.Generic.List{AshesOfVelsingrad.Systems.IUnitSystem},AshesOfVelsingrad.Systems.IMapSystem)">
   Use(IUnitSystem, List&lt;IUnitSystem&gt;, IMapSystem?)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/data/unit/characters/Player1Data.cs/#L72"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/data/skills/FighterSkills.cs/#L95"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Executes the skill logic when cast.</p>
@@ -254,7 +311,7 @@ Class Skill5  <a class="header-action link-secondary" title="View source" href="
 
 
 
-  <h4 class="section" id="AshesOfVelsingrad_Skill5_Use_AshesOfVelsingrad_Systems_IUnitSystem_System_Collections_Generic_List_AshesOfVelsingrad_Systems_IUnitSystem__AshesOfVelsingrad_Systems_IMapSystem__remarks">Remarks</h4>
+  <h4 class="section" id="AshesOfVelsingrad_Data_Skills_Charge_Use_AshesOfVelsingrad_Systems_IUnitSystem_System_Collections_Generic_List_AshesOfVelsingrad_Systems_IUnitSystem__AshesOfVelsingrad_Systems_IMapSystem__remarks">Remarks</h4>
   <div class="markdown level1 remarks"><p>This method must be implemented in derived classes
 to define the actual effect of the skill (damage, healing, etc.).</p>
 </div>
@@ -266,7 +323,7 @@ to define the actual effect of the skill (damage, healing, etc.).</p>
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/data/unit/characters/Player1Data.cs/#L64" class="edit-link">Edit this page</a>
+          <a href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/data/skills/FighterSkills.cs/#L69" class="edit-link">Edit this page</a>
         </div>
 
 

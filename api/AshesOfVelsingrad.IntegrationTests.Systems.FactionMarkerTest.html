@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Class FactionMarkerTest | Ashes of Velsingrad Documentation </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Class FactionMarkerTest | Ashes of Velsingrad Documentation ">
+      
+      <meta name="description" content="Coverage for  — the small floating arrow above each unit that&#39;s colour-coded by faction. The marker itself has no gameplay logic, but it&#39;s how the player visually identifies whose side a unit is on, so a regression here makes the battlefield unreadable. Tests verify:  assigns a faction-distinct colour. brightens the marker for the active turn.The marker mounts a child  and floats above its parent.">
+      <link rel="icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/Gammabra/aov-godot/new/develop/apiSpec/new?filename=AshesOfVelsingrad_IntegrationTests_Systems_FactionMarkerTest.md&amp;value=---%0Auid%3A%20AshesOfVelsingrad.IntegrationTests.Systems.FactionMarkerTest%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../images/logo-doc.png" alt="Ashes of Velsingrad" style="height: 40px; width: auto;">
+            Ashes of Velsingrad
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="AshesOfVelsingrad.IntegrationTests.Systems.FactionMarkerTest">
+
+
+
+  <h1 id="AshesOfVelsingrad_IntegrationTests_Systems_FactionMarkerTest" data-uid="AshesOfVelsingrad.IntegrationTests.Systems.FactionMarkerTest" class="text-break">
+Class FactionMarkerTest  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/integration_tests/scripts_tests/system/FactionMarkerTest.cs/#L22"><i class="bi bi-code-slash"></i></a>
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="AshesOfVelsingrad.html">AshesOfVelsingrad</a>.<a class="xref" href="AshesOfVelsingrad.IntegrationTests.html">IntegrationTests</a>.<a class="xref" href="AshesOfVelsingrad.IntegrationTests.Systems.html">Systems</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>AshesofVelsingrad.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"><p>Coverage for <a class="xref" href="AshesOfVelsingrad.Systems.Battle.FactionMarker.html">FactionMarker</a> — the small floating arrow above each
+unit that's colour-coded by faction. The marker itself has no gameplay logic, but
+it's how the player visually identifies whose side a unit is on, so a regression
+here makes the battlefield unreadable. Tests verify:</p>
+<ul><li><a class="xref" href="AshesOfVelsingrad.Systems.Battle.FactionMarker.html#AshesOfVelsingrad_Systems_Battle_FactionMarker_Bind_AshesOfVelsingrad_Systems_Faction_">Bind(Faction)</a> assigns a faction-distinct colour.</li><li><a class="xref" href="AshesOfVelsingrad.Systems.Battle.FactionMarker.html#AshesOfVelsingrad_Systems_Battle_FactionMarker_SetActive_System_Boolean_">SetActive(bool)</a> brightens the marker for the active turn.</li><li>The marker mounts a child <span class="xref">Godot.MeshInstance3D</span> and floats above its parent.</li></ul>
+</div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[TestSuite(22, &quot;&quot;)]
+[RequireGodotRuntime]
+public class FactionMarkerTest</code></pre>
+  </div>
+
+
+
+
+  <dl class="typelist inheritance">
+    <dt>Inheritance</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+      <div><span class="xref">FactionMarkerTest</span></div>
+    </dd>
+  </dl>
+
+
+
+  <dl class="typelist inheritedMembers">
+    <dt>Inherited Members</dt>
+    <dd>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode">object.GetHashCode()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone">object.MemberwiseClone()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring">object.ToString()</a>
+    </div>
+  </dd></dl>
+
+
+
+
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
+  <a id="AshesOfVelsingrad_IntegrationTests_Systems_FactionMarkerTest_Bind_AllyFaction_UsesGreenAlbedo_" data-uid="AshesOfVelsingrad.IntegrationTests.Systems.FactionMarkerTest.Bind_AllyFaction_UsesGreenAlbedo*"></a>
+
+  <h3 id="AshesOfVelsingrad_IntegrationTests_Systems_FactionMarkerTest_Bind_AllyFaction_UsesGreenAlbedo" data-uid="AshesOfVelsingrad.IntegrationTests.Systems.FactionMarkerTest.Bind_AllyFaction_UsesGreenAlbedo">
+  Bind_AllyFaction_UsesGreenAlbedo()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/integration_tests/scripts_tests/system/FactionMarkerTest.cs/#L102"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[TestCase(new object?[] { })]
+public void Bind_AllyFaction_UsesGreenAlbedo()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AshesOfVelsingrad_IntegrationTests_Systems_FactionMarkerTest_Bind_EnemyFaction_UsesRedAlbedo_" data-uid="AshesOfVelsingrad.IntegrationTests.Systems.FactionMarkerTest.Bind_EnemyFaction_UsesRedAlbedo*"></a>
+
+  <h3 id="AshesOfVelsingrad_IntegrationTests_Systems_FactionMarkerTest_Bind_EnemyFaction_UsesRedAlbedo" data-uid="AshesOfVelsingrad.IntegrationTests.Systems.FactionMarkerTest.Bind_EnemyFaction_UsesRedAlbedo">
+  Bind_EnemyFaction_UsesRedAlbedo()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/integration_tests/scripts_tests/system/FactionMarkerTest.cs/#L90"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[TestCase(new object?[] { })]
+public void Bind_EnemyFaction_UsesRedAlbedo()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AshesOfVelsingrad_IntegrationTests_Systems_FactionMarkerTest_Bind_PlayerFaction_UsesBlueAlbedo_" data-uid="AshesOfVelsingrad.IntegrationTests.Systems.FactionMarkerTest.Bind_PlayerFaction_UsesBlueAlbedo*"></a>
+
+  <h3 id="AshesOfVelsingrad_IntegrationTests_Systems_FactionMarkerTest_Bind_PlayerFaction_UsesBlueAlbedo" data-uid="AshesOfVelsingrad.IntegrationTests.Systems.FactionMarkerTest.Bind_PlayerFaction_UsesBlueAlbedo">
+  Bind_PlayerFaction_UsesBlueAlbedo()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/integration_tests/scripts_tests/system/FactionMarkerTest.cs/#L79"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[TestCase(new object?[] { })]
+public void Bind_PlayerFaction_UsesBlueAlbedo()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AshesOfVelsingrad_IntegrationTests_Systems_FactionMarkerTest_Build_CreatesArrowMeshChild_" data-uid="AshesOfVelsingrad.IntegrationTests.Systems.FactionMarkerTest.Build_CreatesArrowMeshChild*"></a>
+
+  <h3 id="AshesOfVelsingrad_IntegrationTests_Systems_FactionMarkerTest_Build_CreatesArrowMeshChild" data-uid="AshesOfVelsingrad.IntegrationTests.Systems.FactionMarkerTest.Build_CreatesArrowMeshChild">
+  Build_CreatesArrowMeshChild()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/integration_tests/scripts_tests/system/FactionMarkerTest.cs/#L67"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[TestCase(new object?[] { })]
+public void Build_CreatesArrowMeshChild()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AshesOfVelsingrad_IntegrationTests_Systems_FactionMarkerTest_Cleanup_" data-uid="AshesOfVelsingrad.IntegrationTests.Systems.FactionMarkerTest.Cleanup*"></a>
+
+  <h3 id="AshesOfVelsingrad_IntegrationTests_Systems_FactionMarkerTest_Cleanup" data-uid="AshesOfVelsingrad.IntegrationTests.Systems.FactionMarkerTest.Cleanup">
+  Cleanup()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/integration_tests/scripts_tests/system/FactionMarkerTest.cs/#L47"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[AfterTest(47, &quot;Cleanup&quot;)]
+public void Cleanup()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AshesOfVelsingrad_IntegrationTests_Systems_FactionMarkerTest_HoverHeight_IsAppliedAsLocalY_" data-uid="AshesOfVelsingrad.IntegrationTests.Systems.FactionMarkerTest.HoverHeight_IsAppliedAsLocalY*"></a>
+
+  <h3 id="AshesOfVelsingrad_IntegrationTests_Systems_FactionMarkerTest_HoverHeight_IsAppliedAsLocalY" data-uid="AshesOfVelsingrad.IntegrationTests.Systems.FactionMarkerTest.HoverHeight_IsAppliedAsLocalY">
+  HoverHeight_IsAppliedAsLocalY()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/integration_tests/scripts_tests/system/FactionMarkerTest.cs/#L55"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[TestCase(new object?[] { })]
+public void HoverHeight_IsAppliedAsLocalY()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AshesOfVelsingrad_IntegrationTests_Systems_FactionMarkerTest_SetActive_BrightensTheMarker_" data-uid="AshesOfVelsingrad.IntegrationTests.Systems.FactionMarkerTest.SetActive_BrightensTheMarker*"></a>
+
+  <h3 id="AshesOfVelsingrad_IntegrationTests_Systems_FactionMarkerTest_SetActive_BrightensTheMarker" data-uid="AshesOfVelsingrad.IntegrationTests.Systems.FactionMarkerTest.SetActive_BrightensTheMarker">
+  SetActive_BrightensTheMarker()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/integration_tests/scripts_tests/system/FactionMarkerTest.cs/#L114"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[TestCase(new object?[] { })]
+public void SetActive_BrightensTheMarker()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AshesOfVelsingrad_IntegrationTests_Systems_FactionMarkerTest_SetActive_FalseAfterTrue_ReturnsToRestColor_" data-uid="AshesOfVelsingrad.IntegrationTests.Systems.FactionMarkerTest.SetActive_FalseAfterTrue_ReturnsToRestColor*"></a>
+
+  <h3 id="AshesOfVelsingrad_IntegrationTests_Systems_FactionMarkerTest_SetActive_FalseAfterTrue_ReturnsToRestColor" data-uid="AshesOfVelsingrad.IntegrationTests.Systems.FactionMarkerTest.SetActive_FalseAfterTrue_ReturnsToRestColor">
+  SetActive_FalseAfterTrue_ReturnsToRestColor()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/integration_tests/scripts_tests/system/FactionMarkerTest.cs/#L130"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[TestCase(new object?[] { })]
+public void SetActive_FalseAfterTrue_ReturnsToRestColor()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AshesOfVelsingrad_IntegrationTests_Systems_FactionMarkerTest_Setup_" data-uid="AshesOfVelsingrad.IntegrationTests.Systems.FactionMarkerTest.Setup*"></a>
+
+  <h3 id="AshesOfVelsingrad_IntegrationTests_Systems_FactionMarkerTest_Setup" data-uid="AshesOfVelsingrad.IntegrationTests.Systems.FactionMarkerTest.Setup">
+  Setup()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/integration_tests/scripts_tests/system/FactionMarkerTest.cs/#L38"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[BeforeTest(38, &quot;Setup&quot;)]
+public void Setup()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/integration_tests/scripts_tests/system/FactionMarkerTest.cs/#L22" class="edit-link">Edit this page</a>
+        </div>
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          © 2025 Gammabra Studios. All Rights Reserved.
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

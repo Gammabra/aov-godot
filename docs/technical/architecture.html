@@ -200,6 +200,73 @@ public class InventoryLogic {
         ├── managers/                  # AutoLoads (GameManager, etc.)
         └── ui/                        # HUD and Menu controllers
 </code></pre>
+<h2 id="battle-layer">Battle Layer</h2>
+<p>The battle layer is built on the same Clean-Architecture split — pure rules in <code>AshesofVelsingrad.Core</code>, Godot wrappers in <code>AshesofVelsingrad/scripts</code>.</p>
+<h3 id="faction-model">Faction Model</h3>
+<p>Three factions drive the turn flow and target validation:</p>
+<table>
+<thead>
+<tr>
+<th>Faction</th>
+<th>Source</th>
+<th>Turn Dispatch</th>
+<th>Renders With</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Player</code></td>
+<td>Player input</td>
+<td><code>OnPlayerTurn</code></td>
+<td>Blue marker, full HUD</td>
+</tr>
+<tr>
+<td><code>Ally</code></td>
+<td>AI (friendly guest)</td>
+<td><code>OnAllyTurn</code></td>
+<td>Green marker, HUD hidden</td>
+</tr>
+<tr>
+<td><code>Enemy</code></td>
+<td>AI (hostile)</td>
+<td><code>OnEnemyTurn</code></td>
+<td>Red marker, HUD hidden</td>
+</tr>
+</tbody>
+</table>
+<p>Faction relationships live in <code>Faction.cs</code> as extension methods (<code>IsHostileTo</code>, <code>IsFriendlyTo</code>, <code>IsAiControlled</code>). Every skill targeting check, AI target picker, and HUD visibility toggle reads from these. Player + Ally are mutually friendly; both are hostile to Enemy.</p>
+<h3 id="skill-catalogue--localization">Skill Catalogue + Localization</h3>
+<p>Skills are hand-coded <code>SkillSystem</code> subclasses grouped by archetype (Fighter, Swordsman, Assassin, Archer, Mage Fire/Water/Earth/Light/Dark). Names and descriptions read from <code>SkillStrings.cs</code>, a single static class of <code>public const string</code> fields. Today every constant is English; introducing a second language is a one-file swap to <code>L10n.Tr(&quot;skill.charge.name&quot;)</code> against Godot's <code>TranslationServer</code> or a custom dictionary.</p>
+<p>Skills can opt into per-cell targeting rules by overriding <code>IsTargetCellValid(caster, x, y, z, map)</code>. <code>Charge</code> uses this to enforce cardinal alignment; the GameManager target-tile filter calls the predicate so only valid red tiles light up.</p>
+<h3 id="hud-composition">HUD Composition</h3>
+<p>The HUD is fully programmatic — no <code>.tscn</code> resource needed. <code>BattleHud : CanvasLayer</code> exposes seven child widgets and a <code>Build()</code> method that creates them and forwards to each child's <code>EnsureBuilt()</code>. Every widget owns a <code>_built</code> flag so <code>Build()</code> is idempotent and safe to call before <code>_Ready</code> fires.</p>
+<pre><code class="lang-text">BattleHud (CanvasLayer, layer=100)
+├── ActionMenu        (Move / Attack / Skill / Pass / Cancel)
+├── SkillSelector     (5-slot bar, hidden on AI turns)
+├── PlayerStatusPanel (HP / MP, auto-refreshes each frame)
+├── EnemyRoster       (per-enemy health bars)
+├── TurnOrderQueue    (upcoming-turn chips with portraits)
+├── ContextInfoPanel  (movement budget vs queued-skill details)
+└── BattleLog         (subscribed to BattleNotifications.Posted)
+</code></pre>
+<p>End-screens live above the HUD: <code>VictoryScreen</code> (layer 110) and <code>GameOverScreen</code> (layer 120). Both follow the same <code>EnsureBuilt()</code> pattern and are spawned by <code>GameManager.CheckWinLoseCondition</code>.</p>
+<h3 id="indicators--pathfinder">Indicators + Pathfinder</h3>
+<p>Three <code>MeshInstance3D</code>-backed overlays floating just above the GridMap:</p>
+<ul>
+<li><code>MoveIndicator</code> — green tiles for valid moves</li>
+<li><code>TargetIndicator</code> — red tiles for valid skill targets</li>
+<li><code>HoverIndicator</code> — yellow tile under the cursor</li>
+</ul>
+<p>All three are managed by <code>IndicatorOverlay</code>, parented to the map. Player movement uses <code>Pathfinder.FindPath</code> (BFS) to build an A*-style step list, then a <code>Tween</code> follows the path with <code>body.GlobalPosition</code> interpolation.</p>
+<p>A small <code>FactionMarker</code> Node3D bobs over each unit, colour-coded by faction; the marker pulses brighter on the active turn so the player can identify whose turn it is from any camera angle.</p>
+<h3 id="critical-adapter-patterns">Critical Adapter Patterns</h3>
+<p>A few patterns earned dedicated lifecycle handling:</p>
+<ul>
+<li><strong>Deferred <code>AddChild</code> for CanvasLayers.</strong> Adding a CanvasLayer programmatically <em>during</em> another node's <code>_Ready</code> can leave it in a state where Godot never dispatches its own <code>_Ready</code>, and 2D rendering quietly fails. <code>GameManager.EnsureHud</code> queues the add via <code>host.CallDeferred(&quot;add_child&quot;, _battleHud)</code> so the node enters the tree at the start of the next idle frame.</li>
+<li><strong>Idempotent <code>EnsureBuilt</code>.</strong> Each HUD widget exposes a public <code>EnsureBuilt()</code> that runs <code>BuildLayout</code> exactly once (guarded by <code>_built</code>). <code>BattleHud.Build()</code> calls it on every child synchronously, so HUD construction is decoupled from <code>_Ready</code> timing — every widget is fully built and bindable the moment <code>EnsureHud</code> returns.</li>
+<li><strong>Main-thread turn loop.</strong> <code>TurnManager.StartBattle</code> uses <code>await ProcessTurn()</code> directly (not <code>Task.Run</code>). Running the loop on a worker thread silently corrupts Godot's renderer state because the event handlers it fires touch scene/render APIs from off-thread.</li>
+<li><strong>Singleton cleanup on <code>_ExitTree</code>.</strong> <code>GameManager</code> and <code>TurnManager</code> use a <code>private new static Instance</code> that hides <code>BaseManager.Instance</code>. Without an explicit <code>_ExitTree</code> override that nulls out the derived static, <code>ReloadCurrentScene</code> (used by Try Again) leaves the new instance to QueueFree itself as a &quot;duplicate&quot;.</li>
+</ul>
 <h2 id="component-patterns">Component Patterns</h2>
 <h3 id="the-wrapper-pattern-godot-to-core">The Wrapper Pattern (Godot to Core)</h3>
 <p>The Godot Node acts as a visual wrapper for the Core logic.</p>

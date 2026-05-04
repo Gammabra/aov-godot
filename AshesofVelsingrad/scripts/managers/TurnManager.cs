@@ -212,24 +212,48 @@ public partial class TurnManager : BaseManager
             if (_currentTurnState == AovDataStructures.TurnState.Finished)
                 break;
 
-            _currentIndex++;
-            for (; _currentIndex < _unitsTurnOrder.Count; _currentIndex++)
+            // Wrap-around advancement that ALWAYS lands on a live unit (or breaks the loop
+            // if everyone is dead). The previous version skipped dead units after the
+            // increment but didn't re-skip after wrapping back to index 0, so a dead unit
+            // sitting at the start of the order would still get its turn run.
+            if (!AdvanceToNextLiveUnit())
             {
-                if (_unitsTurnOrder[_currentIndex].Key.IsAlive)
-                    break;
+                GD.Print("TurnManager: no live units remaining — ending battle loop.");
+                break;
             }
 
-            if (_currentIndex >= _unitsTurnOrder.Count)
-            {
-                _currentIndex = 0;
-                _turn++;
-                OnCurrentTurnEnd?.Invoke();
-            }
-
-            GD.Print($"Current index after trying reset to 0 loop : {_currentIndex}");
+            GD.Print($"Current index after advancing to next live unit : {_currentIndex}");
 
             _currentTurnState = _unitsTurnOrder[_currentIndex].Value;
         }
+    }
+
+    /// <summary>
+    ///     Move <see cref="_currentIndex" /> to the next live unit in turn order, wrapping
+    ///     around the end and firing <see cref="OnCurrentTurnEnd" /> on wrap. Returns
+    ///     <c>false</c> when no live units remain so the caller can exit the loop.
+    /// </summary>
+    /// <returns><c>true</c> if a live unit was found, <c>false</c> if everyone is dead.</returns>
+    private bool AdvanceToNextLiveUnit()
+    {
+        int n = _unitsTurnOrder.Count;
+        if (n == 0) return false;
+
+        for (int step = 0; step < n; step++)
+        {
+            int next = _currentIndex + 1;
+            if (next >= n)
+            {
+                next = 0;
+                _turn++;
+                OnCurrentTurnEnd?.Invoke();
+            }
+            _currentIndex = next;
+            if (_unitsTurnOrder[_currentIndex].Key.IsAlive)
+                return true;
+        }
+
+        return false; // walked the full ring, nobody alive
     }
 
     /// <summary>

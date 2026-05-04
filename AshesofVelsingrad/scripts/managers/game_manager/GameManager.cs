@@ -333,18 +333,61 @@ public partial class GameManager : BaseManager
 
         GD.Print($"Selected Skill {skillId + 1}");
         _clickOnMapContext = AovDataStructures.ClickOnMapContext.SelectUnitTarget;
-        _selectedSkill = _turnManagerContainer.GetCurrentUnit().ActiveSkills[skillId];
-        var reachableTuples = _turnManagerContainer
-            .GetCurrentUnit()
-            .GetReachableCellsForSkills(_mapSystemContainer, _selectedSkill);
-        _currentUnitReachableCellsForCurrentSelectedSkill =
-            reachableTuples.ConvertAll(t => new Vector3I(t.Item1, t.Item2, t.Item3));
+        IUnitSystem caster = _turnManagerContainer.GetCurrentUnit();
+        _selectedSkill = caster.ActiveSkills[skillId];
+        var reachableTuples = caster.GetReachableCellsForSkills(_mapSystemContainer, _selectedSkill);
+
+        // Only show red tiles where the skill can legally land — i.e. cells whose occupant
+        // matches the skill's TargetType vs caster faction. Damage skills won't show on
+        // self/allies; buff/heal skills won't show on enemies. Empty cells are kept for
+        // AOE skills that can target empty ground.
+        _currentUnitReachableCellsForCurrentSelectedSkill = new List<Vector3I>();
+        foreach ((int x, int y, int z) in reachableTuples)
+        {
+            if (CellMatchesSkillTarget(caster, _selectedSkill, x, y, z))
+                _currentUnitReachableCellsForCurrentSelectedSkill.Add(new Vector3I(x, y, z));
+        }
+
         GD.Print(
             "Current Unit Reachable cells: " + string.Join(", ", _currentUnitReachableCellsForCurrentSelectedSkill)
         );
         ShowTargetIndicators(_currentUnitReachableCellsForCurrentSelectedSkill);
         _battleHud?.ContextInfo?.ShowSkill(_selectedSkill);
         _battleHud?.ActionMenu?.ShowCancel(true);
+    }
+
+    /// <summary>
+    ///     Returns true when the cell at (<paramref name="x" />, <paramref name="y" />,
+    ///     <paramref name="z" />) is a legal landing spot for <paramref name="skill" /> from
+    ///     <paramref name="caster" />'s point of view.
+    /// </summary>
+    /// <remarks>
+    ///     Damage / control / debuff skills only highlight cells with hostile occupants;
+    ///     heal / buff / revive skills only highlight friendly occupants (including the
+    ///     caster for self-castable skills with <c>TargetTypes.SingleAlly</c> at range 0).
+    ///     Empty cells are allowed for both groups because some skills (terrain, AoE)
+    ///     legitimately target ground.
+    /// </remarks>
+    private bool CellMatchesSkillTarget(IUnitSystem caster, ISkillSystem skill, int x, int y, int z)
+    {
+        if (_mapSystemContainer is null) return false;
+
+        // Per-skill cell-level rule (cardinal-only Charge, line-of-sight, cone, …).
+        if (!skill.IsTargetCellValid(caster, x, y, z, _mapSystemContainer)) return false;
+
+        IUnitSystem? occupant;
+        try { occupant = _mapSystemContainer.GetUnitAt(x, y, z); }
+        catch (ArgumentOutOfRangeException) { return false; }
+        if (occupant is null) return true; // empty ground is fine for AOE / terrain skills
+
+        return skill.TargetType switch
+        {
+            AovDataStructures.TargetTypes.SingleEnemy or AovDataStructures.TargetTypes.AllEnemies
+                => caster.Faction.IsHostileTo(occupant.Faction),
+            AovDataStructures.TargetTypes.SingleAlly or AovDataStructures.TargetTypes.AllAllies
+                => caster.Faction.IsFriendlyTo(occupant.Faction),
+            _ => true,
+        };
     }
 
     /// <summary>

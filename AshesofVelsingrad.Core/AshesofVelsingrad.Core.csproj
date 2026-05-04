@@ -8,7 +8,12 @@
     <!-- Match root namespace convention -->
     <RootNamespace>AshesofVelsingrad.Core</RootNamespace>
   </PropertyGroup>
-  <ItemGroup>
-    <PackageReference Include="GodotSharp" Version="4.6.0" />
-  </ItemGroup>
+  <!--
+    Core is intentionally Godot-free — see documentation/docs/technical/architecture.md.
+    No PackageReference to GodotSharp: dragging the native runtime into the unit-test
+    process is what was crashing the test host with a 0xC0000005 access violation
+    (godotsharp_string_new_with_utf16_chars during a Resource static constructor).
+    If you need a Godot-typed field on a Core class, redesign — store a string path,
+    an interface, or move the wrapper into the Adapter assembly.
+  -->
 </Project>

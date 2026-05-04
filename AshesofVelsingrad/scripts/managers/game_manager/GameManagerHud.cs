@@ -168,6 +168,31 @@ public partial class GameManager
         // visible Move/Attack/Skill/Pass row would imply they can.
         bool isPlayerTurn = active is not null && active.Faction == Faction.Player;
         if (_battleHud.ActionMenu is { } menu) menu.Visible = isPlayerTurn;
+
+        // Pulse the FactionMarker arrow on the active unit, dim the others.
+        UpdateActiveMarkers(active);
+    }
+
+    /// <summary>
+    ///     Walk every loaded unit's <see cref="FactionMarker" /> and only the active unit's
+    ///     marker pulses. Called from every turn-event handler via
+    ///     <see cref="RefreshHudForActiveUnit" />.
+    /// </summary>
+    private void UpdateActiveMarkers(IUnitSystem? active)
+    {
+        UpdateMarkersIn(_playerUnits, active);
+        UpdateMarkersIn(_allyUnits, active);
+        UpdateMarkersIn(_enemyUnits, active);
+
+        static void UpdateMarkersIn(System.Collections.Generic.List<IUnitSystem> units, IUnitSystem? active)
+        {
+            foreach (IUnitSystem u in units)
+            {
+                if (u is not Node node) continue;
+                if (node.GetNodeOrNull<FactionMarker>("FactionMarker") is { } marker)
+                    marker.SetActive(ReferenceEquals(u, active));
+            }
+        }
     }
 
     private static BattleHud? FindHudIn(Node root)

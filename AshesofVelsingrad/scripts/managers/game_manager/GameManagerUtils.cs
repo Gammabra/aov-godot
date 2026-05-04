@@ -41,6 +41,7 @@ public partial class GameManager
                 unit.InjectDependencies(_statusEffectSystem);
                 unit.SetFaction(Faction.Player);
                 _playerUnits.Add(unit);
+                AttachFactionMarker(unit);
             }
 
         foreach (Node child in _enemyUnitsContainer.GetChildren())
@@ -49,6 +50,7 @@ public partial class GameManager
                 unit.InjectDependencies(_statusEffectSystem);
                 unit.SetFaction(Faction.Enemy);
                 _enemyUnits.Add(unit);
+                AttachFactionMarker(unit);
             }
 
         if (_alliedUnitsContainer is not null)
@@ -58,7 +60,18 @@ public partial class GameManager
                     unit.InjectDependencies(_statusEffectSystem);
                     unit.SetFaction(Faction.Ally);
                     _allyUnits.Add(unit);
+                    AttachFactionMarker(unit);
                 }
+    }
+
+    /// <summary>Spawn a <see cref="FactionMarker" /> child on a unit and bind its colour.</summary>
+    private static void AttachFactionMarker(UnitSystem unit)
+    {
+        // Skip if already present (defensive — LoadUnits should only run once per battle).
+        if (unit.HasNode("FactionMarker")) return;
+        FactionMarker marker = new() { Name = "FactionMarker" };
+        unit.AddChild(marker);
+        marker.Bind(unit.Faction);
     }
 
     /// <summary>

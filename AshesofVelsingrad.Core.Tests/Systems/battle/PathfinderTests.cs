@@ -40,7 +40,7 @@ public class PathfinderTests
         {
             (1, 0, 0), (2, 0, 0), (3, 0, 0),
         }));
-        Assert.That(path[^1], Is.EqualTo((3, 0, 0)));
+        Assert.That(path![^1], Is.EqualTo((3, 0, 0)));
     }
 
     [Test]

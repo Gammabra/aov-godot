@@ -5,10 +5,12 @@ namespace AshesOfVelsingrad.Core.Tests.Systems;
 
 /// <summary>
 ///     Coverage for <see cref="EntityProfile" /> — the designer-authored display metadata
-///     resource attached to combatants. The class is a simple property bag so the tests
-///     just verify the defaults and that the setters round-trip, but the assertions hit
-///     every line the coverage tool flagged as missing (<c>DisplayName</c>, <c>Portrait</c>,
-///     <c>Level</c>, <c>ClassName</c>, <c>Bio</c>).
+///     resource attached to combatants. <see cref="EntityProfile" /> is a Godot
+///     <c>Resource</c>, so each instance is wrapped in <c>using</c> to ensure the underlying
+///     native handle is released before the NUnit host shuts down. Without that, the
+///     <c>GodotObject</c> finalizer tries to free the handle outside a Godot runtime and
+///     crashes the test host (the tests themselves all pass — see "Test host process
+///     crashed" with exit code 1 on the previous CI run).
 /// </summary>
 [TestFixture]
 public class EntityProfileTests
@@ -16,7 +18,7 @@ public class EntityProfileTests
     [Test]
     public void Defaults_AreEmptyStringsAndLevelOne()
     {
-        var profile = new EntityProfile();
+        using var profile = new EntityProfile();
         Assert.That(profile.DisplayName, Is.EqualTo(string.Empty));
         Assert.That(profile.ClassName, Is.EqualTo(string.Empty));
         Assert.That(profile.Bio, Is.EqualTo(string.Empty));
@@ -27,7 +29,7 @@ public class EntityProfileTests
     [Test]
     public void Setters_AssignValuesAndAreReadable()
     {
-        var profile = new EntityProfile
+        using var profile = new EntityProfile
         {
             DisplayName = "Pikachu",
             ClassName = "Combattant",
@@ -44,7 +46,7 @@ public class EntityProfileTests
     [Test]
     public void Portrait_IsNullableAndAssignable()
     {
-        var profile = new EntityProfile();
+        using var profile = new EntityProfile();
         Assert.That(profile.Portrait, Is.Null);
         // We can't easily construct a Texture2D in a non-Godot-runtime unit test, so the
         // null round-trip is the meaningful coverage we get here. The setter being

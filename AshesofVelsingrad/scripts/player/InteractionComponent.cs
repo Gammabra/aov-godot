@@ -25,11 +25,12 @@ public partial class InteractionComponent : Area3D
 
     private void OnBodyExited(Node3D body)
     {
-        if (body is not IInteractable)
+        if (body is not IInteractable interactable)
             return;
         if (!_interactableObjects.Contains(body))
             return;
         _interactableObjects.Remove(body);
+        interactable?.HidePrompt();
         if (ClosestInteractable == body || _interactableObjects.Count == 0)
             ClosestInteractable = null;
     }

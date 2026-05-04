@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://div38tjld4s2f"
-path.s3tc="res://.godot/imported/poussacha.png-0197e8aedbef09a83984f0bdf9298f86.s3tc.ctex"
+uid="uid://bom7ddsgpq56t"
+path.s3tc="res://.godot/imported/Pikachu.png-c0d525b64257bc0d36ab4ea34082d98f.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/portraits/poussacha.png"
-dest_files=["res://.godot/imported/poussacha.png-0197e8aedbef09a83984f0bdf9298f86.s3tc.ctex"]
+source_file="res://assets/portraits/Pikachu.png"
+dest_files=["res://.godot/imported/Pikachu.png-c0d525b64257bc0d36ab4ea34082d98f.s3tc.ctex"]
 
 [params]
 

@@ -4,6 +4,7 @@ using AshesOfVelsingrad.AI;
 using AshesOfVelsingrad.Data;
 using AshesOfVelsingrad.Systems;
 using AshesOfVelsingrad.Utilities;
+using Godot;
 
 namespace AshesOfVelsingrad;
 
@@ -93,5 +94,13 @@ public sealed partial class EnemyFighter : UnitSystem
 
         var statusEffectSystem = new StatusEffectSystem();
         InjectDependencies(statusEffectSystem);
+
+        SetEntityProfile(new EntityProfile
+        {
+            DisplayName = "Mascaiman",
+            ClassName = "Combattant",
+            Level = 1,
+            Portrait = ResourceLoader.Load<Texture2D>("res://assets/portraits/mascaiman.png"),
+        });
     }
 }

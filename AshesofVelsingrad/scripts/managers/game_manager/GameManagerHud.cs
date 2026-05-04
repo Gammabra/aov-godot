@@ -163,6 +163,11 @@ public partial class GameManager
         _battleHud.SkillSelector?.Bind(active);
         if (_turnManagerContainer is not null)
             _battleHud.TurnQueue?.UpdateOrder(_turnManagerContainer.GetUpcomingUnits());
+
+        // Hide the action bar on non-player turns — the player can't act anyway, and a
+        // visible Move/Attack/Skill/Pass row would imply they can.
+        bool isPlayerTurn = active is not null && active.Faction == Faction.Player;
+        if (_battleHud.ActionMenu is { } menu) menu.Visible = isPlayerTurn;
     }
 
     private static BattleHud? FindHudIn(Node root)

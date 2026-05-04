@@ -12,9 +12,9 @@ namespace AshesOfVelsingrad.Data.Skills;
 #region Actives
 
 /// <summary>Coup Critique — Critical Strike. Double damage. CD 3 (doc-fixed).</summary>
-public sealed class CoupCritique : SkillSystem
+public sealed class CriticalStrike : SkillSystem
 {
-    public CoupCritique()
+    public CriticalStrike()
     {
         Name = SkillStrings.CriticalStrikeName;
         Description = "Deal 200% ATK to one enemy.";
@@ -31,11 +31,11 @@ public sealed class CoupCritique : SkillSystem
     }
 }
 
-/// <summary>Disparition — Vanish. Become invisible until end of next turn.</summary>
+/// <summary>Vanish — Vanish. Become invisible until end of next turn.</summary>
 /// <remarks>Modeled as a +DEF buff; replace with a stealth flag once one exists.</remarks>
-public sealed class Disparition : SkillSystem
+public sealed class Vanish : SkillSystem
 {
-    public Disparition()
+    public Vanish()
     {
         Name = SkillStrings.VanishName;
         Description = "Vanish — +120 DEF for 2 turns (placeholder for stealth).";
@@ -52,9 +52,9 @@ public sealed class Disparition : SkillSystem
 }
 
 /// <summary>Coup d'Ombre — Shadow Strike. Attacks without breaking invisibility.</summary>
-public sealed class CoupDOmbre : SkillSystem
+public sealed class ShadowStrike : SkillSystem
 {
-    public CoupDOmbre()
+    public ShadowStrike()
     {
         Name = SkillStrings.ShadowStrikeName;
         Description = "Strike from the shadows for 130% ATK without breaking stealth.";
@@ -95,9 +95,9 @@ public sealed class Execution : SkillSystem
 }
 
 /// <summary>Frappe Sanguine — Blood Strike. Damages and heals the caster for 20% of damage dealt.</summary>
-public sealed class FrappeSanguine : SkillSystem
+public sealed class BloodStrike : SkillSystem
 {
-    public FrappeSanguine()
+    public BloodStrike()
     {
         Name = SkillStrings.BloodStrikeName;
         Description = "Strike for 100% ATK and heal yourself for 20% of damage dealt.";
@@ -120,9 +120,9 @@ public sealed class FrappeSanguine : SkillSystem
 
 #region Passives
 
-public sealed class FrappeSournoise : SkillSystem
+public sealed class SneakStrike : SkillSystem
 {
-    public FrappeSournoise()
+    public SneakStrike()
     {
         Name = "Sneak Strike";
         Description = "Passive — +30% damage if the target hasn't yet attacked you.";
@@ -135,9 +135,9 @@ public sealed class FrappeSournoise : SkillSystem
     public override void Use(IUnitSystem caster, List<IUnitSystem> targets, IMapSystem? map) { /* passive */ }
 }
 
-public sealed class OmbreFurtive : SkillSystem
+public sealed class StealthyShadow : SkillSystem
 {
-    public OmbreFurtive()
+    public StealthyShadow()
     {
         Name = "Stealthy Shadow";
         Description = "Passive — pass through enemy units without being blocked.";
@@ -150,9 +150,9 @@ public sealed class OmbreFurtive : SkillSystem
     public override void Use(IUnitSystem caster, List<IUnitSystem> targets, IMapSystem? map) { /* passive */ }
 }
 
-public sealed class ToxinesMortelles : SkillSystem
+public sealed class DeadlyToxins : SkillSystem
 {
-    public ToxinesMortelles()
+    public DeadlyToxins()
     {
         Name = "Deadly Toxins";
         Description = "Passive — 20% chance to poison on every successful hit.";

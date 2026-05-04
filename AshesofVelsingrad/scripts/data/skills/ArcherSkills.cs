@@ -11,9 +11,9 @@ namespace AshesOfVelsingrad.Data.Skills;
 #region Actives
 
 /// <summary>Flèche Perforante — Piercing Arrow. Pierces up to 2 aligned enemies.</summary>
-public sealed class FlechePerforante : SkillSystem
+public sealed class PiercingShot : SkillSystem
 {
-    public FlechePerforante()
+    public PiercingShot()
     {
         Name = SkillStrings.PiercingShotName;
         Description = "Pierce up to 2 aligned enemies for 110% ATK.";
@@ -36,9 +36,9 @@ public sealed class FlechePerforante : SkillSystem
 }
 
 /// <summary>Pluie de Flèches — Arrow Rain. AoE damage in a 3×3 zone.</summary>
-public sealed class PluieDeFleches : SkillSystem
+public sealed class MultiShot : SkillSystem
 {
-    public PluieDeFleches()
+    public MultiShot()
     {
         Name = SkillStrings.MultiShotName;
         Description = "Rain arrows in a 3×3 zone for 80% ATK each.";
@@ -56,9 +56,9 @@ public sealed class PluieDeFleches : SkillSystem
 }
 
 /// <summary>Flèche Empoisonnée — Poison Arrow. Burning DOT 3 turns (poison stand-in).</summary>
-public sealed class FlecheEmpoisonnee : SkillSystem
+public sealed class PoisonArrow : SkillSystem
 {
-    public FlecheEmpoisonnee()
+    public PoisonArrow()
     {
         Name = SkillStrings.PoisonArrowName;
         Description = "Strike for 80% ATK + apply burning (poison stand-in) for 3 turns.";
@@ -77,9 +77,9 @@ public sealed class FlecheEmpoisonnee : SkillSystem
 }
 
 /// <summary>Œil de Faucon — Hawk's Eye. +2 range for 1 turn (modelled as ATK buff stand-in).</summary>
-public sealed class OeilDeFaucon : SkillSystem
+public sealed class HawkEye : SkillSystem
 {
-    public OeilDeFaucon()
+    public HawkEye()
     {
         Name = SkillStrings.HawkEyeName;
         Description = "Sharpen aim: +20 ATK for 2 turns (range-buff placeholder).";
@@ -96,9 +96,9 @@ public sealed class OeilDeFaucon : SkillSystem
 }
 
 /// <summary>Flèche de Givre — Frost Arrow. Stuns the target for 1 turn.</summary>
-public sealed class FlecheDeGivre : SkillSystem
+public sealed class FrostArrow : SkillSystem
 {
-    public FlecheDeGivre()
+    public FrostArrow()
     {
         Name = "Frost Arrow";
         Description = "Strike for 60% ATK and freeze the target for 1 turn.";
@@ -120,9 +120,9 @@ public sealed class FlecheDeGivre : SkillSystem
 
 #region Passives
 
-public sealed class TirPrecis : SkillSystem
+public sealed class PreciseShot : SkillSystem
 {
-    public TirPrecis()
+    public PreciseShot()
     {
         Name = "Precise Shot";
         Description = "Passive — +15% accuracy when the unit didn't move this turn.";
@@ -135,9 +135,9 @@ public sealed class TirPrecis : SkillSystem
     public override void Use(IUnitSystem caster, List<IUnitSystem> targets, IMapSystem? map) { /* passive */ }
 }
 
-public sealed class ViseeFatale : SkillSystem
+public sealed class LethalAim : SkillSystem
 {
-    public ViseeFatale()
+    public LethalAim()
     {
         Name = "Lethal Aim";
         Description = "Passive — +10% damage to wounded enemies (HP < 50%).";
@@ -150,9 +150,9 @@ public sealed class ViseeFatale : SkillSystem
     public override void Use(IUnitSystem caster, List<IUnitSystem> targets, IMapSystem? map) { /* passive */ }
 }
 
-public sealed class TirEnMouvement : SkillSystem
+public sealed class MobileShot : SkillSystem
 {
-    public TirEnMouvement()
+    public MobileShot()
     {
         Name = "Mobile Shot";
         Description = "Passive — no penalty when attacking after moving.";

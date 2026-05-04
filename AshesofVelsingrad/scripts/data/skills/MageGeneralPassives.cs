@@ -8,9 +8,9 @@ namespace AshesOfVelsingrad.Data.Skills;
 // Mage general passives — shared by every magic school per the feature doc.
 // =============================================================================
 
-public sealed class ConcentrationMagique : SkillSystem
+public sealed class ArcaneFocus : SkillSystem
 {
-    public ConcentrationMagique()
+    public ArcaneFocus()
     {
         Name = SkillStrings.ArcaneFocusName;
         Description = "Passive — +10% magic damage when the unit didn't move this turn.";
@@ -23,9 +23,9 @@ public sealed class ConcentrationMagique : SkillSystem
     public override void Use(IUnitSystem caster, List<IUnitSystem> targets, IMapSystem? map) { /* passive */ }
 }
 
-public sealed class MaitriseElementaire : SkillSystem
+public sealed class ElementalAttunement : SkillSystem
 {
-    public MaitriseElementaire()
+    public ElementalAttunement()
     {
         Name = SkillStrings.ElementalAttunementName;
         Description = "Passive — elemental skills apply a stronger status alteration.";
@@ -38,9 +38,9 @@ public sealed class MaitriseElementaire : SkillSystem
     public override void Use(IUnitSystem caster, List<IUnitSystem> targets, IMapSystem? map) { /* passive */ }
 }
 
-public sealed class AbsorptionDeMana : SkillSystem
+public sealed class ManaWell : SkillSystem
 {
-    public AbsorptionDeMana()
+    public ManaWell()
     {
         Name = SkillStrings.ManaWellName;
         Description = "Passive — recover 5% MP whenever you apply a status alteration.";

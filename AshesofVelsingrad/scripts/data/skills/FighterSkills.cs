@@ -14,9 +14,9 @@ namespace AshesOfVelsingrad.Data.Skills;
 #region Actives
 
 /// <summary>Frappe Écrasante — Crushing Strike. +50% damage; can stun the target.</summary>
-public sealed class FrappeEcrasante : SkillSystem
+public sealed class CrushingStrike : SkillSystem
 {
-    public FrappeEcrasante()
+    public CrushingStrike()
     {
         Name = SkillStrings.CrushingStrikeName;
         Description = SkillStrings.CrushingStrikeDesc;
@@ -39,9 +39,9 @@ public sealed class FrappeEcrasante : SkillSystem
 }
 
 /// <summary>Cri de Guerre — War Cry. +15% Atk/Def to nearby allies for 3 turns.</summary>
-public sealed class CriDeGuerre : SkillSystem
+public sealed class WarCry : SkillSystem
 {
-    public CriDeGuerre()
+    public WarCry()
     {
         Name = SkillStrings.WarCryName;
         Description = SkillStrings.WarCryDesc;
@@ -181,11 +181,11 @@ public sealed class Charge : SkillSystem
     }
 }
 
-/// <summary>Blocage — Block. Apply a 50% damage-reduction shield to self for 1 turn.</summary>
+/// <summary>Block — Block. Apply a 50% damage-reduction shield to self for 1 turn.</summary>
 /// <remarks>Currently modelled as a flat +DEF buff for 1 turn until a damage-reduction effect lands.</remarks>
-public sealed class Blocage : SkillSystem
+public sealed class Block : SkillSystem
 {
-    public Blocage()
+    public Block()
     {
         Name = SkillStrings.BlockName;
         Description = SkillStrings.BlockDesc;
@@ -206,9 +206,9 @@ public sealed class Blocage : SkillSystem
 }
 
 /// <summary>Frappe Circulaire — Circular Strike. Hits every adjacent enemy.</summary>
-public sealed class FrappeCirculaire : SkillSystem
+public sealed class CircularStrike : SkillSystem
 {
-    public FrappeCirculaire()
+    public CircularStrike()
     {
         Name = SkillStrings.CircularStrikeName;
         Description = SkillStrings.CircularStrikeDesc;
@@ -233,9 +233,9 @@ public sealed class FrappeCirculaire : SkillSystem
 #region Passives
 
 /// <summary>Force Brute — +10% melee damage. Apply at battle start; not invoked.</summary>
-public sealed class ForceBrute : SkillSystem
+public sealed class BruteForce : SkillSystem
 {
-    public ForceBrute()
+    public BruteForce()
     {
         Name = SkillStrings.BruteForceName;
         Description = SkillStrings.BruteForceDesc;
@@ -249,9 +249,9 @@ public sealed class ForceBrute : SkillSystem
 }
 
 /// <summary>Témérité — +5% damage per 25% missing HP. Wired in damage formula, not as a Use().</summary>
-public sealed class Temerite : SkillSystem
+public sealed class Recklessness : SkillSystem
 {
-    public Temerite()
+    public Recklessness()
     {
         Name = SkillStrings.RecklessnessName;
         Description = SkillStrings.RecklessnessDesc;
@@ -265,9 +265,9 @@ public sealed class Temerite : SkillSystem
 }
 
 /// <summary>Endurance Guerrière — -15% damage taken after a successful melee strike.</summary>
-public sealed class EnduranceGuerriere : SkillSystem
+public sealed class WarriorEndurance : SkillSystem
 {
-    public EnduranceGuerriere()
+    public WarriorEndurance()
     {
         Name = SkillStrings.WarriorEnduranceName;
         Description = SkillStrings.WarriorEnduranceDesc;

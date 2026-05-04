@@ -32,15 +32,15 @@ public sealed partial class Player2Data : UnitSystem
         PossibleMovesRange = 3;
         Curse = 0;
 
-        ActiveSkills.Add(new FrappeEclair());
-        ActiveSkills.Add(new DanseDesLames());
-        ActiveSkills.Add(new CoupDeBravoure());
-        ActiveSkills.Add(new FrappeFantome());
-        ActiveSkills.Add(new LameDExecution());
+        ActiveSkills.Add(new LightningStrike());
+        ActiveSkills.Add(new BladeDance());
+        ActiveSkills.Add(new GallantStrike());
+        ActiveSkills.Add(new PhantomStrike());
+        ActiveSkills.Add(new ExecutionerBlade());
 
         PassiveSkills.Add(new Riposte());
-        PassiveSkills.Add(new DanseDuLame());
-        PassiveSkills.Add(new LameSpectrale());
+        PassiveSkills.Add(new WayOfTheBlade());
+        PassiveSkills.Add(new SpectralBlade());
 
         base.Initialize();
 

@@ -34,11 +34,11 @@ public sealed partial class Ally1Data : UnitSystem
         Curse = 0;
         Personality = AIPersonality.Defensive;
 
-        ActiveSkills.Add(new RayonSacre());
-        ActiveSkills.Add(new EclatPurificateur());
-        ActiveSkills.Add(new JugementDivin());
+        ActiveSkills.Add(new SacredRay());
+        ActiveSkills.Add(new PurifyingFlash());
+        ActiveSkills.Add(new DivineJudgment());
         ActiveSkills.Add(new Resurrection());
-        ActiveSkills.Add(new PriereDivine());
+        ActiveSkills.Add(new DivinePrayer());
 
         base.Initialize();
 

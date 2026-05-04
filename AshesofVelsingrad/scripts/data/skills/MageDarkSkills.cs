@@ -11,9 +11,9 @@ namespace AshesOfVelsingrad.Data.Skills;
 // =============================================================================
 
 /// <summary>Orbe Maudit — Cursed Orb. Weakens the target.</summary>
-public sealed class OrbeMaudit : SkillSystem
+public sealed class CursedOrb : SkillSystem
 {
-    public OrbeMaudit()
+    public CursedOrb()
     {
         Name = SkillStrings.CursedOrbName;
         Description = "Hurl a cursed orb for 80% INT and reduce target ATK by 20 for 3 turns.";
@@ -33,9 +33,9 @@ public sealed class OrbeMaudit : SkillSystem
 }
 
 /// <summary>Lame d'Ombre — Shadow Blade. Ignores defense, drains life.</summary>
-public sealed class LameDOmbre : SkillSystem
+public sealed class ShadowChains : SkillSystem
 {
-    public LameDOmbre()
+    public ShadowChains()
     {
         Name = "Shadow Chains";
         Description = "Strike for 130% INT bypassing DEF. Heal caster for 25% damage dealt.";
@@ -56,9 +56,9 @@ public sealed class LameDOmbre : SkillSystem
 }
 
 /// <summary>Pacte Sombre — Dark Pact. Sacrifice HP to boost magic.</summary>
-public sealed class PacteSombre : SkillSystem
+public sealed class DarkPact : SkillSystem
 {
-    public PacteSombre()
+    public DarkPact()
     {
         Name = "Dark Pact";
         Description = "Sacrifice 15% max HP for +40 ATK and +40 INT for 3 turns. Heavy backlash risk.";
@@ -79,9 +79,9 @@ public sealed class PacteSombre : SkillSystem
 }
 
 /// <summary>Sang Corrompu — Corrupted Blood. Reduces regen and healing on target.</summary>
-public sealed class SangCorrompu : SkillSystem
+public sealed class TaintedBlood : SkillSystem
 {
-    public SangCorrompu()
+    public TaintedBlood()
     {
         Name = "Tainted Blood";
         Description = "Bleed the target for 12 damage / turn over 4 turns.";
@@ -101,9 +101,9 @@ public sealed class SangCorrompu : SkillSystem
 }
 
 /// <summary>Armée des Morts — Army of the Dead. Temporarily summons corpses (placeholder).</summary>
-public sealed class ArmeeDesMorts : SkillSystem
+public sealed class ArmyOfTheDead : SkillSystem
 {
-    public ArmeeDesMorts()
+    public ArmyOfTheDead()
     {
         Name = "Army of the Dead";
         Description = "Summon spectral allies. (Summon system TODO — currently buffs every ally.)";

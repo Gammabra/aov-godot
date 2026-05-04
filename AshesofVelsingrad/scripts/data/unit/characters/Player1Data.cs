@@ -10,8 +10,8 @@ namespace AshesOfVelsingrad;
 /// </summary>
 /// <remarks>
 ///     Active skill slots map to the Fighter feature-doc catalogue
-///     (<see cref="FrappeEcrasante" />, <see cref="CriDeGuerre" />, <see cref="Charge" />,
-///     <see cref="Blocage" />, <see cref="FrappeCirculaire" />). Passives are wired into
+///     (<see cref="CrushingStrike" />, <see cref="WarCry" />, <see cref="Charge" />,
+///     <see cref="Block" />, <see cref="CircularStrike" />). Passives are wired into
 ///     <c>PassiveSkills</c> for the relevant systems to read; their <c>Use</c> methods are
 ///     intentional no-ops since they're handled in damage-formula / status-effect code paths.
 /// </remarks>
@@ -35,17 +35,17 @@ public sealed partial class Player1Data : UnitSystem
 
         // Five active slots (matches BattleInputSystem's 1-5 hot-keys and the
         // SkillSelector's 5-button bar).
-        ActiveSkills.Add(new FrappeEcrasante());
-        ActiveSkills.Add(new CriDeGuerre());
+        ActiveSkills.Add(new CrushingStrike());
+        ActiveSkills.Add(new WarCry());
         ActiveSkills.Add(new Charge());
-        ActiveSkills.Add(new Blocage());
-        ActiveSkills.Add(new FrappeCirculaire());
+        ActiveSkills.Add(new Block());
+        ActiveSkills.Add(new CircularStrike());
 
         // Passives — present so other systems (damage formula, end-of-turn hooks)
         // can detect them. Their Use() is a no-op.
-        PassiveSkills.Add(new ForceBrute());
-        PassiveSkills.Add(new Temerite());
-        PassiveSkills.Add(new EnduranceGuerriere());
+        PassiveSkills.Add(new BruteForce());
+        PassiveSkills.Add(new Recklessness());
+        PassiveSkills.Add(new WarriorEndurance());
 
         base.Initialize();
 

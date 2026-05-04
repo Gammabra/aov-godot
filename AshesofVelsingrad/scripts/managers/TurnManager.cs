@@ -37,6 +37,77 @@ public partial class TurnManager : BaseManager
     /// </summary>
     private new static TurnManager? Instance { get; set; }
 
+    /// <summary>
+    ///     Public accessor for the active <see cref="TurnManager" /> in the scene.
+    ///     Returns null when no battle is active.
+    /// </summary>
+    public static TurnManager? Active => Instance;
+
+    #endregion
+
+    #region Battle wiring (used by BattleLauncher / HUD)
+
+    /// <summary>
+    ///     The unit currently taking its turn, or null if the turn order is not set up yet.
+    /// </summary>
+    public UnitSystem? CurrentUnit =>
+        _unitsTurnOrder.Count > 0
+        && _currentIndex >= 0
+        && _currentIndex < _unitsTurnOrder.Count
+            ? _unitsTurnOrder[_currentIndex].Key
+            : null;
+
+    /// <summary>
+    ///     Active victory condition installed by <see cref="SetVictoryCondition" />.
+    ///     The battle loop checks this each turn to decide whether to end the fight.
+    /// </summary>
+    private systems.battle.VictoryCondition? _victoryCondition;
+
+    /// <summary>
+    ///     Optional outcome request set by <see cref="RequestAbort" />.
+    /// </summary>
+    private systems.battle.BattleOutcome? _pendingAbort;
+
+    /// <summary>
+    ///     Install the victory condition the battle loop should evaluate each turn.
+    /// </summary>
+    /// <param name="condition">Condition implementation, or <c>null</c> to clear.</param>
+    public void SetVictoryCondition(systems.battle.VictoryCondition? condition)
+    {
+        _victoryCondition = condition;
+    }
+
+    /// <summary>
+    ///     Run the battle loop and return the final result.
+    /// </summary>
+    /// <remarks>
+    ///     Bridges <see cref="StartBattle" /> (the legacy entry point) to the
+    ///     <see cref="BattleResult" /> contract that <c>BattleLauncher</c> expects.
+    /// </remarks>
+    /// <returns>The outcome of the battle once the loop terminates.</returns>
+    public async Task<systems.battle.BattleResult> RunBattleLoop()
+    {
+        await StartBattle();
+
+        if (_pendingAbort is { } aborted)
+        {
+            _pendingAbort = null;
+            return new systems.battle.BattleResult { Outcome = aborted };
+        }
+
+        return new systems.battle.BattleResult { Outcome = systems.battle.BattleOutcome.Victory };
+    }
+
+    /// <summary>
+    ///     Request the battle loop to terminate with a specific outcome.
+    /// </summary>
+    /// <param name="outcome">Outcome to surface to the caller.</param>
+    public void RequestAbort(systems.battle.BattleOutcome outcome)
+    {
+        _pendingAbort = outcome;
+        EndTurnManagerLoop();
+    }
+
     #endregion
 
     #region Public Properties
@@ -92,6 +163,22 @@ public partial class TurnManager : BaseManager
         GD.Print("TurnManager initialized successfully");
     }
 
+    /// <inheritdoc />
+    /// <remarks>
+    ///     Clear the static singleton when this node leaves the tree (e.g. on
+    ///     <c>ReloadCurrentScene</c>) so the new <see cref="TurnManager" /> on the new
+    ///     scene's first <c>_Ready</c> doesn't see a stale <c>Instance</c> and self-destruct
+    ///     as a duplicate.
+    /// </remarks>
+    public override void _ExitTree()
+    {
+        if (Instance == this) Instance = null;
+        // Tell the async ProcessTurn loop to exit at the next iteration so we don't
+        // continue invoking events on dead unit references after the scene unloaded.
+        _currentTurnState = AovDataStructures.TurnState.Finished;
+        base._ExitTree();
+    }
+
     #endregion
 
     #region Private Methods
@@ -123,35 +210,66 @@ public partial class TurnManager : BaseManager
                     OnPlayerTurnEnd?.Invoke();
                     break;
                 case AovDataStructures.TurnState.EnemyTurn:
-                    OnEnemyTurn?.Invoke();
+                {
+                    bool isAlly = _unitsTurnOrder[_currentIndex].Key.Faction == Faction.Ally;
+                    if (isAlly) OnAllyTurn?.Invoke();
+                    else OnEnemyTurn?.Invoke();
+
                     if (!_unitsTurnOrder[_currentIndex].Key.IsControlled)
                         await WaitForEnemyAction(_unitsTurnOrder[_currentIndex].Key);
-                    OnEnemyTurnEnd?.Invoke();
+
+                    if (isAlly) OnAllyTurnEnd?.Invoke();
+                    else OnEnemyTurnEnd?.Invoke();
 
                     break;
+                }
             }
 
             if (_currentTurnState == AovDataStructures.TurnState.Finished)
                 break;
 
-            _currentIndex++;
-            for (; _currentIndex < _unitsTurnOrder.Count; _currentIndex++)
+            // Wrap-around advancement that ALWAYS lands on a live unit (or breaks the loop
+            // if everyone is dead). The previous version skipped dead units after the
+            // increment but didn't re-skip after wrapping back to index 0, so a dead unit
+            // sitting at the start of the order would still get its turn run.
+            if (!AdvanceToNextLiveUnit())
             {
-                if (_unitsTurnOrder[_currentIndex].Key.IsAlive)
-                    break;
+                GD.Print("TurnManager: no live units remaining — ending battle loop.");
+                break;
             }
 
-            if (_currentIndex >= _unitsTurnOrder.Count)
-            {
-                _currentIndex = 0;
-                _turn++;
-                OnCurrentTurnEnd?.Invoke();
-            }
-
-            GD.Print($"Current index after trying reset to 0 loop : {_currentIndex}");
+            GD.Print($"Current index after advancing to next live unit : {_currentIndex}");
 
             _currentTurnState = _unitsTurnOrder[_currentIndex].Value;
         }
+    }
+
+    /// <summary>
+    ///     Move <see cref="_currentIndex" /> to the next live unit in turn order, wrapping
+    ///     around the end and firing <see cref="OnCurrentTurnEnd" /> on wrap. Returns
+    ///     <c>false</c> when no live units remain so the caller can exit the loop.
+    /// </summary>
+    /// <returns><c>true</c> if a live unit was found, <c>false</c> if everyone is dead.</returns>
+    private bool AdvanceToNextLiveUnit()
+    {
+        int n = _unitsTurnOrder.Count;
+        if (n == 0) return false;
+
+        for (int step = 0; step < n; step++)
+        {
+            int next = _currentIndex + 1;
+            if (next >= n)
+            {
+                next = 0;
+                _turn++;
+                OnCurrentTurnEnd?.Invoke();
+            }
+            _currentIndex = next;
+            if (_unitsTurnOrder[_currentIndex].Key.IsAlive)
+                return true;
+        }
+
+        return false; // walked the full ring, nobody alive
     }
 
     /// <summary>
@@ -287,7 +405,14 @@ public partial class TurnManager : BaseManager
         GD.Print("Starting Battle");
         _currentTurnState = _unitsTurnOrder[_currentIndex].Value;
         _turn++;
-        await Task.Run(async () => await ProcessTurn());
+        // DO NOT use Task.Run here. ProcessTurn fires OnPlayerTurn/OnEnemyTurn events that
+        // synchronously invoke GameManager handlers, which touch Godot scene/render APIs
+        // (HUD widgets, indicator overlays, label text). Those APIs must run on the main
+        // thread — calling them from a worker thread silently corrupts the renderer state
+        // (CanvasLayer 2D content stops rendering even though 3D content keeps working).
+        // `await` is enough — it yields to the engine on every await point so the main
+        // loop keeps processing, no thread switch needed.
+        await ProcessTurn();
     }
 
     /// <summary>

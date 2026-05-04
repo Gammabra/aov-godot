@@ -1,0 +1,55 @@
+[gd_scene load_steps=10 format=3]
+
+[ext_resource type="Script" path="res://scripts/ui/hud/BattleHud.cs" id="1_BattleHud"]
+[ext_resource type="Script" path="res://scripts/ui/hud/ActionMenu.cs" id="2_ActionMenu"]
+[ext_resource type="Script" path="res://scripts/ui/hud/SkillSelector.cs" id="3_SkillSelector"]
+[ext_resource type="Script" path="res://scripts/ui/hud/InventoryPanel.cs" id="4_InventoryPanel"]
+[ext_resource type="Script" path="res://scripts/ui/hud/EnemyRoster.cs" id="5_EnemyRoster"]
+[ext_resource type="Script" path="res://scripts/ui/hud/TurnOrderQueue.cs" id="6_TurnOrderQueue"]
+[ext_resource type="Script" path="res://scripts/ui/hud/CorruptionGauge.cs" id="7_CorruptionGauge"]
+[ext_resource type="Script" path="res://scripts/ui/hud/BattleLog.cs" id="8_BattleLog"]
+
+[node name="BattleHud" type="CanvasLayer"]
+script = ExtResource("1_BattleHud")
+
+[node name="ActionMenu" type="Control" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource("2_ActionMenu")
+
+[node name="SkillSelector" type="Control" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource("3_SkillSelector")
+
+[node name="InventoryPanel" type="Control" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource("4_InventoryPanel")
+
+[node name="EnemyRoster" type="Control" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource("5_EnemyRoster")
+
+[node name="TurnQueue" type="Control" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource("6_TurnOrderQueue")
+
+[node name="CorruptionGauge" type="Control" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource("7_CorruptionGauge")
+
+[node name="BattleLog" type="Control" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource("8_BattleLog")

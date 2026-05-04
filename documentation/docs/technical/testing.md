@@ -136,3 +136,44 @@ dotnet test AshesofVelsingrad --settings AshesofVelsingrad/integration_tests/.ru
 - **Mock the Boundary**: When testing Godot Nodes, use ```Mock<IUnitSystem>``` to isolate the Node's behavior from the actual Core implementation.
 - **AutoFree is Mandatory**: In GdUnit4, always wrap Node creation in ```AutoFree()``` to prevent memory leaks in the Godot process.
 - **No Godot in Core Tests**: If a test in ```Core.Tests fails``` because it can't find ```Godot.Vector3```, the logic is incorrectly coupled. Move the logic to a custom ```struct``` or move the test to the integration folder.
+
+### Testing Godot Resources from Core.Tests
+
+A few Core types (e.g. ```EntityProfile```) extend Godot's ```Resource``` because designers need to author them as ```.tres``` files. They live in Core because they carry no Godot logic — but you still need to be careful in unit tests. The ```GodotObject``` finalizer tries to free a native handle through GodotSharp's runtime; from a non-Godot test process, that call crashes the host with a non-zero exit code AFTER all assertions pass (you'll see ```Test Run Aborted: Test host process crashed``` even though every test passed).
+
+**Always wrap Resource instances in ```using```** so ```Dispose()``` runs synchronously inside the test:
+
+```csharp
+[Test]
+public void EntityProfile_Defaults_AreEmpty()
+{
+    using var profile = new EntityProfile();
+    Assert.That(profile.DisplayName, Is.EqualTo(string.Empty));
+}
+```
+
+```Dispose()``` calls ```GC.SuppressFinalize(this)``` internally, so by the time the host shuts down there are no live finalizers queued and the process exits cleanly with code 0.
+
+### Singleton Cleanup in Integration Tests
+
+```GameManager``` and ```TurnManager``` carry a ```private new static Instance``` field that survives across scene reloads. Tests that spawn either of these into the scene tree must reset the static between cases — otherwise the second test sees the leftover from the first and ```QueueFree```s itself as a "duplicate":
+
+```csharp
+[BeforeTest]
+public void Setup()
+{
+    typeof(TurnManager)
+        .GetProperty("Instance", BindingFlags.Static | BindingFlags.NonPublic)!
+        .SetValue(null, null);
+    // …
+}
+```
+
+The production code now also resets the instance via an ```_ExitTree``` override, but the reflection-based reset stays as a defensive belt-and-braces for tests that don't fully exit the tree.
+
+### Stub vs Mock for Map / Unit Interfaces
+
+```IUnitSystem``` and ```IMapSystem``` have wide surfaces (~30 members each). Two strategies depending on the test:
+
+- **Moq** (auto-generated) — best for AI/decision tests where you only care about a couple of properties (```mockUnit.Setup(u => u.Hp).Returns(50)```). Adding new interface members never breaks Moq-based tests because Moq auto-stubs everything.
+- **Hand-written stubs** — best when you need a delegate-driven member (```StubMap``` with a ```Func<int,int,int,bool>``` walkability rule for ```Pathfinder``` tests). Adding new interface members breaks every stub at compile time, which is sometimes what you want as a compile-time canary.

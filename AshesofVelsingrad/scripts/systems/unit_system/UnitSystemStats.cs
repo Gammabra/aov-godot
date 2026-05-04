@@ -49,10 +49,20 @@ public abstract partial class UnitSystem
         if (!isAlive && Hp <= 0)
         {
             IsAlive = isAlive;
+            // Hide the body so the corpse stops occluding the map. We don't QueueFree the
+            // node because revive skills (e.g. Resurrection) need the unit reference to
+            // come back. Re-show happens in OnEffectRevive.
+            Visible = false;
+            // Disable collision so click-targeting doesn't hit a dead unit.
+            SetCollisionLayerValue(1, false);
+            SetCollisionLayerValue(2, false);
         }
         else if (isAlive && Hp > 0)
         {
             IsAlive = isAlive;
+            Visible = true;
+            SetCollisionLayerValue(1, true);
+            SetCollisionLayerValue(2, true);
         }
     }
 

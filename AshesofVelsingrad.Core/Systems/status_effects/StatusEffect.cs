@@ -61,6 +61,16 @@ public abstract class StatusEffect<TTarget>(
     public bool IsStackable { get; } = isStackable;
 
     /// <summary>
+    ///     Whether this effect can be removed by a "purify" / cleanse skill or item.
+    /// </summary>
+    /// <remarks>
+    ///     Per the design's status table, every status except <c>Curse</c> is
+    ///     purifiable. Override to return <c>false</c> on permanent / curse-style
+    ///     effects so they are skipped by cleanse routines.
+    /// </remarks>
+    public virtual bool IsPurifiable => true;
+
+    /// <summary>
     ///     Whether this effect should be applied twice on initial application.
     ///     Used for control effects like stuns that need immediate double application.
     /// </summary>

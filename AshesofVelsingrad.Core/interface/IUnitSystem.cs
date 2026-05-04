@@ -1,20 +1,33 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using AshesOfVelsingrad.AI;
+using AshesOfVelsingrad.Data;
 using AshesOfVelsingrad.Utilities;
 
 namespace AshesOfVelsingrad.Systems;
 
+/// <summary>
+///     Contract for every combatant in the battle layer.
+/// </summary>
+/// <remarks>
+///     Adds <see cref="Faction" /> for the three-faction turn flow (Player / Ally / Enemy)
+///     and <see cref="EntityProfile" /> for HUD display metadata (portrait, level, class).
+///     Everything else is identical to the prior contract.
+/// </remarks>
 public interface IUnitSystem : IEffectTarget<IUnitSystem>, IStatusEffectBehavior
 {
-    // var from UnitStystem
+    // var from UnitSystem
     string UnitName { get; }
     string Description { get; }
 
-    // var from UnitStystemMovements
+    // var from UnitSystemIdentity
+    Faction Faction { get; }
+    EntityProfile? EntityProfile { get; }
+
+    // var from UnitSystemMovements
     int PossibleMovesRange { get; }
 
-    // var from UnitStystemStats
+    // var from UnitSystemStats
     float Hp { get; }
     float MaxHp { get; }
     float BaseAtk { get; }
@@ -28,7 +41,7 @@ public interface IUnitSystem : IEffectTarget<IUnitSystem>, IStatusEffectBehavior
     AIPersonality Personality { get; }
     List<ISkillSystem> ActiveSkills { get; }
 
-    //var from UnitSystemStatusEffectImplementation
+    // var from UnitSystemStatusEffectImplementation
     float TotalAtk { get; }
     float TotalDef { get; }
     bool IsControlled { get; }
@@ -36,6 +49,10 @@ public interface IUnitSystem : IEffectTarget<IUnitSystem>, IStatusEffectBehavior
     // Methods from IUnitSystem
     Task WaitForActionAsync();
     void PassTurn();
+
+    // Methods from UnitSystemIdentity
+    void SetFaction(Faction faction);
+    void SetEntityProfile(EntityProfile? profile);
 
     // Methods from UnitSystemMovements
     List<(int, int, int)> GetPossibleMoves(IMapSystem map);

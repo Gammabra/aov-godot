@@ -78,6 +78,28 @@ public sealed partial class BattleHud : CanvasLayer
         TurnQueue.EnsureBuilt();
         ContextInfo.EnsureBuilt();
         Log.EnsureBuilt();
+
+        // SMOKE TEST: an unmistakable 200x200 magenta rectangle at (40, 40). If you can
+        // see this on the screen, the CanvasLayer is rendering and the issue is in the
+        // widgets' anchor layout. If you can't see this, the CanvasLayer itself is not
+        // being rendered at all (parented wrong, layer hidden, off-screen viewport, etc.).
+        if (!HasNode("__SmokeTest"))
+        {
+            ColorRect smoke = new()
+            {
+                Name = "__SmokeTest",
+                Color = new Color(1f, 0f, 1f, 1f),
+                MouseFilter = Control.MouseFilterEnum.Ignore,
+            };
+            smoke.SetAnchorsAndOffsetsPreset(Control.LayoutPreset.TopLeft);
+            smoke.OffsetLeft = 40;
+            smoke.OffsetTop = 40;
+            smoke.OffsetRight = 240;
+            smoke.OffsetBottom = 240;
+            AddChild(smoke);
+            GD.Print($"BattleHud smoke-test rect added. Children now: {GetChildCount()}");
+        }
+
         GD.Print("BattleHud.Build completed — all child widgets built.");
     }
 

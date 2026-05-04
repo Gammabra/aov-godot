@@ -1,3 +1,4 @@
+using System;
 using AshesOfVelsingrad.Systems;
 using AshesOfVelsingrad.Systems.Battle;
 using AshesOfVelsingrad.UI.Hud;
@@ -36,8 +37,12 @@ public partial class GameManager
     {
         if (_battleHud is not null && IsInstanceValid(_battleHud)) return;
 
-        Node host = GetTree().CurrentScene ?? GetTree().Root;
-        BattleHud? found = FindHudIn(host);
+        // Prefer the active scene branch so the HUD shares the same live viewport as
+        // the battle scene. Fall back to the tree root only if no current scene exists.
+        SceneTree tree = GetTree();
+        Node host = tree.CurrentScene ?? tree.Root;
+        BattleHud? found = tree.CurrentScene is not null ? FindHudIn(tree.CurrentScene) : null;
+        found ??= FindHudIn(tree.Root);
         if (found is not null) { _battleHud = found; return; }
 
         if (!string.IsNullOrEmpty(_battleHudScenePath))
@@ -51,12 +56,22 @@ public partial class GameManager
         _battleHud.Layer = BattleHud.HudLayer;
         _battleHud.Visible = true;
         host.AddChild(_battleHud);
-        // Build all widgets synchronously — every child widget's EnsureBuilt is idempotent,
-        // so even if Godot fires _Ready later on its own, the second call is a no-op.
-        // This means RefreshHudOnReady can bind to fully-built widgets immediately rather
-        // than waiting for a frame yield that, on this branch, was never actually arriving.
-        _battleHud.Build();
-        GD.Print($"BattleHud spawned under '{host.Name}', layer={_battleHud.Layer}, visible={_battleHud.Visible}, built children: {_battleHud.GetChildCount()}");
+        Viewport? viewport = _battleHud.GetViewport();
+        Vector2 viewportSize = viewport?.GetVisibleRect().Size ?? Vector2.Zero;
+        GD.Print($"BattleHud spawned under '{host.Name}' (type={host.GetType().Name}), layer={_battleHud.Layer}, visible={_battleHud.Visible}, viewport={viewportSize}");
+        // Build all widgets synchronously. Wrapped in try/catch so that any layout-construction
+        // exception is reported here rather than silently bubbling out of GameManager._Ready
+        // and leaving _turnManagerContainer null. EnsureBuilt() is idempotent, so a later
+        // _Ready firing is harmless.
+        try
+        {
+            _battleHud.Build();
+            GD.Print($"BattleHud.Build OK — child count: {_battleHud.GetChildCount()}");
+        }
+        catch (Exception ex)
+        {
+            GD.PrintErr($"BattleHud.Build threw [{ex.GetType().Name}]: {ex.Message}\n{ex.StackTrace}");
+        }
     }
 
     /// <summary>Spawn the move/target/hover indicator overlay parented to the map.</summary>

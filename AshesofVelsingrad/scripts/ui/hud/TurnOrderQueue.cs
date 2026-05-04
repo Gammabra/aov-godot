@@ -111,7 +111,8 @@ public sealed partial class TurnOrderQueue : Control
         border.AddThemeStyleboxOverride("panel", sb);
         wrapper.AddChild(border);
 
-        Texture2D? portrait = unit.EntityProfile?.Portrait;
+        // EntityProfile carries a res:// path (Core has no Godot deps); load lazily here.
+        Texture2D? portrait = LoadPortrait(unit.EntityProfile?.PortraitPath);
         if (portrait is not null)
         {
             TextureRect tex = new()
@@ -151,6 +152,18 @@ public sealed partial class TurnOrderQueue : Control
 
         wrapper.TooltipText = $"{display} ({unit.Faction}, Speed {unit.BaseSpeed:F0})";
         return wrapper;
+    }
+
+    /// <summary>
+    ///     Materialise a portrait <see cref="Texture2D" /> from a <c>res://</c> path.
+    ///     Returns null when the path is empty, missing, or fails to load — every caller
+    ///     already null-checks the result and falls back to a coloured-square placeholder.
+    /// </summary>
+    private static Texture2D? LoadPortrait(string? path)
+    {
+        if (string.IsNullOrEmpty(path)) return null;
+        if (!ResourceLoader.Exists(path)) return null;
+        return ResourceLoader.Load<Texture2D>(path);
     }
 
     private static Color ColorFor(Faction f) => f switch

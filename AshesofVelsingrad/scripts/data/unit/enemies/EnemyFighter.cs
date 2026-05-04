@@ -100,7 +100,7 @@ public sealed partial class EnemyFighter : UnitSystem
             DisplayName = "Mascaiman",
             ClassName = "Combattant",
             Level = 1,
-            Portrait = ResourceLoader.Load<Texture2D>("res://assets/portraits/mascaiman.png"),
+            PortraitPath = "res://assets/portraits/mascaiman.png",
         });
     }
 }

@@ -50,7 +50,7 @@ public sealed partial class EnemyArcher : UnitSystem
             DisplayName = "Mimikyu",
             ClassName = "Archer",
             Level = 1,
-            Portrait = ResourceLoader.Load<Texture2D>("res://assets/portraits/Mimikyu.png"),
+            PortraitPath = "res://assets/portraits/Mimikyu.png",
         });
     }
 }

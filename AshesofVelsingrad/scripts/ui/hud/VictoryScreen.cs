@@ -184,8 +184,11 @@ public sealed partial class VictoryScreen : CanvasLayer
         inner.SetAnchorsAndOffsetsPreset(Control.LayoutPreset.FullRect);
         wrapper.AddChild(HudStyle.MakePanel(inner));
 
-        // Portrait (96×96) — falls back to a coloured rect when no profile is set.
-        if (unit.EntityProfile?.Portrait is { } portrait)
+        // Portrait (96×96) — EntityProfile carries a res:// path (Core has no Godot deps);
+        // load lazily here. Falls back to a coloured rect when no path is set or the
+        // resource is missing.
+        Texture2D? portrait = LoadPortrait(unit.EntityProfile?.PortraitPath);
+        if (portrait is not null)
         {
             TextureRect portraitView = new()
             {
@@ -264,4 +267,16 @@ public sealed partial class VictoryScreen : CanvasLayer
         Faction.Enemy => HudStyle.EnemyColor,
         _ => Colors.Gray,
     };
+
+    /// <summary>
+    ///     Materialise a portrait <see cref="Texture2D" /> from a <c>res://</c> path.
+    ///     Returns null when the path is empty, missing, or fails to load — the card's
+    ///     placeholder branch handles that case.
+    /// </summary>
+    private static Texture2D? LoadPortrait(string? path)
+    {
+        if (string.IsNullOrEmpty(path)) return null;
+        if (!ResourceLoader.Exists(path)) return null;
+        return ResourceLoader.Load<Texture2D>(path);
+    }
 }

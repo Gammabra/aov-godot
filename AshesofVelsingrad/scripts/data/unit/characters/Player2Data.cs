@@ -52,7 +52,7 @@ public sealed partial class Player2Data : UnitSystem
             DisplayName = "Meowth",
             ClassName = "Épéiste",
             Level = 1,
-            Portrait = ResourceLoader.Load<Texture2D>("res://assets/portraits/meowth.png"),
+            PortraitPath = "res://assets/portraits/meowth.png",
         });
     }
 }

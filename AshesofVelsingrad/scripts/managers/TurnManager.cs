@@ -365,7 +365,14 @@ public partial class TurnManager : BaseManager
         GD.Print("Starting Battle");
         _currentTurnState = _unitsTurnOrder[_currentIndex].Value;
         _turn++;
-        await Task.Run(async () => await ProcessTurn());
+        // DO NOT use Task.Run here. ProcessTurn fires OnPlayerTurn/OnEnemyTurn events that
+        // synchronously invoke GameManager handlers, which touch Godot scene/render APIs
+        // (HUD widgets, indicator overlays, label text). Those APIs must run on the main
+        // thread — calling them from a worker thread silently corrupts the renderer state
+        // (CanvasLayer 2D content stops rendering even though 3D content keeps working).
+        // `await` is enough — it yields to the engine on every await point so the main
+        // loop keeps processing, no thread switch needed.
+        await ProcessTurn();
     }
 
     /// <summary>

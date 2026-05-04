@@ -55,14 +55,17 @@ public partial class GameManager
         // shows the HUD on top of the 3D viewport.
         _battleHud.Layer = BattleHud.HudLayer;
         _battleHud.Visible = true;
-        host.AddChild(_battleHud);
-        Viewport? viewport = _battleHud.GetViewport();
-        Vector2 viewportSize = viewport?.GetVisibleRect().Size ?? Vector2.Zero;
-        GD.Print($"BattleHud spawned under '{host.Name}' (type={host.GetType().Name}), layer={_battleHud.Layer}, visible={_battleHud.Visible}, viewport={viewportSize}");
-        // Build all widgets synchronously. Wrapped in try/catch so that any layout-construction
-        // exception is reported here rather than silently bubbling out of GameManager._Ready
-        // and leaving _turnManagerContainer null. EnsureBuilt() is idempotent, so a later
-        // _Ready firing is harmless.
+        // DEFER the AddChild — calling AddChild while we're still inside another node's
+        // _Ready can leave the new node in a state where Godot never dispatches its own
+        // _Ready, and CanvasLayer 2D rendering doesn't initialise. Queueing it via
+        // CallDeferred means the node enters the tree at the start of the next idle frame,
+        // when no _Ready chain is in flight, and Godot processes it normally.
+        host.CallDeferred("add_child", _battleHud);
+        GD.Print($"BattleHud queued for deferred AddChild under '{host.Name}' (type={host.GetType().Name}), layer={_battleHud.Layer}, visible={_battleHud.Visible}");
+        // Build the children synchronously NOW. Build() does AddChild on widgets parented
+        // to the BattleHud — those children get added to the in-memory BattleHud right
+        // away. When Godot processes the deferred AddChild, the entire subtree enters the
+        // tree at once, _EnterTree and _Ready fire for everything in the right order.
         try
         {
             _battleHud.Build();

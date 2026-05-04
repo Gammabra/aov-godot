@@ -551,11 +551,66 @@ public class UnitSystemTest
         AssertThat(unit1.IsControlled).IsFalse();
     }
 
+    [TestCase]
+    public void SetFaction_OverridesDefaultPlayerFaction()
+    {
+        // The Identity partial defaults Faction to Player. SetFaction is what
+        // GameManager.LoadUnits uses to retag units based on their container.
+        TestConcreteUnitSystem unit = AddNodeToTestRoot(new TestConcreteUnitSystem());
+        unit.CallInitialize();
+
+        AssertThat(unit.Faction).IsEqual(Faction.Player);
+
+        unit.SetFaction(Faction.Enemy);
+        AssertThat(unit.Faction).IsEqual(Faction.Enemy);
+
+        unit.SetFaction(Faction.Ally);
+        AssertThat(unit.Faction).IsEqual(Faction.Ally);
+    }
+
+    [TestCase]
+    public void SetIsAlive_OnDeath_HidesTheBody()
+    {
+        // Regression test for the despawn-on-death feature. Without it the corpse
+        // stayed on the map as a clickable obstacle.
+        TestConcreteUnitSystem unit = AddNodeToTestRoot(new TestConcreteUnitSystem());
+        unit.CallInitialize();
+        AssertThat(unit.Visible).IsTrue();
+
+        unit.Hp = 0;
+        unit.SetIsAlive(false);
+
+        AssertThat(unit.IsAlive).IsFalse();
+        AssertThat(unit.Visible).IsFalse();
+    }
+
+    [TestCase]
+    public void SetIsAlive_OnRevive_RestoresTheBody()
+    {
+        // Pair of the test above — Resurrection / OnEffectRevive flips the unit back
+        // to alive and the body should reappear.
+        TestConcreteUnitSystem unit = AddNodeToTestRoot(new TestConcreteUnitSystem());
+        unit.CallInitialize();
+        unit.Hp = 0;
+        unit.SetIsAlive(false);
+        AssertThat(unit.Visible).IsFalse();
+
+        unit.Hp = 50;
+        unit.SetIsAlive(true);
+
+        AssertThat(unit.IsAlive).IsTrue();
+        AssertThat(unit.Visible).IsTrue();
+    }
+
     [AfterTest]
     public void TearDown()
     {
         foreach (Node node in _testNodes)
-            node.QueueFree();
+        {
+            // Defensive: tests may have manually freed nodes (e.g. to exercise _ExitTree).
+            if (GodotObject.IsInstanceValid(node))
+                node.QueueFree();
+        }
 
         _testNodes.Clear();
         ResetSingletons();

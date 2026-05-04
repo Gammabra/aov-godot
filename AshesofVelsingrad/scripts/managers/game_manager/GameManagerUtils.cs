@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
 using AshesOfVelsingrad.Systems;
+using AshesOfVelsingrad.Systems.Battle;
+using AshesOfVelsingrad.UI.Hud;
 using AshesOfVelsingrad.Utilities;
 using Godot;
 
@@ -30,21 +32,46 @@ public partial class GameManager
         }
 
         _playerUnits.Clear();
+        _allyUnits.Clear();
         _enemyUnits.Clear();
 
         foreach (Node child in _playerUnitsContainer.GetChildren())
             if (child is UnitSystem unit)
             {
                 unit.InjectDependencies(_statusEffectSystem);
+                unit.SetFaction(Faction.Player);
                 _playerUnits.Add(unit);
+                AttachFactionMarker(unit);
             }
 
         foreach (Node child in _enemyUnitsContainer.GetChildren())
             if (child is UnitSystem unit)
             {
                 unit.InjectDependencies(_statusEffectSystem);
+                unit.SetFaction(Faction.Enemy);
                 _enemyUnits.Add(unit);
+                AttachFactionMarker(unit);
             }
+
+        if (_alliedUnitsContainer is not null)
+            foreach (Node child in _alliedUnitsContainer.GetChildren())
+                if (child is UnitSystem unit)
+                {
+                    unit.InjectDependencies(_statusEffectSystem);
+                    unit.SetFaction(Faction.Ally);
+                    _allyUnits.Add(unit);
+                    AttachFactionMarker(unit);
+                }
+    }
+
+    /// <summary>Spawn a <see cref="FactionMarker" /> child on a unit and bind its colour.</summary>
+    private static void AttachFactionMarker(UnitSystem unit)
+    {
+        // Skip if already present (defensive — LoadUnits should only run once per battle).
+        if (unit.HasNode("FactionMarker")) return;
+        FactionMarker marker = new() { Name = "FactionMarker" };
+        unit.AddChild(marker);
+        marker.Bind(unit.Faction);
     }
 
     /// <summary>
@@ -92,7 +119,15 @@ public partial class GameManager
         }
 
         _currentUnitPossibleMoves.Clear();
-        MoveUnit(cell);
+        IUnitSystem mover = _turnManagerContainer.GetCurrentUnit();
+        BattleNotifications.Post(
+            $"{mover.UnitName} moves to ({cell.Item1}, {cell.Item3})",
+            BattleNotifications.Severity.Info);
+        _ = AnimateUnitMove(cell);
+        _unitMoved = true;
+        mover.MoveTo(cell.Item1, cell.Item2, cell.Item3, _mapSystemContainer);
+        HideAllIndicators();
+        _battleHud?.ContextInfo?.ShowMovement(0, mover.PossibleMovesRange, canMove: false);
         _battleInputSystemContainer.SetInputEnabled(true);
     }
 
@@ -135,7 +170,7 @@ public partial class GameManager
             }
             catch (ArgumentOutOfRangeException)
             {
-                GD.PrintErr($"No target on the cell {cell}.");
+                Warn("No unit on that cell.");
                 _battleInputSystemContainer.SetInputEnabled(true);
                 return;
             }
@@ -143,37 +178,82 @@ public partial class GameManager
 
         if (!_currentUnitReachableCellsForCurrentSelectedSkill.Contains(new Vector3I(cell.Item1, cell.Item2, cell.Item3)))
         {
-            GD.PrintErr("The cell/target is not reachable.");
+            Warn("Target out of range.");
             _battleInputSystemContainer.SetInputEnabled(true);
             return;
         }
 
         if (target is null)
         {
-            GD.PrintErr($"No target on the cell {cell}.");
+            Warn("No unit on that cell.");
             _battleInputSystemContainer.SetInputEnabled(true);
             return;
         }
 
         if (_selectedSkill == null)
         {
-            GD.PrintErr("No selected skill.");
+            Warn("No skill selected.");
             _battleInputSystemContainer.SetInputEnabled(true);
             return;
         }
 
         if (_selectedSkill.EffectType == AovDataStructures.EffectType.Revive && target.IsAlive)
         {
-            GD.PrintErr("Target is already alive.");
+            Warn("Target is not dead.");
             _battleInputSystemContainer.SetInputEnabled(true);
             return;
         }
 
         if (_selectedSkill.EffectType != AovDataStructures.EffectType.Revive && !target.IsAlive)
         {
-            GD.PrintErr("Target is dead.");
+            Warn("Target is dead — pick another.");
             _battleInputSystemContainer.SetInputEnabled(true);
             return;
+        }
+
+        if (_selectedSkill.Cooldown > 0)
+        {
+            Warn($"{_selectedSkill.Name} is on cooldown.");
+            _battleInputSystemContainer.SetInputEnabled(true);
+            return;
+        }
+
+        if (_turnManagerContainer.GetCurrentUnit().Mana < _selectedSkill.ManaCost)
+        {
+            Warn("Not enough mana.");
+            _battleInputSystemContainer.SetInputEnabled(true);
+            return;
+        }
+
+        // Faction validation — a SingleEnemy / AllEnemies skill must hit a hostile target;
+        // a SingleAlly / AllAllies skill must hit a friendly (or self). Without this, the
+        // click reaches UseSkill which then silently bails via GD.PrintErr, leaving the
+        // player wondering why nothing happened.
+        IUnitSystem caster = _turnManagerContainer.GetCurrentUnit();
+        bool isHostile = caster.Faction.IsHostileTo(target.Faction);
+        bool isFriendly = caster.Faction.IsFriendlyTo(target.Faction);
+        switch (_selectedSkill.TargetType)
+        {
+            case AovDataStructures.TargetTypes.SingleEnemy:
+            case AovDataStructures.TargetTypes.AllEnemies:
+                if (!isHostile)
+                {
+                    Warn(target == caster
+                        ? "You can't target yourself with an offensive skill."
+                        : $"{target.UnitName} is on your side.");
+                    _battleInputSystemContainer.SetInputEnabled(true);
+                    return;
+                }
+                break;
+            case AovDataStructures.TargetTypes.SingleAlly:
+            case AovDataStructures.TargetTypes.AllAllies:
+                if (!isFriendly)
+                {
+                    Warn($"{target.UnitName} is hostile — can't use a friendly skill on them.");
+                    _battleInputSystemContainer.SetInputEnabled(true);
+                    return;
+                }
+                break;
         }
 
         UseSkill(_turnManagerContainer.GetCurrentUnit(), target, _selectedSkill);
@@ -211,6 +291,8 @@ public partial class GameManager
             _gameOutcome = AovDataStructures.GameOutcome.Defeat;
             _turnManagerContainer?.EndTurnManagerLoop();
             GD.Print("Lose!");
+            BattleNotifications.Post("Defeat — your party has fallen.", BattleNotifications.Severity.Critical);
+            ShowGameOverScreen();
             return;
         }
 
@@ -222,6 +304,8 @@ public partial class GameManager
             _gameOutcome = AovDataStructures.GameOutcome.Victory;
             _turnManagerContainer?.EndTurnManagerLoop();
             GD.Print("Win!");
+            BattleNotifications.Post("Victory!", BattleNotifications.Severity.Positive);
+            ShowVictoryScreen();
         }
     }
 

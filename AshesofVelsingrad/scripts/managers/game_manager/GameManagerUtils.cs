@@ -106,12 +106,15 @@ public partial class GameManager
         }
 
         _currentUnitPossibleMoves.Clear();
+        IUnitSystem mover = _turnManagerContainer.GetCurrentUnit();
+        BattleNotifications.Post(
+            $"{mover.UnitName} moves to ({cell.Item1}, {cell.Item3})",
+            BattleNotifications.Severity.Info);
         _ = AnimateUnitMove(cell);
         _unitMoved = true;
-        _turnManagerContainer.GetCurrentUnit().MoveTo(cell.Item1, cell.Item2, cell.Item3, _mapSystemContainer);
+        mover.MoveTo(cell.Item1, cell.Item2, cell.Item3, _mapSystemContainer);
         HideAllIndicators();
-        _battleHud?.ContextInfo?.ShowMovement(0,
-            _turnManagerContainer.GetCurrentUnit().PossibleMovesRange, canMove: false);
+        _battleHud?.ContextInfo?.ShowMovement(0, mover.PossibleMovesRange, canMove: false);
         _battleInputSystemContainer.SetInputEnabled(true);
     }
 

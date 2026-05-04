@@ -245,11 +245,15 @@ public partial class GameManager : BaseManager
             return;
         }
 
-        _statusEffectSystem.ProcessUnitStatusEffects(_turnManagerContainer.GetCurrentUnit());
+        IUnitSystem activeUnit = _turnManagerContainer.GetCurrentUnit();
+        _statusEffectSystem.ProcessUnitStatusEffects(activeUnit);
         _isPlayerTurn = true;
         if (_currentUnitPossibleMoves.Count == 0)
-            _currentUnitPossibleMoves = _turnManagerContainer.GetCurrentUnit().GetPossibleMoves(_mapSystemContainer);
+            _currentUnitPossibleMoves = activeUnit.GetPossibleMoves(_mapSystemContainer);
         GD.Print("Current Unit Possible Moves: " + string.Join(", ", _currentUnitPossibleMoves));
+        BattleNotifications.Post(
+            $"{activeUnit.UnitName}'s turn — HP {activeUnit.Hp:F0}/{activeUnit.MaxHp:F0}, MP {activeUnit.Mana:F0}/{activeUnit.ManaMax:F0}",
+            BattleNotifications.Severity.Info);
         _battleInputSystemContainer.SetInputEnabled(true);
         GD.Print("Activate input");
         RefreshHudForActiveUnit(_turnManagerContainer.GetCurrentUnit());
@@ -418,7 +422,13 @@ public partial class GameManager : BaseManager
             return;
         }
 
-        _statusEffectSystem.ProcessUnitStatusEffects(_turnManagerContainer.GetCurrentUnit());
+        IUnitSystem activeUnit = _turnManagerContainer.GetCurrentUnit();
+        _statusEffectSystem.ProcessUnitStatusEffects(activeUnit);
+        bool isAlly = _allyUnits.Contains(activeUnit);
+        BattleNotifications.Post(
+            $"{activeUnit.UnitName}'s turn ({(isAlly ? "Ally" : "Enemy")})",
+            isAlly ? BattleNotifications.Severity.Positive : BattleNotifications.Severity.Negative);
+        RefreshHudForActiveUnit(activeUnit);
     }
 
     private void AllyTurnStarted() => EnemyTurnStarted();
@@ -542,6 +552,9 @@ public partial class GameManager : BaseManager
     /// </example>
     public virtual void UseSkill(IUnitSystem sourceUnit, IUnitSystem targetUnit, ISkillSystem skill)
     {
+        BattleNotifications.Post(
+            $"{sourceUnit.UnitName} uses [b]{skill.Name}[/b] on {targetUnit.UnitName}",
+            BattleNotifications.Severity.Info);
         List<IUnitSystem> allyUnits = new List<IUnitSystem>();
         List<IUnitSystem> enemyUnits = new List<IUnitSystem>();
         List<IUnitSystem> targetUnits = new List<IUnitSystem>();

@@ -11,27 +11,26 @@ namespace AshesOfVelsingrad.Data;
 ///         <see cref="Systems.IUnitSystem" />.
 ///     </para>
 ///     <para>
+///         Modelled as a <c>record class</c>: same reference semantics as a regular class
+///         (so a unit and its HUD widget share the same instance and a mutation propagates),
+///         but with auto-generated <c>Equals</c> / <c>GetHashCode</c> based on the property
+///         values, plus a <c>with</c>-expression for clean profile derivation. Reference
+///         semantics are deliberate — a struct would copy on every property access and
+///         silently break <c>unit.EntityProfile.Level = 5</c>.
+///     </para>
+///     <para>
 ///         The portrait is stored as a <c>res://</c> path string rather than a
 ///         <c>Godot.Texture2D</c>: this keeps <c>AshesofVelsingrad.Core</c> Godot-free and
 ///         unit-testable. The Godot adapter (HUD widgets, in-world sprites) calls
 ///         <c>ResourceLoader.Load&lt;Texture2D&gt;(profile.PortraitPath)</c> at render time
-///         to materialise the texture. Lazy loading also avoids forcing every saved profile
-///         to drag a texture handle around.
+///         to materialise the texture.
 ///     </para>
 ///     <para>
-///         Build one inline in a unit's <c>Initialize()</c>:
-///         <code>
-///             SetEntityProfile(new EntityProfile
-///             {
-///                 DisplayName = "Pikachu",
-///                 ClassName = "Combattant",
-///                 Level = 1,
-///                 PortraitPath = "res://assets/portraits/Pikachu.png",
-///             });
-///         </code>
+///         File lives in <c>Core/Data/</c> (matching the namespace) rather than
+///         <c>Core/Systems/</c> — it carries no system behaviour, only data.
 ///     </para>
 /// </remarks>
-public sealed class EntityProfile
+public sealed record class EntityProfile
 {
     /// <summary>Name shown in HUD widgets and dialogue prompts.</summary>
     public string DisplayName { get; set; } = string.Empty;
@@ -47,7 +46,7 @@ public sealed class EntityProfile
     /// <summary>Level shown next to the name.</summary>
     public int Level { get; set; } = 1;
 
-    /// <summary>Class label ("Combattant", "Mage Feu", ...) for tooltips and roster screens.</summary>
+    /// <summary>Class label ("Fighter", "Fire Mage", ...) for tooltips and roster screens.</summary>
     public string ClassName { get; set; } = string.Empty;
 
     /// <summary>Optional flavour text for hover tooltips.</summary>

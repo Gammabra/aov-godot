@@ -13,7 +13,7 @@ namespace AshesOfVelsingrad.Data.Skills;
 ///     backlash chance in the catalogue (85% base). Belongs in the Mage Dark school but lives
 ///     in its own file because it depends on <see cref="CorruptionSystem" />.
 /// </remarks>
-public sealed class ConversionCorrompue : SkillSystem
+public sealed class CorruptedConversion : SkillSystem
 {
     /// <summary>Base backlash probability before karma adjustment.</summary>
     public const float BaseBacklashChance = 0.85f;
@@ -21,7 +21,7 @@ public sealed class ConversionCorrompue : SkillSystem
     /// <summary>Number of turns the converted ally fights as an enemy.</summary>
     public const int ConversionTurns = 3;
 
-    public ConversionCorrompue()
+    public CorruptedConversion()
     {
         Name = SkillStrings.CorruptedConversionName;
         Description =

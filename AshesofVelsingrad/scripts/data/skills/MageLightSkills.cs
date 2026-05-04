@@ -9,9 +9,9 @@ namespace AshesOfVelsingrad.Data.Skills;
 // =============================================================================
 
 /// <summary>Rayon Sacré — Sacred Ray. Damages enemies, heals allies in its line.</summary>
-public sealed class RayonSacre : SkillSystem
+public sealed class SacredRay : SkillSystem
 {
-    public RayonSacre()
+    public SacredRay()
     {
         Name = SkillStrings.SacredRayName;
         Description = SkillStrings.SacredRayDesc;
@@ -29,9 +29,9 @@ public sealed class RayonSacre : SkillSystem
 }
 
 /// <summary>Éclat Purificateur — Purifying Burst. Removes every status effect from one ally.</summary>
-public sealed class EclatPurificateur : SkillSystem
+public sealed class PurifyingFlash : SkillSystem
 {
-    public EclatPurificateur()
+    public PurifyingFlash()
     {
         Name = SkillStrings.PurifyingFlashName;
         Description = SkillStrings.PurifyingFlashDesc;
@@ -53,9 +53,9 @@ public sealed class EclatPurificateur : SkillSystem
 }
 
 /// <summary>Jugement Divin — Divine Judgment. Lightning strike, +200% damage vs corrupted.</summary>
-public sealed class JugementDivin : SkillSystem
+public sealed class DivineJudgment : SkillSystem
 {
-    public JugementDivin()
+    public DivineJudgment()
     {
         Name = SkillStrings.DivineJudgmentName;
         Description = SkillStrings.DivineJudgmentDesc;
@@ -94,9 +94,9 @@ public sealed class Resurrection : SkillSystem
 }
 
 /// <summary>Prière Divine — Divine Prayer. +Status resistance for 3 turns.</summary>
-public sealed class PriereDivine : SkillSystem
+public sealed class DivinePrayer : SkillSystem
 {
-    public PriereDivine()
+    public DivinePrayer()
     {
         Name = SkillStrings.DivinePrayerName;
         Description = SkillStrings.DivinePrayerDesc;

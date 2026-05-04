@@ -11,9 +11,9 @@ namespace AshesOfVelsingrad.Data.Skills;
 #region Actives
 
 /// <summary>Frappe Éclair — Lightning Strike. Rush + +20% damage at range 5.</summary>
-public sealed class FrappeEclair : SkillSystem
+public sealed class LightningStrike : SkillSystem
 {
-    public FrappeEclair()
+    public LightningStrike()
     {
         Name = SkillStrings.LightningStrikeName;
         Description = SkillStrings.LightningStrikeDesc;
@@ -31,9 +31,9 @@ public sealed class FrappeEclair : SkillSystem
 }
 
 /// <summary>Danse des Lames — Dance of Blades. Strikes up to 3 adjacent enemies.</summary>
-public sealed class DanseDesLames : SkillSystem
+public sealed class BladeDance : SkillSystem
 {
-    public DanseDesLames()
+    public BladeDance()
     {
         Name = SkillStrings.BladeDanceName;
         Description = SkillStrings.BladeDanceDesc;
@@ -56,9 +56,9 @@ public sealed class DanseDesLames : SkillSystem
 }
 
 /// <summary>Coup de Bravoure — Brave Strike. Self-buff: -50% damage taken + counter for 1 turn.</summary>
-public sealed class CoupDeBravoure : SkillSystem
+public sealed class GallantStrike : SkillSystem
 {
-    public CoupDeBravoure()
+    public GallantStrike()
     {
         Name = SkillStrings.GallantStrikeName;
         Description = SkillStrings.GallantStrikeDesc;
@@ -75,9 +75,9 @@ public sealed class CoupDeBravoure : SkillSystem
 }
 
 /// <summary>Frappe Fantôme — Phantom Strike. Reach attack at 2 tiles distance.</summary>
-public sealed class FrappeFantome : SkillSystem
+public sealed class PhantomStrike : SkillSystem
 {
-    public FrappeFantome()
+    public PhantomStrike()
     {
         Name = SkillStrings.PhantomStrikeName;
         Description = SkillStrings.PhantomStrikeDesc;
@@ -95,9 +95,9 @@ public sealed class FrappeFantome : SkillSystem
 }
 
 /// <summary>Lame d'Exécution — Execution Blade. +50% damage to targets below 30% HP.</summary>
-public sealed class LameDExecution : SkillSystem
+public sealed class ExecutionerBlade : SkillSystem
 {
-    public LameDExecution()
+    public ExecutionerBlade()
     {
         Name = SkillStrings.ExecutionerBladeName;
         Description = SkillStrings.ExecutionerBladeDesc;
@@ -137,9 +137,9 @@ public sealed class Riposte : SkillSystem
 }
 
 /// <summary>Danse du Lame (passive) — +10% crit chance if the unit moved before attacking.</summary>
-public sealed class DanseDuLame : SkillSystem
+public sealed class WayOfTheBlade : SkillSystem
 {
-    public DanseDuLame()
+    public WayOfTheBlade()
     {
         Name = SkillStrings.BladeDancePassiveName;
         Description = SkillStrings.BladeDancePassiveDesc;
@@ -153,9 +153,9 @@ public sealed class DanseDuLame : SkillSystem
 }
 
 /// <summary>Lame Spectrale — ignores 15% of enemy armor.</summary>
-public sealed class LameSpectrale : SkillSystem
+public sealed class SpectralBlade : SkillSystem
 {
-    public LameSpectrale()
+    public SpectralBlade()
     {
         Name = SkillStrings.SpectralBladePassiveName;
         Description = SkillStrings.SpectralBladePassiveDesc;

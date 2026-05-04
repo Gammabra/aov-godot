@@ -9,9 +9,9 @@ namespace AshesOfVelsingrad.Data.Skills;
 // =============================================================================
 
 /// <summary>Jet d'Eau — Water Jet. Moderate damage + slow.</summary>
-public sealed class JetDEau : SkillSystem
+public sealed class WaterJet : SkillSystem
 {
-    public JetDEau()
+    public WaterJet()
     {
         Name = SkillStrings.WaterJetName;
         Description = "Strike for 80% INT and slow the target.";
@@ -30,9 +30,9 @@ public sealed class JetDEau : SkillSystem
 }
 
 /// <summary>Pluie Guérisseuse — Healing Rain. Light heal on every ally.</summary>
-public sealed class PluieGuerisseuse : SkillSystem
+public sealed class HealingRain : SkillSystem
 {
-    public PluieGuerisseuse()
+    public HealingRain()
     {
         Name = "Healing Rain";
         Description = "Heal every ally for 60% INT.";
@@ -51,9 +51,9 @@ public sealed class PluieGuerisseuse : SkillSystem
 }
 
 /// <summary>Vague Déferlante — Crashing Wave. Knocks enemies back, extinguishes fires.</summary>
-public sealed class VagueDeferlante : SkillSystem
+public sealed class CrashingWave : SkillSystem
 {
-    public VagueDeferlante()
+    public CrashingWave()
     {
         Name = "Crashing Wave";
         Description = "Wash a wave dealing 70% INT to every enemy in range.";
@@ -72,9 +72,9 @@ public sealed class VagueDeferlante : SkillSystem
 }
 
 /// <summary>Bulle de Protection — Protection Bubble. Shield an ally for 1 turn.</summary>
-public sealed class BulleDeProtection : SkillSystem
+public sealed class ProtectiveBubble : SkillSystem
 {
-    public BulleDeProtection()
+    public ProtectiveBubble()
     {
         Name = "Protective Bubble";
         Description = "Wrap an ally in a bubble: +100 DEF for 1 turn.";
@@ -92,9 +92,9 @@ public sealed class BulleDeProtection : SkillSystem
 }
 
 /// <summary>Glaciation Instantanée — Instant Glaciation. 50% chance to stun in a small area.</summary>
-public sealed class GlaciationInstantanee : SkillSystem
+public sealed class FlashFreeze : SkillSystem
 {
-    public GlaciationInstantanee()
+    public FlashFreeze()
     {
         Name = "Flash Freeze";
         Description = "Freeze a small zone for 50% INT and a 50% chance to stun for 1 turn.";

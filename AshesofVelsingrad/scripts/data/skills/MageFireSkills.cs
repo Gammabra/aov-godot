@@ -9,9 +9,9 @@ namespace AshesOfVelsingrad.Data.Skills;
 // =============================================================================
 
 /// <summary>Boule de Feu — Fireball. Damage + burn for 3 turns.</summary>
-public sealed class BouleDeFeu : SkillSystem
+public sealed class Fireball : SkillSystem
 {
-    public BouleDeFeu()
+    public Fireball()
     {
         Name = SkillStrings.FireballName;
         Description = SkillStrings.FireballDesc;
@@ -30,9 +30,9 @@ public sealed class BouleDeFeu : SkillSystem
 }
 
 /// <summary>Tempête Ardente — Burning Storm. 3×3 area damage that ignites the terrain.</summary>
-public sealed class TempeteArdente : SkillSystem
+public sealed class Flamestorm : SkillSystem
 {
-    public TempeteArdente()
+    public Flamestorm()
     {
         Name = SkillStrings.FlamestormName;
         Description = SkillStrings.FlamestormDesc;
@@ -54,9 +54,9 @@ public sealed class TempeteArdente : SkillSystem
 }
 
 /// <summary>Souffle du Dragon — Dragon's Breath. Wide cone of fire.</summary>
-public sealed class SouffleDuDragon : SkillSystem
+public sealed class DragonsBreath : SkillSystem
 {
-    public SouffleDuDragon()
+    public DragonsBreath()
     {
         Name = "Dragon's Breath";
         Description = "Wide fiery cone, 130% INT damage to every enemy in front.";
@@ -78,9 +78,9 @@ public sealed class SouffleDuDragon : SkillSystem
 }
 
 /// <summary>Mur de Flammes — Wall of Flames. Barrier; placeholder until terrain effects land.</summary>
-public sealed class MurDeFlammes : SkillSystem
+public sealed class WallOfFlames : SkillSystem
 {
-    public MurDeFlammes()
+    public WallOfFlames()
     {
         Name = "Wall of Flames";
         Description = "Burning barrier blocking passage. (Terrain-effect TODO — currently buffs caster INT.)";
@@ -97,9 +97,9 @@ public sealed class MurDeFlammes : SkillSystem
 }
 
 /// <summary>Explosion Pyromantique — Pyromantic Explosion. Consumes ALL mana for devastating damage.</summary>
-public sealed class ExplosionPyromantique : SkillSystem
+public sealed class PyromanticBurst : SkillSystem
 {
-    public ExplosionPyromantique()
+    public PyromanticBurst()
     {
         Name = "Pyromantic Burst";
         Description = "Consume ALL mana to deal massive damage scaled by the mana spent.";

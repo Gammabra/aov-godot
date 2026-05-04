@@ -9,9 +9,9 @@ namespace AshesOfVelsingrad.Data.Skills;
 // =============================================================================
 
 /// <summary>Lance de Roc — Rock Spear. Pierces armor.</summary>
-public sealed class LanceDeRoc : SkillSystem
+public sealed class StoneSpike : SkillSystem
 {
-    public LanceDeRoc()
+    public StoneSpike()
     {
         Name = SkillStrings.StoneSpikeName;
         Description = "Pierce a target for 110% INT (ignores DEF).";
@@ -29,9 +29,9 @@ public sealed class LanceDeRoc : SkillSystem
 }
 
 /// <summary>Onde Sismique — Seismic Wave. Knocks enemies down in a line; 70% Stun chance.</summary>
-public sealed class OndeSismique : SkillSystem
+public sealed class SeismicWave : SkillSystem
 {
-    public OndeSismique()
+    public SeismicWave()
     {
         Name = "Seismic Wave";
         Description = "Quake a line for 80% INT with a 70% chance to stun for 1 turn.";
@@ -53,9 +53,9 @@ public sealed class OndeSismique : SkillSystem
 }
 
 /// <summary>Forteresse de Pierre — Stone Fortress. Wall blocking movement (placeholder).</summary>
-public sealed class ForteresseDePierre : SkillSystem
+public sealed class StoneFortress : SkillSystem
 {
-    public ForteresseDePierre()
+    public StoneFortress()
     {
         Name = "Stone Fortress";
         Description = "Raise a stone wall blocking movement. (Terrain TODO — currently buffs caster DEF.)";
@@ -72,9 +72,9 @@ public sealed class ForteresseDePierre : SkillSystem
 }
 
 /// <summary>Peau de Granit — Granite Skin. +DEF to ally for 3 turns.</summary>
-public sealed class PeauDeGranit : SkillSystem
+public sealed class GraniteSkin : SkillSystem
 {
-    public PeauDeGranit()
+    public GraniteSkin()
     {
         Name = "Granite Skin";
         Description = "Toughen an ally: +60 DEF for 3 turns.";
@@ -92,9 +92,9 @@ public sealed class PeauDeGranit : SkillSystem
 }
 
 /// <summary>Avatar du Titan — Titan Avatar. Temporary stone-colossus form.</summary>
-public sealed class AvatarDuTitan : SkillSystem
+public sealed class TitanAvatar : SkillSystem
 {
-    public AvatarDuTitan()
+    public TitanAvatar()
     {
         Name = "Titan Avatar";
         Description = "Become a colossus: +100 ATK and +100 DEF for 3 turns.";

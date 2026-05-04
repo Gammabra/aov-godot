@@ -15,7 +15,7 @@ public sealed class FlechePerforante : SkillSystem
 {
     public FlechePerforante()
     {
-        Name = "Flèche Perforante";
+        Name = SkillStrings.PiercingShotName;
         Description = "Pierce up to 2 aligned enemies for 110% ATK.";
         ManaCost = 8; TotalCooldown = 2; Cooldown = 0; Range = 6;
         MagicType = AovDataStructures.MagicType.None;
@@ -40,7 +40,7 @@ public sealed class PluieDeFleches : SkillSystem
 {
     public PluieDeFleches()
     {
-        Name = "Pluie de Flèches";
+        Name = SkillStrings.MultiShotName;
         Description = "Rain arrows in a 3×3 zone for 80% ATK each.";
         ManaCost = 14; TotalCooldown = 4; Cooldown = 0; Range = 7;
         MagicType = AovDataStructures.MagicType.None;
@@ -60,7 +60,7 @@ public sealed class FlecheEmpoisonnee : SkillSystem
 {
     public FlecheEmpoisonnee()
     {
-        Name = "Flèche Empoisonnée";
+        Name = SkillStrings.PoisonArrowName;
         Description = "Strike for 80% ATK + apply burning (poison stand-in) for 3 turns.";
         ManaCost = 7; TotalCooldown = 2; Cooldown = 0; Range = 6;
         MagicType = AovDataStructures.MagicType.None;
@@ -81,7 +81,7 @@ public sealed class OeilDeFaucon : SkillSystem
 {
     public OeilDeFaucon()
     {
-        Name = "Œil de Faucon";
+        Name = SkillStrings.HawkEyeName;
         Description = "Sharpen aim: +20 ATK for 2 turns (range-buff placeholder).";
         ManaCost = 4; TotalCooldown = 3; Cooldown = 0; Range = 0;
         MagicType = AovDataStructures.MagicType.None;
@@ -100,7 +100,7 @@ public sealed class FlecheDeGivre : SkillSystem
 {
     public FlecheDeGivre()
     {
-        Name = "Flèche de Givre";
+        Name = "Frost Arrow";
         Description = "Strike for 60% ATK and freeze the target for 1 turn.";
         ManaCost = 9; TotalCooldown = 3; Cooldown = 0; Range = 6;
         MagicType = AovDataStructures.MagicType.Water;
@@ -124,7 +124,7 @@ public sealed class TirPrecis : SkillSystem
 {
     public TirPrecis()
     {
-        Name = "Tir Précis";
+        Name = "Precise Shot";
         Description = "Passive — +15% accuracy when the unit didn't move this turn.";
         ManaCost = 0; TotalCooldown = 0; Cooldown = 0; Range = 0;
         MagicType = AovDataStructures.MagicType.None;
@@ -139,7 +139,7 @@ public sealed class ViseeFatale : SkillSystem
 {
     public ViseeFatale()
     {
-        Name = "Visée Fatale";
+        Name = "Lethal Aim";
         Description = "Passive — +10% damage to wounded enemies (HP < 50%).";
         ManaCost = 0; TotalCooldown = 0; Cooldown = 0; Range = 0;
         MagicType = AovDataStructures.MagicType.None;
@@ -154,7 +154,7 @@ public sealed class TirEnMouvement : SkillSystem
 {
     public TirEnMouvement()
     {
-        Name = "Tir en Mouvement";
+        Name = "Mobile Shot";
         Description = "Passive — no penalty when attacking after moving.";
         ManaCost = 0; TotalCooldown = 0; Cooldown = 0; Range = 0;
         MagicType = AovDataStructures.MagicType.None;

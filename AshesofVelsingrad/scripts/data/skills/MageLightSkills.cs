@@ -13,8 +13,8 @@ public sealed class RayonSacre : SkillSystem
 {
     public RayonSacre()
     {
-        Name = "Rayon Sacré";
-        Description = "Beam a sacred ray dealing 100% INT to one enemy. (Healing path TODO.)";
+        Name = SkillStrings.SacredRayName;
+        Description = SkillStrings.SacredRayDesc;
         ManaCost = 12; TotalCooldown = 2; Cooldown = 0; Range = 6;
         MagicType = AovDataStructures.MagicType.Light;
         EffectType = AovDataStructures.EffectType.Damage;
@@ -33,8 +33,8 @@ public sealed class EclatPurificateur : SkillSystem
 {
     public EclatPurificateur()
     {
-        Name = "Éclat Purificateur";
-        Description = "Remove every status effect from a single ally.";
+        Name = SkillStrings.PurifyingFlashName;
+        Description = SkillStrings.PurifyingFlashDesc;
         ManaCost = 12; TotalCooldown = 4; Cooldown = 0; Range = 3;
         MagicType = AovDataStructures.MagicType.Light;
         EffectType = AovDataStructures.EffectType.Buff;
@@ -57,8 +57,8 @@ public sealed class JugementDivin : SkillSystem
 {
     public JugementDivin()
     {
-        Name = "Jugement Divin";
-        Description = "Smite for 130% INT (TODO: triple damage on corrupted units).";
+        Name = SkillStrings.DivineJudgmentName;
+        Description = SkillStrings.DivineJudgmentDesc;
         ManaCost = 18; TotalCooldown = 4; Cooldown = 0; Range = 6;
         MagicType = AovDataStructures.MagicType.Light;
         EffectType = AovDataStructures.EffectType.Damage;
@@ -78,8 +78,8 @@ public sealed class Resurrection : SkillSystem
 {
     public Resurrection()
     {
-        Name = "Résurrection";
-        Description = "Revive a fallen ally with 50% of their max HP.";
+        Name = SkillStrings.ResurrectionName;
+        Description = SkillStrings.ResurrectionDesc;
         ManaCost = 30; TotalCooldown = 8; Cooldown = 0; Range = 3;
         MagicType = AovDataStructures.MagicType.Light;
         EffectType = AovDataStructures.EffectType.Revive;
@@ -98,8 +98,8 @@ public sealed class PriereDivine : SkillSystem
 {
     public PriereDivine()
     {
-        Name = "Prière Divine";
-        Description = "Bless every ally with +20 DEF for 3 turns. (Status-resist TODO.)";
+        Name = SkillStrings.DivinePrayerName;
+        Description = SkillStrings.DivinePrayerDesc;
         ManaCost = 14; TotalCooldown = 4; Cooldown = 0; Range = 0;
         MagicType = AovDataStructures.MagicType.Light;
         EffectType = AovDataStructures.EffectType.Buff;

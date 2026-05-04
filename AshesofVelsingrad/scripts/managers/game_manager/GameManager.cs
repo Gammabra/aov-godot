@@ -103,6 +103,23 @@ public partial class GameManager : BaseManager
         GD.Print("GameManager initialized successfully");
     }
 
+    /// <inheritdoc />
+    /// <remarks>
+    ///     Clear the static singleton when this node leaves the tree (scene unload, scene
+    ///     reload). Without this, the new <see cref="GameManager" /> spawned by the next
+    ///     scene sees a stale <c>Instance</c> and QueueFrees itself as a duplicate.
+    /// </remarks>
+    public override void _ExitTree()
+    {
+        if (Instance == this) Instance = null;
+        // Also free the end-screens we may have spawned so they don't outlive the scene.
+        if (_victoryScreen is not null && IsInstanceValid(_victoryScreen)) _victoryScreen.QueueFree();
+        if (_gameOverScreen is not null && IsInstanceValid(_gameOverScreen)) _gameOverScreen.QueueFree();
+        if (_battleHud is not null && IsInstanceValid(_battleHud) && _battleHud.GetParent() == GetTree().Root)
+            _battleHud.QueueFree();
+        base._ExitTree();
+    }
+
     /// <summary>
     ///     Initializes references to all major systems and sets up initial bindings.
     /// </summary>

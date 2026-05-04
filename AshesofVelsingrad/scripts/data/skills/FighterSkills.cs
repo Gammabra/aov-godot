@@ -18,8 +18,8 @@ public sealed class FrappeEcrasante : SkillSystem
 {
     public FrappeEcrasante()
     {
-        Name = "Frappe Écrasante";
-        Description = "Heavy melee blow dealing 150% ATK. 35% chance to stun for 1 turn.";
+        Name = SkillStrings.CrushingStrikeName;
+        Description = SkillStrings.CrushingStrikeDesc;
         ManaCost = 8;
         TotalCooldown = 2;
         Cooldown = 0;
@@ -43,8 +43,8 @@ public sealed class CriDeGuerre : SkillSystem
 {
     public CriDeGuerre()
     {
-        Name = "Cri de Guerre";
-        Description = "Buff every ally's ATK and DEF by 15 (flat) for 3 turns.";
+        Name = SkillStrings.WarCryName;
+        Description = SkillStrings.WarCryDesc;
         ManaCost = 10;
         TotalCooldown = 4;
         Cooldown = 0;
@@ -70,8 +70,8 @@ public sealed class Charge : SkillSystem
 {
     public Charge()
     {
-        Name = "Charge";
-        Description = "Rush along a row or column up to 4 tiles, stop next to the target, strike for 120% ATK.";
+        Name = SkillStrings.ChargeName;
+        Description = SkillStrings.ChargeDesc;
         ManaCost = 6;
         TotalCooldown = 1;
         Cooldown = 0;
@@ -187,8 +187,8 @@ public sealed class Blocage : SkillSystem
 {
     public Blocage()
     {
-        Name = "Blocage";
-        Description = "Brace yourself: +60 DEF for 1 turn.";
+        Name = SkillStrings.BlockName;
+        Description = SkillStrings.BlockDesc;
         ManaCost = 4;
         TotalCooldown = 3;
         Cooldown = 0;
@@ -210,8 +210,8 @@ public sealed class FrappeCirculaire : SkillSystem
 {
     public FrappeCirculaire()
     {
-        Name = "Frappe Circulaire";
-        Description = "Sweep every adjacent enemy for 100% ATK.";
+        Name = SkillStrings.CircularStrikeName;
+        Description = SkillStrings.CircularStrikeDesc;
         ManaCost = 12;
         TotalCooldown = 3;
         Cooldown = 0;
@@ -237,8 +237,8 @@ public sealed class ForceBrute : SkillSystem
 {
     public ForceBrute()
     {
-        Name = "Force Brute";
-        Description = "Passive — +10% damage on melee skills (Range 1).";
+        Name = SkillStrings.BruteForceName;
+        Description = SkillStrings.BruteForceDesc;
         ManaCost = 0; TotalCooldown = 0; Cooldown = 0; Range = 0;
         MagicType = AovDataStructures.MagicType.None;
         EffectType = AovDataStructures.EffectType.Buff;
@@ -253,8 +253,8 @@ public sealed class Temerite : SkillSystem
 {
     public Temerite()
     {
-        Name = "Témérité";
-        Description = "Passive — +5% damage per 25% missing HP.";
+        Name = SkillStrings.RecklessnessName;
+        Description = SkillStrings.RecklessnessDesc;
         ManaCost = 0; TotalCooldown = 0; Cooldown = 0; Range = 0;
         MagicType = AovDataStructures.MagicType.None;
         EffectType = AovDataStructures.EffectType.Buff;
@@ -269,8 +269,8 @@ public sealed class EnduranceGuerriere : SkillSystem
 {
     public EnduranceGuerriere()
     {
-        Name = "Endurance Guerrière";
-        Description = "Passive — -15% damage taken for the rest of the turn after landing a melee hit.";
+        Name = SkillStrings.WarriorEnduranceName;
+        Description = SkillStrings.WarriorEnduranceDesc;
         ManaCost = 0; TotalCooldown = 0; Cooldown = 0; Range = 0;
         MagicType = AovDataStructures.MagicType.None;
         EffectType = AovDataStructures.EffectType.Buff;

@@ -16,7 +16,7 @@ public sealed class CoupCritique : SkillSystem
 {
     public CoupCritique()
     {
-        Name = "Coup Critique";
+        Name = SkillStrings.CriticalStrikeName;
         Description = "Deal 200% ATK to one enemy.";
         ManaCost = 10; TotalCooldown = 3; Cooldown = 0; Range = 1;
         MagicType = AovDataStructures.MagicType.None;
@@ -37,7 +37,7 @@ public sealed class Disparition : SkillSystem
 {
     public Disparition()
     {
-        Name = "Disparition";
+        Name = SkillStrings.VanishName;
         Description = "Vanish — +120 DEF for 2 turns (placeholder for stealth).";
         ManaCost = 8; TotalCooldown = 4; Cooldown = 0; Range = 0;
         MagicType = AovDataStructures.MagicType.None;
@@ -56,7 +56,7 @@ public sealed class CoupDOmbre : SkillSystem
 {
     public CoupDOmbre()
     {
-        Name = "Coup d'Ombre";
+        Name = SkillStrings.ShadowStrikeName;
         Description = "Strike from the shadows for 130% ATK without breaking stealth.";
         ManaCost = 8; TotalCooldown = 2; Cooldown = 0; Range = 1;
         MagicType = AovDataStructures.MagicType.Dark;
@@ -76,7 +76,7 @@ public sealed class Execution : SkillSystem
 {
     public Execution()
     {
-        Name = "Exécution";
+        Name = SkillStrings.ExecutionName;
         Description = "Instantly defeat an enemy below 15% HP. Otherwise deal 100% ATK.";
         ManaCost = 14; TotalCooldown = 5; Cooldown = 0; Range = 1;
         MagicType = AovDataStructures.MagicType.None;
@@ -99,7 +99,7 @@ public sealed class FrappeSanguine : SkillSystem
 {
     public FrappeSanguine()
     {
-        Name = "Frappe Sanguine";
+        Name = SkillStrings.BloodStrikeName;
         Description = "Strike for 100% ATK and heal yourself for 20% of damage dealt.";
         ManaCost = 7; TotalCooldown = 2; Cooldown = 0; Range = 1;
         MagicType = AovDataStructures.MagicType.Dark;
@@ -124,7 +124,7 @@ public sealed class FrappeSournoise : SkillSystem
 {
     public FrappeSournoise()
     {
-        Name = "Frappe Sournoise";
+        Name = "Sneak Strike";
         Description = "Passive — +30% damage if the target hasn't yet attacked you.";
         ManaCost = 0; TotalCooldown = 0; Cooldown = 0; Range = 0;
         MagicType = AovDataStructures.MagicType.None;
@@ -139,7 +139,7 @@ public sealed class OmbreFurtive : SkillSystem
 {
     public OmbreFurtive()
     {
-        Name = "Ombre Furtive";
+        Name = "Stealthy Shadow";
         Description = "Passive — pass through enemy units without being blocked.";
         ManaCost = 0; TotalCooldown = 0; Cooldown = 0; Range = 0;
         MagicType = AovDataStructures.MagicType.None;
@@ -154,7 +154,7 @@ public sealed class ToxinesMortelles : SkillSystem
 {
     public ToxinesMortelles()
     {
-        Name = "Toxines Mortelles";
+        Name = "Deadly Toxins";
         Description = "Passive — 20% chance to poison on every successful hit.";
         ManaCost = 0; TotalCooldown = 0; Cooldown = 0; Range = 0;
         MagicType = AovDataStructures.MagicType.None;

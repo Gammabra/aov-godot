@@ -23,6 +23,12 @@ public partial class GameManager
     /// <summary>World-space tile overlays (move/target/hover).</summary>
     protected IndicatorOverlay? _indicators;
 
+    /// <summary>End-of-battle Victory overlay; spawned lazily.</summary>
+    protected VictoryScreen? _victoryScreen;
+
+    /// <summary>End-of-battle Defeat overlay; spawned lazily.</summary>
+    protected GameOverScreen? _gameOverScreen;
+
     /// <summary>Optional path to a designer-authored HUD scene.</summary>
     [Export(PropertyHint.File, "*.tscn")]
     private string _battleHudScenePath = string.Empty;
@@ -205,4 +211,89 @@ public partial class GameManager
         }
         return null;
     }
+
+    /// <summary>
+    ///     Spawn (or refresh) the <see cref="VictoryScreen" /> overlay and bind it to the
+    ///     surviving party. Called from <c>CheckWinLoseCondition</c> on victory.
+    /// </summary>
+    /// <remarks>
+    ///     XP and loot values are placeholders for now — the rest of the project will wire
+    ///     them up to the progression and loot-drop systems later.
+    /// </remarks>
+    protected void ShowVictoryScreen()
+    {
+        if (_victoryScreen is null || !IsInstanceValid(_victoryScreen))
+        {
+            _victoryScreen = new VictoryScreen { Name = "VictoryScreen" };
+            // Defer the AddChild for the same reason EnsureHud does — see the long
+            // explanation there. CanvasLayers added during another node's _Ready
+            // sometimes never get their own _Ready dispatched.
+            Node host = GetTree().Root;
+            host.CallDeferred("add_child", _victoryScreen);
+            _victoryScreen.OnContinuePressed += OnVictoryContinue;
+        }
+
+        var party = new System.Collections.Generic.List<IUnitSystem>();
+        party.AddRange(_playerUnits);
+        party.AddRange(_allyUnits);
+
+        // Placeholder rewards — real numbers come from the progression system later.
+        int xpGained = 100 * System.Math.Max(1, _enemyUnits.Count);
+        var loot = new System.Collections.Generic.List<string>
+        {
+            "Gold ×120",
+            "Health Potion ×1",
+        };
+
+        // Build child widgets synchronously (same pattern as BattleHud.Build) so that
+        // by the time the deferred AddChild lands, the entire subtree enters the scene
+        // tree at once and Godot dispatches _Ready for everything in the right order.
+        _victoryScreen.EnsureBuilt();
+        _victoryScreen.Bind(party, xpGained, loot);
+    }
+
+    /// <summary>
+    ///     Spawn the <see cref="GameOverScreen" /> overlay. Called from
+    ///     <c>CheckWinLoseCondition</c> on defeat.
+    /// </summary>
+    protected void ShowGameOverScreen()
+    {
+        if (_gameOverScreen is null || !IsInstanceValid(_gameOverScreen))
+        {
+            _gameOverScreen = new GameOverScreen { Name = "GameOverScreen" };
+            Node host = GetTree().Root;
+            host.CallDeferred("add_child", _gameOverScreen);
+            _gameOverScreen.OnTryAgainPressed += OnTryAgain;
+            _gameOverScreen.OnForfeitPressed += OnForfeit;
+        }
+
+        _gameOverScreen.EnsureBuilt();
+    }
+
+    /// <summary>Reload the current scene to retry the battle from the start.</summary>
+    private void OnTryAgain()
+    {
+        GD.Print("GameManager: TryAgain pressed — reloading current scene.");
+        // Cleanup of the old GameManager / HUD happens automatically when the scene
+        // unloads; we don't need to QueueFree manually here.
+        Error err = GetTree().ReloadCurrentScene();
+        if (err != Error.Ok)
+            GD.PrintErr($"GameManager: ReloadCurrentScene failed with {err}");
+    }
+
+    /// <summary>Placeholder for the Forfeit flow — wired to nothing real yet.</summary>
+    private void OnForfeit()
+    {
+        GD.Print("GameManager: Forfeit pressed — placeholder, no action wired.");
+        BattleNotifications.Post("Forfeit registered (placeholder).", BattleNotifications.Severity.Negative);
+        // TODO: wire to scene-change / save-fail handling once that subsystem lands.
+    }
+
+    /// <summary>Continue button on the victory screen — for now just log.</summary>
+    private void OnVictoryContinue()
+    {
+        GD.Print("GameManager: Victory Continue pressed — placeholder, no action wired.");
+        // TODO: route to the next scene / overworld map.
+    }
+
 }

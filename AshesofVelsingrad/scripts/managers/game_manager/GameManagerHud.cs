@@ -76,6 +76,20 @@ public partial class GameManager
     }
 
     /// <summary>
+    ///     Populate widgets that only need a one-shot bind at battle start (enemy roster).
+    /// </summary>
+    /// <remarks>
+    ///     Called via <c>CallDeferred</c> after <see cref="EnsureHud" /> so the HUD's child
+    ///     widgets have run their <c>_Ready</c> and the <see cref="BattleHud.EnemyRoster" />
+    ///     reference is populated.
+    /// </remarks>
+    protected void BindHudRosters()
+    {
+        if (_battleHud is null) return;
+        _battleHud.EnemyRoster?.Bind(_enemyUnits);
+    }
+
+    /// <summary>
     ///     Refresh the player-side HUD bindings (status panel + skill bar) for the active turn.
     /// </summary>
     /// <param name="active">The unit whose turn it is.</param>

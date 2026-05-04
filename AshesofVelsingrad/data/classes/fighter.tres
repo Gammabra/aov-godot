@@ -1,0 +1,59 @@
+[gd_resource type="Resource" script_class="CharacterClassDefinition" load_steps=8 format=3]
+
+[ext_resource type="Script" path="res://scripts/systems/progression/CharacterClassDefinition.cs" id="1_ClassDef"]
+[ext_resource type="Script" path="res://scripts/systems/progression/SkillUnlock.cs" id="2_SkillUnlock"]
+
+[sub_resource type="Resource" id="A1"]
+script = ExtResource("2_SkillUnlock")
+Level = 1
+SkillId = "frappe_ecrasante"
+IsPassive = false
+
+[sub_resource type="Resource" id="A2"]
+script = ExtResource("2_SkillUnlock")
+Level = 5
+SkillId = "cri_de_guerre"
+IsPassive = false
+
+[sub_resource type="Resource" id="A3"]
+script = ExtResource("2_SkillUnlock")
+Level = 11
+SkillId = "charge"
+IsPassive = false
+
+[sub_resource type="Resource" id="A4"]
+script = ExtResource("2_SkillUnlock")
+Level = 18
+SkillId = "blocage"
+IsPassive = false
+
+[sub_resource type="Resource" id="A5"]
+script = ExtResource("2_SkillUnlock")
+Level = 25
+SkillId = "frappe_circulaire"
+IsPassive = false
+
+[sub_resource type="Resource" id="P1"]
+script = ExtResource("2_SkillUnlock")
+Level = 3
+SkillId = "force_brute"
+IsPassive = true
+
+[sub_resource type="Resource" id="P2"]
+script = ExtResource("2_SkillUnlock")
+Level = 15
+SkillId = "temerite"
+IsPassive = true
+
+[sub_resource type="Resource" id="P3"]
+script = ExtResource("2_SkillUnlock")
+Level = 22
+SkillId = "endurance_guerriere"
+IsPassive = true
+
+[resource]
+script = ExtResource("1_ClassDef")
+ClassId = "fighter"
+DisplayName = "Combattant"
+Description = "Front-line warrior. Tough, simple, hits hard."
+SkillUnlocks = [SubResource("A1"), SubResource("A2"), SubResource("A3"), SubResource("A4"), SubResource("A5"), SubResource("P1"), SubResource("P2"), SubResource("P3")]

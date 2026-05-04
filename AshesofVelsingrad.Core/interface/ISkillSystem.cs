@@ -19,4 +19,10 @@ public interface ISkillSystem
     void Use(IUnitSystem caster, List<IUnitSystem> targets, IMapSystem? map);
     void SetCooldown();
     void ReduceCooldown();
+
+    /// <summary>
+    ///     Optional cell-level targeting predicate (e.g. cardinal-only Charge, line-of-sight,
+    ///     cone). Default implementation in <see cref="SkillSystem" /> returns <c>true</c>.
+    /// </summary>
+    bool IsTargetCellValid(IUnitSystem caster, int x, int y, int z, IMapSystem map);
 }

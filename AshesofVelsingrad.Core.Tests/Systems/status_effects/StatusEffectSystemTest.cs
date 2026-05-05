@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using AshesOfVelsingrad.AI;
+using AshesOfVelsingrad.Data;
 using AshesOfVelsingrad.Systems;
 using AshesOfVelsingrad.Utilities;
 using NUnit.Framework;
@@ -31,6 +32,8 @@ public class StatusEffectSystemTests
     {
         public string UnitName { get; set; } = "TestUnit";
         public string Description { get; set; } = string.Empty;
+        public Faction Faction { get; private set; } = Faction.Player;
+        public EntityProfile? EntityProfile { get; private set; }
         public int PossibleMovesRange { get; set; }
         public float Hp { get; set; } = 1;
         public float MaxHp { get; set; } = 1;
@@ -51,6 +54,8 @@ public class StatusEffectSystemTests
 
         public Task WaitForActionAsync() => Task.CompletedTask;
         public void PassTurn() { }
+        public void SetFaction(Faction faction) => Faction = faction;
+        public void SetEntityProfile(EntityProfile? profile) => EntityProfile = profile;
         public List<(int, int, int)> GetPossibleMoves(IMapSystem map) => new();
         public void SetGridPosition(int x, int y, int z, IMapSystem map) { }
         public bool CanMoveTo(int x, int y, int z, IMapSystem map) => false;

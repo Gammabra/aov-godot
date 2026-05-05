@@ -98,5 +98,22 @@ public abstract class SkillSystem : ISkillSystem
         Cooldown--;
     }
 
+    /// <summary>
+    ///     Optional cell-level targeting predicate. Default returns <c>true</c> — any cell
+    ///     in <see cref="Range" /> can be targeted. Skills with extra rules (cardinal-only
+    ///     charges, line-of-sight, cone area) override this to filter the red target tiles
+    ///     before the player ever clicks. Called by <c>GameManager.PlayerSelectedSkill</c>.
+    /// </summary>
+    /// <param name="caster">Unit that's about to cast this skill.</param>
+    /// <param name="x">Target cell X.</param>
+    /// <param name="y">Target cell Y.</param>
+    /// <param name="z">Target cell Z.</param>
+    /// <param name="map">Active map.</param>
+    /// <returns><c>true</c> if the cell is a legal target for this skill.</returns>
+    public virtual bool IsTargetCellValid(IUnitSystem caster, int x, int y, int z, IMapSystem map)
+    {
+        return true;
+    }
+
     #endregion
 }

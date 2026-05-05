@@ -9,7 +9,7 @@ namespace AshesOfVelsingrad.UI.Hud;
 /// <remarks>
 ///     Tight strip so empty viewport area lets map clicks through. Each button raises a C#
 ///     event the rest of the HUD wires up. The "Pass" button additionally calls
-///     <see cref="IUnitSystem.PassTurn" /> directly so the turn loop unblocks even if the
+///     <c>IUnitSystem.PassTurn</c> directly so the turn loop unblocks even if the
 ///     consumer didn't subscribe. The Cancel button is hidden until <see cref="ShowCancel" />
 ///     is invoked by <c>GameManager</c> when entering skill-targeting mode.
 /// </remarks>

@@ -3,7 +3,7 @@ using Godot;
 namespace AshesOfVelsingrad.systems.items;
 
 /// <summary>
-///     Targeting pattern for an item. Mirrors <see cref="TargetTypes" /> but adds a
+///     Targeting pattern for an item. Mirrors <c>TargetTypes</c> but adds a
 ///     "self only" option (most healing potions).
 /// </summary>
 public enum ItemTargetType

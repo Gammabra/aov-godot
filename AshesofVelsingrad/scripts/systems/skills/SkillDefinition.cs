@@ -7,8 +7,8 @@ namespace AshesOfVelsingrad.systems.skills;
 
 /// <summary>
 ///     The stat used to scale a skill's base power.
-///     The runtime behaviour reads <see cref="UnitSystem.BaseAtk" /> or
-///     <see cref="UnitSystem.Intelligence" /> accordingly.
+///     The runtime behaviour reads <c>UnitSystem.BaseAtk</c> or
+///     <c>UnitSystem.Intelligence</c> accordingly.
 /// </summary>
 public enum ScalingStat
 {

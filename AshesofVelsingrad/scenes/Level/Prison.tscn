@@ -1,12 +1,12 @@
 [gd_scene format=3 uid="uid://cv6a5snma6luw"]
 
-[ext_resource type="Script" uid="uid://b0nykwsguly2d" path="res://scripts/camera_3d_mouvement_LR.gd" id="1_1dje1"]
-[ext_resource type="Texture2D" uid="uid://c3fhnshbrt41q" path="res://assets/Krita/ref_perso.png" id="1_426jf"]
-[ext_resource type="Script" uid="uid://df7ixck7nf2fd" path="res://scripts/player_mouvement.gd" id="3_3qxsn"]
 [ext_resource type="PackedScene" uid="uid://clovyn8ti6ung" path="res://assets/prison_assets/floor.tscn" id="4_w1s1i"]
+[ext_resource type="PackedScene" uid="uid://c40qs8x1egpy7" path="res://scenes/aov_player.tscn" id="5_7ekjt"]
 [ext_resource type="PackedScene" uid="uid://dt1eyxw0w0f2e" path="res://assets/prison_assets/wall_door_open.tscn" id="5_atg6q"]
+[ext_resource type="PackedScene" uid="uid://dboivysgg411t" path="res://scenes/npc/Soldier.tscn" id="6_7ekjt"]
 [ext_resource type="PackedScene" uid="uid://cacndwkpp1xg5" path="res://assets/prison_assets/wall.tscn" id="6_js1ay"]
 [ext_resource type="PackedScene" uid="uid://deoxgrrrqxand" path="res://assets/prison_assets/wall_door_close.tscn" id="7_27kcu"]
+[ext_resource type="PackedScene" uid="uid://ch6ssue2idnqm" path="res://scenes/npc/MiniMercenary.tscn" id="7_js1ay"]
 
 [sub_resource type="Sky" id="Sky_3qxsn"]
 
@@ -28,17 +28,6 @@ transform = Transform3D(1, 0, 0, 0, 0.43063718, 0.9025252, 0, -0.9025252, 0.4306
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="Environement" unique_id=1570903618]
 environment = SubResource("Environment_w1s1i")
-
-[node name="Camera3D" type="Camera3D" parent="." unique_id=424831403]
-transform = Transform3D(1, 0, 0, 0, 0.9612617, 0.27563736, 0, -0.27563736, 0.9612617, -8.627811, 1.855, 2.76)
-script = ExtResource("1_1dje1")
-
-[node name="Sprite3D" type="Sprite3D" parent="." unique_id=1183467635]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -8.627811, 0.051890463, 0.92817163)
-centered = false
-offset = Vector2(-20, 0)
-texture = ExtResource("1_426jf")
-script = ExtResource("3_3qxsn")
 
 [node name="wall" type="MeshInstance3D" parent="." unique_id=1248570454]
 transform = Transform3D(5, 0, -1.6609533e-08, 0, 2.5, 0, 8.3047667e-07, 0, 0.1, -7.5, 1.2572842, -1)
@@ -194,3 +183,12 @@ transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 5.77
 
 [node name="Wall7" parent="Wall9" unique_id=395844910 instance=ExtResource("6_js1ay")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3.54523)
+
+[node name="AovPlayer" parent="." unique_id=1117119690 instance=ExtResource("5_7ekjt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.516685, 0.4965227, 1.006068)
+
+[node name="Soldier" parent="." unique_id=633068440 instance=ExtResource("6_7ekjt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.7481985, 0.7465227, 1.2262589)
+
+[node name="MiniMercenary" parent="." unique_id=942239080 instance=ExtResource("7_js1ay")]
+transform = Transform3D(0.85, 0, 0, 0, 0.85, 0, 0, 0, 0.85, -9.494421, 0.64727277, 0.28755298)

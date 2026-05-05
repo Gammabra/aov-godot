@@ -1,8 +1,13 @@
 [gd_scene format=3 uid="uid://ch6ssue2idnqm"]
 
+[ext_resource type="Script" uid="uid://ccwlexh8hrqsr" path="res://scripts/data/npc/MiniMercenary.cs" id="1_3rv65"]
 [ext_resource type="Texture2D" uid="uid://gn1jvwoe4xtx" path="res://assets/Krita/sprite_mercenaire.png" id="1_tarug"]
 [ext_resource type="Script" uid="uid://dotytx100nxai" path="res://scripts/managers/state_machines/StateMachine.cs" id="2_hkbft"]
-[ext_resource type="Script" uid="uid://cbra7nuuruj2p" path="res://scripts/player/States/IdleState.cs" id="3_3rv65"]
+[ext_resource type="Script" uid="uid://cbra7nuuruj2p" path="res://scripts/GenericCharacterStates/IdleState.cs" id="3_3rv65"]
+[ext_resource type="Script" uid="uid://bwuj8qxa0majx" path="res://scripts/GenericCharacterStates/WalkForwardState.cs" id="5_rkhoi"]
+[ext_resource type="Script" uid="uid://b78pk38svecle" path="res://scripts/GenericCharacterStates/WalkBackwardState.cs" id="6_s4j83"]
+[ext_resource type="Script" uid="uid://cekx3mvjf080g" path="res://scripts/GenericCharacterStates/WalkLeftState.cs" id="7_7vivo"]
+[ext_resource type="Script" uid="uid://bs42mjeuf3j6j" path="res://scripts/GenericCharacterStates/WalkRightState.cs" id="8_51vgn"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gemqk"]
 atlas = ExtResource("1_tarug")
@@ -15,6 +20,54 @@ region = Rect2(211, 695, 211, 139)
 [sub_resource type="AtlasTexture" id="AtlasTexture_3rv65"]
 atlas = ExtResource("1_tarug")
 region = Rect2(422, 695, 211, 139)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rkhoi"]
+atlas = ExtResource("1_tarug")
+region = Rect2(0, 417, 211, 139)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8prbg"]
+atlas = ExtResource("1_tarug")
+region = Rect2(211, 417, 211, 139)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s3vwx"]
+atlas = ExtResource("1_tarug")
+region = Rect2(422, 417, 211, 139)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s4j83"]
+atlas = ExtResource("1_tarug")
+region = Rect2(0, 278, 211, 139)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7vivo"]
+atlas = ExtResource("1_tarug")
+region = Rect2(211, 278, 211, 139)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_51vgn"]
+atlas = ExtResource("1_tarug")
+region = Rect2(422, 278, 211, 139)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d6xsn"]
+atlas = ExtResource("1_tarug")
+region = Rect2(0, 139, 211, 139)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t6vye"]
+atlas = ExtResource("1_tarug")
+region = Rect2(211, 139, 211, 139)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s8r6g"]
+atlas = ExtResource("1_tarug")
+region = Rect2(422, 139, 211, 139)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cf2wa"]
+atlas = ExtResource("1_tarug")
+region = Rect2(0, 0, 211, 139)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j5wks"]
+atlas = ExtResource("1_tarug")
+region = Rect2(211, 0, 211, 139)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qfucy"]
+atlas = ExtResource("1_tarug")
+region = Rect2(422, 0, 211, 139)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_w287s"]
 animations = [{
@@ -31,6 +84,62 @@ animations = [{
 "loop": true,
 "name": &"Idle",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rkhoi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8prbg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s3vwx")
+}],
+"loop": true,
+"name": &"WalkBackward",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s4j83")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7vivo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_51vgn")
+}],
+"loop": true,
+"name": &"WalkForward",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d6xsn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t6vye")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s8r6g")
+}],
+"loop": true,
+"name": &"WalkLeft",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cf2wa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j5wks")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qfucy")
+}],
+"loop": true,
+"name": &"WalkRight",
+"speed": 5.0
 }]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_tarug"]
@@ -38,13 +147,16 @@ animations = [{
 [node name="MiniMercenary" type="CharacterBody3D" unique_id=942239080]
 transform = Transform3D(0.85, 0, 0, 0, 0.85, 0, 0, 0, 0.85, 0, 0, 0)
 collision_layer = 3
+script = ExtResource("1_3rv65")
+_navigationAgentPath = NodePath("NavigationAgent3D")
+_stateMachinePath = NodePath("StateMachine")
 
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="." unique_id=1593208387]
 offset = Vector2(67, 0)
 billboard = 2
 texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_w287s")
-animation = &"Idle"
+animation = &"WalkBackward"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1884269744]
 transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 0, 0, 0)
@@ -57,3 +169,23 @@ InitialState = NodePath("IdleState")
 [node name="IdleState" type="Node" parent="StateMachine" unique_id=774728814]
 script = ExtResource("3_3rv65")
 _animatedSprite3DPath = NodePath("../../AnimatedSprite3D")
+
+[node name="WalkForwardState" type="Node" parent="StateMachine" unique_id=899654968]
+script = ExtResource("5_rkhoi")
+_animatedSprite3DPath = NodePath("../../AnimatedSprite3D")
+
+[node name="WalkBackwardState" type="Node" parent="StateMachine" unique_id=180060085]
+script = ExtResource("6_s4j83")
+_animatedSprite3DPath = NodePath("../../AnimatedSprite3D")
+
+[node name="WalkLeftState" type="Node" parent="StateMachine" unique_id=333220132]
+script = ExtResource("7_7vivo")
+_animatedSprite3DPath = NodePath("../../AnimatedSprite3D")
+
+[node name="WalkRightState" type="Node" parent="StateMachine" unique_id=1154963101]
+script = ExtResource("8_51vgn")
+_animatedSprite3DPath = NodePath("../../AnimatedSprite3D")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=559476726]
+path_desired_distance = 10.0
+target_desired_distance = 40.0

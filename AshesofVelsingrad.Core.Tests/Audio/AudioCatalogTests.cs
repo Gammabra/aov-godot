@@ -41,7 +41,7 @@ public class AudioCatalogTests
         Assert.That(track!.Bus, Is.EqualTo(AudioBus.Music));
         Assert.That(track.Loop, Is.True);
         Assert.That(track.ResourcePath, Does.StartWith("res://"));
-        Assert.That(track.ResourcePath, Does.EndWith("TA_A.wav"));
+        Assert.That(track.ResourcePath, Does.EndWith("TA_A.ogg"));
     }
 
     [Test]

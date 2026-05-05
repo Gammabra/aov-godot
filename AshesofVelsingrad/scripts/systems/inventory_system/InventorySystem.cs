@@ -32,6 +32,10 @@ public sealed class InventorySystem: IInventorySystem
 		Capacity = capacity;
 		Slots = new IInventorySlot[capacity];
 		_accept = acceptFilter;
+
+		// Fill with empty structs so GetSlot never returns null
+		for (int i = 0; i < capacity; i++)
+			Slots[i] = new InventorySlot();
 	}
 
 	public bool CanAccept(int itemId)

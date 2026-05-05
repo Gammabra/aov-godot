@@ -1,37 +1,31 @@
 using System.Collections.Generic;
 using AshesOfVelsingrad.Systems;
+using AshesOfVelsingrad.UI.Hud;
 using AshesOfVelsingrad.Managers;
 using Godot;
 
-namespace AshesOfVelsingrad.UI.Exploration;
+namespace AshesOfVelsingrad.UI.Inventory;
 
 /// <summary>
-///     Exploration-mode inventory panel. Reads directly from
-///     <see cref="PlayerInventoryManager.Inventory" />.
-///     Toggled by the "open_inventory" input action.
+///     Full-screen exploration inventory: 30-slot global grid on the left,
+///     one <see cref="UnitTransferPanel" /> per player unit on the right.
+///     Drag items from the left grid and drop them onto a unit slot.
 /// </summary>
 public sealed partial class ExplorationInventoryUI : CanvasLayer
 {
-    public int localLayer = 10;
+    public const int InventoryLayer  = 10;
 
+    // Tune in InventoryConstants — no magic numbers here.
     private bool _built;
-    private GridContainer? _slotContainer;
-    private readonly List<ExplorationSlotUI> _slotUis = new();
+    private GridContainer? _exploGrid;
+    private HBoxContainer? _unitPanelRow;
+    private readonly List<ExplorationSlotUI> _exploSlots = new();
+    private readonly List<UnitTransferPanel> _unitPanels = new();
 
     public override void _Ready()
     {
         EnsureBuilt();
-
-        if (PlayerInventoryManager.Instance is { } mgr)
-        {
-            mgr.Inventory.SlotChanged += OnSlotChanged;
-            BuildSlots(mgr.Inventory);
-            RefreshAll(mgr.Inventory);
-        }
-        else
-        {
-            GD.PrintErr("ExplorationInventoryUI: PlayerInventoryManager not available.");
-        }
+        BindGlobalInventory();
     }
 
     public override void _Input(InputEvent @event)
@@ -45,58 +39,168 @@ public sealed partial class ExplorationInventoryUI : CanvasLayer
         if (_built) return;
         _built = true;
 
-        Layer = localLayer;
+        Layer = InventoryLayer;
         Visible = false;
 
-        var panel = new PanelContainer { Name = "Panel" };
-        panel.SetAnchorsPreset(Control.LayoutPreset.Center);
-        panel.CustomMinimumSize = new Vector2(480, 400);
-        AddChild(panel);
+        // ── Full-screen dim backdrop ────────────────────────────────────
+        var backdrop = new ColorRect
+        {
+            Color = new Color(0f, 0f, 0f, 0.55f),
+            MouseFilter = Control.MouseFilterEnum.Stop,
+        };
+        backdrop.SetAnchorsAndOffsetsPreset(Control.LayoutPreset.FullRect);
+        AddChild(backdrop);
 
-        var vbox = new VBoxContainer();
-        panel.AddChild(vbox);
+        // ── Centred main window ─────────────────────────────────────────
+        var window = new Control { Name = "Window" };
+        window.SetAnchorsAndOffsetsPreset(Control.LayoutPreset.Center);
+        window.OffsetLeft = -520f;
+        window.OffsetRight = 520f;
+        window.OffsetTop = -320f;
+        window.OffsetBottom = 320f;
+        AddChild(window);
 
-        var title = new Label { Text = "Inventory" };
-        title.AddThemeFontSizeOverride("font_size", 20);
-        vbox.AddChild(title);
+        var outerVBox = new VBoxContainer();
+        outerVBox.AddThemeConstantOverride("separation", 8);
+        outerVBox.SetAnchorsAndOffsetsPreset(Control.LayoutPreset.FullRect);
+        window.AddChild(HudStyle.MakePanel(outerVBox));
 
-        var closeBtn = new Button { Text = "Close" };
+        // ── Title row ───────────────────────────────────────────────────
+        var titleRow = new HBoxContainer();
+        outerVBox.AddChild(titleRow);
+
+        var title = new Label
+        {
+            Text = "Inventory",
+            SizeFlagsHorizontal = Control.SizeFlags.ExpandFill,
+        };
+        HudStyle.StyleLabel(title);
+        title.AddThemeFontSizeOverride("font_size", 18);
+        titleRow.AddChild(title);
+
+        var closeBtn = new Button { Text = "✕" };
+        HudStyle.StyleButton(closeBtn);
         closeBtn.Pressed += Toggle;
-        vbox.AddChild(closeBtn);
+        titleRow.AddChild(closeBtn);
 
-        _slotContainer = new GridContainer { Columns = 5 };
-        vbox.AddChild(_slotContainer);
+        var sep = new HSeparator();
+        sep.AddThemeColorOverride("color", HudStyle.PanelBorder);
+        outerVBox.AddChild(sep);
+
+        // ── Content row: global grid | unit panels ──────────────────────
+        var contentRow = new HBoxContainer();
+        contentRow.AddThemeConstantOverride("separation", 12);
+        contentRow.SizeFlagsVertical = Control.SizeFlags.ExpandFill;
+        outerVBox.AddChild(contentRow);
+
+        // Left: exploration grid
+        var leftVBox = new VBoxContainer();
+        leftVBox.AddThemeConstantOverride("separation", 6);
+        leftVBox.SizeFlagsHorizontal = Control.SizeFlags.ExpandFill;
+        contentRow.AddChild(leftVBox);
+
+        var gridHeader = new Label { Text = "Party Inventory" };
+        HudStyle.StyleLabel(gridHeader);
+        leftVBox.AddChild(gridHeader);
+
+        _exploGrid = new GridContainer { Columns = InventoryConstants.ExplorationColumns };
+        _exploGrid.AddThemeConstantOverride("h_separation", 4);
+        _exploGrid.AddThemeConstantOverride("v_separation", 4);
+        leftVBox.AddChild(_exploGrid);
+
+        // Right: unit transfer panels
+        var rightVBox = new VBoxContainer();
+        rightVBox.AddThemeConstantOverride("separation", 6);
+        contentRow.AddChild(rightVBox);
+
+        var unitHeader = new Label { Text = "Unit Loadouts  ←  drag items here" };
+        HudStyle.StyleLabel(unitHeader);
+        unitHeader.AddThemeColorOverride("font_color", HudStyle.DimText);
+        rightVBox.AddChild(unitHeader);
+
+        _unitPanelRow = new HBoxContainer();
+        _unitPanelRow.AddThemeConstantOverride("separation", 8);
+        rightVBox.AddChild(_unitPanelRow);
     }
 
-    public void Toggle() => Visible = !Visible;
+    // ── Public API ──────────────────────────────────────────────────────
 
-    private void BuildSlots(InventorySystem inventory)
+    public void Toggle()
     {
-        if (_slotContainer == null) return;
+        if (!Visible)
+        {
+            // Refresh unit panels every time the screen opens
+            // so post-battle loadout changes are reflected
+            if (PlayerInventoryManager.Instance is { } mgr)
+                RefreshAll(mgr.Inventory);
+        }
+        Visible = !Visible;
+    }
 
-        foreach (Node child in _slotContainer.GetChildren())
-            child.QueueFree();
-        _slotUis.Clear();
+    /// <summary>
+    ///     Call once at exploration start (or after a battle) to bind the
+    ///     player units so their transfer panels reflect current loadouts.
+    /// </summary>
+    public void BindUnits(IReadOnlyList<IUnitSystem> playerUnits)
+    {
+        if (_unitPanelRow == null) return;
 
-        for (int i = 0; i < inventory.Slots.Length; i++)
+        foreach (Node child in _unitPanelRow.GetChildren()) child.QueueFree();
+        _unitPanels.Clear();
+
+        foreach (IUnitSystem unit in playerUnits)
+        {
+            var panel = new UnitTransferPanel();
+            panel.EnsureBuilt();
+            panel.Bind(unit);
+            _unitPanelRow.AddChild(panel);
+            _unitPanels.Add(panel);
+        }
+    }
+
+    // ── Private ─────────────────────────────────────────────────────────
+
+    private void BindGlobalInventory()
+    {
+        if (PlayerInventoryManager.Instance is not { } mgr)
+        {
+            GD.PrintErr("ExplorationInventoryUI: PlayerInventoryManager not found.");
+            return;
+        }
+
+        mgr.Inventory.SlotChanged += OnGlobalSlotChanged;
+        BuildExploSlots(mgr.Inventory);
+        RefreshAll(mgr.Inventory);
+    }
+
+    private void BuildExploSlots(InventorySystem inventory)
+    {
+        if (_exploGrid == null) return;
+
+        foreach (Node child in _exploGrid.GetChildren()) child.QueueFree();
+        _exploSlots.Clear();
+
+        // Always build ExplorationCapacity slots regardless of actual item count
+        for (int i = 0; i < InventoryConstants.ExplorationCapacity; i++)
         {
             var slot = new ExplorationSlotUI();
-            slot.Setup(i);
-            _slotContainer.AddChild(slot);
-            _slotUis.Add(slot);
+            slot.EnsureBuilt();
+            slot.Setup(i, inventory);
+            _exploGrid.AddChild(slot);
+            _exploSlots.Add(slot);
         }
     }
 
     private void RefreshAll(InventorySystem inventory)
     {
-        for (int i = 0; i < _slotUis.Count; i++)
-            _slotUis[i].Refresh(inventory.Slots[i]);
+        for (int i = 0; i < _exploSlots.Count; i++)
+            _exploSlots[i].Refresh(inventory.GetSlot(i));
     }
 
-    private void OnSlotChanged(int index)
+    private void OnGlobalSlotChanged(int index)
     {
         if (PlayerInventoryManager.Instance is not { } mgr) return;
-        if (index < 0 || index >= _slotUis.Count) return;
-        _slotUis[index].Refresh(mgr.Inventory.Slots[index]);
+        if (index < 0 || index >= _exploSlots.Count) return;
+        _exploSlots[index].Refresh(mgr.Inventory.GetSlot(index));
     }
 }

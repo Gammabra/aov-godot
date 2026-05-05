@@ -1,4 +1,5 @@
 using AshesOfVelsingrad.Systems;
+using AshesOfVelsingrad.UI.Inventory;
 using Godot;
 
 namespace AshesOfVelsingrad.Managers;
@@ -16,7 +17,7 @@ public sealed partial class PlayerInventoryManager : Node
     ///     The one global inventory. Capacity can be tuned here or made
     ///     data-driven later.
     /// </summary>
-    public InventorySystem Inventory { get; } = new(capacity: 20);
+    public InventorySystem Inventory { get; } = new(capacity: InventoryConstants.ExplorationCapacity);
 
     public override void _Ready()
     {

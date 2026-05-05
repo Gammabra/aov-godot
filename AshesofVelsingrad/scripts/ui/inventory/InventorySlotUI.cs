@@ -21,12 +21,12 @@ public sealed partial class InventorySlotUI : PanelContainer
 
     private void EnsureBuilt()
     {
-        if (_label != null) return; // already built
+        if (_label != null) return;
 
         var vbox = new VBoxContainer();
         AddChild(vbox);
 
-        _label = new Label { Text = "Empty" };
+        _label = new Label { Text = string.Empty, Visible = false };
         vbox.AddChild(_label);
 
         _useButton = new Button { Text = "Use", Visible = false };
@@ -48,13 +48,15 @@ public sealed partial class InventorySlotUI : PanelContainer
 
         if (slot.IsEmpty)
         {
-            _label.Text = $"[{_slotIndex}] Empty";
+            _label.Text = string.Empty;
+            _label.Visible = false;
             if (_useButton != null) _useButton.Visible = false;
             return;
         }
 
+        _label.Visible = true;
         var item = ItemCatalog.Get(slot.ItemId);
-        _label.Text = $"[{_slotIndex}] {item.Name} x{slot.Quantity}";
+        _label.Text = $"{item.Name} x{slot.Quantity}";
         if (_useButton != null) _useButton.Visible = true;
     }
 

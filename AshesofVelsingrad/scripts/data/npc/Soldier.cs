@@ -6,18 +6,21 @@ namespace AshesOfVelsingrad.data.npc;
 public partial class Soldier : CharacterBody3D, IInteractable
 {
     [Export]
-    private NodePath? InteractTextPath;
+    private NodePath? _interactTextPath;
+
+    [Export]
+    private string? _battleSceneToCharge;
 
     private Label3D InteractText;
 
     public override void _Ready()
     {
-        InteractText = GetNode<Label3D>(InteractTextPath);
+        InteractText = GetNode<Label3D>(_interactTextPath);
     }
 
     public void Interact(IInteractor interactor)
     {
-        // Implement Interact logic
+        GetTree().ChangeSceneToFile(_battleSceneToCharge);
     }
 
     public bool CanInteract()

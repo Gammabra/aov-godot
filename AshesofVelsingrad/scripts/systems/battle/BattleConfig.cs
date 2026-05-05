@@ -43,7 +43,7 @@ public sealed partial class BattleConfig : Resource
 
     /// <summary>
     ///     Path of the map scene to load. The scene's root must be a
-    ///     <see cref="MapSystem" /> subclass.
+    ///     <c>MapSystem</c> subclass.
     /// </summary>
     [Export(PropertyHint.File, "*.tscn")]
     public string MapScenePath { get; set; } = string.Empty;
@@ -74,7 +74,7 @@ public sealed partial class BattleConfig : Resource
     /// <summary>
     ///     Spawn positions for the player party. The list is consumed in order;
     ///     if the party has more units than positions, extra units fall back to
-    ///     <see cref="MapSystem.PlaceUnits" />'s default placement.
+    ///     <c>MapSystem.PlaceUnits</c>'s default placement.
     /// </summary>
     [Export]
     public Array<Vector3I> PlayerSpawnPositions { get; set; } = [];
@@ -112,7 +112,7 @@ public sealed partial class UnitSpawn : Resource
 {
     /// <summary>
     ///     Path of the unit scene to instantiate. The root node must derive from
-    ///     <see cref="UnitSystem" />.
+    ///     <c>UnitSystem</c>.
     /// </summary>
     [Export(PropertyHint.File, "*.tscn")]
     public string UnitScenePath { get; set; } = string.Empty;

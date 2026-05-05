@@ -1,0 +1,283 @@
+/* ============================================================================
+   Ashes of Velsingrad — DocFX custom theme
+   Layered ON TOP of docfx.min.css. Touches:
+     - typography (system serif for prose, mono for code)
+     - palette (warm slate-and-amber to match the in-game Sky)
+     - sidebar / TOC density (less padding, sharper borders)
+     - article header presentation (hero-like H1, subtle rules)
+     - code blocks (deeper background, soft border, copy button)
+     - admonition / note callouts
+     - dark mode tweaks
+   Anything we don't override falls through to docfx defaults so future
+   docfx upgrades don't fight us.
+   ========================================================================= */
+
+:root {
+  /* Brand — warm steel/parchment palette */
+  --aov-amber:       #c9a26a;
+  --aov-amber-soft:  #e2c79a;
+  --aov-rust:        #b35a3a;
+  --aov-slate:       #2f3540;
+  --aov-slate-deep:  #1a1d24;
+  --aov-paper:       #f6f1e8;
+  --aov-ink:         #1f2530;
+  --aov-rule:        rgba(120, 100, 70, 0.18);
+
+  /* Bootstrap-bridge variables docfx itself reads */
+  --bs-link-color:           var(--aov-rust);
+  --bs-link-hover-color:     var(--aov-amber);
+  --bs-body-color:           var(--aov-ink);
+  --bs-body-bg:              var(--aov-paper);
+  --bs-border-color:         var(--aov-rule);
+  --bs-secondary-color:      #5a5040;
+}
+
+/* Dark-mode overrides — docfx flips data-bs-theme="dark" on <html>. */
+html[data-bs-theme="dark"] {
+  --bs-link-color:           var(--aov-amber-soft);
+  --bs-link-hover-color:     var(--aov-amber);
+  --bs-body-color:           #e6e2d8;
+  --bs-body-bg:              var(--aov-slate-deep);
+  --bs-border-color:         rgba(201, 162, 106, 0.18);
+  --bs-secondary-color:      #b8ad97;
+}
+
+/* ----------------------------------------------------------------------------
+   Typography
+   ------------------------------------------------------------------------- */
+body {
+  font-family: "Iowan Old Style", "Palatino Linotype", Palatino, "Times New Roman", Georgia, serif;
+  font-size: 16.5px;
+  line-height: 1.65;
+  letter-spacing: 0.005em;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Helvetica Neue", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  margin-top: 1.6em;
+  margin-bottom: 0.55em;
+}
+
+article h1 {
+  font-size: 2.4rem;
+  border-bottom: 2px solid var(--aov-amber);
+  padding-bottom: 0.35em;
+  margin-top: 0.4em;
+}
+
+article h2 {
+  font-size: 1.7rem;
+  border-bottom: 1px solid var(--bs-border-color);
+  padding-bottom: 0.25em;
+}
+
+article h3 { font-size: 1.32rem; color: var(--aov-rust); }
+html[data-bs-theme="dark"] article h3 { color: var(--aov-amber-soft); }
+
+article h4 { font-size: 1.12rem; }
+
+article p {
+  margin-bottom: 1em;
+}
+
+article a {
+  text-decoration: none;
+  border-bottom: 1px dotted currentColor;
+}
+article a:hover {
+  border-bottom-style: solid;
+}
+
+/* Inline code — slightly deeper background, sharper edges, mono font. */
+code, kbd, pre, samp {
+  font-family: "JetBrains Mono", "Fira Code", "SF Mono", Menlo, Consolas, monospace;
+  font-size: 0.92em;
+}
+:not(pre) > code {
+  background: rgba(120, 90, 50, 0.10);
+  border: 1px solid var(--bs-border-color);
+  border-radius: 4px;
+  padding: 1px 5px;
+  color: var(--aov-rust);
+}
+html[data-bs-theme="dark"] :not(pre) > code {
+  background: rgba(201, 162, 106, 0.12);
+  color: var(--aov-amber-soft);
+}
+
+/* Block code — give it some breathing room and a left amber rule. */
+pre, .code-toolbar pre {
+  background: rgba(47, 53, 64, 0.04);
+  border: 1px solid var(--bs-border-color);
+  border-left: 3px solid var(--aov-amber);
+  border-radius: 6px;
+  padding: 14px 16px;
+  margin: 1.2em 0;
+  overflow-x: auto;
+  line-height: 1.55;
+}
+html[data-bs-theme="dark"] pre {
+  background: rgba(15, 18, 24, 0.7);
+}
+
+/* ----------------------------------------------------------------------------
+   Header / navbar
+   ------------------------------------------------------------------------- */
+header.bg-body {
+  background: linear-gradient(180deg, var(--aov-slate) 0%, var(--aov-slate-deep) 100%) !important;
+  border-bottom: 1px solid var(--aov-amber) !important;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.18);
+}
+
+.navbar-brand,
+.navbar-brand:hover {
+  color: var(--aov-paper) !important;
+  font-family: "Helvetica Neue", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.navbar #search input {
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--aov-paper);
+  border: 1px solid rgba(201, 162, 106, 0.35);
+  border-radius: 4px;
+}
+.navbar #search input::placeholder { color: rgba(246, 241, 232, 0.55); }
+.navbar #search i { color: var(--aov-amber-soft); }
+
+/* ----------------------------------------------------------------------------
+   Sidebar / Table of contents
+   ------------------------------------------------------------------------- */
+.toc {
+  font-family: "Helvetica Neue", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 0.95em;
+}
+.toc .nav > li > a {
+  padding: 4px 8px;
+  border-left: 2px solid transparent;
+  border-radius: 0;
+}
+.toc .nav > li > a:hover {
+  background: rgba(201, 162, 106, 0.08);
+  border-left-color: var(--aov-amber);
+}
+.toc .nav > li.active > a {
+  background: rgba(179, 90, 58, 0.10);
+  border-left-color: var(--aov-rust);
+  color: var(--aov-rust);
+  font-weight: 600;
+}
+html[data-bs-theme="dark"] .toc .nav > li.active > a {
+  color: var(--aov-amber);
+  border-left-color: var(--aov-amber);
+}
+
+/* ----------------------------------------------------------------------------
+   Article body
+   ------------------------------------------------------------------------- */
+article.content {
+  max-width: 88ch;
+  margin-inline: auto;
+}
+
+article blockquote {
+  border-left: 3px solid var(--aov-amber);
+  background: rgba(201, 162, 106, 0.08);
+  padding: 12px 16px;
+  margin: 1.4em 0;
+  color: var(--bs-secondary-color);
+  font-style: italic;
+}
+
+article hr {
+  border: 0;
+  border-top: 1px solid var(--bs-border-color);
+  margin: 2em 0;
+}
+
+article table {
+  border-collapse: collapse;
+  margin: 1.2em 0;
+  width: 100%;
+}
+article table th, article table td {
+  border: 1px solid var(--bs-border-color);
+  padding: 8px 12px;
+  vertical-align: top;
+}
+article table thead th {
+  background: rgba(201, 162, 106, 0.12);
+  font-weight: 700;
+  text-align: left;
+}
+
+/* List density */
+article ul, article ol {
+  padding-left: 1.5em;
+  margin-bottom: 1em;
+}
+article li + li {
+  margin-top: 0.25em;
+}
+
+/* ----------------------------------------------------------------------------
+   API reference niceties
+   ------------------------------------------------------------------------- */
+/* docfx wraps every signature in a <pre class="lang-csharp"> — give those
+   their own colour so they're visually distinct from inline examples. */
+.codewrapper pre,
+pre.lang-csharp {
+  border-left-color: var(--aov-rust);
+}
+
+/* The "Property Value" / "Returns" / "Exceptions" headers on API pages */
+article .pageheader,
+article h4.section,
+article h5 {
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-size: 0.78rem;
+  color: var(--bs-secondary-color);
+  margin-top: 1.6em;
+}
+
+/* Small chips for type names in member tables */
+article a[href*="api/"]:not(.btn) {
+  font-family: "JetBrains Mono", "Fira Code", "SF Mono", Menlo, Consolas, monospace;
+  font-size: 0.95em;
+}
+
+/* ----------------------------------------------------------------------------
+   Footer
+   ------------------------------------------------------------------------- */
+footer.border-top {
+  border-top: 1px solid var(--aov-amber) !important;
+  background: var(--aov-slate);
+  color: var(--aov-paper) !important;
+  padding: 18px 0;
+  margin-top: 4em;
+}
+footer.border-top a { color: var(--aov-amber-soft); }
+
+/* ----------------------------------------------------------------------------
+   Search-results panel
+   ------------------------------------------------------------------------- */
+.search-results .sr-items > * {
+  border-bottom: 1px solid var(--bs-border-color);
+  padding: 14px 6px;
+}
+.search-results mark {
+  background: rgba(201, 162, 106, 0.4);
+  color: inherit;
+}
+
+/* ----------------------------------------------------------------------------
+   Print
+   ------------------------------------------------------------------------- */
+@media print {
+  header, .toc-offcanvas, .affix, footer { display: none !important; }
+  article { max-width: none; }
+}

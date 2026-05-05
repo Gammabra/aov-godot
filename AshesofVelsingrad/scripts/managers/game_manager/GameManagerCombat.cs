@@ -11,7 +11,7 @@ namespace AshesOfVelsingrad.Managers;
 /// <summary>
 ///     <see cref="GameManager" /> partial — indicator updates, hover ray-cast, cancel,
 ///     warnings, A* tween-animated movement, and the HUD event handlers wired by
-///     <see cref="GameManagerHud.WireHudEvents" />.
+///     <c>GameManagerHud.WireHudEvents</c>.
 /// </summary>
 public partial class GameManager
 {

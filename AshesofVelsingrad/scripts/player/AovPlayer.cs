@@ -27,9 +27,12 @@ public sealed partial class AovPlayer : CharacterBody3D, IInteractor
 
     private float _gravity = ProjectSettings.GetSetting("physics/3d/default_gravity").AsSingle();
     private StateMachine? _stateMachine;
-    private SpringArm3D _springArm3D;
+    // null! — populated in Initialize() via the [Export] NodePath. Used non-null in
+    // _PhysicsProcess; Godot's lifecycle guarantees Initialize runs before any frame
+    // callback touches these, so the suppression matches the runtime invariant.
+    private SpringArm3D _springArm3D = null!;
     private InteractionComponent? _interactionComponent;
-    private AnimatedSprite3D _animatedSprite3D;
+    private AnimatedSprite3D _animatedSprite3D = null!;
     private static AovPlayer? _instance;
 
     private void Initialize()

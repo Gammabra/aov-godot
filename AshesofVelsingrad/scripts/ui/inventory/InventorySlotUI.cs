@@ -1,39 +1,61 @@
-using Godot;
+// scripts/ui/hud/InventorySlotUI.cs
 using AshesOfVelsingrad.Systems;
+using AshesOfVelsingrad.UI.Hud;
+using Godot;
 
-public partial class InventorySlotUI : PanelContainer
+/// <summary>
+///     Single inventory slot — label + Use button. Built entirely in code,
+///     no .tscn required, matching the BattleHud widget pattern.
+/// </summary>
+public sealed partial class InventorySlotUI : PanelContainer
 {
-    [Export] private Label? _label;
-    [Export] private Button? _useButton;
-
+    private Label? _label;
+    private Button? _useButton;
     private int _slotIndex;
     private InventoryUI? _inventoryUI;
 
+    public override void _Ready()
+    {
+        EnsureBuilt();
+    }
+
+    private void EnsureBuilt()
+    {
+        if (_label != null) return; // already built
+
+        var vbox = new VBoxContainer();
+        AddChild(vbox);
+
+        _label = new Label { Text = "Empty" };
+        vbox.AddChild(_label);
+
+        _useButton = new Button { Text = "Use", Visible = false };
+        _useButton.Pressed += OnUsePressed;
+        vbox.AddChild(_useButton);
+    }
+
     public void Setup(int slotIndex, InventoryUI inventoryUI)
     {
+        EnsureBuilt(); // may be called before _Ready in the deferred-AddChild path
         _slotIndex = slotIndex;
         _inventoryUI = inventoryUI;
-
-        if (_useButton != null)
-            _useButton.Pressed += OnUsePressed;
     }
 
     public void Refresh(InventorySlot slot)
     {
+        EnsureBuilt();
         if (_label == null) return;
 
-        bool isEmpty = slot.IsEmpty;
-
-        if (isEmpty)
-            _label.Text = $"[{_slotIndex}] Empty";
-        else
+        if (slot.IsEmpty)
         {
-            var item = ItemCatalog.Get(slot.ItemId);
-            _label.Text = $"[{_slotIndex}] {item.Name} x{slot.Quantity}";
+            _label.Text = $"[{_slotIndex}] Empty";
+            if (_useButton != null) _useButton.Visible = false;
+            return;
         }
 
-        if (_useButton != null)
-            _useButton.Visible = !isEmpty;
+        var item = ItemCatalog.Get(slot.ItemId);
+        _label.Text = $"[{_slotIndex}] {item.Name} x{slot.Quantity}";
+        if (_useButton != null) _useButton.Visible = true;
     }
 
     private void OnUsePressed()

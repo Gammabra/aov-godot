@@ -3,9 +3,9 @@ extends Button
 var dio=Dialog.new()
 var dialog:=dio.start(self)
 #Character(NPC_name, font color, npc image)
-var s=dialog.Character("Solder", Color.REBECCA_PURPLE) 
-var kaelen=dialog.Character("Kaelen Voss", Color.BROWN)
-var ym=dialog.Character("Arthur", Color.YELLOW_GREEN)
+var s=dialog.Character("Solder", Color.REBECCA_PURPLE, "res://assets/Krita/icone_solder.png") 
+var kaelen=dialog.Character("Kaelen Voss", Color.BROWN, "res://assets/Krita/icone_player.png")
+var ym=dialog.Character("Arthur", Color.YELLOW_GREEN, "res://assets/Krita/icone_mercenaire.png")
 
 func _ready() -> void:
 	dialog.typewriter_speed=30

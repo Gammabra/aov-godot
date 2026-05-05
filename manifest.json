@@ -2640,7 +2640,7 @@
       "Uid": null,
       "IsMRef": true,
       "Title": "AshesOfVelsingrad.Managers.GameManager",
-      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.Managers.GameManager.yml\" sourcestartlinenumber=\"1\"><xref href=\"AshesOfVelsingrad.Managers.GameManager\" data-throw-if-not-resolved=\"false\"></xref> partial — indicator updates, hover ray-cast, cancel,\nwarnings, A* tween-animated movement, and the HUD event handlers wired by\nGameManagerHud.WireHudEvents.</p>\n"
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.Managers.GameManager.yml\" sourcestartlinenumber=\"1\"><xref href=\"AshesOfVelsingrad.Managers.GameManager\" data-throw-if-not-resolved=\"false\"></xref> partial — indicator updates, hover ray-cast, cancel,\nwarnings, A* tween-animated movement, and the HUD event handlers wired by\n<code>GameManagerHud.WireHudEvents</code>.</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -4404,7 +4404,7 @@
       "Uid": null,
       "IsMRef": true,
       "Title": "AshesOfVelsingrad.systems.items.ItemTargetType",
-      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.systems.items.ItemTargetType.yml\" sourcestartlinenumber=\"1\">Targeting pattern for an item. Mirrors TargetTypes but adds a\n&quot;self only&quot; option (most healing potions).</p>\n"
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.systems.items.ItemTargetType.yml\" sourcestartlinenumber=\"1\">Targeting pattern for an item. Mirrors <code>TargetTypes</code> but adds a\n&quot;self only&quot; option (most healing potions).</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -4670,7 +4670,7 @@
       "Uid": null,
       "IsMRef": true,
       "Title": "AshesOfVelsingrad.systems.skills.ScalingStat",
-      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.systems.skills.ScalingStat.yml\" sourcestartlinenumber=\"1\">The stat used to scale a skill's base power.\nThe runtime behaviour reads UnitSystem.BaseAtk or\nUnitSystem.Intelligence accordingly.</p>\n"
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.systems.skills.ScalingStat.yml\" sourcestartlinenumber=\"1\">The stat used to scale a skill's base power.\nThe runtime behaviour reads <code>UnitSystem.BaseAtk</code> or\n<code>UnitSystem.Intelligence</code> accordingly.</p>\n"
     },
     {
       "type": "ManagedReference",

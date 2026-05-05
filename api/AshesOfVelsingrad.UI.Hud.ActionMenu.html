@@ -1703,7 +1703,7 @@ public sealed class ActionMenu : Control, IDisposable</code></pre>
   <h2 id="AshesOfVelsingrad_UI_Hud_ActionMenu_remarks">Remarks</h2>
   <div class="markdown level0 remarks"><p>Tight strip so empty viewport area lets map clicks through. Each button raises a C#
 event the rest of the HUD wires up. The &quot;Pass&quot; button additionally calls
-IUnitSystem.PassTurn directly so the turn loop unblocks even if the
+<code>IUnitSystem.PassTurn</code> directly so the turn loop unblocks even if the
 consumer didn't subscribe. The Cancel button is hidden until <a class="xref" href="AshesOfVelsingrad.UI.Hud.ActionMenu.html#AshesOfVelsingrad_UI_Hud_ActionMenu_ShowCancel_System_Boolean_">ShowCancel(bool)</a>
 is invoked by <code>GameManager</code> when entering skill-targeting mode.</p>
 </div>

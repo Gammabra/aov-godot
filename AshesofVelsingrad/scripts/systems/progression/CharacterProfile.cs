@@ -14,7 +14,7 @@ namespace AshesOfVelsingrad.systems.progression;
 ///         needs to round-trip the character.
 ///     </para>
 ///     <para>
-///         The runtime <see cref="UnitSystem" /> instance keeps a reference to its
+///         The runtime <c>UnitSystem</c> instance keeps a reference to its
 ///         profile and reads / writes it directly. Profiles are plain C# objects
 ///         (no Godot dependency) so they are easy to test and to serialize.
 ///     </para>

@@ -2,9 +2,9 @@
 <html>
   <head>
     <meta charset="utf-8">
-      <title>Class WalkLeftState | Ashes of Velsingrad Documentation </title>
+      <title>Class MiniMercenary | Ashes of Velsingrad Documentation </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content="Class WalkLeftState | Ashes of Velsingrad Documentation ">
+      <meta name="title" content="Class MiniMercenary | Ashes of Velsingrad Documentation ">
       
       
       <link rel="icon" href="../favicon.ico">
@@ -84,16 +84,16 @@
           <nav id="breadcrumb"></nav>
         </div>
 
-        <article data-uid="AshesOfVelsingrad.player.States.WalkLeftState">
+        <article data-uid="AshesOfVelsingrad.data.npc.MiniMercenary">
 
 
 
-  <h1 id="AshesOfVelsingrad_player_States_WalkLeftState" data-uid="AshesOfVelsingrad.player.States.WalkLeftState" class="text-break">
-Class WalkLeftState  
+  <h1 id="AshesOfVelsingrad_data_npc_MiniMercenary" data-uid="AshesOfVelsingrad.data.npc.MiniMercenary" class="text-break">
+Class MiniMercenary  
   </h1>
 
   <div class="facts text-secondary">
-    <dl><dt>Namespace</dt><dd><a class="xref" href="AshesOfVelsingrad.html">AshesOfVelsingrad</a>.<a class="xref" href="AshesOfVelsingrad.player.html">player</a>.<a class="xref" href="AshesOfVelsingrad.player.States.html">States</a></dd></dl>
+    <dl><dt>Namespace</dt><dd><a class="xref" href="AshesOfVelsingrad.html">AshesOfVelsingrad</a>.<a class="xref" href="AshesOfVelsingrad.data.html">data</a>.<a class="xref" href="AshesOfVelsingrad.data.npc.html">npc</a></dd></dl>
   <dl><dt>Assembly</dt><dd>AshesofVelsingrad.dll</dd></dl>
   </div>
 
@@ -101,8 +101,8 @@ Class WalkLeftState
   <div class="markdown conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[ScriptPath(&quot;res://scripts/GenericCharacterStates/WalkLeftState.cs&quot;)]
-public class WalkLeftState : State, IDisposable</code></pre>
+    <pre><code class="lang-csharp hljs">[ScriptPath(&quot;res://scripts/data/npc/MiniMercenary.cs&quot;)]
+public class MiniMercenary : CharacterBody3D, IDisposable</code></pre>
   </div>
 
 
@@ -114,8 +114,11 @@ public class WalkLeftState : State, IDisposable</code></pre>
       <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
       <div><span class="xref">GodotObject</span></div>
       <div><span class="xref">Node</span></div>
-      <div><a class="xref" href="AshesOfVelsingrad.Managers.State.html">State</a></div>
-      <div><span class="xref">WalkLeftState</span></div>
+      <div><span class="xref">Node3D</span></div>
+      <div><span class="xref">CollisionObject3D</span></div>
+      <div><span class="xref">PhysicsBody3D</span></div>
+      <div><span class="xref">CharacterBody3D</span></div>
+      <div><span class="xref">MiniMercenary</span></div>
     </dd>
   </dl>
 
@@ -131,16 +134,439 @@ public class WalkLeftState : State, IDisposable</code></pre>
     <dt>Inherited Members</dt>
     <dd>
     <div>
-      <a class="xref" href="AshesOfVelsingrad.Managers.State.html#AshesOfVelsingrad_Managers_State_fsm">State.fsm</a>
+      <span class="xref">CharacterBody3D.MoveAndSlide()</span>
     </div>
     <div>
-      <a class="xref" href="AshesOfVelsingrad.Managers.State.html#AshesOfVelsingrad_Managers_State_Update_System_Double_">State.Update(double)</a>
+      <span class="xref">CharacterBody3D.ApplyFloorSnap()</span>
     </div>
     <div>
-      <a class="xref" href="AshesOfVelsingrad.Managers.State.html#AshesOfVelsingrad_Managers_State_PhysicsUpdate_System_Double_">State.PhysicsUpdate(double)</a>
+      <span class="xref">CharacterBody3D.IsOnFloor()</span>
     </div>
     <div>
-      <a class="xref" href="AshesOfVelsingrad.Managers.State.html#AshesOfVelsingrad_Managers_State_HandleInput_Godot_InputEvent_">State.HandleInput(InputEvent)</a>
+      <span class="xref">CharacterBody3D.IsOnFloorOnly()</span>
+    </div>
+    <div>
+      <span class="xref">CharacterBody3D.IsOnCeiling()</span>
+    </div>
+    <div>
+      <span class="xref">CharacterBody3D.IsOnCeilingOnly()</span>
+    </div>
+    <div>
+      <span class="xref">CharacterBody3D.IsOnWall()</span>
+    </div>
+    <div>
+      <span class="xref">CharacterBody3D.IsOnWallOnly()</span>
+    </div>
+    <div>
+      <span class="xref">CharacterBody3D.GetFloorNormal()</span>
+    </div>
+    <div>
+      <span class="xref">CharacterBody3D.GetWallNormal()</span>
+    </div>
+    <div>
+      <span class="xref">CharacterBody3D.GetLastMotion()</span>
+    </div>
+    <div>
+      <span class="xref">CharacterBody3D.GetPositionDelta()</span>
+    </div>
+    <div>
+      <span class="xref">CharacterBody3D.GetRealVelocity()</span>
+    </div>
+    <div>
+      <span class="xref">CharacterBody3D.GetFloorAngle(Vector3?)</span>
+    </div>
+    <div>
+      <span class="xref">CharacterBody3D.GetPlatformVelocity()</span>
+    </div>
+    <div>
+      <span class="xref">CharacterBody3D.GetPlatformAngularVelocity()</span>
+    </div>
+    <div>
+      <span class="xref">CharacterBody3D.GetSlideCollisionCount()</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">CharacterBody3D.GetSlideCollision(int)</a>
+    </div>
+    <div>
+      <span class="xref">CharacterBody3D.GetLastSlideCollision()</span>
+    </div>
+    <div>
+      <span class="xref">CharacterBody3D.InvokeGodotClassMethod(in godot_string_name, NativeVariantPtrArgs, out godot_variant)</span>
+    </div>
+    <div>
+      <span class="xref">CharacterBody3D.HasGodotClassMethod(in godot_string_name)</span>
+    </div>
+    <div>
+      <span class="xref">CharacterBody3D.HasGodotClassSignal(in godot_string_name)</span>
+    </div>
+    <div>
+      <span class="xref">CharacterBody3D.MotionMode</span>
+    </div>
+    <div>
+      <span class="xref">CharacterBody3D.UpDirection</span>
+    </div>
+    <div>
+      <span class="xref">CharacterBody3D.SlideOnCeiling</span>
+    </div>
+    <div>
+      <span class="xref">CharacterBody3D.Velocity</span>
+    </div>
+    <div>
+      <span class="xref">CharacterBody3D.MaxSlides</span>
+    </div>
+    <div>
+      <span class="xref">CharacterBody3D.WallMinSlideAngle</span>
+    </div>
+    <div>
+      <span class="xref">CharacterBody3D.FloorStopOnSlope</span>
+    </div>
+    <div>
+      <span class="xref">CharacterBody3D.FloorConstantSpeed</span>
+    </div>
+    <div>
+      <span class="xref">CharacterBody3D.FloorBlockOnWall</span>
+    </div>
+    <div>
+      <span class="xref">CharacterBody3D.FloorMaxAngle</span>
+    </div>
+    <div>
+      <span class="xref">CharacterBody3D.FloorSnapLength</span>
+    </div>
+    <div>
+      <span class="xref">CharacterBody3D.PlatformOnLeave</span>
+    </div>
+    <div>
+      <span class="xref">CharacterBody3D.PlatformFloorLayers</span>
+    </div>
+    <div>
+      <span class="xref">CharacterBody3D.PlatformWallLayers</span>
+    </div>
+    <div>
+      <span class="xref">CharacterBody3D.SafeMargin</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">PhysicsBody3D.MoveAndCollide(Vector3, bool, float, bool, int)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">PhysicsBody3D.TestMove(Transform3D, Vector3, KinematicCollision3D, float, bool, int)</a>
+    </div>
+    <div>
+      <span class="xref">PhysicsBody3D.GetGravity()</span>
+    </div>
+    <div>
+      <span class="xref">PhysicsBody3D.GetCollisionExceptions()</span>
+    </div>
+    <div>
+      <span class="xref">PhysicsBody3D.AddCollisionExceptionWith(Node)</span>
+    </div>
+    <div>
+      <span class="xref">PhysicsBody3D.RemoveCollisionExceptionWith(Node)</span>
+    </div>
+    <div>
+      <span class="xref">PhysicsBody3D.AxisLockLinearX</span>
+    </div>
+    <div>
+      <span class="xref">PhysicsBody3D.AxisLockLinearY</span>
+    </div>
+    <div>
+      <span class="xref">PhysicsBody3D.AxisLockLinearZ</span>
+    </div>
+    <div>
+      <span class="xref">PhysicsBody3D.AxisLockAngularX</span>
+    </div>
+    <div>
+      <span class="xref">PhysicsBody3D.AxisLockAngularY</span>
+    </div>
+    <div>
+      <span class="xref">PhysicsBody3D.AxisLockAngularZ</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">CollisionObject3D._InputEvent(Camera3D, InputEvent, Vector3, Vector3, int)</a>
+    </div>
+    <div>
+      <span class="xref">CollisionObject3D._MouseEnter()</span>
+    </div>
+    <div>
+      <span class="xref">CollisionObject3D._MouseExit()</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">CollisionObject3D.SetCollisionLayerValue(int, bool)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">CollisionObject3D.GetCollisionLayerValue(int)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">CollisionObject3D.SetCollisionMaskValue(int, bool)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">CollisionObject3D.GetCollisionMaskValue(int)</a>
+    </div>
+    <div>
+      <span class="xref">CollisionObject3D.GetRid()</span>
+    </div>
+    <div>
+      <span class="xref">CollisionObject3D.CreateShapeOwner(GodotObject)</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint32">CollisionObject3D.RemoveShapeOwner(uint)</a>
+    </div>
+    <div>
+      <span class="xref">CollisionObject3D.GetShapeOwners()</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint32">CollisionObject3D.ShapeOwnerSetTransform(uint, Transform3D)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint32">CollisionObject3D.ShapeOwnerGetTransform(uint)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint32">CollisionObject3D.ShapeOwnerGetOwner(uint)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint32">CollisionObject3D.ShapeOwnerSetDisabled(uint, bool)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint32">CollisionObject3D.IsShapeOwnerDisabled(uint)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint32">CollisionObject3D.ShapeOwnerAddShape(uint, Shape3D)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint32">CollisionObject3D.ShapeOwnerGetShapeCount(uint)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint32">CollisionObject3D.ShapeOwnerGetShape(uint, int)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint32">CollisionObject3D.ShapeOwnerGetShapeIndex(uint, int)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint32">CollisionObject3D.ShapeOwnerRemoveShape(uint, int)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint32">CollisionObject3D.ShapeOwnerClearShapes(uint)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">CollisionObject3D.ShapeFindOwner(int)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int64">CollisionObject3D.EmitSignalInputEvent(Node, InputEvent, Vector3, Vector3, long)</a>
+    </div>
+    <div>
+      <span class="xref">CollisionObject3D.EmitSignalMouseEntered()</span>
+    </div>
+    <div>
+      <span class="xref">CollisionObject3D.EmitSignalMouseExited()</span>
+    </div>
+    <div>
+      <span class="xref">CollisionObject3D.DisableMode</span>
+    </div>
+    <div>
+      <span class="xref">CollisionObject3D.CollisionLayer</span>
+    </div>
+    <div>
+      <span class="xref">CollisionObject3D.CollisionMask</span>
+    </div>
+    <div>
+      <span class="xref">CollisionObject3D.CollisionPriority</span>
+    </div>
+    <div>
+      <span class="xref">CollisionObject3D.InputRayPickable</span>
+    </div>
+    <div>
+      <span class="xref">CollisionObject3D.InputCaptureOnDrag</span>
+    </div>
+    <div>
+      <span class="xref">CollisionObject3D.InputEvent</span>
+    </div>
+    <div>
+      <span class="xref">CollisionObject3D.MouseEntered</span>
+    </div>
+    <div>
+      <span class="xref">CollisionObject3D.MouseExited</span>
+    </div>
+    <div>
+      <span class="xref">Node3D.NotificationTransformChanged</span>
+    </div>
+    <div>
+      <span class="xref">Node3D.NotificationEnterWorld</span>
+    </div>
+    <div>
+      <span class="xref">Node3D.NotificationExitWorld</span>
+    </div>
+    <div>
+      <span class="xref">Node3D.NotificationVisibilityChanged</span>
+    </div>
+    <div>
+      <span class="xref">Node3D.NotificationLocalTransformChanged</span>
+    </div>
+    <div>
+      <span class="xref">Node3D.GetGlobalTransformInterpolated()</span>
+    </div>
+    <div>
+      <span class="xref">Node3D.GetParentNode3D()</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Node3D.SetIgnoreTransformNotification(bool)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Node3D.SetDisableScale(bool)</a>
+    </div>
+    <div>
+      <span class="xref">Node3D.IsScaleDisabled()</span>
+    </div>
+    <div>
+      <span class="xref">Node3D.GetWorld3D()</span>
+    </div>
+    <div>
+      <span class="xref">Node3D.ForceUpdateTransform()</span>
+    </div>
+    <div>
+      <span class="xref">Node3D.UpdateGizmos()</span>
+    </div>
+    <div>
+      <span class="xref">Node3D.AddGizmo(Node3DGizmo)</span>
+    </div>
+    <div>
+      <span class="xref">Node3D.GetGizmos()</span>
+    </div>
+    <div>
+      <span class="xref">Node3D.ClearGizmos()</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Node3D.SetSubgizmoSelection(Node3DGizmo, int, Transform3D)</a>
+    </div>
+    <div>
+      <span class="xref">Node3D.ClearSubgizmoSelection()</span>
+    </div>
+    <div>
+      <span class="xref">Node3D.IsVisibleInTree()</span>
+    </div>
+    <div>
+      <span class="xref">Node3D.Show()</span>
+    </div>
+    <div>
+      <span class="xref">Node3D.Hide()</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Node3D.SetNotifyLocalTransform(bool)</a>
+    </div>
+    <div>
+      <span class="xref">Node3D.IsLocalTransformNotificationEnabled()</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Node3D.SetNotifyTransform(bool)</a>
+    </div>
+    <div>
+      <span class="xref">Node3D.IsTransformNotificationEnabled()</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">Node3D.Rotate(Vector3, float)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">Node3D.GlobalRotate(Vector3, float)</a>
+    </div>
+    <div>
+      <span class="xref">Node3D.GlobalScale(Vector3)</span>
+    </div>
+    <div>
+      <span class="xref">Node3D.GlobalTranslate(Vector3)</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">Node3D.RotateObjectLocal(Vector3, float)</a>
+    </div>
+    <div>
+      <span class="xref">Node3D.ScaleObjectLocal(Vector3)</span>
+    </div>
+    <div>
+      <span class="xref">Node3D.TranslateObjectLocal(Vector3)</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">Node3D.RotateX(float)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">Node3D.RotateY(float)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">Node3D.RotateZ(float)</a>
+    </div>
+    <div>
+      <span class="xref">Node3D.Translate(Vector3)</span>
+    </div>
+    <div>
+      <span class="xref">Node3D.Orthonormalize()</span>
+    </div>
+    <div>
+      <span class="xref">Node3D.SetIdentity()</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Node3D.LookAt(Vector3, Vector3?, bool)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Node3D.LookAtFromPosition(Vector3, Vector3, Vector3?, bool)</a>
+    </div>
+    <div>
+      <span class="xref">Node3D.ToLocal(Vector3)</span>
+    </div>
+    <div>
+      <span class="xref">Node3D.ToGlobal(Vector3)</span>
+    </div>
+    <div>
+      <span class="xref">Node3D.EmitSignalVisibilityChanged()</span>
+    </div>
+    <div>
+      <span class="xref">Node3D.Transform</span>
+    </div>
+    <div>
+      <span class="xref">Node3D.GlobalTransform</span>
+    </div>
+    <div>
+      <span class="xref">Node3D.Position</span>
+    </div>
+    <div>
+      <span class="xref">Node3D.Rotation</span>
+    </div>
+    <div>
+      <span class="xref">Node3D.RotationDegrees</span>
+    </div>
+    <div>
+      <span class="xref">Node3D.Quaternion</span>
+    </div>
+    <div>
+      <span class="xref">Node3D.Basis</span>
+    </div>
+    <div>
+      <span class="xref">Node3D.Scale</span>
+    </div>
+    <div>
+      <span class="xref">Node3D.RotationEditMode</span>
+    </div>
+    <div>
+      <span class="xref">Node3D.RotationOrder</span>
+    </div>
+    <div>
+      <span class="xref">Node3D.TopLevel</span>
+    </div>
+    <div>
+      <span class="xref">Node3D.GlobalPosition</span>
+    </div>
+    <div>
+      <span class="xref">Node3D.GlobalBasis</span>
+    </div>
+    <div>
+      <span class="xref">Node3D.GlobalRotation</span>
+    </div>
+    <div>
+      <span class="xref">Node3D.GlobalRotationDegrees</span>
+    </div>
+    <div>
+      <span class="xref">Node3D.Visible</span>
+    </div>
+    <div>
+      <span class="xref">Node3D.VisibilityParent</span>
+    </div>
+    <div>
+      <span class="xref">Node3D.VisibilityChanged</span>
     </div>
     <div>
       <span class="xref">Node.NotificationEnterTree</span>
@@ -323,13 +749,7 @@ public class WalkLeftState : State, IDisposable</code></pre>
       <span class="xref">Node._Input(InputEvent)</span>
     </div>
     <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">Node._PhysicsProcess(double)</a>
-    </div>
-    <div>
       <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">Node._Process(double)</a>
-    </div>
-    <div>
-      <span class="xref">Node._Ready()</span>
     </div>
     <div>
       <span class="xref">Node._ShortcutInput(InputEvent)</span>
@@ -666,15 +1086,6 @@ public class WalkLeftState : State, IDisposable</code></pre>
     </div>
     <div>
       <span class="xref">Node.EmitSignalEditorStateChanged()</span>
-    </div>
-    <div>
-      <span class="xref">Node.InvokeGodotClassMethod(in godot_string_name, NativeVariantPtrArgs, out godot_variant)</span>
-    </div>
-    <div>
-      <span class="xref">Node.HasGodotClassMethod(in godot_string_name)</span>
-    </div>
-    <div>
-      <span class="xref">Node.HasGodotClassSignal(in godot_string_name)</span>
     </div>
     <div>
       <span class="xref">Node.Name</span>
@@ -1014,22 +1425,31 @@ public class WalkLeftState : State, IDisposable</code></pre>
 </h2>
 
 
-  <a id="AshesOfVelsingrad_player_States_WalkLeftState_Enter_" data-uid="AshesOfVelsingrad.player.States.WalkLeftState.Enter*"></a>
+  <a id="AshesOfVelsingrad_data_npc_MiniMercenary__PhysicsProcess_" data-uid="AshesOfVelsingrad.data.npc.MiniMercenary._PhysicsProcess*"></a>
 
-  <h3 id="AshesOfVelsingrad_player_States_WalkLeftState_Enter" data-uid="AshesOfVelsingrad.player.States.WalkLeftState.Enter">
-  Enter()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/GenericCharacterStates/WalkLeftState.cs/#L18"><i class="bi bi-code-slash"></i></a>
+  <h3 id="AshesOfVelsingrad_data_npc_MiniMercenary__PhysicsProcess_System_Double_" data-uid="AshesOfVelsingrad.data.npc.MiniMercenary._PhysicsProcess(System.Double)">
+  _PhysicsProcess(double)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/data/npc/MiniMercenary.cs/#L33"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Called when the state is entered.
-Override to implement enter behavior.</p>
+  <div class="markdown level1 summary"><p>Called once on each physics tick, and allows Nodes to synchronize their logic with physics ticks. <code class="paramref">delta</code> is the logical time between physics ticks in seconds and is equal to <span class="xref">Godot.Engine.TimeScale</span> / <span class="xref">Godot.Engine.PhysicsTicksPerSecond</span>.</p>
+<p>It is only called if physics processing is enabled for this Node, which is done automatically if this method is overridden, and can be toggled with <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">SetPhysicsProcess(bool)</a>.</p>
+<p>Processing happens in order of <span class="xref">Godot.Node.ProcessPhysicsPriority</span>, lower priority values are called first. Nodes with the same priority are processed in tree order, or top to bottom as seen in the editor (also known as pre-order traversal).</p>
+<p>Corresponds to the <span class="xref">Godot.Node.NotificationPhysicsProcess</span> notification in <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">_Notification(int)</a>.</p>
+<p><b>Note:</b> This method is only called if the node is present in the scene tree (i.e. if it's not an orphan).</p>
+<p><b>Note:</b> Accumulated <code class="paramref">delta</code> may diverge from real world seconds.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public override void Enter()</code></pre>
+    <pre><code class="lang-csharp hljs">public override void _PhysicsProcess(double delta)</code></pre>
   </div>
 
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>delta</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd></dd>
+  </dl>
 
 
 
@@ -1042,47 +1462,22 @@ Override to implement enter behavior.</p>
 
 
 
-  <a id="AshesOfVelsingrad_player_States_WalkLeftState_Exit_" data-uid="AshesOfVelsingrad.player.States.WalkLeftState.Exit*"></a>
+  <a id="AshesOfVelsingrad_data_npc_MiniMercenary__Ready_" data-uid="AshesOfVelsingrad.data.npc.MiniMercenary._Ready*"></a>
 
-  <h3 id="AshesOfVelsingrad_player_States_WalkLeftState_Exit" data-uid="AshesOfVelsingrad.player.States.WalkLeftState.Exit">
-  Exit()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/GenericCharacterStates/WalkLeftState.cs/#L23"><i class="bi bi-code-slash"></i></a>
+  <h3 id="AshesOfVelsingrad_data_npc_MiniMercenary__Ready" data-uid="AshesOfVelsingrad.data.npc.MiniMercenary._Ready">
+  _Ready()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/data/npc/MiniMercenary.cs/#L26"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Called when the state is exited.
-Override to implement cleanup logic.</p>
+  <div class="markdown level1 summary"><p>Called when the node is "ready", i.e. when both the node and its children have entered the scene tree. If the node has children, their <span class="xref">Godot.Node._Ready()</span> callbacks get triggered first, and the parent node will receive the ready notification afterwards.</p>
+<p>Corresponds to the <span class="xref">Godot.Node.NotificationReady</span> notification in <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">_Notification(int)</a>. See also the <code>@onready</code> annotation for variables.</p>
+<p>Usually used for initialization. For even earlier initialization, <span class="xref">Godot.GodotObject.GodotObject()</span> may be used. See also <span class="xref">Godot.Node._EnterTree()</span>.</p>
+<p><b>Note:</b> This method may be called only once for each node. After removing a node from the scene tree and adding it again, <span class="xref">Godot.Node._Ready()</span> will <b>not</b> be called a second time. This can be bypassed by requesting another call with <span class="xref">Godot.Node.RequestReady()</span>, which may be called anywhere before adding the node again.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public override void Exit()</code></pre>
-  </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-  <a id="AshesOfVelsingrad_player_States_WalkLeftState_OnStateReady_" data-uid="AshesOfVelsingrad.player.States.WalkLeftState.OnStateReady*"></a>
-
-  <h3 id="AshesOfVelsingrad_player_States_WalkLeftState_OnStateReady" data-uid="AshesOfVelsingrad.player.States.WalkLeftState.OnStateReady">
-  OnStateReady()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/GenericCharacterStates/WalkLeftState.cs/#L13"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Called during the initialization phase of the state machine.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public override void OnStateReady()</code></pre>
+    <pre><code class="lang-csharp hljs">public override void _Ready()</code></pre>
   </div>
 
 

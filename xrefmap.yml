@@ -22739,6 +22739,41 @@ references:
   commentId: N:AshesOfVelsingrad.data.npc
   fullName: AshesOfVelsingrad.data.npc
   nameWithType: AshesOfVelsingrad.data.npc
+- uid: AshesOfVelsingrad.data.npc.MiniMercenary
+  name: MiniMercenary
+  href: api/AshesOfVelsingrad.data.npc.MiniMercenary.html
+  commentId: T:AshesOfVelsingrad.data.npc.MiniMercenary
+  fullName: AshesOfVelsingrad.data.npc.MiniMercenary
+  nameWithType: MiniMercenary
+- uid: AshesOfVelsingrad.data.npc.MiniMercenary._PhysicsProcess(System.Double)
+  name: _PhysicsProcess(double)
+  href: api/AshesOfVelsingrad.data.npc.MiniMercenary.html#AshesOfVelsingrad_data_npc_MiniMercenary__PhysicsProcess_System_Double_
+  commentId: M:AshesOfVelsingrad.data.npc.MiniMercenary._PhysicsProcess(System.Double)
+  name.vb: _PhysicsProcess(Double)
+  fullName: AshesOfVelsingrad.data.npc.MiniMercenary._PhysicsProcess(double)
+  fullName.vb: AshesOfVelsingrad.data.npc.MiniMercenary._PhysicsProcess(Double)
+  nameWithType: MiniMercenary._PhysicsProcess(double)
+  nameWithType.vb: MiniMercenary._PhysicsProcess(Double)
+- uid: AshesOfVelsingrad.data.npc.MiniMercenary._PhysicsProcess*
+  name: _PhysicsProcess
+  href: api/AshesOfVelsingrad.data.npc.MiniMercenary.html#AshesOfVelsingrad_data_npc_MiniMercenary__PhysicsProcess_
+  commentId: Overload:AshesOfVelsingrad.data.npc.MiniMercenary._PhysicsProcess
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.data.npc.MiniMercenary._PhysicsProcess
+  nameWithType: MiniMercenary._PhysicsProcess
+- uid: AshesOfVelsingrad.data.npc.MiniMercenary._Ready
+  name: _Ready()
+  href: api/AshesOfVelsingrad.data.npc.MiniMercenary.html#AshesOfVelsingrad_data_npc_MiniMercenary__Ready
+  commentId: M:AshesOfVelsingrad.data.npc.MiniMercenary._Ready
+  fullName: AshesOfVelsingrad.data.npc.MiniMercenary._Ready()
+  nameWithType: MiniMercenary._Ready()
+- uid: AshesOfVelsingrad.data.npc.MiniMercenary._Ready*
+  name: _Ready
+  href: api/AshesOfVelsingrad.data.npc.MiniMercenary.html#AshesOfVelsingrad_data_npc_MiniMercenary__Ready_
+  commentId: Overload:AshesOfVelsingrad.data.npc.MiniMercenary._Ready
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.data.npc.MiniMercenary._Ready
+  nameWithType: MiniMercenary._Ready
 - uid: AshesOfVelsingrad.data.npc.Soldier
   name: Soldier
   href: api/AshesOfVelsingrad.data.npc.Soldier.html

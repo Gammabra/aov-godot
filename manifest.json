@@ -3666,6 +3666,20 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.data.npc.MiniMercenary.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.data.npc.MiniMercenary.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.data.npc.MiniMercenary",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "documentation/api/AshesOfVelsingrad.data.npc.Soldier.yml",
       "output": {
         ".html": {

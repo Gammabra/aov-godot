@@ -1,6 +1,6 @@
 using System;
 
-namespace AshesOfVelsingrad.Core.Audio;
+namespace AshesOfVelsingrad.Audio;
 
 /// <summary>
 ///     Pure-C# math helpers shared by the audio service for converting between the
@@ -14,7 +14,7 @@ namespace AshesOfVelsingrad.Core.Audio;
 ///         in two places.
 ///     </para>
 ///     <para>
-///         Anything below <see cref="MinAudibleLinear" /> is treated as silence and
+///         Anything below <see cref="MinAudibleLinear" /> is treated as full silence and
 ///         clamped to <see cref="SilenceDb" />, which keeps <c>log10(0)</c> from blowing
 ///         up and matches the intuitive "slider all the way down = muted" behaviour.
 ///     </para>

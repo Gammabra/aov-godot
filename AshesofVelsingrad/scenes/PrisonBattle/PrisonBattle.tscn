@@ -1,0 +1,122 @@
+[gd_scene format=3 uid="uid://7l8dhph6jpfc"]
+
+[ext_resource type="Script" uid="uid://du2xlh41m2cd" path="res://scripts/managers/game_manager/GameManager.cs" id="1_gm"]
+[ext_resource type="Script" uid="uid://dycsfdky6wocx" path="res://scripts/data/map/Map1.cs" id="2_map"]
+[ext_resource type="MeshLibrary" uid="uid://du0rgaffn5bkl" path="res://assets/mesh_library/3DMesh.tres" id="3_mesh"]
+[ext_resource type="Script" uid="uid://dkhfwdhsqvki4" path="res://scripts/managers/TurnManager.cs" id="4_tm"]
+[ext_resource type="Script" uid="uid://mi5bremm10vf" path="res://scripts/data/unit/characters/KaelenVoss.cs" id="5_kaelen"]
+[ext_resource type="Script" uid="uid://dyd14mnjtewte" path="res://scripts/data/unit/characters/MercenaryAlly.cs" id="6_merc"]
+[ext_resource type="Script" uid="uid://b68lmjwbg7b2c" path="res://scripts/data/unit/enemies/EnemySoldier.cs" id="7_soldier"]
+[ext_resource type="Script" uid="uid://dvsd81c4l1hgb" path="res://scripts/AI/EnemyAIBehavior.cs" id="8_aibhv"]
+[ext_resource type="Script" uid="uid://buj6bdu8gkf0j" path="res://scripts/systems/BattleInputSystem.cs" id="9_input"]
+[ext_resource type="Texture2D" uid="uid://bom7ddsgpq56t" path="res://assets/portraits/Pikachu.png" id="10_pika"]
+[ext_resource type="Texture2D" uid="uid://ctcgvos6g66s" path="res://assets/portraits/meowth.png" id="11_meow"]
+[ext_resource type="Texture2D" uid="uid://c2bl223fb2kq1" path="res://assets/portraits/mascaiman.png" id="12_masc"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_sky"]
+sky_top_color = Color(0.15, 0.12, 0.18, 1)
+sky_horizon_color = Color(0.35, 0.28, 0.22, 1)
+ground_bottom_color = Color(0.04, 0.04, 0.05, 1)
+ground_horizon_color = Color(0.18, 0.15, 0.13, 1)
+
+[sub_resource type="Sky" id="Sky_main"]
+sky_material = SubResource("ProceduralSkyMaterial_sky")
+
+[sub_resource type="Environment" id="Environment_main"]
+background_mode = 2
+sky = SubResource("Sky_main")
+ambient_light_source = 3
+ambient_light_color = Color(0.35, 0.32, 0.4, 1)
+ambient_light_energy = 0.4
+tonemap_mode = 2
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_kaelen"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_merc"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_soldier"]
+
+[node name="PrisonBattle" type="Node" unique_id=2145295567]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=926700074]
+environment = SubResource("Environment_main")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1933061371]
+transform = Transform3D(0.866025, -0.353553, 0.353553, 0, 0.707107, 0.707107, -0.5, -0.612372, 0.612372, 0, 8, 0)
+light_color = Color(1, 0.92, 0.78, 1)
+light_energy = 1.2
+shadow_enabled = true
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=52555567]
+transform = Transform3D(1, 0, 0, 0, 0.8170543, 0.57656074, 0, -0.57656074, 0.8170543, 4, 7.2, 11.5)
+
+[node name="Inputs" type="Node" parent="." unique_id=1123947494]
+script = ExtResource("9_input")
+_mapSystemPath = NodePath("../GameManager/GridMap")
+_camera3DPath = NodePath("../Camera3D")
+
+[node name="GameManager" type="Node" parent="." unique_id=1665951024]
+script = ExtResource("1_gm")
+_playerUnitsPath = NodePath("PlayerUnits")
+_enemyUnitsPath = NodePath("EnemyUnits")
+_alliedUnitsPath = NodePath("AlliedUnits")
+_mapSystemPath = NodePath("GridMap")
+_turnManagerPath = NodePath("TurnManager")
+_battleInputSystemPath = NodePath("../Inputs")
+
+[node name="GridMap" type="GridMap" parent="GameManager" unique_id=1082255965]
+mesh_library = ExtResource("3_mesh")
+collision_layer = 3
+collision_mask = 3
+data = {
+"cells": PackedInt32Array(0, 3, 0, 3, 3, 0, 2, 3, 0, 1, 3, 0, 1, 2, 0, 0, 2, 0, 2, 2, 0, 3, 2, 0, 3, 1, 0, 2, 1, 0, 1, 1, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 2, 0, 0, 3, 0, 0)
+}
+script = ExtResource("2_map")
+
+[node name="PlayerUnits" type="Node" parent="GameManager" unique_id=333781711]
+
+[node name="KaelenVoss" type="CharacterBody3D" parent="GameManager/PlayerUnits" unique_id=1938295825]
+script = ExtResource("5_kaelen")
+
+[node name="Sprite3D" type="Sprite3D" parent="GameManager/PlayerUnits/KaelenVoss" unique_id=1325636875]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
+billboard = 1
+texture = ExtResource("10_pika")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="GameManager/PlayerUnits/KaelenVoss" unique_id=750766089]
+shape = SubResource("SphereShape3D_kaelen")
+
+[node name="AlliedUnits" type="Node" parent="GameManager" unique_id=1753107255]
+
+[node name="Mercenary" type="CharacterBody3D" parent="GameManager/AlliedUnits" unique_id=1895765049]
+script = ExtResource("6_merc")
+
+[node name="Sprite3D" type="Sprite3D" parent="GameManager/AlliedUnits/Mercenary" unique_id=1900842778]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
+billboard = 1
+texture = ExtResource("11_meow")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="GameManager/AlliedUnits/Mercenary" unique_id=1885826027]
+shape = SubResource("SphereShape3D_merc")
+
+[node name="EnemyAIBehavior" type="Node" parent="GameManager/AlliedUnits/Mercenary" unique_id=531380673]
+script = ExtResource("8_aibhv")
+
+[node name="EnemyUnits" type="Node" parent="GameManager" unique_id=274689700]
+
+[node name="Soldier" type="CharacterBody3D" parent="GameManager/EnemyUnits" unique_id=1468901185]
+script = ExtResource("7_soldier")
+
+[node name="Sprite3D" type="Sprite3D" parent="GameManager/EnemyUnits/Soldier" unique_id=1274092840]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
+billboard = 1
+texture = ExtResource("12_masc")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="GameManager/EnemyUnits/Soldier" unique_id=1974203491]
+shape = SubResource("SphereShape3D_soldier")
+
+[node name="EnemyAIBehavior" type="Node" parent="GameManager/EnemyUnits/Soldier" unique_id=1846453524]
+script = ExtResource("8_aibhv")
+
+[node name="TurnManager" type="Node" parent="GameManager" unique_id=2134820918]
+script = ExtResource("4_tm")

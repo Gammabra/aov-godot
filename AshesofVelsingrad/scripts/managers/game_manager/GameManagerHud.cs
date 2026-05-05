@@ -281,19 +281,40 @@ public partial class GameManager
             GD.PrintErr($"GameManager: ReloadCurrentScene failed with {err}");
     }
 
-    /// <summary>Placeholder for the Forfeit flow — wired to nothing real yet.</summary>
+    /// <summary>
+    ///     Player pressed Forfeit on the GameOverScreen. Hand off to <see cref="BattleLauncher" />
+    ///     so the player respawns at the position they triggered the encounter from.
+    ///     If no launcher is registered (Test.tscn standalone), this is a no-op +
+    ///     informational log — the GameOverScreen stays visible and Try Again is the
+    ///     only working button.
+    /// </summary>
     private void OnForfeit()
     {
-        GD.Print("GameManager: Forfeit pressed — placeholder, no action wired.");
-        BattleNotifications.Post("Forfeit registered (placeholder).", BattleNotifications.Severity.Negative);
-        // TODO: wire to scene-change / save-fail handling once that subsystem lands.
+        GD.Print("GameManager: Forfeit pressed — handing off to BattleLauncher.");
+        BattleNotifications.Post("Battle forfeited.", BattleNotifications.Severity.Negative);
+        if (BattleLauncher.Instance is null)
+        {
+            GD.PrintErr("GameManager: no BattleLauncher autoload — cannot return to exploration. "
+                + "Register res://scripts/managers/BattleLauncher.cs as an autoload to enable Forfeit.");
+            return;
+        }
+        BattleLauncher.Instance.Forfeit();
     }
 
-    /// <summary>Continue button on the victory screen — for now just log.</summary>
+    /// <summary>
+    ///     Continue button on the VictoryScreen. Same exit path as Forfeit but a different
+    ///     entry point on <see cref="BattleLauncher" /> so reward / progression hooks can
+    ///     attach there later (xp gain, loot inventory grant, etc.).
+    /// </summary>
     private void OnVictoryContinue()
     {
-        GD.Print("GameManager: Victory Continue pressed — placeholder, no action wired.");
-        // TODO: route to the next scene / overworld map.
+        GD.Print("GameManager: Victory Continue pressed — handing off to BattleLauncher.");
+        if (BattleLauncher.Instance is null)
+        {
+            GD.PrintErr("GameManager: no BattleLauncher autoload — cannot return to exploration.");
+            return;
+        }
+        BattleLauncher.Instance.VictoryReturn();
     }
 
 }

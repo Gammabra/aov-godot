@@ -82,7 +82,7 @@ public partial class TurnManager : BaseManager
     /// </summary>
     /// <remarks>
     ///     Bridges <see cref="StartBattle" /> (the legacy entry point) to the
-    ///     <see cref="BattleResult" /> contract that <c>BattleLauncher</c> expects.
+    ///     <c>BattleResult</c> contract that <c>BattleLauncher</c> expects.
     /// </remarks>
     /// <returns>The outcome of the battle once the loop terminates.</returns>
     public async Task<systems.battle.BattleResult> RunBattleLoop()

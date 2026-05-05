@@ -8,7 +8,7 @@ namespace AshesOfVelsingrad.systems.progression;
 /// </summary>
 /// <remarks>
 ///     <para>
-///         Aligned with <see cref="systems.BattleInputSystem" />, which exposes
+///         Aligned with <c>BattleInputSystem</c>, which exposes
 ///         five hot-keys (<c>battle_select_skill1</c>..<c>battle_select_skill5</c>),
 ///         the loadout has exactly <see cref="MaxActiveSlots" /> slots.
 ///     </para>

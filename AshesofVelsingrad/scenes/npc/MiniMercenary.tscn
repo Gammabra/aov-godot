@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://ch6ssue2idnqm"]
 
+[ext_resource type="Script" uid="uid://ccwlexh8hrqsr" path="res://scripts/data/npc/MiniMercenary.cs" id="1_3rv65"]
 [ext_resource type="Texture2D" uid="uid://gn1jvwoe4xtx" path="res://assets/Krita/sprite_mercenaire.png" id="1_tarug"]
 [ext_resource type="Script" uid="uid://dotytx100nxai" path="res://scripts/managers/state_machines/StateMachine.cs" id="2_hkbft"]
 [ext_resource type="Script" uid="uid://cbra7nuuruj2p" path="res://scripts/player/States/IdleState.cs" id="3_3rv65"]
@@ -38,6 +39,8 @@ animations = [{
 [node name="MiniMercenary" type="CharacterBody3D" unique_id=942239080]
 transform = Transform3D(0.85, 0, 0, 0, 0.85, 0, 0, 0, 0.85, 0, 0, 0)
 collision_layer = 3
+script = ExtResource("1_3rv65")
+_navigationAgentPath = NodePath("NavigationAgent3D")
 
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="." unique_id=1593208387]
 offset = Vector2(67, 0)
@@ -57,3 +60,7 @@ InitialState = NodePath("IdleState")
 [node name="IdleState" type="Node" parent="StateMachine" unique_id=774728814]
 script = ExtResource("3_3rv65")
 _animatedSprite3DPath = NodePath("../../AnimatedSprite3D")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=559476726]
+path_desired_distance = 10.0
+target_desired_distance = 40.0

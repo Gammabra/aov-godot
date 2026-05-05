@@ -39,6 +39,18 @@ public sealed partial class AovPlayer : CharacterBody3D, IInteractor
         _interactionComponent = GetNode<InteractionComponent>(_interactionComponentPath);
         _animatedSprite3D = GetNode<AnimatedSprite3D>(_animatedSprite3DPath);
         _instance = this;
+
+        // If we just returned from a battle (player pressed Forfeit or Continue), the
+        // BattleLauncher autoload still has a pending position from when the encounter
+        // was triggered. Snap to it so the player wakes up exactly where they were
+        // standing when they spoke to the NPC. ConsumePendingReturnPosition is one-shot:
+        // calling it clears the value so subsequent scene loads don't re-snap.
+        Vector3? returnPos = BattleLauncher.Instance?.ConsumePendingReturnPosition();
+        if (returnPos is { } pos)
+        {
+            GlobalPosition = pos;
+            GD.Print($"AovPlayer: restored return position {pos} from BattleLauncher.");
+        }
     }
 
     public override void _Ready()
@@ -57,6 +69,21 @@ public sealed partial class AovPlayer : CharacterBody3D, IInteractor
             GD.PrintErr($"Multiple instances of {GetType().Name} detected. Removing duplicate.");
             QueueFree();
         }
+    }
+
+    /// <inheritdoc />
+    /// <remarks>
+    ///     Clear the static <see cref="_instance" /> when this node leaves the tree
+    ///     (scene unload, scene reload via <c>BattleLauncher</c>'s Forfeit / Continue
+    ///     flow). Without this, the new <see cref="AovPlayer" /> on the reloaded
+    ///     exploration scene sees a stale <c>_instance</c> still pointing at the just-
+    ///     unloaded player and <see cref="Node.QueueFree" />s itself as a "duplicate" —
+    ///     the scene then renders with no player and frozen camera.
+    /// </remarks>
+    public override void _ExitTree()
+    {
+        if (_instance == this) _instance = null;
+        base._ExitTree();
     }
 
     public override void _Input(InputEvent @event)

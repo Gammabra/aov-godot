@@ -1,0 +1,69 @@
+[gd_scene format=3 uid="uid://dboivysgg411t"]
+
+[ext_resource type="Texture2D" uid="uid://e4dlqr6r6kup" path="res://assets/Krita/sprite_solder.png" id="1_sy352"]
+[ext_resource type="Script" uid="uid://cjiia3c7avbf0" path="res://scripts/data/npc/Soldier.cs" id="1_t0mcy"]
+[ext_resource type="Script" uid="uid://dotytx100nxai" path="res://scripts/managers/state_machines/StateMachine.cs" id="2_vh47w"]
+[ext_resource type="Script" uid="uid://cbra7nuuruj2p" path="res://scripts/player/States/IdleState.cs" id="3_t0mcy"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sdp4p"]
+atlas = ExtResource("1_sy352")
+region = Rect2(0, 690, 218, 138)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vh47w"]
+atlas = ExtResource("1_sy352")
+region = Rect2(218, 690, 218, 138)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t0mcy"]
+atlas = ExtResource("1_sy352")
+region = Rect2(436, 690, 218, 138)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_j6req"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sdp4p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vh47w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t0mcy")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_sy352"]
+
+[node name="Soldier" type="CharacterBody3D" unique_id=633068440]
+collision_layer = 3
+script = ExtResource("1_t0mcy")
+InteractTextPath = NodePath("InteractLabel")
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="." unique_id=1581145202]
+offset = Vector2(66, 0)
+billboard = 2
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_j6req")
+animation = &"Idle"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=2070563477]
+transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 0, 0, 0)
+shape = SubResource("CapsuleShape3D_sy352")
+
+[node name="InteractLabel" type="Label3D" parent="." unique_id=569696868]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.11181438, 0.1939004)
+visible = false
+billboard = 2
+double_sided = false
+texture_filter = 0
+text = "Press [E] to interact"
+
+[node name="StateMachine" type="Node" parent="." unique_id=1671603942]
+script = ExtResource("2_vh47w")
+InitialState = NodePath("IdleState")
+
+[node name="IdleState" type="Node" parent="StateMachine" unique_id=2115737481]
+script = ExtResource("3_t0mcy")
+_animatedSprite3DPath = NodePath("../../AnimatedSprite3D")

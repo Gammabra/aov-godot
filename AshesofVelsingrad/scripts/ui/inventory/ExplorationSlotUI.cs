@@ -1,5 +1,6 @@
 using AshesOfVelsingrad.Systems;
 using AshesOfVelsingrad.UI.Hud;
+using AshesOfVelsingrad.Managers;
 using Godot;
 
 namespace AshesOfVelsingrad.UI.Inventory;
@@ -102,5 +103,33 @@ public sealed partial class ExplorationSlotUI : PanelContainer
             ["quantity"]  = slot.Quantity,
         };
         return payload;
+    }
+
+    public override bool _CanDropData(Vector2 atPosition, Variant data)
+    {
+        if (data.VariantType != Variant.Type.Dictionary) return false;
+        var dict = data.AsGodotDictionary();
+        // Accept drops from unit slots only (exploration→exploration reorder not needed yet)
+        return dict.TryGetValue("source", out var src) && src.AsString() == "unit";
+    }
+
+    public override void _DropData(Vector2 atPosition, Variant data)
+    {
+        if (PlayerInventoryManager.Instance is not { } mgr) return;
+        var dict = data.AsGodotDictionary();
+        if (!dict.TryGetValue("item_id", out var idVar)) return;
+        if (!dict.TryGetValue("from_slot", out var fromVar)) return;
+
+        int itemId = idVar.AsInt32();
+        int fromSlot = fromVar.AsInt32();
+
+        // Find and remove from whichever party loadout has this item in that slot
+        foreach (var loadout in mgr.PartyLoadouts)
+        {
+            if (loadout.GetSlot(fromSlot).ItemId != itemId) continue;
+            bool removed = loadout.RemoveItem(itemId, 1);
+            if (removed) mgr.GlobalInventory.AddItem(itemId, 1);
+            break;
+        }
     }
 }

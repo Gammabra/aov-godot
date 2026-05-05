@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Interface IAudioService | Ashes of Velsingrad Documentation </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Interface IAudioService | Ashes of Velsingrad Documentation ">
+      
+      <meta name="description" content="Contract for the central audio service.">
+      <link rel="icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/Gammabra/aov-godot/new/develop/apiSpec/new?filename=AshesOfVelsingrad_Audio_IAudioService.md&amp;value=---%0Auid%3A%20AshesOfVelsingrad.Audio.IAudioService%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../images/logo-doc.png" alt="Ashes of Velsingrad" style="height: 40px; width: auto;">
+            Ashes of Velsingrad
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="AshesOfVelsingrad.Audio.IAudioService">
+
+
+
+  <h1 id="AshesOfVelsingrad_Audio_IAudioService" data-uid="AshesOfVelsingrad.Audio.IAudioService" class="text-break">
+Interface IAudioService  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad.Core/Audio/IAudioService.cs/#L20"><i class="bi bi-code-slash"></i></a>
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="AshesOfVelsingrad.html">AshesOfVelsingrad</a>.<a class="xref" href="AshesOfVelsingrad.Audio.html">Audio</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>AshesofVelsingrad.Core.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"><p>Contract for the central audio service.</p>
+</div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public interface IAudioService</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+  <h2 id="AshesOfVelsingrad_Audio_IAudioService_remarks">Remarks</h2>
+  <div class="markdown level0 remarks"><p>
+    Defined in Core so gameplay code (skills, status effects, exploration
+    triggers) can request audio without taking a hard reference to Godot.
+    The adapter (<code>AudioManager</code>) implements this interface against
+    <code>AudioServer</code> and the Godot scene tree.
+</p>
+<p>
+    All track parameters are <code>res://</code> paths (or any path Godot's
+    <code>ResourceLoader</code> understands). Volume parameters use the 0..1
+    linear scale; the adapter converts to decibels via
+    <a class="xref" href="AshesOfVelsingrad.Audio.AudioVolumeMath.html">AudioVolumeMath</a>.
+</p>
+</div>
+
+
+  <h2 class="section" id="properties">Properties
+</h2>
+
+
+  <a id="AshesOfVelsingrad_Audio_IAudioService_Registry_" data-uid="AshesOfVelsingrad.Audio.IAudioService.Registry*"></a>
+
+  <h3 id="AshesOfVelsingrad_Audio_IAudioService_Registry" data-uid="AshesOfVelsingrad.Audio.IAudioService.Registry">
+  Registry
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad.Core/Audio/IAudioService.cs/#L26"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Track registry exposed for read access (UI listings, debug overlays, etc.)
+and for tests that need to assert what's been registered.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IAudioRegistry Registry { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="AshesOfVelsingrad.Audio.IAudioRegistry.html">IAudioRegistry</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
+  <a id="AshesOfVelsingrad_Audio_IAudioService_GetBusVolume_" data-uid="AshesOfVelsingrad.Audio.IAudioService.GetBusVolume*"></a>
+
+  <h3 id="AshesOfVelsingrad_Audio_IAudioService_GetBusVolume_AshesOfVelsingrad_Audio_AudioBus_" data-uid="AshesOfVelsingrad.Audio.IAudioService.GetBusVolume(AshesOfVelsingrad.Audio.AudioBus)">
+  GetBusVolume(AudioBus)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad.Core/Audio/IAudioService.cs/#L81"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Returns the current volume for a bus on the 0..1 linear scale.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">float GetBusVolume(AudioBus bus)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>bus</code> <a class="xref" href="AshesOfVelsingrad.Audio.AudioBus.html">AudioBus</a></dt>
+    <dd><p>Bus to query.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd><p>Linear volume (0 = silent, 1 = unity gain).</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AshesOfVelsingrad_Audio_IAudioService_IsBusMuted_" data-uid="AshesOfVelsingrad.Audio.IAudioService.IsBusMuted*"></a>
+
+  <h3 id="AshesOfVelsingrad_Audio_IAudioService_IsBusMuted_AshesOfVelsingrad_Audio_AudioBus_" data-uid="AshesOfVelsingrad.Audio.IAudioService.IsBusMuted(AshesOfVelsingrad.Audio.AudioBus)">
+  IsBusMuted(AudioBus)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad.Core/Audio/IAudioService.cs/#L90"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Returns whether a bus is currently muted.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool IsBusMuted(AudioBus bus)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>bus</code> <a class="xref" href="AshesOfVelsingrad.Audio.AudioBus.html">AudioBus</a></dt>
+    <dd><p>Bus to query.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AshesOfVelsingrad_Audio_IAudioService_Play_" data-uid="AshesOfVelsingrad.Audio.IAudioService.Play*"></a>
+
+  <h3 id="AshesOfVelsingrad_Audio_IAudioService_Play_System_String_" data-uid="AshesOfVelsingrad.Audio.IAudioService.Play(System.String)">
+  Play(string)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad.Core/Audio/IAudioService.cs/#L37"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Plays the registered track with id <code class="paramref">trackId</code>, dispatching
+to the right code path (music crossfade, ambient layer, or one-shot) based
+on the track's <a class="xref" href="AshesOfVelsingrad.Audio.AudioTrack.html#AshesOfVelsingrad_Audio_AudioTrack_Bus">Bus</a>. The per-track
+<a class="xref" href="AshesOfVelsingrad.Audio.AudioTrack.html#AshesOfVelsingrad_Audio_AudioTrack_BaseVolumeMultiplier">BaseVolumeMultiplier</a> is applied on top of the bus
+volume so individual songs that were mastered too loud can be tamed at the
+catalog level.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void Play(string trackId)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>trackId</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>Identifier registered through <a class="xref" href="AshesOfVelsingrad.Audio.AudioCatalog.html">AudioCatalog</a>.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AshesOfVelsingrad_Audio_IAudioService_PlayAmbient_" data-uid="AshesOfVelsingrad.Audio.IAudioService.PlayAmbient*"></a>
+
+  <h3 id="AshesOfVelsingrad_Audio_IAudioService_PlayAmbient_System_String_System_String_System_Single_" data-uid="AshesOfVelsingrad.Audio.IAudioService.PlayAmbient(System.String,System.String,System.Single)">
+  PlayAmbient(string, string, float)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad.Core/Audio/IAudioService.cs/#L56"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Starts (or replaces) an ambient layer. Multiple layers can play at once,
+each addressed by <code class="paramref">layerId</code>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void PlayAmbient(string layerId, string trackPath, float fadeSeconds = 1.5)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>layerId</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>Stable identifier for the layer (e.g. <code>&quot;wind&quot;</code>, <code>&quot;crickets&quot;</code>).</p>
+</dd>
+    <dt><code>trackPath</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>Resource path of the ambient stream.</p>
+</dd>
+    <dt><code>fadeSeconds</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd><p>Fade-in duration.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AshesOfVelsingrad_Audio_IAudioService_PlayMusic_" data-uid="AshesOfVelsingrad.Audio.IAudioService.PlayMusic*"></a>
+
+  <h3 id="AshesOfVelsingrad_Audio_IAudioService_PlayMusic_System_String_System_Single_System_Boolean_" data-uid="AshesOfVelsingrad.Audio.IAudioService.PlayMusic(System.String,System.Single,System.Boolean)">
+  PlayMusic(string, float, bool)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad.Core/Audio/IAudioService.cs/#L43"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Starts (or crossfades into) a music track.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void PlayMusic(string trackPath, float fadeSeconds = 1.5, bool loop = true)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>trackPath</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>Resource path of the music stream.</p>
+</dd>
+    <dt><code>fadeSeconds</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd><p>Crossfade duration with the currently playing track.</p>
+</dd>
+    <dt><code>loop</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>Whether the stream should loop when it reaches the end.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AshesOfVelsingrad_Audio_IAudioService_PlaySfx_" data-uid="AshesOfVelsingrad.Audio.IAudioService.PlaySfx*"></a>
+
+  <h3 id="AshesOfVelsingrad_Audio_IAudioService_PlaySfx_System_String_System_Single_System_Single_" data-uid="AshesOfVelsingrad.Audio.IAudioService.PlaySfx(System.String,System.Single,System.Single)">
+  PlaySfx(string, float, float)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad.Core/Audio/IAudioService.cs/#L71"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Plays a one-shot sound effect through the SFX pool.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void PlaySfx(string trackPath, float volumeLinear = 1, float pitchScale = 1)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>trackPath</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>Resource path of the SFX stream.</p>
+</dd>
+    <dt><code>volumeLinear</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd><p>Per-shot volume scale on the 0..1 linear scale.</p>
+</dd>
+    <dt><code>pitchScale</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd><p>Pitch multiplier (1.0 = original pitch).</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AshesOfVelsingrad_Audio_IAudioService_PlayUi_" data-uid="AshesOfVelsingrad.Audio.IAudioService.PlayUi*"></a>
+
+  <h3 id="AshesOfVelsingrad_Audio_IAudioService_PlayUi_System_String_System_Single_" data-uid="AshesOfVelsingrad.Audio.IAudioService.PlayUi(System.String,System.Single)">
+  PlayUi(string, float)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad.Core/Audio/IAudioService.cs/#L76"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Plays a one-shot UI sound through the UI bus.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void PlayUi(string trackPath, float volumeLinear = 1)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>trackPath</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>Resource path of the UI stream.</p>
+</dd>
+    <dt><code>volumeLinear</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd><p>Per-shot volume scale on the 0..1 linear scale.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AshesOfVelsingrad_Audio_IAudioService_SetBusMuted_" data-uid="AshesOfVelsingrad.Audio.IAudioService.SetBusMuted*"></a>
+
+  <h3 id="AshesOfVelsingrad_Audio_IAudioService_SetBusMuted_AshesOfVelsingrad_Audio_AudioBus_System_Boolean_" data-uid="AshesOfVelsingrad.Audio.IAudioService.SetBusMuted(AshesOfVelsingrad.Audio.AudioBus,System.Boolean)">
+  SetBusMuted(AudioBus, bool)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad.Core/Audio/IAudioService.cs/#L95"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Mutes or unmutes a bus.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void SetBusMuted(AudioBus bus, bool muted)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>bus</code> <a class="xref" href="AshesOfVelsingrad.Audio.AudioBus.html">AudioBus</a></dt>
+    <dd><p>Bus to toggle.</p>
+</dd>
+    <dt><code>muted</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p><code>true</code> to mute, <code>false</code> to restore the persisted volume.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AshesOfVelsingrad_Audio_IAudioService_SetBusVolume_" data-uid="AshesOfVelsingrad.Audio.IAudioService.SetBusVolume*"></a>
+
+  <h3 id="AshesOfVelsingrad_Audio_IAudioService_SetBusVolume_AshesOfVelsingrad_Audio_AudioBus_System_Single_" data-uid="AshesOfVelsingrad.Audio.IAudioService.SetBusVolume(AshesOfVelsingrad.Audio.AudioBus,System.Single)">
+  SetBusVolume(AudioBus, float)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad.Core/Audio/IAudioService.cs/#L86"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Sets the volume for a bus and persists it through the settings layer.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void SetBusVolume(AudioBus bus, float linear)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>bus</code> <a class="xref" href="AshesOfVelsingrad.Audio.AudioBus.html">AudioBus</a></dt>
+    <dd><p>Bus to set.</p>
+</dd>
+    <dt><code>linear</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd><p>New linear volume; values outside [0,1] are clamped.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AshesOfVelsingrad_Audio_IAudioService_StopAllAmbient_" data-uid="AshesOfVelsingrad.Audio.IAudioService.StopAllAmbient*"></a>
+
+  <h3 id="AshesOfVelsingrad_Audio_IAudioService_StopAllAmbient_System_Single_" data-uid="AshesOfVelsingrad.Audio.IAudioService.StopAllAmbient(System.Single)">
+  StopAllAmbient(float)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad.Core/Audio/IAudioService.cs/#L65"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Fades out and stops every active ambient layer.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void StopAllAmbient(float fadeSeconds = 1)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>fadeSeconds</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd><p>Fade-out duration applied to each layer.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AshesOfVelsingrad_Audio_IAudioService_StopAmbient_" data-uid="AshesOfVelsingrad.Audio.IAudioService.StopAmbient*"></a>
+
+  <h3 id="AshesOfVelsingrad_Audio_IAudioService_StopAmbient_System_String_System_Single_" data-uid="AshesOfVelsingrad.Audio.IAudioService.StopAmbient(System.String,System.Single)">
+  StopAmbient(string, float)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad.Core/Audio/IAudioService.cs/#L61"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Fades out and stops a single ambient layer.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void StopAmbient(string layerId, float fadeSeconds = 1)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>layerId</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>Identifier passed to <a class="xref" href="AshesOfVelsingrad.Audio.IAudioService.html#AshesOfVelsingrad_Audio_IAudioService_PlayAmbient_System_String_System_String_System_Single_">PlayAmbient(string, string, float)</a>.</p>
+</dd>
+    <dt><code>fadeSeconds</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd><p>Fade-out duration.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AshesOfVelsingrad_Audio_IAudioService_StopMusic_" data-uid="AshesOfVelsingrad.Audio.IAudioService.StopMusic*"></a>
+
+  <h3 id="AshesOfVelsingrad_Audio_IAudioService_StopMusic_System_Single_" data-uid="AshesOfVelsingrad.Audio.IAudioService.StopMusic(System.Single)">
+  StopMusic(float)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad.Core/Audio/IAudioService.cs/#L47"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Fades out and stops the current music track, if any.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void StopMusic(float fadeSeconds = 1)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>fadeSeconds</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd><p>Fade-out duration. <code>0</code> stops immediately.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad.Core/Audio/IAudioService.cs/#L20" class="edit-link">Edit this page</a>
+        </div>
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          © 2025 Gammabra Studios. All Rights Reserved.
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

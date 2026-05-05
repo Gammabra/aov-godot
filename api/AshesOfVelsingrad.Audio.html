@@ -2,9 +2,9 @@
 <html>
   <head>
     <meta charset="utf-8">
-      <title>Namespace AshesOfVelsingrad.IntegrationTests.Managers | Ashes of Velsingrad Documentation </title>
+      <title>Namespace AshesOfVelsingrad.Audio | Ashes of Velsingrad Documentation </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content="Namespace AshesOfVelsingrad.IntegrationTests.Managers | Ashes of Velsingrad Documentation ">
+      <meta name="title" content="Namespace AshesOfVelsingrad.Audio | Ashes of Velsingrad Documentation ">
       
       
       <link rel="icon" href="../favicon.ico">
@@ -84,9 +84,9 @@
           <nav id="breadcrumb"></nav>
         </div>
 
-        <article data-uid="AshesOfVelsingrad.IntegrationTests.Managers">
+        <article data-uid="AshesOfVelsingrad.Audio">
 
-  <h1 id="AshesOfVelsingrad_IntegrationTests_Managers" data-uid="AshesOfVelsingrad.IntegrationTests.Managers" class="text-break">Namespace AshesOfVelsingrad.IntegrationTests.Managers</h1>
+  <h1 id="AshesOfVelsingrad_Audio" data-uid="AshesOfVelsingrad.Audio" class="text-break">Namespace AshesOfVelsingrad.Audio</h1>
   <div class="markdown level0 summary"></div>
   <div class="markdown level0 conceptual"></div>
   <div class="markdown level0 remarks"></div>
@@ -95,38 +95,47 @@
 Classes
 </h3>
     <dl class="jumplist">
-      <dt><a class="xref" href="AshesOfVelsingrad.IntegrationTests.Managers.AudioManagerTest.html">AudioManagerTest</a></dt>
-      <dd><p>Engine-level coverage for <a class="xref" href="AshesOfVelsingrad.Managers.AudioManager.html">AudioManager</a>. These tests touch
-<code>AudioServer</code> directly so they have to run inside the Godot runtime.</p>
+      <dt><a class="xref" href="AshesOfVelsingrad.Audio.AudioCatalog.html">AudioCatalog</a></dt>
+      <dd><p>Single source of truth for every audio track shipped with the game.</p>
 </dd>
     </dl>
     <dl class="jumplist">
-      <dt><a class="xref" href="AshesOfVelsingrad.IntegrationTests.Managers.BaseManagerTest.html">BaseManagerTest</a></dt>
-      <dd></dd>
+      <dt><a class="xref" href="AshesOfVelsingrad.Audio.AudioRegistry.html">AudioRegistry</a></dt>
+      <dd><p>In-memory <a class="xref" href="AshesOfVelsingrad.Audio.IAudioRegistry.html">IAudioRegistry</a> backed by an ordered dictionary.</p>
+</dd>
     </dl>
     <dl class="jumplist">
-      <dt><a class="xref" href="AshesOfVelsingrad.IntegrationTests.Managers.EnemyAIManagerTest.html">EnemyAIManagerTest</a></dt>
-      <dd></dd>
+      <dt><a class="xref" href="AshesOfVelsingrad.Audio.AudioTrack.html">AudioTrack</a></dt>
+      <dd><p>Static metadata describing one playable audio asset.</p>
+</dd>
     </dl>
     <dl class="jumplist">
-      <dt><a class="xref" href="AshesOfVelsingrad.IntegrationTests.Managers.GameManagerTest.html">GameManagerTest</a></dt>
-      <dd></dd>
+      <dt><a class="xref" href="AshesOfVelsingrad.Audio.AudioVolumeMath.html">AudioVolumeMath</a></dt>
+      <dd><p>Pure-C# math helpers shared by the audio service for converting between the
+0..1 linear scale stored in user settings and the decibel scale Godot's
+<code>AudioServer</code> consumes.</p>
+</dd>
+    </dl>
+    <h3 id="interfaces">
+Interfaces
+</h3>
+    <dl class="jumplist">
+      <dt><a class="xref" href="AshesOfVelsingrad.Audio.IAudioRegistry.html">IAudioRegistry</a></dt>
+      <dd><p>Lookup table for every <a class="xref" href="AshesOfVelsingrad.Audio.AudioTrack.html">AudioTrack</a> known to the game.</p>
+</dd>
     </dl>
     <dl class="jumplist">
-      <dt><a class="xref" href="AshesOfVelsingrad.IntegrationTests.Managers.GameManagerUtilsTest.html">GameManagerUtilsTest</a></dt>
-      <dd></dd>
+      <dt><a class="xref" href="AshesOfVelsingrad.Audio.IAudioService.html">IAudioService</a></dt>
+      <dd><p>Contract for the central audio service.</p>
+</dd>
     </dl>
+    <h3 id="enums">
+Enums
+</h3>
     <dl class="jumplist">
-      <dt><a class="xref" href="AshesOfVelsingrad.IntegrationTests.Managers.MenuManagerTest.html">MenuManagerTest</a></dt>
-      <dd></dd>
-    </dl>
-    <dl class="jumplist">
-      <dt><a class="xref" href="AshesOfVelsingrad.IntegrationTests.Managers.SettingsManagerTest.html">SettingsManagerTest</a></dt>
-      <dd></dd>
-    </dl>
-    <dl class="jumplist">
-      <dt><a class="xref" href="AshesOfVelsingrad.IntegrationTests.Managers.TurnManagerTest.html">TurnManagerTest</a></dt>
-      <dd></dd>
+      <dt><a class="xref" href="AshesOfVelsingrad.Audio.AudioBus.html">AudioBus</a></dt>
+      <dd><p>Logical mixing channels exposed by the audio service.</p>
+</dd>
     </dl>
 
 

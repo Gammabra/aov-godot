@@ -180,6 +180,118 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.Audio.AudioBus.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.Audio.AudioBus.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.Audio.AudioBus",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.Audio.AudioBus.yml\" sourcestartlinenumber=\"1\">Logical mixing channels exposed by the audio service.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.Audio.AudioCatalog.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.Audio.AudioCatalog.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.Audio.AudioCatalog",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.Audio.AudioCatalog.yml\" sourcestartlinenumber=\"1\">Single source of truth for every audio track shipped with the game.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.Audio.AudioRegistry.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.Audio.AudioRegistry.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.Audio.AudioRegistry",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.Audio.AudioRegistry.yml\" sourcestartlinenumber=\"1\">In-memory <xref href=\"AshesOfVelsingrad.Audio.IAudioRegistry\" data-throw-if-not-resolved=\"false\"></xref> backed by an ordered dictionary.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.Audio.AudioTrack.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.Audio.AudioTrack.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.Audio.AudioTrack",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.Audio.AudioTrack.yml\" sourcestartlinenumber=\"1\">Static metadata describing one playable audio asset.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.Audio.AudioVolumeMath.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.Audio.AudioVolumeMath.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.Audio.AudioVolumeMath",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.Audio.AudioVolumeMath.yml\" sourcestartlinenumber=\"1\">Pure-C# math helpers shared by the audio service for converting between the\n0..1 linear scale stored in user settings and the decibel scale Godot's\n<code>AudioServer</code> consumes.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.Audio.IAudioRegistry.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.Audio.IAudioRegistry.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.Audio.IAudioRegistry",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.Audio.IAudioRegistry.yml\" sourcestartlinenumber=\"1\">Lookup table for every <xref href=\"AshesOfVelsingrad.Audio.AudioTrack\" data-throw-if-not-resolved=\"false\"></xref> known to the game.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.Audio.IAudioService.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.Audio.IAudioService.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.Audio.IAudioService",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.Audio.IAudioService.yml\" sourcestartlinenumber=\"1\">Contract for the central audio service.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.Audio.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.Audio.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.Audio",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "documentation/api/AshesOfVelsingrad.BasicAttackSkill.yml",
       "output": {
         ".html": {
@@ -1664,6 +1776,20 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.Helpers.Managers.TestAudioManager.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.Helpers.Managers.TestAudioManager.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.Helpers.Managers.TestAudioManager",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.Helpers.Managers.TestAudioManager.yml\" sourcestartlinenumber=\"1\">Test-time subclass that exposes <xref href=\"AshesOfVelsingrad.Managers.AudioManager\" data-throw-if-not-resolved=\"false\"></xref>'s singleton hooks for\nreflection-driven test setup and bypasses the noisy startup logging.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "documentation/api/AshesOfVelsingrad.Helpers.Managers.TestConcreteBattleInputSystem.yml",
       "output": {
         ".html": {
@@ -2025,6 +2151,20 @@
       "IsMRef": true,
       "Title": "AshesOfVelsingrad.IntegrationTests.MainTest",
       "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.IntegrationTests.Managers.AudioManagerTest.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.IntegrationTests.Managers.AudioManagerTest.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.IntegrationTests.Managers.AudioManagerTest",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.IntegrationTests.Managers.AudioManagerTest.yml\" sourcestartlinenumber=\"1\">Engine-level coverage for <xref href=\"AshesOfVelsingrad.Managers.AudioManager\" data-throw-if-not-resolved=\"false\"></xref>. These tests touch\n<code>AudioServer</code> directly so they have to run inside the Godot runtime.</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -2403,6 +2543,20 @@
       "IsMRef": true,
       "Title": "AshesOfVelsingrad.Main",
       "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.Main.yml\" sourcestartlinenumber=\"1\">Main scene controller that initializes the game systems.\nFollows the Component-Based Architecture and event-driven communication.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.Managers.AudioManager.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.Managers.AudioManager.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.Managers.AudioManager",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.Managers.AudioManager.yml\" sourcestartlinenumber=\"1\">Centralised audio service for music, ambient layers and one-shot SFX.\nImplements <xref href=\"AshesOfVelsingrad.Audio.IAudioService\" data-throw-if-not-resolved=\"false\"></xref> from the Core layer and bridges Godot\naudio APIs to the rest of the game.</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -5059,6 +5213,46 @@
       "output": {
         "resource": {
           "relative_path": "coverage/AshesofVelsingrad.Core_AtkBuffer.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "documentation/coverage/AshesofVelsingrad.Core_AudioCatalog.html",
+      "output": {
+        "resource": {
+          "relative_path": "coverage/AshesofVelsingrad.Core_AudioCatalog.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "documentation/coverage/AshesofVelsingrad.Core_AudioRegistry.html",
+      "output": {
+        "resource": {
+          "relative_path": "coverage/AshesofVelsingrad.Core_AudioRegistry.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "documentation/coverage/AshesofVelsingrad.Core_AudioTrack.html",
+      "output": {
+        "resource": {
+          "relative_path": "coverage/AshesofVelsingrad.Core_AudioTrack.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "documentation/coverage/AshesofVelsingrad.Core_AudioVolumeMath.html",
+      "output": {
+        "resource": {
+          "relative_path": "coverage/AshesofVelsingrad.Core_AudioVolumeMath.html"
         }
       },
       "version": ""

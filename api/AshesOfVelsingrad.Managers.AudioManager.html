@@ -2,11 +2,11 @@
 <html>
   <head>
     <meta charset="utf-8">
-      <title>Class BaseManager | Ashes of Velsingrad Documentation </title>
+      <title>Class AudioManager | Ashes of Velsingrad Documentation </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content="Class BaseManager | Ashes of Velsingrad Documentation ">
+      <meta name="title" content="Class AudioManager | Ashes of Velsingrad Documentation ">
       
-      <meta name="description" content="Base class for all manager singletons in the game. Implements the Manager Pattern from your architecture documentation.">
+      <meta name="description" content="Centralised audio service for music, ambient layers and one-shot SFX. Implements  from the Core layer and bridges Godot audio APIs to the rest of the game.">
       <link rel="icon" href="../favicon.ico">
       <link rel="stylesheet" href="../public/docfx.min.css">
       <link rel="stylesheet" href="../public/main.css">
@@ -84,12 +84,12 @@
           <nav id="breadcrumb"></nav>
         </div>
 
-        <article data-uid="AshesOfVelsingrad.Managers.BaseManager">
+        <article data-uid="AshesOfVelsingrad.Managers.AudioManager">
 
 
 
-  <h1 id="AshesOfVelsingrad_Managers_BaseManager" data-uid="AshesOfVelsingrad.Managers.BaseManager" class="text-break">
-Class BaseManager  
+  <h1 id="AshesOfVelsingrad_Managers_AudioManager" data-uid="AshesOfVelsingrad.Managers.AudioManager" class="text-break">
+Class AudioManager  
   </h1>
 
   <div class="facts text-secondary">
@@ -97,14 +97,15 @@ Class BaseManager
   <dl><dt>Assembly</dt><dd>AshesofVelsingrad.dll</dd></dl>
   </div>
 
-  <div class="markdown summary"><p>Base class for all manager singletons in the game.
-Implements the Manager Pattern from your architecture documentation.</p>
+  <div class="markdown summary"><p>Centralised audio service for music, ambient layers and one-shot SFX.
+Implements <a class="xref" href="AshesOfVelsingrad.Audio.IAudioService.html">IAudioService</a> from the Core layer and bridges Godot
+audio APIs to the rest of the game.</p>
 </div>
   <div class="markdown conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[ScriptPath(&quot;res://scripts/managers/BaseManager.cs&quot;)]
-public abstract class BaseManager : Node, IDisposable</code></pre>
+    <pre><code class="lang-csharp hljs">[ScriptPath(&quot;res://scripts/managers/AudioManager.cs&quot;)]
+public class AudioManager : BaseManager, IDisposable, IAudioService</code></pre>
   </div>
 
 
@@ -116,7 +117,8 @@ public abstract class BaseManager : Node, IDisposable</code></pre>
       <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
       <div><span class="xref">GodotObject</span></div>
       <div><span class="xref">Node</span></div>
-      <div><span class="xref">BaseManager</span></div>
+      <div><a class="xref" href="AshesOfVelsingrad.Managers.BaseManager.html">BaseManager</a></div>
+      <div><span class="xref">AudioManager</span></div>
     </dd>
   </dl>
 
@@ -124,27 +126,26 @@ public abstract class BaseManager : Node, IDisposable</code></pre>
     <dt>Implements</dt>
     <dd>
       <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.idisposable">IDisposable</a></div>
+      <div><a class="xref" href="AshesOfVelsingrad.Audio.IAudioService.html">IAudioService</a></div>
     </dd>
   </dl>
 
   <dl class="typelist derived">
     <dt>Derived</dt>
     <dd>
-      <div><a class="xref" href="AshesOfVelsingrad.Helpers.Managers.AnotherTestManager.html">AnotherTestManager</a></div>
-      <div><a class="xref" href="AshesOfVelsingrad.Helpers.Managers.TestConcreteManager.html">TestConcreteManager</a></div>
-      <div><a class="xref" href="AshesOfVelsingrad.Managers.AudioManager.html">AudioManager</a></div>
-      <div><a class="xref" href="AshesOfVelsingrad.Managers.GameManager.html">GameManager</a></div>
-      <div><a class="xref" href="AshesOfVelsingrad.Managers.KarmaManager.html">KarmaManager</a></div>
-      <div><a class="xref" href="AshesOfVelsingrad.Managers.MenuManager.html">MenuManager</a></div>
-      <div><a class="xref" href="AshesOfVelsingrad.Managers.SceneManager.html">SceneManager</a></div>
-      <div><a class="xref" href="AshesOfVelsingrad.Managers.SettingsManager.html">SettingsManager</a></div>
-      <div><a class="xref" href="AshesOfVelsingrad.Managers.TurnManager.html">TurnManager</a></div>
+      <div><a class="xref" href="AshesOfVelsingrad.Helpers.Managers.TestAudioManager.html">TestAudioManager</a></div>
     </dd>
   </dl>
 
   <dl class="typelist inheritedMembers">
     <dt>Inherited Members</dt>
     <dd>
+    <div>
+      <a class="xref" href="AshesOfVelsingrad.Managers.BaseManager.html#AshesOfVelsingrad_Managers_BaseManager__Ready">BaseManager._Ready()</a>
+    </div>
+    <div>
+      <a class="xref" href="AshesOfVelsingrad.Managers.BaseManager.html#AshesOfVelsingrad_Managers_BaseManager_Cleanup">BaseManager.Cleanup()</a>
+    </div>
     <div>
       <span class="xref">Node.NotificationEnterTree</span>
     </div>
@@ -1005,29 +1006,58 @@ public abstract class BaseManager : Node, IDisposable</code></pre>
 
 
 
-  <h2 id="AshesOfVelsingrad_Managers_BaseManager_remarks">Remarks</h2>
-  <div class="markdown level0 remarks"><p>This class serves as a base for all manager classes, ensuring that only one instance exists.
-It provides a common initialization and cleanup mechanism for all managers.
-Derived classes should implement the Initialize method to set up their specific functionality.</p>
-</div>
 
 
-  <h2 class="section" id="properties">Properties
+  <h2 class="section" id="fields">Fields
 </h2>
 
 
-  <a id="AshesOfVelsingrad_Managers_BaseManager_Instance_" data-uid="AshesOfVelsingrad.Managers.BaseManager.Instance*"></a>
 
-  <h3 id="AshesOfVelsingrad_Managers_BaseManager_Instance" data-uid="AshesOfVelsingrad.Managers.BaseManager.Instance">
-  Instance
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/managers/BaseManager.cs/#L16"><i class="bi bi-code-slash"></i></a>
+  <h3 id="AshesOfVelsingrad_Managers_AudioManager_SettingsPrefix" data-uid="AshesOfVelsingrad.Managers.AudioManager.SettingsPrefix">
+  SettingsPrefix
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/managers/AudioManager.cs/#L17"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static BaseManager? Instance { get; protected set; }</code></pre>
+    <pre><code class="lang-csharp hljs">public const string SettingsPrefix = &quot;audio.volume.&quot;</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+  <h2 class="section" id="properties">Properties
+</h2>
+
+
+  <a id="AshesOfVelsingrad_Managers_AudioManager_Instance_" data-uid="AshesOfVelsingrad.Managers.AudioManager.Instance*"></a>
+
+  <h3 id="AshesOfVelsingrad_Managers_AudioManager_Instance" data-uid="AshesOfVelsingrad.Managers.AudioManager.Instance">
+  Instance
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/managers/AudioManager.cs/#L39"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static AudioManager? Instance { get; }</code></pre>
   </div>
 
 
@@ -1036,7 +1066,40 @@ Derived classes should implement the Initialize method to set up their specific 
 
   <h4 class="section">Property Value</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="AshesOfVelsingrad.Managers.BaseManager.html">BaseManager</a></dt>
+    <dt><a class="xref" href="AshesOfVelsingrad.Managers.AudioManager.html">AudioManager</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="AshesOfVelsingrad_Managers_AudioManager_Registry_" data-uid="AshesOfVelsingrad.Managers.AudioManager.Registry*"></a>
+
+  <h3 id="AshesOfVelsingrad_Managers_AudioManager_Registry" data-uid="AshesOfVelsingrad.Managers.AudioManager.Registry">
+  Registry
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/managers/AudioManager.cs/#L68"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Track registry exposed for read access (UI listings, debug overlays, etc.)
+and for tests that need to assert what's been registered.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IAudioRegistry Registry { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="AshesOfVelsingrad.Audio.IAudioRegistry.html">IAudioRegistry</a></dt>
     <dd></dd>
   </dl>
 
@@ -1051,22 +1114,34 @@ Derived classes should implement the Initialize method to set up their specific 
 </h2>
 
 
-  <a id="AshesOfVelsingrad_Managers_BaseManager_Cleanup_" data-uid="AshesOfVelsingrad.Managers.BaseManager.Cleanup*"></a>
+  <a id="AshesOfVelsingrad_Managers_AudioManager_GetBusVolume_" data-uid="AshesOfVelsingrad.Managers.AudioManager.GetBusVolume*"></a>
 
-  <h3 id="AshesOfVelsingrad_Managers_BaseManager_Cleanup" data-uid="AshesOfVelsingrad.Managers.BaseManager.Cleanup">
-  Cleanup()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/managers/BaseManager.cs/#L85"><i class="bi bi-code-slash"></i></a>
+  <h3 id="AshesOfVelsingrad_Managers_AudioManager_GetBusVolume_AshesOfVelsingrad_Audio_AudioBus_" data-uid="AshesOfVelsingrad.Managers.AudioManager.GetBusVolume(AshesOfVelsingrad.Audio.AudioBus)">
+  GetBusVolume(AudioBus)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/managers/AudioManager.cs/#L443"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Cleans up the manager instance.
-This method can be overridden in derived classes to implement specific cleanup logic.</p>
+  <div class="markdown level1 summary"><p>Returns the current volume for a bus on the 0..1 linear scale.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">protected virtual void Cleanup()</code></pre>
+    <pre><code class="lang-csharp hljs">public float GetBusVolume(AudioBus bus)</code></pre>
   </div>
 
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>bus</code> <a class="xref" href="AshesOfVelsingrad.Audio.AudioBus.html">AudioBus</a></dt>
+    <dd><p>Bus to query.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd><p>Linear volume (0 = silent, 1 = unity gain).</p>
+</dd>
+  </dl>
 
 
 
@@ -1075,21 +1150,50 @@ This method can be overridden in derived classes to implement specific cleanup l
 
 
 
-  <h4 class="section" id="AshesOfVelsingrad_Managers_BaseManager_Cleanup_remarks">Remarks</h4>
-  <div class="markdown level1 remarks"><p>This method is called when the manager is removed from the scene tree.
-It provides a place for derived classes to implement any necessary cleanup logic,
-such as disconnecting signals or releasing resources.
-By default, it does nothing, but derived classes can override it to perform specific cleanup tasks.</p>
-</div>
+
+
+
+  <a id="AshesOfVelsingrad_Managers_AudioManager_GetSettingsKey_" data-uid="AshesOfVelsingrad.Managers.AudioManager.GetSettingsKey*"></a>
+
+  <h3 id="AshesOfVelsingrad_Managers_AudioManager_GetSettingsKey_AshesOfVelsingrad_Audio_AudioBus_" data-uid="AshesOfVelsingrad.Managers.AudioManager.GetSettingsKey(AshesOfVelsingrad.Audio.AudioBus)">
+  GetSettingsKey(AudioBus)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/managers/AudioManager.cs/#L503"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static string GetSettingsKey(AudioBus bus)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>bus</code> <a class="xref" href="AshesOfVelsingrad.Audio.AudioBus.html">AudioBus</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
 
 
 
 
-  <a id="AshesOfVelsingrad_Managers_BaseManager_Initialize_" data-uid="AshesOfVelsingrad.Managers.BaseManager.Initialize*"></a>
 
-  <h3 id="AshesOfVelsingrad_Managers_BaseManager_Initialize" data-uid="AshesOfVelsingrad.Managers.BaseManager.Initialize">
+
+
+
+
+
+
+  <a id="AshesOfVelsingrad_Managers_AudioManager_Initialize_" data-uid="AshesOfVelsingrad.Managers.AudioManager.Initialize*"></a>
+
+  <h3 id="AshesOfVelsingrad_Managers_AudioManager_Initialize" data-uid="AshesOfVelsingrad.Managers.AudioManager.Initialize">
   Initialize()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/managers/BaseManager.cs/#L55"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/managers/AudioManager.cs/#L74"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Initializes the manager instance.
@@ -1098,7 +1202,7 @@ This method should be overridden in derived classes to set up specific functiona
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">protected abstract void Initialize()</code></pre>
+    <pre><code class="lang-csharp hljs">protected override void Initialize()</code></pre>
   </div>
 
 
@@ -1109,7 +1213,7 @@ This method should be overridden in derived classes to set up specific functiona
 
 
 
-  <h4 class="section" id="AshesOfVelsingrad_Managers_BaseManager_Initialize_remarks">Remarks</h4>
+  <h4 class="section" id="AshesOfVelsingrad_Managers_AudioManager_Initialize_remarks">Remarks</h4>
   <div class="markdown level1 remarks"><p>This method is called by the _Ready method to initialize the manager.
 It should contain the logic necessary to set up the manager's state and functionality.
 Derived classes must implement this method to provide their specific initialization logic.</p>
@@ -1118,11 +1222,415 @@ Derived classes must implement this method to provide their specific initializat
 
 
 
-  <a id="AshesOfVelsingrad_Managers_BaseManager__ExitTree_" data-uid="AshesOfVelsingrad.Managers.BaseManager._ExitTree*"></a>
+  <a id="AshesOfVelsingrad_Managers_AudioManager_IsBusMuted_" data-uid="AshesOfVelsingrad.Managers.AudioManager.IsBusMuted*"></a>
 
-  <h3 id="AshesOfVelsingrad_Managers_BaseManager__ExitTree" data-uid="AshesOfVelsingrad.Managers.BaseManager._ExitTree">
+  <h3 id="AshesOfVelsingrad_Managers_AudioManager_IsBusMuted_AshesOfVelsingrad_Audio_AudioBus_" data-uid="AshesOfVelsingrad.Managers.AudioManager.IsBusMuted(AshesOfVelsingrad.Audio.AudioBus)">
+  IsBusMuted(AudioBus)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/managers/AudioManager.cs/#L473"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Returns whether a bus is currently muted.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool IsBusMuted(AudioBus bus)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>bus</code> <a class="xref" href="AshesOfVelsingrad.Audio.AudioBus.html">AudioBus</a></dt>
+    <dd><p>Bus to query.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AshesOfVelsingrad_Managers_AudioManager_Play_" data-uid="AshesOfVelsingrad.Managers.AudioManager.Play*"></a>
+
+  <h3 id="AshesOfVelsingrad_Managers_AudioManager_Play_System_String_" data-uid="AshesOfVelsingrad.Managers.AudioManager.Play(System.String)">
+  Play(string)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/managers/AudioManager.cs/#L176"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Plays the registered track with id <code class="paramref">trackId</code>, dispatching
+to the right code path (music crossfade, ambient layer, or one-shot) based
+on the track's <a class="xref" href="AshesOfVelsingrad.Audio.AudioTrack.html#AshesOfVelsingrad_Audio_AudioTrack_Bus">Bus</a>. The per-track
+<a class="xref" href="AshesOfVelsingrad.Audio.AudioTrack.html#AshesOfVelsingrad_Audio_AudioTrack_BaseVolumeMultiplier">BaseVolumeMultiplier</a> is applied on top of the bus
+volume so individual songs that were mastered too loud can be tamed at the
+catalog level.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Play(string trackId)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>trackId</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>Identifier registered through <a class="xref" href="AshesOfVelsingrad.Audio.AudioCatalog.html">AudioCatalog</a>.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AshesOfVelsingrad_Managers_AudioManager_PlayAmbient_" data-uid="AshesOfVelsingrad.Managers.AudioManager.PlayAmbient*"></a>
+
+  <h3 id="AshesOfVelsingrad_Managers_AudioManager_PlayAmbient_System_String_System_String_System_Single_" data-uid="AshesOfVelsingrad.Managers.AudioManager.PlayAmbient(System.String,System.String,System.Single)">
+  PlayAmbient(string, string, float)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/managers/AudioManager.cs/#L306"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Starts (or replaces) an ambient layer. Multiple layers can play at once,
+each addressed by <code class="paramref">layerId</code>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void PlayAmbient(string layerId, string trackPath, float fadeSeconds = 1.5)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>layerId</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>Stable identifier for the layer (e.g. <code>&quot;wind&quot;</code>, <code>&quot;crickets&quot;</code>).</p>
+</dd>
+    <dt><code>trackPath</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>Resource path of the ambient stream.</p>
+</dd>
+    <dt><code>fadeSeconds</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd><p>Fade-in duration.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AshesOfVelsingrad_Managers_AudioManager_PlayMusic_" data-uid="AshesOfVelsingrad.Managers.AudioManager.PlayMusic*"></a>
+
+  <h3 id="AshesOfVelsingrad_Managers_AudioManager_PlayMusic_System_String_System_Single_System_Boolean_" data-uid="AshesOfVelsingrad.Managers.AudioManager.PlayMusic(System.String,System.Single,System.Boolean)">
+  PlayMusic(string, float, bool)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/managers/AudioManager.cs/#L213"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Starts (or crossfades into) a music track.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void PlayMusic(string trackPath, float fadeSeconds = 1.5, bool loop = true)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>trackPath</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>Resource path of the music stream.</p>
+</dd>
+    <dt><code>fadeSeconds</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd><p>Crossfade duration with the currently playing track.</p>
+</dd>
+    <dt><code>loop</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>Whether the stream should loop when it reaches the end.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AshesOfVelsingrad_Managers_AudioManager_PlaySfx_" data-uid="AshesOfVelsingrad.Managers.AudioManager.PlaySfx*"></a>
+
+  <h3 id="AshesOfVelsingrad_Managers_AudioManager_PlaySfx_System_String_System_Single_System_Single_" data-uid="AshesOfVelsingrad.Managers.AudioManager.PlaySfx(System.String,System.Single,System.Single)">
+  PlaySfx(string, float, float)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/managers/AudioManager.cs/#L397"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Plays a one-shot sound effect through the SFX pool.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void PlaySfx(string trackPath, float volumeLinear = 1, float pitchScale = 1)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>trackPath</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>Resource path of the SFX stream.</p>
+</dd>
+    <dt><code>volumeLinear</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd><p>Per-shot volume scale on the 0..1 linear scale.</p>
+</dd>
+    <dt><code>pitchScale</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd><p>Pitch multiplier (1.0 = original pitch).</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AshesOfVelsingrad_Managers_AudioManager_PlayUi_" data-uid="AshesOfVelsingrad.Managers.AudioManager.PlayUi*"></a>
+
+  <h3 id="AshesOfVelsingrad_Managers_AudioManager_PlayUi_System_String_System_Single_" data-uid="AshesOfVelsingrad.Managers.AudioManager.PlayUi(System.String,System.Single)">
+  PlayUi(string, float)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/managers/AudioManager.cs/#L402"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Plays a one-shot UI sound through the UI bus.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void PlayUi(string trackPath, float volumeLinear = 1)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>trackPath</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>Resource path of the UI stream.</p>
+</dd>
+    <dt><code>volumeLinear</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd><p>Per-shot volume scale on the 0..1 linear scale.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AshesOfVelsingrad_Managers_AudioManager_SetBusMuted_" data-uid="AshesOfVelsingrad.Managers.AudioManager.SetBusMuted*"></a>
+
+  <h3 id="AshesOfVelsingrad_Managers_AudioManager_SetBusMuted_AshesOfVelsingrad_Audio_AudioBus_System_Boolean_" data-uid="AshesOfVelsingrad.Managers.AudioManager.SetBusMuted(AshesOfVelsingrad.Audio.AudioBus,System.Boolean)">
+  SetBusMuted(AudioBus, bool)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/managers/AudioManager.cs/#L478"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Mutes or unmutes a bus.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetBusMuted(AudioBus bus, bool muted)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>bus</code> <a class="xref" href="AshesOfVelsingrad.Audio.AudioBus.html">AudioBus</a></dt>
+    <dd><p>Bus to toggle.</p>
+</dd>
+    <dt><code>muted</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p><code>true</code> to mute, <code>false</code> to restore the persisted volume.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AshesOfVelsingrad_Managers_AudioManager_SetBusVolume_" data-uid="AshesOfVelsingrad.Managers.AudioManager.SetBusVolume*"></a>
+
+  <h3 id="AshesOfVelsingrad_Managers_AudioManager_SetBusVolume_AshesOfVelsingrad_Audio_AudioBus_System_Single_" data-uid="AshesOfVelsingrad.Managers.AudioManager.SetBusVolume(AshesOfVelsingrad.Audio.AudioBus,System.Single)">
+  SetBusVolume(AudioBus, float)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/managers/AudioManager.cs/#L456"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Sets the volume for a bus and persists it through the settings layer.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetBusVolume(AudioBus bus, float linear)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>bus</code> <a class="xref" href="AshesOfVelsingrad.Audio.AudioBus.html">AudioBus</a></dt>
+    <dd><p>Bus to set.</p>
+</dd>
+    <dt><code>linear</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd><p>New linear volume; values outside [0,1] are clamped.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AshesOfVelsingrad_Managers_AudioManager_StopAllAmbient_" data-uid="AshesOfVelsingrad.Managers.AudioManager.StopAllAmbient*"></a>
+
+  <h3 id="AshesOfVelsingrad_Managers_AudioManager_StopAllAmbient_System_Single_" data-uid="AshesOfVelsingrad.Managers.AudioManager.StopAllAmbient(System.Single)">
+  StopAllAmbient(float)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/managers/AudioManager.cs/#L373"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Fades out and stops every active ambient layer.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void StopAllAmbient(float fadeSeconds = 1)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>fadeSeconds</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd><p>Fade-out duration applied to each layer.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AshesOfVelsingrad_Managers_AudioManager_StopAmbient_" data-uid="AshesOfVelsingrad.Managers.AudioManager.StopAmbient*"></a>
+
+  <h3 id="AshesOfVelsingrad_Managers_AudioManager_StopAmbient_System_String_System_Single_" data-uid="AshesOfVelsingrad.Managers.AudioManager.StopAmbient(System.String,System.Single)">
+  StopAmbient(string, float)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/managers/AudioManager.cs/#L346"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Fades out and stops a single ambient layer.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void StopAmbient(string layerId, float fadeSeconds = 1)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>layerId</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>Identifier passed to <a class="xref" href="AshesOfVelsingrad.Audio.IAudioService.html#AshesOfVelsingrad_Audio_IAudioService_PlayAmbient_System_String_System_String_System_Single_">PlayAmbient(string, string, float)</a>.</p>
+</dd>
+    <dt><code>fadeSeconds</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd><p>Fade-out duration.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AshesOfVelsingrad_Managers_AudioManager_StopMusic_" data-uid="AshesOfVelsingrad.Managers.AudioManager.StopMusic*"></a>
+
+  <h3 id="AshesOfVelsingrad_Managers_AudioManager_StopMusic_System_Single_" data-uid="AshesOfVelsingrad.Managers.AudioManager.StopMusic(System.Single)">
+  StopMusic(float)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/managers/AudioManager.cs/#L218"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Fades out and stops the current music track, if any.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void StopMusic(float fadeSeconds = 1)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>fadeSeconds</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd><p>Fade-out duration. <code>0</code> stops immediately.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AshesOfVelsingrad_Managers_AudioManager__ExitTree_" data-uid="AshesOfVelsingrad.Managers.AudioManager._ExitTree*"></a>
+
+  <h3 id="AshesOfVelsingrad_Managers_AudioManager__ExitTree" data-uid="AshesOfVelsingrad.Managers.AudioManager._ExitTree">
   _ExitTree()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/managers/BaseManager.cs/#L66"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/managers/AudioManager.cs/#L115"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Called when the node is removed from the scene tree.
@@ -1142,43 +1650,10 @@ Cleans up the manager instance and sets it to null.</p>
 
 
 
-  <h4 class="section" id="AshesOfVelsingrad_Managers_BaseManager__ExitTree_remarks">Remarks</h4>
+  <h4 class="section" id="AshesOfVelsingrad_Managers_AudioManager__ExitTree_remarks">Remarks</h4>
   <div class="markdown level1 remarks"><p>This method is called automatically by Godot when the node is removed from the scene tree.
 It ensures that the manager instance is properly cleaned up and set to null.
 This is important for preventing memory leaks and ensuring that the manager can be re-initialized later if needed.</p>
-</div>
-
-
-
-
-  <a id="AshesOfVelsingrad_Managers_BaseManager__Ready_" data-uid="AshesOfVelsingrad.Managers.BaseManager._Ready*"></a>
-
-  <h3 id="AshesOfVelsingrad_Managers_BaseManager__Ready" data-uid="AshesOfVelsingrad.Managers.BaseManager._Ready">
-  _Ready()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/managers/BaseManager.cs/#L27"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Called when the node is added to the scene tree.
-Initializes the manager instance and checks for duplicates.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public override void _Ready()</code></pre>
-  </div>
-
-
-
-
-
-
-
-
-
-  <h4 class="section" id="AshesOfVelsingrad_Managers_BaseManager__Ready_remarks">Remarks</h4>
-  <div class="markdown level1 remarks"><p>This method is called automatically by Godot when the node is ready.
-It ensures that only one instance of the manager exists in the scene tree.
-If a duplicate instance is found, it removes the duplicate.</p>
 </div>
 
 

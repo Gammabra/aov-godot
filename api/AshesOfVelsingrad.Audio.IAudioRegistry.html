@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Interface IAudioRegistry | Ashes of Velsingrad Documentation </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Interface IAudioRegistry | Ashes of Velsingrad Documentation ">
+      
+      <meta name="description" content="Lookup table for every  known to the game.">
+      <link rel="icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/Gammabra/aov-godot/new/develop/apiSpec/new?filename=AshesOfVelsingrad_Audio_IAudioRegistry.md&amp;value=---%0Auid%3A%20AshesOfVelsingrad.Audio.IAudioRegistry%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../images/logo-doc.png" alt="Ashes of Velsingrad" style="height: 40px; width: auto;">
+            Ashes of Velsingrad
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="AshesOfVelsingrad.Audio.IAudioRegistry">
+
+
+
+  <h1 id="AshesOfVelsingrad_Audio_IAudioRegistry" data-uid="AshesOfVelsingrad.Audio.IAudioRegistry" class="text-break">
+Interface IAudioRegistry  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad.Core/Audio/IAudioRegistry.cs/#L22"><i class="bi bi-code-slash"></i></a>
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="AshesOfVelsingrad.html">AshesOfVelsingrad</a>.<a class="xref" href="AshesOfVelsingrad.Audio.html">Audio</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>AshesofVelsingrad.Core.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"><p>Lookup table for every <a class="xref" href="AshesOfVelsingrad.Audio.AudioTrack.html">AudioTrack</a> known to the game.</p>
+</div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public interface IAudioRegistry</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+  <h2 id="AshesOfVelsingrad_Audio_IAudioRegistry_remarks">Remarks</h2>
+  <div class="markdown level0 remarks"><p>
+    The registry is populated at start-up by <a class="xref" href="AshesOfVelsingrad.Audio.AudioCatalog.html">AudioCatalog</a> and
+    queried by <a class="xref" href="AshesOfVelsingrad.Audio.IAudioService.html">IAudioService</a> when call sites use a track id
+    instead of a raw resource path. Treat ids as the public contract — they
+    live as <code>const</code> fields on <a class="xref" href="AshesOfVelsingrad.Audio.AudioCatalog.html">AudioCatalog</a> and survive
+    asset-path renames.
+</p>
+<p>
+    Implementations are expected to be case-insensitive on ids and to reject
+    duplicate registrations explicitly so a typo in two catalog entries
+    doesn't silently overwrite the first one.
+</p>
+</div>
+
+
+  <h2 class="section" id="properties">Properties
+</h2>
+
+
+  <a id="AshesOfVelsingrad_Audio_IAudioRegistry_Count_" data-uid="AshesOfVelsingrad.Audio.IAudioRegistry.Count*"></a>
+
+  <h3 id="AshesOfVelsingrad_Audio_IAudioRegistry_Count" data-uid="AshesOfVelsingrad.Audio.IAudioRegistry.Count">
+  Count
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad.Core/Audio/IAudioRegistry.cs/#L25"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Number of tracks currently registered.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">int Count { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="AshesOfVelsingrad_Audio_IAudioRegistry_Tracks_" data-uid="AshesOfVelsingrad.Audio.IAudioRegistry.Tracks*"></a>
+
+  <h3 id="AshesOfVelsingrad_Audio_IAudioRegistry_Tracks" data-uid="AshesOfVelsingrad.Audio.IAudioRegistry.Tracks">
+  Tracks
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad.Core/Audio/IAudioRegistry.cs/#L28"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>All registered tracks, in insertion order.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IReadOnlyCollection&lt;AudioTrack&gt; Tracks { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlycollection-1">IReadOnlyCollection</a>&lt;<a class="xref" href="AshesOfVelsingrad.Audio.AudioTrack.html">AudioTrack</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
+  <a id="AshesOfVelsingrad_Audio_IAudioRegistry_Clear_" data-uid="AshesOfVelsingrad.Audio.IAudioRegistry.Clear*"></a>
+
+  <h3 id="AshesOfVelsingrad_Audio_IAudioRegistry_Clear" data-uid="AshesOfVelsingrad.Audio.IAudioRegistry.Clear">
+  Clear()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad.Core/Audio/IAudioRegistry.cs/#L55"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Removes every registered track.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void Clear()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AshesOfVelsingrad_Audio_IAudioRegistry_Contains_" data-uid="AshesOfVelsingrad.Audio.IAudioRegistry.Contains*"></a>
+
+  <h3 id="AshesOfVelsingrad_Audio_IAudioRegistry_Contains_System_String_" data-uid="AshesOfVelsingrad.Audio.IAudioRegistry.Contains(System.String)">
+  Contains(string)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad.Core/Audio/IAudioRegistry.cs/#L52"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Returns <code>true</code> if a track with this id has been registered.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool Contains(string trackId)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>trackId</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AshesOfVelsingrad_Audio_IAudioRegistry_Find_" data-uid="AshesOfVelsingrad.Audio.IAudioRegistry.Find*"></a>
+
+  <h3 id="AshesOfVelsingrad_Audio_IAudioRegistry_Find_System_String_" data-uid="AshesOfVelsingrad.Audio.IAudioRegistry.Find(System.String)">
+  Find(string)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad.Core/Audio/IAudioRegistry.cs/#L41"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Returns the track with id <code class="paramref">trackId</code>, or <code>null</code> if missing.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">AudioTrack? Find(string trackId)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>trackId</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="AshesOfVelsingrad.Audio.AudioTrack.html">AudioTrack</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AshesOfVelsingrad_Audio_IAudioRegistry_Register_" data-uid="AshesOfVelsingrad.Audio.IAudioRegistry.Register*"></a>
+
+  <h3 id="AshesOfVelsingrad_Audio_IAudioRegistry_Register_AshesOfVelsingrad_Audio_AudioTrack_" data-uid="AshesOfVelsingrad.Audio.IAudioRegistry.Register(AshesOfVelsingrad.Audio.AudioTrack)">
+  Register(AudioTrack)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad.Core/Audio/IAudioRegistry.cs/#L38"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Adds <code class="paramref">track</code> to the registry.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void Register(AudioTrack track)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>track</code> <a class="xref" href="AshesOfVelsingrad.Audio.AudioTrack.html">AudioTrack</a></dt>
+    <dd><p>Track metadata to register.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+  <h4 class="section">Exceptions</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.argumentnullexception">ArgumentNullException</a></dt>
+    <dd><p>When <code class="paramref">track</code> is null.</p>
+</dd>
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.argumentexception">ArgumentException</a></dt>
+    <dd><p>When the track id is empty or already registered.</p>
+</dd>
+  </dl>
+
+
+
+  <a id="AshesOfVelsingrad_Audio_IAudioRegistry_TryGet_" data-uid="AshesOfVelsingrad.Audio.IAudioRegistry.TryGet*"></a>
+
+  <h3 id="AshesOfVelsingrad_Audio_IAudioRegistry_TryGet_System_String_AshesOfVelsingrad_Audio_AudioTrack__" data-uid="AshesOfVelsingrad.Audio.IAudioRegistry.TryGet(System.String,AshesOfVelsingrad.Audio.AudioTrack@)">
+  TryGet(string, out AudioTrack)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad.Core/Audio/IAudioRegistry.cs/#L49"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Looks up a track by id and returns it via <code class="paramref">track</code>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool TryGet(string trackId, out AudioTrack track)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>trackId</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>Track identifier.</p>
+</dd>
+    <dt><code>track</code> <a class="xref" href="AshesOfVelsingrad.Audio.AudioTrack.html">AudioTrack</a></dt>
+    <dd><p>Resolved track when the method returns <code>true</code>.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p><code>true</code> when the track exists, <code>false</code> otherwise.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad.Core/Audio/IAudioRegistry.cs/#L22" class="edit-link">Edit this page</a>
+        </div>
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          © 2025 Gammabra Studios. All Rights Reserved.
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

@@ -2,11 +2,11 @@
 <html>
   <head>
     <meta charset="utf-8">
-      <title>Namespace AshesOfVelsingrad.IntegrationTests.Managers | Ashes of Velsingrad Documentation </title>
+      <title>Enum AudioBus | Ashes of Velsingrad Documentation </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content="Namespace AshesOfVelsingrad.IntegrationTests.Managers | Ashes of Velsingrad Documentation ">
+      <meta name="title" content="Enum AudioBus | Ashes of Velsingrad Documentation ">
       
-      
+      <meta name="description" content="Logical mixing channels exposed by the audio service.">
       <link rel="icon" href="../favicon.ico">
       <link rel="stylesheet" href="../public/docfx.min.css">
       <link rel="stylesheet" href="../public/main.css">
@@ -16,7 +16,7 @@
       <meta name="docfx:rel" content="../">
       
       
-      
+      <meta name="docfx:docurl" content="https://github.com/Gammabra/aov-godot/new/develop/apiSpec/new?filename=AshesOfVelsingrad_Audio_AudioBus.md&amp;value=---%0Auid%3A%20AshesOfVelsingrad.Audio.AudioBus%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -84,55 +84,84 @@
           <nav id="breadcrumb"></nav>
         </div>
 
-        <article data-uid="AshesOfVelsingrad.IntegrationTests.Managers">
+        <article data-uid="AshesOfVelsingrad.Audio.AudioBus">
 
-  <h1 id="AshesOfVelsingrad_IntegrationTests_Managers" data-uid="AshesOfVelsingrad.IntegrationTests.Managers" class="text-break">Namespace AshesOfVelsingrad.IntegrationTests.Managers</h1>
-  <div class="markdown level0 summary"></div>
-  <div class="markdown level0 conceptual"></div>
-  <div class="markdown level0 remarks"></div>
 
-    <h3 id="classes">
-Classes
-</h3>
-    <dl class="jumplist">
-      <dt><a class="xref" href="AshesOfVelsingrad.IntegrationTests.Managers.AudioManagerTest.html">AudioManagerTest</a></dt>
-      <dd><p>Engine-level coverage for <a class="xref" href="AshesOfVelsingrad.Managers.AudioManager.html">AudioManager</a>. These tests touch
-<code>AudioServer</code> directly so they have to run inside the Godot runtime.</p>
+
+
+  <h1 id="AshesOfVelsingrad_Audio_AudioBus" data-uid="AshesOfVelsingrad.Audio.AudioBus" class="text-break">
+Enum AudioBus  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad.Core/Audio/AudioBus.cs/#L19"><i class="bi bi-code-slash"></i></a>
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="AshesOfVelsingrad.html">AshesOfVelsingrad</a>.<a class="xref" href="AshesOfVelsingrad.Audio.html">Audio</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>AshesofVelsingrad.Core.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"><p>Logical mixing channels exposed by the audio service.</p>
+</div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public enum AudioBus</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+  <h2 id="fields">Fields
+</h2>
+  <dl class="parameters">
+    <dt id="AshesOfVelsingrad_Audio_AudioBus_Ambient"><code>Ambient = 3</code></dt>
+  
+  <dd><p>Looping ambient layers (wind, crickets, dungeon hum).</p>
 </dd>
-    </dl>
-    <dl class="jumplist">
-      <dt><a class="xref" href="AshesOfVelsingrad.IntegrationTests.Managers.BaseManagerTest.html">BaseManagerTest</a></dt>
-      <dd></dd>
-    </dl>
-    <dl class="jumplist">
-      <dt><a class="xref" href="AshesOfVelsingrad.IntegrationTests.Managers.EnemyAIManagerTest.html">EnemyAIManagerTest</a></dt>
-      <dd></dd>
-    </dl>
-    <dl class="jumplist">
-      <dt><a class="xref" href="AshesOfVelsingrad.IntegrationTests.Managers.GameManagerTest.html">GameManagerTest</a></dt>
-      <dd></dd>
-    </dl>
-    <dl class="jumplist">
-      <dt><a class="xref" href="AshesOfVelsingrad.IntegrationTests.Managers.GameManagerUtilsTest.html">GameManagerUtilsTest</a></dt>
-      <dd></dd>
-    </dl>
-    <dl class="jumplist">
-      <dt><a class="xref" href="AshesOfVelsingrad.IntegrationTests.Managers.MenuManagerTest.html">MenuManagerTest</a></dt>
-      <dd></dd>
-    </dl>
-    <dl class="jumplist">
-      <dt><a class="xref" href="AshesOfVelsingrad.IntegrationTests.Managers.SettingsManagerTest.html">SettingsManagerTest</a></dt>
-      <dd></dd>
-    </dl>
-    <dl class="jumplist">
-      <dt><a class="xref" href="AshesOfVelsingrad.IntegrationTests.Managers.TurnManagerTest.html">TurnManagerTest</a></dt>
-      <dd></dd>
-    </dl>
+    <dt id="AshesOfVelsingrad_Audio_AudioBus_Master"><code>Master = 0</code></dt>
+  
+  <dd><p>Master output. Scales every other bus.</p>
+</dd>
+    <dt id="AshesOfVelsingrad_Audio_AudioBus_Music"><code>Music = 1</code></dt>
+  
+  <dd><p>Background music (single track at a time, crossfaded).</p>
+</dd>
+    <dt id="AshesOfVelsingrad_Audio_AudioBus_Sfx"><code>Sfx = 2</code></dt>
+  
+  <dd><p>One-shot sound effects (footsteps, hits, spell casts).</p>
+</dd>
+    <dt id="AshesOfVelsingrad_Audio_AudioBus_Ui"><code>Ui = 4</code></dt>
+  
+  <dd><p>UI clicks, menu transitions, notifications.</p>
+</dd>
+    <dt id="AshesOfVelsingrad_Audio_AudioBus_Voice"><code>Voice = 5</code></dt>
+  
+  <dd><p>Spoken dialogue / VO lines.</p>
+</dd>
+  </dl>
 
+
+  <h2 id="AshesOfVelsingrad_Audio_AudioBus_remarks">Remarks</h2>
+  <div class="markdown level0 remarks"><p>
+    The values double as indices into <code>AudioServer</code> bus tables on the Godot side.
+    The Core layer never resolves them itself — it only routes intent ("play this on
+    the music bus") so the adapter can map each <a class="xref" href="AshesOfVelsingrad.Audio.AudioBus.html">AudioBus</a> to a real bus
+    and a settings key.
+</p>
+<p>
+    Adding a new bus is a deliberate design choice: every bus needs a settings entry
+    (<code>audio.volume.&lt;name&gt;</code>) and a Godot bus of the same name. Keep the list
+    small.
+</p>
+</div>
 
 </article>
 
         <div class="contribution d-print-none">
+          <a href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad.Core/Audio/AudioBus.cs/#L19" class="edit-link">Edit this page</a>
         </div>
 
 

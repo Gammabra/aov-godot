@@ -687,6 +687,664 @@ references:
   isSpec: "True"
   fullName: AshesOfVelsingrad.AssassinStab.Use
   nameWithType: AssassinStab.Use
+- uid: AshesOfVelsingrad.Audio
+  name: AshesOfVelsingrad.Audio
+  href: api/AshesOfVelsingrad.Audio.html
+  commentId: N:AshesOfVelsingrad.Audio
+  fullName: AshesOfVelsingrad.Audio
+  nameWithType: AshesOfVelsingrad.Audio
+- uid: AshesOfVelsingrad.Audio.AudioBus
+  name: AudioBus
+  href: api/AshesOfVelsingrad.Audio.AudioBus.html
+  commentId: T:AshesOfVelsingrad.Audio.AudioBus
+  fullName: AshesOfVelsingrad.Audio.AudioBus
+  nameWithType: AudioBus
+- uid: AshesOfVelsingrad.Audio.AudioBus.Ambient
+  name: Ambient
+  href: api/AshesOfVelsingrad.Audio.AudioBus.html#AshesOfVelsingrad_Audio_AudioBus_Ambient
+  commentId: F:AshesOfVelsingrad.Audio.AudioBus.Ambient
+  fullName: AshesOfVelsingrad.Audio.AudioBus.Ambient
+  nameWithType: AudioBus.Ambient
+- uid: AshesOfVelsingrad.Audio.AudioBus.Master
+  name: Master
+  href: api/AshesOfVelsingrad.Audio.AudioBus.html#AshesOfVelsingrad_Audio_AudioBus_Master
+  commentId: F:AshesOfVelsingrad.Audio.AudioBus.Master
+  fullName: AshesOfVelsingrad.Audio.AudioBus.Master
+  nameWithType: AudioBus.Master
+- uid: AshesOfVelsingrad.Audio.AudioBus.Music
+  name: Music
+  href: api/AshesOfVelsingrad.Audio.AudioBus.html#AshesOfVelsingrad_Audio_AudioBus_Music
+  commentId: F:AshesOfVelsingrad.Audio.AudioBus.Music
+  fullName: AshesOfVelsingrad.Audio.AudioBus.Music
+  nameWithType: AudioBus.Music
+- uid: AshesOfVelsingrad.Audio.AudioBus.Sfx
+  name: Sfx
+  href: api/AshesOfVelsingrad.Audio.AudioBus.html#AshesOfVelsingrad_Audio_AudioBus_Sfx
+  commentId: F:AshesOfVelsingrad.Audio.AudioBus.Sfx
+  fullName: AshesOfVelsingrad.Audio.AudioBus.Sfx
+  nameWithType: AudioBus.Sfx
+- uid: AshesOfVelsingrad.Audio.AudioBus.Ui
+  name: Ui
+  href: api/AshesOfVelsingrad.Audio.AudioBus.html#AshesOfVelsingrad_Audio_AudioBus_Ui
+  commentId: F:AshesOfVelsingrad.Audio.AudioBus.Ui
+  fullName: AshesOfVelsingrad.Audio.AudioBus.Ui
+  nameWithType: AudioBus.Ui
+- uid: AshesOfVelsingrad.Audio.AudioBus.Voice
+  name: Voice
+  href: api/AshesOfVelsingrad.Audio.AudioBus.html#AshesOfVelsingrad_Audio_AudioBus_Voice
+  commentId: F:AshesOfVelsingrad.Audio.AudioBus.Voice
+  fullName: AshesOfVelsingrad.Audio.AudioBus.Voice
+  nameWithType: AudioBus.Voice
+- uid: AshesOfVelsingrad.Audio.AudioCatalog
+  name: AudioCatalog
+  href: api/AshesOfVelsingrad.Audio.AudioCatalog.html
+  commentId: T:AshesOfVelsingrad.Audio.AudioCatalog
+  fullName: AshesOfVelsingrad.Audio.AudioCatalog
+  nameWithType: AudioCatalog
+- uid: AshesOfVelsingrad.Audio.AudioCatalog.MainMenuTheme
+  name: MainMenuTheme
+  href: api/AshesOfVelsingrad.Audio.AudioCatalog.html#AshesOfVelsingrad_Audio_AudioCatalog_MainMenuTheme
+  commentId: F:AshesOfVelsingrad.Audio.AudioCatalog.MainMenuTheme
+  fullName: AshesOfVelsingrad.Audio.AudioCatalog.MainMenuTheme
+  nameWithType: AudioCatalog.MainMenuTheme
+- uid: AshesOfVelsingrad.Audio.AudioCatalog.RegisterDefaults(AshesOfVelsingrad.Audio.IAudioRegistry)
+  name: RegisterDefaults(IAudioRegistry)
+  href: api/AshesOfVelsingrad.Audio.AudioCatalog.html#AshesOfVelsingrad_Audio_AudioCatalog_RegisterDefaults_AshesOfVelsingrad_Audio_IAudioRegistry_
+  commentId: M:AshesOfVelsingrad.Audio.AudioCatalog.RegisterDefaults(AshesOfVelsingrad.Audio.IAudioRegistry)
+  fullName: AshesOfVelsingrad.Audio.AudioCatalog.RegisterDefaults(AshesOfVelsingrad.Audio.IAudioRegistry)
+  nameWithType: AudioCatalog.RegisterDefaults(IAudioRegistry)
+- uid: AshesOfVelsingrad.Audio.AudioCatalog.RegisterDefaults*
+  name: RegisterDefaults
+  href: api/AshesOfVelsingrad.Audio.AudioCatalog.html#AshesOfVelsingrad_Audio_AudioCatalog_RegisterDefaults_
+  commentId: Overload:AshesOfVelsingrad.Audio.AudioCatalog.RegisterDefaults
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.Audio.AudioCatalog.RegisterDefaults
+  nameWithType: AudioCatalog.RegisterDefaults
+- uid: AshesOfVelsingrad.Audio.AudioRegistry
+  name: AudioRegistry
+  href: api/AshesOfVelsingrad.Audio.AudioRegistry.html
+  commentId: T:AshesOfVelsingrad.Audio.AudioRegistry
+  fullName: AshesOfVelsingrad.Audio.AudioRegistry
+  nameWithType: AudioRegistry
+- uid: AshesOfVelsingrad.Audio.AudioRegistry.Clear
+  name: Clear()
+  href: api/AshesOfVelsingrad.Audio.AudioRegistry.html#AshesOfVelsingrad_Audio_AudioRegistry_Clear
+  commentId: M:AshesOfVelsingrad.Audio.AudioRegistry.Clear
+  fullName: AshesOfVelsingrad.Audio.AudioRegistry.Clear()
+  nameWithType: AudioRegistry.Clear()
+- uid: AshesOfVelsingrad.Audio.AudioRegistry.Clear*
+  name: Clear
+  href: api/AshesOfVelsingrad.Audio.AudioRegistry.html#AshesOfVelsingrad_Audio_AudioRegistry_Clear_
+  commentId: Overload:AshesOfVelsingrad.Audio.AudioRegistry.Clear
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.Audio.AudioRegistry.Clear
+  nameWithType: AudioRegistry.Clear
+- uid: AshesOfVelsingrad.Audio.AudioRegistry.Contains(System.String)
+  name: Contains(string)
+  href: api/AshesOfVelsingrad.Audio.AudioRegistry.html#AshesOfVelsingrad_Audio_AudioRegistry_Contains_System_String_
+  commentId: M:AshesOfVelsingrad.Audio.AudioRegistry.Contains(System.String)
+  name.vb: Contains(String)
+  fullName: AshesOfVelsingrad.Audio.AudioRegistry.Contains(string)
+  fullName.vb: AshesOfVelsingrad.Audio.AudioRegistry.Contains(String)
+  nameWithType: AudioRegistry.Contains(string)
+  nameWithType.vb: AudioRegistry.Contains(String)
+- uid: AshesOfVelsingrad.Audio.AudioRegistry.Contains*
+  name: Contains
+  href: api/AshesOfVelsingrad.Audio.AudioRegistry.html#AshesOfVelsingrad_Audio_AudioRegistry_Contains_
+  commentId: Overload:AshesOfVelsingrad.Audio.AudioRegistry.Contains
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.Audio.AudioRegistry.Contains
+  nameWithType: AudioRegistry.Contains
+- uid: AshesOfVelsingrad.Audio.AudioRegistry.Count
+  name: Count
+  href: api/AshesOfVelsingrad.Audio.AudioRegistry.html#AshesOfVelsingrad_Audio_AudioRegistry_Count
+  commentId: P:AshesOfVelsingrad.Audio.AudioRegistry.Count
+  fullName: AshesOfVelsingrad.Audio.AudioRegistry.Count
+  nameWithType: AudioRegistry.Count
+- uid: AshesOfVelsingrad.Audio.AudioRegistry.Count*
+  name: Count
+  href: api/AshesOfVelsingrad.Audio.AudioRegistry.html#AshesOfVelsingrad_Audio_AudioRegistry_Count_
+  commentId: Overload:AshesOfVelsingrad.Audio.AudioRegistry.Count
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.Audio.AudioRegistry.Count
+  nameWithType: AudioRegistry.Count
+- uid: AshesOfVelsingrad.Audio.AudioRegistry.Find(System.String)
+  name: Find(string)
+  href: api/AshesOfVelsingrad.Audio.AudioRegistry.html#AshesOfVelsingrad_Audio_AudioRegistry_Find_System_String_
+  commentId: M:AshesOfVelsingrad.Audio.AudioRegistry.Find(System.String)
+  name.vb: Find(String)
+  fullName: AshesOfVelsingrad.Audio.AudioRegistry.Find(string)
+  fullName.vb: AshesOfVelsingrad.Audio.AudioRegistry.Find(String)
+  nameWithType: AudioRegistry.Find(string)
+  nameWithType.vb: AudioRegistry.Find(String)
+- uid: AshesOfVelsingrad.Audio.AudioRegistry.Find*
+  name: Find
+  href: api/AshesOfVelsingrad.Audio.AudioRegistry.html#AshesOfVelsingrad_Audio_AudioRegistry_Find_
+  commentId: Overload:AshesOfVelsingrad.Audio.AudioRegistry.Find
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.Audio.AudioRegistry.Find
+  nameWithType: AudioRegistry.Find
+- uid: AshesOfVelsingrad.Audio.AudioRegistry.Register(AshesOfVelsingrad.Audio.AudioTrack)
+  name: Register(AudioTrack)
+  href: api/AshesOfVelsingrad.Audio.AudioRegistry.html#AshesOfVelsingrad_Audio_AudioRegistry_Register_AshesOfVelsingrad_Audio_AudioTrack_
+  commentId: M:AshesOfVelsingrad.Audio.AudioRegistry.Register(AshesOfVelsingrad.Audio.AudioTrack)
+  fullName: AshesOfVelsingrad.Audio.AudioRegistry.Register(AshesOfVelsingrad.Audio.AudioTrack)
+  nameWithType: AudioRegistry.Register(AudioTrack)
+- uid: AshesOfVelsingrad.Audio.AudioRegistry.Register*
+  name: Register
+  href: api/AshesOfVelsingrad.Audio.AudioRegistry.html#AshesOfVelsingrad_Audio_AudioRegistry_Register_
+  commentId: Overload:AshesOfVelsingrad.Audio.AudioRegistry.Register
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.Audio.AudioRegistry.Register
+  nameWithType: AudioRegistry.Register
+- uid: AshesOfVelsingrad.Audio.AudioRegistry.Tracks
+  name: Tracks
+  href: api/AshesOfVelsingrad.Audio.AudioRegistry.html#AshesOfVelsingrad_Audio_AudioRegistry_Tracks
+  commentId: P:AshesOfVelsingrad.Audio.AudioRegistry.Tracks
+  fullName: AshesOfVelsingrad.Audio.AudioRegistry.Tracks
+  nameWithType: AudioRegistry.Tracks
+- uid: AshesOfVelsingrad.Audio.AudioRegistry.Tracks*
+  name: Tracks
+  href: api/AshesOfVelsingrad.Audio.AudioRegistry.html#AshesOfVelsingrad_Audio_AudioRegistry_Tracks_
+  commentId: Overload:AshesOfVelsingrad.Audio.AudioRegistry.Tracks
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.Audio.AudioRegistry.Tracks
+  nameWithType: AudioRegistry.Tracks
+- uid: AshesOfVelsingrad.Audio.AudioRegistry.TryGet(System.String,AshesOfVelsingrad.Audio.AudioTrack@)
+  name: TryGet(string, out AudioTrack)
+  href: api/AshesOfVelsingrad.Audio.AudioRegistry.html#AshesOfVelsingrad_Audio_AudioRegistry_TryGet_System_String_AshesOfVelsingrad_Audio_AudioTrack__
+  commentId: M:AshesOfVelsingrad.Audio.AudioRegistry.TryGet(System.String,AshesOfVelsingrad.Audio.AudioTrack@)
+  name.vb: TryGet(String, AudioTrack)
+  fullName: AshesOfVelsingrad.Audio.AudioRegistry.TryGet(string, out AshesOfVelsingrad.Audio.AudioTrack)
+  fullName.vb: AshesOfVelsingrad.Audio.AudioRegistry.TryGet(String, AshesOfVelsingrad.Audio.AudioTrack)
+  nameWithType: AudioRegistry.TryGet(string, out AudioTrack)
+  nameWithType.vb: AudioRegistry.TryGet(String, AudioTrack)
+- uid: AshesOfVelsingrad.Audio.AudioRegistry.TryGet*
+  name: TryGet
+  href: api/AshesOfVelsingrad.Audio.AudioRegistry.html#AshesOfVelsingrad_Audio_AudioRegistry_TryGet_
+  commentId: Overload:AshesOfVelsingrad.Audio.AudioRegistry.TryGet
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.Audio.AudioRegistry.TryGet
+  nameWithType: AudioRegistry.TryGet
+- uid: AshesOfVelsingrad.Audio.AudioTrack
+  name: AudioTrack
+  href: api/AshesOfVelsingrad.Audio.AudioTrack.html
+  commentId: T:AshesOfVelsingrad.Audio.AudioTrack
+  fullName: AshesOfVelsingrad.Audio.AudioTrack
+  nameWithType: AudioTrack
+- uid: AshesOfVelsingrad.Audio.AudioTrack.#ctor(System.String,System.String,AshesOfVelsingrad.Audio.AudioBus,System.Single,System.Boolean)
+  name: AudioTrack(string, string, AudioBus, float, bool)
+  href: api/AshesOfVelsingrad.Audio.AudioTrack.html#AshesOfVelsingrad_Audio_AudioTrack__ctor_System_String_System_String_AshesOfVelsingrad_Audio_AudioBus_System_Single_System_Boolean_
+  commentId: M:AshesOfVelsingrad.Audio.AudioTrack.#ctor(System.String,System.String,AshesOfVelsingrad.Audio.AudioBus,System.Single,System.Boolean)
+  name.vb: New(String, String, AudioBus, Single, Boolean)
+  fullName: AshesOfVelsingrad.Audio.AudioTrack.AudioTrack(string, string, AshesOfVelsingrad.Audio.AudioBus, float, bool)
+  fullName.vb: AshesOfVelsingrad.Audio.AudioTrack.New(String, String, AshesOfVelsingrad.Audio.AudioBus, Single, Boolean)
+  nameWithType: AudioTrack.AudioTrack(string, string, AudioBus, float, bool)
+  nameWithType.vb: AudioTrack.New(String, String, AudioBus, Single, Boolean)
+- uid: AshesOfVelsingrad.Audio.AudioTrack.#ctor*
+  name: AudioTrack
+  href: api/AshesOfVelsingrad.Audio.AudioTrack.html#AshesOfVelsingrad_Audio_AudioTrack__ctor_
+  commentId: Overload:AshesOfVelsingrad.Audio.AudioTrack.#ctor
+  isSpec: "True"
+  name.vb: New
+  fullName: AshesOfVelsingrad.Audio.AudioTrack.AudioTrack
+  fullName.vb: AshesOfVelsingrad.Audio.AudioTrack.New
+  nameWithType: AudioTrack.AudioTrack
+  nameWithType.vb: AudioTrack.New
+- uid: AshesOfVelsingrad.Audio.AudioTrack.BaseVolumeMultiplier
+  name: BaseVolumeMultiplier
+  href: api/AshesOfVelsingrad.Audio.AudioTrack.html#AshesOfVelsingrad_Audio_AudioTrack_BaseVolumeMultiplier
+  commentId: P:AshesOfVelsingrad.Audio.AudioTrack.BaseVolumeMultiplier
+  fullName: AshesOfVelsingrad.Audio.AudioTrack.BaseVolumeMultiplier
+  nameWithType: AudioTrack.BaseVolumeMultiplier
+- uid: AshesOfVelsingrad.Audio.AudioTrack.BaseVolumeMultiplier*
+  name: BaseVolumeMultiplier
+  href: api/AshesOfVelsingrad.Audio.AudioTrack.html#AshesOfVelsingrad_Audio_AudioTrack_BaseVolumeMultiplier_
+  commentId: Overload:AshesOfVelsingrad.Audio.AudioTrack.BaseVolumeMultiplier
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.Audio.AudioTrack.BaseVolumeMultiplier
+  nameWithType: AudioTrack.BaseVolumeMultiplier
+- uid: AshesOfVelsingrad.Audio.AudioTrack.Bus
+  name: Bus
+  href: api/AshesOfVelsingrad.Audio.AudioTrack.html#AshesOfVelsingrad_Audio_AudioTrack_Bus
+  commentId: P:AshesOfVelsingrad.Audio.AudioTrack.Bus
+  fullName: AshesOfVelsingrad.Audio.AudioTrack.Bus
+  nameWithType: AudioTrack.Bus
+- uid: AshesOfVelsingrad.Audio.AudioTrack.Bus*
+  name: Bus
+  href: api/AshesOfVelsingrad.Audio.AudioTrack.html#AshesOfVelsingrad_Audio_AudioTrack_Bus_
+  commentId: Overload:AshesOfVelsingrad.Audio.AudioTrack.Bus
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.Audio.AudioTrack.Bus
+  nameWithType: AudioTrack.Bus
+- uid: AshesOfVelsingrad.Audio.AudioTrack.Id
+  name: Id
+  href: api/AshesOfVelsingrad.Audio.AudioTrack.html#AshesOfVelsingrad_Audio_AudioTrack_Id
+  commentId: P:AshesOfVelsingrad.Audio.AudioTrack.Id
+  fullName: AshesOfVelsingrad.Audio.AudioTrack.Id
+  nameWithType: AudioTrack.Id
+- uid: AshesOfVelsingrad.Audio.AudioTrack.Id*
+  name: Id
+  href: api/AshesOfVelsingrad.Audio.AudioTrack.html#AshesOfVelsingrad_Audio_AudioTrack_Id_
+  commentId: Overload:AshesOfVelsingrad.Audio.AudioTrack.Id
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.Audio.AudioTrack.Id
+  nameWithType: AudioTrack.Id
+- uid: AshesOfVelsingrad.Audio.AudioTrack.Loop
+  name: Loop
+  href: api/AshesOfVelsingrad.Audio.AudioTrack.html#AshesOfVelsingrad_Audio_AudioTrack_Loop
+  commentId: P:AshesOfVelsingrad.Audio.AudioTrack.Loop
+  fullName: AshesOfVelsingrad.Audio.AudioTrack.Loop
+  nameWithType: AudioTrack.Loop
+- uid: AshesOfVelsingrad.Audio.AudioTrack.Loop*
+  name: Loop
+  href: api/AshesOfVelsingrad.Audio.AudioTrack.html#AshesOfVelsingrad_Audio_AudioTrack_Loop_
+  commentId: Overload:AshesOfVelsingrad.Audio.AudioTrack.Loop
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.Audio.AudioTrack.Loop
+  nameWithType: AudioTrack.Loop
+- uid: AshesOfVelsingrad.Audio.AudioTrack.ResourcePath
+  name: ResourcePath
+  href: api/AshesOfVelsingrad.Audio.AudioTrack.html#AshesOfVelsingrad_Audio_AudioTrack_ResourcePath
+  commentId: P:AshesOfVelsingrad.Audio.AudioTrack.ResourcePath
+  fullName: AshesOfVelsingrad.Audio.AudioTrack.ResourcePath
+  nameWithType: AudioTrack.ResourcePath
+- uid: AshesOfVelsingrad.Audio.AudioTrack.ResourcePath*
+  name: ResourcePath
+  href: api/AshesOfVelsingrad.Audio.AudioTrack.html#AshesOfVelsingrad_Audio_AudioTrack_ResourcePath_
+  commentId: Overload:AshesOfVelsingrad.Audio.AudioTrack.ResourcePath
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.Audio.AudioTrack.ResourcePath
+  nameWithType: AudioTrack.ResourcePath
+- uid: AshesOfVelsingrad.Audio.AudioVolumeMath
+  name: AudioVolumeMath
+  href: api/AshesOfVelsingrad.Audio.AudioVolumeMath.html
+  commentId: T:AshesOfVelsingrad.Audio.AudioVolumeMath
+  fullName: AshesOfVelsingrad.Audio.AudioVolumeMath
+  nameWithType: AudioVolumeMath
+- uid: AshesOfVelsingrad.Audio.AudioVolumeMath.ClampLinear(System.Single)
+  name: ClampLinear(float)
+  href: api/AshesOfVelsingrad.Audio.AudioVolumeMath.html#AshesOfVelsingrad_Audio_AudioVolumeMath_ClampLinear_System_Single_
+  commentId: M:AshesOfVelsingrad.Audio.AudioVolumeMath.ClampLinear(System.Single)
+  name.vb: ClampLinear(Single)
+  fullName: AshesOfVelsingrad.Audio.AudioVolumeMath.ClampLinear(float)
+  fullName.vb: AshesOfVelsingrad.Audio.AudioVolumeMath.ClampLinear(Single)
+  nameWithType: AudioVolumeMath.ClampLinear(float)
+  nameWithType.vb: AudioVolumeMath.ClampLinear(Single)
+- uid: AshesOfVelsingrad.Audio.AudioVolumeMath.ClampLinear*
+  name: ClampLinear
+  href: api/AshesOfVelsingrad.Audio.AudioVolumeMath.html#AshesOfVelsingrad_Audio_AudioVolumeMath_ClampLinear_
+  commentId: Overload:AshesOfVelsingrad.Audio.AudioVolumeMath.ClampLinear
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.Audio.AudioVolumeMath.ClampLinear
+  nameWithType: AudioVolumeMath.ClampLinear
+- uid: AshesOfVelsingrad.Audio.AudioVolumeMath.DbToLinear(System.Single)
+  name: DbToLinear(float)
+  href: api/AshesOfVelsingrad.Audio.AudioVolumeMath.html#AshesOfVelsingrad_Audio_AudioVolumeMath_DbToLinear_System_Single_
+  commentId: M:AshesOfVelsingrad.Audio.AudioVolumeMath.DbToLinear(System.Single)
+  name.vb: DbToLinear(Single)
+  fullName: AshesOfVelsingrad.Audio.AudioVolumeMath.DbToLinear(float)
+  fullName.vb: AshesOfVelsingrad.Audio.AudioVolumeMath.DbToLinear(Single)
+  nameWithType: AudioVolumeMath.DbToLinear(float)
+  nameWithType.vb: AudioVolumeMath.DbToLinear(Single)
+- uid: AshesOfVelsingrad.Audio.AudioVolumeMath.DbToLinear*
+  name: DbToLinear
+  href: api/AshesOfVelsingrad.Audio.AudioVolumeMath.html#AshesOfVelsingrad_Audio_AudioVolumeMath_DbToLinear_
+  commentId: Overload:AshesOfVelsingrad.Audio.AudioVolumeMath.DbToLinear
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.Audio.AudioVolumeMath.DbToLinear
+  nameWithType: AudioVolumeMath.DbToLinear
+- uid: AshesOfVelsingrad.Audio.AudioVolumeMath.LinearToDb(System.Single)
+  name: LinearToDb(float)
+  href: api/AshesOfVelsingrad.Audio.AudioVolumeMath.html#AshesOfVelsingrad_Audio_AudioVolumeMath_LinearToDb_System_Single_
+  commentId: M:AshesOfVelsingrad.Audio.AudioVolumeMath.LinearToDb(System.Single)
+  name.vb: LinearToDb(Single)
+  fullName: AshesOfVelsingrad.Audio.AudioVolumeMath.LinearToDb(float)
+  fullName.vb: AshesOfVelsingrad.Audio.AudioVolumeMath.LinearToDb(Single)
+  nameWithType: AudioVolumeMath.LinearToDb(float)
+  nameWithType.vb: AudioVolumeMath.LinearToDb(Single)
+- uid: AshesOfVelsingrad.Audio.AudioVolumeMath.LinearToDb*
+  name: LinearToDb
+  href: api/AshesOfVelsingrad.Audio.AudioVolumeMath.html#AshesOfVelsingrad_Audio_AudioVolumeMath_LinearToDb_
+  commentId: Overload:AshesOfVelsingrad.Audio.AudioVolumeMath.LinearToDb
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.Audio.AudioVolumeMath.LinearToDb
+  nameWithType: AudioVolumeMath.LinearToDb
+- uid: AshesOfVelsingrad.Audio.AudioVolumeMath.MaxLinear
+  name: MaxLinear
+  href: api/AshesOfVelsingrad.Audio.AudioVolumeMath.html#AshesOfVelsingrad_Audio_AudioVolumeMath_MaxLinear
+  commentId: F:AshesOfVelsingrad.Audio.AudioVolumeMath.MaxLinear
+  fullName: AshesOfVelsingrad.Audio.AudioVolumeMath.MaxLinear
+  nameWithType: AudioVolumeMath.MaxLinear
+- uid: AshesOfVelsingrad.Audio.AudioVolumeMath.MinAudibleLinear
+  name: MinAudibleLinear
+  href: api/AshesOfVelsingrad.Audio.AudioVolumeMath.html#AshesOfVelsingrad_Audio_AudioVolumeMath_MinAudibleLinear
+  commentId: F:AshesOfVelsingrad.Audio.AudioVolumeMath.MinAudibleLinear
+  fullName: AshesOfVelsingrad.Audio.AudioVolumeMath.MinAudibleLinear
+  nameWithType: AudioVolumeMath.MinAudibleLinear
+- uid: AshesOfVelsingrad.Audio.AudioVolumeMath.MinLinear
+  name: MinLinear
+  href: api/AshesOfVelsingrad.Audio.AudioVolumeMath.html#AshesOfVelsingrad_Audio_AudioVolumeMath_MinLinear
+  commentId: F:AshesOfVelsingrad.Audio.AudioVolumeMath.MinLinear
+  fullName: AshesOfVelsingrad.Audio.AudioVolumeMath.MinLinear
+  nameWithType: AudioVolumeMath.MinLinear
+- uid: AshesOfVelsingrad.Audio.AudioVolumeMath.SilenceDb
+  name: SilenceDb
+  href: api/AshesOfVelsingrad.Audio.AudioVolumeMath.html#AshesOfVelsingrad_Audio_AudioVolumeMath_SilenceDb
+  commentId: F:AshesOfVelsingrad.Audio.AudioVolumeMath.SilenceDb
+  fullName: AshesOfVelsingrad.Audio.AudioVolumeMath.SilenceDb
+  nameWithType: AudioVolumeMath.SilenceDb
+- uid: AshesOfVelsingrad.Audio.IAudioRegistry
+  name: IAudioRegistry
+  href: api/AshesOfVelsingrad.Audio.IAudioRegistry.html
+  commentId: T:AshesOfVelsingrad.Audio.IAudioRegistry
+  fullName: AshesOfVelsingrad.Audio.IAudioRegistry
+  nameWithType: IAudioRegistry
+- uid: AshesOfVelsingrad.Audio.IAudioRegistry.Clear
+  name: Clear()
+  href: api/AshesOfVelsingrad.Audio.IAudioRegistry.html#AshesOfVelsingrad_Audio_IAudioRegistry_Clear
+  commentId: M:AshesOfVelsingrad.Audio.IAudioRegistry.Clear
+  fullName: AshesOfVelsingrad.Audio.IAudioRegistry.Clear()
+  nameWithType: IAudioRegistry.Clear()
+- uid: AshesOfVelsingrad.Audio.IAudioRegistry.Clear*
+  name: Clear
+  href: api/AshesOfVelsingrad.Audio.IAudioRegistry.html#AshesOfVelsingrad_Audio_IAudioRegistry_Clear_
+  commentId: Overload:AshesOfVelsingrad.Audio.IAudioRegistry.Clear
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.Audio.IAudioRegistry.Clear
+  nameWithType: IAudioRegistry.Clear
+- uid: AshesOfVelsingrad.Audio.IAudioRegistry.Contains(System.String)
+  name: Contains(string)
+  href: api/AshesOfVelsingrad.Audio.IAudioRegistry.html#AshesOfVelsingrad_Audio_IAudioRegistry_Contains_System_String_
+  commentId: M:AshesOfVelsingrad.Audio.IAudioRegistry.Contains(System.String)
+  name.vb: Contains(String)
+  fullName: AshesOfVelsingrad.Audio.IAudioRegistry.Contains(string)
+  fullName.vb: AshesOfVelsingrad.Audio.IAudioRegistry.Contains(String)
+  nameWithType: IAudioRegistry.Contains(string)
+  nameWithType.vb: IAudioRegistry.Contains(String)
+- uid: AshesOfVelsingrad.Audio.IAudioRegistry.Contains*
+  name: Contains
+  href: api/AshesOfVelsingrad.Audio.IAudioRegistry.html#AshesOfVelsingrad_Audio_IAudioRegistry_Contains_
+  commentId: Overload:AshesOfVelsingrad.Audio.IAudioRegistry.Contains
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.Audio.IAudioRegistry.Contains
+  nameWithType: IAudioRegistry.Contains
+- uid: AshesOfVelsingrad.Audio.IAudioRegistry.Count
+  name: Count
+  href: api/AshesOfVelsingrad.Audio.IAudioRegistry.html#AshesOfVelsingrad_Audio_IAudioRegistry_Count
+  commentId: P:AshesOfVelsingrad.Audio.IAudioRegistry.Count
+  fullName: AshesOfVelsingrad.Audio.IAudioRegistry.Count
+  nameWithType: IAudioRegistry.Count
+- uid: AshesOfVelsingrad.Audio.IAudioRegistry.Count*
+  name: Count
+  href: api/AshesOfVelsingrad.Audio.IAudioRegistry.html#AshesOfVelsingrad_Audio_IAudioRegistry_Count_
+  commentId: Overload:AshesOfVelsingrad.Audio.IAudioRegistry.Count
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.Audio.IAudioRegistry.Count
+  nameWithType: IAudioRegistry.Count
+- uid: AshesOfVelsingrad.Audio.IAudioRegistry.Find(System.String)
+  name: Find(string)
+  href: api/AshesOfVelsingrad.Audio.IAudioRegistry.html#AshesOfVelsingrad_Audio_IAudioRegistry_Find_System_String_
+  commentId: M:AshesOfVelsingrad.Audio.IAudioRegistry.Find(System.String)
+  name.vb: Find(String)
+  fullName: AshesOfVelsingrad.Audio.IAudioRegistry.Find(string)
+  fullName.vb: AshesOfVelsingrad.Audio.IAudioRegistry.Find(String)
+  nameWithType: IAudioRegistry.Find(string)
+  nameWithType.vb: IAudioRegistry.Find(String)
+- uid: AshesOfVelsingrad.Audio.IAudioRegistry.Find*
+  name: Find
+  href: api/AshesOfVelsingrad.Audio.IAudioRegistry.html#AshesOfVelsingrad_Audio_IAudioRegistry_Find_
+  commentId: Overload:AshesOfVelsingrad.Audio.IAudioRegistry.Find
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.Audio.IAudioRegistry.Find
+  nameWithType: IAudioRegistry.Find
+- uid: AshesOfVelsingrad.Audio.IAudioRegistry.Register(AshesOfVelsingrad.Audio.AudioTrack)
+  name: Register(AudioTrack)
+  href: api/AshesOfVelsingrad.Audio.IAudioRegistry.html#AshesOfVelsingrad_Audio_IAudioRegistry_Register_AshesOfVelsingrad_Audio_AudioTrack_
+  commentId: M:AshesOfVelsingrad.Audio.IAudioRegistry.Register(AshesOfVelsingrad.Audio.AudioTrack)
+  fullName: AshesOfVelsingrad.Audio.IAudioRegistry.Register(AshesOfVelsingrad.Audio.AudioTrack)
+  nameWithType: IAudioRegistry.Register(AudioTrack)
+- uid: AshesOfVelsingrad.Audio.IAudioRegistry.Register*
+  name: Register
+  href: api/AshesOfVelsingrad.Audio.IAudioRegistry.html#AshesOfVelsingrad_Audio_IAudioRegistry_Register_
+  commentId: Overload:AshesOfVelsingrad.Audio.IAudioRegistry.Register
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.Audio.IAudioRegistry.Register
+  nameWithType: IAudioRegistry.Register
+- uid: AshesOfVelsingrad.Audio.IAudioRegistry.Tracks
+  name: Tracks
+  href: api/AshesOfVelsingrad.Audio.IAudioRegistry.html#AshesOfVelsingrad_Audio_IAudioRegistry_Tracks
+  commentId: P:AshesOfVelsingrad.Audio.IAudioRegistry.Tracks
+  fullName: AshesOfVelsingrad.Audio.IAudioRegistry.Tracks
+  nameWithType: IAudioRegistry.Tracks
+- uid: AshesOfVelsingrad.Audio.IAudioRegistry.Tracks*
+  name: Tracks
+  href: api/AshesOfVelsingrad.Audio.IAudioRegistry.html#AshesOfVelsingrad_Audio_IAudioRegistry_Tracks_
+  commentId: Overload:AshesOfVelsingrad.Audio.IAudioRegistry.Tracks
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.Audio.IAudioRegistry.Tracks
+  nameWithType: IAudioRegistry.Tracks
+- uid: AshesOfVelsingrad.Audio.IAudioRegistry.TryGet(System.String,AshesOfVelsingrad.Audio.AudioTrack@)
+  name: TryGet(string, out AudioTrack)
+  href: api/AshesOfVelsingrad.Audio.IAudioRegistry.html#AshesOfVelsingrad_Audio_IAudioRegistry_TryGet_System_String_AshesOfVelsingrad_Audio_AudioTrack__
+  commentId: M:AshesOfVelsingrad.Audio.IAudioRegistry.TryGet(System.String,AshesOfVelsingrad.Audio.AudioTrack@)
+  name.vb: TryGet(String, AudioTrack)
+  fullName: AshesOfVelsingrad.Audio.IAudioRegistry.TryGet(string, out AshesOfVelsingrad.Audio.AudioTrack)
+  fullName.vb: AshesOfVelsingrad.Audio.IAudioRegistry.TryGet(String, AshesOfVelsingrad.Audio.AudioTrack)
+  nameWithType: IAudioRegistry.TryGet(string, out AudioTrack)
+  nameWithType.vb: IAudioRegistry.TryGet(String, AudioTrack)
+- uid: AshesOfVelsingrad.Audio.IAudioRegistry.TryGet*
+  name: TryGet
+  href: api/AshesOfVelsingrad.Audio.IAudioRegistry.html#AshesOfVelsingrad_Audio_IAudioRegistry_TryGet_
+  commentId: Overload:AshesOfVelsingrad.Audio.IAudioRegistry.TryGet
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.Audio.IAudioRegistry.TryGet
+  nameWithType: IAudioRegistry.TryGet
+- uid: AshesOfVelsingrad.Audio.IAudioService
+  name: IAudioService
+  href: api/AshesOfVelsingrad.Audio.IAudioService.html
+  commentId: T:AshesOfVelsingrad.Audio.IAudioService
+  fullName: AshesOfVelsingrad.Audio.IAudioService
+  nameWithType: IAudioService
+- uid: AshesOfVelsingrad.Audio.IAudioService.GetBusVolume(AshesOfVelsingrad.Audio.AudioBus)
+  name: GetBusVolume(AudioBus)
+  href: api/AshesOfVelsingrad.Audio.IAudioService.html#AshesOfVelsingrad_Audio_IAudioService_GetBusVolume_AshesOfVelsingrad_Audio_AudioBus_
+  commentId: M:AshesOfVelsingrad.Audio.IAudioService.GetBusVolume(AshesOfVelsingrad.Audio.AudioBus)
+  fullName: AshesOfVelsingrad.Audio.IAudioService.GetBusVolume(AshesOfVelsingrad.Audio.AudioBus)
+  nameWithType: IAudioService.GetBusVolume(AudioBus)
+- uid: AshesOfVelsingrad.Audio.IAudioService.GetBusVolume*
+  name: GetBusVolume
+  href: api/AshesOfVelsingrad.Audio.IAudioService.html#AshesOfVelsingrad_Audio_IAudioService_GetBusVolume_
+  commentId: Overload:AshesOfVelsingrad.Audio.IAudioService.GetBusVolume
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.Audio.IAudioService.GetBusVolume
+  nameWithType: IAudioService.GetBusVolume
+- uid: AshesOfVelsingrad.Audio.IAudioService.IsBusMuted(AshesOfVelsingrad.Audio.AudioBus)
+  name: IsBusMuted(AudioBus)
+  href: api/AshesOfVelsingrad.Audio.IAudioService.html#AshesOfVelsingrad_Audio_IAudioService_IsBusMuted_AshesOfVelsingrad_Audio_AudioBus_
+  commentId: M:AshesOfVelsingrad.Audio.IAudioService.IsBusMuted(AshesOfVelsingrad.Audio.AudioBus)
+  fullName: AshesOfVelsingrad.Audio.IAudioService.IsBusMuted(AshesOfVelsingrad.Audio.AudioBus)
+  nameWithType: IAudioService.IsBusMuted(AudioBus)
+- uid: AshesOfVelsingrad.Audio.IAudioService.IsBusMuted*
+  name: IsBusMuted
+  href: api/AshesOfVelsingrad.Audio.IAudioService.html#AshesOfVelsingrad_Audio_IAudioService_IsBusMuted_
+  commentId: Overload:AshesOfVelsingrad.Audio.IAudioService.IsBusMuted
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.Audio.IAudioService.IsBusMuted
+  nameWithType: IAudioService.IsBusMuted
+- uid: AshesOfVelsingrad.Audio.IAudioService.Play(System.String)
+  name: Play(string)
+  href: api/AshesOfVelsingrad.Audio.IAudioService.html#AshesOfVelsingrad_Audio_IAudioService_Play_System_String_
+  commentId: M:AshesOfVelsingrad.Audio.IAudioService.Play(System.String)
+  name.vb: Play(String)
+  fullName: AshesOfVelsingrad.Audio.IAudioService.Play(string)
+  fullName.vb: AshesOfVelsingrad.Audio.IAudioService.Play(String)
+  nameWithType: IAudioService.Play(string)
+  nameWithType.vb: IAudioService.Play(String)
+- uid: AshesOfVelsingrad.Audio.IAudioService.Play*
+  name: Play
+  href: api/AshesOfVelsingrad.Audio.IAudioService.html#AshesOfVelsingrad_Audio_IAudioService_Play_
+  commentId: Overload:AshesOfVelsingrad.Audio.IAudioService.Play
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.Audio.IAudioService.Play
+  nameWithType: IAudioService.Play
+- uid: AshesOfVelsingrad.Audio.IAudioService.PlayAmbient(System.String,System.String,System.Single)
+  name: PlayAmbient(string, string, float)
+  href: api/AshesOfVelsingrad.Audio.IAudioService.html#AshesOfVelsingrad_Audio_IAudioService_PlayAmbient_System_String_System_String_System_Single_
+  commentId: M:AshesOfVelsingrad.Audio.IAudioService.PlayAmbient(System.String,System.String,System.Single)
+  name.vb: PlayAmbient(String, String, Single)
+  fullName: AshesOfVelsingrad.Audio.IAudioService.PlayAmbient(string, string, float)
+  fullName.vb: AshesOfVelsingrad.Audio.IAudioService.PlayAmbient(String, String, Single)
+  nameWithType: IAudioService.PlayAmbient(string, string, float)
+  nameWithType.vb: IAudioService.PlayAmbient(String, String, Single)
+- uid: AshesOfVelsingrad.Audio.IAudioService.PlayAmbient*
+  name: PlayAmbient
+  href: api/AshesOfVelsingrad.Audio.IAudioService.html#AshesOfVelsingrad_Audio_IAudioService_PlayAmbient_
+  commentId: Overload:AshesOfVelsingrad.Audio.IAudioService.PlayAmbient
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.Audio.IAudioService.PlayAmbient
+  nameWithType: IAudioService.PlayAmbient
+- uid: AshesOfVelsingrad.Audio.IAudioService.PlayMusic(System.String,System.Single,System.Boolean)
+  name: PlayMusic(string, float, bool)
+  href: api/AshesOfVelsingrad.Audio.IAudioService.html#AshesOfVelsingrad_Audio_IAudioService_PlayMusic_System_String_System_Single_System_Boolean_
+  commentId: M:AshesOfVelsingrad.Audio.IAudioService.PlayMusic(System.String,System.Single,System.Boolean)
+  name.vb: PlayMusic(String, Single, Boolean)
+  fullName: AshesOfVelsingrad.Audio.IAudioService.PlayMusic(string, float, bool)
+  fullName.vb: AshesOfVelsingrad.Audio.IAudioService.PlayMusic(String, Single, Boolean)
+  nameWithType: IAudioService.PlayMusic(string, float, bool)
+  nameWithType.vb: IAudioService.PlayMusic(String, Single, Boolean)
+- uid: AshesOfVelsingrad.Audio.IAudioService.PlayMusic*
+  name: PlayMusic
+  href: api/AshesOfVelsingrad.Audio.IAudioService.html#AshesOfVelsingrad_Audio_IAudioService_PlayMusic_
+  commentId: Overload:AshesOfVelsingrad.Audio.IAudioService.PlayMusic
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.Audio.IAudioService.PlayMusic
+  nameWithType: IAudioService.PlayMusic
+- uid: AshesOfVelsingrad.Audio.IAudioService.PlaySfx(System.String,System.Single,System.Single)
+  name: PlaySfx(string, float, float)
+  href: api/AshesOfVelsingrad.Audio.IAudioService.html#AshesOfVelsingrad_Audio_IAudioService_PlaySfx_System_String_System_Single_System_Single_
+  commentId: M:AshesOfVelsingrad.Audio.IAudioService.PlaySfx(System.String,System.Single,System.Single)
+  name.vb: PlaySfx(String, Single, Single)
+  fullName: AshesOfVelsingrad.Audio.IAudioService.PlaySfx(string, float, float)
+  fullName.vb: AshesOfVelsingrad.Audio.IAudioService.PlaySfx(String, Single, Single)
+  nameWithType: IAudioService.PlaySfx(string, float, float)
+  nameWithType.vb: IAudioService.PlaySfx(String, Single, Single)
+- uid: AshesOfVelsingrad.Audio.IAudioService.PlaySfx*
+  name: PlaySfx
+  href: api/AshesOfVelsingrad.Audio.IAudioService.html#AshesOfVelsingrad_Audio_IAudioService_PlaySfx_
+  commentId: Overload:AshesOfVelsingrad.Audio.IAudioService.PlaySfx
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.Audio.IAudioService.PlaySfx
+  nameWithType: IAudioService.PlaySfx
+- uid: AshesOfVelsingrad.Audio.IAudioService.PlayUi(System.String,System.Single)
+  name: PlayUi(string, float)
+  href: api/AshesOfVelsingrad.Audio.IAudioService.html#AshesOfVelsingrad_Audio_IAudioService_PlayUi_System_String_System_Single_
+  commentId: M:AshesOfVelsingrad.Audio.IAudioService.PlayUi(System.String,System.Single)
+  name.vb: PlayUi(String, Single)
+  fullName: AshesOfVelsingrad.Audio.IAudioService.PlayUi(string, float)
+  fullName.vb: AshesOfVelsingrad.Audio.IAudioService.PlayUi(String, Single)
+  nameWithType: IAudioService.PlayUi(string, float)
+  nameWithType.vb: IAudioService.PlayUi(String, Single)
+- uid: AshesOfVelsingrad.Audio.IAudioService.PlayUi*
+  name: PlayUi
+  href: api/AshesOfVelsingrad.Audio.IAudioService.html#AshesOfVelsingrad_Audio_IAudioService_PlayUi_
+  commentId: Overload:AshesOfVelsingrad.Audio.IAudioService.PlayUi
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.Audio.IAudioService.PlayUi
+  nameWithType: IAudioService.PlayUi
+- uid: AshesOfVelsingrad.Audio.IAudioService.Registry
+  name: Registry
+  href: api/AshesOfVelsingrad.Audio.IAudioService.html#AshesOfVelsingrad_Audio_IAudioService_Registry
+  commentId: P:AshesOfVelsingrad.Audio.IAudioService.Registry
+  fullName: AshesOfVelsingrad.Audio.IAudioService.Registry
+  nameWithType: IAudioService.Registry
+- uid: AshesOfVelsingrad.Audio.IAudioService.Registry*
+  name: Registry
+  href: api/AshesOfVelsingrad.Audio.IAudioService.html#AshesOfVelsingrad_Audio_IAudioService_Registry_
+  commentId: Overload:AshesOfVelsingrad.Audio.IAudioService.Registry
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.Audio.IAudioService.Registry
+  nameWithType: IAudioService.Registry
+- uid: AshesOfVelsingrad.Audio.IAudioService.SetBusMuted(AshesOfVelsingrad.Audio.AudioBus,System.Boolean)
+  name: SetBusMuted(AudioBus, bool)
+  href: api/AshesOfVelsingrad.Audio.IAudioService.html#AshesOfVelsingrad_Audio_IAudioService_SetBusMuted_AshesOfVelsingrad_Audio_AudioBus_System_Boolean_
+  commentId: M:AshesOfVelsingrad.Audio.IAudioService.SetBusMuted(AshesOfVelsingrad.Audio.AudioBus,System.Boolean)
+  name.vb: SetBusMuted(AudioBus, Boolean)
+  fullName: AshesOfVelsingrad.Audio.IAudioService.SetBusMuted(AshesOfVelsingrad.Audio.AudioBus, bool)
+  fullName.vb: AshesOfVelsingrad.Audio.IAudioService.SetBusMuted(AshesOfVelsingrad.Audio.AudioBus, Boolean)
+  nameWithType: IAudioService.SetBusMuted(AudioBus, bool)
+  nameWithType.vb: IAudioService.SetBusMuted(AudioBus, Boolean)
+- uid: AshesOfVelsingrad.Audio.IAudioService.SetBusMuted*
+  name: SetBusMuted
+  href: api/AshesOfVelsingrad.Audio.IAudioService.html#AshesOfVelsingrad_Audio_IAudioService_SetBusMuted_
+  commentId: Overload:AshesOfVelsingrad.Audio.IAudioService.SetBusMuted
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.Audio.IAudioService.SetBusMuted
+  nameWithType: IAudioService.SetBusMuted
+- uid: AshesOfVelsingrad.Audio.IAudioService.SetBusVolume(AshesOfVelsingrad.Audio.AudioBus,System.Single)
+  name: SetBusVolume(AudioBus, float)
+  href: api/AshesOfVelsingrad.Audio.IAudioService.html#AshesOfVelsingrad_Audio_IAudioService_SetBusVolume_AshesOfVelsingrad_Audio_AudioBus_System_Single_
+  commentId: M:AshesOfVelsingrad.Audio.IAudioService.SetBusVolume(AshesOfVelsingrad.Audio.AudioBus,System.Single)
+  name.vb: SetBusVolume(AudioBus, Single)
+  fullName: AshesOfVelsingrad.Audio.IAudioService.SetBusVolume(AshesOfVelsingrad.Audio.AudioBus, float)
+  fullName.vb: AshesOfVelsingrad.Audio.IAudioService.SetBusVolume(AshesOfVelsingrad.Audio.AudioBus, Single)
+  nameWithType: IAudioService.SetBusVolume(AudioBus, float)
+  nameWithType.vb: IAudioService.SetBusVolume(AudioBus, Single)
+- uid: AshesOfVelsingrad.Audio.IAudioService.SetBusVolume*
+  name: SetBusVolume
+  href: api/AshesOfVelsingrad.Audio.IAudioService.html#AshesOfVelsingrad_Audio_IAudioService_SetBusVolume_
+  commentId: Overload:AshesOfVelsingrad.Audio.IAudioService.SetBusVolume
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.Audio.IAudioService.SetBusVolume
+  nameWithType: IAudioService.SetBusVolume
+- uid: AshesOfVelsingrad.Audio.IAudioService.StopAllAmbient(System.Single)
+  name: StopAllAmbient(float)
+  href: api/AshesOfVelsingrad.Audio.IAudioService.html#AshesOfVelsingrad_Audio_IAudioService_StopAllAmbient_System_Single_
+  commentId: M:AshesOfVelsingrad.Audio.IAudioService.StopAllAmbient(System.Single)
+  name.vb: StopAllAmbient(Single)
+  fullName: AshesOfVelsingrad.Audio.IAudioService.StopAllAmbient(float)
+  fullName.vb: AshesOfVelsingrad.Audio.IAudioService.StopAllAmbient(Single)
+  nameWithType: IAudioService.StopAllAmbient(float)
+  nameWithType.vb: IAudioService.StopAllAmbient(Single)
+- uid: AshesOfVelsingrad.Audio.IAudioService.StopAllAmbient*
+  name: StopAllAmbient
+  href: api/AshesOfVelsingrad.Audio.IAudioService.html#AshesOfVelsingrad_Audio_IAudioService_StopAllAmbient_
+  commentId: Overload:AshesOfVelsingrad.Audio.IAudioService.StopAllAmbient
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.Audio.IAudioService.StopAllAmbient
+  nameWithType: IAudioService.StopAllAmbient
+- uid: AshesOfVelsingrad.Audio.IAudioService.StopAmbient(System.String,System.Single)
+  name: StopAmbient(string, float)
+  href: api/AshesOfVelsingrad.Audio.IAudioService.html#AshesOfVelsingrad_Audio_IAudioService_StopAmbient_System_String_System_Single_
+  commentId: M:AshesOfVelsingrad.Audio.IAudioService.StopAmbient(System.String,System.Single)
+  name.vb: StopAmbient(String, Single)
+  fullName: AshesOfVelsingrad.Audio.IAudioService.StopAmbient(string, float)
+  fullName.vb: AshesOfVelsingrad.Audio.IAudioService.StopAmbient(String, Single)
+  nameWithType: IAudioService.StopAmbient(string, float)
+  nameWithType.vb: IAudioService.StopAmbient(String, Single)
+- uid: AshesOfVelsingrad.Audio.IAudioService.StopAmbient*
+  name: StopAmbient
+  href: api/AshesOfVelsingrad.Audio.IAudioService.html#AshesOfVelsingrad_Audio_IAudioService_StopAmbient_
+  commentId: Overload:AshesOfVelsingrad.Audio.IAudioService.StopAmbient
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.Audio.IAudioService.StopAmbient
+  nameWithType: IAudioService.StopAmbient
+- uid: AshesOfVelsingrad.Audio.IAudioService.StopMusic(System.Single)
+  name: StopMusic(float)
+  href: api/AshesOfVelsingrad.Audio.IAudioService.html#AshesOfVelsingrad_Audio_IAudioService_StopMusic_System_Single_
+  commentId: M:AshesOfVelsingrad.Audio.IAudioService.StopMusic(System.Single)
+  name.vb: StopMusic(Single)
+  fullName: AshesOfVelsingrad.Audio.IAudioService.StopMusic(float)
+  fullName.vb: AshesOfVelsingrad.Audio.IAudioService.StopMusic(Single)
+  nameWithType: IAudioService.StopMusic(float)
+  nameWithType.vb: IAudioService.StopMusic(Single)
+- uid: AshesOfVelsingrad.Audio.IAudioService.StopMusic*
+  name: StopMusic
+  href: api/AshesOfVelsingrad.Audio.IAudioService.html#AshesOfVelsingrad_Audio_IAudioService_StopMusic_
+  commentId: Overload:AshesOfVelsingrad.Audio.IAudioService.StopMusic
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.Audio.IAudioService.StopMusic
+  nameWithType: IAudioService.StopMusic
 - uid: AshesOfVelsingrad.BasicAttackSkill
   name: BasicAttackSkill
   href: api/AshesOfVelsingrad.BasicAttackSkill.html
@@ -5532,6 +6190,89 @@ references:
   isSpec: "True"
   fullName: AshesOfVelsingrad.Helpers.Managers.MethodInfoExtensions.IsOverride
   nameWithType: MethodInfoExtensions.IsOverride
+- uid: AshesOfVelsingrad.Helpers.Managers.TestAudioManager
+  name: TestAudioManager
+  href: api/AshesOfVelsingrad.Helpers.Managers.TestAudioManager.html
+  commentId: T:AshesOfVelsingrad.Helpers.Managers.TestAudioManager
+  fullName: AshesOfVelsingrad.Helpers.Managers.TestAudioManager
+  nameWithType: TestAudioManager
+- uid: AshesOfVelsingrad.Helpers.Managers.TestAudioManager.#ctor
+  name: TestAudioManager()
+  href: api/AshesOfVelsingrad.Helpers.Managers.TestAudioManager.html#AshesOfVelsingrad_Helpers_Managers_TestAudioManager__ctor
+  commentId: M:AshesOfVelsingrad.Helpers.Managers.TestAudioManager.#ctor
+  name.vb: New()
+  fullName: AshesOfVelsingrad.Helpers.Managers.TestAudioManager.TestAudioManager()
+  fullName.vb: AshesOfVelsingrad.Helpers.Managers.TestAudioManager.New()
+  nameWithType: TestAudioManager.TestAudioManager()
+  nameWithType.vb: TestAudioManager.New()
+- uid: AshesOfVelsingrad.Helpers.Managers.TestAudioManager.#ctor*
+  name: TestAudioManager
+  href: api/AshesOfVelsingrad.Helpers.Managers.TestAudioManager.html#AshesOfVelsingrad_Helpers_Managers_TestAudioManager__ctor_
+  commentId: Overload:AshesOfVelsingrad.Helpers.Managers.TestAudioManager.#ctor
+  isSpec: "True"
+  name.vb: New
+  fullName: AshesOfVelsingrad.Helpers.Managers.TestAudioManager.TestAudioManager
+  fullName.vb: AshesOfVelsingrad.Helpers.Managers.TestAudioManager.New
+  nameWithType: TestAudioManager.TestAudioManager
+  nameWithType.vb: TestAudioManager.New
+- uid: AshesOfVelsingrad.Helpers.Managers.TestAudioManager.BusExists(System.String)
+  name: BusExists(string)
+  href: api/AshesOfVelsingrad.Helpers.Managers.TestAudioManager.html#AshesOfVelsingrad_Helpers_Managers_TestAudioManager_BusExists_System_String_
+  commentId: M:AshesOfVelsingrad.Helpers.Managers.TestAudioManager.BusExists(System.String)
+  name.vb: BusExists(String)
+  fullName: AshesOfVelsingrad.Helpers.Managers.TestAudioManager.BusExists(string)
+  fullName.vb: AshesOfVelsingrad.Helpers.Managers.TestAudioManager.BusExists(String)
+  nameWithType: TestAudioManager.BusExists(string)
+  nameWithType.vb: TestAudioManager.BusExists(String)
+- uid: AshesOfVelsingrad.Helpers.Managers.TestAudioManager.BusExists*
+  name: BusExists
+  href: api/AshesOfVelsingrad.Helpers.Managers.TestAudioManager.html#AshesOfVelsingrad_Helpers_Managers_TestAudioManager_BusExists_
+  commentId: Overload:AshesOfVelsingrad.Helpers.Managers.TestAudioManager.BusExists
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.Helpers.Managers.TestAudioManager.BusExists
+  nameWithType: TestAudioManager.BusExists
+- uid: AshesOfVelsingrad.Helpers.Managers.TestAudioManager.GetBusVolumeDb(System.String)
+  name: GetBusVolumeDb(string)
+  href: api/AshesOfVelsingrad.Helpers.Managers.TestAudioManager.html#AshesOfVelsingrad_Helpers_Managers_TestAudioManager_GetBusVolumeDb_System_String_
+  commentId: M:AshesOfVelsingrad.Helpers.Managers.TestAudioManager.GetBusVolumeDb(System.String)
+  name.vb: GetBusVolumeDb(String)
+  fullName: AshesOfVelsingrad.Helpers.Managers.TestAudioManager.GetBusVolumeDb(string)
+  fullName.vb: AshesOfVelsingrad.Helpers.Managers.TestAudioManager.GetBusVolumeDb(String)
+  nameWithType: TestAudioManager.GetBusVolumeDb(string)
+  nameWithType.vb: TestAudioManager.GetBusVolumeDb(String)
+- uid: AshesOfVelsingrad.Helpers.Managers.TestAudioManager.GetBusVolumeDb*
+  name: GetBusVolumeDb
+  href: api/AshesOfVelsingrad.Helpers.Managers.TestAudioManager.html#AshesOfVelsingrad_Helpers_Managers_TestAudioManager_GetBusVolumeDb_
+  commentId: Overload:AshesOfVelsingrad.Helpers.Managers.TestAudioManager.GetBusVolumeDb
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.Helpers.Managers.TestAudioManager.GetBusVolumeDb
+  nameWithType: TestAudioManager.GetBusVolumeDb
+- uid: AshesOfVelsingrad.Helpers.Managers.TestAudioManager.ResetSingleton
+  name: ResetSingleton()
+  href: api/AshesOfVelsingrad.Helpers.Managers.TestAudioManager.html#AshesOfVelsingrad_Helpers_Managers_TestAudioManager_ResetSingleton
+  commentId: M:AshesOfVelsingrad.Helpers.Managers.TestAudioManager.ResetSingleton
+  fullName: AshesOfVelsingrad.Helpers.Managers.TestAudioManager.ResetSingleton()
+  nameWithType: TestAudioManager.ResetSingleton()
+- uid: AshesOfVelsingrad.Helpers.Managers.TestAudioManager.ResetSingleton*
+  name: ResetSingleton
+  href: api/AshesOfVelsingrad.Helpers.Managers.TestAudioManager.html#AshesOfVelsingrad_Helpers_Managers_TestAudioManager_ResetSingleton_
+  commentId: Overload:AshesOfVelsingrad.Helpers.Managers.TestAudioManager.ResetSingleton
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.Helpers.Managers.TestAudioManager.ResetSingleton
+  nameWithType: TestAudioManager.ResetSingleton
+- uid: AshesOfVelsingrad.Helpers.Managers.TestAudioManager.TestInitialize
+  name: TestInitialize()
+  href: api/AshesOfVelsingrad.Helpers.Managers.TestAudioManager.html#AshesOfVelsingrad_Helpers_Managers_TestAudioManager_TestInitialize
+  commentId: M:AshesOfVelsingrad.Helpers.Managers.TestAudioManager.TestInitialize
+  fullName: AshesOfVelsingrad.Helpers.Managers.TestAudioManager.TestInitialize()
+  nameWithType: TestAudioManager.TestInitialize()
+- uid: AshesOfVelsingrad.Helpers.Managers.TestAudioManager.TestInitialize*
+  name: TestInitialize
+  href: api/AshesOfVelsingrad.Helpers.Managers.TestAudioManager.html#AshesOfVelsingrad_Helpers_Managers_TestAudioManager_TestInitialize_
+  commentId: Overload:AshesOfVelsingrad.Helpers.Managers.TestAudioManager.TestInitialize
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.Helpers.Managers.TestAudioManager.TestInitialize
+  nameWithType: TestAudioManager.TestInitialize
 - uid: AshesOfVelsingrad.Helpers.Managers.TestConcreteBattleInputSystem
   name: TestConcreteBattleInputSystem
   href: api/AshesOfVelsingrad.Helpers.Managers.TestConcreteBattleInputSystem.html
@@ -9816,6 +10557,220 @@ references:
   commentId: N:AshesOfVelsingrad.IntegrationTests.Managers
   fullName: AshesOfVelsingrad.IntegrationTests.Managers
   nameWithType: AshesOfVelsingrad.IntegrationTests.Managers
+- uid: AshesOfVelsingrad.IntegrationTests.Managers.AudioManagerTest
+  name: AudioManagerTest
+  href: api/AshesOfVelsingrad.IntegrationTests.Managers.AudioManagerTest.html
+  commentId: T:AshesOfVelsingrad.IntegrationTests.Managers.AudioManagerTest
+  fullName: AshesOfVelsingrad.IntegrationTests.Managers.AudioManagerTest
+  nameWithType: AudioManagerTest
+- uid: AshesOfVelsingrad.IntegrationTests.Managers.AudioManagerTest.ExitTree_ClearsSingleton
+  name: ExitTree_ClearsSingleton()
+  href: api/AshesOfVelsingrad.IntegrationTests.Managers.AudioManagerTest.html#AshesOfVelsingrad_IntegrationTests_Managers_AudioManagerTest_ExitTree_ClearsSingleton
+  commentId: M:AshesOfVelsingrad.IntegrationTests.Managers.AudioManagerTest.ExitTree_ClearsSingleton
+  fullName: AshesOfVelsingrad.IntegrationTests.Managers.AudioManagerTest.ExitTree_ClearsSingleton()
+  nameWithType: AudioManagerTest.ExitTree_ClearsSingleton()
+- uid: AshesOfVelsingrad.IntegrationTests.Managers.AudioManagerTest.ExitTree_ClearsSingleton*
+  name: ExitTree_ClearsSingleton
+  href: api/AshesOfVelsingrad.IntegrationTests.Managers.AudioManagerTest.html#AshesOfVelsingrad_IntegrationTests_Managers_AudioManagerTest_ExitTree_ClearsSingleton_
+  commentId: Overload:AshesOfVelsingrad.IntegrationTests.Managers.AudioManagerTest.ExitTree_ClearsSingleton
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.IntegrationTests.Managers.AudioManagerTest.ExitTree_ClearsSingleton
+  nameWithType: AudioManagerTest.ExitTree_ClearsSingleton
+- uid: AshesOfVelsingrad.IntegrationTests.Managers.AudioManagerTest.GetSettingsKey_FollowsCanonicalFormat
+  name: GetSettingsKey_FollowsCanonicalFormat()
+  href: api/AshesOfVelsingrad.IntegrationTests.Managers.AudioManagerTest.html#AshesOfVelsingrad_IntegrationTests_Managers_AudioManagerTest_GetSettingsKey_FollowsCanonicalFormat
+  commentId: M:AshesOfVelsingrad.IntegrationTests.Managers.AudioManagerTest.GetSettingsKey_FollowsCanonicalFormat
+  fullName: AshesOfVelsingrad.IntegrationTests.Managers.AudioManagerTest.GetSettingsKey_FollowsCanonicalFormat()
+  nameWithType: AudioManagerTest.GetSettingsKey_FollowsCanonicalFormat()
+- uid: AshesOfVelsingrad.IntegrationTests.Managers.AudioManagerTest.GetSettingsKey_FollowsCanonicalFormat*
+  name: GetSettingsKey_FollowsCanonicalFormat
+  href: api/AshesOfVelsingrad.IntegrationTests.Managers.AudioManagerTest.html#AshesOfVelsingrad_IntegrationTests_Managers_AudioManagerTest_GetSettingsKey_FollowsCanonicalFormat_
+  commentId: Overload:AshesOfVelsingrad.IntegrationTests.Managers.AudioManagerTest.GetSettingsKey_FollowsCanonicalFormat
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.IntegrationTests.Managers.AudioManagerTest.GetSettingsKey_FollowsCanonicalFormat
+  nameWithType: AudioManagerTest.GetSettingsKey_FollowsCanonicalFormat
+- uid: AshesOfVelsingrad.IntegrationTests.Managers.AudioManagerTest.Initialize_CreatesAllExpectedBuses
+  name: Initialize_CreatesAllExpectedBuses()
+  href: api/AshesOfVelsingrad.IntegrationTests.Managers.AudioManagerTest.html#AshesOfVelsingrad_IntegrationTests_Managers_AudioManagerTest_Initialize_CreatesAllExpectedBuses
+  commentId: M:AshesOfVelsingrad.IntegrationTests.Managers.AudioManagerTest.Initialize_CreatesAllExpectedBuses
+  fullName: AshesOfVelsingrad.IntegrationTests.Managers.AudioManagerTest.Initialize_CreatesAllExpectedBuses()
+  nameWithType: AudioManagerTest.Initialize_CreatesAllExpectedBuses()
+- uid: AshesOfVelsingrad.IntegrationTests.Managers.AudioManagerTest.Initialize_CreatesAllExpectedBuses*
+  name: Initialize_CreatesAllExpectedBuses
+  href: api/AshesOfVelsingrad.IntegrationTests.Managers.AudioManagerTest.html#AshesOfVelsingrad_IntegrationTests_Managers_AudioManagerTest_Initialize_CreatesAllExpectedBuses_
+  commentId: Overload:AshesOfVelsingrad.IntegrationTests.Managers.AudioManagerTest.Initialize_CreatesAllExpectedBuses
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.IntegrationTests.Managers.AudioManagerTest.Initialize_CreatesAllExpectedBuses
+  nameWithType: AudioManagerTest.Initialize_CreatesAllExpectedBuses
+- uid: AshesOfVelsingrad.IntegrationTests.Managers.AudioManagerTest.Initialize_PopulatesRegistryFromCatalog
+  name: Initialize_PopulatesRegistryFromCatalog()
+  href: api/AshesOfVelsingrad.IntegrationTests.Managers.AudioManagerTest.html#AshesOfVelsingrad_IntegrationTests_Managers_AudioManagerTest_Initialize_PopulatesRegistryFromCatalog
+  commentId: M:AshesOfVelsingrad.IntegrationTests.Managers.AudioManagerTest.Initialize_PopulatesRegistryFromCatalog
+  fullName: AshesOfVelsingrad.IntegrationTests.Managers.AudioManagerTest.Initialize_PopulatesRegistryFromCatalog()
+  nameWithType: AudioManagerTest.Initialize_PopulatesRegistryFromCatalog()
+- uid: AshesOfVelsingrad.IntegrationTests.Managers.AudioManagerTest.Initialize_PopulatesRegistryFromCatalog*
+  name: Initialize_PopulatesRegistryFromCatalog
+  href: api/AshesOfVelsingrad.IntegrationTests.Managers.AudioManagerTest.html#AshesOfVelsingrad_IntegrationTests_Managers_AudioManagerTest_Initialize_PopulatesRegistryFromCatalog_
+  commentId: Overload:AshesOfVelsingrad.IntegrationTests.Managers.AudioManagerTest.Initialize_PopulatesRegistryFromCatalog
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.IntegrationTests.Managers.AudioManagerTest.Initialize_PopulatesRegistryFromCatalog
+  nameWithType: AudioManagerTest.Initialize_PopulatesRegistryFromCatalog
+- uid: AshesOfVelsingrad.IntegrationTests.Managers.AudioManagerTest.Initialize_RegistersSingleton
+  name: Initialize_RegistersSingleton()
+  href: api/AshesOfVelsingrad.IntegrationTests.Managers.AudioManagerTest.html#AshesOfVelsingrad_IntegrationTests_Managers_AudioManagerTest_Initialize_RegistersSingleton
+  commentId: M:AshesOfVelsingrad.IntegrationTests.Managers.AudioManagerTest.Initialize_RegistersSingleton
+  fullName: AshesOfVelsingrad.IntegrationTests.Managers.AudioManagerTest.Initialize_RegistersSingleton()
+  nameWithType: AudioManagerTest.Initialize_RegistersSingleton()
+- uid: AshesOfVelsingrad.IntegrationTests.Managers.AudioManagerTest.Initialize_RegistersSingleton*
+  name: Initialize_RegistersSingleton
+  href: api/AshesOfVelsingrad.IntegrationTests.Managers.AudioManagerTest.html#AshesOfVelsingrad_IntegrationTests_Managers_AudioManagerTest_Initialize_RegistersSingleton_
+  commentId: Overload:AshesOfVelsingrad.IntegrationTests.Managers.AudioManagerTest.Initialize_RegistersSingleton
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.IntegrationTests.Managers.AudioManagerTest.Initialize_RegistersSingleton
+  nameWithType: AudioManagerTest.Initialize_RegistersSingleton
+- uid: AshesOfVelsingrad.IntegrationTests.Managers.AudioManagerTest.Initialize_SecondInstance_RemovesDuplicate
+  name: Initialize_SecondInstance_RemovesDuplicate()
+  href: api/AshesOfVelsingrad.IntegrationTests.Managers.AudioManagerTest.html#AshesOfVelsingrad_IntegrationTests_Managers_AudioManagerTest_Initialize_SecondInstance_RemovesDuplicate
+  commentId: M:AshesOfVelsingrad.IntegrationTests.Managers.AudioManagerTest.Initialize_SecondInstance_RemovesDuplicate
+  fullName: AshesOfVelsingrad.IntegrationTests.Managers.AudioManagerTest.Initialize_SecondInstance_RemovesDuplicate()
+  nameWithType: AudioManagerTest.Initialize_SecondInstance_RemovesDuplicate()
+- uid: AshesOfVelsingrad.IntegrationTests.Managers.AudioManagerTest.Initialize_SecondInstance_RemovesDuplicate*
+  name: Initialize_SecondInstance_RemovesDuplicate
+  href: api/AshesOfVelsingrad.IntegrationTests.Managers.AudioManagerTest.html#AshesOfVelsingrad_IntegrationTests_Managers_AudioManagerTest_Initialize_SecondInstance_RemovesDuplicate_
+  commentId: Overload:AshesOfVelsingrad.IntegrationTests.Managers.AudioManagerTest.Initialize_SecondInstance_RemovesDuplicate
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.IntegrationTests.Managers.AudioManagerTest.Initialize_SecondInstance_RemovesDuplicate
+  nameWithType: AudioManagerTest.Initialize_SecondInstance_RemovesDuplicate
+- uid: AshesOfVelsingrad.IntegrationTests.Managers.AudioManagerTest.Play_MainMenuTheme_DoesNotThrow
+  name: Play_MainMenuTheme_DoesNotThrow()
+  href: api/AshesOfVelsingrad.IntegrationTests.Managers.AudioManagerTest.html#AshesOfVelsingrad_IntegrationTests_Managers_AudioManagerTest_Play_MainMenuTheme_DoesNotThrow
+  commentId: M:AshesOfVelsingrad.IntegrationTests.Managers.AudioManagerTest.Play_MainMenuTheme_DoesNotThrow
+  fullName: AshesOfVelsingrad.IntegrationTests.Managers.AudioManagerTest.Play_MainMenuTheme_DoesNotThrow()
+  nameWithType: AudioManagerTest.Play_MainMenuTheme_DoesNotThrow()
+- uid: AshesOfVelsingrad.IntegrationTests.Managers.AudioManagerTest.Play_MainMenuTheme_DoesNotThrow*
+  name: Play_MainMenuTheme_DoesNotThrow
+  href: api/AshesOfVelsingrad.IntegrationTests.Managers.AudioManagerTest.html#AshesOfVelsingrad_IntegrationTests_Managers_AudioManagerTest_Play_MainMenuTheme_DoesNotThrow_
+  commentId: Overload:AshesOfVelsingrad.IntegrationTests.Managers.AudioManagerTest.Play_MainMenuTheme_DoesNotThrow
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.IntegrationTests.Managers.AudioManagerTest.Play_MainMenuTheme_DoesNotThrow
+  nameWithType: AudioManagerTest.Play_MainMenuTheme_DoesNotThrow
+- uid: AshesOfVelsingrad.IntegrationTests.Managers.AudioManagerTest.Play_UnknownTrackId_DoesNotThrow
+  name: Play_UnknownTrackId_DoesNotThrow()
+  href: api/AshesOfVelsingrad.IntegrationTests.Managers.AudioManagerTest.html#AshesOfVelsingrad_IntegrationTests_Managers_AudioManagerTest_Play_UnknownTrackId_DoesNotThrow
+  commentId: M:AshesOfVelsingrad.IntegrationTests.Managers.AudioManagerTest.Play_UnknownTrackId_DoesNotThrow
+  fullName: AshesOfVelsingrad.IntegrationTests.Managers.AudioManagerTest.Play_UnknownTrackId_DoesNotThrow()
+  nameWithType: AudioManagerTest.Play_UnknownTrackId_DoesNotThrow()
+- uid: AshesOfVelsingrad.IntegrationTests.Managers.AudioManagerTest.Play_UnknownTrackId_DoesNotThrow*
+  name: Play_UnknownTrackId_DoesNotThrow
+  href: api/AshesOfVelsingrad.IntegrationTests.Managers.AudioManagerTest.html#AshesOfVelsingrad_IntegrationTests_Managers_AudioManagerTest_Play_UnknownTrackId_DoesNotThrow_
+  commentId: Overload:AshesOfVelsingrad.IntegrationTests.Managers.AudioManagerTest.Play_UnknownTrackId_DoesNotThrow
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.IntegrationTests.Managers.AudioManagerTest.Play_UnknownTrackId_DoesNotThrow
+  nameWithType: AudioManagerTest.Play_UnknownTrackId_DoesNotThrow
+- uid: AshesOfVelsingrad.IntegrationTests.Managers.AudioManagerTest.Registry_ExposesTrackMetadataForUiUse
+  name: Registry_ExposesTrackMetadataForUiUse()
+  href: api/AshesOfVelsingrad.IntegrationTests.Managers.AudioManagerTest.html#AshesOfVelsingrad_IntegrationTests_Managers_AudioManagerTest_Registry_ExposesTrackMetadataForUiUse
+  commentId: M:AshesOfVelsingrad.IntegrationTests.Managers.AudioManagerTest.Registry_ExposesTrackMetadataForUiUse
+  fullName: AshesOfVelsingrad.IntegrationTests.Managers.AudioManagerTest.Registry_ExposesTrackMetadataForUiUse()
+  nameWithType: AudioManagerTest.Registry_ExposesTrackMetadataForUiUse()
+- uid: AshesOfVelsingrad.IntegrationTests.Managers.AudioManagerTest.Registry_ExposesTrackMetadataForUiUse*
+  name: Registry_ExposesTrackMetadataForUiUse
+  href: api/AshesOfVelsingrad.IntegrationTests.Managers.AudioManagerTest.html#AshesOfVelsingrad_IntegrationTests_Managers_AudioManagerTest_Registry_ExposesTrackMetadataForUiUse_
+  commentId: Overload:AshesOfVelsingrad.IntegrationTests.Managers.AudioManagerTest.Registry_ExposesTrackMetadataForUiUse
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.IntegrationTests.Managers.AudioManagerTest.Registry_ExposesTrackMetadataForUiUse
+  nameWithType: AudioManagerTest.Registry_ExposesTrackMetadataForUiUse
+- uid: AshesOfVelsingrad.IntegrationTests.Managers.AudioManagerTest.SetBusMuted_SilencesBusButPreservesPersistedVolume
+  name: SetBusMuted_SilencesBusButPreservesPersistedVolume()
+  href: api/AshesOfVelsingrad.IntegrationTests.Managers.AudioManagerTest.html#AshesOfVelsingrad_IntegrationTests_Managers_AudioManagerTest_SetBusMuted_SilencesBusButPreservesPersistedVolume
+  commentId: M:AshesOfVelsingrad.IntegrationTests.Managers.AudioManagerTest.SetBusMuted_SilencesBusButPreservesPersistedVolume
+  fullName: AshesOfVelsingrad.IntegrationTests.Managers.AudioManagerTest.SetBusMuted_SilencesBusButPreservesPersistedVolume()
+  nameWithType: AudioManagerTest.SetBusMuted_SilencesBusButPreservesPersistedVolume()
+- uid: AshesOfVelsingrad.IntegrationTests.Managers.AudioManagerTest.SetBusMuted_SilencesBusButPreservesPersistedVolume*
+  name: SetBusMuted_SilencesBusButPreservesPersistedVolume
+  href: api/AshesOfVelsingrad.IntegrationTests.Managers.AudioManagerTest.html#AshesOfVelsingrad_IntegrationTests_Managers_AudioManagerTest_SetBusMuted_SilencesBusButPreservesPersistedVolume_
+  commentId: Overload:AshesOfVelsingrad.IntegrationTests.Managers.AudioManagerTest.SetBusMuted_SilencesBusButPreservesPersistedVolume
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.IntegrationTests.Managers.AudioManagerTest.SetBusMuted_SilencesBusButPreservesPersistedVolume
+  nameWithType: AudioManagerTest.SetBusMuted_SilencesBusButPreservesPersistedVolume
+- uid: AshesOfVelsingrad.IntegrationTests.Managers.AudioManagerTest.SetBusVolume_ClampsOutOfRangeValues
+  name: SetBusVolume_ClampsOutOfRangeValues()
+  href: api/AshesOfVelsingrad.IntegrationTests.Managers.AudioManagerTest.html#AshesOfVelsingrad_IntegrationTests_Managers_AudioManagerTest_SetBusVolume_ClampsOutOfRangeValues
+  commentId: M:AshesOfVelsingrad.IntegrationTests.Managers.AudioManagerTest.SetBusVolume_ClampsOutOfRangeValues
+  fullName: AshesOfVelsingrad.IntegrationTests.Managers.AudioManagerTest.SetBusVolume_ClampsOutOfRangeValues()
+  nameWithType: AudioManagerTest.SetBusVolume_ClampsOutOfRangeValues()
+- uid: AshesOfVelsingrad.IntegrationTests.Managers.AudioManagerTest.SetBusVolume_ClampsOutOfRangeValues*
+  name: SetBusVolume_ClampsOutOfRangeValues
+  href: api/AshesOfVelsingrad.IntegrationTests.Managers.AudioManagerTest.html#AshesOfVelsingrad_IntegrationTests_Managers_AudioManagerTest_SetBusVolume_ClampsOutOfRangeValues_
+  commentId: Overload:AshesOfVelsingrad.IntegrationTests.Managers.AudioManagerTest.SetBusVolume_ClampsOutOfRangeValues
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.IntegrationTests.Managers.AudioManagerTest.SetBusVolume_ClampsOutOfRangeValues
+  nameWithType: AudioManagerTest.SetBusVolume_ClampsOutOfRangeValues
+- uid: AshesOfVelsingrad.IntegrationTests.Managers.AudioManagerTest.SetBusVolume_PersistsToSettings
+  name: SetBusVolume_PersistsToSettings()
+  href: api/AshesOfVelsingrad.IntegrationTests.Managers.AudioManagerTest.html#AshesOfVelsingrad_IntegrationTests_Managers_AudioManagerTest_SetBusVolume_PersistsToSettings
+  commentId: M:AshesOfVelsingrad.IntegrationTests.Managers.AudioManagerTest.SetBusVolume_PersistsToSettings
+  fullName: AshesOfVelsingrad.IntegrationTests.Managers.AudioManagerTest.SetBusVolume_PersistsToSettings()
+  nameWithType: AudioManagerTest.SetBusVolume_PersistsToSettings()
+- uid: AshesOfVelsingrad.IntegrationTests.Managers.AudioManagerTest.SetBusVolume_PersistsToSettings*
+  name: SetBusVolume_PersistsToSettings
+  href: api/AshesOfVelsingrad.IntegrationTests.Managers.AudioManagerTest.html#AshesOfVelsingrad_IntegrationTests_Managers_AudioManagerTest_SetBusVolume_PersistsToSettings_
+  commentId: Overload:AshesOfVelsingrad.IntegrationTests.Managers.AudioManagerTest.SetBusVolume_PersistsToSettings
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.IntegrationTests.Managers.AudioManagerTest.SetBusVolume_PersistsToSettings
+  nameWithType: AudioManagerTest.SetBusVolume_PersistsToSettings
+- uid: AshesOfVelsingrad.IntegrationTests.Managers.AudioManagerTest.SetBusVolume_UpdatesAudioServerInDb
+  name: SetBusVolume_UpdatesAudioServerInDb()
+  href: api/AshesOfVelsingrad.IntegrationTests.Managers.AudioManagerTest.html#AshesOfVelsingrad_IntegrationTests_Managers_AudioManagerTest_SetBusVolume_UpdatesAudioServerInDb
+  commentId: M:AshesOfVelsingrad.IntegrationTests.Managers.AudioManagerTest.SetBusVolume_UpdatesAudioServerInDb
+  fullName: AshesOfVelsingrad.IntegrationTests.Managers.AudioManagerTest.SetBusVolume_UpdatesAudioServerInDb()
+  nameWithType: AudioManagerTest.SetBusVolume_UpdatesAudioServerInDb()
+- uid: AshesOfVelsingrad.IntegrationTests.Managers.AudioManagerTest.SetBusVolume_UpdatesAudioServerInDb*
+  name: SetBusVolume_UpdatesAudioServerInDb
+  href: api/AshesOfVelsingrad.IntegrationTests.Managers.AudioManagerTest.html#AshesOfVelsingrad_IntegrationTests_Managers_AudioManagerTest_SetBusVolume_UpdatesAudioServerInDb_
+  commentId: Overload:AshesOfVelsingrad.IntegrationTests.Managers.AudioManagerTest.SetBusVolume_UpdatesAudioServerInDb
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.IntegrationTests.Managers.AudioManagerTest.SetBusVolume_UpdatesAudioServerInDb
+  nameWithType: AudioManagerTest.SetBusVolume_UpdatesAudioServerInDb
+- uid: AshesOfVelsingrad.IntegrationTests.Managers.AudioManagerTest.SetUp
+  name: SetUp()
+  href: api/AshesOfVelsingrad.IntegrationTests.Managers.AudioManagerTest.html#AshesOfVelsingrad_IntegrationTests_Managers_AudioManagerTest_SetUp
+  commentId: M:AshesOfVelsingrad.IntegrationTests.Managers.AudioManagerTest.SetUp
+  fullName: AshesOfVelsingrad.IntegrationTests.Managers.AudioManagerTest.SetUp()
+  nameWithType: AudioManagerTest.SetUp()
+- uid: AshesOfVelsingrad.IntegrationTests.Managers.AudioManagerTest.SetUp*
+  name: SetUp
+  href: api/AshesOfVelsingrad.IntegrationTests.Managers.AudioManagerTest.html#AshesOfVelsingrad_IntegrationTests_Managers_AudioManagerTest_SetUp_
+  commentId: Overload:AshesOfVelsingrad.IntegrationTests.Managers.AudioManagerTest.SetUp
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.IntegrationTests.Managers.AudioManagerTest.SetUp
+  nameWithType: AudioManagerTest.SetUp
+- uid: AshesOfVelsingrad.IntegrationTests.Managers.AudioManagerTest.SettingsChange_UpdatesBusVolumeInstantly
+  name: SettingsChange_UpdatesBusVolumeInstantly()
+  href: api/AshesOfVelsingrad.IntegrationTests.Managers.AudioManagerTest.html#AshesOfVelsingrad_IntegrationTests_Managers_AudioManagerTest_SettingsChange_UpdatesBusVolumeInstantly
+  commentId: M:AshesOfVelsingrad.IntegrationTests.Managers.AudioManagerTest.SettingsChange_UpdatesBusVolumeInstantly
+  fullName: AshesOfVelsingrad.IntegrationTests.Managers.AudioManagerTest.SettingsChange_UpdatesBusVolumeInstantly()
+  nameWithType: AudioManagerTest.SettingsChange_UpdatesBusVolumeInstantly()
+- uid: AshesOfVelsingrad.IntegrationTests.Managers.AudioManagerTest.SettingsChange_UpdatesBusVolumeInstantly*
+  name: SettingsChange_UpdatesBusVolumeInstantly
+  href: api/AshesOfVelsingrad.IntegrationTests.Managers.AudioManagerTest.html#AshesOfVelsingrad_IntegrationTests_Managers_AudioManagerTest_SettingsChange_UpdatesBusVolumeInstantly_
+  commentId: Overload:AshesOfVelsingrad.IntegrationTests.Managers.AudioManagerTest.SettingsChange_UpdatesBusVolumeInstantly
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.IntegrationTests.Managers.AudioManagerTest.SettingsChange_UpdatesBusVolumeInstantly
+  nameWithType: AudioManagerTest.SettingsChange_UpdatesBusVolumeInstantly
+- uid: AshesOfVelsingrad.IntegrationTests.Managers.AudioManagerTest.TearDown
+  name: TearDown()
+  href: api/AshesOfVelsingrad.IntegrationTests.Managers.AudioManagerTest.html#AshesOfVelsingrad_IntegrationTests_Managers_AudioManagerTest_TearDown
+  commentId: M:AshesOfVelsingrad.IntegrationTests.Managers.AudioManagerTest.TearDown
+  fullName: AshesOfVelsingrad.IntegrationTests.Managers.AudioManagerTest.TearDown()
+  nameWithType: AudioManagerTest.TearDown()
+- uid: AshesOfVelsingrad.IntegrationTests.Managers.AudioManagerTest.TearDown*
+  name: TearDown
+  href: api/AshesOfVelsingrad.IntegrationTests.Managers.AudioManagerTest.html#AshesOfVelsingrad_IntegrationTests_Managers_AudioManagerTest_TearDown_
+  commentId: Overload:AshesOfVelsingrad.IntegrationTests.Managers.AudioManagerTest.TearDown
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.IntegrationTests.Managers.AudioManagerTest.TearDown
+  nameWithType: AudioManagerTest.TearDown
 - uid: AshesOfVelsingrad.IntegrationTests.Managers.BaseManagerTest
   name: BaseManagerTest
   href: api/AshesOfVelsingrad.IntegrationTests.Managers.BaseManagerTest.html
@@ -14172,6 +15127,269 @@ references:
   commentId: N:AshesOfVelsingrad.Managers
   fullName: AshesOfVelsingrad.Managers
   nameWithType: AshesOfVelsingrad.Managers
+- uid: AshesOfVelsingrad.Managers.AudioManager
+  name: AudioManager
+  href: api/AshesOfVelsingrad.Managers.AudioManager.html
+  commentId: T:AshesOfVelsingrad.Managers.AudioManager
+  fullName: AshesOfVelsingrad.Managers.AudioManager
+  nameWithType: AudioManager
+- uid: AshesOfVelsingrad.Managers.AudioManager.GetBusVolume(AshesOfVelsingrad.Audio.AudioBus)
+  name: GetBusVolume(AudioBus)
+  href: api/AshesOfVelsingrad.Managers.AudioManager.html#AshesOfVelsingrad_Managers_AudioManager_GetBusVolume_AshesOfVelsingrad_Audio_AudioBus_
+  commentId: M:AshesOfVelsingrad.Managers.AudioManager.GetBusVolume(AshesOfVelsingrad.Audio.AudioBus)
+  fullName: AshesOfVelsingrad.Managers.AudioManager.GetBusVolume(AshesOfVelsingrad.Audio.AudioBus)
+  nameWithType: AudioManager.GetBusVolume(AudioBus)
+- uid: AshesOfVelsingrad.Managers.AudioManager.GetBusVolume*
+  name: GetBusVolume
+  href: api/AshesOfVelsingrad.Managers.AudioManager.html#AshesOfVelsingrad_Managers_AudioManager_GetBusVolume_
+  commentId: Overload:AshesOfVelsingrad.Managers.AudioManager.GetBusVolume
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.Managers.AudioManager.GetBusVolume
+  nameWithType: AudioManager.GetBusVolume
+- uid: AshesOfVelsingrad.Managers.AudioManager.GetSettingsKey(AshesOfVelsingrad.Audio.AudioBus)
+  name: GetSettingsKey(AudioBus)
+  href: api/AshesOfVelsingrad.Managers.AudioManager.html#AshesOfVelsingrad_Managers_AudioManager_GetSettingsKey_AshesOfVelsingrad_Audio_AudioBus_
+  commentId: M:AshesOfVelsingrad.Managers.AudioManager.GetSettingsKey(AshesOfVelsingrad.Audio.AudioBus)
+  fullName: AshesOfVelsingrad.Managers.AudioManager.GetSettingsKey(AshesOfVelsingrad.Audio.AudioBus)
+  nameWithType: AudioManager.GetSettingsKey(AudioBus)
+- uid: AshesOfVelsingrad.Managers.AudioManager.GetSettingsKey*
+  name: GetSettingsKey
+  href: api/AshesOfVelsingrad.Managers.AudioManager.html#AshesOfVelsingrad_Managers_AudioManager_GetSettingsKey_
+  commentId: Overload:AshesOfVelsingrad.Managers.AudioManager.GetSettingsKey
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.Managers.AudioManager.GetSettingsKey
+  nameWithType: AudioManager.GetSettingsKey
+- uid: AshesOfVelsingrad.Managers.AudioManager.Initialize
+  name: Initialize()
+  href: api/AshesOfVelsingrad.Managers.AudioManager.html#AshesOfVelsingrad_Managers_AudioManager_Initialize
+  commentId: M:AshesOfVelsingrad.Managers.AudioManager.Initialize
+  fullName: AshesOfVelsingrad.Managers.AudioManager.Initialize()
+  nameWithType: AudioManager.Initialize()
+- uid: AshesOfVelsingrad.Managers.AudioManager.Initialize*
+  name: Initialize
+  href: api/AshesOfVelsingrad.Managers.AudioManager.html#AshesOfVelsingrad_Managers_AudioManager_Initialize_
+  commentId: Overload:AshesOfVelsingrad.Managers.AudioManager.Initialize
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.Managers.AudioManager.Initialize
+  nameWithType: AudioManager.Initialize
+- uid: AshesOfVelsingrad.Managers.AudioManager.Instance
+  name: Instance
+  href: api/AshesOfVelsingrad.Managers.AudioManager.html#AshesOfVelsingrad_Managers_AudioManager_Instance
+  commentId: P:AshesOfVelsingrad.Managers.AudioManager.Instance
+  fullName: AshesOfVelsingrad.Managers.AudioManager.Instance
+  nameWithType: AudioManager.Instance
+- uid: AshesOfVelsingrad.Managers.AudioManager.Instance*
+  name: Instance
+  href: api/AshesOfVelsingrad.Managers.AudioManager.html#AshesOfVelsingrad_Managers_AudioManager_Instance_
+  commentId: Overload:AshesOfVelsingrad.Managers.AudioManager.Instance
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.Managers.AudioManager.Instance
+  nameWithType: AudioManager.Instance
+- uid: AshesOfVelsingrad.Managers.AudioManager.IsBusMuted(AshesOfVelsingrad.Audio.AudioBus)
+  name: IsBusMuted(AudioBus)
+  href: api/AshesOfVelsingrad.Managers.AudioManager.html#AshesOfVelsingrad_Managers_AudioManager_IsBusMuted_AshesOfVelsingrad_Audio_AudioBus_
+  commentId: M:AshesOfVelsingrad.Managers.AudioManager.IsBusMuted(AshesOfVelsingrad.Audio.AudioBus)
+  fullName: AshesOfVelsingrad.Managers.AudioManager.IsBusMuted(AshesOfVelsingrad.Audio.AudioBus)
+  nameWithType: AudioManager.IsBusMuted(AudioBus)
+- uid: AshesOfVelsingrad.Managers.AudioManager.IsBusMuted*
+  name: IsBusMuted
+  href: api/AshesOfVelsingrad.Managers.AudioManager.html#AshesOfVelsingrad_Managers_AudioManager_IsBusMuted_
+  commentId: Overload:AshesOfVelsingrad.Managers.AudioManager.IsBusMuted
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.Managers.AudioManager.IsBusMuted
+  nameWithType: AudioManager.IsBusMuted
+- uid: AshesOfVelsingrad.Managers.AudioManager.Play(System.String)
+  name: Play(string)
+  href: api/AshesOfVelsingrad.Managers.AudioManager.html#AshesOfVelsingrad_Managers_AudioManager_Play_System_String_
+  commentId: M:AshesOfVelsingrad.Managers.AudioManager.Play(System.String)
+  name.vb: Play(String)
+  fullName: AshesOfVelsingrad.Managers.AudioManager.Play(string)
+  fullName.vb: AshesOfVelsingrad.Managers.AudioManager.Play(String)
+  nameWithType: AudioManager.Play(string)
+  nameWithType.vb: AudioManager.Play(String)
+- uid: AshesOfVelsingrad.Managers.AudioManager.Play*
+  name: Play
+  href: api/AshesOfVelsingrad.Managers.AudioManager.html#AshesOfVelsingrad_Managers_AudioManager_Play_
+  commentId: Overload:AshesOfVelsingrad.Managers.AudioManager.Play
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.Managers.AudioManager.Play
+  nameWithType: AudioManager.Play
+- uid: AshesOfVelsingrad.Managers.AudioManager.PlayAmbient(System.String,System.String,System.Single)
+  name: PlayAmbient(string, string, float)
+  href: api/AshesOfVelsingrad.Managers.AudioManager.html#AshesOfVelsingrad_Managers_AudioManager_PlayAmbient_System_String_System_String_System_Single_
+  commentId: M:AshesOfVelsingrad.Managers.AudioManager.PlayAmbient(System.String,System.String,System.Single)
+  name.vb: PlayAmbient(String, String, Single)
+  fullName: AshesOfVelsingrad.Managers.AudioManager.PlayAmbient(string, string, float)
+  fullName.vb: AshesOfVelsingrad.Managers.AudioManager.PlayAmbient(String, String, Single)
+  nameWithType: AudioManager.PlayAmbient(string, string, float)
+  nameWithType.vb: AudioManager.PlayAmbient(String, String, Single)
+- uid: AshesOfVelsingrad.Managers.AudioManager.PlayAmbient*
+  name: PlayAmbient
+  href: api/AshesOfVelsingrad.Managers.AudioManager.html#AshesOfVelsingrad_Managers_AudioManager_PlayAmbient_
+  commentId: Overload:AshesOfVelsingrad.Managers.AudioManager.PlayAmbient
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.Managers.AudioManager.PlayAmbient
+  nameWithType: AudioManager.PlayAmbient
+- uid: AshesOfVelsingrad.Managers.AudioManager.PlayMusic(System.String,System.Single,System.Boolean)
+  name: PlayMusic(string, float, bool)
+  href: api/AshesOfVelsingrad.Managers.AudioManager.html#AshesOfVelsingrad_Managers_AudioManager_PlayMusic_System_String_System_Single_System_Boolean_
+  commentId: M:AshesOfVelsingrad.Managers.AudioManager.PlayMusic(System.String,System.Single,System.Boolean)
+  name.vb: PlayMusic(String, Single, Boolean)
+  fullName: AshesOfVelsingrad.Managers.AudioManager.PlayMusic(string, float, bool)
+  fullName.vb: AshesOfVelsingrad.Managers.AudioManager.PlayMusic(String, Single, Boolean)
+  nameWithType: AudioManager.PlayMusic(string, float, bool)
+  nameWithType.vb: AudioManager.PlayMusic(String, Single, Boolean)
+- uid: AshesOfVelsingrad.Managers.AudioManager.PlayMusic*
+  name: PlayMusic
+  href: api/AshesOfVelsingrad.Managers.AudioManager.html#AshesOfVelsingrad_Managers_AudioManager_PlayMusic_
+  commentId: Overload:AshesOfVelsingrad.Managers.AudioManager.PlayMusic
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.Managers.AudioManager.PlayMusic
+  nameWithType: AudioManager.PlayMusic
+- uid: AshesOfVelsingrad.Managers.AudioManager.PlaySfx(System.String,System.Single,System.Single)
+  name: PlaySfx(string, float, float)
+  href: api/AshesOfVelsingrad.Managers.AudioManager.html#AshesOfVelsingrad_Managers_AudioManager_PlaySfx_System_String_System_Single_System_Single_
+  commentId: M:AshesOfVelsingrad.Managers.AudioManager.PlaySfx(System.String,System.Single,System.Single)
+  name.vb: PlaySfx(String, Single, Single)
+  fullName: AshesOfVelsingrad.Managers.AudioManager.PlaySfx(string, float, float)
+  fullName.vb: AshesOfVelsingrad.Managers.AudioManager.PlaySfx(String, Single, Single)
+  nameWithType: AudioManager.PlaySfx(string, float, float)
+  nameWithType.vb: AudioManager.PlaySfx(String, Single, Single)
+- uid: AshesOfVelsingrad.Managers.AudioManager.PlaySfx*
+  name: PlaySfx
+  href: api/AshesOfVelsingrad.Managers.AudioManager.html#AshesOfVelsingrad_Managers_AudioManager_PlaySfx_
+  commentId: Overload:AshesOfVelsingrad.Managers.AudioManager.PlaySfx
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.Managers.AudioManager.PlaySfx
+  nameWithType: AudioManager.PlaySfx
+- uid: AshesOfVelsingrad.Managers.AudioManager.PlayUi(System.String,System.Single)
+  name: PlayUi(string, float)
+  href: api/AshesOfVelsingrad.Managers.AudioManager.html#AshesOfVelsingrad_Managers_AudioManager_PlayUi_System_String_System_Single_
+  commentId: M:AshesOfVelsingrad.Managers.AudioManager.PlayUi(System.String,System.Single)
+  name.vb: PlayUi(String, Single)
+  fullName: AshesOfVelsingrad.Managers.AudioManager.PlayUi(string, float)
+  fullName.vb: AshesOfVelsingrad.Managers.AudioManager.PlayUi(String, Single)
+  nameWithType: AudioManager.PlayUi(string, float)
+  nameWithType.vb: AudioManager.PlayUi(String, Single)
+- uid: AshesOfVelsingrad.Managers.AudioManager.PlayUi*
+  name: PlayUi
+  href: api/AshesOfVelsingrad.Managers.AudioManager.html#AshesOfVelsingrad_Managers_AudioManager_PlayUi_
+  commentId: Overload:AshesOfVelsingrad.Managers.AudioManager.PlayUi
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.Managers.AudioManager.PlayUi
+  nameWithType: AudioManager.PlayUi
+- uid: AshesOfVelsingrad.Managers.AudioManager.Registry
+  name: Registry
+  href: api/AshesOfVelsingrad.Managers.AudioManager.html#AshesOfVelsingrad_Managers_AudioManager_Registry
+  commentId: P:AshesOfVelsingrad.Managers.AudioManager.Registry
+  fullName: AshesOfVelsingrad.Managers.AudioManager.Registry
+  nameWithType: AudioManager.Registry
+- uid: AshesOfVelsingrad.Managers.AudioManager.Registry*
+  name: Registry
+  href: api/AshesOfVelsingrad.Managers.AudioManager.html#AshesOfVelsingrad_Managers_AudioManager_Registry_
+  commentId: Overload:AshesOfVelsingrad.Managers.AudioManager.Registry
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.Managers.AudioManager.Registry
+  nameWithType: AudioManager.Registry
+- uid: AshesOfVelsingrad.Managers.AudioManager.SetBusMuted(AshesOfVelsingrad.Audio.AudioBus,System.Boolean)
+  name: SetBusMuted(AudioBus, bool)
+  href: api/AshesOfVelsingrad.Managers.AudioManager.html#AshesOfVelsingrad_Managers_AudioManager_SetBusMuted_AshesOfVelsingrad_Audio_AudioBus_System_Boolean_
+  commentId: M:AshesOfVelsingrad.Managers.AudioManager.SetBusMuted(AshesOfVelsingrad.Audio.AudioBus,System.Boolean)
+  name.vb: SetBusMuted(AudioBus, Boolean)
+  fullName: AshesOfVelsingrad.Managers.AudioManager.SetBusMuted(AshesOfVelsingrad.Audio.AudioBus, bool)
+  fullName.vb: AshesOfVelsingrad.Managers.AudioManager.SetBusMuted(AshesOfVelsingrad.Audio.AudioBus, Boolean)
+  nameWithType: AudioManager.SetBusMuted(AudioBus, bool)
+  nameWithType.vb: AudioManager.SetBusMuted(AudioBus, Boolean)
+- uid: AshesOfVelsingrad.Managers.AudioManager.SetBusMuted*
+  name: SetBusMuted
+  href: api/AshesOfVelsingrad.Managers.AudioManager.html#AshesOfVelsingrad_Managers_AudioManager_SetBusMuted_
+  commentId: Overload:AshesOfVelsingrad.Managers.AudioManager.SetBusMuted
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.Managers.AudioManager.SetBusMuted
+  nameWithType: AudioManager.SetBusMuted
+- uid: AshesOfVelsingrad.Managers.AudioManager.SetBusVolume(AshesOfVelsingrad.Audio.AudioBus,System.Single)
+  name: SetBusVolume(AudioBus, float)
+  href: api/AshesOfVelsingrad.Managers.AudioManager.html#AshesOfVelsingrad_Managers_AudioManager_SetBusVolume_AshesOfVelsingrad_Audio_AudioBus_System_Single_
+  commentId: M:AshesOfVelsingrad.Managers.AudioManager.SetBusVolume(AshesOfVelsingrad.Audio.AudioBus,System.Single)
+  name.vb: SetBusVolume(AudioBus, Single)
+  fullName: AshesOfVelsingrad.Managers.AudioManager.SetBusVolume(AshesOfVelsingrad.Audio.AudioBus, float)
+  fullName.vb: AshesOfVelsingrad.Managers.AudioManager.SetBusVolume(AshesOfVelsingrad.Audio.AudioBus, Single)
+  nameWithType: AudioManager.SetBusVolume(AudioBus, float)
+  nameWithType.vb: AudioManager.SetBusVolume(AudioBus, Single)
+- uid: AshesOfVelsingrad.Managers.AudioManager.SetBusVolume*
+  name: SetBusVolume
+  href: api/AshesOfVelsingrad.Managers.AudioManager.html#AshesOfVelsingrad_Managers_AudioManager_SetBusVolume_
+  commentId: Overload:AshesOfVelsingrad.Managers.AudioManager.SetBusVolume
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.Managers.AudioManager.SetBusVolume
+  nameWithType: AudioManager.SetBusVolume
+- uid: AshesOfVelsingrad.Managers.AudioManager.SettingsPrefix
+  name: SettingsPrefix
+  href: api/AshesOfVelsingrad.Managers.AudioManager.html#AshesOfVelsingrad_Managers_AudioManager_SettingsPrefix
+  commentId: F:AshesOfVelsingrad.Managers.AudioManager.SettingsPrefix
+  fullName: AshesOfVelsingrad.Managers.AudioManager.SettingsPrefix
+  nameWithType: AudioManager.SettingsPrefix
+- uid: AshesOfVelsingrad.Managers.AudioManager.StopAllAmbient(System.Single)
+  name: StopAllAmbient(float)
+  href: api/AshesOfVelsingrad.Managers.AudioManager.html#AshesOfVelsingrad_Managers_AudioManager_StopAllAmbient_System_Single_
+  commentId: M:AshesOfVelsingrad.Managers.AudioManager.StopAllAmbient(System.Single)
+  name.vb: StopAllAmbient(Single)
+  fullName: AshesOfVelsingrad.Managers.AudioManager.StopAllAmbient(float)
+  fullName.vb: AshesOfVelsingrad.Managers.AudioManager.StopAllAmbient(Single)
+  nameWithType: AudioManager.StopAllAmbient(float)
+  nameWithType.vb: AudioManager.StopAllAmbient(Single)
+- uid: AshesOfVelsingrad.Managers.AudioManager.StopAllAmbient*
+  name: StopAllAmbient
+  href: api/AshesOfVelsingrad.Managers.AudioManager.html#AshesOfVelsingrad_Managers_AudioManager_StopAllAmbient_
+  commentId: Overload:AshesOfVelsingrad.Managers.AudioManager.StopAllAmbient
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.Managers.AudioManager.StopAllAmbient
+  nameWithType: AudioManager.StopAllAmbient
+- uid: AshesOfVelsingrad.Managers.AudioManager.StopAmbient(System.String,System.Single)
+  name: StopAmbient(string, float)
+  href: api/AshesOfVelsingrad.Managers.AudioManager.html#AshesOfVelsingrad_Managers_AudioManager_StopAmbient_System_String_System_Single_
+  commentId: M:AshesOfVelsingrad.Managers.AudioManager.StopAmbient(System.String,System.Single)
+  name.vb: StopAmbient(String, Single)
+  fullName: AshesOfVelsingrad.Managers.AudioManager.StopAmbient(string, float)
+  fullName.vb: AshesOfVelsingrad.Managers.AudioManager.StopAmbient(String, Single)
+  nameWithType: AudioManager.StopAmbient(string, float)
+  nameWithType.vb: AudioManager.StopAmbient(String, Single)
+- uid: AshesOfVelsingrad.Managers.AudioManager.StopAmbient*
+  name: StopAmbient
+  href: api/AshesOfVelsingrad.Managers.AudioManager.html#AshesOfVelsingrad_Managers_AudioManager_StopAmbient_
+  commentId: Overload:AshesOfVelsingrad.Managers.AudioManager.StopAmbient
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.Managers.AudioManager.StopAmbient
+  nameWithType: AudioManager.StopAmbient
+- uid: AshesOfVelsingrad.Managers.AudioManager.StopMusic(System.Single)
+  name: StopMusic(float)
+  href: api/AshesOfVelsingrad.Managers.AudioManager.html#AshesOfVelsingrad_Managers_AudioManager_StopMusic_System_Single_
+  commentId: M:AshesOfVelsingrad.Managers.AudioManager.StopMusic(System.Single)
+  name.vb: StopMusic(Single)
+  fullName: AshesOfVelsingrad.Managers.AudioManager.StopMusic(float)
+  fullName.vb: AshesOfVelsingrad.Managers.AudioManager.StopMusic(Single)
+  nameWithType: AudioManager.StopMusic(float)
+  nameWithType.vb: AudioManager.StopMusic(Single)
+- uid: AshesOfVelsingrad.Managers.AudioManager.StopMusic*
+  name: StopMusic
+  href: api/AshesOfVelsingrad.Managers.AudioManager.html#AshesOfVelsingrad_Managers_AudioManager_StopMusic_
+  commentId: Overload:AshesOfVelsingrad.Managers.AudioManager.StopMusic
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.Managers.AudioManager.StopMusic
+  nameWithType: AudioManager.StopMusic
+- uid: AshesOfVelsingrad.Managers.AudioManager._ExitTree
+  name: _ExitTree()
+  href: api/AshesOfVelsingrad.Managers.AudioManager.html#AshesOfVelsingrad_Managers_AudioManager__ExitTree
+  commentId: M:AshesOfVelsingrad.Managers.AudioManager._ExitTree
+  fullName: AshesOfVelsingrad.Managers.AudioManager._ExitTree()
+  nameWithType: AudioManager._ExitTree()
+- uid: AshesOfVelsingrad.Managers.AudioManager._ExitTree*
+  name: _ExitTree
+  href: api/AshesOfVelsingrad.Managers.AudioManager.html#AshesOfVelsingrad_Managers_AudioManager__ExitTree_
+  commentId: Overload:AshesOfVelsingrad.Managers.AudioManager._ExitTree
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.Managers.AudioManager._ExitTree
+  nameWithType: AudioManager._ExitTree
 - uid: AshesOfVelsingrad.Managers.BaseManager
   name: BaseManager
   href: api/AshesOfVelsingrad.Managers.BaseManager.html

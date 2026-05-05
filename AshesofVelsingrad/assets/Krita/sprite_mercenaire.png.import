@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://daii755sg2tdc"
-path.s3tc="res://.godot/imported/sprite_player.png-2cd69d1338b54b8cfd19b8a99d62aa68.s3tc.ctex"
+uid="uid://gn1jvwoe4xtx"
+path.s3tc="res://.godot/imported/sprite_mercenaire.png-50b25616450ece65313c350eac8b0483.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/Krita/sprite_player.png"
-dest_files=["res://.godot/imported/sprite_player.png-2cd69d1338b54b8cfd19b8a99d62aa68.s3tc.ctex"]
+source_file="res://assets/Krita/sprite_mercenaire.png"
+dest_files=["res://.godot/imported/sprite_mercenaire.png-50b25616450ece65313c350eac8b0483.s3tc.ctex"]
 
 [params]
 

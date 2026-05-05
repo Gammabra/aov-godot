@@ -2,11 +2,11 @@
 <html>
   <head>
     <meta charset="utf-8">
-      <title>Class AovPlayer | Ashes of Velsingrad Documentation </title>
+      <title>Class KaelenVoss | Ashes of Velsingrad Documentation </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content="Class AovPlayer | Ashes of Velsingrad Documentation ">
+      <meta name="title" content="Class KaelenVoss | Ashes of Velsingrad Documentation ">
       
-      <meta name="description" content="Represents the main player character in the game. Handles movement, gravity, and initialization of required nodes.">
+      <meta name="description" content="Kaelen Voss — level 1 fighter, named protagonist of the prison-break encounter.">
       <link rel="icon" href="../favicon.ico">
       <link rel="stylesheet" href="../public/docfx.min.css">
       <link rel="stylesheet" href="../public/main.css">
@@ -84,27 +84,26 @@
           <nav id="breadcrumb"></nav>
         </div>
 
-        <article data-uid="AshesOfVelsingrad.player.AovPlayer">
+        <article data-uid="AshesOfVelsingrad.KaelenVoss">
 
 
 
-  <h1 id="AshesOfVelsingrad_player_AovPlayer" data-uid="AshesOfVelsingrad.player.AovPlayer" class="text-break">
-Class AovPlayer  
+  <h1 id="AshesOfVelsingrad_KaelenVoss" data-uid="AshesOfVelsingrad.KaelenVoss" class="text-break">
+Class KaelenVoss  
   </h1>
 
   <div class="facts text-secondary">
-    <dl><dt>Namespace</dt><dd><a class="xref" href="AshesOfVelsingrad.html">AshesOfVelsingrad</a>.<a class="xref" href="AshesOfVelsingrad.player.html">player</a></dd></dl>
+    <dl><dt>Namespace</dt><dd><a class="xref" href="AshesOfVelsingrad.html">AshesOfVelsingrad</a></dd></dl>
   <dl><dt>Assembly</dt><dd>AshesofVelsingrad.dll</dd></dl>
   </div>
 
-  <div class="markdown summary"><p>Represents the main player character in the game.
-Handles movement, gravity, and initialization of required nodes.</p>
+  <div class="markdown summary"><p>Kaelen Voss — level 1 fighter, named protagonist of the prison-break encounter.</p>
 </div>
   <div class="markdown conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[ScriptPath(&quot;res://scripts/player/AovPlayer.cs&quot;)]
-public sealed class AovPlayer : CharacterBody3D, IDisposable, IInteractor</code></pre>
+    <pre><code class="lang-csharp hljs">[ScriptPath(&quot;res://scripts/data/unit/characters/KaelenVoss.cs&quot;)]
+public sealed class KaelenVoss : UnitSystem, IDisposable, IUnitSystem, IEffectTarget&lt;IUnitSystem&gt;, IStatusEffectBehavior, IEffectTarget</code></pre>
   </div>
 
 
@@ -120,7 +119,8 @@ public sealed class AovPlayer : CharacterBody3D, IDisposable, IInteractor</code>
       <div><span class="xref">CollisionObject3D</span></div>
       <div><span class="xref">PhysicsBody3D</span></div>
       <div><span class="xref">CharacterBody3D</span></div>
-      <div><span class="xref">AovPlayer</span></div>
+      <div><a class="xref" href="AshesOfVelsingrad.Systems.UnitSystem.html">UnitSystem</a></div>
+      <div><span class="xref">KaelenVoss</span></div>
     </dd>
   </dl>
 
@@ -128,7 +128,10 @@ public sealed class AovPlayer : CharacterBody3D, IDisposable, IInteractor</code>
     <dt>Implements</dt>
     <dd>
       <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.idisposable">IDisposable</a></div>
-      <div><a class="xref" href="AshesOfVelsingrad.Systems.IInteractor.html">IInteractor</a></div>
+      <div><a class="xref" href="AshesOfVelsingrad.Systems.IUnitSystem.html">IUnitSystem</a></div>
+      <div><a class="xref" href="AshesOfVelsingrad.Systems.IEffectTarget-1.html">IEffectTarget</a>&lt;<a class="xref" href="AshesOfVelsingrad.Systems.IUnitSystem.html">IUnitSystem</a>&gt;</div>
+      <div><a class="xref" href="AshesOfVelsingrad.Systems.IStatusEffectBehavior.html">IStatusEffectBehavior</a></div>
+      <div><a class="xref" href="AshesOfVelsingrad.systems.status_effects.IEffectTarget.html">IEffectTarget</a></div>
     </dd>
   </dl>
 
@@ -136,6 +139,216 @@ public sealed class AovPlayer : CharacterBody3D, IDisposable, IInteractor</code>
   <dl class="typelist inheritedMembers">
     <dt>Inherited Members</dt>
     <dd>
+    <div>
+      <a class="xref" href="AshesOfVelsingrad.Systems.UnitSystem.html#AshesOfVelsingrad_Systems_UnitSystem_PortraitTexture">UnitSystem.PortraitTexture</a>
+    </div>
+    <div>
+      <a class="xref" href="AshesOfVelsingrad.Systems.UnitSystem.html#AshesOfVelsingrad_Systems_UnitSystem_CharacterSprite">UnitSystem.CharacterSprite</a>
+    </div>
+    <div>
+      <a class="xref" href="AshesOfVelsingrad.Systems.UnitSystem.html#AshesOfVelsingrad_Systems_UnitSystem_UnitName">UnitSystem.UnitName</a>
+    </div>
+    <div>
+      <a class="xref" href="AshesOfVelsingrad.Systems.UnitSystem.html#AshesOfVelsingrad_Systems_UnitSystem_Description">UnitSystem.Description</a>
+    </div>
+    <div>
+      <a class="xref" href="AshesOfVelsingrad.Systems.UnitSystem.html#AshesOfVelsingrad_Systems_UnitSystem_Type">UnitSystem.Type</a>
+    </div>
+    <div>
+      <a class="xref" href="AshesOfVelsingrad.Systems.UnitSystem.html#AshesOfVelsingrad_Systems_UnitSystem__Ready">UnitSystem._Ready()</a>
+    </div>
+    <div>
+      <a class="xref" href="AshesOfVelsingrad.Systems.UnitSystem.html#AshesOfVelsingrad_Systems_UnitSystem_InjectDependencies_AshesOfVelsingrad_Systems_StatusEffectSystem_">UnitSystem.InjectDependencies(StatusEffectSystem)</a>
+    </div>
+    <div>
+      <a class="xref" href="AshesOfVelsingrad.Systems.UnitSystem.html#AshesOfVelsingrad_Systems_UnitSystem__PhysicsProcess_System_Double_">UnitSystem._PhysicsProcess(double)</a>
+    </div>
+    <div>
+      <a class="xref" href="AshesOfVelsingrad.Systems.UnitSystem.html#AshesOfVelsingrad_Systems_UnitSystem_WaitForActionAsync">UnitSystem.WaitForActionAsync()</a>
+    </div>
+    <div>
+      <a class="xref" href="AshesOfVelsingrad.Systems.UnitSystem.html#AshesOfVelsingrad_Systems_UnitSystem_PassTurn">UnitSystem.PassTurn()</a>
+    </div>
+    <div>
+      <a class="xref" href="AshesOfVelsingrad.Systems.UnitSystem.html#AshesOfVelsingrad_Systems_UnitSystem__ExitTree">UnitSystem._ExitTree()</a>
+    </div>
+    <div>
+      <a class="xref" href="AshesOfVelsingrad.Systems.UnitSystem.html#AshesOfVelsingrad_Systems_UnitSystem_Heal_System_Single_">UnitSystem.Heal(float)</a>
+    </div>
+    <div>
+      <a class="xref" href="AshesOfVelsingrad.Systems.UnitSystem.html#AshesOfVelsingrad_Systems_UnitSystem_Revive_System_Single_">UnitSystem.Revive(float)</a>
+    </div>
+    <div>
+      <a class="xref" href="AshesOfVelsingrad.Systems.UnitSystem.html#AshesOfVelsingrad_Systems_UnitSystem_SpendMana_System_Single_">UnitSystem.SpendMana(float)</a>
+    </div>
+    <div>
+      <a class="xref" href="AshesOfVelsingrad.Systems.UnitSystem.html#AshesOfVelsingrad_Systems_UnitSystem_RestoreMana_System_Single_">UnitSystem.RestoreMana(float)</a>
+    </div>
+    <div>
+      <a class="xref" href="AshesOfVelsingrad.Systems.UnitSystem.html#AshesOfVelsingrad_Systems_UnitSystem_AdjustAttack_System_Single_">UnitSystem.AdjustAttack(float)</a>
+    </div>
+    <div>
+      <a class="xref" href="AshesOfVelsingrad.Systems.UnitSystem.html#AshesOfVelsingrad_Systems_UnitSystem_AdjustDefense_System_Single_">UnitSystem.AdjustDefense(float)</a>
+    </div>
+    <div>
+      <a class="xref" href="AshesOfVelsingrad.Systems.UnitSystem.html#AshesOfVelsingrad_Systems_UnitSystem_AdjustSpeed_System_Single_">UnitSystem.AdjustSpeed(float)</a>
+    </div>
+    <div>
+      <a class="xref" href="AshesOfVelsingrad.Systems.UnitSystem.html#AshesOfVelsingrad_Systems_UnitSystem_OverrideDisplayName_System_String_">UnitSystem.OverrideDisplayName(string)</a>
+    </div>
+    <div>
+      <a class="xref" href="AshesOfVelsingrad.Systems.UnitSystem.html#AshesOfVelsingrad_Systems_UnitSystem_CorruptionPointsPerLevel">UnitSystem.CorruptionPointsPerLevel</a>
+    </div>
+    <div>
+      <a class="xref" href="AshesOfVelsingrad.Systems.UnitSystem.html#AshesOfVelsingrad_Systems_UnitSystem_MaxCorruptionLevel">UnitSystem.MaxCorruptionLevel</a>
+    </div>
+    <div>
+      <a class="xref" href="AshesOfVelsingrad.Systems.UnitSystem.html#AshesOfVelsingrad_Systems_UnitSystem_CorruptionLevel">UnitSystem.CorruptionLevel</a>
+    </div>
+    <div>
+      <a class="xref" href="AshesOfVelsingrad.Systems.UnitSystem.html#AshesOfVelsingrad_Systems_UnitSystem_CorruptionPoints">UnitSystem.CorruptionPoints</a>
+    </div>
+    <div>
+      <a class="xref" href="AshesOfVelsingrad.Systems.UnitSystem.html#AshesOfVelsingrad_Systems_UnitSystem_Faction">UnitSystem.Faction</a>
+    </div>
+    <div>
+      <a class="xref" href="AshesOfVelsingrad.Systems.UnitSystem.html#AshesOfVelsingrad_Systems_UnitSystem_EntityProfile">UnitSystem.EntityProfile</a>
+    </div>
+    <div>
+      <a class="xref" href="AshesOfVelsingrad.Systems.UnitSystem.html#AshesOfVelsingrad_Systems_UnitSystem_SetFaction_AshesOfVelsingrad_Systems_Faction_">UnitSystem.SetFaction(Faction)</a>
+    </div>
+    <div>
+      <a class="xref" href="AshesOfVelsingrad.Systems.UnitSystem.html#AshesOfVelsingrad_Systems_UnitSystem_AssignFaction_AshesOfVelsingrad_Systems_Faction_">UnitSystem.AssignFaction(Faction)</a>
+    </div>
+    <div>
+      <a class="xref" href="AshesOfVelsingrad.Systems.UnitSystem.html#AshesOfVelsingrad_Systems_UnitSystem_SetEntityProfile_AshesOfVelsingrad_Data_EntityProfile_">UnitSystem.SetEntityProfile(EntityProfile)</a>
+    </div>
+    <div>
+      <a class="xref" href="AshesOfVelsingrad.Systems.UnitSystem.html#AshesOfVelsingrad_Systems_UnitSystem_ApplyEffect_AshesOfVelsingrad_systems_status_effects_StatusEffect_">UnitSystem.ApplyEffect(StatusEffect)</a>
+    </div>
+    <div>
+      <a class="xref" href="AshesOfVelsingrad.Systems.UnitSystem.html#AshesOfVelsingrad_Systems_UnitSystem_RemoveEffect_AshesOfVelsingrad_systems_status_effects_StatusEffect_">UnitSystem.RemoveEffect(StatusEffect)</a>
+    </div>
+    <div>
+      <a class="xref" href="AshesOfVelsingrad.Systems.UnitSystem.html#AshesOfVelsingrad_Systems_UnitSystem_PossibleMovesRange">UnitSystem.PossibleMovesRange</a>
+    </div>
+    <div>
+      <a class="xref" href="AshesOfVelsingrad.Systems.UnitSystem.html#AshesOfVelsingrad_Systems_UnitSystem_GetPossibleMoves_AshesOfVelsingrad_Systems_IMapSystem_">UnitSystem.GetPossibleMoves(IMapSystem)</a>
+    </div>
+    <div>
+      <a class="xref" href="AshesOfVelsingrad.Systems.UnitSystem.html#AshesOfVelsingrad_Systems_UnitSystem_SetGridPosition_System_Int32_System_Int32_System_Int32_AshesOfVelsingrad_Systems_IMapSystem_">UnitSystem.SetGridPosition(int, int, int, IMapSystem)</a>
+    </div>
+    <div>
+      <a class="xref" href="AshesOfVelsingrad.Systems.UnitSystem.html#AshesOfVelsingrad_Systems_UnitSystem_CanMoveTo_System_Int32_System_Int32_System_Int32_AshesOfVelsingrad_Systems_IMapSystem_">UnitSystem.CanMoveTo(int, int, int, IMapSystem)</a>
+    </div>
+    <div>
+      <a class="xref" href="AshesOfVelsingrad.Systems.UnitSystem.html#AshesOfVelsingrad_Systems_UnitSystem_MoveTo_System_Int32_System_Int32_System_Int32_AshesOfVelsingrad_Systems_IMapSystem_">UnitSystem.MoveTo(int, int, int, IMapSystem)</a>
+    </div>
+    <div>
+      <a class="xref" href="AshesOfVelsingrad.Systems.UnitSystem.html#AshesOfVelsingrad_Systems_UnitSystem_ActiveSkills">UnitSystem.ActiveSkills</a>
+    </div>
+    <div>
+      <a class="xref" href="AshesOfVelsingrad.Systems.UnitSystem.html#AshesOfVelsingrad_Systems_UnitSystem_PassiveSkills">UnitSystem.PassiveSkills</a>
+    </div>
+    <div>
+      <a class="xref" href="AshesOfVelsingrad.Systems.UnitSystem.html#AshesOfVelsingrad_Systems_UnitSystem_GetReachableCellsForSkills_AshesOfVelsingrad_Systems_IMapSystem_AshesOfVelsingrad_Systems_ISkillSystem_">UnitSystem.GetReachableCellsForSkills(IMapSystem, ISkillSystem)</a>
+    </div>
+    <div>
+      <a class="xref" href="AshesOfVelsingrad.Systems.UnitSystem.html#AshesOfVelsingrad_Systems_UnitSystem_Play_System_Collections_Generic_List_AshesOfVelsingrad_Systems_IUnitSystem__AshesOfVelsingrad_Systems_IMapSystem_AshesOfVelsingrad_Systems_ISkillSystem_">UnitSystem.Play(List&lt;IUnitSystem&gt;, IMapSystem, ISkillSystem)</a>
+    </div>
+    <div>
+      <a class="xref" href="AshesOfVelsingrad.Systems.UnitSystem.html#AshesOfVelsingrad_Systems_UnitSystem_Hp">UnitSystem.Hp</a>
+    </div>
+    <div>
+      <a class="xref" href="AshesOfVelsingrad.Systems.UnitSystem.html#AshesOfVelsingrad_Systems_UnitSystem_MaxHp">UnitSystem.MaxHp</a>
+    </div>
+    <div>
+      <a class="xref" href="AshesOfVelsingrad.Systems.UnitSystem.html#AshesOfVelsingrad_Systems_UnitSystem_BaseAtk">UnitSystem.BaseAtk</a>
+    </div>
+    <div>
+      <a class="xref" href="AshesOfVelsingrad.Systems.UnitSystem.html#AshesOfVelsingrad_Systems_UnitSystem_BaseDef">UnitSystem.BaseDef</a>
+    </div>
+    <div>
+      <a class="xref" href="AshesOfVelsingrad.Systems.UnitSystem.html#AshesOfVelsingrad_Systems_UnitSystem_BaseSpeed">UnitSystem.BaseSpeed</a>
+    </div>
+    <div>
+      <a class="xref" href="AshesOfVelsingrad.Systems.UnitSystem.html#AshesOfVelsingrad_Systems_UnitSystem_Intelligence">UnitSystem.Intelligence</a>
+    </div>
+    <div>
+      <a class="xref" href="AshesOfVelsingrad.Systems.UnitSystem.html#AshesOfVelsingrad_Systems_UnitSystem_ManaMax">UnitSystem.ManaMax</a>
+    </div>
+    <div>
+      <a class="xref" href="AshesOfVelsingrad.Systems.UnitSystem.html#AshesOfVelsingrad_Systems_UnitSystem_Mana">UnitSystem.Mana</a>
+    </div>
+    <div>
+      <a class="xref" href="AshesOfVelsingrad.Systems.UnitSystem.html#AshesOfVelsingrad_Systems_UnitSystem_Curse">UnitSystem.Curse</a>
+    </div>
+    <div>
+      <a class="xref" href="AshesOfVelsingrad.Systems.UnitSystem.html#AshesOfVelsingrad_Systems_UnitSystem_Personality">UnitSystem.Personality</a>
+    </div>
+    <div>
+      <a class="xref" href="AshesOfVelsingrad.Systems.UnitSystem.html#AshesOfVelsingrad_Systems_UnitSystem_IsAlive">UnitSystem.IsAlive</a>
+    </div>
+    <div>
+      <a class="xref" href="AshesOfVelsingrad.Systems.UnitSystem.html#AshesOfVelsingrad_Systems_UnitSystem_SetIsAlive_System_Boolean_">UnitSystem.SetIsAlive(bool)</a>
+    </div>
+    <div>
+      <a class="xref" href="AshesOfVelsingrad.Systems.UnitSystem.html#AshesOfVelsingrad_Systems_UnitSystem_TakeDamage_System_Single_">UnitSystem.TakeDamage(float)</a>
+    </div>
+    <div>
+      <a class="xref" href="AshesOfVelsingrad.Systems.UnitSystem.html#AshesOfVelsingrad_Systems_UnitSystem_BypassDamage_System_Single_">UnitSystem.BypassDamage(float)</a>
+    </div>
+    <div>
+      <a class="xref" href="AshesOfVelsingrad.Systems.UnitSystem.html#AshesOfVelsingrad_Systems_UnitSystem_TotalAtk">UnitSystem.TotalAtk</a>
+    </div>
+    <div>
+      <a class="xref" href="AshesOfVelsingrad.Systems.UnitSystem.html#AshesOfVelsingrad_Systems_UnitSystem_TotalDef">UnitSystem.TotalDef</a>
+    </div>
+    <div>
+      <a class="xref" href="AshesOfVelsingrad.Systems.UnitSystem.html#AshesOfVelsingrad_Systems_UnitSystem_IsControlled">UnitSystem.IsControlled</a>
+    </div>
+    <div>
+      <a class="xref" href="AshesOfVelsingrad.Systems.UnitSystem.html#AshesOfVelsingrad_Systems_UnitSystem_SetStatusEffectOnUnit_AshesOfVelsingrad_Systems_StatusEffect_AshesOfVelsingrad_Systems_IUnitSystem__">UnitSystem.SetStatusEffectOnUnit(StatusEffect&lt;IUnitSystem&gt;)</a>
+    </div>
+    <div>
+      <a class="xref" href="AshesOfVelsingrad.Systems.UnitSystem.html#AshesOfVelsingrad_Systems_UnitSystem_ApplyEffect_AshesOfVelsingrad_Systems_StatusEffect_AshesOfVelsingrad_Systems_IUnitSystem__">UnitSystem.ApplyEffect(StatusEffect&lt;IUnitSystem&gt;)</a>
+    </div>
+    <div>
+      <a class="xref" href="AshesOfVelsingrad.Systems.UnitSystem.html#AshesOfVelsingrad_Systems_UnitSystem_RemoveEffect_AshesOfVelsingrad_Systems_StatusEffect_AshesOfVelsingrad_Systems_IUnitSystem__">UnitSystem.RemoveEffect(StatusEffect&lt;IUnitSystem&gt;)</a>
+    </div>
+    <div>
+      <a class="xref" href="AshesOfVelsingrad.Systems.UnitSystem.html#AshesOfVelsingrad_Systems_UnitSystem_HasEffect__1">UnitSystem.HasEffect&lt;T&gt;()</a>
+    </div>
+    <div>
+      <a class="xref" href="AshesOfVelsingrad.Systems.UnitSystem.html#AshesOfVelsingrad_Systems_UnitSystem_GetActiveEffects">UnitSystem.GetActiveEffects()</a>
+    </div>
+    <div>
+      <a class="xref" href="AshesOfVelsingrad.Systems.UnitSystem.html#AshesOfVelsingrad_Systems_UnitSystem_OnEffectDamage_AshesOfVelsingrad_Utilities_AovDataStructures_ModifierType_System_Single_">UnitSystem.OnEffectDamage(AovDataStructures.ModifierType, float)</a>
+    </div>
+    <div>
+      <a class="xref" href="AshesOfVelsingrad.Systems.UnitSystem.html#AshesOfVelsingrad_Systems_UnitSystem_OnEffectHeal_System_Single_">UnitSystem.OnEffectHeal(float)</a>
+    </div>
+    <div>
+      <a class="xref" href="AshesOfVelsingrad.Systems.UnitSystem.html#AshesOfVelsingrad_Systems_UnitSystem_OnEffectRevive_AshesOfVelsingrad_Utilities_AovDataStructures_ModifierType_System_Single_">UnitSystem.OnEffectRevive(AovDataStructures.ModifierType, float)</a>
+    </div>
+    <div>
+      <a class="xref" href="AshesOfVelsingrad.Systems.UnitSystem.html#AshesOfVelsingrad_Systems_UnitSystem_OnEffectModifierApplied_AshesOfVelsingrad_Utilities_AovDataStructures_StatTypeWithModifier_AshesOfVelsingrad_Utilities_AovDataStructures_ModifierType_System_Single_">UnitSystem.OnEffectModifierApplied(AovDataStructures.StatTypeWithModifier, AovDataStructures.ModifierType, float)</a>
+    </div>
+    <div>
+      <a class="xref" href="AshesOfVelsingrad.Systems.UnitSystem.html#AshesOfVelsingrad_Systems_UnitSystem_OnEffectModifierRemoved_AshesOfVelsingrad_Utilities_AovDataStructures_StatTypeWithModifier_AshesOfVelsingrad_Utilities_AovDataStructures_ModifierType_System_Single_">UnitSystem.OnEffectModifierRemoved(AovDataStructures.StatTypeWithModifier, AovDataStructures.ModifierType, float)</a>
+    </div>
+    <div>
+      <a class="xref" href="AshesOfVelsingrad.Systems.UnitSystem.html#AshesOfVelsingrad_Systems_UnitSystem_OnEffectControlApplied">UnitSystem.OnEffectControlApplied()</a>
+    </div>
+    <div>
+      <a class="xref" href="AshesOfVelsingrad.Systems.UnitSystem.html#AshesOfVelsingrad_Systems_UnitSystem_OnEffectControlRemoved">UnitSystem.OnEffectControlRemoved()</a>
+    </div>
+    <div>
+      <a class="xref" href="AshesOfVelsingrad.Systems.UnitSystem.html#AshesOfVelsingrad_Systems_UnitSystem_PortraitChanged">UnitSystem.PortraitChanged</a>
+    </div>
+    <div>
+      <a class="xref" href="AshesOfVelsingrad.Systems.UnitSystem.html#AshesOfVelsingrad_Systems_UnitSystem_HealthChanged">UnitSystem.HealthChanged</a>
+    </div>
     <div>
       <span class="xref">CharacterBody3D.MoveAndSlide()</span>
     </div>
@@ -723,6 +936,9 @@ public sealed class AovPlayer : CharacterBody3D, IDisposable, IInteractor</code>
     </div>
     <div>
       <span class="xref">Node._GetFocusedAccessibilityElement()</span>
+    </div>
+    <div>
+      <span class="xref">Node._Input(InputEvent)</span>
     </div>
     <div>
       <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">Node._Process(double)</a>
@@ -1350,26 +1566,33 @@ public sealed class AovPlayer : CharacterBody3D, IDisposable, IInteractor</code>
 
 
 
+  <h2 id="AshesOfVelsingrad_KaelenVoss_remarks">Remarks</h2>
+  <div class="markdown level0 remarks"><p>Player-controlled by default (faction set to <a class="xref" href="AshesOfVelsingrad.Systems.Faction.html#AshesOfVelsingrad_Systems_Faction_Player">Player</a> by
+<code>GameManager.LoadUnits</code> based on which container the unit lives in).
+Active loadout uses the Fighter catalogue: <code>CrushingStrike</code>, <code>WarCry</code>,
+<code>Charge</code>, <code>Block</code>, <code>CircularStrike</code>. Passives are wired into
+<code>PassiveSkills</code> for future damage-formula hooks.</p>
+</div>
 
 
   <h2 class="section" id="methods">Methods
 </h2>
 
 
-  <a id="AshesOfVelsingrad_player_AovPlayer__ExitTree_" data-uid="AshesOfVelsingrad.player.AovPlayer._ExitTree*"></a>
+  <a id="AshesOfVelsingrad_KaelenVoss_Initialize_" data-uid="AshesOfVelsingrad.KaelenVoss.Initialize*"></a>
 
-  <h3 id="AshesOfVelsingrad_player_AovPlayer__ExitTree" data-uid="AshesOfVelsingrad.player.AovPlayer._ExitTree">
-  _ExitTree()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/player/AovPlayer.cs/#L83"><i class="bi bi-code-slash"></i></a>
+  <h3 id="AshesOfVelsingrad_KaelenVoss_Initialize" data-uid="AshesOfVelsingrad.KaelenVoss.Initialize">
+  Initialize()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/data/unit/characters/KaelenVoss.cs/#L23"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Called when the node is about to leave the <span class="xref">Godot.SceneTree</span> (e.g. upon freeing, scene changing, or after calling <span class="xref">Godot.Node.RemoveChild(Godot.Node)</span> in a script). If the node has children, its <span class="xref">Godot.Node._ExitTree()</span> callback will be called last, after all its children have left the tree.</p>
-<p>Corresponds to the <span class="xref">Godot.Node.NotificationExitTree</span> notification in <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">_Notification(int)</a> and signal <span class="xref">Godot.Node.TreeExiting</span>. To get notified when the node has already left the active tree, connect to the <span class="xref">Godot.Node.TreeExited</span>.</p>
+  <div class="markdown level1 summary"><p>Initializes the unit instance
+This method should be overridden in derived classes to set up specific functionality.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public override void _ExitTree()</code></pre>
+    <pre><code class="lang-csharp hljs">protected override void Initialize()</code></pre>
   </div>
 
 
@@ -1380,117 +1603,11 @@ public sealed class AovPlayer : CharacterBody3D, IDisposable, IInteractor</code>
 
 
 
-  <h4 class="section" id="AshesOfVelsingrad_player_AovPlayer__ExitTree_remarks">Remarks</h4>
-  <div class="markdown level1 remarks"><p>Clear the static <span class="xref">AshesOfVelsingrad.player.AovPlayer._instance</span> when this node leaves the tree
-(scene unload, scene reload via <code>BattleLauncher</code>'s Forfeit / Continue
-flow). Without this, the new <a class="xref" href="AshesOfVelsingrad.player.AovPlayer.html">AovPlayer</a> on the reloaded
-exploration scene sees a stale <code>_instance</code> still pointing at the just-
-unloaded player and <span class="xref">Godot.Node.QueueFree()</span>s itself as a &quot;duplicate&quot; —
-the scene then renders with no player and frozen camera.</p>
+  <h4 class="section" id="AshesOfVelsingrad_KaelenVoss_Initialize_remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>This method is called by the _Ready method to initialize the map.
+It should contain the logic necessary to set up the unit's state and functionality.
+Derived classes must implement this method to provide their specific initialization logic.</p>
 </div>
-
-
-
-
-  <a id="AshesOfVelsingrad_player_AovPlayer__Input_" data-uid="AshesOfVelsingrad.player.AovPlayer._Input*"></a>
-
-  <h3 id="AshesOfVelsingrad_player_AovPlayer__Input_Godot_InputEvent_" data-uid="AshesOfVelsingrad.player.AovPlayer._Input(Godot.InputEvent)">
-  _Input(InputEvent)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/player/AovPlayer.cs/#L89"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Called when there is an input event. The input event propagates up through the node tree until a node consumes it.</p>
-<p>It is only called if input processing is enabled, which is done automatically if this method is overridden, and can be toggled with <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">SetProcessInput(bool)</a>.</p>
-<p>To consume the input event and stop it propagating further to other nodes, <span class="xref">Godot.Viewport.SetInputAsHandled()</span> can be called.</p>
-<p>For gameplay input, <span class="xref">Godot.Node._UnhandledInput(Godot.InputEvent)</span> and <span class="xref">Godot.Node._UnhandledKeyInput(Godot.InputEvent)</span> are usually a better fit as they allow the GUI to intercept the events first.</p>
-<p><b>Note:</b> This method is only called if the node is present in the scene tree (i.e. if it's not an orphan).</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public override void _Input(InputEvent @event)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>event</code> <span class="xref">InputEvent</span></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-
-
-  <a id="AshesOfVelsingrad_player_AovPlayer__PhysicsProcess_" data-uid="AshesOfVelsingrad.player.AovPlayer._PhysicsProcess*"></a>
-
-  <h3 id="AshesOfVelsingrad_player_AovPlayer__PhysicsProcess_System_Double_" data-uid="AshesOfVelsingrad.player.AovPlayer._PhysicsProcess(System.Double)">
-  _PhysicsProcess(double)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/player/AovPlayer.cs/#L102"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Called once on each physics tick, and allows Nodes to synchronize their logic with physics ticks. <code class="paramref">delta</code> is the logical time between physics ticks in seconds and is equal to <span class="xref">Godot.Engine.TimeScale</span> / <span class="xref">Godot.Engine.PhysicsTicksPerSecond</span>.</p>
-<p>It is only called if physics processing is enabled for this Node, which is done automatically if this method is overridden, and can be toggled with <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">SetPhysicsProcess(bool)</a>.</p>
-<p>Processing happens in order of <span class="xref">Godot.Node.ProcessPhysicsPriority</span>, lower priority values are called first. Nodes with the same priority are processed in tree order, or top to bottom as seen in the editor (also known as pre-order traversal).</p>
-<p>Corresponds to the <span class="xref">Godot.Node.NotificationPhysicsProcess</span> notification in <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">_Notification(int)</a>.</p>
-<p><b>Note:</b> This method is only called if the node is present in the scene tree (i.e. if it's not an orphan).</p>
-<p><b>Note:</b> Accumulated <code class="paramref">delta</code> may diverge from real world seconds.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public override void _PhysicsProcess(double delta)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>delta</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-
-
-  <a id="AshesOfVelsingrad_player_AovPlayer__Ready_" data-uid="AshesOfVelsingrad.player.AovPlayer._Ready*"></a>
-
-  <h3 id="AshesOfVelsingrad_player_AovPlayer__Ready" data-uid="AshesOfVelsingrad.player.AovPlayer._Ready">
-  _Ready()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/player/AovPlayer.cs/#L56"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Called when the node is "ready", i.e. when both the node and its children have entered the scene tree. If the node has children, their <span class="xref">Godot.Node._Ready()</span> callbacks get triggered first, and the parent node will receive the ready notification afterwards.</p>
-<p>Corresponds to the <span class="xref">Godot.Node.NotificationReady</span> notification in <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">_Notification(int)</a>. See also the <code>@onready</code> annotation for variables.</p>
-<p>Usually used for initialization. For even earlier initialization, <span class="xref">Godot.GodotObject.GodotObject()</span> may be used. See also <span class="xref">Godot.Node._EnterTree()</span>.</p>
-<p><b>Note:</b> This method may be called only once for each node. After removing a node from the scene tree and adding it again, <span class="xref">Godot.Node._Ready()</span> will <b>not</b> be called a second time. This can be bypassed by requesting another call with <span class="xref">Godot.Node.RequestReady()</span>, which may be called anywhere before adding the node again.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public override void _Ready()</code></pre>
-  </div>
-
-
-
-
-
-
-
-
-
 
 
 

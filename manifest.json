@@ -1636,6 +1636,20 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.EnemySoldier.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.EnemySoldier.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.EnemySoldier",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.EnemySoldier.yml\" sourcestartlinenumber=\"1\">Generic configurable enemy soldier — every stat, name, and portrait can be\noverridden from the Inspector so a designer can drop an instance into any\nbattle scene and shape it without touching the script.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "documentation/api/AshesOfVelsingrad.EnemyStaggeringBlow.yml",
       "output": {
         ".html": {
@@ -2504,6 +2518,20 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.KaelenVoss.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.KaelenVoss.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.KaelenVoss",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.KaelenVoss.yml\" sourcestartlinenumber=\"1\">Kaelen Voss — level 1 fighter, named protagonist of the prison-break encounter.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "documentation/api/AshesOfVelsingrad.LightBolt.yml",
       "output": {
         ".html": {
@@ -2571,6 +2599,20 @@
       "IsMRef": true,
       "Title": "AshesOfVelsingrad.Managers.BaseManager",
       "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.Managers.BaseManager.yml\" sourcestartlinenumber=\"1\">Base class for all manager singletons in the game.\nImplements the Manager Pattern from your architecture documentation.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.Managers.BattleLauncher.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.Managers.BattleLauncher.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.Managers.BattleLauncher",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.Managers.BattleLauncher.yml\" sourcestartlinenumber=\"1\">Autoload that owns the exploration ↔ battle transition.</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -2725,6 +2767,20 @@
       "IsMRef": true,
       "Title": "AshesOfVelsingrad.Managers",
       "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.MercenaryAlly.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.MercenaryAlly.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.MercenaryAlly",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.MercenaryAlly.yml\" sourcestartlinenumber=\"1\">Mercenary — level 1 fighter, AI-controlled friendly guest.</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -2910,6 +2966,20 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.Systems.Battle.BattleSetup.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.Systems.Battle.BattleSetup.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.Systems.Battle.BattleSetup",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.Systems.Battle.BattleSetup.yml\" sourcestartlinenumber=\"1\">Declarative description of an encounter — who fights, on which map, and where to\nreturn when the battle resolves. Built by the exploration layer (an\n<xref href=\"AshesOfVelsingrad.Systems.Battle.NpcBattleTrigger\" data-throw-if-not-resolved=\"false\"></xref> on a story-quest NPC, a procedural encounter\ngenerator, etc.) and handed to <xref href=\"AshesOfVelsingrad.Managers.BattleLauncher\" data-throw-if-not-resolved=\"false\"></xref>.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "documentation/api/AshesOfVelsingrad.Systems.Battle.FactionMarker.yml",
       "output": {
         ".html": {
@@ -2949,6 +3019,20 @@
       "IsMRef": true,
       "Title": "AshesOfVelsingrad.Systems.Battle.MoveIndicator",
       "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.Systems.Battle.MoveIndicator.yml\" sourcestartlinenumber=\"1\">World-space overlay that draws a translucent quad above each cell in a list.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.Systems.Battle.NpcBattleTrigger.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.Systems.Battle.NpcBattleTrigger.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.Systems.Battle.NpcBattleTrigger",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.Systems.Battle.NpcBattleTrigger.yml\" sourcestartlinenumber=\"1\">Drop this on an NPC node in an exploration scene to make that NPC launch a\nconfigurable battle when the player interacts with them.</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -3690,7 +3774,7 @@
       "Uid": null,
       "IsMRef": true,
       "Title": "AshesOfVelsingrad.data.npc.Soldier",
-      "Summary": null
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.data.npc.Soldier.yml\" sourcestartlinenumber=\"1\">Hostile NPC that triggers a battle when the player interacts with them.</p>\n"
     },
     {
       "type": "ManagedReference",

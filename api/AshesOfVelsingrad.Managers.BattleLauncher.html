@@ -2,11 +2,11 @@
 <html>
   <head>
     <meta charset="utf-8">
-      <title>Class AovPlayer | Ashes of Velsingrad Documentation </title>
+      <title>Class BattleLauncher | Ashes of Velsingrad Documentation </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content="Class AovPlayer | Ashes of Velsingrad Documentation ">
+      <meta name="title" content="Class BattleLauncher | Ashes of Velsingrad Documentation ">
       
-      <meta name="description" content="Represents the main player character in the game. Handles movement, gravity, and initialization of required nodes.">
+      <meta name="description" content="Autoload that owns the exploration ↔ battle transition.">
       <link rel="icon" href="../favicon.ico">
       <link rel="stylesheet" href="../public/docfx.min.css">
       <link rel="stylesheet" href="../public/main.css">
@@ -84,27 +84,26 @@
           <nav id="breadcrumb"></nav>
         </div>
 
-        <article data-uid="AshesOfVelsingrad.player.AovPlayer">
+        <article data-uid="AshesOfVelsingrad.Managers.BattleLauncher">
 
 
 
-  <h1 id="AshesOfVelsingrad_player_AovPlayer" data-uid="AshesOfVelsingrad.player.AovPlayer" class="text-break">
-Class AovPlayer  
+  <h1 id="AshesOfVelsingrad_Managers_BattleLauncher" data-uid="AshesOfVelsingrad.Managers.BattleLauncher" class="text-break">
+Class BattleLauncher  
   </h1>
 
   <div class="facts text-secondary">
-    <dl><dt>Namespace</dt><dd><a class="xref" href="AshesOfVelsingrad.html">AshesOfVelsingrad</a>.<a class="xref" href="AshesOfVelsingrad.player.html">player</a></dd></dl>
+    <dl><dt>Namespace</dt><dd><a class="xref" href="AshesOfVelsingrad.html">AshesOfVelsingrad</a>.<a class="xref" href="AshesOfVelsingrad.Managers.html">Managers</a></dd></dl>
   <dl><dt>Assembly</dt><dd>AshesofVelsingrad.dll</dd></dl>
   </div>
 
-  <div class="markdown summary"><p>Represents the main player character in the game.
-Handles movement, gravity, and initialization of required nodes.</p>
+  <div class="markdown summary"><p>Autoload that owns the exploration ↔ battle transition.</p>
 </div>
   <div class="markdown conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[ScriptPath(&quot;res://scripts/player/AovPlayer.cs&quot;)]
-public sealed class AovPlayer : CharacterBody3D, IDisposable, IInteractor</code></pre>
+    <pre><code class="lang-csharp hljs">[ScriptPath(&quot;res://scripts/managers/BattleLauncher.cs&quot;)]
+public sealed class BattleLauncher : Node, IDisposable</code></pre>
   </div>
 
 
@@ -116,11 +115,7 @@ public sealed class AovPlayer : CharacterBody3D, IDisposable, IInteractor</code>
       <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
       <div><span class="xref">GodotObject</span></div>
       <div><span class="xref">Node</span></div>
-      <div><span class="xref">Node3D</span></div>
-      <div><span class="xref">CollisionObject3D</span></div>
-      <div><span class="xref">PhysicsBody3D</span></div>
-      <div><span class="xref">CharacterBody3D</span></div>
-      <div><span class="xref">AovPlayer</span></div>
+      <div><span class="xref">BattleLauncher</span></div>
     </dd>
   </dl>
 
@@ -128,7 +123,6 @@ public sealed class AovPlayer : CharacterBody3D, IDisposable, IInteractor</code>
     <dt>Implements</dt>
     <dd>
       <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.idisposable">IDisposable</a></div>
-      <div><a class="xref" href="AshesOfVelsingrad.Systems.IInteractor.html">IInteractor</a></div>
     </dd>
   </dl>
 
@@ -136,420 +130,6 @@ public sealed class AovPlayer : CharacterBody3D, IDisposable, IInteractor</code>
   <dl class="typelist inheritedMembers">
     <dt>Inherited Members</dt>
     <dd>
-    <div>
-      <span class="xref">CharacterBody3D.MoveAndSlide()</span>
-    </div>
-    <div>
-      <span class="xref">CharacterBody3D.ApplyFloorSnap()</span>
-    </div>
-    <div>
-      <span class="xref">CharacterBody3D.IsOnFloor()</span>
-    </div>
-    <div>
-      <span class="xref">CharacterBody3D.IsOnFloorOnly()</span>
-    </div>
-    <div>
-      <span class="xref">CharacterBody3D.IsOnCeiling()</span>
-    </div>
-    <div>
-      <span class="xref">CharacterBody3D.IsOnCeilingOnly()</span>
-    </div>
-    <div>
-      <span class="xref">CharacterBody3D.IsOnWall()</span>
-    </div>
-    <div>
-      <span class="xref">CharacterBody3D.IsOnWallOnly()</span>
-    </div>
-    <div>
-      <span class="xref">CharacterBody3D.GetFloorNormal()</span>
-    </div>
-    <div>
-      <span class="xref">CharacterBody3D.GetWallNormal()</span>
-    </div>
-    <div>
-      <span class="xref">CharacterBody3D.GetLastMotion()</span>
-    </div>
-    <div>
-      <span class="xref">CharacterBody3D.GetPositionDelta()</span>
-    </div>
-    <div>
-      <span class="xref">CharacterBody3D.GetRealVelocity()</span>
-    </div>
-    <div>
-      <span class="xref">CharacterBody3D.GetFloorAngle(Vector3?)</span>
-    </div>
-    <div>
-      <span class="xref">CharacterBody3D.GetPlatformVelocity()</span>
-    </div>
-    <div>
-      <span class="xref">CharacterBody3D.GetPlatformAngularVelocity()</span>
-    </div>
-    <div>
-      <span class="xref">CharacterBody3D.GetSlideCollisionCount()</span>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">CharacterBody3D.GetSlideCollision(int)</a>
-    </div>
-    <div>
-      <span class="xref">CharacterBody3D.GetLastSlideCollision()</span>
-    </div>
-    <div>
-      <span class="xref">CharacterBody3D.MotionMode</span>
-    </div>
-    <div>
-      <span class="xref">CharacterBody3D.UpDirection</span>
-    </div>
-    <div>
-      <span class="xref">CharacterBody3D.SlideOnCeiling</span>
-    </div>
-    <div>
-      <span class="xref">CharacterBody3D.Velocity</span>
-    </div>
-    <div>
-      <span class="xref">CharacterBody3D.MaxSlides</span>
-    </div>
-    <div>
-      <span class="xref">CharacterBody3D.WallMinSlideAngle</span>
-    </div>
-    <div>
-      <span class="xref">CharacterBody3D.FloorStopOnSlope</span>
-    </div>
-    <div>
-      <span class="xref">CharacterBody3D.FloorConstantSpeed</span>
-    </div>
-    <div>
-      <span class="xref">CharacterBody3D.FloorBlockOnWall</span>
-    </div>
-    <div>
-      <span class="xref">CharacterBody3D.FloorMaxAngle</span>
-    </div>
-    <div>
-      <span class="xref">CharacterBody3D.FloorSnapLength</span>
-    </div>
-    <div>
-      <span class="xref">CharacterBody3D.PlatformOnLeave</span>
-    </div>
-    <div>
-      <span class="xref">CharacterBody3D.PlatformFloorLayers</span>
-    </div>
-    <div>
-      <span class="xref">CharacterBody3D.PlatformWallLayers</span>
-    </div>
-    <div>
-      <span class="xref">CharacterBody3D.SafeMargin</span>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">PhysicsBody3D.MoveAndCollide(Vector3, bool, float, bool, int)</a>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">PhysicsBody3D.TestMove(Transform3D, Vector3, KinematicCollision3D, float, bool, int)</a>
-    </div>
-    <div>
-      <span class="xref">PhysicsBody3D.GetGravity()</span>
-    </div>
-    <div>
-      <span class="xref">PhysicsBody3D.GetCollisionExceptions()</span>
-    </div>
-    <div>
-      <span class="xref">PhysicsBody3D.AddCollisionExceptionWith(Node)</span>
-    </div>
-    <div>
-      <span class="xref">PhysicsBody3D.RemoveCollisionExceptionWith(Node)</span>
-    </div>
-    <div>
-      <span class="xref">PhysicsBody3D.AxisLockLinearX</span>
-    </div>
-    <div>
-      <span class="xref">PhysicsBody3D.AxisLockLinearY</span>
-    </div>
-    <div>
-      <span class="xref">PhysicsBody3D.AxisLockLinearZ</span>
-    </div>
-    <div>
-      <span class="xref">PhysicsBody3D.AxisLockAngularX</span>
-    </div>
-    <div>
-      <span class="xref">PhysicsBody3D.AxisLockAngularY</span>
-    </div>
-    <div>
-      <span class="xref">PhysicsBody3D.AxisLockAngularZ</span>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">CollisionObject3D._InputEvent(Camera3D, InputEvent, Vector3, Vector3, int)</a>
-    </div>
-    <div>
-      <span class="xref">CollisionObject3D._MouseEnter()</span>
-    </div>
-    <div>
-      <span class="xref">CollisionObject3D._MouseExit()</span>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">CollisionObject3D.SetCollisionLayerValue(int, bool)</a>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">CollisionObject3D.GetCollisionLayerValue(int)</a>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">CollisionObject3D.SetCollisionMaskValue(int, bool)</a>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">CollisionObject3D.GetCollisionMaskValue(int)</a>
-    </div>
-    <div>
-      <span class="xref">CollisionObject3D.GetRid()</span>
-    </div>
-    <div>
-      <span class="xref">CollisionObject3D.CreateShapeOwner(GodotObject)</span>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint32">CollisionObject3D.RemoveShapeOwner(uint)</a>
-    </div>
-    <div>
-      <span class="xref">CollisionObject3D.GetShapeOwners()</span>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint32">CollisionObject3D.ShapeOwnerSetTransform(uint, Transform3D)</a>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint32">CollisionObject3D.ShapeOwnerGetTransform(uint)</a>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint32">CollisionObject3D.ShapeOwnerGetOwner(uint)</a>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint32">CollisionObject3D.ShapeOwnerSetDisabled(uint, bool)</a>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint32">CollisionObject3D.IsShapeOwnerDisabled(uint)</a>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint32">CollisionObject3D.ShapeOwnerAddShape(uint, Shape3D)</a>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint32">CollisionObject3D.ShapeOwnerGetShapeCount(uint)</a>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint32">CollisionObject3D.ShapeOwnerGetShape(uint, int)</a>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint32">CollisionObject3D.ShapeOwnerGetShapeIndex(uint, int)</a>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint32">CollisionObject3D.ShapeOwnerRemoveShape(uint, int)</a>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint32">CollisionObject3D.ShapeOwnerClearShapes(uint)</a>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">CollisionObject3D.ShapeFindOwner(int)</a>
-    </div>
-    <div>
-      <span class="xref">CollisionObject3D.DisableMode</span>
-    </div>
-    <div>
-      <span class="xref">CollisionObject3D.CollisionLayer</span>
-    </div>
-    <div>
-      <span class="xref">CollisionObject3D.CollisionMask</span>
-    </div>
-    <div>
-      <span class="xref">CollisionObject3D.CollisionPriority</span>
-    </div>
-    <div>
-      <span class="xref">CollisionObject3D.InputRayPickable</span>
-    </div>
-    <div>
-      <span class="xref">CollisionObject3D.InputCaptureOnDrag</span>
-    </div>
-    <div>
-      <span class="xref">CollisionObject3D.InputEvent</span>
-    </div>
-    <div>
-      <span class="xref">CollisionObject3D.MouseEntered</span>
-    </div>
-    <div>
-      <span class="xref">CollisionObject3D.MouseExited</span>
-    </div>
-    <div>
-      <span class="xref">Node3D.NotificationTransformChanged</span>
-    </div>
-    <div>
-      <span class="xref">Node3D.NotificationEnterWorld</span>
-    </div>
-    <div>
-      <span class="xref">Node3D.NotificationExitWorld</span>
-    </div>
-    <div>
-      <span class="xref">Node3D.NotificationVisibilityChanged</span>
-    </div>
-    <div>
-      <span class="xref">Node3D.NotificationLocalTransformChanged</span>
-    </div>
-    <div>
-      <span class="xref">Node3D.GetGlobalTransformInterpolated()</span>
-    </div>
-    <div>
-      <span class="xref">Node3D.GetParentNode3D()</span>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Node3D.SetIgnoreTransformNotification(bool)</a>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Node3D.SetDisableScale(bool)</a>
-    </div>
-    <div>
-      <span class="xref">Node3D.IsScaleDisabled()</span>
-    </div>
-    <div>
-      <span class="xref">Node3D.GetWorld3D()</span>
-    </div>
-    <div>
-      <span class="xref">Node3D.ForceUpdateTransform()</span>
-    </div>
-    <div>
-      <span class="xref">Node3D.UpdateGizmos()</span>
-    </div>
-    <div>
-      <span class="xref">Node3D.AddGizmo(Node3DGizmo)</span>
-    </div>
-    <div>
-      <span class="xref">Node3D.GetGizmos()</span>
-    </div>
-    <div>
-      <span class="xref">Node3D.ClearGizmos()</span>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Node3D.SetSubgizmoSelection(Node3DGizmo, int, Transform3D)</a>
-    </div>
-    <div>
-      <span class="xref">Node3D.ClearSubgizmoSelection()</span>
-    </div>
-    <div>
-      <span class="xref">Node3D.IsVisibleInTree()</span>
-    </div>
-    <div>
-      <span class="xref">Node3D.Show()</span>
-    </div>
-    <div>
-      <span class="xref">Node3D.Hide()</span>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Node3D.SetNotifyLocalTransform(bool)</a>
-    </div>
-    <div>
-      <span class="xref">Node3D.IsLocalTransformNotificationEnabled()</span>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Node3D.SetNotifyTransform(bool)</a>
-    </div>
-    <div>
-      <span class="xref">Node3D.IsTransformNotificationEnabled()</span>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">Node3D.Rotate(Vector3, float)</a>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">Node3D.GlobalRotate(Vector3, float)</a>
-    </div>
-    <div>
-      <span class="xref">Node3D.GlobalScale(Vector3)</span>
-    </div>
-    <div>
-      <span class="xref">Node3D.GlobalTranslate(Vector3)</span>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">Node3D.RotateObjectLocal(Vector3, float)</a>
-    </div>
-    <div>
-      <span class="xref">Node3D.ScaleObjectLocal(Vector3)</span>
-    </div>
-    <div>
-      <span class="xref">Node3D.TranslateObjectLocal(Vector3)</span>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">Node3D.RotateX(float)</a>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">Node3D.RotateY(float)</a>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">Node3D.RotateZ(float)</a>
-    </div>
-    <div>
-      <span class="xref">Node3D.Translate(Vector3)</span>
-    </div>
-    <div>
-      <span class="xref">Node3D.Orthonormalize()</span>
-    </div>
-    <div>
-      <span class="xref">Node3D.SetIdentity()</span>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Node3D.LookAt(Vector3, Vector3?, bool)</a>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Node3D.LookAtFromPosition(Vector3, Vector3, Vector3?, bool)</a>
-    </div>
-    <div>
-      <span class="xref">Node3D.ToLocal(Vector3)</span>
-    </div>
-    <div>
-      <span class="xref">Node3D.ToGlobal(Vector3)</span>
-    </div>
-    <div>
-      <span class="xref">Node3D.Transform</span>
-    </div>
-    <div>
-      <span class="xref">Node3D.GlobalTransform</span>
-    </div>
-    <div>
-      <span class="xref">Node3D.Position</span>
-    </div>
-    <div>
-      <span class="xref">Node3D.Rotation</span>
-    </div>
-    <div>
-      <span class="xref">Node3D.RotationDegrees</span>
-    </div>
-    <div>
-      <span class="xref">Node3D.Quaternion</span>
-    </div>
-    <div>
-      <span class="xref">Node3D.Basis</span>
-    </div>
-    <div>
-      <span class="xref">Node3D.Scale</span>
-    </div>
-    <div>
-      <span class="xref">Node3D.RotationEditMode</span>
-    </div>
-    <div>
-      <span class="xref">Node3D.RotationOrder</span>
-    </div>
-    <div>
-      <span class="xref">Node3D.TopLevel</span>
-    </div>
-    <div>
-      <span class="xref">Node3D.GlobalPosition</span>
-    </div>
-    <div>
-      <span class="xref">Node3D.GlobalBasis</span>
-    </div>
-    <div>
-      <span class="xref">Node3D.GlobalRotation</span>
-    </div>
-    <div>
-      <span class="xref">Node3D.GlobalRotationDegrees</span>
-    </div>
-    <div>
-      <span class="xref">Node3D.Visible</span>
-    </div>
-    <div>
-      <span class="xref">Node3D.VisibilityParent</span>
-    </div>
-    <div>
-      <span class="xref">Node3D.VisibilityChanged</span>
-    </div>
     <div>
       <span class="xref">Node.NotificationEnterTree</span>
     </div>
@@ -716,6 +296,9 @@ public sealed class AovPlayer : CharacterBody3D, IDisposable, IInteractor</code>
       <span class="xref">Node._EnterTree()</span>
     </div>
     <div>
+      <span class="xref">Node._ExitTree()</span>
+    </div>
+    <div>
       <span class="xref">Node._GetAccessibilityConfigurationWarnings()</span>
     </div>
     <div>
@@ -723,6 +306,12 @@ public sealed class AovPlayer : CharacterBody3D, IDisposable, IInteractor</code>
     </div>
     <div>
       <span class="xref">Node._GetFocusedAccessibilityElement()</span>
+    </div>
+    <div>
+      <span class="xref">Node._Input(InputEvent)</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">Node._PhysicsProcess(double)</a>
     </div>
     <div>
       <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">Node._Process(double)</a>
@@ -1350,70 +939,131 @@ public sealed class AovPlayer : CharacterBody3D, IDisposable, IInteractor</code>
 
 
 
+  <h2 id="AshesOfVelsingrad_Managers_BattleLauncher_remarks">Remarks</h2>
+  <div class="markdown level0 remarks"><p>
+    The exploration layer (an <a class="xref" href="AshesOfVelsingrad.Systems.Battle.NpcBattleTrigger.html">NpcBattleTrigger</a> on an NPC, an
+    encounter zone, scripted intro fight, …) builds a <a class="xref" href="AshesOfVelsingrad.Systems.Battle.BattleSetup.html">BattleSetup</a>
+    and calls <a class="xref" href="AshesOfVelsingrad.Managers.BattleLauncher.html#AshesOfVelsingrad_Managers_BattleLauncher_Launch_AshesOfVelsingrad_Systems_Battle_BattleSetup_">Launch(BattleSetup)</a>. <code>BattleLauncher</code> stores the setup, swaps
+    to the battle scene, and exposes the setup to <a class="xref" href="AshesOfVelsingrad.Managers.GameManager.html">GameManager</a> via
+    <a class="xref" href="AshesOfVelsingrad.Managers.BattleLauncher.html#AshesOfVelsingrad_Managers_BattleLauncher_PendingSetup">PendingSetup</a> so the GameManager can spawn the configured units.
+</p>
+<p>
+    When the battle ends the player can:
+<pre><code>&lt;ul&gt;&lt;li&gt;&lt;b&gt;Try Again&lt;/b&gt; — handled inside &lt;xref href=&quot;AshesOfVelsingrad.Managers.GameManager&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt; via &lt;code&gt;ReloadCurrentScene&lt;/code&gt;; the launcher's pending setup is preserved.&lt;/li&gt;&lt;li&gt;&lt;b&gt;Forfeit&lt;/b&gt; — calls &lt;xref href=&quot;AshesOfVelsingrad.Managers.BattleLauncher.Forfeit&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt; here, which loads &lt;xref href=&quot;AshesOfVelsingrad.Systems.Battle.BattleSetup.ReturnScenePath&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt; and queues the player respawn at &lt;xref href=&quot;AshesOfVelsingrad.Systems.Battle.BattleSetup.ReturnPosition&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt;.&lt;/li&gt;&lt;li&gt;&lt;b&gt;Continue (victory)&lt;/b&gt; — calls &lt;xref href=&quot;AshesOfVelsingrad.Managers.BattleLauncher.ReturnToExploration&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt; with the same flow.&lt;/li&gt;&lt;/ul&gt;
+</code></pre>
+
+<p>
+    Register as an autoload (Project Settings → AutoLoad):
+<pre><code>&lt;pre&gt;&lt;code class=&quot;lang-csharp&quot;&gt;Path: res://scripts/managers/BattleLauncher.cs
+</code></pre>
+<p>Name: BattleLauncher
+Singleton: ✓</p>
+<pre><code>If you don't register the autoload, &lt;xref href=&quot;AshesOfVelsingrad.Managers.BattleLauncher.Instance&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt; stays null and
+exploration code that calls &lt;code&gt;BattleLauncher.Instance?.Launch(...)&lt;/code&gt;
+silently no-ops — Test.tscn keeps working standalone.
+</code></pre>
+
+</div>
+
+
+  <h2 class="section" id="properties">Properties
+</h2>
+
+
+  <a id="AshesOfVelsingrad_Managers_BattleLauncher_Instance_" data-uid="AshesOfVelsingrad.Managers.BattleLauncher.Instance*"></a>
+
+  <h3 id="AshesOfVelsingrad_Managers_BattleLauncher_Instance" data-uid="AshesOfVelsingrad.Managers.BattleLauncher.Instance">
+  Instance
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/managers/BattleLauncher.cs/#L40"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Singleton instance, set in <a class="xref" href="AshesOfVelsingrad.Managers.BattleLauncher.html#AshesOfVelsingrad_Managers_BattleLauncher__Ready">_Ready()</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static BattleLauncher? Instance { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="AshesOfVelsingrad.Managers.BattleLauncher.html">BattleLauncher</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="AshesOfVelsingrad_Managers_BattleLauncher_PendingSetup_" data-uid="AshesOfVelsingrad.Managers.BattleLauncher.PendingSetup*"></a>
+
+  <h3 id="AshesOfVelsingrad_Managers_BattleLauncher_PendingSetup" data-uid="AshesOfVelsingrad.Managers.BattleLauncher.PendingSetup">
+  PendingSetup
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/managers/BattleLauncher.cs/#L48"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>The setup currently being launched, or null when no battle is active.
+<a class="xref" href="AshesOfVelsingrad.Managers.GameManager.html">GameManager</a> reads this in <code>InitializeGameManager</code> and uses
+it to populate the unit containers from <a class="xref" href="AshesOfVelsingrad.Systems.Battle.BattleSetup.html">BattleSetup</a>'s
+PackedScene lists.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public BattleSetup? PendingSetup { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="AshesOfVelsingrad.Systems.Battle.BattleSetup.html">BattleSetup</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
 
 
   <h2 class="section" id="methods">Methods
 </h2>
 
 
-  <a id="AshesOfVelsingrad_player_AovPlayer__ExitTree_" data-uid="AshesOfVelsingrad.player.AovPlayer._ExitTree*"></a>
+  <a id="AshesOfVelsingrad_Managers_BattleLauncher_ConsumePendingReturnPosition_" data-uid="AshesOfVelsingrad.Managers.BattleLauncher.ConsumePendingReturnPosition*"></a>
 
-  <h3 id="AshesOfVelsingrad_player_AovPlayer__ExitTree" data-uid="AshesOfVelsingrad.player.AovPlayer._ExitTree">
-  _ExitTree()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/player/AovPlayer.cs/#L83"><i class="bi bi-code-slash"></i></a>
+  <h3 id="AshesOfVelsingrad_Managers_BattleLauncher_ConsumePendingReturnPosition" data-uid="AshesOfVelsingrad.Managers.BattleLauncher.ConsumePendingReturnPosition">
+  ConsumePendingReturnPosition()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/managers/BattleLauncher.cs/#L139"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Called when the node is about to leave the <span class="xref">Godot.SceneTree</span> (e.g. upon freeing, scene changing, or after calling <span class="xref">Godot.Node.RemoveChild(Godot.Node)</span> in a script). If the node has children, its <span class="xref">Godot.Node._ExitTree()</span> callback will be called last, after all its children have left the tree.</p>
-<p>Corresponds to the <span class="xref">Godot.Node.NotificationExitTree</span> notification in <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">_Notification(int)</a> and signal <span class="xref">Godot.Node.TreeExiting</span>. To get notified when the node has already left the active tree, connect to the <span class="xref">Godot.Node.TreeExited</span>.</p>
+  <div class="markdown level1 summary"><p>The player controller in the exploration scene calls this in <code>_Ready</code> to
+find out whether it should snap to a return position from a finished battle.
+Returns <code>null</code> when there's no pending return — the player keeps whatever
+position the exploration scene gave them by default. Consuming clears the
+stored value so subsequent reads return null.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public override void _ExitTree()</code></pre>
+    <pre><code class="lang-csharp hljs">public Vector3? ConsumePendingReturnPosition()</code></pre>
   </div>
 
 
-
-
-
-
-
-
-
-  <h4 class="section" id="AshesOfVelsingrad_player_AovPlayer__ExitTree_remarks">Remarks</h4>
-  <div class="markdown level1 remarks"><p>Clear the static <span class="xref">AshesOfVelsingrad.player.AovPlayer._instance</span> when this node leaves the tree
-(scene unload, scene reload via <code>BattleLauncher</code>'s Forfeit / Continue
-flow). Without this, the new <a class="xref" href="AshesOfVelsingrad.player.AovPlayer.html">AovPlayer</a> on the reloaded
-exploration scene sees a stale <code>_instance</code> still pointing at the just-
-unloaded player and <span class="xref">Godot.Node.QueueFree()</span>s itself as a &quot;duplicate&quot; —
-the scene then renders with no player and frozen camera.</p>
-</div>
-
-
-
-
-  <a id="AshesOfVelsingrad_player_AovPlayer__Input_" data-uid="AshesOfVelsingrad.player.AovPlayer._Input*"></a>
-
-  <h3 id="AshesOfVelsingrad_player_AovPlayer__Input_Godot_InputEvent_" data-uid="AshesOfVelsingrad.player.AovPlayer._Input(Godot.InputEvent)">
-  _Input(InputEvent)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/player/AovPlayer.cs/#L89"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Called when there is an input event. The input event propagates up through the node tree until a node consumes it.</p>
-<p>It is only called if input processing is enabled, which is done automatically if this method is overridden, and can be toggled with <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">SetProcessInput(bool)</a>.</p>
-<p>To consume the input event and stop it propagating further to other nodes, <span class="xref">Godot.Viewport.SetInputAsHandled()</span> can be called.</p>
-<p>For gameplay input, <span class="xref">Godot.Node._UnhandledInput(Godot.InputEvent)</span> and <span class="xref">Godot.Node._UnhandledKeyInput(Godot.InputEvent)</span> are usually a better fit as they allow the GUI to intercept the events first.</p>
-<p><b>Note:</b> This method is only called if the node is present in the scene tree (i.e. if it's not an orphan).</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public override void _Input(InputEvent @event)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
+  <h4 class="section">Returns</h4>
   <dl class="parameters">
-    <dt><code>event</code> <span class="xref">InputEvent</span></dt>
+    <dt><span class="xref">Vector3</span>?</dt>
     <dd></dd>
   </dl>
 
@@ -1427,31 +1077,56 @@ the scene then renders with no player and frozen camera.</p>
 
 
 
+  <a id="AshesOfVelsingrad_Managers_BattleLauncher_Forfeit_" data-uid="AshesOfVelsingrad.Managers.BattleLauncher.Forfeit*"></a>
 
-  <a id="AshesOfVelsingrad_player_AovPlayer__PhysicsProcess_" data-uid="AshesOfVelsingrad.player.AovPlayer._PhysicsProcess*"></a>
-
-  <h3 id="AshesOfVelsingrad_player_AovPlayer__PhysicsProcess_System_Double_" data-uid="AshesOfVelsingrad.player.AovPlayer._PhysicsProcess(System.Double)">
-  _PhysicsProcess(double)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/player/AovPlayer.cs/#L102"><i class="bi bi-code-slash"></i></a>
+  <h3 id="AshesOfVelsingrad_Managers_BattleLauncher_Forfeit" data-uid="AshesOfVelsingrad.Managers.BattleLauncher.Forfeit">
+  Forfeit()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/managers/BattleLauncher.cs/#L95"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Called once on each physics tick, and allows Nodes to synchronize their logic with physics ticks. <code class="paramref">delta</code> is the logical time between physics ticks in seconds and is equal to <span class="xref">Godot.Engine.TimeScale</span> / <span class="xref">Godot.Engine.PhysicsTicksPerSecond</span>.</p>
-<p>It is only called if physics processing is enabled for this Node, which is done automatically if this method is overridden, and can be toggled with <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">SetPhysicsProcess(bool)</a>.</p>
-<p>Processing happens in order of <span class="xref">Godot.Node.ProcessPhysicsPriority</span>, lower priority values are called first. Nodes with the same priority are processed in tree order, or top to bottom as seen in the editor (also known as pre-order traversal).</p>
-<p>Corresponds to the <span class="xref">Godot.Node.NotificationPhysicsProcess</span> notification in <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">_Notification(int)</a>.</p>
-<p><b>Note:</b> This method is only called if the node is present in the scene tree (i.e. if it's not an orphan).</p>
-<p><b>Note:</b> Accumulated <code class="paramref">delta</code> may diverge from real world seconds.</p>
+  <div class="markdown level1 summary"><p>Player pressed Forfeit on the GameOverScreen. Tear down the battle and return
+the player to the exploration scene at the saved return position.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public override void _PhysicsProcess(double delta)</code></pre>
+    <pre><code class="lang-csharp hljs">public void Forfeit()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AshesOfVelsingrad_Managers_BattleLauncher_Launch_" data-uid="AshesOfVelsingrad.Managers.BattleLauncher.Launch*"></a>
+
+  <h3 id="AshesOfVelsingrad_Managers_BattleLauncher_Launch_AshesOfVelsingrad_Systems_Battle_BattleSetup_" data-uid="AshesOfVelsingrad.Managers.BattleLauncher.Launch(AshesOfVelsingrad.Systems.Battle.BattleSetup)">
+  Launch(BattleSetup)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/managers/BattleLauncher.cs/#L73"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Launch a new battle. Stores the setup and swaps to the battle scene.
+<span class="xref">AshesOfVelsingrad.Managers.GameManager.InitializeGameManager()</span> will read <a class="xref" href="AshesOfVelsingrad.Managers.BattleLauncher.html#AshesOfVelsingrad_Managers_BattleLauncher_PendingSetup">PendingSetup</a>
+to populate the unit containers.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Launch(BattleSetup setup)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
-    <dt><code>delta</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
-    <dd></dd>
+    <dt><code>setup</code> <a class="xref" href="AshesOfVelsingrad.Systems.Battle.BattleSetup.html">BattleSetup</a></dt>
+    <dd><p>Encounter description.</p>
+</dd>
   </dl>
 
 
@@ -1465,11 +1140,39 @@ the scene then renders with no player and frozen camera.</p>
 
 
 
-  <a id="AshesOfVelsingrad_player_AovPlayer__Ready_" data-uid="AshesOfVelsingrad.player.AovPlayer._Ready*"></a>
+  <a id="AshesOfVelsingrad_Managers_BattleLauncher_VictoryReturn_" data-uid="AshesOfVelsingrad.Managers.BattleLauncher.VictoryReturn*"></a>
 
-  <h3 id="AshesOfVelsingrad_player_AovPlayer__Ready" data-uid="AshesOfVelsingrad.player.AovPlayer._Ready">
+  <h3 id="AshesOfVelsingrad_Managers_BattleLauncher_VictoryReturn" data-uid="AshesOfVelsingrad.Managers.BattleLauncher.VictoryReturn">
+  VictoryReturn()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/managers/BattleLauncher.cs/#L105"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Player pressed Continue on the VictoryScreen. Same scene transition as
+forfeit, but callers can layer reward / progression hooks here later.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void VictoryReturn()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AshesOfVelsingrad_Managers_BattleLauncher__Ready_" data-uid="AshesOfVelsingrad.Managers.BattleLauncher._Ready*"></a>
+
+  <h3 id="AshesOfVelsingrad_Managers_BattleLauncher__Ready" data-uid="AshesOfVelsingrad.Managers.BattleLauncher._Ready">
   _Ready()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/player/AovPlayer.cs/#L56"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/managers/BattleLauncher.cs/#L61"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Called when the node is "ready", i.e. when both the node and its children have entered the scene tree. If the node has children, their <span class="xref">Godot.Node._Ready()</span> callbacks get triggered first, and the parent node will receive the ready notification afterwards.</p>

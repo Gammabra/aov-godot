@@ -2,11 +2,11 @@
 <html>
   <head>
     <meta charset="utf-8">
-      <title>Class AovPlayer | Ashes of Velsingrad Documentation </title>
+      <title>Class NpcBattleTrigger | Ashes of Velsingrad Documentation </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content="Class AovPlayer | Ashes of Velsingrad Documentation ">
+      <meta name="title" content="Class NpcBattleTrigger | Ashes of Velsingrad Documentation ">
       
-      <meta name="description" content="Represents the main player character in the game. Handles movement, gravity, and initialization of required nodes.">
+      <meta name="description" content="Drop this on an NPC node in an exploration scene to make that NPC launch a configurable battle when the player interacts with them.">
       <link rel="icon" href="../favicon.ico">
       <link rel="stylesheet" href="../public/docfx.min.css">
       <link rel="stylesheet" href="../public/main.css">
@@ -84,27 +84,28 @@
           <nav id="breadcrumb"></nav>
         </div>
 
-        <article data-uid="AshesOfVelsingrad.player.AovPlayer">
+        <article data-uid="AshesOfVelsingrad.Systems.Battle.NpcBattleTrigger">
 
 
 
-  <h1 id="AshesOfVelsingrad_player_AovPlayer" data-uid="AshesOfVelsingrad.player.AovPlayer" class="text-break">
-Class AovPlayer  
+  <h1 id="AshesOfVelsingrad_Systems_Battle_NpcBattleTrigger" data-uid="AshesOfVelsingrad.Systems.Battle.NpcBattleTrigger" class="text-break">
+Class NpcBattleTrigger  
   </h1>
 
   <div class="facts text-secondary">
-    <dl><dt>Namespace</dt><dd><a class="xref" href="AshesOfVelsingrad.html">AshesOfVelsingrad</a>.<a class="xref" href="AshesOfVelsingrad.player.html">player</a></dd></dl>
+    <dl><dt>Namespace</dt><dd><a class="xref" href="AshesOfVelsingrad.html">AshesOfVelsingrad</a>.<a class="xref" href="AshesOfVelsingrad.Systems.html">Systems</a>.<a class="xref" href="AshesOfVelsingrad.Systems.Battle.html">Battle</a></dd></dl>
   <dl><dt>Assembly</dt><dd>AshesofVelsingrad.dll</dd></dl>
   </div>
 
-  <div class="markdown summary"><p>Represents the main player character in the game.
-Handles movement, gravity, and initialization of required nodes.</p>
+  <div class="markdown summary"><p>Drop this on an NPC node in an exploration scene to make that NPC launch a
+configurable battle when the player interacts with them.</p>
 </div>
   <div class="markdown conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[ScriptPath(&quot;res://scripts/player/AovPlayer.cs&quot;)]
-public sealed class AovPlayer : CharacterBody3D, IDisposable, IInteractor</code></pre>
+    <pre><code class="lang-csharp hljs">[GlobalClass]
+[ScriptPath(&quot;res://scripts/systems/battle/NpcBattleTrigger.cs&quot;)]
+public sealed class NpcBattleTrigger : Node3D, IDisposable</code></pre>
   </div>
 
 
@@ -117,10 +118,7 @@ public sealed class AovPlayer : CharacterBody3D, IDisposable, IInteractor</code>
       <div><span class="xref">GodotObject</span></div>
       <div><span class="xref">Node</span></div>
       <div><span class="xref">Node3D</span></div>
-      <div><span class="xref">CollisionObject3D</span></div>
-      <div><span class="xref">PhysicsBody3D</span></div>
-      <div><span class="xref">CharacterBody3D</span></div>
-      <div><span class="xref">AovPlayer</span></div>
+      <div><span class="xref">NpcBattleTrigger</span></div>
     </dd>
   </dl>
 
@@ -128,7 +126,6 @@ public sealed class AovPlayer : CharacterBody3D, IDisposable, IInteractor</code>
     <dt>Implements</dt>
     <dd>
       <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.idisposable">IDisposable</a></div>
-      <div><a class="xref" href="AshesOfVelsingrad.Systems.IInteractor.html">IInteractor</a></div>
     </dd>
   </dl>
 
@@ -136,240 +133,6 @@ public sealed class AovPlayer : CharacterBody3D, IDisposable, IInteractor</code>
   <dl class="typelist inheritedMembers">
     <dt>Inherited Members</dt>
     <dd>
-    <div>
-      <span class="xref">CharacterBody3D.MoveAndSlide()</span>
-    </div>
-    <div>
-      <span class="xref">CharacterBody3D.ApplyFloorSnap()</span>
-    </div>
-    <div>
-      <span class="xref">CharacterBody3D.IsOnFloor()</span>
-    </div>
-    <div>
-      <span class="xref">CharacterBody3D.IsOnFloorOnly()</span>
-    </div>
-    <div>
-      <span class="xref">CharacterBody3D.IsOnCeiling()</span>
-    </div>
-    <div>
-      <span class="xref">CharacterBody3D.IsOnCeilingOnly()</span>
-    </div>
-    <div>
-      <span class="xref">CharacterBody3D.IsOnWall()</span>
-    </div>
-    <div>
-      <span class="xref">CharacterBody3D.IsOnWallOnly()</span>
-    </div>
-    <div>
-      <span class="xref">CharacterBody3D.GetFloorNormal()</span>
-    </div>
-    <div>
-      <span class="xref">CharacterBody3D.GetWallNormal()</span>
-    </div>
-    <div>
-      <span class="xref">CharacterBody3D.GetLastMotion()</span>
-    </div>
-    <div>
-      <span class="xref">CharacterBody3D.GetPositionDelta()</span>
-    </div>
-    <div>
-      <span class="xref">CharacterBody3D.GetRealVelocity()</span>
-    </div>
-    <div>
-      <span class="xref">CharacterBody3D.GetFloorAngle(Vector3?)</span>
-    </div>
-    <div>
-      <span class="xref">CharacterBody3D.GetPlatformVelocity()</span>
-    </div>
-    <div>
-      <span class="xref">CharacterBody3D.GetPlatformAngularVelocity()</span>
-    </div>
-    <div>
-      <span class="xref">CharacterBody3D.GetSlideCollisionCount()</span>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">CharacterBody3D.GetSlideCollision(int)</a>
-    </div>
-    <div>
-      <span class="xref">CharacterBody3D.GetLastSlideCollision()</span>
-    </div>
-    <div>
-      <span class="xref">CharacterBody3D.MotionMode</span>
-    </div>
-    <div>
-      <span class="xref">CharacterBody3D.UpDirection</span>
-    </div>
-    <div>
-      <span class="xref">CharacterBody3D.SlideOnCeiling</span>
-    </div>
-    <div>
-      <span class="xref">CharacterBody3D.Velocity</span>
-    </div>
-    <div>
-      <span class="xref">CharacterBody3D.MaxSlides</span>
-    </div>
-    <div>
-      <span class="xref">CharacterBody3D.WallMinSlideAngle</span>
-    </div>
-    <div>
-      <span class="xref">CharacterBody3D.FloorStopOnSlope</span>
-    </div>
-    <div>
-      <span class="xref">CharacterBody3D.FloorConstantSpeed</span>
-    </div>
-    <div>
-      <span class="xref">CharacterBody3D.FloorBlockOnWall</span>
-    </div>
-    <div>
-      <span class="xref">CharacterBody3D.FloorMaxAngle</span>
-    </div>
-    <div>
-      <span class="xref">CharacterBody3D.FloorSnapLength</span>
-    </div>
-    <div>
-      <span class="xref">CharacterBody3D.PlatformOnLeave</span>
-    </div>
-    <div>
-      <span class="xref">CharacterBody3D.PlatformFloorLayers</span>
-    </div>
-    <div>
-      <span class="xref">CharacterBody3D.PlatformWallLayers</span>
-    </div>
-    <div>
-      <span class="xref">CharacterBody3D.SafeMargin</span>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">PhysicsBody3D.MoveAndCollide(Vector3, bool, float, bool, int)</a>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">PhysicsBody3D.TestMove(Transform3D, Vector3, KinematicCollision3D, float, bool, int)</a>
-    </div>
-    <div>
-      <span class="xref">PhysicsBody3D.GetGravity()</span>
-    </div>
-    <div>
-      <span class="xref">PhysicsBody3D.GetCollisionExceptions()</span>
-    </div>
-    <div>
-      <span class="xref">PhysicsBody3D.AddCollisionExceptionWith(Node)</span>
-    </div>
-    <div>
-      <span class="xref">PhysicsBody3D.RemoveCollisionExceptionWith(Node)</span>
-    </div>
-    <div>
-      <span class="xref">PhysicsBody3D.AxisLockLinearX</span>
-    </div>
-    <div>
-      <span class="xref">PhysicsBody3D.AxisLockLinearY</span>
-    </div>
-    <div>
-      <span class="xref">PhysicsBody3D.AxisLockLinearZ</span>
-    </div>
-    <div>
-      <span class="xref">PhysicsBody3D.AxisLockAngularX</span>
-    </div>
-    <div>
-      <span class="xref">PhysicsBody3D.AxisLockAngularY</span>
-    </div>
-    <div>
-      <span class="xref">PhysicsBody3D.AxisLockAngularZ</span>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">CollisionObject3D._InputEvent(Camera3D, InputEvent, Vector3, Vector3, int)</a>
-    </div>
-    <div>
-      <span class="xref">CollisionObject3D._MouseEnter()</span>
-    </div>
-    <div>
-      <span class="xref">CollisionObject3D._MouseExit()</span>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">CollisionObject3D.SetCollisionLayerValue(int, bool)</a>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">CollisionObject3D.GetCollisionLayerValue(int)</a>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">CollisionObject3D.SetCollisionMaskValue(int, bool)</a>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">CollisionObject3D.GetCollisionMaskValue(int)</a>
-    </div>
-    <div>
-      <span class="xref">CollisionObject3D.GetRid()</span>
-    </div>
-    <div>
-      <span class="xref">CollisionObject3D.CreateShapeOwner(GodotObject)</span>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint32">CollisionObject3D.RemoveShapeOwner(uint)</a>
-    </div>
-    <div>
-      <span class="xref">CollisionObject3D.GetShapeOwners()</span>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint32">CollisionObject3D.ShapeOwnerSetTransform(uint, Transform3D)</a>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint32">CollisionObject3D.ShapeOwnerGetTransform(uint)</a>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint32">CollisionObject3D.ShapeOwnerGetOwner(uint)</a>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint32">CollisionObject3D.ShapeOwnerSetDisabled(uint, bool)</a>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint32">CollisionObject3D.IsShapeOwnerDisabled(uint)</a>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint32">CollisionObject3D.ShapeOwnerAddShape(uint, Shape3D)</a>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint32">CollisionObject3D.ShapeOwnerGetShapeCount(uint)</a>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint32">CollisionObject3D.ShapeOwnerGetShape(uint, int)</a>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint32">CollisionObject3D.ShapeOwnerGetShapeIndex(uint, int)</a>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint32">CollisionObject3D.ShapeOwnerRemoveShape(uint, int)</a>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint32">CollisionObject3D.ShapeOwnerClearShapes(uint)</a>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">CollisionObject3D.ShapeFindOwner(int)</a>
-    </div>
-    <div>
-      <span class="xref">CollisionObject3D.DisableMode</span>
-    </div>
-    <div>
-      <span class="xref">CollisionObject3D.CollisionLayer</span>
-    </div>
-    <div>
-      <span class="xref">CollisionObject3D.CollisionMask</span>
-    </div>
-    <div>
-      <span class="xref">CollisionObject3D.CollisionPriority</span>
-    </div>
-    <div>
-      <span class="xref">CollisionObject3D.InputRayPickable</span>
-    </div>
-    <div>
-      <span class="xref">CollisionObject3D.InputCaptureOnDrag</span>
-    </div>
-    <div>
-      <span class="xref">CollisionObject3D.InputEvent</span>
-    </div>
-    <div>
-      <span class="xref">CollisionObject3D.MouseEntered</span>
-    </div>
-    <div>
-      <span class="xref">CollisionObject3D.MouseExited</span>
-    </div>
     <div>
       <span class="xref">Node3D.NotificationTransformChanged</span>
     </div>
@@ -716,6 +479,9 @@ public sealed class AovPlayer : CharacterBody3D, IDisposable, IInteractor</code>
       <span class="xref">Node._EnterTree()</span>
     </div>
     <div>
+      <span class="xref">Node._ExitTree()</span>
+    </div>
+    <div>
       <span class="xref">Node._GetAccessibilityConfigurationWarnings()</span>
     </div>
     <div>
@@ -725,7 +491,16 @@ public sealed class AovPlayer : CharacterBody3D, IDisposable, IInteractor</code>
       <span class="xref">Node._GetFocusedAccessibilityElement()</span>
     </div>
     <div>
+      <span class="xref">Node._Input(InputEvent)</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">Node._PhysicsProcess(double)</a>
+    </div>
+    <div>
       <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">Node._Process(double)</a>
+    </div>
+    <div>
+      <span class="xref">Node._Ready()</span>
     </div>
     <div>
       <span class="xref">Node._ShortcutInput(InputEvent)</span>
@@ -1350,71 +1125,218 @@ public sealed class AovPlayer : CharacterBody3D, IDisposable, IInteractor</code>
 
 
 
+  <h2 id="AshesOfVelsingrad_Systems_Battle_NpcBattleTrigger_remarks">Remarks</h2>
+  <div class="markdown level0 remarks"><p>
+    Designer flow:
+<pre><code>&lt;ol&gt;&lt;li&gt;Add an NPC &lt;xref href=&quot;Godot.Node3D&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt; (with whatever sprite / collider it needs) to the world scene.&lt;/li&gt;&lt;li&gt;Add this script as a child node, fill in the inspector exports (battle scene, enemies, party, allies).&lt;/li&gt;&lt;li&gt;From the player controller, call &lt;xref href=&quot;AshesOfVelsingrad.Systems.Battle.NpcBattleTrigger.Trigger(Godot.Node3D)&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt; on the closest &lt;xref href=&quot;AshesOfVelsingrad.Systems.Battle.NpcBattleTrigger&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt; when an interact key is pressed.&lt;/li&gt;&lt;/ol&gt;
+</code></pre>
+
+<p>
+    <a class="xref" href="AshesOfVelsingrad.Systems.Battle.NpcBattleTrigger.html#AshesOfVelsingrad_Systems_Battle_NpcBattleTrigger_Trigger_Godot_Node3D_">Trigger(Node3D)</a> captures the player's current scene path + world position
+    as the "return point", builds a <a class="xref" href="AshesOfVelsingrad.Systems.Battle.BattleSetup.html">BattleSetup</a>, and calls
+    <a class="xref" href="AshesOfVelsingrad.Managers.BattleLauncher.html#AshesOfVelsingrad_Managers_BattleLauncher_Launch_AshesOfVelsingrad_Systems_Battle_BattleSetup_">Launch(BattleSetup)</a>. If the player loses and presses Forfeit
+    on the GameOverScreen, <a class="xref" href="AshesOfVelsingrad.Managers.BattleLauncher.html">BattleLauncher</a> sends them back to that
+    exact scene + position so they can talk to the NPC again or walk away.
+</p>
+</div>
+
+
+  <h2 class="section" id="properties">Properties
+</h2>
+
+
+  <a id="AshesOfVelsingrad_Systems_Battle_NpcBattleTrigger_AllyUnits_" data-uid="AshesOfVelsingrad.Systems.Battle.NpcBattleTrigger.AllyUnits*"></a>
+
+  <h3 id="AshesOfVelsingrad_Systems_Battle_NpcBattleTrigger_AllyUnits" data-uid="AshesOfVelsingrad.Systems.Battle.NpcBattleTrigger.AllyUnits">
+  AllyUnits
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/systems/battle/NpcBattleTrigger.cs/#L40"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Optional friendly AI guests this NPC brings along (recruited mercs, etc).</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[Export(PropertyHint.None, &quot;&quot;)]
+public Array&lt;PackedScene&gt; AllyUnits { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">Array</span>&lt;<span class="xref">PackedScene</span>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="AshesOfVelsingrad_Systems_Battle_NpcBattleTrigger_BattleScene_" data-uid="AshesOfVelsingrad.Systems.Battle.NpcBattleTrigger.BattleScene*"></a>
+
+  <h3 id="AshesOfVelsingrad_Systems_Battle_NpcBattleTrigger_BattleScene" data-uid="AshesOfVelsingrad.Systems.Battle.NpcBattleTrigger.BattleScene">
+  BattleScene
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/systems/battle/NpcBattleTrigger.cs/#L32"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Battle scene template — typically <code>res://scenes/Test/Test.tscn</code> or similar.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[Export(PropertyHint.None, &quot;&quot;)]
+public PackedScene? BattleScene { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">PackedScene</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="AshesOfVelsingrad_Systems_Battle_NpcBattleTrigger_EncounterName_" data-uid="AshesOfVelsingrad.Systems.Battle.NpcBattleTrigger.EncounterName*"></a>
+
+  <h3 id="AshesOfVelsingrad_Systems_Battle_NpcBattleTrigger_EncounterName" data-uid="AshesOfVelsingrad.Systems.Battle.NpcBattleTrigger.EncounterName">
+  EncounterName
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/systems/battle/NpcBattleTrigger.cs/#L52"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Display name shown on the battle banner / log header.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[Export(PropertyHint.None, &quot;&quot;)]
+public string EncounterName { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="AshesOfVelsingrad_Systems_Battle_NpcBattleTrigger_EnemyUnits_" data-uid="AshesOfVelsingrad.Systems.Battle.NpcBattleTrigger.EnemyUnits*"></a>
+
+  <h3 id="AshesOfVelsingrad_Systems_Battle_NpcBattleTrigger_EnemyUnits" data-uid="AshesOfVelsingrad.Systems.Battle.NpcBattleTrigger.EnemyUnits">
+  EnemyUnits
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/systems/battle/NpcBattleTrigger.cs/#L36"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Hostile units this NPC will spawn into <code>EnemyUnits</code>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[Export(PropertyHint.None, &quot;&quot;)]
+public Array&lt;PackedScene&gt; EnemyUnits { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">Array</span>&lt;<span class="xref">PackedScene</span>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="AshesOfVelsingrad_Systems_Battle_NpcBattleTrigger_PartyOverride_" data-uid="AshesOfVelsingrad.Systems.Battle.NpcBattleTrigger.PartyOverride*"></a>
+
+  <h3 id="AshesOfVelsingrad_Systems_Battle_NpcBattleTrigger_PartyOverride" data-uid="AshesOfVelsingrad.Systems.Battle.NpcBattleTrigger.PartyOverride">
+  PartyOverride
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/systems/battle/NpcBattleTrigger.cs/#L48"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Player party scenes. Usually wired by a global PartyManager rather than
+hardcoded per NPC, but kept as an inspector option for one-off encounters
+where the encounter forces a specific lineup.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[Export(PropertyHint.None, &quot;&quot;)]
+public Array&lt;PackedScene&gt; PartyOverride { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">Array</span>&lt;<span class="xref">PackedScene</span>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
 
 
   <h2 class="section" id="methods">Methods
 </h2>
 
 
-  <a id="AshesOfVelsingrad_player_AovPlayer__ExitTree_" data-uid="AshesOfVelsingrad.player.AovPlayer._ExitTree*"></a>
+  <a id="AshesOfVelsingrad_Systems_Battle_NpcBattleTrigger_Trigger_" data-uid="AshesOfVelsingrad.Systems.Battle.NpcBattleTrigger.Trigger*"></a>
 
-  <h3 id="AshesOfVelsingrad_player_AovPlayer__ExitTree" data-uid="AshesOfVelsingrad.player.AovPlayer._ExitTree">
-  _ExitTree()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/player/AovPlayer.cs/#L83"><i class="bi bi-code-slash"></i></a>
+  <h3 id="AshesOfVelsingrad_Systems_Battle_NpcBattleTrigger_Trigger_Godot_Node3D_" data-uid="AshesOfVelsingrad.Systems.Battle.NpcBattleTrigger.Trigger(Godot.Node3D)">
+  Trigger(Node3D)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/systems/battle/NpcBattleTrigger.cs/#L67"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Called when the node is about to leave the <span class="xref">Godot.SceneTree</span> (e.g. upon freeing, scene changing, or after calling <span class="xref">Godot.Node.RemoveChild(Godot.Node)</span> in a script). If the node has children, its <span class="xref">Godot.Node._ExitTree()</span> callback will be called last, after all its children have left the tree.</p>
-<p>Corresponds to the <span class="xref">Godot.Node.NotificationExitTree</span> notification in <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">_Notification(int)</a> and signal <span class="xref">Godot.Node.TreeExiting</span>. To get notified when the node has already left the active tree, connect to the <span class="xref">Godot.Node.TreeExited</span>.</p>
+  <div class="markdown level1 summary"><p>Build a <a class="xref" href="AshesOfVelsingrad.Systems.Battle.BattleSetup.html">BattleSetup</a> from this NPC's exported lists, capture the
+player's current world location as the return point, and launch.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public override void _ExitTree()</code></pre>
-  </div>
-
-
-
-
-
-
-
-
-
-  <h4 class="section" id="AshesOfVelsingrad_player_AovPlayer__ExitTree_remarks">Remarks</h4>
-  <div class="markdown level1 remarks"><p>Clear the static <span class="xref">AshesOfVelsingrad.player.AovPlayer._instance</span> when this node leaves the tree
-(scene unload, scene reload via <code>BattleLauncher</code>'s Forfeit / Continue
-flow). Without this, the new <a class="xref" href="AshesOfVelsingrad.player.AovPlayer.html">AovPlayer</a> on the reloaded
-exploration scene sees a stale <code>_instance</code> still pointing at the just-
-unloaded player and <span class="xref">Godot.Node.QueueFree()</span>s itself as a &quot;duplicate&quot; —
-the scene then renders with no player and frozen camera.</p>
-</div>
-
-
-
-
-  <a id="AshesOfVelsingrad_player_AovPlayer__Input_" data-uid="AshesOfVelsingrad.player.AovPlayer._Input*"></a>
-
-  <h3 id="AshesOfVelsingrad_player_AovPlayer__Input_Godot_InputEvent_" data-uid="AshesOfVelsingrad.player.AovPlayer._Input(Godot.InputEvent)">
-  _Input(InputEvent)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/player/AovPlayer.cs/#L89"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Called when there is an input event. The input event propagates up through the node tree until a node consumes it.</p>
-<p>It is only called if input processing is enabled, which is done automatically if this method is overridden, and can be toggled with <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">SetProcessInput(bool)</a>.</p>
-<p>To consume the input event and stop it propagating further to other nodes, <span class="xref">Godot.Viewport.SetInputAsHandled()</span> can be called.</p>
-<p>For gameplay input, <span class="xref">Godot.Node._UnhandledInput(Godot.InputEvent)</span> and <span class="xref">Godot.Node._UnhandledKeyInput(Godot.InputEvent)</span> are usually a better fit as they allow the GUI to intercept the events first.</p>
-<p><b>Note:</b> This method is only called if the node is present in the scene tree (i.e. if it's not an orphan).</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public override void _Input(InputEvent @event)</code></pre>
+    <pre><code class="lang-csharp hljs">public void Trigger(Node3D player)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
-    <dt><code>event</code> <span class="xref">InputEvent</span></dt>
-    <dd></dd>
+    <dt><code>player</code> <span class="xref">Node3D</span></dt>
+    <dd><p>The player Node3D — used to capture the return position.</p>
+</dd>
   </dl>
 
 
@@ -1428,66 +1350,35 @@ the scene then renders with no player and frozen camera.</p>
 
 
 
-  <a id="AshesOfVelsingrad_player_AovPlayer__PhysicsProcess_" data-uid="AshesOfVelsingrad.player.AovPlayer._PhysicsProcess*"></a>
+  <h2 class="section" id="events">Events
+</h2>
 
-  <h3 id="AshesOfVelsingrad_player_AovPlayer__PhysicsProcess_System_Double_" data-uid="AshesOfVelsingrad.player.AovPlayer._PhysicsProcess(System.Double)">
-  _PhysicsProcess(double)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/player/AovPlayer.cs/#L102"><i class="bi bi-code-slash"></i></a>
+
+
+  <h3 id="AshesOfVelsingrad_Systems_Battle_NpcBattleTrigger_BattleTriggered" data-uid="AshesOfVelsingrad.Systems.Battle.NpcBattleTrigger.BattleTriggered">
+  BattleTriggered
+  
   </h3>
 
-  <div class="markdown level1 summary"><p>Called once on each physics tick, and allows Nodes to synchronize their logic with physics ticks. <code class="paramref">delta</code> is the logical time between physics ticks in seconds and is equal to <span class="xref">Godot.Engine.TimeScale</span> / <span class="xref">Godot.Engine.PhysicsTicksPerSecond</span>.</p>
-<p>It is only called if physics processing is enabled for this Node, which is done automatically if this method is overridden, and can be toggled with <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">SetPhysicsProcess(bool)</a>.</p>
-<p>Processing happens in order of <span class="xref">Godot.Node.ProcessPhysicsPriority</span>, lower priority values are called first. Nodes with the same priority are processed in tree order, or top to bottom as seen in the editor (also known as pre-order traversal).</p>
-<p>Corresponds to the <span class="xref">Godot.Node.NotificationPhysicsProcess</span> notification in <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">_Notification(int)</a>.</p>
-<p><b>Note:</b> This method is only called if the node is present in the scene tree (i.e. if it's not an orphan).</p>
-<p><b>Note:</b> Accumulated <code class="paramref">delta</code> may diverge from real world seconds.</p>
+  <div class="markdown level1 summary"><p>Fired right before the scene transition kicks off. Listeners (sound effects,
+screen-fade tween, NPC dialogue close, …) hook here.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public override void _PhysicsProcess(double delta)</code></pre>
+    <pre><code class="lang-csharp hljs">public event NpcBattleTrigger.BattleTriggeredEventHandler BattleTriggered</code></pre>
   </div>
 
-  <h4 class="section">Parameters</h4>
+
+
+
+
+
+  <h4 class="section">Event Type</h4>
   <dl class="parameters">
-    <dt><code>delta</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dt><a class="xref" href="AshesOfVelsingrad.Systems.Battle.NpcBattleTrigger.html">NpcBattleTrigger</a>.<a class="xref" href="AshesOfVelsingrad.Systems.Battle.NpcBattleTrigger.html">BattleTriggeredEventHandler</a></dt>
     <dd></dd>
   </dl>
-
-
-
-
-
-
-
-
-
-
-
-
-  <a id="AshesOfVelsingrad_player_AovPlayer__Ready_" data-uid="AshesOfVelsingrad.player.AovPlayer._Ready*"></a>
-
-  <h3 id="AshesOfVelsingrad_player_AovPlayer__Ready" data-uid="AshesOfVelsingrad.player.AovPlayer._Ready">
-  _Ready()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/player/AovPlayer.cs/#L56"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Called when the node is "ready", i.e. when both the node and its children have entered the scene tree. If the node has children, their <span class="xref">Godot.Node._Ready()</span> callbacks get triggered first, and the parent node will receive the ready notification afterwards.</p>
-<p>Corresponds to the <span class="xref">Godot.Node.NotificationReady</span> notification in <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">_Notification(int)</a>. See also the <code>@onready</code> annotation for variables.</p>
-<p>Usually used for initialization. For even earlier initialization, <span class="xref">Godot.GodotObject.GodotObject()</span> may be used. See also <span class="xref">Godot.Node._EnterTree()</span>.</p>
-<p><b>Note:</b> This method may be called only once for each node. After removing a node from the scene tree and adding it again, <span class="xref">Godot.Node._Ready()</span> will <b>not</b> be called a second time. This can be bypassed by requesting another call with <span class="xref">Godot.Node.RequestReady()</span>, which may be called anywhere before adding the node again.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public override void _Ready()</code></pre>
-  </div>
-
-
-
-
-
-
 
 
 

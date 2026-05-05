@@ -62,6 +62,16 @@ public partial class GameManager
                     _allyUnits.Add(unit);
                     AttachFactionMarker(unit);
                 }
+
+        if (PlayerInventoryManager.Instance is { } inv)
+        {
+            foreach (IUnitSystem unit in _playerUnits)
+                unit.Inventory.CopyFrom(inv.Inventory);
+        }
+        else
+        {
+            GD.PrintErr("PlayerInventoryManager not found — player units will have empty inventories.");
+        }
     }
 
     /// <summary>Spawn a <see cref="FactionMarker" /> child on a unit and bind its colour.</summary>
@@ -305,8 +315,22 @@ public partial class GameManager
             _turnManagerContainer?.EndTurnManagerLoop();
             GD.Print("Win!");
             BattleNotifications.Post("Victory!", BattleNotifications.Severity.Positive);
+            SyncInventoryBackToGlobal();
             ShowVictoryScreen();
         }
+    }
+
+    /// <summary>
+    ///     Synchronizes the inventory of the player units back to the global inventory.
+    /// </summary>
+    private void SyncInventoryBackToGlobal()
+    {
+        if (PlayerInventoryManager.Instance is not { } inv) return;
+        if (_playerUnits.Count == 0) return;
+
+        // Use the first player unit as the source of truth
+        // (for now — multi-unit inventory merging can come later)
+        inv.Inventory.CopyFrom((InventorySystem)_playerUnits[0].Inventory);
     }
 
     /// <summary>

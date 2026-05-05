@@ -1,5 +1,6 @@
 using AshesOfVelsingrad.Managers;
 using AshesOfVelsingrad.Systems;
+using AshesOfVelsingrad.UI.Exploration;
 using Godot;
 
 namespace AshesOfVelsingrad.player;
@@ -31,6 +32,7 @@ public sealed partial class AovPlayer : CharacterBody3D, IInteractor
     private InteractionComponent? _interactionComponent;
     private AnimatedSprite3D _animatedSprite3D;
     private static AovPlayer? _instance;
+    private ExplorationInventoryUI? _explorationInventoryUI;
 
     private void Initialize()
     {
@@ -39,6 +41,10 @@ public sealed partial class AovPlayer : CharacterBody3D, IInteractor
         _interactionComponent = GetNode<InteractionComponent>(_interactionComponentPath);
         _animatedSprite3D = GetNode<AnimatedSprite3D>(_animatedSprite3DPath);
         _instance = this;
+
+        _explorationInventoryUI = new ExplorationInventoryUI { Name = "ExplorationInventoryUI" };
+        GetTree().Root.CallDeferred("add_child", _explorationInventoryUI);
+        _explorationInventoryUI.EnsureBuilt();
     }
 
     public override void _Ready()
@@ -135,5 +141,11 @@ public sealed partial class AovPlayer : CharacterBody3D, IInteractor
             _stateMachine?.TransitionTo("WalkRightState");
         if (direction > 135 || direction < -135)
             _stateMachine?.TransitionTo("WalkBackwardState");
+    }
+
+    public override void _ExitTree()
+    {
+        if (_explorationInventoryUI is not null && IsInstanceValid(_explorationInventoryUI))
+            _explorationInventoryUI.QueueFree();
     }
 }

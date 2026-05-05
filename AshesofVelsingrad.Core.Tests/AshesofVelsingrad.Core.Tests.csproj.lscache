@@ -58,6 +58,10 @@ AI/
  AIDecisionGeneratorTests.cs
  AIEvaluatorTests.cs
  AIUtilitiesTests.cs
+Audio/
+ AudioCatalogTests.cs
+ AudioRegistryTests.cs
+ AudioVolumeMathTests.cs
 Data/status_effect/unit/
  AtkBufferTests.cs
  BurningEffectTests.cs

@@ -124,6 +124,11 @@ html[data-bs-theme="dark"] pre {
 
 /* ----------------------------------------------------------------------------
    Header / navbar
+   The header uses a dark slate gradient, so EVERYTHING inside it has to be
+   forced light: brand, links, buttons (theme toggle / hamburger / contribute),
+   icons (Bootstrap-Icons + SVG-based), and the search field. Without these
+   overrides Bootstrap's default `.btn` text colour stays dark and the buttons
+   become invisible on dark.
    ------------------------------------------------------------------------- */
 header.bg-body {
   background: linear-gradient(180deg, var(--aov-slate) 0%, var(--aov-slate-deep) 100%) !important;
@@ -131,22 +136,130 @@ header.bg-body {
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.18);
 }
 
+/* Default text colour for everything in the header. */
+header.bg-body,
+header.bg-body * {
+  color: var(--aov-paper);
+}
+
 .navbar-brand,
-.navbar-brand:hover {
+.navbar-brand:hover,
+.navbar-brand:focus {
   color: var(--aov-paper) !important;
   font-family: "Helvetica Neue", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   font-weight: 700;
   letter-spacing: 0.02em;
 }
 
-.navbar #search input {
+/* Nav links (if a flat menu is rendered into #navbar). */
+.navbar a,
+.navbar .nav-link {
+  color: var(--aov-paper) !important;
+  border-bottom: 0;
+}
+.navbar a:hover,
+.navbar .nav-link:hover {
+  color: var(--aov-amber-soft) !important;
+}
+
+/* Buttons in the navbar — theme toggle, mobile hamburger, contribute, etc.
+   docfx renders these as <button class="btn …"> with a Bootstrap-Icons <i>. */
+header.bg-body .btn,
+header.bg-body button {
+  color: var(--aov-paper) !important;
+  background: transparent;
+  border: 1px solid transparent;
+}
+header.bg-body .btn:hover,
+header.bg-body button:hover {
+  color: var(--aov-amber-soft) !important;
   background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(201, 162, 106, 0.25);
+}
+header.bg-body .btn i,
+header.bg-body button i,
+header.bg-body .btn svg,
+header.bg-body button svg {
+  color: inherit !important;
+  fill: currentColor;
+}
+
+/* Search box. */
+.navbar #search {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.navbar #search input,
+.navbar #search-query {
+  background: rgba(255, 255, 255, 0.08);
   color: var(--aov-paper);
   border: 1px solid rgba(201, 162, 106, 0.35);
   border-radius: 4px;
+  padding: 4px 10px;
+  min-width: 220px;
 }
-.navbar #search input::placeholder { color: rgba(246, 241, 232, 0.55); }
+.navbar #search input::placeholder,
+.navbar #search-query::placeholder { color: rgba(246, 241, 232, 0.6); }
+.navbar #search input:focus,
+.navbar #search-query:focus {
+  outline: none;
+  border-color: var(--aov-amber);
+  background: rgba(255, 255, 255, 0.12);
+}
 .navbar #search i { color: var(--aov-amber-soft); }
+
+/* Mobile collapse toggle (hamburger). */
+.navbar-toggler {
+  border-color: rgba(201, 162, 106, 0.35) !important;
+}
+.navbar-toggler-icon {
+  filter: invert(1) brightness(1.1);
+}
+
+/* ----------------------------------------------------------------------------
+   Theme-toggle dropdown
+   The header forces all child text to paper colour. Bootstrap's dropdown panel
+   (theme toggle: Light / Dark / Auto) renders with a default white background
+   in light mode — paper-on-white reads as invisible. Force the panel itself
+   to slate so the paper text always has contrast.
+   ------------------------------------------------------------------------- */
+header.bg-body .dropdown-menu {
+  background: var(--aov-slate) !important;
+  border: 1px solid var(--aov-amber) !important;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
+  padding: 4px 0;
+  min-width: 9rem;
+}
+
+header.bg-body .dropdown-menu .dropdown-item {
+  color: var(--aov-paper) !important;
+  background: transparent !important;
+  padding: 6px 14px;
+  font-family: "Helvetica Neue", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 0.92rem;
+}
+
+header.bg-body .dropdown-menu .dropdown-item:hover,
+header.bg-body .dropdown-menu .dropdown-item:focus {
+  background: rgba(201, 162, 106, 0.18) !important;
+  color: var(--aov-amber-soft) !important;
+}
+
+header.bg-body .dropdown-menu .dropdown-item.active,
+header.bg-body .dropdown-menu .dropdown-item[aria-checked="true"] {
+  background: rgba(179, 90, 58, 0.25) !important;
+  color: var(--aov-amber) !important;
+  font-weight: 600;
+}
+
+/* Bootstrap-Icons inside dropdown items (sun/moon/auto-circle). */
+header.bg-body .dropdown-menu .dropdown-item i,
+header.bg-body .dropdown-menu .dropdown-item svg {
+  color: inherit !important;
+  fill: currentColor;
+  margin-right: 6px;
+}
 
 /* ----------------------------------------------------------------------------
    Sidebar / Table of contents

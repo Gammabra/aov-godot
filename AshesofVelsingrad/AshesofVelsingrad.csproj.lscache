@@ -13,7 +13,19 @@ primary
 lastDtbSucceeded
 
 [properties]
+AssemblyName=AshesofVelsingrad
 CommandLineArgsForDesignTimeEvaluation=-langversion:12.0 -define:;GDUNIT4NET_API_V5;TRACE -doc:"<PATH>.godot/mono/temp/obj/Debug/AshesofVelsingrad.xml"
+CompilerGeneratedFilesOutputPath=
+MaxSupportedLangVersion=13.0
+ProjectAssetsFile=<PATH>.godot/mono/temp/obj/project.assets.json
+RootNamespace=AshesofVelsingrad
+RunAnalyzers=
+RunAnalyzersDuringLiveAnalysis=
+SolutionPath=<PATH>../AOV-Project.slnx
+TargetFrameworkIdentifier=.NETCoreApp
+TargetPath=<PATH>.godot/mono/temp/bin/Debug/AshesofVelsingrad.dll
+TargetRefPath=<PATH>.godot/mono/temp/obj/Debug/ref/AshesofVelsingrad.dll
+TemporaryDependencyNodeTargetIdentifier=net9.0
 
 [commandLineArguments]
 /noconfig
@@ -254,10 +266,13 @@ scripts/
   UnitHealthBar.cs
   VictoryScreen.cs
  ui/inventory/
+  BattleInventorySlotUI.cs
+  BattleInventoryUI.cs
   ExplorationInventoryUI.cs
   ExplorationSlotUI.cs
-  InventorySlotUI.cs
-  InventoryUI.cs
+  InventoryConstants.cs
+  UnitSlotUI.cs
+  UnitTransferPanel.cs
  ui/menus/
   ButtonMenu.cs
   ButtonSettingsFont.cs

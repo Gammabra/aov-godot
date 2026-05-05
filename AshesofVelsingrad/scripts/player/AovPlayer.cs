@@ -1,6 +1,6 @@
 using AshesOfVelsingrad.Managers;
 using AshesOfVelsingrad.Systems;
-using AshesOfVelsingrad.UI.Exploration;
+using AshesOfVelsingrad.UI.Inventory;
 using Godot;
 
 namespace AshesOfVelsingrad.player;
@@ -45,6 +45,10 @@ public sealed partial class AovPlayer : CharacterBody3D, IInteractor
         _explorationInventoryUI = new ExplorationInventoryUI { Name = "ExplorationInventoryUI" };
         GetTree().Root.CallDeferred("add_child", _explorationInventoryUI);
         _explorationInventoryUI.EnsureBuilt();
+
+        // Units aren't known here — GameManager calls BindUnits after battle.
+        // For exploration with no battle context, pass an empty list.
+        _explorationInventoryUI.BindUnits(System.Array.Empty<IUnitSystem>());
     }
 
     public override void _Ready()
@@ -141,6 +145,11 @@ public sealed partial class AovPlayer : CharacterBody3D, IInteractor
             _stateMachine?.TransitionTo("WalkRightState");
         if (direction > 135 || direction < -135)
             _stateMachine?.TransitionTo("WalkBackwardState");
+    }
+
+    public void BindInventoryUnits(System.Collections.Generic.IReadOnlyList<IUnitSystem> units)
+    {
+        _explorationInventoryUI?.BindUnits(units);
     }
 
     public override void _ExitTree()

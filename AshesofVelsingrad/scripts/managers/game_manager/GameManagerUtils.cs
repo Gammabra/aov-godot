@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using AshesOfVelsingrad.Systems;
 using AshesOfVelsingrad.Systems.Battle;
-using AshesOfVelsingrad.UI.Hud;
 using AshesOfVelsingrad.Utilities;
 using Godot;
 

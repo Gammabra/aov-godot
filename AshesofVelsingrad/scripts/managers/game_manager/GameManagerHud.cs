@@ -2,6 +2,7 @@ using System;
 using AshesOfVelsingrad.Systems;
 using AshesOfVelsingrad.Systems.Battle;
 using AshesOfVelsingrad.UI.Hud;
+using AshesOfVelsingrad.UI.Inventory;
 using Godot;
 
 namespace AshesOfVelsingrad.Managers;
@@ -20,7 +21,7 @@ public partial class GameManager
     /// <summary>HUD root, spawned (or found) in <see cref="EnsureHud" />.</summary>
     protected BattleHud? _battleHud;
 
-    protected InventoryUI? _inventoryUI;
+    protected BattleInventoryUI? _inventoryUI;
 
     /// <summary>World-space tile overlays (move/target/hover).</summary>
     protected IndicatorOverlay? _indicators;
@@ -86,7 +87,7 @@ public partial class GameManager
     }
 
     /// <summary>
-    ///     Spawn (or find) the <see cref="InventoryUI" /> overlay, following the
+    ///     Spawn (or find) the <see cref="BattleInventoryUI" /> overlay, following the
     ///     exact same pattern as <see cref="EnsureHud" />.
     /// </summary>
     protected void EnsureInventoryUI()
@@ -99,10 +100,10 @@ public partial class GameManager
         // Try to find one already in the tree (designer-placed or previous call)
         foreach (Node child in host.GetChildren())
         {
-            if (child is InventoryUI existing) { _inventoryUI = existing; return; }
+            if (child is BattleInventoryUI existing) { _inventoryUI = existing; return; }
         }
 
-        _inventoryUI = new InventoryUI { Name = "InventoryUI" };
+        _inventoryUI = new BattleInventoryUI { Name = "InventoryUI" };
         host.CallDeferred("add_child", _inventoryUI);
         _inventoryUI.EnsureBuilt();
     }

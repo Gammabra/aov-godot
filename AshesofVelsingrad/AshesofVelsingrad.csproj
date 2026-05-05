@@ -1,4 +1,4 @@
-<Project Sdk="Godot.NET.Sdk/4.6.1">
+<Project Sdk="Godot.NET.Sdk/4.6.0">
   <PropertyGroup>
     <TargetFramework>net9.0</TargetFramework>
     <LangVersion>12.0</LangVersion>
@@ -6,11 +6,11 @@
     <RootNamespace>AshesofVelsingrad</RootNamespace>
     <AssemblyName>AshesofVelsingrad</AssemblyName>
     <GenerateTargetFrameworkAttribute>false</GenerateTargetFrameworkAttribute>
-    
+
     <Nullable>enable</Nullable>
     <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
     <Optimize>false</Optimize>
-    
+
     <NoWarn>NU1605;1591</NoWarn>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
 

@@ -54,10 +54,6 @@ public partial class GameManager : BaseManager
     [Export]
     private NodePath? _battleInputSystemPath;
 
-    [Export]
-    private NodePath? _inventoryUIPath;
-
-
     /// <summary>
     /// Toggle threat map visualization for all enemy units.
     /// Call this from a debug input or console command.
@@ -71,7 +67,6 @@ public partial class GameManager : BaseManager
     private IMapSystem? _mapSystemContainer;
     private TurnManager? _turnManagerContainer;
     private BattleInputSystem? _battleInputSystemContainer;
-    private InventoryUI? _inventoryUIContainer;
 
     #endregion
 
@@ -122,6 +117,8 @@ public partial class GameManager : BaseManager
         if (_gameOverScreen is not null && IsInstanceValid(_gameOverScreen)) _gameOverScreen.QueueFree();
         if (_battleHud is not null && IsInstanceValid(_battleHud) && _battleHud.GetParent() == GetTree().Root)
             _battleHud.QueueFree();
+        if (_inventoryUI is not null && IsInstanceValid(_inventoryUI) && _inventoryUI.GetParent() == GetTree().Root)
+            _inventoryUI.QueueFree();
         base._ExitTree();
     }
 
@@ -141,12 +138,11 @@ public partial class GameManager : BaseManager
         _battleInputSystemContainer.OnSelectMovePressed += PlayerSelectedMove;
         _playerUnitsContainer = GetNode<Node>(_playerUnitsPath);
         _enemyUnitsContainer = GetNode<Node>(_enemyUnitsPath);
-        if (_alliedUnitsPath is not null && !_alliedUnitsPath.IsEmpty)
-            _alliedUnitsContainer = GetNodeOrNull<Node>(_alliedUnitsPath);
         _battleInputSystemContainer.OnOpenInventoryPressed += OpenInventory;
         _battleInputSystemContainer.OnUseItemPressed += PlayerUsedItem;
-        _inventoryUIContainer = GetNode<InventoryUI>(_inventoryUIPath);
-        _inventoryUIContainer.SetBattleInputSystem(_battleInputSystemContainer);
+
+        if (_alliedUnitsPath is not null && !_alliedUnitsPath.IsEmpty)
+            _alliedUnitsContainer = GetNodeOrNull<Node>(_alliedUnitsPath);
 
         LoadUnits();
 
@@ -165,6 +161,7 @@ public partial class GameManager : BaseManager
         // refresh once their _Ready has fired (see RefreshHudOnReady below).
         EnsureHud();
         EnsureIndicators();
+        EnsureInventoryUI();
 
         _turnManagerContainer = GetNode<TurnManager>(_turnManagerPath);
         _turnManagerContainer.OnPlayerTurn += ActivatePlayerUnit;
@@ -548,8 +545,8 @@ public partial class GameManager : BaseManager
             return;
 
         var currentUnit = _turnManagerContainer.GetCurrentUnit();
-        _inventoryUIContainer?.BindInventory((InventorySystem)currentUnit.Inventory);
-        _inventoryUIContainer?.Toggle();
+        _inventoryUI?.BindInventory((InventorySystem)currentUnit.Inventory);
+        _inventoryUI?.Toggle();
     }
 
     /// <summary>
@@ -575,14 +572,8 @@ public partial class GameManager : BaseManager
             return;
         }
 
-        // For items that need a target, you'd set _clickOnMapContext here
-        // and wait for PlayerMovedUnitOrSelectedTarget, exactly like skills.
-        // For now: no-target / self-target items only.
         currentUnit.UseItem(slotIndex, target: null, _mapSystemContainer);
 
-        // If the item consumed the turn, input is already disabled by
-        // ReportSystemUnitHasPlayed → CompleteAction → TurnManager advancing.
-        // If it didn't (e.g. equip), re-enable input so the player can still act.
         if (!ItemCatalog.TryGet(slot.ItemId, out var item) || !item.ConsumesTurn)
             _battleInputSystemContainer?.SetInputEnabled(true);
     }

@@ -94,16 +94,23 @@ integration_tests/scripts_tests/
   MenuManagerTest.cs
   SettingsManagerTest.cs
   TurnManagerTest.cs
+ player/
+  AovPlayerTest.cs
+  InteractionComponentTest.cs
  system/
   BattleInputSystemTest.cs
+  FactionMarkerTest.cs
   MapSystemTest.cs
   SkillSystemTest.cs
   StatusEffectSystemTest.cs
   UnitSystemTest.cs
- ui/menus/
-  MainMenuTest.cs
-  OptionsMenuTest.cs
-  settings_tests.cs
+ ui/
+  BattleHudTest.cs
+  GameOverScreenTest.cs
+  menus/
+   MainMenuTest.cs
+   OptionsMenuTest.cs
+   settings_tests.cs
 scripts/
  AI/EnemyAIBehavior.cs
  data/items/
@@ -112,12 +119,28 @@ scripts/
   PotionItem.cs
  data/
   map/Map1.cs
+  npc/Soldier.cs
+  skills/
+   ArcherSkills.cs
+   AssassinSkills.cs
+   CorruptedConversion.cs
+   FighterSkills.cs
+   MageDarkSkills.cs
+   MageEarthSkills.cs
+   MageFireSkills.cs
+   MageGeneralPassives.cs
+   MageLightSkills.cs
+   MageWaterSkills.cs
+   SkillStrings.cs
+   SwordsmanSkills.cs
   status_effect/map/BurningCellEffect.cs
   unit/characters/
+   Ally1Data.cs
    AssassinData.cs
    FighterData.cs
    LightMageData.cs
    Player1Data.cs
+   Player2Data.cs
    SwordsmanData.cs
   unit/enemies/
    EnemyArcher.cs
@@ -131,7 +154,11 @@ scripts/
   EnemyAIManager.cs
   game_manager/
    GameManager.cs
+   GameManagerCombat.cs
+   GameManagerHud.cs
    GameManagerUtils.cs
+   KarmaManager.cs
+   TurnManagerHelpers.cs
   MenuManager.cs
   SceneManager.cs
   SettingsManager.cs
@@ -139,23 +166,99 @@ scripts/
    State.cs
    StateMachine.cs
   TurnManager.cs
+ player/
+  AovPlayer.cs
+  ExplorationCamera.cs
+  InteractionComponent.cs
+  States/
+   IdleState.cs
+   WalkBackwardState.cs
+   WalkForwardState.cs
+   WalkLeftState.cs
+   WalkRightState.cs
+ systems/battle/
+  BattleConfig.cs
+  BattleEventBus.cs
+  BattleEvents.cs
+  BattleLauncher.cs
+  BattleNotification.cs
+  BattleResult.cs
+  FactionMarker.cs
+  IndicatorOverlay.cs
+  MoveIndicator.cs
+  VictoryCondition.cs
  systems/
   BattleInputSystem.cs
+  corruption/
+   CorruptedTransformationEffect.cs
+   CorruptionLevelEffect.cs
+   CorruptionSystem.cs
   inventory_system/
    EquipementSystem.cs
    InventorySystem.cs
    ItemCatalog.cs
    ItemSystem.cs
+  items/
+   behaviours/ItemBehaviours.cs
+   IItemBehaviour.cs
+   ItemDefinition.cs
+   ItemRegistry.cs
+   PartyInventory.cs
   map_system/
    MapSystem.cs
    MapSystemUnitsHandling.cs
    MapSystemUtils.cs
+  progression/
+   CharacterClassDefinition.cs
+   CharacterProfile.cs
+   ExperienceCalculator.cs
+   SkillLoadout.cs
+   SkillUnlock.cs
+  skills/
+   behaviours/SkillBehaviours.cs
+   DataDrivenSkill.cs
+   ISkillBehaviour.cs
+   SkillDefinition.cs
+   SkillRegistry.cs
+  status_effects/effects/
+   BleedEffect.cs
+   BurnEffect.cs
+   ConfusionEffect.cs
+   CurseEffect.cs
+   PoisonEffect.cs
+   StunEffect.cs
+  status_effects/
+   EffectTarget.cs
+   IEffectTarget.cs
+   StatusEffect.cs
+   StatusEffectFactory.cs
+   StatusEffectSystem.cs
   unit_system/
    UnitSystem.cs
+   UnitSystemActions.cs
+   UnitSystemCorruption.cs
+   UnitSystemIdentity.cs
+   UnitSystemLegacyEffects.cs
    UnitSystemMovements.cs
    UnitSystemSkills.cs
    UnitSystemStats.cs
    UnitSystemStatusEffectImplementation.cs
+ ui/hud/
+  ActionMenu.cs
+  BattleHud.cs
+  BattleLog.cs
+  ContextInfoPanel.cs
+  CorruptionGauge.cs
+  EnemyRoster.cs
+  GameOverScreen.cs
+  HudBusHelper.cs
+  HudStyle.cs
+  InventoryPanel.cs
+  PlayerStatusPanel.cs
+  SkillSelector.cs
+  TurnOrderQueue.cs
+  UnitHealthBar.cs
+  VictoryScreen.cs
  ui/inventory/
   InventorySlotUI.cs
   InventoryUI.cs

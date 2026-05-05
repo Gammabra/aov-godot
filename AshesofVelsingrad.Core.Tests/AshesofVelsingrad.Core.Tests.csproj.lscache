@@ -66,8 +66,13 @@ obj/Debug/net9.0/
  .NETCoreApp,Version=v9.0.AssemblyAttributes.cs
  AshesofVelsingrad.Core.Tests.AssemblyInfo.cs
 Systems/
+ battle/PathfinderTests.cs
+ EntityProfileTests.cs
+ FactionTests.cs
  map_system/CellInformationTests.cs
+ SkillSystemTargetingTests.cs
  SkillSystemTests.cs
+ StatusEffectExtraTests.cs
  status_effects/
   EffectTargetTests.cs
   StatusEffectSystemTest.cs
@@ -242,7 +247,6 @@ Systems/
  WindowsBase.dll
 <NUGET>/
  castle.core/5.1.1/lib/net6.0/Castle.Core.dll
- godotsharp/4.6.0/lib/net8.0/GodotSharp.dll
  microsoft.codecoverage/18.3.0/lib/net8.0/Microsoft.VisualStudio.CodeCoverage.Shim.dll
  microsoft.testplatform.testhost/18.3.0/lib/net8.0/
   Microsoft.TestPlatform.CommunicationUtilities.dll

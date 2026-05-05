@@ -60,12 +60,16 @@ AI/
  AIUtilities.cs
  BattleState.cs
  IAPersonality.cs
-Data/status_effect/unit/
- AtkBuffer.cs
- BurningEffect.cs
- Stun.cs
+Data/
+ EntityProfile.cs
+ status_effect/unit/
+  AtkBuffer.cs
+  BurningEffect.cs
+  Stun.cs
 interface/
  IEffectTarget.cs
+ IInteractable.cs
+ IInteractor.cs
  IInventorySystem.cs
  IItemSystem.cs
  IMapSystem.cs
@@ -77,6 +81,8 @@ obj/Debug/net9.0/
  .NETCoreApp,Version=v9.0.AssemblyAttributes.cs
  AshesofVelsingrad.Core.AssemblyInfo.cs
 Systems/
+ battle/Pathfinder.cs
+ Faction.cs
  map_system/CellInformation.cs
  SkillSystem.cs
  status_effects/
@@ -253,7 +259,6 @@ Utilities/
  System.Xml.XPath.dll
  System.Xml.XPath.XDocument.dll
  WindowsBase.dll
-<NUGET>/godotsharp/4.6.0/lib/net8.0/GodotSharp.dll
 
 [analyzerReferences]
 <DOTNET>/packs/Microsoft.NETCore.App.Ref/9.0.15/analyzers/dotnet/cs/

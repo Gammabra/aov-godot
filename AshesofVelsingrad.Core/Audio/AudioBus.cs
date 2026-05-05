@@ -1,4 +1,4 @@
-namespace AshesOfVelsingrad.Core.Audio;
+namespace AshesOfVelsingrad.Audio;
 
 /// <summary>
 ///     Logical mixing channels exposed by the audio service.

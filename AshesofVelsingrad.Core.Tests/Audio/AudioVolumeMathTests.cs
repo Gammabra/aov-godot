@@ -1,4 +1,4 @@
-using AshesOfVelsingrad.Core.Audio;
+using AshesOfVelsingrad.Audio;
 using NUnit.Framework;
 
 namespace AshesOfVelsingrad.Core.Tests.Audio;

@@ -1,37 +1,19 @@
 using System;
 using System.Collections.Generic;
-using AshesOfVelsingrad.Core.Audio;
+using AshesOfVelsingrad.Audio;
 using Godot;
 
 namespace AshesOfVelsingrad.Managers;
 
 /// <summary>
 ///     Centralised audio service for music, ambient layers and one-shot SFX.
+///     Implements <see cref="IAudioService" /> from the Core layer and bridges Godot
+///     audio APIs to the rest of the game.
 /// </summary>
-/// <remarks>
-///     <para>
-///         Implements <see cref="IAudioService" /> from the Core layer. The adapter
-///         owns the Godot-specific concerns: <c>AudioServer</c> bus indices, pooled
-///         <c>AudioStreamPlayer</c> nodes and <see cref="Tween" />-driven fades.
-///     </para>
-///     <para>
-///         Wired to <see cref="SettingsManager" /> via the <c>SettingsChanged</c> signal:
-///         volume sliders update bus volumes the same frame the player drags them. On
-///         start-up the manager reads persisted volumes (<c>audio.volume.&lt;bus&gt;</c>)
-///         from the settings store and applies them.
-///     </para>
-///     <para>
-///         Optimisations: SFX players are pooled (no per-shot allocation), streams are
-///         cached after first load, music playback uses two players that crossfade so
-///         transitions don't pop, and ambient layers are kept in a dictionary so they
-///         can be toggled independently without rebuilding the audio graph.
-///     </para>
-/// </remarks>
 public partial class AudioManager : BaseManager, IAudioService
 {
     #region Constants
 
-    /// <summary>Prefix for every audio key stored through <see cref="SettingsManager" />.</summary>
     public const string SettingsPrefix = "audio.volume.";
 
     private const int _sfxPoolSize = 16;
@@ -39,9 +21,6 @@ public partial class AudioManager : BaseManager, IAudioService
     private const float _defaultAmbientFadeSeconds = 1.5f;
     private const float _defaultStopFadeSeconds = 1.0f;
 
-    // Bus names match the existing audio UI (SettingsPages.cs) so the manager and the
-    // legacy UI both target the same Godot buses. The enum stays language-neutral —
-    // only the string mapping reflects the project's existing convention.
     private static readonly IReadOnlyDictionary<AudioBus, string> _busNames =
         new Dictionary<AudioBus, string>
         {
@@ -57,7 +36,6 @@ public partial class AudioManager : BaseManager, IAudioService
 
     #region Singleton
 
-    /// <summary>Active <see cref="AudioManager" /> autoload, or <c>null</c> before <c>_Ready</c>.</summary>
     public new static AudioManager? Instance { get; private set; }
 
     #endregion
@@ -74,29 +52,25 @@ public partial class AudioManager : BaseManager, IAudioService
     private string? _currentMusicPath;
 
     private readonly Dictionary<string, AmbientLayer> _ambientLayers = new();
-
     private readonly Dictionary<string, AudioStream> _streamCache = new();
-
     private readonly Dictionary<AudioBus, float> _persistedLinearVolumes = new();
     private readonly Dictionary<AudioBus, bool> _muted = new();
 
     private SettingsManager? _settingsManager;
     private bool _settingsConnected;
 
+    private readonly AudioRegistry _registry = new();
+
+    #endregion
+
+    #region Public Properties
+
+    public IAudioRegistry Registry => _registry;
+
     #endregion
 
     #region Lifecycle
 
-    /// <summary>
-    ///     Boots the audio service: ensures buses exist, builds the player pool, applies
-    ///     persisted volumes and connects to <see cref="SettingsManager" />.
-    /// </summary>
-    /// <remarks>
-    ///     Idempotent on the same instance — guards the test harness which calls
-    ///     <c>Initialize</c> via reflection after Godot's <c>_Ready</c> has already
-    ///     run it once. A second call on the same node is a no-op; a call from a
-    ///     duplicate node frees the duplicate.
-    /// </remarks>
     protected override void Initialize()
     {
         if (Instance == this) return;
@@ -113,18 +87,31 @@ public partial class AudioManager : BaseManager, IAudioService
 
         EnsureBuses();
         BuildPlayers();
+        RegisterCatalog();
         ApplyInitialVolumesFromSettings();
         ConnectToSettings();
 
-        GD.Print("AudioManager initialized successfully");
+        GD.Print($"AudioManager initialized successfully ({_registry.Count} track(s), sfxPool={_sfxPool.Count})");
+
+        // The game always boots into a menu — start the menu theme automatically
+        // so any boot scene gets music without needing a per-scene hook. Deferred
+        // so it runs after the autoload chain finishes and the scene tree is ready
+        // for resource loads.
+        Callable.From(PlayBootMusic).CallDeferred();
     }
 
-    /// <inheritdoc />
-    /// <remarks>
-    ///     Mirror the <c>TurnManager</c> / <c>GameManager</c> pattern: clear the derived
-    ///     static <see cref="Instance" /> so a scene reload doesn't see a stale singleton
-    ///     and self-destruct as a "duplicate".
-    /// </remarks>
+    private void PlayBootMusic()
+    {
+        if (_registry.Contains(AudioCatalog.MainMenuTheme))
+        {
+            Play(AudioCatalog.MainMenuTheme);
+        }
+        else
+        {
+            GD.PrintErr($"[AudioManager] Boot track '{AudioCatalog.MainMenuTheme}' NOT in registry; skipping.");
+        }
+    }
+
     public override void _ExitTree()
     {
         DisconnectFromSettings();
@@ -136,12 +123,6 @@ public partial class AudioManager : BaseManager, IAudioService
 
     #region Setup helpers
 
-    /// <summary>
-    ///     Creates any missing audio buses programmatically so the manager works without
-    ///     a hand-authored <c>default_bus_layout.tres</c>. Master always exists; every
-    ///     other bus is appended and routed back to Master, so the master slider keeps
-    ///     scaling every other bus.
-    /// </summary>
     private static void EnsureBuses()
     {
         var masterName = _busNames[AudioBus.Master];
@@ -176,18 +157,74 @@ public partial class AudioManager : BaseManager, IAudioService
         {
             Name = name,
             Bus = busName,
-            ProcessMode = ProcessModeEnum.Always, // keep audio when the game pauses
+            ProcessMode = ProcessModeEnum.Always,
         };
         AddChild(player);
         return player;
+    }
+
+    private void RegisterCatalog()
+    {
+        if (_registry.Count > 0) _registry.Clear();
+        AudioCatalog.RegisterDefaults(_registry);
+    }
+
+    #endregion
+
+    #region IAudioService — Registry dispatch
+
+    public void Play(string trackId)
+    {
+        if (!_registry.TryGet(trackId, out var track))
+        {
+            GD.PrintErr($"AudioManager: no track registered with id '{trackId}'");
+            return;
+        }
+
+        var multiplier = AudioVolumeMath.ClampLinear(track.BaseVolumeMultiplier);
+
+        switch (track.Bus)
+        {
+            case AudioBus.Music:
+                PlayMusicInternal(track.ResourcePath, _defaultMusicFadeSeconds, track.Loop, multiplier);
+                break;
+
+            case AudioBus.Ambient:
+                PlayAmbientInternal(track.Id, track.ResourcePath, _defaultAmbientFadeSeconds, multiplier);
+                break;
+
+            case AudioBus.Sfx:
+            case AudioBus.Ui:
+            case AudioBus.Voice:
+                PlayOneShot(track.ResourcePath, _busNames[track.Bus], multiplier, pitchScale: 1f);
+                break;
+
+            case AudioBus.Master:
+            default:
+                GD.PrintErr($"AudioManager: track '{trackId}' uses unsupported bus '{track.Bus}'");
+                break;
+        }
     }
 
     #endregion
 
     #region IAudioService — Music
 
-    /// <inheritdoc />
     public void PlayMusic(string trackPath, float fadeSeconds = _defaultMusicFadeSeconds, bool loop = true)
+    {
+        PlayMusicInternal(trackPath, fadeSeconds, loop, volumeMultiplier: 1f);
+    }
+
+    public void StopMusic(float fadeSeconds = _defaultStopFadeSeconds)
+    {
+        var active = _musicAIsActive ? _musicA : _musicB;
+        var inactive = _musicAIsActive ? _musicB : _musicA;
+        FadeOutAndStop(active, Mathf.Max(0f, fadeSeconds));
+        FadeOutAndStop(inactive, 0f);
+        _currentMusicPath = null;
+    }
+
+    private void PlayMusicInternal(string trackPath, float fadeSeconds, bool loop, float volumeMultiplier)
     {
         if (string.IsNullOrEmpty(trackPath))
         {
@@ -214,33 +251,28 @@ public partial class AudioManager : BaseManager, IAudioService
         nextPlayer.VolumeDb = AudioVolumeMath.SilenceDb;
         nextPlayer.Play();
 
-        CrossfadeMusic(prevPlayer, nextPlayer, Mathf.Max(0f, fadeSeconds));
+        var targetDb = AudioVolumeMath.LinearToDb(AudioVolumeMath.ClampLinear(volumeMultiplier));
+        CrossfadeMusic(prevPlayer, nextPlayer, Mathf.Max(0f, fadeSeconds), targetDb);
         _currentMusicPath = trackPath;
     }
 
-    /// <inheritdoc />
-    public void StopMusic(float fadeSeconds = _defaultStopFadeSeconds)
-    {
-        var active = _musicAIsActive ? _musicA : _musicB;
-        var inactive = _musicAIsActive ? _musicB : _musicA;
-        FadeOutAndStop(active, Mathf.Max(0f, fadeSeconds));
-        FadeOutAndStop(inactive, 0f);
-        _currentMusicPath = null;
-    }
-
-    private void CrossfadeMusic(AudioStreamPlayer outgoing, AudioStreamPlayer incoming, float fadeSeconds)
+    private void CrossfadeMusic(
+        AudioStreamPlayer outgoing,
+        AudioStreamPlayer incoming,
+        float fadeSeconds,
+        float targetDb)
     {
         _musicTween?.Kill();
 
         if (fadeSeconds <= 0f)
         {
             outgoing.Stop();
-            incoming.VolumeDb = 0f;
+            incoming.VolumeDb = targetDb;
             return;
         }
 
         _musicTween = CreateTween().SetParallel(true);
-        _musicTween.TweenProperty(incoming, "volume_db", 0f, fadeSeconds)
+        _musicTween.TweenProperty(incoming, "volume_db", targetDb, fadeSeconds)
             .From(AudioVolumeMath.SilenceDb);
         _musicTween.TweenProperty(outgoing, "volume_db", AudioVolumeMath.SilenceDb, fadeSeconds);
         _musicTween.Chain().TweenCallback(Callable.From(() =>
@@ -271,8 +303,12 @@ public partial class AudioManager : BaseManager, IAudioService
 
     #region IAudioService — Ambient
 
-    /// <inheritdoc />
     public void PlayAmbient(string layerId, string trackPath, float fadeSeconds = _defaultAmbientFadeSeconds)
+    {
+        PlayAmbientInternal(layerId, trackPath, fadeSeconds, volumeMultiplier: 1f);
+    }
+
+    private void PlayAmbientInternal(string layerId, string trackPath, float fadeSeconds, float volumeMultiplier)
     {
         if (string.IsNullOrEmpty(layerId) || string.IsNullOrEmpty(trackPath))
         {
@@ -284,17 +320,17 @@ public partial class AudioManager : BaseManager, IAudioService
         if (stream == null) return;
         ApplyLoopFlag(stream, true);
 
+        var targetDb = AudioVolumeMath.LinearToDb(AudioVolumeMath.ClampLinear(volumeMultiplier));
+
         if (_ambientLayers.TryGetValue(layerId, out var existing))
         {
             if (existing.TrackPath == trackPath && existing.Player.Playing) return;
 
-            // Replace the running layer in place so we keep the same node and just
-            // swap the stream — saves an AddChild call and a frame of silence.
             existing.TrackPath = trackPath;
             existing.Player.Stream = stream;
             existing.Player.VolumeDb = AudioVolumeMath.SilenceDb;
             existing.Player.Play();
-            FadeIn(existing.Player, Mathf.Max(0f, fadeSeconds));
+            FadeIn(existing.Player, Mathf.Max(0f, fadeSeconds), targetDb);
             return;
         }
 
@@ -302,12 +338,11 @@ public partial class AudioManager : BaseManager, IAudioService
         player.Stream = stream;
         player.VolumeDb = AudioVolumeMath.SilenceDb;
         player.Play();
-        FadeIn(player, Mathf.Max(0f, fadeSeconds));
+        FadeIn(player, Mathf.Max(0f, fadeSeconds), targetDb);
 
         _ambientLayers[layerId] = new AmbientLayer(player, trackPath);
     }
 
-    /// <inheritdoc />
     public void StopAmbient(string layerId, float fadeSeconds = _defaultStopFadeSeconds)
     {
         if (!_ambientLayers.TryGetValue(layerId, out var layer)) return;
@@ -335,25 +370,23 @@ public partial class AudioManager : BaseManager, IAudioService
         _ambientLayers.Remove(layerId);
     }
 
-    /// <inheritdoc />
     public void StopAllAmbient(float fadeSeconds = _defaultStopFadeSeconds)
     {
-        // Snapshot keys first so the dictionary mutation inside StopAmbient is safe.
         var keys = new string[_ambientLayers.Count];
         _ambientLayers.Keys.CopyTo(keys, 0);
         foreach (var id in keys) StopAmbient(id, fadeSeconds);
     }
 
-    private static void FadeIn(AudioStreamPlayer player, float fadeSeconds)
+    private static void FadeIn(AudioStreamPlayer player, float fadeSeconds, float targetDb)
     {
         if (fadeSeconds <= 0f)
         {
-            player.VolumeDb = 0f;
+            player.VolumeDb = targetDb;
             return;
         }
 
         var tween = player.CreateTween();
-        tween.TweenProperty(player, "volume_db", 0f, fadeSeconds)
+        tween.TweenProperty(player, "volume_db", targetDb, fadeSeconds)
             .From(AudioVolumeMath.SilenceDb);
     }
 
@@ -361,13 +394,11 @@ public partial class AudioManager : BaseManager, IAudioService
 
     #region IAudioService — SFX / UI
 
-    /// <inheritdoc />
     public void PlaySfx(string trackPath, float volumeLinear = 1f, float pitchScale = 1f)
     {
         PlayOneShot(trackPath, _busNames[AudioBus.Sfx], volumeLinear, pitchScale);
     }
 
-    /// <inheritdoc />
     public void PlayUi(string trackPath, float volumeLinear = 1f)
     {
         PlayOneShot(trackPath, _busNames[AudioBus.Ui], volumeLinear, pitchScale: 1f);
@@ -389,7 +420,6 @@ public partial class AudioManager : BaseManager, IAudioService
 
     private AudioStreamPlayer NextSfxPlayer()
     {
-        // Round-robin first, then steal the oldest player if everything is busy.
         for (var i = 0; i < _sfxPool.Count; i++)
         {
             var idx = (_sfxCursor + i) % _sfxPool.Count;
@@ -410,7 +440,6 @@ public partial class AudioManager : BaseManager, IAudioService
 
     #region IAudioService — Bus volume
 
-    /// <inheritdoc />
     public float GetBusVolume(AudioBus bus)
     {
         if (_muted.TryGetValue(bus, out var muted) && muted)
@@ -424,7 +453,6 @@ public partial class AudioManager : BaseManager, IAudioService
         return AudioVolumeMath.DbToLinear(AudioServer.GetBusVolumeDb(index));
     }
 
-    /// <inheritdoc />
     public void SetBusVolume(AudioBus bus, float linear)
     {
         var clamped = AudioVolumeMath.ClampLinear(linear);
@@ -432,8 +460,6 @@ public partial class AudioManager : BaseManager, IAudioService
 
         if (_muted.TryGetValue(bus, out var muted) && muted)
         {
-            // Keep the persisted slider value so unmuting can restore it, but leave
-            // the live bus silent.
             ApplyBusDb(bus, AudioVolumeMath.SilenceDb);
         }
         else
@@ -444,13 +470,11 @@ public partial class AudioManager : BaseManager, IAudioService
         PersistToSettings(bus, clamped);
     }
 
-    /// <inheritdoc />
     public bool IsBusMuted(AudioBus bus)
     {
         return _muted.TryGetValue(bus, out var muted) && muted;
     }
 
-    /// <inheritdoc />
     public void SetBusMuted(AudioBus bus, bool muted)
     {
         _muted[bus] = muted;
@@ -476,8 +500,6 @@ public partial class AudioManager : BaseManager, IAudioService
 
     #region Settings binding
 
-    /// <summary>Returns the canonical settings key for a bus (e.g. <c>audio.volume.music</c>).</summary>
-    /// <param name="bus">Bus to convert.</param>
     public static string GetSettingsKey(AudioBus bus) => SettingsPrefix + bus.ToString().ToLowerInvariant();
 
     private void ApplyInitialVolumesFromSettings()
@@ -559,7 +581,7 @@ public partial class AudioManager : BaseManager, IAudioService
         var loaded = ResourceLoader.Load<AudioStream>(path);
         if (loaded == null)
         {
-            GD.PrintErr($"AudioManager: failed to load stream at '{path}'");
+            GD.PrintErr($"AudioManager: failed to load stream at '{path}' (missing .import or wrong path)");
             return null;
         }
 
@@ -587,7 +609,6 @@ public partial class AudioManager : BaseManager, IAudioService
 
     #region Nested types
 
-    /// <summary>Tracks an active ambient layer and the resource path that produced it.</summary>
     private sealed class AmbientLayer
     {
         public AudioStreamPlayer Player { get; }

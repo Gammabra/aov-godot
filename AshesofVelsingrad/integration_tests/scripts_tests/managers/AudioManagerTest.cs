@@ -1,5 +1,5 @@
 using System.Collections.Generic;
-using AshesOfVelsingrad.Core.Audio;
+using AshesOfVelsingrad.Audio;
 using AshesOfVelsingrad.Helpers.Managers;
 using AshesOfVelsingrad.Managers;
 using GdUnit4;
@@ -157,6 +157,42 @@ public class AudioManagerTest
     {
         _audio!._ExitTree();
         AssertThat(AudioManager.Instance).IsNull();
+    }
+
+    // === Registry / catalog integration ===
+
+    [TestCase]
+    public void Initialize_PopulatesRegistryFromCatalog()
+    {
+        AssertThat(_audio!.Registry.Count).IsGreater(0);
+        AssertThat(_audio.Registry.Contains(AudioCatalog.MainMenuTheme)).IsTrue();
+    }
+
+    [TestCase]
+    public void Play_UnknownTrackId_DoesNotThrow()
+    {
+        // Should log an error and noop; never blow up the caller.
+        _audio!.Play("does.not.exist");
+    }
+
+    [TestCase]
+    public void Play_MainMenuTheme_DoesNotThrow()
+    {
+        // Whether the player actually starts depends on Godot's .import for the
+        // asset being present (the editor generates it on first open). The
+        // contract we care about here is that the dispatch path is wired up and
+        // a missing .import surfaces as a printed error, not an exception.
+        _audio!.Play(AudioCatalog.MainMenuTheme);
+    }
+
+    [TestCase]
+    public void Registry_ExposesTrackMetadataForUiUse()
+    {
+        var track = _audio!.Registry.Find(AudioCatalog.MainMenuTheme);
+
+        AssertThat(track).IsNotNull();
+        AssertThat(track!.Bus).IsEqual(AudioBus.Music);
+        AssertThat(track.ResourcePath).IsEqual("res://assets/audio_assets/musics/TA_A.wav");
     }
 
     // === Helpers ===

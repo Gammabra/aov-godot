@@ -1,4 +1,4 @@
-namespace AshesOfVelsingrad.Core.Audio;
+namespace AshesOfVelsingrad.Audio;
 
 /// <summary>
 ///     Contract for the central audio service.
@@ -19,6 +19,23 @@ namespace AshesOfVelsingrad.Core.Audio;
 /// </remarks>
 public interface IAudioService
 {
+    /// <summary>
+    ///     Track registry exposed for read access (UI listings, debug overlays, etc.)
+    ///     and for tests that need to assert what's been registered.
+    /// </summary>
+    IAudioRegistry Registry { get; }
+
+    /// <summary>
+    ///     Plays the registered track with id <paramref name="trackId" />, dispatching
+    ///     to the right code path (music crossfade, ambient layer, or one-shot) based
+    ///     on the track's <see cref="AudioTrack.Bus" />. The per-track
+    ///     <see cref="AudioTrack.BaseVolumeMultiplier" /> is applied on top of the bus
+    ///     volume so individual songs that were mastered too loud can be tamed at the
+    ///     catalog level.
+    /// </summary>
+    /// <param name="trackId">Identifier registered through <see cref="AudioCatalog" />.</param>
+    void Play(string trackId);
+
     /// <summary>Starts (or crossfades into) a music track.</summary>
     /// <param name="trackPath">Resource path of the music stream.</param>
     /// <param name="fadeSeconds">Crossfade duration with the currently playing track.</param>

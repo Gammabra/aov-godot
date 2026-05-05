@@ -2,11 +2,11 @@
 <html>
   <head>
     <meta charset="utf-8">
-      <title>Class State | Ashes of Velsingrad Documentation </title>
+      <title>Class WalkForwardState | Ashes of Velsingrad Documentation </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content="Class State | Ashes of Velsingrad Documentation ">
+      <meta name="title" content="Class WalkForwardState | Ashes of Velsingrad Documentation ">
       
-      <meta name="description" content="Base class for all states used in a . Provides a lifecycle and hooks for behavior implementation.">
+      
       <link rel="icon" href="../favicon.ico">
       <link rel="stylesheet" href="../public/docfx.min.css">
       <link rel="stylesheet" href="../public/main.css">
@@ -84,27 +84,25 @@
           <nav id="breadcrumb"></nav>
         </div>
 
-        <article data-uid="AshesOfVelsingrad.Managers.State">
+        <article data-uid="AshesOfVelsingrad.player.States.WalkForwardState">
 
 
 
-  <h1 id="AshesOfVelsingrad_Managers_State" data-uid="AshesOfVelsingrad.Managers.State" class="text-break">
-Class State  
+  <h1 id="AshesOfVelsingrad_player_States_WalkForwardState" data-uid="AshesOfVelsingrad.player.States.WalkForwardState" class="text-break">
+Class WalkForwardState  
   </h1>
 
   <div class="facts text-secondary">
-    <dl><dt>Namespace</dt><dd><a class="xref" href="AshesOfVelsingrad.html">AshesOfVelsingrad</a>.<a class="xref" href="AshesOfVelsingrad.Managers.html">Managers</a></dd></dl>
+    <dl><dt>Namespace</dt><dd><a class="xref" href="AshesOfVelsingrad.html">AshesOfVelsingrad</a>.<a class="xref" href="AshesOfVelsingrad.player.html">player</a>.<a class="xref" href="AshesOfVelsingrad.player.States.html">States</a></dd></dl>
   <dl><dt>Assembly</dt><dd>AshesofVelsingrad.dll</dd></dl>
   </div>
 
-  <div class="markdown summary"><p>Base class for all states used in a <a class="xref" href="AshesOfVelsingrad.Managers.StateMachine.html">StateMachine</a>.
-Provides a lifecycle and hooks for behavior implementation.</p>
-</div>
+  <div class="markdown summary"></div>
   <div class="markdown conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[ScriptPath(&quot;res://scripts/managers/state_machines/State.cs&quot;)]
-public class State : Node, IDisposable</code></pre>
+    <pre><code class="lang-csharp hljs">[ScriptPath(&quot;res://scripts/player/States/WalkForwardState.cs&quot;)]
+public class WalkForwardState : State, IDisposable</code></pre>
   </div>
 
 
@@ -116,7 +114,8 @@ public class State : Node, IDisposable</code></pre>
       <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
       <div><span class="xref">GodotObject</span></div>
       <div><span class="xref">Node</span></div>
-      <div><span class="xref">State</span></div>
+      <div><a class="xref" href="AshesOfVelsingrad.Managers.State.html">State</a></div>
+      <div><span class="xref">WalkForwardState</span></div>
     </dd>
   </dl>
 
@@ -127,20 +126,22 @@ public class State : Node, IDisposable</code></pre>
     </dd>
   </dl>
 
-  <dl class="typelist derived">
-    <dt>Derived</dt>
-    <dd>
-      <div><a class="xref" href="AshesOfVelsingrad.player.States.IdleState.html">IdleState</a></div>
-      <div><a class="xref" href="AshesOfVelsingrad.player.States.WalkBackwardState.html">WalkBackwardState</a></div>
-      <div><a class="xref" href="AshesOfVelsingrad.player.States.WalkForwardState.html">WalkForwardState</a></div>
-      <div><a class="xref" href="AshesOfVelsingrad.player.States.WalkLeftState.html">WalkLeftState</a></div>
-      <div><a class="xref" href="AshesOfVelsingrad.player.States.WalkRightState.html">WalkRightState</a></div>
-    </dd>
-  </dl>
 
   <dl class="typelist inheritedMembers">
     <dt>Inherited Members</dt>
     <dd>
+    <div>
+      <a class="xref" href="AshesOfVelsingrad.Managers.State.html#AshesOfVelsingrad_Managers_State_fsm">State.fsm</a>
+    </div>
+    <div>
+      <a class="xref" href="AshesOfVelsingrad.Managers.State.html#AshesOfVelsingrad_Managers_State_Update_System_Double_">State.Update(double)</a>
+    </div>
+    <div>
+      <a class="xref" href="AshesOfVelsingrad.Managers.State.html#AshesOfVelsingrad_Managers_State_PhysicsUpdate_System_Double_">State.PhysicsUpdate(double)</a>
+    </div>
+    <div>
+      <a class="xref" href="AshesOfVelsingrad.Managers.State.html#AshesOfVelsingrad_Managers_State_HandleInput_Godot_InputEvent_">State.HandleInput(InputEvent)</a>
+    </div>
     <div>
       <span class="xref">Node.NotificationEnterTree</span>
     </div>
@@ -1009,50 +1010,15 @@ public class State : Node, IDisposable</code></pre>
 
 
 
-  <h2 class="section" id="fields">Fields
-</h2>
-
-
-
-  <h3 id="AshesOfVelsingrad_Managers_State_fsm" data-uid="AshesOfVelsingrad.Managers.State.fsm">
-  fsm
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/managers/state_machines/State.cs/#L14"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Reference to the owning state machine.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public StateMachine? fsm</code></pre>
-  </div>
-
-
-
-
-  <h4 class="section">Field Value</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="AshesOfVelsingrad.Managers.StateMachine.html">StateMachine</a></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-
   <h2 class="section" id="methods">Methods
 </h2>
 
 
-  <a id="AshesOfVelsingrad_Managers_State_Enter_" data-uid="AshesOfVelsingrad.Managers.State.Enter*"></a>
+  <a id="AshesOfVelsingrad_player_States_WalkForwardState_Enter_" data-uid="AshesOfVelsingrad.player.States.WalkForwardState.Enter*"></a>
 
-  <h3 id="AshesOfVelsingrad_Managers_State_Enter" data-uid="AshesOfVelsingrad.Managers.State.Enter">
+  <h3 id="AshesOfVelsingrad_player_States_WalkForwardState_Enter" data-uid="AshesOfVelsingrad.player.States.WalkForwardState.Enter">
   Enter()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/managers/state_machines/State.cs/#L20"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/player/States/WalkForwardState.cs/#L18"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Called when the state is entered.
@@ -1061,7 +1027,7 @@ Override to implement enter behavior.</p>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public virtual void Enter()</code></pre>
+    <pre><code class="lang-csharp hljs">public override void Enter()</code></pre>
   </div>
 
 
@@ -1076,11 +1042,11 @@ Override to implement enter behavior.</p>
 
 
 
-  <a id="AshesOfVelsingrad_Managers_State_Exit_" data-uid="AshesOfVelsingrad.Managers.State.Exit*"></a>
+  <a id="AshesOfVelsingrad_player_States_WalkForwardState_Exit_" data-uid="AshesOfVelsingrad.player.States.WalkForwardState.Exit*"></a>
 
-  <h3 id="AshesOfVelsingrad_Managers_State_Exit" data-uid="AshesOfVelsingrad.Managers.State.Exit">
+  <h3 id="AshesOfVelsingrad_player_States_WalkForwardState_Exit" data-uid="AshesOfVelsingrad.player.States.WalkForwardState.Exit">
   Exit()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/managers/state_machines/State.cs/#L28"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/player/States/WalkForwardState.cs/#L23"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Called when the state is exited.
@@ -1089,7 +1055,7 @@ Override to implement cleanup logic.</p>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public virtual void Exit()</code></pre>
+    <pre><code class="lang-csharp hljs">public override void Exit()</code></pre>
   </div>
 
 
@@ -1104,44 +1070,11 @@ Override to implement cleanup logic.</p>
 
 
 
-  <a id="AshesOfVelsingrad_Managers_State_HandleInput_" data-uid="AshesOfVelsingrad.Managers.State.HandleInput*"></a>
+  <a id="AshesOfVelsingrad_player_States_WalkForwardState_OnStateReady_" data-uid="AshesOfVelsingrad.player.States.WalkForwardState.OnStateReady*"></a>
 
-  <h3 id="AshesOfVelsingrad_Managers_State_HandleInput_Godot_InputEvent_" data-uid="AshesOfVelsingrad.Managers.State.HandleInput(Godot.InputEvent)">
-  HandleInput(InputEvent)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/managers/state_machines/State.cs/#L60"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Handles input events while this state is active.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public virtual void HandleInput(InputEvent @event)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>event</code> <span class="xref">InputEvent</span></dt>
-    <dd><p>The input event.</p>
-</dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-
-
-  <a id="AshesOfVelsingrad_Managers_State_OnStateReady_" data-uid="AshesOfVelsingrad.Managers.State.OnStateReady*"></a>
-
-  <h3 id="AshesOfVelsingrad_Managers_State_OnStateReady" data-uid="AshesOfVelsingrad.Managers.State.OnStateReady">
+  <h3 id="AshesOfVelsingrad_player_States_WalkForwardState_OnStateReady" data-uid="AshesOfVelsingrad.player.States.WalkForwardState.OnStateReady">
   OnStateReady()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/managers/state_machines/State.cs/#L35"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/player/States/WalkForwardState.cs/#L13"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Called during the initialization phase of the state machine.</p>
@@ -1149,76 +1082,9 @@ Override to implement cleanup logic.</p>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public virtual void OnStateReady()</code></pre>
+    <pre><code class="lang-csharp hljs">public override void OnStateReady()</code></pre>
   </div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-  <a id="AshesOfVelsingrad_Managers_State_PhysicsUpdate_" data-uid="AshesOfVelsingrad.Managers.State.PhysicsUpdate*"></a>
-
-  <h3 id="AshesOfVelsingrad_Managers_State_PhysicsUpdate_System_Double_" data-uid="AshesOfVelsingrad.Managers.State.PhysicsUpdate(System.Double)">
-  PhysicsUpdate(double)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/managers/state_machines/State.cs/#L52"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Called at a fixed interval while this state is active.
-Intended for physics-related updates.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public virtual void PhysicsUpdate(double delta)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>delta</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
-    <dd><p>Elapsed time since the previous physics frame.</p>
-</dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-
-
-  <a id="AshesOfVelsingrad_Managers_State_Update_" data-uid="AshesOfVelsingrad.Managers.State.Update*"></a>
-
-  <h3 id="AshesOfVelsingrad_Managers_State_Update_System_Double_" data-uid="AshesOfVelsingrad.Managers.State.Update(System.Double)">
-  Update(double)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/managers/state_machines/State.cs/#L43"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Called every frame while this state is active.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public virtual void Update(double delta)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>delta</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
-    <dd><p>Elapsed time since the previous frame.</p>
-</dd>
-  </dl>
 
 
 

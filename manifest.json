@@ -2140,6 +2140,48 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.IntegrationTests.Player.AovPlayerTest.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.IntegrationTests.Player.AovPlayerTest.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.IntegrationTests.Player.AovPlayerTest",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.IntegrationTests.Player.InteractionComponentTest.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.IntegrationTests.Player.InteractionComponentTest.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.IntegrationTests.Player.InteractionComponentTest",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.IntegrationTests.Player.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.IntegrationTests.Player.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.IntegrationTests.Player",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "documentation/api/AshesOfVelsingrad.IntegrationTests.Systems.BattleInputSystemTest.yml",
       "output": {
         ".html": {
@@ -2868,6 +2910,34 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.Systems.IInteractable.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.Systems.IInteractable.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.Systems.IInteractable",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.Systems.IInteractable.yml\" sourcestartlinenumber=\"1\">Defines a contract for objects that can be interacted with by the player.\nImplementing classes handle interaction logic, availability checks,\nand optional UI feedback such as prompts.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.Systems.IInteractor.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.Systems.IInteractor.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.Systems.IInteractor",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.Systems.IInteractor.yml\" sourcestartlinenumber=\"1\">Represents an entity capable of initiating interactions with interactable objects.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "documentation/api/AshesOfVelsingrad.Systems.IMapSystem.yml",
       "output": {
         ".html": {
@@ -3439,6 +3509,174 @@
       "IsMRef": true,
       "Title": "AshesOfVelsingrad.WarCry",
       "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.WarCry.yml\" sourcestartlinenumber=\"1\">War Cry – Boosts the ATK of all nearby allies for 3 turns.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.data.npc.Soldier.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.data.npc.Soldier.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.data.npc.Soldier",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.data.npc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.data.npc.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.data.npc",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.player.AovPlayer.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.player.AovPlayer.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.player.AovPlayer",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.player.AovPlayer.yml\" sourcestartlinenumber=\"1\">Represents the main player character in the game.\nHandles movement, gravity, and initialization of required nodes.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.player.ExplorationCamera.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.player.ExplorationCamera.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.player.ExplorationCamera",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.player.ExplorationCamera.yml\" sourcestartlinenumber=\"1\">Camera controller for exploration mode.\nHandles mouse input to rotate the camera using a SpringArm3D.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.player.InteractionComponent.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.player.InteractionComponent.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.player.InteractionComponent",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.player.States.IdleState.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.player.States.IdleState.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.player.States.IdleState",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.player.States.WalkBackwardState.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.player.States.WalkBackwardState.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.player.States.WalkBackwardState",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.player.States.WalkForwardState.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.player.States.WalkForwardState.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.player.States.WalkForwardState",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.player.States.WalkLeftState.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.player.States.WalkLeftState.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.player.States.WalkLeftState",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.player.States.WalkRightState.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.player.States.WalkRightState.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.player.States.WalkRightState",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.player.States.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.player.States.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.player.States",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.player.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.player.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.player",
+      "Summary": null
     },
     {
       "type": "ManagedReference",

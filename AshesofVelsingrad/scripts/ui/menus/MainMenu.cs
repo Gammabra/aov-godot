@@ -1,3 +1,4 @@
+using AshesOfVelsingrad.Audio;
 using AshesOfVelsingrad.Managers;
 using Godot;
 
@@ -51,6 +52,10 @@ public partial class MainMenu : Control
             GD.PrintErr("MenuManager not found!");
             return;
         }
+
+        // Kick off the menu theme. The registry knows the file path, the bus, and
+        // the per-track volume multiplier — call sites only need the catalog id.
+        AudioManager.Instance?.Play(AudioCatalog.MainMenuTheme);
     }
 
     /// <summary>

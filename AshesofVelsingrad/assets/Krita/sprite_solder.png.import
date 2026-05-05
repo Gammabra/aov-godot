@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://daii755sg2tdc"
-path.s3tc="res://.godot/imported/sprite_player.png-2cd69d1338b54b8cfd19b8a99d62aa68.s3tc.ctex"
+uid="uid://e4dlqr6r6kup"
+path.s3tc="res://.godot/imported/sprite_solder.png-878e92104989e3f521e02bfc772616b5.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/Krita/sprite_player.png"
-dest_files=["res://.godot/imported/sprite_player.png-2cd69d1338b54b8cfd19b8a99d62aa68.s3tc.ctex"]
+source_file="res://assets/Krita/sprite_solder.png"
+dest_files=["res://.godot/imported/sprite_solder.png-878e92104989e3f521e02bfc772616b5.s3tc.ctex"]
 
 [params]
 

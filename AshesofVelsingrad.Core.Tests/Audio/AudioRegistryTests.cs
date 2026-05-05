@@ -126,6 +126,66 @@ public class AudioRegistryTests
     }
 
     [Test]
+    public void Find_NullId_ReturnsNull()
+    {
+        var registry = new AudioRegistry();
+        registry.Register(MakeTrack(id: "music.a"));
+
+        Assert.That(registry.Find(null!), Is.Null);
+    }
+
+    [Test]
+    public void Find_EmptyId_ReturnsNull()
+    {
+        var registry = new AudioRegistry();
+        registry.Register(MakeTrack(id: "music.a"));
+
+        Assert.That(registry.Find(string.Empty), Is.Null);
+    }
+
+    [Test]
+    public void TryGet_NullId_ReturnsFalse()
+    {
+        var registry = new AudioRegistry();
+        registry.Register(MakeTrack(id: "music.a"));
+
+        var found = registry.TryGet(null!, out var track);
+
+        Assert.That(found, Is.False);
+        Assert.That(track, Is.Null);
+    }
+
+    [Test]
+    public void TryGet_EmptyId_ReturnsFalse()
+    {
+        var registry = new AudioRegistry();
+        registry.Register(MakeTrack(id: "music.a"));
+
+        var found = registry.TryGet(string.Empty, out var track);
+
+        Assert.That(found, Is.False);
+        Assert.That(track, Is.Null);
+    }
+
+    [Test]
+    public void Contains_NullId_ReturnsFalse()
+    {
+        var registry = new AudioRegistry();
+        registry.Register(MakeTrack(id: "music.a"));
+
+        Assert.That(registry.Contains(null!), Is.False);
+    }
+
+    [Test]
+    public void Contains_EmptyId_ReturnsFalse()
+    {
+        var registry = new AudioRegistry();
+        registry.Register(MakeTrack(id: "music.a"));
+
+        Assert.That(registry.Contains(string.Empty), Is.False);
+    }
+
+    [Test]
     public void Clear_AllowsReRegistrationOfSameIds()
     {
         var registry = new AudioRegistry();

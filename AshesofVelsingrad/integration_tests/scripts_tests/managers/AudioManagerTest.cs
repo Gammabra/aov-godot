@@ -192,7 +192,7 @@ public class AudioManagerTest
 
         AssertThat(track).IsNotNull();
         AssertThat(track!.Bus).IsEqual(AudioBus.Music);
-        AssertThat(track.ResourcePath).IsEqual("res://assets/audio_assets/musics/TA_A.wav");
+        AssertThat(track.ResourcePath).IsEqual("res://assets/audio_assets/musics/TA_A.ogg");
     }
 
     // === Helpers ===

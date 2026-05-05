@@ -48,7 +48,7 @@ public sealed partial class AovPlayer : CharacterBody3D, IInteractor
 
         // Units aren't known here — GameManager calls BindUnits after battle.
         // For exploration with no battle context, pass an empty list.
-        _explorationInventoryUI.BindUnits(System.Array.Empty<IUnitSystem>());
+        _explorationInventoryUI.RefreshUnitPanels();
     }
 
     public override void _Ready()
@@ -147,9 +147,9 @@ public sealed partial class AovPlayer : CharacterBody3D, IInteractor
             _stateMachine?.TransitionTo("WalkBackwardState");
     }
 
-    public void BindInventoryUnits(System.Collections.Generic.IReadOnlyList<IUnitSystem> units)
+    public void BindInventoryUnits()
     {
-        _explorationInventoryUI?.BindUnits(units);
+        _explorationInventoryUI?.RefreshUnitPanels();
     }
 
     public override void _ExitTree()

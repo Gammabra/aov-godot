@@ -64,8 +64,8 @@ public partial class GameManager
 
         if (PlayerInventoryManager.Instance is { } inv)
         {
-            foreach (IUnitSystem unit in _playerUnits)
-                unit.Inventory.CopyFrom(inv.Inventory);
+            for (int i = 0; i < _playerUnits.Count && i < PlayerInventoryManager.MaxPartySize; i++)
+                inv.RegisterUnit(i, _playerUnits[i]);
         }
         else
         {
@@ -324,12 +324,11 @@ public partial class GameManager
     /// </summary>
     private void SyncInventoryBackToGlobal()
     {
-        if (PlayerInventoryManager.Instance is not { } inv) return;
-        if (_playerUnits.Count == 0) return;
+        if (PlayerInventoryManager.Instance is not { } inv)
+            return;
 
-        // Use the first player unit as the source of truth
-        // (for now — multi-unit inventory merging can come later)
-        inv.Inventory.CopyFrom((InventorySystem)_playerUnits[0].Inventory);
+        for (int i = 0; i < _playerUnits.Count && i < PlayerInventoryManager.MaxPartySize; i++)
+            inv.SyncBack(i, _playerUnits[i]);
     }
 
     /// <summary>

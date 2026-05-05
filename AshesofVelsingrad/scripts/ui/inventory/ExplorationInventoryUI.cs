@@ -18,7 +18,7 @@ public sealed partial class ExplorationInventoryUI : CanvasLayer
     // Tune in InventoryConstants — no magic numbers here.
     private bool _built;
     private GridContainer? _exploGrid;
-    private HBoxContainer? _unitPanelRow;
+    private VBoxContainer? _unitPanelColumn;
     private readonly List<ExplorationSlotUI> _exploSlots = new();
     private readonly List<UnitTransferPanel> _unitPanels = new();
 
@@ -26,6 +26,7 @@ public sealed partial class ExplorationInventoryUI : CanvasLayer
     {
         EnsureBuilt();
         BindGlobalInventory();
+        RefreshUnitPanels();
     }
 
     public override void _Input(InputEvent @event)
@@ -87,13 +88,13 @@ public sealed partial class ExplorationInventoryUI : CanvasLayer
         sep.AddThemeColorOverride("color", HudStyle.PanelBorder);
         outerVBox.AddChild(sep);
 
-        // ── Content row: global grid | unit panels ──────────────────────
+        // ── Content row: global grid (left) | unit loadouts (right) ────────
         var contentRow = new HBoxContainer();
-        contentRow.AddThemeConstantOverride("separation", 12);
+        contentRow.AddThemeConstantOverride("separation", 16);
         contentRow.SizeFlagsVertical = Control.SizeFlags.ExpandFill;
         outerVBox.AddChild(contentRow);
 
-        // Left: exploration grid
+        // Left: 30-slot exploration grid
         var leftVBox = new VBoxContainer();
         leftVBox.AddThemeConstantOverride("separation", 6);
         leftVBox.SizeFlagsHorizontal = Control.SizeFlags.ExpandFill;
@@ -108,7 +109,7 @@ public sealed partial class ExplorationInventoryUI : CanvasLayer
         _exploGrid.AddThemeConstantOverride("v_separation", 4);
         leftVBox.AddChild(_exploGrid);
 
-        // Right: unit transfer panels
+        // Right: vertical stack of unit loadout rows
         var rightVBox = new VBoxContainer();
         rightVBox.AddThemeConstantOverride("separation", 6);
         contentRow.AddChild(rightVBox);
@@ -118,9 +119,16 @@ public sealed partial class ExplorationInventoryUI : CanvasLayer
         unitHeader.AddThemeColorOverride("font_color", HudStyle.DimText);
         rightVBox.AddChild(unitHeader);
 
-        _unitPanelRow = new HBoxContainer();
-        _unitPanelRow.AddThemeConstantOverride("separation", 8);
-        rightVBox.AddChild(_unitPanelRow);
+        var unitSep = new HSeparator();
+        unitSep.AddThemeColorOverride("color", HudStyle.PanelBorder);
+        rightVBox.AddChild(unitSep);
+
+        // One row per party slot — created immediately with whatever names are in
+        // PlayerInventoryManager so the UI is populated even before a battle runs.
+        _unitPanelColumn = new VBoxContainer();
+        _unitPanelColumn.AddThemeConstantOverride("separation", 6);
+        _unitPanelColumn.SizeFlagsVertical = Control.SizeFlags.ExpandFill;
+        rightVBox.AddChild(_unitPanelColumn);
     }
 
     // ── Public API ──────────────────────────────────────────────────────
@@ -129,31 +137,33 @@ public sealed partial class ExplorationInventoryUI : CanvasLayer
     {
         if (!Visible)
         {
-            // Refresh unit panels every time the screen opens
-            // so post-battle loadout changes are reflected
             if (PlayerInventoryManager.Instance is { } mgr)
-                RefreshAll(mgr.Inventory);
+                RefreshAll(mgr.GlobalInventory);
+            RefreshUnitPanels();
         }
         Visible = !Visible;
     }
 
     /// <summary>
-    ///     Call once at exploration start (or after a battle) to bind the
-    ///     player units so their transfer panels reflect current loadouts.
+    ///     Rebuild unit rows from PlayerInventoryManager's persistent loadouts.
+    ///     Safe to call multiple times (e.g. after a battle updates party names).
     /// </summary>
-    public void BindUnits(IReadOnlyList<IUnitSystem> playerUnits)
+    public void RefreshUnitPanels()
     {
-        if (_unitPanelRow == null) return;
+        if (_unitPanelColumn == null) return;
+        if (PlayerInventoryManager.Instance is not { } mgr) return;
 
-        foreach (Node child in _unitPanelRow.GetChildren()) child.QueueFree();
+        foreach (Node child in _unitPanelColumn.GetChildren()) child.QueueFree();
         _unitPanels.Clear();
 
-        foreach (IUnitSystem unit in playerUnits)
+        for (int i = 0; i < PlayerInventoryManager.MaxPartySize; i++)
         {
             var panel = new UnitTransferPanel();
             panel.EnsureBuilt();
-            panel.Bind(unit);
-            _unitPanelRow.AddChild(panel);
+            panel.CustomMinimumSize = new Vector2(0, InventoryConstants.SlotSize + 16f);
+            panel.SizeFlagsHorizontal = Control.SizeFlags.ExpandFill;
+            panel.Bind(mgr.PartyNames[i], mgr.PartyLoadouts[i]);
+            _unitPanelColumn.AddChild(panel);
             _unitPanels.Add(panel);
         }
     }
@@ -168,9 +178,9 @@ public sealed partial class ExplorationInventoryUI : CanvasLayer
             return;
         }
 
-        mgr.Inventory.SlotChanged += OnGlobalSlotChanged;
-        BuildExploSlots(mgr.Inventory);
-        RefreshAll(mgr.Inventory);
+        mgr.GlobalInventory.SlotChanged += OnGlobalSlotChanged;
+        BuildExploSlots(mgr.GlobalInventory);
+        RefreshAll(mgr.GlobalInventory);
     }
 
     private void BuildExploSlots(InventorySystem inventory)
@@ -201,6 +211,6 @@ public sealed partial class ExplorationInventoryUI : CanvasLayer
     {
         if (PlayerInventoryManager.Instance is not { } mgr) return;
         if (index < 0 || index >= _exploSlots.Count) return;
-        _exploSlots[index].Refresh(mgr.Inventory.GetSlot(index));
+        _exploSlots[index].Refresh(mgr.GlobalInventory.GetSlot(index));
     }
 }

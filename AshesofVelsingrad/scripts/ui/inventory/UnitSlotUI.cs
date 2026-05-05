@@ -19,7 +19,6 @@ public sealed partial class UnitSlotUI : PanelContainer
     public InventorySystem? Target { get; private set; }
 
     /// <summary>Raised after a successful drop so the parent panel can react.</summary>
-    public event System.Action<int, int>? OnItemDropped; // (fromExploSlot, toUnitSlot)
 
     public override void _Ready() => EnsureBuilt();
 
@@ -82,40 +81,89 @@ public sealed partial class UnitSlotUI : PanelContainer
 
     // ── Godot drop ─────────────────────────────────────────────────────
 
+    // Add to UnitSlotUI — drag OUT of a unit slot:
+    public override Variant _GetDragData(Vector2 atPosition)
+    {
+        if (Target == null) return default;
+        var slot = Target.GetSlot(SlotIndex);
+        if (slot.IsEmpty) return default;
+
+        var ghost = new Label { Text = ItemCatalog.Get(slot.ItemId).Name ?? "?" };
+        HudStyle.StyleLabel(ghost);
+        SetDragPreview(ghost);
+
+        // Tag the source as a unit loadout slot so _DropData can distinguish it
+        return new Godot.Collections.Dictionary
+        {
+            ["source"]     = "unit",
+            ["from_slot"]  = SlotIndex,
+            ["item_id"]    = slot.ItemId,
+            ["quantity"]   = slot.Quantity,
+            ["from_inv_id"] = GetInstanceId(), // used to identify which UnitSlotUI dragged
+        };
+    }
+
+    // Replace _CanDropData and _DropData:
     public override bool _CanDropData(Vector2 atPosition, Variant data)
     {
         if (Target == null) return false;
         if (data.VariantType != Variant.Type.Dictionary) return false;
-        // Only accept if this unit slot is empty or has the same item (stackable)
-        var slot = Target.GetSlot(SlotIndex);
-        if (slot.IsEmpty) return true;
         var dict = data.AsGodotDictionary();
         if (!dict.TryGetValue("item_id", out var idVar)) return false;
-        return slot.ItemId == idVar.AsInt32(); // allow stacking same item
+
+        var slot = Target.GetSlot(SlotIndex);
+        if (slot.IsEmpty) return true;
+        return slot.ItemId == idVar.AsInt32(); // allow stacking
     }
 
     public override void _DropData(Vector2 atPosition, Variant data)
     {
         if (Target == null) return;
         var dict = data.AsGodotDictionary();
-        if (!dict.TryGetValue("from_slot", out var fromVar)) return;
         if (!dict.TryGetValue("item_id", out var idVar)) return;
+        if (!dict.TryGetValue("from_slot", out var fromSlotVar)) return;
 
-        int fromSlot = fromVar.AsInt32();
         int itemId = idVar.AsInt32();
+        int fromSlot = fromSlotVar.AsInt32();
+        bool fromUnit = dict.TryGetValue("source", out var srcVar) && srcVar.AsString() == "unit";
 
-        // Move one unit from exploration inventory → this unit slot
-        bool removed = PlayerInventoryManager.Instance?.Inventory.RemoveItem(itemId, 1) ?? false;
-        if (!removed) return;
-
-        int leftover = Target.AddItem(itemId, 1);
-        if (leftover > 0)
+        if (fromUnit)
         {
-            // Unit inventory full — give back to global
-            PlayerInventoryManager.Instance?.Inventory.AddItem(itemId, leftover);
-        }
+            // Drag from another unit slot — find the source inventory via instance id
+            if (!dict.TryGetValue("from_inv_id", out var idInst)) return;
+            ulong instId = idInst.AsUInt64();
 
-        OnItemDropped?.Invoke(fromSlot, SlotIndex);
+            // Walk all party loadouts to find which one owns that UnitSlotUI instance
+            if (PlayerInventoryManager.Instance is not { } mgr) return;
+            InventorySystem? sourceInv = null;
+            foreach (var loadout in mgr.PartyLoadouts)
+            {
+                // Check if this is the same inventory reference the dragged slot uses
+                if (ReferenceEquals(loadout, Target)) continue; // skip self
+                // We stored the UnitSlotUI's instance id — find the slot UI and get its Target
+                // Simpler: just remove from the loadout that has the item in that slot
+                if (loadout.GetSlot(fromSlot).ItemId == itemId)
+                {
+                    sourceInv = loadout;
+                    break;
+                }
+            }
+
+            if (sourceInv == null || ReferenceEquals(sourceInv, Target)) return;
+            bool removed = sourceInv.RemoveItem(itemId, 1);
+            if (!removed) return;
+            int leftover = Target.AddItem(itemId, 1);
+            if (leftover > 0) sourceInv.AddItem(itemId, leftover); // put back if full
+        }
+        else
+        {
+            // Drag from global exploration inventory
+            bool removed = PlayerInventoryManager.Instance?.GlobalInventory.RemoveItem(itemId, 1) ?? false;
+            if (!removed) return;
+            int leftover = Target.AddItem(itemId, 1);
+            if (leftover > 0)
+                PlayerInventoryManager.Instance?.GlobalInventory.AddItem(itemId, leftover);
+        }
     }
 
     private void RefreshBorder(bool hover)

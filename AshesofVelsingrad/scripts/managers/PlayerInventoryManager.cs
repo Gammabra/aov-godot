@@ -4,36 +4,66 @@ using Godot;
 
 namespace AshesOfVelsingrad.Managers;
 
-/// <summary>
-///     Autoload singleton that owns the player's persistent inventory.
-///     Survives scene transitions. Both the exploration layer and the
-///     battle layer read from / write to this single instance.
-/// </summary>
 public sealed partial class PlayerInventoryManager : Node
 {
+    public const int MaxPartySize = 4;
+
     public static PlayerInventoryManager? Instance { get; private set; }
 
+    public InventorySystem GlobalInventory { get; } =
+        new(InventoryConstants.ExplorationCapacity);
+
     /// <summary>
-    ///     The one global inventory. Capacity can be tuned here or made
-    ///     data-driven later.
+    ///     One persistent 5-slot loadout per party slot.
+    ///     Index 0 = slot for first unit, 1 = second, etc.
+    ///     These survive scene transitions; units read from them at battle start.
     /// </summary>
-    public InventorySystem Inventory { get; } = new(capacity: InventoryConstants.ExplorationCapacity);
+    public InventorySystem[] PartyLoadouts { get; } = new InventorySystem[MaxPartySize];
+
+    /// <summary>Display names for each party slot, set when units are registered.</summary>
+    public string[] PartyNames { get; } = new string[MaxPartySize];
 
     public override void _Ready()
     {
         if (Instance != null && Instance != this)
         {
-            GD.PrintErr("Duplicate PlayerInventoryManager — removing.");
             QueueFree();
             return;
         }
-
         Instance = this;
+
+        for (int i = 0; i < MaxPartySize; i++)
+        {
+            PartyLoadouts[i] = new InventorySystem(InventoryConstants.BattleCapacity);
+            PartyNames[i] = $"Unit {i + 1}";
+        }
+
         GD.Print("PlayerInventoryManager ready.");
     }
 
     public override void _ExitTree()
     {
         if (Instance == this) Instance = null;
+    }
+
+    /// <summary>
+    ///     Register a unit into a party slot. Called by GameManager at battle start.
+    ///     Copies the persistent loadout into the unit's live inventory.
+    /// </summary>
+    public void RegisterUnit(int partySlot, IUnitSystem unit)
+    {
+        if (partySlot < 0 || partySlot >= MaxPartySize) return;
+        PartyNames[partySlot] = unit.UnitName;
+        unit.Inventory.CopyFrom(PartyLoadouts[partySlot]);
+    }
+
+    /// <summary>
+    ///     Sync a unit's live inventory back into its persistent loadout.
+    ///     Called by GameManager at battle end.
+    /// </summary>
+    public void SyncBack(int partySlot, IUnitSystem unit)
+    {
+        if (partySlot < 0 || partySlot >= MaxPartySize) return;
+        PartyLoadouts[partySlot].CopyFrom(unit.Inventory);
     }
 }

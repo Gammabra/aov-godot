@@ -13,19 +13,7 @@ primary
 lastDtbSucceeded
 
 [properties]
-AssemblyName=AshesofVelsingrad
 CommandLineArgsForDesignTimeEvaluation=-langversion:12.0 -define:;GDUNIT4NET_API_V5;TRACE -doc:"<PATH>.godot/mono/temp/obj/Debug/AshesofVelsingrad.xml"
-CompilerGeneratedFilesOutputPath=
-MaxSupportedLangVersion=13.0
-ProjectAssetsFile=<PATH>.godot/mono/temp/obj/project.assets.json
-RootNamespace=AshesofVelsingrad
-RunAnalyzers=
-RunAnalyzersDuringLiveAnalysis=
-SolutionPath=<PATH>../AOV-Project.slnx
-TargetFrameworkIdentifier=.NETCoreApp
-TargetPath=<PATH>.godot/mono/temp/bin/Debug/AshesofVelsingrad.dll
-TargetRefPath=<PATH>.godot/mono/temp/obj/Debug/ref/AshesofVelsingrad.dll
-TemporaryDependencyNodeTargetIdentifier=net9.0
 
 [commandLineArguments]
 /noconfig
@@ -61,6 +49,7 @@ integration_tests/helpers/
  AI/TestConcreteEnemyAIBehavior.cs
  managers/
   game_manager/TestConcreteGameManager.cs
+  TestAudioManager.cs
   TestConcreteBattleInputSystem.cs
   TestConcreteManager.cs
   TestConcreteTurnManager.cs
@@ -86,6 +75,7 @@ integration_tests/scripts_tests/data/
 integration_tests/scripts_tests/
  MainTest.cs
  managers/
+  AudioManagerTest.cs
   BaseManagerTest.cs
   EnemyAIManagerTest.cs
   game_manager/
@@ -119,7 +109,9 @@ scripts/
   PotionItem.cs
  data/
   map/Map1.cs
-  npc/Soldier.cs
+  npc/
+   MiniMercenary.cs
+   Soldier.cs
   skills/
    ArcherSkills.cs
    AssassinSkills.cs
@@ -148,8 +140,15 @@ scripts/
    EnemyFighter.cs
    EnemyLightMage.cs
    EnemySwordsman.cs
+ GenericCharacterStates/
+  IdleState.cs
+  WalkBackwardState.cs
+  WalkForwardState.cs
+  WalkLeftState.cs
+  WalkRightState.cs
  Main.cs
  managers/
+  AudioManager.cs
   BaseManager.cs
   EnemyAIManager.cs
   game_manager/
@@ -160,6 +159,7 @@ scripts/
    KarmaManager.cs
    TurnManagerHelpers.cs
   MenuManager.cs
+  PlayerInventoryManager.cs
   SceneManager.cs
   SettingsManager.cs
   state_machines/
@@ -170,12 +170,6 @@ scripts/
   AovPlayer.cs
   ExplorationCamera.cs
   InteractionComponent.cs
-  States/
-   IdleState.cs
-   WalkBackwardState.cs
-   WalkForwardState.cs
-   WalkLeftState.cs
-   WalkRightState.cs
  systems/battle/
   BattleConfig.cs
   BattleEventBus.cs
@@ -260,6 +254,8 @@ scripts/
   UnitHealthBar.cs
   VictoryScreen.cs
  ui/inventory/
+  ExplorationInventoryUI.cs
+  ExplorationSlotUI.cs
   InventorySlotUI.cs
   InventoryUI.cs
  ui/menus/

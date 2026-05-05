@@ -60,6 +60,14 @@ AI/
  AIUtilities.cs
  BattleState.cs
  IAPersonality.cs
+Audio/
+ AudioBus.cs
+ AudioCatalog.cs
+ AudioRegistry.cs
+ AudioTrack.cs
+ AudioVolumeMath.cs
+ IAudioRegistry.cs
+ IAudioService.cs
 Data/
  EntityProfile.cs
  status_effect/unit/

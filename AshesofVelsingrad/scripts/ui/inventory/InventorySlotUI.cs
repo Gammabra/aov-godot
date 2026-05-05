@@ -41,7 +41,7 @@ public sealed partial class InventorySlotUI : PanelContainer
         _inventoryUI = inventoryUI;
     }
 
-    public void Refresh(InventorySlot slot)
+    public void Refresh(IInventorySlot slot)
     {
         EnsureBuilt();
         if (_label == null) return;

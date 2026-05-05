@@ -2,7 +2,7 @@ using System;
 
 namespace AshesOfVelsingrad.Systems;
 
-public struct InventorySlot: IReadOnlyInventorySlot
+public struct InventorySlot: IInventorySlot
 {
 	public int ItemId { get; set; }
 	public int Quantity { get; set; }
@@ -19,18 +19,18 @@ public struct InventorySlot: IReadOnlyInventorySlot
 public sealed class InventorySystem: IInventorySystem
 {
 	public int Capacity { get; }
-	public InventorySlot[] Slots { get; }
+	public IInventorySlot[] Slots { get; }
 
 	public event Action<int>? SlotChanged;
 
 	private readonly Func<ItemSystem, bool>? _accept;
-    public IReadOnlyInventorySlot GetSlot(int index) => Slots[index];
+    public IInventorySlot GetSlot(int index) => Slots[index];
 
 	public InventorySystem(int capacity, Func<ItemSystem, bool>? acceptFilter = null)
 	{
 		if (capacity <= 0) throw new ArgumentOutOfRangeException(nameof(capacity));
 		Capacity = capacity;
-		Slots = new InventorySlot[capacity];
+		Slots = new IInventorySlot[capacity];
 		_accept = acceptFilter;
 	}
 
@@ -168,4 +168,18 @@ public sealed class InventorySystem: IInventorySystem
         RemoveItem(slot.ItemId, 1);    // consume one from stack
         return true;
     }
+
+	// In InventorySystem.cs — add:
+	/// <summary>
+	///     Overwrites this inventory's slots with a shallow copy of <paramref name="source" />.
+	///     Used to seed per-unit battle inventories from the global exploration inventory.
+	/// </summary>
+	public void CopyFrom(IInventorySystem source)
+	{
+		for (int i = 0; i < Slots.Length && i < source.Slots.Length; i++)
+		{
+			Slots[i] = source.Slots[i]; // InventorySlot is a struct — copy by value
+			SlotChanged?.Invoke(i);
+		}
+	}
 }

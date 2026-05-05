@@ -1,4 +1,6 @@
 using System;
+using AshesOfVelsingrad.Audio;
+using AshesOfVelsingrad.Managers;
 using Godot;
 using Godot.Collections;
 
@@ -353,13 +355,43 @@ public partial class SettingsPages : Node
     // AUDIO
     // =================================================
 
+    /// <summary>
+    ///     Routes a slider change through the central <see cref="AudioManager" /> so the
+    ///     0..1 ↔ dB conversion, clamping and persistence all live in one place.
+    ///     The UI sliders run on a 0..100 scale, so we normalise to 0..1 here.
+    /// </summary>
+    /// <param name="busName">Godot bus name (e.g. "Master", "Music", "SFX", "Voices").</param>
+    /// <param name="value">Slider value on a 0..100 scale.</param>
     private void SetBusVolume(string busName, float value)
     {
-        int idx = AudioServer.GetBusIndex(busName);
-        if (idx == -1)
-            return;
+        var linear = Mathf.Clamp(value / 100f, 0f, 1f);
 
-        AudioServer.SetBusVolumeDb(idx, Mathf.LinearToDb(value));
+        if (AudioManager.Instance != null && TryMapBusName(busName, out var bus))
+        {
+            AudioManager.Instance.SetBusVolume(bus, linear);
+            return;
+        }
+
+        // Fallback for tests / scenes booted without the AudioManager autoload.
+        var idx = AudioServer.GetBusIndex(busName);
+        if (idx == -1) return;
+        AudioServer.SetBusVolumeDb(idx, Mathf.LinearToDb(linear));
+    }
+
+    private static bool TryMapBusName(string busName, out AudioBus bus)
+    {
+        switch (busName)
+        {
+            case "Master": bus = AudioBus.Master; return true;
+            case "Music": bus = AudioBus.Music; return true;
+            case "SFX": bus = AudioBus.Sfx; return true;
+            case "Voices": bus = AudioBus.Voice; return true;
+            case "Ambient": bus = AudioBus.Ambient; return true;
+            case "Ui": bus = AudioBus.Ui; return true;
+            default:
+                bus = AudioBus.Master;
+                return false;
+        }
     }
 
     public void OnMasterVolumeChanged(double value)

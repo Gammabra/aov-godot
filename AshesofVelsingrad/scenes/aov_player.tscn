@@ -1,0 +1,229 @@
+[gd_scene format=3 uid="uid://c40qs8x1egpy7"]
+
+[ext_resource type="Script" uid="uid://3kcmpk5x2mx0" path="res://scripts/player/AovPlayer.cs" id="2_x6mcw"]
+[ext_resource type="Script" uid="uid://chw0te1ob2xlt" path="res://scripts/player/InteractionComponent.cs" id="3_mjuyt"]
+[ext_resource type="Texture2D" uid="uid://daii755sg2tdc" path="res://assets/Krita/sprite_player.png" id="5_ggc04"]
+[ext_resource type="Script" uid="uid://dotytx100nxai" path="res://scripts/managers/state_machines/StateMachine.cs" id="5_uqaem"]
+[ext_resource type="Script" uid="uid://cbra7nuuruj2p" path="res://scripts/player/States/IdleState.cs" id="6_uqaem"]
+[ext_resource type="Script" uid="uid://bwuj8qxa0majx" path="res://scripts/player/States/WalkForwardState.cs" id="7_4g4aq"]
+[ext_resource type="Script" uid="uid://b78pk38svecle" path="res://scripts/player/States/WalkBackwardState.cs" id="8_3fw4j"]
+[ext_resource type="Script" uid="uid://cekx3mvjf080g" path="res://scripts/player/States/WalkLeftState.cs" id="9_k6vw3"]
+[ext_resource type="Script" uid="uid://bs42mjeuf3j6j" path="res://scripts/player/States/WalkRightState.cs" id="10_hct3h"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uqaem"]
+atlas = ExtResource("5_ggc04")
+region = Rect2(0, 819, 180, 117)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4g4aq"]
+atlas = ExtResource("5_ggc04")
+region = Rect2(180, 819, 180, 117)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3fw4j"]
+atlas = ExtResource("5_ggc04")
+region = Rect2(360, 819, 180, 117)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hct3h"]
+atlas = ExtResource("5_ggc04")
+region = Rect2(0, 702, 180, 117)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tadot"]
+atlas = ExtResource("5_ggc04")
+region = Rect2(180, 702, 180, 117)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_evfxo"]
+atlas = ExtResource("5_ggc04")
+region = Rect2(0, 351, 180, 117)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_051h8"]
+atlas = ExtResource("5_ggc04")
+region = Rect2(180, 351, 180, 117)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gp8lr"]
+atlas = ExtResource("5_ggc04")
+region = Rect2(360, 351, 180, 117)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mjuyt"]
+atlas = ExtResource("5_ggc04")
+region = Rect2(0, 234, 180, 117)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ggc04"]
+atlas = ExtResource("5_ggc04")
+region = Rect2(180, 234, 180, 117)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k6vw3"]
+atlas = ExtResource("5_ggc04")
+region = Rect2(360, 234, 180, 117)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gr534"]
+atlas = ExtResource("5_ggc04")
+region = Rect2(0, 117, 180, 117)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n6k2e"]
+atlas = ExtResource("5_ggc04")
+region = Rect2(180, 117, 180, 117)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eh24h"]
+atlas = ExtResource("5_ggc04")
+region = Rect2(360, 117, 180, 117)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ihyer"]
+atlas = ExtResource("5_ggc04")
+region = Rect2(0, 0, 180, 117)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_62dtw"]
+atlas = ExtResource("5_ggc04")
+region = Rect2(180, 0, 180, 117)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v6f6i"]
+atlas = ExtResource("5_ggc04")
+region = Rect2(360, 0, 180, 117)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_k6vw3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uqaem")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4g4aq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3fw4j")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hct3h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tadot")
+}],
+"loop": true,
+"name": &"Interact",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_evfxo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_051h8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gp8lr")
+}],
+"loop": true,
+"name": &"WalkBackward",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mjuyt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ggc04")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k6vw3")
+}],
+"loop": true,
+"name": &"WalkForward",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gr534")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n6k2e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eh24h")
+}],
+"loop": true,
+"name": &"WalkLeft",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ihyer")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_62dtw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v6f6i")
+}],
+"loop": true,
+"name": &"WalkRight",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_mjuyt"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_wwxp1"]
+
+[node name="AovPlayer" type="CharacterBody3D" unique_id=1117119690]
+script = ExtResource("2_x6mcw")
+_stateMachinePath = NodePath("StateMachine")
+_springArm3DPath = NodePath("SpringArm3D")
+_interactionComponentPath = NodePath("InteractionArea")
+_animatedSprite3DPath = NodePath("AnimatedSprite3D")
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="." unique_id=255960198]
+transform = Transform3D(1.1, 0, 0, 0, 1.1, 0, 0, 0, 1.1, 0, 0, 0)
+offset = Vector2(54, 0)
+billboard = 2
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_k6vw3")
+animation = &"Idle"
+frame_progress = 0.113481626
+
+[node name="PlayerCollision" type="CollisionShape3D" parent="." unique_id=446419558]
+transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0, 0, 0)
+shape = SubResource("CapsuleShape3D_mjuyt")
+
+[node name="InteractionArea" type="Area3D" parent="." unique_id=1952076679]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.05505383, 0)
+collision_mask = 2
+script = ExtResource("3_mjuyt")
+_animatedSprite3DPath = NodePath("../AnimatedSprite3D")
+
+[node name="InteractionCollision" type="CollisionShape3D" parent="InteractionArea" unique_id=1649506564]
+transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, 0, -0.05264087, 0)
+shape = SubResource("BoxShape3D_wwxp1")
+
+[node name="SpringArm3D" type="SpringArm3D" parent="." unique_id=417669318]
+transform = Transform3D(1, 0, 0, 0, 0.96363044, 0.26723838, 0, -0.26723838, 0.96363044, 0, 0.25, 0)
+spring_length = 2.0
+margin = 0.2
+
+[node name="Camera3D" type="Camera3D" parent="SpringArm3D" unique_id=732970999]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
+
+[node name="StateMachine" type="Node" parent="." unique_id=1073719663]
+script = ExtResource("5_uqaem")
+InitialState = NodePath("IdleState")
+
+[node name="IdleState" type="Node" parent="StateMachine" unique_id=577681520]
+script = ExtResource("6_uqaem")
+_animatedSprite3DPath = NodePath("../../AnimatedSprite3D")
+
+[node name="WalkForwardState" type="Node" parent="StateMachine" unique_id=918618735]
+script = ExtResource("7_4g4aq")
+_animatedSprite3DPath = NodePath("../../AnimatedSprite3D")
+
+[node name="WalkBackwardState" type="Node" parent="StateMachine" unique_id=830506779]
+script = ExtResource("8_3fw4j")
+_animatedSprite3DPath = NodePath("../../AnimatedSprite3D")
+
+[node name="WalkLeftState" type="Node" parent="StateMachine" unique_id=254607399]
+script = ExtResource("9_k6vw3")
+_animatedSprite3DPath = NodePath("../../AnimatedSprite3D")
+
+[node name="WalkRightState" type="Node" parent="StateMachine" unique_id=231684798]
+script = ExtResource("10_hct3h")
+_animatedSprite3DPath = NodePath("../../AnimatedSprite3D")

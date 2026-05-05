@@ -6,11 +6,11 @@
     <RootNamespace>AshesofVelsingrad</RootNamespace>
     <AssemblyName>AshesofVelsingrad</AssemblyName>
     <GenerateTargetFrameworkAttribute>false</GenerateTargetFrameworkAttribute>
-    
+
     <Nullable>enable</Nullable>
     <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
     <Optimize>false</Optimize>
-    
+
     <NoWarn>NU1605;1591</NoWarn>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
 

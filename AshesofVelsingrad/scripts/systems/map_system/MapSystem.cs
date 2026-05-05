@@ -55,7 +55,7 @@ public abstract partial class MapSystem : GridMap, IMapSystem
     /// <remarks>
     ///     It will be used to check if there is only one instance.
     /// </remarks>
-    protected static MapSystem? Instance { get; set; }
+    public static MapSystem? Instance { get; protected set; }
 
     #endregion
 

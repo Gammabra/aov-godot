@@ -19,8 +19,25 @@ public partial class SettingsManager : BaseManager
     [Signal]
     public delegate void DialogueSizeChangedEventHandler(float newSize);
 
+    /// <summary>
+    ///     Emitted when <see cref="GetUiScale" /> changes. The HUD subscribes to this so
+    ///     widgets rescale their fonts (and rebuild their min-sizes) without needing a
+    ///     scene reload.
+    /// </summary>
+    [Signal]
+    public delegate void UiScaleChangedEventHandler(float newScale);
+
     [Signal]
     public delegate void InputBindingChangedEventHandler(string action);
+
+    /// <summary>Lower bound of UI scale (e.g. 50% size). Smaller than this becomes unreadable.</summary>
+    public const float UiScaleMin = 0.5f;
+
+    /// <summary>Upper bound of UI scale. Larger and the battle HUD widgets begin to clip.</summary>
+    public const float UiScaleMax = 1.5f;
+
+    /// <summary>Default scale (100% — the design size everything else multiplies against).</summary>
+    public const float UiScaleDefault = 1.0f;
 
     private const string _settingsFilePath = "user://settings.json";
     private SettingsData? _settings;
@@ -420,6 +437,38 @@ public partial class SettingsManager : BaseManager
     }
 
     /// <summary>
+    ///     Gets the user's UI scale multiplier — a single number every HUD widget
+    ///     multiplies its design font size by. <c>1.0</c> means "exactly the design
+    ///     size", <c>0.5</c> half, <c>1.5</c> 50% larger.
+    /// </summary>
+    /// <returns>The scale, clamped to <see cref="UiScaleMin" />..<see cref="UiScaleMax" />.</returns>
+    public float GetUiScale()
+    {
+        return _settings?.UiScale ?? UiScaleDefault;
+    }
+
+    /// <summary>
+    ///     Persists a new UI scale and emits <see cref="UiScaleChanged" /> when the
+    ///     value actually changes (small float deltas are absorbed). HUD code can
+    ///     subscribe and rebuild its widgets in response.
+    /// </summary>
+    /// <param name="scale">New scale; clamped to <see cref="UiScaleMin" />..<see cref="UiScaleMax" />.</param>
+    public void SetUiScale(float scale)
+    {
+        if (_settings == null) return;
+
+        var clamped = Mathf.Clamp(scale, UiScaleMin, UiScaleMax);
+        if (Mathf.Abs(_settings.UiScale - clamped) > 0.01f)
+        {
+            _settings.UiScale = clamped;
+            SaveSettings();
+            EmitSignal(SignalName.SettingsChanged, "UiScale", clamped);
+            EmitSignal(SignalName.UiScaleChanged, clamped);
+            GD.Print($"[SettingsManager] UI scale persisted: {clamped:F2}× (UiScaleChanged emitted).");
+        }
+    }
+
+    /// <summary>
     /// Gets a custom setting by key, with an optional default value.
     /// </summary>
     /// <typeparam name="T">The type of the setting value.</typeparam>
@@ -496,6 +545,7 @@ public partial class SettingsManager : BaseManager
 
         SaveSettings();
         EmitSignal(SignalName.DialogueSizeChanged, _settings.DialogueSize);
+        EmitSignal(SignalName.UiScaleChanged, _settings.UiScale);
         EmitSignal(SignalName.SettingsChanged, "Reset", true);
 
         // Notify about all input bindings being reset
@@ -516,6 +566,14 @@ public partial class SettingsManager : BaseManager
 public class SettingsData
 {
     public float DialogueSize { get; set; } = 1.0f;
+
+    /// <summary>
+    ///     Battle-HUD font / spacing multiplier. <c>1.0</c> is the design size; lower
+    ///     shrinks all HUD text, higher enlarges it. Range mirrors <see cref="SettingsManager.UiScaleMin"/>
+    ///     and <see cref="SettingsManager.UiScaleMax"/>.
+    /// </summary>
+    public float UiScale { get; set; } = 1.0f;
+
     public Dictionary<string, Dictionary<string, object>> InputBindings { get; set; } = new();
     public Dictionary<string, object> CustomSettings { get; set; } = new();
 }

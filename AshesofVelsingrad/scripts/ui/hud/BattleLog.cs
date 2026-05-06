@@ -42,11 +42,15 @@ public sealed partial class BattleLog : Control
 
     private void BuildLayout()
     {
+        // 1152×648 design viewport. Width 260 (was 480), wedged between the
+        // EnemyRoster (top-right, ends at y=332) and the SkillSelector strip
+        // (starts at y=514). Resulting rect at the design size is x[880,1140]
+        // y[360,500] — clear of every other widget in every direction.
         SetAnchorsAndOffsetsPreset(LayoutPreset.BottomRight);
-        OffsetLeft = -480;
-        OffsetTop = -260;
+        OffsetLeft = -260;
+        OffsetTop = -288;
         OffsetRight = -12;
-        OffsetBottom = -100;
+        OffsetBottom = -148;
         MouseFilter = MouseFilterEnum.Ignore;
 
         VBoxContainer inner = new() { MouseFilter = MouseFilterEnum.Ignore };
@@ -70,7 +74,7 @@ public sealed partial class BattleLog : Control
             MouseFilter = MouseFilterEnum.Stop,
             AutowrapMode = TextServer.AutowrapMode.WordSmart,
         };
-        _text.AddThemeFontSizeOverride("normal_font_size", 13);
+        HudStyle.ApplyScaledFontSize(_text, "normal_font_size", HudStyle.FontSizeSmall);
         inner.AddChild(_text);
     }
 

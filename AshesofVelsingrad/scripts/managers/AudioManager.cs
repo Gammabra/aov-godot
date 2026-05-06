@@ -239,18 +239,24 @@ public partial class AudioManager : BaseManager, IAudioService
     /// <param name="context">The scene category currently active.</param>
     public void SetMusicContext(MusicContext context)
     {
-        if (_musicContext == context) return;
+        if (_musicContext == context)
+        {
+            GD.Print($"[AudioManager] SetMusicContext({context}) — already active, no-op.");
+            return;
+        }
+
+        var previous = _musicContext;
         _musicContext = context;
 
         var trackId = ResolveTrackId(context);
         if (trackId is not null && _registry.Contains(trackId))
         {
+            GD.Print($"[AudioManager] SetMusicContext: {previous} → {context} (playing '{trackId}').");
             Play(trackId);
         }
         else
         {
-            // Either the context is None or no track is registered for it yet.
-            // Either way we want any currently-playing music to stop.
+            GD.Print($"[AudioManager] SetMusicContext: {previous} → {context} (no track registered for context — stopping music).");
             StopMusic();
         }
     }
@@ -638,14 +644,29 @@ public partial class AudioManager : BaseManager, IAudioService
     {
         if (_streamCache.TryGetValue(path, out var cached)) return cached;
 
+        // ResourceLoader.Exists() catches the most common failure mode — a freshly
+        // added asset that hasn't been imported yet, so there's no .import sidecar
+        // and no cached resource under .godot/imported/. Without this branch the
+        // failure shows up as a generic "Load returned null", which is easy to
+        // miss in a noisy Output panel.
+        if (!ResourceLoader.Exists(path))
+        {
+            GD.PushError(
+                $"AudioManager: stream '{path}' has no Godot import. " +
+                "Run the project once in the editor (or `godot --headless --import` " +
+                "from the project folder) so the .import sidecar gets generated.");
+            return null;
+        }
+
         var loaded = ResourceLoader.Load<AudioStream>(path);
         if (loaded == null)
         {
-            GD.PrintErr($"AudioManager: failed to load stream at '{path}' (missing .import or wrong path)");
+            GD.PushError($"AudioManager: ResourceLoader.Load returned null for '{path}' — wrong path or unsupported format.");
             return null;
         }
 
         _streamCache[path] = loaded;
+        GD.Print($"[AudioManager] Loaded stream '{path}' (cached).");
         return loaded;
     }
 

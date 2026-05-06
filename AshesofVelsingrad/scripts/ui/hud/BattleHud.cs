@@ -1,0 +1,91 @@
+using Godot;
+
+namespace AshesOfVelsingrad.UI.Hud;
+
+/// <summary>
+///     Root <see cref="CanvasLayer" /> that hosts every battle HUD widget.
+/// </summary>
+/// <remarks>
+///     Spawned (or found) by <c>GameManager</c> at battle start. Children are created
+///     programmatically in <see cref="_Ready" /> if a <c>.tscn</c> didn't pre-instantiate
+///     them. Each child widget self-positions; the HUD itself doesn't subscribe to events —
+///     it just exposes the children so <c>GameManager</c> can wire them.
+/// </remarks>
+public sealed partial class BattleHud : CanvasLayer
+{
+    /// <summary>
+    ///     CanvasLayer index. Pinned high so the HUD always renders above the 3D viewport
+    ///     content and any other CanvasLayers in the scene.
+    /// </summary>
+    public const int HudLayer = 100;
+
+    /// <summary>Action menu (Move / Attack / Skill / Pass / Cancel).</summary>
+    public ActionMenu? ActionMenu { get; private set; }
+
+    /// <summary>Five-slot active-skill bar.</summary>
+    public SkillSelector? SkillSelector { get; private set; }
+
+    /// <summary>Bottom-left status panel for the active controlled unit.</summary>
+    public PlayerStatusPanel? PlayerStatus { get; private set; }
+
+    /// <summary>Top-right vertical roster of enemies.</summary>
+    public EnemyRoster? EnemyRoster { get; private set; }
+
+    /// <summary>Top-centre upcoming-turn-order strip.</summary>
+    public TurnOrderQueue? TurnQueue { get; private set; }
+
+    /// <summary>Top-left context panel (movement budget vs queued skill details).</summary>
+    public ContextInfoPanel? ContextInfo { get; private set; }
+
+    /// <summary>Right-side scrolling log of warnings + events.</summary>
+    public BattleLog? Log { get; private set; }
+
+    /// <inheritdoc />
+    public override void _Ready()
+    {
+        GD.Print($"BattleHud._Ready running. Layer={Layer}");
+        Build();
+    }
+
+    /// <summary>
+    ///     Build (or re-resolve) the child widget references, pin the layer's render order,
+    ///     and force every child widget's own layout to run synchronously. Idempotent — safe
+    ///     to call from <c>GameManager.EnsureHud</c> right after <c>AddChild</c> so the HUD
+    ///     is fully usable without waiting for <c>_Ready</c> to fire.
+    /// </summary>
+    public void Build()
+    {
+        Layer = HudLayer;
+        Visible = true;
+
+        ActionMenu ??= GetOrCreate<ActionMenu>("ActionMenu");
+        SkillSelector ??= GetOrCreate<SkillSelector>("SkillSelector");
+        PlayerStatus ??= GetOrCreate<PlayerStatusPanel>("PlayerStatus");
+        EnemyRoster ??= GetOrCreate<EnemyRoster>("EnemyRoster");
+        TurnQueue ??= GetOrCreate<TurnOrderQueue>("TurnQueue");
+        ContextInfo ??= GetOrCreate<ContextInfoPanel>("ContextInfo");
+        Log ??= GetOrCreate<BattleLog>("BattleLog");
+
+        // Force each widget to build its own layout NOW. This is what makes the HUD
+        // independent of Godot's _Ready timing — if AddChild-during-_Ready quirks delay
+        // their _Ready, EnsureBuilt() runs the layout immediately. Each widget's own
+        // EnsureBuilt is idempotent (guarded by a _built flag), so calling _Ready later
+        // is harmless.
+        ActionMenu.EnsureBuilt();
+        SkillSelector.EnsureBuilt();
+        PlayerStatus.EnsureBuilt();
+        EnemyRoster.EnsureBuilt();
+        TurnQueue.EnsureBuilt();
+        ContextInfo.EnsureBuilt();
+        Log.EnsureBuilt();
+    }
+
+    private T GetOrCreate<T>(string name) where T : Control, new()
+    {
+        if (HasNode(name) && GetNode(name) is T existing)
+            return existing;
+        T created = new() { Name = name };
+        AddChild(created);
+        return created;
+    }
+}

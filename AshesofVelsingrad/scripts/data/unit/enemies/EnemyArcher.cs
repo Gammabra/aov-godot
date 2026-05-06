@@ -1,8 +1,10 @@
 using System;
 using System.Collections.Generic;
 using AshesOfVelsingrad.AI;
+using AshesOfVelsingrad.Data;
 using AshesOfVelsingrad.Systems;
 using AshesOfVelsingrad.Utilities;
+using Godot;
 
 namespace AshesOfVelsingrad;
 
@@ -42,6 +44,14 @@ public sealed partial class EnemyArcher : UnitSystem
 
         var statusEffectSystem = new StatusEffectSystem();
         InjectDependencies(statusEffectSystem);
+
+        SetEntityProfile(new EntityProfile
+        {
+            DisplayName = "Mimikyu",
+            ClassName = "Archer",
+            Level = 1,
+            PortraitPath = "res://assets/portraits/Mimikyu.png",
+        });
     }
 }
 

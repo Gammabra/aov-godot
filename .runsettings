@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Repo-root .runsettings picked up automatically by the MikeSchulze/gdunit4-action,
+  which only scans the working directory for a project-specific runsettings and
+  otherwise falls back to its bundled default (20 s compile timeout). Mirrors the
+  values in AshesofVelsingrad/integration_tests/.runsettings but with the GodotBin
+  hardcoded path stripped so it resolves from $GODOT_BIN on Linux runners.
+-->
+<RunSettings>
+  <GdUnit4>
+    <!--
+      Direct child elements as per the gdUnit4 v6 schema. The previous nested
+      <Parameters><Parameter name="CompileProcessTimeout" value="..." /></Parameters>
+      form is silently ignored by the runner — it falls back to the 20s default,
+      which is too short for the Godot C# project on a CI runner under load (the
+      action timed out at 20s and force-killed the compile).
+    -->
+    <CompileProcessTimeout>120000</CompileProcessTimeout>
+    <Parameters>
+      <Parameter name="godot-parameters" value="--headless --no-import" />
+    </Parameters>
+  </GdUnit4>
+</RunSettings>

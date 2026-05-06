@@ -1,3 +1,4 @@
+using AshesOfVelsingrad.Audio;
 using AshesOfVelsingrad.Managers;
 using Godot;
 
@@ -51,6 +52,11 @@ public partial class MainMenu : Control
             GD.PrintErr("MenuManager not found!");
             return;
         }
+
+        // Declare the music context for this scene. The audio manager picks the
+        // right track (or fades out if no track is registered for the context yet)
+        // — call-sites only have to say *what kind* of scene this is.
+        AudioManager.Instance?.SetMusicContext(MusicContext.MainMenu);
     }
 
     /// <summary>

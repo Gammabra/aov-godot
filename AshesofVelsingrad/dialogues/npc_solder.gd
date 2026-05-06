@@ -1,5 +1,8 @@
-extends Button
+extends Node
 
+signal battle_started(interactor)
+
+var interactor: Node
 var dio=Dialog.new()
 var dialog:=dio.start(self)
 #Character(NPC_name, font color, npc image)
@@ -9,8 +12,11 @@ var ym=dialog.Character("Arthur", Color.YELLOW_GREEN, "res://assets/Krita/icone_
 
 func _ready() -> void:
 	dialog.typewriter_speed=30
+
+func set_interactor(i) -> void:
+	interactor = i
 	
-func talk():
+func talk() -> void:
 	dialog.say("Mr. Voss... finally. Hm... you're looking more and more like your father.", s)
 	dialog.say("It's been three years since you were locked up here...", s)
 	dialog.say("But we don’t have time for that.", s)
@@ -33,19 +39,22 @@ func talk():
 
 	dialog.menu("Your decision?", {
 			"We help defend the capital": "yes_function",
-			"I need time to think": "No_function",
+			"I need time to think": "no_function",
 		})
 
-func yes_function():
+func yes_function() -> void:
 	dialog.say("Alright. Then we move. Now.", s)
 	dialog.say("Good. Let them come.", ym)
-	dialog.action("start_Fight")
+	dialog.action("start_fight")
 
-func No_function():
+func no_function() -> void:
 	dialog.say("Alright... but make it quick. We don’t have much time.", s)
 	
 func _on_pressed() -> void:
 	talk()
 
-func start_Fight():
-	print("démarrer le combat !")
+func start_fight():
+	if interactor == null:
+		push_error("battle_started: interactor is null")
+		return
+	battle_started.emit(interactor);

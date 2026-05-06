@@ -1,0 +1,58 @@
+[gd_scene format=3 uid="uid://du6yoy0raqgx2"]
+
+[ext_resource type="Script" uid="uid://mi5bremm10vf" path="res://scripts/data/unit/characters/KaelenVoss.cs" id="1_kaelen"]
+[ext_resource type="Script" uid="uid://dotytx100nxai" path="res://scripts/managers/state_machines/StateMachine.cs" id="3_0obue"]
+[ext_resource type="Texture2D" uid="uid://b54uy2c80ls7c" path="res://assets/Krita/sprite_player.png" id="3_ooen3"]
+[ext_resource type="Script" uid="uid://cbra7nuuruj2p" path="res://scripts/GenericCharacterStates/IdleState.cs" id="4_ooen3"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_kaelen"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f5git"]
+atlas = ExtResource("3_ooen3")
+region = Rect2(0, 819, 180, 117)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v8s6p"]
+atlas = ExtResource("3_ooen3")
+region = Rect2(180, 819, 180, 117)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d8qgb"]
+atlas = ExtResource("3_ooen3")
+region = Rect2(360, 819, 180, 117)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0obue"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f5git")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v8s6p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d8qgb")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}]
+
+[node name="KaelenVoss" type="CharacterBody3D" unique_id=1043628005]
+script = ExtResource("1_kaelen")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1985862594]
+shape = SubResource("SphereShape3D_kaelen")
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="." unique_id=1764626605]
+offset = Vector2(54, 0)
+billboard = 2
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_0obue")
+animation = &"Idle"
+
+[node name="StateMachine" type="Node" parent="." unique_id=1923613593]
+script = ExtResource("3_0obue")
+InitialState = NodePath("IdleState")
+
+[node name="IdleState" type="Node" parent="StateMachine" unique_id=1515553913]
+script = ExtResource("4_ooen3")
+_animatedSprite3DPath = NodePath("../../AnimatedSprite3D")

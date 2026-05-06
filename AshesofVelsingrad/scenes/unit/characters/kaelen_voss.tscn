@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://du6yoy0raqgx2"]
+
+[ext_resource type="Script" uid="uid://mi5bremm10vf" path="res://scripts/data/unit/characters/KaelenVoss.cs" id="1_kaelen"]
+[ext_resource type="Texture2D" uid="uid://bom7ddsgpq56t" path="res://assets/portraits/Pikachu.png" id="2_sprite"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_kaelen"]
+
+[node name="KaelenVoss" type="CharacterBody3D"]
+script = ExtResource("1_kaelen")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
+billboard = 1
+texture = ExtResource("2_sprite")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_kaelen")

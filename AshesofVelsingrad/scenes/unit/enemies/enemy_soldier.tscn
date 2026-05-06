@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://du6yoy00ow8lg"]
+
+[ext_resource type="Script" uid="uid://b68lmjwbg7b2c" path="res://scripts/data/unit/enemies/EnemySoldier.cs" id="1_soldier"]
+[ext_resource type="Texture2D" uid="uid://c2bl223fb2kq1" path="res://assets/portraits/mascaiman.png" id="2_sprite"]
+[ext_resource type="Script" uid="uid://dvsd81c4l1hgb" path="res://scripts/AI/EnemyAIBehavior.cs" id="3_aibhv"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_soldier"]
+
+[node name="EnemySoldier" type="CharacterBody3D"]
+script = ExtResource("1_soldier")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
+billboard = 1
+texture = ExtResource("2_sprite")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_soldier")
+
+[node name="EnemyAIBehavior" type="Node" parent="."]
+script = ExtResource("3_aibhv")

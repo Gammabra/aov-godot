@@ -4,21 +4,8 @@
 [ext_resource type="Script" uid="uid://dycsfdky6wocx" path="res://scripts/data/map/Map1.cs" id="2_map"]
 [ext_resource type="MeshLibrary" uid="uid://du0rgaffn5bkl" path="res://assets/mesh_library/3DMesh.tres" id="3_mesh"]
 [ext_resource type="Script" uid="uid://dkhfwdhsqvki4" path="res://scripts/managers/TurnManager.cs" id="4_tm"]
-[ext_resource type="Script" uid="uid://mi5bremm10vf" path="res://scripts/data/unit/characters/KaelenVoss.cs" id="5_kaelen"]
-[ext_resource type="Script" uid="uid://dyd14mnjtewte" path="res://scripts/data/unit/characters/MercenaryAlly.cs" id="6_merc"]
-[ext_resource type="Script" uid="uid://b68lmjwbg7b2c" path="res://scripts/data/unit/enemies/EnemySoldier.cs" id="7_soldier"]
-[ext_resource type="Script" uid="uid://dvsd81c4l1hgb" path="res://scripts/AI/EnemyAIBehavior.cs" id="8_aibhv"]
 [ext_resource type="Script" uid="uid://buj6bdu8gkf0j" path="res://scripts/systems/BattleInputSystem.cs" id="9_input"]
-[ext_resource type="Texture2D" uid="uid://bom7ddsgpq56t" path="res://assets/portraits/Pikachu.png" id="10_pika"]
-[ext_resource type="Texture2D" uid="uid://ctcgvos6g66s" path="res://assets/portraits/meowth.png" id="11_meow"]
-[ext_resource type="Texture2D" uid="uid://c2bl223fb2kq1" path="res://assets/portraits/mascaiman.png" id="12_masc"]
 [ext_resource type="PackedScene" uid="uid://8jsp7b3bi66t" path="res://scenes/Level/Fight.tscn" id="13_kq1lv"]
-
-[sub_resource type="SphereShape3D" id="SphereShape3D_kaelen"]
-
-[sub_resource type="SphereShape3D" id="SphereShape3D_merc"]
-
-[sub_resource type="SphereShape3D" id="SphereShape3D_soldier"]
 
 [node name="PrisonBattle" type="Node" unique_id=2145295567]
 
@@ -34,6 +21,7 @@ _camera3DPath = NodePath("../Camera3D")
 script = ExtResource("1_gm")
 _playerUnitsPath = NodePath("PlayerUnits")
 _enemyUnitsPath = NodePath("EnemyUnits")
+_alliedUnitsPath = NodePath("AlliedUnits")
 _mapSystemPath = NodePath("GridMap")
 _turnManagerPath = NodePath("TurnManager")
 _battleInputSystemPath = NodePath("../Inputs")
@@ -49,48 +37,9 @@ script = ExtResource("2_map")
 
 [node name="PlayerUnits" type="Node" parent="GameManager" unique_id=333781711]
 
-[node name="KaelenVoss" type="CharacterBody3D" parent="GameManager/PlayerUnits" unique_id=1938295825]
-script = ExtResource("5_kaelen")
-
-[node name="Sprite3D" type="Sprite3D" parent="GameManager/PlayerUnits/KaelenVoss" unique_id=1325636875]
-transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
-billboard = 1
-texture = ExtResource("10_pika")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="GameManager/PlayerUnits/KaelenVoss" unique_id=750766089]
-shape = SubResource("SphereShape3D_kaelen")
-
 [node name="AlliedUnits" type="Node" parent="GameManager" unique_id=1753107255]
 
-[node name="Mercenary" type="CharacterBody3D" parent="GameManager/AlliedUnits" unique_id=1895765049]
-script = ExtResource("6_merc")
-
-[node name="Sprite3D" type="Sprite3D" parent="GameManager/AlliedUnits/Mercenary" unique_id=1900842778]
-transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
-billboard = 1
-texture = ExtResource("11_meow")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="GameManager/AlliedUnits/Mercenary" unique_id=1885826027]
-shape = SubResource("SphereShape3D_merc")
-
-[node name="EnemyAIBehavior" type="Node" parent="GameManager/AlliedUnits/Mercenary" unique_id=531380673]
-script = ExtResource("8_aibhv")
-
 [node name="EnemyUnits" type="Node" parent="GameManager" unique_id=274689700]
-
-[node name="Soldier" type="CharacterBody3D" parent="GameManager/EnemyUnits" unique_id=1468901185]
-script = ExtResource("7_soldier")
-
-[node name="Sprite3D" type="Sprite3D" parent="GameManager/EnemyUnits/Soldier" unique_id=1274092840]
-transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
-billboard = 1
-texture = ExtResource("12_masc")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="GameManager/EnemyUnits/Soldier" unique_id=1974203491]
-shape = SubResource("SphereShape3D_soldier")
-
-[node name="EnemyAIBehavior" type="Node" parent="GameManager/EnemyUnits/Soldier" unique_id=1846453524]
-script = ExtResource("8_aibhv")
 
 [node name="TurnManager" type="Node" parent="GameManager" unique_id=2134820918]
 script = ExtResource("4_tm")

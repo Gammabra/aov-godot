@@ -5,6 +5,9 @@
 [ext_resource type="Script" uid="uid://dotytx100nxai" path="res://scripts/managers/state_machines/StateMachine.cs" id="2_vh47w"]
 [ext_resource type="Script" uid="uid://cbra7nuuruj2p" path="res://scripts/GenericCharacterStates/IdleState.cs" id="3_t0mcy"]
 [ext_resource type="Script" uid="uid://cvqs12q0c4fsy" path="res://dialogues/npc_solder.gd" id="5_j6req"]
+[ext_resource type="PackedScene" uid="uid://du6yoy0raqgx2" path="res://scenes/unit/characters/kaelen_voss.tscn" id="6_kaelen"]
+[ext_resource type="PackedScene" uid="uid://du6yoy0te37lg" path="res://scenes/unit/characters/mercenary_ally.tscn" id="7_merc"]
+[ext_resource type="PackedScene" uid="uid://du6yoy00ow8lg" path="res://scenes/unit/enemies/enemy_soldier.tscn" id="8_enemysoldier"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_sdp4p"]
 atlas = ExtResource("1_sy352")
@@ -42,6 +45,9 @@ collision_layer = 3
 script = ExtResource("1_t0mcy")
 _interactTextPath = NodePath("InteractLabel")
 _battleSceneToCharge = "res://scenes/PrisonBattle/PrisonBattle.tscn"
+_playerUnits = Array[PackedScene]([ExtResource("6_kaelen")])
+_allyUnits = Array[PackedScene]([ExtResource("7_merc")])
+_enemyUnits = Array[PackedScene]([ExtResource("8_enemysoldier")])
 _dialogPath = NodePath("Dialog")
 
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="." unique_id=1581145202]

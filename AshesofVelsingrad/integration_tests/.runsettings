@@ -1,9 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RunSettings>
   <GdUnit4>
+    <!--
+      CompileProcessTimeout MUST be a direct child of <GdUnit4>; the gdUnit4 v6
+      runner doesn't read it from the legacy <Parameters><Parameter ... /></Parameters>
+      form. Without this, the runner uses its 20s default and force-kills the
+      compile on CI under load (see the "Godot compilation TIMEOUT" banner).
+    -->
+    <CompileProcessTimeout>120000</CompileProcessTimeout>
     <Parameters>
       <Parameter name="godot-parameters" value="--headless --no-import" />
-      <Parameter name="CompileProcessTimeout" value="120000" />
       <Parameter name="GodotBin" value="C:\Program Files\Godot\Godot_v4.6-stable_mono_win64.exe" />
     </Parameters>
   </GdUnit4>

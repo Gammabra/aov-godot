@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://bx4svi1f08lm2"
+path="res://.godot/imported/Awakening of the Juggernaut_FULL.ogg-7cf5820ed9d7d4a603cd3aead14487a4.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/audio_assets/musics/Awakening of the Juggernaut_FULL.ogg"
+dest_files=["res://.godot/imported/Awakening of the Juggernaut_FULL.ogg-7cf5820ed9d7d4a603cd3aead14487a4.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -835,7 +835,7 @@ volumetric_fog_sky_affect = 0.689
 [node name="Fight" type="Node3D" unique_id=2032490020]
 
 [node name="Ground" type="StaticBody3D" parent="." unique_id=426171075]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.80879927, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5349436, 1.9477897, 20.86125)
 metadata/MeshInstance3D = Plane(0, 0, 0, 0)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Ground" unique_id=797103117]
@@ -847,7 +847,7 @@ mesh = SubResource("PlaneMesh_ojdfr")
 shape = SubResource("BoxShape3D_2bpy1")
 
 [node name="IN" type="Node3D" parent="." unique_id=295012285]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.80879927, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5349436, 1.9477897, 20.86125)
 
 [node name="Shop_Closed2" type="MeshInstance3D" parent="IN" unique_id=133196370]
 transform = Transform3D(1, 0, 0, 0, -4.371126e-08, -0.9999971, 0, 0.9999971, -4.371126e-08, 6.6721134, 0.29307997, -28.48292)
@@ -900,7 +900,7 @@ mesh = SubResource("ArrayMesh_abrci")
 skeleton = NodePath("")
 
 [node name="CASTLE" type="Node3D" parent="." unique_id=538478973]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.80879927, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5349436, 1.9477897, 20.86125)
 
 [node name="Wall_L_Ext5" type="MeshInstance3D" parent="CASTLE" unique_id=269107341]
 transform = Transform3D(1, 0, 0, 0, -4.3711353e-08, -0.99999917, 0, 0.99999917, -4.3711353e-08, 14.475956, 0.8325496, -8.9978695)
@@ -1093,7 +1093,7 @@ mesh = SubResource("ArrayMesh_3wnwt")
 skeleton = NodePath("")
 
 [node name="ENV" type="Node3D" parent="." unique_id=1137244901]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.80879927, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5349436, 1.9477897, 20.86125)
 
 [node name="Mushroom_Common2" parent="ENV" unique_id=107590431 instance=ExtResource("21_dc3xx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.9081097, -0.8494073, -17.411808)
@@ -1331,3 +1331,15 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -53.67681, -0.618948, 48.2287
 
 [node name="Sky&Fog" type="WorldEnvironment" parent="." unique_id=875029585]
 environment = SubResource("Environment_ojdfr")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=155783697]
+transform = Transform3D(0.691433, 0.5986497, -0.40439937, 0.20467503, 0.37450927, 0.90435094, 0.6928408, -0.7080687, 0.13641945, 1.3024607, 11.945252, -12.672045)
+light_color = Color(1, 0.92, 0.78, 1)
+light_energy = 1.962
+light_specular = 0.0
+shadow_enabled = true
+shadow_normal_bias = 1.127
+shadow_opacity = 0.95
+shadow_blur = 0.0
+directional_shadow_max_distance = 39.5
+directional_shadow_pancake_size = 110.1

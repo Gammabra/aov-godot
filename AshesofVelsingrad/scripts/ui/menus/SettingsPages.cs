@@ -95,7 +95,21 @@ public partial class SettingsPages : Node
         if (resetBtn != null)
             resetBtn.Pressed += OnResetCommandsPressed;
 
+        // Reflect the persisted UI scale back into the Interface Size slider
+        // when the settings page opens, so the slider thumb starts where the
+        // user actually left it instead of at the .tscn default (50).
+        SyncInterfaceSizeFromSettings();
+
         CallDeferred(nameof(UpdateSubtitlePreview));
+    }
+
+    private void SyncInterfaceSizeFromSettings()
+    {
+        var current = SettingsManager.Instance?.GetUiScale() ?? SettingsManager.UiScaleDefault;
+        var slider = GetNodeOrNull<HSlider>("PageVisual/InterfaceSize/HSlider");
+        if (slider is not null) slider.Value = UiScaleToSlider(current);
+        interface_size = UiScaleToSlider(current);
+        UpdateInterfaceSizePreview(current);
     }
 
     // =================================================
@@ -197,7 +211,51 @@ public partial class SettingsPages : Node
     // VISUAL
     // =================================================
 
-    public void OnInterfaceSizeChanged(double value) => interface_size = (float)value;
+    /// <summary>
+    ///     Slider runs on a 0..100 scale; we map it linearly onto the
+    ///     <see cref="SettingsManager.UiScaleMin" />..<see cref="SettingsManager.UiScaleMax" />
+    ///     range. 0 → smallest, 50 → 1.0× (design size), 100 → largest.
+    /// </summary>
+    /// <param name="value">Raw slider value (0..100).</param>
+    public void OnInterfaceSizeChanged(double value)
+    {
+        interface_size = (float)value;
+        var scale = SliderToUiScale((float)value);
+        GD.Print($"[Settings] Interface size slider → {value:F0}/100  (UI scale {scale:F2}×).");
+        if (SettingsManager.Instance is null)
+        {
+            GD.PrintErr("[Settings] SettingsManager autoload missing — UI scale will NOT persist.");
+            return;
+        }
+        SettingsManager.Instance.SetUiScale(scale);
+        UpdateInterfaceSizePreview(scale);
+    }
+
+    /// <summary>0..100 slider value → <see cref="SettingsManager.UiScaleMin" />..<see cref="SettingsManager.UiScaleMax" />.</summary>
+    private static float SliderToUiScale(float sliderValue)
+    {
+        var t = Mathf.Clamp(sliderValue / 100f, 0f, 1f);
+        return Mathf.Lerp(SettingsManager.UiScaleMin, SettingsManager.UiScaleMax, t);
+    }
+
+    /// <summary>Inverse of <see cref="SliderToUiScale" /> for restoring the slider on _Ready.</summary>
+    private static float UiScaleToSlider(float scale)
+    {
+        var span = SettingsManager.UiScaleMax - SettingsManager.UiScaleMin;
+        if (span <= 0f) return 50f;
+        var t = (scale - SettingsManager.UiScaleMin) / span;
+        return Mathf.Clamp(t, 0f, 1f) * 100f;
+    }
+
+    /// <summary>Tiny visual feedback under the slider so the player can see what 1.25× looks like.</summary>
+    private void UpdateInterfaceSizePreview(float scale)
+    {
+        var preview = GetNodeOrNull<Label>("PageVisual/InterfaceSize/Preview");
+        if (preview is null) return;
+        preview.Text = $"{scale * 100f:F0}%";
+        preview.AddThemeFontSizeOverride("font_size", Mathf.RoundToInt(20 * scale));
+    }
+
     public void OnBlurryToggled(bool enabled) => blurry_enabled = enabled;
     public void OnCameraShakeToggled(bool enabled) => camera_shake_enabled = enabled;
     public void OnVisualIndicatorsToggled(bool enabled) => visual_indicators_enabled = enabled;
@@ -449,7 +507,12 @@ public partial class SettingsPages : Node
         GetNode<OptionButton>("PageVideo/WindowMode/OptionButton").Select(window_mode);
         GetNode<OptionButton>("PageVideo/Texture/OptionButton").Select(texture_quality);
 
-        GetNode<HSlider>("PageVisual/InterfaceSize/HSlider").Value = interface_size;
+        // interface_size on this script holds a slider-domain value (0..100), not a
+        // multiplier. Pull the actual scale from SettingsManager and convert; that
+        // way ApplySettingsToUI honours whatever the player saved last session
+        // even if interface_size hasn't been touched yet.
+        var savedScale = SettingsManager.Instance?.GetUiScale() ?? SettingsManager.UiScaleDefault;
+        GetNode<HSlider>("PageVisual/InterfaceSize/HSlider").Value = UiScaleToSlider(savedScale);
         GetNode<CheckBox>("PageVisual/Blurry/CheckBox").ButtonPressed = blurry_enabled;
         GetNode<CheckBox>("PageVisual/CameraShake/CheckBox").ButtonPressed = camera_shake_enabled;
         GetNode<CheckBox>("PageVisual/VisualIndicators/CheckBox").ButtonPressed = visual_indicators_enabled;

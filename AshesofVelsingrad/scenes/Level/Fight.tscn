@@ -1,6 +1,7 @@
 [gd_scene format=4 uid="uid://8jsp7b3bi66t"]
 
 [ext_resource type="Texture2D" uid="uid://c50jnm1re45tp" path="res://mapAssets/Castle Assets/Medieval_Voxel_Assets_Example_Shop_Closed.png" id="1_306wk"]
+[ext_resource type="Texture2D" uid="uid://xshu4k0r4opv" path="res://mapAssets/Castle Assets/Dirt.jpg" id="1_wyd5r"]
 [ext_resource type="Texture2D" uid="uid://nri07cgqsa6m" path="res://mapAssets/Castle Assets/Medieval_Voxel_Assets_Example_Kiosk.png" id="2_me6wc"]
 [ext_resource type="Texture2D" uid="uid://dek7py6ffxfy5" path="res://mapAssets/Castle Assets/Medieval_Voxel_Assets_Example_House_3.png" id="3_yv1nk"]
 [ext_resource type="Texture2D" uid="uid://b1qcx2nxg5ivo" path="res://mapAssets/Castle Assets/Medieval_Voxel_Assets_Example_House_2.png" id="4_b1mw0"]
@@ -31,6 +32,14 @@
 [ext_resource type="PackedScene" uid="uid://baakauy7wylb1" path="res://mapAssets/Stylized Nature MegaKit[Standard]/glTF/DeadTree_4.gltf" id="29_e4018"]
 [ext_resource type="PackedScene" uid="uid://rorbyeb0k1vk" path="res://mapAssets/Stylized Nature MegaKit[Standard]/glTF/DeadTree_3.gltf" id="30_e5x41"]
 [ext_resource type="Texture2D" uid="uid://xb8g3ceo22pp" path="res://mapAssets/Free Sky Backgrounds/Painterly Sky BGs (167).png" id="31_4uleq"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_17hws"]
+albedo_texture = ExtResource("1_wyd5r")
+heightmap_scale = 16.0
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_ojdfr"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2bpy1"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_skf66"]
 resource_name = "Shop_Closed"
@@ -805,29 +814,40 @@ background_energy_multiplier = 1.09
 sky = SubResource("Sky_17hws")
 ambient_light_sky_contribution = 0.42
 ambient_light_energy = 0.0
-fog_mode = 1
-fog_light_color = Color(0.50102776, 0.22304443, 0, 1)
-fog_light_energy = 1.53
-fog_density = 1.0
-fog_sky_affect = 0.479
-fog_height = -8.46
-fog_height_density = 0.2645
+fog_enabled = true
+fog_light_color = Color(0, 0, 0, 1)
+fog_light_energy = 6.64
+fog_density = 0.0346
+fog_sky_affect = 0.848
+fog_height = 192.99
+fog_height_density = -0.5224
 fog_depth_curve = 0.6155713
 fog_depth_begin = 0.0
 fog_depth_end = 760.3
-volumetric_fog_enabled = true
 volumetric_fog_density = 0.005
-volumetric_fog_length = 131.7
-volumetric_fog_detail_spread = 1.1095697
-volumetric_fog_ambient_inject = 0.51
+volumetric_fog_emission_energy = 68.15
+volumetric_fog_anisotropy = -0.9
+volumetric_fog_length = 486.83
+volumetric_fog_detail_spread = 6.0
+volumetric_fog_ambient_inject = 0.36
+volumetric_fog_sky_affect = 0.689
 
 [node name="Fight" type="Node3D" unique_id=2032490020]
 
-[node name="Ground" type="MeshInstance3D" parent="." unique_id=44284641]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5110238, -1.4991915, -19.490753)
-skeleton = NodePath("")
+[node name="Ground" type="StaticBody3D" parent="." unique_id=426171075]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.80879927, 0)
+metadata/MeshInstance3D = Plane(0, 0, 0, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Ground" unique_id=797103117]
+transform = Transform3D(100, 0, 0, 0, 100, 0, 0, 0, 100, 1.0333424, -0.77840126, -21.804306)
+material_override = SubResource("StandardMaterial3D_17hws")
+mesh = SubResource("PlaneMesh_ojdfr")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground" unique_id=975790977]
+shape = SubResource("BoxShape3D_2bpy1")
 
 [node name="IN" type="Node3D" parent="." unique_id=295012285]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.80879927, 0)
 
 [node name="Shop_Closed2" type="MeshInstance3D" parent="IN" unique_id=133196370]
 transform = Transform3D(1, 0, 0, 0, -4.371126e-08, -0.9999971, 0, 0.9999971, -4.371126e-08, 6.6721134, 0.29307997, -28.48292)
@@ -880,6 +900,7 @@ mesh = SubResource("ArrayMesh_abrci")
 skeleton = NodePath("")
 
 [node name="CASTLE" type="Node3D" parent="." unique_id=538478973]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.80879927, 0)
 
 [node name="Wall_L_Ext5" type="MeshInstance3D" parent="CASTLE" unique_id=269107341]
 transform = Transform3D(1, 0, 0, 0, -4.3711353e-08, -0.99999917, 0, 0.99999917, -4.3711353e-08, 14.475956, 0.8325496, -8.9978695)
@@ -1072,6 +1093,7 @@ mesh = SubResource("ArrayMesh_3wnwt")
 skeleton = NodePath("")
 
 [node name="ENV" type="Node3D" parent="." unique_id=1137244901]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.80879927, 0)
 
 [node name="Mushroom_Common2" parent="ENV" unique_id=107590431 instance=ExtResource("21_dc3xx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.9081097, -0.8494073, -17.411808)
@@ -1187,5 +1209,125 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -35.752663, -0.8410301, -57.2
 [node name="DeadTree_39" parent="ENV" unique_id=1262364125 instance=ExtResource("30_e5x41")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34.499374, -0.8410301, 4.541274)
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=875029585]
+[node name="DeadTree_25" parent="ENV" unique_id=1072602122 instance=ExtResource("26_2bpy1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.7818928, -0.618948, 28.630373)
+
+[node name="DeadTree_46" parent="ENV" unique_id=2124822342 instance=ExtResource("29_e4018")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.57583, -0.618948, 32.495712)
+
+[node name="DeadTree_26" parent="ENV" unique_id=1879102132 instance=ExtResource("26_2bpy1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.409203, -0.618948, 39.780563)
+
+[node name="DeadTree_47" parent="ENV" unique_id=2142341544 instance=ExtResource("29_e4018")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.350704, -0.618948, 50.43347)
+
+[node name="DeadTree_27" parent="ENV" unique_id=393215960 instance=ExtResource("26_2bpy1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -41.768227, -0.618948, 38.089905)
+
+[node name="DeadTree_15" parent="ENV" unique_id=1248852631 instance=ExtResource("25_ojdfr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.200317, -0.618948, 59.447144)
+
+[node name="DeadTree_28" parent="ENV" unique_id=601644268 instance=ExtResource("26_2bpy1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -53.618626, -0.618948, 25.259447)
+
+[node name="DeadTree_40" parent="ENV" unique_id=2122832853 instance=ExtResource("30_e5x41")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -64.343315, -0.618948, -0.90916824)
+
+[node name="DeadTree_16" parent="ENV" unique_id=871874247 instance=ExtResource("25_ojdfr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -72.35756, -0.618948, 14.300689)
+
+[node name="DeadTree_41" parent="ENV" unique_id=435054907 instance=ExtResource("30_e5x41")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -45.713863, -0.618948, -6.298443)
+
+[node name="DeadTree_29" parent="ENV" unique_id=538017418 instance=ExtResource("26_2bpy1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -80.026375, -0.618948, -26.420849)
+
+[node name="DeadTree_30" parent="ENV" unique_id=176848514 instance=ExtResource("26_2bpy1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -59.792282, -0.618948, -41.524406)
+
+[node name="DeadTree_48" parent="ENV" unique_id=717439149 instance=ExtResource("29_e4018")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -70.22, -0.618948, -68.94614)
+
+[node name="DeadTree_49" parent="ENV" unique_id=258860507 instance=ExtResource("30_e5x41")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -81.812325, -0.618948, -87.65228)
+
+[node name="DeadTree_50" parent="ENV" unique_id=1550883940 instance=ExtResource("29_e4018")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -41.388016, -0.618948, -85.452385)
+
+[node name="DeadTree_31" parent="ENV" unique_id=1595660727 instance=ExtResource("26_2bpy1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.4037037, -0.618948, -96.0911)
+
+[node name="DeadTree_17" parent="ENV" unique_id=451226465 instance=ExtResource("25_ojdfr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.085613, -0.618948, -74.23247)
+
+[node name="DeadTree_57" parent="ENV" unique_id=1543910346 instance=ExtResource("28_1chy7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.624832, -0.6189461, -76.83995)
+
+[node name="DeadTree_51" parent="ENV" unique_id=1293228773 instance=ExtResource("30_e5x41")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.255074, -0.618948, -109.197685)
+
+[node name="DeadTree_58" parent="ENV" unique_id=45342835 instance=ExtResource("29_e4018")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36.40206, -0.618948, -104.85222)
+
+[node name="DeadTree_59" parent="ENV" unique_id=1045767933 instance=ExtResource("26_2bpy1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 44.659306, -0.618948, -74.885315)
+
+[node name="DeadTree_18" parent="ENV" unique_id=476704615 instance=ExtResource("25_ojdfr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.51173, -0.618948, -85.27855)
+
+[node name="DeadTree_60" parent="ENV" unique_id=920113845 instance=ExtResource("29_e4018")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 72.6126, -0.618948, -108.57382)
+
+[node name="DeadTree_61" parent="ENV" unique_id=2052064801 instance=ExtResource("29_e4018")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 74.079056, -0.618948, -88.59598)
+
+[node name="DeadTree_62" parent="ENV" unique_id=1098413160 instance=ExtResource("26_2bpy1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 52.677536, -0.618948, -96.85328)
+
+[node name="DeadTree_63" parent="ENV" unique_id=1037586522 instance=ExtResource("30_e5x41")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 81.76797, -0.618948, -54.676826)
+
+[node name="DeadTree_64" parent="ENV" unique_id=1178270054 instance=ExtResource("28_1chy7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 63.64833, -0.618948, -68.77271)
+
+[node name="DeadTree_65" parent="ENV" unique_id=184862819 instance=ExtResource("26_2bpy1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 55.202415, -0.618948, -43.94108)
+
+[node name="DeadTree_66" parent="ENV" unique_id=1779260809 instance=ExtResource("28_1chy7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 85.89751, -0.618948, -31.492077)
+
+[node name="DeadTree_67" parent="ENV" unique_id=291370860 instance=ExtResource("26_2bpy1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 59.192406, -0.618947, -24.803377)
+
+[node name="DeadTree_68" parent="ENV" unique_id=781914766 instance=ExtResource("29_e4018")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 83.52858, -0.618948, 0.6009903)
+
+[node name="DeadTree_69" parent="ENV" unique_id=898575777 instance=ExtResource("30_e5x41")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 60.385086, -0.618948, 1.074913)
+
+[node name="DeadTree_70" parent="ENV" unique_id=2066486274 instance=ExtResource("28_1chy7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 84.588715, -0.618947, 32.671402)
+
+[node name="DeadTree_71" parent="ENV" unique_id=554323585 instance=ExtResource("30_e5x41")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 56.22592, -0.618948, 38.480816)
+
+[node name="DeadTree_72" parent="ENV" unique_id=116808127 instance=ExtResource("28_1chy7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37.133595, -0.618948, 31.380953)
+
+[node name="DeadTree_73" parent="ENV" unique_id=961276014 instance=ExtResource("30_e5x41")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 76.1966, -0.618948, 59.94658)
+
+[node name="DeadTree_19" parent="ENV" unique_id=1076715166 instance=ExtResource("25_ojdfr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.946507, -0.6189461, 60.903946)
+
+[node name="DeadTree_74" parent="ENV" unique_id=2009942813 instance=ExtResource("30_e5x41")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -53.69867, -0.618948, 67.69751)
+
+[node name="DeadTree_20" parent="ENV" unique_id=1355396109 instance=ExtResource("25_ojdfr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -78.35655, -0.618948, 46.239075)
+
+[node name="DeadTree_75" parent="ENV" unique_id=1409571964 instance=ExtResource("29_e4018")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -53.67681, -0.618948, 48.22873)
+
+[node name="Sky&Fog" type="WorldEnvironment" parent="." unique_id=875029585]
 environment = SubResource("Environment_ojdfr")

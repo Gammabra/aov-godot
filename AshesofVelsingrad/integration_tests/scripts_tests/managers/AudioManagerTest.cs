@@ -208,12 +208,14 @@ public class AudioManagerTest
     }
 
     [TestCase]
-    public void SetMusicContext_UnregisteredContext_DoesNotThrow()
+    public void SetMusicContext_AllContexts_DoNotThrow()
     {
-        // Exploration & Battle aren't registered yet — the manager must fall back
-        // to StopMusic instead of crashing on a missing track lookup.
+        // Hammer every transition path — registered tracks, missing-import fallback,
+        // and the explicit None stop. The manager has to log + no-op rather than
+        // throwing on any of them.
         _audio!.SetMusicContext(MusicContext.Exploration);
         _audio.SetMusicContext(MusicContext.Battle);
+        _audio.SetMusicContext(MusicContext.MainMenu);
         _audio.SetMusicContext(MusicContext.None);
     }
 

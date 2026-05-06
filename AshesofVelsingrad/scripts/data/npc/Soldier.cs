@@ -20,74 +20,103 @@ namespace AshesOfVelsingrad.data.npc;
 /// </remarks>
 public partial class Soldier : CharacterBody3D, IInteractable
 {
-    [Export]
-    private NodePath? _interactTextPath;
+	[Export]
+	private NodePath? _interactTextPath;
 
-    /// <summary>
-    ///     Path to the battle scene's <c>.tscn</c>. Kept as a string for backward compat
-    ///     with the existing scene authoring; <see cref="Interact" /> loads it as a
-    ///     <see cref="PackedScene" /> at trigger time.
-    /// </summary>
-    [Export]
-    private string? _battleSceneToCharge;
+	/// <summary>
+	///     Path to the battle scene's <c>.tscn</c>. Kept as a string for backward compat
+	///     with the existing scene authoring; <see cref="Interact" /> loads it as a
+	///     <see cref="PackedScene" /> at trigger time.
+	/// </summary>
+	[Export]
+	private string? _battleSceneToCharge;
 
-    private Label3D? InteractText;
+	[Export]
+	private NodePath? _dialogPath;
 
-    public override void _Ready()
-    {
-        InteractText = GetNode<Label3D>(_interactTextPath);
-    }
+	private Label3D? InteractText;
+	private Node? _dialog;
 
-    public void Interact(IInteractor interactor)
-    {
-        if (string.IsNullOrEmpty(_battleSceneToCharge))
-        {
-            GD.PrintErr($"Soldier '{Name}': _battleSceneToCharge is empty; cannot start a battle.");
-            return;
-        }
+	public override void _Ready()
+	{
+		InteractText = GetNode<Label3D>(_interactTextPath);
+		_dialog = GetNode<Node>(_dialogPath);
+		_dialog.Connect("battle_started", Callable.From<Node>(OnBattleStarted));
+	}
 
-        PackedScene? battleScene = ResourceLoader.Load<PackedScene>(_battleSceneToCharge);
-        if (battleScene is null)
-        {
-            GD.PrintErr($"Soldier '{Name}': failed to load battle scene at '{_battleSceneToCharge}'.");
-            return;
-        }
+	private void OnBattleStarted(Node interactorNode)
+	{
+		if (interactorNode is not IInteractor interactor)
+		{
+			GD.PrintErr("battle_started: interactor does not implement IInteractor");
+			return;
+		}
 
-        // Capture the player's current scene + world position so Forfeit / Victory
-        // Continue can drop them right back here, no save needed.
-        SceneTree tree = GetTree();
-        string returnScenePath = tree.CurrentScene?.SceneFilePath ?? string.Empty;
-        Vector3 returnPosition = interactor is Node3D playerNode
-            ? playerNode.GlobalPosition
-            : GlobalPosition; // fallback to NPC's own position if interactor isn't a Node3D
+		LaunchBattle(interactor);
+	}
 
-        BattleSetup setup = new()
-        {
-            BattleScene = battleScene,
-            ReturnScenePath = returnScenePath,
-            ReturnPosition = returnPosition,
-            EncounterName = Name.ToString(),
-        };
+	private void LaunchBattle(IInteractor interactor)
+	{
+		if (string.IsNullOrEmpty(_battleSceneToCharge))
+		{
+			GD.PrintErr($"Soldier '{Name}': _battleSceneToCharge is empty; cannot start a battle.");
+			return;
+		}
 
-        if (BattleLauncher.Instance is null)
-        {
-            GD.PrintErr("Soldier: BattleLauncher autoload is not registered. Falling back to direct ChangeSceneToFile (no return state).");
-            tree.ChangeSceneToFile(_battleSceneToCharge);
-            return;
-        }
+		PackedScene? battleScene = ResourceLoader.Load<PackedScene>(_battleSceneToCharge);
+		if (battleScene is null)
+		{
+			GD.PrintErr($"Soldier '{Name}': failed to load battle scene at '{_battleSceneToCharge}'.");
+			return;
+		}
 
-        BattleLauncher.Instance.Launch(setup);
-    }
+		// Capture the player's current scene + world position so Forfeit / Victory
+		// Continue can drop them right back here, no save needed.
+		SceneTree tree = GetTree();
+		string returnScenePath = tree.CurrentScene?.SceneFilePath ?? string.Empty;
+		Vector3 returnPosition = interactor is Node3D playerNode
+			? playerNode.GlobalPosition
+			: GlobalPosition; // fallback to NPC's own position if interactor isn't a Node3D
 
-    public bool CanInteract() => true;
+		BattleSetup setup = new()
+		{
+			BattleScene = battleScene,
+			ReturnScenePath = returnScenePath,
+			ReturnPosition = returnPosition,
+			EncounterName = Name.ToString(),
+		};
 
-    public void ShowPrompt()
-    {
-        if (InteractText is not null) InteractText.Visible = true;
-    }
+		interactor.UnlockInteractor();
+		if (BattleLauncher.Instance is null)
+		{
+			GD.PrintErr("Soldier: BattleLauncher autoload is not registered. Falling back to direct ChangeSceneToFile (no return state).");
+			tree.ChangeSceneToFile(_battleSceneToCharge);
+			return;
+		}
 
-    public void HidePrompt()
-    {
-        if (InteractText is not null) InteractText.Visible = false;
-    }
+		BattleLauncher.Instance.Launch(setup);
+	}
+
+	public void Interact(IInteractor interactor)
+	{
+		interactor.LockInteractor();
+		if (interactor is Node node)
+		{
+			_dialog?.Call("set_interactor", node);
+		}
+
+		_dialog?.Call("talk");
+	}
+
+	public bool CanInteract() => true;
+
+	public void ShowPrompt()
+	{
+		if (InteractText is not null) InteractText.Visible = true;
+	}
+
+	public void HidePrompt()
+	{
+		if (InteractText is not null) InteractText.Visible = false;
+	}
 }

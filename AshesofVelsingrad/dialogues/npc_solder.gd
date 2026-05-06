@@ -14,9 +14,11 @@ func _ready() -> void:
 	dialog.typewriter_speed=30
 
 func set_interactor(i) -> void:
+	print("[npc_solder] set_interactor called with: ", i)
 	interactor = i
-	
+
 func talk() -> void:
+	print("[npc_solder] talk() invoked — interactor=", interactor)
 	dialog.say("Mr. Voss... finally. Hm... you're looking more and more like your father.", s)
 	dialog.say("It's been three years since you were locked up here...", s)
 	dialog.say("But we don’t have time for that.", s)
@@ -43,18 +45,23 @@ func talk() -> void:
 		})
 
 func yes_function() -> void:
+	print("[npc_solder] yes_function() — adding 2 lines + start_fight action")
 	dialog.say("Alright. Then we move. Now.", s)
 	dialog.say("Good. Let them come.", ym)
 	dialog.action("start_fight")
 
 func no_function() -> void:
+	print("[npc_solder] no_function() — peace path")
 	dialog.say("Alright... but make it quick. We don’t have much time.", s)
-	
+
 func _on_pressed() -> void:
+	print("[npc_solder] _on_pressed() — restarting talk()")
 	talk()
 
 func start_fight():
+	print("[npc_solder] start_fight() called — interactor=", interactor)
 	if interactor == null:
 		push_error("battle_started: interactor is null")
 		return
+	print("[npc_solder] emitting battle_started signal")
 	battle_started.emit(interactor);

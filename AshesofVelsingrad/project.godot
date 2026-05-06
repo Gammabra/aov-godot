@@ -27,6 +27,10 @@ MenuManager="*res://scripts/managers/MenuManager.cs"
 AudioManager="*res://scripts/managers/AudioManager.cs"
 BattleLauncher="*res://scripts/managers/BattleLauncher.cs"
 
+[display]
+
+window/stretch/mode="canvas_items"
+
 [dotnet]
 
 project/assembly_name="AshesofVelsingrad"

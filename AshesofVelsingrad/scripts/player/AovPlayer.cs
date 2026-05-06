@@ -1,3 +1,4 @@
+using AshesOfVelsingrad.Audio;
 using AshesOfVelsingrad.Managers;
 using AshesOfVelsingrad.Systems;
 using Godot;
@@ -54,6 +55,12 @@ public sealed partial class AovPlayer : CharacterBody3D, IInteractor
             GlobalPosition = pos;
             GD.Print($"AovPlayer: restored return position {pos} from BattleLauncher.");
         }
+
+        // The player only spawns inside exploration scenes (prison, world map, …)
+        // — battle scenes spawn unit nodes through GameManager instead. So an
+        // active AovPlayer is a reliable signal that we're now exploring, and the
+        // audio manager can switch off the menu theme accordingly.
+        AudioManager.Instance?.SetMusicContext(MusicContext.Exploration);
     }
 
     public override void _Ready()

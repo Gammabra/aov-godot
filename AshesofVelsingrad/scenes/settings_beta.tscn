@@ -44,15 +44,13 @@ border_blend = true
 [node name="MenuBeta" type="Node2D" unique_id=675576821]
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=782571889]
-offset_left = 203.0
-offset_top = 193.0
-offset_right = 243.0
-offset_bottom = 233.0
+offset_right = 1154.0
+offset_bottom = 648.0
 
 [node name="MenuProto" type="Sprite2D" parent="TextureRect" unique_id=2141476751]
 modulate = Color(0.29954743, 0.29954746, 0.29954734, 0.8392157)
-position = Vector2(0, -1)
-scale = Vector2(0.5999153, 0.5997711)
+position = Vector2(203.41867, 192.63826)
+scale = Vector2(0.5999881, 0.59994954)
 texture = ExtResource("1_ujhbt")
 offset = Vector2(621, 219)
 

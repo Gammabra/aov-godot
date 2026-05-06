@@ -7,7 +7,7 @@
       form. Without this, the runner uses its 20s default and force-kills the
       compile on CI under load (see the "Godot compilation TIMEOUT" banner).
     -->
-    <CompileProcessTimeout>120000</CompileProcessTimeout>
+    <CompileProcessTimeout>240000</CompileProcessTimeout>
     <Parameters>
       <Parameter name="godot-parameters" value="--headless --no-import" />
       <Parameter name="GodotBin" value="C:\Program Files\Godot\Godot_v4.6-stable_mono_win64.exe" />

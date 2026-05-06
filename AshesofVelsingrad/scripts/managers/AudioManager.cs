@@ -50,6 +50,7 @@ public partial class AudioManager : BaseManager, IAudioService
     private bool _musicAIsActive = true;
     private Tween? _musicTween;
     private string? _currentMusicPath;
+    private MusicContext _musicContext = MusicContext.None;
 
     private readonly Dictionary<string, AmbientLayer> _ambientLayers = new();
     private readonly Dictionary<string, AudioStream> _streamCache = new();
@@ -100,16 +101,30 @@ public partial class AudioManager : BaseManager, IAudioService
         Callable.From(PlayBootMusic).CallDeferred();
     }
 
-    private void PlayBootMusic()
+    /// <summary>
+    ///     Boot-time fallback that picks <see cref="MusicContext.MainMenu" /> if
+    ///     no scene has declared its own context yet. Marked <c>protected</c> (not
+    ///     <c>private</c>) so the integration-test harness can invoke it via
+    ///     reflection on a <c>TestAudioManager</c> subclass — same access modifier
+    ///     as <see cref="Initialize" /> for the same reason.
+    /// </summary>
+    protected void PlayBootMusic()
     {
-        if (_registry.Contains(AudioCatalog.MainMenuTheme))
-        {
-            Play(AudioCatalog.MainMenuTheme);
-        }
-        else
-        {
-            GD.PrintErr($"[AudioManager] Boot track '{AudioCatalog.MainMenuTheme}' NOT in registry; skipping.");
-        }
+        // Defensive default for the project's normal boot scene (menu_beta.tscn),
+        // which has no script on its root and so doesn't declare a context itself
+        // — its <c>ButtonMenu</c> children pick up the slack but only after this
+        // deferred call is queued.
+        //
+        // The check matters when the developer launches a different scene directly
+        // (F6 in the editor, or `--main-scene` from CLI). In that case the loaded
+        // scene's <c>_Ready</c> runs *before* this deferred call (autoloads
+        // initialize first, but their deferred callbacks fire at end-of-frame
+        // *after* the new scene's _Ready), so by the time we get here the scene
+        // has already declared its real context — Battle, Exploration, whatever.
+        // Without this guard we'd happily overwrite that with MainMenu and the
+        // menu theme would bleed into the wrong scene.
+        if (_musicContext != MusicContext.None) return;
+        SetMusicContext(MusicContext.MainMenu);
     }
 
     public override void _ExitTree()
@@ -205,6 +220,64 @@ public partial class AudioManager : BaseManager, IAudioService
                 break;
         }
     }
+
+    #endregion
+
+    #region Music context
+
+    /// <summary>
+    ///     Declares what kind of scene is now active so the right music plays.
+    /// </summary>
+    /// <remarks>
+    ///     <para>
+    ///         Scenes call this on <c>_Ready</c> (or whenever they enter a new
+    ///         gameplay phase) instead of poking individual track ids — the catalog
+    ///         is then free to re-map a context to a different track without
+    ///         touching every call-site.
+    ///     </para>
+    ///     <para>
+    ///         When the catalog has no track registered for the requested context
+    ///         (typical during development before exploration / battle music ships)
+    ///         the manager fades the current music out, so the menu theme doesn't
+    ///         leak into exploration or combat. Calls are idempotent — passing the
+    ///         current context is a no-op.
+    ///     </para>
+    /// </remarks>
+    /// <param name="context">The scene category currently active.</param>
+    public void SetMusicContext(MusicContext context)
+    {
+        if (_musicContext == context)
+        {
+            GD.Print($"[AudioManager] SetMusicContext({context}) — already active, no-op.");
+            return;
+        }
+
+        var previous = _musicContext;
+        _musicContext = context;
+
+        var trackId = ResolveTrackId(context);
+        if (trackId is not null && _registry.Contains(trackId))
+        {
+            GD.Print($"[AudioManager] SetMusicContext: {previous} → {context} (playing '{trackId}').");
+            Play(trackId);
+        }
+        else
+        {
+            GD.Print($"[AudioManager] SetMusicContext: {previous} → {context} (no track registered for context — stopping music).");
+            StopMusic();
+        }
+    }
+
+    /// <summary>Returns the currently-declared music context.</summary>
+    public MusicContext CurrentMusicContext => _musicContext;
+
+    private static string? ResolveTrackId(MusicContext context) => context switch
+    {
+        MusicContext.MainMenu => AudioCatalog.MainMenuTheme,
+        MusicContext.Exploration => AudioCatalog.ExplorationTheme,
+        MusicContext.Battle => AudioCatalog.BattleTheme,
+        _ => null,
+    };
 
     #endregion
 
@@ -578,14 +651,29 @@ public partial class AudioManager : BaseManager, IAudioService
     {
         if (_streamCache.TryGetValue(path, out var cached)) return cached;
 
+        // ResourceLoader.Exists() catches the most common failure mode — a freshly
+        // added asset that hasn't been imported yet, so there's no .import sidecar
+        // and no cached resource under .godot/imported/. Without this branch the
+        // failure shows up as a generic "Load returned null", which is easy to
+        // miss in a noisy Output panel.
+        if (!ResourceLoader.Exists(path))
+        {
+            GD.PushError(
+                $"AudioManager: stream '{path}' has no Godot import. " +
+                "Run the project once in the editor (or `godot --headless --import` " +
+                "from the project folder) so the .import sidecar gets generated.");
+            return null;
+        }
+
         var loaded = ResourceLoader.Load<AudioStream>(path);
         if (loaded == null)
         {
-            GD.PrintErr($"AudioManager: failed to load stream at '{path}' (missing .import or wrong path)");
+            GD.PushError($"AudioManager: ResourceLoader.Load returned null for '{path}' — wrong path or unsupported format.");
             return null;
         }
 
         _streamCache[path] = loaded;
+        GD.Print($"[AudioManager] Loaded stream '{path}' (cached).");
         return loaded;
     }
 

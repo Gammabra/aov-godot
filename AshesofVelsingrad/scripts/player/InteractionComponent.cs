@@ -7,9 +7,11 @@ namespace AshesOfVelsingrad.player;
 public partial class InteractionComponent : Area3D
 {
     [Export]
-    private NodePath _animatedSprite3DPath;
+    private NodePath? _animatedSprite3DPath;
 
-    private AnimatedSprite3D _animatedSprite3D;
+    // null! — assigned in _Ready from the [Export] NodePath. Used non-null in
+    // _Process; the Godot lifecycle guarantees _Ready runs before any frame callback.
+    private AnimatedSprite3D _animatedSprite3D = null!;
     private readonly List<Node3D> _interactableObjects = [];
 
     public Node3D? ClosestInteractable { get; private set; }

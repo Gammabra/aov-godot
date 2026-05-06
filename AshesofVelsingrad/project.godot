@@ -15,8 +15,9 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 [application]
 
 config/name="AshesofVelsingrad"
-run/main_scene="uid://cuadq8eeoqg7j"
+run/main_scene="uid://dly7v2pb0m006"
 config/features=PackedStringArray("4.6", "C#", "Forward Plus")
+boot_splash/image="uid://d2o6v40ln62ci"
 config/icon="uid://d2o6v40ln62ci"
 
 [autoload]
@@ -24,6 +25,7 @@ config/icon="uid://d2o6v40ln62ci"
 SettingsManager="*res://scripts/managers/SettingsManager.cs"
 MenuManager="*res://scripts/managers/MenuManager.cs"
 AudioManager="*res://scripts/managers/AudioManager.cs"
+BattleLauncher="*res://scripts/managers/BattleLauncher.cs"
 
 [dotnet]
 

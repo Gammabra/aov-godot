@@ -52,6 +52,7 @@ theme_override_styles/pressed = SubResource("StyleBoxEmpty_3mi6d")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_gw7wq")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_yu3h4")
 text = "Play"
+script = ExtResource("4_xf5kf")
 
 [node name="ButtonOptions" type="Button" parent="HBoxContainer/VBoxContainer" unique_id=1854145709]
 layout_mode = 2
@@ -79,5 +80,6 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_yu3h4")
 text = "Exit"
 script = ExtResource("4_xf5kf")
 
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/ButtonPlay" to="HBoxContainer/VBoxContainer/ButtonPlay" method="OnPlayButtonPressed"]
 [connection signal="pressed" from="HBoxContainer/VBoxContainer/ButtonOptions" to="HBoxContainer/VBoxContainer/ButtonOptions" method="OnOptionsButtonPressed"]
 [connection signal="pressed" from="HBoxContainer/VBoxContainer/ButtonExit" to="HBoxContainer/VBoxContainer/ButtonExit" method="OnExitButtonPressed"]

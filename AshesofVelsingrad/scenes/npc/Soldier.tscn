@@ -40,7 +40,7 @@ animations = [{
 collision_layer = 3
 script = ExtResource("1_t0mcy")
 _interactTextPath = NodePath("InteractLabel")
-_battleSceneToCharge = "res://scenes/Test/Test.tscn"
+_battleSceneToCharge = "res://scenes/PrisonBattle/PrisonBattle.tscn"
 
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="." unique_id=1581145202]
 offset = Vector2(66, 0)

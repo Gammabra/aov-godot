@@ -1046,6 +1046,38 @@ public class AudioManager : BaseManager, IDisposable, IAudioService</code></pre>
 </h2>
 
 
+  <a id="AshesOfVelsingrad_Managers_AudioManager_CurrentMusicContext_" data-uid="AshesOfVelsingrad.Managers.AudioManager.CurrentMusicContext*"></a>
+
+  <h3 id="AshesOfVelsingrad_Managers_AudioManager_CurrentMusicContext" data-uid="AshesOfVelsingrad.Managers.AudioManager.CurrentMusicContext">
+  CurrentMusicContext
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/managers/AudioManager.cs/#L272"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Returns the currently-declared music context.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public MusicContext CurrentMusicContext { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="AshesOfVelsingrad.Audio.MusicContext.html">MusicContext</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
   <a id="AshesOfVelsingrad_Managers_AudioManager_Instance_" data-uid="AshesOfVelsingrad.Managers.AudioManager.Instance*"></a>
 
   <h3 id="AshesOfVelsingrad_Managers_AudioManager_Instance" data-uid="AshesOfVelsingrad.Managers.AudioManager.Instance">
@@ -1081,7 +1113,7 @@ public class AudioManager : BaseManager, IDisposable, IAudioService</code></pre>
 
   <h3 id="AshesOfVelsingrad_Managers_AudioManager_Registry" data-uid="AshesOfVelsingrad.Managers.AudioManager.Registry">
   Registry
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/managers/AudioManager.cs/#L68"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/managers/AudioManager.cs/#L69"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Track registry exposed for read access (UI listings, debug overlays, etc.)
@@ -1118,7 +1150,7 @@ and for tests that need to assert what's been registered.</p>
 
   <h3 id="AshesOfVelsingrad_Managers_AudioManager_GetBusVolume_AshesOfVelsingrad_Audio_AudioBus_" data-uid="AshesOfVelsingrad.Managers.AudioManager.GetBusVolume(AshesOfVelsingrad.Audio.AudioBus)">
   GetBusVolume(AudioBus)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/managers/AudioManager.cs/#L443"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/managers/AudioManager.cs/#L516"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Returns the current volume for a bus on the 0..1 linear scale.</p>
@@ -1157,7 +1189,7 @@ and for tests that need to assert what's been registered.</p>
 
   <h3 id="AshesOfVelsingrad_Managers_AudioManager_GetSettingsKey_AshesOfVelsingrad_Audio_AudioBus_" data-uid="AshesOfVelsingrad.Managers.AudioManager.GetSettingsKey(AshesOfVelsingrad.Audio.AudioBus)">
   GetSettingsKey(AudioBus)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/managers/AudioManager.cs/#L503"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/managers/AudioManager.cs/#L576"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"></div>
@@ -1193,7 +1225,7 @@ and for tests that need to assert what's been registered.</p>
 
   <h3 id="AshesOfVelsingrad_Managers_AudioManager_Initialize" data-uid="AshesOfVelsingrad.Managers.AudioManager.Initialize">
   Initialize()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/managers/AudioManager.cs/#L74"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/managers/AudioManager.cs/#L75"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Initializes the manager instance.
@@ -1226,7 +1258,7 @@ Derived classes must implement this method to provide their specific initializat
 
   <h3 id="AshesOfVelsingrad_Managers_AudioManager_IsBusMuted_AshesOfVelsingrad_Audio_AudioBus_" data-uid="AshesOfVelsingrad.Managers.AudioManager.IsBusMuted(AshesOfVelsingrad.Audio.AudioBus)">
   IsBusMuted(AudioBus)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/managers/AudioManager.cs/#L473"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/managers/AudioManager.cs/#L546"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Returns whether a bus is currently muted.</p>
@@ -1264,7 +1296,7 @@ Derived classes must implement this method to provide their specific initializat
 
   <h3 id="AshesOfVelsingrad_Managers_AudioManager_Play_System_String_" data-uid="AshesOfVelsingrad.Managers.AudioManager.Play(System.String)">
   Play(string)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/managers/AudioManager.cs/#L176"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/managers/AudioManager.cs/#L191"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Plays the registered track with id <code class="paramref">trackId</code>, dispatching
@@ -1302,7 +1334,7 @@ catalog level.</p>
 
   <h3 id="AshesOfVelsingrad_Managers_AudioManager_PlayAmbient_System_String_System_String_System_Single_" data-uid="AshesOfVelsingrad.Managers.AudioManager.PlayAmbient(System.String,System.String,System.Single)">
   PlayAmbient(string, string, float)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/managers/AudioManager.cs/#L306"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/managers/AudioManager.cs/#L379"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Starts (or replaces) an ambient layer. Multiple layers can play at once,
@@ -1338,11 +1370,42 @@ each addressed by <code class="paramref">layerId</code>.</p>
 
 
 
+  <a id="AshesOfVelsingrad_Managers_AudioManager_PlayBootMusic_" data-uid="AshesOfVelsingrad.Managers.AudioManager.PlayBootMusic*"></a>
+
+  <h3 id="AshesOfVelsingrad_Managers_AudioManager_PlayBootMusic" data-uid="AshesOfVelsingrad.Managers.AudioManager.PlayBootMusic">
+  PlayBootMusic()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/managers/AudioManager.cs/#L111"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Boot-time fallback that picks <a class="xref" href="AshesOfVelsingrad.Audio.MusicContext.html#AshesOfVelsingrad_Audio_MusicContext_MainMenu">MainMenu</a> if
+no scene has declared its own context yet. Marked <code>protected</code> (not
+<code>private</code>) so the integration-test harness can invoke it via
+reflection on a <code>TestAudioManager</code> subclass — same access modifier
+as <a class="xref" href="AshesOfVelsingrad.Managers.AudioManager.html#AshesOfVelsingrad_Managers_AudioManager_Initialize">Initialize()</a> for the same reason.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected void PlayBootMusic()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
   <a id="AshesOfVelsingrad_Managers_AudioManager_PlayMusic_" data-uid="AshesOfVelsingrad.Managers.AudioManager.PlayMusic*"></a>
 
   <h3 id="AshesOfVelsingrad_Managers_AudioManager_PlayMusic_System_String_System_Single_System_Boolean_" data-uid="AshesOfVelsingrad.Managers.AudioManager.PlayMusic(System.String,System.Single,System.Boolean)">
   PlayMusic(string, float, bool)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/managers/AudioManager.cs/#L213"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/managers/AudioManager.cs/#L286"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Starts (or crossfades into) a music track.</p>
@@ -1381,7 +1444,7 @@ each addressed by <code class="paramref">layerId</code>.</p>
 
   <h3 id="AshesOfVelsingrad_Managers_AudioManager_PlaySfx_System_String_System_Single_System_Single_" data-uid="AshesOfVelsingrad.Managers.AudioManager.PlaySfx(System.String,System.Single,System.Single)">
   PlaySfx(string, float, float)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/managers/AudioManager.cs/#L397"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/managers/AudioManager.cs/#L470"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Plays a one-shot sound effect through the SFX pool.</p>
@@ -1420,7 +1483,7 @@ each addressed by <code class="paramref">layerId</code>.</p>
 
   <h3 id="AshesOfVelsingrad_Managers_AudioManager_PlayUi_System_String_System_Single_" data-uid="AshesOfVelsingrad.Managers.AudioManager.PlayUi(System.String,System.Single)">
   PlayUi(string, float)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/managers/AudioManager.cs/#L402"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/managers/AudioManager.cs/#L475"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Plays a one-shot UI sound through the UI bus.</p>
@@ -1456,7 +1519,7 @@ each addressed by <code class="paramref">layerId</code>.</p>
 
   <h3 id="AshesOfVelsingrad_Managers_AudioManager_SetBusMuted_AshesOfVelsingrad_Audio_AudioBus_System_Boolean_" data-uid="AshesOfVelsingrad.Managers.AudioManager.SetBusMuted(AshesOfVelsingrad.Audio.AudioBus,System.Boolean)">
   SetBusMuted(AudioBus, bool)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/managers/AudioManager.cs/#L478"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/managers/AudioManager.cs/#L551"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Mutes or unmutes a bus.</p>
@@ -1492,7 +1555,7 @@ each addressed by <code class="paramref">layerId</code>.</p>
 
   <h3 id="AshesOfVelsingrad_Managers_AudioManager_SetBusVolume_AshesOfVelsingrad_Audio_AudioBus_System_Single_" data-uid="AshesOfVelsingrad.Managers.AudioManager.SetBusVolume(AshesOfVelsingrad.Audio.AudioBus,System.Single)">
   SetBusVolume(AudioBus, float)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/managers/AudioManager.cs/#L456"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/managers/AudioManager.cs/#L529"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Sets the volume for a bus and persists it through the settings layer.</p>
@@ -1524,11 +1587,59 @@ each addressed by <code class="paramref">layerId</code>.</p>
 
 
 
+  <a id="AshesOfVelsingrad_Managers_AudioManager_SetMusicContext_" data-uid="AshesOfVelsingrad.Managers.AudioManager.SetMusicContext*"></a>
+
+  <h3 id="AshesOfVelsingrad_Managers_AudioManager_SetMusicContext_AshesOfVelsingrad_Audio_MusicContext_" data-uid="AshesOfVelsingrad.Managers.AudioManager.SetMusicContext(AshesOfVelsingrad.Audio.MusicContext)">
+  SetMusicContext(MusicContext)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/managers/AudioManager.cs/#L247"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Declares what kind of scene is now active so the right music plays.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetMusicContext(MusicContext context)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>context</code> <a class="xref" href="AshesOfVelsingrad.Audio.MusicContext.html">MusicContext</a></dt>
+    <dd><p>The scene category currently active.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h4 class="section" id="AshesOfVelsingrad_Managers_AudioManager_SetMusicContext_AshesOfVelsingrad_Audio_MusicContext__remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>
+    Scenes call this on <code>_Ready</code> (or whenever they enter a new
+    gameplay phase) instead of poking individual track ids — the catalog
+    is then free to re-map a context to a different track without
+    touching every call-site.
+</p>
+<p>
+    When the catalog has no track registered for the requested context
+    (typical during development before exploration / battle music ships)
+    the manager fades the current music out, so the menu theme doesn't
+    leak into exploration or combat. Calls are idempotent — passing the
+    current context is a no-op.
+</p>
+</div>
+
+
+
+
   <a id="AshesOfVelsingrad_Managers_AudioManager_StopAllAmbient_" data-uid="AshesOfVelsingrad.Managers.AudioManager.StopAllAmbient*"></a>
 
   <h3 id="AshesOfVelsingrad_Managers_AudioManager_StopAllAmbient_System_Single_" data-uid="AshesOfVelsingrad.Managers.AudioManager.StopAllAmbient(System.Single)">
   StopAllAmbient(float)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/managers/AudioManager.cs/#L373"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/managers/AudioManager.cs/#L446"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Fades out and stops every active ambient layer.</p>
@@ -1561,7 +1672,7 @@ each addressed by <code class="paramref">layerId</code>.</p>
 
   <h3 id="AshesOfVelsingrad_Managers_AudioManager_StopAmbient_System_String_System_Single_" data-uid="AshesOfVelsingrad.Managers.AudioManager.StopAmbient(System.String,System.Single)">
   StopAmbient(string, float)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/managers/AudioManager.cs/#L346"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/managers/AudioManager.cs/#L419"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Fades out and stops a single ambient layer.</p>
@@ -1597,7 +1708,7 @@ each addressed by <code class="paramref">layerId</code>.</p>
 
   <h3 id="AshesOfVelsingrad_Managers_AudioManager_StopMusic_System_Single_" data-uid="AshesOfVelsingrad.Managers.AudioManager.StopMusic(System.Single)">
   StopMusic(float)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/managers/AudioManager.cs/#L218"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/managers/AudioManager.cs/#L291"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Fades out and stops the current music track, if any.</p>
@@ -1630,7 +1741,7 @@ each addressed by <code class="paramref">layerId</code>.</p>
 
   <h3 id="AshesOfVelsingrad_Managers_AudioManager__ExitTree" data-uid="AshesOfVelsingrad.Managers.AudioManager._ExitTree">
   _ExitTree()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/managers/AudioManager.cs/#L115"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/managers/AudioManager.cs/#L130"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Called when the node is removed from the scene tree.

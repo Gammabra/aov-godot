@@ -741,6 +741,18 @@ references:
   commentId: T:AshesOfVelsingrad.Audio.AudioCatalog
   fullName: AshesOfVelsingrad.Audio.AudioCatalog
   nameWithType: AudioCatalog
+- uid: AshesOfVelsingrad.Audio.AudioCatalog.BattleTheme
+  name: BattleTheme
+  href: api/AshesOfVelsingrad.Audio.AudioCatalog.html#AshesOfVelsingrad_Audio_AudioCatalog_BattleTheme
+  commentId: F:AshesOfVelsingrad.Audio.AudioCatalog.BattleTheme
+  fullName: AshesOfVelsingrad.Audio.AudioCatalog.BattleTheme
+  nameWithType: AudioCatalog.BattleTheme
+- uid: AshesOfVelsingrad.Audio.AudioCatalog.ExplorationTheme
+  name: ExplorationTheme
+  href: api/AshesOfVelsingrad.Audio.AudioCatalog.html#AshesOfVelsingrad_Audio_AudioCatalog_ExplorationTheme
+  commentId: F:AshesOfVelsingrad.Audio.AudioCatalog.ExplorationTheme
+  fullName: AshesOfVelsingrad.Audio.AudioCatalog.ExplorationTheme
+  nameWithType: AudioCatalog.ExplorationTheme
 - uid: AshesOfVelsingrad.Audio.AudioCatalog.MainMenuTheme
   name: MainMenuTheme
   href: api/AshesOfVelsingrad.Audio.AudioCatalog.html#AshesOfVelsingrad_Audio_AudioCatalog_MainMenuTheme
@@ -1345,6 +1357,36 @@ references:
   isSpec: "True"
   fullName: AshesOfVelsingrad.Audio.IAudioService.StopMusic
   nameWithType: IAudioService.StopMusic
+- uid: AshesOfVelsingrad.Audio.MusicContext
+  name: MusicContext
+  href: api/AshesOfVelsingrad.Audio.MusicContext.html
+  commentId: T:AshesOfVelsingrad.Audio.MusicContext
+  fullName: AshesOfVelsingrad.Audio.MusicContext
+  nameWithType: MusicContext
+- uid: AshesOfVelsingrad.Audio.MusicContext.Battle
+  name: Battle
+  href: api/AshesOfVelsingrad.Audio.MusicContext.html#AshesOfVelsingrad_Audio_MusicContext_Battle
+  commentId: F:AshesOfVelsingrad.Audio.MusicContext.Battle
+  fullName: AshesOfVelsingrad.Audio.MusicContext.Battle
+  nameWithType: MusicContext.Battle
+- uid: AshesOfVelsingrad.Audio.MusicContext.Exploration
+  name: Exploration
+  href: api/AshesOfVelsingrad.Audio.MusicContext.html#AshesOfVelsingrad_Audio_MusicContext_Exploration
+  commentId: F:AshesOfVelsingrad.Audio.MusicContext.Exploration
+  fullName: AshesOfVelsingrad.Audio.MusicContext.Exploration
+  nameWithType: MusicContext.Exploration
+- uid: AshesOfVelsingrad.Audio.MusicContext.MainMenu
+  name: MainMenu
+  href: api/AshesOfVelsingrad.Audio.MusicContext.html#AshesOfVelsingrad_Audio_MusicContext_MainMenu
+  commentId: F:AshesOfVelsingrad.Audio.MusicContext.MainMenu
+  fullName: AshesOfVelsingrad.Audio.MusicContext.MainMenu
+  nameWithType: MusicContext.MainMenu
+- uid: AshesOfVelsingrad.Audio.MusicContext.None
+  name: None
+  href: api/AshesOfVelsingrad.Audio.MusicContext.html#AshesOfVelsingrad_Audio_MusicContext_None
+  commentId: F:AshesOfVelsingrad.Audio.MusicContext.None
+  fullName: AshesOfVelsingrad.Audio.MusicContext.None
+  nameWithType: MusicContext.None
 - uid: AshesOfVelsingrad.BasicAttackSkill
   name: BasicAttackSkill
   href: api/AshesOfVelsingrad.BasicAttackSkill.html
@@ -10686,6 +10728,32 @@ references:
   commentId: T:AshesOfVelsingrad.IntegrationTests.Managers.AudioManagerTest
   fullName: AshesOfVelsingrad.IntegrationTests.Managers.AudioManagerTest
   nameWithType: AudioManagerTest
+- uid: AshesOfVelsingrad.IntegrationTests.Managers.AudioManagerTest.BootMusic_DoesNotOverrideAlreadyDeclaredContext
+  name: BootMusic_DoesNotOverrideAlreadyDeclaredContext()
+  href: api/AshesOfVelsingrad.IntegrationTests.Managers.AudioManagerTest.html#AshesOfVelsingrad_IntegrationTests_Managers_AudioManagerTest_BootMusic_DoesNotOverrideAlreadyDeclaredContext
+  commentId: M:AshesOfVelsingrad.IntegrationTests.Managers.AudioManagerTest.BootMusic_DoesNotOverrideAlreadyDeclaredContext
+  fullName: AshesOfVelsingrad.IntegrationTests.Managers.AudioManagerTest.BootMusic_DoesNotOverrideAlreadyDeclaredContext()
+  nameWithType: AudioManagerTest.BootMusic_DoesNotOverrideAlreadyDeclaredContext()
+- uid: AshesOfVelsingrad.IntegrationTests.Managers.AudioManagerTest.BootMusic_DoesNotOverrideAlreadyDeclaredContext*
+  name: BootMusic_DoesNotOverrideAlreadyDeclaredContext
+  href: api/AshesOfVelsingrad.IntegrationTests.Managers.AudioManagerTest.html#AshesOfVelsingrad_IntegrationTests_Managers_AudioManagerTest_BootMusic_DoesNotOverrideAlreadyDeclaredContext_
+  commentId: Overload:AshesOfVelsingrad.IntegrationTests.Managers.AudioManagerTest.BootMusic_DoesNotOverrideAlreadyDeclaredContext
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.IntegrationTests.Managers.AudioManagerTest.BootMusic_DoesNotOverrideAlreadyDeclaredContext
+  nameWithType: AudioManagerTest.BootMusic_DoesNotOverrideAlreadyDeclaredContext
+- uid: AshesOfVelsingrad.IntegrationTests.Managers.AudioManagerTest.BootMusic_FallsBackToMainMenu_WhenNoContextDeclared
+  name: BootMusic_FallsBackToMainMenu_WhenNoContextDeclared()
+  href: api/AshesOfVelsingrad.IntegrationTests.Managers.AudioManagerTest.html#AshesOfVelsingrad_IntegrationTests_Managers_AudioManagerTest_BootMusic_FallsBackToMainMenu_WhenNoContextDeclared
+  commentId: M:AshesOfVelsingrad.IntegrationTests.Managers.AudioManagerTest.BootMusic_FallsBackToMainMenu_WhenNoContextDeclared
+  fullName: AshesOfVelsingrad.IntegrationTests.Managers.AudioManagerTest.BootMusic_FallsBackToMainMenu_WhenNoContextDeclared()
+  nameWithType: AudioManagerTest.BootMusic_FallsBackToMainMenu_WhenNoContextDeclared()
+- uid: AshesOfVelsingrad.IntegrationTests.Managers.AudioManagerTest.BootMusic_FallsBackToMainMenu_WhenNoContextDeclared*
+  name: BootMusic_FallsBackToMainMenu_WhenNoContextDeclared
+  href: api/AshesOfVelsingrad.IntegrationTests.Managers.AudioManagerTest.html#AshesOfVelsingrad_IntegrationTests_Managers_AudioManagerTest_BootMusic_FallsBackToMainMenu_WhenNoContextDeclared_
+  commentId: Overload:AshesOfVelsingrad.IntegrationTests.Managers.AudioManagerTest.BootMusic_FallsBackToMainMenu_WhenNoContextDeclared
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.IntegrationTests.Managers.AudioManagerTest.BootMusic_FallsBackToMainMenu_WhenNoContextDeclared
+  nameWithType: AudioManagerTest.BootMusic_FallsBackToMainMenu_WhenNoContextDeclared
 - uid: AshesOfVelsingrad.IntegrationTests.Managers.AudioManagerTest.ExitTree_ClearsSingleton
   name: ExitTree_ClearsSingleton()
   href: api/AshesOfVelsingrad.IntegrationTests.Managers.AudioManagerTest.html#AshesOfVelsingrad_IntegrationTests_Managers_AudioManagerTest_ExitTree_ClearsSingleton
@@ -10855,6 +10923,45 @@ references:
   isSpec: "True"
   fullName: AshesOfVelsingrad.IntegrationTests.Managers.AudioManagerTest.SetBusVolume_UpdatesAudioServerInDb
   nameWithType: AudioManagerTest.SetBusVolume_UpdatesAudioServerInDb
+- uid: AshesOfVelsingrad.IntegrationTests.Managers.AudioManagerTest.SetMusicContext_SameContextTwice_IsIdempotent
+  name: SetMusicContext_SameContextTwice_IsIdempotent()
+  href: api/AshesOfVelsingrad.IntegrationTests.Managers.AudioManagerTest.html#AshesOfVelsingrad_IntegrationTests_Managers_AudioManagerTest_SetMusicContext_SameContextTwice_IsIdempotent
+  commentId: M:AshesOfVelsingrad.IntegrationTests.Managers.AudioManagerTest.SetMusicContext_SameContextTwice_IsIdempotent
+  fullName: AshesOfVelsingrad.IntegrationTests.Managers.AudioManagerTest.SetMusicContext_SameContextTwice_IsIdempotent()
+  nameWithType: AudioManagerTest.SetMusicContext_SameContextTwice_IsIdempotent()
+- uid: AshesOfVelsingrad.IntegrationTests.Managers.AudioManagerTest.SetMusicContext_SameContextTwice_IsIdempotent*
+  name: SetMusicContext_SameContextTwice_IsIdempotent
+  href: api/AshesOfVelsingrad.IntegrationTests.Managers.AudioManagerTest.html#AshesOfVelsingrad_IntegrationTests_Managers_AudioManagerTest_SetMusicContext_SameContextTwice_IsIdempotent_
+  commentId: Overload:AshesOfVelsingrad.IntegrationTests.Managers.AudioManagerTest.SetMusicContext_SameContextTwice_IsIdempotent
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.IntegrationTests.Managers.AudioManagerTest.SetMusicContext_SameContextTwice_IsIdempotent
+  nameWithType: AudioManagerTest.SetMusicContext_SameContextTwice_IsIdempotent
+- uid: AshesOfVelsingrad.IntegrationTests.Managers.AudioManagerTest.SetMusicContext_UnregisteredContext_DoesNotThrow
+  name: SetMusicContext_UnregisteredContext_DoesNotThrow()
+  href: api/AshesOfVelsingrad.IntegrationTests.Managers.AudioManagerTest.html#AshesOfVelsingrad_IntegrationTests_Managers_AudioManagerTest_SetMusicContext_UnregisteredContext_DoesNotThrow
+  commentId: M:AshesOfVelsingrad.IntegrationTests.Managers.AudioManagerTest.SetMusicContext_UnregisteredContext_DoesNotThrow
+  fullName: AshesOfVelsingrad.IntegrationTests.Managers.AudioManagerTest.SetMusicContext_UnregisteredContext_DoesNotThrow()
+  nameWithType: AudioManagerTest.SetMusicContext_UnregisteredContext_DoesNotThrow()
+- uid: AshesOfVelsingrad.IntegrationTests.Managers.AudioManagerTest.SetMusicContext_UnregisteredContext_DoesNotThrow*
+  name: SetMusicContext_UnregisteredContext_DoesNotThrow
+  href: api/AshesOfVelsingrad.IntegrationTests.Managers.AudioManagerTest.html#AshesOfVelsingrad_IntegrationTests_Managers_AudioManagerTest_SetMusicContext_UnregisteredContext_DoesNotThrow_
+  commentId: Overload:AshesOfVelsingrad.IntegrationTests.Managers.AudioManagerTest.SetMusicContext_UnregisteredContext_DoesNotThrow
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.IntegrationTests.Managers.AudioManagerTest.SetMusicContext_UnregisteredContext_DoesNotThrow
+  nameWithType: AudioManagerTest.SetMusicContext_UnregisteredContext_DoesNotThrow
+- uid: AshesOfVelsingrad.IntegrationTests.Managers.AudioManagerTest.SetMusicContext_UpdatesCurrentContext
+  name: SetMusicContext_UpdatesCurrentContext()
+  href: api/AshesOfVelsingrad.IntegrationTests.Managers.AudioManagerTest.html#AshesOfVelsingrad_IntegrationTests_Managers_AudioManagerTest_SetMusicContext_UpdatesCurrentContext
+  commentId: M:AshesOfVelsingrad.IntegrationTests.Managers.AudioManagerTest.SetMusicContext_UpdatesCurrentContext
+  fullName: AshesOfVelsingrad.IntegrationTests.Managers.AudioManagerTest.SetMusicContext_UpdatesCurrentContext()
+  nameWithType: AudioManagerTest.SetMusicContext_UpdatesCurrentContext()
+- uid: AshesOfVelsingrad.IntegrationTests.Managers.AudioManagerTest.SetMusicContext_UpdatesCurrentContext*
+  name: SetMusicContext_UpdatesCurrentContext
+  href: api/AshesOfVelsingrad.IntegrationTests.Managers.AudioManagerTest.html#AshesOfVelsingrad_IntegrationTests_Managers_AudioManagerTest_SetMusicContext_UpdatesCurrentContext_
+  commentId: Overload:AshesOfVelsingrad.IntegrationTests.Managers.AudioManagerTest.SetMusicContext_UpdatesCurrentContext
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.IntegrationTests.Managers.AudioManagerTest.SetMusicContext_UpdatesCurrentContext
+  nameWithType: AudioManagerTest.SetMusicContext_UpdatesCurrentContext
 - uid: AshesOfVelsingrad.IntegrationTests.Managers.AudioManagerTest.SetUp
   name: SetUp()
   href: api/AshesOfVelsingrad.IntegrationTests.Managers.AudioManagerTest.html#AshesOfVelsingrad_IntegrationTests_Managers_AudioManagerTest_SetUp
@@ -15275,6 +15382,19 @@ references:
   commentId: T:AshesOfVelsingrad.Managers.AudioManager
   fullName: AshesOfVelsingrad.Managers.AudioManager
   nameWithType: AudioManager
+- uid: AshesOfVelsingrad.Managers.AudioManager.CurrentMusicContext
+  name: CurrentMusicContext
+  href: api/AshesOfVelsingrad.Managers.AudioManager.html#AshesOfVelsingrad_Managers_AudioManager_CurrentMusicContext
+  commentId: P:AshesOfVelsingrad.Managers.AudioManager.CurrentMusicContext
+  fullName: AshesOfVelsingrad.Managers.AudioManager.CurrentMusicContext
+  nameWithType: AudioManager.CurrentMusicContext
+- uid: AshesOfVelsingrad.Managers.AudioManager.CurrentMusicContext*
+  name: CurrentMusicContext
+  href: api/AshesOfVelsingrad.Managers.AudioManager.html#AshesOfVelsingrad_Managers_AudioManager_CurrentMusicContext_
+  commentId: Overload:AshesOfVelsingrad.Managers.AudioManager.CurrentMusicContext
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.Managers.AudioManager.CurrentMusicContext
+  nameWithType: AudioManager.CurrentMusicContext
 - uid: AshesOfVelsingrad.Managers.AudioManager.GetBusVolume(AshesOfVelsingrad.Audio.AudioBus)
   name: GetBusVolume(AudioBus)
   href: api/AshesOfVelsingrad.Managers.AudioManager.html#AshesOfVelsingrad_Managers_AudioManager_GetBusVolume_AshesOfVelsingrad_Audio_AudioBus_
@@ -15372,6 +15492,19 @@ references:
   isSpec: "True"
   fullName: AshesOfVelsingrad.Managers.AudioManager.PlayAmbient
   nameWithType: AudioManager.PlayAmbient
+- uid: AshesOfVelsingrad.Managers.AudioManager.PlayBootMusic
+  name: PlayBootMusic()
+  href: api/AshesOfVelsingrad.Managers.AudioManager.html#AshesOfVelsingrad_Managers_AudioManager_PlayBootMusic
+  commentId: M:AshesOfVelsingrad.Managers.AudioManager.PlayBootMusic
+  fullName: AshesOfVelsingrad.Managers.AudioManager.PlayBootMusic()
+  nameWithType: AudioManager.PlayBootMusic()
+- uid: AshesOfVelsingrad.Managers.AudioManager.PlayBootMusic*
+  name: PlayBootMusic
+  href: api/AshesOfVelsingrad.Managers.AudioManager.html#AshesOfVelsingrad_Managers_AudioManager_PlayBootMusic_
+  commentId: Overload:AshesOfVelsingrad.Managers.AudioManager.PlayBootMusic
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.Managers.AudioManager.PlayBootMusic
+  nameWithType: AudioManager.PlayBootMusic
 - uid: AshesOfVelsingrad.Managers.AudioManager.PlayMusic(System.String,System.Single,System.Boolean)
   name: PlayMusic(string, float, bool)
   href: api/AshesOfVelsingrad.Managers.AudioManager.html#AshesOfVelsingrad_Managers_AudioManager_PlayMusic_System_String_System_Single_System_Boolean_
@@ -15465,6 +15598,19 @@ references:
   isSpec: "True"
   fullName: AshesOfVelsingrad.Managers.AudioManager.SetBusVolume
   nameWithType: AudioManager.SetBusVolume
+- uid: AshesOfVelsingrad.Managers.AudioManager.SetMusicContext(AshesOfVelsingrad.Audio.MusicContext)
+  name: SetMusicContext(MusicContext)
+  href: api/AshesOfVelsingrad.Managers.AudioManager.html#AshesOfVelsingrad_Managers_AudioManager_SetMusicContext_AshesOfVelsingrad_Audio_MusicContext_
+  commentId: M:AshesOfVelsingrad.Managers.AudioManager.SetMusicContext(AshesOfVelsingrad.Audio.MusicContext)
+  fullName: AshesOfVelsingrad.Managers.AudioManager.SetMusicContext(AshesOfVelsingrad.Audio.MusicContext)
+  nameWithType: AudioManager.SetMusicContext(MusicContext)
+- uid: AshesOfVelsingrad.Managers.AudioManager.SetMusicContext*
+  name: SetMusicContext
+  href: api/AshesOfVelsingrad.Managers.AudioManager.html#AshesOfVelsingrad_Managers_AudioManager_SetMusicContext_
+  commentId: Overload:AshesOfVelsingrad.Managers.AudioManager.SetMusicContext
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.Managers.AudioManager.SetMusicContext
+  nameWithType: AudioManager.SetMusicContext
 - uid: AshesOfVelsingrad.Managers.AudioManager.SettingsPrefix
   name: SettingsPrefix
   href: api/AshesOfVelsingrad.Managers.AudioManager.html#AshesOfVelsingrad_Managers_AudioManager_SettingsPrefix
@@ -28293,6 +28439,19 @@ references:
   isSpec: "True"
   fullName: ButtonMenu.OnPlayButtonPressed
   nameWithType: ButtonMenu.OnPlayButtonPressed
+- uid: Global.ButtonMenu._Ready
+  name: _Ready()
+  href: api/Global.ButtonMenu.html#Global_ButtonMenu__Ready
+  commentId: M:Global.ButtonMenu._Ready
+  fullName: ButtonMenu._Ready()
+  nameWithType: ButtonMenu._Ready()
+- uid: Global.ButtonMenu._Ready*
+  name: _Ready
+  href: api/Global.ButtonMenu.html#Global_ButtonMenu__Ready_
+  commentId: Overload:Global.ButtonMenu._Ready
+  isSpec: "True"
+  fullName: ButtonMenu._Ready
+  nameWithType: ButtonMenu._Ready
 - uid: Global.ButtonSettingsFont
   name: ButtonSettingsFont
   href: api/Global.ButtonSettingsFont.html

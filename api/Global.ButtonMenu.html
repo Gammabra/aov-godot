@@ -1235,9 +1235,6 @@ public class ButtonMenu : Button, IDisposable</code></pre>
       <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">Node._Process(double)</a>
     </div>
     <div>
-      <span class="xref">Node._Ready()</span>
-    </div>
-    <div>
       <span class="xref">Node._ShortcutInput(InputEvent)</span>
     </div>
     <div>
@@ -1915,7 +1912,7 @@ public class ButtonMenu : Button, IDisposable</code></pre>
 
   <h3 id="Global_ButtonMenu_OnExitButtonPressed" data-uid="Global.ButtonMenu.OnExitButtonPressed">
   OnExitButtonPressed()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/ui/menus/ButtonMenu.cs/#L25"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/ui/menus/ButtonMenu.cs/#L41"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"></div>
@@ -1941,7 +1938,7 @@ public class ButtonMenu : Button, IDisposable</code></pre>
 
   <h3 id="Global_ButtonMenu_OnOptionsButtonPressed" data-uid="Global.ButtonMenu.OnOptionsButtonPressed">
   OnOptionsButtonPressed()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/ui/menus/ButtonMenu.cs/#L15"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/ui/menus/ButtonMenu.cs/#L31"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"></div>
@@ -1967,7 +1964,7 @@ public class ButtonMenu : Button, IDisposable</code></pre>
 
   <h3 id="Global_ButtonMenu_OnOptionsExitButtonPressed" data-uid="Global.ButtonMenu.OnOptionsExitButtonPressed">
   OnOptionsExitButtonPressed()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/ui/menus/ButtonMenu.cs/#L20"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/ui/menus/ButtonMenu.cs/#L36"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"></div>
@@ -1993,7 +1990,7 @@ public class ButtonMenu : Button, IDisposable</code></pre>
 
   <h3 id="Global_ButtonMenu_OnPlayButtonPressed" data-uid="Global.ButtonMenu.OnPlayButtonPressed">
   OnPlayButtonPressed()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/ui/menus/ButtonMenu.cs/#L10"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/ui/menus/ButtonMenu.cs/#L26"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Wired to <code>ButtonPlay.pressed</code> on the beta main menu. Drops the player
@@ -2004,6 +2001,39 @@ encounters via NPCs (e.g. the Soldier → <code>BattleLauncher.Launch</code>).</
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public void OnPlayButtonPressed()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Global_ButtonMenu__Ready_" data-uid="Global.ButtonMenu._Ready*"></a>
+
+  <h3 id="Global_ButtonMenu__Ready" data-uid="Global.ButtonMenu._Ready">
+  _Ready()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/ui/menus/ButtonMenu.cs/#L16"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>The beta main menu (<code>menu_beta.tscn</code>) and settings screen
+(<code>settings_beta.tscn</code>) don't have <code>MainMenu.cs</code> attached, so the
+scene root never declares its own music context. Hooking on
+<a class="xref" href="Global.ButtonMenu.html#ButtonMenu__Ready">_Ready()</a> here covers it: every <code>ButtonMenu</code> on those
+scenes pings the audio manager when the scene loads and
+<code>SetMusicContext</code> is idempotent, so multiple buttons declaring the
+same context cost nothing.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override void _Ready()</code></pre>
   </div>
 
 

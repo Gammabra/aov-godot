@@ -278,6 +278,20 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.Audio.MusicContext.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.Audio.MusicContext.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.Audio.MusicContext",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.Audio.MusicContext.yml\" sourcestartlinenumber=\"1\">High-level scene categories used to pick the right music track.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "documentation/api/AshesOfVelsingrad.Audio.yml",
       "output": {
         ".html": {

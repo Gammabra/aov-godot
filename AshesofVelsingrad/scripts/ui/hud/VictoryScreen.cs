@@ -126,7 +126,7 @@ public sealed partial class VictoryScreen : CanvasLayer
         Label title = new() { Text = "Victory!" };
         title.HorizontalAlignment = HorizontalAlignment.Center;
         title.AddThemeColorOverride("font_color", new Color(1f, 0.85f, 0.40f));
-        title.AddThemeFontSizeOverride("font_size", 36);
+        HudStyle.ApplyScaledFontSize(title, "font_size", HudStyle.FontSizeTitle);
         _root.AddChild(title);
 
         Label subtitle = new() { Text = "The battle is won. Your party survives the day." };
@@ -143,7 +143,7 @@ public sealed partial class VictoryScreen : CanvasLayer
         _xpLabel = new Label { Text = "XP gained: +0" };
         _xpLabel.HorizontalAlignment = HorizontalAlignment.Center;
         _xpLabel.AddThemeColorOverride("font_color", new Color(0.55f, 0.95f, 0.55f));
-        _xpLabel.AddThemeFontSizeOverride("font_size", 20);
+        HudStyle.ApplyScaledFontSize(_xpLabel, "font_size", 20);
         _root.AddChild(_xpLabel);
 
         Label lootHeader = new() { Text = "Loot:" };
@@ -224,7 +224,7 @@ public sealed partial class VictoryScreen : CanvasLayer
             CustomMinimumSize = new Vector2(0, 22),
             MouseFilter = Control.MouseFilterEnum.Ignore,
         };
-        name.AddThemeFontSizeOverride("normal_font_size", 14);
+        HudStyle.ApplyScaledFontSize(name, "normal_font_size", HudStyle.FontSizeBody);
         inner.AddChild(name);
 
         Label hpLabel = new() { Text = $"HP {unit.Hp:F0}/{unit.MaxHp:F0}" };

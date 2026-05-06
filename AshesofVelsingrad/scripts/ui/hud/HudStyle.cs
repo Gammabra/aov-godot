@@ -1,3 +1,4 @@
+using AshesOfVelsingrad.Managers;
 using Godot;
 
 namespace AshesOfVelsingrad.UI.Hud;
@@ -35,6 +36,97 @@ public static class HudStyle
 
     /// <summary>Enemy chip colour for the turn queue.</summary>
     public static Color EnemyColor => new(0.90f, 0.30f, 0.30f, 1f);
+
+    // Font sizes ----------------------------------------------------------
+    //
+    // The HUD has four "tiers" of text — a hero title (Victory!, GameOver),
+    // a section header (panel headings, unit name), the body size used by
+    // most labels and buttons, and a footnote size for log entries / dim
+    // metadata. They're declared here so widgets stop magic-numbering the
+    // sizes and so a future redesign only touches one file.
+
+    /// <summary>Hero font size (Victory / GameOver title).</summary>
+    public const int FontSizeTitle = 36;
+
+    /// <summary>Section-header font size (panel titles, unit name above HP).</summary>
+    public const int FontSizeHeader = 16;
+
+    /// <summary>Body font size (most labels, buttons).</summary>
+    public const int FontSizeBody = 14;
+
+    /// <summary>Footnote font size (log lines, dim subtitles).</summary>
+    public const int FontSizeSmall = 13;
+
+    /// <summary>
+    ///     Returns <paramref name="baseSize" /> multiplied by the user's UI scale
+    ///     setting (<see cref="SettingsManager.GetUiScale" />). Always returns at
+    ///     least <c>1</c> so Godot's font renderer never gets a zero/negative size.
+    /// </summary>
+    /// <param name="baseSize">Design-time font size — one of the
+    ///     <see cref="FontSizeTitle" />/<see cref="FontSizeHeader" />/
+    ///     <see cref="FontSizeBody" />/<see cref="FontSizeSmall" /> constants.</param>
+    /// <returns>Scaled, integer-rounded font size suitable for
+    ///     <see cref="Control.AddThemeFontSizeOverride" />.</returns>
+    public static int ScaledFontSize(int baseSize)
+    {
+        var scale = SettingsManager.Instance?.GetUiScale() ?? SettingsManager.UiScaleDefault;
+        var scaled = Mathf.RoundToInt(baseSize * scale);
+        return Mathf.Max(1, scaled);
+    }
+
+    // Live-rescale plumbing -----------------------------------------------
+    //
+    // BattleHud subscribes to SettingsManager.UiScaleChanged and forwards the
+    // event to every styled control by walking the tree. Each control that
+    // wants to participate stamps its design-time base size into a meta
+    // entry; the walker reads that meta and re-applies the theme override.
+    // Without the meta we'd have no way to know the original size — we'd
+    // pull the *currently scaled* size and end up exponentially scaling on
+    // every change.
+
+    /// <summary>Meta key identifying the design-time font size of a styled control.</summary>
+    public const string FontSizeMetaKey = "hud_base_font_size";
+
+    /// <summary>Meta key identifying the theme override property used (e.g. "font_size", "normal_font_size").</summary>
+    public const string FontSizePropertyMetaKey = "hud_font_size_property";
+
+    /// <summary>
+    ///     Apply a UI-scaled font size override to <paramref name="control" /> AND remember
+    ///     the design-time base so a later <see cref="RefreshScaledFonts" /> walk can
+    ///     re-apply it cleanly.
+    /// </summary>
+    /// <param name="control">Control receiving the override.</param>
+    /// <param name="property">Theme override property name (<c>"font_size"</c> for Label/Button,
+    ///     <c>"normal_font_size"</c> for RichTextLabel).</param>
+    /// <param name="baseSize">Design-time font size.</param>
+    public static void ApplyScaledFontSize(Control control, string property, int baseSize)
+    {
+        control.SetMeta(FontSizeMetaKey, baseSize);
+        control.SetMeta(FontSizePropertyMetaKey, property);
+        control.AddThemeFontSizeOverride(property, ScaledFontSize(baseSize));
+    }
+
+    /// <summary>
+    ///     Walk <paramref name="root" />'s descendants and re-apply font-size overrides for
+    ///     every control that was tagged via <see cref="ApplyScaledFontSize" /> or one of
+    ///     the <c>StyleLabel</c>/<c>StyleButton</c> helpers. Cheap — only touches Controls
+    ///     that opted in.
+    /// </summary>
+    /// <param name="root">Subtree root (typically the BattleHud CanvasLayer).</param>
+    public static void RefreshScaledFonts(Node root)
+    {
+        if (root is Control control && control.HasMeta(FontSizeMetaKey))
+        {
+            var baseSize = (int)control.GetMeta(FontSizeMetaKey);
+            var property = control.GetMeta(FontSizePropertyMetaKey, "font_size").AsString();
+            control.AddThemeFontSizeOverride(property, ScaledFontSize(baseSize));
+        }
+
+        foreach (var child in root.GetChildren())
+        {
+            RefreshScaledFonts(child);
+        }
+    }
 
     /// <summary>Build a translucent rounded panel <see cref="StyleBoxFlat" />.</summary>
     /// <returns>A reusable stylebox.</returns>
@@ -78,21 +170,27 @@ public static class HudStyle
         return panel;
     }
 
-    /// <summary>Apply default text colour and font size to a <see cref="Label" />.</summary>
+    /// <summary>
+    ///     Apply default text colour and a UI-scaled font size to a <see cref="Label" />.
+    /// </summary>
     /// <param name="label">Label to style.</param>
-    public static void StyleLabel(Label label)
+    /// <param name="baseSize">Design-time font size; defaults to <see cref="FontSizeBody" />.</param>
+    public static void StyleLabel(Label label, int baseSize = FontSizeBody)
     {
         label.AddThemeColorOverride("font_color", TextColor);
-        label.AddThemeFontSizeOverride("font_size", 14);
+        ApplyScaledFontSize(label, "font_size", baseSize);
     }
 
-    /// <summary>Apply default text colour and font size to a <see cref="Button" />.</summary>
+    /// <summary>
+    ///     Apply default text colour and a UI-scaled font size to a <see cref="Button" />.
+    /// </summary>
     /// <param name="button">Button to style.</param>
-    public static void StyleButton(Button button)
+    /// <param name="baseSize">Design-time font size; defaults to <see cref="FontSizeBody" />.</param>
+    public static void StyleButton(Button button, int baseSize = FontSizeBody)
     {
         button.AddThemeColorOverride("font_color", TextColor);
         button.AddThemeColorOverride("font_hover_color", new Color(1f, 0.95f, 0.7f));
-        button.AddThemeFontSizeOverride("font_size", 14);
+        ApplyScaledFontSize(button, "font_size", baseSize);
     }
 
     /// <summary>Build a HP/MP-style stylebox pair for a <see cref="ProgressBar" />.</summary>

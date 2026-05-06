@@ -49,9 +49,15 @@ public sealed partial class ActionMenu : Control
 
     private void BuildLayout()
     {
+        // Layout target: the project's canvas_items design viewport is 1152×648.
+        // Every anchor here is computed against that, so widgets stay clear of
+        // each other once the viewport is scaled to whatever the player's window
+        // happens to be. The bottom action bar sits at viewport-center, ±180 wide,
+        // safely between the 308-wide PlayerStatusPanel on the left and the
+        // 260-wide BattleLog on the right.
         SetAnchorsAndOffsetsPreset(LayoutPreset.CenterBottom);
-        OffsetLeft = -260;
-        OffsetRight = 260;
+        OffsetLeft = -180;
+        OffsetRight = 180;
         OffsetTop = -64;
         OffsetBottom = -8;
         MouseFilter = MouseFilterEnum.Ignore;

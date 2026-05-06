@@ -10923,6 +10923,19 @@ references:
   isSpec: "True"
   fullName: AshesOfVelsingrad.IntegrationTests.Managers.AudioManagerTest.SetBusVolume_UpdatesAudioServerInDb
   nameWithType: AudioManagerTest.SetBusVolume_UpdatesAudioServerInDb
+- uid: AshesOfVelsingrad.IntegrationTests.Managers.AudioManagerTest.SetMusicContext_AllContexts_DoNotThrow
+  name: SetMusicContext_AllContexts_DoNotThrow()
+  href: api/AshesOfVelsingrad.IntegrationTests.Managers.AudioManagerTest.html#AshesOfVelsingrad_IntegrationTests_Managers_AudioManagerTest_SetMusicContext_AllContexts_DoNotThrow
+  commentId: M:AshesOfVelsingrad.IntegrationTests.Managers.AudioManagerTest.SetMusicContext_AllContexts_DoNotThrow
+  fullName: AshesOfVelsingrad.IntegrationTests.Managers.AudioManagerTest.SetMusicContext_AllContexts_DoNotThrow()
+  nameWithType: AudioManagerTest.SetMusicContext_AllContexts_DoNotThrow()
+- uid: AshesOfVelsingrad.IntegrationTests.Managers.AudioManagerTest.SetMusicContext_AllContexts_DoNotThrow*
+  name: SetMusicContext_AllContexts_DoNotThrow
+  href: api/AshesOfVelsingrad.IntegrationTests.Managers.AudioManagerTest.html#AshesOfVelsingrad_IntegrationTests_Managers_AudioManagerTest_SetMusicContext_AllContexts_DoNotThrow_
+  commentId: Overload:AshesOfVelsingrad.IntegrationTests.Managers.AudioManagerTest.SetMusicContext_AllContexts_DoNotThrow
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.IntegrationTests.Managers.AudioManagerTest.SetMusicContext_AllContexts_DoNotThrow
+  nameWithType: AudioManagerTest.SetMusicContext_AllContexts_DoNotThrow
 - uid: AshesOfVelsingrad.IntegrationTests.Managers.AudioManagerTest.SetMusicContext_SameContextTwice_IsIdempotent
   name: SetMusicContext_SameContextTwice_IsIdempotent()
   href: api/AshesOfVelsingrad.IntegrationTests.Managers.AudioManagerTest.html#AshesOfVelsingrad_IntegrationTests_Managers_AudioManagerTest_SetMusicContext_SameContextTwice_IsIdempotent
@@ -10936,19 +10949,6 @@ references:
   isSpec: "True"
   fullName: AshesOfVelsingrad.IntegrationTests.Managers.AudioManagerTest.SetMusicContext_SameContextTwice_IsIdempotent
   nameWithType: AudioManagerTest.SetMusicContext_SameContextTwice_IsIdempotent
-- uid: AshesOfVelsingrad.IntegrationTests.Managers.AudioManagerTest.SetMusicContext_UnregisteredContext_DoesNotThrow
-  name: SetMusicContext_UnregisteredContext_DoesNotThrow()
-  href: api/AshesOfVelsingrad.IntegrationTests.Managers.AudioManagerTest.html#AshesOfVelsingrad_IntegrationTests_Managers_AudioManagerTest_SetMusicContext_UnregisteredContext_DoesNotThrow
-  commentId: M:AshesOfVelsingrad.IntegrationTests.Managers.AudioManagerTest.SetMusicContext_UnregisteredContext_DoesNotThrow
-  fullName: AshesOfVelsingrad.IntegrationTests.Managers.AudioManagerTest.SetMusicContext_UnregisteredContext_DoesNotThrow()
-  nameWithType: AudioManagerTest.SetMusicContext_UnregisteredContext_DoesNotThrow()
-- uid: AshesOfVelsingrad.IntegrationTests.Managers.AudioManagerTest.SetMusicContext_UnregisteredContext_DoesNotThrow*
-  name: SetMusicContext_UnregisteredContext_DoesNotThrow
-  href: api/AshesOfVelsingrad.IntegrationTests.Managers.AudioManagerTest.html#AshesOfVelsingrad_IntegrationTests_Managers_AudioManagerTest_SetMusicContext_UnregisteredContext_DoesNotThrow_
-  commentId: Overload:AshesOfVelsingrad.IntegrationTests.Managers.AudioManagerTest.SetMusicContext_UnregisteredContext_DoesNotThrow
-  isSpec: "True"
-  fullName: AshesOfVelsingrad.IntegrationTests.Managers.AudioManagerTest.SetMusicContext_UnregisteredContext_DoesNotThrow
-  nameWithType: AudioManagerTest.SetMusicContext_UnregisteredContext_DoesNotThrow
 - uid: AshesOfVelsingrad.IntegrationTests.Managers.AudioManagerTest.SetMusicContext_UpdatesCurrentContext
   name: SetMusicContext_UpdatesCurrentContext()
   href: api/AshesOfVelsingrad.IntegrationTests.Managers.AudioManagerTest.html#AshesOfVelsingrad_IntegrationTests_Managers_AudioManagerTest_SetMusicContext_UpdatesCurrentContext

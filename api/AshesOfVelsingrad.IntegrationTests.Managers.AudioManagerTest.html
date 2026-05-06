@@ -160,7 +160,7 @@ public class AudioManagerTest</code></pre>
 
   <h3 id="AshesOfVelsingrad_IntegrationTests_Managers_AudioManagerTest_BootMusic_DoesNotOverrideAlreadyDeclaredContext" data-uid="AshesOfVelsingrad.IntegrationTests.Managers.AudioManagerTest.BootMusic_DoesNotOverrideAlreadyDeclaredContext">
   BootMusic_DoesNotOverrideAlreadyDeclaredContext()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/integration_tests/scripts_tests/managers/AudioManagerTest.cs/#L230"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/integration_tests/scripts_tests/managers/AudioManagerTest.cs/#L232"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"></div>
@@ -187,7 +187,7 @@ public void BootMusic_DoesNotOverrideAlreadyDeclaredContext()</code></pre>
 
   <h3 id="AshesOfVelsingrad_IntegrationTests_Managers_AudioManagerTest_BootMusic_FallsBackToMainMenu_WhenNoContextDeclared" data-uid="AshesOfVelsingrad.IntegrationTests.Managers.AudioManagerTest.BootMusic_FallsBackToMainMenu_WhenNoContextDeclared">
   BootMusic_FallsBackToMainMenu_WhenNoContextDeclared()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/integration_tests/scripts_tests/managers/AudioManagerTest.cs/#L242"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/integration_tests/scripts_tests/managers/AudioManagerTest.cs/#L244"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"></div>
@@ -561,11 +561,11 @@ public void SetBusVolume_UpdatesAudioServerInDb()</code></pre>
 
 
 
-  <a id="AshesOfVelsingrad_IntegrationTests_Managers_AudioManagerTest_SetMusicContext_SameContextTwice_IsIdempotent_" data-uid="AshesOfVelsingrad.IntegrationTests.Managers.AudioManagerTest.SetMusicContext_SameContextTwice_IsIdempotent*"></a>
+  <a id="AshesOfVelsingrad_IntegrationTests_Managers_AudioManagerTest_SetMusicContext_AllContexts_DoNotThrow_" data-uid="AshesOfVelsingrad.IntegrationTests.Managers.AudioManagerTest.SetMusicContext_AllContexts_DoNotThrow*"></a>
 
-  <h3 id="AshesOfVelsingrad_IntegrationTests_Managers_AudioManagerTest_SetMusicContext_SameContextTwice_IsIdempotent" data-uid="AshesOfVelsingrad.IntegrationTests.Managers.AudioManagerTest.SetMusicContext_SameContextTwice_IsIdempotent">
-  SetMusicContext_SameContextTwice_IsIdempotent()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/integration_tests/scripts_tests/managers/AudioManagerTest.cs/#L220"><i class="bi bi-code-slash"></i></a>
+  <h3 id="AshesOfVelsingrad_IntegrationTests_Managers_AudioManagerTest_SetMusicContext_AllContexts_DoNotThrow" data-uid="AshesOfVelsingrad.IntegrationTests.Managers.AudioManagerTest.SetMusicContext_AllContexts_DoNotThrow">
+  SetMusicContext_AllContexts_DoNotThrow()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/integration_tests/scripts_tests/managers/AudioManagerTest.cs/#L210"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"></div>
@@ -573,7 +573,7 @@ public void SetBusVolume_UpdatesAudioServerInDb()</code></pre>
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[TestCase(new object?[] { })]
-public void SetMusicContext_SameContextTwice_IsIdempotent()</code></pre>
+public void SetMusicContext_AllContexts_DoNotThrow()</code></pre>
   </div>
 
 
@@ -588,11 +588,11 @@ public void SetMusicContext_SameContextTwice_IsIdempotent()</code></pre>
 
 
 
-  <a id="AshesOfVelsingrad_IntegrationTests_Managers_AudioManagerTest_SetMusicContext_UnregisteredContext_DoesNotThrow_" data-uid="AshesOfVelsingrad.IntegrationTests.Managers.AudioManagerTest.SetMusicContext_UnregisteredContext_DoesNotThrow*"></a>
+  <a id="AshesOfVelsingrad_IntegrationTests_Managers_AudioManagerTest_SetMusicContext_SameContextTwice_IsIdempotent_" data-uid="AshesOfVelsingrad.IntegrationTests.Managers.AudioManagerTest.SetMusicContext_SameContextTwice_IsIdempotent*"></a>
 
-  <h3 id="AshesOfVelsingrad_IntegrationTests_Managers_AudioManagerTest_SetMusicContext_UnregisteredContext_DoesNotThrow" data-uid="AshesOfVelsingrad.IntegrationTests.Managers.AudioManagerTest.SetMusicContext_UnregisteredContext_DoesNotThrow">
-  SetMusicContext_UnregisteredContext_DoesNotThrow()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/integration_tests/scripts_tests/managers/AudioManagerTest.cs/#L210"><i class="bi bi-code-slash"></i></a>
+  <h3 id="AshesOfVelsingrad_IntegrationTests_Managers_AudioManagerTest_SetMusicContext_SameContextTwice_IsIdempotent" data-uid="AshesOfVelsingrad.IntegrationTests.Managers.AudioManagerTest.SetMusicContext_SameContextTwice_IsIdempotent">
+  SetMusicContext_SameContextTwice_IsIdempotent()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/integration_tests/scripts_tests/managers/AudioManagerTest.cs/#L222"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"></div>
@@ -600,7 +600,7 @@ public void SetMusicContext_SameContextTwice_IsIdempotent()</code></pre>
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[TestCase(new object?[] { })]
-public void SetMusicContext_UnregisteredContext_DoesNotThrow()</code></pre>
+public void SetMusicContext_SameContextTwice_IsIdempotent()</code></pre>
   </div>
 
 

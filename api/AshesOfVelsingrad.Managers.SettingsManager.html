@@ -1009,6 +1009,103 @@ public class SettingsManager : BaseManager, IDisposable</code></pre>
 
 
 
+  <h2 class="section" id="fields">Fields
+</h2>
+
+
+
+  <h3 id="AshesOfVelsingrad_Managers_SettingsManager_UiScaleDefault" data-uid="AshesOfVelsingrad.Managers.SettingsManager.UiScaleDefault">
+  UiScaleDefault
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/managers/SettingsManager.cs/#L40"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Default scale (100% — the design size everything else multiplies against).</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const float UiScaleDefault = 1</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="AshesOfVelsingrad_Managers_SettingsManager_UiScaleMax" data-uid="AshesOfVelsingrad.Managers.SettingsManager.UiScaleMax">
+  UiScaleMax
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/managers/SettingsManager.cs/#L37"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Upper bound of UI scale. Larger and the battle HUD widgets begin to clip.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const float UiScaleMax = 1.5</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="AshesOfVelsingrad_Managers_SettingsManager_UiScaleMin" data-uid="AshesOfVelsingrad.Managers.SettingsManager.UiScaleMin">
+  UiScaleMin
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/managers/SettingsManager.cs/#L34"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Lower bound of UI scale (e.g. 50% size). Smaller than this becomes unreadable.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const float UiScaleMin = 0.5</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
   <h2 class="section" id="properties">Properties
 </h2>
 
@@ -1143,11 +1240,42 @@ public class SettingsManager : BaseManager, IDisposable</code></pre>
 
 
 
+  <a id="AshesOfVelsingrad_Managers_SettingsManager_EmitSignalUiScaleChanged_" data-uid="AshesOfVelsingrad.Managers.SettingsManager.EmitSignalUiScaleChanged*"></a>
+
+  <h3 id="AshesOfVelsingrad_Managers_SettingsManager_EmitSignalUiScaleChanged_System_Single_" data-uid="AshesOfVelsingrad.Managers.SettingsManager.EmitSignalUiScaleChanged(System.Single)">
+  EmitSignalUiScaleChanged(float)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected void EmitSignalUiScaleChanged(float newScale)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>newScale</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
   <a id="AshesOfVelsingrad_Managers_SettingsManager_GetDialogueSize_" data-uid="AshesOfVelsingrad.Managers.SettingsManager.GetDialogueSize*"></a>
 
   <h3 id="AshesOfVelsingrad_Managers_SettingsManager_GetDialogueSize" data-uid="AshesOfVelsingrad.Managers.SettingsManager.GetDialogueSize">
   GetDialogueSize()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/managers/SettingsManager.cs/#L393"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/managers/SettingsManager.cs/#L410"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Gets the current dialogue size setting.</p>
@@ -1184,7 +1312,7 @@ If the dialogue size is not set, it returns a default value of 1.0f.</p>
 
   <h3 id="AshesOfVelsingrad_Managers_SettingsManager_GetInputBinding_System_String_" data-uid="AshesOfVelsingrad.Managers.SettingsManager.GetInputBinding(System.String)">
   GetInputBinding(string)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/managers/SettingsManager.cs/#L178"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/managers/SettingsManager.cs/#L195"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Gets the current input binding for an action.</p>
@@ -1223,7 +1351,7 @@ If the dialogue size is not set, it returns a default value of 1.0f.</p>
 
   <h3 id="AshesOfVelsingrad_Managers_SettingsManager_GetSetting__1_System_String___0_" data-uid="AshesOfVelsingrad.Managers.SettingsManager.GetSetting``1(System.String,``0)">
   GetSetting&lt;T&gt;(string, T?)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/managers/SettingsManager.cs/#L434"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/managers/SettingsManager.cs/#L483"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Gets a custom setting by key, with an optional default value.</p>
@@ -1272,11 +1400,46 @@ It uses JSON serialization to convert the setting value to the specified type.</
 
 
 
+  <a id="AshesOfVelsingrad_Managers_SettingsManager_GetUiScale_" data-uid="AshesOfVelsingrad.Managers.SettingsManager.GetUiScale*"></a>
+
+  <h3 id="AshesOfVelsingrad_Managers_SettingsManager_GetUiScale" data-uid="AshesOfVelsingrad.Managers.SettingsManager.GetUiScale">
+  GetUiScale()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/managers/SettingsManager.cs/#L445"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets the user's UI scale multiplier — a single number every HUD widget
+multiplies its design font size by. <code>1.0</code> means &quot;exactly the design
+size&quot;, <code>0.5</code> half, <code>1.5</code> 50% larger.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public float GetUiScale()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd><p>The scale, clamped to <a class="xref" href="AshesOfVelsingrad.Managers.SettingsManager.html#AshesOfVelsingrad_Managers_SettingsManager_UiScaleMin">UiScaleMin</a>..<a class="xref" href="AshesOfVelsingrad.Managers.SettingsManager.html#AshesOfVelsingrad_Managers_SettingsManager_UiScaleMax">UiScaleMax</a>.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="AshesOfVelsingrad_Managers_SettingsManager_Initialize_" data-uid="AshesOfVelsingrad.Managers.SettingsManager.Initialize*"></a>
 
   <h3 id="AshesOfVelsingrad_Managers_SettingsManager_Initialize" data-uid="AshesOfVelsingrad.Managers.SettingsManager.Initialize">
   Initialize()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/managers/SettingsManager.cs/#L38"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/managers/SettingsManager.cs/#L55"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Initializes the SettingsManager singleton instance.
@@ -1309,7 +1472,7 @@ If the settings file does not exist, it creates a new default settings object an
 
   <h3 id="AshesOfVelsingrad_Managers_SettingsManager_LoadSettings" data-uid="AshesOfVelsingrad.Managers.SettingsManager.LoadSettings">
   LoadSettings()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/managers/SettingsManager.cs/#L86"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/managers/SettingsManager.cs/#L103"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Loads settings from the JSON file.
@@ -1342,7 +1505,7 @@ and saves it to create the settings file.</p>
 
   <h3 id="AshesOfVelsingrad_Managers_SettingsManager_ResetToDefaults" data-uid="AshesOfVelsingrad.Managers.SettingsManager.ResetToDefaults">
   ResetToDefaults()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/managers/SettingsManager.cs/#L483"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/managers/SettingsManager.cs/#L532"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Resets all settings to their default values.</p>
@@ -1373,7 +1536,7 @@ It saves the new settings to the JSON file and emits a SettingsChanged signal to
 
   <h3 id="AshesOfVelsingrad_Managers_SettingsManager_SaveSettings" data-uid="AshesOfVelsingrad.Managers.SettingsManager.SaveSettings">
   SaveSettings()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/managers/SettingsManager.cs/#L116"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/managers/SettingsManager.cs/#L133"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Saves the current settings to the JSON file.</p>
@@ -1404,7 +1567,7 @@ user://settings.json file. It handles any exceptions that may occur during the f
 
   <h3 id="AshesOfVelsingrad_Managers_SettingsManager_SetDialogueSize_System_Single_" data-uid="AshesOfVelsingrad.Managers.SettingsManager.SetDialogueSize(System.Single)">
   SetDialogueSize(float)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/managers/SettingsManager.cs/#L408"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/managers/SettingsManager.cs/#L425"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Sets the dialogue size and saves the settings.
@@ -1443,7 +1606,7 @@ The size is clamped between 0.5f and 2.0f to ensure it remains within a reasonab
 
   <h3 id="AshesOfVelsingrad_Managers_SettingsManager_SetInputBinding_System_String_Godot_InputEvent_" data-uid="AshesOfVelsingrad.Managers.SettingsManager.SetInputBinding(System.String,Godot.InputEvent)">
   SetInputBinding(string, InputEvent?)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/managers/SettingsManager.cs/#L193"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/managers/SettingsManager.cs/#L210"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Sets a new input binding for an action and saves the settings.
@@ -1480,7 +1643,7 @@ Emits a signal to notify other components of the change.</p>
 
   <h3 id="AshesOfVelsingrad_Managers_SettingsManager_SetSetting__1_System_String___0_" data-uid="AshesOfVelsingrad.Managers.SettingsManager.SetSetting``1(System.String,``0)">
   SetSetting&lt;T&gt;(string, T)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/managers/SettingsManager.cs/#L466"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/managers/SettingsManager.cs/#L515"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Sets a custom setting by key and saves the settings.
@@ -1520,6 +1683,41 @@ Emits a signal to notify other components of the change.</p>
 It also emits a SettingsChanged signal to notify other components of the change.
 The value is serialized to JSON format before being stored.</p>
 </div>
+
+
+
+
+  <a id="AshesOfVelsingrad_Managers_SettingsManager_SetUiScale_" data-uid="AshesOfVelsingrad.Managers.SettingsManager.SetUiScale*"></a>
+
+  <h3 id="AshesOfVelsingrad_Managers_SettingsManager_SetUiScale_System_Single_" data-uid="AshesOfVelsingrad.Managers.SettingsManager.SetUiScale(System.Single)">
+  SetUiScale(float)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/managers/SettingsManager.cs/#L456"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Persists a new UI scale and emits <a class="xref" href="AshesOfVelsingrad.Managers.SettingsManager.html#AshesOfVelsingrad_Managers_SettingsManager_UiScaleChanged">UiScaleChanged</a> when the
+value actually changes (small float deltas are absorbed). HUD code can
+subscribe and rebuild its widgets in response.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetUiScale(float scale)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>scale</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd><p>New scale; clamped to <a class="xref" href="AshesOfVelsingrad.Managers.SettingsManager.html#AshesOfVelsingrad_Managers_SettingsManager_UiScaleMin">UiScaleMin</a>..<a class="xref" href="AshesOfVelsingrad.Managers.SettingsManager.html#AshesOfVelsingrad_Managers_SettingsManager_UiScaleMax">UiScaleMax</a>.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
 
 
 
@@ -1609,6 +1807,39 @@ The value is serialized to JSON format before being stored.</p>
   <h4 class="section">Event Type</h4>
   <dl class="parameters">
     <dt><a class="xref" href="AshesOfVelsingrad.Managers.SettingsManager.html">SettingsManager</a>.<a class="xref" href="AshesOfVelsingrad.Managers.SettingsManager.html">SettingsChangedEventHandler</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h3 id="AshesOfVelsingrad_Managers_SettingsManager_UiScaleChanged" data-uid="AshesOfVelsingrad.Managers.SettingsManager.UiScaleChanged">
+  UiScaleChanged
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Emitted when <a class="xref" href="AshesOfVelsingrad.Managers.SettingsManager.html#AshesOfVelsingrad_Managers_SettingsManager_GetUiScale">GetUiScale()</a> changes. The HUD subscribes to this so
+widgets rescale their fonts (and rebuild their min-sizes) without needing a
+scene reload.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public event SettingsManager.UiScaleChangedEventHandler UiScaleChanged</code></pre>
+  </div>
+
+
+
+
+
+
+  <h4 class="section">Event Type</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="AshesOfVelsingrad.Managers.SettingsManager.html">SettingsManager</a>.<a class="xref" href="AshesOfVelsingrad.Managers.SettingsManager.html">UiScaleChangedEventHandler</a></dt>
     <dd></dd>
   </dl>
 

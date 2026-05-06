@@ -16656,6 +16656,19 @@ references:
   isSpec: "True"
   fullName: AshesOfVelsingrad.Managers.SettingsData.InputBindings
   nameWithType: SettingsData.InputBindings
+- uid: AshesOfVelsingrad.Managers.SettingsData.UiScale
+  name: UiScale
+  href: api/AshesOfVelsingrad.Managers.SettingsData.html#AshesOfVelsingrad_Managers_SettingsData_UiScale
+  commentId: P:AshesOfVelsingrad.Managers.SettingsData.UiScale
+  fullName: AshesOfVelsingrad.Managers.SettingsData.UiScale
+  nameWithType: SettingsData.UiScale
+- uid: AshesOfVelsingrad.Managers.SettingsData.UiScale*
+  name: UiScale
+  href: api/AshesOfVelsingrad.Managers.SettingsData.html#AshesOfVelsingrad_Managers_SettingsData_UiScale_
+  commentId: Overload:AshesOfVelsingrad.Managers.SettingsData.UiScale
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.Managers.SettingsData.UiScale
+  nameWithType: SettingsData.UiScale
 - uid: AshesOfVelsingrad.Managers.SettingsManager
   name: SettingsManager
   href: api/AshesOfVelsingrad.Managers.SettingsManager.html
@@ -16716,6 +16729,22 @@ references:
   isSpec: "True"
   fullName: AshesOfVelsingrad.Managers.SettingsManager.EmitSignalSettingsChanged
   nameWithType: SettingsManager.EmitSignalSettingsChanged
+- uid: AshesOfVelsingrad.Managers.SettingsManager.EmitSignalUiScaleChanged(System.Single)
+  name: EmitSignalUiScaleChanged(float)
+  href: api/AshesOfVelsingrad.Managers.SettingsManager.html#AshesOfVelsingrad_Managers_SettingsManager_EmitSignalUiScaleChanged_System_Single_
+  commentId: M:AshesOfVelsingrad.Managers.SettingsManager.EmitSignalUiScaleChanged(System.Single)
+  name.vb: EmitSignalUiScaleChanged(Single)
+  fullName: AshesOfVelsingrad.Managers.SettingsManager.EmitSignalUiScaleChanged(float)
+  fullName.vb: AshesOfVelsingrad.Managers.SettingsManager.EmitSignalUiScaleChanged(Single)
+  nameWithType: SettingsManager.EmitSignalUiScaleChanged(float)
+  nameWithType.vb: SettingsManager.EmitSignalUiScaleChanged(Single)
+- uid: AshesOfVelsingrad.Managers.SettingsManager.EmitSignalUiScaleChanged*
+  name: EmitSignalUiScaleChanged
+  href: api/AshesOfVelsingrad.Managers.SettingsManager.html#AshesOfVelsingrad_Managers_SettingsManager_EmitSignalUiScaleChanged_
+  commentId: Overload:AshesOfVelsingrad.Managers.SettingsManager.EmitSignalUiScaleChanged
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.Managers.SettingsManager.EmitSignalUiScaleChanged
+  nameWithType: SettingsManager.EmitSignalUiScaleChanged
 - uid: AshesOfVelsingrad.Managers.SettingsManager.GetDialogueSize
   name: GetDialogueSize()
   href: api/AshesOfVelsingrad.Managers.SettingsManager.html#AshesOfVelsingrad_Managers_SettingsManager_GetDialogueSize
@@ -16761,6 +16790,19 @@ references:
   fullName.vb: AshesOfVelsingrad.Managers.SettingsManager.GetSetting(Of T)(String, T)
   nameWithType: SettingsManager.GetSetting<T>(string, T?)
   nameWithType.vb: SettingsManager.GetSetting(Of T)(String, T)
+- uid: AshesOfVelsingrad.Managers.SettingsManager.GetUiScale
+  name: GetUiScale()
+  href: api/AshesOfVelsingrad.Managers.SettingsManager.html#AshesOfVelsingrad_Managers_SettingsManager_GetUiScale
+  commentId: M:AshesOfVelsingrad.Managers.SettingsManager.GetUiScale
+  fullName: AshesOfVelsingrad.Managers.SettingsManager.GetUiScale()
+  nameWithType: SettingsManager.GetUiScale()
+- uid: AshesOfVelsingrad.Managers.SettingsManager.GetUiScale*
+  name: GetUiScale
+  href: api/AshesOfVelsingrad.Managers.SettingsManager.html#AshesOfVelsingrad_Managers_SettingsManager_GetUiScale_
+  commentId: Overload:AshesOfVelsingrad.Managers.SettingsManager.GetUiScale
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.Managers.SettingsManager.GetUiScale
+  nameWithType: SettingsManager.GetUiScale
 - uid: AshesOfVelsingrad.Managers.SettingsManager.Initialize
   name: Initialize()
   href: api/AshesOfVelsingrad.Managers.SettingsManager.html#AshesOfVelsingrad_Managers_SettingsManager_Initialize
@@ -16880,12 +16922,52 @@ references:
   fullName.vb: AshesOfVelsingrad.Managers.SettingsManager.SetSetting(Of T)(String, T)
   nameWithType: SettingsManager.SetSetting<T>(string, T)
   nameWithType.vb: SettingsManager.SetSetting(Of T)(String, T)
+- uid: AshesOfVelsingrad.Managers.SettingsManager.SetUiScale(System.Single)
+  name: SetUiScale(float)
+  href: api/AshesOfVelsingrad.Managers.SettingsManager.html#AshesOfVelsingrad_Managers_SettingsManager_SetUiScale_System_Single_
+  commentId: M:AshesOfVelsingrad.Managers.SettingsManager.SetUiScale(System.Single)
+  name.vb: SetUiScale(Single)
+  fullName: AshesOfVelsingrad.Managers.SettingsManager.SetUiScale(float)
+  fullName.vb: AshesOfVelsingrad.Managers.SettingsManager.SetUiScale(Single)
+  nameWithType: SettingsManager.SetUiScale(float)
+  nameWithType.vb: SettingsManager.SetUiScale(Single)
+- uid: AshesOfVelsingrad.Managers.SettingsManager.SetUiScale*
+  name: SetUiScale
+  href: api/AshesOfVelsingrad.Managers.SettingsManager.html#AshesOfVelsingrad_Managers_SettingsManager_SetUiScale_
+  commentId: Overload:AshesOfVelsingrad.Managers.SettingsManager.SetUiScale
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.Managers.SettingsManager.SetUiScale
+  nameWithType: SettingsManager.SetUiScale
 - uid: AshesOfVelsingrad.Managers.SettingsManager.SettingsChanged
   name: SettingsChanged
   href: api/AshesOfVelsingrad.Managers.SettingsManager.html#AshesOfVelsingrad_Managers_SettingsManager_SettingsChanged
   commentId: E:AshesOfVelsingrad.Managers.SettingsManager.SettingsChanged
   fullName: AshesOfVelsingrad.Managers.SettingsManager.SettingsChanged
   nameWithType: SettingsManager.SettingsChanged
+- uid: AshesOfVelsingrad.Managers.SettingsManager.UiScaleChanged
+  name: UiScaleChanged
+  href: api/AshesOfVelsingrad.Managers.SettingsManager.html#AshesOfVelsingrad_Managers_SettingsManager_UiScaleChanged
+  commentId: E:AshesOfVelsingrad.Managers.SettingsManager.UiScaleChanged
+  fullName: AshesOfVelsingrad.Managers.SettingsManager.UiScaleChanged
+  nameWithType: SettingsManager.UiScaleChanged
+- uid: AshesOfVelsingrad.Managers.SettingsManager.UiScaleDefault
+  name: UiScaleDefault
+  href: api/AshesOfVelsingrad.Managers.SettingsManager.html#AshesOfVelsingrad_Managers_SettingsManager_UiScaleDefault
+  commentId: F:AshesOfVelsingrad.Managers.SettingsManager.UiScaleDefault
+  fullName: AshesOfVelsingrad.Managers.SettingsManager.UiScaleDefault
+  nameWithType: SettingsManager.UiScaleDefault
+- uid: AshesOfVelsingrad.Managers.SettingsManager.UiScaleMax
+  name: UiScaleMax
+  href: api/AshesOfVelsingrad.Managers.SettingsManager.html#AshesOfVelsingrad_Managers_SettingsManager_UiScaleMax
+  commentId: F:AshesOfVelsingrad.Managers.SettingsManager.UiScaleMax
+  fullName: AshesOfVelsingrad.Managers.SettingsManager.UiScaleMax
+  nameWithType: SettingsManager.UiScaleMax
+- uid: AshesOfVelsingrad.Managers.SettingsManager.UiScaleMin
+  name: UiScaleMin
+  href: api/AshesOfVelsingrad.Managers.SettingsManager.html#AshesOfVelsingrad_Managers_SettingsManager_UiScaleMin
+  commentId: F:AshesOfVelsingrad.Managers.SettingsManager.UiScaleMin
+  fullName: AshesOfVelsingrad.Managers.SettingsManager.UiScaleMin
+  nameWithType: SettingsManager.UiScaleMin
 - uid: AshesOfVelsingrad.Managers.State
   name: State
   href: api/AshesOfVelsingrad.Managers.State.html
@@ -18894,6 +18976,32 @@ references:
   commentId: T:AshesOfVelsingrad.Systems.IInteractor
   fullName: AshesOfVelsingrad.Systems.IInteractor
   nameWithType: IInteractor
+- uid: AshesOfVelsingrad.Systems.IInteractor.LockInteractor
+  name: LockInteractor()
+  href: api/AshesOfVelsingrad.Systems.IInteractor.html#AshesOfVelsingrad_Systems_IInteractor_LockInteractor
+  commentId: M:AshesOfVelsingrad.Systems.IInteractor.LockInteractor
+  fullName: AshesOfVelsingrad.Systems.IInteractor.LockInteractor()
+  nameWithType: IInteractor.LockInteractor()
+- uid: AshesOfVelsingrad.Systems.IInteractor.LockInteractor*
+  name: LockInteractor
+  href: api/AshesOfVelsingrad.Systems.IInteractor.html#AshesOfVelsingrad_Systems_IInteractor_LockInteractor_
+  commentId: Overload:AshesOfVelsingrad.Systems.IInteractor.LockInteractor
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.Systems.IInteractor.LockInteractor
+  nameWithType: IInteractor.LockInteractor
+- uid: AshesOfVelsingrad.Systems.IInteractor.UnlockInteractor
+  name: UnlockInteractor()
+  href: api/AshesOfVelsingrad.Systems.IInteractor.html#AshesOfVelsingrad_Systems_IInteractor_UnlockInteractor
+  commentId: M:AshesOfVelsingrad.Systems.IInteractor.UnlockInteractor
+  fullName: AshesOfVelsingrad.Systems.IInteractor.UnlockInteractor()
+  nameWithType: IInteractor.UnlockInteractor()
+- uid: AshesOfVelsingrad.Systems.IInteractor.UnlockInteractor*
+  name: UnlockInteractor
+  href: api/AshesOfVelsingrad.Systems.IInteractor.html#AshesOfVelsingrad_Systems_IInteractor_UnlockInteractor_
+  commentId: Overload:AshesOfVelsingrad.Systems.IInteractor.UnlockInteractor
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.Systems.IInteractor.UnlockInteractor
+  nameWithType: IInteractor.UnlockInteractor
 - uid: AshesOfVelsingrad.Systems.IMapSystem
   name: IMapSystem
   href: api/AshesOfVelsingrad.Systems.IMapSystem.html
@@ -22079,6 +22187,19 @@ references:
   isSpec: "True"
   fullName: AshesOfVelsingrad.UI.Hud.BattleHud.TurnQueue
   nameWithType: BattleHud.TurnQueue
+- uid: AshesOfVelsingrad.UI.Hud.BattleHud._ExitTree
+  name: _ExitTree()
+  href: api/AshesOfVelsingrad.UI.Hud.BattleHud.html#AshesOfVelsingrad_UI_Hud_BattleHud__ExitTree
+  commentId: M:AshesOfVelsingrad.UI.Hud.BattleHud._ExitTree
+  fullName: AshesOfVelsingrad.UI.Hud.BattleHud._ExitTree()
+  nameWithType: BattleHud._ExitTree()
+- uid: AshesOfVelsingrad.UI.Hud.BattleHud._ExitTree*
+  name: _ExitTree
+  href: api/AshesOfVelsingrad.UI.Hud.BattleHud.html#AshesOfVelsingrad_UI_Hud_BattleHud__ExitTree_
+  commentId: Overload:AshesOfVelsingrad.UI.Hud.BattleHud._ExitTree
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.UI.Hud.BattleHud._ExitTree
+  nameWithType: BattleHud._ExitTree
 - uid: AshesOfVelsingrad.UI.Hud.BattleHud._Ready
   name: _Ready()
   href: api/AshesOfVelsingrad.UI.Hud.BattleHud.html#AshesOfVelsingrad_UI_Hud_BattleHud__Ready
@@ -22347,6 +22468,22 @@ references:
   isSpec: "True"
   fullName: AshesOfVelsingrad.UI.Hud.HudStyle.ApplyBarStyle
   nameWithType: HudStyle.ApplyBarStyle
+- uid: AshesOfVelsingrad.UI.Hud.HudStyle.ApplyScaledFontSize(Godot.Control,System.String,System.Int32)
+  name: ApplyScaledFontSize(Control, string, int)
+  href: api/AshesOfVelsingrad.UI.Hud.HudStyle.html#AshesOfVelsingrad_UI_Hud_HudStyle_ApplyScaledFontSize_Godot_Control_System_String_System_Int32_
+  commentId: M:AshesOfVelsingrad.UI.Hud.HudStyle.ApplyScaledFontSize(Godot.Control,System.String,System.Int32)
+  name.vb: ApplyScaledFontSize(Control, String, Integer)
+  fullName: AshesOfVelsingrad.UI.Hud.HudStyle.ApplyScaledFontSize(Godot.Control, string, int)
+  fullName.vb: AshesOfVelsingrad.UI.Hud.HudStyle.ApplyScaledFontSize(Godot.Control, String, Integer)
+  nameWithType: HudStyle.ApplyScaledFontSize(Control, string, int)
+  nameWithType.vb: HudStyle.ApplyScaledFontSize(Control, String, Integer)
+- uid: AshesOfVelsingrad.UI.Hud.HudStyle.ApplyScaledFontSize*
+  name: ApplyScaledFontSize
+  href: api/AshesOfVelsingrad.UI.Hud.HudStyle.html#AshesOfVelsingrad_UI_Hud_HudStyle_ApplyScaledFontSize_
+  commentId: Overload:AshesOfVelsingrad.UI.Hud.HudStyle.ApplyScaledFontSize
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.UI.Hud.HudStyle.ApplyScaledFontSize
+  nameWithType: HudStyle.ApplyScaledFontSize
 - uid: AshesOfVelsingrad.UI.Hud.HudStyle.DimText
   name: DimText
   href: api/AshesOfVelsingrad.UI.Hud.HudStyle.html#AshesOfVelsingrad_UI_Hud_HudStyle_DimText
@@ -22373,6 +22510,42 @@ references:
   isSpec: "True"
   fullName: AshesOfVelsingrad.UI.Hud.HudStyle.EnemyColor
   nameWithType: HudStyle.EnemyColor
+- uid: AshesOfVelsingrad.UI.Hud.HudStyle.FontSizeBody
+  name: FontSizeBody
+  href: api/AshesOfVelsingrad.UI.Hud.HudStyle.html#AshesOfVelsingrad_UI_Hud_HudStyle_FontSizeBody
+  commentId: F:AshesOfVelsingrad.UI.Hud.HudStyle.FontSizeBody
+  fullName: AshesOfVelsingrad.UI.Hud.HudStyle.FontSizeBody
+  nameWithType: HudStyle.FontSizeBody
+- uid: AshesOfVelsingrad.UI.Hud.HudStyle.FontSizeHeader
+  name: FontSizeHeader
+  href: api/AshesOfVelsingrad.UI.Hud.HudStyle.html#AshesOfVelsingrad_UI_Hud_HudStyle_FontSizeHeader
+  commentId: F:AshesOfVelsingrad.UI.Hud.HudStyle.FontSizeHeader
+  fullName: AshesOfVelsingrad.UI.Hud.HudStyle.FontSizeHeader
+  nameWithType: HudStyle.FontSizeHeader
+- uid: AshesOfVelsingrad.UI.Hud.HudStyle.FontSizeMetaKey
+  name: FontSizeMetaKey
+  href: api/AshesOfVelsingrad.UI.Hud.HudStyle.html#AshesOfVelsingrad_UI_Hud_HudStyle_FontSizeMetaKey
+  commentId: F:AshesOfVelsingrad.UI.Hud.HudStyle.FontSizeMetaKey
+  fullName: AshesOfVelsingrad.UI.Hud.HudStyle.FontSizeMetaKey
+  nameWithType: HudStyle.FontSizeMetaKey
+- uid: AshesOfVelsingrad.UI.Hud.HudStyle.FontSizePropertyMetaKey
+  name: FontSizePropertyMetaKey
+  href: api/AshesOfVelsingrad.UI.Hud.HudStyle.html#AshesOfVelsingrad_UI_Hud_HudStyle_FontSizePropertyMetaKey
+  commentId: F:AshesOfVelsingrad.UI.Hud.HudStyle.FontSizePropertyMetaKey
+  fullName: AshesOfVelsingrad.UI.Hud.HudStyle.FontSizePropertyMetaKey
+  nameWithType: HudStyle.FontSizePropertyMetaKey
+- uid: AshesOfVelsingrad.UI.Hud.HudStyle.FontSizeSmall
+  name: FontSizeSmall
+  href: api/AshesOfVelsingrad.UI.Hud.HudStyle.html#AshesOfVelsingrad_UI_Hud_HudStyle_FontSizeSmall
+  commentId: F:AshesOfVelsingrad.UI.Hud.HudStyle.FontSizeSmall
+  fullName: AshesOfVelsingrad.UI.Hud.HudStyle.FontSizeSmall
+  nameWithType: HudStyle.FontSizeSmall
+- uid: AshesOfVelsingrad.UI.Hud.HudStyle.FontSizeTitle
+  name: FontSizeTitle
+  href: api/AshesOfVelsingrad.UI.Hud.HudStyle.html#AshesOfVelsingrad_UI_Hud_HudStyle_FontSizeTitle
+  commentId: F:AshesOfVelsingrad.UI.Hud.HudStyle.FontSizeTitle
+  fullName: AshesOfVelsingrad.UI.Hud.HudStyle.FontSizeTitle
+  nameWithType: HudStyle.FontSizeTitle
 - uid: AshesOfVelsingrad.UI.Hud.HudStyle.HpFill
   name: HpFill
   href: api/AshesOfVelsingrad.UI.Hud.HudStyle.html#AshesOfVelsingrad_UI_Hud_HudStyle_HpFill
@@ -22464,12 +22637,44 @@ references:
   isSpec: "True"
   fullName: AshesOfVelsingrad.UI.Hud.HudStyle.PlayerColor
   nameWithType: HudStyle.PlayerColor
-- uid: AshesOfVelsingrad.UI.Hud.HudStyle.StyleButton(Godot.Button)
-  name: StyleButton(Button)
-  href: api/AshesOfVelsingrad.UI.Hud.HudStyle.html#AshesOfVelsingrad_UI_Hud_HudStyle_StyleButton_Godot_Button_
-  commentId: M:AshesOfVelsingrad.UI.Hud.HudStyle.StyleButton(Godot.Button)
-  fullName: AshesOfVelsingrad.UI.Hud.HudStyle.StyleButton(Godot.Button)
-  nameWithType: HudStyle.StyleButton(Button)
+- uid: AshesOfVelsingrad.UI.Hud.HudStyle.RefreshScaledFonts(Godot.Node)
+  name: RefreshScaledFonts(Node)
+  href: api/AshesOfVelsingrad.UI.Hud.HudStyle.html#AshesOfVelsingrad_UI_Hud_HudStyle_RefreshScaledFonts_Godot_Node_
+  commentId: M:AshesOfVelsingrad.UI.Hud.HudStyle.RefreshScaledFonts(Godot.Node)
+  fullName: AshesOfVelsingrad.UI.Hud.HudStyle.RefreshScaledFonts(Godot.Node)
+  nameWithType: HudStyle.RefreshScaledFonts(Node)
+- uid: AshesOfVelsingrad.UI.Hud.HudStyle.RefreshScaledFonts*
+  name: RefreshScaledFonts
+  href: api/AshesOfVelsingrad.UI.Hud.HudStyle.html#AshesOfVelsingrad_UI_Hud_HudStyle_RefreshScaledFonts_
+  commentId: Overload:AshesOfVelsingrad.UI.Hud.HudStyle.RefreshScaledFonts
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.UI.Hud.HudStyle.RefreshScaledFonts
+  nameWithType: HudStyle.RefreshScaledFonts
+- uid: AshesOfVelsingrad.UI.Hud.HudStyle.ScaledFontSize(System.Int32)
+  name: ScaledFontSize(int)
+  href: api/AshesOfVelsingrad.UI.Hud.HudStyle.html#AshesOfVelsingrad_UI_Hud_HudStyle_ScaledFontSize_System_Int32_
+  commentId: M:AshesOfVelsingrad.UI.Hud.HudStyle.ScaledFontSize(System.Int32)
+  name.vb: ScaledFontSize(Integer)
+  fullName: AshesOfVelsingrad.UI.Hud.HudStyle.ScaledFontSize(int)
+  fullName.vb: AshesOfVelsingrad.UI.Hud.HudStyle.ScaledFontSize(Integer)
+  nameWithType: HudStyle.ScaledFontSize(int)
+  nameWithType.vb: HudStyle.ScaledFontSize(Integer)
+- uid: AshesOfVelsingrad.UI.Hud.HudStyle.ScaledFontSize*
+  name: ScaledFontSize
+  href: api/AshesOfVelsingrad.UI.Hud.HudStyle.html#AshesOfVelsingrad_UI_Hud_HudStyle_ScaledFontSize_
+  commentId: Overload:AshesOfVelsingrad.UI.Hud.HudStyle.ScaledFontSize
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.UI.Hud.HudStyle.ScaledFontSize
+  nameWithType: HudStyle.ScaledFontSize
+- uid: AshesOfVelsingrad.UI.Hud.HudStyle.StyleButton(Godot.Button,System.Int32)
+  name: StyleButton(Button, int)
+  href: api/AshesOfVelsingrad.UI.Hud.HudStyle.html#AshesOfVelsingrad_UI_Hud_HudStyle_StyleButton_Godot_Button_System_Int32_
+  commentId: M:AshesOfVelsingrad.UI.Hud.HudStyle.StyleButton(Godot.Button,System.Int32)
+  name.vb: StyleButton(Button, Integer)
+  fullName: AshesOfVelsingrad.UI.Hud.HudStyle.StyleButton(Godot.Button, int)
+  fullName.vb: AshesOfVelsingrad.UI.Hud.HudStyle.StyleButton(Godot.Button, Integer)
+  nameWithType: HudStyle.StyleButton(Button, int)
+  nameWithType.vb: HudStyle.StyleButton(Button, Integer)
 - uid: AshesOfVelsingrad.UI.Hud.HudStyle.StyleButton*
   name: StyleButton
   href: api/AshesOfVelsingrad.UI.Hud.HudStyle.html#AshesOfVelsingrad_UI_Hud_HudStyle_StyleButton_
@@ -22477,12 +22682,15 @@ references:
   isSpec: "True"
   fullName: AshesOfVelsingrad.UI.Hud.HudStyle.StyleButton
   nameWithType: HudStyle.StyleButton
-- uid: AshesOfVelsingrad.UI.Hud.HudStyle.StyleLabel(Godot.Label)
-  name: StyleLabel(Label)
-  href: api/AshesOfVelsingrad.UI.Hud.HudStyle.html#AshesOfVelsingrad_UI_Hud_HudStyle_StyleLabel_Godot_Label_
-  commentId: M:AshesOfVelsingrad.UI.Hud.HudStyle.StyleLabel(Godot.Label)
-  fullName: AshesOfVelsingrad.UI.Hud.HudStyle.StyleLabel(Godot.Label)
-  nameWithType: HudStyle.StyleLabel(Label)
+- uid: AshesOfVelsingrad.UI.Hud.HudStyle.StyleLabel(Godot.Label,System.Int32)
+  name: StyleLabel(Label, int)
+  href: api/AshesOfVelsingrad.UI.Hud.HudStyle.html#AshesOfVelsingrad_UI_Hud_HudStyle_StyleLabel_Godot_Label_System_Int32_
+  commentId: M:AshesOfVelsingrad.UI.Hud.HudStyle.StyleLabel(Godot.Label,System.Int32)
+  name.vb: StyleLabel(Label, Integer)
+  fullName: AshesOfVelsingrad.UI.Hud.HudStyle.StyleLabel(Godot.Label, int)
+  fullName.vb: AshesOfVelsingrad.UI.Hud.HudStyle.StyleLabel(Godot.Label, Integer)
+  nameWithType: HudStyle.StyleLabel(Label, int)
+  nameWithType.vb: HudStyle.StyleLabel(Label, Integer)
 - uid: AshesOfVelsingrad.UI.Hud.HudStyle.StyleLabel*
   name: StyleLabel
   href: api/AshesOfVelsingrad.UI.Hud.HudStyle.html#AshesOfVelsingrad_UI_Hud_HudStyle_StyleLabel_
@@ -23448,6 +23656,32 @@ references:
   commentId: T:AshesOfVelsingrad.player.AovPlayer
   fullName: AshesOfVelsingrad.player.AovPlayer
   nameWithType: AovPlayer
+- uid: AshesOfVelsingrad.player.AovPlayer.LockInteractor
+  name: LockInteractor()
+  href: api/AshesOfVelsingrad.player.AovPlayer.html#AshesOfVelsingrad_player_AovPlayer_LockInteractor
+  commentId: M:AshesOfVelsingrad.player.AovPlayer.LockInteractor
+  fullName: AshesOfVelsingrad.player.AovPlayer.LockInteractor()
+  nameWithType: AovPlayer.LockInteractor()
+- uid: AshesOfVelsingrad.player.AovPlayer.LockInteractor*
+  name: LockInteractor
+  href: api/AshesOfVelsingrad.player.AovPlayer.html#AshesOfVelsingrad_player_AovPlayer_LockInteractor_
+  commentId: Overload:AshesOfVelsingrad.player.AovPlayer.LockInteractor
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.player.AovPlayer.LockInteractor
+  nameWithType: AovPlayer.LockInteractor
+- uid: AshesOfVelsingrad.player.AovPlayer.UnlockInteractor
+  name: UnlockInteractor()
+  href: api/AshesOfVelsingrad.player.AovPlayer.html#AshesOfVelsingrad_player_AovPlayer_UnlockInteractor
+  commentId: M:AshesOfVelsingrad.player.AovPlayer.UnlockInteractor
+  fullName: AshesOfVelsingrad.player.AovPlayer.UnlockInteractor()
+  nameWithType: AovPlayer.UnlockInteractor()
+- uid: AshesOfVelsingrad.player.AovPlayer.UnlockInteractor*
+  name: UnlockInteractor
+  href: api/AshesOfVelsingrad.player.AovPlayer.html#AshesOfVelsingrad_player_AovPlayer_UnlockInteractor_
+  commentId: Overload:AshesOfVelsingrad.player.AovPlayer.UnlockInteractor
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.player.AovPlayer.UnlockInteractor
+  nameWithType: AovPlayer.UnlockInteractor
 - uid: AshesOfVelsingrad.player.AovPlayer._ExitTree
   name: _ExitTree()
   href: api/AshesOfVelsingrad.player.AovPlayer.html#AshesOfVelsingrad_player_AovPlayer__ExitTree

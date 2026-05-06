@@ -50,6 +50,7 @@ public partial class AudioManager : BaseManager, IAudioService
     private bool _musicAIsActive = true;
     private Tween? _musicTween;
     private string? _currentMusicPath;
+    private MusicContext _musicContext = MusicContext.None;
 
     private readonly Dictionary<string, AmbientLayer> _ambientLayers = new();
     private readonly Dictionary<string, AudioStream> _streamCache = new();
@@ -102,14 +103,21 @@ public partial class AudioManager : BaseManager, IAudioService
 
     private void PlayBootMusic()
     {
-        if (_registry.Contains(AudioCatalog.MainMenuTheme))
-        {
-            Play(AudioCatalog.MainMenuTheme);
-        }
-        else
-        {
-            GD.PrintErr($"[AudioManager] Boot track '{AudioCatalog.MainMenuTheme}' NOT in registry; skipping.");
-        }
+        // Defensive default for the project's normal boot scene (menu_beta.tscn),
+        // which has no script on its root and so doesn't declare a context itself
+        // — its <c>ButtonMenu</c> children pick up the slack but only after this
+        // deferred call is queued.
+        //
+        // The check matters when the developer launches a different scene directly
+        // (F6 in the editor, or `--main-scene` from CLI). In that case the loaded
+        // scene's <c>_Ready</c> runs *before* this deferred call (autoloads
+        // initialize first, but their deferred callbacks fire at end-of-frame
+        // *after* the new scene's _Ready), so by the time we get here the scene
+        // has already declared its real context — Battle, Exploration, whatever.
+        // Without this guard we'd happily overwrite that with MainMenu and the
+        // menu theme would bleed into the wrong scene.
+        if (_musicContext != MusicContext.None) return;
+        SetMusicContext(MusicContext.MainMenu);
     }
 
     public override void _ExitTree()
@@ -205,6 +213,58 @@ public partial class AudioManager : BaseManager, IAudioService
                 break;
         }
     }
+
+    #endregion
+
+    #region Music context
+
+    /// <summary>
+    ///     Declares what kind of scene is now active so the right music plays.
+    /// </summary>
+    /// <remarks>
+    ///     <para>
+    ///         Scenes call this on <c>_Ready</c> (or whenever they enter a new
+    ///         gameplay phase) instead of poking individual track ids — the catalog
+    ///         is then free to re-map a context to a different track without
+    ///         touching every call-site.
+    ///     </para>
+    ///     <para>
+    ///         When the catalog has no track registered for the requested context
+    ///         (typical during development before exploration / battle music ships)
+    ///         the manager fades the current music out, so the menu theme doesn't
+    ///         leak into exploration or combat. Calls are idempotent — passing the
+    ///         current context is a no-op.
+    ///     </para>
+    /// </remarks>
+    /// <param name="context">The scene category currently active.</param>
+    public void SetMusicContext(MusicContext context)
+    {
+        if (_musicContext == context) return;
+        _musicContext = context;
+
+        var trackId = ResolveTrackId(context);
+        if (trackId is not null && _registry.Contains(trackId))
+        {
+            Play(trackId);
+        }
+        else
+        {
+            // Either the context is None or no track is registered for it yet.
+            // Either way we want any currently-playing music to stop.
+            StopMusic();
+        }
+    }
+
+    /// <summary>Returns the currently-declared music context.</summary>
+    public MusicContext CurrentMusicContext => _musicContext;
+
+    private static string? ResolveTrackId(MusicContext context) => context switch
+    {
+        MusicContext.MainMenu => AudioCatalog.MainMenuTheme,
+        MusicContext.Exploration => AudioCatalog.ExplorationTheme,
+        MusicContext.Battle => AudioCatalog.BattleTheme,
+        _ => null,
+    };
 
     #endregion
 

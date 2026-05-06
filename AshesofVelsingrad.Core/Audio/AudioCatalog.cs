@@ -26,6 +26,29 @@ public static class AudioCatalog
     public const string MainMenuTheme = "music.main_menu";
 
     /// <summary>
+    ///     Exploration / world-map theme. Selected by
+    ///     <see cref="MusicContext.Exploration" /> in <c>AudioManager.SetMusicContext</c>.
+    /// </summary>
+    /// <remarks>
+    ///     Intentionally <i>not</i> registered in <see cref="RegisterDefaults" /> until
+    ///     the actual track ships — until then the manager falls back to
+    ///     <c>StopMusic()</c> when entering exploration, which is exactly what we
+    ///     want: the menu theme stops cleanly instead of bleeding into the world map.
+    /// </remarks>
+    public const string ExplorationTheme = "music.exploration";
+
+    /// <summary>
+    ///     Battle theme. Selected by <see cref="MusicContext.Battle" /> in
+    ///     <c>AudioManager.SetMusicContext</c>.
+    /// </summary>
+    /// <remarks>
+    ///     Same story as <see cref="ExplorationTheme" /> — declared as a stable id
+    ///     here so call-sites can already reference it; the registry entry is added
+    ///     when the audio ships.
+    /// </remarks>
+    public const string BattleTheme = "music.battle";
+
+    /// <summary>
     ///     Populates <paramref name="registry" /> with every track shipped with the
     ///     game. Calling twice on the same registry throws — use
     ///     <see cref="IAudioRegistry.Clear" /> first if a hot reload is intended.

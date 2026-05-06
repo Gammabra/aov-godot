@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dpl0b25gg7v7h"
+path="res://.godot/imported/Awakening of the Juggernaut_FULL.wav-349bfa3ababbd6a358619c42fcefb78f.sample"
+
+[deps]
+
+source_file="res://assets/audio_assets/musics/Awakening of the Juggernaut_FULL.wav"
+dest_files=["res://.godot/imported/Awakening of the Juggernaut_FULL.wav-349bfa3ababbd6a358619c42fcefb78f.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

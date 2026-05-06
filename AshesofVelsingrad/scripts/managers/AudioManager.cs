@@ -101,7 +101,14 @@ public partial class AudioManager : BaseManager, IAudioService
         Callable.From(PlayBootMusic).CallDeferred();
     }
 
-    private void PlayBootMusic()
+    /// <summary>
+    ///     Boot-time fallback that picks <see cref="MusicContext.MainMenu" /> if
+    ///     no scene has declared its own context yet. Marked <c>protected</c> (not
+    ///     <c>private</c>) so the integration-test harness can invoke it via
+    ///     reflection on a <c>TestAudioManager</c> subclass — same access modifier
+    ///     as <see cref="Initialize" /> for the same reason.
+    /// </summary>
+    protected void PlayBootMusic()
     {
         // Defensive default for the project's normal boot scene (menu_beta.tscn),
         // which has no script on its root and so doesn't declare a context itself

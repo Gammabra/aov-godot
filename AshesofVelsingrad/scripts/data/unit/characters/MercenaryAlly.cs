@@ -25,43 +25,43 @@ namespace AshesOfVelsingrad;
 /// </remarks>
 public sealed partial class MercenaryAlly : UnitSystem
 {
-    protected override void Initialize()
-    {
-        UnitName = "Mercenary";
-        Description = "A hired sword. Doesn't talk much, doesn't need to.";
-        MaxHp = 950;
-        Hp = MaxHp;
-        BaseAtk = 170;
-        BaseDef = 30;
-        BaseSpeed = 150;
-        Intelligence = 60;
-        ManaMax = 100;
-        Mana = ManaMax;
-        IsAlive = true;
-        PossibleMovesRange = 2;
-        Curse = 0;
-        Personality = AIPersonality.Aggressive;
+	protected override void Initialize()
+	{
+		UnitName = "Mercenary";
+		Description = "A hired sword. Doesn't talk much, doesn't need to.";
+		MaxHp = 950;
+		Hp = MaxHp;
+		BaseAtk = 170;
+		BaseDef = 30;
+		BaseSpeed = 150;
+		Intelligence = 60;
+		ManaMax = 100;
+		Mana = ManaMax;
+		IsAlive = true;
+		PossibleMovesRange = 2;
+		Curse = 0;
+		Personality = AIPersonality.Aggressive;
 
-        ActiveSkills.Add(new Catalog.CrushingStrike());
-        ActiveSkills.Add(new Catalog.Charge());
-        ActiveSkills.Add(new Catalog.Block());
-        ActiveSkills.Add(new Catalog.CircularStrike());
+		ActiveSkills.Add(new Catalog.CrushingStrike());
+		ActiveSkills.Add(new Catalog.Charge());
+		ActiveSkills.Add(new Catalog.Block());
+		ActiveSkills.Add(new Catalog.CircularStrike());
 
-        PassiveSkills.Add(new Catalog.BruteForce());
-        PassiveSkills.Add(new Catalog.WarriorEndurance());
+		PassiveSkills.Add(new Catalog.BruteForce());
+		PassiveSkills.Add(new Catalog.WarriorEndurance());
 
-        base.Initialize();
+		base.Initialize();
 
-        var statusEffectSystem = new StatusEffectSystem();
-        InjectDependencies(statusEffectSystem);
+		var statusEffectSystem = new StatusEffectSystem();
+		InjectDependencies(statusEffectSystem);
 
-        SetEntityProfile(new EntityProfile
-        {
-            DisplayName = "Mercenary",
-            ClassName = "Fighter",
-            Level = 1,
-            PortraitPath = "res://assets/portraits/meowth.png",
-            Bio = "Coin-and-blade type. Loyal until the contract ends.",
-        });
-    }
+		SetEntityProfile(new EntityProfile
+		{
+			DisplayName = "Mercenary",
+			ClassName = "Fighter",
+			Level = 1,
+			PortraitPath = "res://assets/Krita/icone_mercenaire.png",
+			Bio = "Coin-and-blade type. Loyal until the contract ends.",
+		});
+	}
 }

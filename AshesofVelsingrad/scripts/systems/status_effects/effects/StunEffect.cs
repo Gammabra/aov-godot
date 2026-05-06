@@ -4,7 +4,7 @@ namespace AshesOfVelsingrad.systems.status_effects.effects;
 ///     Prevents the affected unit from acting on its turn.
 /// </summary>
 /// <remarks>
-///     Non-stackable, purifiable. <see cref="UnitSystem" /> queries this effect at the
+///     Non-stackable, purifiable. <c>UnitSystem</c> queries this effect at the
 ///     start of every turn; if present, the turn is auto-passed.
 /// </remarks>
 public sealed class StunEffect : StatusEffect

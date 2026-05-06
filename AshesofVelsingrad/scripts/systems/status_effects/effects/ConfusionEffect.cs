@@ -7,7 +7,7 @@ namespace AshesOfVelsingrad.systems.status_effects.effects;
 ///     <para>
 ///         The actual targeting bypass is implemented by the AI controllers and the
 ///         player input layer: when a unit has this effect, both <c>BasicEnemyAi</c>
-///         and <c>BattleHud</c> consult <see cref="UnitSystem.HasEffect{T}" /> and
+///         and <c>BattleHud</c> consult <c>UnitSystem.HasEffect&lt;T&gt;</c> and
 ///         pick a random valid target instead of the chosen one.
 ///     </para>
 ///     <para>

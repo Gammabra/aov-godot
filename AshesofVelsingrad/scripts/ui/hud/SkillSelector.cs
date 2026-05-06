@@ -48,9 +48,12 @@ public sealed partial class SkillSelector : Control
 
     private void BuildLayout()
     {
+        // 1152×648 design viewport (canvas_items stretch). 400 wide is enough for
+        // five slots plus separators while leaving a ≥56 px horizontal gap to
+        // the PlayerStatusPanel (left) and ≥104 px to the BattleLog (right).
         SetAnchorsAndOffsetsPreset(LayoutPreset.CenterBottom);
-        OffsetLeft = -360;
-        OffsetRight = 360;
+        OffsetLeft = -200;
+        OffsetRight = 200;
         OffsetTop = -134;
         OffsetBottom = -76;
         MouseFilter = MouseFilterEnum.Ignore;

@@ -41,9 +41,12 @@ public sealed partial class TurnOrderQueue : Control
 
     private void BuildLayout()
     {
+        // 1152×648 design viewport. Width 500 (was 720) — enough for ~10 portrait
+        // chips at 44 px each. Leaves a ≥44 px horizontal gap to ContextInfoPanel
+        // on the left and ≥66 px to EnemyRoster on the right.
         SetAnchorsAndOffsetsPreset(LayoutPreset.CenterTop);
-        OffsetLeft = -360;
-        OffsetRight = 360;
+        OffsetLeft = -250;
+        OffsetRight = 250;
         OffsetTop = 12;
         OffsetBottom = 90;
         MouseFilter = MouseFilterEnum.Ignore;
@@ -147,7 +150,10 @@ public sealed partial class TurnOrderQueue : Control
             MouseFilter = MouseFilterEnum.Ignore,
         };
         nameLabel.AddThemeColorOverride("font_color", HudStyle.TextColor);
-        nameLabel.AddThemeFontSizeOverride("font_size", 10);
+        // Tiny label under each portrait chip — keep it just below body size so
+        // long unit names still fit. Tagged so the metadata walker can rescale
+        // it the moment the player drags the Interface Size slider.
+        HudStyle.ApplyScaledFontSize(nameLabel, "font_size", 10);
         wrapper.AddChild(nameLabel);
 
         wrapper.TooltipText = $"{display} ({unit.Faction}, Speed {unit.BaseSpeed:F0})";

@@ -60,8 +60,10 @@ public sealed partial class PlayerStatusPanel : Control
         AddChild(HudStyle.MakePanel(outer));
 
         _name = new Label { Text = "—" };
-        _name.AddThemeFontSizeOverride("font_size", 16);
-        HudStyle.StyleLabel(_name);
+        // StyleLabel(label, baseSize) routes through HudStyle.ScaledFontSize, so
+        // the unit name picks up the user's UI scale on the next battle without
+        // any extra wiring here.
+        HudStyle.StyleLabel(_name, HudStyle.FontSizeHeader);
         outer.AddChild(_name);
 
         _hpLabel = new Label { Text = "HP —" };

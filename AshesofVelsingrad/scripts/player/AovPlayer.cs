@@ -26,6 +26,8 @@ public sealed partial class AovPlayer : CharacterBody3D, IInteractor
     [Export]
     private float _speed = 4;
 
+    private bool _isLock;
+
     private float _gravity = ProjectSettings.GetSetting("physics/3d/default_gravity").AsSingle();
     private StateMachine? _stateMachine;
     // null! — populated in Initialize() via the [Export] NodePath. Used non-null in
@@ -111,6 +113,12 @@ public sealed partial class AovPlayer : CharacterBody3D, IInteractor
 
     public override void _PhysicsProcess(double delta)
     {
+        if (_isLock)
+        {
+            _stateMachine?.TransitionTo("IdleState");
+            return;
+        }
+
         Vector3 currentVelocity = Velocity;
 
         Vector3 inputDir = new(
@@ -172,5 +180,15 @@ public sealed partial class AovPlayer : CharacterBody3D, IInteractor
             _stateMachine?.TransitionTo("WalkRightState");
         if (direction > 135 || direction < -135)
             _stateMachine?.TransitionTo("WalkBackwardState");
+    }
+
+    public void LockInteractor()
+    {
+        _isLock = true;
+    }
+
+    public void UnlockInteractor()
+    {
+        _isLock = false;
     }
 }

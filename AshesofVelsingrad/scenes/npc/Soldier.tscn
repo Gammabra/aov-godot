@@ -1,9 +1,10 @@
 [gd_scene format=3 uid="uid://dboivysgg411t"]
 
-[ext_resource type="Texture2D" uid="uid://e4dlqr6r6kup" path="res://assets/Krita/sprite_solder.png" id="1_sy352"]
+[ext_resource type="Texture2D" uid="uid://c0t37mbg2mc5b" path="res://assets/Krita/sprite_solder.png" id="1_sy352"]
 [ext_resource type="Script" uid="uid://cjiia3c7avbf0" path="res://scripts/data/npc/Soldier.cs" id="1_t0mcy"]
 [ext_resource type="Script" uid="uid://dotytx100nxai" path="res://scripts/managers/state_machines/StateMachine.cs" id="2_vh47w"]
-[ext_resource type="Script" uid="uid://cbra7nuuruj2p" path="res://scripts/player/States/IdleState.cs" id="3_t0mcy"]
+[ext_resource type="Script" uid="uid://cbra7nuuruj2p" path="res://scripts/GenericCharacterStates/IdleState.cs" id="3_t0mcy"]
+[ext_resource type="Script" uid="uid://cvqs12q0c4fsy" path="res://dialogues/npc_solder.gd" id="5_j6req"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_sdp4p"]
 atlas = ExtResource("1_sy352")
@@ -41,6 +42,7 @@ collision_layer = 3
 script = ExtResource("1_t0mcy")
 _interactTextPath = NodePath("InteractLabel")
 _battleSceneToCharge = "res://scenes/PrisonBattle/PrisonBattle.tscn"
+_dialogPath = NodePath("Dialog")
 
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="." unique_id=1581145202]
 offset = Vector2(66, 0)
@@ -68,3 +70,6 @@ InitialState = NodePath("IdleState")
 [node name="IdleState" type="Node" parent="StateMachine" unique_id=2115737481]
 script = ExtResource("3_t0mcy")
 _animatedSprite3DPath = NodePath("../../AnimatedSprite3D")
+
+[node name="Dialog" type="Node" parent="." unique_id=545940555]
+script = ExtResource("5_j6req")

@@ -17,8 +17,9 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 config/name="AshesofVelsingrad"
 run/main_scene="uid://dly7v2pb0m006"
 config/features=PackedStringArray("4.6", "C#", "Forward Plus")
-boot_splash/image="uid://d2o6v40ln62ci"
-config/icon="uid://d2o6v40ln62ci"
+boot_splash/bg_color=Color(0.28485027, 0.28485027, 0.2848502, 1)
+boot_splash/image="uid://bd7oq7v7dvar6"
+config/icon="uid://bnku40ddey8ra"
 
 [autoload]
 
@@ -37,7 +38,7 @@ project/assembly_name="AshesofVelsingrad"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/gdUnit4/plugin.cfg", "res://addons/gridMapEditorTool/plugin.cfg", "res://addons/yarn_spinner/plugin.cfg")
+enabled=PackedStringArray("res://addons/gdUnit4/plugin.cfg", "res://addons/gridMapEditorTool/plugin.cfg")
 
 [filesystem]
 

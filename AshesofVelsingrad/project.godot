@@ -17,6 +17,7 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 config/name="AshesofVelsingrad"
 run/main_scene="uid://dly7v2pb0m006"
 config/features=PackedStringArray("4.6", "C#", "Forward Plus")
+boot_splash/image="uid://d2o6v40ln62ci"
 config/icon="uid://d2o6v40ln62ci"
 
 [autoload]

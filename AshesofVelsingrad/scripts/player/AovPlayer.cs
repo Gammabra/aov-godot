@@ -100,6 +100,13 @@ public sealed partial class AovPlayer : CharacterBody3D, IInteractor
 
     public override void _Input(InputEvent @event)
     {
+        // Mirror the lock check in _PhysicsProcess. Without this, pressing E
+        // while a dialog is already running (or a battle is mid-launch) would
+        // re-fire Interact() and restart the conversation from line one — the
+        // dialog system itself doesn't guard against being re-entered, it just
+        // appends/replaces queue entries based on its `start` flag.
+        if (_isLock) return;
+
         if (@event.IsActionPressed("interact"))
         {
             IInteractable? interactable = _interactionComponent?.ClosestInteractable as IInteractable;

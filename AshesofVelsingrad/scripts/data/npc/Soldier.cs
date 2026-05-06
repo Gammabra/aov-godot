@@ -176,6 +176,7 @@ public partial class Soldier : CharacterBody3D, IInteractable
 
 	public void Interact(IInteractor interactor)
 	{
+		GD.Print($"Soldier '{Name}': Interact() called — starting dialog.");
 		interactor.LockInteractor();
 		if (interactor is Node node)
 		{

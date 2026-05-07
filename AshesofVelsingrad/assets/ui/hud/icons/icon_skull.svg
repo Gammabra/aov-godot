@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- HUD icon: corruption (skull) -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="#e1d6bf">
+  <g>
+    <path d="M32 6 C 16 6, 8 18, 8 30 C 8 38, 12 44, 18 48 L 18 56 C 18 58, 20 58, 22 58 L 26 58 L 26 52 L 30 52 L 30 58 L 34 58 L 34 52 L 38 52 L 38 58 L 42 58 C 44 58, 46 58, 46 56 L 46 48 C 52 44, 56 38, 56 30 C 56 18, 48 6, 32 6 Z"/>
+    <!-- Eye sockets -->
+    <ellipse cx="22" cy="30" rx="6" ry="7" fill="#1a1612"/>
+    <ellipse cx="42" cy="30" rx="6" ry="7" fill="#1a1612"/>
+    <!-- Glow inside eyes -->
+    <circle cx="22" cy="32" r="2" fill="#b8232a"/>
+    <circle cx="42" cy="32" r="2" fill="#b8232a"/>
+    <!-- Nose -->
+    <polygon points="32,38 28,44 36,44" fill="#1a1612"/>
+    <!-- Teeth gaps -->
+    <rect x="26" y="46" width="1.4" height="6" fill="#1a1612"/>
+    <rect x="31" y="46" width="1.4" height="6" fill="#1a1612"/>
+    <rect x="36" y="46" width="1.4" height="6" fill="#1a1612"/>
+  </g>
+</svg>

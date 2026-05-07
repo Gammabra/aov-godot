@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- HUD icon: mana droplet -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <path d="M32 6 C 22 22, 12 34, 12 44 A 20 20 0 0 0 52 44 C 52 34, 42 22, 32 6 Z"
+        fill="#3a72c8" stroke="#0e2548" stroke-width="2.5"/>
+  <!-- Highlight -->
+  <path d="M22 36 C 22 42, 26 46, 28 46" fill="none" stroke="#a4c8f8" stroke-width="2.5" stroke-linecap="round" opacity="0.9"/>
+</svg>

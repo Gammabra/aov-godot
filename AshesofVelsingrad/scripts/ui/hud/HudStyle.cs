@@ -1,104 +1,173 @@
+using System.Collections.Generic;
 using AshesOfVelsingrad.Managers;
 using Godot;
 
 namespace AshesOfVelsingrad.UI.Hud;
 
 /// <summary>
-///     Shared visual constants and helpers for every HUD widget — colours, panel styles,
-///     bar styles, label / button theme overrides.
+///     Shared visual constants and helpers for every HUD widget — Souls-like dark-fantasy
+///     palette, panel tiers, bar styling, scaled fonts, scaled metrics, layout helpers.
 /// </summary>
-/// <remarks>
-///     Keeps the HUD's look-and-feel in one file. A future iteration can replace this with a
-///     Godot <see cref="Theme" /> resource without changing widget code.
-/// </remarks>
 public static class HudStyle
 {
-    /// <summary>Translucent dark background used by every HUD panel.</summary>
-    public static Color PanelBackground => new(0.08f, 0.07f, 0.10f, 0.78f);
+    // ── Palette ─────────────────────────────────────────────────────────
+    /// <summary>Body / parchment text colour.</summary>
+    public static Color Parchment => new(0.93f, 0.87f, 0.74f, 1f);
+    /// <summary>Dim parchment for sub-text.</summary>
+    public static Color ParchmentDim => new(0.66f, 0.60f, 0.50f, 1f);
+    /// <summary>Title / header gold.</summary>
+    public static Color Gold => new(0.86f, 0.70f, 0.36f, 1f);
+    /// <summary>Bronze panel border.</summary>
+    public static Color Bronze => new(0.55f, 0.42f, 0.22f, 1f);
+    /// <summary>Faded bronze for inset lines.</summary>
+    public static Color BronzeDim => new(0.34f, 0.26f, 0.14f, 0.95f);
+    /// <summary>Heavy panel background.</summary>
+    public static Color IronHeavy => new(0.07f, 0.06f, 0.06f, 0.94f);
+    /// <summary>Lighter panel background.</summary>
+    public static Color IronLight => new(0.12f, 0.10f, 0.10f, 0.85f);
+    /// <summary>HP fill.</summary>
+    public static Color Crimson => new(0.78f, 0.16f, 0.18f, 1f);
+    /// <summary>HP fill darker stripe.</summary>
+    public static Color CrimsonDeep => new(0.32f, 0.04f, 0.06f, 1f);
+    /// <summary>MP fill.</summary>
+    public static Color Azure => new(0.24f, 0.50f, 0.86f, 1f);
+    /// <summary>MP fill darker stripe.</summary>
+    public static Color AzureDeep => new(0.08f, 0.20f, 0.40f, 1f);
+    /// <summary>Player faction chip.</summary>
+    public static Color PlayerColor => new(0.28f, 0.78f, 0.94f, 1f);
+    /// <summary>Ally faction chip.</summary>
+    public static Color AllyColor => new(0.36f, 0.82f, 0.42f, 1f);
+    /// <summary>Enemy faction chip.</summary>
+    public static Color EnemyColor => new(0.86f, 0.22f, 0.22f, 1f);
+    /// <summary>Hover gold.</summary>
+    public static Color GoldHover => new(1f, 0.90f, 0.55f, 1f);
+    /// <summary>Pressed deep crimson.</summary>
+    public static Color PressedFill => new(0.20f, 0.06f, 0.06f, 0.95f);
+    /// <summary>Disabled iron.</summary>
+    public static Color DisabledFill => new(0.10f, 0.09f, 0.08f, 0.6f);
+    /// <summary>Disabled text.</summary>
+    public static Color DisabledText => new(0.45f, 0.42f, 0.36f, 0.75f);
 
-    /// <summary>Subtle border colour around panels.</summary>
-    public static Color PanelBorder => new(0.55f, 0.45f, 0.30f, 0.85f);
+    // Legacy aliases.
+    /// <summary>Deprecated alias.</summary>
+    public static Color PanelBackground => IronHeavy;
+    /// <summary>Deprecated alias.</summary>
+    public static Color PanelBorder => Bronze;
+    /// <summary>Deprecated alias.</summary>
+    public static Color TextColor => Parchment;
+    /// <summary>Deprecated alias.</summary>
+    public static Color DimText => ParchmentDim;
+    /// <summary>Deprecated alias.</summary>
+    public static Color HpFill => Crimson;
+    /// <summary>Deprecated alias.</summary>
+    public static Color ManaFill => Azure;
 
-    /// <summary>Foreground text colour.</summary>
-    public static Color TextColor => new(0.95f, 0.92f, 0.84f, 1f);
-
-    /// <summary>Dimmed text colour (used for placeholders / labels).</summary>
-    public static Color DimText => new(0.55f, 0.52f, 0.48f, 1f);
-
-    /// <summary>Healthy HP bar fill.</summary>
-    public static Color HpFill => new(0.78f, 0.18f, 0.20f, 1f);
-
-    /// <summary>Mana bar fill.</summary>
-    public static Color ManaFill => new(0.20f, 0.45f, 0.85f, 1f);
-
-    /// <summary>Player chip colour for the turn queue.</summary>
-    public static Color PlayerColor => new(0.30f, 0.80f, 0.95f, 1f);
-
-    /// <summary>Enemy chip colour for the turn queue.</summary>
-    public static Color EnemyColor => new(0.90f, 0.30f, 0.30f, 1f);
-
-    // Font sizes ----------------------------------------------------------
-    //
-    // The HUD has four "tiers" of text — a hero title (Victory!, GameOver),
-    // a section header (panel headings, unit name), the body size used by
-    // most labels and buttons, and a footnote size for log entries / dim
-    // metadata. They're declared here so widgets stop magic-numbering the
-    // sizes and so a future redesign only touches one file.
-
-    /// <summary>Hero font size (Victory / GameOver title).</summary>
+    // ── Font tiers ───────────────────────────────────────────────────────
+    /// <summary>Hero title.</summary>
     public const int FontSizeTitle = 36;
-
-    /// <summary>Section-header font size (panel titles, unit name above HP).</summary>
-    public const int FontSizeHeader = 16;
-
-    /// <summary>Body font size (most labels, buttons).</summary>
-    public const int FontSizeBody = 14;
-
-    /// <summary>Footnote font size (log lines, dim subtitles).</summary>
+    /// <summary>Section title.</summary>
+    public const int FontSizeHeader = 18;
+    /// <summary>Sub-header.</summary>
+    public const int FontSizeSub = 16;
+    /// <summary>Body.</summary>
+    public const int FontSizeBody = 15;
+    /// <summary>Small footnote.</summary>
     public const int FontSizeSmall = 13;
+    /// <summary>Tiny.</summary>
+    public const int FontSizeTiny = 11;
 
-    /// <summary>
-    ///     Returns <paramref name="baseSize" /> multiplied by the user's UI scale
-    ///     setting (<see cref="SettingsManager.GetUiScale" />). Always returns at
-    ///     least <c>1</c> so Godot's font renderer never gets a zero/negative size.
-    /// </summary>
-    /// <param name="baseSize">Design-time font size — one of the
-    ///     <see cref="FontSizeTitle" />/<see cref="FontSizeHeader" />/
-    ///     <see cref="FontSizeBody" />/<see cref="FontSizeSmall" /> constants.</param>
-    /// <returns>Scaled, integer-rounded font size suitable for
-    ///     <see cref="Control.AddThemeFontSizeOverride" />.</returns>
+    // ── Spacing tokens ──────────────────────────────────────────────────
+    /// <summary>4 px.</summary>
+    public const int PadXs = 4;
+    /// <summary>6 px.</summary>
+    public const int PadSm = 6;
+    /// <summary>10 px.</summary>
+    public const int PadMd = 10;
+    /// <summary>14 px.</summary>
+    public const int PadLg = 14;
+    /// <summary>20 px.</summary>
+    public const int PadXl = 20;
+
+    // ── Component design sizes ──────────────────────────────────────────
+    /// <summary>Action-bar button height.</summary>
+    public const int ButtonHeight = 44;
+    /// <summary>Skill-slot edge.</summary>
+    public const int SkillSlotSize = 52;
+    /// <summary>Default action-button icon max width (kept small so the text label fits).</summary>
+    public const int ActionIconSize = 22;
+    /// <summary>Slot icon max width.</summary>
+    public const int SlotIconSize = 36;
+    /// <summary>HP bar height.</summary>
+    public const int HpBarHeight = 16;
+    /// <summary>MP bar height.</summary>
+    public const int MpBarHeight = 10;
+
+    /// <summary>Player-status panel width.</summary>
+    public const int PlayerStatusWidth = 340;
+    /// <summary>Player-status panel height.</summary>
+    public const int PlayerStatusHeight = 170;
+    /// <summary>Player-status portrait edge.</summary>
+    public const int PlayerPortrait = 76;
+
+    /// <summary>Action-bar width.</summary>
+    public const int ActionBarWidth = 440;
+    /// <summary>Action-bar height.</summary>
+    public const int ActionBarHeight = 72;
+
+    /// <summary>Skill bar width.</summary>
+    public const int SkillBarWidth = 440;
+    /// <summary>Skill bar height.</summary>
+    public const int SkillBarHeight = 76;
+
+    /// <summary>Battle-log width.</summary>
+    public const int LogWidth = 280;
+    /// <summary>Battle-log height.</summary>
+    public const int LogHeight = 130;
+
+    /// <summary>Enemy roster width.</summary>
+    public const int RosterWidth = 280;
+    /// <summary>Enemy roster height.</summary>
+    public const int RosterHeight = 250;
+    /// <summary>Roster portrait edge.</summary>
+    public const int RosterPortrait = 36;
+
+    /// <summary>Turn-queue chip portrait size.</summary>
+    public const int TurnChipSize = 38;
+    /// <summary>Turn-queue width.</summary>
+    public const int TurnQueueWidth = 480;
+    /// <summary>Turn-queue height.</summary>
+    public const int TurnQueueHeight = 76;
+
+    /// <summary>Context info panel width.</summary>
+    public const int ContextWidth = 260;
+    /// <summary>Context info panel height.</summary>
+    public const int ContextHeight = 116;
+
+    /// <summary>Corruption gauge width.</summary>
+    public const int CorruptionWidth = 232;
+    /// <summary>Corruption gauge height.</summary>
+    public const int CorruptionHeight = 60;
+
+    // ── Scaling primitives ──────────────────────────────────────────────
+    /// <summary>Current UI scale multiplier.</summary>
+    public static float UiScale =>
+        SettingsManager.Instance?.GetUiScale() ?? SettingsManager.UiScaleDefault;
+
+    /// <summary>Returns <paramref name="baseSize"/> × UI scale, ≥ 1.</summary>
     public static int ScaledFontSize(int baseSize)
-    {
-        var scale = SettingsManager.Instance?.GetUiScale() ?? SettingsManager.UiScaleDefault;
-        var scaled = Mathf.RoundToInt(baseSize * scale);
-        return Mathf.Max(1, scaled);
-    }
+        => Mathf.Max(1, Mathf.RoundToInt(baseSize * UiScale));
 
-    // Live-rescale plumbing -----------------------------------------------
-    //
-    // BattleHud subscribes to SettingsManager.UiScaleChanged and forwards the
-    // event to every styled control by walking the tree. Each control that
-    // wants to participate stamps its design-time base size into a meta
-    // entry; the walker reads that meta and re-applies the theme override.
-    // Without the meta we'd have no way to know the original size — we'd
-    // pull the *currently scaled* size and end up exponentially scaling on
-    // every change.
+    /// <summary>Returns <paramref name="px"/> × UI scale.</summary>
+    public static int ScaledPx(int px)
+        => Mathf.RoundToInt(px * UiScale);
 
-    /// <summary>Meta key identifying the design-time font size of a styled control.</summary>
+    // ── Live-rescale plumbing ───────────────────────────────────────────
+    /// <summary>Meta key for design-time font size.</summary>
     public const string FontSizeMetaKey = "hud_base_font_size";
-
-    /// <summary>Meta key identifying the theme override property used (e.g. "font_size", "normal_font_size").</summary>
+    /// <summary>Meta key for theme override property.</summary>
     public const string FontSizePropertyMetaKey = "hud_font_size_property";
 
-    /// <summary>
-    ///     Apply a UI-scaled font size override to <paramref name="control" /> AND remember
-    ///     the design-time base so a later <see cref="RefreshScaledFonts" /> walk can
-    ///     re-apply it cleanly.
-    /// </summary>
-    /// <param name="control">Control receiving the override.</param>
-    /// <param name="property">Theme override property name (<c>"font_size"</c> for Label/Button,
-    ///     <c>"normal_font_size"</c> for RichTextLabel).</param>
-    /// <param name="baseSize">Design-time font size.</param>
+    /// <summary>Apply a UI-scaled font size override and remember the design base.</summary>
     public static void ApplyScaledFontSize(Control control, string property, int baseSize)
     {
         control.SetMeta(FontSizeMetaKey, baseSize);
@@ -107,12 +176,9 @@ public static class HudStyle
     }
 
     /// <summary>
-    ///     Walk <paramref name="root" />'s descendants and re-apply font-size overrides for
-    ///     every control that was tagged via <see cref="ApplyScaledFontSize" /> or one of
-    ///     the <c>StyleLabel</c>/<c>StyleButton</c> helpers. Cheap — only touches Controls
-    ///     that opted in.
+    ///     Walk the tree, re-applying tagged font overrides and calling
+    ///     <see cref="IHudWidget.Relayout"/> on every <see cref="IHudWidget"/>.
     /// </summary>
-    /// <param name="root">Subtree root (typically the BattleHud CanvasLayer).</param>
     public static void RefreshScaledFonts(Node root)
     {
         if (root is Control control && control.HasMeta(FontSizeMetaKey))
@@ -121,98 +187,222 @@ public static class HudStyle
             var property = control.GetMeta(FontSizePropertyMetaKey, "font_size").AsString();
             control.AddThemeFontSizeOverride(property, ScaledFontSize(baseSize));
         }
-
-        foreach (var child in root.GetChildren())
-        {
-            RefreshScaledFonts(child);
-        }
+        if (root is IHudWidget widget) widget.Relayout();
+        foreach (var child in root.GetChildren()) RefreshScaledFonts(child);
     }
 
-    /// <summary>Build a translucent rounded panel <see cref="StyleBoxFlat" />.</summary>
-    /// <returns>A reusable stylebox.</returns>
-    public static StyleBoxFlat MakePanelStyle()
+    // ── Panel styles ────────────────────────────────────────────────────
+    /// <summary>Panel weight tier.</summary>
+    public enum PanelTier
     {
-        return new StyleBoxFlat
+        /// <summary>Heavy iron panel.</summary>
+        Heavy,
+        /// <summary>Light iron panel.</summary>
+        Light,
+        /// <summary>Slot frame.</summary>
+        Slot,
+    }
+
+    /// <summary>Build a stylebox for the given tier.</summary>
+    public static StyleBoxFlat MakePanelStyle(PanelTier tier = PanelTier.Heavy)
+    {
+        return tier switch
         {
-            BgColor = PanelBackground,
-            BorderColor = PanelBorder,
-            BorderWidthLeft = 1,
-            BorderWidthRight = 1,
-            BorderWidthTop = 1,
-            BorderWidthBottom = 1,
-            CornerRadiusBottomLeft = 6,
-            CornerRadiusBottomRight = 6,
-            CornerRadiusTopLeft = 6,
-            CornerRadiusTopRight = 6,
-            ContentMarginLeft = 8,
-            ContentMarginRight = 8,
-            ContentMarginTop = 6,
-            ContentMarginBottom = 6,
+            PanelTier.Light => new StyleBoxFlat
+            {
+                BgColor = IronLight, BorderColor = BronzeDim,
+                BorderWidthLeft = 1, BorderWidthRight = 1, BorderWidthTop = 1, BorderWidthBottom = 1,
+                CornerRadiusBottomLeft = 6, CornerRadiusBottomRight = 6,
+                CornerRadiusTopLeft = 6, CornerRadiusTopRight = 6,
+                ContentMarginLeft = PadMd, ContentMarginRight = PadMd,
+                ContentMarginTop = PadSm, ContentMarginBottom = PadSm,
+                ShadowColor = new Color(0, 0, 0, 0.55f), ShadowSize = 4, ShadowOffset = new Vector2(0, 2),
+            },
+            PanelTier.Slot => new StyleBoxFlat
+            {
+                BgColor = new Color(0.06f, 0.05f, 0.04f, 0.95f), BorderColor = Bronze,
+                BorderWidthLeft = 2, BorderWidthRight = 2, BorderWidthTop = 2, BorderWidthBottom = 2,
+                CornerRadiusBottomLeft = 4, CornerRadiusBottomRight = 4,
+                CornerRadiusTopLeft = 4, CornerRadiusTopRight = 4,
+                ContentMarginLeft = PadXs, ContentMarginRight = PadXs,
+                ContentMarginTop = PadXs, ContentMarginBottom = PadXs,
+            },
+            _ => new StyleBoxFlat
+            {
+                BgColor = IronHeavy, BorderColor = Bronze,
+                BorderWidthLeft = 2, BorderWidthRight = 2, BorderWidthTop = 2, BorderWidthBottom = 2,
+                CornerRadiusBottomLeft = 6, CornerRadiusBottomRight = 6,
+                CornerRadiusTopLeft = 6, CornerRadiusTopRight = 6,
+                ContentMarginLeft = PadMd, ContentMarginRight = PadMd,
+                ContentMarginTop = PadSm, ContentMarginBottom = PadSm,
+                ShadowColor = new Color(0, 0, 0, 0.7f), ShadowSize = 6, ShadowOffset = new Vector2(0, 2),
+            },
         };
     }
 
-    /// <summary>
-    ///     Wrap <paramref name="content" /> in a styled <see cref="PanelContainer" /> filling the parent.
-    /// </summary>
-    /// <param name="content">Control to host inside the panel.</param>
-    /// <returns>A panel containing <paramref name="content" />, with <c>MouseFilter.Ignore</c>
-    ///     so empty space lets clicks through to the map.</returns>
-    public static PanelContainer MakePanel(Control content)
+    /// <summary>Wrap <paramref name="content"/> in a styled panel.</summary>
+    public static PanelContainer MakePanel(Control content, PanelTier tier = PanelTier.Heavy)
     {
         PanelContainer panel = new()
         {
             Name = "Panel",
             MouseFilter = Control.MouseFilterEnum.Ignore,
         };
-        panel.AddThemeStyleboxOverride("panel", MakePanelStyle());
+        panel.AddThemeStyleboxOverride("panel", MakePanelStyle(tier));
         panel.SetAnchorsAndOffsetsPreset(Control.LayoutPreset.FullRect);
         panel.AddChild(content);
         return panel;
     }
 
-    /// <summary>
-    ///     Apply default text colour and a UI-scaled font size to a <see cref="Label" />.
-    /// </summary>
-    /// <param name="label">Label to style.</param>
-    /// <param name="baseSize">Design-time font size; defaults to <see cref="FontSizeBody" />.</param>
+    // ── Label & button styling ─────────────────────────────────────────
+    /// <summary>Apply parchment text + scaled font to a label and force MouseFilter.Ignore.</summary>
     public static void StyleLabel(Label label, int baseSize = FontSizeBody)
     {
-        label.AddThemeColorOverride("font_color", TextColor);
+        label.MouseFilter = Control.MouseFilterEnum.Ignore;
+        label.AddThemeColorOverride("font_color", Parchment);
+        label.AddThemeColorOverride("font_outline_color", new Color(0, 0, 0, 0.85f));
+        label.AddThemeConstantOverride("outline_size", 2);
         ApplyScaledFontSize(label, "font_size", baseSize);
     }
 
-    /// <summary>
-    ///     Apply default text colour and a UI-scaled font size to a <see cref="Button" />.
-    /// </summary>
-    /// <param name="button">Button to style.</param>
-    /// <param name="baseSize">Design-time font size; defaults to <see cref="FontSizeBody" />.</param>
-    public static void StyleButton(Button button, int baseSize = FontSizeBody)
+    /// <summary>Apply gold text + scaled font to a header label.</summary>
+    public static void StyleHeader(Label label, int baseSize = FontSizeHeader)
     {
-        button.AddThemeColorOverride("font_color", TextColor);
-        button.AddThemeColorOverride("font_hover_color", new Color(1f, 0.95f, 0.7f));
-        ApplyScaledFontSize(button, "font_size", baseSize);
+        label.MouseFilter = Control.MouseFilterEnum.Ignore;
+        label.AddThemeColorOverride("font_color", Gold);
+        label.AddThemeColorOverride("font_outline_color", new Color(0, 0, 0, 0.9f));
+        label.AddThemeConstantOverride("outline_size", 3);
+        ApplyScaledFontSize(label, "font_size", baseSize);
     }
 
-    /// <summary>Build a HP/MP-style stylebox pair for a <see cref="ProgressBar" />.</summary>
-    /// <param name="bar">The progress bar to style.</param>
-    /// <param name="fillColor">Colour for the filled portion.</param>
+    /// <summary>Default button styling.</summary>
+    public static void StyleButton(Button button, int baseSize = FontSizeBody)
+    {
+        button.AddThemeColorOverride("font_color", Parchment);
+        button.AddThemeColorOverride("font_hover_color", GoldHover);
+        button.AddThemeColorOverride("font_pressed_color", Gold);
+        button.AddThemeColorOverride("font_disabled_color", DisabledText);
+        button.AddThemeColorOverride("font_outline_color", new Color(0, 0, 0, 0.85f));
+        button.AddThemeConstantOverride("outline_size", 2);
+        ApplyScaledFontSize(button, "font_size", baseSize);
+
+        button.AddThemeStyleboxOverride("normal", MakeButtonStylebox(IronHeavy, Bronze));
+        button.AddThemeStyleboxOverride("hover", MakeButtonStylebox(new Color(0.18f, 0.14f, 0.10f, 0.95f), Gold, 3));
+        button.AddThemeStyleboxOverride("pressed", MakeButtonStylebox(PressedFill, Gold, 3));
+        button.AddThemeStyleboxOverride("disabled", MakeButtonStylebox(DisabledFill, BronzeDim));
+        button.AddThemeStyleboxOverride("focus", MakeFocusStylebox());
+    }
+
+    /// <summary>Skill-slot styling.</summary>
+    public static void StyleSlotButton(Button button, int baseSize = FontSizeSmall)
+    {
+        button.AddThemeColorOverride("font_color", Parchment);
+        button.AddThemeColorOverride("font_hover_color", GoldHover);
+        button.AddThemeColorOverride("font_pressed_color", Gold);
+        button.AddThemeColorOverride("font_disabled_color", DisabledText);
+        button.AddThemeColorOverride("font_outline_color", new Color(0, 0, 0, 0.9f));
+        button.AddThemeConstantOverride("outline_size", 2);
+        ApplyScaledFontSize(button, "font_size", baseSize);
+
+        button.AddThemeStyleboxOverride("normal", MakeSlotStylebox(IronHeavy, Bronze));
+        button.AddThemeStyleboxOverride("hover", MakeSlotStylebox(new Color(0.18f, 0.14f, 0.10f, 0.96f), Gold, 3));
+        button.AddThemeStyleboxOverride("pressed", MakeSlotStylebox(PressedFill, Gold, 3));
+        button.AddThemeStyleboxOverride("disabled", MakeSlotStylebox(DisabledFill, BronzeDim));
+        button.AddThemeStyleboxOverride("focus", MakeFocusStylebox());
+    }
+
+    private static StyleBoxFlat MakeButtonStylebox(Color bg, Color border, int borderW = 2)
+        => new() {
+            BgColor = bg, BorderColor = border,
+            BorderWidthLeft = borderW, BorderWidthRight = borderW,
+            BorderWidthTop = borderW, BorderWidthBottom = borderW,
+            CornerRadiusBottomLeft = 5, CornerRadiusBottomRight = 5,
+            CornerRadiusTopLeft = 5, CornerRadiusTopRight = 5,
+            ContentMarginLeft = PadSm, ContentMarginRight = PadSm,
+            ContentMarginTop = PadXs, ContentMarginBottom = PadXs,
+        };
+
+    private static StyleBoxFlat MakeSlotStylebox(Color bg, Color border, int borderW = 2)
+        => new() {
+            BgColor = bg, BorderColor = border,
+            BorderWidthLeft = borderW, BorderWidthRight = borderW,
+            BorderWidthTop = borderW, BorderWidthBottom = borderW,
+            CornerRadiusBottomLeft = 4, CornerRadiusBottomRight = 4,
+            CornerRadiusTopLeft = 4, CornerRadiusTopRight = 4,
+            ContentMarginLeft = PadXs, ContentMarginRight = PadXs,
+            ContentMarginTop = PadXs, ContentMarginBottom = PadXs,
+        };
+
+    private static StyleBoxFlat MakeFocusStylebox()
+        => new() {
+            BgColor = new Color(0, 0, 0, 0), BorderColor = GoldHover,
+            BorderWidthLeft = 2, BorderWidthRight = 2,
+            BorderWidthTop = 2, BorderWidthBottom = 2,
+            CornerRadiusBottomLeft = 5, CornerRadiusBottomRight = 5,
+            CornerRadiusTopLeft = 5, CornerRadiusTopRight = 5,
+        };
+
+    // ── Bars ────────────────────────────────────────────────────────────
+    /// <summary>Apply styled fill + dark inset background to a progress bar.</summary>
     public static void ApplyBarStyle(ProgressBar bar, Color fillColor)
     {
-        StyleBoxFlat bg = new()
-        {
-            BgColor = new Color(0.10f, 0.09f, 0.10f, 0.85f),
-            BorderColor = new Color(0, 0, 0, 0.5f),
+        bar.MouseFilter = Control.MouseFilterEnum.Ignore;
+        StyleBoxFlat bg = new() {
+            BgColor = new Color(0.04f, 0.04f, 0.04f, 0.95f), BorderColor = Bronze,
             BorderWidthLeft = 1, BorderWidthRight = 1, BorderWidthTop = 1, BorderWidthBottom = 1,
             CornerRadiusBottomLeft = 3, CornerRadiusBottomRight = 3,
             CornerRadiusTopLeft = 3, CornerRadiusTopRight = 3,
+            ContentMarginLeft = 1, ContentMarginRight = 1,
+            ContentMarginTop = 1, ContentMarginBottom = 1,
         };
-        StyleBoxFlat fill = new()
-        {
-            BgColor = fillColor,
-            CornerRadiusBottomLeft = 3, CornerRadiusBottomRight = 3,
-            CornerRadiusTopLeft = 3, CornerRadiusTopRight = 3,
+        Color darker = new(fillColor.R * 0.55f, fillColor.G * 0.55f, fillColor.B * 0.55f, fillColor.A);
+        StyleBoxFlat fill = new() {
+            BgColor = fillColor, BorderColor = darker,
+            BorderWidthBottom = 2,
+            CornerRadiusBottomLeft = 2, CornerRadiusBottomRight = 2,
+            CornerRadiusTopLeft = 2, CornerRadiusTopRight = 2,
         };
         bar.AddThemeStyleboxOverride("background", bg);
         bar.AddThemeStyleboxOverride("fill", fill);
     }
+
+    // ── Icon loader ─────────────────────────────────────────────────────
+    private const string IconRoot = "res://assets/ui/hud/icons/";
+    private static readonly Dictionary<string, Texture2D?> _iconCache = new();
+
+    /// <summary>Load a HUD icon by short name. Null when not yet imported.</summary>
+    public static Texture2D? LoadIcon(string name)
+    {
+        if (_iconCache.TryGetValue(name, out var cached)) return cached;
+        string path = $"{IconRoot}icon_{name}.svg";
+        Texture2D? tex = ResourceLoader.Exists(path) ? ResourceLoader.Load<Texture2D>(path) : null;
+        _iconCache[name] = tex;
+        return tex;
+    }
+
+    /// <summary>
+    ///     Set <paramref name="button"/>'s icon by short name AND cap its rendered width.
+    ///     Without the cap a 64x64 SVG fills the entire button and crowds out the text.
+    /// </summary>
+    /// <param name="button">Button to receive the icon.</param>
+    /// <param name="iconName">Short icon name (no "icon_" prefix, no extension).</param>
+    /// <param name="maxWidthDesignPx">Design-time max icon width — multiplied by UI scale.</param>
+    public static void SetButtonIcon(Button button, string iconName, int maxWidthDesignPx = ActionIconSize)
+    {
+        Texture2D? tex = LoadIcon(iconName);
+        if (tex is not null)
+        {
+            button.Icon = tex;
+            button.ExpandIcon = false;
+        }
+        // Apply the cap unconditionally — it kicks in as soon as the texture resolves.
+        button.AddThemeConstantOverride("icon_max_width", ScaledPx(maxWidthDesignPx));
+    }
+}
+
+/// <summary>HUD widgets implement this so anchor offsets can be recomputed on UI scale change.</summary>
+public interface IHudWidget
+{
+    /// <summary>Recompute anchored offsets / min-size against current <see cref="HudStyle.UiScale"/>.</summary>
+    void Relayout();
 }

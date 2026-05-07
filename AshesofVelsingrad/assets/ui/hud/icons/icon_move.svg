@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- HUD icon: move/footstep (Souls-like silhouette, monochrome white) -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="#f1e7cf">
+  <g>
+    <!-- Front foot -->
+    <ellipse cx="22" cy="22" rx="10" ry="14" transform="rotate(-12 22 22)"/>
+    <circle cx="14" cy="9" r="3.2"/>
+    <circle cx="20" cy="6" r="2.8"/>
+    <circle cx="26" cy="7" r="2.6"/>
+    <circle cx="31" cy="11" r="2.2"/>
+    <!-- Back foot -->
+    <ellipse cx="42" cy="48" rx="10" ry="14" transform="rotate(8 42 48)"/>
+    <circle cx="34" cy="35" r="3.2"/>
+    <circle cx="40" cy="32" r="2.8"/>
+    <circle cx="46" cy="33" r="2.6"/>
+    <circle cx="51" cy="37" r="2.2"/>
+  </g>
+</svg>

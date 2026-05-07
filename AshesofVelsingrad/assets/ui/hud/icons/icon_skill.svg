@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- HUD icon: skill (flaming rune circle) -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none" stroke="#f1e7cf" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round">
+  <circle cx="32" cy="32" r="22"/>
+  <!-- Inner triangle / rune -->
+  <polygon points="32,16 46,40 18,40" fill="#f1e7cf" fill-opacity="0.18"/>
+  <line x1="32" y1="16" x2="32" y2="44"/>
+  <line x1="22" y1="36" x2="42" y2="36"/>
+  <!-- Flame tongues at the top -->
+  <path d="M28 8 Q30 13 32 8 Q34 13 36 8" stroke-width="2"/>
+  <!-- Spark dots at cardinal points -->
+  <circle cx="32" cy="6" r="1.6" fill="#f1e7cf" stroke="none"/>
+  <circle cx="6" cy="32" r="1.6" fill="#f1e7cf" stroke="none"/>
+  <circle cx="58" cy="32" r="1.6" fill="#f1e7cf" stroke="none"/>
+  <circle cx="32" cy="58" r="1.6" fill="#f1e7cf" stroke="none"/>
+</svg>

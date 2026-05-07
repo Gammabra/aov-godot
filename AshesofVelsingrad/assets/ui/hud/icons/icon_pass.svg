@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- HUD icon: pass turn (hourglass) -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="#f1e7cf">
+  <g>
+    <!-- Frame -->
+    <rect x="14" y="6" width="36" height="3" rx="1"/>
+    <rect x="14" y="55" width="36" height="3" rx="1"/>
+    <!-- Glass outline as triangles -->
+    <polygon points="18,9 46,9 34,30 30,30" opacity="0.85"/>
+    <polygon points="30,34 34,34 46,55 18,55" opacity="0.85"/>
+    <!-- Sand -->
+    <polygon points="22,12 42,12 33,28 31,28" fill="#d8b86a"/>
+    <polygon points="24,52 40,52 36,42 28,42" fill="#d8b86a"/>
+    <!-- Falling stream -->
+    <rect x="31.4" y="30" width="1.2" height="6" fill="#d8b86a"/>
+  </g>
+</svg>

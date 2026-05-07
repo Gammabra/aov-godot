@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Decorative corner ornament for HUD panels (top-left) -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none" stroke="#a07a35" stroke-width="2" stroke-linecap="round">
+  <path d="M2 18 Q 2 2, 18 2"/>
+  <path d="M8 14 Q 14 14, 14 8"/>
+  <circle cx="14" cy="14" r="2.5" fill="#d8b86a" stroke="none"/>
+  <line x1="2" y1="22" x2="2" y2="40"/>
+  <line x1="22" y1="2" x2="40" y2="2"/>
+  <!-- Filigree flourish -->
+  <path d="M22 22 Q 26 18, 30 22 Q 26 26, 22 22 Z" fill="#a07a35" stroke="none"/>
+</svg>

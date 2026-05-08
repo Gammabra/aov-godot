@@ -5,5 +5,6 @@ namespace AshesOfVelsingrad.Systems;
 /// </summary>
 public interface IInteractor
 {
-
+    public void LockInteractor();
+    public void UnlockInteractor();
 }

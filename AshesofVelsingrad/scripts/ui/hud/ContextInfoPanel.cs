@@ -42,10 +42,13 @@ public sealed partial class ContextInfoPanel : Control
 
     private void BuildLayout()
     {
+        // 1152×648 design viewport. Trimmed from 308 wide to 250 wide so the
+        // top row (this panel + TurnOrderQueue + EnemyRoster) all fit without
+        // overlapping at the design size.
         SetAnchorsAndOffsetsPreset(LayoutPreset.TopLeft);
         OffsetLeft = 12;
         OffsetTop = 12;
-        OffsetRight = 320;
+        OffsetRight = 262;
         OffsetBottom = 110;
         MouseFilter = MouseFilterEnum.Ignore;
 
@@ -55,8 +58,7 @@ public sealed partial class ContextInfoPanel : Control
         AddChild(HudStyle.MakePanel(box));
 
         _title = new Label { Text = "—" };
-        _title.AddThemeFontSizeOverride("font_size", 16);
-        HudStyle.StyleLabel(_title);
+        HudStyle.StyleLabel(_title, HudStyle.FontSizeHeader);
         box.AddChild(_title);
 
         _detail = new Label
@@ -66,9 +68,8 @@ public sealed partial class ContextInfoPanel : Control
             SizeFlagsHorizontal = SizeFlags.ExpandFill,
             SizeFlagsVertical = SizeFlags.ExpandFill,
         };
-        HudStyle.StyleLabel(_detail);
+        HudStyle.StyleLabel(_detail, HudStyle.FontSizeSmall);
         _detail.AddThemeColorOverride("font_color", HudStyle.DimText);
-        _detail.AddThemeFontSizeOverride("font_size", 13);
         box.AddChild(_detail);
     }
 

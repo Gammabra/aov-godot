@@ -1,3 +1,4 @@
+using AshesOfVelsingrad.Managers;
 using Godot;
 
 namespace AshesOfVelsingrad.UI.Hud;
@@ -45,6 +46,35 @@ public sealed partial class BattleHud : CanvasLayer
     {
         GD.Print($"BattleHud._Ready running. Layer={Layer}");
         Build();
+
+        // Live-bind to the user's Interface Size slider. Each styled control
+        // stamps its design-time font size into a meta entry during Build();
+        // when the player drags the slider mid-battle (or after returning from
+        // settings), HudStyle.RefreshScaledFonts walks the tree and re-applies
+        // the new scale without rebuilding any widget.
+        if (SettingsManager.Instance is { } settings)
+        {
+            settings.UiScaleChanged += OnUiScaleChanged;
+        }
+    }
+
+    /// <inheritdoc />
+    public override void _ExitTree()
+    {
+        if (SettingsManager.Instance is { } settings)
+        {
+            settings.UiScaleChanged -= OnUiScaleChanged;
+        }
+        base._ExitTree();
+    }
+
+    private void OnUiScaleChanged(float newScale)
+    {
+        // Re-apply font sizes everywhere under this CanvasLayer. Cheap — only
+        // controls that opted in via HudStyle.ApplyScaledFontSize / StyleLabel /
+        // StyleButton get touched.
+        GD.Print($"[BattleHud] UiScale changed to {newScale:F2}× — refreshing fonts.");
+        HudStyle.RefreshScaledFonts(this);
     }
 
     /// <summary>

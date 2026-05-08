@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using AshesOfVelsingrad.AI;
+using AshesOfVelsingrad.Audio;
 using AshesOfVelsingrad.Systems;
 using AshesOfVelsingrad.Systems.Battle;
 using AshesOfVelsingrad.UI.Hud;
@@ -131,6 +132,11 @@ public partial class GameManager : BaseManager
     /// </remarks>
     private void InitializeGameManager()
     {
+        // Battle scene is now active — switch the music context off the menu / world
+        // theme. If no battle track is registered yet the manager simply fades out,
+        // which is the correct behaviour during development.
+        AudioManager.Instance?.SetMusicContext(MusicContext.Battle);
+
         _battleInputSystemContainer = GetNode<BattleInputSystem>(_battleInputSystemPath);
         _battleInputSystemContainer.OnPassTurnPressed += PlayerPassedUnitTurn;
         _battleInputSystemContainer.OnMoveUnitOrSelectTargetPressed += PlayerMovedUnitOrSelectedTarget;

@@ -314,6 +314,10 @@ public partial class GameManager : BaseManager
             return;
         }
 
+        _inventoryUI?.Toggle();
+
+        if (_inventoryUI is { Visible: true }) _inventoryUI.Toggle();
+
         _clickOnMapContext = AovDataStructures.ClickOnMapContext.MoveUnit;
         _isPlayerTurn = false;
         _selectedSkill = null;

@@ -32,43 +32,32 @@ public sealed partial class BattleInventoryUI : CanvasLayer
 
         // ── Outer anchor: centre-bottom, above ActionMenu ──────────────
         var root = new Control { Name = "Root" };
-        root.SetAnchorsAndOffsetsPreset(Control.LayoutPreset.CenterBottom);
-        root.OffsetLeft = -300f;
-        root.OffsetRight = 300f;
-        root.OffsetTop = -180f;
-        root.OffsetBottom = -80f;
+        root.AnchorLeft   = 0.5f;
+        root.AnchorRight  = 0.5f;
+        root.AnchorTop    = 1.0f;
+        root.AnchorBottom = 1.0f;
+        root.OffsetLeft   = -200f;
+        root.OffsetRight  =  200f;
+        root.OffsetTop    = -134f;
+        root.OffsetBottom =  -76f;
         root.MouseFilter = Control.MouseFilterEnum.Ignore;
         AddChild(root);
 
         var vbox = new VBoxContainer();
-        vbox.AddThemeConstantOverride("separation", 6);
+        vbox.AddThemeConstantOverride("separation", 4);
         vbox.SetAnchorsAndOffsetsPreset(Control.LayoutPreset.FullRect);
-
         root.AddChild(HudStyle.MakePanel(vbox));
 
-        // Title row
-        var titleRow = new HBoxContainer();
-        vbox.AddChild(titleRow);
+        // Small label so the player knows what they're looking at
+        var header = new Label { Text = "Items" };
+        HudStyle.StyleLabel(header);
+        header.AddThemeColorOverride("font_color", HudStyle.DimText);
+        header.AddThemeFontSizeOverride("font_size", 12);
+        vbox.AddChild(header);
 
-        var title = new Label { Text = "Unit Inventory", SizeFlagsHorizontal = Control.SizeFlags.ExpandFill };
-        HudStyle.StyleLabel(title);
-        title.AddThemeFontSizeOverride("font_size", 16);
-        titleRow.AddChild(title);
-
-        var closeBtn = new Button { Text = "✕" };
-        HudStyle.StyleButton(closeBtn);
-        closeBtn.AddThemeColorOverride("font_color", HudStyle.DimText);
-        closeBtn.Pressed += Toggle;
-        titleRow.AddChild(closeBtn);
-
-        // Divider
-        var sep = new HSeparator();
-        sep.AddThemeColorOverride("color", HudStyle.PanelBorder);
-        vbox.AddChild(sep);
-
-        // Slot row — BattleCapacity slots in a single horizontal strip
         _slotRow = new HBoxContainer();
-        _slotRow.AddThemeConstantOverride("separation", 6);
+        _slotRow.AddThemeConstantOverride("separation", 4);
+        _slotRow.SizeFlagsVertical = Control.SizeFlags.ExpandFill;
         vbox.AddChild(_slotRow);
 
         for (int i = 0; i < InventoryConstants.BattleCapacity; i++)

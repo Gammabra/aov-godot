@@ -140,6 +140,13 @@ public partial class GameManager
 
         if (_inventoryUI is not null && _battleInputSystemContainer is not null)
         _inventoryUI.SetBattleInputSystem(_battleInputSystemContainer);
+
+        if (_battleHud?.ActionMenu is { } actionMenu
+            && _inventoryUI is not null
+            && _battleHud.SkillSelector is { } skillSelector)
+        {
+            actionMenu.SetInventoryUI(_inventoryUI, skillSelector);
+        }
     }
 
     /// <summary>

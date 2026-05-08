@@ -195,6 +195,63 @@ public class AudioManagerTest
         AssertThat(track.ResourcePath).IsEqual("res://assets/audio_assets/musics/TA_A.ogg");
     }
 
+    // === Music context ===
+
+    [TestCase]
+    public void SetMusicContext_UpdatesCurrentContext()
+    {
+        _audio!.SetMusicContext(MusicContext.Battle);
+        AssertThat(_audio.CurrentMusicContext).IsEqual(MusicContext.Battle);
+
+        _audio.SetMusicContext(MusicContext.Exploration);
+        AssertThat(_audio.CurrentMusicContext).IsEqual(MusicContext.Exploration);
+    }
+
+    [TestCase]
+    public void SetMusicContext_AllContexts_DoNotThrow()
+    {
+        // Hammer every transition path — registered tracks, missing-import fallback,
+        // and the explicit None stop. The manager has to log + no-op rather than
+        // throwing on any of them.
+        _audio!.SetMusicContext(MusicContext.Exploration);
+        _audio.SetMusicContext(MusicContext.Battle);
+        _audio.SetMusicContext(MusicContext.MainMenu);
+        _audio.SetMusicContext(MusicContext.None);
+    }
+
+    [TestCase]
+    public void SetMusicContext_SameContextTwice_IsIdempotent()
+    {
+        _audio!.SetMusicContext(MusicContext.MainMenu);
+        var first = _audio.CurrentMusicContext;
+        _audio.SetMusicContext(MusicContext.MainMenu);
+
+        AssertThat(_audio.CurrentMusicContext).IsEqual(first);
+    }
+
+    [TestCase]
+    public void BootMusic_DoesNotOverrideAlreadyDeclaredContext()
+    {
+        // Simulates the "scene declared its context before the deferred boot
+        // callback fires" flow — running PrisonBattle.tscn directly, for example.
+        // The boot-time fallback must not stomp on the scene's choice.
+        _audio!.SetMusicContext(MusicContext.Battle);
+        InvokePrivate(_audio, "PlayBootMusic");
+
+        AssertThat(_audio.CurrentMusicContext).IsEqual(MusicContext.Battle);
+    }
+
+    [TestCase]
+    public void BootMusic_FallsBackToMainMenu_WhenNoContextDeclared()
+    {
+        // Default boot path: nothing declared a context, so the fallback ensures
+        // menu_beta.tscn (which has no script on the root) still gets music.
+        AssertThat(_audio!.CurrentMusicContext).IsEqual(MusicContext.None);
+        InvokePrivate(_audio, "PlayBootMusic");
+
+        AssertThat(_audio.CurrentMusicContext).IsEqual(MusicContext.MainMenu);
+    }
+
     // === Helpers ===
 
     private T AddNode<T>(T node) where T : Node

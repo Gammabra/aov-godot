@@ -8,9 +8,21 @@
 -->
 <RunSettings>
   <GdUnit4>
+    <!--
+      Direct child elements as per the gdUnit4 v6 schema. The previous nested
+      <Parameters><Parameter name="CompileProcessTimeout" value="..." /></Parameters>
+      form is silently ignored by the runner — it falls back to the 20s default,
+      which is too short for the Godot C# project on a CI runner under load (the
+      action timed out at 20s and force-killed the compile).
+
+      120s was enough until the asset folder grew (audio imports, additional
+      generated cache entries) and CI started crossing the threshold. 240s
+      gives a comfortable margin on the GitHub free runners without masking a
+      real hang.
+    -->
+    <CompileProcessTimeout>240000</CompileProcessTimeout>
     <Parameters>
       <Parameter name="godot-parameters" value="--headless --no-import" />
-      <Parameter name="CompileProcessTimeout" value="120000" />
     </Parameters>
   </GdUnit4>
 </RunSettings>

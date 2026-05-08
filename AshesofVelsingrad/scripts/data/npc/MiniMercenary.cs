@@ -18,10 +18,12 @@ public partial class MiniMercenary : CharacterBody3D
     [Export]
     private float _speed = 4;
 
-    private NavigationAgent3D _navigationAgent;
+    // null! — populated in _Ready via the [Export] NodePath. Godot guarantees _Ready
+    // runs before any other engine callback touches these, so the suppression is safe.
+    private NavigationAgent3D _navigationAgent = null!;
     private AovPlayer? _player;
     private float _stopDistance = 1.5f;
-    private StateMachine _stateMachine;
+    private StateMachine _stateMachine = null!;
 
     public override void _Ready()
     {

@@ -142,7 +142,9 @@ scripts/
    Ally1Data.cs
    AssassinData.cs
    FighterData.cs
+   KaelenVoss.cs
    LightMageData.cs
+   MercenaryAlly.cs
    Player1Data.cs
    Player2Data.cs
    SwordsmanData.cs
@@ -151,6 +153,7 @@ scripts/
    EnemyAssassin.cs
    EnemyFighter.cs
    EnemyLightMage.cs
+   EnemySoldier.cs
    EnemySwordsman.cs
  GenericCharacterStates/
   IdleState.cs
@@ -162,6 +165,7 @@ scripts/
  managers/
   AudioManager.cs
   BaseManager.cs
+  BattleLauncher.cs
   EnemyAIManager.cs
   game_manager/
    GameManager.cs
@@ -189,9 +193,11 @@ scripts/
   BattleLauncher.cs
   BattleNotification.cs
   BattleResult.cs
+  BattleSetup.cs
   FactionMarker.cs
   IndicatorOverlay.cs
   MoveIndicator.cs
+  NpcBattleTrigger.cs
   VictoryCondition.cs
  systems/
   BattleInputSystem.cs

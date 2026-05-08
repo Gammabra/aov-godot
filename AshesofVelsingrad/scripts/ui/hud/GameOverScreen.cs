@@ -81,7 +81,10 @@ public sealed partial class GameOverScreen : CanvasLayer
         Label title = new() { Text = "Defeat" };
         title.HorizontalAlignment = HorizontalAlignment.Center;
         title.AddThemeColorOverride("font_color", new Color(0.95f, 0.30f, 0.30f));
-        title.AddThemeFontSizeOverride("font_size", 42);
+        // Title font is its own tier (bigger than HudStyle.FontSizeTitle which is
+        // for VictoryScreen). Funnel through ScaledFontSize so the user's
+        // accessibility scale still applies to the defeat headline.
+        HudStyle.ApplyScaledFontSize(title, "font_size", 42);
         panel.AddChild(title);
 
         Label subtitle = new() { Text = "Your party has fallen." };
@@ -94,27 +97,24 @@ public sealed partial class GameOverScreen : CanvasLayer
         panel.AddChild(spacer);
 
         _tryAgainButton = new Button { Text = "Try Again" };
-        HudStyle.StyleButton(_tryAgainButton);
+        HudStyle.StyleButton(_tryAgainButton, 18);
         _tryAgainButton.CustomMinimumSize = new Vector2(220, 50);
         _tryAgainButton.SizeFlagsHorizontal = Control.SizeFlags.ShrinkCenter;
-        _tryAgainButton.AddThemeFontSizeOverride("font_size", 18);
         _tryAgainButton.Pressed += FireTryAgain;
         panel.AddChild(_tryAgainButton);
 
         _forfeitButton = new Button { Text = "Forfeit" };
-        HudStyle.StyleButton(_forfeitButton);
+        HudStyle.StyleButton(_forfeitButton, 18);
         _forfeitButton.CustomMinimumSize = new Vector2(220, 50);
         _forfeitButton.SizeFlagsHorizontal = Control.SizeFlags.ShrinkCenter;
-        _forfeitButton.AddThemeFontSizeOverride("font_size", 18);
         _forfeitButton.AddThemeColorOverride("font_color", new Color(0.85f, 0.65f, 0.55f));
         _forfeitButton.Pressed += FireForfeit;
         panel.AddChild(_forfeitButton);
 
         Label forfeitNote = new() { Text = "(Forfeit is wired to nothing yet — placeholder.)" };
         forfeitNote.HorizontalAlignment = HorizontalAlignment.Center;
-        HudStyle.StyleLabel(forfeitNote);
+        HudStyle.StyleLabel(forfeitNote, 11);
         forfeitNote.AddThemeColorOverride("font_color", HudStyle.DimText);
-        forfeitNote.AddThemeFontSizeOverride("font_size", 11);
         panel.AddChild(forfeitNote);
     }
 

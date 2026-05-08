@@ -1,0 +1,62 @@
+[gd_scene format=3 uid="uid://du6yoy00ow8lg"]
+
+[ext_resource type="Script" uid="uid://b68lmjwbg7b2c" path="res://scripts/data/unit/enemies/EnemySoldier.cs" id="1_soldier"]
+[ext_resource type="Script" uid="uid://dvsd81c4l1hgb" path="res://scripts/AI/EnemyAIBehavior.cs" id="3_aibhv"]
+[ext_resource type="Script" uid="uid://dotytx100nxai" path="res://scripts/managers/state_machines/StateMachine.cs" id="4_pdojf"]
+[ext_resource type="Texture2D" uid="uid://c0t37mbg2mc5b" path="res://assets/Krita/sprite_solder.png" id="4_xo8kj"]
+[ext_resource type="Script" uid="uid://cbra7nuuruj2p" path="res://scripts/GenericCharacterStates/IdleState.cs" id="5_xo8kj"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_soldier"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6vwif"]
+atlas = ExtResource("4_xo8kj")
+region = Rect2(0, 690, 218, 138)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ff3wc"]
+atlas = ExtResource("4_xo8kj")
+region = Rect2(218, 690, 218, 138)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mpsg0"]
+atlas = ExtResource("4_xo8kj")
+region = Rect2(436, 690, 218, 138)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_pdojf"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6vwif")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ff3wc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mpsg0")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}]
+
+[node name="EnemySoldier" type="CharacterBody3D" unique_id=597330240]
+script = ExtResource("1_soldier")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1922187445]
+shape = SubResource("SphereShape3D_soldier")
+
+[node name="EnemyAIBehavior" type="Node" parent="." unique_id=41681633]
+script = ExtResource("3_aibhv")
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="." unique_id=1486184095]
+offset = Vector2(66, 0)
+billboard = 2
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_pdojf")
+animation = &"Idle"
+
+[node name="StateMachine" type="Node" parent="." unique_id=688239534]
+script = ExtResource("4_pdojf")
+InitialState = NodePath("IdleState")
+
+[node name="IdleState" type="Node" parent="StateMachine" unique_id=912592674]
+script = ExtResource("5_xo8kj")
+_animatedSprite3DPath = NodePath("../../AnimatedSprite3D")

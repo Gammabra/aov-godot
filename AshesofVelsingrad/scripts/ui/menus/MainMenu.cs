@@ -53,9 +53,10 @@ public partial class MainMenu : Control
             return;
         }
 
-        // Kick off the menu theme. The registry knows the file path, the bus, and
-        // the per-track volume multiplier — call sites only need the catalog id.
-        AudioManager.Instance?.Play(AudioCatalog.MainMenuTheme);
+        // Declare the music context for this scene. The audio manager picks the
+        // right track (or fades out if no track is registered for the context yet)
+        // — call-sites only have to say *what kind* of scene this is.
+        AudioManager.Instance?.SetMusicContext(MusicContext.MainMenu);
     }
 
     /// <summary>

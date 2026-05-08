@@ -34,6 +34,13 @@ public partial class GameManager
         _allyUnits.Clear();
         _enemyUnits.Clear();
 
+        // If a BattleSetup was queued by BattleLauncher, instantiate its PackedScenes
+        // into the matching containers BEFORE the scene-tree pass picks them up. This
+        // lets exploration-driven encounters compose the roster at runtime; standalone
+        // launches of Test.tscn (no launcher / no setup) skip this and fall back to
+        // whatever units the .tscn already has under the containers.
+        SpawnUnitsFromPendingSetup();
+
         foreach (Node child in _playerUnitsContainer.GetChildren())
             if (child is UnitSystem unit)
             {
@@ -70,6 +77,41 @@ public partial class GameManager
         else
         {
             GD.PrintErr("PlayerInventoryManager not found — player units will have empty inventories.");
+        }
+    }
+
+    /// <summary>
+    ///     If <see cref="BattleLauncher.PendingSetup" /> is non-null, instantiate the
+    ///     setup's PackedScenes into the matching unit containers. Called once at the
+    ///     top of <see cref="LoadUnits" />, before the scene-tree iteration.
+    /// </summary>
+    /// <remarks>
+    ///     Standalone launches of a battle scene (F6 on Test.tscn with no exploration
+    ///     scene to launch from) have no pending setup, so this is a no-op and the
+    ///     scene's pre-baked units are used as before. The two paths coexist —
+    ///     designers can keep authoring static .tscn battles, while the runtime gets
+    ///     procedural encounters via BattleLauncher.
+    /// </remarks>
+    private void SpawnUnitsFromPendingSetup()
+    {
+        BattleSetup? setup = BattleLauncher.Instance?.PendingSetup;
+        if (setup is null) return;
+
+        SpawnInto(setup.PlayerUnits, _playerUnitsContainer);
+        SpawnInto(setup.AllyUnits, _alliedUnitsContainer);
+        SpawnInto(setup.EnemyUnits, _enemyUnitsContainer);
+        GD.Print($"GameManager: spawned setup '{setup.EncounterName}' "
+            + $"(P={setup.PlayerUnits.Count}, A={setup.AllyUnits.Count}, E={setup.EnemyUnits.Count})");
+
+        static void SpawnInto(System.Collections.Generic.List<PackedScene> scenes, Node? container)
+        {
+            if (container is null) return;
+            foreach (PackedScene packed in scenes)
+            {
+                if (packed is null) continue;
+                Node instance = packed.Instantiate();
+                container.AddChild(instance);
+            }
         }
     }
 

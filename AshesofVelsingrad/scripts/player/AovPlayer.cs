@@ -1,3 +1,4 @@
+using AshesOfVelsingrad.Audio;
 using AshesOfVelsingrad.Managers;
 using AshesOfVelsingrad.Systems;
 using AshesOfVelsingrad.UI.Inventory;
@@ -26,11 +27,16 @@ public sealed partial class AovPlayer : CharacterBody3D, IInteractor
     [Export]
     private float _speed = 4;
 
+    private bool _isLock;
+
     private float _gravity = ProjectSettings.GetSetting("physics/3d/default_gravity").AsSingle();
     private StateMachine? _stateMachine;
-    private SpringArm3D _springArm3D;
+    // null! — populated in Initialize() via the [Export] NodePath. Used non-null in
+    // _PhysicsProcess; Godot's lifecycle guarantees Initialize runs before any frame
+    // callback touches these, so the suppression matches the runtime invariant.
+    private SpringArm3D _springArm3D = null!;
     private InteractionComponent? _interactionComponent;
-    private AnimatedSprite3D _animatedSprite3D;
+    private AnimatedSprite3D _animatedSprite3D = null!;
     private static AovPlayer? _instance;
     private ExplorationInventoryUI? _explorationInventoryUI;
 
@@ -41,6 +47,24 @@ public sealed partial class AovPlayer : CharacterBody3D, IInteractor
         _interactionComponent = GetNode<InteractionComponent>(_interactionComponentPath);
         _animatedSprite3D = GetNode<AnimatedSprite3D>(_animatedSprite3DPath);
         _instance = this;
+
+        // If we just returned from a battle (player pressed Forfeit or Continue), the
+        // BattleLauncher autoload still has a pending position from when the encounter
+        // was triggered. Snap to it so the player wakes up exactly where they were
+        // standing when they spoke to the NPC. ConsumePendingReturnPosition is one-shot:
+        // calling it clears the value so subsequent scene loads don't re-snap.
+        Vector3? returnPos = BattleLauncher.Instance?.ConsumePendingReturnPosition();
+        if (returnPos is { } pos)
+        {
+            GlobalPosition = pos;
+            GD.Print($"AovPlayer: restored return position {pos} from BattleLauncher.");
+        }
+
+        // The player only spawns inside exploration scenes (prison, world map, …)
+        // — battle scenes spawn unit nodes through GameManager instead. So an
+        // active AovPlayer is a reliable signal that we're now exploring, and the
+        // audio manager can switch off the menu theme accordingly.
+        AudioManager.Instance?.SetMusicContext(MusicContext.Exploration);
 
         _explorationInventoryUI = new ExplorationInventoryUI { Name = "ExplorationInventoryUI" };
         GetTree().Root.CallDeferred("add_child", _explorationInventoryUI);
@@ -71,6 +95,13 @@ public sealed partial class AovPlayer : CharacterBody3D, IInteractor
 
     public override void _Input(InputEvent @event)
     {
+        // Mirror the lock check in _PhysicsProcess. Without this, pressing E
+        // while a dialog is already running (or a battle is mid-launch) would
+        // re-fire Interact() and restart the conversation from line one — the
+        // dialog system itself doesn't guard against being re-entered, it just
+        // appends/replaces queue entries based on its `start` flag.
+        if (_isLock) return;
+
         if (@event.IsActionPressed("interact"))
         {
             IInteractable? interactable = _interactionComponent?.ClosestInteractable as IInteractable;
@@ -84,6 +115,12 @@ public sealed partial class AovPlayer : CharacterBody3D, IInteractor
 
     public override void _PhysicsProcess(double delta)
     {
+        if (_isLock)
+        {
+            _stateMachine?.TransitionTo("IdleState");
+            return;
+        }
+
         Vector3 currentVelocity = Velocity;
 
         Vector3 inputDir = new(
@@ -147,14 +184,36 @@ public sealed partial class AovPlayer : CharacterBody3D, IInteractor
             _stateMachine?.TransitionTo("WalkBackwardState");
     }
 
+    public void LockInteractor()
+    {
+        _isLock = true;
+    }
+
+    public void UnlockInteractor()
+    {
+        _isLock = false;
+    }
+
     public void BindInventoryUnits()
     {
         _explorationInventoryUI?.RefreshUnitPanels();
     }
 
+    /// <inheritdoc />
+    /// <remarks>
+    ///     Clear the static <see cref="_instance" /> when this node leaves the tree
+    ///     (scene unload, scene reload via <c>BattleLauncher</c>'s Forfeit / Continue
+    ///     flow). Without this, the new <see cref="AovPlayer" /> on the reloaded
+    ///     exploration scene sees a stale <c>_instance</c> still pointing at the just-
+    ///     unloaded player and <see cref="Node.QueueFree" />s itself as a "duplicate" —
+    ///     the scene then renders with no player and frozen camera.
+    /// </remarks>
     public override void _ExitTree()
     {
         if (_explorationInventoryUI is not null && IsInstanceValid(_explorationInventoryUI))
             _explorationInventoryUI.QueueFree();
+        
+        if (_instance == this) _instance = null;
+        base._ExitTree();
     }
 }

@@ -68,6 +68,7 @@ Audio/
  AudioVolumeMath.cs
  IAudioRegistry.cs
  IAudioService.cs
+ MusicContext.cs
 Data/
  EntityProfile.cs
  status_effect/unit/

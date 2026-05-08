@@ -7,15 +7,14 @@ using Godot;
 namespace AshesOfVelsingrad.UI.Inventory;
 
 /// <summary>
-///     Full-screen exploration inventory: 30-slot global grid on the left,
-///     one <see cref="UnitTransferPanel" /> per player unit on the right.
-///     Drag items from the left grid and drop them onto a unit slot.
+///     Exploration inventory panel: 30-slot global grid on the left,
+///     4 unit loadout rows on the right. Sized as a fraction of the viewport
+///     so it scales cleanly at any resolution.
 /// </summary>
 public sealed partial class ExplorationInventoryUI : CanvasLayer
 {
-    public const int InventoryLayer  = 10;
+    public const int InventoryLayer = 10;
 
-    // Tune in InventoryConstants — no magic numbers here.
     private bool _built;
     private GridContainer? _exploGrid;
     private VBoxContainer? _unitPanelColumn;
@@ -52,13 +51,20 @@ public sealed partial class ExplorationInventoryUI : CanvasLayer
         backdrop.SetAnchorsAndOffsetsPreset(Control.LayoutPreset.FullRect);
         AddChild(backdrop);
 
-        // ── Centred main window ─────────────────────────────────────────
+        // ── Main window: 80% wide, 70% tall, centred ───────────────────
+        // Using anchor-based sizing means the panel scales with the viewport
+        // instead of being glued to fixed pixel dimensions.
         var window = new Control { Name = "Window" };
-        window.SetAnchorsAndOffsetsPreset(Control.LayoutPreset.Center);
-        window.OffsetLeft = -520f;
-        window.OffsetRight = 520f;
-        window.OffsetTop = -320f;
-        window.OffsetBottom = 320f;
+        // Anchor to a centred 80×70% rectangle
+        window.AnchorLeft   = 0.10f;
+        window.AnchorRight  = 0.90f;
+        window.AnchorTop    = 0.15f;
+        window.AnchorBottom = 0.85f;
+        // Zero offsets — the anchors do all the sizing
+        window.OffsetLeft   = 0f;
+        window.OffsetRight  = 0f;
+        window.OffsetTop    = 0f;
+        window.OffsetBottom = 0f;
         AddChild(window);
 
         var outerVBox = new VBoxContainer();
@@ -88,16 +94,18 @@ public sealed partial class ExplorationInventoryUI : CanvasLayer
         sep.AddThemeColorOverride("color", HudStyle.PanelBorder);
         outerVBox.AddChild(sep);
 
-        // ── Content row: global grid (left) | unit loadouts (right) ────────
+        // ── Content row ─────────────────────────────────────────────────
         var contentRow = new HBoxContainer();
-        contentRow.AddThemeConstantOverride("separation", 16);
+        contentRow.AddThemeConstantOverride("separation", 12);
         contentRow.SizeFlagsVertical = Control.SizeFlags.ExpandFill;
         outerVBox.AddChild(contentRow);
 
-        // Left: 30-slot exploration grid
+        // ── LEFT: exploration grid ──────────────────────────────────────
+        // No ExpandFill — let it take only as much space as the grid needs.
         var leftVBox = new VBoxContainer();
         leftVBox.AddThemeConstantOverride("separation", 6);
-        leftVBox.SizeFlagsHorizontal = Control.SizeFlags.ExpandFill;
+        // ShrinkBegin so it hugs the grid instead of stretching to fill
+        leftVBox.SizeFlagsHorizontal = Control.SizeFlags.ShrinkBegin;
         contentRow.AddChild(leftVBox);
 
         var gridHeader = new Label { Text = "Party Inventory" };
@@ -109,9 +117,16 @@ public sealed partial class ExplorationInventoryUI : CanvasLayer
         _exploGrid.AddThemeConstantOverride("v_separation", 4);
         leftVBox.AddChild(_exploGrid);
 
-        // Right: vertical stack of unit loadout rows
+        // ── Vertical divider ────────────────────────────────────────────
+        var vDivider = new VSeparator();
+        vDivider.AddThemeColorOverride("color", HudStyle.PanelBorder);
+        contentRow.AddChild(vDivider);
+
+        // ── RIGHT: unit loadout rows ────────────────────────────────────
+        // ExpandFill here so the unit side takes the remaining space.
         var rightVBox = new VBoxContainer();
         rightVBox.AddThemeConstantOverride("separation", 6);
+        rightVBox.SizeFlagsHorizontal = Control.SizeFlags.ExpandFill;
         contentRow.AddChild(rightVBox);
 
         var unitHeader = new Label { Text = "Unit Loadouts  ←  drag items here" };
@@ -123,11 +138,10 @@ public sealed partial class ExplorationInventoryUI : CanvasLayer
         unitSep.AddThemeColorOverride("color", HudStyle.PanelBorder);
         rightVBox.AddChild(unitSep);
 
-        // One row per party slot — created immediately with whatever names are in
-        // PlayerInventoryManager so the UI is populated even before a battle runs.
         _unitPanelColumn = new VBoxContainer();
         _unitPanelColumn.AddThemeConstantOverride("separation", 6);
         _unitPanelColumn.SizeFlagsVertical = Control.SizeFlags.ExpandFill;
+        _unitPanelColumn.SizeFlagsHorizontal = Control.SizeFlags.ExpandFill;
         rightVBox.AddChild(_unitPanelColumn);
     }
 
@@ -160,8 +174,11 @@ public sealed partial class ExplorationInventoryUI : CanvasLayer
         {
             var panel = new UnitTransferPanel();
             panel.EnsureBuilt();
-            panel.CustomMinimumSize = new Vector2(0, InventoryConstants.SlotSize + 16f);
+            // ExpandFill width so rows stretch across the right column,
+            // fixed minimum height so each row is always tall enough for the slots.
             panel.SizeFlagsHorizontal = Control.SizeFlags.ExpandFill;
+            panel.SizeFlagsVertical   = Control.SizeFlags.ExpandFill;
+            panel.CustomMinimumSize   = new Vector2(0f, InventoryConstants.SlotSize + 20f);
             panel.Bind(mgr.PartyNames[i], mgr.PartyLoadouts[i]);
             _unitPanelColumn.AddChild(panel);
             _unitPanels.Add(panel);
@@ -190,7 +207,6 @@ public sealed partial class ExplorationInventoryUI : CanvasLayer
         foreach (Node child in _exploGrid.GetChildren()) child.QueueFree();
         _exploSlots.Clear();
 
-        // Always build ExplorationCapacity slots regardless of actual item count
         for (int i = 0; i < InventoryConstants.ExplorationCapacity; i++)
         {
             var slot = new ExplorationSlotUI();

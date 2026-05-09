@@ -212,7 +212,7 @@ public sealed partial class AovPlayer : CharacterBody3D, IInteractor
     {
         if (_explorationInventoryUI is not null && IsInstanceValid(_explorationInventoryUI))
             _explorationInventoryUI.QueueFree();
-        
+
         if (_instance == this) _instance = null;
         base._ExitTree();
     }

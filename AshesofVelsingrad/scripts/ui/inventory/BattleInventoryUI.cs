@@ -31,11 +31,11 @@ public sealed partial class BattleInventoryUI : Control
         MouseFilter = MouseFilterEnum.Ignore;
 
         SetAnchorsAndOffsetsPreset(LayoutPreset.CenterBottom);
-        OffsetLeft   = -180f;  // match ActionMenu width exactly
-        OffsetRight  =  180f;
-        OffsetTop    = -134f;  // same as SkillSelector top
-        OffsetBottom =  -72f;  // just touching the top of ActionMenu (-64 + some margin)
-        MouseFilter  = MouseFilterEnum.Ignore;
+        OffsetLeft = -180f;  // match ActionMenu width exactly
+        OffsetRight = 180f;
+        OffsetTop = -134f;  // same as SkillSelector top
+        OffsetBottom = -72f;  // just touching the top of ActionMenu (-64 + some margin)
+        MouseFilter = MouseFilterEnum.Ignore;
 
         var vbox = new VBoxContainer();
         vbox.AddThemeConstantOverride("separation", 4);

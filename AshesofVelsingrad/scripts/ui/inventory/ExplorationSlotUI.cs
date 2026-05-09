@@ -1,6 +1,6 @@
+using AshesOfVelsingrad.Managers;
 using AshesOfVelsingrad.Systems;
 using AshesOfVelsingrad.UI.Hud;
-using AshesOfVelsingrad.Managers;
 using Godot;
 
 namespace AshesOfVelsingrad.UI.Inventory;
@@ -99,8 +99,8 @@ public sealed partial class ExplorationSlotUI : PanelContainer
         var payload = new Godot.Collections.Dictionary
         {
             ["from_slot"] = SlotIndex,
-            ["item_id"]   = slot.ItemId,
-            ["quantity"]  = slot.Quantity,
+            ["item_id"] = slot.ItemId,
+            ["quantity"] = slot.Quantity,
         };
         return payload;
     }

@@ -1,7 +1,7 @@
 using System.Collections.Generic;
+using AshesOfVelsingrad.Managers;
 using AshesOfVelsingrad.Systems;
 using AshesOfVelsingrad.UI.Hud;
-using AshesOfVelsingrad.Managers;
 using Godot;
 
 namespace AshesOfVelsingrad.UI.Inventory;
@@ -56,14 +56,14 @@ public sealed partial class ExplorationInventoryUI : CanvasLayer
         // instead of being glued to fixed pixel dimensions.
         var window = new Control { Name = "Window" };
         // Anchor to a centred 80×70% rectangle
-        window.AnchorLeft   = 0.10f;
-        window.AnchorRight  = 0.90f;
-        window.AnchorTop    = 0.15f;
+        window.AnchorLeft = 0.10f;
+        window.AnchorRight = 0.90f;
+        window.AnchorTop = 0.15f;
         window.AnchorBottom = 0.85f;
         // Zero offsets — the anchors do all the sizing
-        window.OffsetLeft   = 0f;
-        window.OffsetRight  = 0f;
-        window.OffsetTop    = 0f;
+        window.OffsetLeft = 0f;
+        window.OffsetRight = 0f;
+        window.OffsetTop = 0f;
         window.OffsetBottom = 0f;
         AddChild(window);
 
@@ -177,8 +177,8 @@ public sealed partial class ExplorationInventoryUI : CanvasLayer
             // ExpandFill width so rows stretch across the right column,
             // fixed minimum height so each row is always tall enough for the slots.
             panel.SizeFlagsHorizontal = Control.SizeFlags.ExpandFill;
-            panel.SizeFlagsVertical   = Control.SizeFlags.ExpandFill;
-            panel.CustomMinimumSize   = new Vector2(0f, InventoryConstants.SlotSize + 20f);
+            panel.SizeFlagsVertical = Control.SizeFlags.ExpandFill;
+            panel.CustomMinimumSize = new Vector2(0f, InventoryConstants.SlotSize + 20f);
             panel.Bind(mgr.PartyNames[i], mgr.PartyLoadouts[i]);
             _unitPanelColumn.AddChild(panel);
             _unitPanels.Add(panel);

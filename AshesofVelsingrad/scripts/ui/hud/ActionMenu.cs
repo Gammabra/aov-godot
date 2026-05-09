@@ -1,7 +1,7 @@
 using System;
-using Godot;
-using AshesOfVelsingrad.UI.Inventory;
 using AshesOfVelsingrad.Systems;
+using AshesOfVelsingrad.UI.Inventory;
+using Godot;
 
 namespace AshesOfVelsingrad.UI.Hud;
 
@@ -119,7 +119,7 @@ public sealed partial class ActionMenu : Control
     /// </summary>
     public void SetInventoryUI(BattleInventoryUI inventoryUI, SkillSelector skillSelector, Func<InventorySystem?> getActiveInventory)
     {
-        _inventoryUI  = inventoryUI;
+        _inventoryUI = inventoryUI;
         _skillSelector = skillSelector;
         _getActiveInventory = getActiveInventory;
     }

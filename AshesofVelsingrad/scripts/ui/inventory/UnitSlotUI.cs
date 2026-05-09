@@ -1,6 +1,6 @@
+using AshesOfVelsingrad.Managers;
 using AshesOfVelsingrad.Systems;
 using AshesOfVelsingrad.UI.Hud;
-using AshesOfVelsingrad.Managers;
 using Godot;
 
 namespace AshesOfVelsingrad.UI.Inventory;
@@ -95,10 +95,10 @@ public sealed partial class UnitSlotUI : PanelContainer
         // Tag the source as a unit loadout slot so _DropData can distinguish it
         return new Godot.Collections.Dictionary
         {
-            ["source"]     = "unit",
-            ["from_slot"]  = SlotIndex,
-            ["item_id"]    = slot.ItemId,
-            ["quantity"]   = slot.Quantity,
+            ["source"] = "unit",
+            ["from_slot"] = SlotIndex,
+            ["item_id"] = slot.ItemId,
+            ["quantity"] = slot.Quantity,
             ["from_inv_id"] = GetInstanceId(), // used to identify which UnitSlotUI dragged
         };
     }

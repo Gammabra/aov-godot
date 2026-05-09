@@ -1,4 +1,4 @@
-﻿using AshesOfVelsingrad.Managers;
+using AshesOfVelsingrad.Managers;
 using AshesOfVelsingrad.player;
 using Godot;
 

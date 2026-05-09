@@ -115,7 +115,7 @@ public partial class GameManager
             selector.OnSkillSelected += OnHudSkillSlotChosen;
 
         if (_battleHud.InventoryPanel is not null && _battleInputSystemContainer is not null)
-        _battleHud.InventoryPanel.SetBattleInputSystem(_battleInputSystemContainer);
+            _battleHud.InventoryPanel.SetBattleInputSystem(_battleInputSystemContainer);
 
         if (_battleHud?.ActionMenu is { } actionMenu
             && _battleHud.InventoryPanel is not null

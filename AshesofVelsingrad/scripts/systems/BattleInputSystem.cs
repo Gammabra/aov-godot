@@ -37,35 +37,35 @@ namespace AshesOfVelsingrad.Systems;
 /// </remarks>
 public partial class BattleInputSystem : Node
 {
-	#region Godot Private Fields
+    #region Godot Private Fields
 
-	[Export]
-	private NodePath? _mapSystemPath;
+    [Export]
+    private NodePath? _mapSystemPath;
 
-	[Export]
-	private NodePath? _camera3DPath;
+    [Export]
+    private NodePath? _camera3DPath;
 
     [Signal]
     public delegate void OnUseItemPressedEventHandler(int slotIndex);
 
-	private MapSystem? _mapSystemContainer;
-	private Camera3D? _camera3DContainer;
+    private MapSystem? _mapSystemContainer;
+    private Camera3D? _camera3DContainer;
 
-	#endregion
+    #endregion
 
-	#region Private Fields
+    #region Private Fields
 
-	private bool _inputEnabled = true;
+    private bool _inputEnabled = true;
 
-	#endregion
+    #endregion
 
-	#region Private Properties
+    #region Private Properties
 
-	private static BattleInputSystem? Instance { get; set; }
+    private static BattleInputSystem? Instance { get; set; }
 
-	#endregion
+    #endregion
 
-	#region Godot Public Events
+    #region Godot Public Events
 
     /// <summary>
     ///     Emitted when the player presses the "pass turn" input action.
@@ -115,37 +115,37 @@ public partial class BattleInputSystem : Node
     [Signal]
     public delegate void OnOpenInventoryPressedEventHandler();
 
-	#endregion
+    #endregion
 
-	#region Class Initialization
+    #region Class Initialization
 
-	/// <summary>
-	///     Called when the node is added to the scene tree.
-	///     Initializes the <see cref="BattleInputSystem" /> instance and checks for duplicates.
-	/// </summary>
-	/// <remarks>
-	///     This method is called automatically by Godot when the node is ready.
-	///     It ensures that only one instance of the <see cref="BattleInputSystem" /> exists in the scene tree.
-	///     If a duplicate instance is found, it removes the duplicate.
-	/// </remarks>
-	public override void _Ready()
-	{
-		// For AutoLoad, the initialization does immediately
-		if (IsInsideTree() && GetParent() == GetTree().Root)
-		{
-			Initialize();
-		}
-		// For manual instances, check for duplicates.
-		else if (Instance == null)
-		{
-			Initialize();
-		}
-		else
-		{
-			GD.PrintErr($"Multiple instances of {GetType().Name} detected. Removing duplicate.");
-			QueueFree();
-		}
-	}
+    /// <summary>
+    ///     Called when the node is added to the scene tree.
+    ///     Initializes the <see cref="BattleInputSystem" /> instance and checks for duplicates.
+    /// </summary>
+    /// <remarks>
+    ///     This method is called automatically by Godot when the node is ready.
+    ///     It ensures that only one instance of the <see cref="BattleInputSystem" /> exists in the scene tree.
+    ///     If a duplicate instance is found, it removes the duplicate.
+    /// </remarks>
+    public override void _Ready()
+    {
+        // For AutoLoad, the initialization does immediately
+        if (IsInsideTree() && GetParent() == GetTree().Root)
+        {
+            Initialize();
+        }
+        // For manual instances, check for duplicates.
+        else if (Instance == null)
+        {
+            Initialize();
+        }
+        else
+        {
+            GD.PrintErr($"Multiple instances of {GetType().Name} detected. Removing duplicate.");
+            QueueFree();
+        }
+    }
 
     /// <summary>
     ///     Initializes the <see cref="BattleInputSystem" /> instance
@@ -177,9 +177,9 @@ public partial class BattleInputSystem : Node
         Instance = instance;
     }
 
-	#endregion
+    #endregion
 
-	#region Public Methods
+    #region Public Methods
 
     /// <inheritdoc />
     public override void _Input(InputEvent @event)
@@ -202,17 +202,17 @@ public partial class BattleInputSystem : Node
                 _mapSystemContainer is null)
                 return;
 
-			Vector2 mouse = GetViewport().GetMousePosition();
-			Vector3 from = _camera3DContainer.ProjectRayOrigin(mouse);
-			Vector3 dir = _camera3DContainer.ProjectRayNormal(mouse);
-			Vector3 to = from + dir * 2000f;
+            Vector2 mouse = GetViewport().GetMousePosition();
+            Vector3 from = _camera3DContainer.ProjectRayOrigin(mouse);
+            Vector3 dir = _camera3DContainer.ProjectRayNormal(mouse);
+            Vector3 to = from + dir * 2000f;
 
-			PhysicsDirectSpaceState3D space = _camera3DContainer.GetWorld3D().DirectSpaceState;
-			PhysicsRayQueryParameters3D query = PhysicsRayQueryParameters3D.Create(
-				from,
-				to
-			);
-			Dictionary? result = space.IntersectRay(query);
+            PhysicsDirectSpaceState3D space = _camera3DContainer.GetWorld3D().DirectSpaceState;
+            PhysicsRayQueryParameters3D query = PhysicsRayQueryParameters3D.Create(
+                from,
+                to
+            );
+            Dictionary? result = space.IntersectRay(query);
 
             if (result.Count < 0)
                 return;
@@ -232,41 +232,41 @@ public partial class BattleInputSystem : Node
             return;
         }
 
-		if (@event.IsActionPressed("battle_select_skill1"))
-		{
-			EmitSignalOnSelectedSkillPressed(0);
-			return;
-		}
-
-		if (@event.IsActionPressed("battle_select_skill2"))
-		{
-			EmitSignalOnSelectedSkillPressed(1);
-			return;
-		}
-
-		if (@event.IsActionPressed("battle_select_skill3"))
-		{
-			EmitSignalOnSelectedSkillPressed(2);
-			return;
-		}
-
-		if (@event.IsActionPressed("battle_select_skill4"))
-		{
-			EmitSignalOnSelectedSkillPressed(3);
-			return;
-		}
-
-		if (@event.IsActionPressed("battle_select_skill5"))
+        if (@event.IsActionPressed("battle_select_skill1"))
         {
-			EmitSignalOnSelectedSkillPressed(4);
+            EmitSignalOnSelectedSkillPressed(0);
             return;
-		}
+        }
+
+        if (@event.IsActionPressed("battle_select_skill2"))
+        {
+            EmitSignalOnSelectedSkillPressed(1);
+            return;
+        }
+
+        if (@event.IsActionPressed("battle_select_skill3"))
+        {
+            EmitSignalOnSelectedSkillPressed(2);
+            return;
+        }
+
+        if (@event.IsActionPressed("battle_select_skill4"))
+        {
+            EmitSignalOnSelectedSkillPressed(3);
+            return;
+        }
+
+        if (@event.IsActionPressed("battle_select_skill5"))
+        {
+            EmitSignalOnSelectedSkillPressed(4);
+            return;
+        }
 
         if (@event.IsActionPressed("open_inventory"))
         {
             EmitSignalOnOpenInventoryPressed();
         }
-	}
+    }
 
     /// <summary>
     ///     Set the input to enabled or not.
@@ -277,9 +277,9 @@ public partial class BattleInputSystem : Node
         _inputEnabled = enabled;
     }
 
-	#endregion
+    #endregion
 
-	#region Class Destroyer
+    #region Class Destroyer
 
     /// <summary>
     ///     Called when the node is removed from the scene tree.
@@ -297,5 +297,5 @@ public partial class BattleInputSystem : Node
         Instance = null;
     }
 
-	#endregion
+    #endregion
 }

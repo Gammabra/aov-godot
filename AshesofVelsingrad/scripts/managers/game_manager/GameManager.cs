@@ -118,8 +118,8 @@ public partial class GameManager : BaseManager
         if (_gameOverScreen is not null && IsInstanceValid(_gameOverScreen)) _gameOverScreen.QueueFree();
         if (_battleHud is not null && IsInstanceValid(_battleHud) && _battleHud.GetParent() == GetTree().Root)
             _battleHud.QueueFree();
-        if (_inventoryUI is not null && IsInstanceValid(_inventoryUI) && _inventoryUI.GetParent() == GetTree().Root)
-            _inventoryUI.QueueFree();
+        if (_battleHud?.InventoryPanel is not null && IsInstanceValid(_battleHud?.InventoryPanel) && _battleHud?.InventoryPanel.GetParent() == GetTree().Root)
+            _battleHud?.InventoryPanel.QueueFree();
         base._ExitTree();
     }
 
@@ -144,7 +144,6 @@ public partial class GameManager : BaseManager
         _battleInputSystemContainer.OnSelectMovePressed += PlayerSelectedMove;
         _playerUnitsContainer = GetNode<Node>(_playerUnitsPath);
         _enemyUnitsContainer = GetNode<Node>(_enemyUnitsPath);
-        _battleInputSystemContainer.OnOpenInventoryPressed += OpenInventory;
         _battleInputSystemContainer.OnUseItemPressed += PlayerUsedItem;
 
         if (_alliedUnitsPath is not null && !_alliedUnitsPath.IsEmpty)
@@ -167,7 +166,6 @@ public partial class GameManager : BaseManager
         // refresh once their _Ready has fired (see RefreshHudOnReady below).
         EnsureHud();
         EnsureIndicators();
-        EnsureInventoryUI();
 
         _turnManagerContainer = GetNode<TurnManager>(_turnManagerPath);
         _turnManagerContainer.OnPlayerTurn += ActivatePlayerUnit;
@@ -314,9 +312,8 @@ public partial class GameManager : BaseManager
             return;
         }
 
-        _inventoryUI?.Toggle();
-
-        if (_inventoryUI is { Visible: true }) _inventoryUI.Toggle();
+        if (_battleHud?.InventoryPanel is not null)
+            _battleHud.InventoryPanel.Visible = false;
 
         _clickOnMapContext = AovDataStructures.ClickOnMapContext.MoveUnit;
         _isPlayerTurn = false;
@@ -544,19 +541,6 @@ public partial class GameManager : BaseManager
         }
 
         _statusEffectSystem.ProcessTurnEnd();
-    }
-
-    /// <summary>
-    /// Opens the inventory for the currently active unit.
-    /// </summary>
-    private void OpenInventory()
-    {
-        if (_turnManagerContainer == null)
-            return;
-
-        var currentUnit = _turnManagerContainer.GetCurrentUnit();
-        _inventoryUI?.BindInventory((InventorySystem)currentUnit.Inventory);
-        _inventoryUI?.Toggle();
     }
 
     /// <summary>

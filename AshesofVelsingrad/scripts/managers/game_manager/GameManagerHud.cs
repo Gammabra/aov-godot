@@ -21,8 +21,6 @@ public partial class GameManager
     /// <summary>HUD root, spawned (or found) in <see cref="EnsureHud" />.</summary>
     protected BattleHud? _battleHud;
 
-    protected BattleInventoryUI? _inventoryUI;
-
     /// <summary>World-space tile overlays (move/target/hover).</summary>
     protected IndicatorOverlay? _indicators;
 
@@ -86,28 +84,6 @@ public partial class GameManager
         }
     }
 
-    /// <summary>
-    ///     Spawn (or find) the <see cref="BattleInventoryUI" /> overlay, following the
-    ///     exact same pattern as <see cref="EnsureHud" />.
-    /// </summary>
-    protected void EnsureInventoryUI()
-    {
-        if (_inventoryUI is not null && IsInstanceValid(_inventoryUI)) return;
-
-        SceneTree tree = GetTree();
-        Node host = tree.CurrentScene ?? tree.Root;
-
-        // Try to find one already in the tree (designer-placed or previous call)
-        foreach (Node child in host.GetChildren())
-        {
-            if (child is BattleInventoryUI existing) { _inventoryUI = existing; return; }
-        }
-
-        _inventoryUI = new BattleInventoryUI { Name = "InventoryUI" };
-        host.CallDeferred("add_child", _inventoryUI);
-        _inventoryUI.EnsureBuilt();
-    }
-
     /// <summary>Spawn the move/target/hover indicator overlay parented to the map.</summary>
     protected void EnsureIndicators()
     {
@@ -138,14 +114,20 @@ public partial class GameManager
         if (_battleHud.SkillSelector is { } selector)
             selector.OnSkillSelected += OnHudSkillSlotChosen;
 
-        if (_inventoryUI is not null && _battleInputSystemContainer is not null)
-        _inventoryUI.SetBattleInputSystem(_battleInputSystemContainer);
+        if (_battleHud.InventoryPanel is not null && _battleInputSystemContainer is not null)
+        _battleHud.InventoryPanel.SetBattleInputSystem(_battleInputSystemContainer);
 
         if (_battleHud?.ActionMenu is { } actionMenu
-            && _inventoryUI is not null
+            && _battleHud.InventoryPanel is not null
             && _battleHud.SkillSelector is { } skillSelector)
         {
-            actionMenu.SetInventoryUI(_inventoryUI, skillSelector);
+            actionMenu.SetInventoryUI(
+                _battleHud.InventoryPanel,
+                skillSelector,
+                () => _turnManagerContainer?.GetCurrentUnit().Inventory as InventorySystem
+            );
+            if (_battleInputSystemContainer is not null)
+                _battleHud.InventoryPanel.SetBattleInputSystem(_battleInputSystemContainer);
         }
     }
 

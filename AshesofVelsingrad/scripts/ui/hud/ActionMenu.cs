@@ -1,6 +1,7 @@
 using System;
 using Godot;
 using AshesOfVelsingrad.UI.Inventory;
+using AshesOfVelsingrad.Systems;
 
 namespace AshesOfVelsingrad.UI.Hud;
 
@@ -36,6 +37,7 @@ public sealed partial class ActionMenu : Control
 
     private Button? _cancelButton;
     private bool _built;
+    private Func<InventorySystem?>? _getActiveInventory;
 
     /// <inheritdoc />
     public override void _Ready()
@@ -115,19 +117,27 @@ public sealed partial class ActionMenu : Control
     ///     Connect the action menu to the inventory panel and skill selector
     ///     so "Use Item" can swap them in place.
     /// </summary>
-    public void SetInventoryUI(BattleInventoryUI inventoryUI, SkillSelector skillSelector)
+    public void SetInventoryUI(BattleInventoryUI inventoryUI, SkillSelector skillSelector, Func<InventorySystem?> getActiveInventory)
     {
         _inventoryUI  = inventoryUI;
         _skillSelector = skillSelector;
+        _getActiveInventory = getActiveInventory;
     }
 
     private void OnUseItemPressed()
     {
-        if (_inventoryUI == null || _skillSelector == null) return;
+        if (_inventoryUI == null || _skillSelector == null)
+            return;
 
         bool opening = !_inventoryUI.Visible;
+        if (opening && _getActiveInventory != null)
+        {
+            var inv = _getActiveInventory();
+            if (inv != null) _inventoryUI.BindInventory(inv);
+        }
+
         _inventoryUI.Visible = opening;
-        _skillSelector.Visible = !opening; // swap: hide skill bar when inventory is open
+        _skillSelector.Visible = !opening;
     }
 
     // In every other button's press handler, close the inventory if open.

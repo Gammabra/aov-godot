@@ -24,7 +24,7 @@ public sealed partial class BattleInventorySlotUI : PanelContainer
         if (_built) return;
         _built = true;
 
-        CustomMinimumSize = new Vector2(InventoryConstants.SlotSize * 1.8f, InventoryConstants.SlotSize);
+        CustomMinimumSize = new Vector2(66f, 48f);
         AddThemeStyleboxOverride("panel", HudStyle.MakePanelStyle());
         MouseFilter = MouseFilterEnum.Stop;
 

@@ -15,7 +15,7 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 [application]
 
 config/name="AshesofVelsingrad"
-run/main_scene="uid://dly7v2pb0m006"
+run/main_scene="uid://cuadq8eeoqg7j"
 config/features=PackedStringArray("4.6", "C#", "Forward Plus")
 boot_splash/bg_color=Color(0.28485027, 0.28485027, 0.2848502, 1)
 boot_splash/image="uid://bd7oq7v7dvar6"

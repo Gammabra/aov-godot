@@ -2686,6 +2686,20 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.Managers.PlayerInventoryManager.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.Managers.PlayerInventoryManager.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.Managers.PlayerInventoryManager",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "documentation/api/AshesOfVelsingrad.Managers.SceneManager.yml",
       "output": {
         ".html": {
@@ -3120,6 +3134,34 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.Systems.EquipSlot.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.Systems.EquipSlot.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.Systems.EquipSlot",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.Systems.EquipmentSystem.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.Systems.EquipmentSystem.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.Systems.EquipmentSystem",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "documentation/api/AshesOfVelsingrad.Systems.Faction.yml",
       "output": {
         ".html": {
@@ -3187,6 +3229,48 @@
       "IsMRef": true,
       "Title": "AshesOfVelsingrad.Systems.IInteractor",
       "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.Systems.IInteractor.yml\" sourcestartlinenumber=\"1\">Represents an entity capable of initiating interactions with interactable objects.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.Systems.IInventorySlot.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.Systems.IInventorySlot.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.Systems.IInventorySlot",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.Systems.IInventorySystem.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.Systems.IInventorySystem.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.Systems.IInventorySystem",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.Systems.IItemSystem.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.Systems.IItemSystem.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.Systems.IItemSystem",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
@@ -3260,6 +3344,76 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.Systems.InventorySlot.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.Systems.InventorySlot.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.Systems.InventorySlot",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.Systems.InventorySystem.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.Systems.InventorySystem.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.Systems.InventorySystem",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.Systems.ItemCatalog.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.Systems.ItemCatalog.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.Systems.ItemCatalog",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.Systems.ItemCategory.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.Systems.ItemCategory.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.Systems.ItemCategory",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.Systems.ItemSystem.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.Systems.ItemSystem.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.Systems.ItemSystem",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "documentation/api/AshesOfVelsingrad.Systems.MapSystem.yml",
       "output": {
         ".html": {
@@ -3313,6 +3467,20 @@
       "IsMRef": true,
       "Title": "AshesOfVelsingrad.Systems.StatusEffectSystem",
       "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.Systems.StatusEffectSystem.yml\" sourcestartlinenumber=\"1\">Manages the lifecycle and application of <xref href=\"AshesOfVelsingrad.Systems.StatusEffect%601\" data-throw-if-not-resolved=\"false\"></xref>s\nfor all tracked targets in the game, including units and map cells.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.Systems.TargetType.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.Systems.TargetType.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.Systems.TargetType",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
@@ -3522,6 +3690,118 @@
       "Uid": null,
       "IsMRef": true,
       "Title": "AshesOfVelsingrad.UI.Hud",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.UI.Inventory.BattleInventorySlotUI.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.UI.Inventory.BattleInventorySlotUI.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.UI.Inventory.BattleInventorySlotUI",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.UI.Inventory.BattleInventorySlotUI.yml\" sourcestartlinenumber=\"1\">Single slot in the battle inventory. Styled with <xref href=\"AshesOfVelsingrad.UI.Hud.HudStyle\" data-throw-if-not-resolved=\"false\"></xref>.\nShows item icon area, name label, and a &quot;Use&quot; button.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.UI.Inventory.BattleInventoryUI.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.UI.Inventory.BattleInventoryUI.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.UI.Inventory.BattleInventoryUI",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.UI.Inventory.BattleInventoryUI.yml\" sourcestartlinenumber=\"1\">Battle-phase inventory panel. Lives inside <xref href=\"AshesOfVelsingrad.UI.Hud.BattleHud\" data-throw-if-not-resolved=\"false\"></xref>\nas a plain Control so it shares the same coordinate space as\n<xref href=\"AshesOfVelsingrad.UI.Hud.SkillSelector\" data-throw-if-not-resolved=\"false\"></xref> and <xref href=\"AshesOfVelsingrad.UI.Hud.ActionMenu\" data-throw-if-not-resolved=\"false\"></xref>.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.UI.Inventory.ExplorationInventoryUI.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.UI.Inventory.ExplorationInventoryUI.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.UI.Inventory.ExplorationInventoryUI",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.UI.Inventory.ExplorationInventoryUI.yml\" sourcestartlinenumber=\"1\">Exploration inventory panel: 30-slot global grid on the left,\n4 unit loadout rows on the right. Sized as a fraction of the viewport\nso it scales cleanly at any resolution.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.UI.Inventory.ExplorationSlotUI.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.UI.Inventory.ExplorationSlotUI.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.UI.Inventory.ExplorationSlotUI",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.UI.Inventory.ExplorationSlotUI.yml\" sourcestartlinenumber=\"1\">One slot in the 30-slot exploration inventory.\nSupports Godot drag-and-drop — drag starts here, drop lands on\n<xref href=\"AshesOfVelsingrad.UI.Inventory.UnitSlotUI\" data-throw-if-not-resolved=\"false\"></xref>.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.UI.Inventory.InventoryConstants.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.UI.Inventory.InventoryConstants.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.UI.Inventory.InventoryConstants",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.UI.Inventory.UnitSlotUI.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.UI.Inventory.UnitSlotUI.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.UI.Inventory.UnitSlotUI",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.UI.Inventory.UnitSlotUI.yml\" sourcestartlinenumber=\"1\">One of the <xref href=\"AshesOfVelsingrad.UI.Inventory.InventoryConstants.BattleCapacity\" data-throw-if-not-resolved=\"false\"></xref> slots shown per unit\nin the exploration transfer screen. Accepts drops from <xref href=\"AshesOfVelsingrad.UI.Inventory.ExplorationSlotUI\" data-throw-if-not-resolved=\"false\"></xref>.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.UI.Inventory.UnitTransferPanel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.UI.Inventory.UnitTransferPanel.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.UI.Inventory.UnitTransferPanel",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.UI.Inventory.UnitTransferPanel.yml\" sourcestartlinenumber=\"1\">Horizontal strip: unit name label + 5 drop-target slots.\nBinds to a persistent <xref href=\"AshesOfVelsingrad.Systems.InventorySystem\" data-throw-if-not-resolved=\"false\"></xref> party loadout,\nso no live unit node is required during exploration.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.UI.Inventory.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.UI.Inventory.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.UI.Inventory",
       "Summary": null
     },
     {
@@ -3802,6 +4082,62 @@
       "Uid": null,
       "IsMRef": true,
       "Title": "AshesOfVelsingrad.data.npc",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.items.IronSwordItem.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.items.IronSwordItem.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.items.IronSwordItem",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.items.LeatherArmorItem.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.items.LeatherArmorItem.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.items.LeatherArmorItem",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.items.PotionItem.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.items.PotionItem.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.items.PotionItem",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.items.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.items.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.items",
       "Summary": null
     },
     {

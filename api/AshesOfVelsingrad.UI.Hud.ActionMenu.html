@@ -1717,7 +1717,7 @@ is invoked by <code>GameManager</code> when entering skill-targeting mode.</p>
 
   <h3 id="AshesOfVelsingrad_UI_Hud_ActionMenu_EnsureBuilt" data-uid="AshesOfVelsingrad.UI.Hud.ActionMenu.EnsureBuilt">
   EnsureBuilt()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/ui/hud/ActionMenu.cs/#L43"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/ui/hud/ActionMenu.cs/#L49"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Idempotent build — safe to call before <code>_Ready</code> fires.</p>
@@ -1740,11 +1740,48 @@ is invoked by <code>GameManager</code> when entering skill-targeting mode.</p>
 
 
 
+  <a id="AshesOfVelsingrad_UI_Hud_ActionMenu_SetInventoryUI_" data-uid="AshesOfVelsingrad.UI.Hud.ActionMenu.SetInventoryUI*"></a>
+
+  <h3 id="AshesOfVelsingrad_UI_Hud_ActionMenu_SetInventoryUI_AshesOfVelsingrad_UI_Inventory_BattleInventoryUI_AshesOfVelsingrad_UI_Hud_SkillSelector_System_Func_AshesOfVelsingrad_Systems_InventorySystem__" data-uid="AshesOfVelsingrad.UI.Hud.ActionMenu.SetInventoryUI(AshesOfVelsingrad.UI.Inventory.BattleInventoryUI,AshesOfVelsingrad.UI.Hud.SkillSelector,System.Func{AshesOfVelsingrad.Systems.InventorySystem})">
+  SetInventoryUI(BattleInventoryUI, SkillSelector, Func&lt;InventorySystem?&gt;)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/ui/hud/ActionMenu.cs/#L120"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Connect the action menu to the inventory panel and skill selector
+so &quot;Use Item&quot; can swap them in place.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetInventoryUI(BattleInventoryUI inventoryUI, SkillSelector skillSelector, Func&lt;InventorySystem?&gt; getActiveInventory)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>inventoryUI</code> <a class="xref" href="AshesOfVelsingrad.UI.Inventory.BattleInventoryUI.html">BattleInventoryUI</a></dt>
+    <dd></dd>
+    <dt><code>skillSelector</code> <a class="xref" href="AshesOfVelsingrad.UI.Hud.SkillSelector.html">SkillSelector</a></dt>
+    <dd></dd>
+    <dt><code>getActiveInventory</code> <span class="xref">Func</span>&lt;<a class="xref" href="AshesOfVelsingrad.Systems.InventorySystem.html">InventorySystem</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
   <a id="AshesOfVelsingrad_UI_Hud_ActionMenu_ShowCancel_" data-uid="AshesOfVelsingrad.UI.Hud.ActionMenu.ShowCancel*"></a>
 
   <h3 id="AshesOfVelsingrad_UI_Hud_ActionMenu_ShowCancel_System_Boolean_" data-uid="AshesOfVelsingrad.UI.Hud.ActionMenu.ShowCancel(System.Boolean)">
   ShowCancel(bool)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/ui/hud/ActionMenu.cs/#L101"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/ui/hud/ActionMenu.cs/#L175"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Show or hide the Cancel button. Called by <code>GameManager</code> when the player
@@ -1778,7 +1815,7 @@ enters or leaves skill-targeting mode.</p>
 
   <h3 id="AshesOfVelsingrad_UI_Hud_ActionMenu__Ready" data-uid="AshesOfVelsingrad.UI.Hud.ActionMenu._Ready">
   _Ready()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/ui/hud/ActionMenu.cs/#L37"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/ui/hud/ActionMenu.cs/#L43"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Called when the node is "ready", i.e. when both the node and its children have entered the scene tree. If the node has children, their <span class="xref">Godot.Node._Ready()</span> callbacks get triggered first, and the parent node will receive the ready notification afterwards.</p>
@@ -1811,7 +1848,7 @@ enters or leaves skill-targeting mode.</p>
 
   <h3 id="AshesOfVelsingrad_UI_Hud_ActionMenu_OnAttackPressed" data-uid="AshesOfVelsingrad.UI.Hud.ActionMenu.OnAttackPressed">
   OnAttackPressed
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/ui/hud/ActionMenu.cs/#L19"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/ui/hud/ActionMenu.cs/#L21"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Player chose the basic-attack action.</p>
@@ -1842,7 +1879,7 @@ enters or leaves skill-targeting mode.</p>
 
   <h3 id="AshesOfVelsingrad_UI_Hud_ActionMenu_OnCancelPressed" data-uid="AshesOfVelsingrad.UI.Hud.ActionMenu.OnCancelPressed">
   OnCancelPressed
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/ui/hud/ActionMenu.cs/#L31"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/ui/hud/ActionMenu.cs/#L33"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Player cancelled skill targeting (Cancel button / Esc / right-click).</p>
@@ -1873,7 +1910,7 @@ enters or leaves skill-targeting mode.</p>
 
   <h3 id="AshesOfVelsingrad_UI_Hud_ActionMenu_OnMovePressed" data-uid="AshesOfVelsingrad.UI.Hud.ActionMenu.OnMovePressed">
   OnMovePressed
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/ui/hud/ActionMenu.cs/#L25"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/ui/hud/ActionMenu.cs/#L27"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Player chose the move action (returns to MoveUnit click context).</p>
@@ -1904,7 +1941,7 @@ enters or leaves skill-targeting mode.</p>
 
   <h3 id="AshesOfVelsingrad_UI_Hud_ActionMenu_OnPassPressed" data-uid="AshesOfVelsingrad.UI.Hud.ActionMenu.OnPassPressed">
   OnPassPressed
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/ui/hud/ActionMenu.cs/#L28"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/ui/hud/ActionMenu.cs/#L30"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Player chose to pass the turn.</p>
@@ -1935,7 +1972,7 @@ enters or leaves skill-targeting mode.</p>
 
   <h3 id="AshesOfVelsingrad_UI_Hud_ActionMenu_OnSkillPressed" data-uid="AshesOfVelsingrad.UI.Hud.ActionMenu.OnSkillPressed">
   OnSkillPressed
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/ui/hud/ActionMenu.cs/#L22"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/ui/hud/ActionMenu.cs/#L24"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Player asked to open / focus the skill submenu.</p>

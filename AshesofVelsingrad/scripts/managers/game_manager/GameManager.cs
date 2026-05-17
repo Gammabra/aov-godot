@@ -118,6 +118,8 @@ public partial class GameManager : BaseManager
         if (_gameOverScreen is not null && IsInstanceValid(_gameOverScreen)) _gameOverScreen.QueueFree();
         if (_battleHud is not null && IsInstanceValid(_battleHud) && _battleHud.GetParent() == GetTree().Root)
             _battleHud.QueueFree();
+        if (_battleHud?.InventoryPanel is not null && IsInstanceValid(_battleHud?.InventoryPanel) && _battleHud?.InventoryPanel.GetParent() == GetTree().Root)
+            _battleHud?.InventoryPanel.QueueFree();
         base._ExitTree();
     }
 
@@ -142,6 +144,8 @@ public partial class GameManager : BaseManager
         _battleInputSystemContainer.OnSelectMovePressed += PlayerSelectedMove;
         _playerUnitsContainer = GetNode<Node>(_playerUnitsPath);
         _enemyUnitsContainer = GetNode<Node>(_enemyUnitsPath);
+        _battleInputSystemContainer.OnUseItemPressed += PlayerUsedItem;
+
         if (_alliedUnitsPath is not null && !_alliedUnitsPath.IsEmpty)
             _alliedUnitsContainer = GetNodeOrNull<Node>(_alliedUnitsPath);
 
@@ -307,6 +311,9 @@ public partial class GameManager : BaseManager
             GD.PrintErr("MapSystemContainer not set in GameManager.");
             return;
         }
+
+        if (_battleHud?.InventoryPanel is not null)
+            _battleHud.InventoryPanel.Visible = false;
 
         _clickOnMapContext = AovDataStructures.ClickOnMapContext.MoveUnit;
         _isPlayerTurn = false;
@@ -534,6 +541,35 @@ public partial class GameManager : BaseManager
         }
 
         _statusEffectSystem.ProcessTurnEnd();
+    }
+
+    /// <summary>
+    /// Called when the player confirms using an item from the inventory.
+    /// For now uses no map target (self/no-target items only).
+    /// Target-requiring items can be extended like skills.
+    /// </summary>
+    private void PlayerUsedItem(int slotIndex)
+    {
+        if (_turnManagerContainer == null)
+        {
+            GD.PrintErr("TurnManagerContainer not set in GameManager.");
+            return;
+        }
+
+        var currentUnit = _turnManagerContainer.GetCurrentUnit();
+        var slot = currentUnit.Inventory.GetSlot(slotIndex);
+
+        if (slot.IsEmpty)
+        {
+            GD.PrintErr($"Slot {slotIndex} is empty.");
+            _battleInputSystemContainer?.SetInputEnabled(true);
+            return;
+        }
+
+        currentUnit.UseItem(slotIndex, target: null, _mapSystemContainer);
+
+        if (!ItemCatalog.TryGet(slot.ItemId, out var item) || !item.ConsumesTurn)
+            _battleInputSystemContainer?.SetInputEnabled(true);
     }
 
     #endregion

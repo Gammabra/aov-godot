@@ -1,7 +1,7 @@
 using AshesOfVelsingrad.Data.Corruption;
-using AshesOfVelsingrad.Systems;
 using AshesOfVelsingrad.systems.battle;
 using AshesOfVelsingrad.systems.status_effects;
+using AshesOfVelsingrad.Systems;
 
 namespace AshesOfVelsingrad.systems.items.behaviours;
 

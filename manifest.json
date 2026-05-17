@@ -5617,500 +5617,500 @@
     },
     {
       "type": "Resource",
-      "source_relative_path": "documentation/coverage/AshesofVelsingrad.Core_AIDecision.html",
+      "source_relative_path": "documentation/coverage/html/AshesofVelsingrad.Core_AIDecision.html",
       "output": {
         "resource": {
-          "relative_path": "coverage/AshesofVelsingrad.Core_AIDecision.html"
+          "relative_path": "coverage/html/AshesofVelsingrad.Core_AIDecision.html"
         }
       },
       "version": ""
     },
     {
       "type": "Resource",
-      "source_relative_path": "documentation/coverage/AshesofVelsingrad.Core_AIDecisionGenerator.html",
+      "source_relative_path": "documentation/coverage/html/AshesofVelsingrad.Core_AIDecisionGenerator.html",
       "output": {
         "resource": {
-          "relative_path": "coverage/AshesofVelsingrad.Core_AIDecisionGenerator.html"
+          "relative_path": "coverage/html/AshesofVelsingrad.Core_AIDecisionGenerator.html"
         }
       },
       "version": ""
     },
     {
       "type": "Resource",
-      "source_relative_path": "documentation/coverage/AshesofVelsingrad.Core_AIEvaluator.html",
+      "source_relative_path": "documentation/coverage/html/AshesofVelsingrad.Core_AIEvaluator.html",
       "output": {
         "resource": {
-          "relative_path": "coverage/AshesofVelsingrad.Core_AIEvaluator.html"
+          "relative_path": "coverage/html/AshesofVelsingrad.Core_AIEvaluator.html"
         }
       },
       "version": ""
     },
     {
       "type": "Resource",
-      "source_relative_path": "documentation/coverage/AshesofVelsingrad.Core_AIUtilities.html",
+      "source_relative_path": "documentation/coverage/html/AshesofVelsingrad.Core_AIUtilities.html",
       "output": {
         "resource": {
-          "relative_path": "coverage/AshesofVelsingrad.Core_AIUtilities.html"
+          "relative_path": "coverage/html/AshesofVelsingrad.Core_AIUtilities.html"
         }
       },
       "version": ""
     },
     {
       "type": "Resource",
-      "source_relative_path": "documentation/coverage/AshesofVelsingrad.Core_AtkBuffer.html",
+      "source_relative_path": "documentation/coverage/html/AshesofVelsingrad.Core_AtkBuffer.html",
       "output": {
         "resource": {
-          "relative_path": "coverage/AshesofVelsingrad.Core_AtkBuffer.html"
+          "relative_path": "coverage/html/AshesofVelsingrad.Core_AtkBuffer.html"
         }
       },
       "version": ""
     },
     {
       "type": "Resource",
-      "source_relative_path": "documentation/coverage/AshesofVelsingrad.Core_AudioCatalog.html",
+      "source_relative_path": "documentation/coverage/html/AshesofVelsingrad.Core_AudioCatalog.html",
       "output": {
         "resource": {
-          "relative_path": "coverage/AshesofVelsingrad.Core_AudioCatalog.html"
+          "relative_path": "coverage/html/AshesofVelsingrad.Core_AudioCatalog.html"
         }
       },
       "version": ""
     },
     {
       "type": "Resource",
-      "source_relative_path": "documentation/coverage/AshesofVelsingrad.Core_AudioRegistry.html",
+      "source_relative_path": "documentation/coverage/html/AshesofVelsingrad.Core_AudioRegistry.html",
       "output": {
         "resource": {
-          "relative_path": "coverage/AshesofVelsingrad.Core_AudioRegistry.html"
+          "relative_path": "coverage/html/AshesofVelsingrad.Core_AudioRegistry.html"
         }
       },
       "version": ""
     },
     {
       "type": "Resource",
-      "source_relative_path": "documentation/coverage/AshesofVelsingrad.Core_AudioTrack.html",
+      "source_relative_path": "documentation/coverage/html/AshesofVelsingrad.Core_AudioTrack.html",
       "output": {
         "resource": {
-          "relative_path": "coverage/AshesofVelsingrad.Core_AudioTrack.html"
+          "relative_path": "coverage/html/AshesofVelsingrad.Core_AudioTrack.html"
         }
       },
       "version": ""
     },
     {
       "type": "Resource",
-      "source_relative_path": "documentation/coverage/AshesofVelsingrad.Core_AudioVolumeMath.html",
+      "source_relative_path": "documentation/coverage/html/AshesofVelsingrad.Core_AudioVolumeMath.html",
       "output": {
         "resource": {
-          "relative_path": "coverage/AshesofVelsingrad.Core_AudioVolumeMath.html"
+          "relative_path": "coverage/html/AshesofVelsingrad.Core_AudioVolumeMath.html"
         }
       },
       "version": ""
     },
     {
       "type": "Resource",
-      "source_relative_path": "documentation/coverage/AshesofVelsingrad.Core_BattleState.html",
+      "source_relative_path": "documentation/coverage/html/AshesofVelsingrad.Core_BattleState.html",
       "output": {
         "resource": {
-          "relative_path": "coverage/AshesofVelsingrad.Core_BattleState.html"
+          "relative_path": "coverage/html/AshesofVelsingrad.Core_BattleState.html"
         }
       },
       "version": ""
     },
     {
       "type": "Resource",
-      "source_relative_path": "documentation/coverage/AshesofVelsingrad.Core_BurningEffect.html",
+      "source_relative_path": "documentation/coverage/html/AshesofVelsingrad.Core_BurningEffect.html",
       "output": {
         "resource": {
-          "relative_path": "coverage/AshesofVelsingrad.Core_BurningEffect.html"
+          "relative_path": "coverage/html/AshesofVelsingrad.Core_BurningEffect.html"
         }
       },
       "version": ""
     },
     {
       "type": "Resource",
-      "source_relative_path": "documentation/coverage/AshesofVelsingrad.Core_CellInformation.html",
+      "source_relative_path": "documentation/coverage/html/AshesofVelsingrad.Core_CellInformation.html",
       "output": {
         "resource": {
-          "relative_path": "coverage/AshesofVelsingrad.Core_CellInformation.html"
+          "relative_path": "coverage/html/AshesofVelsingrad.Core_CellInformation.html"
         }
       },
       "version": ""
     },
     {
       "type": "Resource",
-      "source_relative_path": "documentation/coverage/AshesofVelsingrad.Core_EffectTarget_1.html",
+      "source_relative_path": "documentation/coverage/html/AshesofVelsingrad.Core_EffectTarget_1.html",
       "output": {
         "resource": {
-          "relative_path": "coverage/AshesofVelsingrad.Core_EffectTarget_1.html"
+          "relative_path": "coverage/html/AshesofVelsingrad.Core_EffectTarget_1.html"
         }
       },
       "version": ""
     },
     {
       "type": "Resource",
-      "source_relative_path": "documentation/coverage/AshesofVelsingrad.Core_EntityProfile.html",
+      "source_relative_path": "documentation/coverage/html/AshesofVelsingrad.Core_EntityProfile.html",
       "output": {
         "resource": {
-          "relative_path": "coverage/AshesofVelsingrad.Core_EntityProfile.html"
+          "relative_path": "coverage/html/AshesofVelsingrad.Core_EntityProfile.html"
         }
       },
       "version": ""
     },
     {
       "type": "Resource",
-      "source_relative_path": "documentation/coverage/AshesofVelsingrad.Core_FactionExtensions.html",
+      "source_relative_path": "documentation/coverage/html/AshesofVelsingrad.Core_FactionExtensions.html",
       "output": {
         "resource": {
-          "relative_path": "coverage/AshesofVelsingrad.Core_FactionExtensions.html"
+          "relative_path": "coverage/html/AshesofVelsingrad.Core_FactionExtensions.html"
         }
       },
       "version": ""
     },
     {
       "type": "Resource",
-      "source_relative_path": "documentation/coverage/AshesofVelsingrad.Core_Pathfinder.html",
+      "source_relative_path": "documentation/coverage/html/AshesofVelsingrad.Core_Pathfinder.html",
       "output": {
         "resource": {
-          "relative_path": "coverage/AshesofVelsingrad.Core_Pathfinder.html"
+          "relative_path": "coverage/html/AshesofVelsingrad.Core_Pathfinder.html"
         }
       },
       "version": ""
     },
     {
       "type": "Resource",
-      "source_relative_path": "documentation/coverage/AshesofVelsingrad.Core_SkillSystem.html",
+      "source_relative_path": "documentation/coverage/html/AshesofVelsingrad.Core_SkillSystem.html",
       "output": {
         "resource": {
-          "relative_path": "coverage/AshesofVelsingrad.Core_SkillSystem.html"
+          "relative_path": "coverage/html/AshesofVelsingrad.Core_SkillSystem.html"
         }
       },
       "version": ""
     },
     {
       "type": "Resource",
-      "source_relative_path": "documentation/coverage/AshesofVelsingrad.Core_StatusEffectSystem.html",
+      "source_relative_path": "documentation/coverage/html/AshesofVelsingrad.Core_StatusEffectSystem.html",
       "output": {
         "resource": {
-          "relative_path": "coverage/AshesofVelsingrad.Core_StatusEffectSystem.html"
+          "relative_path": "coverage/html/AshesofVelsingrad.Core_StatusEffectSystem.html"
         }
       },
       "version": ""
     },
     {
       "type": "Resource",
-      "source_relative_path": "documentation/coverage/AshesofVelsingrad.Core_StatusEffect_1.html",
+      "source_relative_path": "documentation/coverage/html/AshesofVelsingrad.Core_StatusEffect_1.html",
       "output": {
         "resource": {
-          "relative_path": "coverage/AshesofVelsingrad.Core_StatusEffect_1.html"
+          "relative_path": "coverage/html/AshesofVelsingrad.Core_StatusEffect_1.html"
         }
       },
       "version": ""
     },
     {
       "type": "Resource",
-      "source_relative_path": "documentation/coverage/AshesofVelsingrad.Core_Stun.html",
+      "source_relative_path": "documentation/coverage/html/AshesofVelsingrad.Core_Stun.html",
       "output": {
         "resource": {
-          "relative_path": "coverage/AshesofVelsingrad.Core_Stun.html"
+          "relative_path": "coverage/html/AshesofVelsingrad.Core_Stun.html"
         }
       },
       "version": ""
     },
     {
       "type": "Resource",
-      "source_relative_path": "documentation/coverage/class.js",
+      "source_relative_path": "documentation/coverage/html/class.js",
       "output": {
         "resource": {
-          "relative_path": "coverage/class.js"
+          "relative_path": "coverage/html/class.js"
         }
       },
       "version": ""
     },
     {
       "type": "Resource",
-      "source_relative_path": "documentation/coverage/icon_cog.svg",
+      "source_relative_path": "documentation/coverage/html/icon_cog.svg",
       "output": {
         "resource": {
-          "relative_path": "coverage/icon_cog.svg"
+          "relative_path": "coverage/html/icon_cog.svg"
         }
       },
       "version": ""
     },
     {
       "type": "Resource",
-      "source_relative_path": "documentation/coverage/icon_cog_dark.svg",
+      "source_relative_path": "documentation/coverage/html/icon_cog_dark.svg",
       "output": {
         "resource": {
-          "relative_path": "coverage/icon_cog_dark.svg"
+          "relative_path": "coverage/html/icon_cog_dark.svg"
         }
       },
       "version": ""
     },
     {
       "type": "Resource",
-      "source_relative_path": "documentation/coverage/icon_cube.svg",
+      "source_relative_path": "documentation/coverage/html/icon_cube.svg",
       "output": {
         "resource": {
-          "relative_path": "coverage/icon_cube.svg"
+          "relative_path": "coverage/html/icon_cube.svg"
         }
       },
       "version": ""
     },
     {
       "type": "Resource",
-      "source_relative_path": "documentation/coverage/icon_cube_dark.svg",
+      "source_relative_path": "documentation/coverage/html/icon_cube_dark.svg",
       "output": {
         "resource": {
-          "relative_path": "coverage/icon_cube_dark.svg"
+          "relative_path": "coverage/html/icon_cube_dark.svg"
         }
       },
       "version": ""
     },
     {
       "type": "Resource",
-      "source_relative_path": "documentation/coverage/icon_fork.svg",
+      "source_relative_path": "documentation/coverage/html/icon_fork.svg",
       "output": {
         "resource": {
-          "relative_path": "coverage/icon_fork.svg"
+          "relative_path": "coverage/html/icon_fork.svg"
         }
       },
       "version": ""
     },
     {
       "type": "Resource",
-      "source_relative_path": "documentation/coverage/icon_fork_dark.svg",
+      "source_relative_path": "documentation/coverage/html/icon_fork_dark.svg",
       "output": {
         "resource": {
-          "relative_path": "coverage/icon_fork_dark.svg"
+          "relative_path": "coverage/html/icon_fork_dark.svg"
         }
       },
       "version": ""
     },
     {
       "type": "Resource",
-      "source_relative_path": "documentation/coverage/icon_info-circled.svg",
+      "source_relative_path": "documentation/coverage/html/icon_info-circled.svg",
       "output": {
         "resource": {
-          "relative_path": "coverage/icon_info-circled.svg"
+          "relative_path": "coverage/html/icon_info-circled.svg"
         }
       },
       "version": ""
     },
     {
       "type": "Resource",
-      "source_relative_path": "documentation/coverage/icon_info-circled_dark.svg",
+      "source_relative_path": "documentation/coverage/html/icon_info-circled_dark.svg",
       "output": {
         "resource": {
-          "relative_path": "coverage/icon_info-circled_dark.svg"
+          "relative_path": "coverage/html/icon_info-circled_dark.svg"
         }
       },
       "version": ""
     },
     {
       "type": "Resource",
-      "source_relative_path": "documentation/coverage/icon_minus.svg",
+      "source_relative_path": "documentation/coverage/html/icon_minus.svg",
       "output": {
         "resource": {
-          "relative_path": "coverage/icon_minus.svg"
+          "relative_path": "coverage/html/icon_minus.svg"
         }
       },
       "version": ""
     },
     {
       "type": "Resource",
-      "source_relative_path": "documentation/coverage/icon_minus_dark.svg",
+      "source_relative_path": "documentation/coverage/html/icon_minus_dark.svg",
       "output": {
         "resource": {
-          "relative_path": "coverage/icon_minus_dark.svg"
+          "relative_path": "coverage/html/icon_minus_dark.svg"
         }
       },
       "version": ""
     },
     {
       "type": "Resource",
-      "source_relative_path": "documentation/coverage/icon_plus.svg",
+      "source_relative_path": "documentation/coverage/html/icon_plus.svg",
       "output": {
         "resource": {
-          "relative_path": "coverage/icon_plus.svg"
+          "relative_path": "coverage/html/icon_plus.svg"
         }
       },
       "version": ""
     },
     {
       "type": "Resource",
-      "source_relative_path": "documentation/coverage/icon_plus_dark.svg",
+      "source_relative_path": "documentation/coverage/html/icon_plus_dark.svg",
       "output": {
         "resource": {
-          "relative_path": "coverage/icon_plus_dark.svg"
+          "relative_path": "coverage/html/icon_plus_dark.svg"
         }
       },
       "version": ""
     },
     {
       "type": "Resource",
-      "source_relative_path": "documentation/coverage/icon_search-minus.svg",
+      "source_relative_path": "documentation/coverage/html/icon_search-minus.svg",
       "output": {
         "resource": {
-          "relative_path": "coverage/icon_search-minus.svg"
+          "relative_path": "coverage/html/icon_search-minus.svg"
         }
       },
       "version": ""
     },
     {
       "type": "Resource",
-      "source_relative_path": "documentation/coverage/icon_search-minus_dark.svg",
+      "source_relative_path": "documentation/coverage/html/icon_search-minus_dark.svg",
       "output": {
         "resource": {
-          "relative_path": "coverage/icon_search-minus_dark.svg"
+          "relative_path": "coverage/html/icon_search-minus_dark.svg"
         }
       },
       "version": ""
     },
     {
       "type": "Resource",
-      "source_relative_path": "documentation/coverage/icon_search-plus.svg",
+      "source_relative_path": "documentation/coverage/html/icon_search-plus.svg",
       "output": {
         "resource": {
-          "relative_path": "coverage/icon_search-plus.svg"
+          "relative_path": "coverage/html/icon_search-plus.svg"
         }
       },
       "version": ""
     },
     {
       "type": "Resource",
-      "source_relative_path": "documentation/coverage/icon_search-plus_dark.svg",
+      "source_relative_path": "documentation/coverage/html/icon_search-plus_dark.svg",
       "output": {
         "resource": {
-          "relative_path": "coverage/icon_search-plus_dark.svg"
+          "relative_path": "coverage/html/icon_search-plus_dark.svg"
         }
       },
       "version": ""
     },
     {
       "type": "Resource",
-      "source_relative_path": "documentation/coverage/icon_sponsor.svg",
+      "source_relative_path": "documentation/coverage/html/icon_sponsor.svg",
       "output": {
         "resource": {
-          "relative_path": "coverage/icon_sponsor.svg"
+          "relative_path": "coverage/html/icon_sponsor.svg"
         }
       },
       "version": ""
     },
     {
       "type": "Resource",
-      "source_relative_path": "documentation/coverage/icon_star.svg",
+      "source_relative_path": "documentation/coverage/html/icon_star.svg",
       "output": {
         "resource": {
-          "relative_path": "coverage/icon_star.svg"
+          "relative_path": "coverage/html/icon_star.svg"
         }
       },
       "version": ""
     },
     {
       "type": "Resource",
-      "source_relative_path": "documentation/coverage/icon_star_dark.svg",
+      "source_relative_path": "documentation/coverage/html/icon_star_dark.svg",
       "output": {
         "resource": {
-          "relative_path": "coverage/icon_star_dark.svg"
+          "relative_path": "coverage/html/icon_star_dark.svg"
         }
       },
       "version": ""
     },
     {
       "type": "Resource",
-      "source_relative_path": "documentation/coverage/icon_up-dir.svg",
+      "source_relative_path": "documentation/coverage/html/icon_up-dir.svg",
       "output": {
         "resource": {
-          "relative_path": "coverage/icon_up-dir.svg"
+          "relative_path": "coverage/html/icon_up-dir.svg"
         }
       },
       "version": ""
     },
     {
       "type": "Resource",
-      "source_relative_path": "documentation/coverage/icon_up-dir_active.svg",
+      "source_relative_path": "documentation/coverage/html/icon_up-dir_active.svg",
       "output": {
         "resource": {
-          "relative_path": "coverage/icon_up-dir_active.svg"
+          "relative_path": "coverage/html/icon_up-dir_active.svg"
         }
       },
       "version": ""
     },
     {
       "type": "Resource",
-      "source_relative_path": "documentation/coverage/icon_up-down-dir.svg",
+      "source_relative_path": "documentation/coverage/html/icon_up-down-dir.svg",
       "output": {
         "resource": {
-          "relative_path": "coverage/icon_up-down-dir.svg"
+          "relative_path": "coverage/html/icon_up-down-dir.svg"
         }
       },
       "version": ""
     },
     {
       "type": "Resource",
-      "source_relative_path": "documentation/coverage/icon_up-down-dir_dark.svg",
+      "source_relative_path": "documentation/coverage/html/icon_up-down-dir_dark.svg",
       "output": {
         "resource": {
-          "relative_path": "coverage/icon_up-down-dir_dark.svg"
+          "relative_path": "coverage/html/icon_up-down-dir_dark.svg"
         }
       },
       "version": ""
     },
     {
       "type": "Resource",
-      "source_relative_path": "documentation/coverage/icon_wrench.svg",
+      "source_relative_path": "documentation/coverage/html/icon_wrench.svg",
       "output": {
         "resource": {
-          "relative_path": "coverage/icon_wrench.svg"
+          "relative_path": "coverage/html/icon_wrench.svg"
         }
       },
       "version": ""
     },
     {
       "type": "Resource",
-      "source_relative_path": "documentation/coverage/icon_wrench_dark.svg",
+      "source_relative_path": "documentation/coverage/html/icon_wrench_dark.svg",
       "output": {
         "resource": {
-          "relative_path": "coverage/icon_wrench_dark.svg"
+          "relative_path": "coverage/html/icon_wrench_dark.svg"
         }
       },
       "version": ""
     },
     {
       "type": "Resource",
-      "source_relative_path": "documentation/coverage/index.htm",
+      "source_relative_path": "documentation/coverage/html/index.htm",
       "output": {
         "resource": {
-          "relative_path": "coverage/index.htm"
+          "relative_path": "coverage/html/index.htm"
         }
       },
       "version": ""
     },
     {
       "type": "Resource",
-      "source_relative_path": "documentation/coverage/index.html",
+      "source_relative_path": "documentation/coverage/html/index.html",
       "output": {
         "resource": {
-          "relative_path": "coverage/index.html"
+          "relative_path": "coverage/html/index.html"
         }
       },
       "version": ""
     },
     {
       "type": "Resource",
-      "source_relative_path": "documentation/coverage/main.js",
+      "source_relative_path": "documentation/coverage/html/main.js",
       "output": {
         "resource": {
-          "relative_path": "coverage/main.js"
+          "relative_path": "coverage/html/main.js"
         }
       },
       "version": ""
     },
     {
       "type": "Resource",
-      "source_relative_path": "documentation/coverage/report.css",
+      "source_relative_path": "documentation/coverage/html/report.css",
       "output": {
         "resource": {
-          "relative_path": "coverage/report.css"
+          "relative_path": "coverage/html/report.css"
         }
       },
       "version": ""

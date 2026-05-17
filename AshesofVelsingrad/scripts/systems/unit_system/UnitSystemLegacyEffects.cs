@@ -76,5 +76,5 @@ public abstract partial class UnitSystem : LegacyEffectTarget
 
     bool LegacyEffectTarget.HasEffect<T>() => _legacyStatusEffects.Any(e => e is T);
 
-    List<LegacyStatusEffect> LegacyEffectTarget.GetActiveEffects() => [.._legacyStatusEffects];
+    List<LegacyStatusEffect> LegacyEffectTarget.GetActiveEffects() => [.. _legacyStatusEffects];
 }

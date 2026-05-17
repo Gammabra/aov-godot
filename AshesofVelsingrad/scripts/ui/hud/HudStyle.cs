@@ -202,15 +202,22 @@ public static class HudStyle
         {
             BgColor = new Color(0.10f, 0.09f, 0.10f, 0.85f),
             BorderColor = new Color(0, 0, 0, 0.5f),
-            BorderWidthLeft = 1, BorderWidthRight = 1, BorderWidthTop = 1, BorderWidthBottom = 1,
-            CornerRadiusBottomLeft = 3, CornerRadiusBottomRight = 3,
-            CornerRadiusTopLeft = 3, CornerRadiusTopRight = 3,
+            BorderWidthLeft = 1,
+            BorderWidthRight = 1,
+            BorderWidthTop = 1,
+            BorderWidthBottom = 1,
+            CornerRadiusBottomLeft = 3,
+            CornerRadiusBottomRight = 3,
+            CornerRadiusTopLeft = 3,
+            CornerRadiusTopRight = 3,
         };
         StyleBoxFlat fill = new()
         {
             BgColor = fillColor,
-            CornerRadiusBottomLeft = 3, CornerRadiusBottomRight = 3,
-            CornerRadiusTopLeft = 3, CornerRadiusTopRight = 3,
+            CornerRadiusBottomLeft = 3,
+            CornerRadiusBottomRight = 3,
+            CornerRadiusTopLeft = 3,
+            CornerRadiusTopRight = 3,
         };
         bar.AddThemeStyleboxOverride("background", bg);
         bar.AddThemeStyleboxOverride("fill", fill);

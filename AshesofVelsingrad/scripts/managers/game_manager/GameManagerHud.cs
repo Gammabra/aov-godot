@@ -2,6 +2,7 @@ using System;
 using AshesOfVelsingrad.Systems;
 using AshesOfVelsingrad.Systems.Battle;
 using AshesOfVelsingrad.UI.Hud;
+using AshesOfVelsingrad.UI.Inventory;
 using Godot;
 
 namespace AshesOfVelsingrad.Managers;
@@ -112,6 +113,22 @@ public partial class GameManager
 
         if (_battleHud.SkillSelector is { } selector)
             selector.OnSkillSelected += OnHudSkillSlotChosen;
+
+        if (_battleHud.InventoryPanel is not null && _battleInputSystemContainer is not null)
+            _battleHud.InventoryPanel.SetBattleInputSystem(_battleInputSystemContainer);
+
+        if (_battleHud?.ActionMenu is { } actionMenu
+            && _battleHud.InventoryPanel is not null
+            && _battleHud.SkillSelector is { } skillSelector)
+        {
+            actionMenu.SetInventoryUI(
+                _battleHud.InventoryPanel,
+                skillSelector,
+                () => _turnManagerContainer?.GetCurrentUnit().Inventory as InventorySystem
+            );
+            if (_battleInputSystemContainer is not null)
+                _battleHud.InventoryPanel.SetBattleInputSystem(_battleInputSystemContainer);
+        }
     }
 
     /// <summary>

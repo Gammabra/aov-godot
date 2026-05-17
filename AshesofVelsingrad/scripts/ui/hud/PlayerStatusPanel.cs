@@ -72,7 +72,10 @@ public sealed partial class PlayerStatusPanel : Control
 
         _hp = new ProgressBar
         {
-            MinValue = 0, MaxValue = 1, Value = 1, ShowPercentage = false,
+            MinValue = 0,
+            MaxValue = 1,
+            Value = 1,
+            ShowPercentage = false,
             CustomMinimumSize = new Vector2(0, 12),
         };
         HudStyle.ApplyBarStyle(_hp, HudStyle.HpFill);
@@ -84,7 +87,10 @@ public sealed partial class PlayerStatusPanel : Control
 
         _mp = new ProgressBar
         {
-            MinValue = 0, MaxValue = 1, Value = 1, ShowPercentage = false,
+            MinValue = 0,
+            MaxValue = 1,
+            Value = 1,
+            ShowPercentage = false,
             CustomMinimumSize = new Vector2(0, 8),
         };
         HudStyle.ApplyBarStyle(_mp, HudStyle.ManaFill);

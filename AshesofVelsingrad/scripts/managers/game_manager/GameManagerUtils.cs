@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using AshesOfVelsingrad.Systems;
 using AshesOfVelsingrad.Systems.Battle;
-using AshesOfVelsingrad.UI.Hud;
 using AshesOfVelsingrad.Utilities;
 using Godot;
 
@@ -69,6 +68,16 @@ public partial class GameManager
                     _allyUnits.Add(unit);
                     AttachFactionMarker(unit);
                 }
+
+        if (PlayerInventoryManager.Instance is { } inv)
+        {
+            for (int i = 0; i < _playerUnits.Count && i < PlayerInventoryManager.MaxPartySize; i++)
+                inv.RegisterUnit(i, _playerUnits[i]);
+        }
+        else
+        {
+            GD.PrintErr("PlayerInventoryManager not found — player units will have empty inventories.");
+        }
     }
 
     /// <summary>
@@ -347,8 +356,21 @@ public partial class GameManager
             _turnManagerContainer?.EndTurnManagerLoop();
             GD.Print("Win!");
             BattleNotifications.Post("Victory!", BattleNotifications.Severity.Positive);
+            SyncInventoryBackToGlobal();
             ShowVictoryScreen();
         }
+    }
+
+    /// <summary>
+    ///     Synchronizes the inventory of the player units back to the global inventory.
+    /// </summary>
+    private void SyncInventoryBackToGlobal()
+    {
+        if (PlayerInventoryManager.Instance is not { } inv)
+            return;
+
+        for (int i = 0; i < _playerUnits.Count && i < PlayerInventoryManager.MaxPartySize; i++)
+            inv.SyncBack(i, _playerUnits[i]);
     }
 
     /// <summary>

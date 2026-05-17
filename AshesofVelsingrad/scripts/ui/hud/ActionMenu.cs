@@ -1,4 +1,6 @@
 using System;
+using AshesOfVelsingrad.Systems;
+using AshesOfVelsingrad.UI.Inventory;
 using Godot;
 
 namespace AshesOfVelsingrad.UI.Hud;
@@ -29,9 +31,13 @@ public sealed partial class ActionMenu : Control
 
     /// <summary>Player cancelled skill targeting (Cancel button / Esc / right-click).</summary>
     public event Action? OnCancelPressed;
+    private Button? _useItemButton;
+    private BattleInventoryUI? _inventoryUI;
+    private SkillSelector? _skillSelector;
 
     private Button? _cancelButton;
     private bool _built;
+    private Func<InventorySystem?>? _getActiveInventory;
 
     /// <inheritdoc />
     public override void _Ready()
@@ -82,6 +88,18 @@ public sealed partial class ActionMenu : Control
         // calls PassTurn() in its handler. This avoids a TurnManager singleton accessor.
         AddButton(row, "Pass", () => OnPassPressed?.Invoke());
 
+        Button useItem = new()
+        {
+            Text = "Item",
+            CustomMinimumSize = new Vector2(86, 40),
+            SizeFlagsHorizontal = SizeFlags.ExpandFill,
+        };
+        HudStyle.StyleButton(useItem);
+        useItem.AddThemeColorOverride("font_color", new Color(0.6f, 0.9f, 0.6f, 1f)); // soft green
+        useItem.Pressed += OnUseItemPressed;
+        _useItemButton = useItem;
+        row.AddChild(_useItemButton);
+
         _cancelButton = new Button
         {
             Text = "Cancel",
@@ -95,15 +113,36 @@ public sealed partial class ActionMenu : Control
         row.AddChild(_cancelButton);
     }
 
-    /// <summary>Show or hide the Cancel button. Called by <c>GameManager</c> when the player
-    /// enters or leaves skill-targeting mode.</summary>
-    /// <param name="show">True to show the Cancel button.</param>
-    public void ShowCancel(bool show)
+    /// <summary>
+    ///     Connect the action menu to the inventory panel and skill selector
+    ///     so "Use Item" can swap them in place.
+    /// </summary>
+    public void SetInventoryUI(BattleInventoryUI inventoryUI, SkillSelector skillSelector, Func<InventorySystem?> getActiveInventory)
     {
-        if (_cancelButton is not null) _cancelButton.Visible = show;
+        _inventoryUI = inventoryUI;
+        _skillSelector = skillSelector;
+        _getActiveInventory = getActiveInventory;
     }
 
-    private static void AddButton(Container parent, string label, Action onPressed)
+    private void OnUseItemPressed()
+    {
+        if (_inventoryUI == null || _skillSelector == null)
+            return;
+
+        bool opening = !_inventoryUI.Visible;
+        if (opening && _getActiveInventory != null)
+        {
+            var inv = _getActiveInventory();
+            if (inv != null) _inventoryUI.BindInventory(inv);
+        }
+
+        _inventoryUI.Visible = opening;
+        _skillSelector.Visible = !opening;
+    }
+
+    // In every other button's press handler, close the inventory if open.
+    // Replace AddButton calls for Move, Attack, Skill, Pass with this helper instead:
+    private void AddButton(Container parent, string label, Action onPressed)
     {
         Button b = new()
         {
@@ -112,7 +151,30 @@ public sealed partial class ActionMenu : Control
             SizeFlagsHorizontal = SizeFlags.ExpandFill,
         };
         HudStyle.StyleButton(b);
-        b.Pressed += () => onPressed();
+        b.Pressed += () =>
+        {
+            CloseInventory();
+            onPressed();
+        };
         parent.AddChild(b);
+    }
+
+    // Add the close helper:
+    private void CloseInventory()
+    {
+        if (_inventoryUI is { Visible: true })
+        {
+            _inventoryUI.Visible = false;
+            if (_skillSelector != null) _skillSelector.Visible = true;
+        }
+    }
+
+    /// <summary>Show or hide the Cancel button. Called by <c>GameManager</c> when the player
+    /// enters or leaves skill-targeting mode.</summary>
+    /// <param name="show">True to show the Cancel button.</param>
+    public void ShowCancel(bool show)
+    {
+        if (_cancelButton is not null) _cancelButton.Visible = show;
+        if (show) CloseInventory();
     }
 }

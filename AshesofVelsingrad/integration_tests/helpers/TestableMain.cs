@@ -3,7 +3,7 @@ using Godot;
 
 namespace AshesOfVelsingrad.Helpers;
 
-public partial class TestableMain : AshesOfVelsingrad.Main
+public partial class TestableMain : AshesOfVelsingrad.MainManager
 {
     private readonly List<Node> _createdNodes = new();
     private System.Func<Node, Node?>? _autoFreeCallback;

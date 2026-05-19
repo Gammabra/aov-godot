@@ -1,14 +1,19 @@
 [gd_scene format=3 uid="uid://cuadq8eeoqg7j"]
 
-[ext_resource type="Script" uid="uid://cgf4fbcb5g7mi" path="res://scripts/Main.cs" id="1_itxqv"]
+[ext_resource type="Script" uid="uid://bnsbetmtyu1jd" path="res://scripts/MainManager.cs" id="1_tbgi4"]
 [ext_resource type="PackedScene" uid="uid://dly7v2pb0m006" path="res://scenes/ui/menus/menu_beta.tscn" id="2_sugp2"]
 [ext_resource type="PackedScene" uid="uid://geowrsurjvqo" path="res://scenes/ui/menus/settings_beta.tscn" id="3_jyhfs"]
 [ext_resource type="PackedScene" path="res://scenes/ui/hud/BattleHud.tscn" id="4_jyhfs"]
 [ext_resource type="PackedScene" uid="uid://x64n6yx3lj66" path="res://scenes/ui/inventory/InventoryUI.tscn" id="5_tbgi4"]
 
-[node name="Main" type="Node" unique_id=359710342 node_paths=PackedStringArray("_menuContainer")]
-script = ExtResource("1_itxqv")
+[node name="MainManager" type="Node" unique_id=359710342 node_paths=PackedStringArray("_worldContainer", "_menuContainer", "_battleHud", "_battleInventoryUi", "_explorationInventoryUi", "_screenTransition")]
+script = ExtResource("1_tbgi4")
+_worldContainer = NodePath("WorldContainer")
 _menuContainer = NodePath("UILayer/MenuContainer")
+_battleHud = NodePath("UILayer/BattleHud")
+_battleInventoryUi = NodePath("UILayer/InventoryUI")
+_explorationInventoryUi = NodePath("UILayer/InventoryUI")
+_screenTransition = NodePath("UILayer/SceneTransition")
 _mainMenuScene = ExtResource("2_sugp2")
 _settingsScene = ExtResource("3_jyhfs")
 

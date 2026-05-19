@@ -3,17 +3,33 @@
 [ext_resource type="Script" uid="uid://cgf4fbcb5g7mi" path="res://scripts/Main.cs" id="1_itxqv"]
 [ext_resource type="PackedScene" uid="uid://dly7v2pb0m006" path="res://scenes/ui/menus/menu_beta.tscn" id="2_sugp2"]
 [ext_resource type="PackedScene" uid="uid://geowrsurjvqo" path="res://scenes/ui/menus/settings_beta.tscn" id="3_jyhfs"]
+[ext_resource type="PackedScene" path="res://scenes/ui/hud/BattleHud.tscn" id="4_jyhfs"]
+[ext_resource type="PackedScene" uid="uid://x64n6yx3lj66" path="res://scenes/ui/inventory/InventoryUI.tscn" id="5_tbgi4"]
 
 [node name="Main" type="Node" unique_id=359710342 node_paths=PackedStringArray("_menuContainer")]
 script = ExtResource("1_itxqv")
-_menuContainer = NodePath("MenuContainer")
+_menuContainer = NodePath("UILayer/MenuContainer")
 _mainMenuScene = ExtResource("2_sugp2")
 _settingsScene = ExtResource("3_jyhfs")
 
-[node name="MenuContainer" type="Control" parent="." unique_id=1685649391]
+[node name="WorldContainer" type="Node" parent="." unique_id=678347684]
+
+[node name="UILayer" type="CanvasLayer" parent="." unique_id=89138738]
+layer = 10
+
+[node name="MenuContainer" type="Control" parent="UILayer" unique_id=1685649391]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="BattleHud" parent="UILayer" unique_id=1185000935 instance=ExtResource("4_jyhfs")]
+
+[node name="InventoryUI" parent="UILayer" unique_id=642595375 instance=ExtResource("5_tbgi4")]
+script = null
+
+[node name="SceneTransition" type="ColorRect" parent="UILayer" unique_id=1680881509]
+offset_right = 40.0
+offset_bottom = 40.0

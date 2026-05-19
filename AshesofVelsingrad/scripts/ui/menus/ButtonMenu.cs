@@ -25,17 +25,21 @@ public partial class ButtonMenu : Button
     /// </summary>
     public void OnPlayButtonPressed()
     {
+        // Still a scene change — battle/exploration are separate scenes
         GetTree().ChangeSceneToFile("res://scenes/Level/Prison.tscn");
     }
 
     public void OnOptionsButtonPressed()
     {
-        GetTree().ChangeSceneToFile("res://scenes/settings_beta.tscn");
+        // Route through MenuManager instead of changing scene
+        MenuManager.Instance?.ShowMenu(MenuManager.OPTIONS_MENU);
     }
 
     public void OnOptionsExitButtonPressed()
     {
-        GetTree().ChangeSceneToFile("res://scenes/menu_beta.tscn");
+        // Go back to whatever was before settings
+        GD.Print("[ButtonMenu] OnOptionsExitButtonPressed FIRED");
+        MenuManager.Instance?.GoBack();
     }
 
     public void OnExitButtonPressed()

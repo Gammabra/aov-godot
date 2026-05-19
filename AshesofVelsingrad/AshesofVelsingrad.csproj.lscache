@@ -110,10 +110,7 @@ integration_tests/scripts_tests/
  ui/
   BattleHudTest.cs
   GameOverScreenTest.cs
-  menus/
-   MainMenuTest.cs
-   OptionsMenuTest.cs
-   settings_tests.cs
+  menus/settings_tests.cs
 scripts/
  AI/EnemyAIBehavior.cs
  data/
@@ -265,8 +262,6 @@ scripts/
  ui/menus/
   ButtonMenu.cs
   ButtonSettingsFont.cs
-  MainMenu.cs
-  OptionsMenu.cs
   SettingsPageManager.cs
   SettingsPages.cs
   SettingsSave.cs

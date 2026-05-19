@@ -8,7 +8,7 @@ public partial class TestableMain : AshesOfVelsingrad.Main
     private readonly List<Node> _createdNodes = new();
     private System.Func<Node, Node?>? _autoFreeCallback;
     public int MainMenuInstantiateCount { get; private set; }
-    public int OptionsMenuInstantiateCount { get; private set; }
+    public int SettingsInstantiateCount { get; private set; }
 
     public void SetAutoFreeCallback(System.Func<Node, Node?> callback)
     {
@@ -20,7 +20,7 @@ public partial class TestableMain : AshesOfVelsingrad.Main
         _menuContainer = menuContainer;
     }
 
-    protected override (Node mainMenu, Node optionsMenu) CreateMenus()
+    protected override (Control mainMenu, Control settings) CreateMenus()
     {
         if (_menuContainer == null)
         {
@@ -41,18 +41,18 @@ public partial class TestableMain : AshesOfVelsingrad.Main
         _createdNodes.Add(mainMenu);
         GD.Print($"[TEST] TestableMain created MainMenu. Count: {MainMenuInstantiateCount}");
 
-        OptionsMenuInstantiateCount++;
-        var optionsMenu = new Control { Name = "TestOptionsMenu" };
+        SettingsInstantiateCount++;
+        var settings = new Control { Name = "TestSettings" };
 
         if (_autoFreeCallback != null)
         {
-            _autoFreeCallback(optionsMenu);
+            _autoFreeCallback(settings);
         }
 
-        _createdNodes.Add(optionsMenu);
-        GD.Print($"[TEST] TestableMain created OptionsMenu. Count: {OptionsMenuInstantiateCount}");
+        _createdNodes.Add(settings);
+        GD.Print($"[TEST] TestableMain created settings. Count: {SettingsInstantiateCount}");
 
-        return (mainMenu, optionsMenu);
+        return (mainMenu, settings);
     }
 
     public new void InitializeMenus()
@@ -85,7 +85,7 @@ public partial class TestableMain : AshesOfVelsingrad.Main
     {
         FreeAllCreatedNodes();
         MainMenuInstantiateCount = 0;
-        OptionsMenuInstantiateCount = 0;
+        SettingsInstantiateCount = 0;
     }
 
     public IReadOnlyList<Node> CreatedNodes => _createdNodes;

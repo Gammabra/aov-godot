@@ -1,3 +1,4 @@
+using AshesOfVelsingrad;
 using AshesOfVelsingrad.Audio;
 using AshesOfVelsingrad.Managers;
 using Godot;
@@ -25,8 +26,17 @@ public partial class ButtonMenu : Button
     /// </summary>
     public void OnPlayButtonPressed()
     {
-        // Still a scene change — battle/exploration are separate scenes
-        GetTree().ChangeSceneToFile("res://scenes/Level/Prison.tscn");
+        const string prisonScenePath = "res://scenes/Level/Prison.tscn";
+
+        if (MainManager.Instance != null)
+        {
+            MainManager.Instance.LoadScene(prisonScenePath, showHud: false);
+        }
+        else
+        {
+            GD.Print("[ButtonMenu] MainManager instance missing. Swapping scene tree directly.");
+            GetTree().ChangeSceneToFile(prisonScenePath);
+        }
     }
 
     public void OnOptionsButtonPressed()

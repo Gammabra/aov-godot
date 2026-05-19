@@ -43,9 +43,12 @@ border_blend = true
 
 [node name="Control" type="Control" unique_id=2073738294]
 layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=1255423235]
 layout_mode = 0
@@ -87,12 +90,14 @@ script = ExtResource("4_qi5fe")
 custom_minimum_size = Vector2(300, 0)
 offset_right = 1151.0
 offset_bottom = 335.0
+mouse_filter = 2
 alignment = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="PageManager/VBoxContainer" unique_id=1811945338]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 size_flags_vertical = 4
+mouse_filter = 2
 theme_override_constants/separation = 20
 alignment = 1
 

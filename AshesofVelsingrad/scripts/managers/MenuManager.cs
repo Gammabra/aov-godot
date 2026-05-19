@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using AshesOfVelsingrad.UI.Menus;
 using Godot;
 
 namespace AshesOfVelsingrad.Managers;
@@ -83,12 +82,6 @@ public partial class MenuManager : BaseManager
         _menus[menuName] = menuControl;
         menuControl.Hide(); // Hide by default
 
-        // Connect back signals for navigation menus
-        if (menuControl is OptionsMenu optionsMenu)
-        {
-            optionsMenu.BackRequested += () => GoBack();
-        }
-
         GD.Print($"Menu '{menuName}' registered successfully");
     }
 
@@ -139,34 +132,31 @@ public partial class MenuManager : BaseManager
         // Hide current menu
         if (!string.IsNullOrEmpty(_currentMenu) && _menus.ContainsKey(_currentMenu))
         {
-            var currentMenuControl = _menus[_currentMenu];
-            if (currentMenuControl is OptionsMenu currentOptionsMenu)
-            {
-                currentOptionsMenu.HideMenu();
-            }
+            var current = _menus[_currentMenu];
+            var pages = current.GetNodeOrNull<SettingsPages>("MainContent");
+            if (pages != null)
+                pages.HideAll();
             else
             {
-                currentMenuControl.Hide();
+                current.Hide();
+                // Prevent hidden control from blocking mouse events
+                current.MouseFilter = Control.MouseFilterEnum.Ignore;
             }
         }
 
-        // Update current menu BEFORE showing new menu
         _currentMenu = menuName;
 
-        // Show new menu
-        var newMenuControl = _menus[menuName];
-
-        if (newMenuControl is OptionsMenu optionsMenu)
-        {
-            optionsMenu.ShowMenu();
-        }
+        var newMenu = _menus[menuName];
+        var newPages = newMenu.GetNodeOrNull<SettingsPages>("MainContent");
+        if (newPages != null)
+            newPages.ShowAll();
         else
         {
-            newMenuControl.Show();
+            newMenu.MouseFilter = Control.MouseFilterEnum.Pass;
+            newMenu.Show();
         }
 
         EmitSignal(SignalName.MenuChanged, menuName);
-        GD.Print($"Showing menu: {menuName}");
     }
 
     /// <summary>
@@ -180,10 +170,12 @@ public partial class MenuManager : BaseManager
     /// </remarks>
     public void GoBack()
     {
+        GD.Print($"[MenuManager] GoBack called. History count: {_menuHistory.Count}, current: {_currentMenu}");
         if (_menuHistory.Count > 0)
         {
             var previousMenu = _menuHistory.Pop();
-            ShowMenu(previousMenu, false); // Don't add to history when going back
+            GD.Print($"[MenuManager] Going back to: {previousMenu}");
+            ShowMenu(previousMenu, false);
         }
         else
         {

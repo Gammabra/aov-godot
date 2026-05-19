@@ -51,7 +51,7 @@ public class MainTest
         var childCount = _mockMenuContainer?.GetChildCount() ?? 0;
         AssertThat(childCount).IsEqual(0);
         AssertThat(_testableMain.MainMenuInstantiateCount).IsEqual(0);
-        AssertThat(_testableMain.OptionsMenuInstantiateCount).IsEqual(0);
+        AssertThat(_testableMain.SettingsInstantiateCount).IsEqual(0);
     }
 
     [TestCase]
@@ -68,7 +68,7 @@ public class MainTest
         var childCount = _mockMenuContainer?.GetChildCount() ?? 0;
         AssertThat(childCount).IsEqual(0);
         AssertThat(_testableMain.MainMenuInstantiateCount).IsEqual(0);
-        AssertThat(_testableMain.OptionsMenuInstantiateCount).IsEqual(0);
+        AssertThat(_testableMain.SettingsInstantiateCount).IsEqual(0);
     }
 
     [TestCase]
@@ -78,18 +78,18 @@ public class MainTest
         SetupValidManagers();
         _testableMain!.SetMenuContainer(_mockMenuContainer);
 
-        GD.Print($"[TEST] Before InitializeMenus - Main: {_testableMain.MainMenuInstantiateCount}, Options: {_testableMain.OptionsMenuInstantiateCount}");
+        GD.Print($"[TEST] Before InitializeMenus - Main: {_testableMain.MainMenuInstantiateCount}, Settings: {_testableMain.SettingsInstantiateCount}");
 
         // Act
         _testableMain.InitializeMenus();
 
-        GD.Print($"[TEST] After InitializeMenus - Main: {_testableMain.MainMenuInstantiateCount}, Options: {_testableMain.OptionsMenuInstantiateCount}");
+        GD.Print($"[TEST] After InitializeMenus - Main: {_testableMain.MainMenuInstantiateCount}, Settings: {_testableMain.SettingsInstantiateCount}");
 
         // Assert
         var childCount = _mockMenuContainer?.GetChildCount() ?? 0;
         AssertThat(childCount).IsEqual(2);
         AssertThat(_testableMain.MainMenuInstantiateCount).IsEqual(1);
-        AssertThat(_testableMain.OptionsMenuInstantiateCount).IsEqual(1);
+        AssertThat(_testableMain.SettingsInstantiateCount).IsEqual(1);
     }
 
     [TestCase]
@@ -104,7 +104,7 @@ public class MainTest
 
         // Assert
         AssertThat(_testableMain.MainMenuInstantiateCount).IsEqual(0);
-        AssertThat(_testableMain.OptionsMenuInstantiateCount).IsEqual(0);
+        AssertThat(_testableMain.SettingsInstantiateCount).IsEqual(0);
     }
 
     [TestCase]
@@ -142,7 +142,7 @@ public class MainTest
 
         // Assert - verify complete workflow
         AssertThat(_testableMain.MainMenuInstantiateCount).IsEqual(1);
-        AssertThat(_testableMain.OptionsMenuInstantiateCount).IsEqual(1);
+        AssertThat(_testableMain.SettingsInstantiateCount).IsEqual(1);
 
         var finalChildCount = _mockMenuContainer?.GetChildCount() ?? 0;
         GD.Print($"[TEST] Final child count: {finalChildCount}");

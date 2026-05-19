@@ -110,9 +110,16 @@ integration_tests/scripts_tests/
  ui/
   BattleHudTest.cs
   GameOverScreenTest.cs
-  menus/settings_tests.cs
+  menus/
+   MainMenuTest.cs
+   OptionsMenuTest.cs
+   settings_tests.cs
 scripts/
  AI/EnemyAIBehavior.cs
+ data/items/
+  IronSwordItem.cs
+  LeatherArmorItem.cs
+  PotionItem.cs
  data/
   map/Map1.cs
   npc/
@@ -169,6 +176,7 @@ scripts/
    KarmaManager.cs
    TurnManagerHelpers.cs
   MenuManager.cs
+  PlayerInventoryManager.cs
   SceneManager.cs
   SettingsManager.cs
   state_machines/
@@ -198,6 +206,11 @@ scripts/
    CorruptedTransformationEffect.cs
    CorruptionLevelEffect.cs
    CorruptionSystem.cs
+  inventory_system/
+   EquipementSystem.cs
+   InventorySystem.cs
+   ItemCatalog.cs
+   ItemSystem.cs
   items/
    behaviours/ItemBehaviours.cs
    IItemBehaviour.cs
@@ -259,6 +272,14 @@ scripts/
   TurnOrderQueue.cs
   UnitHealthBar.cs
   VictoryScreen.cs
+ ui/inventory/
+  BattleInventorySlotUI.cs
+  BattleInventoryUI.cs
+  ExplorationInventoryUI.cs
+  ExplorationSlotUI.cs
+  InventoryConstants.cs
+  UnitSlotUI.cs
+  UnitTransferPanel.cs
  ui/menus/
   ButtonMenu.cs
   ButtonSettingsFont.cs
@@ -267,8 +288,7 @@ scripts/
   SettingsSave.cs
 
 [metadataReferences]
-../AshesofVelsingrad.Core/obj/Debug/net9.0/ref/AshesofVelsingrad.Core.dll
-<DOTNET>/packs/Microsoft.NETCore.App.Ref/9.0.16/ref/net9.0/
+../../../../../../../Program Files/dotnet/packs/Microsoft.NETCore.App.Ref/9.0.14/ref/net9.0/
  Microsoft.CSharp.dll
  Microsoft.VisualBasic.Core.dll
  Microsoft.VisualBasic.dll

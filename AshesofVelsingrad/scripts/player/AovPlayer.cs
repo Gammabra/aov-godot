@@ -1,6 +1,7 @@
 using AshesOfVelsingrad.Audio;
 using AshesOfVelsingrad.Managers;
 using AshesOfVelsingrad.Systems;
+using AshesOfVelsingrad.UI.Inventory;
 using Godot;
 
 namespace AshesOfVelsingrad.player;
@@ -37,6 +38,7 @@ public sealed partial class AovPlayer : CharacterBody3D, IInteractor
     private InteractionComponent? _interactionComponent;
     private AnimatedSprite3D _animatedSprite3D = null!;
     private static AovPlayer? _instance;
+    private ExplorationInventoryUI? _explorationInventoryUI;
 
     private void Initialize()
     {
@@ -63,6 +65,14 @@ public sealed partial class AovPlayer : CharacterBody3D, IInteractor
         // active AovPlayer is a reliable signal that we're now exploring, and the
         // audio manager can switch off the menu theme accordingly.
         AudioManager.Instance?.SetMusicContext(MusicContext.Exploration);
+
+        _explorationInventoryUI = new ExplorationInventoryUI { Name = "ExplorationInventoryUI" };
+        GetTree().Root.CallDeferred("add_child", _explorationInventoryUI);
+        _explorationInventoryUI.EnsureBuilt();
+
+        // Units aren't known here — GameManager calls BindUnits after battle.
+        // For exploration with no battle context, pass an empty list.
+        _explorationInventoryUI.RefreshUnitPanels();
     }
 
     public override void _Ready()
@@ -81,21 +91,6 @@ public sealed partial class AovPlayer : CharacterBody3D, IInteractor
             GD.PrintErr($"Multiple instances of {GetType().Name} detected. Removing duplicate.");
             QueueFree();
         }
-    }
-
-    /// <inheritdoc />
-    /// <remarks>
-    ///     Clear the static <see cref="_instance" /> when this node leaves the tree
-    ///     (scene unload, scene reload via <c>BattleLauncher</c>'s Forfeit / Continue
-    ///     flow). Without this, the new <see cref="AovPlayer" /> on the reloaded
-    ///     exploration scene sees a stale <c>_instance</c> still pointing at the just-
-    ///     unloaded player and <see cref="Node.QueueFree" />s itself as a "duplicate" —
-    ///     the scene then renders with no player and frozen camera.
-    /// </remarks>
-    public override void _ExitTree()
-    {
-        if (_instance == this) _instance = null;
-        base._ExitTree();
     }
 
     public override void _Input(InputEvent @event)
@@ -197,5 +192,28 @@ public sealed partial class AovPlayer : CharacterBody3D, IInteractor
     public void UnlockInteractor()
     {
         _isLock = false;
+    }
+
+    public void BindInventoryUnits()
+    {
+        _explorationInventoryUI?.RefreshUnitPanels();
+    }
+
+    /// <inheritdoc />
+    /// <remarks>
+    ///     Clear the static <see cref="_instance" /> when this node leaves the tree
+    ///     (scene unload, scene reload via <c>BattleLauncher</c>'s Forfeit / Continue
+    ///     flow). Without this, the new <see cref="AovPlayer" /> on the reloaded
+    ///     exploration scene sees a stale <c>_instance</c> still pointing at the just-
+    ///     unloaded player and <see cref="Node.QueueFree" />s itself as a "duplicate" —
+    ///     the scene then renders with no player and frozen camera.
+    /// </remarks>
+    public override void _ExitTree()
+    {
+        if (_explorationInventoryUI is not null && IsInstanceValid(_explorationInventoryUI))
+            _explorationInventoryUI.QueueFree();
+
+        if (_instance == this) _instance = null;
+        base._ExitTree();
     }
 }

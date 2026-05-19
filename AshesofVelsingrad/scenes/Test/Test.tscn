@@ -5,41 +5,39 @@
 [ext_resource type="MeshLibrary" uid="uid://du0rgaffn5bkl" path="res://assets/mesh_library/3DMesh.tres" id="2_so6rl"]
 [ext_resource type="Script" uid="uid://dkhfwdhsqvki4" path="res://scripts/managers/TurnManager.cs" id="3_p4llj"]
 [ext_resource type="Script" uid="uid://cltl52yi2vtq6" path="res://scripts/data/unit/characters/Player1Data.cs" id="4_so6rl"]
+[ext_resource type="Script" uid="uid://dvsd81c4l1hgb" path="res://scripts/AI/EnemyAIBehavior.cs" id="5_aibhv"]
+[ext_resource type="Script" uid="uid://doituhy4yx6e2" path="res://scripts/data/unit/characters/Ally1Data.cs" id="5_ally1"]
+[ext_resource type="Script" uid="uid://bihe61tigjoey" path="res://scripts/data/unit/enemies/EnemyFighter.cs" id="5_enemy2"]
 [ext_resource type="Script" uid="uid://bh5sblraxitw" path="res://scripts/data/unit/enemies/EnemyArcher.cs" id="5_nvgwb"]
-[ext_resource type="Script" path="res://scripts/data/unit/characters/Player2Data.cs" id="5_player2"]
-[ext_resource type="Script" path="res://scripts/data/unit/characters/Ally1Data.cs" id="5_ally1"]
-[ext_resource type="Script" path="res://scripts/data/unit/enemies/EnemyFighter.cs" id="5_enemy2"]
-[ext_resource type="Script" path="res://scripts/AI/EnemyAIBehavior.cs" id="5_aibhv"]
-[ext_resource type="Texture2D" uid="uid://d2o6v40ln62ci" path="res://assets/aov-logo-transparent.png" id="6_l5nkq"]
-[ext_resource type="Texture2D" uid="uid://ddwok17vhh08j" path="res://assets/icon.svg" id="6_lhig6"]
-[ext_resource type="Script" uid="uid://buj6bdu8gkf0j" path="res://scripts/systems/BattleInputSystem.cs" id="7_nvgwb"]
-[ext_resource type="Texture2D" path="res://assets/portraits/Pikachu.png" id="8_pika"]
-[ext_resource type="Texture2D" path="res://assets/portraits/meowth.png" id="8_meow"]
-[ext_resource type="Texture2D" path="res://assets/portraits/poussacha.png" id="8_pous"]
-[ext_resource type="Texture2D" path="res://assets/portraits/Mimikyu.png" id="8_mimi"]
-[ext_resource type="Texture2D" path="res://assets/portraits/mascaiman.png" id="8_masc"]
+[ext_resource type="Script" uid="uid://bjv1wn31cfvut" path="res://scripts/data/unit/characters/Player2Data.cs" id="5_player2"]
+[ext_resource type="Script" uid="uid://b6hj56agqrgl5" path="res://scripts/systems/BattleInputSystem.cs" id="7_nvgwb"]
+[ext_resource type="Texture2D" uid="uid://c2bl223fb2kq1" path="res://assets/portraits/mascaiman.png" id="8_masc"]
+[ext_resource type="Texture2D" uid="uid://ctcgvos6g66s" path="res://assets/portraits/meowth.png" id="8_meow"]
+[ext_resource type="Texture2D" uid="uid://bh2le7yv78bm4" path="res://assets/portraits/Mimikyu.png" id="8_mimi"]
+[ext_resource type="Texture2D" uid="uid://bom7ddsgpq56t" path="res://assets/portraits/Pikachu.png" id="8_pika"]
+[ext_resource type="Texture2D" uid="uid://div38tjld4s2f" path="res://assets/portraits/poussacha.png" id="8_pous"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_ctjmi"]
-
-[sub_resource type="SphereShape3D" id="SphereShape3D_k3vm1"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_player2"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_ally1"]
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_k3vm1"]
+
 [sub_resource type="SphereShape3D" id="SphereShape3D_enemy2"]
 
-[node name="Test" type="Node"]
+[node name="Test" type="Node" unique_id=1730310334]
 
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.8170543, 0.57656074, 0, -0.57656074, 0.8170543, 4, 6.757878, 10.624343)
+[node name="Camera3D" type="Camera3D" parent="." unique_id=152298289]
+transform = Transform3D(-4.371139e-08, 0.70710677, -0.70710677, 0, 0.70710677, 0.70710677, 1, 3.090862e-08, -3.090862e-08, -7.7853413, 9.874531, 3.7960315)
 
-[node name="Inputs" type="Node" parent="."]
+[node name="Inputs" type="Node" parent="." unique_id=1093197646]
 script = ExtResource("7_nvgwb")
 _mapSystemPath = NodePath("../GameManager/GridMap")
 _camera3DPath = NodePath("../Camera3D")
 
-[node name="GameManager" type="Node" parent="."]
+[node name="GameManager" type="Node" parent="." unique_id=680451959]
 script = ExtResource("1_bc6e8")
 _playerUnitsPath = NodePath("PlayerUnits")
 _enemyUnitsPath = NodePath("EnemyUnits")
@@ -48,7 +46,7 @@ _mapSystemPath = NodePath("GridMap")
 _turnManagerPath = NodePath("TurnManager")
 _battleInputSystemPath = NodePath("../Inputs")
 
-[node name="GridMap" type="GridMap" parent="GameManager"]
+[node name="GridMap" type="GridMap" parent="GameManager" unique_id=1490880816]
 mesh_library = ExtResource("2_so6rl")
 collision_layer = 3
 collision_mask = 3
@@ -57,75 +55,75 @@ data = {
 }
 script = ExtResource("2_p4llj")
 
-[node name="PlayerUnits" type="Node" parent="GameManager"]
+[node name="PlayerUnits" type="Node" parent="GameManager" unique_id=696676367]
 
-[node name="Player1" type="CharacterBody3D" parent="GameManager/PlayerUnits"]
+[node name="Player1" type="CharacterBody3D" parent="GameManager/PlayerUnits" unique_id=1090020772]
 script = ExtResource("4_so6rl")
 
-[node name="Sprite3D" type="Sprite3D" parent="GameManager/PlayerUnits/Player1"]
+[node name="Sprite3D" type="Sprite3D" parent="GameManager/PlayerUnits/Player1" unique_id=1609729052]
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
 billboard = 1
 texture = ExtResource("8_pika")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="GameManager/PlayerUnits/Player1"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="GameManager/PlayerUnits/Player1" unique_id=1365843207]
 shape = SubResource("SphereShape3D_ctjmi")
 
-[node name="Player2" type="CharacterBody3D" parent="GameManager/PlayerUnits"]
+[node name="Player2" type="CharacterBody3D" parent="GameManager/PlayerUnits" unique_id=638693819]
 script = ExtResource("5_player2")
 
-[node name="Sprite3D" type="Sprite3D" parent="GameManager/PlayerUnits/Player2"]
+[node name="Sprite3D" type="Sprite3D" parent="GameManager/PlayerUnits/Player2" unique_id=114911935]
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
 billboard = 1
 texture = ExtResource("8_meow")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="GameManager/PlayerUnits/Player2"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="GameManager/PlayerUnits/Player2" unique_id=2124770189]
 shape = SubResource("SphereShape3D_player2")
 
-[node name="AlliedUnits" type="Node" parent="GameManager"]
+[node name="AlliedUnits" type="Node" parent="GameManager" unique_id=851584870]
 
-[node name="Ally1" type="CharacterBody3D" parent="GameManager/AlliedUnits"]
+[node name="Ally1" type="CharacterBody3D" parent="GameManager/AlliedUnits" unique_id=672064035]
 script = ExtResource("5_ally1")
 
-[node name="Sprite3D" type="Sprite3D" parent="GameManager/AlliedUnits/Ally1"]
+[node name="Sprite3D" type="Sprite3D" parent="GameManager/AlliedUnits/Ally1" unique_id=1736063598]
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
 billboard = 1
 texture = ExtResource("8_pous")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="GameManager/AlliedUnits/Ally1"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="GameManager/AlliedUnits/Ally1" unique_id=1189513948]
 shape = SubResource("SphereShape3D_ally1")
 
-[node name="EnemyAIBehavior" type="Node" parent="GameManager/AlliedUnits/Ally1"]
+[node name="EnemyAIBehavior" type="Node" parent="GameManager/AlliedUnits/Ally1" unique_id=1421839624]
 script = ExtResource("5_aibhv")
 
-[node name="EnemyUnits" type="Node" parent="GameManager"]
+[node name="EnemyUnits" type="Node" parent="GameManager" unique_id=992960182]
 
-[node name="Enemy1" type="CharacterBody3D" parent="GameManager/EnemyUnits"]
+[node name="Enemy1" type="CharacterBody3D" parent="GameManager/EnemyUnits" unique_id=50932391]
 script = ExtResource("5_nvgwb")
 
-[node name="Sprite3D" type="Sprite3D" parent="GameManager/EnemyUnits/Enemy1"]
+[node name="Sprite3D" type="Sprite3D" parent="GameManager/EnemyUnits/Enemy1" unique_id=48400164]
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
 billboard = 1
 texture = ExtResource("8_mimi")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="GameManager/EnemyUnits/Enemy1"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="GameManager/EnemyUnits/Enemy1" unique_id=1761404318]
 shape = SubResource("SphereShape3D_k3vm1")
 
-[node name="EnemyAIBehavior" type="Node" parent="GameManager/EnemyUnits/Enemy1"]
+[node name="EnemyAIBehavior" type="Node" parent="GameManager/EnemyUnits/Enemy1" unique_id=1859835165]
 script = ExtResource("5_aibhv")
 
-[node name="Enemy2" type="CharacterBody3D" parent="GameManager/EnemyUnits"]
+[node name="Enemy2" type="CharacterBody3D" parent="GameManager/EnemyUnits" unique_id=383239329]
 script = ExtResource("5_enemy2")
 
-[node name="Sprite3D" type="Sprite3D" parent="GameManager/EnemyUnits/Enemy2"]
+[node name="Sprite3D" type="Sprite3D" parent="GameManager/EnemyUnits/Enemy2" unique_id=1990049813]
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
 billboard = 1
 texture = ExtResource("8_masc")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="GameManager/EnemyUnits/Enemy2"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="GameManager/EnemyUnits/Enemy2" unique_id=462269565]
 shape = SubResource("SphereShape3D_enemy2")
 
-[node name="EnemyAIBehavior" type="Node" parent="GameManager/EnemyUnits/Enemy2"]
+[node name="EnemyAIBehavior" type="Node" parent="GameManager/EnemyUnits/Enemy2" unique_id=744602225]
 script = ExtResource("5_aibhv")
 
-[node name="TurnManager" type="Node" parent="GameManager"]
+[node name="TurnManager" type="Node" parent="GameManager" unique_id=1988093598]
 script = ExtResource("3_p4llj")

@@ -124,7 +124,7 @@ public sealed partial class BattleLauncher : Node
         // Place units on the map (delegated to MapSystem).
         if (MapSystem.Instance is not null)
         {
-            List<IUnitSystem> friendly = [.._playerUnits, .._allyUnits];
+            List<IUnitSystem> friendly = [.. _playerUnits, .. _allyUnits];
             List<IUnitSystem> enemies = _enemyUnits.Cast<IUnitSystem>().ToList();
             MapSystem.Instance.PlaceUnits(friendly, enemies);
         }

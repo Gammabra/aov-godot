@@ -41,14 +41,11 @@ public partial class ButtonMenu : Button
 
     public void OnOptionsButtonPressed()
     {
-        // Route through MenuManager instead of changing scene
         MenuManager.Instance?.ShowMenu(MenuManager.OPTIONS_MENU);
     }
 
     public void OnOptionsExitButtonPressed()
     {
-        // Go back to whatever was before settings
-        GD.Print("[ButtonMenu] OnOptionsExitButtonPressed FIRED");
         MenuManager.Instance?.GoBack();
     }
 

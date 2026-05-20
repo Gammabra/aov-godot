@@ -42,56 +42,42 @@ public partial class GameManager
     {
         if (_battleHud is not null && IsInstanceValid(_battleHud)) return;
 
-        // Step 1: Attempt to resolve via direct NodePath (Highly Recommended)
-        if (_battleHudPath is not null && !_battleHudPath.IsEmpty)
+        // First try to find the pre-existing BattleHud in UILayer via MainManager
+        if (MainManager.Instance != null)
         {
-            _battleHud = GetNodeOrNull<BattleHud>(_battleHudPath);
+            SceneTree tree = GetTree();
+            _battleHud = FindHudIn(tree.Root);
             if (_battleHud is not null)
             {
-                GD.Print($"GameManager: BattleHud resolved via explicit NodePath '{_battleHudPath}'");
-                _battleHud.Build();
+                GD.Print("GameManager: found pre-existing BattleHud in UILayer.");
+                // Ensure it's built and visible
+                _battleHud.Visible = true;
+                try { _battleHud.Build(); }
+                catch (Exception ex)
+                {
+                    GD.PrintErr($"BattleHud.Build threw: {ex.Message}");
+                }
                 return;
             }
         }
 
-        // Step 2: Fallback to searching the active scene hierarchy
-        SceneTree tree = GetTree();
-        BattleHud? found = tree.CurrentScene is not null ? FindHudIn(tree.CurrentScene) : null;
-        found ??= FindHudIn(tree.Root);
-        
-        if (found is not null) 
-        { 
-            _battleHud = found;
-            GD.Print($"GameManager: BattleHud located contextually inside scene hierarchy: '{_battleHud.Name}'");
-            _battleHud.Build();
-            return; 
-        }
+        // Fallback: spawn dynamically (for standalone Test.tscn without MainManager)
+        SceneTree fallbackTree = GetTree();
+        Node host = fallbackTree.CurrentScene ?? fallbackTree.Root;
+        BattleHud? found = fallbackTree.CurrentScene is not null
+            ? FindHudIn(fallbackTree.CurrentScene) : null;
+        found ??= FindHudIn(fallbackTree.Root);
+        if (found is not null) { _battleHud = found; return; }
 
-        // Step 3: Instantiate dynamically from a packed scene asset path
-        if (!string.IsNullOrEmpty(_battleHudScenePath))
-        {
-            PackedScene? scene = ResourceLoader.Load<PackedScene>(_battleHudScenePath);
-            if (scene is not null) _battleHud = scene.Instantiate<BattleHud>();
-        }
-
-        // Step 4: Absolute structural fallback
         _battleHud ??= new BattleHud { Name = "BattleHud" };
         _battleHud.Layer = BattleHud.HudLayer;
         _battleHud.Visible = true;
-
-        // Parent the dynamically instantiated HUD to your local UI container layer if specified
-        Node host = ResolveUiHostNode();
-        host.CallDeferred(Node.MethodName.AddChild, _battleHud);
-        
-        GD.Print($"GameManager: BattleHud spawned procedurally under '{host.Name}' (Type: {host.GetType().Name})");
-
-        try
-        {
-            _battleHud.Build();
-        }
+        host.CallDeferred("add_child", _battleHud);
+        GD.Print("GameManager: spawned BattleHud as fallback.");
+        try { _battleHud.Build(); }
         catch (Exception ex)
         {
-            GD.PrintErr($"BattleHud.Build threw [{ex.GetType().Name}]: {ex.Message}\n{ex.StackTrace}");
+            GD.PrintErr($"BattleHud.Build threw: {ex.Message}");
         }
     }
 

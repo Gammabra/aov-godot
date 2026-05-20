@@ -79,6 +79,19 @@ public sealed partial class AovPlayer : CharacterBody3D, IInteractor
     /// </summary>
     private void ResolveExplorationInventoryUI()
     {
+        // Step 0: MainManager owns the persistent ExplorationInventoryUI in UILayer
+        if (MainManager.Instance is { } manager)
+        {
+            _explorationInventoryUI = manager.GetExplorationInventoryUI();
+            if (_explorationInventoryUI is not null)
+            {
+                GD.Print("AovPlayer: ExplorationInventoryUI found via MainManager.");
+                _explorationInventoryUI.EnsureBuilt();
+                _explorationInventoryUI.RefreshUnitPanels();
+                return;
+            }
+        }
+
         // Step 1: Attempt direct resolution via explicit NodePath mapping
         if (_explorationInventoryUiPath is not null && !_explorationInventoryUiPath.IsEmpty)
         {
@@ -254,14 +267,12 @@ public sealed partial class AovPlayer : CharacterBody3D, IInteractor
 
     public override void _ExitTree()
     {
-        // Direct scene node tree objects clean themselves up automatically when the active 
-        // world unloads. We only run manual deletion if it was orphaned on the absolute tree root.
+        // Only free if we spawned it ourselves (no MainManager) AND it landed on root
         if (_explorationInventoryUI is not null && IsInstanceValid(_explorationInventoryUI))
         {
-            if (_explorationInventoryUI.GetParent() == GetTree().Root)
-            {
+            bool ownedByMainManager = MainManager.Instance is not null;
+            if (!ownedByMainManager && _explorationInventoryUI.GetParent() == GetTree().Root)
                 _explorationInventoryUI.QueueFree();
-            }
         }
 
         if (_instance == this) _instance = null;

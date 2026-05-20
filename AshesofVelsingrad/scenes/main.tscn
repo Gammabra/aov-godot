@@ -33,6 +33,7 @@ grow_vertical = 2
 [node name="BattleHud" parent="UILayer" unique_id=1185000935 instance=ExtResource("4_jyhfs")]
 
 [node name="InventoryUI" parent="UILayer" unique_id=642595375 instance=ExtResource("5_tbgi4")]
+visible = false
 script = null
 
 [node name="SceneTransition" type="ColorRect" parent="UILayer" unique_id=1680881509]

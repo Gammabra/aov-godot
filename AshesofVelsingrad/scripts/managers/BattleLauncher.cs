@@ -135,9 +135,7 @@ public sealed partial class BattleLauncher : Node
 
         // Route through MainManager shell if available
         if (MainManager.Instance != null)
-        {
             MainManager.Instance.LoadScene(_returnScenePath, showHud: false);
-        }
         else
         {
             GD.Print("[BattleLauncher] MainManager instance missing. Running standalone return fallback.");

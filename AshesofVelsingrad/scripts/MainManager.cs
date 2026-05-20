@@ -1,6 +1,7 @@
 using System;
 using Godot;
 using AshesOfVelsingrad.Managers;
+using AshesOfVelsingrad.UI.Inventory;
 
 namespace AshesOfVelsingrad;
 
@@ -20,8 +21,8 @@ public partial class MainManager : Node
     
     // Persistent UI Elements
     [Export] protected CanvasLayer? _battleHud;
-    [Export] protected Control? _battleInventoryUi;
-    [Export] protected Control? _explorationInventoryUi;
+    [Export] protected CanvasLayer? _battleInventoryUi;
+    [Export] protected CanvasLayer? _explorationInventoryUi;
     [Export] protected ColorRect? _screenTransition;
 
     // Menu Scenes
@@ -30,6 +31,9 @@ public partial class MainManager : Node
 
     private Node? _currentScene;
     private bool _isTransitioning;
+
+    public ExplorationInventoryUI? GetExplorationInventoryUI()
+    => _explorationInventoryUi as ExplorationInventoryUI;
 
     public override void _EnterTree()
     {
@@ -222,8 +226,13 @@ public partial class MainManager : Node
     public override void _ExitTree()
     {
         if (Instance == this)
-        {
             Instance = null;
+
+        // Clean up current scene if still loaded
+        if (_currentScene != null && IsInstanceValid(_currentScene))
+        {
+            _currentScene.QueueFree();
+            _currentScene = null;
         }
     }
 }

@@ -4,6 +4,7 @@ using System.Reflection;
 using AshesOfVelsingrad.Managers;
 using AshesOfVelsingrad.Systems;
 using AshesOfVelsingrad.Utilities;
+using AshesOfVelsingrad.UI.Hud;
 using Godot;
 
 namespace AshesOfVelsingrad.Helpers.Managers;
@@ -22,6 +23,19 @@ public partial class TestConcreteGameManager : GameManager
     public ISkillSystem? LastUsedSkill { get; private set; }
     public IUnitSystem? LastSkillTarget { get; private set; }
     public IUnitSystem? LastSkillSource { get; private set; }
+
+    public void CallEnsureHud() => EnsureHud();
+    public void CallEnsureIndicators() => EnsureIndicators();
+    public void CallWireHudEvents() => WireHudEvents();
+    public void CallBindHudRosters() => BindHudRosters();
+    public void CallRefreshHudForActiveUnit(IUnitSystem active) => RefreshHudForActiveUnit(active);
+    public void CallShowVictoryScreen() => ShowVictoryScreen();
+    public void CallShowGameOverScreen() => ShowGameOverScreen();
+
+    public BattleHud? GetBattleHud() => _battleHud;
+    public void SetBattleHud(BattleHud? hud) => _battleHud = hud;
+    public VictoryScreen? GetVictoryScreen() => _victoryScreen;
+    public GameOverScreen? GetGameOverScreen() => _gameOverScreen;
 
     public void SetNodePaths(
         NodePath playerUnitsPath,

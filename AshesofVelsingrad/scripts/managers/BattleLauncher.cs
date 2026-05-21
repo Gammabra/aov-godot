@@ -86,7 +86,7 @@ public sealed partial class BattleLauncher : Node
         // Use MainManager shell if active; otherwise fallback to standard tree swapping for standalone tests
         if (MainManager.Instance != null)
         {
-            MainManager.Instance.LoadScene(setup.BattleScene.ResourcePath, showHud: false);
+            MainManager.Instance.LoadScene(setup.BattleScene.ResourcePath, showHud: true);
         }
         else
         {

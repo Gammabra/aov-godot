@@ -49,10 +49,10 @@ public partial class GameManager
             _battleHud = FindHudIn(tree.Root);
             if (_battleHud is not null)
             {
-                GD.Print("GameManager: found pre-existing BattleHud in UILayer.");
-                // Ensure it's built and visible
                 _battleHud.Visible = true;
-                try { _battleHud.Build(); }
+                try {
+                    _battleHud.Build();
+                }
                 catch (Exception ex)
                 {
                     GD.PrintErr($"BattleHud.Build threw: {ex.Message}");
@@ -73,7 +73,7 @@ public partial class GameManager
         _battleHud.Layer = BattleHud.HudLayer;
         _battleHud.Visible = true;
         host.CallDeferred("add_child", _battleHud);
-        GD.Print("GameManager: spawned BattleHud as fallback.");
+
         try { _battleHud.Build(); }
         catch (Exception ex)
         {

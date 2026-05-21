@@ -103,18 +103,19 @@ public class MenuManagerTest
         _menuManager.RegisterMenu("menu1", _mockMenu1!);
         _menuManager.RegisterMenu("menu2", _mockMenu2!);
 
-        // Show first menu
         _menuManager.ShowMenu("menu1");
         AssertThat(_mockMenu1!.Visible).IsTrue();
         AssertThat(_menuManager.GetCurrentMenu()).IsEqual("menu1");
 
-        // Act - show second menu
+        // Act
         _menuManager.ShowMenu("menu2");
 
-        // Assert
-        AssertThat(_mockMenu1.Visible).IsFalse(); // Previous menu hidden
-        AssertThat(_mockMenu2!.Visible).IsTrue(); // New menu shown
+        // Assert — plain Controls use Hide()/Show(), not SettingsPages.HideAll/ShowAll
+        AssertThat(_mockMenu1.Visible).IsFalse();
+        AssertThat(_mockMenu2!.Visible).IsTrue();
         AssertThat(_menuManager.GetCurrentMenu()).IsEqual("menu2");
+        // MouseFilter should be set to Ignore when hidden
+        AssertThat((int)_mockMenu1.MouseFilter).IsEqual((int)Control.MouseFilterEnum.Ignore);
     }
 
     [TestCase]
@@ -122,13 +123,15 @@ public class MenuManagerTest
     {
         // Arrange
         _menuManager = CreateMenuManager();
+        _menuManager.RegisterMenu(MenuManager.OPTIONS_MENU, _mockMenu1!);
 
         // Act
-        _menuManager.ShowMenu("options");
+        _menuManager.ShowMenu(MenuManager.OPTIONS_MENU);
 
-        // Assert
-        // The menu should be visible after ShowMenu is called
-        AssertThat(_menuManager.GetCurrentMenu()).IsEqual("options");
+        // Assert — options menu is shown like any other menu now
+        // (no special OptionsMenu type handling)
+        AssertThat(_menuManager.GetCurrentMenu()).IsEqual(MenuManager.OPTIONS_MENU);
+        AssertThat(_mockMenu1!.Visible).IsTrue();
     }
 
     [TestCase]
@@ -414,6 +417,41 @@ public class MenuManagerTest
         AssertThat(MenuManager.MAIN_MENU).IsEqual("main_menu");
         AssertThat(MenuManager.OPTIONS_MENU).IsEqual("options_menu");
         AssertThat(MenuManager.PAUSE_MENU).IsEqual("pause_menu");
+    }
+
+    [TestCase]
+    public void ShowMenu_HiddenMenu_SetsMouseFilterToIgnore()
+    {
+        // Arrange
+        _menuManager = CreateMenuManager();
+        _menuManager.RegisterMenu("menu1", _mockMenu1!);
+        _menuManager.RegisterMenu("menu2", _mockMenu2!);
+
+        _menuManager.ShowMenu("menu1");
+
+        // Act — show menu2, which hides menu1
+        _menuManager.ShowMenu("menu2");
+
+        // Assert — hidden menu must not block mouse events
+        AssertThat((int)_mockMenu1!.MouseFilter).IsEqual((int)Control.MouseFilterEnum.Ignore);
+    }
+
+    [TestCase]
+    public void ShowMenu_ShowingMenu_SetsMouseFilterToPass()
+    {
+        // Arrange
+        _menuManager = CreateMenuManager();
+        _menuManager.RegisterMenu("menu1", _mockMenu1!);
+        _menuManager.RegisterMenu("menu2", _mockMenu2!);
+
+        _menuManager.ShowMenu("menu1");
+        _menuManager.ShowMenu("menu2"); // menu1 is now hidden with Ignore
+
+        // Act — go back to menu1
+        _menuManager.GoBack();
+
+        // Assert — restored menu gets Pass filter
+        AssertThat((int)_mockMenu1!.MouseFilter).IsEqual((int)Control.MouseFilterEnum.Pass);
     }
 
     // Helper Methods

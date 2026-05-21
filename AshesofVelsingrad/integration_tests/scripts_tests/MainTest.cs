@@ -15,6 +15,7 @@ public class MainTest
 {
     private TestableMain? _testableMain;
     private Control? _mockMenuContainer;
+    private Node? _mockWorldContainer;
     private readonly List<Node> _testNodes = new();
 
     [BeforeTest]
@@ -33,6 +34,7 @@ public class MainTest
         _testableMain.SetAutoFreeCallback(AutoFree);
 
         _mockMenuContainer = AutoFree(new Control { Name = "MockMenuContainer" });
+        _mockWorldContainer = AutoFree(new Node { Name = "MockWorldContainer" });
 
         GD.Print("[TEST] Main SetUp completed");
     }
@@ -43,9 +45,10 @@ public class MainTest
         // Arrange
         SetupValidMenuManager();
         _testableMain!.SetMenuContainer(_mockMenuContainer);
+        _testableMain!.SetWorldContainer(_mockWorldContainer);
 
         // Act
-        _testableMain.InitializeMenus();
+        _testableMain.PublicInitializeMenus();
 
         // Assert
         var childCount = _mockMenuContainer?.GetChildCount() ?? 0;
@@ -60,9 +63,10 @@ public class MainTest
         // Arrange
         SetupValidSettingsManager();
         _testableMain!.SetMenuContainer(_mockMenuContainer);
+        _testableMain!.SetWorldContainer(_mockWorldContainer);
 
         // Act
-        _testableMain.InitializeMenus();
+        _testableMain.PublicInitializeMenus();
 
         // Assert
         var childCount = _mockMenuContainer?.GetChildCount() ?? 0;
@@ -77,11 +81,12 @@ public class MainTest
         // Arrange
         SetupValidManagers();
         _testableMain!.SetMenuContainer(_mockMenuContainer);
+        _testableMain!.SetWorldContainer(_mockWorldContainer);
 
         GD.Print($"[TEST] Before InitializeMenus - Main: {_testableMain.MainMenuInstantiateCount}, Settings: {_testableMain.SettingsInstantiateCount}");
 
         // Act
-        _testableMain.InitializeMenus();
+        _testableMain.PublicInitializeMenus();
 
         GD.Print($"[TEST] After InitializeMenus - Main: {_testableMain.MainMenuInstantiateCount}, Settings: {_testableMain.SettingsInstantiateCount}");
 
@@ -100,7 +105,7 @@ public class MainTest
         _testableMain!.SetMenuContainer(null);
 
         // Act
-        _testableMain.InitializeMenus();
+        _testableMain.PublicInitializeMenus();
 
         // Assert
         AssertThat(_testableMain.MainMenuInstantiateCount).IsEqual(0);
@@ -115,9 +120,10 @@ public class MainTest
         SetupValidSettingsManager();
         SetSingletonInstance<MenuManager>(testMenuManager);
         _testableMain!.SetMenuContainer(_mockMenuContainer);
+        _testableMain!.SetWorldContainer(_mockWorldContainer);
 
         // Act
-        _testableMain.InitializeMenus();
+        _testableMain.PublicInitializeMenus();
 
         // Assert
         AssertThat(testMenuManager.RegisteredMenus.ContainsKey(MenuManager.MAIN_MENU)).IsTrue();
@@ -133,12 +139,13 @@ public class MainTest
         SetupValidSettingsManager();
         SetSingletonInstance<MenuManager>(testMenuManager);
         _testableMain!.SetMenuContainer(_mockMenuContainer);
+        _testableMain!.SetWorldContainer(_mockWorldContainer);
 
         var initialChildCount = _mockMenuContainer?.GetChildCount() ?? 0;
         GD.Print($"[TEST] Initial child count: {initialChildCount}");
 
         // Act
-        _testableMain.InitializeMenus();
+        _testableMain.PublicInitializeMenus();
 
         // Assert - verify complete workflow
         AssertThat(_testableMain.MainMenuInstantiateCount).IsEqual(1);

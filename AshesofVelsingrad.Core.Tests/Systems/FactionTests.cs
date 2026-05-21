@@ -47,9 +47,9 @@ public class FactionTests
     public void IsHostileTo_IsTheNegationOfIsFriendlyTo()
     {
         foreach (Faction a in System.Enum.GetValues<Faction>())
-        foreach (Faction b in System.Enum.GetValues<Faction>())
-            Assert.That(a.IsHostileTo(b), Is.EqualTo(!a.IsFriendlyTo(b)),
-                $"hostile/friendly should be exact opposites for ({a}, {b})");
+            foreach (Faction b in System.Enum.GetValues<Faction>())
+                Assert.That(a.IsHostileTo(b), Is.EqualTo(!a.IsFriendlyTo(b)),
+                    $"hostile/friendly should be exact opposites for ({a}, {b})");
     }
 
     [Test]

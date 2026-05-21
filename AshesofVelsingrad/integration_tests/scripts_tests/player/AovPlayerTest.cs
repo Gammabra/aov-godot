@@ -105,10 +105,10 @@ public partial class AovPlayerTest
     {
         // Arrange
         AovPlayer player = CreatePlayerWithDependencies();
-        
+
         ExplorationInventoryUI expectedUi = new() { Name = "PrePlacedInventoryUI" };
         AddToTestRoot(expectedUi);
-        
+
         player.Set("_explorationInventoryUiPath", expectedUi.GetPath());
 
         // Act
@@ -125,7 +125,7 @@ public partial class AovPlayerTest
     {
         // Arrange
         AovPlayer player = CreatePlayerWithDependencies();
-        
+
         // Direct the procedural generator to use our test root instead of leaking onto tree root
         player.Set("_uiContainerPath", _root!.GetPath());
 

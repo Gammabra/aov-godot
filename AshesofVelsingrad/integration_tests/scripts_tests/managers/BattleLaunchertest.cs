@@ -94,7 +94,7 @@ public partial class BattleLauncherTest
     {
         // Arrange
         BattleLauncher launcher = new();
-        
+
         // Act
         _root!.AddChild(launcher);
         _testNodes.Add(launcher);
@@ -177,7 +177,7 @@ public partial class BattleLauncherTest
         // Verify the coordinate cache matches and is successfully flushed upon read
         Vector3? consumedPos = launcher.ConsumePendingReturnPosition();
         AssertThat(consumedPos).IsEqual(expectedReturnPos);
-        
+
         // Subsequent checks must be completely blanked out (Idempotent tracking)
         AssertThat(launcher.ConsumePendingReturnPosition()).IsNull();
     }

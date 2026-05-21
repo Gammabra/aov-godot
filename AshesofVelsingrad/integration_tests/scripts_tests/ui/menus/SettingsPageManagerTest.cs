@@ -1,6 +1,6 @@
 using System.Collections.Generic;
-using Godot;
 using GdUnit4;
+using Godot;
 using static GdUnit4.Assertions;
 
 namespace AshesOfVelsingrad.IntegrationTests.UI;

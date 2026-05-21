@@ -40,7 +40,7 @@ public sealed partial class AovPlayer : CharacterBody3D, IInteractor
 
     private float _gravity = ProjectSettings.GetSetting("physics/3d/default_gravity").AsSingle();
     private StateMachine? _stateMachine;
-    
+
     private SpringArm3D _springArm3D = null!;
     private InteractionComponent? _interactionComponent;
     private AnimatedSprite3D _animatedSprite3D = null!;
@@ -122,7 +122,7 @@ public sealed partial class AovPlayer : CharacterBody3D, IInteractor
 
         // Step 3: Procedural generation fallback if no pre-built design layer exists
         _explorationInventoryUI = new ExplorationInventoryUI { Name = "ExplorationInventoryUI" };
-        
+
         Node host = currentSceneRoot ?? tree.Root;
         if (_uiContainerPath is not null && !_uiContainerPath.IsEmpty)
         {
@@ -133,7 +133,7 @@ public sealed partial class AovPlayer : CharacterBody3D, IInteractor
         host.CallDeferred(Node.MethodName.AddChild, _explorationInventoryUI);
         _explorationInventoryUI.EnsureBuilt();
         _explorationInventoryUI.RefreshUnitPanels();
-        
+
         GD.Print($"AovPlayer: ExplorationInventoryUI spawned procedurally under host layout: '{host.Name}'");
     }
 

@@ -2,10 +2,10 @@ using System;
 using System.Collections.Generic;
 using System.Reflection;
 using System.Threading.Tasks;
-using Godot;
-using GdUnit4;
-using AshesOfVelsingrad.Managers;
 using AshesOfVelsingrad.Audio;
+using AshesOfVelsingrad.Managers;
+using GdUnit4;
+using Godot;
 using static GdUnit4.Assertions;
 
 namespace AshesOfVelsingrad.IntegrationTests.UI;
@@ -32,7 +32,7 @@ public class SettingsPagesTest
         // --- PageCommand Hierarchy ---
         var pageCommand = new Control { Name = "PageCommand" };
         _pages.AddChild(pageCommand);
-        
+
         foreach (string action in _pages.actions.Keys)
         {
             var label = new Label { Name = action };
@@ -46,7 +46,7 @@ public class SettingsPagesTest
         var pageSubtitle = new Control { Name = "PageSubtitle" };
         _pages.AddChild(pageSubtitle);
         pageSubtitle.AddChild(new Label { Name = "ExampleLabel" });
-        
+
         var fontControl = new Control { Name = "Font" };
         pageSubtitle.AddChild(fontControl);
         fontControl.AddChild(new OptionButton { Name = "OptionButton" });
@@ -78,7 +78,7 @@ public class SettingsPagesTest
         // --- PageVideo Hierarchy ---
         var pageVideo = new Control { Name = "PageVideo" };
         _pages.AddChild(pageVideo);
-        
+
         string[][] videoControls = {
             new[] { "Contrast", "HSlider" },
             new[] { "Brightness", "HSlider" },
@@ -92,7 +92,7 @@ public class SettingsPagesTest
         // --- PageVisual Hierarchy ---
         var pageVisual = new Control { Name = "PageVisual" };
         _pages.AddChild(pageVisual);
-        
+
         var interfaceSizeControl = new Control { Name = "InterfaceSize" };
         pageVisual.AddChild(interfaceSizeControl);
         interfaceSizeControl.AddChild(new HSlider { Name = "HSlider" });
@@ -109,7 +109,7 @@ public class SettingsPagesTest
         // --- PageAudio Hierarchy ---
         var pageAudio = new Control { Name = "PageAudio" };
         _pages.AddChild(pageAudio);
-        
+
         string[][] audioControls = {
             new[] { "Master", "HSlider" },
             new[] { "Music", "HSlider" },

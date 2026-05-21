@@ -91,7 +91,7 @@ public class GameManagerHudTest
         typeof(TestConcreteUnitSystem).GetProperty("Faction", BindingFlags.Public | BindingFlags.Instance | BindingFlags.NonPublic)?.SetValue(dummyPlayer, Faction.Player);
         var dummyEnemy = new TestConcreteUnitSystem { Name = "TestEnemyUnit" };
         typeof(TestConcreteUnitSystem).GetProperty("Faction", BindingFlags.Public | BindingFlags.Instance | BindingFlags.NonPublic)?.SetValue(dummyEnemy, Faction.Enemy);
-        
+
         playerUnitsContainer.AddChild(dummyPlayer);
         enemyUnitsContainer.AddChild(dummyEnemy);
 
@@ -136,7 +136,7 @@ public class GameManagerHudTest
         var existingHud = new BattleHud { Name = "ExistingHud" };
         _root!.AddChild(existingHud);
         _testNodes.Add(existingHud);
-        
+
         _gameManager.SetBattleHud(existingHud);
 
         _gameManager.CallEnsureHud();

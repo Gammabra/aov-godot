@@ -119,7 +119,7 @@ public class GameManagerTest
 
         manager.Set("_playerUnitsContainer", playerContainer);
         manager.Set("_enemyUnitsContainer", enemyContainer);
-        SetPrivateField(manager, "_alliedUnitsContainer", allyContainer); 
+        SetPrivateField(manager, "_alliedUnitsContainer", allyContainer);
 
         manager.Call("LoadUnits");
 
@@ -137,7 +137,7 @@ public class GameManagerTest
         GameManager manager = AddNode(new GameManager());
         Node playerContainer = AddNode(new Node());
         Node enemyContainer = AddNode(new Node());
-        Node allyContainer = AddNode(new Node()); 
+        Node allyContainer = AddNode(new Node());
         TestConcreteUnitSystem playerUnit = CreateUnit("Player");
         TestConcreteUnitSystem enemyUnit = CreateUnit("Enemy", 0);
 
@@ -149,7 +149,7 @@ public class GameManagerTest
 
         SetPrivateField(manager, "_playerUnitsContainer", playerContainer);
         SetPrivateField(manager, "_enemyUnitsContainer", enemyContainer);
-        SetPrivateField(manager, "_alliedUnitsContainer", allyContainer); 
+        SetPrivateField(manager, "_alliedUnitsContainer", allyContainer);
 
         CallPrivateMethod(manager, "LoadUnits");
 
@@ -169,7 +169,7 @@ public class GameManagerTest
         GameManager manager = AddNode(new GameManager());
         Node playerContainer = AddNode(new Node());
         Node enemyContainer = AddNode(new Node());
-        Node allyContainer = AddNode(new Node()); 
+        Node allyContainer = AddNode(new Node());
         TestConcreteUnitSystem playerUnit = CreateUnit("Player", 0);
         TestConcreteUnitSystem enemyUnit = CreateUnit("Enemy");
 
@@ -181,7 +181,7 @@ public class GameManagerTest
 
         SetPrivateField(manager, "_playerUnitsContainer", playerContainer);
         SetPrivateField(manager, "_enemyUnitsContainer", enemyContainer);
-        SetPrivateField(manager, "_alliedUnitsContainer", allyContainer); 
+        SetPrivateField(manager, "_alliedUnitsContainer", allyContainer);
 
         CallPrivateMethod(manager, "LoadUnits");
 
@@ -201,7 +201,7 @@ public class GameManagerTest
         GameManager manager = AddNode(new GameManager());
         Node playerContainer = AddNode(new Node());
         Node enemyContainer = AddNode(new Node());
-        Node allyContainer = AddNode(new Node()); 
+        Node allyContainer = AddNode(new Node());
         TestConcreteUnitSystem playerUnit = CreateUnit("Player", 0);
         TestConcreteUnitSystem enemyUnit = CreateUnit("Enemy", 0);
 

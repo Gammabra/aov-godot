@@ -24,13 +24,13 @@ public partial class GameManager
 
     /// <summary>End-of-battle Defeat overlay; spawned lazily.</summary>
     protected GameOverScreen? _gameOverScreen;
-    
+
     /// <summary>Direct path to a pre-placed BattleHud node inside the designer-authored scene tree.</summary>
-    [Export] 
+    [Export]
     private NodePath? _battleHudPath;
 
     /// <summary>Optional path to a dedicated local UI Layer/Container. If unset, falls back to the scene root.</summary>
-    [Export] 
+    [Export]
     private NodePath? _uiContainerPath;
 
     /// <summary>Fallback path to a designer-authored HUD scene asset if no local instance is found.</summary>
@@ -50,7 +50,8 @@ public partial class GameManager
             if (_battleHud is not null)
             {
                 _battleHud.Visible = true;
-                try {
+                try
+                {
                     _battleHud.Build();
                 }
                 catch (Exception ex)
@@ -202,7 +203,7 @@ public partial class GameManager
         if (_victoryScreen is null || !IsInstanceValid(_victoryScreen))
         {
             _victoryScreen = new VictoryScreen { Name = "VictoryScreen" };
-            
+
             Node host = ResolveUiHostNode();
             host.CallDeferred(Node.MethodName.AddChild, _victoryScreen);
             _victoryScreen.OnContinuePressed += OnVictoryContinue;
@@ -225,7 +226,7 @@ public partial class GameManager
         if (_gameOverScreen is null || !IsInstanceValid(_gameOverScreen))
         {
             _gameOverScreen = new GameOverScreen { Name = "GameOverScreen" };
-            
+
             Node host = ResolveUiHostNode();
             host.CallDeferred(Node.MethodName.AddChild, _gameOverScreen);
             _gameOverScreen.OnTryAgainPressed += OnTryAgain;
@@ -243,7 +244,7 @@ public partial class GameManager
             Node? container = GetNodeOrNull(_uiContainerPath);
             if (container is not null) return container;
         }
-        
+
         return GetTree().CurrentScene ?? GetTree().Root;
     }
 

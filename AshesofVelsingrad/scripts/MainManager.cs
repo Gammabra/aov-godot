@@ -1,7 +1,7 @@
 using System;
-using Godot;
 using AshesOfVelsingrad.Managers;
 using AshesOfVelsingrad.UI.Inventory;
+using Godot;
 
 namespace AshesOfVelsingrad;
 
@@ -18,7 +18,7 @@ public partial class MainManager : Node
     // Containers & Layers
     [Export] protected Node? _worldContainer;
     [Export] protected Control? _menuContainer;
-    
+
     // Persistent UI Elements
     [Export] protected CanvasLayer? _battleHud;
     [Export] protected CanvasLayer? _battleInventoryUi;
@@ -108,22 +108,22 @@ public partial class MainManager : Node
 
         // Godot 4 smooth fade sequence using Tweens
         Tween fadeTween = CreateTween().SetPauseMode(Tween.TweenPauseMode.Process);
-        
+
         // 1. Fade to Black
         fadeTween.TweenProperty(_screenTransition, "color:a", 1.0f, 0.3f)
             .SetTrans(Tween.TransitionType.Quad)
             .SetEase(Tween.EaseType.Out);
-        
+
         // 2. Perform the actual resource swap while screen is black
         fadeTween.TweenCallback(Callable.From(() => PerformSceneSwap(scenePath, showHud)));
-        
+
         // 3. Fade Back to Transparent
         fadeTween.TweenProperty(_screenTransition, "color:a", 0.0f, 0.3f)
             .SetTrans(Tween.TransitionType.Quad)
             .SetEase(Tween.EaseType.In);
-            
+
         // 4. Clean up transition state
-        fadeTween.TweenCallback(Callable.From(() => 
+        fadeTween.TweenCallback(Callable.From(() =>
         {
             _screenTransition.Visible = false;
             _isTransitioning = false;

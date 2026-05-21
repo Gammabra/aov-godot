@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Reflection;
 using AshesOfVelsingrad.player;
 using AshesOfVelsingrad.Systems;
+using AshesOfVelsingrad.UI.Inventory;
 using GdUnit4;
 using Godot;
 using static GdUnit4.Assertions;
@@ -42,6 +43,7 @@ public partial class AovPlayerTest
         player.AddChild(sprite);
         player.AddChild(spring);
         player.AddChild(interaction);
+
         player.Set("_animatedSprite3DPath", sprite.GetPath());
         player.Set("_springArm3DPath", spring.GetPath());
         player.Set("_interactionComponentPath", interaction.GetPath());
@@ -95,7 +97,45 @@ public partial class AovPlayerTest
 
         player._Input(action);
 
-        AssertThat(player).IsNotNull(); // no crash
+        AssertThat(player).IsNotNull(); // No crash occurs
+    }
+
+    [TestCase]
+    public void ResolveInventoryUi_BindsViaExplicitPath_WhenAssigned()
+    {
+        // Arrange
+        AovPlayer player = CreatePlayerWithDependencies();
+        
+        ExplorationInventoryUI expectedUi = new() { Name = "PrePlacedInventoryUI" };
+        AddToTestRoot(expectedUi);
+        
+        player.Set("_explorationInventoryUiPath", expectedUi.GetPath());
+
+        // Act
+        player._Ready();
+
+        // Assert
+        var resolvedUi = GetPrivateField<ExplorationInventoryUI>(player, "_explorationInventoryUI");
+        AssertThat(resolvedUi).IsNotNull();
+        AssertThat(resolvedUi).IsEqual(expectedUi);
+    }
+
+    [TestCase]
+    public void ResolveInventoryUi_FallsBackToProceduralSpawning_WhenPathMissing()
+    {
+        // Arrange
+        AovPlayer player = CreatePlayerWithDependencies();
+        
+        // Direct the procedural generator to use our test root instead of leaking onto tree root
+        player.Set("_uiContainerPath", _root!.GetPath());
+
+        // Act
+        player._Ready();
+
+        // Assert
+        var resolvedUi = GetPrivateField<ExplorationInventoryUI>(player, "_explorationInventoryUI");
+        AssertThat(resolvedUi).IsNotNull();
+        AssertThat(resolvedUi!.Name.ToString()).IsEqual("ExplorationInventoryUI");
     }
 
     #region Test Doubles

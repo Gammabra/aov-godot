@@ -168,7 +168,11 @@ public partial class AovPlayerTest
     {
         foreach (Node node in _testNodes)
         {
-            if (GodotObject.IsInstanceValid(node) && !node.IsQueuedForDeletion())
+            if (!GodotObject.IsInstanceValid(node))
+                continue;
+
+            node.GetParent()?.RemoveChild(node);
+            if (!node.IsQueuedForDeletion())
                 node.QueueFree();
         }
 

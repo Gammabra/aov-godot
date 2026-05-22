@@ -62,11 +62,11 @@ public class AovPlayerTest
 
         if (mockInventoryUi)
         {
-            // Use mock — creates zero child nodes
             MockExplorationInventoryUI dummyUi = new() { Name = "DummyUI" };
             _nodesToFree.Add(dummyUi);
             AddToTestRoot(dummyUi);
-            player.Set("_explorationInventoryUiPath", dummyUi.GetPath());
+
+            player.Set("_explorationInventoryUiPath", new NodePath($"../{dummyUi.Name}"));
         }
 
         if (addToTree)
@@ -176,7 +176,8 @@ public class AovPlayerTest
         _nodesToFree.Add(expectedUi);
         AddToTestRoot(expectedUi);
 
-        player.Set("_explorationInventoryUiPath", expectedUi.GetPath());
+        // FIX: Use relative path instead of GetPath()
+        player.Set("_explorationInventoryUiPath", new NodePath($"../{expectedUi.Name}"));
         AddToTestRoot(player);
 
         var resolvedUi = GetPrivateField<ExplorationInventoryUI>(player, "_explorationInventoryUI");

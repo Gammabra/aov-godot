@@ -64,13 +64,25 @@ public class AovPlayerTest
         {
             MockExplorationInventoryUI dummyUi = new() { Name = "DummyUI" };
             _nodesToFree.Add(dummyUi);
-            AddToTestRoot(dummyUi);
 
-            player.Set("_explorationInventoryUiPath", new NodePath($"../{dummyUi.Name}"));
+            // 1. Group them securely offline
+            Node container = new Node { Name = "PlayerContainer" };
+            _nodesToFree.Add(container);
+
+            container.AddChild(dummyUi);
+            container.AddChild(player);
+
+            // 2. Safely generate a Godot engine-certified relative path
+            player.Set("_explorationInventoryUiPath", player.GetPathTo(dummyUi));
+
+            // 3. Mount to tree (Triggers _Ready on the player)
+            if (addToTree)
+                AddToTestRoot(container);
         }
-
-        if (addToTree)
+        else if (addToTree)
+        {
             AddToTestRoot(player);
+        }
 
         return player;
     }
@@ -171,14 +183,21 @@ public class AovPlayerTest
     {
         AovPlayer player = CreatePlayerWithDependencies(mockInventoryUi: false, addToTree: false);
 
-        // Use mock instead of real ExplorationInventoryUI
         MockExplorationInventoryUI expectedUi = new() { Name = "PrePlacedInventoryUI" };
         _nodesToFree.Add(expectedUi);
-        AddToTestRoot(expectedUi);
 
-        // FIX: Use relative path instead of GetPath()
-        player.Set("_explorationInventoryUiPath", new NodePath($"../{expectedUi.Name}"));
-        AddToTestRoot(player);
+        // 1. Offline grouping for CI headless safety
+        Node container = new Node { Name = "TestContainer" };
+        _nodesToFree.Add(container);
+
+        container.AddChild(expectedUi);
+        container.AddChild(player);
+
+        // 2. The Godot engine computes the perfect NodePath BEFORE entering the tree
+        player.Set("_explorationInventoryUiPath", player.GetPathTo(expectedUi));
+
+        // 3. Mount to tree (Fires _Ready)
+        AddToTestRoot(container);
 
         var resolvedUi = GetPrivateField<ExplorationInventoryUI>(player, "_explorationInventoryUI");
         AssertThat(resolvedUi).IsNotNull();

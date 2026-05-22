@@ -10,6 +10,9 @@ public partial class TestableMain : AshesOfVelsingrad.MainManager
     private System.Func<Node, Node?>? _autoFreeCallback;
     public int MainMenuInstantiateCount { get; private set; }
     public int SettingsInstantiateCount { get; private set; }
+    public string? LastLoadedScene { get; private set; }
+    public bool LastShowHud { get; private set; }
+    public bool LoadSceneCalled { get; private set; }
 
     // Track deferred calls instead of actually deferring them
     public bool ShowMainMenuWasCalled { get; private set; }
@@ -53,6 +56,15 @@ public partial class TestableMain : AshesOfVelsingrad.MainManager
         _createdNodes.Add(settings);
 
         return (mainMenu, settings);
+    }
+
+    public override void LoadScene(string scenePath, bool showHud)
+    {
+        // Record the call without actually loading anything
+        LastLoadedScene = scenePath;
+        LastShowHud = showHud;
+        LoadSceneCalled = true;
+        GD.Print($"[TEST] TestableMainManager.LoadScene called: {scenePath}, showHud={showHud}");
     }
 
     /// <summary>

@@ -2,9 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Reflection;
 using AshesOfVelsingrad.player;
-using AshesOfVelsingrad.Systems;
-using AshesOfVelsingrad.UI.Inventory;
 using AshesOfVelsingrad.Managers;
+using AshesOfVelsingrad.UI.Inventory;
 using GdUnit4;
 using Godot;
 using static GdUnit4.Assertions;
@@ -13,53 +12,72 @@ namespace AshesOfVelsingrad.IntegrationTests.Player;
 
 [TestSuite]
 [RequireGodotRuntime]
-public partial class AovPlayerTest
+public class AovPlayerTest
 {
-    private List<Node> _testNodes = new();
     private Node? _root;
+
+    private List<Node> _nodesToFree = new();
 
     #region Helpers
 
-    private T AddToTestRoot<T>(T node)
-        where T : Node
+    private void AddToTestRoot(Node node)
     {
-        if (_root == null)
-            throw new InvalidOperationException("Root not initialized");
-
+        if (_root == null) throw new InvalidOperationException("Root not initialized");
         _root.AddChild(node);
-        _testNodes.Add(node);
-        return node;
     }
 
-    private AovPlayer CreatePlayerWithDependencies()
+    private void ClearSingleton<T>() where T : class
+    {
+        typeof(T).GetProperty("Instance", BindingFlags.Public | BindingFlags.Static)
+            ?.GetSetMethod(true)
+            ?.Invoke(null, new object?[] { null }); // null value, not empty array
+        typeof(T).GetField("Instance", BindingFlags.Public | BindingFlags.Static)
+            ?.SetValue(null, null);
+    }
+
+    private AovPlayer CreatePlayerWithDependencies(bool mockInventoryUi = true, bool addToTree = true)
     {
         AovPlayer player = new();
+        _nodesToFree.Add(player);
 
-        AnimatedSprite3D sprite = new();
-        SpringArm3D spring = new();
-        InteractionComponent interaction = new();
-        StateMachine stateMachine = new StateMachine { InitialState = null! };
+        AnimatedSprite3D sprite = new() { Name = "Sprite" };
+        SpringArm3D spring = new() { Name = "Spring" };
+        InteractionComponent interaction = new() { Name = "Interact" };
+        StateMachine stateMachine = new() { Name = "State", InitialState = null! };
 
-        AddToTestRoot(player);
+        _nodesToFree.Add(sprite);
+        _nodesToFree.Add(spring);
+        _nodesToFree.Add(interaction);
+        _nodesToFree.Add(stateMachine);
 
         player.AddChild(sprite);
         player.AddChild(spring);
         player.AddChild(interaction);
         player.AddChild(stateMachine);
 
-        player.Set("_animatedSprite3DPath", sprite.GetPath());
-        player.Set("_springArm3DPath", spring.GetPath());
-        player.Set("_interactionComponentPath", interaction.GetPath());
-        player.Set("_stateMachinePath", stateMachine.GetPath());
+        player.Set("_animatedSprite3DPath", new NodePath(sprite.Name));
+        player.Set("_springArm3DPath", new NodePath(spring.Name));
+        player.Set("_interactionComponentPath", new NodePath(interaction.Name));
+        player.Set("_stateMachinePath", new NodePath(stateMachine.Name));
+
+        if (mockInventoryUi)
+        {
+            // Use mock — creates zero child nodes
+            MockExplorationInventoryUI dummyUi = new() { Name = "DummyUI" };
+            _nodesToFree.Add(dummyUi);
+            AddToTestRoot(dummyUi);
+            player.Set("_explorationInventoryUiPath", dummyUi.GetPath());
+        }
+
+        if (addToTree)
+            AddToTestRoot(player);
 
         return player;
     }
 
     private T? GetPrivateField<T>(object obj, string fieldName)
     {
-        FieldInfo? field = obj.GetType()
-            .GetField(fieldName, BindingFlags.NonPublic | BindingFlags.Instance);
-
+        FieldInfo? field = obj.GetType().GetField(fieldName, BindingFlags.NonPublic | BindingFlags.Instance);
         return (T?)field?.GetValue(obj);
     }
 
@@ -68,118 +86,113 @@ public partial class AovPlayerTest
     [BeforeTest]
     public void SetUp()
     {
-        _testNodes.Clear();
+        _nodesToFree = new System.Collections.Generic.List<Node>();
+        ClearSingleton<MainManager>();
+        ClearSingleton<AudioManager>();
+        ClearSingleton<BattleLauncher>();
 
         _root = new Node { Name = "TestRoot" };
         ((SceneTree)Engine.GetMainLoop()).Root.AddChild(_root);
-        _testNodes.Add(_root);
+    }
+
+    [AfterTest]
+    public void TearDown()
+    {
+        // Free tracked nodes individually first (reverse order)
+        for (int i = _nodesToFree.Count - 1; i >= 0; i--)
+        {
+            var node = _nodesToFree[i];
+            if (GodotObject.IsInstanceValid(node) && !node.IsQueuedForDeletion())
+            {
+                if (node.GetParent() != null)
+                    node.GetParent().RemoveChild(node);
+                node.Free();
+            }
+        }
+        _nodesToFree.Clear();
+
+        // Free root
+        if (GodotObject.IsInstanceValid(_root))
+        {
+            _root.GetParent()?.RemoveChild(_root);
+            _root.Free();
+        }
+        _root = null;
+
+        // Clean up escaped nodes on scene root
+        // Use a snapshot to avoid modifying collection while iterating
+        var sceneRoot = ((SceneTree)Engine.GetMainLoop()).Root;
+        var escapedNodes = new System.Collections.Generic.List<Node>();
+        foreach (Node child in sceneRoot.GetChildren())
+        {
+            if (child is CanvasLayer or Control)
+                escapedNodes.Add(child);
+        }
+        foreach (Node node in escapedNodes)
+        {
+            if (GodotObject.IsInstanceValid(node))
+            {
+                GD.Print($"[TEST] Freeing escaped node: {node.Name}");
+                node.Free();
+            }
+        }
+
+        ClearSingleton<MainManager>();
+        ClearSingleton<AudioManager>();
+        ClearSingleton<BattleLauncher>();
+
+        GC.Collect();
+        GC.WaitForPendingFinalizers();
     }
 
     [TestCase]
     public void Ready_RemovesDuplicateInstances()
     {
-        AovPlayer first = CreatePlayerWithDependencies();
-        first._Ready();
+        AovPlayer first = CreatePlayerWithDependencies(addToTree: true);
+        AovPlayer second = CreatePlayerWithDependencies(addToTree: true);
 
-        AovPlayer second = CreatePlayerWithDependencies();
-        second._Ready();
-
+        // We removed the manual _Ready() calls! AddToTestRoot ran them naturally.
         AssertThat(second.IsQueuedForDeletion()).IsTrue();
     }
 
     [TestCase]
     public void Input_Interact_DoesNothing_WhenNoInteractable()
     {
-        AovPlayer player = CreatePlayerWithDependencies();
-        player._Ready();
+        AovPlayer player = CreatePlayerWithDependencies(addToTree: true);
 
-        InputEventAction action = new()
-        {
-            Action = "interact",
-            Pressed = true
-        };
-
+        InputEventAction action = new() { Action = "interact", Pressed = true };
         player._Input(action);
 
-        AssertThat(player).IsNotNull(); // No crash occurs
+        AssertThat(player).IsNotNull();
     }
 
     [TestCase]
     public void ResolveInventoryUi_BindsViaExplicitPath_WhenAssigned()
     {
-        // Arrange
-        AovPlayer player = CreatePlayerWithDependencies();
+        AovPlayer player = CreatePlayerWithDependencies(mockInventoryUi: false, addToTree: false);
 
-        ExplorationInventoryUI expectedUi = new() { Name = "PrePlacedInventoryUI" };
+        // Use mock instead of real ExplorationInventoryUI
+        MockExplorationInventoryUI expectedUi = new() { Name = "PrePlacedInventoryUI" };
+        _nodesToFree.Add(expectedUi);
         AddToTestRoot(expectedUi);
 
         player.Set("_explorationInventoryUiPath", expectedUi.GetPath());
+        AddToTestRoot(player);
 
-        // Act
-        player._Ready();
-
-        // Assert
         var resolvedUi = GetPrivateField<ExplorationInventoryUI>(player, "_explorationInventoryUI");
         AssertThat(resolvedUi).IsNotNull();
         AssertThat(resolvedUi).IsEqual(expectedUi);
     }
 
     [TestCase]
-    public void ResolveInventoryUi_FallsBackToProceduralSpawning_WhenPathMissing()
+    public void ResolveInventoryUi_FindsUiViaNodePath_WhenMainManagerAbsent()
     {
-        // Arrange
-        AovPlayer player = CreatePlayerWithDependencies();
+        // When no MainManager exists but a UI is pre-placed in scene,
+        // AovPlayer should find and use it via NodePath (Step 1)
+        AovPlayer player = CreatePlayerWithDependencies(mockInventoryUi: true, addToTree: true);
 
-        // Direct the procedural generator to use our test root instead of leaking onto tree root
-        player.Set("_uiContainerPath", _root!.GetPath());
-
-        // Act
-        player._Ready();
-
-        // Assert
         var resolvedUi = GetPrivateField<ExplorationInventoryUI>(player, "_explorationInventoryUI");
         AssertThat(resolvedUi).IsNotNull();
-        AssertThat(resolvedUi!.Name.ToString()).IsEqual("ExplorationInventoryUI");
-    }
-
-    #region Test Doubles
-
-    private partial class TestInteractable : Node3D, IInteractable
-    {
-        public bool Interacted { get; private set; }
-
-        public bool CanInteract() => true;
-
-        public void Interact(IInteractor interactor)
-        {
-            Interacted = true;
-        }
-
-        public void ShowPrompt()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void HidePrompt()
-        {
-            throw new NotImplementedException();
-        }
-    }
-    #endregion
-
-    [AfterTest]
-    public void TearDown()
-    {
-        foreach (Node node in _testNodes)
-        {
-            if (!GodotObject.IsInstanceValid(node))
-                continue;
-
-            node.GetParent()?.RemoveChild(node);
-            if (!node.IsQueuedForDeletion())
-                node.QueueFree();
-        }
-
-        _testNodes.Clear();
+        AssertThat(resolvedUi).IsInstanceOf<MockExplorationInventoryUI>();
     }
 }

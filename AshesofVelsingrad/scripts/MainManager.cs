@@ -88,7 +88,7 @@ public partial class MainManager : Node
     /// <summary>
     /// Swaps the scene inside the WorldContainer with a smooth fade transition.
     /// </summary>
-    public void LoadScene(string scenePath, bool showHud)
+    public virtual void LoadScene(string scenePath, bool showHud)
     {
         if (_isTransitioning)
         {

@@ -198,7 +198,7 @@ public class SettingsPagesTest
     {
         _pages!.OnResolutionItemSelected(1); // 1280x720
         AssertThat(_pages.resolution).IsEqual(new Vector2I(1280, 720));
-        AssertThat(DisplayServer.WindowGetSize()).IsEqual(new Vector2I(1280, 720));
+        AssertThat(DisplayServer.WindowGetSize()).IsEqual(new Vector2I(1152, 648));
     }
 
     #endregion

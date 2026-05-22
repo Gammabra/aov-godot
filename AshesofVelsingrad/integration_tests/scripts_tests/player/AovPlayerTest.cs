@@ -4,6 +4,7 @@ using System.Reflection;
 using AshesOfVelsingrad.player;
 using AshesOfVelsingrad.Systems;
 using AshesOfVelsingrad.UI.Inventory;
+using AshesOfVelsingrad.Managers;
 using GdUnit4;
 using Godot;
 using static GdUnit4.Assertions;
@@ -37,16 +38,19 @@ public partial class AovPlayerTest
         AnimatedSprite3D sprite = new();
         SpringArm3D spring = new();
         InteractionComponent interaction = new();
+        StateMachine stateMachine = new StateMachine { InitialState = null! };
 
         AddToTestRoot(player);
 
         player.AddChild(sprite);
         player.AddChild(spring);
         player.AddChild(interaction);
+        player.AddChild(stateMachine);
 
         player.Set("_animatedSprite3DPath", sprite.GetPath());
         player.Set("_springArm3DPath", spring.GetPath());
         player.Set("_interactionComponentPath", interaction.GetPath());
+        player.Set("_stateMachinePath", stateMachine.GetPath());
 
         return player;
     }

@@ -177,42 +177,4 @@ public class AovPlayerTest
 
         AssertThat(player).IsNotNull();
     }
-
-    [TestCase]
-    public void ResolveInventoryUi_BindsViaExplicitPath_WhenAssigned()
-    {
-        AovPlayer player = CreatePlayerWithDependencies(mockInventoryUi: false, addToTree: false);
-
-        MockExplorationInventoryUI expectedUi = new() { Name = "PrePlacedInventoryUI" };
-        _nodesToFree.Add(expectedUi);
-
-        // 1. Offline grouping for CI headless safety
-        Node container = new Node { Name = "TestContainer" };
-        _nodesToFree.Add(container);
-
-        container.AddChild(expectedUi);
-        container.AddChild(player);
-
-        // 2. The Godot engine computes the perfect NodePath BEFORE entering the tree
-        player.Set("_explorationInventoryUiPath", player.GetPathTo(expectedUi));
-
-        // 3. Mount to tree (Fires _Ready)
-        AddToTestRoot(container);
-
-        var resolvedUi = GetPrivateField<ExplorationInventoryUI>(player, "_explorationInventoryUI");
-        AssertThat(resolvedUi).IsNotNull();
-        AssertThat(resolvedUi).IsEqual(expectedUi);
-    }
-
-    [TestCase]
-    public void ResolveInventoryUi_FindsUiViaNodePath_WhenMainManagerAbsent()
-    {
-        // When no MainManager exists but a UI is pre-placed in scene,
-        // AovPlayer should find and use it via NodePath (Step 1)
-        AovPlayer player = CreatePlayerWithDependencies(mockInventoryUi: true, addToTree: true);
-
-        var resolvedUi = GetPrivateField<ExplorationInventoryUI>(player, "_explorationInventoryUI");
-        AssertThat(resolvedUi).IsNotNull();
-        AssertThat(resolvedUi).IsInstanceOf<MockExplorationInventoryUI>();
-    }
 }

@@ -1884,7 +1884,7 @@ public sealed class UnitSlotUI : PanelContainer, IDisposable</code></pre>
 
   <h3 id="AshesOfVelsingrad_UI_Inventory_UnitSlotUI__CanDropData_Godot_Vector2_Godot_Variant_" data-uid="AshesOfVelsingrad.UI.Inventory.UnitSlotUI._CanDropData(Godot.Vector2,Godot.Variant)">
   _CanDropData(Vector2, Variant)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/ui/inventory/UnitSlotUI.cs/#L107"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/ui/inventory/UnitSlotUI.cs/#L110"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Godot calls this method to test if <code class="paramref">data</code> from a control's <span class="xref">Godot.Control._GetDragData(Godot.Vector2)</span> can be dropped at <code class="paramref">atPosition</code>. <code class="paramref">atPosition</code> is local to this control.</p>
@@ -1931,7 +1931,7 @@ public sealed class UnitSlotUI : PanelContainer, IDisposable</code></pre>
 
   <h3 id="AshesOfVelsingrad_UI_Inventory_UnitSlotUI__DropData_Godot_Vector2_Godot_Variant_" data-uid="AshesOfVelsingrad.UI.Inventory.UnitSlotUI._DropData(Godot.Vector2,Godot.Variant)">
   _DropData(Vector2, Variant)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/ui/inventory/UnitSlotUI.cs/#L119"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/ui/inventory/UnitSlotUI.cs/#L122"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Godot calls this method to pass you the <code class="paramref">data</code> from a control's <span class="xref">Godot.Control._GetDragData(Godot.Vector2)</span> result. Godot first calls <span class="xref">Godot.Control._CanDropData(Godot.Vector2, Godot.Variant)</span> to test if <code class="paramref">data</code> is allowed to drop at <code class="paramref">atPosition</code> where <code class="paramref">atPosition</code> is local to this control.</p>
@@ -1974,7 +1974,7 @@ Color color = data.AsGodotDictionary()[&quot;color&quot;].AsColor();
 
   <h3 id="AshesOfVelsingrad_UI_Inventory_UnitSlotUI__GetDragData_Godot_Vector2_" data-uid="AshesOfVelsingrad.UI.Inventory.UnitSlotUI._GetDragData(Godot.Vector2)">
   _GetDragData(Vector2)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/ui/inventory/UnitSlotUI.cs/#L85"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/ui/inventory/UnitSlotUI.cs/#L88"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Godot calls this method to get data that can be dragged and dropped onto controls that expect drop data. Returns <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/keywords/null">null</a> if there is no data to drag. Controls that want to receive drop data should implement <span class="xref">Godot.Control._CanDropData(Godot.Vector2, Godot.Variant)</span> and <span class="xref">Godot.Control._DropData(Godot.Vector2, Godot.Variant)</span>. <code class="paramref">atPosition</code> is local to this control. Drag may be forced with <span class="xref">Godot.Control.ForceDrag(Godot.Variant, Godot.Control)</span>.</p>

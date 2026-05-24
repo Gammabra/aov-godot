@@ -1360,7 +1360,7 @@ public sealed class AovPlayer : CharacterBody3D, IDisposable, IInteractor</code>
 
   <h3 id="AshesOfVelsingrad_player_AovPlayer_BindInventoryUnits" data-uid="AshesOfVelsingrad.player.AovPlayer.BindInventoryUnits">
   BindInventoryUnits()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/player/AovPlayer.cs/#L197"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/player/AovPlayer.cs/#L263"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"></div>
@@ -1386,7 +1386,7 @@ public sealed class AovPlayer : CharacterBody3D, IDisposable, IInteractor</code>
 
   <h3 id="AshesOfVelsingrad_player_AovPlayer_LockInteractor" data-uid="AshesOfVelsingrad.player.AovPlayer.LockInteractor">
   LockInteractor()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/player/AovPlayer.cs/#L187"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/player/AovPlayer.cs/#L253"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"></div>
@@ -1412,7 +1412,7 @@ public sealed class AovPlayer : CharacterBody3D, IDisposable, IInteractor</code>
 
   <h3 id="AshesOfVelsingrad_player_AovPlayer_UnlockInteractor" data-uid="AshesOfVelsingrad.player.AovPlayer.UnlockInteractor">
   UnlockInteractor()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/player/AovPlayer.cs/#L192"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/player/AovPlayer.cs/#L258"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"></div>
@@ -1438,7 +1438,7 @@ public sealed class AovPlayer : CharacterBody3D, IDisposable, IInteractor</code>
 
   <h3 id="AshesOfVelsingrad_player_AovPlayer__ExitTree" data-uid="AshesOfVelsingrad.player.AovPlayer._ExitTree">
   _ExitTree()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/player/AovPlayer.cs/#L211"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/player/AovPlayer.cs/#L268"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Called when the node is about to leave the <span class="xref">Godot.SceneTree</span> (e.g. upon freeing, scene changing, or after calling <span class="xref">Godot.Node.RemoveChild(Godot.Node)</span> in a script). If the node has children, its <span class="xref">Godot.Node._ExitTree()</span> callback will be called last, after all its children have left the tree.</p>
@@ -1458,14 +1458,6 @@ public sealed class AovPlayer : CharacterBody3D, IDisposable, IInteractor</code>
 
 
 
-  <h4 class="section" id="AshesOfVelsingrad_player_AovPlayer__ExitTree_remarks">Remarks</h4>
-  <div class="markdown level1 remarks"><p>Clear the static <span class="xref">AshesOfVelsingrad.player.AovPlayer._instance</span> when this node leaves the tree
-(scene unload, scene reload via <code>BattleLauncher</code>'s Forfeit / Continue
-flow). Without this, the new <a class="xref" href="AshesOfVelsingrad.player.AovPlayer.html">AovPlayer</a> on the reloaded
-exploration scene sees a stale <code>_instance</code> still pointing at the just-
-unloaded player and <span class="xref">Godot.Node.QueueFree()</span>s itself as a &quot;duplicate&quot; —
-the scene then renders with no player and frozen camera.</p>
-</div>
 
 
 
@@ -1474,7 +1466,7 @@ the scene then renders with no player and frozen camera.</p>
 
   <h3 id="AshesOfVelsingrad_player_AovPlayer__Input_Godot_InputEvent_" data-uid="AshesOfVelsingrad.player.AovPlayer._Input(Godot.InputEvent)">
   _Input(InputEvent)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/player/AovPlayer.cs/#L96"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/player/AovPlayer.cs/#L168"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Called when there is an input event. The input event propagates up through the node tree until a node consumes it.</p>
@@ -1510,7 +1502,7 @@ the scene then renders with no player and frozen camera.</p>
 
   <h3 id="AshesOfVelsingrad_player_AovPlayer__PhysicsProcess_System_Double_" data-uid="AshesOfVelsingrad.player.AovPlayer._PhysicsProcess(System.Double)">
   _PhysicsProcess(double)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/player/AovPlayer.cs/#L116"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/player/AovPlayer.cs/#L183"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Called once on each physics tick, and allows Nodes to synchronize their logic with physics ticks. <code class="paramref">delta</code> is the logical time between physics ticks in seconds and is equal to <span class="xref">Godot.Engine.TimeScale</span> / <span class="xref">Godot.Engine.PhysicsTicksPerSecond</span>.</p>
@@ -1547,7 +1539,7 @@ the scene then renders with no player and frozen camera.</p>
 
   <h3 id="AshesOfVelsingrad_player_AovPlayer__Ready" data-uid="AshesOfVelsingrad.player.AovPlayer._Ready">
   _Ready()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/player/AovPlayer.cs/#L78"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/player/AovPlayer.cs/#L151"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Called when the node is "ready", i.e. when both the node and its children have entered the scene tree. If the node has children, their <span class="xref">Godot.Node._Ready()</span> callbacks get triggered first, and the parent node will receive the ready notification afterwards.</p>

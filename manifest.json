@@ -2210,6 +2210,20 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.IntegrationTests.Managers.BattleLauncherTest.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.IntegrationTests.Managers.BattleLauncherTest.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.IntegrationTests.Managers.BattleLauncherTest",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "documentation/api/AshesOfVelsingrad.IntegrationTests.Managers.EnemyAIManagerTest.yml",
       "output": {
         ".html": {
@@ -2220,6 +2234,20 @@
       "Uid": null,
       "IsMRef": true,
       "Title": "AshesOfVelsingrad.IntegrationTests.Managers.EnemyAIManagerTest",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.IntegrationTests.Managers.GameManagerHudTest.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.IntegrationTests.Managers.GameManagerHudTest.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.IntegrationTests.Managers.GameManagerHudTest",
       "Summary": null
     },
     {
@@ -2332,6 +2360,20 @@
       "Uid": null,
       "IsMRef": true,
       "Title": "AshesOfVelsingrad.IntegrationTests.Player.InteractionComponentTest",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.IntegrationTests.Player.MockExplorationInventoryUI.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.IntegrationTests.Player.MockExplorationInventoryUI.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.IntegrationTests.Player.MockExplorationInventoryUI",
       "Summary": null
     },
     {
@@ -2462,6 +2504,20 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.IntegrationTests.UI.ButtonMenuTest.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.IntegrationTests.UI.ButtonMenuTest.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.IntegrationTests.UI.ButtonMenuTest",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "documentation/api/AshesOfVelsingrad.IntegrationTests.UI.GameOverScreenTest.yml",
       "output": {
         ".html": {
@@ -2476,30 +2532,30 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "documentation/api/AshesOfVelsingrad.IntegrationTests.UI.MainMenuTest.yml",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.IntegrationTests.UI.SettingsPageManagerTest.yml",
       "output": {
         ".html": {
-          "relative_path": "api/AshesOfVelsingrad.IntegrationTests.UI.MainMenuTest.html"
+          "relative_path": "api/AshesOfVelsingrad.IntegrationTests.UI.SettingsPageManagerTest.html"
         }
       },
       "version": "",
       "Uid": null,
       "IsMRef": true,
-      "Title": "AshesOfVelsingrad.IntegrationTests.UI.MainMenuTest",
+      "Title": "AshesOfVelsingrad.IntegrationTests.UI.SettingsPageManagerTest",
       "Summary": null
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "documentation/api/AshesOfVelsingrad.IntegrationTests.UI.OptionsMenuTest.yml",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.IntegrationTests.UI.SettingsPagesTest.yml",
       "output": {
         ".html": {
-          "relative_path": "api/AshesOfVelsingrad.IntegrationTests.UI.OptionsMenuTest.html"
+          "relative_path": "api/AshesOfVelsingrad.IntegrationTests.UI.SettingsPagesTest.html"
         }
       },
       "version": "",
       "Uid": null,
       "IsMRef": true,
-      "Title": "AshesOfVelsingrad.IntegrationTests.UI.OptionsMenuTest",
+      "Title": "AshesOfVelsingrad.IntegrationTests.UI.SettingsPagesTest",
       "Summary": null
     },
     {
@@ -2574,17 +2630,17 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "documentation/api/AshesOfVelsingrad.Main.yml",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.MainManager.yml",
       "output": {
         ".html": {
-          "relative_path": "api/AshesOfVelsingrad.Main.html"
+          "relative_path": "api/AshesOfVelsingrad.MainManager.html"
         }
       },
       "version": "",
       "Uid": null,
       "IsMRef": true,
-      "Title": "AshesOfVelsingrad.Main",
-      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.Main.yml\" sourcestartlinenumber=\"1\">Main scene controller that initializes the game systems.\nFollows the Component-Based Architecture and event-driven communication.</p>\n"
+      "Title": "AshesOfVelsingrad.MainManager",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.MainManager.yml\" sourcestartlinenumber=\"1\">Global scene root manager. Owns the persistent canvas components,\nhandles global scene transitions within the WorldContainer, and coordinates\ncore UI visibility.</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -3802,48 +3858,6 @@
       "Uid": null,
       "IsMRef": true,
       "Title": "AshesOfVelsingrad.UI.Inventory",
-      "Summary": null
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "documentation/api/AshesOfVelsingrad.UI.Menus.MainMenu.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/AshesOfVelsingrad.UI.Menus.MainMenu.html"
-        }
-      },
-      "version": "",
-      "Uid": null,
-      "IsMRef": true,
-      "Title": "AshesOfVelsingrad.UI.Menus.MainMenu",
-      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.UI.Menus.MainMenu.yml\" sourcestartlinenumber=\"1\">Main menu controller that handles user interactions and navigation.\nImplements the Manager Pattern from your architecture documentation.</p>\n"
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "documentation/api/AshesOfVelsingrad.UI.Menus.OptionsMenu.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/AshesOfVelsingrad.UI.Menus.OptionsMenu.html"
-        }
-      },
-      "version": "",
-      "Uid": null,
-      "IsMRef": true,
-      "Title": "AshesOfVelsingrad.UI.Menus.OptionsMenu",
-      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.UI.Menus.OptionsMenu.yml\" sourcestartlinenumber=\"1\">Options menu that allows players to configure game settings.\nFollows the Component-Based Architecture and event-driven communication.\nImplements the Manager Pattern for centralized settings management.</p>\n"
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "documentation/api/AshesOfVelsingrad.UI.Menus.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/AshesOfVelsingrad.UI.Menus.html"
-        }
-      },
-      "version": "",
-      "Uid": null,
-      "IsMRef": true,
-      "Title": "AshesOfVelsingrad.UI.Menus",
       "Summary": null
     },
     {
@@ -5524,34 +5538,6 @@
       "Uid": null,
       "IsMRef": true,
       "Title": "SettingsPages",
-      "Summary": null
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "documentation/api/Global.SettingsPagesTests.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Global.SettingsPagesTests.html"
-        }
-      },
-      "version": "",
-      "Uid": null,
-      "IsMRef": true,
-      "Title": "SettingsPagesTests",
-      "Summary": null
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "documentation/api/Global.SettingsPages_mock.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Global.SettingsPages_mock.html"
-        }
-      },
-      "version": "",
-      "Uid": null,
-      "IsMRef": true,
-      "Title": "SettingsPages_mock",
       "Summary": null
     },
     {

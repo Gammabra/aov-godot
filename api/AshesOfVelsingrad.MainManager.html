@@ -2,11 +2,11 @@
 <html>
   <head>
     <meta charset="utf-8">
-      <title>Class ExplorationInventoryUI | Ashes of Velsingrad Documentation </title>
+      <title>Class MainManager | Ashes of Velsingrad Documentation </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content="Class ExplorationInventoryUI | Ashes of Velsingrad Documentation ">
+      <meta name="title" content="Class MainManager | Ashes of Velsingrad Documentation ">
       
-      <meta name="description" content="Exploration inventory panel: 30-slot global grid on the left, 4 unit loadout rows on the right. Sized as a fraction of the viewport so it scales cleanly at any resolution.">
+      <meta name="description" content="Global scene root manager. Owns the persistent canvas components, handles global scene transitions within the WorldContainer, and coordinates core UI visibility.">
       <link rel="icon" href="../favicon.ico">
       <link rel="stylesheet" href="../public/docfx.min.css">
       <link rel="stylesheet" href="../public/main.css">
@@ -84,28 +84,28 @@
           <nav id="breadcrumb"></nav>
         </div>
 
-        <article data-uid="AshesOfVelsingrad.UI.Inventory.ExplorationInventoryUI">
+        <article data-uid="AshesOfVelsingrad.MainManager">
 
 
 
-  <h1 id="AshesOfVelsingrad_UI_Inventory_ExplorationInventoryUI" data-uid="AshesOfVelsingrad.UI.Inventory.ExplorationInventoryUI" class="text-break">
-Class ExplorationInventoryUI  
+  <h1 id="AshesOfVelsingrad_MainManager" data-uid="AshesOfVelsingrad.MainManager" class="text-break">
+Class MainManager  
   </h1>
 
   <div class="facts text-secondary">
-    <dl><dt>Namespace</dt><dd><a class="xref" href="AshesOfVelsingrad.html">AshesOfVelsingrad</a>.<a class="xref" href="AshesOfVelsingrad.UI.html">UI</a>.<a class="xref" href="AshesOfVelsingrad.UI.Inventory.html">Inventory</a></dd></dl>
+    <dl><dt>Namespace</dt><dd><a class="xref" href="AshesOfVelsingrad.html">AshesOfVelsingrad</a></dd></dl>
   <dl><dt>Assembly</dt><dd>AshesofVelsingrad.dll</dd></dl>
   </div>
 
-  <div class="markdown summary"><p>Exploration inventory panel: 30-slot global grid on the left,
-4 unit loadout rows on the right. Sized as a fraction of the viewport
-so it scales cleanly at any resolution.</p>
+  <div class="markdown summary"><p>Global scene root manager. Owns the persistent canvas components,
+handles global scene transitions within the WorldContainer, and coordinates
+core UI visibility.</p>
 </div>
   <div class="markdown conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[ScriptPath(&quot;res://scripts/ui/inventory/ExplorationInventoryUI.cs&quot;)]
-public class ExplorationInventoryUI : CanvasLayer, IDisposable</code></pre>
+    <pre><code class="lang-csharp hljs">[ScriptPath(&quot;res://scripts/MainManager.cs&quot;)]
+public class MainManager : Node, IDisposable</code></pre>
   </div>
 
 
@@ -117,8 +117,7 @@ public class ExplorationInventoryUI : CanvasLayer, IDisposable</code></pre>
       <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
       <div><span class="xref">GodotObject</span></div>
       <div><span class="xref">Node</span></div>
-      <div><span class="xref">CanvasLayer</span></div>
-      <div><span class="xref">ExplorationInventoryUI</span></div>
+      <div><span class="xref">MainManager</span></div>
     </dd>
   </dl>
 
@@ -132,67 +131,13 @@ public class ExplorationInventoryUI : CanvasLayer, IDisposable</code></pre>
   <dl class="typelist derived">
     <dt>Derived</dt>
     <dd>
-      <div><a class="xref" href="AshesOfVelsingrad.IntegrationTests.Player.MockExplorationInventoryUI.html">MockExplorationInventoryUI</a></div>
+      <div><a class="xref" href="AshesOfVelsingrad.Helpers.TestableMain.html">TestableMain</a></div>
     </dd>
   </dl>
 
   <dl class="typelist inheritedMembers">
     <dt>Inherited Members</dt>
     <dd>
-    <div>
-      <span class="xref">CanvasLayer.Show()</span>
-    </div>
-    <div>
-      <span class="xref">CanvasLayer.Hide()</span>
-    </div>
-    <div>
-      <span class="xref">CanvasLayer.GetFinalTransform()</span>
-    </div>
-    <div>
-      <span class="xref">CanvasLayer.GetCanvas()</span>
-    </div>
-    <div>
-      <span class="xref">CanvasLayer.EmitSignalVisibilityChanged()</span>
-    </div>
-    <div>
-      <span class="xref">CanvasLayer.InvokeGodotClassMethod(in godot_string_name, NativeVariantPtrArgs, out godot_variant)</span>
-    </div>
-    <div>
-      <span class="xref">CanvasLayer.HasGodotClassMethod(in godot_string_name)</span>
-    </div>
-    <div>
-      <span class="xref">CanvasLayer.HasGodotClassSignal(in godot_string_name)</span>
-    </div>
-    <div>
-      <span class="xref">CanvasLayer.Layer</span>
-    </div>
-    <div>
-      <span class="xref">CanvasLayer.Visible</span>
-    </div>
-    <div>
-      <span class="xref">CanvasLayer.Offset</span>
-    </div>
-    <div>
-      <span class="xref">CanvasLayer.Rotation</span>
-    </div>
-    <div>
-      <span class="xref">CanvasLayer.Scale</span>
-    </div>
-    <div>
-      <span class="xref">CanvasLayer.Transform</span>
-    </div>
-    <div>
-      <span class="xref">CanvasLayer.CustomViewport</span>
-    </div>
-    <div>
-      <span class="xref">CanvasLayer.FollowViewportEnabled</span>
-    </div>
-    <div>
-      <span class="xref">CanvasLayer.FollowViewportScale</span>
-    </div>
-    <div>
-      <span class="xref">CanvasLayer.VisibilityChanged</span>
-    </div>
     <div>
       <span class="xref">Node.NotificationEnterTree</span>
     </div>
@@ -356,9 +301,6 @@ public class ExplorationInventoryUI : CanvasLayer, IDisposable</code></pre>
       <span class="xref">Node.GetParentOrNull&lt;T&gt;()</span>
     </div>
     <div>
-      <span class="xref">Node._EnterTree()</span>
-    </div>
-    <div>
       <span class="xref">Node._GetAccessibilityConfigurationWarnings()</span>
     </div>
     <div>
@@ -366,6 +308,9 @@ public class ExplorationInventoryUI : CanvasLayer, IDisposable</code></pre>
     </div>
     <div>
       <span class="xref">Node._GetFocusedAccessibilityElement()</span>
+    </div>
+    <div>
+      <span class="xref">Node._Input(InputEvent)</span>
     </div>
     <div>
       <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">Node._PhysicsProcess(double)</a>
@@ -710,6 +655,15 @@ public class ExplorationInventoryUI : CanvasLayer, IDisposable</code></pre>
       <span class="xref">Node.EmitSignalEditorStateChanged()</span>
     </div>
     <div>
+      <span class="xref">Node.InvokeGodotClassMethod(in godot_string_name, NativeVariantPtrArgs, out godot_variant)</span>
+    </div>
+    <div>
+      <span class="xref">Node.HasGodotClassMethod(in godot_string_name)</span>
+    </div>
+    <div>
+      <span class="xref">Node.HasGodotClassSignal(in godot_string_name)</span>
+    </div>
+    <div>
       <span class="xref">Node.Name</span>
     </div>
     <div>
@@ -1048,16 +1002,17 @@ public class ExplorationInventoryUI : CanvasLayer, IDisposable</code></pre>
 
 
 
-  <h3 id="AshesOfVelsingrad_UI_Inventory_ExplorationInventoryUI_InventoryLayer" data-uid="AshesOfVelsingrad.UI.Inventory.ExplorationInventoryUI.InventoryLayer">
-  InventoryLayer
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/ui/inventory/ExplorationInventoryUI.cs/#L16"><i class="bi bi-code-slash"></i></a>
+  <h3 id="AshesOfVelsingrad_MainManager__battleHud" data-uid="AshesOfVelsingrad.MainManager._battleHud">
+  _battleHud
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/MainManager.cs/#L23"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public const int InventoryLayer = 10</code></pre>
+    <pre><code class="lang-csharp hljs">[Export(PropertyHint.None, &quot;&quot;)]
+protected CanvasLayer? _battleHud</code></pre>
   </div>
 
 
@@ -1065,10 +1020,262 @@ public class ExplorationInventoryUI : CanvasLayer, IDisposable</code></pre>
 
   <h4 class="section">Field Value</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dt><span class="xref">CanvasLayer</span></dt>
     <dd></dd>
   </dl>
 
+
+
+
+
+
+
+
+
+
+  <h3 id="AshesOfVelsingrad_MainManager__battleInventoryUi" data-uid="AshesOfVelsingrad.MainManager._battleInventoryUi">
+  _battleInventoryUi
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/MainManager.cs/#L24"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[Export(PropertyHint.None, &quot;&quot;)]
+protected CanvasLayer? _battleInventoryUi</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">CanvasLayer</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="AshesOfVelsingrad_MainManager__explorationInventoryUi" data-uid="AshesOfVelsingrad.MainManager._explorationInventoryUi">
+  _explorationInventoryUi
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/MainManager.cs/#L25"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[Export(PropertyHint.None, &quot;&quot;)]
+protected CanvasLayer? _explorationInventoryUi</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">CanvasLayer</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="AshesOfVelsingrad_MainManager__mainMenuScene" data-uid="AshesOfVelsingrad.MainManager._mainMenuScene">
+  _mainMenuScene
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/MainManager.cs/#L29"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[Export(PropertyHint.None, &quot;&quot;)]
+protected PackedScene? _mainMenuScene</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">PackedScene</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="AshesOfVelsingrad_MainManager__menuContainer" data-uid="AshesOfVelsingrad.MainManager._menuContainer">
+  _menuContainer
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/MainManager.cs/#L20"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[Export(PropertyHint.None, &quot;&quot;)]
+protected Control? _menuContainer</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">Control</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="AshesOfVelsingrad_MainManager__screenTransition" data-uid="AshesOfVelsingrad.MainManager._screenTransition">
+  _screenTransition
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/MainManager.cs/#L26"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[Export(PropertyHint.None, &quot;&quot;)]
+protected ColorRect? _screenTransition</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">ColorRect</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="AshesOfVelsingrad_MainManager__settingsScene" data-uid="AshesOfVelsingrad.MainManager._settingsScene">
+  _settingsScene
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/MainManager.cs/#L30"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[Export(PropertyHint.None, &quot;&quot;)]
+protected PackedScene? _settingsScene</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">PackedScene</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="AshesOfVelsingrad_MainManager__worldContainer" data-uid="AshesOfVelsingrad.MainManager._worldContainer">
+  _worldContainer
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/MainManager.cs/#L19"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[Export(PropertyHint.None, &quot;&quot;)]
+protected Node? _worldContainer</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">Node</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+  <h2 class="section" id="properties">Properties
+</h2>
+
+
+  <a id="AshesOfVelsingrad_MainManager_Instance_" data-uid="AshesOfVelsingrad.MainManager.Instance*"></a>
+
+  <h3 id="AshesOfVelsingrad_MainManager_Instance" data-uid="AshesOfVelsingrad.MainManager.Instance">
+  Instance
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/MainManager.cs/#L16"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static MainManager? Instance { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="AshesOfVelsingrad.MainManager.html">MainManager</a></dt>
+    <dd></dd>
+  </dl>
 
 
 
@@ -1081,18 +1288,80 @@ public class ExplorationInventoryUI : CanvasLayer, IDisposable</code></pre>
 </h2>
 
 
-  <a id="AshesOfVelsingrad_UI_Inventory_ExplorationInventoryUI_EnsureBuilt_" data-uid="AshesOfVelsingrad.UI.Inventory.ExplorationInventoryUI.EnsureBuilt*"></a>
+  <a id="AshesOfVelsingrad_MainManager_CreateMenus_" data-uid="AshesOfVelsingrad.MainManager.CreateMenus*"></a>
 
-  <h3 id="AshesOfVelsingrad_UI_Inventory_ExplorationInventoryUI_EnsureBuilt" data-uid="AshesOfVelsingrad.UI.Inventory.ExplorationInventoryUI.EnsureBuilt">
-  EnsureBuilt()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/ui/inventory/ExplorationInventoryUI.cs/#L37"><i class="bi bi-code-slash"></i></a>
+  <h3 id="AshesOfVelsingrad_MainManager_CreateMenus" data-uid="AshesOfVelsingrad.MainManager.CreateMenus">
+  CreateMenus()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/MainManager.cs/#L202"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public virtual void EnsureBuilt()</code></pre>
+    <pre><code class="lang-csharp hljs">protected virtual (Control? mainMenu, Control? settings) CreateMenus()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt>(<span class="xref">Control</span> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-godot.control,godot.control-.mainmenu">mainMenu</a>, <span class="xref">Control</span> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-godot.control,godot.control-.settings">settings</a>)</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AshesOfVelsingrad_MainManager_GetExplorationInventoryUI_" data-uid="AshesOfVelsingrad.MainManager.GetExplorationInventoryUI*"></a>
+
+  <h3 id="AshesOfVelsingrad_MainManager_GetExplorationInventoryUI" data-uid="AshesOfVelsingrad.MainManager.GetExplorationInventoryUI">
+  GetExplorationInventoryUI()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/MainManager.cs/#L35"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ExplorationInventoryUI? GetExplorationInventoryUI()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="AshesOfVelsingrad.UI.Inventory.ExplorationInventoryUI.html">ExplorationInventoryUI</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AshesOfVelsingrad_MainManager_InitializeMenus_" data-uid="AshesOfVelsingrad.MainManager.InitializeMenus*"></a>
+
+  <h3 id="AshesOfVelsingrad_MainManager_InitializeMenus" data-uid="AshesOfVelsingrad.MainManager.InitializeMenus">
+  InitializeMenus()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/MainManager.cs/#L62"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected virtual void InitializeMenus()</code></pre>
   </div>
 
 
@@ -1107,22 +1376,28 @@ public class ExplorationInventoryUI : CanvasLayer, IDisposable</code></pre>
 
 
 
-  <a id="AshesOfVelsingrad_UI_Inventory_ExplorationInventoryUI_RefreshUnitPanels_" data-uid="AshesOfVelsingrad.UI.Inventory.ExplorationInventoryUI.RefreshUnitPanels*"></a>
+  <a id="AshesOfVelsingrad_MainManager_LoadScene_" data-uid="AshesOfVelsingrad.MainManager.LoadScene*"></a>
 
-  <h3 id="AshesOfVelsingrad_UI_Inventory_ExplorationInventoryUI_RefreshUnitPanels" data-uid="AshesOfVelsingrad.UI.Inventory.ExplorationInventoryUI.RefreshUnitPanels">
-  RefreshUnitPanels()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/ui/inventory/ExplorationInventoryUI.cs/#L165"><i class="bi bi-code-slash"></i></a>
+  <h3 id="AshesOfVelsingrad_MainManager_LoadScene_System_String_System_Boolean_" data-uid="AshesOfVelsingrad.MainManager.LoadScene(System.String,System.Boolean)">
+  LoadScene(string, bool)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/MainManager.cs/#L91"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Rebuild unit rows from PlayerInventoryManager's persistent loadouts.
-Safe to call multiple times (e.g. after a battle updates party names).</p>
+  <div class="markdown level1 summary"><p>Swaps the scene inside the WorldContainer with a smooth fade transition.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public virtual void RefreshUnitPanels()</code></pre>
+    <pre><code class="lang-csharp hljs">public virtual void LoadScene(string scenePath, bool showHud)</code></pre>
   </div>
 
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>scenePath</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+    <dt><code>showHud</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
 
 
 
@@ -1135,18 +1410,19 @@ Safe to call multiple times (e.g. after a battle updates party names).</p>
 
 
 
-  <a id="AshesOfVelsingrad_UI_Inventory_ExplorationInventoryUI_Toggle_" data-uid="AshesOfVelsingrad.UI.Inventory.ExplorationInventoryUI.Toggle*"></a>
+  <a id="AshesOfVelsingrad_MainManager_TogglePauseMenu_" data-uid="AshesOfVelsingrad.MainManager.TogglePauseMenu*"></a>
 
-  <h3 id="AshesOfVelsingrad_UI_Inventory_ExplorationInventoryUI_Toggle" data-uid="AshesOfVelsingrad.UI.Inventory.ExplorationInventoryUI.Toggle">
-  Toggle()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/ui/inventory/ExplorationInventoryUI.cs/#L150"><i class="bi bi-code-slash"></i></a>
+  <h3 id="AshesOfVelsingrad_MainManager_TogglePauseMenu" data-uid="AshesOfVelsingrad.MainManager.TogglePauseMenu">
+  TogglePauseMenu()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/MainManager.cs/#L179"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Global entry point to handle game pause state toggles.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public void Toggle()</code></pre>
+    <pre><code class="lang-csharp hljs">public void TogglePauseMenu()</code></pre>
   </div>
 
 
@@ -1161,11 +1437,39 @@ Safe to call multiple times (e.g. after a battle updates party names).</p>
 
 
 
-  <a id="AshesOfVelsingrad_UI_Inventory_ExplorationInventoryUI__ExitTree_" data-uid="AshesOfVelsingrad.UI.Inventory.ExplorationInventoryUI._ExitTree*"></a>
+  <a id="AshesOfVelsingrad_MainManager__EnterTree_" data-uid="AshesOfVelsingrad.MainManager._EnterTree*"></a>
 
-  <h3 id="AshesOfVelsingrad_UI_Inventory_ExplorationInventoryUI__ExitTree" data-uid="AshesOfVelsingrad.UI.Inventory.ExplorationInventoryUI._ExitTree">
+  <h3 id="AshesOfVelsingrad_MainManager__EnterTree" data-uid="AshesOfVelsingrad.MainManager._EnterTree">
+  _EnterTree()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/MainManager.cs/#L38"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Called when the node enters the <span class="xref">Godot.SceneTree</span> (e.g. upon instantiating, scene changing, or after calling <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">AddChild(Node, bool, InternalMode)</a> in a script). If the node has children, its <span class="xref">Godot.Node._EnterTree()</span> callback will be called first, and then that of the children.</p>
+<p>Corresponds to the <span class="xref">Godot.Node.NotificationEnterTree</span> notification in <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">_Notification(int)</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override void _EnterTree()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AshesOfVelsingrad_MainManager__ExitTree_" data-uid="AshesOfVelsingrad.MainManager._ExitTree*"></a>
+
+  <h3 id="AshesOfVelsingrad_MainManager__ExitTree" data-uid="AshesOfVelsingrad.MainManager._ExitTree">
   _ExitTree()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/ui/inventory/ExplorationInventoryUI.cs/#L233"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/MainManager.cs/#L226"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Called when the node is about to leave the <span class="xref">Godot.SceneTree</span> (e.g. upon freeing, scene changing, or after calling <span class="xref">Godot.Node.RemoveChild(Godot.Node)</span> in a script). If the node has children, its <span class="xref">Godot.Node._ExitTree()</span> callback will be called last, after all its children have left the tree.</p>
@@ -1189,47 +1493,11 @@ Safe to call multiple times (e.g. after a battle updates party names).</p>
 
 
 
-  <a id="AshesOfVelsingrad_UI_Inventory_ExplorationInventoryUI__Input_" data-uid="AshesOfVelsingrad.UI.Inventory.ExplorationInventoryUI._Input*"></a>
+  <a id="AshesOfVelsingrad_MainManager__Ready_" data-uid="AshesOfVelsingrad.MainManager._Ready*"></a>
 
-  <h3 id="AshesOfVelsingrad_UI_Inventory_ExplorationInventoryUI__Input_Godot_InputEvent_" data-uid="AshesOfVelsingrad.UI.Inventory.ExplorationInventoryUI._Input(Godot.InputEvent)">
-  _Input(InputEvent)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/ui/inventory/ExplorationInventoryUI.cs/#L31"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Called when there is an input event. The input event propagates up through the node tree until a node consumes it.</p>
-<p>It is only called if input processing is enabled, which is done automatically if this method is overridden, and can be toggled with <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">SetProcessInput(bool)</a>.</p>
-<p>To consume the input event and stop it propagating further to other nodes, <span class="xref">Godot.Viewport.SetInputAsHandled()</span> can be called.</p>
-<p>For gameplay input, <span class="xref">Godot.Node._UnhandledInput(Godot.InputEvent)</span> and <span class="xref">Godot.Node._UnhandledKeyInput(Godot.InputEvent)</span> are usually a better fit as they allow the GUI to intercept the events first.</p>
-<p><b>Note:</b> This method is only called if the node is present in the scene tree (i.e. if it's not an orphan).</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public override void _Input(InputEvent @event)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>event</code> <span class="xref">InputEvent</span></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-
-
-  <a id="AshesOfVelsingrad_UI_Inventory_ExplorationInventoryUI__Ready_" data-uid="AshesOfVelsingrad.UI.Inventory.ExplorationInventoryUI._Ready*"></a>
-
-  <h3 id="AshesOfVelsingrad_UI_Inventory_ExplorationInventoryUI__Ready" data-uid="AshesOfVelsingrad.UI.Inventory.ExplorationInventoryUI._Ready">
+  <h3 id="AshesOfVelsingrad_MainManager__Ready" data-uid="AshesOfVelsingrad.MainManager._Ready">
   _Ready()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/ui/inventory/ExplorationInventoryUI.cs/#L24"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/MainManager.cs/#L49"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Called when the node is "ready", i.e. when both the node and its children have entered the scene tree. If the node has children, their <span class="xref">Godot.Node._Ready()</span> callbacks get triggered first, and the parent node will receive the ready notification afterwards.</p>

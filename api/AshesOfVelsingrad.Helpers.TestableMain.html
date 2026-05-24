@@ -102,7 +102,7 @@ Class TestableMain
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[ScriptPath(&quot;res://integration_tests/helpers/TestableMain.cs&quot;)]
-public class TestableMain : Main, IDisposable</code></pre>
+public class TestableMain : MainManager, IDisposable</code></pre>
   </div>
 
 
@@ -114,7 +114,7 @@ public class TestableMain : Main, IDisposable</code></pre>
       <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
       <div><span class="xref">GodotObject</span></div>
       <div><span class="xref">Node</span></div>
-      <div><a class="xref" href="AshesOfVelsingrad.Main.html">Main</a></div>
+      <div><a class="xref" href="AshesOfVelsingrad.MainManager.html">MainManager</a></div>
       <div><span class="xref">TestableMain</span></div>
     </dd>
   </dl>
@@ -131,16 +131,46 @@ public class TestableMain : Main, IDisposable</code></pre>
     <dt>Inherited Members</dt>
     <dd>
     <div>
-      <a class="xref" href="AshesOfVelsingrad.Main.html#AshesOfVelsingrad_Main__menuContainer">Main._menuContainer</a>
+      <a class="xref" href="AshesOfVelsingrad.MainManager.html#AshesOfVelsingrad_MainManager_Instance">MainManager.Instance</a>
     </div>
     <div>
-      <a class="xref" href="AshesOfVelsingrad.Main.html#AshesOfVelsingrad_Main__mainMenuScene">Main._mainMenuScene</a>
+      <a class="xref" href="AshesOfVelsingrad.MainManager.html#AshesOfVelsingrad_MainManager__worldContainer">MainManager._worldContainer</a>
     </div>
     <div>
-      <a class="xref" href="AshesOfVelsingrad.Main.html#AshesOfVelsingrad_Main__optionsMenuScene">Main._optionsMenuScene</a>
+      <a class="xref" href="AshesOfVelsingrad.MainManager.html#AshesOfVelsingrad_MainManager__menuContainer">MainManager._menuContainer</a>
     </div>
     <div>
-      <a class="xref" href="AshesOfVelsingrad.Main.html#AshesOfVelsingrad_Main__Ready">Main._Ready()</a>
+      <a class="xref" href="AshesOfVelsingrad.MainManager.html#AshesOfVelsingrad_MainManager__battleHud">MainManager._battleHud</a>
+    </div>
+    <div>
+      <a class="xref" href="AshesOfVelsingrad.MainManager.html#AshesOfVelsingrad_MainManager__battleInventoryUi">MainManager._battleInventoryUi</a>
+    </div>
+    <div>
+      <a class="xref" href="AshesOfVelsingrad.MainManager.html#AshesOfVelsingrad_MainManager__explorationInventoryUi">MainManager._explorationInventoryUi</a>
+    </div>
+    <div>
+      <a class="xref" href="AshesOfVelsingrad.MainManager.html#AshesOfVelsingrad_MainManager__screenTransition">MainManager._screenTransition</a>
+    </div>
+    <div>
+      <a class="xref" href="AshesOfVelsingrad.MainManager.html#AshesOfVelsingrad_MainManager__mainMenuScene">MainManager._mainMenuScene</a>
+    </div>
+    <div>
+      <a class="xref" href="AshesOfVelsingrad.MainManager.html#AshesOfVelsingrad_MainManager__settingsScene">MainManager._settingsScene</a>
+    </div>
+    <div>
+      <a class="xref" href="AshesOfVelsingrad.MainManager.html#AshesOfVelsingrad_MainManager_GetExplorationInventoryUI">MainManager.GetExplorationInventoryUI()</a>
+    </div>
+    <div>
+      <a class="xref" href="AshesOfVelsingrad.MainManager.html#AshesOfVelsingrad_MainManager__EnterTree">MainManager._EnterTree()</a>
+    </div>
+    <div>
+      <a class="xref" href="AshesOfVelsingrad.MainManager.html#AshesOfVelsingrad_MainManager__Ready">MainManager._Ready()</a>
+    </div>
+    <div>
+      <a class="xref" href="AshesOfVelsingrad.MainManager.html#AshesOfVelsingrad_MainManager_TogglePauseMenu">MainManager.TogglePauseMenu()</a>
+    </div>
+    <div>
+      <a class="xref" href="AshesOfVelsingrad.MainManager.html#AshesOfVelsingrad_MainManager__ExitTree">MainManager._ExitTree()</a>
     </div>
     <div>
       <span class="xref">Node.NotificationEnterTree</span>
@@ -303,12 +333,6 @@ public class TestableMain : Main, IDisposable</code></pre>
     </div>
     <div>
       <span class="xref">Node.GetParentOrNull&lt;T&gt;()</span>
-    </div>
-    <div>
-      <span class="xref">Node._EnterTree()</span>
-    </div>
-    <div>
-      <span class="xref">Node._ExitTree()</span>
     </div>
     <div>
       <span class="xref">Node._GetAccessibilityConfigurationWarnings()</span>
@@ -1015,7 +1039,7 @@ public class TestableMain : Main, IDisposable</code></pre>
 
   <h3 id="AshesOfVelsingrad_Helpers_TestableMain_CreatedNodes" data-uid="AshesOfVelsingrad.Helpers.TestableMain.CreatedNodes">
   CreatedNodes
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/integration_tests/helpers/TestableMain.cs/#L91"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/integration_tests/helpers/TestableMain.cs/#L151"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"></div>
@@ -1042,11 +1066,104 @@ public class TestableMain : Main, IDisposable</code></pre>
 
 
 
+  <a id="AshesOfVelsingrad_Helpers_TestableMain_LastLoadedScene_" data-uid="AshesOfVelsingrad.Helpers.TestableMain.LastLoadedScene*"></a>
+
+  <h3 id="AshesOfVelsingrad_Helpers_TestableMain_LastLoadedScene" data-uid="AshesOfVelsingrad.Helpers.TestableMain.LastLoadedScene">
+  LastLoadedScene
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/integration_tests/helpers/TestableMain.cs/#L13"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string? LastLoadedScene { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="AshesOfVelsingrad_Helpers_TestableMain_LastShowHud_" data-uid="AshesOfVelsingrad.Helpers.TestableMain.LastShowHud*"></a>
+
+  <h3 id="AshesOfVelsingrad_Helpers_TestableMain_LastShowHud" data-uid="AshesOfVelsingrad.Helpers.TestableMain.LastShowHud">
+  LastShowHud
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/integration_tests/helpers/TestableMain.cs/#L14"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool LastShowHud { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="AshesOfVelsingrad_Helpers_TestableMain_LoadSceneCalled_" data-uid="AshesOfVelsingrad.Helpers.TestableMain.LoadSceneCalled*"></a>
+
+  <h3 id="AshesOfVelsingrad_Helpers_TestableMain_LoadSceneCalled" data-uid="AshesOfVelsingrad.Helpers.TestableMain.LoadSceneCalled">
+  LoadSceneCalled
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/integration_tests/helpers/TestableMain.cs/#L15"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool LoadSceneCalled { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
   <a id="AshesOfVelsingrad_Helpers_TestableMain_MainMenuInstantiateCount_" data-uid="AshesOfVelsingrad.Helpers.TestableMain.MainMenuInstantiateCount*"></a>
 
   <h3 id="AshesOfVelsingrad_Helpers_TestableMain_MainMenuInstantiateCount" data-uid="AshesOfVelsingrad.Helpers.TestableMain.MainMenuInstantiateCount">
   MainMenuInstantiateCount
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/integration_tests/helpers/TestableMain.cs/#L10"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/integration_tests/helpers/TestableMain.cs/#L11"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"></div>
@@ -1073,18 +1190,18 @@ public class TestableMain : Main, IDisposable</code></pre>
 
 
 
-  <a id="AshesOfVelsingrad_Helpers_TestableMain_OptionsMenuInstantiateCount_" data-uid="AshesOfVelsingrad.Helpers.TestableMain.OptionsMenuInstantiateCount*"></a>
+  <a id="AshesOfVelsingrad_Helpers_TestableMain_SettingsInstantiateCount_" data-uid="AshesOfVelsingrad.Helpers.TestableMain.SettingsInstantiateCount*"></a>
 
-  <h3 id="AshesOfVelsingrad_Helpers_TestableMain_OptionsMenuInstantiateCount" data-uid="AshesOfVelsingrad.Helpers.TestableMain.OptionsMenuInstantiateCount">
-  OptionsMenuInstantiateCount
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/integration_tests/helpers/TestableMain.cs/#L11"><i class="bi bi-code-slash"></i></a>
+  <h3 id="AshesOfVelsingrad_Helpers_TestableMain_SettingsInstantiateCount" data-uid="AshesOfVelsingrad.Helpers.TestableMain.SettingsInstantiateCount">
+  SettingsInstantiateCount
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/integration_tests/helpers/TestableMain.cs/#L12"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public int OptionsMenuInstantiateCount { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">public int SettingsInstantiateCount { get; }</code></pre>
   </div>
 
 
@@ -1104,6 +1221,37 @@ public class TestableMain : Main, IDisposable</code></pre>
 
 
 
+  <a id="AshesOfVelsingrad_Helpers_TestableMain_ShowMainMenuWasCalled_" data-uid="AshesOfVelsingrad.Helpers.TestableMain.ShowMainMenuWasCalled*"></a>
+
+  <h3 id="AshesOfVelsingrad_Helpers_TestableMain_ShowMainMenuWasCalled" data-uid="AshesOfVelsingrad.Helpers.TestableMain.ShowMainMenuWasCalled">
+  ShowMainMenuWasCalled
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/integration_tests/helpers/TestableMain.cs/#L18"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool ShowMainMenuWasCalled { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
   <h2 class="section" id="methods">Methods
 </h2>
 
@@ -1112,26 +1260,21 @@ public class TestableMain : Main, IDisposable</code></pre>
 
   <h3 id="AshesOfVelsingrad_Helpers_TestableMain_CreateMenus" data-uid="AshesOfVelsingrad.Helpers.TestableMain.CreateMenus">
   CreateMenus()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/integration_tests/helpers/TestableMain.cs/#L23"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/integration_tests/helpers/TestableMain.cs/#L38"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Create menu instances - virtual for testing overrides.
-Default implementation instantiates from PackedScenes.
-Checks for null references and logs appropriately.
-Can be overridden in tests to provide mock or test-specific menus.</p>
-</div>
+  <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">protected override (Node mainMenu, Node optionsMenu) CreateMenus()</code></pre>
+    <pre><code class="lang-csharp hljs">protected override (Control? mainMenu, Control? settings) CreateMenus()</code></pre>
   </div>
 
 
   <h4 class="section">Returns</h4>
   <dl class="parameters">
-    <dt>(<span class="xref">Node</span> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-godot.node,godot.node-.mainmenu">mainMenu</a>, <span class="xref">Node</span> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-godot.node,godot.node-.optionsmenu">optionsMenu</a>)</dt>
-    <dd><p>Tuple of (mainMenu, optionsMenu) nodes.</p>
-</dd>
+    <dt>(<span class="xref">Control</span> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-godot.control,godot.control-.mainmenu">mainMenu</a>, <span class="xref">Control</span> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-godot.control,godot.control-.settings">settings</a>)</dt>
+    <dd></dd>
   </dl>
 
 
@@ -1148,7 +1291,7 @@ Can be overridden in tests to provide mock or test-specific menus.</p>
 
   <h3 id="AshesOfVelsingrad_Helpers_TestableMain_FreeAllCreatedNodes" data-uid="AshesOfVelsingrad.Helpers.TestableMain.FreeAllCreatedNodes">
   FreeAllCreatedNodes()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/integration_tests/helpers/TestableMain.cs/#L63"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/integration_tests/helpers/TestableMain.cs/#L130"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"></div>
@@ -1174,14 +1317,76 @@ Can be overridden in tests to provide mock or test-specific menus.</p>
 
   <h3 id="AshesOfVelsingrad_Helpers_TestableMain_InitializeMenus" data-uid="AshesOfVelsingrad.Helpers.TestableMain.InitializeMenus">
   InitializeMenus()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/integration_tests/helpers/TestableMain.cs/#L58"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/integration_tests/helpers/TestableMain.cs/#L73"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Override InitializeMenus to skip CallDeferred — tests run synchronously.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public void InitializeMenus()</code></pre>
+    <pre><code class="lang-csharp hljs">protected override void InitializeMenus()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AshesOfVelsingrad_Helpers_TestableMain_LoadScene_" data-uid="AshesOfVelsingrad.Helpers.TestableMain.LoadScene*"></a>
+
+  <h3 id="AshesOfVelsingrad_Helpers_TestableMain_LoadScene_System_String_System_Boolean_" data-uid="AshesOfVelsingrad.Helpers.TestableMain.LoadScene(System.String,System.Boolean)">
+  LoadScene(string, bool)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/integration_tests/helpers/TestableMain.cs/#L61"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Swaps the scene inside the WorldContainer with a smooth fade transition.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override void LoadScene(string scenePath, bool showHud)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>scenePath</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+    <dt><code>showHud</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AshesOfVelsingrad_Helpers_TestableMain_PublicInitializeMenus_" data-uid="AshesOfVelsingrad.Helpers.TestableMain.PublicInitializeMenus*"></a>
+
+  <h3 id="AshesOfVelsingrad_Helpers_TestableMain_PublicInitializeMenus" data-uid="AshesOfVelsingrad.Helpers.TestableMain.PublicInitializeMenus">
+  PublicInitializeMenus()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/integration_tests/helpers/TestableMain.cs/#L101"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Expose InitializeMenus publicly for tests.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void PublicInitializeMenus()</code></pre>
   </div>
 
 
@@ -1200,7 +1405,7 @@ Can be overridden in tests to provide mock or test-specific menus.</p>
 
   <h3 id="AshesOfVelsingrad_Helpers_TestableMain_Reset" data-uid="AshesOfVelsingrad.Helpers.TestableMain.Reset">
   Reset()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/integration_tests/helpers/TestableMain.cs/#L84"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/integration_tests/helpers/TestableMain.cs/#L143"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"></div>
@@ -1226,7 +1431,7 @@ Can be overridden in tests to provide mock or test-specific menus.</p>
 
   <h3 id="AshesOfVelsingrad_Helpers_TestableMain_SetAutoFreeCallback_System_Func_Godot_Node_Godot_Node__" data-uid="AshesOfVelsingrad.Helpers.TestableMain.SetAutoFreeCallback(System.Func{Godot.Node,Godot.Node})">
   SetAutoFreeCallback(Func&lt;Node, Node?&gt;)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/integration_tests/helpers/TestableMain.cs/#L13"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/integration_tests/helpers/TestableMain.cs/#L20"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"></div>
@@ -1257,7 +1462,7 @@ Can be overridden in tests to provide mock or test-specific menus.</p>
 
   <h3 id="AshesOfVelsingrad_Helpers_TestableMain_SetMenuContainer_Godot_Control_" data-uid="AshesOfVelsingrad.Helpers.TestableMain.SetMenuContainer(Godot.Control)">
   SetMenuContainer(Control?)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/integration_tests/helpers/TestableMain.cs/#L18"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/integration_tests/helpers/TestableMain.cs/#L25"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"></div>
@@ -1270,6 +1475,38 @@ Can be overridden in tests to provide mock or test-specific menus.</p>
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
     <dt><code>menuContainer</code> <span class="xref">Control</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AshesOfVelsingrad_Helpers_TestableMain_SetWorldContainer_" data-uid="AshesOfVelsingrad.Helpers.TestableMain.SetWorldContainer*"></a>
+
+  <h3 id="AshesOfVelsingrad_Helpers_TestableMain_SetWorldContainer_Godot_Node_" data-uid="AshesOfVelsingrad.Helpers.TestableMain.SetWorldContainer(Godot.Node)">
+  SetWorldContainer(Node?)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/integration_tests/helpers/TestableMain.cs/#L33"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Provide a mock WorldContainer so ValidateInitialConditions passes.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetWorldContainer(Node? worldContainer)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>worldContainer</code> <span class="xref">Node</span></dt>
     <dd></dd>
   </dl>
 

@@ -267,6 +267,97 @@ public class InventoryLogic {
 <li><strong>Main-thread turn loop.</strong> <code>TurnManager.StartBattle</code> uses <code>await ProcessTurn()</code> directly (not <code>Task.Run</code>). Running the loop on a worker thread silently corrupts Godot's renderer state because the event handlers it fires touch scene/render APIs from off-thread.</li>
 <li><strong>Singleton cleanup on <code>_ExitTree</code>.</strong> <code>GameManager</code> and <code>TurnManager</code> use a <code>private new static Instance</code> that hides <code>BaseManager.Instance</code>. Without an explicit <code>_ExitTree</code> override that nulls out the derived static, <code>ReloadCurrentScene</code> (used by Try Again) leaves the new instance to QueueFree itself as a &quot;duplicate&quot;.</li>
 </ul>
+<h2 id="scene-management-layer">Scene Management Layer</h2>
+<p>The game uses a <strong>Root Scene Architecture</strong> to keep persistent UI always on screen
+regardless of which level or menu is currently active.</p>
+<h3 id="structure">Structure</h3>
+<p>MainManager (Node) — res://scenes/main.tscn — permanent root, never unloaded
+├── WorldContainer (Node) — active level or menu scene lives here
+└── UILayer (CanvasLayer, layer=10) — always rendered above WorldContainer
+├── MenuContainer (Control) — main menu + settings
+├── BattleHud (CanvasLayer) — battle HUD widgets
+├── InventoryUI (Control) — shared inventory panel
+└── SceneTransition (ColorRect) — fade overlay for transitions</p>
+<p><code>main.tscn</code> is set as the <strong>Main Scene</strong> in Project Settings. It never unloads.
+Levels, menus, and battle scenes are loaded into <code>WorldContainer</code> and freed on
+transition.</p>
+<h3 id="scene-transitions">Scene Transitions</h3>
+<p>All scene changes go through <code>MainManager.LoadScene(path, showHud)</code>:</p>
+<ul>
+<li>Fades to black via a <code>Tween</code> on <code>SceneTransition</code></li>
+<li>Frees the current <code>WorldContainer</code> child</li>
+<li>Instantiates and adds the new scene</li>
+<li>Fades back to transparent</li>
+</ul>
+<p><strong>Never call <code>GetTree().ChangeSceneToFile()</code> directly.</strong> Route through
+<code>MainManager.Instance?.LoadScene(...)</code> instead. The fallback to
+<code>ChangeSceneToFile</code> is kept only in autoloads that may run in standalone
+test scenes without <code>MainManager</code>.</p>
+<h3 id="ui-ownership">UI Ownership</h3>
+<table>
+<thead>
+<tr>
+<th>Component</th>
+<th>Owner</th>
+<th>Lifetime</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>BattleHud</code></td>
+<td><code>MainManager</code> / <code>UILayer</code></td>
+<td>Persistent — hidden between battles</td>
+</tr>
+<tr>
+<td><code>InventoryUI</code></td>
+<td><code>MainManager</code> / <code>UILayer</code></td>
+<td>Persistent — toggled by game state</td>
+</tr>
+<tr>
+<td><code>VictoryScreen</code></td>
+<td><code>GameManager</code></td>
+<td>Battle-scoped — freed on <code>_ExitTree</code></td>
+</tr>
+<tr>
+<td><code>GameOverScreen</code></td>
+<td><code>GameManager</code></td>
+<td>Battle-scoped — freed on <code>_ExitTree</code></td>
+</tr>
+<tr>
+<td><code>IndicatorOverlay</code></td>
+<td><code>GameManager</code></td>
+<td>Battle-scoped — parented to map</td>
+</tr>
+</tbody>
+</table>
+<p><code>GameManager</code> finds <code>BattleHud</code> via <code>FindHudIn(tree.Root)</code> rather than
+spawning it, since it already exists in <code>UILayer</code>. If <code>MainManager</code> is absent
+(standalone <code>Test.tscn</code>), <code>GameManager</code> falls back to spawning <code>BattleHud</code>
+dynamically.</p>
+<h3 id="gameplay-ui-visibility-rules">Gameplay UI Visibility Rules</h3>
+<ul>
+<li><strong>Main Menu / Settings</strong>: all gameplay UIs hidden via <code>ToggleGameplayUIs(false)</code></li>
+<li><strong>Exploration</strong>: <code>ExplorationInventoryUI</code> shown on demand via <code>open_inventory</code> input</li>
+<li><strong>Battle</strong>: <code>BattleHud</code> made visible by <code>GameManager.EnsureHud()</code>;
+<code>BattleInventoryUI</code> toggled by <code>ActionMenu</code>'s Item button</li>
+</ul>
+<p><code>MainManager.ToggleGameplayUIs</code> only forces UIs <strong>off</strong> (on menu load).
+Turning UIs <strong>on</strong> is always the responsibility of the system that owns them
+(<code>GameManager</code> for battle UI, <code>AovPlayer</code> for exploration UI).</p>
+<h3 id="adding-a-new-scene">Adding a New Scene</h3>
+<ol>
+<li>Create your <code>.tscn</code> file</li>
+<li>Call <code>MainManager.Instance?.LoadScene(&quot;res://scenes/your_scene.tscn&quot;, showHud: false)</code></li>
+<li>If your scene needs the HUD, pass <code>showHud: true</code> — but prefer letting
+<code>GameManager</code> or the relevant system control HUD visibility explicitly</li>
+</ol>
+<h3 id="adding-a-new-persistent-ui-element">Adding a New Persistent UI Element</h3>
+<ol>
+<li>Add your <code>Control</code> or <code>CanvasLayer</code> node as a child of <code>UILayer</code> in <code>main.tscn</code></li>
+<li>Export a reference to it from <code>MainManager</code></li>
+<li>Start it hidden — <code>ToggleGameplayUIs(false)</code> runs on every menu load</li>
+<li>The system that owns it (a manager or player script) shows it when appropriate</li>
+</ol>
 <h2 id="component-patterns">Component Patterns</h2>
 <h3 id="the-wrapper-pattern-godot-to-core">The Wrapper Pattern (Godot to Core)</h3>
 <p>The Godot Node acts as a visual wrapper for the Core logic.</p>

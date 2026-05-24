@@ -2,11 +2,11 @@
 <html>
   <head>
     <meta charset="utf-8">
-      <title>Class Main | Ashes of Velsingrad Documentation </title>
+      <title>Class MockExplorationInventoryUI | Ashes of Velsingrad Documentation </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content="Class Main | Ashes of Velsingrad Documentation ">
+      <meta name="title" content="Class MockExplorationInventoryUI | Ashes of Velsingrad Documentation ">
       
-      <meta name="description" content="Main scene controller that initializes the game systems. Follows the Component-Based Architecture and event-driven communication.">
+      
       <link rel="icon" href="../favicon.ico">
       <link rel="stylesheet" href="../public/docfx.min.css">
       <link rel="stylesheet" href="../public/main.css">
@@ -84,27 +84,25 @@
           <nav id="breadcrumb"></nav>
         </div>
 
-        <article data-uid="AshesOfVelsingrad.Main">
+        <article data-uid="AshesOfVelsingrad.IntegrationTests.Player.MockExplorationInventoryUI">
 
 
 
-  <h1 id="AshesOfVelsingrad_Main" data-uid="AshesOfVelsingrad.Main" class="text-break">
-Class Main  
+  <h1 id="AshesOfVelsingrad_IntegrationTests_Player_MockExplorationInventoryUI" data-uid="AshesOfVelsingrad.IntegrationTests.Player.MockExplorationInventoryUI" class="text-break">
+Class MockExplorationInventoryUI  
   </h1>
 
   <div class="facts text-secondary">
-    <dl><dt>Namespace</dt><dd><a class="xref" href="AshesOfVelsingrad.html">AshesOfVelsingrad</a></dd></dl>
+    <dl><dt>Namespace</dt><dd><a class="xref" href="AshesOfVelsingrad.html">AshesOfVelsingrad</a>.<a class="xref" href="AshesOfVelsingrad.IntegrationTests.html">IntegrationTests</a>.<a class="xref" href="AshesOfVelsingrad.IntegrationTests.Player.html">Player</a></dd></dl>
   <dl><dt>Assembly</dt><dd>AshesofVelsingrad.dll</dd></dl>
   </div>
 
-  <div class="markdown summary"><p>Main scene controller that initializes the game systems.
-Follows the Component-Based Architecture and event-driven communication.</p>
-</div>
+  <div class="markdown summary"></div>
   <div class="markdown conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[ScriptPath(&quot;res://scripts/Main.cs&quot;)]
-public class Main : Node, IDisposable</code></pre>
+    <pre><code class="lang-csharp hljs">[ScriptPath(&quot;res://integration_tests/helpers/player/MockExplorationInventoryUI.cs&quot;)]
+public class MockExplorationInventoryUI : ExplorationInventoryUI, IDisposable</code></pre>
   </div>
 
 
@@ -116,7 +114,9 @@ public class Main : Node, IDisposable</code></pre>
       <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
       <div><span class="xref">GodotObject</span></div>
       <div><span class="xref">Node</span></div>
-      <div><span class="xref">Main</span></div>
+      <div><span class="xref">CanvasLayer</span></div>
+      <div><a class="xref" href="AshesOfVelsingrad.UI.Inventory.ExplorationInventoryUI.html">ExplorationInventoryUI</a></div>
+      <div><span class="xref">MockExplorationInventoryUI</span></div>
     </dd>
   </dl>
 
@@ -127,16 +127,79 @@ public class Main : Node, IDisposable</code></pre>
     </dd>
   </dl>
 
-  <dl class="typelist derived">
-    <dt>Derived</dt>
-    <dd>
-      <div><a class="xref" href="AshesOfVelsingrad.Helpers.TestableMain.html">TestableMain</a></div>
-    </dd>
-  </dl>
 
   <dl class="typelist inheritedMembers">
     <dt>Inherited Members</dt>
     <dd>
+    <div>
+      <a class="xref" href="AshesOfVelsingrad.UI.Inventory.ExplorationInventoryUI.html#AshesOfVelsingrad_UI_Inventory_ExplorationInventoryUI_InventoryLayer">ExplorationInventoryUI.InventoryLayer</a>
+    </div>
+    <div>
+      <a class="xref" href="AshesOfVelsingrad.UI.Inventory.ExplorationInventoryUI.html#AshesOfVelsingrad_UI_Inventory_ExplorationInventoryUI__Ready">ExplorationInventoryUI._Ready()</a>
+    </div>
+    <div>
+      <a class="xref" href="AshesOfVelsingrad.UI.Inventory.ExplorationInventoryUI.html#AshesOfVelsingrad_UI_Inventory_ExplorationInventoryUI__Input_Godot_InputEvent_">ExplorationInventoryUI._Input(InputEvent)</a>
+    </div>
+    <div>
+      <a class="xref" href="AshesOfVelsingrad.UI.Inventory.ExplorationInventoryUI.html#AshesOfVelsingrad_UI_Inventory_ExplorationInventoryUI_Toggle">ExplorationInventoryUI.Toggle()</a>
+    </div>
+    <div>
+      <a class="xref" href="AshesOfVelsingrad.UI.Inventory.ExplorationInventoryUI.html#AshesOfVelsingrad_UI_Inventory_ExplorationInventoryUI__ExitTree">ExplorationInventoryUI._ExitTree()</a>
+    </div>
+    <div>
+      <span class="xref">CanvasLayer.Show()</span>
+    </div>
+    <div>
+      <span class="xref">CanvasLayer.Hide()</span>
+    </div>
+    <div>
+      <span class="xref">CanvasLayer.GetFinalTransform()</span>
+    </div>
+    <div>
+      <span class="xref">CanvasLayer.GetCanvas()</span>
+    </div>
+    <div>
+      <span class="xref">CanvasLayer.EmitSignalVisibilityChanged()</span>
+    </div>
+    <div>
+      <span class="xref">CanvasLayer.InvokeGodotClassMethod(in godot_string_name, NativeVariantPtrArgs, out godot_variant)</span>
+    </div>
+    <div>
+      <span class="xref">CanvasLayer.HasGodotClassMethod(in godot_string_name)</span>
+    </div>
+    <div>
+      <span class="xref">CanvasLayer.HasGodotClassSignal(in godot_string_name)</span>
+    </div>
+    <div>
+      <span class="xref">CanvasLayer.Layer</span>
+    </div>
+    <div>
+      <span class="xref">CanvasLayer.Visible</span>
+    </div>
+    <div>
+      <span class="xref">CanvasLayer.Offset</span>
+    </div>
+    <div>
+      <span class="xref">CanvasLayer.Rotation</span>
+    </div>
+    <div>
+      <span class="xref">CanvasLayer.Scale</span>
+    </div>
+    <div>
+      <span class="xref">CanvasLayer.Transform</span>
+    </div>
+    <div>
+      <span class="xref">CanvasLayer.CustomViewport</span>
+    </div>
+    <div>
+      <span class="xref">CanvasLayer.FollowViewportEnabled</span>
+    </div>
+    <div>
+      <span class="xref">CanvasLayer.FollowViewportScale</span>
+    </div>
+    <div>
+      <span class="xref">CanvasLayer.VisibilityChanged</span>
+    </div>
     <div>
       <span class="xref">Node.NotificationEnterTree</span>
     </div>
@@ -303,9 +366,6 @@ public class Main : Node, IDisposable</code></pre>
       <span class="xref">Node._EnterTree()</span>
     </div>
     <div>
-      <span class="xref">Node._ExitTree()</span>
-    </div>
-    <div>
       <span class="xref">Node._GetAccessibilityConfigurationWarnings()</span>
     </div>
     <div>
@@ -313,9 +373,6 @@ public class Main : Node, IDisposable</code></pre>
     </div>
     <div>
       <span class="xref">Node._GetFocusedAccessibilityElement()</span>
-    </div>
-    <div>
-      <span class="xref">Node._Input(InputEvent)</span>
     </div>
     <div>
       <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">Node._PhysicsProcess(double)</a>
@@ -660,15 +717,6 @@ public class Main : Node, IDisposable</code></pre>
       <span class="xref">Node.EmitSignalEditorStateChanged()</span>
     </div>
     <div>
-      <span class="xref">Node.InvokeGodotClassMethod(in godot_string_name, NativeVariantPtrArgs, out godot_variant)</span>
-    </div>
-    <div>
-      <span class="xref">Node.HasGodotClassMethod(in godot_string_name)</span>
-    </div>
-    <div>
-      <span class="xref">Node.HasGodotClassSignal(in godot_string_name)</span>
-    </div>
-    <div>
       <span class="xref">Node.Name</span>
     </div>
     <div>
@@ -1002,30 +1050,31 @@ public class Main : Node, IDisposable</code></pre>
 
 
 
-  <h2 class="section" id="fields">Fields
+  <h2 class="section" id="properties">Properties
 </h2>
 
 
+  <a id="AshesOfVelsingrad_IntegrationTests_Player_MockExplorationInventoryUI_EnsureBuiltCalled_" data-uid="AshesOfVelsingrad.IntegrationTests.Player.MockExplorationInventoryUI.EnsureBuiltCalled*"></a>
 
-  <h3 id="AshesOfVelsingrad_Main__mainMenuScene" data-uid="AshesOfVelsingrad.Main._mainMenuScene">
-  _mainMenuScene
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/Main.cs/#L13"><i class="bi bi-code-slash"></i></a>
+  <h3 id="AshesOfVelsingrad_IntegrationTests_Player_MockExplorationInventoryUI_EnsureBuiltCalled" data-uid="AshesOfVelsingrad.IntegrationTests.Player.MockExplorationInventoryUI.EnsureBuiltCalled">
+  EnsureBuiltCalled
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/integration_tests/helpers/player/MockExplorationInventoryUI.cs/#L8"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[Export(PropertyHint.None, &quot;&quot;)]
-protected PackedScene? _mainMenuScene</code></pre>
+    <pre><code class="lang-csharp hljs">public bool EnsureBuiltCalled { get; }</code></pre>
   </div>
 
 
 
 
-  <h4 class="section">Field Value</h4>
+
+  <h4 class="section">Property Value</h4>
   <dl class="parameters">
-    <dt><span class="xref">PackedScene</span></dt>
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
     <dd></dd>
   </dl>
 
@@ -1036,61 +1085,29 @@ protected PackedScene? _mainMenuScene</code></pre>
 
 
 
+  <a id="AshesOfVelsingrad_IntegrationTests_Player_MockExplorationInventoryUI_RefreshUnitPanelsCalled_" data-uid="AshesOfVelsingrad.IntegrationTests.Player.MockExplorationInventoryUI.RefreshUnitPanelsCalled*"></a>
 
-
-  <h3 id="AshesOfVelsingrad_Main__menuContainer" data-uid="AshesOfVelsingrad.Main._menuContainer">
-  _menuContainer
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/Main.cs/#L12"><i class="bi bi-code-slash"></i></a>
+  <h3 id="AshesOfVelsingrad_IntegrationTests_Player_MockExplorationInventoryUI_RefreshUnitPanelsCalled" data-uid="AshesOfVelsingrad.IntegrationTests.Player.MockExplorationInventoryUI.RefreshUnitPanelsCalled">
+  RefreshUnitPanelsCalled
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/integration_tests/helpers/player/MockExplorationInventoryUI.cs/#L9"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[Export(PropertyHint.None, &quot;&quot;)]
-protected Control? _menuContainer</code></pre>
+    <pre><code class="lang-csharp hljs">public bool RefreshUnitPanelsCalled { get; }</code></pre>
   </div>
 
 
 
 
-  <h4 class="section">Field Value</h4>
+
+  <h4 class="section">Property Value</h4>
   <dl class="parameters">
-    <dt><span class="xref">Control</span></dt>
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
     <dd></dd>
   </dl>
-
-
-
-
-
-
-
-
-
-
-  <h3 id="AshesOfVelsingrad_Main__optionsMenuScene" data-uid="AshesOfVelsingrad.Main._optionsMenuScene">
-  _optionsMenuScene
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/Main.cs/#L14"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[Export(PropertyHint.None, &quot;&quot;)]
-protected PackedScene? _optionsMenuScene</code></pre>
-  </div>
-
-
-
-
-  <h4 class="section">Field Value</h4>
-  <dl class="parameters">
-    <dt><span class="xref">PackedScene</span></dt>
-    <dd></dd>
-  </dl>
-
 
 
 
@@ -1103,60 +1120,18 @@ protected PackedScene? _optionsMenuScene</code></pre>
 </h2>
 
 
-  <a id="AshesOfVelsingrad_Main_CreateMenus_" data-uid="AshesOfVelsingrad.Main.CreateMenus*"></a>
+  <a id="AshesOfVelsingrad_IntegrationTests_Player_MockExplorationInventoryUI_EnsureBuilt_" data-uid="AshesOfVelsingrad.IntegrationTests.Player.MockExplorationInventoryUI.EnsureBuilt*"></a>
 
-  <h3 id="AshesOfVelsingrad_Main_CreateMenus" data-uid="AshesOfVelsingrad.Main.CreateMenus">
-  CreateMenus()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/Main.cs/#L65"><i class="bi bi-code-slash"></i></a>
+  <h3 id="AshesOfVelsingrad_IntegrationTests_Player_MockExplorationInventoryUI_EnsureBuilt" data-uid="AshesOfVelsingrad.IntegrationTests.Player.MockExplorationInventoryUI.EnsureBuilt">
+  EnsureBuilt()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/integration_tests/helpers/player/MockExplorationInventoryUI.cs/#L11"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Create menu instances - virtual for testing overrides.
-Default implementation instantiates from PackedScenes.
-Checks for null references and logs appropriately.
-Can be overridden in tests to provide mock or test-specific menus.</p>
-</div>
+  <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">protected virtual (Node mainMenu, Node optionsMenu) CreateMenus()</code></pre>
-  </div>
-
-
-  <h4 class="section">Returns</h4>
-  <dl class="parameters">
-    <dt>(<span class="xref">Node</span> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-godot.node,godot.node-.mainmenu">mainMenu</a>, <span class="xref">Node</span> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-godot.node,godot.node-.optionsmenu">optionsMenu</a>)</dt>
-    <dd><p>Tuple of (mainMenu, optionsMenu) nodes.</p>
-</dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-
-  <a id="AshesOfVelsingrad_Main_InitializeMenus_" data-uid="AshesOfVelsingrad.Main.InitializeMenus*"></a>
-
-  <h3 id="AshesOfVelsingrad_Main_InitializeMenus" data-uid="AshesOfVelsingrad.Main.InitializeMenus">
-  InitializeMenus()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/Main.cs/#L29"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Initialise the menus and register them with the MenuManager.
-Ensures that the SettingsManager and MenuManager singletons are available.
-Uses deferred calls to avoid Godot lifecycle issues.
-Catches and logs exceptions during initialization.
-Also checks that the menu container and scenes are valid before proceeding.
-This method can be overridden in tests to provide mock menus.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">protected virtual void InitializeMenus()</code></pre>
+    <pre><code class="lang-csharp hljs">public override void EnsureBuilt()</code></pre>
   </div>
 
 
@@ -1171,22 +1146,20 @@ This method can be overridden in tests to provide mock menus.</p>
 
 
 
-  <a id="AshesOfVelsingrad_Main__Ready_" data-uid="AshesOfVelsingrad.Main._Ready*"></a>
+  <a id="AshesOfVelsingrad_IntegrationTests_Player_MockExplorationInventoryUI_RefreshUnitPanels_" data-uid="AshesOfVelsingrad.IntegrationTests.Player.MockExplorationInventoryUI.RefreshUnitPanels*"></a>
 
-  <h3 id="AshesOfVelsingrad_Main__Ready" data-uid="AshesOfVelsingrad.Main._Ready">
-  _Ready()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/Main.cs/#L16"><i class="bi bi-code-slash"></i></a>
+  <h3 id="AshesOfVelsingrad_IntegrationTests_Player_MockExplorationInventoryUI_RefreshUnitPanels" data-uid="AshesOfVelsingrad.IntegrationTests.Player.MockExplorationInventoryUI.RefreshUnitPanels">
+  RefreshUnitPanels()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/integration_tests/helpers/player/MockExplorationInventoryUI.cs/#L16"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Called when the node is "ready", i.e. when both the node and its children have entered the scene tree. If the node has children, their <span class="xref">Godot.Node._Ready()</span> callbacks get triggered first, and the parent node will receive the ready notification afterwards.</p>
-<p>Corresponds to the <span class="xref">Godot.Node.NotificationReady</span> notification in <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">_Notification(int)</a>. See also the <code>@onready</code> annotation for variables.</p>
-<p>Usually used for initialization. For even earlier initialization, <span class="xref">Godot.GodotObject.GodotObject()</span> may be used. See also <span class="xref">Godot.Node._EnterTree()</span>.</p>
-<p><b>Note:</b> This method may be called only once for each node. After removing a node from the scene tree and adding it again, <span class="xref">Godot.Node._Ready()</span> will <b>not</b> be called a second time. This can be bypassed by requesting another call with <span class="xref">Godot.Node.RequestReady()</span>, which may be called anywhere before adding the node again.</p>
+  <div class="markdown level1 summary"><p>Rebuild unit rows from PlayerInventoryManager's persistent loadouts.
+Safe to call multiple times (e.g. after a battle updates party names).</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public override void _Ready()</code></pre>
+    <pre><code class="lang-csharp hljs">public override void RefreshUnitPanels()</code></pre>
   </div>
 
 

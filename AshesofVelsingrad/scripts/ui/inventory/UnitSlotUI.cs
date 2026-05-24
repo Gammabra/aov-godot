@@ -65,6 +65,9 @@ public sealed partial class UnitSlotUI : PanelContainer
 
     public void Refresh(IInventorySlot slot)
     {
+        if (!GodotObject.IsInstanceValid(this) || !GodotObject.IsInstanceValid(_qtyLabel))
+            return;
+
         EnsureBuilt();
         bool empty = slot.IsEmpty;
         if (_nameLabel != null)

@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using System.Reflection;
 using AshesOfVelsingrad.Managers;
-using AshesOfVelsingrad.UI.Menus;
 using GdUnit4;
 using Godot;
 using static GdUnit4.Assertions;
@@ -17,7 +16,6 @@ public class MenuManagerTest
     private Node? _root;
     private Control? _mockMenu1;
     private Control? _mockMenu2;
-    private OptionsMenu? _optionsMenu;
 
     [BeforeTest]
     public void SetUp()
@@ -35,7 +33,6 @@ public class MenuManagerTest
         // Create test menus
         _mockMenu1 = AutoFree(new Control { Name = "MockMenu1" });
         _mockMenu2 = AutoFree(new Control { Name = "MockMenu2" });
-        _optionsMenu = AutoFree(new OptionsMenu { Name = "OptionsMenu" });
 
         GD.Print("[TEST] MenuManager SetUp completed");
     }
@@ -99,20 +96,6 @@ public class MenuManagerTest
     }
 
     [TestCase]
-    public void RegisterMenu_OptionsMenu_ConnectsBackSignal()
-    {
-        // Arrange
-        _menuManager = CreateMenuManager();
-
-        // Act
-        _menuManager.RegisterMenu("options_menu", _optionsMenu!);
-
-        // Assert
-        // We can't directly test signal connection, but we can test that registration worked
-        AssertThat(_optionsMenu!.Visible).IsFalse(); // Should be hidden by default
-    }
-
-    [TestCase]
     public void ShowMenu_ValidMenu_ShowsAndHidesPrevious()
     {
         // Arrange
@@ -120,18 +103,19 @@ public class MenuManagerTest
         _menuManager.RegisterMenu("menu1", _mockMenu1!);
         _menuManager.RegisterMenu("menu2", _mockMenu2!);
 
-        // Show first menu
         _menuManager.ShowMenu("menu1");
         AssertThat(_mockMenu1!.Visible).IsTrue();
         AssertThat(_menuManager.GetCurrentMenu()).IsEqual("menu1");
 
-        // Act - show second menu
+        // Act
         _menuManager.ShowMenu("menu2");
 
-        // Assert
-        AssertThat(_mockMenu1.Visible).IsFalse(); // Previous menu hidden
-        AssertThat(_mockMenu2!.Visible).IsTrue(); // New menu shown
+        // Assert — plain Controls use Hide()/Show(), not SettingsPages.HideAll/ShowAll
+        AssertThat(_mockMenu1.Visible).IsFalse();
+        AssertThat(_mockMenu2!.Visible).IsTrue();
         AssertThat(_menuManager.GetCurrentMenu()).IsEqual("menu2");
+        // MouseFilter should be set to Ignore when hidden
+        AssertThat((int)_mockMenu1.MouseFilter).IsEqual((int)Control.MouseFilterEnum.Ignore);
     }
 
     [TestCase]
@@ -139,15 +123,15 @@ public class MenuManagerTest
     {
         // Arrange
         _menuManager = CreateMenuManager();
-        _menuManager.RegisterMenu("options", _optionsMenu!);
+        _menuManager.RegisterMenu(MenuManager.OPTIONS_MENU, _mockMenu1!);
 
         // Act
-        _menuManager.ShowMenu("options");
+        _menuManager.ShowMenu(MenuManager.OPTIONS_MENU);
 
-        // Assert
-        // The menu should be visible after ShowMenu is called
-        AssertThat(_optionsMenu!.Visible).IsTrue();
-        AssertThat(_menuManager.GetCurrentMenu()).IsEqual("options");
+        // Assert — options menu is shown like any other menu now
+        // (no special OptionsMenu type handling)
+        AssertThat(_menuManager.GetCurrentMenu()).IsEqual(MenuManager.OPTIONS_MENU);
+        AssertThat(_mockMenu1!.Visible).IsTrue();
     }
 
     [TestCase]
@@ -427,52 +411,6 @@ public class MenuManagerTest
     }
 
     [TestCase]
-    public void OptionsMenuBackRequested_CallsGoBack()
-    {
-        // Arrange
-        _menuManager = CreateMenuManager();
-        _menuManager.RegisterMenu("menu1", _mockMenu1!);
-        _menuManager.RegisterMenu("options", _optionsMenu!);
-
-        _menuManager.ShowMenu("menu1");
-        _menuManager.ShowMenu("options");
-
-        // Act - simulate back button press in options menu
-        _optionsMenu!.EmitSignal(OptionsMenu.SignalName.BackRequested);
-
-        // Assert
-        AssertThat(_menuManager.GetCurrentMenu()).IsEqual("menu1");
-    }
-
-    [TestCase]
-    public void ShowMenu_OptionsMenuWithCurrentOptionsMenu_UsesHideMenuMethod()
-    {
-        // Arrange
-        _menuManager = CreateMenuManager();
-        var currentOptionsMenu = AutoFree(new OptionsMenu { Name = "CurrentOptions" });
-        var newMenu = AutoFree(new Control { Name = "NewMenu" });
-
-        if (currentOptionsMenu == null || newMenu == null)
-            throw new System.InvalidOperationException("Failed to create test menus.");
-
-        _menuManager.RegisterMenu("current_options", currentOptionsMenu);
-        _menuManager.RegisterMenu("new_menu", newMenu);
-
-        _menuManager.ShowMenu("current_options");
-        AssertThat(currentOptionsMenu.Visible).IsTrue();
-
-        // Act
-        _menuManager.ShowMenu("new_menu");
-
-        // Assert
-        // The currentOptionsMenu should be hidden when switching to new menu
-        // Note: OptionsMenu.HideMenu() has animation, so immediate visibility check may not work
-        // We'll test that the new menu is shown and current menu changed
-        AssertThat(newMenu.Visible).IsTrue();
-        AssertThat(_menuManager.GetCurrentMenu()).IsEqual("new_menu");
-    }
-
-    [TestCase]
     public void MenuConstants_HaveCorrectValues()
     {
         // Assert
@@ -482,33 +420,38 @@ public class MenuManagerTest
     }
 
     [TestCase]
-    public void FullWorkflow_RegisterShowNavigate_WorksCorrectly()
+    public void ShowMenu_HiddenMenu_SetsMouseFilterToIgnore()
     {
         // Arrange
         _menuManager = CreateMenuManager();
+        _menuManager.RegisterMenu("menu1", _mockMenu1!);
+        _menuManager.RegisterMenu("menu2", _mockMenu2!);
 
-        // Act & Assert - Register menus
-        _menuManager.RegisterMenu(MenuManager.MAIN_MENU, _mockMenu1!);
-        _menuManager.RegisterMenu(MenuManager.OPTIONS_MENU, _optionsMenu!);
+        _menuManager.ShowMenu("menu1");
 
-        // Show main menu
-        _menuManager.ShowMenu(MenuManager.MAIN_MENU);
-        AssertThat(_menuManager.IsMenuActive(MenuManager.MAIN_MENU)).IsTrue();
-        AssertThat(_mockMenu1!.Visible).IsTrue();
+        // Act — show menu2, which hides menu1
+        _menuManager.ShowMenu("menu2");
 
-        // Navigate to options
-        _menuManager.ShowMenu(MenuManager.OPTIONS_MENU);
-        AssertThat(_menuManager.IsMenuActive(MenuManager.OPTIONS_MENU)).IsTrue();
-        AssertThat(_optionsMenu!.Visible).IsTrue();
-        AssertThat(_mockMenu1.Visible).IsFalse();
+        // Assert — hidden menu must not block mouse events
+        AssertThat((int)_mockMenu1!.MouseFilter).IsEqual((int)Control.MouseFilterEnum.Ignore);
+    }
 
-        // Go back to main menu
+    [TestCase]
+    public void ShowMenu_ShowingMenu_SetsMouseFilterToPass()
+    {
+        // Arrange
+        _menuManager = CreateMenuManager();
+        _menuManager.RegisterMenu("menu1", _mockMenu1!);
+        _menuManager.RegisterMenu("menu2", _mockMenu2!);
+
+        _menuManager.ShowMenu("menu1");
+        _menuManager.ShowMenu("menu2"); // menu1 is now hidden with Ignore
+
+        // Act — go back to menu1
         _menuManager.GoBack();
-        AssertThat(_menuManager.IsMenuActive(MenuManager.MAIN_MENU)).IsTrue();
-        AssertThat(_mockMenu1.Visible).IsTrue();
-        // Note: OptionsMenu.HideMenu() has animation, so immediate visibility check may not work
-        // The key test is that we're back to the main menu
-        AssertThat(_menuManager.GetCurrentMenu()).IsEqual(MenuManager.MAIN_MENU);
+
+        // Assert — restored menu gets Pass filter
+        AssertThat((int)_mockMenu1!.MouseFilter).IsEqual((int)Control.MouseFilterEnum.Pass);
     }
 
     // Helper Methods

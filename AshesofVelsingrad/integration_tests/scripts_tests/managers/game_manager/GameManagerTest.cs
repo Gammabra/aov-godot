@@ -109,6 +109,7 @@ public class GameManagerTest
 
         Node playerContainer = AddNode(new Node());
         Node enemyContainer = AddNode(new Node());
+        Node allyContainer = AddNode(new Node());
 
         TestConcreteUnitSystem playerUnit = CreateUnit("Player");
         playerContainer.AddChild(playerUnit);
@@ -118,6 +119,7 @@ public class GameManagerTest
 
         manager.Set("_playerUnitsContainer", playerContainer);
         manager.Set("_enemyUnitsContainer", enemyContainer);
+        SetPrivateField(manager, "_alliedUnitsContainer", allyContainer);
 
         manager.Call("LoadUnits");
 
@@ -135,6 +137,7 @@ public class GameManagerTest
         GameManager manager = AddNode(new GameManager());
         Node playerContainer = AddNode(new Node());
         Node enemyContainer = AddNode(new Node());
+        Node allyContainer = AddNode(new Node());
         TestConcreteUnitSystem playerUnit = CreateUnit("Player");
         TestConcreteUnitSystem enemyUnit = CreateUnit("Enemy", 0);
 
@@ -146,6 +149,7 @@ public class GameManagerTest
 
         SetPrivateField(manager, "_playerUnitsContainer", playerContainer);
         SetPrivateField(manager, "_enemyUnitsContainer", enemyContainer);
+        SetPrivateField(manager, "_alliedUnitsContainer", allyContainer);
 
         CallPrivateMethod(manager, "LoadUnits");
 
@@ -165,6 +169,7 @@ public class GameManagerTest
         GameManager manager = AddNode(new GameManager());
         Node playerContainer = AddNode(new Node());
         Node enemyContainer = AddNode(new Node());
+        Node allyContainer = AddNode(new Node());
         TestConcreteUnitSystem playerUnit = CreateUnit("Player", 0);
         TestConcreteUnitSystem enemyUnit = CreateUnit("Enemy");
 
@@ -176,6 +181,7 @@ public class GameManagerTest
 
         SetPrivateField(manager, "_playerUnitsContainer", playerContainer);
         SetPrivateField(manager, "_enemyUnitsContainer", enemyContainer);
+        SetPrivateField(manager, "_alliedUnitsContainer", allyContainer);
 
         CallPrivateMethod(manager, "LoadUnits");
 
@@ -195,6 +201,7 @@ public class GameManagerTest
         GameManager manager = AddNode(new GameManager());
         Node playerContainer = AddNode(new Node());
         Node enemyContainer = AddNode(new Node());
+        Node allyContainer = AddNode(new Node());
         TestConcreteUnitSystem playerUnit = CreateUnit("Player", 0);
         TestConcreteUnitSystem enemyUnit = CreateUnit("Enemy", 0);
 
@@ -204,6 +211,7 @@ public class GameManagerTest
 
         SetPrivateField(manager, "_playerUnitsContainer", playerContainer);
         SetPrivateField(manager, "_enemyUnitsContainer", enemyContainer);
+        SetPrivateField(manager, "_alliedUnitsContainer", allyContainer);
 
         CallPrivateMethod(manager, "LoadUnits");
 
@@ -227,6 +235,7 @@ public class GameManagerTest
         GameManager manager = AddNode(new GameManager());
         Node playerContainer = AddNode(new Node());
         Node enemyContainer = AddNode(new Node());
+        Node allyContainer = AddNode(new Node());
         TestConcreteUnitSystem playerUnit = CreateUnit("Player");
         TestConcreteUnitSystem enemyUnit = CreateUnit("Enemy", 0);
 
@@ -236,6 +245,7 @@ public class GameManagerTest
 
         SetPrivateField(manager, "_playerUnitsContainer", playerContainer);
         SetPrivateField(manager, "_enemyUnitsContainer", enemyContainer);
+        SetPrivateField(manager, "_alliedUnitsContainer", allyContainer);
 
         CallPrivateMethod(manager, "LoadUnits");
 
@@ -359,6 +369,7 @@ public class GameManagerTest
         GameManager manager = AddNode(new GameManager());
         Node playerContainer = AddNode(new Node());
         Node enemyContainer = AddNode(new Node());
+        Node allyContainer = AddNode(new Node());
         TestConcreteUnitSystem playerUnit = CreateUnit("Player", speed: 2);
         TestConcreteUnitSystem enemyUnit = CreateUnit("Enemy", 1);
         BattleInputSystem inputSystem = AddNode(new BattleInputSystem());
@@ -374,6 +385,7 @@ public class GameManagerTest
         SetPrivateField(manager, "_battleInputSystemContainer", inputSystem);
         SetPrivateField(manager, "_turnManagerContainer", turnManager);
         SetPrivateField(manager, "_mapSystemContainer", mapSystem);
+        SetPrivateField(manager, "_alliedUnitsContainer", allyContainer);
 
         mapSystem.AddWalkableCell(0, 0, 0);
         mapSystem.AddWalkableCell(1, 0, 0);
@@ -389,6 +401,7 @@ public class GameManagerTest
         CallPrivateMethod(manager, "LoadUnits");
         turnManager.InitializeTurnOrder(
             GetPrivateField<List<IUnitSystem>>(manager, "_playerUnits"),
+            new List<IUnitSystem>(), // allies — empty in this test
             GetPrivateField<List<IUnitSystem>>(manager, "_enemyUnits")
         );
         turnManager
@@ -410,6 +423,7 @@ public class GameManagerTest
         GameManager manager = AddNode(new GameManager());
         Node playerContainer = AddNode(new Node());
         Node enemyContainer = AddNode(new Node());
+        Node allyContainer = AddNode(new Node());
         TestConcreteUnitSystem playerUnit = CreateUnit("Player", speed: 2);
         TestConcreteUnitSystem enemyUnit = CreateUnit("Enemy", 0, 1);
         BattleInputSystem inputSystem = AddNode(new BattleInputSystem());
@@ -425,6 +439,7 @@ public class GameManagerTest
         SetPrivateField(manager, "_battleInputSystemContainer", inputSystem);
         SetPrivateField(manager, "_mapSystemContainer", mapSystem);
         SetPrivateField(manager, "_turnManagerContainer", turnManager);
+        SetPrivateField(manager, "_alliedUnitsContainer", allyContainer);
 
         SetPrivateField(manager, "_clickOnMapContext", AovDataStructures.ClickOnMapContext.SelectUnitTarget);
         SetPrivateField(manager, "_isPlayerTurn", true);
@@ -439,6 +454,7 @@ public class GameManagerTest
         CallPrivateMethod(manager, "LoadUnits");
         turnManager.InitializeTurnOrder(
             GetPrivateField<List<IUnitSystem>>(manager, "_playerUnits"),
+            new List<IUnitSystem>(), // allies — empty in this test
             GetPrivateField<List<IUnitSystem>>(manager, "_enemyUnits")
         );
         CallPrivateMethod(manager, "DeactivatePlayerUnit");
@@ -491,7 +507,7 @@ public class GameManagerTest
         SetPrivateField(manager, "_turnManagerContainer", turnManager);
         SetPrivateField(manager, "_mapSystemContainer", mapSystem);
 
-        turnManager.InitializeTurnOrder(new List<IUnitSystem> { unit }, new List<IUnitSystem>());
+        turnManager.InitializeTurnOrder(new List<IUnitSystem> { unit }, new List<IUnitSystem>(), new List<IUnitSystem>());
 
         CallPrivateMethod(manager, "PlayerSelectedSkill", 0);
 
@@ -515,7 +531,7 @@ public class GameManagerTest
         SetPrivateField(manager, "_turnManagerContainer", turnManager);
         SetPrivateField(manager, "_mapSystemContainer", mapSystem);
 
-        turnManager.InitializeTurnOrder(new List<IUnitSystem> { unit }, new List<IUnitSystem>());
+        turnManager.InitializeTurnOrder(new List<IUnitSystem> { unit }, new List<IUnitSystem>(), new List<IUnitSystem>());
 
         CallPrivateMethod(manager, "PlayerSelectedSkill", 0);
 
@@ -530,6 +546,7 @@ public class GameManagerTest
         GameManager manager = AddNode(new GameManager());
         Node playerContainer = AddNode(new Node());
         Node enemyContainer = AddNode(new Node());
+        Node allyContainer = AddNode(new Node());
         TestConcreteUnitSystem playerUnit = CreateUnit("Player", speed: 2);
         TestConcreteUnitSystem enemyUnit = CreateUnit("Enemy", 1, speed: 4);
         TestConcreteMapSystem mapSystem = AddNode(new TestConcreteMapSystem());
@@ -543,6 +560,7 @@ public class GameManagerTest
         SetPrivateField(manager, "_enemyUnitsContainer", enemyContainer);
         SetPrivateField(manager, "_turnManagerContainer", turnManager);
         SetPrivateField(manager, "_mapSystemContainer", mapSystem);
+        SetPrivateField(manager, "_alliedUnitsContainer", allyContainer);
 
         mapSystem.AddWalkableCell(0, 0, 0);
         mapSystem.AddWalkableCell(1, 0, 0);
@@ -551,6 +569,7 @@ public class GameManagerTest
         CallPrivateMethod(manager, "LoadUnits");
         turnManager.InitializeTurnOrder(
             GetPrivateField<List<IUnitSystem>>(manager, "_playerUnits"),
+            new List<IUnitSystem>(), // allies — empty in this test
             GetPrivateField<List<IUnitSystem>>(manager, "_enemyUnits")
         );
         turnManager
@@ -574,6 +593,7 @@ public class GameManagerTest
         SetPrivateField(manager, "_unitMoved", true);
 
         turnManager.InitializeTurnOrder(
+            new List<IUnitSystem>(),
             new List<IUnitSystem>(),
             new List<IUnitSystem> { enemy }
         );

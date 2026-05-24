@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://dycsfdky6wocx" path="res://scripts/data/map/Map1.cs" id="2_map"]
 [ext_resource type="MeshLibrary" uid="uid://du0rgaffn5bkl" path="res://assets/mesh_library/3DMesh.tres" id="3_mesh"]
 [ext_resource type="Script" uid="uid://dkhfwdhsqvki4" path="res://scripts/managers/TurnManager.cs" id="4_tm"]
-[ext_resource type="Script" uid="uid://buj6bdu8gkf0j" path="res://scripts/systems/BattleInputSystem.cs" id="9_input"]
+[ext_resource type="Script" uid="uid://b6hj56agqrgl5" path="res://scripts/systems/BattleInputSystem.cs" id="9_input"]
 [ext_resource type="PackedScene" uid="uid://8jsp7b3bi66t" path="res://scenes/Level/Fight.tscn" id="13_kq1lv"]
 
 [node name="PrisonBattle" type="Node" unique_id=2145295567]
@@ -25,6 +25,7 @@ _alliedUnitsPath = NodePath("AlliedUnits")
 _mapSystemPath = NodePath("GridMap")
 _turnManagerPath = NodePath("TurnManager")
 _battleInputSystemPath = NodePath("../Inputs")
+_battleHudScenePath = "res://scenes/ui/hud/BattleHud.tscn"
 
 [node name="GridMap" type="GridMap" parent="GameManager" unique_id=1082255965]
 mesh_library = ExtResource("3_mesh")

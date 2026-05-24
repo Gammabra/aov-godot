@@ -180,6 +180,79 @@ A few patterns earned dedicated lifecycle handling:
 - **Main-thread turn loop.** `TurnManager.StartBattle` uses `await ProcessTurn()` directly (not `Task.Run`). Running the loop on a worker thread silently corrupts Godot's renderer state because the event handlers it fires touch scene/render APIs from off-thread.
 - **Singleton cleanup on `_ExitTree`.** `GameManager` and `TurnManager` use a `private new static Instance` that hides `BaseManager.Instance`. Without an explicit `_ExitTree` override that nulls out the derived static, `ReloadCurrentScene` (used by Try Again) leaves the new instance to QueueFree itself as a "duplicate".
 
+## Scene Management Layer
+
+The game uses a **Root Scene Architecture** to keep persistent UI always on screen
+regardless of which level or menu is currently active.
+
+### Structure
+
+MainManager (Node) — res://scenes/main.tscn — permanent root, never unloaded
+├── WorldContainer (Node) — active level or menu scene lives here
+└── UILayer (CanvasLayer, layer=10) — always rendered above WorldContainer
+├── MenuContainer (Control) — main menu + settings
+├── BattleHud (CanvasLayer) — battle HUD widgets
+├── InventoryUI (Control) — shared inventory panel
+└── SceneTransition (ColorRect) — fade overlay for transitions
+
+`main.tscn` is set as the **Main Scene** in Project Settings. It never unloads.
+Levels, menus, and battle scenes are loaded into `WorldContainer` and freed on
+transition.
+
+### Scene Transitions
+
+All scene changes go through `MainManager.LoadScene(path, showHud)`:
+
+- Fades to black via a `Tween` on `SceneTransition`
+- Frees the current `WorldContainer` child
+- Instantiates and adds the new scene
+- Fades back to transparent
+
+**Never call `GetTree().ChangeSceneToFile()` directly.** Route through
+`MainManager.Instance?.LoadScene(...)` instead. The fallback to
+`ChangeSceneToFile` is kept only in autoloads that may run in standalone
+test scenes without `MainManager`.
+
+### UI Ownership
+
+| Component | Owner | Lifetime |
+|---|---|---|
+| `BattleHud` | `MainManager` / `UILayer` | Persistent — hidden between battles |
+| `InventoryUI` | `MainManager` / `UILayer` | Persistent — toggled by game state |
+| `VictoryScreen` | `GameManager` | Battle-scoped — freed on `_ExitTree` |
+| `GameOverScreen` | `GameManager` | Battle-scoped — freed on `_ExitTree` |
+| `IndicatorOverlay` | `GameManager` | Battle-scoped — parented to map |
+
+`GameManager` finds `BattleHud` via `FindHudIn(tree.Root)` rather than
+spawning it, since it already exists in `UILayer`. If `MainManager` is absent
+(standalone `Test.tscn`), `GameManager` falls back to spawning `BattleHud`
+dynamically.
+
+### Gameplay UI Visibility Rules
+
+- **Main Menu / Settings**: all gameplay UIs hidden via `ToggleGameplayUIs(false)`
+- **Exploration**: `ExplorationInventoryUI` shown on demand via `open_inventory` input
+- **Battle**: `BattleHud` made visible by `GameManager.EnsureHud()`;
+  `BattleInventoryUI` toggled by `ActionMenu`'s Item button
+
+`MainManager.ToggleGameplayUIs` only forces UIs **off** (on menu load).
+Turning UIs **on** is always the responsibility of the system that owns them
+(`GameManager` for battle UI, `AovPlayer` for exploration UI).
+
+### Adding a New Scene
+
+1. Create your `.tscn` file
+2. Call `MainManager.Instance?.LoadScene("res://scenes/your_scene.tscn", showHud: false)`
+3. If your scene needs the HUD, pass `showHud: true` — but prefer letting
+   `GameManager` or the relevant system control HUD visibility explicitly
+
+### Adding a New Persistent UI Element
+
+1. Add your `Control` or `CanvasLayer` node as a child of `UILayer` in `main.tscn`
+2. Export a reference to it from `MainManager`
+3. Start it hidden — `ToggleGameplayUIs(false)` runs on every menu load
+4. The system that owns it (a manager or player script) shows it when appropriate
+
 ## Component Patterns
 
 ### The Wrapper Pattern (Godot to Core)

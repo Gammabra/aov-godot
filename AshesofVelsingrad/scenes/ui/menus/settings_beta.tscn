@@ -41,20 +41,29 @@ border_blend = true
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_sjfrx"]
 
-[node name="MenuBeta" type="Node2D" unique_id=675576821]
+[node name="Control" type="Control" unique_id=2073738294]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
 
-[node name="TextureRect" type="TextureRect" parent="." unique_id=782571889]
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1255423235]
+layout_mode = 0
 offset_right = 1154.0
 offset_bottom = 648.0
 
-[node name="MenuProto" type="Sprite2D" parent="TextureRect" unique_id=2141476751]
+[node name="MenuProto" type="Sprite2D" parent="TextureRect" unique_id=1863183825]
 modulate = Color(0.29954743, 0.29954746, 0.29954734, 0.8392157)
 position = Vector2(203.41867, 192.63826)
 scale = Vector2(0.5999881, 0.59994954)
 texture = ExtResource("1_ujhbt")
 offset = Vector2(621, 219)
 
-[node name="LabelSettings" type="Label" parent="." unique_id=1713170725]
+[node name="LabelSettings" type="Label" parent="." unique_id=152209915]
+layout_mode = 0
 offset_top = 59.0
 offset_right = 1151.0
 offset_bottom = 119.0
@@ -63,7 +72,8 @@ theme_override_font_sizes/font_size = 60
 text = "Settings"
 horizontal_alignment = 1
 
-[node name="ButtonSave" type="Button" parent="." unique_id=1568461147]
+[node name="ButtonSave" type="Button" parent="." unique_id=756295731]
+layout_mode = 0
 offset_left = 1028.0
 offset_top = 583.0
 offset_right = 1132.0
@@ -73,23 +83,25 @@ theme_override_font_sizes/font_size = 30
 text = "Save"
 script = ExtResource("3_t01jc")
 
-[node name="PageManager" type="Node" parent="." unique_id=885377501]
+[node name="PageManager" type="Node" parent="." unique_id=498621682]
 script = ExtResource("4_qi5fe")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="PageManager" unique_id=2023019499]
+[node name="VBoxContainer" type="VBoxContainer" parent="PageManager" unique_id=703207539]
 custom_minimum_size = Vector2(300, 0)
 offset_right = 1151.0
 offset_bottom = 335.0
+mouse_filter = 2
 alignment = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="PageManager/VBoxContainer" unique_id=1318815892]
+[node name="HBoxContainer" type="HBoxContainer" parent="PageManager/VBoxContainer" unique_id=1811945338]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 size_flags_vertical = 4
+mouse_filter = 2
 theme_override_constants/separation = 20
 alignment = 1
 
-[node name="ButtonSubtitle" type="Button" parent="PageManager/VBoxContainer/HBoxContainer" unique_id=727346576]
+[node name="ButtonSubtitle" type="Button" parent="PageManager/VBoxContainer/HBoxContainer" unique_id=1774091430]
 custom_minimum_size = Vector2(160, 55)
 layout_mode = 2
 theme_override_colors/font_focus_color = Color(0.8745098, 0, 0, 1)
@@ -105,7 +117,7 @@ text = "Subtitle"
 autowrap_trim_flags = 0
 icon_alignment = 1
 
-[node name="ButtonVideo" type="Button" parent="PageManager/VBoxContainer/HBoxContainer" unique_id=468110324]
+[node name="ButtonVideo" type="Button" parent="PageManager/VBoxContainer/HBoxContainer" unique_id=518292397]
 custom_minimum_size = Vector2(160, 55)
 layout_mode = 2
 theme_override_colors/font_focus_color = Color(0.8745098, 0, 0, 1)
@@ -121,7 +133,7 @@ text = "Video"
 autowrap_trim_flags = 0
 icon_alignment = 1
 
-[node name="ButtonVisual" type="Button" parent="PageManager/VBoxContainer/HBoxContainer" unique_id=925863024]
+[node name="ButtonVisual" type="Button" parent="PageManager/VBoxContainer/HBoxContainer" unique_id=642134494]
 custom_minimum_size = Vector2(160, 55)
 layout_mode = 2
 theme_override_colors/font_focus_color = Color(0.8745098, 0, 0, 1)
@@ -137,7 +149,7 @@ text = "Visual"
 autowrap_trim_flags = 0
 icon_alignment = 1
 
-[node name="ButtonCommand" type="Button" parent="PageManager/VBoxContainer/HBoxContainer" unique_id=1177699801]
+[node name="ButtonCommand" type="Button" parent="PageManager/VBoxContainer/HBoxContainer" unique_id=1133244945]
 custom_minimum_size = Vector2(160, 55)
 layout_mode = 2
 theme_override_colors/font_focus_color = Color(0.8745098, 0, 0, 1)
@@ -153,7 +165,7 @@ text = "Command"
 autowrap_trim_flags = 0
 icon_alignment = 1
 
-[node name="ButtonAudio" type="Button" parent="PageManager/VBoxContainer/HBoxContainer" unique_id=2095731372]
+[node name="ButtonAudio" type="Button" parent="PageManager/VBoxContainer/HBoxContainer" unique_id=918821752]
 custom_minimum_size = Vector2(160, 55)
 layout_mode = 2
 theme_override_colors/font_focus_color = Color(0.8745098, 0, 0, 1)
@@ -169,10 +181,10 @@ text = "Audio"
 autowrap_trim_flags = 0
 icon_alignment = 1
 
-[node name="MainContent" type="Node" parent="." unique_id=108730012]
+[node name="MainContent" type="Node" parent="." unique_id=1728822268]
 script = ExtResource("4_tlijc")
 
-[node name="PageSubtitle" type="Control" parent="MainContent" unique_id=893435252]
+[node name="PageSubtitle" type="Control" parent="MainContent" unique_id=307216350]
 visible = false
 layout_mode = 3
 anchors_preset = 0
@@ -180,14 +192,14 @@ offset_top = 211.0
 offset_right = 1152.0
 offset_bottom = 211.0
 
-[node name="ColorRect" type="ColorRect" parent="MainContent/PageSubtitle" unique_id=1175340787]
+[node name="ColorRect" type="ColorRect" parent="MainContent/PageSubtitle" unique_id=137776245]
 layout_mode = 0
 offset_left = 472.0
 offset_right = 697.0
 offset_bottom = 79.0
 color = Color(0.4, 0.4, 0.28, 0)
 
-[node name="ExampleLabel" type="Label" parent="MainContent/PageSubtitle" unique_id=1947172413]
+[node name="ExampleLabel" type="Label" parent="MainContent/PageSubtitle" unique_id=1607218617]
 visible = false
 layout_mode = 0
 offset_left = 489.0
@@ -200,7 +212,7 @@ text = "Subtitles"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Subtitles" type="Label" parent="MainContent/PageSubtitle" unique_id=1486823530]
+[node name="Subtitles" type="Label" parent="MainContent/PageSubtitle" unique_id=746013438]
 layout_mode = 0
 offset_left = 428.0
 offset_top = 93.0
@@ -212,7 +224,7 @@ text = "Subtitles"
 horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="CheckBox" type="CheckBox" parent="MainContent/PageSubtitle/Subtitles" unique_id=2012841433]
+[node name="CheckBox" type="CheckBox" parent="MainContent/PageSubtitle/Subtitles" unique_id=1247445612]
 layout_mode = 0
 offset_left = 171.0
 offset_right = 195.0
@@ -222,7 +234,7 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_t01jc")
 theme_override_colors/checkbox_checked_color = Color(0.4539004, 0, 0.04259321, 1)
 theme_override_colors/checkbox_unchecked_color = Color(0, 0, 0, 1)
 
-[node name="Size" type="Label" parent="MainContent/PageSubtitle" unique_id=422695664]
+[node name="Size" type="Label" parent="MainContent/PageSubtitle" unique_id=1011613547]
 layout_mode = 0
 offset_left = 428.0
 offset_top = 128.0
@@ -234,7 +246,7 @@ text = "Size"
 horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="HSlider" type="HSlider" parent="MainContent/PageSubtitle/Size" unique_id=1195506009]
+[node name="HSlider" type="HSlider" parent="MainContent/PageSubtitle/Size" unique_id=1517035348]
 layout_mode = 0
 offset_left = 171.0
 offset_top = 9.0
@@ -249,7 +261,7 @@ tick_count = 4
 ticks_on_borders = true
 ticks_position = 3
 
-[node name="Font" type="Label" parent="MainContent/PageSubtitle" unique_id=1018975612]
+[node name="Font" type="Label" parent="MainContent/PageSubtitle" unique_id=840711037]
 layout_mode = 0
 offset_left = 428.0
 offset_top = 163.0
@@ -261,7 +273,7 @@ text = "Font"
 horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="OptionButton" type="OptionButton" parent="MainContent/PageSubtitle/Font" unique_id=1573501405]
+[node name="OptionButton" type="OptionButton" parent="MainContent/PageSubtitle/Font" unique_id=1210442809]
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 0
 offset_left = 171.0
@@ -271,7 +283,7 @@ theme_override_fonts/font = ExtResource("3_tlijc")
 theme_override_font_sizes/font_size = 20
 script = ExtResource("5_t01jc")
 
-[node name="TextColor" type="Label" parent="MainContent/PageSubtitle" unique_id=616290397]
+[node name="TextColor" type="Label" parent="MainContent/PageSubtitle" unique_id=1806889553]
 layout_mode = 0
 offset_left = 428.0
 offset_top = 198.0
@@ -283,7 +295,7 @@ text = "Text Color"
 horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="OptionButton" type="OptionButton" parent="MainContent/PageSubtitle/TextColor" unique_id=717680413]
+[node name="OptionButton" type="OptionButton" parent="MainContent/PageSubtitle/TextColor" unique_id=51970053]
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 0
 offset_left = 171.0
@@ -300,7 +312,7 @@ popup/item_1/id = 1
 popup/item_2/text = "Green"
 popup/item_2/id = 2
 
-[node name="BgColor" type="Label" parent="MainContent/PageSubtitle" unique_id=2023977199]
+[node name="BgColor" type="Label" parent="MainContent/PageSubtitle" unique_id=1380048366]
 layout_mode = 0
 offset_left = 363.0
 offset_top = 233.0
@@ -312,7 +324,7 @@ text = "Background Color"
 horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="OptionButton" type="OptionButton" parent="MainContent/PageSubtitle/BgColor" unique_id=483542218]
+[node name="OptionButton" type="OptionButton" parent="MainContent/PageSubtitle/BgColor" unique_id=1750641785]
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 0
 offset_left = 236.0
@@ -334,7 +346,7 @@ popup/item_3/id = 3
 popup/item_4/text = "None"
 popup/item_4/id = 4
 
-[node name="Opacity" type="Label" parent="MainContent/PageSubtitle" unique_id=2128204355]
+[node name="Opacity" type="Label" parent="MainContent/PageSubtitle" unique_id=759353649]
 layout_mode = 0
 offset_left = 428.0
 offset_top = 268.0
@@ -346,7 +358,7 @@ text = "Opacity"
 horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="HSlider" type="HSlider" parent="MainContent/PageSubtitle/Opacity" unique_id=1450134565]
+[node name="HSlider" type="HSlider" parent="MainContent/PageSubtitle/Opacity" unique_id=308065412]
 layout_mode = 0
 offset_left = 171.0
 offset_top = 9.0
@@ -360,7 +372,7 @@ tick_count = 4
 ticks_on_borders = true
 ticks_position = 3
 
-[node name="Langage" type="Label" parent="MainContent/PageSubtitle" unique_id=1864710212]
+[node name="Langage" type="Label" parent="MainContent/PageSubtitle" unique_id=1442744403]
 layout_mode = 0
 offset_left = 428.0
 offset_top = 303.0
@@ -372,7 +384,7 @@ text = "Langage"
 horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="OptionButton" type="OptionButton" parent="MainContent/PageSubtitle/Langage" unique_id=1265949244]
+[node name="OptionButton" type="OptionButton" parent="MainContent/PageSubtitle/Langage" unique_id=1917225468]
 custom_minimum_size = Vector2(130, 0)
 layout_mode = 0
 offset_left = 171.0
@@ -388,7 +400,7 @@ popup/item_0/id = 0
 popup/item_1/text = "French"
 popup/item_1/id = 1
 
-[node name="PageVideo" type="Control" parent="MainContent" unique_id=243791385]
+[node name="PageVideo" type="Control" parent="MainContent" unique_id=1706531504]
 visible = false
 layout_mode = 3
 anchors_preset = 0
@@ -396,7 +408,7 @@ offset_top = 215.0
 offset_right = 1152.0
 offset_bottom = 215.0
 
-[node name="Contrast" type="Label" parent="MainContent/PageVideo" unique_id=2103985989]
+[node name="Contrast" type="Label" parent="MainContent/PageVideo" unique_id=1346860008]
 layout_mode = 0
 offset_left = 427.0
 offset_top = 18.0
@@ -408,7 +420,7 @@ text = "Contrast"
 horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="HSlider" type="HSlider" parent="MainContent/PageVideo/Contrast" unique_id=1346903287]
+[node name="HSlider" type="HSlider" parent="MainContent/PageVideo/Contrast" unique_id=525381256]
 layout_mode = 0
 offset_left = 165.0
 offset_top = 7.0
@@ -421,7 +433,7 @@ tick_count = 5
 ticks_on_borders = true
 ticks_position = 3
 
-[node name="Brightness" type="Label" parent="MainContent/PageVideo" unique_id=1931041370]
+[node name="Brightness" type="Label" parent="MainContent/PageVideo" unique_id=1211735737]
 layout_mode = 0
 offset_left = 427.0
 offset_top = 53.0
@@ -433,7 +445,7 @@ text = "Brightness"
 horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="HSlider" type="HSlider" parent="MainContent/PageVideo/Brightness" unique_id=1597598506]
+[node name="HSlider" type="HSlider" parent="MainContent/PageVideo/Brightness" unique_id=755377909]
 layout_mode = 0
 offset_left = 165.0
 offset_top = 7.0
@@ -446,7 +458,7 @@ tick_count = 5
 ticks_on_borders = true
 ticks_position = 3
 
-[node name="Animations" type="Label" parent="MainContent/PageVideo" unique_id=2102627402]
+[node name="Animations" type="Label" parent="MainContent/PageVideo" unique_id=1759642158]
 layout_mode = 0
 offset_left = 427.0
 offset_top = 87.0
@@ -458,7 +470,7 @@ text = "Animations"
 horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="CheckBox" type="CheckBox" parent="MainContent/PageVideo/Animations" unique_id=1928812872]
+[node name="CheckBox" type="CheckBox" parent="MainContent/PageVideo/Animations" unique_id=1513117402]
 layout_mode = 0
 offset_left = 165.0
 offset_top = 2.0
@@ -469,7 +481,7 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_t01jc")
 theme_override_colors/checkbox_checked_color = Color(0.4539004, 0, 0.04259321, 1)
 theme_override_colors/checkbox_unchecked_color = Color(0, 0, 0, 1)
 
-[node name="Resolution" type="Label" parent="MainContent/PageVideo" unique_id=996325924]
+[node name="Resolution" type="Label" parent="MainContent/PageVideo" unique_id=768397201]
 layout_mode = 0
 offset_left = 427.0
 offset_top = 122.0
@@ -481,7 +493,7 @@ text = "Resolution"
 horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="OptionButton" type="OptionButton" parent="MainContent/PageVideo/Resolution" unique_id=1706943346]
+[node name="OptionButton" type="OptionButton" parent="MainContent/PageVideo/Resolution" unique_id=1790121749]
 custom_minimum_size = Vector2(130, 0)
 layout_mode = 0
 offset_left = 165.0
@@ -497,7 +509,7 @@ popup/item_0/id = 0
 popup/item_1/text = " 1280 x 720"
 popup/item_1/id = 1
 
-[node name="WindowMode" type="Label" parent="MainContent/PageVideo" unique_id=1633475845]
+[node name="WindowMode" type="Label" parent="MainContent/PageVideo" unique_id=1463240279]
 layout_mode = 0
 offset_left = 363.0
 offset_top = 157.0
@@ -509,7 +521,7 @@ text = "Window Mode"
 horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="OptionButton" type="OptionButton" parent="MainContent/PageVideo/WindowMode" unique_id=1077491393]
+[node name="OptionButton" type="OptionButton" parent="MainContent/PageVideo/WindowMode" unique_id=1659406566]
 custom_minimum_size = Vector2(130, 0)
 layout_mode = 0
 offset_left = 229.0
@@ -525,7 +537,7 @@ popup/item_0/id = 0
 popup/item_1/text = "Fullscreen"
 popup/item_1/id = 1
 
-[node name="Texture" type="Label" parent="MainContent/PageVideo" unique_id=1558982895]
+[node name="Texture" type="Label" parent="MainContent/PageVideo" unique_id=619054290]
 layout_mode = 0
 offset_left = 427.0
 offset_top = 190.0
@@ -537,7 +549,7 @@ text = "Texture"
 horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="OptionButton" type="OptionButton" parent="MainContent/PageVideo/Texture" unique_id=1352717392]
+[node name="OptionButton" type="OptionButton" parent="MainContent/PageVideo/Texture" unique_id=1188118528]
 custom_minimum_size = Vector2(130, 0)
 layout_mode = 0
 offset_left = 165.0
@@ -555,7 +567,7 @@ popup/item_1/id = 1
 popup/item_2/text = "High"
 popup/item_2/id = 2
 
-[node name="PageVisual" type="Control" parent="MainContent" unique_id=954433597]
+[node name="PageVisual" type="Control" parent="MainContent" unique_id=640137602]
 visible = false
 layout_mode = 3
 anchors_preset = 0
@@ -563,7 +575,7 @@ offset_top = 219.0
 offset_right = 1152.0
 offset_bottom = 219.0
 
-[node name="InterfaceSize" type="Label" parent="MainContent/PageVisual" unique_id=1470325855]
+[node name="InterfaceSize" type="Label" parent="MainContent/PageVisual" unique_id=1976841903]
 layout_mode = 0
 offset_left = 402.0
 offset_top = 12.0
@@ -575,7 +587,7 @@ text = "Interface Size"
 horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="HSlider" type="HSlider" parent="MainContent/PageVisual/InterfaceSize" unique_id=377516815]
+[node name="HSlider" type="HSlider" parent="MainContent/PageVisual/InterfaceSize" unique_id=1040148499]
 layout_mode = 0
 offset_left = 195.0
 offset_top = 7.0
@@ -588,7 +600,7 @@ tick_count = 5
 ticks_on_borders = true
 ticks_position = 3
 
-[node name="Blurry" type="Label" parent="MainContent/PageVisual" unique_id=894213012]
+[node name="Blurry" type="Label" parent="MainContent/PageVisual" unique_id=448169997]
 layout_mode = 0
 offset_left = 428.0
 offset_top = 45.0
@@ -600,7 +612,7 @@ text = "Blurry"
 horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="CheckBox" type="CheckBox" parent="MainContent/PageVisual/Blurry" unique_id=922108861]
+[node name="CheckBox" type="CheckBox" parent="MainContent/PageVisual/Blurry" unique_id=18038051]
 layout_mode = 0
 offset_left = 169.0
 offset_right = 193.0
@@ -610,7 +622,7 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_t01jc")
 theme_override_colors/checkbox_checked_color = Color(0.4539004, 0, 0.04259321, 1)
 theme_override_colors/checkbox_unchecked_color = Color(0, 0, 0, 1)
 
-[node name="CameraShake" type="Label" parent="MainContent/PageVisual" unique_id=257544696]
+[node name="CameraShake" type="Label" parent="MainContent/PageVisual" unique_id=2032276227]
 layout_mode = 0
 offset_left = 404.0
 offset_top = 81.0
@@ -622,7 +634,7 @@ text = "Camera Shake"
 horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="CheckBox" type="CheckBox" parent="MainContent/PageVisual/CameraShake" unique_id=885079687]
+[node name="CheckBox" type="CheckBox" parent="MainContent/PageVisual/CameraShake" unique_id=150438768]
 layout_mode = 0
 offset_left = 193.0
 offset_top = 2.0
@@ -633,7 +645,7 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_t01jc")
 theme_override_colors/checkbox_checked_color = Color(0.4539004, 0, 0.04259321, 1)
 theme_override_colors/checkbox_unchecked_color = Color(0, 0, 0, 1)
 
-[node name="VisualIndicators" type="Label" parent="MainContent/PageVisual" unique_id=485491905]
+[node name="VisualIndicators" type="Label" parent="MainContent/PageVisual" unique_id=1089196946]
 layout_mode = 0
 offset_left = 363.0
 offset_top = 116.0
@@ -645,7 +657,7 @@ text = "Visual Indicators"
 horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="CheckBox" type="CheckBox" parent="MainContent/PageVisual/VisualIndicators" unique_id=815631265]
+[node name="CheckBox" type="CheckBox" parent="MainContent/PageVisual/VisualIndicators" unique_id=2035015880]
 layout_mode = 0
 offset_left = 234.0
 offset_top = 5.0
@@ -656,7 +668,7 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_t01jc")
 theme_override_colors/checkbox_checked_color = Color(0.4539004, 0, 0.04259321, 1)
 theme_override_colors/checkbox_unchecked_color = Color(0, 0, 0, 1)
 
-[node name="ColorBlindness" type="Label" parent="MainContent/PageVisual" unique_id=347959885]
+[node name="ColorBlindness" type="Label" parent="MainContent/PageVisual" unique_id=145270417]
 layout_mode = 0
 offset_left = 385.0
 offset_top = 151.0
@@ -668,7 +680,7 @@ text = "Color Blindness"
 horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="OptionButton" type="OptionButton" parent="MainContent/PageVisual/ColorBlindness" unique_id=380108627]
+[node name="OptionButton" type="OptionButton" parent="MainContent/PageVisual/ColorBlindness" unique_id=1058746008]
 custom_minimum_size = Vector2(130, 0)
 layout_mode = 0
 offset_left = 213.0
@@ -688,14 +700,14 @@ popup/item_2/id = 2
 popup/item_3/text = "Tritanopia"
 popup/item_3/id = 3
 
-[node name="PageCommand" type="Control" parent="MainContent" unique_id=1689856365]
+[node name="PageCommand" type="Control" parent="MainContent" unique_id=551347612]
 layout_mode = 3
 anchors_preset = 0
 offset_top = 223.0
 offset_right = 1152.0
 offset_bottom = 223.0
 
-[node name="move_up" type="Label" parent="MainContent/PageCommand" unique_id=1061923437]
+[node name="move_up" type="Label" parent="MainContent/PageCommand" unique_id=1148530194]
 layout_mode = 0
 offset_left = 403.0
 offset_top = -11.0
@@ -707,21 +719,21 @@ text = "Move Up"
 horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="Button" type="Button" parent="MainContent/PageCommand/move_up" unique_id=1847816118]
+[node name="Button" type="Button" parent="MainContent/PageCommand/move_up" unique_id=1462852770]
 layout_mode = 0
 offset_left = 193.0
 offset_top = 2.0
 offset_right = 209.0
 offset_bottom = 17.0
 
-[node name="Button2" type="Button" parent="MainContent/PageCommand/move_up" unique_id=1309692055]
+[node name="Button2" type="Button" parent="MainContent/PageCommand/move_up" unique_id=336259446]
 layout_mode = 0
 offset_left = 305.0
 offset_top = 2.0
 offset_right = 321.0
 offset_bottom = 17.0
 
-[node name="move_down" type="Label" parent="MainContent/PageCommand" unique_id=689532528]
+[node name="move_down" type="Label" parent="MainContent/PageCommand" unique_id=1598988785]
 layout_mode = 0
 offset_left = 403.0
 offset_top = 22.0
@@ -733,21 +745,21 @@ text = "Move Down"
 horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="Button" type="Button" parent="MainContent/PageCommand/move_down" unique_id=2065158127]
+[node name="Button" type="Button" parent="MainContent/PageCommand/move_down" unique_id=865615429]
 layout_mode = 0
 offset_left = 193.0
 offset_top = 2.0
 offset_right = 209.0
 offset_bottom = 19.0
 
-[node name="Button2" type="Button" parent="MainContent/PageCommand/move_down" unique_id=1706111509]
+[node name="Button2" type="Button" parent="MainContent/PageCommand/move_down" unique_id=288003531]
 layout_mode = 0
 offset_left = 305.0
 offset_top = 2.0
 offset_right = 321.0
 offset_bottom = 19.0
 
-[node name="move_left" type="Label" parent="MainContent/PageCommand" unique_id=1164204733]
+[node name="move_left" type="Label" parent="MainContent/PageCommand" unique_id=1604769209]
 layout_mode = 0
 offset_left = 403.0
 offset_top = 55.0
@@ -759,21 +771,21 @@ text = "Move Left"
 horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="Button" type="Button" parent="MainContent/PageCommand/move_left" unique_id=797909869]
+[node name="Button" type="Button" parent="MainContent/PageCommand/move_left" unique_id=1686231046]
 layout_mode = 0
 offset_left = 193.0
 offset_top = 2.0
 offset_right = 209.0
 offset_bottom = 17.0
 
-[node name="Button2" type="Button" parent="MainContent/PageCommand/move_left" unique_id=163950116]
+[node name="Button2" type="Button" parent="MainContent/PageCommand/move_left" unique_id=361925814]
 layout_mode = 0
 offset_left = 305.0
 offset_top = 2.0
 offset_right = 321.0
 offset_bottom = 17.0
 
-[node name="move_right" type="Label" parent="MainContent/PageCommand" unique_id=1338653224]
+[node name="move_right" type="Label" parent="MainContent/PageCommand" unique_id=754088251]
 layout_mode = 0
 offset_left = 403.0
 offset_top = 88.0
@@ -785,21 +797,21 @@ text = "Move Right"
 horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="Button" type="Button" parent="MainContent/PageCommand/move_right" unique_id=1574154671]
+[node name="Button" type="Button" parent="MainContent/PageCommand/move_right" unique_id=221291318]
 layout_mode = 0
 offset_left = 193.0
 offset_top = 2.0
 offset_right = 209.0
 offset_bottom = 18.0
 
-[node name="Button2" type="Button" parent="MainContent/PageCommand/move_right" unique_id=1935252702]
+[node name="Button2" type="Button" parent="MainContent/PageCommand/move_right" unique_id=597379292]
 layout_mode = 0
 offset_left = 305.0
 offset_top = 2.0
 offset_right = 321.0
 offset_bottom = 18.0
 
-[node name="battle_move_unit_to" type="Label" parent="MainContent/PageCommand" unique_id=1651936937]
+[node name="battle_move_unit_to" type="Label" parent="MainContent/PageCommand" unique_id=1512633526]
 layout_mode = 0
 offset_left = 392.0
 offset_top = 121.0
@@ -811,21 +823,21 @@ text = "Battle Move To"
 horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="Button" type="Button" parent="MainContent/PageCommand/battle_move_unit_to" unique_id=1258817591]
+[node name="Button" type="Button" parent="MainContent/PageCommand/battle_move_unit_to" unique_id=1053578079]
 layout_mode = 0
 offset_left = 204.0
 offset_top = 2.0
 offset_right = 220.0
 offset_bottom = 19.0
 
-[node name="Button2" type="Button" parent="MainContent/PageCommand/battle_move_unit_to" unique_id=1889056444]
+[node name="Button2" type="Button" parent="MainContent/PageCommand/battle_move_unit_to" unique_id=879233401]
 layout_mode = 0
 offset_left = 316.0
 offset_top = 2.0
 offset_right = 332.0
 offset_bottom = 19.0
 
-[node name="battle_select_skill1" type="Label" parent="MainContent/PageCommand" unique_id=1989929865]
+[node name="battle_select_skill1" type="Label" parent="MainContent/PageCommand" unique_id=980820198]
 layout_mode = 0
 offset_left = 403.0
 offset_top = 153.0
@@ -837,21 +849,21 @@ text = "Battle Skill 1"
 horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="Button" type="Button" parent="MainContent/PageCommand/battle_select_skill1" unique_id=426154838]
+[node name="Button" type="Button" parent="MainContent/PageCommand/battle_select_skill1" unique_id=1264345170]
 layout_mode = 0
 offset_left = 193.0
 offset_top = 2.0
 offset_right = 209.0
 offset_bottom = 17.0
 
-[node name="Button2" type="Button" parent="MainContent/PageCommand/battle_select_skill1" unique_id=2105571444]
+[node name="Button2" type="Button" parent="MainContent/PageCommand/battle_select_skill1" unique_id=617735296]
 layout_mode = 0
 offset_left = 305.0
 offset_top = 2.0
 offset_right = 321.0
 offset_bottom = 17.0
 
-[node name="battle_select_skill2" type="Label" parent="MainContent/PageCommand" unique_id=224097977]
+[node name="battle_select_skill2" type="Label" parent="MainContent/PageCommand" unique_id=134897420]
 layout_mode = 0
 offset_left = 403.0
 offset_top = 186.0
@@ -863,21 +875,21 @@ text = "Battle Skill 2"
 horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="Button" type="Button" parent="MainContent/PageCommand/battle_select_skill2" unique_id=718627339]
+[node name="Button" type="Button" parent="MainContent/PageCommand/battle_select_skill2" unique_id=1822076626]
 layout_mode = 0
 offset_left = 193.0
 offset_top = 2.0
 offset_right = 209.0
 offset_bottom = 18.0
 
-[node name="Button2" type="Button" parent="MainContent/PageCommand/battle_select_skill2" unique_id=1887816494]
+[node name="Button2" type="Button" parent="MainContent/PageCommand/battle_select_skill2" unique_id=2096601913]
 layout_mode = 0
 offset_left = 305.0
 offset_top = 2.0
 offset_right = 321.0
 offset_bottom = 18.0
 
-[node name="battle_select_skill3" type="Label" parent="MainContent/PageCommand" unique_id=359823432]
+[node name="battle_select_skill3" type="Label" parent="MainContent/PageCommand" unique_id=1076583238]
 layout_mode = 0
 offset_left = 403.0
 offset_top = 219.0
@@ -889,21 +901,21 @@ text = "Battle Skill 3"
 horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="Button" type="Button" parent="MainContent/PageCommand/battle_select_skill3" unique_id=298160172]
+[node name="Button" type="Button" parent="MainContent/PageCommand/battle_select_skill3" unique_id=1670888498]
 layout_mode = 0
 offset_left = 193.0
 offset_top = 2.0
 offset_right = 209.0
 offset_bottom = 18.0
 
-[node name="Button2" type="Button" parent="MainContent/PageCommand/battle_select_skill3" unique_id=1518832418]
+[node name="Button2" type="Button" parent="MainContent/PageCommand/battle_select_skill3" unique_id=1737558331]
 layout_mode = 0
 offset_left = 305.0
 offset_top = 2.0
 offset_right = 321.0
 offset_bottom = 18.0
 
-[node name="battle_select_skill4" type="Label" parent="MainContent/PageCommand" unique_id=994169077]
+[node name="battle_select_skill4" type="Label" parent="MainContent/PageCommand" unique_id=1200825089]
 layout_mode = 0
 offset_left = 403.0
 offset_top = 252.0
@@ -915,21 +927,21 @@ text = "Battle Skill 4"
 horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="Button" type="Button" parent="MainContent/PageCommand/battle_select_skill4" unique_id=351853212]
+[node name="Button" type="Button" parent="MainContent/PageCommand/battle_select_skill4" unique_id=76086683]
 layout_mode = 0
 offset_left = 193.0
 offset_top = 2.0
 offset_right = 209.0
 offset_bottom = 18.0
 
-[node name="Button2" type="Button" parent="MainContent/PageCommand/battle_select_skill4" unique_id=938154668]
+[node name="Button2" type="Button" parent="MainContent/PageCommand/battle_select_skill4" unique_id=773195514]
 layout_mode = 0
 offset_left = 305.0
 offset_top = 2.0
 offset_right = 321.0
 offset_bottom = 18.0
 
-[node name="battle_select_skill5" type="Label" parent="MainContent/PageCommand" unique_id=857453795]
+[node name="battle_select_skill5" type="Label" parent="MainContent/PageCommand" unique_id=1221593313]
 layout_mode = 0
 offset_left = 403.0
 offset_top = 285.0
@@ -941,21 +953,21 @@ text = "Battle Skill 5"
 horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="Button" type="Button" parent="MainContent/PageCommand/battle_select_skill5" unique_id=1183845358]
+[node name="Button" type="Button" parent="MainContent/PageCommand/battle_select_skill5" unique_id=490649042]
 layout_mode = 0
 offset_left = 193.0
 offset_top = 2.0
 offset_right = 209.0
 offset_bottom = 17.0
 
-[node name="Button2" type="Button" parent="MainContent/PageCommand/battle_select_skill5" unique_id=869770110]
+[node name="Button2" type="Button" parent="MainContent/PageCommand/battle_select_skill5" unique_id=695176482]
 layout_mode = 0
 offset_left = 305.0
 offset_top = 2.0
 offset_right = 321.0
 offset_bottom = 17.0
 
-[node name="battle_pass_turn" type="Label" parent="MainContent/PageCommand" unique_id=1511248290]
+[node name="battle_pass_turn" type="Label" parent="MainContent/PageCommand" unique_id=1521102629]
 layout_mode = 0
 offset_left = 376.0
 offset_top = 318.0
@@ -967,21 +979,21 @@ text = "Battle Pass Turn"
 horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="Button" type="Button" parent="MainContent/PageCommand/battle_pass_turn" unique_id=1086420496]
+[node name="Button" type="Button" parent="MainContent/PageCommand/battle_pass_turn" unique_id=941211499]
 layout_mode = 0
 offset_left = 220.0
 offset_top = 2.0
 offset_right = 236.0
 offset_bottom = 18.0
 
-[node name="Button2" type="Button" parent="MainContent/PageCommand/battle_pass_turn" unique_id=111262004]
+[node name="Button2" type="Button" parent="MainContent/PageCommand/battle_pass_turn" unique_id=1657517027]
 layout_mode = 0
 offset_left = 332.0
 offset_top = 2.0
 offset_right = 348.0
 offset_bottom = 18.0
 
-[node name="toggle_options" type="Label" parent="MainContent/PageCommand" unique_id=1514559153]
+[node name="toggle_options" type="Label" parent="MainContent/PageCommand" unique_id=1438198692]
 layout_mode = 0
 offset_left = 395.0
 offset_top = 351.0
@@ -993,21 +1005,21 @@ text = "Toggle Options"
 horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="Button" type="Button" parent="MainContent/PageCommand/toggle_options" unique_id=1171487983]
+[node name="Button" type="Button" parent="MainContent/PageCommand/toggle_options" unique_id=1055492730]
 layout_mode = 0
 offset_left = 201.0
 offset_top = 2.0
 offset_right = 217.0
 offset_bottom = 17.0
 
-[node name="Button2" type="Button" parent="MainContent/PageCommand/toggle_options" unique_id=808599930]
+[node name="Button2" type="Button" parent="MainContent/PageCommand/toggle_options" unique_id=511098907]
 layout_mode = 0
 offset_left = 313.0
 offset_top = 2.0
 offset_right = 329.0
 offset_bottom = 17.0
 
-[node name="ButtonReset" type="Button" parent="MainContent/PageCommand" unique_id=1970241680]
+[node name="ButtonReset" type="Button" parent="MainContent/PageCommand" unique_id=1509578790]
 layout_mode = 0
 offset_left = 906.0
 offset_top = 360.0
@@ -1017,7 +1029,7 @@ theme_override_fonts/font = ExtResource("3_tlijc")
 theme_override_font_sizes/font_size = 30
 text = "Reset"
 
-[node name="PageAudio" type="Control" parent="MainContent" unique_id=817584571]
+[node name="PageAudio" type="Control" parent="MainContent" unique_id=1388832412]
 visible = false
 layout_mode = 3
 anchors_preset = 0
@@ -1026,7 +1038,7 @@ offset_top = 211.0
 offset_right = 1176.0
 offset_bottom = 211.0
 
-[node name="Master" type="Label" parent="MainContent/PageAudio" unique_id=16470335]
+[node name="Master" type="Label" parent="MainContent/PageAudio" unique_id=175846726]
 layout_mode = 0
 offset_left = 406.0
 offset_top = 21.0
@@ -1038,7 +1050,7 @@ text = "Volume"
 horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="HSlider" type="HSlider" parent="MainContent/PageAudio/Master" unique_id=601207339]
+[node name="HSlider" type="HSlider" parent="MainContent/PageAudio/Master" unique_id=382517795]
 layout_mode = 0
 offset_left = 165.0
 offset_top = 6.0
@@ -1051,7 +1063,7 @@ tick_count = 5
 ticks_on_borders = true
 ticks_position = 3
 
-[node name="Music" type="Label" parent="MainContent/PageAudio" unique_id=122552731]
+[node name="Music" type="Label" parent="MainContent/PageAudio" unique_id=594635063]
 layout_mode = 0
 offset_left = 406.0
 offset_top = 56.0
@@ -1063,7 +1075,7 @@ text = "Music"
 horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="HSlider" type="HSlider" parent="MainContent/PageAudio/Music" unique_id=297934133]
+[node name="HSlider" type="HSlider" parent="MainContent/PageAudio/Music" unique_id=1721750610]
 layout_mode = 0
 offset_left = 165.0
 offset_top = 7.0
@@ -1076,7 +1088,7 @@ tick_count = 5
 ticks_on_borders = true
 ticks_position = 3
 
-[node name="Voices" type="Label" parent="MainContent/PageAudio" unique_id=754145137]
+[node name="Voices" type="Label" parent="MainContent/PageAudio" unique_id=1419894349]
 layout_mode = 0
 offset_left = 406.0
 offset_top = 91.0
@@ -1088,7 +1100,7 @@ text = "Voices"
 horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="HSlider" type="HSlider" parent="MainContent/PageAudio/Voices" unique_id=300571768]
+[node name="HSlider" type="HSlider" parent="MainContent/PageAudio/Voices" unique_id=231872814]
 layout_mode = 0
 offset_left = 165.0
 offset_top = 8.0
@@ -1101,7 +1113,7 @@ tick_count = 5
 ticks_on_borders = true
 ticks_position = 3
 
-[node name="SFX" type="Label" parent="MainContent/PageAudio" unique_id=1414479563]
+[node name="SFX" type="Label" parent="MainContent/PageAudio" unique_id=1769709856]
 layout_mode = 0
 offset_left = 387.0
 offset_top = 126.0
@@ -1113,7 +1125,7 @@ text = "Sound Effects"
 horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="HSlider" type="HSlider" parent="MainContent/PageAudio/SFX" unique_id=296336438]
+[node name="HSlider" type="HSlider" parent="MainContent/PageAudio/SFX" unique_id=623350342]
 layout_mode = 0
 offset_left = 184.0
 offset_top = 8.0
@@ -1126,7 +1138,8 @@ tick_count = 5
 ticks_on_borders = true
 ticks_position = 3
 
-[node name="ButtonExitSettings" type="Button" parent="." unique_id=120356062]
+[node name="ButtonExitSettings" type="Button" parent="." unique_id=391709505]
+layout_mode = 0
 offset_left = 24.0
 offset_top = 20.0
 offset_right = 76.0
@@ -1143,15 +1156,10 @@ text = "X"
 script = ExtResource("3_qi5fe")
 
 [connection signal="pressed" from="PageManager/VBoxContainer/HBoxContainer/ButtonSubtitle" to="PageManager" method="OnButtonSubtitlePressed"]
-[connection signal="pressed" from="PageManager/VBoxContainer/HBoxContainer/ButtonSubtitle" to="MainContent" method="_OnButtonSubtitlePressed"]
 [connection signal="pressed" from="PageManager/VBoxContainer/HBoxContainer/ButtonVideo" to="PageManager" method="OnButtonVideoPressed"]
-[connection signal="pressed" from="PageManager/VBoxContainer/HBoxContainer/ButtonVideo" to="MainContent" method="_OnButtonVideoPressed"]
 [connection signal="pressed" from="PageManager/VBoxContainer/HBoxContainer/ButtonVisual" to="PageManager" method="OnButtonVisualPressed"]
-[connection signal="pressed" from="PageManager/VBoxContainer/HBoxContainer/ButtonVisual" to="MainContent" method="_OnButtonVisualPressed"]
 [connection signal="pressed" from="PageManager/VBoxContainer/HBoxContainer/ButtonCommand" to="PageManager" method="OnButtonCommandPressed"]
-[connection signal="pressed" from="PageManager/VBoxContainer/HBoxContainer/ButtonCommand" to="MainContent" method="_OnButtonCommandPressed"]
 [connection signal="pressed" from="PageManager/VBoxContainer/HBoxContainer/ButtonAudio" to="PageManager" method="OnButtonAudioPressed"]
-[connection signal="pressed" from="PageManager/VBoxContainer/HBoxContainer/ButtonAudio" to="MainContent" method="_OnButtonAudioPressed"]
 [connection signal="toggled" from="MainContent/PageSubtitle/Subtitles/CheckBox" to="MainContent" method="OnSubtitlesToggled"]
 [connection signal="value_changed" from="MainContent/PageSubtitle/Size/HSlider" to="MainContent" method="OnSubtitleSizeChanged"]
 [connection signal="item_selected" from="MainContent/PageSubtitle/Font/OptionButton" to="MainContent" method="OnSubtitleFontItemSelected"]

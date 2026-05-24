@@ -35,10 +35,10 @@ public abstract class SkillSystem : ISkillSystem
     /// </summary>
     public int TotalCooldown { get; protected init; }
 
-	/// <summary>
-	///     The remaining cooldown (in turns) before the skill becomes available again.
-	/// </summary>
-	public int Cooldown { get; protected set; }
+    /// <summary>
+    ///     The remaining cooldown (in turns) before the skill becomes available again.
+    /// </summary>
+    public int Cooldown { get; protected set; }
 
     /// <summary>
     ///     The maximum distance (in grid units) from which the skill can target.

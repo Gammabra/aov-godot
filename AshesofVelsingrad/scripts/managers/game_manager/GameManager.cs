@@ -112,14 +112,15 @@ public partial class GameManager : BaseManager
     /// </remarks>
     public override void _ExitTree()
     {
-        if (Instance == this) Instance = null;
-        // Also free the end-screens we may have spawned so they don't outlive the scene.
-        if (_victoryScreen is not null && IsInstanceValid(_victoryScreen)) _victoryScreen.QueueFree();
-        if (_gameOverScreen is not null && IsInstanceValid(_gameOverScreen)) _gameOverScreen.QueueFree();
-        if (_battleHud is not null && IsInstanceValid(_battleHud) && _battleHud.GetParent() == GetTree().Root)
-            _battleHud.QueueFree();
-        if (_battleHud?.InventoryPanel is not null && IsInstanceValid(_battleHud?.InventoryPanel) && _battleHud?.InventoryPanel.GetParent() == GetTree().Root)
-            _battleHud?.InventoryPanel.QueueFree();
+        if (Instance == this)
+            Instance = null;
+
+        // Victory/GameOver screens are still GameManager-owned
+        if (_victoryScreen is not null && IsInstanceValid(_victoryScreen))
+            _victoryScreen.QueueFree();
+        if (_gameOverScreen is not null && IsInstanceValid(_gameOverScreen))
+            _gameOverScreen.QueueFree();
+
         base._ExitTree();
     }
 

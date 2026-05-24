@@ -82,9 +82,20 @@ public sealed partial class UnitTransferPanel : Control
         }
     }
 
+    public override void _ExitTree()
+    {
+        if (_loadout != null)
+        {
+            _loadout.SlotChanged -= OnLoadoutSlotChanged;
+        }
+        base._ExitTree();
+    }
+
     private void OnLoadoutSlotChanged(int index)
     {
-        if (_loadout == null || index < 0 || index >= _slots.Count) return;
+        // 2. UPDATE THIS LINE: Add IsInstanceValid(this) for lifecycle safety
+        if (!GodotObject.IsInstanceValid(this) || _loadout == null || index < 0 || index >= _slots.Count) return;
+        
         _slots[index].Refresh(_loadout.GetSlot(index));
     }
 }

@@ -11,7 +11,7 @@ namespace AshesOfVelsingrad.UI.Inventory;
 ///     4 unit loadout rows on the right. Sized as a fraction of the viewport
 ///     so it scales cleanly at any resolution.
 /// </summary>
-public sealed partial class ExplorationInventoryUI : CanvasLayer
+public partial class ExplorationInventoryUI : CanvasLayer
 {
     public const int InventoryLayer = 10;
 
@@ -34,7 +34,7 @@ public sealed partial class ExplorationInventoryUI : CanvasLayer
             Toggle();
     }
 
-    public void EnsureBuilt()
+    public virtual void EnsureBuilt()
     {
         if (_built) return;
         _built = true;
@@ -162,7 +162,7 @@ public sealed partial class ExplorationInventoryUI : CanvasLayer
     ///     Rebuild unit rows from PlayerInventoryManager's persistent loadouts.
     ///     Safe to call multiple times (e.g. after a battle updates party names).
     /// </summary>
-    public void RefreshUnitPanels()
+    public virtual void RefreshUnitPanels()
     {
         if (_unitPanelColumn == null) return;
         if (PlayerInventoryManager.Instance is not { } mgr) return;
@@ -228,5 +228,13 @@ public sealed partial class ExplorationInventoryUI : CanvasLayer
         if (PlayerInventoryManager.Instance is not { } mgr) return;
         if (index < 0 || index >= _exploSlots.Count) return;
         _exploSlots[index].Refresh(mgr.GlobalInventory.GetSlot(index));
+    }
+
+    public override void _ExitTree()
+    {
+        if (PlayerInventoryManager.Instance is { } mgr)
+            mgr.GlobalInventory.SlotChanged -= OnGlobalSlotChanged;
+        
+        base._ExitTree();
     }
 }

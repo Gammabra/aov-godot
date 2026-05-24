@@ -101,6 +101,7 @@ public partial class SettingsPages : Node
         SyncInterfaceSizeFromSettings();
 
         CallDeferred(nameof(UpdateSubtitlePreview));
+        CallDeferred(MethodName.HideAll);
     }
 
     private void SyncInterfaceSizeFromSettings()
@@ -534,5 +535,41 @@ public partial class SettingsPages : Node
         SetBusVolume("Music", music_volume);
         SetBusVolume("Voices", voices_volume);
         SetBusVolume("SFX", sfx_volume);
+    }
+
+    /// <summary>
+    /// Hides the entire settings screen including all pages and the root control.
+    /// Called by MenuManager instead of relying on Control.Hide() alone.
+    /// </summary>
+    public void HideAll()
+    {
+        var root = GetParent() as Control;
+        GD.Print($"[SettingsPages] HideAll — parent is {GetParent()?.Name}, is Control: {root != null}");
+        root?.Hide();
+        var pageManager = GetParent()?.GetNodeOrNull<SettingsPageManager>("PageManager");
+        pageManager?.HideAllPages();
+    }
+
+    /// <summary>
+    /// Shows the settings screen and restores the current page.
+    /// </summary>
+    public void ShowAll()
+    {
+        GD.Print("[SettingsPages] ShowAll called");
+        GD.Print($"[SettingsPages] GetParent type: {GetParent()?.GetType().Name}, name: {GetParent()?.Name}");
+        var root = GetParent() as Control;
+        GD.Print($"[SettingsPages] root is null: {root == null}");
+
+        if (root != null)
+        {
+            root.SetAnchorsAndOffsetsPreset(Control.LayoutPreset.FullRect);
+            root.Size = root.GetViewportRect().Size;
+            root.Position = Vector2.Zero;
+            // Allow mouse events to pass through to children
+            root.MouseFilter = Control.MouseFilterEnum.Pass;
+            root.Show();
+        }
+        var pageManager = GetParent()?.GetNodeOrNull<SettingsPageManager>("PageManager");
+        pageManager?.ShowCurrentPage();
     }
 }

@@ -112,7 +112,6 @@ public sealed partial class BattleHud : CanvasLayer
         TurnQueue.EnsureBuilt();
         ContextInfo.EnsureBuilt();
         Log.EnsureBuilt();
-        InventoryPanel.EnsureBuilt();
     }
 
     private T GetOrCreate<T>(string name) where T : Control, new()

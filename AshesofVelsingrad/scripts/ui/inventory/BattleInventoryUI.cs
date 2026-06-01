@@ -1,58 +1,43 @@
 using System.Collections.Generic;
 using AshesOfVelsingrad.Systems;
-using AshesOfVelsingrad.UI.Hud;
 using Godot;
 
 namespace AshesOfVelsingrad.UI.Inventory;
 
 /// <summary>
-///     Battle-phase inventory panel. Lives inside <see cref="BattleHud" />
-///     as a plain Control so it shares the same coordinate space as
-///     <see cref="SkillSelector" /> and <see cref="ActionMenu" />.
+///    Battle inventory panel: horizontal row of 5 slots. Pops up as a modal overlay during battle when the player presses the inventory key.
+///    Binds directly to the live inventory of the currently controlled unit, so it requires a reference to the battle's input system to signal item use and close itself.
 /// </summary>
 public sealed partial class BattleInventoryUI : Control
 {
-    private bool _built;
-    private HBoxContainer? _slotRow;
+    [Export] private HBoxContainer _slotRow = null!;
+    [Export] private PackedScene _battleSlotScene = null!; // Your BattleInventorySlotUI scene
+
     private BattleInputSystem? _battleInputSystem;
     private InventorySystem? _inventory;
     private readonly List<BattleInventorySlotUI> _slots = new();
 
-    public override void _Ready() => EnsureBuilt();
-
-    public void EnsureBuilt()
+    public override void _Ready()
     {
-        if (_built)
-            return;
-
-        _built = true;
-
         Visible = false;
-        MouseFilter = MouseFilterEnum.Ignore;
+        BuildBattleSlots();
+    }
 
-        SetAnchorsAndOffsetsPreset(LayoutPreset.CenterBottom);
-        OffsetLeft = -180f;  // match ActionMenu width exactly
-        OffsetRight = 180f;
-        OffsetTop = -134f;  // same as SkillSelector top
-        OffsetBottom = -72f;  // just touching the top of ActionMenu (-64 + some margin)
-        MouseFilter = MouseFilterEnum.Ignore;
+    private void BuildBattleSlots()
+    {
+        if (_slotRow == null || _battleSlotScene == null) return;
 
-        var vbox = new VBoxContainer();
-        vbox.AddThemeConstantOverride("separation", 4);
-        vbox.SetAnchorsAndOffsetsPreset(LayoutPreset.FullRect);
-        AddChild(HudStyle.MakePanel(vbox));
-
-        _slotRow = new HBoxContainer();
-        _slotRow.AddThemeConstantOverride("separation", 4);
-        _slotRow.SizeFlagsVertical = SizeFlags.ExpandFill;
-        vbox.AddChild(_slotRow);
+        foreach (Node child in _slotRow.GetChildren()) 
+            child.QueueFree();
+            
+        _slots.Clear();
 
         for (int i = 0; i < InventoryConstants.BattleCapacity; i++)
         {
-            var slot = new BattleInventorySlotUI();
-            slot.EnsureBuilt();
-            slot.Setup(i, this);
+            var slot = _battleSlotScene.Instantiate<BattleInventorySlotUI>();
             _slotRow.AddChild(slot);
+            
+            slot.Setup(i, this);
             _slots.Add(slot);
         }
     }
@@ -61,7 +46,9 @@ public sealed partial class BattleInventoryUI : Control
 
     public void BindInventory(InventorySystem inventory)
     {
-        if (_inventory != null) _inventory.SlotChanged -= OnSlotChanged;
+        if (_inventory != null) 
+            _inventory.SlotChanged -= OnSlotChanged;
+            
         _inventory = inventory;
         _inventory.SlotChanged += OnSlotChanged;
         RefreshAll();

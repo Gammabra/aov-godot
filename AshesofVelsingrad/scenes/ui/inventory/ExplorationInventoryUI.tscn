@@ -1,0 +1,147 @@
+[gd_scene format=3 uid="uid://ueqjkgxnpo4j"]
+
+[ext_resource type="Script" uid="uid://efb1feu0ivj1" path="res://scripts/ui/inventory/ExplorationInventoryUI.cs" id="1_ew2pj"]
+[ext_resource type="PackedScene" uid="uid://cjq80hosvbu32" path="res://scenes/ui/inventory/UnitTransferPanel.tscn" id="2_0yw6i"]
+[ext_resource type="PackedScene" uid="uid://dt3xp8xxmxkev" path="res://scenes/ui/inventory/ExplorationInventorySlotUI.tscn" id="2_hj2vy"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0yw6i"]
+content_margin_left = 8.0
+content_margin_top = 6.0
+content_margin_right = 8.0
+content_margin_bottom = 6.0
+bg_color = Color(0.3133042, 0.29337206, 0.3491902, 0.78000003)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.76737565, 0.7014107, 0.58383155, 0.85)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[node name="ExplorationInventoryUi" type="CanvasLayer" unique_id=1182585849 node_paths=PackedStringArray("_exploGrid", "_unitPanelColumn", "_closeButton")]
+script = ExtResource("1_ew2pj")
+_exploGrid = NodePath("Window/Panel/MarginContainer/OuterVBox/ContentRow/LeftVBox/ExploGrid")
+_unitPanelColumn = NodePath("Window/Panel/MarginContainer/OuterVBox/ContentRow/RightVBox/UnitPanelColumn")
+_closeButton = NodePath("Window/Panel/MarginContainer/OuterVBox/TitleRow/CloseButton")
+_slotScene = ExtResource("2_hj2vy")
+_unitPanelScene = ExtResource("2_0yw6i")
+
+[node name="Backdrop" type="ColorRect" parent="." unique_id=930555126]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.54901963)
+
+[node name="Window" type="Control" parent="." unique_id=1296038930]
+layout_mode = 3
+anchor_left = 0.017361112
+anchor_top = 0.030864198
+anchor_right = 0.9826389
+anchor_bottom = 0.9691358
+offset_left = 95.2
+offset_top = 77.2
+offset_right = -95.20007
+offset_bottom = -77.20001
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="Window" unique_id=2027540747]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_0yw6i")
+
+[node name="MarginContainer" type="MarginContainer" parent="Window/Panel" unique_id=653184207]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 6
+theme_override_constants/margin_top = 6
+theme_override_constants/margin_right = 6
+theme_override_constants/margin_bottom = 6
+
+[node name="OuterVBox" type="VBoxContainer" parent="Window/Panel/MarginContainer" unique_id=253768945]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="TitleRow" type="HBoxContainer" parent="Window/Panel/MarginContainer/OuterVBox" unique_id=1307571759]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="TitleLabel" type="Label" parent="Window/Panel/MarginContainer/OuterVBox/TitleRow" unique_id=1127309319]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.9776916, 0.9639762, 0.9260749, 1)
+theme_override_font_sizes/font_size = 18
+text = "Inventory"
+
+[node name="CloseButton" type="Button" parent="Window/Panel/MarginContainer/OuterVBox/TitleRow" unique_id=1915530983]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9776916, 0.9639762, 0.9260749, 1)
+theme_override_colors/font_hover_color = Color(1, 0.9776916, 0.85430586, 1)
+theme_override_font_sizes/font_size = 14
+text = "✕"
+
+[node name="Separator" type="HSeparator" parent="Window/Panel/MarginContainer/OuterVBox" unique_id=489821791]
+modulate = Color(0.76737565, 0.7014107, 0.58383155, 0.85)
+self_modulate = Color(0.76737565, 0.7014107, 0.58383155, 0.85)
+layout_mode = 2
+
+[node name="ContentRow" type="HBoxContainer" parent="Window/Panel/MarginContainer/OuterVBox" unique_id=954023495]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 12
+
+[node name="LeftVBox" type="VBoxContainer" parent="Window/Panel/MarginContainer/OuterVBox/ContentRow" unique_id=1309300629]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_constants/separation = 6
+
+[node name="GridHeader" type="Label" parent="Window/Panel/MarginContainer/OuterVBox/ContentRow/LeftVBox" unique_id=798704212]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9776916, 0.9639762, 0.9260749, 1)
+theme_override_font_sizes/font_size = 14
+text = "Party Inventory"
+
+[node name="ExploGrid" type="GridContainer" parent="Window/Panel/MarginContainer/OuterVBox/ContentRow/LeftVBox" unique_id=214047734]
+layout_mode = 2
+theme_override_constants/h_separation = 4
+theme_override_constants/v_separation = 4
+columns = 6
+
+[node name="VDivider" type="VSeparator" parent="Window/Panel/MarginContainer/OuterVBox/ContentRow" unique_id=162517481]
+modulate = Color(0.76737565, 0.7014107, 0.58383155, 0.85)
+self_modulate = Color(0.76737565, 0.7014107, 0.58383155, 0.85)
+layout_mode = 2
+
+[node name="RightVBox" type="VBoxContainer" parent="Window/Panel/MarginContainer/OuterVBox/ContentRow" unique_id=1446989202]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 6
+
+[node name="UnitHeader" type="Label" parent="Window/Panel/MarginContainer/OuterVBox/ContentRow/RightVBox" unique_id=842255605]
+layout_mode = 2
+theme_override_colors/font_color = Color(5.0445476, 4.92675, 4.7633433, 1)
+theme_override_font_sizes/font_size = 14
+text = "Unit Loadouts  ←  drag items here"
+
+[node name="UnitSep" type="HSeparator" parent="Window/Panel/MarginContainer/OuterVBox/ContentRow/RightVBox" unique_id=423500235]
+modulate = Color(0.76737565, 0.7014107, 0.58383155, 0.85)
+self_modulate = Color(0.76737565, 0.7014107, 0.58383155, 0.85)
+layout_mode = 2
+
+[node name="UnitPanelColumn" type="VBoxContainer" parent="Window/Panel/MarginContainer/OuterVBox/ContentRow/RightVBox" unique_id=989321956]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 6

@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://dc2mxxi1eo0f1"]
+
+[ext_resource type="Script" uid="uid://bd5j1pbvnplxd" path="res://scripts/ui/inventory/UnitSlotUI.cs" id="1_j60h0"]
+
+[node name="InventorySlotUI" type="PanelContainer" unique_id=361446939]
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_j60h0")
+
+[node name="ItemLabel" type="Label" parent="." unique_id=1868052683]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="." unique_id=571401355]
+layout_mode = 2

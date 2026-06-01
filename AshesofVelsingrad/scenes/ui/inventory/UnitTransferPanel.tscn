@@ -1,0 +1,75 @@
+[gd_scene format=3 uid="uid://cjq80hosvbu32"]
+
+[ext_resource type="Script" uid="uid://c6qho3ul3x34" path="res://scripts/ui/inventory/UnitTransferPanel.cs" id="1_wiys2"]
+[ext_resource type="PackedScene" uid="uid://dc2mxxi1eo0f1" path="res://scenes/ui/inventory/PanelSlotUI.tscn" id="2_v0tsh"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wiys2"]
+content_margin_left = 8.0
+content_margin_top = 6.0
+content_margin_right = 8.0
+content_margin_bottom = 6.0
+bg_color = Color(0.3133042, 0.29337206, 0.3491902, 0.78000003)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.76737565, 0.7014107, 0.58383155, 0.85)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[node name="Control" type="Control" unique_id=1093799068 node_paths=PackedStringArray("_nameLabel", "_slotRow")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_wiys2")
+_nameLabel = NodePath("Panel/MarginContainer/HBoxContainer/Label")
+_slotRow = NodePath("Panel/MarginContainer/HBoxContainer/SlotRow")
+_unitSlotScene = ExtResource("2_v0tsh")
+
+[node name="Panel" type="Panel" parent="." unique_id=1897756063]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_wiys2")
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel" unique_id=592071847]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 6
+theme_override_constants/margin_top = 6
+theme_override_constants/margin_right = 6
+theme_override_constants/margin_bottom = 6
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/MarginContainer" unique_id=364615450]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="Label" type="Label" parent="Panel/MarginContainer/HBoxContainer" unique_id=923890296]
+custom_minimum_size = Vector2(90, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0.9776916, 0.9639762, 0.9260749, 1)
+theme_override_font_sizes/font_size = 13
+autowrap_mode = 3
+
+[node name="Divider" type="VSeparator" parent="Panel/MarginContainer/HBoxContainer" unique_id=798846671]
+modulate = Color(0.76737565, 0.7014107, 0.58383155, 0.85)
+self_modulate = Color(0.76737565, 0.7014107, 0.58383155, 0.85)
+layout_mode = 2
+
+[node name="SlotRow" type="HBoxContainer" parent="Panel/MarginContainer/HBoxContainer" unique_id=1234506600]
+layout_mode = 2
+theme_override_constants/separation = 4

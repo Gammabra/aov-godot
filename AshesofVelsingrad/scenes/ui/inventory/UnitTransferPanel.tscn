@@ -20,12 +20,15 @@ corner_radius_bottom_right = 6
 corner_radius_bottom_left = 6
 
 [node name="Control" type="Control" unique_id=1093799068 node_paths=PackedStringArray("_nameLabel", "_slotRow")]
+custom_minimum_size = Vector2(0, 84)
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 script = ExtResource("1_wiys2")
 _nameLabel = NodePath("Panel/MarginContainer/HBoxContainer/Label")
 _slotRow = NodePath("Panel/MarginContainer/HBoxContainer/SlotRow")

@@ -43,7 +43,5 @@ grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
 [node name="BattleInventoryUi" parent="UILayer" unique_id=1302735412 instance=ExtResource("5_tefeu")]
-visible = false
 
 [node name="ExplorationInventoryUi" parent="UILayer" unique_id=1182585849 instance=ExtResource("6_o6xl0")]
-visible = false

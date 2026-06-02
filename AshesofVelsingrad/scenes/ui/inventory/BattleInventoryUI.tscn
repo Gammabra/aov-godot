@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://cwp1ya1dms2xw"]
 
 [ext_resource type="Script" uid="uid://u0jouyrfd85f" path="res://scripts/ui/inventory/BattleInventoryUI.cs" id="1_h7o8j"]
-[ext_resource type="PackedScene" uid="uid://dmbckr66c1anr" path="res://scenes/ui/inventory/BattleInventorySlotUI.tscn" id="2_wmp1n"]
+[ext_resource type="PackedScene" path="res://scenes/ui/inventory/BattleSlotUI.tscn" id="2_h7o8j"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xi4lq"]
 content_margin_left = 8.0
@@ -34,7 +34,7 @@ grow_vertical = 0
 size_flags_vertical = 8
 script = ExtResource("1_h7o8j")
 _slotRow = NodePath("Panel/VBoxContainer/SlotRow")
-_battleSlotScene = ExtResource("2_wmp1n")
+_battleSlotScene = ExtResource("2_h7o8j")
 
 [node name="Panel" type="Panel" parent="." unique_id=1946745920]
 layout_mode = 2

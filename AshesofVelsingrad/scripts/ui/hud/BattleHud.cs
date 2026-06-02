@@ -98,7 +98,7 @@ public sealed partial class BattleHud : CanvasLayer
         TurnQueue ??= GetOrCreate<TurnOrderQueue>("TurnQueue");
         ContextInfo ??= GetOrCreate<ContextInfoPanel>("ContextInfo");
         Log ??= GetOrCreate<BattleLog>("BattleLog");
-        InventoryPanel ??= GetOrCreate<BattleInventoryUI>("InventoryPanel");
+        InventoryPanel ??= GetOrCreate<BattleInventoryUI>("BattleInventoryUI");
 
         // Force each widget to build its own layout NOW. This is what makes the HUD
         // independent of Godot's _Ready timing — if AddChild-during-_Ready quirks delay

@@ -21,8 +21,8 @@ public partial class MainManager : Node
 
     // Persistent UI Elements
     [Export] protected CanvasLayer? _battleHud;
-    [Export] protected PanelContainer? _battleInventoryUi;
-    [Export] protected CanvasLayer? _explorationInventoryUi;
+    [Export] protected BattleInventoryUI? _battleInventoryUi;
+    [Export] protected ExplorationInventoryUI? _explorationInventoryUi;
     [Export] protected ColorRect? _screenTransition;
 
     // Menu Scenes

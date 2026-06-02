@@ -11,11 +11,11 @@ namespace AshesOfVelsingrad.UI.Inventory;
 public sealed partial class BattleInventoryUI : Control
 {
     [Export] private HBoxContainer _slotRow = null!;
-    [Export] private PackedScene _battleSlotScene = null!; // Your BattleInventorySlotUI scene
+    [Export] private PackedScene _battleSlotScene = null!; // Your BattleSlotUI scene
 
     private BattleInputSystem? _battleInputSystem;
     private InventorySystem? _inventory;
-    private readonly List<BattleInventorySlotUI> _slots = new();
+    private readonly List<BattleSlotUI> _slots = new();
 
     public override void _Ready()
     {
@@ -34,7 +34,7 @@ public sealed partial class BattleInventoryUI : Control
 
         for (int i = 0; i < InventoryConstants.BattleCapacity; i++)
         {
-            var slot = _battleSlotScene.Instantiate<BattleInventorySlotUI>();
+            var slot = _battleSlotScene.Instantiate<BattleSlotUI>();
             _slotRow.AddChild(slot);
             
             slot.Setup(i, this);

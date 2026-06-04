@@ -1,10 +1,11 @@
+using AshesOfVelsingrad.Interfaces;
 using AshesOfVelsingrad.Managers;
 using AshesOfVelsingrad.player;
 using Godot;
 
 namespace AshesOfVelsingrad.data.npc;
 
-public partial class MiniMercenary : CharacterBody3D
+public partial class MiniMercenary : Npc
 {
     [Export]
     private NodePath? _navigationAgentPath;
@@ -27,9 +28,10 @@ public partial class MiniMercenary : CharacterBody3D
 
     public override void _Ready()
     {
-        _navigationAgent = GetNode<NavigationAgent3D>(_navigationAgentPath);
+        NavigationAgent3D navigationAgent = GetNode<NavigationAgent3D>(_navigationAgentPath);
         _player = GetNode<AovPlayer>(_playerPath);
-        _stateMachine = GetNode<StateMachine>(_stateMachinePath);
+        StateMachine stateMachine = GetNode<StateMachine>(_stateMachinePath);
+        Initialize(stateMachine, navigationAgent, _stopDistance, _speed);
     }
 
     public override void _PhysicsProcess(double delta)
@@ -39,40 +41,6 @@ public partial class MiniMercenary : CharacterBody3D
             return;
         }
 
-        float distance = GlobalPosition.DistanceTo(_player.GlobalPosition);
-
-        if (distance > _stopDistance)
-        {
-            _navigationAgent.TargetPosition = _player.GlobalPosition;
-
-            Vector3 nextPosition = _navigationAgent.GetNextPathPosition();
-            Vector3 nextDirection = (nextPosition - GlobalPosition).Normalized();
-
-            float angleRad = Mathf.Atan2(nextDirection.X, -nextDirection.Z);
-            float direction = Mathf.RadToDeg(angleRad);
-
-            Velocity = nextDirection * _speed;
-
-            if (direction > -45 && direction < 45)
-                _stateMachine?.TransitionTo("WalkForwardState");
-            if (direction > 45 && direction <= 135)
-                _stateMachine?.TransitionTo("WalkRightState");
-            if (direction > -135 && direction <= -45)
-                _stateMachine?.TransitionTo("WalkLeftState");
-            if (direction > 135 || direction < -135)
-                _stateMachine?.TransitionTo("WalkBackwardState");
-        }
-        else
-        {
-            if (Velocity.Length() < 1)
-            {
-                Velocity = Vector3.Zero;
-                _stateMachine?.TransitionTo("IdleState");
-            }
-            else
-                Velocity = Velocity.Lerp(Vector3.Zero, 5f * (float)delta);
-        }
-
-        MoveAndSlide();
+        ToFollowingMovingEntity(_player, delta);
     }
 }

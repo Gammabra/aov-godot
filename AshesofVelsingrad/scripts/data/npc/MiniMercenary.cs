@@ -5,7 +5,7 @@ using Godot;
 
 namespace AshesOfVelsingrad.data.npc;
 
-public partial class MiniMercenary : Npc
+public partial class MiniMercenary : NpcSystem
 {
     [Export]
     private NodePath? _navigationAgentPath;

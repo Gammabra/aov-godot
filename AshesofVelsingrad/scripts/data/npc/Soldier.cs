@@ -19,7 +19,7 @@ namespace AshesOfVelsingrad.data.npc;
 ///         Continue on the VictoryScreen).
 ///     </para>
 /// </remarks>
-public partial class Soldier : Npc, IInteractable
+public partial class Soldier : NpcSystem, IInteractable
 {
 	[Export]
 	private NodePath? _interactTextPath;

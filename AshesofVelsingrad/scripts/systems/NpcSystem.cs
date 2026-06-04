@@ -8,7 +8,7 @@ namespace AshesOfVelsingrad.Interfaces;
 /// Provides common movement, navigation, and state-transition behaviors
 /// such as idling, roaming, and following a target entity.
 /// </summary>
-public abstract partial class Npc : CharacterBody3D
+public abstract partial class NpcSystem : CharacterBody3D
 {
     private StateMachine _stateMachine = null!;
     private NavigationAgent3D _navigationAgent = null!;

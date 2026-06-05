@@ -103,7 +103,7 @@ Class Soldier
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[ScriptPath(&quot;res://scripts/data/npc/Soldier.cs&quot;)]
-public class Soldier : CharacterBody3D, IDisposable, IInteractable</code></pre>
+public class Soldier : NpcSystem, IDisposable, IInteractable</code></pre>
   </div>
 
 
@@ -119,6 +119,7 @@ public class Soldier : CharacterBody3D, IDisposable, IInteractable</code></pre>
       <div><span class="xref">CollisionObject3D</span></div>
       <div><span class="xref">PhysicsBody3D</span></div>
       <div><span class="xref">CharacterBody3D</span></div>
+      <div><a class="xref" href="AshesOfVelsingrad.Interfaces.NpcSystem.html">NpcSystem</a></div>
       <div><span class="xref">Soldier</span></div>
     </dd>
   </dl>
@@ -135,6 +136,24 @@ public class Soldier : CharacterBody3D, IDisposable, IInteractable</code></pre>
   <dl class="typelist inheritedMembers">
     <dt>Inherited Members</dt>
     <dd>
+    <div>
+      <a class="xref" href="AshesOfVelsingrad.Interfaces.NpcSystem.html#AshesOfVelsingrad_Interfaces_NpcSystem_StopDistance">NpcSystem.StopDistance</a>
+    </div>
+    <div>
+      <a class="xref" href="AshesOfVelsingrad.Interfaces.NpcSystem.html#AshesOfVelsingrad_Interfaces_NpcSystem_Speed">NpcSystem.Speed</a>
+    </div>
+    <div>
+      <a class="xref" href="AshesOfVelsingrad.Interfaces.NpcSystem.html#AshesOfVelsingrad_Interfaces_NpcSystem_Initialize_AshesOfVelsingrad_Managers_StateMachine_Godot_NavigationAgent3D_System_Single_System_Single_">NpcSystem.Initialize(StateMachine, NavigationAgent3D, float, float)</a>
+    </div>
+    <div>
+      <a class="xref" href="AshesOfVelsingrad.Interfaces.NpcSystem.html#AshesOfVelsingrad_Interfaces_NpcSystem_ToIdle">NpcSystem.ToIdle()</a>
+    </div>
+    <div>
+      <a class="xref" href="AshesOfVelsingrad.Interfaces.NpcSystem.html#AshesOfVelsingrad_Interfaces_NpcSystem_ToRoaming">NpcSystem.ToRoaming()</a>
+    </div>
+    <div>
+      <a class="xref" href="AshesOfVelsingrad.Interfaces.NpcSystem.html#AshesOfVelsingrad_Interfaces_NpcSystem_ToFollowingMovingEntity_Godot_Node3D_System_Double_">NpcSystem.ToFollowingMovingEntity(Node3D, double)</a>
+    </div>
     <div>
       <span class="xref">CharacterBody3D.MoveAndSlide()</span>
     </div>
@@ -1444,7 +1463,7 @@ public class Soldier : CharacterBody3D, IDisposable, IInteractable</code></pre>
 
   <h3 id="AshesOfVelsingrad_data_npc_Soldier_CanInteract" data-uid="AshesOfVelsingrad.data.npc.Soldier.CanInteract">
   CanInteract()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/data/npc/Soldier.cs/#L189"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/data/npc/Soldier.cs/#L190"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Determines whether the object can currently be interacted with.</p>
@@ -1477,7 +1496,7 @@ public class Soldier : CharacterBody3D, IDisposable, IInteractable</code></pre>
 
   <h3 id="AshesOfVelsingrad_data_npc_Soldier_HidePrompt" data-uid="AshesOfVelsingrad.data.npc.Soldier.HidePrompt">
   HidePrompt()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/data/npc/Soldier.cs/#L214"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/data/npc/Soldier.cs/#L218"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Hides the interaction prompt.</p>
@@ -1504,7 +1523,7 @@ public class Soldier : CharacterBody3D, IDisposable, IInteractable</code></pre>
 
   <h3 id="AshesOfVelsingrad_data_npc_Soldier_Interact_AshesOfVelsingrad_Systems_IInteractor_" data-uid="AshesOfVelsingrad.data.npc.Soldier.Interact(AshesOfVelsingrad.Systems.IInteractor)">
   Interact(IInteractor)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/data/npc/Soldier.cs/#L177"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/data/npc/Soldier.cs/#L178"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Executes the interaction logic.</p>
@@ -1537,7 +1556,7 @@ public class Soldier : CharacterBody3D, IDisposable, IInteractable</code></pre>
 
   <h3 id="AshesOfVelsingrad_data_npc_Soldier_ShowPrompt" data-uid="AshesOfVelsingrad.data.npc.Soldier.ShowPrompt">
   ShowPrompt()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/data/npc/Soldier.cs/#L209"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/data/npc/Soldier.cs/#L212"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Displays a visual or UI prompt indicating that the object
@@ -1565,7 +1584,7 @@ can be interacted with.</p>
 
   <h3 id="AshesOfVelsingrad_data_npc_Soldier__Ready" data-uid="AshesOfVelsingrad.data.npc.Soldier._Ready">
   _Ready()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/data/npc/Soldier.cs/#L62"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/data/npc/Soldier.cs/#L63"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Called when the node is "ready", i.e. when both the node and its children have entered the scene tree. If the node has children, their <span class="xref">Godot.Node._Ready()</span> callbacks get triggered first, and the parent node will receive the ready notification afterwards.</p>

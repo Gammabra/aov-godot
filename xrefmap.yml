@@ -15378,6 +15378,88 @@ references:
   isSpec: "True"
   fullName: AshesOfVelsingrad.IntegrationTests.UI.SettingsPagesTest.Video_ResolutionSelection_AltersDisplayServer
   nameWithType: SettingsPagesTest.Video_ResolutionSelection_AltersDisplayServer
+- uid: AshesOfVelsingrad.Interfaces
+  name: AshesOfVelsingrad.Interfaces
+  href: api/AshesOfVelsingrad.Interfaces.html
+  commentId: N:AshesOfVelsingrad.Interfaces
+  fullName: AshesOfVelsingrad.Interfaces
+  nameWithType: AshesOfVelsingrad.Interfaces
+- uid: AshesOfVelsingrad.Interfaces.NpcSystem
+  name: NpcSystem
+  href: api/AshesOfVelsingrad.Interfaces.NpcSystem.html
+  commentId: T:AshesOfVelsingrad.Interfaces.NpcSystem
+  fullName: AshesOfVelsingrad.Interfaces.NpcSystem
+  nameWithType: NpcSystem
+- uid: AshesOfVelsingrad.Interfaces.NpcSystem.Initialize(AshesOfVelsingrad.Managers.StateMachine,Godot.NavigationAgent3D,System.Single,System.Single)
+  name: Initialize(StateMachine, NavigationAgent3D, float, float)
+  href: api/AshesOfVelsingrad.Interfaces.NpcSystem.html#AshesOfVelsingrad_Interfaces_NpcSystem_Initialize_AshesOfVelsingrad_Managers_StateMachine_Godot_NavigationAgent3D_System_Single_System_Single_
+  commentId: M:AshesOfVelsingrad.Interfaces.NpcSystem.Initialize(AshesOfVelsingrad.Managers.StateMachine,Godot.NavigationAgent3D,System.Single,System.Single)
+  name.vb: Initialize(StateMachine, NavigationAgent3D, Single, Single)
+  fullName: AshesOfVelsingrad.Interfaces.NpcSystem.Initialize(AshesOfVelsingrad.Managers.StateMachine, Godot.NavigationAgent3D, float, float)
+  fullName.vb: AshesOfVelsingrad.Interfaces.NpcSystem.Initialize(AshesOfVelsingrad.Managers.StateMachine, Godot.NavigationAgent3D, Single, Single)
+  nameWithType: NpcSystem.Initialize(StateMachine, NavigationAgent3D, float, float)
+  nameWithType.vb: NpcSystem.Initialize(StateMachine, NavigationAgent3D, Single, Single)
+- uid: AshesOfVelsingrad.Interfaces.NpcSystem.Initialize*
+  name: Initialize
+  href: api/AshesOfVelsingrad.Interfaces.NpcSystem.html#AshesOfVelsingrad_Interfaces_NpcSystem_Initialize_
+  commentId: Overload:AshesOfVelsingrad.Interfaces.NpcSystem.Initialize
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.Interfaces.NpcSystem.Initialize
+  nameWithType: NpcSystem.Initialize
+- uid: AshesOfVelsingrad.Interfaces.NpcSystem.Speed
+  name: Speed
+  href: api/AshesOfVelsingrad.Interfaces.NpcSystem.html#AshesOfVelsingrad_Interfaces_NpcSystem_Speed
+  commentId: F:AshesOfVelsingrad.Interfaces.NpcSystem.Speed
+  fullName: AshesOfVelsingrad.Interfaces.NpcSystem.Speed
+  nameWithType: NpcSystem.Speed
+- uid: AshesOfVelsingrad.Interfaces.NpcSystem.StopDistance
+  name: StopDistance
+  href: api/AshesOfVelsingrad.Interfaces.NpcSystem.html#AshesOfVelsingrad_Interfaces_NpcSystem_StopDistance
+  commentId: F:AshesOfVelsingrad.Interfaces.NpcSystem.StopDistance
+  fullName: AshesOfVelsingrad.Interfaces.NpcSystem.StopDistance
+  nameWithType: NpcSystem.StopDistance
+- uid: AshesOfVelsingrad.Interfaces.NpcSystem.ToFollowingMovingEntity(Godot.Node3D,System.Double)
+  name: ToFollowingMovingEntity(Node3D, double)
+  href: api/AshesOfVelsingrad.Interfaces.NpcSystem.html#AshesOfVelsingrad_Interfaces_NpcSystem_ToFollowingMovingEntity_Godot_Node3D_System_Double_
+  commentId: M:AshesOfVelsingrad.Interfaces.NpcSystem.ToFollowingMovingEntity(Godot.Node3D,System.Double)
+  name.vb: ToFollowingMovingEntity(Node3D, Double)
+  fullName: AshesOfVelsingrad.Interfaces.NpcSystem.ToFollowingMovingEntity(Godot.Node3D, double)
+  fullName.vb: AshesOfVelsingrad.Interfaces.NpcSystem.ToFollowingMovingEntity(Godot.Node3D, Double)
+  nameWithType: NpcSystem.ToFollowingMovingEntity(Node3D, double)
+  nameWithType.vb: NpcSystem.ToFollowingMovingEntity(Node3D, Double)
+- uid: AshesOfVelsingrad.Interfaces.NpcSystem.ToFollowingMovingEntity*
+  name: ToFollowingMovingEntity
+  href: api/AshesOfVelsingrad.Interfaces.NpcSystem.html#AshesOfVelsingrad_Interfaces_NpcSystem_ToFollowingMovingEntity_
+  commentId: Overload:AshesOfVelsingrad.Interfaces.NpcSystem.ToFollowingMovingEntity
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.Interfaces.NpcSystem.ToFollowingMovingEntity
+  nameWithType: NpcSystem.ToFollowingMovingEntity
+- uid: AshesOfVelsingrad.Interfaces.NpcSystem.ToIdle
+  name: ToIdle()
+  href: api/AshesOfVelsingrad.Interfaces.NpcSystem.html#AshesOfVelsingrad_Interfaces_NpcSystem_ToIdle
+  commentId: M:AshesOfVelsingrad.Interfaces.NpcSystem.ToIdle
+  fullName: AshesOfVelsingrad.Interfaces.NpcSystem.ToIdle()
+  nameWithType: NpcSystem.ToIdle()
+- uid: AshesOfVelsingrad.Interfaces.NpcSystem.ToIdle*
+  name: ToIdle
+  href: api/AshesOfVelsingrad.Interfaces.NpcSystem.html#AshesOfVelsingrad_Interfaces_NpcSystem_ToIdle_
+  commentId: Overload:AshesOfVelsingrad.Interfaces.NpcSystem.ToIdle
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.Interfaces.NpcSystem.ToIdle
+  nameWithType: NpcSystem.ToIdle
+- uid: AshesOfVelsingrad.Interfaces.NpcSystem.ToRoaming
+  name: ToRoaming()
+  href: api/AshesOfVelsingrad.Interfaces.NpcSystem.html#AshesOfVelsingrad_Interfaces_NpcSystem_ToRoaming
+  commentId: M:AshesOfVelsingrad.Interfaces.NpcSystem.ToRoaming
+  fullName: AshesOfVelsingrad.Interfaces.NpcSystem.ToRoaming()
+  nameWithType: NpcSystem.ToRoaming()
+- uid: AshesOfVelsingrad.Interfaces.NpcSystem.ToRoaming*
+  name: ToRoaming
+  href: api/AshesOfVelsingrad.Interfaces.NpcSystem.html#AshesOfVelsingrad_Interfaces_NpcSystem_ToRoaming_
+  commentId: Overload:AshesOfVelsingrad.Interfaces.NpcSystem.ToRoaming
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.Interfaces.NpcSystem.ToRoaming
+  nameWithType: NpcSystem.ToRoaming
 - uid: AshesOfVelsingrad.KaelenVoss
   name: KaelenVoss
   href: api/AshesOfVelsingrad.KaelenVoss.html

@@ -2,11 +2,11 @@
 <html>
   <head>
     <meta charset="utf-8">
-      <title>Class MiniMercenary | Ashes of Velsingrad Documentation </title>
+      <title>Class NpcSystem | Ashes of Velsingrad Documentation </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content="Class MiniMercenary | Ashes of Velsingrad Documentation ">
+      <meta name="title" content="Class NpcSystem | Ashes of Velsingrad Documentation ">
       
-      
+      <meta name="description" content="Base abstract class for all NPCs in the game. Provides common movement, navigation, and state-transition behaviors such as idling, roaming, and following a target entity.">
       <link rel="icon" href="../favicon.ico">
       <link rel="stylesheet" href="../public/docfx.min.css">
       <link rel="stylesheet" href="../public/main.css">
@@ -84,25 +84,28 @@
           <nav id="breadcrumb"></nav>
         </div>
 
-        <article data-uid="AshesOfVelsingrad.data.npc.MiniMercenary">
+        <article data-uid="AshesOfVelsingrad.Interfaces.NpcSystem">
 
 
 
-  <h1 id="AshesOfVelsingrad_data_npc_MiniMercenary" data-uid="AshesOfVelsingrad.data.npc.MiniMercenary" class="text-break">
-Class MiniMercenary  
+  <h1 id="AshesOfVelsingrad_Interfaces_NpcSystem" data-uid="AshesOfVelsingrad.Interfaces.NpcSystem" class="text-break">
+Class NpcSystem  
   </h1>
 
   <div class="facts text-secondary">
-    <dl><dt>Namespace</dt><dd><a class="xref" href="AshesOfVelsingrad.html">AshesOfVelsingrad</a>.<a class="xref" href="AshesOfVelsingrad.data.html">data</a>.<a class="xref" href="AshesOfVelsingrad.data.npc.html">npc</a></dd></dl>
+    <dl><dt>Namespace</dt><dd><a class="xref" href="AshesOfVelsingrad.html">AshesOfVelsingrad</a>.<a class="xref" href="AshesOfVelsingrad.Interfaces.html">Interfaces</a></dd></dl>
   <dl><dt>Assembly</dt><dd>AshesofVelsingrad.dll</dd></dl>
   </div>
 
-  <div class="markdown summary"></div>
+  <div class="markdown summary"><p>Base abstract class for all NPCs in the game.
+Provides common movement, navigation, and state-transition behaviors
+such as idling, roaming, and following a target entity.</p>
+</div>
   <div class="markdown conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[ScriptPath(&quot;res://scripts/data/npc/MiniMercenary.cs&quot;)]
-public class MiniMercenary : NpcSystem, IDisposable</code></pre>
+    <pre><code class="lang-csharp hljs">[ScriptPath(&quot;res://scripts/systems/NpcSystem.cs&quot;)]
+public abstract class NpcSystem : CharacterBody3D, IDisposable</code></pre>
   </div>
 
 
@@ -118,8 +121,7 @@ public class MiniMercenary : NpcSystem, IDisposable</code></pre>
       <div><span class="xref">CollisionObject3D</span></div>
       <div><span class="xref">PhysicsBody3D</span></div>
       <div><span class="xref">CharacterBody3D</span></div>
-      <div><a class="xref" href="AshesOfVelsingrad.Interfaces.NpcSystem.html">NpcSystem</a></div>
-      <div><span class="xref">MiniMercenary</span></div>
+      <div><span class="xref">NpcSystem</span></div>
     </dd>
   </dl>
 
@@ -130,28 +132,17 @@ public class MiniMercenary : NpcSystem, IDisposable</code></pre>
     </dd>
   </dl>
 
+  <dl class="typelist derived">
+    <dt>Derived</dt>
+    <dd>
+      <div><a class="xref" href="AshesOfVelsingrad.data.npc.MiniMercenary.html">MiniMercenary</a></div>
+      <div><a class="xref" href="AshesOfVelsingrad.data.npc.Soldier.html">Soldier</a></div>
+    </dd>
+  </dl>
 
   <dl class="typelist inheritedMembers">
     <dt>Inherited Members</dt>
     <dd>
-    <div>
-      <a class="xref" href="AshesOfVelsingrad.Interfaces.NpcSystem.html#AshesOfVelsingrad_Interfaces_NpcSystem_StopDistance">NpcSystem.StopDistance</a>
-    </div>
-    <div>
-      <a class="xref" href="AshesOfVelsingrad.Interfaces.NpcSystem.html#AshesOfVelsingrad_Interfaces_NpcSystem_Speed">NpcSystem.Speed</a>
-    </div>
-    <div>
-      <a class="xref" href="AshesOfVelsingrad.Interfaces.NpcSystem.html#AshesOfVelsingrad_Interfaces_NpcSystem_Initialize_AshesOfVelsingrad_Managers_StateMachine_Godot_NavigationAgent3D_System_Single_System_Single_">NpcSystem.Initialize(StateMachine, NavigationAgent3D, float, float)</a>
-    </div>
-    <div>
-      <a class="xref" href="AshesOfVelsingrad.Interfaces.NpcSystem.html#AshesOfVelsingrad_Interfaces_NpcSystem_ToIdle">NpcSystem.ToIdle()</a>
-    </div>
-    <div>
-      <a class="xref" href="AshesOfVelsingrad.Interfaces.NpcSystem.html#AshesOfVelsingrad_Interfaces_NpcSystem_ToRoaming">NpcSystem.ToRoaming()</a>
-    </div>
-    <div>
-      <a class="xref" href="AshesOfVelsingrad.Interfaces.NpcSystem.html#AshesOfVelsingrad_Interfaces_NpcSystem_ToFollowingMovingEntity_Godot_Node3D_System_Double_">NpcSystem.ToFollowingMovingEntity(Node3D, double)</a>
-    </div>
     <div>
       <span class="xref">CharacterBody3D.MoveAndSlide()</span>
     </div>
@@ -768,7 +759,13 @@ public class MiniMercenary : NpcSystem, IDisposable</code></pre>
       <span class="xref">Node._Input(InputEvent)</span>
     </div>
     <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">Node._PhysicsProcess(double)</a>
+    </div>
+    <div>
       <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">Node._Process(double)</a>
+    </div>
+    <div>
+      <span class="xref">Node._Ready()</span>
     </div>
     <div>
       <span class="xref">Node._ShortcutInput(InputEvent)</span>
@@ -1440,34 +1437,105 @@ public class MiniMercenary : NpcSystem, IDisposable</code></pre>
 
 
 
-  <h2 class="section" id="methods">Methods
+  <h2 class="section" id="fields">Fields
 </h2>
 
 
-  <a id="AshesOfVelsingrad_data_npc_MiniMercenary__PhysicsProcess_" data-uid="AshesOfVelsingrad.data.npc.MiniMercenary._PhysicsProcess*"></a>
 
-  <h3 id="AshesOfVelsingrad_data_npc_MiniMercenary__PhysicsProcess_System_Double_" data-uid="AshesOfVelsingrad.data.npc.MiniMercenary._PhysicsProcess(System.Double)">
-  _PhysicsProcess(double)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/data/npc/MiniMercenary.cs/#L37"><i class="bi bi-code-slash"></i></a>
+  <h3 id="AshesOfVelsingrad_Interfaces_NpcSystem_Speed" data-uid="AshesOfVelsingrad.Interfaces.NpcSystem.Speed">
+  Speed
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/systems/NpcSystem.cs/#L27"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Called once on each physics tick, and allows Nodes to synchronize their logic with physics ticks. <code class="paramref">delta</code> is the logical time between physics ticks in seconds and is equal to <span class="xref">Godot.Engine.TimeScale</span> / <span class="xref">Godot.Engine.PhysicsTicksPerSecond</span>.</p>
-<p>It is only called if physics processing is enabled for this Node, which is done automatically if this method is overridden, and can be toggled with <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">SetPhysicsProcess(bool)</a>.</p>
-<p>Processing happens in order of <span class="xref">Godot.Node.ProcessPhysicsPriority</span>, lower priority values are called first. Nodes with the same priority are processed in tree order, or top to bottom as seen in the editor (also known as pre-order traversal).</p>
-<p>Corresponds to the <span class="xref">Godot.Node.NotificationPhysicsProcess</span> notification in <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">_Notification(int)</a>.</p>
-<p><b>Note:</b> This method is only called if the node is present in the scene tree (i.e. if it's not an orphan).</p>
-<p><b>Note:</b> Accumulated <code class="paramref">delta</code> may diverge from real world seconds.</p>
+  <div class="markdown level1 summary"><p>Movement speed of the NPC.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public override void _PhysicsProcess(double delta)</code></pre>
+    <pre><code class="lang-csharp hljs">protected float Speed</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="AshesOfVelsingrad_Interfaces_NpcSystem_StopDistance" data-uid="AshesOfVelsingrad.Interfaces.NpcSystem.StopDistance">
+  StopDistance
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/systems/NpcSystem.cs/#L22"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Minimum distance at which the NPC stops approaching its target.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected float StopDistance</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
+  <a id="AshesOfVelsingrad_Interfaces_NpcSystem_Initialize_" data-uid="AshesOfVelsingrad.Interfaces.NpcSystem.Initialize*"></a>
+
+  <h3 id="AshesOfVelsingrad_Interfaces_NpcSystem_Initialize_AshesOfVelsingrad_Managers_StateMachine_Godot_NavigationAgent3D_System_Single_System_Single_" data-uid="AshesOfVelsingrad.Interfaces.NpcSystem.Initialize(AshesOfVelsingrad.Managers.StateMachine,Godot.NavigationAgent3D,System.Single,System.Single)">
+  Initialize(StateMachine, NavigationAgent3D, float, float)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/systems/NpcSystem.cs/#L44"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Initializes the NPC with its navigation and movement settings.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected void Initialize(StateMachine stateMachine, NavigationAgent3D navigationAgent, float stopDistance, float speed)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
-    <dt><code>delta</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
-    <dd></dd>
+    <dt><code>stateMachine</code> <a class="xref" href="AshesOfVelsingrad.Managers.StateMachine.html">StateMachine</a></dt>
+    <dd><p>State machine responsible for handling NPC state transitions.</p>
+</dd>
+    <dt><code>navigationAgent</code> <span class="xref">NavigationAgent3D</span></dt>
+    <dd><p>Navigation agent used for pathfinding and movement.</p>
+</dd>
+    <dt><code>stopDistance</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd><p>Distance from the target at which the NPC stops moving.</p>
+</dd>
+    <dt><code>speed</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd><p>Movement speed of the NPC.</p>
+</dd>
   </dl>
 
 
@@ -1481,22 +1549,86 @@ public class MiniMercenary : NpcSystem, IDisposable</code></pre>
 
 
 
-  <a id="AshesOfVelsingrad_data_npc_MiniMercenary__Ready_" data-uid="AshesOfVelsingrad.data.npc.MiniMercenary._Ready*"></a>
+  <a id="AshesOfVelsingrad_Interfaces_NpcSystem_ToFollowingMovingEntity_" data-uid="AshesOfVelsingrad.Interfaces.NpcSystem.ToFollowingMovingEntity*"></a>
 
-  <h3 id="AshesOfVelsingrad_data_npc_MiniMercenary__Ready" data-uid="AshesOfVelsingrad.data.npc.MiniMercenary._Ready">
-  _Ready()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/data/npc/MiniMercenary.cs/#L29"><i class="bi bi-code-slash"></i></a>
+  <h3 id="AshesOfVelsingrad_Interfaces_NpcSystem_ToFollowingMovingEntity_Godot_Node3D_System_Double_" data-uid="AshesOfVelsingrad.Interfaces.NpcSystem.ToFollowingMovingEntity(Godot.Node3D,System.Double)">
+  ToFollowingMovingEntity(Node3D, double)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/systems/NpcSystem.cs/#L88"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Called when the node is "ready", i.e. when both the node and its children have entered the scene tree. If the node has children, their <span class="xref">Godot.Node._Ready()</span> callbacks get triggered first, and the parent node will receive the ready notification afterwards.</p>
-<p>Corresponds to the <span class="xref">Godot.Node.NotificationReady</span> notification in <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">_Notification(int)</a>. See also the <code>@onready</code> annotation for variables.</p>
-<p>Usually used for initialization. For even earlier initialization, <span class="xref">Godot.GodotObject.GodotObject()</span> may be used. See also <span class="xref">Godot.Node._EnterTree()</span>.</p>
-<p><b>Note:</b> This method may be called only once for each node. After removing a node from the scene tree and adding it again, <span class="xref">Godot.Node._Ready()</span> will <b>not</b> be called a second time. This can be bypassed by requesting another call with <span class="xref">Godot.Node.RequestReady()</span>, which may be called anywhere before adding the node again.</p>
+  <div class="markdown level1 summary"><p>Makes the NPC follow a target entity using navigation pathfinding.
+The NPC moves toward the target until it reaches the configured
+stopping distance, while updating its movement state according
+to the current movement direction.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public override void _Ready()</code></pre>
+    <pre><code class="lang-csharp hljs">public void ToFollowingMovingEntity(Node3D nodeToFollow, double delta)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>nodeToFollow</code> <span class="xref">Node3D</span></dt>
+    <dd><p>The target entity that the NPC should follow.</p>
+</dd>
+    <dt><code>delta</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd><p>Frame delta time used for velocity interpolation.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AshesOfVelsingrad_Interfaces_NpcSystem_ToIdle_" data-uid="AshesOfVelsingrad.Interfaces.NpcSystem.ToIdle*"></a>
+
+  <h3 id="AshesOfVelsingrad_Interfaces_NpcSystem_ToIdle" data-uid="AshesOfVelsingrad.Interfaces.NpcSystem.ToIdle">
+  ToIdle()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/systems/NpcSystem.cs/#L60"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Transitions the NPC to its idle state.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void ToIdle()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AshesOfVelsingrad_Interfaces_NpcSystem_ToRoaming_" data-uid="AshesOfVelsingrad.Interfaces.NpcSystem.ToRoaming*"></a>
+
+  <h3 id="AshesOfVelsingrad_Interfaces_NpcSystem_ToRoaming" data-uid="AshesOfVelsingrad.Interfaces.NpcSystem.ToRoaming">
+  ToRoaming()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/systems/NpcSystem.cs/#L69"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Starts the roaming behavior by activating the roaming timer
+and refreshing the navigation path.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void ToRoaming()</code></pre>
   </div>
 
 

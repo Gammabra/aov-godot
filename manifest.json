@@ -2588,6 +2588,34 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.Interfaces.NpcSystem.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.Interfaces.NpcSystem.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.Interfaces.NpcSystem",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.Interfaces.NpcSystem.yml\" sourcestartlinenumber=\"1\">Base abstract class for all NPCs in the game.\nProvides common movement, navigation, and state-transition behaviors\nsuch as idling, roaming, and following a target entity.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.Interfaces.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.Interfaces.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.Interfaces",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "documentation/api/AshesOfVelsingrad.KaelenVoss.yml",
       "output": {
         ".html": {

@@ -33,11 +33,11 @@ public sealed partial class UnitSlotUI : PanelContainer
 
         bool empty = slot.IsEmpty;
         _nameLabel.Visible = !empty;
-        if (!empty) 
+        if (!empty)
             _nameLabel.Text = ItemCatalog.Get(slot.ItemId).Name ?? string.Empty;
 
         _qtyLabel.Visible = !empty && slot.Quantity > 1;
-        if (!empty) 
+        if (!empty)
             _qtyLabel.Text = $"x{slot.Quantity}";
     }
 
@@ -87,7 +87,7 @@ public sealed partial class UnitSlotUI : PanelContainer
         {
             if (PlayerInventoryManager.Instance is not { } mgr) return;
             InventorySystem? sourceInv = null;
-            
+
             foreach (var loadout in mgr.PartyLoadouts)
             {
                 if (ReferenceEquals(loadout, Target)) continue;
@@ -99,10 +99,10 @@ public sealed partial class UnitSlotUI : PanelContainer
             }
 
             if (sourceInv == null || ReferenceEquals(sourceInv, Target)) return;
-            
+
             bool removed = sourceInv.RemoveItem(itemId, 1);
             if (!removed) return;
-            
+
             int leftover = Target.AddItem(itemId, 1);
             if (leftover > 0) sourceInv.AddItem(itemId, leftover);
         }
@@ -110,7 +110,7 @@ public sealed partial class UnitSlotUI : PanelContainer
         {
             bool removed = PlayerInventoryManager.Instance?.GlobalInventory.RemoveItem(itemId, 1) ?? false;
             if (!removed) return;
-            
+
             int leftover = Target.AddItem(itemId, 1);
             if (leftover > 0)
                 PlayerInventoryManager.Instance?.GlobalInventory.AddItem(itemId, leftover);

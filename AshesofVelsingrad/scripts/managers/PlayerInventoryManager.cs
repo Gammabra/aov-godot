@@ -40,13 +40,13 @@ public sealed partial class PlayerInventoryManager : Node
 
         GD.Print("PlayerInventoryManager ready.");
 
-        #if DEBUG
+#if DEBUG
         // Seed test items so the inventory UI is non-empty during development
         // Remove this block before shipping
         GlobalInventory.AddItem(1, 3);  // 3x Potion
         GlobalInventory.AddItem(4, 2);  // 2x Ether
         GD.Print("[PlayerInventoryManager] DEBUG: seeded test items into GlobalInventory.");
-        #endif
+#endif
     }
 
     public override void _ExitTree()

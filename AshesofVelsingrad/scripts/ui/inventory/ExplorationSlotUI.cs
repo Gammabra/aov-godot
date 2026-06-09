@@ -29,7 +29,7 @@ public sealed partial class ExplorationSlotUI : PanelContainer
     {
         if (slot.IsEmpty)
         {
-            _nameLabel.Text = string.Empty; 
+            _nameLabel.Text = string.Empty;
             _nameLabel.Visible = false;
             _qtyLabel.Visible = false;
             return;
@@ -38,16 +38,16 @@ public sealed partial class ExplorationSlotUI : PanelContainer
         if (!ItemCatalog.TryGet(slot.ItemId, out var item))
         {
             GD.PrintErr($"ExplorationSlotUI: unknown item id {slot.ItemId} in slot {SlotIndex}");
-            _nameLabel.Text = "?"; 
+            _nameLabel.Text = "?";
             _nameLabel.Visible = true;
             _qtyLabel.Visible = false;
             return;
         }
 
-        _nameLabel.Text = item.Name ?? string.Empty; 
+        _nameLabel.Text = item.Name ?? string.Empty;
         _nameLabel.Visible = true;
-        
-        _qtyLabel.Text = $"x{slot.Quantity}"; 
+
+        _qtyLabel.Text = $"x{slot.Quantity}";
         _qtyLabel.Visible = slot.Quantity > 1;
     }
 

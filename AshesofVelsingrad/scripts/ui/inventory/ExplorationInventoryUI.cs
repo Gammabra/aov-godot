@@ -61,16 +61,16 @@ public partial class ExplorationInventoryUI : CanvasLayer
         if (_unitPanelColumn == null || _unitPanelScene == null) return;
         if (PlayerInventoryManager.Instance is not { } mgr) return;
 
-        foreach (Node child in _unitPanelColumn.GetChildren()) 
+        foreach (Node child in _unitPanelColumn.GetChildren())
             child.QueueFree();
-            
+
         _unitPanels.Clear();
 
         for (int i = 0; i < PlayerInventoryManager.MaxPartySize; i++)
         {
             var panel = _unitPanelScene.Instantiate<UnitTransferPanel>();
             _unitPanelColumn.AddChild(panel);
-            
+
             panel.Bind(mgr.PartyNames[i], mgr.PartyLoadouts[i]);
             _unitPanels.Add(panel);
         }
@@ -92,20 +92,20 @@ public partial class ExplorationInventoryUI : CanvasLayer
     {
         if (_exploGrid == null || _slotScene == null) return;
 
-        foreach (Node child in _exploGrid.GetChildren()) 
+        foreach (Node child in _exploGrid.GetChildren())
             child.QueueFree();
-            
+
         _exploSlots.Clear();
 
         for (int i = 0; i < InventoryConstants.ExplorationCapacity; i++)
         {
             var slot = _slotScene.Instantiate<ExplorationSlotUI>();
             _exploGrid.AddChild(slot);
-            
+
             slot.Setup(i, inventory);
             _exploSlots.Add(slot);
         }
-        
+
         RefreshAll(inventory);
     }
 
@@ -126,7 +126,7 @@ public partial class ExplorationInventoryUI : CanvasLayer
     {
         if (PlayerInventoryManager.Instance is { } mgr)
             mgr.GlobalInventory.SlotChanged -= OnGlobalSlotChanged;
-        
+
         base._ExitTree();
     }
 }

@@ -20,13 +20,13 @@ public sealed partial class UnitTransferPanel : Control
 
     public void Bind(string unitName, InventorySystem loadout)
     {
-        if (_loadout != null) 
+        if (_loadout != null)
             _loadout.SlotChanged -= OnLoadoutSlotChanged;
 
         // Clear dynamic elements safely
-        foreach (Node child in _slotRow.GetChildren()) 
+        foreach (Node child in _slotRow.GetChildren())
             child.QueueFree();
-            
+
         _slots.Clear();
 
         _loadout = loadout;
@@ -41,7 +41,7 @@ public sealed partial class UnitTransferPanel : Control
             {
                 var slot = _unitSlotScene.Instantiate<UnitSlotUI>();
                 _slotRow.AddChild(slot);
-                
+
                 slot.Setup(i, loadout);
                 slot.Refresh(loadout.GetSlot(i));
                 _slots.Add(slot);
@@ -53,7 +53,7 @@ public sealed partial class UnitTransferPanel : Control
     {
         if (_loadout != null)
             _loadout.SlotChanged -= OnLoadoutSlotChanged;
-            
+
         base._ExitTree();
     }
 

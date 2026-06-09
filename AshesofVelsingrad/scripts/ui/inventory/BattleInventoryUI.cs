@@ -27,16 +27,16 @@ public sealed partial class BattleInventoryUI : Control
     {
         if (_slotRow == null || _battleSlotScene == null) return;
 
-        foreach (Node child in _slotRow.GetChildren()) 
+        foreach (Node child in _slotRow.GetChildren())
             child.QueueFree();
-            
+
         _slots.Clear();
 
         for (int i = 0; i < InventoryConstants.BattleCapacity; i++)
         {
             var slot = _battleSlotScene.Instantiate<BattleSlotUI>();
             _slotRow.AddChild(slot);
-            
+
             slot.Setup(i, this);
             _slots.Add(slot);
         }
@@ -46,9 +46,9 @@ public sealed partial class BattleInventoryUI : Control
 
     public void BindInventory(InventorySystem inventory)
     {
-        if (_inventory != null) 
+        if (_inventory != null)
             _inventory.SlotChanged -= OnSlotChanged;
-            
+
         _inventory = inventory;
         _inventory.SlotChanged += OnSlotChanged;
         RefreshAll();

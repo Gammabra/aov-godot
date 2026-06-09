@@ -16,7 +16,7 @@ public sealed partial class BattleSlotUI : PanelContainer
     public override void _Ready()
     {
         AddThemeStyleboxOverride("panel", HudStyle.MakePanelStyle());
-        
+
         if (_useButton != null)
             _useButton.Pressed += OnUsePressed;
     }
@@ -44,7 +44,7 @@ public sealed partial class BattleSlotUI : PanelContainer
         }
 
         _qtyLabel.Visible = !empty && slot.Quantity > 1;
-        if (!empty) 
+        if (!empty)
             _qtyLabel.Text = $"x{slot.Quantity}";
 
         _useButton.Visible = !empty;

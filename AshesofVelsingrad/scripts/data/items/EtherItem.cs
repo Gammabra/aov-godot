@@ -3,16 +3,16 @@ using AshesOfVelsingrad.Utilities;
 
 namespace AshesOfVelsingrad.items;
 
-public sealed class PotionItem : ItemSystem
+/// <summary>Restores a small amount of mana.</summary>
+public sealed class EtherItem : ItemSystem
 {
-    /// <summary>HP restored per use.</summary>
-    private const float _healAmount = 50f;
+    private const float _manaAmount = 40f;
 
-    public PotionItem()
+    public EtherItem()
     {
-        Id = 1;
-        Name = "Potion";
-        Description = $"Restores {_healAmount} HP.";
+        Id = 4;
+        Name = "Ether";
+        Description = $"Restores {_manaAmount} MP.";
         Category = ItemCategory.Consumable;
         IsStackable = true;
         MaxStack = 10;
@@ -21,8 +21,7 @@ public sealed class PotionItem : ItemSystem
 
     public override void Use(IUnitSystem user, IUnitSystem? target, IMapSystem? map)
     {
-        // Heal the target if provided, otherwise heal the user (self-use)
         var actualTarget = target ?? user;
-        actualTarget.OnEffectHeal(_healAmount);
+        actualTarget.RestoreMana(_manaAmount); // mana restore needs a dedicated method — see note below
     }
 }

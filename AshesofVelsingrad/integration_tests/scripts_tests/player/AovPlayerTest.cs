@@ -1,8 +1,8 @@
 using System;
 using System.Collections.Generic;
 using System.Reflection;
-using AshesOfVelsingrad.player;
 using AshesOfVelsingrad.Managers;
+using AshesOfVelsingrad.player;
 using AshesOfVelsingrad.UI.Inventory;
 using GdUnit4;
 using Godot;

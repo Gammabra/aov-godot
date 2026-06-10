@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://c8h22n6k3rvf2"]
+
+[ext_resource type="Script" uid="uid://dj5ele12pjypb" path="res://scripts/data/items/PotionItem.cs" id="1_uuw1q"]
+[ext_resource type="Texture2D" uid="uid://yffv1s2e0faa" path="res://assets/images/potion.png" id="2_uuw1q"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_uuw1q"]
+
+[node name="Potion" type="StaticBody3D" unique_id=1454740707]
+collision_layer = 2
+script = ExtResource("1_uuw1q")
+_interactTextPath = NodePath("Label3D")
+
+[node name="Sprite3D" type="Sprite3D" parent="." unique_id=1784526722]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
+billboard = 1
+texture_filter = 0
+texture = ExtResource("2_uuw1q")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1205484712]
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0, 0, 0)
+shape = SubResource("BoxShape3D_uuw1q")
+
+[node name="Label3D" type="Label3D" parent="." unique_id=877272577]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.015370861, 0.46264854, 0.63448846)
+visible = false
+billboard = 1
+texture_filter = 0
+text = "Pick Up"

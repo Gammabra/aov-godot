@@ -1077,6 +1077,9 @@ public sealed class UnitTransferPanel : Control, IDisposable</code></pre>
       <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">Node._Process(double)</a>
     </div>
     <div>
+      <span class="xref">Node._Ready()</span>
+    </div>
+    <div>
       <span class="xref">Node._ShortcutInput(InputEvent)</span>
     </div>
     <div>
@@ -1709,11 +1712,10 @@ public sealed class UnitTransferPanel : Control, IDisposable</code></pre>
 
   <h3 id="AshesOfVelsingrad_UI_Inventory_UnitTransferPanel_Bind_System_String_AshesOfVelsingrad_Systems_InventorySystem_" data-uid="AshesOfVelsingrad.UI.Inventory.UnitTransferPanel.Bind(System.String,AshesOfVelsingrad.Systems.InventorySystem)">
   Bind(string, InventorySystem)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/ui/inventory/UnitTransferPanel.cs/#L31"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/ui/inventory/UnitTransferPanel.cs/#L21"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Bind to a persistent party loadout slot.</p>
-</div>
+  <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -1739,37 +1741,11 @@ public sealed class UnitTransferPanel : Control, IDisposable</code></pre>
 
 
 
-  <a id="AshesOfVelsingrad_UI_Inventory_UnitTransferPanel_EnsureBuilt_" data-uid="AshesOfVelsingrad.UI.Inventory.UnitTransferPanel.EnsureBuilt*"></a>
-
-  <h3 id="AshesOfVelsingrad_UI_Inventory_UnitTransferPanel_EnsureBuilt" data-uid="AshesOfVelsingrad.UI.Inventory.UnitTransferPanel.EnsureBuilt">
-  EnsureBuilt()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/ui/inventory/UnitTransferPanel.cs/#L23"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public void EnsureBuilt()</code></pre>
-  </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
   <a id="AshesOfVelsingrad_UI_Inventory_UnitTransferPanel__ExitTree_" data-uid="AshesOfVelsingrad.UI.Inventory.UnitTransferPanel._ExitTree*"></a>
 
   <h3 id="AshesOfVelsingrad_UI_Inventory_UnitTransferPanel__ExitTree" data-uid="AshesOfVelsingrad.UI.Inventory.UnitTransferPanel._ExitTree">
   _ExitTree()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/ui/inventory/UnitTransferPanel.cs/#L85"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/ui/inventory/UnitTransferPanel.cs/#L52"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Called when the node is about to leave the <span class="xref">Godot.SceneTree</span> (e.g. upon freeing, scene changing, or after calling <span class="xref">Godot.Node.RemoveChild(Godot.Node)</span> in a script). If the node has children, its <span class="xref">Godot.Node._ExitTree()</span> callback will be called last, after all its children have left the tree.</p>
@@ -1779,36 +1755,6 @@ public sealed class UnitTransferPanel : Control, IDisposable</code></pre>
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public override void _ExitTree()</code></pre>
-  </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-  <a id="AshesOfVelsingrad_UI_Inventory_UnitTransferPanel__Ready_" data-uid="AshesOfVelsingrad.UI.Inventory.UnitTransferPanel._Ready*"></a>
-
-  <h3 id="AshesOfVelsingrad_UI_Inventory_UnitTransferPanel__Ready" data-uid="AshesOfVelsingrad.UI.Inventory.UnitTransferPanel._Ready">
-  _Ready()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/ui/inventory/UnitTransferPanel.cs/#L21"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Called when the node is "ready", i.e. when both the node and its children have entered the scene tree. If the node has children, their <span class="xref">Godot.Node._Ready()</span> callbacks get triggered first, and the parent node will receive the ready notification afterwards.</p>
-<p>Corresponds to the <span class="xref">Godot.Node.NotificationReady</span> notification in <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">_Notification(int)</a>. See also the <code>@onready</code> annotation for variables.</p>
-<p>Usually used for initialization. For even earlier initialization, <span class="xref">Godot.GodotObject.GodotObject()</span> may be used. See also <span class="xref">Godot.Node._EnterTree()</span>.</p>
-<p><b>Note:</b> This method may be called only once for each node. After removing a node from the scene tree and adding it again, <span class="xref">Godot.Node._Ready()</span> will <b>not</b> be called a second time. This can be bypassed by requesting another call with <span class="xref">Godot.Node.RequestReady()</span>, which may be called anywhere before adding the node again.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public override void _Ready()</code></pre>
   </div>
 
 

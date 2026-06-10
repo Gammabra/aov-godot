@@ -3452,7 +3452,7 @@
       "Uid": null,
       "IsMRef": true,
       "Title": "AshesOfVelsingrad.Systems.InventorySystem",
-      "Summary": null
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.Systems.InventorySystem.yml\" sourcestartlinenumber=\"1\">Basic inventory implementation: fixed-size array of slots, each with an item ID and quantity.\nDoes not handle item stacking logic internally — that is the caller's responsibility (e.g. InventoryUI).\nDoes not handle item use logic internally — that is the caller's responsibility (e.g. InventoryUI or BattleSystem).</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -3467,6 +3467,20 @@
       "IsMRef": true,
       "Title": "AshesOfVelsingrad.Systems.ItemCatalog",
       "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.Systems.ItemCatalogSeeder.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.Systems.ItemCatalogSeeder.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.Systems.ItemCatalogSeeder",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.Systems.ItemCatalogSeeder.yml\" sourcestartlinenumber=\"1\">Autoload that registers every concrete <xref href=\"AshesOfVelsingrad.Systems.ItemSystem\" data-throw-if-not-resolved=\"false\"></xref> into\n<xref href=\"AshesOfVelsingrad.Systems.ItemCatalog\" data-throw-if-not-resolved=\"false\"></xref> at game start.\nAdd new items here as they are created.</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -3778,20 +3792,6 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "documentation/api/AshesOfVelsingrad.UI.Inventory.BattleInventorySlotUI.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/AshesOfVelsingrad.UI.Inventory.BattleInventorySlotUI.html"
-        }
-      },
-      "version": "",
-      "Uid": null,
-      "IsMRef": true,
-      "Title": "AshesOfVelsingrad.UI.Inventory.BattleInventorySlotUI",
-      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.UI.Inventory.BattleInventorySlotUI.yml\" sourcestartlinenumber=\"1\">Single slot in the battle inventory. Styled with <xref href=\"AshesOfVelsingrad.UI.Hud.HudStyle\" data-throw-if-not-resolved=\"false\"></xref>.\nShows item icon area, name label, and a &quot;Use&quot; button.</p>\n"
-    },
-    {
-      "type": "ManagedReference",
       "source_relative_path": "documentation/api/AshesOfVelsingrad.UI.Inventory.BattleInventoryUI.yml",
       "output": {
         ".html": {
@@ -3802,7 +3802,21 @@
       "Uid": null,
       "IsMRef": true,
       "Title": "AshesOfVelsingrad.UI.Inventory.BattleInventoryUI",
-      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.UI.Inventory.BattleInventoryUI.yml\" sourcestartlinenumber=\"1\">Battle-phase inventory panel. Lives inside <xref href=\"AshesOfVelsingrad.UI.Hud.BattleHud\" data-throw-if-not-resolved=\"false\"></xref>\nas a plain Control so it shares the same coordinate space as\n<xref href=\"AshesOfVelsingrad.UI.Hud.SkillSelector\" data-throw-if-not-resolved=\"false\"></xref> and <xref href=\"AshesOfVelsingrad.UI.Hud.ActionMenu\" data-throw-if-not-resolved=\"false\"></xref>.</p>\n"
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.UI.Inventory.BattleInventoryUI.yml\" sourcestartlinenumber=\"1\">Battle inventory panel: horizontal row of 5 slots. Pops up as a modal overlay during battle when the player presses the inventory key.\nBinds directly to the live inventory of the currently controlled unit, so it requires a reference to the battle's input system to signal item use and close itself.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.UI.Inventory.BattleSlotUI.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.UI.Inventory.BattleSlotUI.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.UI.Inventory.BattleSlotUI",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
@@ -3830,7 +3844,7 @@
       "Uid": null,
       "IsMRef": true,
       "Title": "AshesOfVelsingrad.UI.Inventory.ExplorationSlotUI",
-      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.UI.Inventory.ExplorationSlotUI.yml\" sourcestartlinenumber=\"1\">One slot in the 30-slot exploration inventory.\nSupports Godot drag-and-drop — drag starts here, drop lands on\n<xref href=\"AshesOfVelsingrad.UI.Inventory.UnitSlotUI\" data-throw-if-not-resolved=\"false\"></xref>.</p>\n"
+      "Summary": null
     },
     {
       "type": "ManagedReference",
@@ -3858,7 +3872,7 @@
       "Uid": null,
       "IsMRef": true,
       "Title": "AshesOfVelsingrad.UI.Inventory.UnitSlotUI",
-      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.UI.Inventory.UnitSlotUI.yml\" sourcestartlinenumber=\"1\">One of the <xref href=\"AshesOfVelsingrad.UI.Inventory.InventoryConstants.BattleCapacity\" data-throw-if-not-resolved=\"false\"></xref> slots shown per unit\nin the exploration transfer screen. Accepts drops from <xref href=\"AshesOfVelsingrad.UI.Inventory.ExplorationSlotUI\" data-throw-if-not-resolved=\"false\"></xref>.</p>\n"
+      "Summary": null
     },
     {
       "type": "ManagedReference",
@@ -4125,6 +4139,20 @@
       "IsMRef": true,
       "Title": "AshesOfVelsingrad.data.npc",
       "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.items.EtherItem.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.items.EtherItem.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.items.EtherItem",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.items.EtherItem.yml\" sourcestartlinenumber=\"1\">Restores a small amount of mana.</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -4744,202 +4772,6 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "documentation/api/AshesOfVelsingrad.systems.items.IItemBehaviour.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/AshesOfVelsingrad.systems.items.IItemBehaviour.html"
-        }
-      },
-      "version": "",
-      "Uid": null,
-      "IsMRef": true,
-      "Title": "AshesOfVelsingrad.systems.items.IItemBehaviour",
-      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.systems.items.IItemBehaviour.yml\" sourcestartlinenumber=\"1\">Strategy interface for item behaviours.</p>\n"
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "documentation/api/AshesOfVelsingrad.systems.items.ItemDefinition.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/AshesOfVelsingrad.systems.items.ItemDefinition.html"
-        }
-      },
-      "version": "",
-      "Uid": null,
-      "IsMRef": true,
-      "Title": "AshesOfVelsingrad.systems.items.ItemDefinition",
-      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.systems.items.ItemDefinition.yml\" sourcestartlinenumber=\"1\">Authored data for a usable item.</p>\n"
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "documentation/api/AshesOfVelsingrad.systems.items.ItemRegistry.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/AshesOfVelsingrad.systems.items.ItemRegistry.html"
-        }
-      },
-      "version": "",
-      "Uid": null,
-      "IsMRef": true,
-      "Title": "AshesOfVelsingrad.systems.items.ItemRegistry",
-      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.systems.items.ItemRegistry.yml\" sourcestartlinenumber=\"1\">Singleton lookup for item definitions and behaviours.</p>\n"
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "documentation/api/AshesOfVelsingrad.systems.items.ItemTargetType.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/AshesOfVelsingrad.systems.items.ItemTargetType.html"
-        }
-      },
-      "version": "",
-      "Uid": null,
-      "IsMRef": true,
-      "Title": "AshesOfVelsingrad.systems.items.ItemTargetType",
-      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.systems.items.ItemTargetType.yml\" sourcestartlinenumber=\"1\">Targeting pattern for an item. Mirrors <code>TargetTypes</code> but adds a\n&quot;self only&quot; option (most healing potions).</p>\n"
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "documentation/api/AshesOfVelsingrad.systems.items.ItemUseContext.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/AshesOfVelsingrad.systems.items.ItemUseContext.html"
-        }
-      },
-      "version": "",
-      "Uid": null,
-      "IsMRef": true,
-      "Title": "AshesOfVelsingrad.systems.items.ItemUseContext",
-      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.systems.items.ItemUseContext.yml\" sourcestartlinenumber=\"1\">Context passed to an item behaviour at use time.</p>\n"
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "documentation/api/AshesOfVelsingrad.systems.items.PartyInventory.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/AshesOfVelsingrad.systems.items.PartyInventory.html"
-        }
-      },
-      "version": "",
-      "Uid": null,
-      "IsMRef": true,
-      "Title": "AshesOfVelsingrad.systems.items.PartyInventory",
-      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.systems.items.PartyInventory.yml\" sourcestartlinenumber=\"1\">Shared bag of items available to the player party during combat and exploration.</p>\n"
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "documentation/api/AshesOfVelsingrad.systems.items.behaviours.CleanseItemBehaviour.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/AshesOfVelsingrad.systems.items.behaviours.CleanseItemBehaviour.html"
-        }
-      },
-      "version": "",
-      "Uid": null,
-      "IsMRef": true,
-      "Title": "AshesOfVelsingrad.systems.items.behaviours.CleanseItemBehaviour",
-      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.systems.items.behaviours.CleanseItemBehaviour.yml\" sourcestartlinenumber=\"1\">Removes every purifiable status effect from the target.</p>\n"
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "documentation/api/AshesOfVelsingrad.systems.items.behaviours.DamageItemBehaviour.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/AshesOfVelsingrad.systems.items.behaviours.DamageItemBehaviour.html"
-        }
-      },
-      "version": "",
-      "Uid": null,
-      "IsMRef": true,
-      "Title": "AshesOfVelsingrad.systems.items.behaviours.DamageItemBehaviour",
-      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.systems.items.behaviours.DamageItemBehaviour.yml\" sourcestartlinenumber=\"1\">Deals <xref href=\"AshesOfVelsingrad.systems.items.ItemDefinition.Magnitude\" data-throw-if-not-resolved=\"false\"></xref> raw damage to every target.</p>\n"
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "documentation/api/AshesOfVelsingrad.systems.items.behaviours.HealingItemBehaviour.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/AshesOfVelsingrad.systems.items.behaviours.HealingItemBehaviour.html"
-        }
-      },
-      "version": "",
-      "Uid": null,
-      "IsMRef": true,
-      "Title": "AshesOfVelsingrad.systems.items.behaviours.HealingItemBehaviour",
-      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.systems.items.behaviours.HealingItemBehaviour.yml\" sourcestartlinenumber=\"1\">Restores HP equal to <xref href=\"AshesOfVelsingrad.systems.items.ItemDefinition.Magnitude\" data-throw-if-not-resolved=\"false\"></xref> on every target.</p>\n"
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "documentation/api/AshesOfVelsingrad.systems.items.behaviours.ManaItemBehaviour.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/AshesOfVelsingrad.systems.items.behaviours.ManaItemBehaviour.html"
-        }
-      },
-      "version": "",
-      "Uid": null,
-      "IsMRef": true,
-      "Title": "AshesOfVelsingrad.systems.items.behaviours.ManaItemBehaviour",
-      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.systems.items.behaviours.ManaItemBehaviour.yml\" sourcestartlinenumber=\"1\">Restores mana equal to <xref href=\"AshesOfVelsingrad.systems.items.ItemDefinition.Magnitude\" data-throw-if-not-resolved=\"false\"></xref> on every target.</p>\n"
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "documentation/api/AshesOfVelsingrad.systems.items.behaviours.PurifyingElixirBehaviour.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/AshesOfVelsingrad.systems.items.behaviours.PurifyingElixirBehaviour.html"
-        }
-      },
-      "version": "",
-      "Uid": null,
-      "IsMRef": true,
-      "Title": "AshesOfVelsingrad.systems.items.behaviours.PurifyingElixirBehaviour",
-      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.systems.items.behaviours.PurifyingElixirBehaviour.yml\" sourcestartlinenumber=\"1\">Reduces the target's corruption by one level (down to 0).</p>\n"
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "documentation/api/AshesOfVelsingrad.systems.items.behaviours.ReviveItemBehaviour.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/AshesOfVelsingrad.systems.items.behaviours.ReviveItemBehaviour.html"
-        }
-      },
-      "version": "",
-      "Uid": null,
-      "IsMRef": true,
-      "Title": "AshesOfVelsingrad.systems.items.behaviours.ReviveItemBehaviour",
-      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.systems.items.behaviours.ReviveItemBehaviour.yml\" sourcestartlinenumber=\"1\">Revives the target with a percentage of MaxHp encoded in <xref href=\"AshesOfVelsingrad.systems.items.ItemDefinition.Magnitude\" data-throw-if-not-resolved=\"false\"></xref>.</p>\n"
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "documentation/api/AshesOfVelsingrad.systems.items.behaviours.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/AshesOfVelsingrad.systems.items.behaviours.html"
-        }
-      },
-      "version": "",
-      "Uid": null,
-      "IsMRef": true,
-      "Title": "AshesOfVelsingrad.systems.items.behaviours",
-      "Summary": null
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "documentation/api/AshesOfVelsingrad.systems.items.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/AshesOfVelsingrad.systems.items.html"
-        }
-      },
-      "version": "",
-      "Uid": null,
-      "IsMRef": true,
-      "Title": "AshesOfVelsingrad.systems.items",
-      "Summary": null
-    },
-    {
-      "type": "ManagedReference",
       "source_relative_path": "documentation/api/AshesOfVelsingrad.systems.progression.CharacterClassDefinition.yml",
       "output": {
         ".html": {
@@ -5469,20 +5301,6 @@
       "IsMRef": true,
       "Title": "AshesOfVelsingrad.ui.hud.HudBusHelper",
       "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.ui.hud.HudBusHelper.yml\" sourcestartlinenumber=\"1\">Shared helpers for HUD widgets that need to subscribe to <xref href=\"AshesOfVelsingrad.systems.battle.BattleEventBus\" data-throw-if-not-resolved=\"false\"></xref>.</p>\n"
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "documentation/api/AshesOfVelsingrad.ui.hud.InventoryPanel.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/AshesOfVelsingrad.ui.hud.InventoryPanel.html"
-        }
-      },
-      "version": "",
-      "Uid": null,
-      "IsMRef": true,
-      "Title": "AshesOfVelsingrad.ui.hud.InventoryPanel",
-      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.ui.hud.InventoryPanel.yml\" sourcestartlinenumber=\"1\">Modal panel listing the shared <xref href=\"AshesOfVelsingrad.systems.items.PartyInventory\" data-throw-if-not-resolved=\"false\"></xref>.</p>\n"
     },
     {
       "type": "ManagedReference",

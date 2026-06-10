@@ -6,7 +6,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <meta name="title" content="Class BattleInventoryUI | Ashes of Velsingrad Documentation ">
       
-      <meta name="description" content="Battle-phase inventory panel. Lives inside  as a plain Control so it shares the same coordinate space as  and .">
+      <meta name="description" content="Battle inventory panel: horizontal row of 5 slots. Pops up as a modal overlay during battle when the player presses the inventory key. Binds directly to the live inventory of the currently controlled unit, so it requires a reference to the battle&#39;s input system to signal item use and close itself.">
       <link rel="icon" href="../favicon.ico">
       <link rel="stylesheet" href="../public/docfx.min.css">
       <link rel="stylesheet" href="../public/main.css">
@@ -97,9 +97,8 @@ Class BattleInventoryUI
   <dl><dt>Assembly</dt><dd>AshesofVelsingrad.dll</dd></dl>
   </div>
 
-  <div class="markdown summary"><p>Battle-phase inventory panel. Lives inside <a class="xref" href="AshesOfVelsingrad.UI.Hud.BattleHud.html">BattleHud</a>
-as a plain Control so it shares the same coordinate space as
-<a class="xref" href="AshesOfVelsingrad.UI.Hud.SkillSelector.html">SkillSelector</a> and <a class="xref" href="AshesOfVelsingrad.UI.Hud.ActionMenu.html">ActionMenu</a>.</p>
+  <div class="markdown summary"><p>Battle inventory panel: horizontal row of 5 slots. Pops up as a modal overlay during battle when the player presses the inventory key.
+Binds directly to the live inventory of the currently controlled unit, so it requires a reference to the battle's input system to signal item use and close itself.</p>
 </div>
   <div class="markdown conceptual"></div>
 
@@ -1712,7 +1711,7 @@ public sealed class BattleInventoryUI : Control, IDisposable</code></pre>
 
   <h3 id="AshesOfVelsingrad_UI_Inventory_BattleInventoryUI_BindInventory_AshesOfVelsingrad_Systems_InventorySystem_" data-uid="AshesOfVelsingrad.UI.Inventory.BattleInventoryUI.BindInventory(AshesOfVelsingrad.Systems.InventorySystem)">
   BindInventory(InventorySystem)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/ui/inventory/BattleInventoryUI.cs/#L62"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/ui/inventory/BattleInventoryUI.cs/#L47"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"></div>
@@ -1739,37 +1738,11 @@ public sealed class BattleInventoryUI : Control, IDisposable</code></pre>
 
 
 
-  <a id="AshesOfVelsingrad_UI_Inventory_BattleInventoryUI_EnsureBuilt_" data-uid="AshesOfVelsingrad.UI.Inventory.BattleInventoryUI.EnsureBuilt*"></a>
-
-  <h3 id="AshesOfVelsingrad_UI_Inventory_BattleInventoryUI_EnsureBuilt" data-uid="AshesOfVelsingrad.UI.Inventory.BattleInventoryUI.EnsureBuilt">
-  EnsureBuilt()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/ui/inventory/BattleInventoryUI.cs/#L23"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public void EnsureBuilt()</code></pre>
-  </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
   <a id="AshesOfVelsingrad_UI_Inventory_BattleInventoryUI_NotifyUseItemPressed_" data-uid="AshesOfVelsingrad.UI.Inventory.BattleInventoryUI.NotifyUseItemPressed*"></a>
 
   <h3 id="AshesOfVelsingrad_UI_Inventory_BattleInventoryUI_NotifyUseItemPressed_System_Int32_" data-uid="AshesOfVelsingrad.UI.Inventory.BattleInventoryUI.NotifyUseItemPressed(System.Int32)">
   NotifyUseItemPressed(int)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/ui/inventory/BattleInventoryUI.cs/#L70"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/ui/inventory/BattleInventoryUI.cs/#L57"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"></div>
@@ -1800,7 +1773,7 @@ public sealed class BattleInventoryUI : Control, IDisposable</code></pre>
 
   <h3 id="AshesOfVelsingrad_UI_Inventory_BattleInventoryUI_SetBattleInputSystem_AshesOfVelsingrad_Systems_BattleInputSystem_" data-uid="AshesOfVelsingrad.UI.Inventory.BattleInventoryUI.SetBattleInputSystem(AshesOfVelsingrad.Systems.BattleInputSystem)">
   SetBattleInputSystem(BattleInputSystem)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/ui/inventory/BattleInventoryUI.cs/#L60"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/ui/inventory/BattleInventoryUI.cs/#L45"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"></div>
@@ -1831,7 +1804,7 @@ public sealed class BattleInventoryUI : Control, IDisposable</code></pre>
 
   <h3 id="AshesOfVelsingrad_UI_Inventory_BattleInventoryUI_Toggle" data-uid="AshesOfVelsingrad.UI.Inventory.BattleInventoryUI.Toggle">
   Toggle()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/ui/inventory/BattleInventoryUI.cs/#L76"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/ui/inventory/BattleInventoryUI.cs/#L63"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"></div>
@@ -1857,7 +1830,7 @@ public sealed class BattleInventoryUI : Control, IDisposable</code></pre>
 
   <h3 id="AshesOfVelsingrad_UI_Inventory_BattleInventoryUI__Ready" data-uid="AshesOfVelsingrad.UI.Inventory.BattleInventoryUI._Ready">
   _Ready()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/ui/inventory/BattleInventoryUI.cs/#L21"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/ui/inventory/BattleInventoryUI.cs/#L20"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Called when the node is "ready", i.e. when both the node and its children have entered the scene tree. If the node has children, their <span class="xref">Godot.Node._Ready()</span> callbacks get triggered first, and the parent node will receive the ready notification afterwards.</p>

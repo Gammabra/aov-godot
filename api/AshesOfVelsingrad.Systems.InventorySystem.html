@@ -6,7 +6,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <meta name="title" content="Class InventorySystem | Ashes of Velsingrad Documentation ">
       
-      
+      <meta name="description" content="Basic inventory implementation: fixed-size array of slots, each with an item ID and quantity. Does not handle item stacking logic internally — that is the caller&#39;s responsibility (e.g. InventoryUI). Does not handle item use logic internally — that is the caller&#39;s responsibility (e.g. InventoryUI or BattleSystem).">
       <link rel="icon" href="../favicon.ico">
       <link rel="stylesheet" href="../public/docfx.min.css">
       <link rel="stylesheet" href="../public/main.css">
@@ -89,7 +89,7 @@
 
 
   <h1 id="AshesOfVelsingrad_Systems_InventorySystem" data-uid="AshesOfVelsingrad.Systems.InventorySystem" class="text-break">
-Class InventorySystem  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/systems/inventory_system/InventorySystem.cs/#L19"><i class="bi bi-code-slash"></i></a>
+Class InventorySystem  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/systems/inventory_system/InventorySystem.cs/#L24"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
@@ -97,7 +97,10 @@ Class InventorySystem  <a class="header-action link-secondary" title="View sourc
   <dl><dt>Assembly</dt><dd>AshesofVelsingrad.dll</dd></dl>
   </div>
 
-  <div class="markdown summary"></div>
+  <div class="markdown summary"><p>Basic inventory implementation: fixed-size array of slots, each with an item ID and quantity.
+Does not handle item stacking logic internally — that is the caller's responsibility (e.g. InventoryUI).
+Does not handle item use logic internally — that is the caller's responsibility (e.g. InventoryUI or BattleSystem).</p>
+</div>
   <div class="markdown conceptual"></div>
 
   <div class="codewrapper">
@@ -159,7 +162,7 @@ Class InventorySystem  <a class="header-action link-secondary" title="View sourc
 
   <h3 id="AshesOfVelsingrad_Systems_InventorySystem__ctor_System_Int32_System_Func_AshesOfVelsingrad_Systems_ItemSystem_System_Boolean__" data-uid="AshesOfVelsingrad.Systems.InventorySystem.#ctor(System.Int32,System.Func{AshesOfVelsingrad.Systems.ItemSystem,System.Boolean})">
   InventorySystem(int, Func&lt;ItemSystem, bool&gt;?)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/systems/inventory_system/InventorySystem.cs/#L29"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/systems/inventory_system/InventorySystem.cs/#L34"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"></div>
@@ -196,7 +199,7 @@ Class InventorySystem  <a class="header-action link-secondary" title="View sourc
 
   <h3 id="AshesOfVelsingrad_Systems_InventorySystem_Capacity" data-uid="AshesOfVelsingrad.Systems.InventorySystem.Capacity">
   Capacity
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/systems/inventory_system/InventorySystem.cs/#L21"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/systems/inventory_system/InventorySystem.cs/#L26"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"></div>
@@ -227,7 +230,7 @@ Class InventorySystem  <a class="header-action link-secondary" title="View sourc
 
   <h3 id="AshesOfVelsingrad_Systems_InventorySystem_Slots" data-uid="AshesOfVelsingrad.Systems.InventorySystem.Slots">
   Slots
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/systems/inventory_system/InventorySystem.cs/#L22"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/systems/inventory_system/InventorySystem.cs/#L27"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"></div>
@@ -262,7 +265,7 @@ Class InventorySystem  <a class="header-action link-secondary" title="View sourc
 
   <h3 id="AshesOfVelsingrad_Systems_InventorySystem_AddItem_System_Int32_System_Int32_" data-uid="AshesOfVelsingrad.Systems.InventorySystem.AddItem(System.Int32,System.Int32)">
   AddItem(int, int)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/systems/inventory_system/InventorySystem.cs/#L49"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/systems/inventory_system/InventorySystem.cs/#L54"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"></div>
@@ -300,7 +303,7 @@ Class InventorySystem  <a class="header-action link-secondary" title="View sourc
 
   <h3 id="AshesOfVelsingrad_Systems_InventorySystem_CanAccept_System_Int32_" data-uid="AshesOfVelsingrad.Systems.InventorySystem.CanAccept(System.Int32)">
   CanAccept(int)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/systems/inventory_system/InventorySystem.cs/#L41"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/systems/inventory_system/InventorySystem.cs/#L46"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"></div>
@@ -336,7 +339,7 @@ Class InventorySystem  <a class="header-action link-secondary" title="View sourc
 
   <h3 id="AshesOfVelsingrad_Systems_InventorySystem_CopyFrom_AshesOfVelsingrad_Systems_IInventorySystem_" data-uid="AshesOfVelsingrad.Systems.InventorySystem.CopyFrom(AshesOfVelsingrad.Systems.IInventorySystem)">
   CopyFrom(IInventorySystem)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/systems/inventory_system/InventorySystem.cs/#L181"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/systems/inventory_system/InventorySystem.cs/#L186"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Overwrites this inventory's slots with a shallow copy of <code class="paramref">source</code>.
@@ -369,7 +372,7 @@ Used to seed per-unit battle inventories from the global exploration inventory.<
 
   <h3 id="AshesOfVelsingrad_Systems_InventorySystem_GetSlot_System_Int32_" data-uid="AshesOfVelsingrad.Systems.InventorySystem.GetSlot(System.Int32)">
   GetSlot(int)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/systems/inventory_system/InventorySystem.cs/#L27"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/systems/inventory_system/InventorySystem.cs/#L32"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"></div>
@@ -405,7 +408,7 @@ Used to seed per-unit battle inventories from the global exploration inventory.<
 
   <h3 id="AshesOfVelsingrad_Systems_InventorySystem_Move_System_Int32_System_Int32_" data-uid="AshesOfVelsingrad.Systems.InventorySystem.Move(System.Int32,System.Int32)">
   Move(int, int)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/systems/inventory_system/InventorySystem.cs/#L120"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/systems/inventory_system/InventorySystem.cs/#L125"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"></div>
@@ -438,7 +441,7 @@ Used to seed per-unit battle inventories from the global exploration inventory.<
 
   <h3 id="AshesOfVelsingrad_Systems_InventorySystem_RemoveItem_System_Int32_System_Int32_" data-uid="AshesOfVelsingrad.Systems.InventorySystem.RemoveItem(System.Int32,System.Int32)">
   RemoveItem(int, int)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/systems/inventory_system/InventorySystem.cs/#L98"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/systems/inventory_system/InventorySystem.cs/#L103"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"></div>
@@ -476,7 +479,7 @@ Used to seed per-unit battle inventories from the global exploration inventory.<
 
   <h3 id="AshesOfVelsingrad_Systems_InventorySystem_TryUseItem_System_Int32_AshesOfVelsingrad_Systems_IUnitSystem_AshesOfVelsingrad_Systems_IUnitSystem_AshesOfVelsingrad_Systems_IMapSystem_" data-uid="AshesOfVelsingrad.Systems.InventorySystem.TryUseItem(System.Int32,AshesOfVelsingrad.Systems.IUnitSystem,AshesOfVelsingrad.Systems.IUnitSystem,AshesOfVelsingrad.Systems.IMapSystem)">
   TryUseItem(int, IUnitSystem, IUnitSystem?, IMapSystem?)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/systems/inventory_system/InventorySystem.cs/#L164"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/systems/inventory_system/InventorySystem.cs/#L169"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Uses the item in the given slot. Returns false if the slot is empty or item use failed.
@@ -523,7 +526,7 @@ Does NOT call ReportSystemUnitHasPlayed — that is the caller's responsibility.
 
   <h3 id="AshesOfVelsingrad_Systems_InventorySystem_SlotChanged" data-uid="AshesOfVelsingrad.Systems.InventorySystem.SlotChanged">
   SlotChanged
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/systems/inventory_system/InventorySystem.cs/#L24"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/systems/inventory_system/InventorySystem.cs/#L29"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"></div>
@@ -554,7 +557,7 @@ Does NOT call ReportSystemUnitHasPlayed — that is the caller's responsibility.
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/systems/inventory_system/InventorySystem.cs/#L19" class="edit-link">Edit this page</a>
+          <a href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/systems/inventory_system/InventorySystem.cs/#L24" class="edit-link">Edit this page</a>
         </div>
 
 

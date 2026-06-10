@@ -2,11 +2,11 @@
 <html>
   <head>
     <meta charset="utf-8">
-      <title>Class PartyInventory | Ashes of Velsingrad Documentation </title>
+      <title>Class ItemCatalogSeeder | Ashes of Velsingrad Documentation </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content="Class PartyInventory | Ashes of Velsingrad Documentation ">
+      <meta name="title" content="Class ItemCatalogSeeder | Ashes of Velsingrad Documentation ">
       
-      <meta name="description" content="Shared bag of items available to the player party during combat and exploration.">
+      <meta name="description" content="Autoload that registers every concrete  into  at game start. Add new items here as they are created.">
       <link rel="icon" href="../favicon.ico">
       <link rel="stylesheet" href="../public/docfx.min.css">
       <link rel="stylesheet" href="../public/main.css">
@@ -84,26 +84,28 @@
           <nav id="breadcrumb"></nav>
         </div>
 
-        <article data-uid="AshesOfVelsingrad.systems.items.PartyInventory">
+        <article data-uid="AshesOfVelsingrad.Systems.ItemCatalogSeeder">
 
 
 
-  <h1 id="AshesOfVelsingrad_systems_items_PartyInventory" data-uid="AshesOfVelsingrad.systems.items.PartyInventory" class="text-break">
-Class PartyInventory  
+  <h1 id="AshesOfVelsingrad_Systems_ItemCatalogSeeder" data-uid="AshesOfVelsingrad.Systems.ItemCatalogSeeder" class="text-break">
+Class ItemCatalogSeeder  
   </h1>
 
   <div class="facts text-secondary">
-    <dl><dt>Namespace</dt><dd><a class="xref" href="AshesOfVelsingrad.html">AshesOfVelsingrad</a>.<a class="xref" href="AshesOfVelsingrad.systems.html">systems</a>.<a class="xref" href="AshesOfVelsingrad.systems.items.html">items</a></dd></dl>
+    <dl><dt>Namespace</dt><dd><a class="xref" href="AshesOfVelsingrad.html">AshesOfVelsingrad</a>.<a class="xref" href="AshesOfVelsingrad.Systems.html">Systems</a></dd></dl>
   <dl><dt>Assembly</dt><dd>AshesofVelsingrad.dll</dd></dl>
   </div>
 
-  <div class="markdown summary"><p>Shared bag of items available to the player party during combat and exploration.</p>
+  <div class="markdown summary"><p>Autoload that registers every concrete <a class="xref" href="AshesOfVelsingrad.Systems.ItemSystem.html">ItemSystem</a> into
+<a class="xref" href="AshesOfVelsingrad.Systems.ItemCatalog.html">ItemCatalog</a> at game start.
+Add new items here as they are created.</p>
 </div>
   <div class="markdown conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[ScriptPath(&quot;res://scripts/systems/items/PartyInventory.cs&quot;)]
-public sealed class PartyInventory : Node, IDisposable</code></pre>
+    <pre><code class="lang-csharp hljs">[ScriptPath(&quot;res://scripts/systems/inventory_system/ItemCatalogSeeder.cs&quot;)]
+public sealed class ItemCatalogSeeder : Node, IDisposable</code></pre>
   </div>
 
 
@@ -115,7 +117,7 @@ public sealed class PartyInventory : Node, IDisposable</code></pre>
       <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
       <div><span class="xref">GodotObject</span></div>
       <div><span class="xref">Node</span></div>
-      <div><span class="xref">PartyInventory</span></div>
+      <div><span class="xref">ItemCatalogSeeder</span></div>
     </dd>
   </dl>
 
@@ -294,6 +296,9 @@ public sealed class PartyInventory : Node, IDisposable</code></pre>
     </div>
     <div>
       <span class="xref">Node._EnterTree()</span>
+    </div>
+    <div>
+      <span class="xref">Node._ExitTree()</span>
     </div>
     <div>
       <span class="xref">Node._GetAccessibilityConfigurationWarnings()</span>
@@ -936,320 +941,17 @@ public sealed class PartyInventory : Node, IDisposable</code></pre>
 
 
 
-  <h2 id="AshesOfVelsingrad_systems_items_PartyInventory_remarks">Remarks</h2>
-  <div class="markdown level0 remarks"><p>
-    The inventory is a dictionary of <code>itemId → count</code>. Adding a stackable
-    item increments the count; consuming decrements and removes it when zero.
-</p>
-<p>
-    The class is a Godot <span class="xref">Godot.Node</span> so it can be registered as an AutoLoad
-    singleton (one inventory per save). Use <a class="xref" href="AshesOfVelsingrad.systems.items.PartyInventory.html#AshesOfVelsingrad_systems_items_PartyInventory_Instance">Instance</a> to access it
-    from any combat or HUD code.
-</p>
-<p>
-    All write operations emit <a class="xref" href="AshesOfVelsingrad.systems.items.PartyInventory.html#AshesOfVelsingrad_systems_items_PartyInventory_InventoryChanged">InventoryChanged</a> for the HUD to react.
-</p>
-</div>
-
-
-  <h2 class="section" id="properties">Properties
-</h2>
-
-
-  <a id="AshesOfVelsingrad_systems_items_PartyInventory_Instance_" data-uid="AshesOfVelsingrad.systems.items.PartyInventory.Instance*"></a>
-
-  <h3 id="AshesOfVelsingrad_systems_items_PartyInventory_Instance" data-uid="AshesOfVelsingrad.systems.items.PartyInventory.Instance">
-  Instance
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/systems/items/PartyInventory.cs/#L31"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Active singleton instance.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static PartyInventory? Instance { get; }</code></pre>
-  </div>
-
-
-
-
-
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="AshesOfVelsingrad.systems.items.PartyInventory.html">PartyInventory</a></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-  <a id="AshesOfVelsingrad_systems_items_PartyInventory_Items_" data-uid="AshesOfVelsingrad.systems.items.PartyInventory.Items*"></a>
-
-  <h3 id="AshesOfVelsingrad_systems_items_PartyInventory_Items" data-uid="AshesOfVelsingrad.systems.items.PartyInventory.Items">
-  Items
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/systems/items/PartyInventory.cs/#L49"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Read-only view of the current contents.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public IReadOnlyDictionary&lt;string, int&gt; Items { get; }</code></pre>
-  </div>
-
-
-
-
-
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlydictionary-2">IReadOnlyDictionary</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>&gt;</dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
 
 
   <h2 class="section" id="methods">Methods
 </h2>
 
 
-  <a id="AshesOfVelsingrad_systems_items_PartyInventory_Add_" data-uid="AshesOfVelsingrad.systems.items.PartyInventory.Add*"></a>
+  <a id="AshesOfVelsingrad_Systems_ItemCatalogSeeder__Ready_" data-uid="AshesOfVelsingrad.Systems.ItemCatalogSeeder._Ready*"></a>
 
-  <h3 id="AshesOfVelsingrad_systems_items_PartyInventory_Add_System_String_System_Int32_" data-uid="AshesOfVelsingrad.systems.items.PartyInventory.Add(System.String,System.Int32)">
-  Add(string, int)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/systems/items/PartyInventory.cs/#L83"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Add <code class="paramref">count</code> copies of <code class="paramref">itemId</code> to the bag.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public void Add(string itemId, int count = 1)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>itemId</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd><p>The item id (must be registered).</p>
-</dd>
-    <dt><code>count</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
-    <dd><p>Number of copies to add (must be &gt; 0).</p>
-</dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-
-
-  <a id="AshesOfVelsingrad_systems_items_PartyInventory_Clear_" data-uid="AshesOfVelsingrad.systems.items.PartyInventory.Clear*"></a>
-
-  <h3 id="AshesOfVelsingrad_systems_items_PartyInventory_Clear" data-uid="AshesOfVelsingrad.systems.items.PartyInventory.Clear">
-  Clear()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/systems/items/PartyInventory.cs/#L168"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Empty the bag. Useful for new-game flows or test setup.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public void Clear()</code></pre>
-  </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-  <a id="AshesOfVelsingrad_systems_items_PartyInventory_CountOf_" data-uid="AshesOfVelsingrad.systems.items.PartyInventory.CountOf*"></a>
-
-  <h3 id="AshesOfVelsingrad_systems_items_PartyInventory_CountOf_System_String_" data-uid="AshesOfVelsingrad.systems.items.PartyInventory.CountOf(System.String)">
-  CountOf(string)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/systems/items/PartyInventory.cs/#L118"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>How many of <code class="paramref">itemId</code> are currently held.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public int CountOf(string itemId)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>itemId</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd><p>The item id.</p>
-</dd>
-  </dl>
-
-  <h4 class="section">Returns</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
-    <dd><p>Count, or 0 if absent.</p>
-</dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-
-  <a id="AshesOfVelsingrad_systems_items_PartyInventory_Remove_" data-uid="AshesOfVelsingrad.systems.items.PartyInventory.Remove*"></a>
-
-  <h3 id="AshesOfVelsingrad_systems_items_PartyInventory_Remove_System_String_System_Int32_" data-uid="AshesOfVelsingrad.systems.items.PartyInventory.Remove(System.String,System.Int32)">
-  Remove(string, int)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/systems/items/PartyInventory.cs/#L97"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Remove up to <code class="paramref">count</code> copies of <code class="paramref">itemId</code> from the bag.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public int Remove(string itemId, int count = 1)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>itemId</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd><p>The item id.</p>
-</dd>
-    <dt><code>count</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
-    <dd><p>Number of copies to remove.</p>
-</dd>
-  </dl>
-
-  <h4 class="section">Returns</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
-    <dd><p>Actual number removed (0 if absent).</p>
-</dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-
-  <a id="AshesOfVelsingrad_systems_items_PartyInventory_Use_" data-uid="AshesOfVelsingrad.systems.items.PartyInventory.Use*"></a>
-
-  <h3 id="AshesOfVelsingrad_systems_items_PartyInventory_Use_AshesOfVelsingrad_Systems_UnitSystem_System_String_System_Collections_Generic_IReadOnlyList_AshesOfVelsingrad_Systems_UnitSystem__" data-uid="AshesOfVelsingrad.systems.items.PartyInventory.Use(AshesOfVelsingrad.Systems.UnitSystem,System.String,System.Collections.Generic.IReadOnlyList{AshesOfVelsingrad.Systems.UnitSystem})">
-  Use(UnitSystem, string, IReadOnlyList&lt;UnitSystem&gt;)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/systems/items/PartyInventory.cs/#L134"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Use an item from the bag.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public bool Use(UnitSystem user, string itemId, IReadOnlyList&lt;UnitSystem&gt; targets)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>user</code> <a class="xref" href="AshesOfVelsingrad.Systems.UnitSystem.html">UnitSystem</a></dt>
-    <dd><p>The unit using the item.</p>
-</dd>
-    <dt><code>itemId</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd><p>The item id.</p>
-</dd>
-    <dt><code>targets</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1">IReadOnlyList</a>&lt;<a class="xref" href="AshesOfVelsingrad.Systems.UnitSystem.html">UnitSystem</a>&gt;</dt>
-    <dd><p>The targets the item should affect.</p>
-</dd>
-  </dl>
-
-  <h4 class="section">Returns</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
-    <dd><p><code>true</code> if the use succeeded; <code>false</code> if the item is missing or invalid.</p>
-</dd>
-  </dl>
-
-
-
-
-
-
-
-  <h4 class="section" id="AshesOfVelsingrad_systems_items_PartyInventory_Use_AshesOfVelsingrad_Systems_UnitSystem_System_String_System_Collections_Generic_IReadOnlyList_AshesOfVelsingrad_Systems_UnitSystem___remarks">Remarks</h4>
-  <div class="markdown level1 remarks"><p>Decrements the item count, applies the behaviour, and publishes
-<a class="xref" href="AshesOfVelsingrad.systems.battle.BattleEvents.ItemUsed.html">BattleEvents.ItemUsed</a> on success.</p>
-</div>
-
-
-
-
-  <a id="AshesOfVelsingrad_systems_items_PartyInventory__ExitTree_" data-uid="AshesOfVelsingrad.systems.items.PartyInventory._ExitTree*"></a>
-
-  <h3 id="AshesOfVelsingrad_systems_items_PartyInventory__ExitTree" data-uid="AshesOfVelsingrad.systems.items.PartyInventory._ExitTree">
-  _ExitTree()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/systems/items/PartyInventory.cs/#L68"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Called when the node is about to leave the <span class="xref">Godot.SceneTree</span> (e.g. upon freeing, scene changing, or after calling <span class="xref">Godot.Node.RemoveChild(Godot.Node)</span> in a script). If the node has children, its <span class="xref">Godot.Node._ExitTree()</span> callback will be called last, after all its children have left the tree.</p>
-<p>Corresponds to the <span class="xref">Godot.Node.NotificationExitTree</span> notification in <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">_Notification(int)</a> and signal <span class="xref">Godot.Node.TreeExiting</span>. To get notified when the node has already left the active tree, connect to the <span class="xref">Godot.Node.TreeExited</span>.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public override void _ExitTree()</code></pre>
-  </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-  <a id="AshesOfVelsingrad_systems_items_PartyInventory__Ready_" data-uid="AshesOfVelsingrad.systems.items.PartyInventory._Ready*"></a>
-
-  <h3 id="AshesOfVelsingrad_systems_items_PartyInventory__Ready" data-uid="AshesOfVelsingrad.systems.items.PartyInventory._Ready">
+  <h3 id="AshesOfVelsingrad_Systems_ItemCatalogSeeder__Ready" data-uid="AshesOfVelsingrad.Systems.ItemCatalogSeeder._Ready">
   _Ready()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/systems/items/PartyInventory.cs/#L56"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/systems/inventory_system/ItemCatalogSeeder.cs/#L13"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Called when the node is "ready", i.e. when both the node and its children have entered the scene tree. If the node has children, their <span class="xref">Godot.Node._Ready()</span> callbacks get triggered first, and the parent node will receive the ready notification afterwards.</p>
@@ -1268,41 +970,6 @@ public sealed class PartyInventory : Node, IDisposable</code></pre>
 
 
 
-
-
-
-
-
-
-
-  <h2 class="section" id="events">Events
-</h2>
-
-
-
-  <h3 id="AshesOfVelsingrad_systems_items_PartyInventory_InventoryChanged" data-uid="AshesOfVelsingrad.systems.items.PartyInventory.InventoryChanged">
-  InventoryChanged
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/systems/items/PartyInventory.cs/#L40"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Fired whenever the contents change (add, remove, use, clear).</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public event Action? InventoryChanged</code></pre>
-  </div>
-
-
-
-
-
-
-  <h4 class="section">Event Type</h4>
-  <dl class="parameters">
-    <dt><span class="xref">Action</span></dt>
-    <dd></dd>
-  </dl>
 
 
 

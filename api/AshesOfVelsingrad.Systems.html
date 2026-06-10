@@ -122,11 +122,21 @@ Provides default implementations for applying, removing, and querying effects.</
     </dl>
     <dl class="jumplist">
       <dt><a class="xref" href="AshesOfVelsingrad.Systems.InventorySystem.html">InventorySystem</a></dt>
-      <dd></dd>
+      <dd><p>Basic inventory implementation: fixed-size array of slots, each with an item ID and quantity.
+Does not handle item stacking logic internally — that is the caller's responsibility (e.g. InventoryUI).
+Does not handle item use logic internally — that is the caller's responsibility (e.g. InventoryUI or BattleSystem).</p>
+</dd>
     </dl>
     <dl class="jumplist">
       <dt><a class="xref" href="AshesOfVelsingrad.Systems.ItemCatalog.html">ItemCatalog</a></dt>
       <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="AshesOfVelsingrad.Systems.ItemCatalogSeeder.html">ItemCatalogSeeder</a></dt>
+      <dd><p>Autoload that registers every concrete <a class="xref" href="AshesOfVelsingrad.Systems.ItemSystem.html">ItemSystem</a> into
+<a class="xref" href="AshesOfVelsingrad.Systems.ItemCatalog.html">ItemCatalog</a> at game start.
+Add new items here as they are created.</p>
+</dd>
     </dl>
     <dl class="jumplist">
       <dt><a class="xref" href="AshesOfVelsingrad.Systems.ItemSystem.html">ItemSystem</a></dt>

@@ -13610,19 +13610,6 @@ references:
   commentId: T:AshesOfVelsingrad.IntegrationTests.Player.MockExplorationInventoryUI
   fullName: AshesOfVelsingrad.IntegrationTests.Player.MockExplorationInventoryUI
   nameWithType: MockExplorationInventoryUI
-- uid: AshesOfVelsingrad.IntegrationTests.Player.MockExplorationInventoryUI.EnsureBuilt
-  name: EnsureBuilt()
-  href: api/AshesOfVelsingrad.IntegrationTests.Player.MockExplorationInventoryUI.html#AshesOfVelsingrad_IntegrationTests_Player_MockExplorationInventoryUI_EnsureBuilt
-  commentId: M:AshesOfVelsingrad.IntegrationTests.Player.MockExplorationInventoryUI.EnsureBuilt
-  fullName: AshesOfVelsingrad.IntegrationTests.Player.MockExplorationInventoryUI.EnsureBuilt()
-  nameWithType: MockExplorationInventoryUI.EnsureBuilt()
-- uid: AshesOfVelsingrad.IntegrationTests.Player.MockExplorationInventoryUI.EnsureBuilt*
-  name: EnsureBuilt
-  href: api/AshesOfVelsingrad.IntegrationTests.Player.MockExplorationInventoryUI.html#AshesOfVelsingrad_IntegrationTests_Player_MockExplorationInventoryUI_EnsureBuilt_
-  commentId: Overload:AshesOfVelsingrad.IntegrationTests.Player.MockExplorationInventoryUI.EnsureBuilt
-  isSpec: "True"
-  fullName: AshesOfVelsingrad.IntegrationTests.Player.MockExplorationInventoryUI.EnsureBuilt
-  nameWithType: MockExplorationInventoryUI.EnsureBuilt
 - uid: AshesOfVelsingrad.IntegrationTests.Player.MockExplorationInventoryUI.EnsureBuiltCalled
   name: EnsureBuiltCalled
   href: api/AshesOfVelsingrad.IntegrationTests.Player.MockExplorationInventoryUI.html#AshesOfVelsingrad_IntegrationTests_Player_MockExplorationInventoryUI_EnsureBuiltCalled
@@ -20813,6 +20800,22 @@ references:
   isSpec: "True"
   fullName: AshesOfVelsingrad.Systems.IUnitSystem.RemoveEffect
   nameWithType: IUnitSystem.RemoveEffect
+- uid: AshesOfVelsingrad.Systems.IUnitSystem.RestoreMana(System.Single)
+  name: RestoreMana(float)
+  href: api/AshesOfVelsingrad.Systems.IUnitSystem.html#AshesOfVelsingrad_Systems_IUnitSystem_RestoreMana_System_Single_
+  commentId: M:AshesOfVelsingrad.Systems.IUnitSystem.RestoreMana(System.Single)
+  name.vb: RestoreMana(Single)
+  fullName: AshesOfVelsingrad.Systems.IUnitSystem.RestoreMana(float)
+  fullName.vb: AshesOfVelsingrad.Systems.IUnitSystem.RestoreMana(Single)
+  nameWithType: IUnitSystem.RestoreMana(float)
+  nameWithType.vb: IUnitSystem.RestoreMana(Single)
+- uid: AshesOfVelsingrad.Systems.IUnitSystem.RestoreMana*
+  name: RestoreMana
+  href: api/AshesOfVelsingrad.Systems.IUnitSystem.html#AshesOfVelsingrad_Systems_IUnitSystem_RestoreMana_
+  commentId: Overload:AshesOfVelsingrad.Systems.IUnitSystem.RestoreMana
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.Systems.IUnitSystem.RestoreMana
+  nameWithType: IUnitSystem.RestoreMana
 - uid: AshesOfVelsingrad.Systems.IUnitSystem.SetEntityProfile(AshesOfVelsingrad.Data.EntityProfile)
   name: SetEntityProfile(EntityProfile?)
   href: api/AshesOfVelsingrad.Systems.IUnitSystem.html#AshesOfVelsingrad_Systems_IUnitSystem_SetEntityProfile_AshesOfVelsingrad_Data_EntityProfile_
@@ -21262,6 +21265,25 @@ references:
   isSpec: "True"
   fullName: AshesOfVelsingrad.Systems.ItemCatalog.TryGet
   nameWithType: ItemCatalog.TryGet
+- uid: AshesOfVelsingrad.Systems.ItemCatalogSeeder
+  name: ItemCatalogSeeder
+  href: api/AshesOfVelsingrad.Systems.ItemCatalogSeeder.html
+  commentId: T:AshesOfVelsingrad.Systems.ItemCatalogSeeder
+  fullName: AshesOfVelsingrad.Systems.ItemCatalogSeeder
+  nameWithType: ItemCatalogSeeder
+- uid: AshesOfVelsingrad.Systems.ItemCatalogSeeder._Ready
+  name: _Ready()
+  href: api/AshesOfVelsingrad.Systems.ItemCatalogSeeder.html#AshesOfVelsingrad_Systems_ItemCatalogSeeder__Ready
+  commentId: M:AshesOfVelsingrad.Systems.ItemCatalogSeeder._Ready
+  fullName: AshesOfVelsingrad.Systems.ItemCatalogSeeder._Ready()
+  nameWithType: ItemCatalogSeeder._Ready()
+- uid: AshesOfVelsingrad.Systems.ItemCatalogSeeder._Ready*
+  name: _Ready
+  href: api/AshesOfVelsingrad.Systems.ItemCatalogSeeder.html#AshesOfVelsingrad_Systems_ItemCatalogSeeder__Ready_
+  commentId: Overload:AshesOfVelsingrad.Systems.ItemCatalogSeeder._Ready
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.Systems.ItemCatalogSeeder._Ready
+  nameWithType: ItemCatalogSeeder._Ready
 - uid: AshesOfVelsingrad.Systems.ItemCategory
   name: ItemCategory
   href: api/AshesOfVelsingrad.Systems.ItemCategory.html
@@ -24400,67 +24422,6 @@ references:
   commentId: N:AshesOfVelsingrad.UI.Inventory
   fullName: AshesOfVelsingrad.UI.Inventory
   nameWithType: AshesOfVelsingrad.UI.Inventory
-- uid: AshesOfVelsingrad.UI.Inventory.BattleInventorySlotUI
-  name: BattleInventorySlotUI
-  href: api/AshesOfVelsingrad.UI.Inventory.BattleInventorySlotUI.html
-  commentId: T:AshesOfVelsingrad.UI.Inventory.BattleInventorySlotUI
-  fullName: AshesOfVelsingrad.UI.Inventory.BattleInventorySlotUI
-  nameWithType: BattleInventorySlotUI
-- uid: AshesOfVelsingrad.UI.Inventory.BattleInventorySlotUI.EnsureBuilt
-  name: EnsureBuilt()
-  href: api/AshesOfVelsingrad.UI.Inventory.BattleInventorySlotUI.html#AshesOfVelsingrad_UI_Inventory_BattleInventorySlotUI_EnsureBuilt
-  commentId: M:AshesOfVelsingrad.UI.Inventory.BattleInventorySlotUI.EnsureBuilt
-  fullName: AshesOfVelsingrad.UI.Inventory.BattleInventorySlotUI.EnsureBuilt()
-  nameWithType: BattleInventorySlotUI.EnsureBuilt()
-- uid: AshesOfVelsingrad.UI.Inventory.BattleInventorySlotUI.EnsureBuilt*
-  name: EnsureBuilt
-  href: api/AshesOfVelsingrad.UI.Inventory.BattleInventorySlotUI.html#AshesOfVelsingrad_UI_Inventory_BattleInventorySlotUI_EnsureBuilt_
-  commentId: Overload:AshesOfVelsingrad.UI.Inventory.BattleInventorySlotUI.EnsureBuilt
-  isSpec: "True"
-  fullName: AshesOfVelsingrad.UI.Inventory.BattleInventorySlotUI.EnsureBuilt
-  nameWithType: BattleInventorySlotUI.EnsureBuilt
-- uid: AshesOfVelsingrad.UI.Inventory.BattleInventorySlotUI.Refresh(AshesOfVelsingrad.Systems.IInventorySlot)
-  name: Refresh(IInventorySlot)
-  href: api/AshesOfVelsingrad.UI.Inventory.BattleInventorySlotUI.html#AshesOfVelsingrad_UI_Inventory_BattleInventorySlotUI_Refresh_AshesOfVelsingrad_Systems_IInventorySlot_
-  commentId: M:AshesOfVelsingrad.UI.Inventory.BattleInventorySlotUI.Refresh(AshesOfVelsingrad.Systems.IInventorySlot)
-  fullName: AshesOfVelsingrad.UI.Inventory.BattleInventorySlotUI.Refresh(AshesOfVelsingrad.Systems.IInventorySlot)
-  nameWithType: BattleInventorySlotUI.Refresh(IInventorySlot)
-- uid: AshesOfVelsingrad.UI.Inventory.BattleInventorySlotUI.Refresh*
-  name: Refresh
-  href: api/AshesOfVelsingrad.UI.Inventory.BattleInventorySlotUI.html#AshesOfVelsingrad_UI_Inventory_BattleInventorySlotUI_Refresh_
-  commentId: Overload:AshesOfVelsingrad.UI.Inventory.BattleInventorySlotUI.Refresh
-  isSpec: "True"
-  fullName: AshesOfVelsingrad.UI.Inventory.BattleInventorySlotUI.Refresh
-  nameWithType: BattleInventorySlotUI.Refresh
-- uid: AshesOfVelsingrad.UI.Inventory.BattleInventorySlotUI.Setup(System.Int32,AshesOfVelsingrad.UI.Inventory.BattleInventoryUI)
-  name: Setup(int, BattleInventoryUI)
-  href: api/AshesOfVelsingrad.UI.Inventory.BattleInventorySlotUI.html#AshesOfVelsingrad_UI_Inventory_BattleInventorySlotUI_Setup_System_Int32_AshesOfVelsingrad_UI_Inventory_BattleInventoryUI_
-  commentId: M:AshesOfVelsingrad.UI.Inventory.BattleInventorySlotUI.Setup(System.Int32,AshesOfVelsingrad.UI.Inventory.BattleInventoryUI)
-  name.vb: Setup(Integer, BattleInventoryUI)
-  fullName: AshesOfVelsingrad.UI.Inventory.BattleInventorySlotUI.Setup(int, AshesOfVelsingrad.UI.Inventory.BattleInventoryUI)
-  fullName.vb: AshesOfVelsingrad.UI.Inventory.BattleInventorySlotUI.Setup(Integer, AshesOfVelsingrad.UI.Inventory.BattleInventoryUI)
-  nameWithType: BattleInventorySlotUI.Setup(int, BattleInventoryUI)
-  nameWithType.vb: BattleInventorySlotUI.Setup(Integer, BattleInventoryUI)
-- uid: AshesOfVelsingrad.UI.Inventory.BattleInventorySlotUI.Setup*
-  name: Setup
-  href: api/AshesOfVelsingrad.UI.Inventory.BattleInventorySlotUI.html#AshesOfVelsingrad_UI_Inventory_BattleInventorySlotUI_Setup_
-  commentId: Overload:AshesOfVelsingrad.UI.Inventory.BattleInventorySlotUI.Setup
-  isSpec: "True"
-  fullName: AshesOfVelsingrad.UI.Inventory.BattleInventorySlotUI.Setup
-  nameWithType: BattleInventorySlotUI.Setup
-- uid: AshesOfVelsingrad.UI.Inventory.BattleInventorySlotUI._Ready
-  name: _Ready()
-  href: api/AshesOfVelsingrad.UI.Inventory.BattleInventorySlotUI.html#AshesOfVelsingrad_UI_Inventory_BattleInventorySlotUI__Ready
-  commentId: M:AshesOfVelsingrad.UI.Inventory.BattleInventorySlotUI._Ready
-  fullName: AshesOfVelsingrad.UI.Inventory.BattleInventorySlotUI._Ready()
-  nameWithType: BattleInventorySlotUI._Ready()
-- uid: AshesOfVelsingrad.UI.Inventory.BattleInventorySlotUI._Ready*
-  name: _Ready
-  href: api/AshesOfVelsingrad.UI.Inventory.BattleInventorySlotUI.html#AshesOfVelsingrad_UI_Inventory_BattleInventorySlotUI__Ready_
-  commentId: Overload:AshesOfVelsingrad.UI.Inventory.BattleInventorySlotUI._Ready
-  isSpec: "True"
-  fullName: AshesOfVelsingrad.UI.Inventory.BattleInventorySlotUI._Ready
-  nameWithType: BattleInventorySlotUI._Ready
 - uid: AshesOfVelsingrad.UI.Inventory.BattleInventoryUI
   name: BattleInventoryUI
   href: api/AshesOfVelsingrad.UI.Inventory.BattleInventoryUI.html
@@ -24480,19 +24441,6 @@ references:
   isSpec: "True"
   fullName: AshesOfVelsingrad.UI.Inventory.BattleInventoryUI.BindInventory
   nameWithType: BattleInventoryUI.BindInventory
-- uid: AshesOfVelsingrad.UI.Inventory.BattleInventoryUI.EnsureBuilt
-  name: EnsureBuilt()
-  href: api/AshesOfVelsingrad.UI.Inventory.BattleInventoryUI.html#AshesOfVelsingrad_UI_Inventory_BattleInventoryUI_EnsureBuilt
-  commentId: M:AshesOfVelsingrad.UI.Inventory.BattleInventoryUI.EnsureBuilt
-  fullName: AshesOfVelsingrad.UI.Inventory.BattleInventoryUI.EnsureBuilt()
-  nameWithType: BattleInventoryUI.EnsureBuilt()
-- uid: AshesOfVelsingrad.UI.Inventory.BattleInventoryUI.EnsureBuilt*
-  name: EnsureBuilt
-  href: api/AshesOfVelsingrad.UI.Inventory.BattleInventoryUI.html#AshesOfVelsingrad_UI_Inventory_BattleInventoryUI_EnsureBuilt_
-  commentId: Overload:AshesOfVelsingrad.UI.Inventory.BattleInventoryUI.EnsureBuilt
-  isSpec: "True"
-  fullName: AshesOfVelsingrad.UI.Inventory.BattleInventoryUI.EnsureBuilt
-  nameWithType: BattleInventoryUI.EnsureBuilt
 - uid: AshesOfVelsingrad.UI.Inventory.BattleInventoryUI.NotifyUseItemPressed(System.Int32)
   name: NotifyUseItemPressed(int)
   href: api/AshesOfVelsingrad.UI.Inventory.BattleInventoryUI.html#AshesOfVelsingrad_UI_Inventory_BattleInventoryUI_NotifyUseItemPressed_System_Int32_
@@ -24548,25 +24496,60 @@ references:
   isSpec: "True"
   fullName: AshesOfVelsingrad.UI.Inventory.BattleInventoryUI._Ready
   nameWithType: BattleInventoryUI._Ready
+- uid: AshesOfVelsingrad.UI.Inventory.BattleSlotUI
+  name: BattleSlotUI
+  href: api/AshesOfVelsingrad.UI.Inventory.BattleSlotUI.html
+  commentId: T:AshesOfVelsingrad.UI.Inventory.BattleSlotUI
+  fullName: AshesOfVelsingrad.UI.Inventory.BattleSlotUI
+  nameWithType: BattleSlotUI
+- uid: AshesOfVelsingrad.UI.Inventory.BattleSlotUI.Refresh(AshesOfVelsingrad.Systems.IInventorySlot)
+  name: Refresh(IInventorySlot)
+  href: api/AshesOfVelsingrad.UI.Inventory.BattleSlotUI.html#AshesOfVelsingrad_UI_Inventory_BattleSlotUI_Refresh_AshesOfVelsingrad_Systems_IInventorySlot_
+  commentId: M:AshesOfVelsingrad.UI.Inventory.BattleSlotUI.Refresh(AshesOfVelsingrad.Systems.IInventorySlot)
+  fullName: AshesOfVelsingrad.UI.Inventory.BattleSlotUI.Refresh(AshesOfVelsingrad.Systems.IInventorySlot)
+  nameWithType: BattleSlotUI.Refresh(IInventorySlot)
+- uid: AshesOfVelsingrad.UI.Inventory.BattleSlotUI.Refresh*
+  name: Refresh
+  href: api/AshesOfVelsingrad.UI.Inventory.BattleSlotUI.html#AshesOfVelsingrad_UI_Inventory_BattleSlotUI_Refresh_
+  commentId: Overload:AshesOfVelsingrad.UI.Inventory.BattleSlotUI.Refresh
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.UI.Inventory.BattleSlotUI.Refresh
+  nameWithType: BattleSlotUI.Refresh
+- uid: AshesOfVelsingrad.UI.Inventory.BattleSlotUI.Setup(System.Int32,AshesOfVelsingrad.UI.Inventory.BattleInventoryUI)
+  name: Setup(int, BattleInventoryUI)
+  href: api/AshesOfVelsingrad.UI.Inventory.BattleSlotUI.html#AshesOfVelsingrad_UI_Inventory_BattleSlotUI_Setup_System_Int32_AshesOfVelsingrad_UI_Inventory_BattleInventoryUI_
+  commentId: M:AshesOfVelsingrad.UI.Inventory.BattleSlotUI.Setup(System.Int32,AshesOfVelsingrad.UI.Inventory.BattleInventoryUI)
+  name.vb: Setup(Integer, BattleInventoryUI)
+  fullName: AshesOfVelsingrad.UI.Inventory.BattleSlotUI.Setup(int, AshesOfVelsingrad.UI.Inventory.BattleInventoryUI)
+  fullName.vb: AshesOfVelsingrad.UI.Inventory.BattleSlotUI.Setup(Integer, AshesOfVelsingrad.UI.Inventory.BattleInventoryUI)
+  nameWithType: BattleSlotUI.Setup(int, BattleInventoryUI)
+  nameWithType.vb: BattleSlotUI.Setup(Integer, BattleInventoryUI)
+- uid: AshesOfVelsingrad.UI.Inventory.BattleSlotUI.Setup*
+  name: Setup
+  href: api/AshesOfVelsingrad.UI.Inventory.BattleSlotUI.html#AshesOfVelsingrad_UI_Inventory_BattleSlotUI_Setup_
+  commentId: Overload:AshesOfVelsingrad.UI.Inventory.BattleSlotUI.Setup
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.UI.Inventory.BattleSlotUI.Setup
+  nameWithType: BattleSlotUI.Setup
+- uid: AshesOfVelsingrad.UI.Inventory.BattleSlotUI._Ready
+  name: _Ready()
+  href: api/AshesOfVelsingrad.UI.Inventory.BattleSlotUI.html#AshesOfVelsingrad_UI_Inventory_BattleSlotUI__Ready
+  commentId: M:AshesOfVelsingrad.UI.Inventory.BattleSlotUI._Ready
+  fullName: AshesOfVelsingrad.UI.Inventory.BattleSlotUI._Ready()
+  nameWithType: BattleSlotUI._Ready()
+- uid: AshesOfVelsingrad.UI.Inventory.BattleSlotUI._Ready*
+  name: _Ready
+  href: api/AshesOfVelsingrad.UI.Inventory.BattleSlotUI.html#AshesOfVelsingrad_UI_Inventory_BattleSlotUI__Ready_
+  commentId: Overload:AshesOfVelsingrad.UI.Inventory.BattleSlotUI._Ready
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.UI.Inventory.BattleSlotUI._Ready
+  nameWithType: BattleSlotUI._Ready
 - uid: AshesOfVelsingrad.UI.Inventory.ExplorationInventoryUI
   name: ExplorationInventoryUI
   href: api/AshesOfVelsingrad.UI.Inventory.ExplorationInventoryUI.html
   commentId: T:AshesOfVelsingrad.UI.Inventory.ExplorationInventoryUI
   fullName: AshesOfVelsingrad.UI.Inventory.ExplorationInventoryUI
   nameWithType: ExplorationInventoryUI
-- uid: AshesOfVelsingrad.UI.Inventory.ExplorationInventoryUI.EnsureBuilt
-  name: EnsureBuilt()
-  href: api/AshesOfVelsingrad.UI.Inventory.ExplorationInventoryUI.html#AshesOfVelsingrad_UI_Inventory_ExplorationInventoryUI_EnsureBuilt
-  commentId: M:AshesOfVelsingrad.UI.Inventory.ExplorationInventoryUI.EnsureBuilt
-  fullName: AshesOfVelsingrad.UI.Inventory.ExplorationInventoryUI.EnsureBuilt()
-  nameWithType: ExplorationInventoryUI.EnsureBuilt()
-- uid: AshesOfVelsingrad.UI.Inventory.ExplorationInventoryUI.EnsureBuilt*
-  name: EnsureBuilt
-  href: api/AshesOfVelsingrad.UI.Inventory.ExplorationInventoryUI.html#AshesOfVelsingrad_UI_Inventory_ExplorationInventoryUI_EnsureBuilt_
-  commentId: Overload:AshesOfVelsingrad.UI.Inventory.ExplorationInventoryUI.EnsureBuilt
-  isSpec: "True"
-  fullName: AshesOfVelsingrad.UI.Inventory.ExplorationInventoryUI.EnsureBuilt
-  nameWithType: ExplorationInventoryUI.EnsureBuilt
 - uid: AshesOfVelsingrad.UI.Inventory.ExplorationInventoryUI.InventoryLayer
   name: InventoryLayer
   href: api/AshesOfVelsingrad.UI.Inventory.ExplorationInventoryUI.html#AshesOfVelsingrad_UI_Inventory_ExplorationInventoryUI_InventoryLayer
@@ -24644,19 +24627,6 @@ references:
   commentId: T:AshesOfVelsingrad.UI.Inventory.ExplorationSlotUI
   fullName: AshesOfVelsingrad.UI.Inventory.ExplorationSlotUI
   nameWithType: ExplorationSlotUI
-- uid: AshesOfVelsingrad.UI.Inventory.ExplorationSlotUI.EnsureBuilt
-  name: EnsureBuilt()
-  href: api/AshesOfVelsingrad.UI.Inventory.ExplorationSlotUI.html#AshesOfVelsingrad_UI_Inventory_ExplorationSlotUI_EnsureBuilt
-  commentId: M:AshesOfVelsingrad.UI.Inventory.ExplorationSlotUI.EnsureBuilt
-  fullName: AshesOfVelsingrad.UI.Inventory.ExplorationSlotUI.EnsureBuilt()
-  nameWithType: ExplorationSlotUI.EnsureBuilt()
-- uid: AshesOfVelsingrad.UI.Inventory.ExplorationSlotUI.EnsureBuilt*
-  name: EnsureBuilt
-  href: api/AshesOfVelsingrad.UI.Inventory.ExplorationSlotUI.html#AshesOfVelsingrad_UI_Inventory_ExplorationSlotUI_EnsureBuilt_
-  commentId: Overload:AshesOfVelsingrad.UI.Inventory.ExplorationSlotUI.EnsureBuilt
-  isSpec: "True"
-  fullName: AshesOfVelsingrad.UI.Inventory.ExplorationSlotUI.EnsureBuilt
-  nameWithType: ExplorationSlotUI.EnsureBuilt
 - uid: AshesOfVelsingrad.UI.Inventory.ExplorationSlotUI.Refresh(AshesOfVelsingrad.Systems.IInventorySlot)
   name: Refresh(IInventorySlot)
   href: api/AshesOfVelsingrad.UI.Inventory.ExplorationSlotUI.html#AshesOfVelsingrad_UI_Inventory_ExplorationSlotUI_Refresh_AshesOfVelsingrad_Systems_IInventorySlot_
@@ -24800,19 +24770,6 @@ references:
   commentId: T:AshesOfVelsingrad.UI.Inventory.UnitSlotUI
   fullName: AshesOfVelsingrad.UI.Inventory.UnitSlotUI
   nameWithType: UnitSlotUI
-- uid: AshesOfVelsingrad.UI.Inventory.UnitSlotUI.EnsureBuilt
-  name: EnsureBuilt()
-  href: api/AshesOfVelsingrad.UI.Inventory.UnitSlotUI.html#AshesOfVelsingrad_UI_Inventory_UnitSlotUI_EnsureBuilt
-  commentId: M:AshesOfVelsingrad.UI.Inventory.UnitSlotUI.EnsureBuilt
-  fullName: AshesOfVelsingrad.UI.Inventory.UnitSlotUI.EnsureBuilt()
-  nameWithType: UnitSlotUI.EnsureBuilt()
-- uid: AshesOfVelsingrad.UI.Inventory.UnitSlotUI.EnsureBuilt*
-  name: EnsureBuilt
-  href: api/AshesOfVelsingrad.UI.Inventory.UnitSlotUI.html#AshesOfVelsingrad_UI_Inventory_UnitSlotUI_EnsureBuilt_
-  commentId: Overload:AshesOfVelsingrad.UI.Inventory.UnitSlotUI.EnsureBuilt
-  isSpec: "True"
-  fullName: AshesOfVelsingrad.UI.Inventory.UnitSlotUI.EnsureBuilt
-  nameWithType: UnitSlotUI.EnsureBuilt
 - uid: AshesOfVelsingrad.UI.Inventory.UnitSlotUI.Refresh(AshesOfVelsingrad.Systems.IInventorySlot)
   name: Refresh(IInventorySlot)
   href: api/AshesOfVelsingrad.UI.Inventory.UnitSlotUI.html#AshesOfVelsingrad_UI_Inventory_UnitSlotUI_Refresh_AshesOfVelsingrad_Systems_IInventorySlot_
@@ -24942,19 +24899,6 @@ references:
   isSpec: "True"
   fullName: AshesOfVelsingrad.UI.Inventory.UnitTransferPanel.Bind
   nameWithType: UnitTransferPanel.Bind
-- uid: AshesOfVelsingrad.UI.Inventory.UnitTransferPanel.EnsureBuilt
-  name: EnsureBuilt()
-  href: api/AshesOfVelsingrad.UI.Inventory.UnitTransferPanel.html#AshesOfVelsingrad_UI_Inventory_UnitTransferPanel_EnsureBuilt
-  commentId: M:AshesOfVelsingrad.UI.Inventory.UnitTransferPanel.EnsureBuilt
-  fullName: AshesOfVelsingrad.UI.Inventory.UnitTransferPanel.EnsureBuilt()
-  nameWithType: UnitTransferPanel.EnsureBuilt()
-- uid: AshesOfVelsingrad.UI.Inventory.UnitTransferPanel.EnsureBuilt*
-  name: EnsureBuilt
-  href: api/AshesOfVelsingrad.UI.Inventory.UnitTransferPanel.html#AshesOfVelsingrad_UI_Inventory_UnitTransferPanel_EnsureBuilt_
-  commentId: Overload:AshesOfVelsingrad.UI.Inventory.UnitTransferPanel.EnsureBuilt
-  isSpec: "True"
-  fullName: AshesOfVelsingrad.UI.Inventory.UnitTransferPanel.EnsureBuilt
-  nameWithType: UnitTransferPanel.EnsureBuilt
 - uid: AshesOfVelsingrad.UI.Inventory.UnitTransferPanel._ExitTree
   name: _ExitTree()
   href: api/AshesOfVelsingrad.UI.Inventory.UnitTransferPanel.html#AshesOfVelsingrad_UI_Inventory_UnitTransferPanel__ExitTree
@@ -24968,19 +24912,6 @@ references:
   isSpec: "True"
   fullName: AshesOfVelsingrad.UI.Inventory.UnitTransferPanel._ExitTree
   nameWithType: UnitTransferPanel._ExitTree
-- uid: AshesOfVelsingrad.UI.Inventory.UnitTransferPanel._Ready
-  name: _Ready()
-  href: api/AshesOfVelsingrad.UI.Inventory.UnitTransferPanel.html#AshesOfVelsingrad_UI_Inventory_UnitTransferPanel__Ready
-  commentId: M:AshesOfVelsingrad.UI.Inventory.UnitTransferPanel._Ready
-  fullName: AshesOfVelsingrad.UI.Inventory.UnitTransferPanel._Ready()
-  nameWithType: UnitTransferPanel._Ready()
-- uid: AshesOfVelsingrad.UI.Inventory.UnitTransferPanel._Ready*
-  name: _Ready
-  href: api/AshesOfVelsingrad.UI.Inventory.UnitTransferPanel.html#AshesOfVelsingrad_UI_Inventory_UnitTransferPanel__Ready_
-  commentId: Overload:AshesOfVelsingrad.UI.Inventory.UnitTransferPanel._Ready
-  isSpec: "True"
-  fullName: AshesOfVelsingrad.UI.Inventory.UnitTransferPanel._Ready
-  nameWithType: UnitTransferPanel._Ready
 - uid: AshesOfVelsingrad.Utilities
   name: AshesOfVelsingrad.Utilities
   href: api/AshesOfVelsingrad.Utilities.html
@@ -25470,6 +25401,47 @@ references:
   commentId: N:AshesOfVelsingrad.items
   fullName: AshesOfVelsingrad.items
   nameWithType: AshesOfVelsingrad.items
+- uid: AshesOfVelsingrad.items.EtherItem
+  name: EtherItem
+  href: api/AshesOfVelsingrad.items.EtherItem.html
+  commentId: T:AshesOfVelsingrad.items.EtherItem
+  fullName: AshesOfVelsingrad.items.EtherItem
+  nameWithType: EtherItem
+- uid: AshesOfVelsingrad.items.EtherItem.#ctor
+  name: EtherItem()
+  href: api/AshesOfVelsingrad.items.EtherItem.html#AshesOfVelsingrad_items_EtherItem__ctor
+  commentId: M:AshesOfVelsingrad.items.EtherItem.#ctor
+  name.vb: New()
+  fullName: AshesOfVelsingrad.items.EtherItem.EtherItem()
+  fullName.vb: AshesOfVelsingrad.items.EtherItem.New()
+  nameWithType: EtherItem.EtherItem()
+  nameWithType.vb: EtherItem.New()
+- uid: AshesOfVelsingrad.items.EtherItem.#ctor*
+  name: EtherItem
+  href: api/AshesOfVelsingrad.items.EtherItem.html#AshesOfVelsingrad_items_EtherItem__ctor_
+  commentId: Overload:AshesOfVelsingrad.items.EtherItem.#ctor
+  isSpec: "True"
+  name.vb: New
+  fullName: AshesOfVelsingrad.items.EtherItem.EtherItem
+  fullName.vb: AshesOfVelsingrad.items.EtherItem.New
+  nameWithType: EtherItem.EtherItem
+  nameWithType.vb: EtherItem.New
+- uid: AshesOfVelsingrad.items.EtherItem.Use(AshesOfVelsingrad.Systems.IUnitSystem,AshesOfVelsingrad.Systems.IUnitSystem,AshesOfVelsingrad.Systems.IMapSystem)
+  name: Use(IUnitSystem, IUnitSystem?, IMapSystem?)
+  href: api/AshesOfVelsingrad.items.EtherItem.html#AshesOfVelsingrad_items_EtherItem_Use_AshesOfVelsingrad_Systems_IUnitSystem_AshesOfVelsingrad_Systems_IUnitSystem_AshesOfVelsingrad_Systems_IMapSystem_
+  commentId: M:AshesOfVelsingrad.items.EtherItem.Use(AshesOfVelsingrad.Systems.IUnitSystem,AshesOfVelsingrad.Systems.IUnitSystem,AshesOfVelsingrad.Systems.IMapSystem)
+  name.vb: Use(IUnitSystem, IUnitSystem, IMapSystem)
+  fullName: AshesOfVelsingrad.items.EtherItem.Use(AshesOfVelsingrad.Systems.IUnitSystem, AshesOfVelsingrad.Systems.IUnitSystem?, AshesOfVelsingrad.Systems.IMapSystem?)
+  fullName.vb: AshesOfVelsingrad.items.EtherItem.Use(AshesOfVelsingrad.Systems.IUnitSystem, AshesOfVelsingrad.Systems.IUnitSystem, AshesOfVelsingrad.Systems.IMapSystem)
+  nameWithType: EtherItem.Use(IUnitSystem, IUnitSystem?, IMapSystem?)
+  nameWithType.vb: EtherItem.Use(IUnitSystem, IUnitSystem, IMapSystem)
+- uid: AshesOfVelsingrad.items.EtherItem.Use*
+  name: Use
+  href: api/AshesOfVelsingrad.items.EtherItem.html#AshesOfVelsingrad_items_EtherItem_Use_
+  commentId: Overload:AshesOfVelsingrad.items.EtherItem.Use
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.items.EtherItem.Use
+  nameWithType: EtherItem.Use
 - uid: AshesOfVelsingrad.items.IronSwordItem
   name: IronSwordItem
   href: api/AshesOfVelsingrad.items.IronSwordItem.html
@@ -27760,636 +27732,6 @@ references:
   isSpec: "True"
   fullName: AshesOfVelsingrad.systems.battle.VictoryCondition.IsVictoryReached
   nameWithType: VictoryCondition.IsVictoryReached
-- uid: AshesOfVelsingrad.systems.items
-  name: AshesOfVelsingrad.systems.items
-  href: api/AshesOfVelsingrad.systems.items.html
-  commentId: N:AshesOfVelsingrad.systems.items
-  fullName: AshesOfVelsingrad.systems.items
-  nameWithType: AshesOfVelsingrad.systems.items
-- uid: AshesOfVelsingrad.systems.items.IItemBehaviour
-  name: IItemBehaviour
-  href: api/AshesOfVelsingrad.systems.items.IItemBehaviour.html
-  commentId: T:AshesOfVelsingrad.systems.items.IItemBehaviour
-  fullName: AshesOfVelsingrad.systems.items.IItemBehaviour
-  nameWithType: IItemBehaviour
-- uid: AshesOfVelsingrad.systems.items.IItemBehaviour.Apply(AshesOfVelsingrad.systems.items.ItemUseContext@)
-  name: Apply(in ItemUseContext)
-  href: api/AshesOfVelsingrad.systems.items.IItemBehaviour.html#AshesOfVelsingrad_systems_items_IItemBehaviour_Apply_AshesOfVelsingrad_systems_items_ItemUseContext__
-  commentId: M:AshesOfVelsingrad.systems.items.IItemBehaviour.Apply(AshesOfVelsingrad.systems.items.ItemUseContext@)
-  name.vb: Apply(ItemUseContext)
-  fullName: AshesOfVelsingrad.systems.items.IItemBehaviour.Apply(in AshesOfVelsingrad.systems.items.ItemUseContext)
-  fullName.vb: AshesOfVelsingrad.systems.items.IItemBehaviour.Apply(AshesOfVelsingrad.systems.items.ItemUseContext)
-  nameWithType: IItemBehaviour.Apply(in ItemUseContext)
-  nameWithType.vb: IItemBehaviour.Apply(ItemUseContext)
-- uid: AshesOfVelsingrad.systems.items.IItemBehaviour.Apply*
-  name: Apply
-  href: api/AshesOfVelsingrad.systems.items.IItemBehaviour.html#AshesOfVelsingrad_systems_items_IItemBehaviour_Apply_
-  commentId: Overload:AshesOfVelsingrad.systems.items.IItemBehaviour.Apply
-  isSpec: "True"
-  fullName: AshesOfVelsingrad.systems.items.IItemBehaviour.Apply
-  nameWithType: IItemBehaviour.Apply
-- uid: AshesOfVelsingrad.systems.items.ItemDefinition
-  name: ItemDefinition
-  href: api/AshesOfVelsingrad.systems.items.ItemDefinition.html
-  commentId: T:AshesOfVelsingrad.systems.items.ItemDefinition
-  fullName: AshesOfVelsingrad.systems.items.ItemDefinition
-  nameWithType: ItemDefinition
-- uid: AshesOfVelsingrad.systems.items.ItemDefinition.BehaviourId
-  name: BehaviourId
-  href: api/AshesOfVelsingrad.systems.items.ItemDefinition.html#AshesOfVelsingrad_systems_items_ItemDefinition_BehaviourId
-  commentId: P:AshesOfVelsingrad.systems.items.ItemDefinition.BehaviourId
-  fullName: AshesOfVelsingrad.systems.items.ItemDefinition.BehaviourId
-  nameWithType: ItemDefinition.BehaviourId
-- uid: AshesOfVelsingrad.systems.items.ItemDefinition.BehaviourId*
-  name: BehaviourId
-  href: api/AshesOfVelsingrad.systems.items.ItemDefinition.html#AshesOfVelsingrad_systems_items_ItemDefinition_BehaviourId_
-  commentId: Overload:AshesOfVelsingrad.systems.items.ItemDefinition.BehaviourId
-  isSpec: "True"
-  fullName: AshesOfVelsingrad.systems.items.ItemDefinition.BehaviourId
-  nameWithType: ItemDefinition.BehaviourId
-- uid: AshesOfVelsingrad.systems.items.ItemDefinition.Consumable
-  name: Consumable
-  href: api/AshesOfVelsingrad.systems.items.ItemDefinition.html#AshesOfVelsingrad_systems_items_ItemDefinition_Consumable
-  commentId: P:AshesOfVelsingrad.systems.items.ItemDefinition.Consumable
-  fullName: AshesOfVelsingrad.systems.items.ItemDefinition.Consumable
-  nameWithType: ItemDefinition.Consumable
-- uid: AshesOfVelsingrad.systems.items.ItemDefinition.Consumable*
-  name: Consumable
-  href: api/AshesOfVelsingrad.systems.items.ItemDefinition.html#AshesOfVelsingrad_systems_items_ItemDefinition_Consumable_
-  commentId: Overload:AshesOfVelsingrad.systems.items.ItemDefinition.Consumable
-  isSpec: "True"
-  fullName: AshesOfVelsingrad.systems.items.ItemDefinition.Consumable
-  nameWithType: ItemDefinition.Consumable
-- uid: AshesOfVelsingrad.systems.items.ItemDefinition.Description
-  name: Description
-  href: api/AshesOfVelsingrad.systems.items.ItemDefinition.html#AshesOfVelsingrad_systems_items_ItemDefinition_Description
-  commentId: P:AshesOfVelsingrad.systems.items.ItemDefinition.Description
-  fullName: AshesOfVelsingrad.systems.items.ItemDefinition.Description
-  nameWithType: ItemDefinition.Description
-- uid: AshesOfVelsingrad.systems.items.ItemDefinition.Description*
-  name: Description
-  href: api/AshesOfVelsingrad.systems.items.ItemDefinition.html#AshesOfVelsingrad_systems_items_ItemDefinition_Description_
-  commentId: Overload:AshesOfVelsingrad.systems.items.ItemDefinition.Description
-  isSpec: "True"
-  fullName: AshesOfVelsingrad.systems.items.ItemDefinition.Description
-  nameWithType: ItemDefinition.Description
-- uid: AshesOfVelsingrad.systems.items.ItemDefinition.DisplayName
-  name: DisplayName
-  href: api/AshesOfVelsingrad.systems.items.ItemDefinition.html#AshesOfVelsingrad_systems_items_ItemDefinition_DisplayName
-  commentId: P:AshesOfVelsingrad.systems.items.ItemDefinition.DisplayName
-  fullName: AshesOfVelsingrad.systems.items.ItemDefinition.DisplayName
-  nameWithType: ItemDefinition.DisplayName
-- uid: AshesOfVelsingrad.systems.items.ItemDefinition.DisplayName*
-  name: DisplayName
-  href: api/AshesOfVelsingrad.systems.items.ItemDefinition.html#AshesOfVelsingrad_systems_items_ItemDefinition_DisplayName_
-  commentId: Overload:AshesOfVelsingrad.systems.items.ItemDefinition.DisplayName
-  isSpec: "True"
-  fullName: AshesOfVelsingrad.systems.items.ItemDefinition.DisplayName
-  nameWithType: ItemDefinition.DisplayName
-- uid: AshesOfVelsingrad.systems.items.ItemDefinition.Icon
-  name: Icon
-  href: api/AshesOfVelsingrad.systems.items.ItemDefinition.html#AshesOfVelsingrad_systems_items_ItemDefinition_Icon
-  commentId: P:AshesOfVelsingrad.systems.items.ItemDefinition.Icon
-  fullName: AshesOfVelsingrad.systems.items.ItemDefinition.Icon
-  nameWithType: ItemDefinition.Icon
-- uid: AshesOfVelsingrad.systems.items.ItemDefinition.Icon*
-  name: Icon
-  href: api/AshesOfVelsingrad.systems.items.ItemDefinition.html#AshesOfVelsingrad_systems_items_ItemDefinition_Icon_
-  commentId: Overload:AshesOfVelsingrad.systems.items.ItemDefinition.Icon
-  isSpec: "True"
-  fullName: AshesOfVelsingrad.systems.items.ItemDefinition.Icon
-  nameWithType: ItemDefinition.Icon
-- uid: AshesOfVelsingrad.systems.items.ItemDefinition.ItemId
-  name: ItemId
-  href: api/AshesOfVelsingrad.systems.items.ItemDefinition.html#AshesOfVelsingrad_systems_items_ItemDefinition_ItemId
-  commentId: P:AshesOfVelsingrad.systems.items.ItemDefinition.ItemId
-  fullName: AshesOfVelsingrad.systems.items.ItemDefinition.ItemId
-  nameWithType: ItemDefinition.ItemId
-- uid: AshesOfVelsingrad.systems.items.ItemDefinition.ItemId*
-  name: ItemId
-  href: api/AshesOfVelsingrad.systems.items.ItemDefinition.html#AshesOfVelsingrad_systems_items_ItemDefinition_ItemId_
-  commentId: Overload:AshesOfVelsingrad.systems.items.ItemDefinition.ItemId
-  isSpec: "True"
-  fullName: AshesOfVelsingrad.systems.items.ItemDefinition.ItemId
-  nameWithType: ItemDefinition.ItemId
-- uid: AshesOfVelsingrad.systems.items.ItemDefinition.Magnitude
-  name: Magnitude
-  href: api/AshesOfVelsingrad.systems.items.ItemDefinition.html#AshesOfVelsingrad_systems_items_ItemDefinition_Magnitude
-  commentId: P:AshesOfVelsingrad.systems.items.ItemDefinition.Magnitude
-  fullName: AshesOfVelsingrad.systems.items.ItemDefinition.Magnitude
-  nameWithType: ItemDefinition.Magnitude
-- uid: AshesOfVelsingrad.systems.items.ItemDefinition.Magnitude*
-  name: Magnitude
-  href: api/AshesOfVelsingrad.systems.items.ItemDefinition.html#AshesOfVelsingrad_systems_items_ItemDefinition_Magnitude_
-  commentId: Overload:AshesOfVelsingrad.systems.items.ItemDefinition.Magnitude
-  isSpec: "True"
-  fullName: AshesOfVelsingrad.systems.items.ItemDefinition.Magnitude
-  nameWithType: ItemDefinition.Magnitude
-- uid: AshesOfVelsingrad.systems.items.ItemDefinition.Price
-  name: Price
-  href: api/AshesOfVelsingrad.systems.items.ItemDefinition.html#AshesOfVelsingrad_systems_items_ItemDefinition_Price
-  commentId: P:AshesOfVelsingrad.systems.items.ItemDefinition.Price
-  fullName: AshesOfVelsingrad.systems.items.ItemDefinition.Price
-  nameWithType: ItemDefinition.Price
-- uid: AshesOfVelsingrad.systems.items.ItemDefinition.Price*
-  name: Price
-  href: api/AshesOfVelsingrad.systems.items.ItemDefinition.html#AshesOfVelsingrad_systems_items_ItemDefinition_Price_
-  commentId: Overload:AshesOfVelsingrad.systems.items.ItemDefinition.Price
-  isSpec: "True"
-  fullName: AshesOfVelsingrad.systems.items.ItemDefinition.Price
-  nameWithType: ItemDefinition.Price
-- uid: AshesOfVelsingrad.systems.items.ItemDefinition.TargetType
-  name: TargetType
-  href: api/AshesOfVelsingrad.systems.items.ItemDefinition.html#AshesOfVelsingrad_systems_items_ItemDefinition_TargetType
-  commentId: P:AshesOfVelsingrad.systems.items.ItemDefinition.TargetType
-  fullName: AshesOfVelsingrad.systems.items.ItemDefinition.TargetType
-  nameWithType: ItemDefinition.TargetType
-- uid: AshesOfVelsingrad.systems.items.ItemDefinition.TargetType*
-  name: TargetType
-  href: api/AshesOfVelsingrad.systems.items.ItemDefinition.html#AshesOfVelsingrad_systems_items_ItemDefinition_TargetType_
-  commentId: Overload:AshesOfVelsingrad.systems.items.ItemDefinition.TargetType
-  isSpec: "True"
-  fullName: AshesOfVelsingrad.systems.items.ItemDefinition.TargetType
-  nameWithType: ItemDefinition.TargetType
-- uid: AshesOfVelsingrad.systems.items.ItemRegistry
-  name: ItemRegistry
-  href: api/AshesOfVelsingrad.systems.items.ItemRegistry.html
-  commentId: T:AshesOfVelsingrad.systems.items.ItemRegistry
-  fullName: AshesOfVelsingrad.systems.items.ItemRegistry
-  nameWithType: ItemRegistry
-- uid: AshesOfVelsingrad.systems.items.ItemRegistry.AllDefinitions
-  name: AllDefinitions
-  href: api/AshesOfVelsingrad.systems.items.ItemRegistry.html#AshesOfVelsingrad_systems_items_ItemRegistry_AllDefinitions
-  commentId: P:AshesOfVelsingrad.systems.items.ItemRegistry.AllDefinitions
-  fullName: AshesOfVelsingrad.systems.items.ItemRegistry.AllDefinitions
-  nameWithType: ItemRegistry.AllDefinitions
-- uid: AshesOfVelsingrad.systems.items.ItemRegistry.AllDefinitions*
-  name: AllDefinitions
-  href: api/AshesOfVelsingrad.systems.items.ItemRegistry.html#AshesOfVelsingrad_systems_items_ItemRegistry_AllDefinitions_
-  commentId: Overload:AshesOfVelsingrad.systems.items.ItemRegistry.AllDefinitions
-  isSpec: "True"
-  fullName: AshesOfVelsingrad.systems.items.ItemRegistry.AllDefinitions
-  nameWithType: ItemRegistry.AllDefinitions
-- uid: AshesOfVelsingrad.systems.items.ItemRegistry.GetBehaviour(System.String)
-  name: GetBehaviour(string)
-  href: api/AshesOfVelsingrad.systems.items.ItemRegistry.html#AshesOfVelsingrad_systems_items_ItemRegistry_GetBehaviour_System_String_
-  commentId: M:AshesOfVelsingrad.systems.items.ItemRegistry.GetBehaviour(System.String)
-  name.vb: GetBehaviour(String)
-  fullName: AshesOfVelsingrad.systems.items.ItemRegistry.GetBehaviour(string)
-  fullName.vb: AshesOfVelsingrad.systems.items.ItemRegistry.GetBehaviour(String)
-  nameWithType: ItemRegistry.GetBehaviour(string)
-  nameWithType.vb: ItemRegistry.GetBehaviour(String)
-- uid: AshesOfVelsingrad.systems.items.ItemRegistry.GetBehaviour*
-  name: GetBehaviour
-  href: api/AshesOfVelsingrad.systems.items.ItemRegistry.html#AshesOfVelsingrad_systems_items_ItemRegistry_GetBehaviour_
-  commentId: Overload:AshesOfVelsingrad.systems.items.ItemRegistry.GetBehaviour
-  isSpec: "True"
-  fullName: AshesOfVelsingrad.systems.items.ItemRegistry.GetBehaviour
-  nameWithType: ItemRegistry.GetBehaviour
-- uid: AshesOfVelsingrad.systems.items.ItemRegistry.GetDefinition(System.String)
-  name: GetDefinition(string)
-  href: api/AshesOfVelsingrad.systems.items.ItemRegistry.html#AshesOfVelsingrad_systems_items_ItemRegistry_GetDefinition_System_String_
-  commentId: M:AshesOfVelsingrad.systems.items.ItemRegistry.GetDefinition(System.String)
-  name.vb: GetDefinition(String)
-  fullName: AshesOfVelsingrad.systems.items.ItemRegistry.GetDefinition(string)
-  fullName.vb: AshesOfVelsingrad.systems.items.ItemRegistry.GetDefinition(String)
-  nameWithType: ItemRegistry.GetDefinition(string)
-  nameWithType.vb: ItemRegistry.GetDefinition(String)
-- uid: AshesOfVelsingrad.systems.items.ItemRegistry.GetDefinition*
-  name: GetDefinition
-  href: api/AshesOfVelsingrad.systems.items.ItemRegistry.html#AshesOfVelsingrad_systems_items_ItemRegistry_GetDefinition_
-  commentId: Overload:AshesOfVelsingrad.systems.items.ItemRegistry.GetDefinition
-  isSpec: "True"
-  fullName: AshesOfVelsingrad.systems.items.ItemRegistry.GetDefinition
-  nameWithType: ItemRegistry.GetDefinition
-- uid: AshesOfVelsingrad.systems.items.ItemRegistry.Instance
-  name: Instance
-  href: api/AshesOfVelsingrad.systems.items.ItemRegistry.html#AshesOfVelsingrad_systems_items_ItemRegistry_Instance
-  commentId: P:AshesOfVelsingrad.systems.items.ItemRegistry.Instance
-  fullName: AshesOfVelsingrad.systems.items.ItemRegistry.Instance
-  nameWithType: ItemRegistry.Instance
-- uid: AshesOfVelsingrad.systems.items.ItemRegistry.Instance*
-  name: Instance
-  href: api/AshesOfVelsingrad.systems.items.ItemRegistry.html#AshesOfVelsingrad_systems_items_ItemRegistry_Instance_
-  commentId: Overload:AshesOfVelsingrad.systems.items.ItemRegistry.Instance
-  isSpec: "True"
-  fullName: AshesOfVelsingrad.systems.items.ItemRegistry.Instance
-  nameWithType: ItemRegistry.Instance
-- uid: AshesOfVelsingrad.systems.items.ItemRegistry.RegisterBehaviour(System.String,AshesOfVelsingrad.systems.items.IItemBehaviour)
-  name: RegisterBehaviour(string, IItemBehaviour)
-  href: api/AshesOfVelsingrad.systems.items.ItemRegistry.html#AshesOfVelsingrad_systems_items_ItemRegistry_RegisterBehaviour_System_String_AshesOfVelsingrad_systems_items_IItemBehaviour_
-  commentId: M:AshesOfVelsingrad.systems.items.ItemRegistry.RegisterBehaviour(System.String,AshesOfVelsingrad.systems.items.IItemBehaviour)
-  name.vb: RegisterBehaviour(String, IItemBehaviour)
-  fullName: AshesOfVelsingrad.systems.items.ItemRegistry.RegisterBehaviour(string, AshesOfVelsingrad.systems.items.IItemBehaviour)
-  fullName.vb: AshesOfVelsingrad.systems.items.ItemRegistry.RegisterBehaviour(String, AshesOfVelsingrad.systems.items.IItemBehaviour)
-  nameWithType: ItemRegistry.RegisterBehaviour(string, IItemBehaviour)
-  nameWithType.vb: ItemRegistry.RegisterBehaviour(String, IItemBehaviour)
-- uid: AshesOfVelsingrad.systems.items.ItemRegistry.RegisterBehaviour*
-  name: RegisterBehaviour
-  href: api/AshesOfVelsingrad.systems.items.ItemRegistry.html#AshesOfVelsingrad_systems_items_ItemRegistry_RegisterBehaviour_
-  commentId: Overload:AshesOfVelsingrad.systems.items.ItemRegistry.RegisterBehaviour
-  isSpec: "True"
-  fullName: AshesOfVelsingrad.systems.items.ItemRegistry.RegisterBehaviour
-  nameWithType: ItemRegistry.RegisterBehaviour
-- uid: AshesOfVelsingrad.systems.items.ItemRegistry.RegisterDefinition(AshesOfVelsingrad.systems.items.ItemDefinition)
-  name: RegisterDefinition(ItemDefinition)
-  href: api/AshesOfVelsingrad.systems.items.ItemRegistry.html#AshesOfVelsingrad_systems_items_ItemRegistry_RegisterDefinition_AshesOfVelsingrad_systems_items_ItemDefinition_
-  commentId: M:AshesOfVelsingrad.systems.items.ItemRegistry.RegisterDefinition(AshesOfVelsingrad.systems.items.ItemDefinition)
-  fullName: AshesOfVelsingrad.systems.items.ItemRegistry.RegisterDefinition(AshesOfVelsingrad.systems.items.ItemDefinition)
-  nameWithType: ItemRegistry.RegisterDefinition(ItemDefinition)
-- uid: AshesOfVelsingrad.systems.items.ItemRegistry.RegisterDefinition*
-  name: RegisterDefinition
-  href: api/AshesOfVelsingrad.systems.items.ItemRegistry.html#AshesOfVelsingrad_systems_items_ItemRegistry_RegisterDefinition_
-  commentId: Overload:AshesOfVelsingrad.systems.items.ItemRegistry.RegisterDefinition
-  isSpec: "True"
-  fullName: AshesOfVelsingrad.systems.items.ItemRegistry.RegisterDefinition
-  nameWithType: ItemRegistry.RegisterDefinition
-- uid: AshesOfVelsingrad.systems.items.ItemRegistry._Ready
-  name: _Ready()
-  href: api/AshesOfVelsingrad.systems.items.ItemRegistry.html#AshesOfVelsingrad_systems_items_ItemRegistry__Ready
-  commentId: M:AshesOfVelsingrad.systems.items.ItemRegistry._Ready
-  fullName: AshesOfVelsingrad.systems.items.ItemRegistry._Ready()
-  nameWithType: ItemRegistry._Ready()
-- uid: AshesOfVelsingrad.systems.items.ItemRegistry._Ready*
-  name: _Ready
-  href: api/AshesOfVelsingrad.systems.items.ItemRegistry.html#AshesOfVelsingrad_systems_items_ItemRegistry__Ready_
-  commentId: Overload:AshesOfVelsingrad.systems.items.ItemRegistry._Ready
-  isSpec: "True"
-  fullName: AshesOfVelsingrad.systems.items.ItemRegistry._Ready
-  nameWithType: ItemRegistry._Ready
-- uid: AshesOfVelsingrad.systems.items.ItemTargetType
-  name: ItemTargetType
-  href: api/AshesOfVelsingrad.systems.items.ItemTargetType.html
-  commentId: T:AshesOfVelsingrad.systems.items.ItemTargetType
-  fullName: AshesOfVelsingrad.systems.items.ItemTargetType
-  nameWithType: ItemTargetType
-- uid: AshesOfVelsingrad.systems.items.ItemTargetType.AllAllies
-  name: AllAllies
-  href: api/AshesOfVelsingrad.systems.items.ItemTargetType.html#AshesOfVelsingrad_systems_items_ItemTargetType_AllAllies
-  commentId: F:AshesOfVelsingrad.systems.items.ItemTargetType.AllAllies
-  fullName: AshesOfVelsingrad.systems.items.ItemTargetType.AllAllies
-  nameWithType: ItemTargetType.AllAllies
-- uid: AshesOfVelsingrad.systems.items.ItemTargetType.Self
-  name: Self
-  href: api/AshesOfVelsingrad.systems.items.ItemTargetType.html#AshesOfVelsingrad_systems_items_ItemTargetType_Self
-  commentId: F:AshesOfVelsingrad.systems.items.ItemTargetType.Self
-  fullName: AshesOfVelsingrad.systems.items.ItemTargetType.Self
-  nameWithType: ItemTargetType.Self
-- uid: AshesOfVelsingrad.systems.items.ItemTargetType.SingleAlly
-  name: SingleAlly
-  href: api/AshesOfVelsingrad.systems.items.ItemTargetType.html#AshesOfVelsingrad_systems_items_ItemTargetType_SingleAlly
-  commentId: F:AshesOfVelsingrad.systems.items.ItemTargetType.SingleAlly
-  fullName: AshesOfVelsingrad.systems.items.ItemTargetType.SingleAlly
-  nameWithType: ItemTargetType.SingleAlly
-- uid: AshesOfVelsingrad.systems.items.ItemTargetType.SingleEnemy
-  name: SingleEnemy
-  href: api/AshesOfVelsingrad.systems.items.ItemTargetType.html#AshesOfVelsingrad_systems_items_ItemTargetType_SingleEnemy
-  commentId: F:AshesOfVelsingrad.systems.items.ItemTargetType.SingleEnemy
-  fullName: AshesOfVelsingrad.systems.items.ItemTargetType.SingleEnemy
-  nameWithType: ItemTargetType.SingleEnemy
-- uid: AshesOfVelsingrad.systems.items.ItemUseContext
-  name: ItemUseContext
-  href: api/AshesOfVelsingrad.systems.items.ItemUseContext.html
-  commentId: T:AshesOfVelsingrad.systems.items.ItemUseContext
-  fullName: AshesOfVelsingrad.systems.items.ItemUseContext
-  nameWithType: ItemUseContext
-- uid: AshesOfVelsingrad.systems.items.ItemUseContext.#ctor(AshesOfVelsingrad.Systems.UnitSystem,System.Collections.Generic.IReadOnlyList{AshesOfVelsingrad.Systems.UnitSystem},AshesOfVelsingrad.systems.items.ItemDefinition)
-  name: ItemUseContext(UnitSystem, IReadOnlyList<UnitSystem>, ItemDefinition)
-  href: api/AshesOfVelsingrad.systems.items.ItemUseContext.html#AshesOfVelsingrad_systems_items_ItemUseContext__ctor_AshesOfVelsingrad_Systems_UnitSystem_System_Collections_Generic_IReadOnlyList_AshesOfVelsingrad_Systems_UnitSystem__AshesOfVelsingrad_systems_items_ItemDefinition_
-  commentId: M:AshesOfVelsingrad.systems.items.ItemUseContext.#ctor(AshesOfVelsingrad.Systems.UnitSystem,System.Collections.Generic.IReadOnlyList{AshesOfVelsingrad.Systems.UnitSystem},AshesOfVelsingrad.systems.items.ItemDefinition)
-  name.vb: New(UnitSystem, IReadOnlyList(Of UnitSystem), ItemDefinition)
-  fullName: AshesOfVelsingrad.systems.items.ItemUseContext.ItemUseContext(AshesOfVelsingrad.Systems.UnitSystem, System.Collections.Generic.IReadOnlyList<AshesOfVelsingrad.Systems.UnitSystem>, AshesOfVelsingrad.systems.items.ItemDefinition)
-  fullName.vb: AshesOfVelsingrad.systems.items.ItemUseContext.New(AshesOfVelsingrad.Systems.UnitSystem, System.Collections.Generic.IReadOnlyList(Of AshesOfVelsingrad.Systems.UnitSystem), AshesOfVelsingrad.systems.items.ItemDefinition)
-  nameWithType: ItemUseContext.ItemUseContext(UnitSystem, IReadOnlyList<UnitSystem>, ItemDefinition)
-  nameWithType.vb: ItemUseContext.New(UnitSystem, IReadOnlyList(Of UnitSystem), ItemDefinition)
-- uid: AshesOfVelsingrad.systems.items.ItemUseContext.#ctor*
-  name: ItemUseContext
-  href: api/AshesOfVelsingrad.systems.items.ItemUseContext.html#AshesOfVelsingrad_systems_items_ItemUseContext__ctor_
-  commentId: Overload:AshesOfVelsingrad.systems.items.ItemUseContext.#ctor
-  isSpec: "True"
-  name.vb: New
-  fullName: AshesOfVelsingrad.systems.items.ItemUseContext.ItemUseContext
-  fullName.vb: AshesOfVelsingrad.systems.items.ItemUseContext.New
-  nameWithType: ItemUseContext.ItemUseContext
-  nameWithType.vb: ItemUseContext.New
-- uid: AshesOfVelsingrad.systems.items.ItemUseContext.Definition
-  name: Definition
-  href: api/AshesOfVelsingrad.systems.items.ItemUseContext.html#AshesOfVelsingrad_systems_items_ItemUseContext_Definition
-  commentId: P:AshesOfVelsingrad.systems.items.ItemUseContext.Definition
-  fullName: AshesOfVelsingrad.systems.items.ItemUseContext.Definition
-  nameWithType: ItemUseContext.Definition
-- uid: AshesOfVelsingrad.systems.items.ItemUseContext.Definition*
-  name: Definition
-  href: api/AshesOfVelsingrad.systems.items.ItemUseContext.html#AshesOfVelsingrad_systems_items_ItemUseContext_Definition_
-  commentId: Overload:AshesOfVelsingrad.systems.items.ItemUseContext.Definition
-  isSpec: "True"
-  fullName: AshesOfVelsingrad.systems.items.ItemUseContext.Definition
-  nameWithType: ItemUseContext.Definition
-- uid: AshesOfVelsingrad.systems.items.ItemUseContext.Targets
-  name: Targets
-  href: api/AshesOfVelsingrad.systems.items.ItemUseContext.html#AshesOfVelsingrad_systems_items_ItemUseContext_Targets
-  commentId: P:AshesOfVelsingrad.systems.items.ItemUseContext.Targets
-  fullName: AshesOfVelsingrad.systems.items.ItemUseContext.Targets
-  nameWithType: ItemUseContext.Targets
-- uid: AshesOfVelsingrad.systems.items.ItemUseContext.Targets*
-  name: Targets
-  href: api/AshesOfVelsingrad.systems.items.ItemUseContext.html#AshesOfVelsingrad_systems_items_ItemUseContext_Targets_
-  commentId: Overload:AshesOfVelsingrad.systems.items.ItemUseContext.Targets
-  isSpec: "True"
-  fullName: AshesOfVelsingrad.systems.items.ItemUseContext.Targets
-  nameWithType: ItemUseContext.Targets
-- uid: AshesOfVelsingrad.systems.items.ItemUseContext.User
-  name: User
-  href: api/AshesOfVelsingrad.systems.items.ItemUseContext.html#AshesOfVelsingrad_systems_items_ItemUseContext_User
-  commentId: P:AshesOfVelsingrad.systems.items.ItemUseContext.User
-  fullName: AshesOfVelsingrad.systems.items.ItemUseContext.User
-  nameWithType: ItemUseContext.User
-- uid: AshesOfVelsingrad.systems.items.ItemUseContext.User*
-  name: User
-  href: api/AshesOfVelsingrad.systems.items.ItemUseContext.html#AshesOfVelsingrad_systems_items_ItemUseContext_User_
-  commentId: Overload:AshesOfVelsingrad.systems.items.ItemUseContext.User
-  isSpec: "True"
-  fullName: AshesOfVelsingrad.systems.items.ItemUseContext.User
-  nameWithType: ItemUseContext.User
-- uid: AshesOfVelsingrad.systems.items.PartyInventory
-  name: PartyInventory
-  href: api/AshesOfVelsingrad.systems.items.PartyInventory.html
-  commentId: T:AshesOfVelsingrad.systems.items.PartyInventory
-  fullName: AshesOfVelsingrad.systems.items.PartyInventory
-  nameWithType: PartyInventory
-- uid: AshesOfVelsingrad.systems.items.PartyInventory.Add(System.String,System.Int32)
-  name: Add(string, int)
-  href: api/AshesOfVelsingrad.systems.items.PartyInventory.html#AshesOfVelsingrad_systems_items_PartyInventory_Add_System_String_System_Int32_
-  commentId: M:AshesOfVelsingrad.systems.items.PartyInventory.Add(System.String,System.Int32)
-  name.vb: Add(String, Integer)
-  fullName: AshesOfVelsingrad.systems.items.PartyInventory.Add(string, int)
-  fullName.vb: AshesOfVelsingrad.systems.items.PartyInventory.Add(String, Integer)
-  nameWithType: PartyInventory.Add(string, int)
-  nameWithType.vb: PartyInventory.Add(String, Integer)
-- uid: AshesOfVelsingrad.systems.items.PartyInventory.Add*
-  name: Add
-  href: api/AshesOfVelsingrad.systems.items.PartyInventory.html#AshesOfVelsingrad_systems_items_PartyInventory_Add_
-  commentId: Overload:AshesOfVelsingrad.systems.items.PartyInventory.Add
-  isSpec: "True"
-  fullName: AshesOfVelsingrad.systems.items.PartyInventory.Add
-  nameWithType: PartyInventory.Add
-- uid: AshesOfVelsingrad.systems.items.PartyInventory.Clear
-  name: Clear()
-  href: api/AshesOfVelsingrad.systems.items.PartyInventory.html#AshesOfVelsingrad_systems_items_PartyInventory_Clear
-  commentId: M:AshesOfVelsingrad.systems.items.PartyInventory.Clear
-  fullName: AshesOfVelsingrad.systems.items.PartyInventory.Clear()
-  nameWithType: PartyInventory.Clear()
-- uid: AshesOfVelsingrad.systems.items.PartyInventory.Clear*
-  name: Clear
-  href: api/AshesOfVelsingrad.systems.items.PartyInventory.html#AshesOfVelsingrad_systems_items_PartyInventory_Clear_
-  commentId: Overload:AshesOfVelsingrad.systems.items.PartyInventory.Clear
-  isSpec: "True"
-  fullName: AshesOfVelsingrad.systems.items.PartyInventory.Clear
-  nameWithType: PartyInventory.Clear
-- uid: AshesOfVelsingrad.systems.items.PartyInventory.CountOf(System.String)
-  name: CountOf(string)
-  href: api/AshesOfVelsingrad.systems.items.PartyInventory.html#AshesOfVelsingrad_systems_items_PartyInventory_CountOf_System_String_
-  commentId: M:AshesOfVelsingrad.systems.items.PartyInventory.CountOf(System.String)
-  name.vb: CountOf(String)
-  fullName: AshesOfVelsingrad.systems.items.PartyInventory.CountOf(string)
-  fullName.vb: AshesOfVelsingrad.systems.items.PartyInventory.CountOf(String)
-  nameWithType: PartyInventory.CountOf(string)
-  nameWithType.vb: PartyInventory.CountOf(String)
-- uid: AshesOfVelsingrad.systems.items.PartyInventory.CountOf*
-  name: CountOf
-  href: api/AshesOfVelsingrad.systems.items.PartyInventory.html#AshesOfVelsingrad_systems_items_PartyInventory_CountOf_
-  commentId: Overload:AshesOfVelsingrad.systems.items.PartyInventory.CountOf
-  isSpec: "True"
-  fullName: AshesOfVelsingrad.systems.items.PartyInventory.CountOf
-  nameWithType: PartyInventory.CountOf
-- uid: AshesOfVelsingrad.systems.items.PartyInventory.Instance
-  name: Instance
-  href: api/AshesOfVelsingrad.systems.items.PartyInventory.html#AshesOfVelsingrad_systems_items_PartyInventory_Instance
-  commentId: P:AshesOfVelsingrad.systems.items.PartyInventory.Instance
-  fullName: AshesOfVelsingrad.systems.items.PartyInventory.Instance
-  nameWithType: PartyInventory.Instance
-- uid: AshesOfVelsingrad.systems.items.PartyInventory.Instance*
-  name: Instance
-  href: api/AshesOfVelsingrad.systems.items.PartyInventory.html#AshesOfVelsingrad_systems_items_PartyInventory_Instance_
-  commentId: Overload:AshesOfVelsingrad.systems.items.PartyInventory.Instance
-  isSpec: "True"
-  fullName: AshesOfVelsingrad.systems.items.PartyInventory.Instance
-  nameWithType: PartyInventory.Instance
-- uid: AshesOfVelsingrad.systems.items.PartyInventory.InventoryChanged
-  name: InventoryChanged
-  href: api/AshesOfVelsingrad.systems.items.PartyInventory.html#AshesOfVelsingrad_systems_items_PartyInventory_InventoryChanged
-  commentId: E:AshesOfVelsingrad.systems.items.PartyInventory.InventoryChanged
-  fullName: AshesOfVelsingrad.systems.items.PartyInventory.InventoryChanged
-  nameWithType: PartyInventory.InventoryChanged
-- uid: AshesOfVelsingrad.systems.items.PartyInventory.Items
-  name: Items
-  href: api/AshesOfVelsingrad.systems.items.PartyInventory.html#AshesOfVelsingrad_systems_items_PartyInventory_Items
-  commentId: P:AshesOfVelsingrad.systems.items.PartyInventory.Items
-  fullName: AshesOfVelsingrad.systems.items.PartyInventory.Items
-  nameWithType: PartyInventory.Items
-- uid: AshesOfVelsingrad.systems.items.PartyInventory.Items*
-  name: Items
-  href: api/AshesOfVelsingrad.systems.items.PartyInventory.html#AshesOfVelsingrad_systems_items_PartyInventory_Items_
-  commentId: Overload:AshesOfVelsingrad.systems.items.PartyInventory.Items
-  isSpec: "True"
-  fullName: AshesOfVelsingrad.systems.items.PartyInventory.Items
-  nameWithType: PartyInventory.Items
-- uid: AshesOfVelsingrad.systems.items.PartyInventory.Remove(System.String,System.Int32)
-  name: Remove(string, int)
-  href: api/AshesOfVelsingrad.systems.items.PartyInventory.html#AshesOfVelsingrad_systems_items_PartyInventory_Remove_System_String_System_Int32_
-  commentId: M:AshesOfVelsingrad.systems.items.PartyInventory.Remove(System.String,System.Int32)
-  name.vb: Remove(String, Integer)
-  fullName: AshesOfVelsingrad.systems.items.PartyInventory.Remove(string, int)
-  fullName.vb: AshesOfVelsingrad.systems.items.PartyInventory.Remove(String, Integer)
-  nameWithType: PartyInventory.Remove(string, int)
-  nameWithType.vb: PartyInventory.Remove(String, Integer)
-- uid: AshesOfVelsingrad.systems.items.PartyInventory.Remove*
-  name: Remove
-  href: api/AshesOfVelsingrad.systems.items.PartyInventory.html#AshesOfVelsingrad_systems_items_PartyInventory_Remove_
-  commentId: Overload:AshesOfVelsingrad.systems.items.PartyInventory.Remove
-  isSpec: "True"
-  fullName: AshesOfVelsingrad.systems.items.PartyInventory.Remove
-  nameWithType: PartyInventory.Remove
-- uid: AshesOfVelsingrad.systems.items.PartyInventory.Use(AshesOfVelsingrad.Systems.UnitSystem,System.String,System.Collections.Generic.IReadOnlyList{AshesOfVelsingrad.Systems.UnitSystem})
-  name: Use(UnitSystem, string, IReadOnlyList<UnitSystem>)
-  href: api/AshesOfVelsingrad.systems.items.PartyInventory.html#AshesOfVelsingrad_systems_items_PartyInventory_Use_AshesOfVelsingrad_Systems_UnitSystem_System_String_System_Collections_Generic_IReadOnlyList_AshesOfVelsingrad_Systems_UnitSystem__
-  commentId: M:AshesOfVelsingrad.systems.items.PartyInventory.Use(AshesOfVelsingrad.Systems.UnitSystem,System.String,System.Collections.Generic.IReadOnlyList{AshesOfVelsingrad.Systems.UnitSystem})
-  name.vb: Use(UnitSystem, String, IReadOnlyList(Of UnitSystem))
-  fullName: AshesOfVelsingrad.systems.items.PartyInventory.Use(AshesOfVelsingrad.Systems.UnitSystem, string, System.Collections.Generic.IReadOnlyList<AshesOfVelsingrad.Systems.UnitSystem>)
-  fullName.vb: AshesOfVelsingrad.systems.items.PartyInventory.Use(AshesOfVelsingrad.Systems.UnitSystem, String, System.Collections.Generic.IReadOnlyList(Of AshesOfVelsingrad.Systems.UnitSystem))
-  nameWithType: PartyInventory.Use(UnitSystem, string, IReadOnlyList<UnitSystem>)
-  nameWithType.vb: PartyInventory.Use(UnitSystem, String, IReadOnlyList(Of UnitSystem))
-- uid: AshesOfVelsingrad.systems.items.PartyInventory.Use*
-  name: Use
-  href: api/AshesOfVelsingrad.systems.items.PartyInventory.html#AshesOfVelsingrad_systems_items_PartyInventory_Use_
-  commentId: Overload:AshesOfVelsingrad.systems.items.PartyInventory.Use
-  isSpec: "True"
-  fullName: AshesOfVelsingrad.systems.items.PartyInventory.Use
-  nameWithType: PartyInventory.Use
-- uid: AshesOfVelsingrad.systems.items.PartyInventory._ExitTree
-  name: _ExitTree()
-  href: api/AshesOfVelsingrad.systems.items.PartyInventory.html#AshesOfVelsingrad_systems_items_PartyInventory__ExitTree
-  commentId: M:AshesOfVelsingrad.systems.items.PartyInventory._ExitTree
-  fullName: AshesOfVelsingrad.systems.items.PartyInventory._ExitTree()
-  nameWithType: PartyInventory._ExitTree()
-- uid: AshesOfVelsingrad.systems.items.PartyInventory._ExitTree*
-  name: _ExitTree
-  href: api/AshesOfVelsingrad.systems.items.PartyInventory.html#AshesOfVelsingrad_systems_items_PartyInventory__ExitTree_
-  commentId: Overload:AshesOfVelsingrad.systems.items.PartyInventory._ExitTree
-  isSpec: "True"
-  fullName: AshesOfVelsingrad.systems.items.PartyInventory._ExitTree
-  nameWithType: PartyInventory._ExitTree
-- uid: AshesOfVelsingrad.systems.items.PartyInventory._Ready
-  name: _Ready()
-  href: api/AshesOfVelsingrad.systems.items.PartyInventory.html#AshesOfVelsingrad_systems_items_PartyInventory__Ready
-  commentId: M:AshesOfVelsingrad.systems.items.PartyInventory._Ready
-  fullName: AshesOfVelsingrad.systems.items.PartyInventory._Ready()
-  nameWithType: PartyInventory._Ready()
-- uid: AshesOfVelsingrad.systems.items.PartyInventory._Ready*
-  name: _Ready
-  href: api/AshesOfVelsingrad.systems.items.PartyInventory.html#AshesOfVelsingrad_systems_items_PartyInventory__Ready_
-  commentId: Overload:AshesOfVelsingrad.systems.items.PartyInventory._Ready
-  isSpec: "True"
-  fullName: AshesOfVelsingrad.systems.items.PartyInventory._Ready
-  nameWithType: PartyInventory._Ready
-- uid: AshesOfVelsingrad.systems.items.behaviours
-  name: AshesOfVelsingrad.systems.items.behaviours
-  href: api/AshesOfVelsingrad.systems.items.behaviours.html
-  commentId: N:AshesOfVelsingrad.systems.items.behaviours
-  fullName: AshesOfVelsingrad.systems.items.behaviours
-  nameWithType: AshesOfVelsingrad.systems.items.behaviours
-- uid: AshesOfVelsingrad.systems.items.behaviours.CleanseItemBehaviour
-  name: CleanseItemBehaviour
-  href: api/AshesOfVelsingrad.systems.items.behaviours.CleanseItemBehaviour.html
-  commentId: T:AshesOfVelsingrad.systems.items.behaviours.CleanseItemBehaviour
-  fullName: AshesOfVelsingrad.systems.items.behaviours.CleanseItemBehaviour
-  nameWithType: CleanseItemBehaviour
-- uid: AshesOfVelsingrad.systems.items.behaviours.CleanseItemBehaviour.Apply(AshesOfVelsingrad.systems.items.ItemUseContext@)
-  name: Apply(in ItemUseContext)
-  href: api/AshesOfVelsingrad.systems.items.behaviours.CleanseItemBehaviour.html#AshesOfVelsingrad_systems_items_behaviours_CleanseItemBehaviour_Apply_AshesOfVelsingrad_systems_items_ItemUseContext__
-  commentId: M:AshesOfVelsingrad.systems.items.behaviours.CleanseItemBehaviour.Apply(AshesOfVelsingrad.systems.items.ItemUseContext@)
-  name.vb: Apply(ItemUseContext)
-  fullName: AshesOfVelsingrad.systems.items.behaviours.CleanseItemBehaviour.Apply(in AshesOfVelsingrad.systems.items.ItemUseContext)
-  fullName.vb: AshesOfVelsingrad.systems.items.behaviours.CleanseItemBehaviour.Apply(AshesOfVelsingrad.systems.items.ItemUseContext)
-  nameWithType: CleanseItemBehaviour.Apply(in ItemUseContext)
-  nameWithType.vb: CleanseItemBehaviour.Apply(ItemUseContext)
-- uid: AshesOfVelsingrad.systems.items.behaviours.CleanseItemBehaviour.Apply*
-  name: Apply
-  href: api/AshesOfVelsingrad.systems.items.behaviours.CleanseItemBehaviour.html#AshesOfVelsingrad_systems_items_behaviours_CleanseItemBehaviour_Apply_
-  commentId: Overload:AshesOfVelsingrad.systems.items.behaviours.CleanseItemBehaviour.Apply
-  isSpec: "True"
-  fullName: AshesOfVelsingrad.systems.items.behaviours.CleanseItemBehaviour.Apply
-  nameWithType: CleanseItemBehaviour.Apply
-- uid: AshesOfVelsingrad.systems.items.behaviours.DamageItemBehaviour
-  name: DamageItemBehaviour
-  href: api/AshesOfVelsingrad.systems.items.behaviours.DamageItemBehaviour.html
-  commentId: T:AshesOfVelsingrad.systems.items.behaviours.DamageItemBehaviour
-  fullName: AshesOfVelsingrad.systems.items.behaviours.DamageItemBehaviour
-  nameWithType: DamageItemBehaviour
-- uid: AshesOfVelsingrad.systems.items.behaviours.DamageItemBehaviour.Apply(AshesOfVelsingrad.systems.items.ItemUseContext@)
-  name: Apply(in ItemUseContext)
-  href: api/AshesOfVelsingrad.systems.items.behaviours.DamageItemBehaviour.html#AshesOfVelsingrad_systems_items_behaviours_DamageItemBehaviour_Apply_AshesOfVelsingrad_systems_items_ItemUseContext__
-  commentId: M:AshesOfVelsingrad.systems.items.behaviours.DamageItemBehaviour.Apply(AshesOfVelsingrad.systems.items.ItemUseContext@)
-  name.vb: Apply(ItemUseContext)
-  fullName: AshesOfVelsingrad.systems.items.behaviours.DamageItemBehaviour.Apply(in AshesOfVelsingrad.systems.items.ItemUseContext)
-  fullName.vb: AshesOfVelsingrad.systems.items.behaviours.DamageItemBehaviour.Apply(AshesOfVelsingrad.systems.items.ItemUseContext)
-  nameWithType: DamageItemBehaviour.Apply(in ItemUseContext)
-  nameWithType.vb: DamageItemBehaviour.Apply(ItemUseContext)
-- uid: AshesOfVelsingrad.systems.items.behaviours.DamageItemBehaviour.Apply*
-  name: Apply
-  href: api/AshesOfVelsingrad.systems.items.behaviours.DamageItemBehaviour.html#AshesOfVelsingrad_systems_items_behaviours_DamageItemBehaviour_Apply_
-  commentId: Overload:AshesOfVelsingrad.systems.items.behaviours.DamageItemBehaviour.Apply
-  isSpec: "True"
-  fullName: AshesOfVelsingrad.systems.items.behaviours.DamageItemBehaviour.Apply
-  nameWithType: DamageItemBehaviour.Apply
-- uid: AshesOfVelsingrad.systems.items.behaviours.HealingItemBehaviour
-  name: HealingItemBehaviour
-  href: api/AshesOfVelsingrad.systems.items.behaviours.HealingItemBehaviour.html
-  commentId: T:AshesOfVelsingrad.systems.items.behaviours.HealingItemBehaviour
-  fullName: AshesOfVelsingrad.systems.items.behaviours.HealingItemBehaviour
-  nameWithType: HealingItemBehaviour
-- uid: AshesOfVelsingrad.systems.items.behaviours.HealingItemBehaviour.Apply(AshesOfVelsingrad.systems.items.ItemUseContext@)
-  name: Apply(in ItemUseContext)
-  href: api/AshesOfVelsingrad.systems.items.behaviours.HealingItemBehaviour.html#AshesOfVelsingrad_systems_items_behaviours_HealingItemBehaviour_Apply_AshesOfVelsingrad_systems_items_ItemUseContext__
-  commentId: M:AshesOfVelsingrad.systems.items.behaviours.HealingItemBehaviour.Apply(AshesOfVelsingrad.systems.items.ItemUseContext@)
-  name.vb: Apply(ItemUseContext)
-  fullName: AshesOfVelsingrad.systems.items.behaviours.HealingItemBehaviour.Apply(in AshesOfVelsingrad.systems.items.ItemUseContext)
-  fullName.vb: AshesOfVelsingrad.systems.items.behaviours.HealingItemBehaviour.Apply(AshesOfVelsingrad.systems.items.ItemUseContext)
-  nameWithType: HealingItemBehaviour.Apply(in ItemUseContext)
-  nameWithType.vb: HealingItemBehaviour.Apply(ItemUseContext)
-- uid: AshesOfVelsingrad.systems.items.behaviours.HealingItemBehaviour.Apply*
-  name: Apply
-  href: api/AshesOfVelsingrad.systems.items.behaviours.HealingItemBehaviour.html#AshesOfVelsingrad_systems_items_behaviours_HealingItemBehaviour_Apply_
-  commentId: Overload:AshesOfVelsingrad.systems.items.behaviours.HealingItemBehaviour.Apply
-  isSpec: "True"
-  fullName: AshesOfVelsingrad.systems.items.behaviours.HealingItemBehaviour.Apply
-  nameWithType: HealingItemBehaviour.Apply
-- uid: AshesOfVelsingrad.systems.items.behaviours.ManaItemBehaviour
-  name: ManaItemBehaviour
-  href: api/AshesOfVelsingrad.systems.items.behaviours.ManaItemBehaviour.html
-  commentId: T:AshesOfVelsingrad.systems.items.behaviours.ManaItemBehaviour
-  fullName: AshesOfVelsingrad.systems.items.behaviours.ManaItemBehaviour
-  nameWithType: ManaItemBehaviour
-- uid: AshesOfVelsingrad.systems.items.behaviours.ManaItemBehaviour.Apply(AshesOfVelsingrad.systems.items.ItemUseContext@)
-  name: Apply(in ItemUseContext)
-  href: api/AshesOfVelsingrad.systems.items.behaviours.ManaItemBehaviour.html#AshesOfVelsingrad_systems_items_behaviours_ManaItemBehaviour_Apply_AshesOfVelsingrad_systems_items_ItemUseContext__
-  commentId: M:AshesOfVelsingrad.systems.items.behaviours.ManaItemBehaviour.Apply(AshesOfVelsingrad.systems.items.ItemUseContext@)
-  name.vb: Apply(ItemUseContext)
-  fullName: AshesOfVelsingrad.systems.items.behaviours.ManaItemBehaviour.Apply(in AshesOfVelsingrad.systems.items.ItemUseContext)
-  fullName.vb: AshesOfVelsingrad.systems.items.behaviours.ManaItemBehaviour.Apply(AshesOfVelsingrad.systems.items.ItemUseContext)
-  nameWithType: ManaItemBehaviour.Apply(in ItemUseContext)
-  nameWithType.vb: ManaItemBehaviour.Apply(ItemUseContext)
-- uid: AshesOfVelsingrad.systems.items.behaviours.ManaItemBehaviour.Apply*
-  name: Apply
-  href: api/AshesOfVelsingrad.systems.items.behaviours.ManaItemBehaviour.html#AshesOfVelsingrad_systems_items_behaviours_ManaItemBehaviour_Apply_
-  commentId: Overload:AshesOfVelsingrad.systems.items.behaviours.ManaItemBehaviour.Apply
-  isSpec: "True"
-  fullName: AshesOfVelsingrad.systems.items.behaviours.ManaItemBehaviour.Apply
-  nameWithType: ManaItemBehaviour.Apply
-- uid: AshesOfVelsingrad.systems.items.behaviours.PurifyingElixirBehaviour
-  name: PurifyingElixirBehaviour
-  href: api/AshesOfVelsingrad.systems.items.behaviours.PurifyingElixirBehaviour.html
-  commentId: T:AshesOfVelsingrad.systems.items.behaviours.PurifyingElixirBehaviour
-  fullName: AshesOfVelsingrad.systems.items.behaviours.PurifyingElixirBehaviour
-  nameWithType: PurifyingElixirBehaviour
-- uid: AshesOfVelsingrad.systems.items.behaviours.PurifyingElixirBehaviour.Apply(AshesOfVelsingrad.systems.items.ItemUseContext@)
-  name: Apply(in ItemUseContext)
-  href: api/AshesOfVelsingrad.systems.items.behaviours.PurifyingElixirBehaviour.html#AshesOfVelsingrad_systems_items_behaviours_PurifyingElixirBehaviour_Apply_AshesOfVelsingrad_systems_items_ItemUseContext__
-  commentId: M:AshesOfVelsingrad.systems.items.behaviours.PurifyingElixirBehaviour.Apply(AshesOfVelsingrad.systems.items.ItemUseContext@)
-  name.vb: Apply(ItemUseContext)
-  fullName: AshesOfVelsingrad.systems.items.behaviours.PurifyingElixirBehaviour.Apply(in AshesOfVelsingrad.systems.items.ItemUseContext)
-  fullName.vb: AshesOfVelsingrad.systems.items.behaviours.PurifyingElixirBehaviour.Apply(AshesOfVelsingrad.systems.items.ItemUseContext)
-  nameWithType: PurifyingElixirBehaviour.Apply(in ItemUseContext)
-  nameWithType.vb: PurifyingElixirBehaviour.Apply(ItemUseContext)
-- uid: AshesOfVelsingrad.systems.items.behaviours.PurifyingElixirBehaviour.Apply*
-  name: Apply
-  href: api/AshesOfVelsingrad.systems.items.behaviours.PurifyingElixirBehaviour.html#AshesOfVelsingrad_systems_items_behaviours_PurifyingElixirBehaviour_Apply_
-  commentId: Overload:AshesOfVelsingrad.systems.items.behaviours.PurifyingElixirBehaviour.Apply
-  isSpec: "True"
-  fullName: AshesOfVelsingrad.systems.items.behaviours.PurifyingElixirBehaviour.Apply
-  nameWithType: PurifyingElixirBehaviour.Apply
-- uid: AshesOfVelsingrad.systems.items.behaviours.ReviveItemBehaviour
-  name: ReviveItemBehaviour
-  href: api/AshesOfVelsingrad.systems.items.behaviours.ReviveItemBehaviour.html
-  commentId: T:AshesOfVelsingrad.systems.items.behaviours.ReviveItemBehaviour
-  fullName: AshesOfVelsingrad.systems.items.behaviours.ReviveItemBehaviour
-  nameWithType: ReviveItemBehaviour
-- uid: AshesOfVelsingrad.systems.items.behaviours.ReviveItemBehaviour.Apply(AshesOfVelsingrad.systems.items.ItemUseContext@)
-  name: Apply(in ItemUseContext)
-  href: api/AshesOfVelsingrad.systems.items.behaviours.ReviveItemBehaviour.html#AshesOfVelsingrad_systems_items_behaviours_ReviveItemBehaviour_Apply_AshesOfVelsingrad_systems_items_ItemUseContext__
-  commentId: M:AshesOfVelsingrad.systems.items.behaviours.ReviveItemBehaviour.Apply(AshesOfVelsingrad.systems.items.ItemUseContext@)
-  name.vb: Apply(ItemUseContext)
-  fullName: AshesOfVelsingrad.systems.items.behaviours.ReviveItemBehaviour.Apply(in AshesOfVelsingrad.systems.items.ItemUseContext)
-  fullName.vb: AshesOfVelsingrad.systems.items.behaviours.ReviveItemBehaviour.Apply(AshesOfVelsingrad.systems.items.ItemUseContext)
-  nameWithType: ReviveItemBehaviour.Apply(in ItemUseContext)
-  nameWithType.vb: ReviveItemBehaviour.Apply(ItemUseContext)
-- uid: AshesOfVelsingrad.systems.items.behaviours.ReviveItemBehaviour.Apply*
-  name: Apply
-  href: api/AshesOfVelsingrad.systems.items.behaviours.ReviveItemBehaviour.html#AshesOfVelsingrad_systems_items_behaviours_ReviveItemBehaviour_Apply_
-  commentId: Overload:AshesOfVelsingrad.systems.items.behaviours.ReviveItemBehaviour.Apply
-  isSpec: "True"
-  fullName: AshesOfVelsingrad.systems.items.behaviours.ReviveItemBehaviour.Apply
-  nameWithType: ReviveItemBehaviour.Apply
 - uid: AshesOfVelsingrad.systems.progression
   name: AshesOfVelsingrad.systems.progression
   href: api/AshesOfVelsingrad.systems.progression.html
@@ -30510,70 +29852,6 @@ references:
   isSpec: "True"
   fullName: AshesOfVelsingrad.ui.hud.HudBusHelper.WhenReadyAsync
   nameWithType: HudBusHelper.WhenReadyAsync
-- uid: AshesOfVelsingrad.ui.hud.InventoryPanel
-  name: InventoryPanel
-  href: api/AshesOfVelsingrad.ui.hud.InventoryPanel.html
-  commentId: T:AshesOfVelsingrad.ui.hud.InventoryPanel
-  fullName: AshesOfVelsingrad.ui.hud.InventoryPanel
-  nameWithType: InventoryPanel
-- uid: AshesOfVelsingrad.ui.hud.InventoryPanel.OnItemChosen
-  name: OnItemChosen
-  href: api/AshesOfVelsingrad.ui.hud.InventoryPanel.html#AshesOfVelsingrad_ui_hud_InventoryPanel_OnItemChosen
-  commentId: E:AshesOfVelsingrad.ui.hud.InventoryPanel.OnItemChosen
-  fullName: AshesOfVelsingrad.ui.hud.InventoryPanel.OnItemChosen
-  nameWithType: InventoryPanel.OnItemChosen
-- uid: AshesOfVelsingrad.ui.hud.InventoryPanel.Refresh
-  name: Refresh()
-  href: api/AshesOfVelsingrad.ui.hud.InventoryPanel.html#AshesOfVelsingrad_ui_hud_InventoryPanel_Refresh
-  commentId: M:AshesOfVelsingrad.ui.hud.InventoryPanel.Refresh
-  fullName: AshesOfVelsingrad.ui.hud.InventoryPanel.Refresh()
-  nameWithType: InventoryPanel.Refresh()
-- uid: AshesOfVelsingrad.ui.hud.InventoryPanel.Refresh*
-  name: Refresh
-  href: api/AshesOfVelsingrad.ui.hud.InventoryPanel.html#AshesOfVelsingrad_ui_hud_InventoryPanel_Refresh_
-  commentId: Overload:AshesOfVelsingrad.ui.hud.InventoryPanel.Refresh
-  isSpec: "True"
-  fullName: AshesOfVelsingrad.ui.hud.InventoryPanel.Refresh
-  nameWithType: InventoryPanel.Refresh
-- uid: AshesOfVelsingrad.ui.hud.InventoryPanel.Toggle
-  name: Toggle()
-  href: api/AshesOfVelsingrad.ui.hud.InventoryPanel.html#AshesOfVelsingrad_ui_hud_InventoryPanel_Toggle
-  commentId: M:AshesOfVelsingrad.ui.hud.InventoryPanel.Toggle
-  fullName: AshesOfVelsingrad.ui.hud.InventoryPanel.Toggle()
-  nameWithType: InventoryPanel.Toggle()
-- uid: AshesOfVelsingrad.ui.hud.InventoryPanel.Toggle*
-  name: Toggle
-  href: api/AshesOfVelsingrad.ui.hud.InventoryPanel.html#AshesOfVelsingrad_ui_hud_InventoryPanel_Toggle_
-  commentId: Overload:AshesOfVelsingrad.ui.hud.InventoryPanel.Toggle
-  isSpec: "True"
-  fullName: AshesOfVelsingrad.ui.hud.InventoryPanel.Toggle
-  nameWithType: InventoryPanel.Toggle
-- uid: AshesOfVelsingrad.ui.hud.InventoryPanel._ExitTree
-  name: _ExitTree()
-  href: api/AshesOfVelsingrad.ui.hud.InventoryPanel.html#AshesOfVelsingrad_ui_hud_InventoryPanel__ExitTree
-  commentId: M:AshesOfVelsingrad.ui.hud.InventoryPanel._ExitTree
-  fullName: AshesOfVelsingrad.ui.hud.InventoryPanel._ExitTree()
-  nameWithType: InventoryPanel._ExitTree()
-- uid: AshesOfVelsingrad.ui.hud.InventoryPanel._ExitTree*
-  name: _ExitTree
-  href: api/AshesOfVelsingrad.ui.hud.InventoryPanel.html#AshesOfVelsingrad_ui_hud_InventoryPanel__ExitTree_
-  commentId: Overload:AshesOfVelsingrad.ui.hud.InventoryPanel._ExitTree
-  isSpec: "True"
-  fullName: AshesOfVelsingrad.ui.hud.InventoryPanel._ExitTree
-  nameWithType: InventoryPanel._ExitTree
-- uid: AshesOfVelsingrad.ui.hud.InventoryPanel._Ready
-  name: _Ready()
-  href: api/AshesOfVelsingrad.ui.hud.InventoryPanel.html#AshesOfVelsingrad_ui_hud_InventoryPanel__Ready
-  commentId: M:AshesOfVelsingrad.ui.hud.InventoryPanel._Ready
-  fullName: AshesOfVelsingrad.ui.hud.InventoryPanel._Ready()
-  nameWithType: InventoryPanel._Ready()
-- uid: AshesOfVelsingrad.ui.hud.InventoryPanel._Ready*
-  name: _Ready
-  href: api/AshesOfVelsingrad.ui.hud.InventoryPanel.html#AshesOfVelsingrad_ui_hud_InventoryPanel__Ready_
-  commentId: Overload:AshesOfVelsingrad.ui.hud.InventoryPanel._Ready
-  isSpec: "True"
-  fullName: AshesOfVelsingrad.ui.hud.InventoryPanel._Ready
-  nameWithType: InventoryPanel._Ready
 - uid: Global
   name: ''
   href: api/Global.html

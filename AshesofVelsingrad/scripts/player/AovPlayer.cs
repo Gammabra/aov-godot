@@ -86,7 +86,6 @@ public sealed partial class AovPlayer : CharacterBody3D, IInteractor
             if (_explorationInventoryUI is not null)
             {
                 GD.Print("AovPlayer: ExplorationInventoryUI found via MainManager.");
-                _explorationInventoryUI.EnsureBuilt();
                 _explorationInventoryUI.RefreshUnitPanels();
                 return;
             }
@@ -99,7 +98,6 @@ public sealed partial class AovPlayer : CharacterBody3D, IInteractor
             if (_explorationInventoryUI is not null)
             {
                 GD.Print($"AovPlayer: ExplorationInventoryUI found via explicit NodePath alignment.");
-                _explorationInventoryUI.EnsureBuilt();
                 _explorationInventoryUI.RefreshUnitPanels();
                 return;
             }
@@ -114,7 +112,6 @@ public sealed partial class AovPlayer : CharacterBody3D, IInteractor
             if (_explorationInventoryUI is not null)
             {
                 GD.Print($"AovPlayer: ExplorationInventoryUI resolved contextually from scene hierarchy.");
-                _explorationInventoryUI.EnsureBuilt();
                 _explorationInventoryUI.RefreshUnitPanels();
                 return;
             }
@@ -131,7 +128,6 @@ public sealed partial class AovPlayer : CharacterBody3D, IInteractor
         }
 
         host.CallDeferred(Node.MethodName.AddChild, _explorationInventoryUI);
-        _explorationInventoryUI.EnsureBuilt();
         _explorationInventoryUI.RefreshUnitPanels();
 
         GD.Print($"AovPlayer: ExplorationInventoryUI spawned procedurally under host layout: '{host.Name}'");

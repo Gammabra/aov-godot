@@ -25,6 +25,7 @@ config/icon="uid://bnku40ddey8ra"
 
 SettingsManager="*res://scripts/managers/SettingsManager.cs"
 MenuManager="*res://scripts/managers/MenuManager.cs"
+ItemCatalogSeeder="*uid://d3x8fv22qcxk0"
 AudioManager="*res://scripts/managers/AudioManager.cs"
 PlayerInventoryManager="*uid://bmwjs4q6rvudh"
 BattleLauncher="*res://scripts/managers/BattleLauncher.cs"

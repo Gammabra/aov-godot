@@ -9,7 +9,6 @@ public sealed partial class PotionItem : ItemSystem
     /// <summary>HP restored per use.</summary>
     private const float _healAmount = 50f;
 
-    public PotionItem()
     [Export]
     private NodePath? _interactTextPath;
 

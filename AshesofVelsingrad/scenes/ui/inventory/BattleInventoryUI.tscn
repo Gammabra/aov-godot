@@ -1,0 +1,56 @@
+[gd_scene format=3 uid="uid://cwp1ya1dms2xw"]
+
+[ext_resource type="Script" uid="uid://u0jouyrfd85f" path="res://scripts/ui/inventory/BattleInventoryUI.cs" id="1_h7o8j"]
+[ext_resource type="PackedScene" path="res://scenes/ui/inventory/BattleSlotUI.tscn" id="2_h7o8j"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xi4lq"]
+content_margin_left = 8.0
+content_margin_top = 6.0
+content_margin_right = 8.0
+content_margin_bottom = 6.0
+bg_color = Color(0.3133042, 0.29337206, 0.3491902, 0.78000003)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.76737565, 0.7014107, 0.58383155, 0.85)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[node name="PanelContainer" type="PanelContainer" unique_id=1742024029 node_paths=PackedStringArray("_slotRow")]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -180.0
+offset_top = -134.0
+offset_right = 180.0
+offset_bottom = -62.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_vertical = 8
+script = ExtResource("1_h7o8j")
+_slotRow = NodePath("Panel/VBoxContainer/SlotRow")
+_battleSlotScene = ExtResource("2_h7o8j")
+
+[node name="Panel" type="Panel" parent="." unique_id=1946745920]
+layout_mode = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_xi4lq")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel" unique_id=1607896645]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 4
+
+[node name="SlotRow" type="HBoxContainer" parent="Panel/VBoxContainer" unique_id=1095229626]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 4

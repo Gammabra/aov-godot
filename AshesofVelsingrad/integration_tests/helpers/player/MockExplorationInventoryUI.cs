@@ -8,11 +8,6 @@ public partial class MockExplorationInventoryUI : ExplorationInventoryUI
     public bool EnsureBuiltCalled { get; private set; }
     public bool RefreshUnitPanelsCalled { get; private set; }
 
-    public override void EnsureBuilt()
-    {
-        EnsureBuiltCalled = true;
-    }
-
     public override void RefreshUnitPanels()
     {
         RefreshUnitPanelsCalled = true;

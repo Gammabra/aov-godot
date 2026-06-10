@@ -66,6 +66,7 @@ public class StatusEffectSystemTests
         public void TakeDamage(float damage) => Hp -= damage;
         public void BypassDamage(float damage) => Hp -= damage;
         public void OnEffectHeal(float amount) { }
+        public void RestoreMana(float amount) { }
         public void OnEffectControlApplied() { }
         public void OnEffectControlRemoved() { }
         public void OnEffectDamage(AovDataStructures.ModifierType modifierType, float amount) { }

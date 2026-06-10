@@ -2,7 +2,7 @@ using AshesOfVelsingrad.Systems;
 
 namespace AshesOfVelsingrad.items;
 
-public sealed class IronSwordItem : ItemSystem
+public sealed partial class IronSwordItem : ItemSystem
 {
     public IronSwordItem()
     {

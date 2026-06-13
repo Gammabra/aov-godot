@@ -19,6 +19,7 @@ public sealed partial class BattleLog : Control, IHudWidget
 
     private RichTextLabel? _text;
     private bool _built;
+    private int _lineCount;
 
     /// <inheritdoc />
     public override void _Ready()
@@ -108,13 +109,15 @@ public sealed partial class BattleLog : Control, IHudWidget
         _text.PushColor(new Color(colorHex));
         _text.AppendText(message + "\n");
         _text.Pop();
+        _lineCount++;
 
-        string[] lines = _text.Text.Split('\n');
-        if (lines.Length > MaxLines)
+        // Drop the oldest paragraphs in place. Removing paragraphs preserves the BBCode
+        // colour of every retained line — reassigning _text.Text (which returns BBCode-
+        // stripped text) used to wipe all colour history once the cap was hit.
+        while (_lineCount > MaxLines)
         {
-            int drop = lines.Length - MaxLines;
-            string trimmed = string.Join('\n', lines, drop, lines.Length - drop);
-            _text.Text = trimmed;
+            _text.RemoveParagraph(0);
+            _lineCount--;
         }
     }
 

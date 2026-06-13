@@ -69,12 +69,12 @@ public static class HudStyle
     public const int FontSizeHeader = 18;
     /// <summary>Sub-header.</summary>
     public const int FontSizeSub = 16;
-    /// <summary>Body.</summary>
-    public const int FontSizeBody = 15;
+    /// <summary>Body. Kept at the 16px accessibility baseline for body text.</summary>
+    public const int FontSizeBody = 16;
     /// <summary>Small footnote.</summary>
     public const int FontSizeSmall = 13;
-    /// <summary>Tiny.</summary>
-    public const int FontSizeTiny = 11;
+    /// <summary>Tiny. Held at the 12px lower floor for readable on-screen text.</summary>
+    public const int FontSizeTiny = 12;
 
     // ── Spacing tokens ──────────────────────────────────────────────────
     /// <summary>4 px.</summary>
@@ -109,15 +109,15 @@ public static class HudStyle
     /// <summary>Player-status portrait edge.</summary>
     public const int PlayerPortrait = 76;
 
-    /// <summary>Action-bar width.</summary>
-    public const int ActionBarWidth = 440;
+    /// <summary>Action-bar width. Sized so all action labels (incl. Cancel) fit without clipping.</summary>
+    public const int ActionBarWidth = 560;
     /// <summary>Action-bar height.</summary>
     public const int ActionBarHeight = 72;
 
     /// <summary>Skill bar width.</summary>
     public const int SkillBarWidth = 440;
-    /// <summary>Skill bar height.</summary>
-    public const int SkillBarHeight = 76;
+    /// <summary>Skill bar height. Tall enough for the slot square plus the skill-name label.</summary>
+    public const int SkillBarHeight = 100;
 
     /// <summary>Battle-log width.</summary>
     public const int LogWidth = 280;

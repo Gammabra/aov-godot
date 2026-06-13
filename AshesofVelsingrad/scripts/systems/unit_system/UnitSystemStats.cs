@@ -5,13 +5,50 @@ namespace AshesOfVelsingrad.Systems;
 
 public abstract partial class UnitSystem
 {
+    #region Stat-change notification
+
+    /// <summary>
+    ///     Raised whenever a HUD-relevant stat (<see cref="Hp" />, <see cref="MaxHp" />,
+    ///     <see cref="Mana" /> or <see cref="ManaMax" />) changes value. HUD widgets subscribe
+    ///     to this instead of polling the unit every frame.
+    /// </summary>
+    public event Action OnStatsChanged;
+
+    /// <summary>Invoke <see cref="OnStatsChanged" />. Safe when there are no subscribers.</summary>
+    protected void RaiseStatsChanged() => OnStatsChanged?.Invoke();
+
+    #endregion
+
     #region Public Properties
 
+    private float _hp;
+    private float _maxHp;
+    private float _manaMax;
+    private float _mana;
+
     /// <summary>The current health points of the unit.</summary>
-    public float Hp { get; protected set; }
+    public float Hp
+    {
+        get => _hp;
+        protected set
+        {
+            if (_hp == value) return;
+            _hp = value;
+            RaiseStatsChanged();
+        }
+    }
 
     /// <summary>The maximum health points of the unit.</summary>
-    public float MaxHp { get; protected set; }
+    public float MaxHp
+    {
+        get => _maxHp;
+        protected set
+        {
+            if (_maxHp == value) return;
+            _maxHp = value;
+            RaiseStatsChanged();
+        }
+    }
 
     /// <summary>The base physical attack value of the unit.</summary>
     public float BaseAtk { get; protected set; }
@@ -26,10 +63,28 @@ public abstract partial class UnitSystem
     public float Intelligence { get; protected set; }
 
     /// <summary>The unit's available mana points for casting skills.</summary>
-    public float ManaMax { get; protected set; }
+    public float ManaMax
+    {
+        get => _manaMax;
+        protected set
+        {
+            if (_manaMax == value) return;
+            _manaMax = value;
+            RaiseStatsChanged();
+        }
+    }
 
     /// <summary>The current mana points of the unit.</summary>
-    public float Mana { get; protected set; }
+    public float Mana
+    {
+        get => _mana;
+        protected set
+        {
+            if (_mana == value) return;
+            _mana = value;
+            RaiseStatsChanged();
+        }
+    }
 
     /// <summary>The unit’s curse value (used for status mechanics or debuffs).</summary>
     public float Curse { get; protected set; }

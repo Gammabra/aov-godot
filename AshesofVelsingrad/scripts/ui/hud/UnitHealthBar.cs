@@ -17,10 +17,11 @@ namespace AshesOfVelsingrad.UI.Hud;
 ///         source might have altered the unit's state.
 ///     </para>
 /// </remarks>
-public sealed partial class UnitHealthBar : Control
+public sealed partial class UnitHealthBar : Control, IHudWidget
 {
     private IUnitSystem? _bound;
     private TextureRect? _portrait;
+    private PanelContainer? _frame;
     private Label? _name;
     private ProgressBar? _hp;
     private Label? _hpLabel;
@@ -30,13 +31,26 @@ public sealed partial class UnitHealthBar : Control
     public override void _Ready()
     {
         BuildLayout();
-        SetProcess(true);
     }
 
     /// <inheritdoc />
-    public override void _Process(double delta)
+    public override void _ExitTree()
     {
-        if (_bound is not null) Refresh();
+        if (_bound is not null) _bound.OnStatsChanged -= Refresh;
+        base._ExitTree();
+    }
+
+    /// <inheritdoc />
+    public void Relayout() => ApplyMetrics();
+
+    /// <summary>Recompute UI-scale-dependent sizes for this bar and its portrait.</summary>
+    private void ApplyMetrics()
+    {
+        int portraitSize = HudStyle.ScaledPx(HudStyle.RosterPortrait);
+        int inner = HudStyle.ScaledPx(HudStyle.RosterPortrait - HudStyle.PadXs * 2);
+        CustomMinimumSize = new Vector2(0, portraitSize + HudStyle.PadXs);
+        if (_frame is not null) _frame.CustomMinimumSize = new Vector2(portraitSize, portraitSize);
+        if (_portrait is not null) _portrait.CustomMinimumSize = new Vector2(inner, inner);
     }
 
     private void BuildLayout()
@@ -50,14 +64,14 @@ public sealed partial class UnitHealthBar : Control
         row.SetAnchorsAndOffsetsPreset(LayoutPreset.FullRect);
         AddChild(row);
 
-        PanelContainer frame = new()
+        _frame = new PanelContainer
         {
             CustomMinimumSize = new Vector2(portraitSize, portraitSize),
             SizeFlagsVertical = SizeFlags.ShrinkCenter,
             MouseFilter = MouseFilterEnum.Ignore,
         };
-        frame.AddThemeStyleboxOverride("panel", HudStyle.MakePanelStyle(HudStyle.PanelTier.Slot));
-        row.AddChild(frame);
+        _frame.AddThemeStyleboxOverride("panel", HudStyle.MakePanelStyle(HudStyle.PanelTier.Slot));
+        row.AddChild(_frame);
 
         _portrait = new TextureRect
         {
@@ -71,7 +85,7 @@ public sealed partial class UnitHealthBar : Control
                 HudStyle.ScaledPx(HudStyle.RosterPortrait - HudStyle.PadXs * 2),
                 HudStyle.ScaledPx(HudStyle.RosterPortrait - HudStyle.PadXs * 2)),
         };
-        frame.AddChild(_portrait);
+        _frame.AddChild(_portrait);
 
         VBoxContainer stats = new()
         {
@@ -130,7 +144,14 @@ public sealed partial class UnitHealthBar : Control
     /// <summary>Bind the bar to a unit and immediately refresh.</summary>
     public void Bind(IUnitSystem? unit)
     {
+        if (ReferenceEquals(_bound, unit))
+        {
+            Refresh();
+            return;
+        }
+        if (_bound is not null) _bound.OnStatsChanged -= Refresh;
         _bound = unit;
+        if (_bound is not null) _bound.OnStatsChanged += Refresh;
         Refresh();
     }
 

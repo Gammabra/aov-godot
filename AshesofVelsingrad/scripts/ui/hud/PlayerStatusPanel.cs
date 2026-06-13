@@ -42,13 +42,13 @@ public sealed partial class PlayerStatusPanel : Control, IHudWidget
         if (_built) return;
         _built = true;
         BuildLayout();
-        SetProcess(true);
     }
 
     /// <inheritdoc />
-    public override void _Process(double delta)
+    public override void _ExitTree()
     {
-        if (_bound is not null) Refresh();
+        if (_bound is not null) _bound.OnStatsChanged -= Refresh;
+        base._ExitTree();
     }
 
     /// <inheritdoc />
@@ -123,11 +123,13 @@ public sealed partial class PlayerStatusPanel : Control, IHudWidget
         stats.AddThemeConstantOverride("separation", HudStyle.PadXs);
         row.AddChild(stats);
 
-        _name = new Label { Text = "—" };
+        // ClipText + ExpandFill so a long unit name clips inside the panel instead of
+        // widening the stats column and pushing the HP/MP bars past the card edge.
+        _name = new Label { Text = "—", ClipText = true, SizeFlagsHorizontal = SizeFlags.ExpandFill };
         HudStyle.StyleHeader(_name);
         stats.AddChild(_name);
 
-        _classLine = new Label { Text = "" };
+        _classLine = new Label { Text = "", ClipText = true, SizeFlagsHorizontal = SizeFlags.ExpandFill };
         HudStyle.StyleLabel(_classLine, HudStyle.FontSizeSmall);
         _classLine.AddThemeColorOverride("font_color", HudStyle.ParchmentDim);
         stats.AddChild(_classLine);
@@ -183,7 +185,14 @@ public sealed partial class PlayerStatusPanel : Control, IHudWidget
     /// <summary>Bind the panel to a unit. Pass null to reset.</summary>
     public void Bind(IUnitSystem? unit)
     {
+        if (ReferenceEquals(_bound, unit))
+        {
+            Refresh();
+            return;
+        }
+        if (_bound is not null) _bound.OnStatsChanged -= Refresh;
         _bound = unit;
+        if (_bound is not null) _bound.OnStatsChanged += Refresh;
         Refresh();
     }
 

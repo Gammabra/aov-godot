@@ -96,7 +96,9 @@ public sealed partial class ActionMenu : Control, IHudWidget
         Button useItem = new()
         {
             Text = "Item",
-            CustomMinimumSize = new Vector2(86, 40),
+            CustomMinimumSize = new Vector2(
+                HudStyle.ScaledPx(70),
+                HudStyle.ScaledPx(HudStyle.ButtonHeight)),
             SizeFlagsHorizontal = SizeFlags.ExpandFill,
         };
         HudStyle.StyleButton(useItem);
@@ -139,8 +141,10 @@ public sealed partial class ActionMenu : Control, IHudWidget
         _skillSelector.Visible = !opening;
     }
 
-    // In every other button's press handler, close the inventory if open.
-    // Replace AddButton calls for Move, Attack, Skill, Pass with this helper instead:
+    /// <summary>
+    ///     Add a standard action button to the row. Every button closes the inventory panel
+    ///     (if open) before running its action, so the battlefield is never obscured mid-action.
+    /// </summary>
     private void AddButton(Container parent, string label, Action onPressed)
     {
         // Min width is ~70 design px so 5 buttons (4 + Cancel) fit in the 440-wide bar
@@ -154,7 +158,8 @@ public sealed partial class ActionMenu : Control, IHudWidget
                 HudStyle.ScaledPx(HudStyle.ButtonHeight)),
             SizeFlagsHorizontal = SizeFlags.ExpandFill,
             SizeFlagsVertical = SizeFlags.Fill,
-            ClipText = true,
+            // Never clip the label — the bar is sized to fit every action word.
+            ClipText = false,
             // Icon on the LEFT, text follows. ExpandIcon=false keeps the icon at its
             // natural size instead of stretching it to fill the button.
             IconAlignment = HorizontalAlignment.Left,
@@ -170,7 +175,32 @@ public sealed partial class ActionMenu : Control, IHudWidget
         parent.AddChild(b);
     }
 
-    // Add the close helper:
+    /// <summary>
+    ///     Build a standalone styled action button with an icon. Unlike <see cref="AddButton" />
+    ///     it does not parent the button or wrap the handler — the caller owns placement and
+    ///     visibility (used for the contextual Cancel button).
+    /// </summary>
+    private Button BuildButton(string label, string iconName, Action onPressed)
+    {
+        Button b = new()
+        {
+            Text = label,
+            CustomMinimumSize = new Vector2(
+                HudStyle.ScaledPx(70),
+                HudStyle.ScaledPx(HudStyle.ButtonHeight)),
+            SizeFlagsHorizontal = SizeFlags.ExpandFill,
+            SizeFlagsVertical = SizeFlags.Fill,
+            ClipText = false,
+            IconAlignment = HorizontalAlignment.Left,
+            VerticalIconAlignment = VerticalAlignment.Center,
+            ExpandIcon = false,
+        };
+        HudStyle.StyleButton(b);
+        if (!string.IsNullOrEmpty(iconName)) HudStyle.SetButtonIcon(b, iconName);
+        b.Pressed += () => onPressed();
+        return b;
+    }
+
     private void CloseInventory()
     {
         if (_inventoryUI is { Visible: true })

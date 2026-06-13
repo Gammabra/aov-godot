@@ -51,51 +51,51 @@ public sealed partial class EnemySoldier : UnitSystem
     [Export]
     public float SoldierBaseDef { get; set; } = 25f;
 
-    /// <summary>Base speed — drives turn order. Lower than Kaelen's 180 so the player acts first.</summary>
-    [Export]
-    public float SoldierBaseSpeed { get; set; } = 120f;
+	/// <summary>Base speed — drives turn order. Lower than Kaelen's 180 so the player acts first.</summary>
+	[Export]
+	public float SoldierBaseSpeed { get; set; } = 120f;
 
-    /// <summary>Tactical-AI personality: Aggressive / Defensive / Opportunistic / Balanced.</summary>
-    [Export]
-    public AIPersonality SoldierPersonality { get; set; } = AIPersonality.Balanced;
+	/// <summary>Tactical-AI personality: Aggressive / Defensive / Opportunistic / Balanced.</summary>
+	[Export]
+	public AIPersonality SoldierPersonality { get; set; } = AIPersonality.Balanced;
 
-    /// <inheritdoc />
-    protected override void Initialize()
-    {
-        UnitName = SoldierName;
-        Description = "Velsingrad regular. Doesn't ask questions.";
-        MaxHp = SoldierMaxHp;
-        Hp = MaxHp;
-        BaseAtk = SoldierBaseAtk;
-        BaseDef = SoldierBaseDef;
-        BaseSpeed = SoldierBaseSpeed;
-        Intelligence = 40;
-        ManaMax = 80;
-        Mana = ManaMax;
-        IsAlive = true;
-        PossibleMovesRange = 2;
-        Curse = 0;
-        Personality = SoldierPersonality;
-        Type = AovDataStructures.UnitType.Fighter;
+	/// <inheritdoc />
+	protected override void Initialize()
+	{
+		UnitName = SoldierName;
+		Description = "Velsingrad regular. Doesn't ask questions.";
+		MaxHp = SoldierMaxHp;
+		Hp = MaxHp;
+		BaseAtk = SoldierBaseAtk;
+		BaseDef = SoldierBaseDef;
+		BaseSpeed = SoldierBaseSpeed;
+		Intelligence = 40;
+		ManaMax = 80;
+		Mana = ManaMax;
+		IsAlive = true;
+		PossibleMovesRange = 2;
+		Curse = 0;
+		Personality = SoldierPersonality;
+		Type = AovDataStructures.UnitType.Fighter;
 
-        ActiveSkills.Add(new Catalog.CrushingStrike());
-        ActiveSkills.Add(new Catalog.Charge());
-        ActiveSkills.Add(new Catalog.Block());
+		ActiveSkills.Add(new Catalog.CrushingStrike());
+		ActiveSkills.Add(new Catalog.Charge());
+		ActiveSkills.Add(new Catalog.Block());
 
-        PassiveSkills.Add(new Catalog.BruteForce());
+		PassiveSkills.Add(new Catalog.BruteForce());
 
-        base.Initialize();
+		base.Initialize();
 
-        var statusEffectSystem = new StatusEffectSystem();
-        InjectDependencies(statusEffectSystem);
+		var statusEffectSystem = new StatusEffectSystem();
+		InjectDependencies(statusEffectSystem);
 
-        SetEntityProfile(new EntityProfile
-        {
-            DisplayName = SoldierName,
-            ClassName = "Soldier",
-            Level = SoldierLevel,
-            PortraitPath = SoldierPortraitPath,
-            Bio = "A faceless trooper of the Velsingrad guard.",
-        });
-    }
+		SetEntityProfile(new EntityProfile
+		{
+			DisplayName = SoldierName,
+			ClassName = "Soldier",
+			Level = SoldierLevel,
+			PortraitPath = SoldierPortraitPath,
+			Bio = "A faceless trooper of the Velsingrad guard.",
+		});
+	}
 }

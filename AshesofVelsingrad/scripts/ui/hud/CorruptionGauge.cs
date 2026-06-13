@@ -3,10 +3,9 @@ using AshesOfVelsingrad.systems;
 using AshesOfVelsingrad.systems.battle;
 using AshesOfVelsingrad.systems.progression;
 using AshesOfVelsingrad.Systems;
-using AshesOfVelsingrad.UI.Hud;
 using Godot;
 
-namespace AshesOfVelsingrad.ui.hud;
+namespace AshesOfVelsingrad.UI.Hud;
 
 /// <summary>
 ///     Three-segment gauge showing the active player unit's corruption level.

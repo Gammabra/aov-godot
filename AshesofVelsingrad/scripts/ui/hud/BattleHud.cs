@@ -42,6 +42,9 @@ public sealed partial class BattleHud : CanvasLayer
     /// <summary>Right-side scrolling log of warnings + events.</summary>
     public BattleLog? Log { get; private set; }
 
+    /// <summary>Top-left corruption gauge for the active player unit.</summary>
+    public CorruptionGauge? Corruption { get; private set; }
+
     public BattleInventoryUI? InventoryPanel { get; private set; }
 
     /// <inheritdoc />
@@ -98,6 +101,7 @@ public sealed partial class BattleHud : CanvasLayer
         TurnQueue ??= GetOrCreate<TurnOrderQueue>("TurnQueue");
         ContextInfo ??= GetOrCreate<ContextInfoPanel>("ContextInfo");
         Log ??= GetOrCreate<BattleLog>("BattleLog");
+        Corruption ??= GetOrCreate<CorruptionGauge>("CorruptionGauge");
         InventoryPanel ??= GetOrCreate<BattleInventoryUI>("BattleInventoryUI");
 
         // Force each widget to build its own layout NOW. This is what makes the HUD
@@ -112,6 +116,7 @@ public sealed partial class BattleHud : CanvasLayer
         TurnQueue.EnsureBuilt();
         ContextInfo.EnsureBuilt();
         Log.EnsureBuilt();
+        Corruption.EnsureBuilt();
     }
 
     private T GetOrCreate<T>(string name) where T : Control, new()

@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using AshesOfVelsingrad.AI;
@@ -16,6 +17,13 @@ namespace AshesOfVelsingrad.Systems;
 /// </remarks>
 public interface IUnitSystem : IEffectTarget<IUnitSystem>, IStatusEffectBehavior
 {
+    /// <summary>
+    ///     Raised whenever <see cref="Hp" />, <see cref="MaxHp" />, <see cref="Mana" /> or
+    ///     <see cref="ManaMax" /> changes. HUD widgets subscribe to refresh on demand instead
+    ///     of polling every frame.
+    /// </summary>
+    event Action OnStatsChanged;
+
     // var from UnitSystem
     string UnitName { get; }
     string Description { get; }

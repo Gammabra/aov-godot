@@ -152,9 +152,11 @@ public sealed partial class TurnOrderQueue : Control, IHudWidget
         }
 
         string display = unit.EntityProfile?.DisplayName is { Length: > 0 } n ? n : unit.UnitName;
+        // Prefix a faction initial so faction is conveyed by a text channel, not colour alone
+        // (WCAG 1.4.1). The letter leads the label, so it survives ClipText on long names.
         Label nameLabel = new()
         {
-            Text = display,
+            Text = $"{FactionInitial(unit.Faction)} {display}",
             HorizontalAlignment = HorizontalAlignment.Center,
             ClipText = true,
             MouseFilter = MouseFilterEnum.Ignore,
@@ -181,5 +183,14 @@ public sealed partial class TurnOrderQueue : Control, IHudWidget
         Faction.Ally => HudStyle.AllyColor,
         Faction.Enemy => HudStyle.EnemyColor,
         _ => Colors.Gray,
+    };
+
+    /// <summary>Single-letter faction tag — a non-colour cue for faction identity.</summary>
+    private static string FactionInitial(Faction f) => f switch
+    {
+        Faction.Player => "P",
+        Faction.Ally => "A",
+        Faction.Enemy => "E",
+        _ => "?",
     };
 }

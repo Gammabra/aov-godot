@@ -24,6 +24,7 @@ public sealed partial class SkillSelector : Control, IHudWidget
 
     private readonly Button[] _buttons = new Button[SlotCount];
     private readonly Label[] _cdLabels = new Label[SlotCount];
+    private readonly Label[] _nameLabels = new Label[SlotCount];
     private IUnitSystem? _bound;
     private bool _built;
 
@@ -80,22 +81,28 @@ public sealed partial class SkillSelector : Control, IHudWidget
     }
 
     /// <summary>
-    ///     A slot is a single Button. The hotkey number is rendered as the button's text and
-    ///     the skill icon is set on the button's Icon field, so all input handling is on the
-    ///     button itself — no overlapping Label children that could intercept clicks.
+    ///     A slot is a square Button (hotkey number + skill icon, with a cooldown overlay)
+    ///     stacked above a skill-name label. The button owns all input; the name label and
+    ///     cooldown overlay are <see cref="MouseFilterEnum.Ignore" /> so clicks fall through.
     /// </summary>
     private Control BuildSlot(int slot)
     {
-        // Outer wrapper exists only to host the cooldown label overlay. Marked Ignore so
-        // every click in the slot's rect falls through to the button beneath.
-        Control wrapper = new()
+        VBoxContainer wrapper = new()
         {
             Name = $"Slot{slot}",
+            SizeFlagsHorizontal = SizeFlags.ExpandFill,
+            SizeFlagsVertical = SizeFlags.Fill,
+            MouseFilter = MouseFilterEnum.Ignore,
+        };
+        wrapper.AddThemeConstantOverride("separation", 2);
+
+        // Square box that hosts the button and the cooldown overlay on top of it.
+        Control slotBox = new()
+        {
             CustomMinimumSize = new Vector2(
                 HudStyle.ScaledPx(HudStyle.SkillSlotSize),
                 HudStyle.ScaledPx(HudStyle.SkillSlotSize)),
-            SizeFlagsHorizontal = SizeFlags.ExpandFill,
-            SizeFlagsVertical = SizeFlags.Fill,
+            SizeFlagsHorizontal = SizeFlags.ShrinkCenter,
             MouseFilter = MouseFilterEnum.Ignore,
         };
 
@@ -115,7 +122,7 @@ public sealed partial class SkillSelector : Control, IHudWidget
         HudStyle.SetButtonIcon(b, "skill_default", HudStyle.SlotIconSize);
         b.SetAnchorsAndOffsetsPreset(LayoutPreset.FullRect);
         b.Pressed += () => HandlePress(slot);
-        wrapper.AddChild(b);
+        slotBox.AddChild(b);
         _buttons[slot] = b;
 
         // Cooldown overlay — only visible while CD > 0. MouseFilter.Ignore so it never
@@ -130,8 +137,23 @@ public sealed partial class SkillSelector : Control, IHudWidget
         HudStyle.StyleLabel(cd, HudStyle.FontSizeHeader);
         cd.AddThemeColorOverride("font_color", new Color(1f, 0.78f, 0.42f, 1f));
         cd.SetAnchorsAndOffsetsPreset(LayoutPreset.FullRect);
-        wrapper.AddChild(cd);
+        slotBox.AddChild(cd);
         _cdLabels[slot] = cd;
+
+        wrapper.AddChild(slotBox);
+
+        // Skill name beneath the slot. Clipped so long names never widen the bar.
+        Label name = new()
+        {
+            Text = "",
+            HorizontalAlignment = HorizontalAlignment.Center,
+            ClipText = true,
+            MouseFilter = MouseFilterEnum.Ignore,
+            SizeFlagsHorizontal = SizeFlags.ExpandFill,
+        };
+        HudStyle.StyleLabel(name, HudStyle.FontSizeTiny);
+        wrapper.AddChild(name);
+        _nameLabels[slot] = name;
 
         return wrapper;
     }
@@ -156,8 +178,8 @@ public sealed partial class SkillSelector : Control, IHudWidget
                 _buttons[i].Text = (i + 1).ToString();
                 _buttons[i].Disabled = true;
                 _buttons[i].TooltipText = "";
-                HudStyle.SetButtonIcon(_buttons[i], "skill_default", HudStyle.SlotIconSize);
                 if (_cdLabels[i] is not null) _cdLabels[i].Text = "";
+                if (_nameLabels[i] is not null) _nameLabels[i].Text = "";
             }
             return;
         }
@@ -170,17 +192,20 @@ public sealed partial class SkillSelector : Control, IHudWidget
                 _buttons[i].Text = (i + 1).ToString();
                 _buttons[i].Disabled = true;
                 _buttons[i].TooltipText = "(empty slot)";
-                HudStyle.SetButtonIcon(_buttons[i], "skill_default", HudStyle.SlotIconSize);
                 _cdLabels[i].Text = "";
+                if (_nameLabels[i] is not null) _nameLabels[i].Text = "—";
                 continue;
             }
 
             // Show "1" "2" "3" "4" "5" as the button text — easy hotkey recognition.
+            // The slot icon is set once in BuildSlot; re-stamp here only when per-skill icons
+            // are introduced.
             _buttons[i].Text = (i + 1).ToString();
             _buttons[i].Disabled = skill.Cooldown > 0 || skill.ManaCost > _bound.Mana;
-            HudStyle.SetButtonIcon(_buttons[i], "skill_default", HudStyle.SlotIconSize);
 
             _cdLabels[i].Text = skill.Cooldown > 0 ? skill.Cooldown.ToString() : "";
+            if (_nameLabels[i] is not null)
+                _nameLabels[i].Text = string.IsNullOrEmpty(skill.Name) ? $"Skill {i + 1}" : skill.Name;
 
             string desc = string.IsNullOrEmpty(skill.Description) ? skill.Name : skill.Description;
             string cdText = skill.Cooldown > 0

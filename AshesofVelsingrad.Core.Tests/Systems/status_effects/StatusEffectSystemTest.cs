@@ -50,6 +50,7 @@ public class StatusEffectSystemTests
         public float TotalDef { get; set; }
         public bool IsControlled { get; set; }
         public List<ISkillSystem> ActiveSkills { get; set; } = new();
+        public IInventorySystem Inventory { get; } = null!;
 
         public Task WaitForActionAsync() => Task.CompletedTask;
         public void PassTurn() { }
@@ -65,6 +66,7 @@ public class StatusEffectSystemTests
         public void TakeDamage(float damage) => Hp -= damage;
         public void BypassDamage(float damage) => Hp -= damage;
         public void OnEffectHeal(float amount) { }
+        public void RestoreMana(float amount) { }
         public void OnEffectControlApplied() { }
         public void OnEffectControlRemoved() { }
         public void OnEffectDamage(AovDataStructures.ModifierType modifierType, float amount) { }
@@ -73,6 +75,8 @@ public class StatusEffectSystemTests
         public void InjectDependencies(StatusEffectSystem statusEffectSystem) { }
         public void OnEffectRevive(AovDataStructures.ModifierType modifierType, float amount) { }
         public void SetStatusEffectOnUnit(StatusEffect<IUnitSystem> statusEffect) { }
+        public void UseItem(int slotIndex, IUnitSystem? target, IMapSystem? map) { }
+
     }
 
     [SetUp]

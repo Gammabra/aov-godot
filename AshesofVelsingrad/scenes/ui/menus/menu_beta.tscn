@@ -1,0 +1,99 @@
+[gd_scene format=3 uid="uid://dly7v2pb0m006"]
+
+[ext_resource type="Texture2D" uid="uid://b5g32aw86klf1" path="res://assets/menu_assets/MENU proto.png" id="1_crup6"]
+[ext_resource type="Texture2D" uid="uid://btapw4xgdwv57" path="res://assets/menu_assets/Logo AOV v2 white.png" id="2_xf5kf"]
+[ext_resource type="FontFile" uid="uid://dri86n5u6wvhn" path="res://font/abibas/Abibas.ttf" id="3_3mi6d"]
+[ext_resource type="Script" uid="uid://bw0o38i5ks7ff" path="res://scripts/ui/menus/ButtonMenu.cs" id="4_xf5kf"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xf5kf"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3mi6d"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gw7wq"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_yu3h4"]
+
+[node name="MenuBeta" type="Control" unique_id=1006486696]
+layout_direction = 1
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=540260180]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 647.0
+grow_horizontal = 2
+
+[node name="MenuProto" type="Sprite2D" parent="TextureRect" unique_id=1767004911]
+modulate = Color(0.9867516, 0.9867516, 0.9867516, 0.8392157)
+position = Vector2(203.39403, 192.58134)
+scale = Vector2(0.5999823, 0.60002446)
+texture = ExtResource("1_crup6")
+offset = Vector2(621, 219)
+
+[node name="LogoAovV2White" type="Sprite2D" parent="." unique_id=1328452743]
+position = Vector2(52.000004, 48)
+scale = Vector2(0.10205079, 0.093261726)
+texture = ExtResource("2_xf5kf")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=567552316]
+layout_mode = 0
+offset_left = 1.0
+offset_right = 1152.0
+offset_bottom = 648.0
+size_flags_horizontal = 4
+alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer" unique_id=1269806081]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+alignment = 1
+
+[node name="ButtonPlay" type="Button" parent="HBoxContainer/VBoxContainer" unique_id=2116551739]
+layout_mode = 2
+theme_override_colors/font_pressed_color = Color(0.8745098, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0.8745098, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_3mi6d")
+theme_override_font_sizes/font_size = 55
+theme_override_styles/normal = SubResource("StyleBoxEmpty_xf5kf")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_3mi6d")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_gw7wq")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_yu3h4")
+text = "Play"
+script = ExtResource("4_xf5kf")
+
+[node name="ButtonOptions" type="Button" parent="HBoxContainer/VBoxContainer" unique_id=1854145709]
+layout_mode = 2
+theme_override_colors/font_pressed_color = Color(0.8745098, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0.8745098, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_3mi6d")
+theme_override_font_sizes/font_size = 55
+theme_override_styles/normal = SubResource("StyleBoxEmpty_xf5kf")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_3mi6d")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_gw7wq")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_yu3h4")
+text = "Options"
+script = ExtResource("4_xf5kf")
+
+[node name="ButtonExit" type="Button" parent="HBoxContainer/VBoxContainer" unique_id=2111163949]
+layout_mode = 2
+theme_override_colors/font_pressed_color = Color(0.8745098, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0.8745098, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_3mi6d")
+theme_override_font_sizes/font_size = 55
+theme_override_styles/normal = SubResource("StyleBoxEmpty_xf5kf")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_3mi6d")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_gw7wq")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_yu3h4")
+text = "Exit"
+script = ExtResource("4_xf5kf")
+
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/ButtonPlay" to="HBoxContainer/VBoxContainer/ButtonPlay" method="OnPlayButtonPressed"]
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/ButtonOptions" to="HBoxContainer/VBoxContainer/ButtonOptions" method="OnOptionsButtonPressed"]
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/ButtonExit" to="HBoxContainer/VBoxContainer/ButtonExit" method="OnExitButtonPressed"]

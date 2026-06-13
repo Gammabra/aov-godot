@@ -1,4 +1,5 @@
 using AshesOfVelsingrad.Managers;
+using AshesOfVelsingrad.UI.Inventory;
 using Godot;
 
 namespace AshesOfVelsingrad.UI.Hud;
@@ -40,6 +41,8 @@ public sealed partial class BattleHud : CanvasLayer
 
     /// <summary>Right-side scrolling log of warnings + events.</summary>
     public BattleLog? Log { get; private set; }
+
+    public BattleInventoryUI? InventoryPanel { get; private set; }
 
     /// <inheritdoc />
     public override void _Ready()
@@ -95,6 +98,7 @@ public sealed partial class BattleHud : CanvasLayer
         TurnQueue ??= GetOrCreate<TurnOrderQueue>("TurnQueue");
         ContextInfo ??= GetOrCreate<ContextInfoPanel>("ContextInfo");
         Log ??= GetOrCreate<BattleLog>("BattleLog");
+        InventoryPanel ??= GetOrCreate<BattleInventoryUI>("BattleInventoryUI");
 
         // Force each widget to build its own layout NOW. This is what makes the HUD
         // independent of Godot's _Ready timing — if AddChild-during-_Ready quirks delay

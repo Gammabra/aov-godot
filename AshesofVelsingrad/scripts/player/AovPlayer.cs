@@ -1,6 +1,8 @@
+using System;
 using AshesOfVelsingrad.Audio;
 using AshesOfVelsingrad.Managers;
 using AshesOfVelsingrad.Systems;
+using AshesOfVelsingrad.UI.Inventory;
 using Godot;
 
 namespace AshesOfVelsingrad.player;
@@ -26,17 +28,24 @@ public sealed partial class AovPlayer : CharacterBody3D, IInteractor
     [Export]
     private float _speed = 4;
 
+    /// <summary>Direct path to a pre-placed ExplorationInventoryUI node inside your UILayer scene structure.</summary>
+    [Export]
+    private NodePath? _explorationInventoryUiPath;
+
+    /// <summary>Optional container path to house the inventory UI if spawned procedurally at runtime.</summary>
+    [Export]
+    private NodePath? _uiContainerPath;
+
     private bool _isLock;
 
     private float _gravity = ProjectSettings.GetSetting("physics/3d/default_gravity").AsSingle();
     private StateMachine? _stateMachine;
-    // null! — populated in Initialize() via the [Export] NodePath. Used non-null in
-    // _PhysicsProcess; Godot's lifecycle guarantees Initialize runs before any frame
-    // callback touches these, so the suppression matches the runtime invariant.
+
     private SpringArm3D _springArm3D = null!;
     private InteractionComponent? _interactionComponent;
     private AnimatedSprite3D _animatedSprite3D = null!;
     private static AovPlayer? _instance;
+    private ExplorationInventoryUI? _explorationInventoryUI;
 
     private void Initialize()
     {
@@ -49,8 +58,7 @@ public sealed partial class AovPlayer : CharacterBody3D, IInteractor
         // If we just returned from a battle (player pressed Forfeit or Continue), the
         // BattleLauncher autoload still has a pending position from when the encounter
         // was triggered. Snap to it so the player wakes up exactly where they were
-        // standing when they spoke to the NPC. ConsumePendingReturnPosition is one-shot:
-        // calling it clears the value so subsequent scene loads don't re-snap.
+        // standing when they spoke to the NPC.
         Vector3? returnPos = BattleLauncher.Instance?.ConsumePendingReturnPosition();
         if (returnPos is { } pos)
         {
@@ -58,11 +66,82 @@ public sealed partial class AovPlayer : CharacterBody3D, IInteractor
             GD.Print($"AovPlayer: restored return position {pos} from BattleLauncher.");
         }
 
-        // The player only spawns inside exploration scenes (prison, world map, …)
-        // — battle scenes spawn unit nodes through GameManager instead. So an
-        // active AovPlayer is a reliable signal that we're now exploring, and the
-        // audio manager can switch off the menu theme accordingly.
+        // The player only spawns inside exploration scenes — battle scenes spawn unit nodes
+        // through GameManager instead. So an active AovPlayer is a reliable signal that
+        // we're now exploring, and the audio manager can switch off the menu theme accordingly.
         AudioManager.Instance?.SetMusicContext(MusicContext.Exploration);
+
+        ResolveExplorationInventoryUI();
+    }
+
+    /// <summary>
+    /// Evaluates scene architecture options to link or dynamically inject the Exploration UI layer.
+    /// </summary>
+    private void ResolveExplorationInventoryUI()
+    {
+        // Step 0: MainManager owns the persistent ExplorationInventoryUI in UILayer
+        if (MainManager.Instance is { } manager)
+        {
+            _explorationInventoryUI = manager.GetExplorationInventoryUI();
+            if (_explorationInventoryUI is not null)
+            {
+                GD.Print("AovPlayer: ExplorationInventoryUI found via MainManager.");
+                _explorationInventoryUI.RefreshUnitPanels();
+                return;
+            }
+        }
+
+        // Step 1: Attempt direct resolution via explicit NodePath mapping
+        if (_explorationInventoryUiPath is not null && !_explorationInventoryUiPath.IsEmpty)
+        {
+            _explorationInventoryUI = GetNodeOrNull<ExplorationInventoryUI>(_explorationInventoryUiPath);
+            if (_explorationInventoryUI is not null)
+            {
+                GD.Print($"AovPlayer: ExplorationInventoryUI found via explicit NodePath alignment.");
+                _explorationInventoryUI.RefreshUnitPanels();
+                return;
+            }
+        }
+
+        // Step 2: Contextual recursive search of the active exploration scene layout
+        SceneTree tree = GetTree();
+        Node? currentSceneRoot = tree.CurrentScene;
+        if (currentSceneRoot is not null)
+        {
+            _explorationInventoryUI = FindInventoryUiIn(currentSceneRoot);
+            if (_explorationInventoryUI is not null)
+            {
+                GD.Print($"AovPlayer: ExplorationInventoryUI resolved contextually from scene hierarchy.");
+                _explorationInventoryUI.RefreshUnitPanels();
+                return;
+            }
+        }
+
+        // Step 3: Procedural generation fallback if no pre-built design layer exists
+        _explorationInventoryUI = new ExplorationInventoryUI { Name = "ExplorationInventoryUI" };
+
+        Node host = currentSceneRoot ?? tree.Root;
+        if (_uiContainerPath is not null && !_uiContainerPath.IsEmpty)
+        {
+            Node? container = GetNodeOrNull(_uiContainerPath);
+            if (container is not null) host = container;
+        }
+
+        host.CallDeferred(Node.MethodName.AddChild, _explorationInventoryUI);
+        _explorationInventoryUI.RefreshUnitPanels();
+
+        GD.Print($"AovPlayer: ExplorationInventoryUI spawned procedurally under host layout: '{host.Name}'");
+    }
+
+    private static ExplorationInventoryUI? FindInventoryUiIn(Node root)
+    {
+        if (root is ExplorationInventoryUI ui) return ui;
+        foreach (Node child in root.GetChildren())
+        {
+            ExplorationInventoryUI? found = FindInventoryUiIn(child);
+            if (found is not null) return found;
+        }
+        return null;
     }
 
     public override void _Ready()
@@ -71,7 +150,6 @@ public sealed partial class AovPlayer : CharacterBody3D, IInteractor
         {
             Initialize();
         }
-        // For manual instances, check for duplicates.
         else if (_instance == null)
         {
             Initialize();
@@ -83,28 +161,8 @@ public sealed partial class AovPlayer : CharacterBody3D, IInteractor
         }
     }
 
-    /// <inheritdoc />
-    /// <remarks>
-    ///     Clear the static <see cref="_instance" /> when this node leaves the tree
-    ///     (scene unload, scene reload via <c>BattleLauncher</c>'s Forfeit / Continue
-    ///     flow). Without this, the new <see cref="AovPlayer" /> on the reloaded
-    ///     exploration scene sees a stale <c>_instance</c> still pointing at the just-
-    ///     unloaded player and <see cref="Node.QueueFree" />s itself as a "duplicate" —
-    ///     the scene then renders with no player and frozen camera.
-    /// </remarks>
-    public override void _ExitTree()
-    {
-        if (_instance == this) _instance = null;
-        base._ExitTree();
-    }
-
     public override void _Input(InputEvent @event)
     {
-        // Mirror the lock check in _PhysicsProcess. Without this, pressing E
-        // while a dialog is already running (or a battle is mid-launch) would
-        // re-fire Interact() and restart the conversation from line one — the
-        // dialog system itself doesn't guard against being re-entered, it just
-        // appends/replaces queue entries based on its `start` flag.
         if (_isLock) return;
 
         if (@event.IsActionPressed("interact"))
@@ -161,7 +219,6 @@ public sealed partial class AovPlayer : CharacterBody3D, IInteractor
         MoveAndSlide();
 
         Vector3 velocity = currentVelocity;
-
         velocity.Y = 0;
 
         if (velocity.Length() < 0.1f)
@@ -197,5 +254,24 @@ public sealed partial class AovPlayer : CharacterBody3D, IInteractor
     public void UnlockInteractor()
     {
         _isLock = false;
+    }
+
+    public void BindInventoryUnits()
+    {
+        _explorationInventoryUI?.RefreshUnitPanels();
+    }
+
+    public override void _ExitTree()
+    {
+        // Only free if we spawned it ourselves (no MainManager) AND it landed on root
+        if (_explorationInventoryUI is not null && IsInstanceValid(_explorationInventoryUI))
+        {
+            bool ownedByMainManager = MainManager.Instance is not null;
+            if (!ownedByMainManager && _explorationInventoryUI.GetParent() == GetTree().Root)
+                _explorationInventoryUI.QueueFree();
+        }
+
+        if (_instance == this) _instance = null;
+        base._ExitTree();
     }
 }

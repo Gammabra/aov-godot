@@ -346,21 +346,26 @@ public static class HudStyle
     /// <summary>Apply styled fill + dark inset background to a progress bar.</summary>
     public static void ApplyBarStyle(ProgressBar bar, Color fillColor)
     {
-        bar.MouseFilter = Control.MouseFilterEnum.Ignore;
-        StyleBoxFlat bg = new() {
-            BgColor = new Color(0.04f, 0.04f, 0.04f, 0.95f), BorderColor = Bronze,
-            BorderWidthLeft = 1, BorderWidthRight = 1, BorderWidthTop = 1, BorderWidthBottom = 1,
-            CornerRadiusBottomLeft = 3, CornerRadiusBottomRight = 3,
-            CornerRadiusTopLeft = 3, CornerRadiusTopRight = 3,
-            ContentMarginLeft = 1, ContentMarginRight = 1,
-            ContentMarginTop = 1, ContentMarginBottom = 1,
+        StyleBoxFlat bg = new()
+        {
+            BgColor = new Color(0.10f, 0.09f, 0.10f, 0.85f),
+            BorderColor = new Color(0, 0, 0, 0.5f),
+            BorderWidthLeft = 1,
+            BorderWidthRight = 1,
+            BorderWidthTop = 1,
+            BorderWidthBottom = 1,
+            CornerRadiusBottomLeft = 3,
+            CornerRadiusBottomRight = 3,
+            CornerRadiusTopLeft = 3,
+            CornerRadiusTopRight = 3,
         };
-        Color darker = new(fillColor.R * 0.55f, fillColor.G * 0.55f, fillColor.B * 0.55f, fillColor.A);
-        StyleBoxFlat fill = new() {
-            BgColor = fillColor, BorderColor = darker,
-            BorderWidthBottom = 2,
-            CornerRadiusBottomLeft = 2, CornerRadiusBottomRight = 2,
-            CornerRadiusTopLeft = 2, CornerRadiusTopRight = 2,
+        StyleBoxFlat fill = new()
+        {
+            BgColor = fillColor,
+            CornerRadiusBottomLeft = 3,
+            CornerRadiusBottomRight = 3,
+            CornerRadiusTopLeft = 3,
+            CornerRadiusTopRight = 3,
         };
         bar.AddThemeStyleboxOverride("background", bg);
         bar.AddThemeStyleboxOverride("fill", fill);

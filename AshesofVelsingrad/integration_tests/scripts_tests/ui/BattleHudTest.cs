@@ -68,7 +68,7 @@ public class BattleHudTest
         AssertThat(hud.TurnQueue).IsNotNull();
         AssertThat(hud.ContextInfo).IsNotNull();
         AssertThat(hud.Log).IsNotNull();
-        AssertThat(hud.GetChildCount()).IsEqual(7);
+        AssertThat(hud.GetChildCount()).IsEqual(8); // 7 widgets + The inventory
     }
 
     [TestCase]
@@ -94,7 +94,7 @@ public class BattleHudTest
         int afterSecondBuild = hud.GetChildCount();
 
         AssertThat(afterSecondBuild).IsEqual(afterFirstBuild);
-        AssertThat(afterSecondBuild).IsEqual(7);
+        AssertThat(afterSecondBuild).IsEqual(8); // 7 widgets + The inventory
     }
 
     [TestCase]

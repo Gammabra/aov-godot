@@ -106,16 +106,22 @@ public sealed partial class UnitHealthBar : Control
 
         _hp = new ProgressBar
         {
-            MinValue = 0, MaxValue = 1, Value = 1, ShowPercentage = false,
-            CustomMinimumSize = new Vector2(0, HudStyle.ScaledPx(14)),
+            MinValue = 0,
+            MaxValue = 1,
+            Value = 1,
+            ShowPercentage = false,
+            CustomMinimumSize = new Vector2(0, 12),
         };
         HudStyle.ApplyBarStyle(_hp, HudStyle.Crimson);
         stats.AddChild(_hp);
 
         _mp = new ProgressBar
         {
-            MinValue = 0, MaxValue = 1, Value = 1, ShowPercentage = false,
-            CustomMinimumSize = new Vector2(0, HudStyle.ScaledPx(8)),
+            MinValue = 0,
+            MaxValue = 1,
+            Value = 1,
+            ShowPercentage = false,
+            CustomMinimumSize = new Vector2(0, 8),
         };
         HudStyle.ApplyBarStyle(_mp, HudStyle.Azure);
         stats.AddChild(_mp);

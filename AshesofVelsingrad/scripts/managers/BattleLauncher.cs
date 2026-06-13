@@ -83,9 +83,18 @@ public sealed partial class BattleLauncher : Node
         _returnPosition = setup.ReturnPosition;
         GD.Print($"BattleLauncher: launching '{setup.EncounterName}' (return → {_returnScenePath} @ {_returnPosition})");
 
-        Error err = GetTree().ChangeSceneToPacked(setup.BattleScene);
-        if (err != Error.Ok)
-            GD.PrintErr($"BattleLauncher: ChangeSceneToPacked failed with {err}");
+        // Use MainManager shell if active; otherwise fallback to standard tree swapping for standalone tests
+        if (MainManager.Instance != null)
+        {
+            MainManager.Instance.LoadScene(setup.BattleScene.ResourcePath, showHud: true);
+        }
+        else
+        {
+            GD.Print("[BattleLauncher] MainManager instance missing. Running standalone fallback layout.");
+            Error err = GetTree().ChangeSceneToPacked(setup.BattleScene);
+            if (err != Error.Ok)
+                GD.PrintErr($"BattleLauncher: Standalone fallback ChangeSceneToPacked failed with {err}");
+        }
     }
 
     /// <summary>
@@ -124,9 +133,16 @@ public sealed partial class BattleLauncher : Node
         _pendingReturnPosition = _returnPosition;
         PendingSetup = null;
 
-        Error err = GetTree().ChangeSceneToFile(_returnScenePath);
-        if (err != Error.Ok)
-            GD.PrintErr($"BattleLauncher: ChangeSceneToFile failed with {err}");
+        // Route through MainManager shell if available
+        if (MainManager.Instance != null)
+            MainManager.Instance.LoadScene(_returnScenePath, showHud: false);
+        else
+        {
+            GD.Print("[BattleLauncher] MainManager instance missing. Running standalone return fallback.");
+            Error err = GetTree().ChangeSceneToFile(_returnScenePath);
+            if (err != Error.Ok)
+                GD.PrintErr($"BattleLauncher: Standalone fallback ChangeSceneToFile failed with {err}");
+        }
     }
 
     /// <summary>

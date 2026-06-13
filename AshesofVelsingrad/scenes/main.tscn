@@ -1,19 +1,47 @@
-[gd_scene load_steps=4 format=3 uid="uid://cuadq8eeoqg7j"]
+[gd_scene format=3 uid="uid://cuadq8eeoqg7j"]
 
-[ext_resource type="Script" uid="uid://cgf4fbcb5g7mi" path="res://scripts/Main.cs" id="1_itxqv"]
-[ext_resource type="PackedScene" uid="uid://c5rfeq1b85sob" path="res://scenes/ui/menus/main_menu.tscn" id="2_8gbba"]
-[ext_resource type="PackedScene" uid="uid://bjgrvgvbxb6y6" path="res://scenes/ui/menus/options_menu.tscn" id="3_jjvhh"]
+[ext_resource type="Script" uid="uid://bnsbetmtyu1jd" path="res://scripts/MainManager.cs" id="1_tbgi4"]
+[ext_resource type="PackedScene" uid="uid://dly7v2pb0m006" path="res://scenes/ui/menus/menu_beta.tscn" id="2_sugp2"]
+[ext_resource type="PackedScene" uid="uid://geowrsurjvqo" path="res://scenes/ui/menus/settings_beta.tscn" id="3_jyhfs"]
+[ext_resource type="PackedScene" path="res://scenes/ui/hud/BattleHud.tscn" id="4_jyhfs"]
+[ext_resource type="PackedScene" uid="uid://cwp1ya1dms2xw" path="res://scenes/ui/inventory/BattleInventoryUI.tscn" id="5_tefeu"]
+[ext_resource type="PackedScene" uid="uid://ueqjkgxnpo4j" path="res://scenes/ui/inventory/ExplorationInventoryUI.tscn" id="6_o6xl0"]
 
-[node name="Main" type="Node" node_paths=PackedStringArray("_menuContainer")]
-script = ExtResource("1_itxqv")
-_menuContainer = NodePath("MenuContainer")
-_mainMenuScene = ExtResource("2_8gbba")
-_optionsMenuScene = ExtResource("3_jjvhh")
+[node name="MainManager" type="Node" unique_id=359710342 node_paths=PackedStringArray("_worldContainer", "_menuContainer", "_battleHud", "_battleInventoryUi", "_explorationInventoryUi", "_screenTransition")]
+script = ExtResource("1_tbgi4")
+_worldContainer = NodePath("WorldContainer")
+_menuContainer = NodePath("UILayer/MenuContainer")
+_battleHud = NodePath("UILayer/BattleHud")
+_battleInventoryUi = NodePath("UILayer/BattleInventoryUi")
+_explorationInventoryUi = NodePath("UILayer/ExplorationInventoryUi")
+_screenTransition = NodePath("UILayer/SceneTransition")
+_mainMenuScene = ExtResource("2_sugp2")
+_settingsScene = ExtResource("3_jyhfs")
 
-[node name="MenuContainer" type="Control" parent="."]
+[node name="WorldContainer" type="Node" parent="." unique_id=678347684]
+
+[node name="UILayer" type="CanvasLayer" parent="." unique_id=89138738]
+layer = 10
+
+[node name="MenuContainer" type="Control" parent="UILayer" unique_id=1685649391]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="BattleHud" parent="UILayer" unique_id=1185000935 instance=ExtResource("4_jyhfs")]
+
+[node name="SceneTransition" type="ColorRect" parent="UILayer" unique_id=1680881509]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="BattleInventoryUi" parent="UILayer" unique_id=1302735412 instance=ExtResource("5_tefeu")]
+
+[node name="ExplorationInventoryUi" parent="UILayer" unique_id=1182585849 instance=ExtResource("6_o6xl0")]

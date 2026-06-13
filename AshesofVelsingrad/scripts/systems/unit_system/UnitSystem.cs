@@ -1,3 +1,4 @@
+using System;
 using System.Threading.Tasks;
 using AshesOfVelsingrad.Utilities;
 using Godot;
@@ -63,6 +64,8 @@ public abstract partial class UnitSystem : CharacterBody3D, IUnitSystem
 
     /// <summary>The type or archetype of the unit.</summary>
     public AovDataStructures.UnitType Type { get; protected set; }
+
+    public IInventorySystem Inventory { get; protected set; } = new InventorySystem(20);
 
     #endregion
 
@@ -168,6 +171,36 @@ public abstract partial class UnitSystem : CharacterBody3D, IUnitSystem
     public void PassTurn()
     {
         ReportSystemUnitHasPlayed();
+    }
+
+    /// <summary>
+    /// Uses the item in the given inventory slot.
+    /// If the item ConsumesTurn, the unit's action is consumed.
+    /// </summary>
+    public virtual void UseItem(int slotIndex, IUnitSystem? target, IMapSystem? map)
+    {
+        var slot = Inventory.GetSlot(slotIndex);
+        if (slot.IsEmpty)
+        {
+            GD.PrintErr($"{UnitName}: slot {slotIndex} is empty.");
+            return;
+        }
+
+        if (!ItemCatalog.TryGet(slot.ItemId, out var item))
+        {
+            GD.PrintErr($"{UnitName}: unknown item id {slot.ItemId}.");
+            return;
+        }
+
+        bool success = Inventory.TryUseItem(slotIndex, this, target, map);
+        if (!success)
+        {
+            GD.PrintErr($"{UnitName}: TryUseItem failed for slot {slotIndex}.");
+            return;
+        }
+
+        if (item.ConsumesTurn)
+            ReportSystemUnitHasPlayed();
     }
 
     #endregion

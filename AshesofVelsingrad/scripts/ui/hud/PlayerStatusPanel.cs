@@ -135,8 +135,11 @@ public sealed partial class PlayerStatusPanel : Control, IHudWidget
         stats.AddChild(BuildIconLabel("heart", out _hpLabel, "HP —"));
         _hp = new ProgressBar
         {
-            MinValue = 0, MaxValue = 1, Value = 1, ShowPercentage = false,
-            CustomMinimumSize = new Vector2(0, HudStyle.ScaledPx(HudStyle.HpBarHeight)),
+            MinValue = 0,
+            MaxValue = 1,
+            Value = 1,
+            ShowPercentage = false,
+            CustomMinimumSize = new Vector2(0, 12),
         };
         HudStyle.ApplyBarStyle(_hp, HudStyle.Crimson);
         stats.AddChild(_hp);
@@ -144,8 +147,11 @@ public sealed partial class PlayerStatusPanel : Control, IHudWidget
         stats.AddChild(BuildIconLabel("droplet", out _mpLabel, "MP —"));
         _mp = new ProgressBar
         {
-            MinValue = 0, MaxValue = 1, Value = 1, ShowPercentage = false,
-            CustomMinimumSize = new Vector2(0, HudStyle.ScaledPx(HudStyle.MpBarHeight)),
+            MinValue = 0,
+            MaxValue = 1,
+            Value = 1,
+            ShowPercentage = false,
+            CustomMinimumSize = new Vector2(0, 8),
         };
         HudStyle.ApplyBarStyle(_mp, HudStyle.Azure);
         stats.AddChild(_mp);

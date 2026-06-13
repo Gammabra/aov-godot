@@ -210,19 +210,19 @@ public partial class TurnManager : BaseManager
                     OnPlayerTurnEnd?.Invoke();
                     break;
                 case AovDataStructures.TurnState.EnemyTurn:
-                {
-                    bool isAlly = _unitsTurnOrder[_currentIndex].Key.Faction == Faction.Ally;
-                    if (isAlly) OnAllyTurn?.Invoke();
-                    else OnEnemyTurn?.Invoke();
+                    {
+                        bool isAlly = _unitsTurnOrder[_currentIndex].Key.Faction == Faction.Ally;
+                        if (isAlly) OnAllyTurn?.Invoke();
+                        else OnEnemyTurn?.Invoke();
 
-                    if (!_unitsTurnOrder[_currentIndex].Key.IsControlled)
-                        await WaitForEnemyAction(_unitsTurnOrder[_currentIndex].Key);
+                        if (!_unitsTurnOrder[_currentIndex].Key.IsControlled)
+                            await WaitForEnemyAction(_unitsTurnOrder[_currentIndex].Key);
 
-                    if (isAlly) OnAllyTurnEnd?.Invoke();
-                    else OnEnemyTurnEnd?.Invoke();
+                        if (isAlly) OnAllyTurnEnd?.Invoke();
+                        else OnEnemyTurnEnd?.Invoke();
 
-                    break;
-                }
+                        break;
+                    }
             }
 
             if (_currentTurnState == AovDataStructures.TurnState.Finished)

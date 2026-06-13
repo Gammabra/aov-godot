@@ -1,7 +1,9 @@
 using System;
+using System.Collections.Generic;
 using AshesOfVelsingrad.Systems;
 using AshesOfVelsingrad.Systems.Battle;
 using AshesOfVelsingrad.UI.Hud;
+using AshesOfVelsingrad.UI.Inventory;
 using Godot;
 
 namespace AshesOfVelsingrad.Managers;
@@ -9,15 +11,9 @@ namespace AshesOfVelsingrad.Managers;
 /// <summary>
 ///     <see cref="GameManager" /> partial — HUD + IndicatorOverlay spawn and wiring.
 /// </summary>
-/// <remarks>
-///     Call <see cref="EnsureHud" /> + <see cref="EnsureIndicators" /> from
-///     <c>InitializeGameManager</c> after the map and turn manager are resolved. Then
-///     <see cref="WireHudEvents" /> connects ActionMenu / SkillSelector buttons to the
-///     gameplay handlers.
-/// </remarks>
 public partial class GameManager
 {
-    /// <summary>HUD root, spawned (or found) in <see cref="EnsureHud" />.</summary>
+    /// <summary>HUD root, resolved via export path, scene search, or runtime generation.</summary>
     protected BattleHud? _battleHud;
 
     /// <summary>World-space tile overlays (move/target/hover).</summary>
@@ -29,57 +25,60 @@ public partial class GameManager
     /// <summary>End-of-battle Defeat overlay; spawned lazily.</summary>
     protected GameOverScreen? _gameOverScreen;
 
-    /// <summary>Optional path to a designer-authored HUD scene.</summary>
+    /// <summary>Direct path to a pre-placed BattleHud node inside the designer-authored scene tree.</summary>
+    [Export]
+    private NodePath? _battleHudPath;
+
+    /// <summary>Optional path to a dedicated local UI Layer/Container. If unset, falls back to the scene root.</summary>
+    [Export]
+    private NodePath? _uiContainerPath;
+
+    /// <summary>Fallback path to a designer-authored HUD scene asset if no local instance is found.</summary>
     [Export(PropertyHint.File, "*.tscn")]
     private string _battleHudScenePath = string.Empty;
 
     /// <summary>Find an existing <see cref="BattleHud" /> in the scene or spawn one.</summary>
-    /// <remarks>
-    ///     Widget internals are only built when the BattleHud's <c>_Ready</c> fires next frame,
-    ///     so any code that touches <c>_battleHud.PlayerStatus.Bind(...)</c>, etc. must run via
-    ///     <c>CallDeferred</c> (see <see cref="RefreshHudOnReady" />) rather than synchronously.
-    /// </remarks>
     protected void EnsureHud()
     {
         if (_battleHud is not null && IsInstanceValid(_battleHud)) return;
 
-        // Prefer the active scene branch so the HUD shares the same live viewport as
-        // the battle scene. Fall back to the tree root only if no current scene exists.
-        SceneTree tree = GetTree();
-        Node host = tree.CurrentScene ?? tree.Root;
-        BattleHud? found = tree.CurrentScene is not null ? FindHudIn(tree.CurrentScene) : null;
-        found ??= FindHudIn(tree.Root);
+        // First try to find the pre-existing BattleHud in UILayer via MainManager
+        if (MainManager.Instance != null)
+        {
+            SceneTree tree = GetTree();
+            _battleHud = FindHudIn(tree.Root);
+            if (_battleHud is not null)
+            {
+                _battleHud.Visible = true;
+                try
+                {
+                    _battleHud.Build();
+                }
+                catch (Exception ex)
+                {
+                    GD.PrintErr($"BattleHud.Build threw: {ex.Message}");
+                }
+                return;
+            }
+        }
+
+        // Fallback: spawn dynamically (for standalone Test.tscn without MainManager)
+        SceneTree fallbackTree = GetTree();
+        Node host = fallbackTree.CurrentScene ?? fallbackTree.Root;
+        BattleHud? found = fallbackTree.CurrentScene is not null
+            ? FindHudIn(fallbackTree.CurrentScene) : null;
+        found ??= FindHudIn(fallbackTree.Root);
         if (found is not null) { _battleHud = found; return; }
 
-        if (!string.IsNullOrEmpty(_battleHudScenePath))
-        {
-            PackedScene? scene = ResourceLoader.Load<PackedScene>(_battleHudScenePath);
-            if (scene is not null) _battleHud = scene.Instantiate<BattleHud>();
-        }
         _battleHud ??= new BattleHud { Name = "BattleHud" };
-        // Pin layer + visibility BEFORE adding to the tree so the very first paint already
-        // shows the HUD on top of the 3D viewport.
         _battleHud.Layer = BattleHud.HudLayer;
         _battleHud.Visible = true;
-        // DEFER the AddChild — calling AddChild while we're still inside another node's
-        // _Ready can leave the new node in a state where Godot never dispatches its own
-        // _Ready, and CanvasLayer 2D rendering doesn't initialise. Queueing it via
-        // CallDeferred means the node enters the tree at the start of the next idle frame,
-        // when no _Ready chain is in flight, and Godot processes it normally.
         host.CallDeferred("add_child", _battleHud);
-        GD.Print($"BattleHud queued for deferred AddChild under '{host.Name}' (type={host.GetType().Name}), layer={_battleHud.Layer}, visible={_battleHud.Visible}");
-        // Build the children synchronously NOW. Build() does AddChild on widgets parented
-        // to the BattleHud — those children get added to the in-memory BattleHud right
-        // away. When Godot processes the deferred AddChild, the entire subtree enters the
-        // tree at once, _EnterTree and _Ready fire for everything in the right order.
-        try
-        {
-            _battleHud.Build();
-            GD.Print($"BattleHud.Build OK — child count: {_battleHud.GetChildCount()}");
-        }
+
+        try { _battleHud.Build(); }
         catch (Exception ex)
         {
-            GD.PrintErr($"BattleHud.Build threw [{ex.GetType().Name}]: {ex.Message}\n{ex.StackTrace}");
+            GD.PrintErr($"BattleHud.Build threw: {ex.Message}");
         }
     }
 
@@ -95,8 +94,6 @@ public partial class GameManager
     }
 
     /// <summary>Connect HUD buttons to the gameplay handlers.</summary>
-    /// <remarks>Call AFTER <see cref="EnsureHud" /> and ONE ProcessFrame yield so the HUD's
-    /// child widgets have run their <c>_Ready</c>.</remarks>
     protected void WireHudEvents()
     {
         if (_battleHud is null) return;
@@ -112,31 +109,32 @@ public partial class GameManager
 
         if (_battleHud.SkillSelector is { } selector)
             selector.OnSkillSelected += OnHudSkillSlotChosen;
+
+        if (_battleHud.InventoryPanel is not null && _battleInputSystemContainer is not null)
+            _battleHud.InventoryPanel.SetBattleInputSystem(_battleInputSystemContainer);
+
+        if (_battleHud.ActionMenu is { } actionMenu
+            && _battleHud.InventoryPanel is not null
+            && _battleHud.SkillSelector is { } skillSelector)
+        {
+            actionMenu.SetInventoryUI(
+                _battleHud.InventoryPanel,
+                skillSelector,
+                () => _turnManagerContainer?.GetCurrentUnit().Inventory as InventorySystem
+            );
+            if (_battleInputSystemContainer is not null)
+                _battleHud.InventoryPanel.SetBattleInputSystem(_battleInputSystemContainer);
+        }
     }
 
-    /// <summary>
-    ///     Populate widgets that only need a one-shot bind at battle start (enemy roster).
-    /// </summary>
-    /// <remarks>
-    ///     Called via <c>CallDeferred</c> after <see cref="EnsureHud" /> so the HUD's child
-    ///     widgets have run their <c>_Ready</c> and the <see cref="BattleHud.EnemyRoster" />
-    ///     reference is populated.
-    /// </remarks>
+    /// <summary>Populate widgets that only need a one-shot bind at battle start.</summary>
     protected void BindHudRosters()
     {
         if (_battleHud is null) return;
         _battleHud.EnemyRoster?.Bind(_enemyUnits);
     }
 
-    /// <summary>
-    ///     One-shot first-turn HUD refresh — runs AFTER <see cref="EnsureHud" /> finishes
-    ///     spawning the <see cref="BattleHud" /> and its <c>_Ready</c> populates the child
-    ///     widget references. Re-binds the active unit, redraws move tiles and updates the
-    ///     context info panel — all of which silently no-op'd on the very first
-    ///     <see cref="ActivatePlayerUnit" /> call because <c>_battleHud</c>'s children
-    ///     hadn't been built yet.
-    /// </summary>
-    /// <remarks>Scheduled via <c>CallDeferred</c> at the end of <c>InitializeGameManager</c>.</remarks>
+    /// <summary>One-shot first-turn HUD refresh — runs after _Ready chains finish processing.</summary>
     protected void RefreshHudOnReady()
     {
         if (_turnManagerContainer is null) return;
@@ -147,8 +145,6 @@ public partial class GameManager
 
         RefreshHudForActiveUnit(active);
 
-        // Only redraw move-tile indicators + context-info movement summary when it's
-        // actually a player turn — AI turns don't get tile previews.
         if (!_playerUnits.Contains(active)) return;
 
         ShowMoveIndicators(_currentUnitPossibleMoves);
@@ -158,10 +154,7 @@ public partial class GameManager
             canMove: !_unitMoved);
     }
 
-    /// <summary>
-    ///     Refresh the player-side HUD bindings (status panel + skill bar) for the active turn.
-    /// </summary>
-    /// <param name="active">The unit whose turn it is.</param>
+    /// <summary>Refresh the player-side HUD bindings for the active turn.</summary>
     protected void RefreshHudForActiveUnit(IUnitSystem? active)
     {
         if (_battleHud is null) return;
@@ -170,27 +163,19 @@ public partial class GameManager
         if (_turnManagerContainer is not null)
             _battleHud.TurnQueue?.UpdateOrder(_turnManagerContainer.GetUpcomingUnits());
 
-        // Hide the action bar on non-player turns — the player can't act anyway, and a
-        // visible Move/Attack/Skill/Pass row would imply they can.
         bool isPlayerTurn = active is not null && active.Faction == Faction.Player;
         if (_battleHud.ActionMenu is { } menu) menu.Visible = isPlayerTurn;
 
-        // Pulse the FactionMarker arrow on the active unit, dim the others.
         UpdateActiveMarkers(active);
     }
 
-    /// <summary>
-    ///     Walk every loaded unit's <see cref="FactionMarker" /> and only the active unit's
-    ///     marker pulses. Called from every turn-event handler via
-    ///     <see cref="RefreshHudForActiveUnit" />.
-    /// </summary>
     private void UpdateActiveMarkers(IUnitSystem? active)
     {
         UpdateMarkersIn(_playerUnits, active);
         UpdateMarkersIn(_allyUnits, active);
         UpdateMarkersIn(_enemyUnits, active);
 
-        static void UpdateMarkersIn(System.Collections.Generic.List<IUnitSystem> units, IUnitSystem? active)
+        static void UpdateMarkersIn(List<IUnitSystem> units, IUnitSystem? active)
         {
             foreach (IUnitSystem u in units)
             {
@@ -212,57 +197,38 @@ public partial class GameManager
         return null;
     }
 
-    /// <summary>
-    ///     Spawn (or refresh) the <see cref="VictoryScreen" /> overlay and bind it to the
-    ///     surviving party. Called from <c>CheckWinLoseCondition</c> on victory.
-    /// </summary>
-    /// <remarks>
-    ///     XP and loot values are placeholders for now — the rest of the project will wire
-    ///     them up to the progression and loot-drop systems later.
-    /// </remarks>
+    /// <summary>Spawn (or refresh) the Victory Screen overlay, bound to a clean local UI container layer.</summary>
     protected void ShowVictoryScreen()
     {
         if (_victoryScreen is null || !IsInstanceValid(_victoryScreen))
         {
             _victoryScreen = new VictoryScreen { Name = "VictoryScreen" };
-            // Defer the AddChild for the same reason EnsureHud does — see the long
-            // explanation there. CanvasLayers added during another node's _Ready
-            // sometimes never get their own _Ready dispatched.
-            Node host = GetTree().Root;
-            host.CallDeferred("add_child", _victoryScreen);
+
+            Node host = ResolveUiHostNode();
+            host.CallDeferred(Node.MethodName.AddChild, _victoryScreen);
             _victoryScreen.OnContinuePressed += OnVictoryContinue;
         }
 
-        var party = new System.Collections.Generic.List<IUnitSystem>();
+        var party = new List<IUnitSystem>();
         party.AddRange(_playerUnits);
         party.AddRange(_allyUnits);
 
-        // Placeholder rewards — real numbers come from the progression system later.
-        int xpGained = 100 * System.Math.Max(1, _enemyUnits.Count);
-        var loot = new System.Collections.Generic.List<string>
-        {
-            "Gold ×120",
-            "Health Potion ×1",
-        };
+        int xpGained = 100 * Math.Max(1, _enemyUnits.Count);
+        var loot = new List<string> { "Gold ×120", "Health Potion ×1" };
 
-        // Build child widgets synchronously (same pattern as BattleHud.Build) so that
-        // by the time the deferred AddChild lands, the entire subtree enters the scene
-        // tree at once and Godot dispatches _Ready for everything in the right order.
         _victoryScreen.EnsureBuilt();
         _victoryScreen.Bind(party, xpGained, loot);
     }
 
-    /// <summary>
-    ///     Spawn the <see cref="GameOverScreen" /> overlay. Called from
-    ///     <c>CheckWinLoseCondition</c> on defeat.
-    /// </summary>
+    /// <summary>Spawn the GameOverScreen overlay, bound to a clean local UI container layer.</summary>
     protected void ShowGameOverScreen()
     {
         if (_gameOverScreen is null || !IsInstanceValid(_gameOverScreen))
         {
             _gameOverScreen = new GameOverScreen { Name = "GameOverScreen" };
-            Node host = GetTree().Root;
-            host.CallDeferred("add_child", _gameOverScreen);
+
+            Node host = ResolveUiHostNode();
+            host.CallDeferred(Node.MethodName.AddChild, _gameOverScreen);
             _gameOverScreen.OnTryAgainPressed += OnTryAgain;
             _gameOverScreen.OnForfeitPressed += OnForfeit;
         }
@@ -270,42 +236,38 @@ public partial class GameManager
         _gameOverScreen.EnsureBuilt();
     }
 
-    /// <summary>Reload the current scene to retry the battle from the start.</summary>
+    /// <summary>Helper logic to determine where runtime overlay scenes should reside.</summary>
+    private Node ResolveUiHostNode()
+    {
+        if (_uiContainerPath is not null && !_uiContainerPath.IsEmpty)
+        {
+            Node? container = GetNodeOrNull(_uiContainerPath);
+            if (container is not null) return container;
+        }
+
+        return GetTree().CurrentScene ?? GetTree().Root;
+    }
+
     private void OnTryAgain()
     {
         GD.Print("GameManager: TryAgain pressed — reloading current scene.");
-        // Cleanup of the old GameManager / HUD happens automatically when the scene
-        // unloads; we don't need to QueueFree manually here.
         Error err = GetTree().ReloadCurrentScene();
         if (err != Error.Ok)
             GD.PrintErr($"GameManager: ReloadCurrentScene failed with {err}");
     }
 
-    /// <summary>
-    ///     Player pressed Forfeit on the GameOverScreen. Hand off to <see cref="BattleLauncher" />
-    ///     so the player respawns at the position they triggered the encounter from.
-    ///     If no launcher is registered (Test.tscn standalone), this is a no-op +
-    ///     informational log — the GameOverScreen stays visible and Try Again is the
-    ///     only working button.
-    /// </summary>
     private void OnForfeit()
     {
         GD.Print("GameManager: Forfeit pressed — handing off to BattleLauncher.");
         BattleNotifications.Post("Battle forfeited.", BattleNotifications.Severity.Negative);
         if (BattleLauncher.Instance is null)
         {
-            GD.PrintErr("GameManager: no BattleLauncher autoload — cannot return to exploration. "
-                + "Register res://scripts/managers/BattleLauncher.cs as an autoload to enable Forfeit.");
+            GD.PrintErr("GameManager: no BattleLauncher autoload — cannot return to exploration.");
             return;
         }
         BattleLauncher.Instance.Forfeit();
     }
 
-    /// <summary>
-    ///     Continue button on the VictoryScreen. Same exit path as Forfeit but a different
-    ///     entry point on <see cref="BattleLauncher" /> so reward / progression hooks can
-    ///     attach there later (xp gain, loot inventory grant, etc.).
-    /// </summary>
     private void OnVictoryContinue()
     {
         GD.Print("GameManager: Victory Continue pressed — handing off to BattleLauncher.");
@@ -316,5 +278,4 @@ public partial class GameManager
         }
         BattleLauncher.Instance.VictoryReturn();
     }
-
 }

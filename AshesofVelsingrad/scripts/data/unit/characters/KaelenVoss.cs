@@ -20,44 +20,44 @@ namespace AshesOfVelsingrad;
 /// </remarks>
 public sealed partial class KaelenVoss : UnitSystem
 {
-	protected override void Initialize()
-	{
-		UnitName = "Kaelen Voss";
-		Description = "A disgraced soldier turned reluctant hero. Solid blade, thicker armor.";
-		MaxHp = 1100;
-		Hp = MaxHp;
-		BaseAtk = 190;
-		BaseDef = 40;
-		BaseSpeed = 180;
-		Intelligence = 80;
-		ManaMax = 180;
-		Mana = ManaMax;
-		IsAlive = true;
-		PossibleMovesRange = 2;
-		Curse = 0;
+    protected override void Initialize()
+    {
+        UnitName = "Kaelen Voss";
+        Description = "A disgraced soldier turned reluctant hero. Solid blade, thicker armor.";
+        MaxHp = 1100;
+        Hp = MaxHp;
+        BaseAtk = 190;
+        BaseDef = 40;
+        BaseSpeed = 180;
+        Intelligence = 80;
+        ManaMax = 180;
+        Mana = ManaMax;
+        IsAlive = true;
+        PossibleMovesRange = 2;
+        Curse = 0;
 
-		ActiveSkills.Add(new Catalog.CrushingStrike());
-		ActiveSkills.Add(new Catalog.WarCry());
-		ActiveSkills.Add(new Catalog.Charge());
-		ActiveSkills.Add(new Catalog.Block());
-		ActiveSkills.Add(new Catalog.CircularStrike());
+        ActiveSkills.Add(new Catalog.CrushingStrike());
+        ActiveSkills.Add(new Catalog.WarCry());
+        ActiveSkills.Add(new Catalog.Charge());
+        ActiveSkills.Add(new Catalog.Block());
+        ActiveSkills.Add(new Catalog.CircularStrike());
 
-		PassiveSkills.Add(new Catalog.BruteForce());
-		PassiveSkills.Add(new Catalog.Recklessness());
-		PassiveSkills.Add(new Catalog.WarriorEndurance());
+        PassiveSkills.Add(new Catalog.BruteForce());
+        PassiveSkills.Add(new Catalog.Recklessness());
+        PassiveSkills.Add(new Catalog.WarriorEndurance());
 
-		base.Initialize();
+        base.Initialize();
 
-		var statusEffectSystem = new StatusEffectSystem();
-		InjectDependencies(statusEffectSystem);
+        var statusEffectSystem = new StatusEffectSystem();
+        InjectDependencies(statusEffectSystem);
 
-		SetEntityProfile(new EntityProfile
-		{
-			DisplayName = "Kaelen Voss",
-			ClassName = "Fighter",
-			Level = 1,
-			PortraitPath = "res://assets/Krita/icone_player.png",
-			Bio = "Once a soldier of Velsingrad, now a fugitive. Carries the weight of a verdict he doesn't believe.",
-		});
-	}
+        SetEntityProfile(new EntityProfile
+        {
+            DisplayName = "Kaelen Voss",
+            ClassName = "Fighter",
+            Level = 1,
+            PortraitPath = "res://assets/Krita/icone_player.png",
+            Bio = "Once a soldier of Velsingrad, now a fugitive. Carries the weight of a verdict he doesn't believe.",
+        });
+    }
 }

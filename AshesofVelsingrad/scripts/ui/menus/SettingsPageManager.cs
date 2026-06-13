@@ -54,6 +54,43 @@ public partial class SettingsPageManager : Node
             _pages[currentPage - 1].Visible = true;
     }
 
+    /// <summary>
+    /// Hides all pages and resets button highlights.
+    /// Called by MenuManager when hiding the settings screen.
+    /// </summary>
+    public void HideAllPages()
+    {
+        foreach (var page in _pages)
+            page.Visible = false;
+
+        foreach (var title in _titles)
+            title.Modulate = Colors.White;
+
+        var vbox = GetNodeOrNull<Control>("VBoxContainer");
+        if (vbox != null)
+        {
+            vbox.Visible = false;
+            vbox.MouseFilter = Control.MouseFilterEnum.Ignore;
+        }
+    }
+
+    /// <summary>
+    /// Shows the current page and highlights its button.
+    /// Called by MenuManager when showing the settings screen.
+    /// </summary>
+    public void ShowCurrentPage()
+    {
+        var vbox = GetNodeOrNull<Control>("VBoxContainer");
+
+        if (vbox != null)
+        {
+            vbox.Visible = true;
+            vbox.MouseFilter = Control.MouseFilterEnum.Ignore;
+        }
+
+        UpdateAll();
+    }
+
     // === Connexions boutons ===
 
     public void OnButtonSubtitlePressed() => ChangePage(1);

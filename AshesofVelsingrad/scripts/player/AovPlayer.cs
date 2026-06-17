@@ -174,6 +174,8 @@ public sealed partial class AovPlayer : CharacterBody3D, IInteractor
                 interactable.Interact(this);
             }
         }
+        if (@event.IsActionPressed("open_inventory"))
+            _explorationInventoryUI?.Toggle();
     }
 
     public override void _PhysicsProcess(double delta)

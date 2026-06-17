@@ -39,12 +39,6 @@ public partial class ExplorationInventoryUI : CanvasLayer
         RefreshUnitPanels();
     }
 
-    public override void _Input(InputEvent @event)
-    {
-        if (@event.IsActionPressed("open_inventory"))
-            Toggle();
-    }
-
     public void Toggle()
     {
         if (!Visible)

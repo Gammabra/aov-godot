@@ -196,12 +196,14 @@ transform = Transform3D(-5.1425165e-08, 0, 1.1764706, 0, 1.1764706, 0, -1.176470
 [node name="Wall7" parent="NavigationRegion3D/Wall9" unique_id=395844910 instance=ExtResource("6_js1ay")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3.54523)
 
-[node name="AovPlayer" parent="." unique_id=1117119690 instance=ExtResource("5_7ekjt")]
+[node name="Characters" type="Node" parent="." unique_id=1507978962]
+
+[node name="AovPlayer" parent="Characters" unique_id=1117119690 instance=ExtResource("5_7ekjt")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.516685, 0.4965227, 1.006068)
 
-[node name="Soldier" parent="." unique_id=633068440 instance=ExtResource("6_7ekjt")]
+[node name="Soldier" parent="Characters" unique_id=633068440 instance=ExtResource("6_7ekjt")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.7481985, 0.7465227, 1.2262589)
 
-[node name="MiniMercenary" parent="." unique_id=942239080 instance=ExtResource("7_js1ay")]
+[node name="MiniMercenary" parent="Characters" unique_id=942239080 instance=ExtResource("7_js1ay")]
 transform = Transform3D(0.85, 0, 0, 0, 0.85, 0, 0, 0, 0.85, -9.115555, 0.64727277, -0.021078676)
 _playerPath = NodePath("../AovPlayer")

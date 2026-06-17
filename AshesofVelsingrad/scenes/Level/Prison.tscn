@@ -7,6 +7,8 @@
 [ext_resource type="PackedScene" uid="uid://cacndwkpp1xg5" path="res://assets/prison_assets/wall.tscn" id="6_js1ay"]
 [ext_resource type="PackedScene" uid="uid://deoxgrrrqxand" path="res://assets/prison_assets/wall_door_close.tscn" id="7_27kcu"]
 [ext_resource type="PackedScene" uid="uid://ch6ssue2idnqm" path="res://scenes/npc/MiniMercenary.tscn" id="7_js1ay"]
+[ext_resource type="Script" uid="uid://bgoggf0ipa0eg" path="res://scripts/managers/TutorialManager.cs" id="8_o5u2j"]
+[ext_resource type="Script" uid="uid://da4tcpfho02r0" path="res://dialogues/prison/OpenToKaelen.gd" id="9_lqcxu"]
 
 [sub_resource type="Sky" id="Sky_3qxsn"]
 
@@ -27,6 +29,14 @@ edge_max_error = 1.0
 material = SubResource("StandardMaterial3D_3qxsn")
 
 [node name="Prison" type="Node3D" unique_id=878599033]
+
+[node name="TutorialManager" type="Node" parent="." unique_id=1692385747]
+script = ExtResource("8_o5u2j")
+_introDialogPath = NodePath("IntroDialog")
+_playerPath = NodePath("../Characters/AovPlayer")
+
+[node name="IntroDialog" type="Node" parent="TutorialManager" unique_id=1236982906]
+script = ExtResource("9_lqcxu")
 
 [node name="Environement" type="Node3D" parent="." unique_id=206120937]
 
@@ -200,6 +210,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3.54523)
 
 [node name="AovPlayer" parent="Characters" unique_id=1117119690 instance=ExtResource("5_7ekjt")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.516685, 0.4965227, 1.006068)
+_tutorialManagerPath = NodePath("../../TutorialManager")
 
 [node name="Soldier" parent="Characters" unique_id=633068440 instance=ExtResource("6_7ekjt")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.7481985, 0.7465227, 1.2262589)

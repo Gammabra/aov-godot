@@ -32,6 +32,9 @@ public sealed partial class AovPlayer : CharacterBody3D, IInteractor
     [Export]
     private NodePath? _explorationInventoryUiPath;
 
+    [Export]
+    private NodePath _tutorialManagerPath = null!;
+
     /// <summary>Optional container path to house the inventory UI if spawned procedurally at runtime.</summary>
     [Export]
     private NodePath? _uiContainerPath;
@@ -46,6 +49,8 @@ public sealed partial class AovPlayer : CharacterBody3D, IInteractor
     private AnimatedSprite3D _animatedSprite3D = null!;
     private static AovPlayer? _instance;
     private ExplorationInventoryUI? _explorationInventoryUI;
+    private TutorialManager _tutorialManager = null!;
+    private bool _isTutorial;
 
     private void Initialize()
     {
@@ -53,6 +58,16 @@ public sealed partial class AovPlayer : CharacterBody3D, IInteractor
         _springArm3D = GetNode<SpringArm3D>(_springArm3DPath);
         _interactionComponent = GetNode<InteractionComponent>(_interactionComponentPath);
         _animatedSprite3D = GetNode<AnimatedSprite3D>(_animatedSprite3DPath);
+        try
+        {
+            _tutorialManager = GetNode<TutorialManager>(_tutorialManagerPath);
+            _isTutorial = true;
+        }
+        catch
+        {
+            _isTutorial = false;
+        }
+
         _instance = this;
 
         // If we just returned from a battle (player pressed Forfeit or Continue), the
@@ -165,6 +180,8 @@ public sealed partial class AovPlayer : CharacterBody3D, IInteractor
     {
         if (_isLock) return;
 
+        if (_isTutorial && !_tutorialManager.CanMove)
+            return;
         if (@event.IsActionPressed("interact"))
         {
             IInteractable? interactable = _interactionComponent?.ClosestInteractable as IInteractable;
@@ -185,6 +202,9 @@ public sealed partial class AovPlayer : CharacterBody3D, IInteractor
             _stateMachine?.TransitionTo("IdleState");
             return;
         }
+
+        if (_isTutorial && !_tutorialManager.CanMove)
+            return;
 
         Vector3 currentVelocity = Velocity;
 

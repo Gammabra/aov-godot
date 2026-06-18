@@ -1,11 +1,14 @@
 ﻿using AshesOfVelsingrad.player;
+using AshesOfVelsingrad.ui;
 using Godot;
+using System.Threading.Tasks;
 
 namespace AshesOfVelsingrad.Managers;
 
 public enum TutorialStep
 {
     Start,
+    IntroSequence,
     IntroDialog,
 }
 
@@ -19,16 +22,38 @@ public partial class TutorialManager : Node
     [Export]
     private NodePath _playerPath = null!;
 
+    [Export]
+    private NodePath _introSequencePath = null!;
+
     private Node _introDialog = null!;
     private AovPlayer _player = null!;
+    private TextSequence _introSequence = null!;
+    // TODO: Fill the tuple to have the complete intro sequence
+    private readonly (string, int, float)[] _sequences = [
+        ("Prologue", 50, 3)
+    ];
 
     public bool CanMove { get; private set; }
 
-    public override void _Ready()
+    private void DoIntroDialogStep()
+    {
+        _introDialog.Call("talk");
+    }
+
+    private void DoIntroSequences()
+    {
+        _ = _introSequence.PlaySequence(_sequences);
+    }
+
+    public override async void _Ready()
     {
         _player = GetNode<AovPlayer>(_playerPath);
         _introDialog = GetNode<Node>(_introDialogPath);
         _introDialog.Connect("dialog_ended", Callable.From(() => CanMove = true));
+        _introSequence = GetNode<TextSequence>(_introSequencePath);
+        _introSequence.OnSequenceEnded += GoToNextStep;
+
+        await ToSignal(_introSequence, Node.SignalName.Ready);
         GoToNextStep();
     }
 
@@ -38,14 +63,12 @@ public partial class TutorialManager : Node
 
         switch (_step)
         {
+            case TutorialStep.IntroSequence:
+                DoIntroSequences();
+                break;
             case TutorialStep.IntroDialog:
                 DoIntroDialogStep();
                 break;
         }
-    }
-
-    private void DoIntroDialogStep()
-    {
-        _introDialog.Call("talk");
     }
 }

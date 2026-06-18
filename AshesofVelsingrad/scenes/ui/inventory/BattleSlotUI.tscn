@@ -16,6 +16,7 @@ layout_mode = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=357203689]
 layout_mode = 2
+mouse_filter = 2
 
 [node name="ItemLabel" type="Label" parent="VBoxContainer" unique_id=1868052683]
 custom_minimum_size = Vector2(60, 0)

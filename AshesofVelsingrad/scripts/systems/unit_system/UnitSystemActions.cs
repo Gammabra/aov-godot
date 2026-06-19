@@ -57,7 +57,7 @@ public abstract partial class UnitSystem
     ///     Restore <paramref name="amount" /> mana, clamped to <see cref="UnitSystem.ManaMax" />.
     /// </summary>
     /// <param name="amount">Mana to restore. Negative values are ignored.</param>
-    public virtual void RestoreMana(float amount)
+    public void RestoreMana(float amount)
     {
         if (amount <= 0f) return;
 

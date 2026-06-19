@@ -16,6 +16,11 @@ public struct InventorySlot : IInventorySlot
     }
 }
 
+/// <summary>
+///    Basic inventory implementation: fixed-size array of slots, each with an item ID and quantity.
+///    Does not handle item stacking logic internally — that is the caller's responsibility (e.g. InventoryUI).
+///    Does not handle item use logic internally — that is the caller's responsibility (e.g. InventoryUI or BattleSystem).
+/// </summary>
 public sealed class InventorySystem : IInventorySystem
 {
     public int Capacity { get; }

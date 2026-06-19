@@ -72,6 +72,7 @@ public interface IUnitSystem : IEffectTarget<IUnitSystem>, IStatusEffectBehavior
 
     // Methods from UnitSystemStatusEffectImplementation
     new void OnEffectHeal(float amount);
+    void RestoreMana(float amount);
     new void OnEffectControlApplied();
     new void OnEffectControlRemoved();
     new void OnEffectDamage(AovDataStructures.ModifierType modifierType, float amount);

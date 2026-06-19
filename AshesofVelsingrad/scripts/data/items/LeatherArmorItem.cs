@@ -2,7 +2,7 @@ using AshesOfVelsingrad.Systems;
 
 namespace AshesOfVelsingrad.items;
 
-public sealed class LeatherArmorItem : ItemSystem
+public sealed partial class LeatherArmorItem : ItemSystem
 {
     public LeatherArmorItem()
     {

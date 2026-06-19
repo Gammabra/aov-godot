@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://dc2mxxi1eo0f1"]
+
+[ext_resource type="Script" uid="uid://bd5j1pbvnplxd" path="res://scripts/ui/inventory/UnitSlotUI.cs" id="1_j60h0"]
+
+[node name="PanelSlotUI" type="PanelContainer" unique_id=361446939 node_paths=PackedStringArray("_nameLabel", "_qtyLabel")]
+custom_minimum_size = Vector2(64, 64)
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_j60h0")
+_nameLabel = NodePath("VBoxContainer/ItemLabel")
+_qtyLabel = NodePath("VBoxContainer/QtyLabel")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=357203689]
+layout_mode = 2
+
+[node name="ItemLabel" type="Label" parent="VBoxContainer" unique_id=1868052683]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+autowrap_mode = 3
+
+[node name="QtyLabel" type="Label" parent="VBoxContainer" unique_id=803329031]
+layout_mode = 2
+theme_override_font_sizes/font_size = 11

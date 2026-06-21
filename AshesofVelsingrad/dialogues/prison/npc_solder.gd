@@ -39,10 +39,12 @@ func talk() -> void:
 
 	dialog.say("What do we do?", ym)
 
+
 	dialog.menu("Your decision?", {
 			"We help defend the capital": "yes_function",
 			"I need time to think": "no_function",
 		})
+	dialog.start_convo()
 
 func yes_function() -> void:
 	print("[npc_solder] yes_function() — adding 2 lines + start_fight action")

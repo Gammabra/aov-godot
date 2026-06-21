@@ -4,10 +4,10 @@
 [ext_resource type="Script" uid="uid://cjiia3c7avbf0" path="res://scripts/data/npc/Soldier.cs" id="1_t0mcy"]
 [ext_resource type="Script" uid="uid://dotytx100nxai" path="res://scripts/managers/state_machines/StateMachine.cs" id="2_vh47w"]
 [ext_resource type="Script" uid="uid://cbra7nuuruj2p" path="res://scripts/data/states/IdleState.cs" id="3_t0mcy"]
-[ext_resource type="Script" uid="uid://cvqs12q0c4fsy" path="res://dialogues/prison/npc_solder.gd" id="5_j6req"]
 [ext_resource type="PackedScene" uid="uid://du6yoy0raqgx2" path="res://scenes/unit/characters/kaelen_voss.tscn" id="6_kaelen"]
 [ext_resource type="PackedScene" uid="uid://du6yoy0te37lg" path="res://scenes/unit/characters/mercenary_ally.tscn" id="7_merc"]
 [ext_resource type="PackedScene" uid="uid://du6yoy00ow8lg" path="res://scenes/unit/enemies/enemy_soldier.tscn" id="8_enemysoldier"]
+[ext_resource type="Script" uid="uid://cvqs12q0c4fsy" path="res://dialogues/prison/npc_solder.gd" id="8_sfneb"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_sdp4p"]
 atlas = ExtResource("1_sy352")
@@ -78,4 +78,4 @@ script = ExtResource("3_t0mcy")
 _animatedSprite3DPath = NodePath("../../AnimatedSprite3D")
 
 [node name="Dialog" type="Node" parent="." unique_id=545940555]
-script = ExtResource("5_j6req")
+script = ExtResource("8_sfneb")

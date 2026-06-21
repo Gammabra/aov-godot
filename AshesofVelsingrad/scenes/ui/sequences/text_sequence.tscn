@@ -4,7 +4,7 @@
 
 [node name="Sequence" type="CanvasLayer" unique_id=463615766]
 script = ExtResource("1_u1bfi")
-_fadeRootPath = NodePath("ColorRect")
+_fadeBackgroundPath = NodePath("ColorRect")
 _labelNodePath = NodePath("Label")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=1235816295]

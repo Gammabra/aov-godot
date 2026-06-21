@@ -10,6 +10,7 @@ public enum TutorialStep
     Start,
     IntroSequence,
     IntroDialog,
+    GuardDialog,
 }
 
 public partial class TutorialManager : Node
@@ -20,12 +21,16 @@ public partial class TutorialManager : Node
     private NodePath _introDialogPath = null!;
 
     [Export]
+    private NodePath _guardDialogPath = null!;
+
+    [Export]
     private NodePath _playerPath = null!;
 
     [Export]
     private NodePath _introSequencePath = null!;
 
     private Node _introDialog = null!;
+    private Node _guardDialog = null!;
     private AovPlayer _player = null!;
     private TextSequence _introSequence = null!;
     // TODO: Fill the tuple to have the complete intro sequence
@@ -40,6 +45,13 @@ public partial class TutorialManager : Node
         _introDialog.Call("talk");
     }
 
+    private async Task DoGuardDialog()
+    {
+        await ToSignal(GetTree().CreateTimer(1f),
+            SceneTreeTimer.SignalName.Timeout);
+        _guardDialog.Call("talk");
+    }
+
     private void DoIntroSequences()
     {
         _ = _introSequence.PlaySequence(_sequences);
@@ -49,7 +61,9 @@ public partial class TutorialManager : Node
     {
         _player = GetNode<AovPlayer>(_playerPath);
         _introDialog = GetNode<Node>(_introDialogPath);
-        _introDialog.Connect("dialog_ended", Callable.From(() => CanMove = true));
+        _introDialog.Connect("dialog_ended", Callable.From(GoToNextStep));
+        _guardDialog = GetNode<Node>(_guardDialogPath);
+        _guardDialog.Connect("dialog_ended", Callable.From(() => CanMove = true));
         _introSequence = GetNode<TextSequence>(_introSequencePath);
         _introSequence.OnSequenceEnded += GoToNextStep;
 
@@ -68,6 +82,9 @@ public partial class TutorialManager : Node
                 break;
             case TutorialStep.IntroDialog:
                 DoIntroDialogStep();
+                break;
+            case TutorialStep.GuardDialog:
+                _ = DoGuardDialog();
                 break;
         }
     }

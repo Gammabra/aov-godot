@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://cv6a5snma6luw"]
 
+[ext_resource type="Script" uid="uid://balavsax1sbem" path="res://dialogues/prison/IntroDialog.gd" id="2_1dv8c"]
 [ext_resource type="PackedScene" uid="uid://clovyn8ti6ung" path="res://assets/prison_assets/floor.tscn" id="4_w1s1i"]
 [ext_resource type="PackedScene" uid="uid://c40qs8x1egpy7" path="res://scenes/aov_player.tscn" id="5_7ekjt"]
 [ext_resource type="PackedScene" uid="uid://dt1eyxw0w0f2e" path="res://assets/prison_assets/wall_door_open.tscn" id="5_atg6q"]
@@ -8,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://deoxgrrrqxand" path="res://assets/prison_assets/wall_door_close.tscn" id="7_27kcu"]
 [ext_resource type="PackedScene" uid="uid://ch6ssue2idnqm" path="res://scenes/npc/MiniMercenary.tscn" id="7_js1ay"]
 [ext_resource type="Script" uid="uid://bgoggf0ipa0eg" path="res://scripts/managers/TutorialManager.cs" id="8_o5u2j"]
-[ext_resource type="Script" uid="uid://da4tcpfho02r0" path="res://dialogues/prison/OpenToKaelen.gd" id="9_lqcxu"]
+[ext_resource type="Script" uid="uid://da4tcpfho02r0" path="res://dialogues/prison/GuardDialog.gd" id="9_lqcxu"]
 [ext_resource type="PackedScene" uid="uid://drjehibwr5q1e" path="res://scenes/ui/sequences/text_sequence.tscn" id="10_lqcxu"]
 
 [sub_resource type="Sky" id="Sky_3qxsn"]
@@ -33,11 +34,15 @@ material = SubResource("StandardMaterial3D_3qxsn")
 
 [node name="TutorialManager" type="Node" parent="." unique_id=1692385747]
 script = ExtResource("8_o5u2j")
-_introDialogPath = NodePath("IntroDialog")
+_introDialogPath = NodePath("IntroDialogScript")
+_guardDialogPath = NodePath("GuardDialogScript")
 _playerPath = NodePath("../Characters/AovPlayer")
 _introSequencePath = NodePath("../Sequence/Sequence")
 
-[node name="IntroDialog" type="Node" parent="TutorialManager" unique_id=1236982906]
+[node name="IntroDialogScript" type="Node" parent="TutorialManager" unique_id=1252239078]
+script = ExtResource("2_1dv8c")
+
+[node name="GuardDialogScript" type="Node" parent="TutorialManager" unique_id=1124455202]
 script = ExtResource("9_lqcxu")
 
 [node name="Environement" type="Node3D" parent="." unique_id=206120937]

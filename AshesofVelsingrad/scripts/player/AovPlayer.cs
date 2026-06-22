@@ -204,7 +204,10 @@ public sealed partial class AovPlayer : CharacterBody3D, IInteractor
         }
 
         if (_isTutorial && !_tutorialManager.CanMove)
+        {
+            _stateMachine?.TransitionTo("IdleState");
             return;
+        }
 
         Vector3 currentVelocity = Velocity;
 

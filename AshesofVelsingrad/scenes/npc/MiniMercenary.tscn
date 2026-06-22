@@ -1,13 +1,13 @@
 [gd_scene format=3 uid="uid://ch6ssue2idnqm"]
 
 [ext_resource type="Script" uid="uid://ccwlexh8hrqsr" path="res://scripts/data/npc/MiniMercenary.cs" id="1_3rv65"]
-[ext_resource type="Texture2D" uid="uid://gn1jvwoe4xtx" path="res://assets/Krita/sprite_mercenaire.png" id="1_tarug"]
+[ext_resource type="Texture2D" uid="uid://cjmqool0xnbmx" path="res://assets/Krita/sprite_mercenaire.png" id="1_tarug"]
 [ext_resource type="Script" uid="uid://dotytx100nxai" path="res://scripts/managers/state_machines/StateMachine.cs" id="2_hkbft"]
-[ext_resource type="Script" uid="uid://cbra7nuuruj2p" path="res://scripts/GenericCharacterStates/IdleState.cs" id="3_3rv65"]
-[ext_resource type="Script" uid="uid://bwuj8qxa0majx" path="res://scripts/GenericCharacterStates/WalkForwardState.cs" id="5_rkhoi"]
-[ext_resource type="Script" uid="uid://b78pk38svecle" path="res://scripts/GenericCharacterStates/WalkBackwardState.cs" id="6_s4j83"]
-[ext_resource type="Script" uid="uid://cekx3mvjf080g" path="res://scripts/GenericCharacterStates/WalkLeftState.cs" id="7_7vivo"]
-[ext_resource type="Script" uid="uid://bs42mjeuf3j6j" path="res://scripts/GenericCharacterStates/WalkRightState.cs" id="8_51vgn"]
+[ext_resource type="Script" uid="uid://cbra7nuuruj2p" path="res://scripts/data/states/IdleState.cs" id="3_3rv65"]
+[ext_resource type="Script" uid="uid://bwuj8qxa0majx" path="res://scripts/data/states/WalkForwardState.cs" id="5_rkhoi"]
+[ext_resource type="Script" uid="uid://b78pk38svecle" path="res://scripts/data/states/WalkBackwardState.cs" id="6_s4j83"]
+[ext_resource type="Script" uid="uid://cekx3mvjf080g" path="res://scripts/data/states/WalkLeftState.cs" id="7_7vivo"]
+[ext_resource type="Script" uid="uid://bs42mjeuf3j6j" path="res://scripts/data/states/WalkRightState.cs" id="8_51vgn"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gemqk"]
 atlas = ExtResource("1_tarug")

@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://balavsax1sbem" path="res://dialogues/prison/IntroDialog.gd" id="2_1dv8c"]
 [ext_resource type="Script" uid="uid://bkna3rtcrulbr" path="res://scripts/tutorial/ItemDetectionArea.cs" id="4_4ma5r"]
+[ext_resource type="Script" uid="uid://ct0kta256qys4" path="res://dialogues/prison/FoundFirstItem.gd" id="4_t6d7d"]
 [ext_resource type="PackedScene" uid="uid://clovyn8ti6ung" path="res://assets/prison_assets/floor.tscn" id="4_w1s1i"]
 [ext_resource type="PackedScene" uid="uid://c40qs8x1egpy7" path="res://scenes/aov_player.tscn" id="5_7ekjt"]
 [ext_resource type="PackedScene" uid="uid://dt1eyxw0w0f2e" path="res://assets/prison_assets/wall_door_open.tscn" id="5_atg6q"]
@@ -40,14 +41,20 @@ material = SubResource("StandardMaterial3D_3qxsn")
 script = ExtResource("8_o5u2j")
 _introDialogPath = NodePath("IntroDialogScript")
 _guardDialogPath = NodePath("GuardDialogScript")
+_foundFirstItemDialogPath = NodePath("FoundFirstItemDialogScript")
 _playerPath = NodePath("../Characters/AovPlayer")
+_miniMercenaryPath = NodePath("../Characters/MiniMercenary")
 _introSequencePath = NodePath("../Sequence/Sequence")
+_firstItemDetectionAreaPath = NodePath("FirstItemDetectionArea")
 
 [node name="IntroDialogScript" type="Node" parent="TutorialManager" unique_id=1252239078]
 script = ExtResource("2_1dv8c")
 
 [node name="GuardDialogScript" type="Node" parent="TutorialManager" unique_id=1124455202]
 script = ExtResource("9_lqcxu")
+
+[node name="FoundFirstItemDialogScript" type="Node" parent="TutorialManager" unique_id=1262204849]
+script = ExtResource("4_t6d7d")
 
 [node name="FirstItemDetectionArea" type="Area3D" parent="TutorialManager" unique_id=1482621318]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.8482203, 0.3264104, 1.5686047)

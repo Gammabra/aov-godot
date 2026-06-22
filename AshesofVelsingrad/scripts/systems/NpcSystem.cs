@@ -5,9 +5,9 @@ using Godot;
 namespace AshesOfVelsingrad.Interfaces;
 
 /// <summary>
-/// Base abstract class for all NPCs in the game.
-/// Provides common movement, navigation, and state-transition behaviors
-/// such as idling, roaming, and following a target entity.
+/// Base abstract class for all NPC characters in the game.
+/// Provides core behavior including navigation, movement handling,
+/// and high-level AI sub-states such as idle, roaming, and target following.
 /// </summary>
 public abstract partial class NpcSystem : CharacterBody3D
 {
@@ -20,22 +20,33 @@ public abstract partial class NpcSystem : CharacterBody3D
     private Node3D? _nodeToFollow;
 
     /// <summary>
-    /// Minimum distance at which the NPC stops approaching its target.
+    /// Minimum distance at which the NPC considers it has reached its target
+    /// and stops advancing further.
     /// </summary>
     protected float StopDistance;
 
     /// <summary>
-    /// Movement speed of the NPC.
+    /// Movement speed applied to the NPC when following a navigation path.
     /// </summary>
     protected float Speed;
 
+    /// <summary>
+    /// Signal emitted when the NPC successfully reaches a specific target point
+    /// while using the "FollowSpecificPoint" behavior.
+    /// </summary>
     [Signal]
     public delegate void OnSpecificPointReachedEventHandler();
 
+    /// <summary>
+    /// Handles movement logic when the NPC is following a fixed target position.
+    /// The NPC moves toward the target until it is within a small threshold distance,
+    /// then transitions to idle and emits a completion signal.
+    /// </summary>
     private void OnFollowSpecificPoint()
     {
         if (_nodeToFollow == null)
             return;
+
         float distance = GlobalPosition.DistanceTo(_nodeToFollow.GlobalPosition);
 
         if (distance > 0.3f)
@@ -59,17 +70,23 @@ public abstract partial class NpcSystem : CharacterBody3D
         }
         else
         {
-            ToIdle();
+            ToIdle(true);
             EmitSignalOnSpecificPointReached();
         }
 
         MoveAndSlide();
     }
 
+    /// <summary>
+    /// Handles movement logic when the NPC is following a moving target.
+    /// The navigation path is continuously updated to track the target's position.
+    /// </summary>
+    /// <param name="delta">Frame time step used for smoothing movement.</param>
     private void OnFollowMovingPoint(double delta)
     {
         if (_nodeToFollow == null)
             return;
+
         float distance = GlobalPosition.DistanceTo(_nodeToFollow.GlobalPosition);
 
         if (distance > StopDistance)
@@ -108,6 +125,10 @@ public abstract partial class NpcSystem : CharacterBody3D
         MoveAndSlide();
     }
 
+    /// <summary>
+    /// Executes the current movement behavior depending on the active NPC sub-state.
+    /// </summary>
+    /// <param name="delta">Frame time step.</param>
     protected void HandleCharacterMovement(double delta)
     {
         switch (_subState)
@@ -115,6 +136,7 @@ public abstract partial class NpcSystem : CharacterBody3D
             case AovDataStructures.NpcSubState.FollowSpecificPoint:
                 OnFollowSpecificPoint();
                 break;
+
             case AovDataStructures.NpcSubState.FollowMovingPoint:
                 OnFollowMovingPoint(delta);
                 break;
@@ -122,19 +144,20 @@ public abstract partial class NpcSystem : CharacterBody3D
     }
 
     /// <summary>
-    /// Initializes the NPC with its navigation and movement settings.
+    /// Initializes the NPC systems including navigation, state machine, and movement parameters.
+    /// Must be called before any movement logic is executed.
     /// </summary>
     /// <param name="stateMachine">
-    /// State machine responsible for handling NPC state transitions.
+    /// State machine responsible for animation and behavior transitions.
     /// </param>
     /// <param name="navigationAgent">
-    /// Navigation agent used for pathfinding and movement.
+    /// Navigation agent used for pathfinding on the NavMesh.
     /// </param>
     /// <param name="stopDistance">
-    /// Distance from the target at which the NPC stops moving.
+    /// Distance threshold at which the NPC stops moving toward a target.
     /// </param>
     /// <param name="speed">
-    /// Movement speed of the NPC.
+    /// Movement speed applied during navigation.
     /// </param>
     protected void Initialize(
         StateMachine stateMachine,
@@ -150,28 +173,38 @@ public abstract partial class NpcSystem : CharacterBody3D
     }
 
     /// <summary>
-    /// Transitions the NPC to its idle state.
+    /// Forces the NPC into an idle state and stops all movement.
     /// </summary>
+    /// <param name="changeSubState">
+    /// If true, also resets the internal AI sub-state to Idle.
+    /// </param>
     public void ToIdle(bool changeSubState = false)
     {
         Velocity = Vector3.Zero;
         _stateMachine.TransitionTo("IdleState");
+
         if (changeSubState)
             _subState = AovDataStructures.NpcSubState.Idle;
     }
 
     /// <summary>
-    /// Starts the roaming behavior by activating the roaming timer
-    /// and refreshing the navigation path.
+    /// Starts roaming behavior (not fully implemented).
+    /// Intended to make the NPC wander around its origin point.
     /// </summary>
     public void ToRoaming()
     {
-        // TODO: Not finished
         _timer.Start();
         _navigationAgent.GetNextPathPosition();
         _navigationAgent.IsNavigationFinished();
     }
 
+    /// <summary>
+    /// Sets the NPC to follow a fixed target point in the world.
+    /// The NPC will stop once it reaches the target position.
+    /// </summary>
+    /// <param name="nodeToFollow">
+    /// Static target position represented by a Node3D.
+    /// </param>
     public void ToFollowingSpecificPoint(Node3D nodeToFollow)
     {
         _nodeToFollow = nodeToFollow;
@@ -180,10 +213,11 @@ public abstract partial class NpcSystem : CharacterBody3D
     }
 
     /// <summary>
-    /// Makes the NPC follow a target entity using navigation pathfinding.
+    /// Sets the NPC to follow a moving entity using continuous path recalculation.
+    /// The target position is updated dynamically during movement.
     /// </summary>
     /// <param name="nodeToFollow">
-    /// The target entity that the NPC should follow.
+    /// Dynamic target entity to follow.
     /// </param>
     public void ToFollowingMovingEntity(Node3D nodeToFollow)
     {

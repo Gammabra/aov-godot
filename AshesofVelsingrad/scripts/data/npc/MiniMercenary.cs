@@ -32,6 +32,7 @@ public partial class MiniMercenary : NpcSystem
         _player = GetNode<AovPlayer>(_playerPath);
         StateMachine stateMachine = GetNode<StateMachine>(_stateMachinePath);
         Initialize(stateMachine, navigationAgent, _stopDistance, _speed);
+        ToFollowingMovingEntity(_player);
     }
 
     public override void _PhysicsProcess(double delta)
@@ -41,6 +42,6 @@ public partial class MiniMercenary : NpcSystem
             return;
         }
 
-        ToFollowingMovingEntity(_player, delta);
+        HandleCharacterMovement(delta);
     }
 }

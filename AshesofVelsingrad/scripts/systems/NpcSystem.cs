@@ -49,7 +49,7 @@ public abstract partial class NpcSystem : CharacterBody3D
 
         float distance = GlobalPosition.DistanceTo(_nodeToFollow.GlobalPosition);
 
-        if (distance > 0.3f)
+        if (distance > 0.4f)
         {
             Vector3 nextPosition = _navigationAgent.GetNextPathPosition();
             Vector3 nextDirection = (nextPosition - GlobalPosition).Normalized();
@@ -208,8 +208,8 @@ public abstract partial class NpcSystem : CharacterBody3D
     public void ToFollowingSpecificPoint(Node3D nodeToFollow)
     {
         _nodeToFollow = nodeToFollow;
+        _navigationAgent.TargetPosition = _nodeToFollow.GlobalPosition;
         _subState = AovDataStructures.NpcSubState.FollowSpecificPoint;
-        _navigationAgent.TargetPosition = nodeToFollow.GlobalPosition;
     }
 
     /// <summary>

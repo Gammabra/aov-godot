@@ -6,10 +6,10 @@ namespace AshesOfVelsingrad.tutotial;
 public partial class ItemDetectionArea : Area3D
 {
 	[Export]
-	private NodePath _characterThatDetectPath;
+	private NodePath _characterThatDetectPath = null!;
 
 	[Export]
-	private NodePath _pointOfInterestPath;
+	private NodePath _pointOfInterestPath = null!;
 
 	private CharacterBody3D? _characterThatDetect;
 	private Marker3D? _pointOfInterest;

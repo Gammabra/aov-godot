@@ -1,9 +1,11 @@
 [gd_scene format=3 uid="uid://cv6a5snma6luw"]
 
 [ext_resource type="Script" uid="uid://balavsax1sbem" path="res://dialogues/prison/IntroDialog.gd" id="2_1dv8c"]
+[ext_resource type="Script" uid="uid://bkna3rtcrulbr" path="res://scripts/tutorial/ItemDetectionArea.cs" id="4_4ma5r"]
 [ext_resource type="PackedScene" uid="uid://clovyn8ti6ung" path="res://assets/prison_assets/floor.tscn" id="4_w1s1i"]
 [ext_resource type="PackedScene" uid="uid://c40qs8x1egpy7" path="res://scenes/aov_player.tscn" id="5_7ekjt"]
 [ext_resource type="PackedScene" uid="uid://dt1eyxw0w0f2e" path="res://assets/prison_assets/wall_door_open.tscn" id="5_atg6q"]
+[ext_resource type="PackedScene" uid="uid://c8h22n6k3rvf2" path="res://scenes/Item/Potion.tscn" id="5_t6d7d"]
 [ext_resource type="PackedScene" uid="uid://dboivysgg411t" path="res://scenes/npc/Soldier.tscn" id="6_7ekjt"]
 [ext_resource type="PackedScene" uid="uid://cacndwkpp1xg5" path="res://assets/prison_assets/wall.tscn" id="6_js1ay"]
 [ext_resource type="PackedScene" uid="uid://deoxgrrrqxand" path="res://assets/prison_assets/wall_door_close.tscn" id="7_27kcu"]
@@ -11,6 +13,8 @@
 [ext_resource type="Script" uid="uid://bgoggf0ipa0eg" path="res://scripts/managers/TutorialManager.cs" id="8_o5u2j"]
 [ext_resource type="Script" uid="uid://da4tcpfho02r0" path="res://dialogues/prison/GuardDialog.gd" id="9_lqcxu"]
 [ext_resource type="PackedScene" uid="uid://drjehibwr5q1e" path="res://scenes/ui/sequences/text_sequence.tscn" id="10_lqcxu"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1dv8c"]
 
 [sub_resource type="Sky" id="Sky_3qxsn"]
 
@@ -44,6 +48,22 @@ script = ExtResource("2_1dv8c")
 
 [node name="GuardDialogScript" type="Node" parent="TutorialManager" unique_id=1124455202]
 script = ExtResource("9_lqcxu")
+
+[node name="FirstItemDetectionArea" type="Area3D" parent="TutorialManager" unique_id=1482621318]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.8482203, 0.3264104, 1.5686047)
+script = ExtResource("4_4ma5r")
+_characterThatDetectPath = NodePath("../../Characters/MiniMercenary")
+_pointOfInterestPath = NodePath("Marker3D")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TutorialManager/FirstItemDetectionArea" unique_id=1367942822]
+transform = Transform3D(1, 0, 0, 0, 4, 0, 0, 0, 4, 0.30319357, -0.36419058, -0.59936523)
+shape = SubResource("BoxShape3D_1dv8c")
+
+[node name="Marker3D" type="Marker3D" parent="TutorialManager/FirstItemDetectionArea" unique_id=1743615305]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.7508192, 0, -5.470482)
+
+[node name="Potion" parent="TutorialManager" unique_id=1454740707 instance=ExtResource("5_t6d7d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.9570532, 0.3520227, -4.532995)
 
 [node name="Environement" type="Node3D" parent="." unique_id=206120937]
 

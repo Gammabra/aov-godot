@@ -71,6 +71,7 @@ public abstract partial class NpcSystem : CharacterBody3D
         else
         {
             ToIdle(true);
+            _nodeToFollow = null;
             EmitSignalOnSpecificPointReached();
         }
 

@@ -1,6 +1,7 @@
 using System;
 using AshesOfVelsingrad.Managers;
 using AshesOfVelsingrad.UI.Inventory;
+using AshesOfVelsingrad.UI.Menus;
 using Godot;
 
 namespace AshesOfVelsingrad;
@@ -28,9 +29,11 @@ public partial class MainManager : Node
     // Menu Scenes
     [Export] protected PackedScene? _mainMenuScene;
     [Export] protected PackedScene? _settingsScene;
+    [Export] private PauseMenu? _pauseMenu;
 
     private Node? _currentScene;
     private bool _isTransitioning;
+    private bool _isPaused = false;
 
     public ExplorationInventoryUI? GetExplorationInventoryUI()
     => _explorationInventoryUi as ExplorationInventoryUI;
@@ -173,15 +176,6 @@ public partial class MainManager : Node
         GetTree().Paused = false;
     }
 
-    /// <summary>
-    /// Global entry point to handle game pause state toggles.
-    /// </summary>
-    public void TogglePauseMenu()
-    {
-        // Stub: Implement when your Pause Menu UI is added to the UILayer
-        GD.Print("[MAIN MANAGER] TogglePauseMenu called (Stub)");
-    }
-
     private void ToggleGameplayUIs(bool visible)
     {
         // If explicitly requested off, force turn off all persistent gameplay components.
@@ -221,6 +215,39 @@ public partial class MainManager : Node
         if (_worldContainer == null) GD.PrintErr("[MAIN MANAGER] WorldContainer node configuration missing.");
 
         return SettingsManager.Instance != null && MenuManager.Instance != null && _menuContainer != null && _worldContainer != null;
+    }
+
+    // ── Pause API ──────────────────────────────────────────────────────
+    public void TogglePauseMenu()
+    {
+        if (_isPaused)
+            ResumeGame();
+        else
+            PauseGame();
+    }
+
+    private void PauseGame()
+    {
+        _isPaused = true;
+        GetTree().Paused = true;
+
+        if (_pauseMenu != null)
+            _pauseMenu.Show();
+    }
+
+    private void ResumeGame()
+    {
+        _isPaused = false;
+        GetTree().Paused = false;
+
+        if (_pauseMenu != null)
+            _pauseMenu.Hide();
+    }
+
+    private void OnExitToMainMenuRequested()
+    {
+        ResumeGame();
+        LoadScene("res://scenes/ui/menus/menu_beta.tscn", false);
     }
 
     public override void _ExitTree()

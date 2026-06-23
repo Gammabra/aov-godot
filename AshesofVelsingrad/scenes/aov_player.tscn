@@ -2,13 +2,13 @@
 
 [ext_resource type="Script" uid="uid://3kcmpk5x2mx0" path="res://scripts/player/AovPlayer.cs" id="2_x6mcw"]
 [ext_resource type="Script" uid="uid://chw0te1ob2xlt" path="res://scripts/player/InteractionComponent.cs" id="3_mjuyt"]
-[ext_resource type="Texture2D" uid="uid://daii755sg2tdc" path="res://assets/Krita/sprite_player.png" id="5_ggc04"]
+[ext_resource type="Texture2D" uid="uid://b54uy2c80ls7c" path="res://assets/Krita/sprite_player.png" id="5_ggc04"]
 [ext_resource type="Script" uid="uid://dotytx100nxai" path="res://scripts/managers/state_machines/StateMachine.cs" id="5_uqaem"]
-[ext_resource type="Script" uid="uid://cbra7nuuruj2p" path="res://scripts/player/States/IdleState.cs" id="6_uqaem"]
-[ext_resource type="Script" uid="uid://bwuj8qxa0majx" path="res://scripts/player/States/WalkForwardState.cs" id="7_4g4aq"]
-[ext_resource type="Script" uid="uid://b78pk38svecle" path="res://scripts/player/States/WalkBackwardState.cs" id="8_3fw4j"]
-[ext_resource type="Script" uid="uid://cekx3mvjf080g" path="res://scripts/player/States/WalkLeftState.cs" id="9_k6vw3"]
-[ext_resource type="Script" uid="uid://bs42mjeuf3j6j" path="res://scripts/player/States/WalkRightState.cs" id="10_hct3h"]
+[ext_resource type="Script" uid="uid://cbra7nuuruj2p" path="res://scripts/data/states/IdleState.cs" id="6_uqaem"]
+[ext_resource type="Script" uid="uid://bwuj8qxa0majx" path="res://scripts/data/states/WalkForwardState.cs" id="7_4g4aq"]
+[ext_resource type="Script" uid="uid://b78pk38svecle" path="res://scripts/data/states/WalkBackwardState.cs" id="8_3fw4j"]
+[ext_resource type="Script" uid="uid://cekx3mvjf080g" path="res://scripts/data/states/WalkLeftState.cs" id="9_k6vw3"]
+[ext_resource type="Script" uid="uid://bs42mjeuf3j6j" path="res://scripts/data/states/WalkRightState.cs" id="10_hct3h"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_uqaem"]
 atlas = ExtResource("5_ggc04")
@@ -167,6 +167,8 @@ animations = [{
 [sub_resource type="BoxShape3D" id="BoxShape3D_wwxp1"]
 
 [node name="AovPlayer" type="CharacterBody3D" unique_id=1117119690]
+collision_layer = 5
+collision_mask = 5
 script = ExtResource("2_x6mcw")
 _stateMachinePath = NodePath("StateMachine")
 _springArm3DPath = NodePath("SpringArm3D")

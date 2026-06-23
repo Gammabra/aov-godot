@@ -123,7 +123,7 @@ public partial class TutorialManager : Node
 
 	private void HandleFoundFirstItemDialogEnd()
 	{
-		_miniMercenary.CollisionLayer = 3;
+		_miniMercenary.CollisionLayer = 4;
 		_miniMercenary.CollisionMask = 1;
 		CanMove = true;
 		_miniMercenary.OnSpecificPointReached -= DoFoundFirstItemDialog;

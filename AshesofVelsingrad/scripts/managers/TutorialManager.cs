@@ -3,6 +3,7 @@ using AshesOfVelsingrad.ui;
 using Godot;
 using System.Threading.Tasks;
 using AshesOfVelsingrad.data.npc;
+using AshesOfVelsingrad.Systems;
 
 namespace AshesOfVelsingrad.Managers;
 
@@ -31,6 +32,9 @@ public partial class TutorialManager : Node
 	private NodePath _interactionExplanationDialogPath = null!;
 
 	[Export]
+	private NodePath _inventoryExplanationDialogPath = null!;
+
+	[Export]
 	private NodePath _playerPath = null!;
 
 	[Export]
@@ -43,23 +47,30 @@ public partial class TutorialManager : Node
 	private NodePath _firstItemDetectionAreaPath = null!;
 
 	[Export]
+	private NodePath _firstItemPath = null!;
+
+	[Export]
 	private NodePath _triggerInteractionExplanationAreaPath = null!;
 
 	private Node _introDialog = null!;
 	private Node _guardDialog = null!;
 	private Node _foundFirstItemDialog = null!;
 	private Node _interactionExplanationDialog = null!;
+	private Node _inventoryExplanationDialog = null!;
 	private AovPlayer _player = null!;
 	private MiniMercenary _miniMercenary = null!;
 	private TextSequence _introSequence = null!;
 	private Area3D _firstItemDetectionArea = null!;
 	private Area3D _triggerInteractionExplanationArea = null!;
+	private ItemSystem _firstItem = null!;
 	// TODO: Fill the tuple to have the complete intro sequence
 	private readonly (string, int, float)[] _sequences = [
 		("Prologue", 50, 3)
 	];
 
 	public bool CanMove { get; private set; }
+	public bool CanToggleInventory { get; private set; }
+	public bool IsOnlyToggleInventory { get; private set; }
 
 	private void DoIntroDialogStep()
 	{
@@ -123,6 +134,7 @@ public partial class TutorialManager : Node
 	{
 		_player = GetNode<AovPlayer>(_playerPath);
 		_miniMercenary = GetNode<MiniMercenary>(_miniMercenaryPath);
+        _firstItem = GetNode<ItemSystem>(_firstItemPath);
 		_introDialog = GetNode<Node>(_introDialogPath);
 		_introDialog.Connect("dialog_ended", Callable.From(GoToNextStep));
 		_guardDialog = GetNode<Node>(_guardDialogPath);
@@ -131,6 +143,7 @@ public partial class TutorialManager : Node
 		_foundFirstItemDialog.Connect("dialog_ended", Callable.From(HandleFoundFirstItemDialogEnd));
 		_interactionExplanationDialog = GetNode<Node>(_interactionExplanationDialogPath);
 		_interactionExplanationDialog.Connect("dialog_ended", Callable.From(HandleInteractionExplanationDialogEnd));
+        _inventoryExplanationDialog = GetNode<Node>(_inventoryExplanationDialogPath);
 		_introSequence = GetNode<TextSequence>(_introSequencePath);
 		_introSequence.OnSequenceEnded += GoToNextStep;
 		_firstItemDetectionArea = GetNode<Area3D>(_firstItemDetectionAreaPath);

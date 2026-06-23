@@ -2,9 +2,13 @@
 
 [ext_resource type="Script" uid="uid://qafwewtt5wgd" path="res://scripts/ui/menus/PauseMenu.cs" id="1_5p30d"]
 
-[node name="PauseMenu" type="CanvasLayer" unique_id=1598797719 node_paths=PackedStringArray("_continueButton", "_saveButton", "_loadButton", "_settingsButton", "_exitButton")]
+[node name="PauseMenu" type="Control" unique_id=1598797719 node_paths=PackedStringArray("_continueButton", "_saveButton", "_loadButton", "_settingsButton", "_exitButton")]
 process_mode = 3
-layer = 50
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("1_5p30d")
 _continueButton = NodePath("PanelContainer/VBoxContainer/Continue")
 _saveButton = NodePath("PanelContainer/VBoxContainer/Save")

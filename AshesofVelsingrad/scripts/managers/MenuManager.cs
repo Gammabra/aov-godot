@@ -211,6 +211,22 @@ public partial class MenuManager : BaseManager
     }
 
     /// <summary>
+    /// Hides the current active menu without navigating to another.
+    /// Used when closing a menu overlay (e.g. pause menu resuming to gameplay).
+    /// </summary>
+    public void HideCurrentMenu()
+    {
+        if (string.IsNullOrEmpty(_currentMenu) || !_menus.ContainsKey(_currentMenu))
+            return;
+
+        var current = _menus[_currentMenu];
+        current.Hide();
+        current.MouseFilter = Control.MouseFilterEnum.Ignore;
+        _currentMenu = null;
+        ClearHistory();
+    }
+
+    /// <summary>
     /// Checks if a specific menu is currently active.
     /// </summary>
     /// <param name="menuName">The unique name of the menu to check.</param>

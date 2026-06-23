@@ -66,6 +66,8 @@ script = ExtResource("5_0wyha")
 
 [node name="FirstItemDetectionArea" type="Area3D" parent="TutorialManager" unique_id=1482621318]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.8482203, 0.3264104, 1.5686047)
+collision_layer = 5
+collision_mask = 5
 script = ExtResource("4_4ma5r")
 _characterThatDetectPath = NodePath("../../Characters/MiniMercenary")
 _pointOfInterestPath = NodePath("Marker3D")
@@ -82,6 +84,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.9570532, 0.3520227, -4.5329
 
 [node name="TriggerInteractionExplanation" type="Area3D" parent="TutorialManager" unique_id=1520510260]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.910983, 0, -3.8480675)
+collision_layer = 5
+collision_mask = 5
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="TutorialManager/TriggerInteractionExplanation" unique_id=1134220676]
 transform = Transform3D(4, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.38327086, -0.14833021)

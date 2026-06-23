@@ -182,15 +182,19 @@ public sealed partial class AovPlayer : CharacterBody3D, IInteractor
 	{
 		if (_isLock) return;
 
-		if (_isTutorial && !_tutorialManager.CanMove)
-			return;
-
-		if (_isTutorial && !_tutorialManager.IsOnlyToggleInventory)
+		if (_isTutorial && _tutorialManager.IsOnlyToggleInventory)
 		{
 			if (@event.IsActionPressed("open_inventory"))
+			{
 				_explorationInventoryUI?.Toggle();
+				_tutorialManager.DoSecondInventoryExplationDialog();
+			}
+
 			return;
 		}
+
+		if (_isTutorial && !_tutorialManager.CanMove)
+			return;
 
 		if (@event.IsActionPressed("interact"))
 		{

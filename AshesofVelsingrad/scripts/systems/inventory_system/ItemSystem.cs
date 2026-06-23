@@ -48,8 +48,11 @@ public abstract partial class ItemSystem : Node3D, IItemSystem, IInteractable
 
     public virtual void Interact(IInteractor interactor)
     {
-        PickableSystem.AddToInventory(this);
-        EmitSignalInteracted();
+        if (PickableSystem.AddToInventory(this) == 0)
+        {
+            EmitSignalInteracted();
+            QueueFree();
+        }
     }
 
     public virtual void HidePrompt()

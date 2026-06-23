@@ -28,6 +28,9 @@ public partial class TutorialManager : Node
     private NodePath _foundFirstItemDialogPath = null!;
 
     [Export]
+    private NodePath _interactionExplanationDialogPath = null!;
+
+    [Export]
     private NodePath _playerPath = null!;
 
     [Export]
@@ -39,13 +42,18 @@ public partial class TutorialManager : Node
     [Export]
     private NodePath _firstItemDetectionAreaPath = null!;
 
+    [Export]
+    private NodePath _triggerInteractionExplanationAreaPath = null!;
+
     private Node _introDialog = null!;
     private Node _guardDialog = null!;
     private Node _foundFirstItemDialog = null!;
+    private Node _interactionExplanationDialog = null!;
     private AovPlayer _player = null!;
     private MiniMercenary _miniMercenary = null!;
     private TextSequence _introSequence = null!;
     private Area3D _firstItemDetectionArea = null!;
+    private Area3D _triggerInteractionExplanationArea = null!;
     // TODO: Fill the tuple to have the complete intro sequence
     private readonly (string, int, float)[] _sequences = [
         ("Prologue", 50, 3)
@@ -79,6 +87,16 @@ public partial class TutorialManager : Node
         }
     }
 
+    private void OnTriggerInteractionExplanationAreaBodyEntered(Node3D body)
+    {
+        if (body == _player)
+        {
+            CanMove = false;
+            _interactionExplanationDialog.Call("talk");
+            _triggerInteractionExplanationArea.QueueFree();
+        }
+    }
+
     private void DoFoundFirstItemDialog()
     {
         _foundFirstItemDialog.Call("talk");
@@ -91,6 +109,12 @@ public partial class TutorialManager : Node
         _firstItemDetectionArea.QueueFree();
     }
 
+    private void HandleInteractionExplanationDialogEnd()
+    {
+        CanMove = true;
+        _player.ToggleInteraction(true);
+    }
+
     public override async void _Ready()
     {
         _player = GetNode<AovPlayer>(_playerPath);
@@ -101,10 +125,14 @@ public partial class TutorialManager : Node
         _guardDialog.Connect("dialog_ended", Callable.From(() => CanMove = true));
         _foundFirstItemDialog = GetNode<Node>(_foundFirstItemDialogPath);
         _foundFirstItemDialog.Connect("dialog_ended", Callable.From(HandleFoundFirstItemDialogEnd));
+        _interactionExplanationDialog = GetNode<Node>(_interactionExplanationDialogPath);
+        _interactionExplanationDialog.Connect("dialog_ended", Callable.From(HandleInteractionExplanationDialogEnd));
         _introSequence = GetNode<TextSequence>(_introSequencePath);
         _introSequence.OnSequenceEnded += GoToNextStep;
         _firstItemDetectionArea = GetNode<Area3D>(_firstItemDetectionAreaPath);
         _firstItemDetectionArea.BodyEntered += OnFirstItemDetectionAreaBodyEntered;
+        _triggerInteractionExplanationArea = GetNode<Area3D>(_triggerInteractionExplanationAreaPath);
+        _triggerInteractionExplanationArea.BodyEntered += OnTriggerInteractionExplanationAreaBodyEntered;
 
         await ToSignal(_introSequence, Node.SignalName.Ready);
         GoToNextStep();

@@ -3,11 +3,12 @@
 [ext_resource type="Script" uid="uid://bnsbetmtyu1jd" path="res://scripts/MainManager.cs" id="1_tbgi4"]
 [ext_resource type="PackedScene" uid="uid://dly7v2pb0m006" path="res://scenes/ui/menus/menu_beta.tscn" id="2_sugp2"]
 [ext_resource type="PackedScene" uid="uid://geowrsurjvqo" path="res://scenes/ui/menus/settings_beta.tscn" id="3_jyhfs"]
-[ext_resource type="PackedScene" path="res://scenes/ui/hud/BattleHud.tscn" id="4_jyhfs"]
+[ext_resource type="PackedScene" uid="uid://7q44sms4ym5o" path="res://scenes/ui/hud/BattleHud.tscn" id="4_jyhfs"]
 [ext_resource type="PackedScene" uid="uid://cwp1ya1dms2xw" path="res://scenes/ui/inventory/BattleInventoryUI.tscn" id="5_tefeu"]
 [ext_resource type="PackedScene" uid="uid://ueqjkgxnpo4j" path="res://scenes/ui/inventory/ExplorationInventoryUI.tscn" id="6_o6xl0"]
+[ext_resource type="PackedScene" uid="uid://bf8ixfri81gyh" path="res://scenes/ui/menus/pause_menu.tscn" id="7_o6xl0"]
 
-[node name="MainManager" type="Node" unique_id=359710342 node_paths=PackedStringArray("_worldContainer", "_menuContainer", "_battleHud", "_battleInventoryUi", "_explorationInventoryUi", "_screenTransition")]
+[node name="MainManager" type="Node" unique_id=359710342 node_paths=PackedStringArray("_worldContainer", "_menuContainer", "_battleHud", "_battleInventoryUi", "_explorationInventoryUi", "_screenTransition", "_pauseMenu")]
 script = ExtResource("1_tbgi4")
 _worldContainer = NodePath("WorldContainer")
 _menuContainer = NodePath("UILayer/MenuContainer")
@@ -17,6 +18,7 @@ _explorationInventoryUi = NodePath("UILayer/ExplorationInventoryUi")
 _screenTransition = NodePath("UILayer/SceneTransition")
 _mainMenuScene = ExtResource("2_sugp2")
 _settingsScene = ExtResource("3_jyhfs")
+_pauseMenu = NodePath("UILayer/PauseMenu")
 
 [node name="WorldContainer" type="Node" parent="." unique_id=678347684]
 
@@ -45,3 +47,8 @@ color = Color(0, 0, 0, 1)
 [node name="BattleInventoryUi" parent="UILayer" unique_id=1302735412 instance=ExtResource("5_tefeu")]
 
 [node name="ExplorationInventoryUi" parent="UILayer" unique_id=1182585849 instance=ExtResource("6_o6xl0")]
+
+[node name="PauseMenu" parent="UILayer" unique_id=1598797719 instance=ExtResource("7_o6xl0")]
+
+[connection signal="ExitToMainMenuRequested" from="UILayer/PauseMenu" to="." method="OnExitToMainMenuRequested"]
+[connection signal="ResumeRequested" from="UILayer/PauseMenu" to="." method="TogglePauseMenu"]

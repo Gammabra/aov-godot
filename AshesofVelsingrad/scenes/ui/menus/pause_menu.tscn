@@ -1,0 +1,66 @@
+[gd_scene format=3 uid="uid://bf8ixfri81gyh"]
+
+[ext_resource type="Script" uid="uid://qafwewtt5wgd" path="res://scripts/ui/menus/PauseMenu.cs" id="1_5p30d"]
+
+[node name="PauseMenu" type="CanvasLayer" unique_id=1598797719 node_paths=PackedStringArray("_continueButton", "_saveButton", "_loadButton", "_settingsButton", "_exitButton")]
+process_mode = 3
+layer = 50
+script = ExtResource("1_5p30d")
+_continueButton = NodePath("PanelContainer/VBoxContainer/Continue")
+_saveButton = NodePath("PanelContainer/VBoxContainer/Save")
+_loadButton = NodePath("PanelContainer/VBoxContainer/Load")
+_settingsButton = NodePath("PanelContainer/VBoxContainer/Settings")
+_exitButton = NodePath("PanelContainer/VBoxContainer/Exit")
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=65705590]
+custom_minimum_size = Vector2(300, 400)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer" unique_id=683632076]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 12
+
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer" unique_id=1681077295]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "PAUSED"
+
+[node name="Continue" type="Button" parent="PanelContainer/VBoxContainer" unique_id=786951811]
+layout_mode = 2
+text = "Continue"
+
+[node name="Save" type="Button" parent="PanelContainer/VBoxContainer" unique_id=2121648621]
+layout_mode = 2
+text = "Save"
+
+[node name="Load" type="Button" parent="PanelContainer/VBoxContainer" unique_id=835000950]
+layout_mode = 2
+text = "Load"
+
+[node name="Settings" type="Button" parent="PanelContainer/VBoxContainer" unique_id=1482238770]
+layout_mode = 2
+text = "Settings"
+
+[node name="Exit" type="Button" parent="PanelContainer/VBoxContainer" unique_id=1812088958]
+layout_mode = 2
+text = "Exit"
+
+[connection signal="pressed" from="PanelContainer/VBoxContainer/Continue" to="." method="OnContinuePressed"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/Save" to="." method="OnSavePressed"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/Load" to="." method="OnLoadPressed"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/Settings" to="." method="OnSettingsPressed"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/Exit" to="." method="OnExitPressed"]

@@ -14,6 +14,8 @@ public partial class InteractionComponent : Area3D
     private AnimatedSprite3D _animatedSprite3D = null!;
     private readonly List<Node3D> _interactableObjects = [];
 
+    public bool CanInteract = true;
+
     public Node3D? ClosestInteractable { get; private set; }
 
     private void OnBodyEntered(Node3D body)
@@ -47,6 +49,12 @@ public partial class InteractionComponent : Area3D
     public override void _Process(double delta)
     {
         float closest = 0;
+
+        if (!CanInteract)
+        {
+            ClosestInteractable = null;
+            return;
+        }
 
         foreach (Node3D body in _interactableObjects)
         {

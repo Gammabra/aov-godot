@@ -13,6 +13,7 @@ bg_color = Color(0, 0, 0, 0.32156864)
 corner_detail = 20
 
 [node name="DialogSystem" type="CanvasLayer" unique_id=1613724199]
+layer = 11
 script = ExtResource("1_rmm2v")
 
 [node name="bg" type="TextureRect" parent="." unique_id=936517519]

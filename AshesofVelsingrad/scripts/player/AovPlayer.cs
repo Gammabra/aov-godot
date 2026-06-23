@@ -288,6 +288,13 @@ public sealed partial class AovPlayer : CharacterBody3D, IInteractor
         _explorationInventoryUI?.RefreshUnitPanels();
     }
 
+    public void ToggleInteraction(bool active)
+    {
+        if (_interactionComponent == null)
+            return;
+        _interactionComponent.CanInteract = active;
+    }
+
     public override void _ExitTree()
     {
         // Only free if we spawned it ourselves (no MainManager) AND it landed on root

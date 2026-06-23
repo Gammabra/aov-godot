@@ -115,6 +115,12 @@ public partial class TutorialManager : Node
 		_foundFirstItemDialog.Call("talk");
 	}
 
+	private void OnFirstItemInteracted()
+	{
+		CanMove = false;
+		_inventoryExplanationDialog.Call("first");
+	}
+
 	private void HandleFoundFirstItemDialogEnd()
 	{
 		_miniMercenary.CollisionLayer = 3;
@@ -130,11 +136,25 @@ public partial class TutorialManager : Node
 		_player.ToggleInteraction(true);
 	}
 
+	private void HandleFirstInventoryExplanationDialogEnd()
+	{
+		IsOnlyToggleInventory = true;
+		_inventoryExplanationDialog.Disconnect("dialog_ended", Callable.From(HandleFirstInventoryExplanationDialogEnd));
+		_inventoryExplanationDialog.Connect("dialog_ended", Callable.From(HandleSecondInventoryExplanationDialogEnd));
+	}
+
+	private void HandleSecondInventoryExplanationDialogEnd()
+	{
+		CanMove = true;
+		CanToggleInventory = true;
+	}
+
 	public override async void _Ready()
 	{
 		_player = GetNode<AovPlayer>(_playerPath);
 		_miniMercenary = GetNode<MiniMercenary>(_miniMercenaryPath);
-        _firstItem = GetNode<ItemSystem>(_firstItemPath);
+		_firstItem = GetNode<ItemSystem>(_firstItemPath);
+		_firstItem.Interacted += OnFirstItemInteracted;
 		_introDialog = GetNode<Node>(_introDialogPath);
 		_introDialog.Connect("dialog_ended", Callable.From(GoToNextStep));
 		_guardDialog = GetNode<Node>(_guardDialogPath);
@@ -143,7 +163,8 @@ public partial class TutorialManager : Node
 		_foundFirstItemDialog.Connect("dialog_ended", Callable.From(HandleFoundFirstItemDialogEnd));
 		_interactionExplanationDialog = GetNode<Node>(_interactionExplanationDialogPath);
 		_interactionExplanationDialog.Connect("dialog_ended", Callable.From(HandleInteractionExplanationDialogEnd));
-        _inventoryExplanationDialog = GetNode<Node>(_inventoryExplanationDialogPath);
+		_inventoryExplanationDialog = GetNode<Node>(_inventoryExplanationDialogPath);
+		_inventoryExplanationDialog.Connect("dialog_ended", Callable.From(HandleFirstInventoryExplanationDialogEnd));
 		_introSequence = GetNode<TextSequence>(_introSequencePath);
 		_introSequence.OnSequenceEnded += GoToNextStep;
 		_firstItemDetectionArea = GetNode<Area3D>(_firstItemDetectionAreaPath);
@@ -171,5 +192,11 @@ public partial class TutorialManager : Node
 				_ = DoGuardDialog();
 				break;
 		}
+	}
+
+	public void DoSecondInventoryExplationDialog()
+	{
+		IsOnlyToggleInventory = false;
+		_inventoryExplanationDialog.Call("second");
 	}
 }

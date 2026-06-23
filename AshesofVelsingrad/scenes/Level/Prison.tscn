@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://c8h22n6k3rvf2" path="res://scenes/Item/Potion.tscn" id="5_t6d7d"]
 [ext_resource type="PackedScene" uid="uid://dboivysgg411t" path="res://scenes/npc/Soldier.tscn" id="6_7ekjt"]
 [ext_resource type="PackedScene" uid="uid://cacndwkpp1xg5" path="res://assets/prison_assets/wall.tscn" id="6_js1ay"]
+[ext_resource type="Script" uid="uid://dfb1lfokop4w5" path="res://dialogues/prison/InventoryExplanation.gd" id="6_nk3mi"]
 [ext_resource type="PackedScene" uid="uid://deoxgrrrqxand" path="res://assets/prison_assets/wall_door_close.tscn" id="7_27kcu"]
 [ext_resource type="PackedScene" uid="uid://ch6ssue2idnqm" path="res://scenes/npc/MiniMercenary.tscn" id="7_js1ay"]
 [ext_resource type="Script" uid="uid://bgoggf0ipa0eg" path="res://scripts/managers/TutorialManager.cs" id="8_o5u2j"]
@@ -42,27 +43,34 @@ material = SubResource("StandardMaterial3D_3qxsn")
 
 [node name="TutorialManager" type="Node" parent="." unique_id=1692385747]
 script = ExtResource("8_o5u2j")
-_introDialogPath = NodePath("IntroDialogScript")
-_guardDialogPath = NodePath("GuardDialogScript")
-_foundFirstItemDialogPath = NodePath("FoundFirstItemDialogScript")
-_interactionExplanationDialogPath = NodePath("InteractionExplanationDialogScript")
+_introDialogPath = NodePath("Dialogs/IntroDialogScript")
+_guardDialogPath = NodePath("Dialogs/GuardDialogScript")
+_foundFirstItemDialogPath = NodePath("Dialogs/FoundFirstItemDialogScript")
+_interactionExplanationDialogPath = NodePath("Dialogs/InteractionExplanationDialogScript")
+_inventoryExplanationDialogPath = NodePath("Dialogs/InventoryExplanationScript")
 _playerPath = NodePath("../Characters/AovPlayer")
 _miniMercenaryPath = NodePath("../Characters/MiniMercenary")
 _introSequencePath = NodePath("../Sequence/Sequence")
 _firstItemDetectionAreaPath = NodePath("FirstItemDetectionArea")
+_firstItemPath = NodePath("Potion")
 _triggerInteractionExplanationAreaPath = NodePath("TriggerInteractionExplanation")
 
-[node name="IntroDialogScript" type="Node" parent="TutorialManager" unique_id=1252239078]
+[node name="Dialogs" type="Node" parent="TutorialManager" unique_id=1108658910]
+
+[node name="IntroDialogScript" type="Node" parent="TutorialManager/Dialogs" unique_id=1252239078]
 script = ExtResource("2_1dv8c")
 
-[node name="GuardDialogScript" type="Node" parent="TutorialManager" unique_id=1124455202]
+[node name="GuardDialogScript" type="Node" parent="TutorialManager/Dialogs" unique_id=1124455202]
 script = ExtResource("9_lqcxu")
 
-[node name="FoundFirstItemDialogScript" type="Node" parent="TutorialManager" unique_id=1262204849]
+[node name="FoundFirstItemDialogScript" type="Node" parent="TutorialManager/Dialogs" unique_id=1262204849]
 script = ExtResource("4_t6d7d")
 
-[node name="InteractionExplanationDialogScript" type="Node" parent="TutorialManager" unique_id=732043352]
+[node name="InteractionExplanationDialogScript" type="Node" parent="TutorialManager/Dialogs" unique_id=732043352]
 script = ExtResource("5_0wyha")
+
+[node name="InventoryExplanationScript" type="Node" parent="TutorialManager/Dialogs" unique_id=1931581588]
+script = ExtResource("6_nk3mi")
 
 [node name="FirstItemDetectionArea" type="Area3D" parent="TutorialManager" unique_id=1482621318]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.1689796, 0.3264104, 1.2676842)

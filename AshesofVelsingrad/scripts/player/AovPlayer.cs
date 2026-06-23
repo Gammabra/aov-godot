@@ -62,10 +62,12 @@ public sealed partial class AovPlayer : CharacterBody3D, IInteractor
         {
             _tutorialManager = GetNode<TutorialManager>(_tutorialManagerPath);
             _isTutorial = true;
+            _interactionComponent.CanInteract = false;
         }
         catch
         {
             _isTutorial = false;
+            _interactionComponent.CanInteract = true;
         }
 
         _instance = this;

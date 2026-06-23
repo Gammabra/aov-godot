@@ -41,7 +41,7 @@ public partial class TutorialManager : Node
 
     private Node _introDialog = null!;
     private Node _guardDialog = null!;
-    private Node _foundFirstDialog = null!;
+    private Node _foundFirstItemDialog = null!;
     private AovPlayer _player = null!;
     private MiniMercenary _miniMercenary = null!;
     private TextSequence _introSequence = null!;
@@ -75,8 +75,20 @@ public partial class TutorialManager : Node
         if (body == _miniMercenary)
         {
             CanMove = false;
-            _miniMercenary.OnSpecificPointReached += () => _foundFirstDialog.Call("talk");
+            _miniMercenary.OnSpecificPointReached += DoFoundFirstItemDialog;
         }
+    }
+
+    private void DoFoundFirstItemDialog()
+    {
+        _foundFirstItemDialog.Call("talk");
+    }
+
+    private void HandleFoundFirstItemDialogEnd()
+    {
+        CanMove = true;
+        _miniMercenary.OnSpecificPointReached -= DoFoundFirstItemDialog;
+        _firstItemDetectionArea.QueueFree();
     }
 
     public override async void _Ready()
@@ -87,8 +99,8 @@ public partial class TutorialManager : Node
         _introDialog.Connect("dialog_ended", Callable.From(GoToNextStep));
         _guardDialog = GetNode<Node>(_guardDialogPath);
         _guardDialog.Connect("dialog_ended", Callable.From(() => CanMove = true));
-        _foundFirstDialog = GetNode<Node>(_foundFirstItemDialogPath);
-        _foundFirstDialog.Connect("dialog_ended", Callable.From(() => CanMove = true));
+        _foundFirstItemDialog = GetNode<Node>(_foundFirstItemDialogPath);
+        _foundFirstItemDialog.Connect("dialog_ended", Callable.From(HandleFoundFirstItemDialogEnd));
         _introSequence = GetNode<TextSequence>(_introSequencePath);
         _introSequence.OnSequenceEnded += GoToNextStep;
         _firstItemDetectionArea = GetNode<Area3D>(_firstItemDetectionAreaPath);

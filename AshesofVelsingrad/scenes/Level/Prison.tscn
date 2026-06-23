@@ -65,7 +65,7 @@ script = ExtResource("4_t6d7d")
 script = ExtResource("5_0wyha")
 
 [node name="FirstItemDetectionArea" type="Area3D" parent="TutorialManager" unique_id=1482621318]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.8482203, 0.3264104, 1.5686047)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.1689796, 0.3264104, 1.2676842)
 collision_layer = 5
 collision_mask = 5
 script = ExtResource("4_4ma5r")
@@ -73,7 +73,7 @@ _characterThatDetectPath = NodePath("../../Characters/MiniMercenary")
 _pointOfInterestPath = NodePath("Marker3D")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="TutorialManager/FirstItemDetectionArea" unique_id=1367942822]
-transform = Transform3D(1, 0, 0, 0, 4, 0, 0, 0, 4, 0.30319357, -0.36419058, -0.59936523)
+transform = Transform3D(1, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0)
 shape = SubResource("BoxShape3D_1dv8c")
 
 [node name="Marker3D" type="Marker3D" parent="TutorialManager/FirstItemDetectionArea" unique_id=1743615305]
@@ -83,7 +83,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.7508192, 0, -5.470482)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.9570532, 0.3520227, -4.532995)
 
 [node name="TriggerInteractionExplanation" type="Area3D" parent="TutorialManager" unique_id=1520510260]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.910983, 0, -3.8480675)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.910983, 0, -4.016086)
 collision_layer = 5
 collision_mask = 5
 
@@ -262,7 +262,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3.54523)
 [node name="Characters" type="Node" parent="." unique_id=1507978962]
 
 [node name="AovPlayer" parent="Characters" unique_id=1117119690 instance=ExtResource("5_7ekjt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.516685, 0.63563037, 1.006068)
+transform = Transform3D(1.0000001, 0, 0, 0, 1.0000001, 0, 0, 0, 1.0000001, -8.516685, 0.63563037, 1.0060681)
 _tutorialManagerPath = NodePath("../../TutorialManager")
 
 [node name="Soldier" parent="Characters" unique_id=633068440 instance=ExtResource("6_7ekjt")]

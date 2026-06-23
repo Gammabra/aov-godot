@@ -18,7 +18,7 @@ _explorationInventoryUi = NodePath("UILayer/ExplorationInventoryUi")
 _screenTransition = NodePath("UILayer/SceneTransition")
 _mainMenuScene = ExtResource("2_sugp2")
 _settingsScene = ExtResource("3_jyhfs")
-_pauseMenu = NodePath("UILayer/PauseMenu")
+_pauseMenu = NodePath("")
 
 [node name="WorldContainer" type="Node" parent="." unique_id=678347684]
 
@@ -49,6 +49,7 @@ color = Color(0, 0, 0, 1)
 [node name="ExplorationInventoryUi" parent="UILayer" unique_id=1182585849 instance=ExtResource("6_o6xl0")]
 
 [node name="PauseMenu" parent="UILayer" unique_id=1598797719 instance=ExtResource("7_o6xl0")]
+layout_mode = 3
 
 [connection signal="ExitToMainMenuRequested" from="UILayer/PauseMenu" to="." method="OnExitToMainMenuRequested"]
-[connection signal="ResumeRequested" from="UILayer/PauseMenu" to="." method="TogglePauseMenu"]
+[connection signal="ResumeRequested" from="UILayer/PauseMenu" to="." method="ResumeGame"]

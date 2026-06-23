@@ -1,8 +1,9 @@
 using Godot;
+using AshesOfVelsingrad.Managers;
 
 namespace AshesOfVelsingrad.UI.Menus;
 
-public partial class PauseMenu : CanvasLayer
+public partial class PauseMenu : Control
 {
     // Emitted so MainManager (or whoever) can react to resume/exit
     [Signal] public delegate void ResumeRequestedEventHandler();
@@ -16,14 +17,13 @@ public partial class PauseMenu : CanvasLayer
 
     public override void _Ready()
     {
-        // Start hidden — MainManager will show/hide it
-        Hide();
+        MenuManager.Instance?.RegisterMenu(MenuManager.PAUSE_MENU, this);
     }
 
     public override void _UnhandledInput(InputEvent @event)
     {
         // Allow Escape to toggle pause even when visible
-        if (@event.IsActionPressed("pause"))
+        if (@event.IsActionPressed("pause") && MenuManager.Instance?.IsMenuActive(MenuManager.PAUSE_MENU) == true)
         {
             EmitSignal(SignalName.ResumeRequested);
             GetViewport().SetInputAsHandled();
@@ -48,8 +48,7 @@ public partial class PauseMenu : CanvasLayer
 
     private void OnSettingsPressed()
     {
-        // TODO: open your settings menu (e.g. MainManager.Instance?.OpenSettings())
-        GD.Print("[PauseMenu] Settings — not yet implemented.");
+        MenuManager.Instance?.ShowMenu(MenuManager.OPTIONS_MENU);
     }
 
     private void OnExitPressed() => EmitSignal(SignalName.ExitToMainMenuRequested);

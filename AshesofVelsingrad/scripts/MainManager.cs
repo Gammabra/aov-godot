@@ -217,6 +217,15 @@ public partial class MainManager : Node
         return SettingsManager.Instance != null && MenuManager.Instance != null && _menuContainer != null && _worldContainer != null;
     }
 
+    public override void _UnhandledInput(InputEvent @event)
+    {
+        if (@event.IsActionPressed("pause"))
+        {
+            TogglePauseMenu();
+            GetViewport().SetInputAsHandled();
+        }
+    }
+
     // ── Pause API ──────────────────────────────────────────────────────
     public void TogglePauseMenu()
     {
@@ -230,18 +239,14 @@ public partial class MainManager : Node
     {
         _isPaused = true;
         GetTree().Paused = true;
-
-        if (_pauseMenu != null)
-            _pauseMenu.Show();
+        MenuManager.Instance?.ShowMenu(MenuManager.PAUSE_MENU, addToHistory: false);
     }
 
     private void ResumeGame()
     {
         _isPaused = false;
         GetTree().Paused = false;
-
-        if (_pauseMenu != null)
-            _pauseMenu.Hide();
+        MenuManager.Instance?.HideCurrentMenu();
     }
 
     private void OnExitToMainMenuRequested()

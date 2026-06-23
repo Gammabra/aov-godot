@@ -147,6 +147,7 @@ public partial class TutorialManager : Node
 	{
 		CanMove = true;
 		CanToggleInventory = true;
+		_miniMercenary.ToFollowingMovingEntity(_player);
 	}
 
 	public override async void _Ready()

@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://cj4nkpkd42nph"]
+
+[node name="TutorialLayer" type="CanvasLayer" unique_id=1646690382]
+
+[node name="Label" type="Label" parent="." unique_id=413011563]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 131.0
+offset_top = 236.0
+offset_right = 539.0
+offset_bottom = 278.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 30
+text = "Open your inventory with (I)"
+horizontal_alignment = 1

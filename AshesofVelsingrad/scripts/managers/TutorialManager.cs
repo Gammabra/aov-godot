@@ -51,6 +51,9 @@ public partial class TutorialManager : Node
 
 	[Export]
 	private NodePath _triggerInteractionExplanationAreaPath = null!;
+	
+	[Export]
+	private NodePath _tutorialLayerPath = null!;
 
 	private Node _introDialog = null!;
 	private Node _guardDialog = null!;
@@ -63,6 +66,7 @@ public partial class TutorialManager : Node
 	private Area3D _firstItemDetectionArea = null!;
 	private Area3D _triggerInteractionExplanationArea = null!;
 	private ItemSystem _firstItem = null!;
+	private CanvasLayer _tutorialLayer = null!;
 	// TODO: Fill the tuple to have the complete intro sequence
 	private readonly (string, int, float)[] _sequences = [
 		("Prologue", 50, 3)
@@ -141,6 +145,7 @@ public partial class TutorialManager : Node
 		IsOnlyToggleInventory = true;
 		_inventoryExplanationDialog.Disconnect("dialog_ended", Callable.From(HandleFirstInventoryExplanationDialogEnd));
 		_inventoryExplanationDialog.Connect("dialog_ended", Callable.From(HandleSecondInventoryExplanationDialogEnd));
+		_tutorialLayer.Show();
 	}
 
 	private void HandleSecondInventoryExplanationDialogEnd()
@@ -154,6 +159,8 @@ public partial class TutorialManager : Node
 	{
 		_player = GetNode<AovPlayer>(_playerPath);
 		_miniMercenary = GetNode<MiniMercenary>(_miniMercenaryPath);
+		_tutorialLayer = GetNode<CanvasLayer>(_tutorialLayerPath);
+		_tutorialLayer.Hide();
 		_firstItem = GetNode<ItemSystem>(_firstItemPath);
 		_firstItem.Interacted += OnFirstItemInteracted;
 		_introDialog = GetNode<Node>(_introDialogPath);
@@ -197,6 +204,7 @@ public partial class TutorialManager : Node
 
 	public void DoSecondInventoryExplationDialog()
 	{
+		_tutorialLayer.Hide();
 		IsOnlyToggleInventory = false;
 		_inventoryExplanationDialog.Call("second");
 	}

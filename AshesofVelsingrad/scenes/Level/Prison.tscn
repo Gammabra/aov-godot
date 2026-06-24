@@ -15,6 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://ch6ssue2idnqm" path="res://scenes/npc/MiniMercenary.tscn" id="7_js1ay"]
 [ext_resource type="Script" uid="uid://bgoggf0ipa0eg" path="res://scripts/managers/TutorialManager.cs" id="8_o5u2j"]
 [ext_resource type="Script" uid="uid://da4tcpfho02r0" path="res://dialogues/prison/GuardDialog.gd" id="9_lqcxu"]
+[ext_resource type="PackedScene" uid="uid://cj4nkpkd42nph" path="res://scenes/ui/tutorial/TutorialLayer.tscn" id="9_trggx"]
 [ext_resource type="PackedScene" uid="uid://drjehibwr5q1e" path="res://scenes/ui/sequences/text_sequence.tscn" id="10_lqcxu"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_1dv8c"]
@@ -54,6 +55,7 @@ _introSequencePath = NodePath("../Sequence/Sequence")
 _firstItemDetectionAreaPath = NodePath("FirstItemDetectionArea")
 _firstItemPath = NodePath("Potion")
 _triggerInteractionExplanationAreaPath = NodePath("TriggerInteractionExplanation")
+_tutorialLayerPath = NodePath("TutorialLayer")
 
 [node name="Dialogs" type="Node" parent="TutorialManager" unique_id=1108658910]
 
@@ -98,6 +100,8 @@ collision_mask = 5
 [node name="CollisionShape3D" type="CollisionShape3D" parent="TutorialManager/TriggerInteractionExplanation" unique_id=1134220676]
 transform = Transform3D(4, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.38327086, -0.14833021)
 shape = SubResource("BoxShape3D_t6d7d")
+
+[node name="TutorialLayer" parent="TutorialManager" unique_id=1646690382 instance=ExtResource("9_trggx")]
 
 [node name="Environement" type="Node3D" parent="." unique_id=206120937]
 

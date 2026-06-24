@@ -70,6 +70,8 @@ public sealed partial class PlayerStatusPanel : Control, IHudWidget
     {
         ApplyAnchorOffsets();
         MouseFilter = MouseFilterEnum.Ignore;
+        // Safety net: never let the stat rows draw outside the card frame.
+        ClipContents = true;
 
         Control panelContent = new() { MouseFilter = MouseFilterEnum.Ignore };
         panelContent.SetAnchorsAndOffsetsPreset(LayoutPreset.FullRect);
@@ -113,12 +115,14 @@ public sealed partial class PlayerStatusPanel : Control, IHudWidget
         };
         portraitFrame.AddChild(_portrait);
 
-        // Stats column.
+        // Stats column. ShrinkCenter so the rows sit centred in the card height instead of
+        // stretching/overflowing.
         VBoxContainer stats = new()
         {
             Name = "Stats",
             MouseFilter = MouseFilterEnum.Ignore,
             SizeFlagsHorizontal = SizeFlags.ExpandFill,
+            SizeFlagsVertical = SizeFlags.ShrinkCenter,
         };
         stats.AddThemeConstantOverride("separation", HudStyle.PadXs);
         row.AddChild(stats);
@@ -141,7 +145,7 @@ public sealed partial class PlayerStatusPanel : Control, IHudWidget
             MaxValue = 1,
             Value = 1,
             ShowPercentage = false,
-            CustomMinimumSize = new Vector2(0, 12),
+            CustomMinimumSize = new Vector2(0, HudStyle.ScaledPx(HudStyle.HpBarHeight)),
         };
         HudStyle.ApplyBarStyle(_hp, HudStyle.Crimson);
         stats.AddChild(_hp);
@@ -153,7 +157,7 @@ public sealed partial class PlayerStatusPanel : Control, IHudWidget
             MaxValue = 1,
             Value = 1,
             ShowPercentage = false,
-            CustomMinimumSize = new Vector2(0, 8),
+            CustomMinimumSize = new Vector2(0, HudStyle.ScaledPx(HudStyle.MpBarHeight)),
         };
         HudStyle.ApplyBarStyle(_mp, HudStyle.Azure);
         stats.AddChild(_mp);

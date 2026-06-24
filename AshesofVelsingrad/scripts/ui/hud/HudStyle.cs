@@ -104,8 +104,8 @@ public static class HudStyle
 
     /// <summary>Player-status panel width.</summary>
     public const int PlayerStatusWidth = 340;
-    /// <summary>Player-status panel height.</summary>
-    public const int PlayerStatusHeight = 170;
+    /// <summary>Player-status panel height. Sized so name + class + HP/MP rows never clip.</summary>
+    public const int PlayerStatusHeight = 210;
     /// <summary>Player-status portrait edge.</summary>
     public const int PlayerPortrait = 76;
 
@@ -140,8 +140,8 @@ public static class HudStyle
 
     /// <summary>Context info panel width.</summary>
     public const int ContextWidth = 260;
-    /// <summary>Context info panel height.</summary>
-    public const int ContextHeight = 116;
+    /// <summary>Context info panel height. Tall enough for the multi-line skill-target text.</summary>
+    public const int ContextHeight = 156;
 
     /// <summary>Corruption gauge width.</summary>
     public const int CorruptionWidth = 232;

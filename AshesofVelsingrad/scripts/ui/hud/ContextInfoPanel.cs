@@ -62,6 +62,9 @@ public sealed partial class ContextInfoPanel : Control, IHudWidget
     {
         ApplyAnchorOffsets();
         MouseFilter = MouseFilterEnum.Ignore;
+        // Keep the (variable-length) detail text inside the frame so it can never spill
+        // down over the corruption gauge that sits directly beneath this panel.
+        ClipContents = true;
 
         VBoxContainer box = new() { MouseFilter = MouseFilterEnum.Ignore };
         box.AddThemeConstantOverride("separation", HudStyle.PadXs);

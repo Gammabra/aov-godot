@@ -60,6 +60,8 @@ public sealed partial class TurnOrderQueue : Control, IHudWidget
     {
         ApplyAnchorOffsets();
         MouseFilter = MouseFilterEnum.Ignore;
+        // Backstop so a chip can never bleed past the right edge of the strip.
+        ClipContents = true;
 
         Control panelContent = new() { MouseFilter = MouseFilterEnum.Ignore };
         panelContent.SetAnchorsAndOffsetsPreset(LayoutPreset.FullRect);
@@ -92,8 +94,20 @@ public sealed partial class TurnOrderQueue : Control, IHudWidget
         for (int i = _row.GetChildCount() - 1; i > 0; i--)
             _row.GetChild(i).QueueFree();
 
-        for (int i = 0; i < upcomingUnits.Count; i++)
+        // Only show as many chips as fit beside the header, so the last chip can't spill
+        // off the right edge of the strip.
+        int shown = Mathf.Min(upcomingUnits.Count, MaxVisibleChips());
+        for (int i = 0; i < shown; i++)
             _row.AddChild(BuildPortraitChip(upcomingUnits[i], isActive: i == 0));
+    }
+
+    /// <summary>How many portrait chips fit beside the "TURN ORDER" header at the current scale.</summary>
+    private static int MaxVisibleChips()
+    {
+        int headerW = HudStyle.ScaledPx(120);
+        int chipCell = HudStyle.ScaledPx(HudStyle.TurnChipSize) + HudStyle.PadSm * 2;
+        int avail = HudStyle.ScaledPx(HudStyle.TurnQueueWidth) - headerW;
+        return Mathf.Max(1, avail / chipCell);
     }
 
     private static Control BuildPortraitChip(IUnitSystem unit, bool isActive)

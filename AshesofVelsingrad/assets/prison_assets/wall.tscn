@@ -1,18 +1,20 @@
 [gd_scene format=3 uid="uid://cacndwkpp1xg5"]
 
-[sub_resource type="BoxMesh" id="BoxMesh_73a02"]
+[ext_resource type="PackedScene" uid="uid://brci1i0sy7iul" path="res://assets/Blender/export/Wall.glb" id="1_26rb2"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_73a02"]
+size = Vector3(1.156662, 0.7541504, 0.07366943)
 
 [node name="Wall" type="Node3D" unique_id=1971867356]
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1145040152]
-transform = Transform3D(2, 0, 0, 0, 2.5, 0, 0, 0, 0.1, 0, 1.25, 0)
-mesh = SubResource("BoxMesh_73a02")
+[node name="Wall" parent="." unique_id=2098425835 instance=ExtResource("1_26rb2")]
+transform = Transform3D(1, 0, 0, 0, 1.25, 0, 0, 0, 1.1, 0, 0, 0)
 
-[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D" unique_id=69251597]
+[node name="StaticBody3D" type="StaticBody3D" parent="Wall" unique_id=69251597]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 1.1387635, 0)
 collision_layer = 7
 collision_mask = 7
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D" unique_id=128535423]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Wall/StaticBody3D" unique_id=128535423]
+transform = Transform3D(0.99999964, 0, 0, 0, 0.99999857, 0, 0, 0, 0.99999994, 0.0015335002, -0.00061035156, 0.0050354)
 shape = SubResource("BoxShape3D_73a02")

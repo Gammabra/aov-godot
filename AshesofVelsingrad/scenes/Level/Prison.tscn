@@ -221,10 +221,10 @@ transform = Transform3D(1.1764706, 0, 0, 0, 1.1764706, 0, 0, 0, 1.1764706, 15.87
 transform = Transform3D(1.1764706, 0, 0, 0, 1.1764706, 0, 0, 0, 1.1764706, 11.169908, -0.7614974, -1.5147682)
 
 [node name="Wall4" parent="NavigationRegion3D" unique_id=49243192 instance=ExtResource("6_js1ay")]
-transform = Transform3D(1.1764706, 0, 0, 0, 1.1764706, 0, 0, 0, 1.1764706, 13.522849, -0.7614974, -1.5147682)
+transform = Transform3D(1.1764708, 0, 0, 0, 1.1764708, 0, 0, 0, 1.1764708, 13.029502, -0.7614974, -1.5147684)
 
 [node name="Wall5" parent="NavigationRegion3D" unique_id=627778613 instance=ExtResource("6_js1ay")]
-transform = Transform3D(1.1764706, 0, 0, 0, 1.1764706, 0, 0, 0, 1.1764706, 18.228731, -0.7614974, -1.5147682)
+transform = Transform3D(1.1764708, 0, 0, 0, 1.1764708, 0, 0, 0, 1.1764708, 18.617645, -0.7614974, -1.5147684)
 
 [node name="WallCloseDoor3" parent="NavigationRegion3D" unique_id=752198185 instance=ExtResource("7_27kcu")]
 transform = Transform3D(1.1764706, 0, 0, 0, 1.1764706, 0, 0, 0, 1.1764706, 20.581673, -0.7614974, -1.5147682)
@@ -242,19 +242,16 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.8791499, 0, -0.018645287)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.7487686, 0, 0.03182161)
 
 [node name="Wall7" parent="NavigationRegion3D" unique_id=106329512 instance=ExtResource("6_js1ay")]
-transform = Transform3D(-5.1425165e-08, 0, 1.1764706, 0, 1.1764706, 0, -1.1764706, 0, -5.1425165e-08, 17.96873, -0.7614974, -2.6912389)
+transform = Transform3D(-5.1425168e-08, 0, 1.1764708, 0, 1.1764708, 0, -1.1764708, 0, -5.1425168e-08, 17.96873, -0.7614974, -3.345688)
 
 [node name="Wall7" parent="NavigationRegion3D/Wall7" unique_id=199984561 instance=ExtResource("6_js1ay")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3.54523)
+transform = Transform3D(1, 0, 1.0658141e-14, 0, 1, 0, -1.0658141e-14, 0, 1, 0.010924339, 0, -3.5452306)
 
 [node name="Wall8" parent="NavigationRegion3D" unique_id=255629156 instance=ExtResource("6_js1ay")]
-transform = Transform3D(1.1764706, 0, 0, 0, 1.1764706, 0, 0, 0, 1.1764706, 15.87579, -0.7614974, -6.220651)
+transform = Transform3D(1.1764708, 0, 0, 0, 1.1764708, 0, 0, 0, 1.1764708, 14.12145, -0.7614974, -6.2063503)
 
 [node name="Wall8" parent="NavigationRegion3D/Wall8" unique_id=703914559 instance=ExtResource("6_js1ay")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0)
-
-[node name="Wall9" parent="NavigationRegion3D/Wall8" unique_id=21063477 instance=ExtResource("6_js1ay")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.1994452, 0, 0)
 
 [node name="Floor4" parent="NavigationRegion3D" unique_id=1074005343 instance=ExtResource("4_w1s1i")]
 transform = Transform3D(1.1764706, 0, 0, 0, 1.1764706, 0, 0, 0, 1.1764706, 15.87579, -0.7614974, -5.043772)
@@ -266,10 +263,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.8791499, 0, -0.018645287)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.7487686, 0, 0.03182161)
 
 [node name="Wall9" parent="NavigationRegion3D" unique_id=1804689301 instance=ExtResource("6_js1ay")]
-transform = Transform3D(-5.1425165e-08, 0, 1.1764706, 0, 1.1764706, 0, -1.1764706, 0, -5.1425165e-08, 17.96873, -0.7614974, -5.0441804)
+transform = Transform3D(-5.142517e-08, 0, 1.1764708, 0, 1.1764708, 0, -1.1764708, 0, -5.142517e-08, 17.96873, -0.7614974, -7.1411166)
 
 [node name="Wall7" parent="NavigationRegion3D/Wall9" unique_id=395844910 instance=ExtResource("6_js1ay")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3.54523)
+transform = Transform3D(1, 0, 7.1054274e-15, 0, 1, 0, -7.1054274e-15, 0, 1, 0.041265965, 0, -3.5452304)
 
 [node name="Characters" type="Node" parent="." unique_id=1507978962]
 

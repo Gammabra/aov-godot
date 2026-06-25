@@ -1,5 +1,7 @@
 [gd_scene format=3 uid="uid://dt1eyxw0w0f2e"]
 
+[ext_resource type="PackedScene" uid="uid://rw6bili0x0pv" path="res://assets/Blender/export/Wall Door.glb" id="1_x0owp"]
+
 [node name="Wall" type="Node3D" unique_id=1971867356]
 
 [node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=1200843714]
@@ -8,6 +10,9 @@ use_collision = true
 collision_layer = 7
 collision_mask = 7
 size = Vector3(2, 2.5, 0.1)
+
+[node name="Wall Door" parent="CSGBox3D" unique_id=547371328 instance=ExtResource("1_x0owp")]
+transform = Transform3D(1, 0, 0, 0, 1.125, 0, 0, 0, 1, -0.7885381, -1.2641371, 0.16709435)
 
 [node name="porte" type="Node3D" parent="CSGBox3D" unique_id=1042003107]
 transform = Transform3D(-0.18859841, 0, 0.9820543, 0, 1, 0, -0.9820543, 0, -0.18859841, 0.53610176, -1.2591553, 0.48548692)

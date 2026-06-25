@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://clovyn8ti6ung"]
 
-[ext_resource type="PackedScene" uid="uid://1k6grq5uc544" path="res://assets/Blender/Pave Prison.glb" id="1_m2pqf"]
+[ext_resource type="PackedScene" uid="uid://7hgu86odom4c" path="res://assets/Blender/export/Pave Prison.glb" id="1_m2pqf"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_m2pqf"]
 size = Vector3(1.918457, 0.79052734, 1.820816)

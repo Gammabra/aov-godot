@@ -163,6 +163,7 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_mjuyt"]
+radius = 0.3
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_wwxp1"]
 

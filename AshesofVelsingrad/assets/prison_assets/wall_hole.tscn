@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://b2wkgesqgex1t"]
+
+[ext_resource type="PackedScene" uid="uid://c67ont12heh0a" path="res://assets/Blender/export/Wall Hole.glb" id="1_7w4ku"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_73a02"]
+size = Vector3(1.156662, 0.7541504, 0.07366943)
+
+[node name="Wall" type="Node3D" unique_id=1971867356]
+
+[node name="Wall Hole" parent="." unique_id=1130973797 instance=ExtResource("1_7w4ku")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Wall Hole" unique_id=69251597]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3.0000002, 0, 1.1387635, 0)
+collision_layer = 7
+collision_mask = 7
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Wall Hole/StaticBody3D" unique_id=128535423]
+transform = Transform3D(0.99999964, 0, 0, 0, 0.99999857, 0, 0, 0, 0.99999994, 0.0015335002, -0.00061035156, 0.0050354)
+shape = SubResource("BoxShape3D_73a02")

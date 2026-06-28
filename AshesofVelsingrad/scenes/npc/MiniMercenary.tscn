@@ -143,7 +143,6 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_tarug"]
-radius = 0.3
 
 [node name="MiniMercenary" type="CharacterBody3D" unique_id=942239080]
 transform = Transform3D(0.85, 0, 0, 0, 0.85, 0, 0, 0, 0.85, 0, 0, 0)
@@ -188,5 +187,4 @@ script = ExtResource("8_51vgn")
 _animatedSprite3DPath = NodePath("../../AnimatedSprite3D")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=559476726]
-path_desired_distance = 10.0
-target_desired_distance = 40.0
+path_max_distance = 2.01

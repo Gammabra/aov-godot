@@ -39,7 +39,6 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_sy352"]
-radius = 0.3
 
 [node name="Soldier" type="CharacterBody3D" unique_id=633068440]
 collision_layer = 6

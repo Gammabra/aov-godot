@@ -18,7 +18,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.15)
 transform = Transform3D(-0.3621779, 0, -0.932109, 0, 1, 0, 0.932109, 0, -0.3621779, 0.32684565, 0.09033278, -0.03763038)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Wall Door" unique_id=753054563]
-transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 1.1387635, 0)
+transform = Transform3D(2.885, 0, 0, 0, 3, 0, 0, 0, 3, -0.013591886, 1.1387635, 0)
 collision_layer = 7
 collision_mask = 7
 
@@ -27,7 +27,7 @@ transform = Transform3D(0.99999964, 0, 0, 0, 0.99999857, 0, 0, 0, 0.99999994, -0
 shape = SubResource("BoxShape3D_x0owp")
 
 [node name="StaticBody3D2" type="StaticBody3D" parent="Wall Door" unique_id=796534530]
-transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3.0000002, 2.982737, 1.1387635, 0)
+transform = Transform3D(2.455, 0, 0, 0, 3, 0, 0, 0, 3, 2.7249613, 1.1387635, 0)
 collision_layer = 7
 collision_mask = 7
 

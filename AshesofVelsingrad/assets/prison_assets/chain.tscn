@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://nd5kxchifen7"]
+
+[ext_resource type="PackedScene" uid="uid://bvewchx1img8e" path="res://assets/Blender/export/chain.glb" id="1_e2gu8"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_73a02"]
+size = Vector3(0.03001535, 1.2360287, 0.07065487)
+
+[node name="Chain" type="Node3D" unique_id=1971867356]
+
+[node name="chain" parent="." unique_id=930220443 instance=ExtResource("1_e2gu8")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="chain" unique_id=69251597]
+collision_layer = 7
+collision_mask = 7
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="chain/StaticBody3D" unique_id=128535423]
+transform = Transform3D(0.9999997, 0, 0, 0, 0.99999857, 0, 0, 0, 0.99999994, -0.00080342963, -0.0032298565, 0.0007109642)
+shape = SubResource("BoxShape3D_73a02")

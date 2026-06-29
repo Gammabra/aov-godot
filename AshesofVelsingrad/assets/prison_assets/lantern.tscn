@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://dt68jgkvymscw"]
+
+[ext_resource type="PackedScene" uid="uid://dof7e6k75jqtm" path="res://assets/Blender/export/Lantern.glb" id="1_2sqe3"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_73a02"]
+size = Vector3(0.27557898, 0.47145844, 0.2738304)
+
+[node name="Lantern" type="Node3D" unique_id=1971867356]
+
+[node name="Lantern" parent="." unique_id=1692622568 instance=ExtResource("1_2sqe3")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Lantern" unique_id=69251597]
+collision_layer = 7
+collision_mask = 7
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Lantern/StaticBody3D" unique_id=128535423]
+transform = Transform3D(0.9999997, 0, 0, 0, 0.99999857, 0, 0, 0, 0.99999994, 0.00041029975, 0.23617734, 0.0010280609)
+shape = SubResource("BoxShape3D_73a02")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Lantern" unique_id=837501737]
+light_color = Color(1, 0.6627451, 0.30588236, 1)
+light_energy = 5.0

@@ -4,6 +4,8 @@
 [ext_resource type="PackedScene" uid="uid://cacndwkpp1xg5" path="res://assets/prison_assets/wall.tscn" id="2_w2pob"]
 [ext_resource type="PackedScene" uid="uid://deoxgrrrqxand" path="res://assets/prison_assets/wall_door_close.tscn" id="3_xfxtf"]
 [ext_resource type="PackedScene" uid="uid://dt1eyxw0w0f2e" path="res://assets/prison_assets/wall_door_open.tscn" id="4_nn5ey"]
+[ext_resource type="PackedScene" uid="uid://b2wkgesqgex1t" path="res://assets/prison_assets/wall_hole.tscn" id="5_xfxtf"]
+[ext_resource type="PackedScene" uid="uid://dt68jgkvymscw" path="res://assets/prison_assets/lantern.tscn" id="6_nn5ey"]
 
 [node name="All" type="Node3D" unique_id=1087946994]
 
@@ -14,3 +16,7 @@
 [node name="Wall2" parent="." unique_id=992867745 instance=ExtResource("3_xfxtf")]
 
 [node name="Wall3" parent="." unique_id=301095390 instance=ExtResource("4_nn5ey")]
+
+[node name="Wall4" parent="." unique_id=286580322 instance=ExtResource("5_xfxtf")]
+
+[node name="Wall5" parent="." unique_id=1791713862 instance=ExtResource("6_nn5ey")]

@@ -188,3 +188,4 @@ _animatedSprite3DPath = NodePath("../../AnimatedSprite3D")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=559476726]
 path_max_distance = 2.01
+path_postprocessing = 2

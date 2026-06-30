@@ -4,6 +4,7 @@ using Godot;
 using System.Threading.Tasks;
 using AshesOfVelsingrad.data.npc;
 using AshesOfVelsingrad.Systems;
+using AshesOfVelsingrad.tutotial;
 
 namespace AshesOfVelsingrad.Managers;
 
@@ -51,7 +52,7 @@ public partial class TutorialManager : Node
 
 	[Export]
 	private NodePath _triggerInteractionExplanationAreaPath = null!;
-	
+
 	[Export]
 	private NodePath _tutorialLayerPath = null!;
 
@@ -63,7 +64,7 @@ public partial class TutorialManager : Node
 	private AovPlayer _player = null!;
 	private MiniMercenary _miniMercenary = null!;
 	private TextSequence _introSequence = null!;
-	private Area3D _firstItemDetectionArea = null!;
+	private ItemDetectionArea _firstItemDetectionArea = null!;
 	private Area3D _triggerInteractionExplanationArea = null!;
 	private ItemSystem _firstItem = null!;
 	private CanvasLayer _tutorialLayer = null!;
@@ -97,6 +98,7 @@ public partial class TutorialManager : Node
 	{
 		if (body == _miniMercenary)
 		{
+			_miniMercenary.ToggleNoticed();
 			_miniMercenary.CollisionLayer = 2;
 			_miniMercenary.CollisionMask = 2;
 			CanMove = false;
@@ -175,8 +177,9 @@ public partial class TutorialManager : Node
 		_inventoryExplanationDialog.Connect("dialog_ended", Callable.From(HandleFirstInventoryExplanationDialogEnd));
 		_introSequence = GetNode<TextSequence>(_introSequencePath);
 		_introSequence.OnSequenceEnded += GoToNextStep;
-		_firstItemDetectionArea = GetNode<Area3D>(_firstItemDetectionAreaPath);
+		_firstItemDetectionArea = GetNode<ItemDetectionArea>(_firstItemDetectionAreaPath);
 		_firstItemDetectionArea.BodyEntered += OnFirstItemDetectionAreaBodyEntered;
+		_firstItemDetectionArea.OnStartedToMove += () => _miniMercenary.ToggleNoticed();
 		_triggerInteractionExplanationArea = GetNode<Area3D>(_triggerInteractionExplanationAreaPath);
 		_triggerInteractionExplanationArea.BodyEntered += OnTriggerInteractionExplanationAreaBodyEntered;
 

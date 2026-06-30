@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://cjmqool0xnbmx" path="res://assets/Krita/sprite_mercenaire.png" id="1_tarug"]
 [ext_resource type="Script" uid="uid://dotytx100nxai" path="res://scripts/managers/state_machines/StateMachine.cs" id="2_hkbft"]
 [ext_resource type="Script" uid="uid://cbra7nuuruj2p" path="res://scripts/data/states/IdleState.cs" id="3_3rv65"]
+[ext_resource type="Texture2D" uid="uid://bpsyen0uhk0bs" path="res://assets/images/exclamation-mark-notification.png" id="3_7vivo"]
 [ext_resource type="Script" uid="uid://bwuj8qxa0majx" path="res://scripts/data/states/WalkForwardState.cs" id="5_rkhoi"]
 [ext_resource type="Script" uid="uid://b78pk38svecle" path="res://scripts/data/states/WalkBackwardState.cs" id="6_s4j83"]
 [ext_resource type="Script" uid="uid://cekx3mvjf080g" path="res://scripts/data/states/WalkLeftState.cs" id="7_7vivo"]
@@ -150,6 +151,7 @@ collision_layer = 4
 script = ExtResource("1_3rv65")
 _navigationAgentPath = NodePath("NavigationAgent3D")
 _stateMachinePath = NodePath("StateMachine")
+_noticedPath = NodePath("Noticed")
 
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="." unique_id=1593208387]
 offset = Vector2(67, 0)
@@ -161,6 +163,13 @@ animation = &"WalkBackward"
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1884269744]
 transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 0, 0, 0)
 shape = SubResource("CapsuleShape3D_tarug")
+
+[node name="Noticed" type="Sprite3D" parent="." unique_id=2140268306]
+transform = Transform3D(0.20000003, 0, 0, 0, 0.20000003, 0, 0, 0, 0.20000003, 0, 1.0932329, 0)
+visible = false
+billboard = 1
+texture_filter = 0
+texture = ExtResource("3_7vivo")
 
 [node name="StateMachine" type="Node" parent="." unique_id=1855902581]
 script = ExtResource("2_hkbft")

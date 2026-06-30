@@ -14,6 +14,9 @@ public partial class ItemDetectionArea : Area3D
 	private CharacterBody3D? _characterThatDetect;
 	private Marker3D? _pointOfInterest;
 
+    [Signal]
+    public delegate void OnStartedToMoveEventHandler();
+
 	private async void OnBodyEntered(Node3D body)
 	{
 		if (body == _characterThatDetect &&
@@ -23,6 +26,7 @@ public partial class ItemDetectionArea : Area3D
 			npc.ToIdle(true);
 			await ToSignal(GetTree().CreateTimer(1),
 				SceneTreeTimer.SignalName.Timeout);
+            EmitSignalOnStartedToMove();
 			npc.ToFollowingSpecificPoint(_pointOfInterest);
 		}
 	}

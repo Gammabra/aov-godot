@@ -33,8 +33,8 @@ background_mode = 2
 sky = SubResource("Sky_3qxsn")
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_js1ay"]
-vertices = PackedVector3Array(10.945951, -0.5673495, -1.964211, 11.745952, -0.5673495, -1.964211, 11.745952, -0.5673495, -5.964211, 10.845951, -0.5673495, -5.964211, 15.945951, -0.5673495, -1.964211, 17.245953, -0.5673495, -1.964211, 17.145952, -0.5673495, -5.964211, 15.945951, -0.5673495, -5.964211, 22.745953, -0.5673495, -1.0642109, 22.445953, -0.5673495, -1.0642109, 22.345953, -0.5673495, -0.8642106, 22.745953, -0.5673495, 2.435789, 15.045952, -0.5673495, -5.464211, 14.945951, -0.5673495, -5.664211, 14.645951, -0.5673495, -5.7642107, 12.845951, -0.5673495, -5.7642107, 12.745952, -0.5673495, -1.964211, 14.345951, -0.5673495, -1.964211, 14.645951, -0.5673495, -1.1642108, 14.445951, -0.5673495, -0.964211, 14.345951, -0.5673495, -0.464211, 13.845951, -0.5673495, 2.435789, 15.045952, -0.5673495, -1.0642109, 14.845951, -0.5673495, -1.2642107, 14.845951, -0.5673495, -1.7642107, 14.645951, -0.5673495, -1.5642109, 14.045952, -0.5673495, -0.1642108, 13.845951, -0.5673495, -0.1642108, 18.545952, -0.5673495, -0.8642106, 18.445953, -0.5673495, -1.0642109, 15.045952, -0.5673495, -2.1642108, 4.045952, -0.5673495, 0.6357894, 3.4459515, -0.5673495, 0.535789, 3.4459515, -0.5673495, 2.435789, 4.2459517, -0.5673495, 0.4357891, 5.545952, -0.5673495, -0.8642106, 5.445952, -0.5673495, -1.0642109, 3.3459516, -0.5673495, -1.0642109, 3.1459517, -0.5673495, -0.7642107, 3.7459517, -0.5673495, -0.3642106, 4.2459517, -0.5673495, 0.035789013, 2.6459517, -0.5673495, -0.7642107, 2.4459515, -0.5673495, -1.0642109, 0.14595163, -0.5673495, -1.0642109, 2.4459515, -0.5673495, -0.2642107, 13.445951, -0.5673495, -0.3642106, 9.245952, -0.5673495, -0.8642106, 0.14595163, -0.5673495, 2.435789, 2.4459515, -0.5673495, 2.435789, 13.545952, -0.5673495, -1.0642109, 9.345951, -0.5673495, -1.0642109, 2.9459515, -0.5673495, -0.5642109)
-polygons = [PackedInt32Array(1, 0, 2), PackedInt32Array(2, 0, 3), PackedInt32Array(7, 6, 4), PackedInt32Array(4, 6, 5), PackedInt32Array(9, 8, 10), PackedInt32Array(10, 8, 11), PackedInt32Array(13, 12, 14), PackedInt32Array(14, 12, 15), PackedInt32Array(15, 12, 17), PackedInt32Array(15, 17, 16), PackedInt32Array(23, 22, 18), PackedInt32Array(18, 22, 19), PackedInt32Array(19, 22, 20), PackedInt32Array(20, 22, 21), PackedInt32Array(18, 25, 23), PackedInt32Array(23, 25, 24), PackedInt32Array(21, 27, 26), PackedInt32Array(21, 26, 20), PackedInt32Array(28, 10, 11), PackedInt32Array(28, 22, 29), PackedInt32Array(22, 28, 21), PackedInt32Array(21, 28, 11), PackedInt32Array(25, 17, 24), PackedInt32Array(24, 17, 30), PackedInt32Array(30, 17, 12), PackedInt32Array(33, 32, 31), PackedInt32Array(33, 31, 34), PackedInt32Array(38, 37, 39), PackedInt32Array(39, 37, 36), PackedInt32Array(39, 36, 35), PackedInt32Array(40, 39, 35), PackedInt32Array(41, 44, 42), PackedInt32Array(42, 44, 43), PackedInt32Array(27, 21, 45), PackedInt32Array(45, 21, 46), PackedInt32Array(46, 21, 35), PackedInt32Array(35, 21, 34), PackedInt32Array(34, 21, 33), PackedInt32Array(48, 47, 44), PackedInt32Array(44, 47, 43), PackedInt32Array(46, 50, 45), PackedInt32Array(45, 50, 49), PackedInt32Array(34, 40, 35), PackedInt32Array(38, 51, 41), PackedInt32Array(41, 51, 44), PackedInt32Array(39, 51, 38)]
+vertices = PackedVector3Array(11.545952, -0.5673498, -5.964211, 11.645951, -0.5673498, -1.964211, 11.845951, -0.5673498, -2.7642107, 11.745952, -0.5673498, -5.964211, 14.645951, -0.5673498, -1.1642108, 14.445951, -0.5673498, -0.964211, 14.345951, -0.5673498, -0.464211, 14.045952, -0.5673498, -0.1642108, 13.845951, -0.5673498, -0.1642108, 13.845951, -0.5673498, 1.8357897, 15.045952, -0.5673498, -1.0642109, 14.845951, -0.5673498, -1.2642107, 22.745953, -0.5673498, 1.8357897, 22.745953, -0.5673498, -1.0642109, 21.545952, -0.5673498, -1.0642109, 21.345953, -0.5673498, -1.2642107, 20.845953, -0.5673498, -0.3642106, 21.345953, -0.5673498, -1.7642107, 21.545952, -0.5673498, -1.8642106, 21.545952, -0.5673498, -5.7642107, 20.845953, -0.5673498, -1.964211, 14.845951, -0.5673498, -1.7642107, 15.045952, -0.5673498, -1.8642106, 15.045952, -0.5673498, -5.7642107, 14.345951, -0.5673498, -1.964211, 19.245953, -0.5673498, -5.7642107, 19.245953, -0.5673498, -1.964211, 20.145952, -0.5673498, -0.1642108, 19.945953, -0.5673498, -0.3642106, 19.945953, -0.5673498, -0.7642107, 21.145952, -0.5673498, -1.5642109, 14.645951, -0.5673498, -1.5642109, 20.645952, -0.5673498, -0.1642108, 12.745952, -0.5673498, -5.7642107, 12.745952, -0.5673498, -1.964211, 20.145952, -0.5673498, -1.0642109, 19.245953, -0.26734978, -4.064211, 19.245953, -0.26734978, -2.3642106, 19.545952, -0.26734978, -2.464211, 19.545952, -0.26734978, -3.9642107, 12.745952, -0.26734978, -3.8642108, 12.745952, -0.26734978, -2.3642106, 13.045952, -0.26734978, -2.3642106, 13.045952, -0.26734978, -3.8642108, 4.045952, -0.5673498, 0.6357894, 3.4459515, -0.5673498, 0.535789, 3.4459515, -0.5673498, 1.8357897, 4.2459517, -0.5673498, 0.4357891, 5.545952, -0.5673498, -0.8642106, 5.445952, -0.5673498, -1.0642109, 3.3459516, -0.5673498, -1.0642109, 3.1459517, -0.5673498, -0.7642107, 3.7459517, -0.5673498, -0.3642106, 13.445951, -0.5673498, -0.3642106, 9.245952, -0.5673498, -0.8642106, 4.2459517, -0.5673498, 0.035789013, 2.6459517, -0.5673498, -0.7642107, 2.4459515, -0.5673498, -1.0642109, 0.14595163, -0.5673498, -1.0642109, 2.4459515, -0.5673498, -0.2642107, 0.14595163, -0.5673498, 1.8357897, 2.4459515, -0.5673498, 1.8357897, 13.545952, -0.5673498, -1.0642109, 9.345951, -0.5673498, -1.0642109, 2.9459515, -0.5673498, -0.5642109, 26.245953, -0.5673498, -0.964211, 23.645952, -0.5673498, -0.964211, 23.745953, -0.5673498, 2.2357893, 26.245953, -0.5673498, 2.2357893)
+polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1), PackedInt32Array(6, 5, 4), PackedInt32Array(9, 8, 7), PackedInt32Array(9, 7, 6), PackedInt32Array(11, 10, 4), PackedInt32Array(4, 10, 6), PackedInt32Array(6, 10, 9), PackedInt32Array(14, 13, 12), PackedInt32Array(15, 14, 16), PackedInt32Array(16, 14, 12), PackedInt32Array(17, 20, 18), PackedInt32Array(18, 20, 19), PackedInt32Array(21, 24, 22), PackedInt32Array(22, 24, 23), PackedInt32Array(26, 25, 20), PackedInt32Array(20, 25, 19), PackedInt32Array(10, 27, 9), PackedInt32Array(9, 27, 12), PackedInt32Array(10, 29, 28), PackedInt32Array(17, 30, 20), PackedInt32Array(17, 15, 30), PackedInt32Array(30, 15, 16), PackedInt32Array(4, 31, 11), PackedInt32Array(11, 31, 21), PackedInt32Array(31, 24, 21), PackedInt32Array(12, 32, 16), PackedInt32Array(27, 32, 12), PackedInt32Array(34, 33, 24), PackedInt32Array(24, 33, 23), PackedInt32Array(10, 28, 27), PackedInt32Array(10, 35, 29), PackedInt32Array(39, 38, 36), PackedInt32Array(36, 38, 37), PackedInt32Array(43, 42, 40), PackedInt32Array(40, 42, 41), PackedInt32Array(46, 45, 44), PackedInt32Array(46, 44, 47), PackedInt32Array(51, 50, 52), PackedInt32Array(52, 50, 49), PackedInt32Array(52, 49, 48), PackedInt32Array(8, 9, 53), PackedInt32Array(53, 9, 54), PackedInt32Array(54, 9, 48), PackedInt32Array(48, 9, 47), PackedInt32Array(47, 9, 46), PackedInt32Array(47, 55, 48), PackedInt32Array(56, 59, 57), PackedInt32Array(57, 59, 58), PackedInt32Array(61, 60, 59), PackedInt32Array(59, 60, 58), PackedInt32Array(54, 63, 53), PackedInt32Array(53, 63, 62), PackedInt32Array(55, 52, 48), PackedInt32Array(51, 64, 56), PackedInt32Array(56, 64, 59), PackedInt32Array(52, 64, 51), PackedInt32Array(68, 67, 65), PackedInt32Array(65, 67, 66)]
 cell_size = 0.1
 cell_height = 0.1
 border_size = 1.0
@@ -129,6 +129,78 @@ light_energy = 16.0
 spot_range = 8.153
 spot_attenuation = -1.03
 spot_angle = 25.92
+
+[node name="Lantern" parent="Environement" unique_id=1268220014 instance=ExtResource("15_466sc")]
+transform = Transform3D(0.8500002, 0, 0, 0, 0.8500002, 0, 0, 0, 0.8500002, -1.163929, 1.2108195, -0.23581472)
+
+[node name="Chain" parent="Environement/Lantern" unique_id=298819437 instance=ExtResource("16_6b824")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0512048, 0)
+
+[node name="Chain" parent="Environement/Lantern/Chain" unique_id=288081421 instance=ExtResource("16_6b824")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 1.1981189, 0)
+
+[node name="Lantern2" parent="Environement" unique_id=1496839541 instance=ExtResource("15_466sc")]
+transform = Transform3D(0.8500002, 0, 0, 0, 0.8500002, 0, 0, 0, 0.8500002, -3.8948193, 1.553422, 0.6659106)
+
+[node name="Chain" parent="Environement/Lantern2" unique_id=430567418 instance=ExtResource("16_6b824")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0512048, 0)
+
+[node name="Chain" parent="Environement/Lantern2/Chain" unique_id=1783032502 instance=ExtResource("16_6b824")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 1.1981189, 0)
+
+[node name="Lantern3" parent="Environement" unique_id=1475431444 instance=ExtResource("15_466sc")]
+transform = Transform3D(0.8500002, 0, 0, 0, 0.8500002, 0, 0, 0, 0.8500002, 1.0500231, 1.486809, 1.1495197)
+
+[node name="Chain" parent="Environement/Lantern3" unique_id=11123199 instance=ExtResource("16_6b824")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0512048, 0)
+
+[node name="Chain" parent="Environement/Lantern3/Chain" unique_id=1540353992 instance=ExtResource("16_6b824")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 1.1981189, 0)
+
+[node name="Lantern4" parent="Environement" unique_id=1114068131 instance=ExtResource("15_466sc")]
+transform = Transform3D(0.8500002, 0, 0, 0, 0.8500002, 0, 0, 0, 0.8500002, 3.813531, 1.3420082, -0.42984214)
+
+[node name="Chain" parent="Environement/Lantern4" unique_id=583023842 instance=ExtResource("16_6b824")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0512048, 0)
+
+[node name="Chain" parent="Environement/Lantern4/Chain" unique_id=103779470 instance=ExtResource("16_6b824")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 1.1981189, 0)
+
+[node name="Lantern5" parent="Environement" unique_id=672477275 instance=ExtResource("15_466sc")]
+transform = Transform3D(0.8500002, 0, 0, 0, 0.8500002, 0, 0, 0, 0.8500002, 5.67537, 1.702147, 1.2538894)
+
+[node name="Chain" parent="Environement/Lantern5" unique_id=949798046 instance=ExtResource("16_6b824")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0512048, 0)
+
+[node name="Chain" parent="Environement/Lantern5/Chain" unique_id=1488468753 instance=ExtResource("16_6b824")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 1.1981189, 0)
+
+[node name="Lantern6" parent="Environement" unique_id=1201305763 instance=ExtResource("15_466sc")]
+transform = Transform3D(0.8500002, 0, 0, 0, 0.8500002, 0, 0, 0, 0.8500002, -6.08357, 1.4100564, 1.5157125)
+
+[node name="Chain" parent="Environement/Lantern6" unique_id=1610988922 instance=ExtResource("16_6b824")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0512048, 0)
+
+[node name="Chain" parent="Environement/Lantern6/Chain" unique_id=1599199728 instance=ExtResource("16_6b824")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 1.1981189, 0)
+
+[node name="Lantern7" parent="Environement" unique_id=160688785 instance=ExtResource("15_466sc")]
+transform = Transform3D(0.8500002, 0, 0, 0, 0.8500002, 0, 0, 0, 0.8500002, 9.228994, 1.1821169, 1.8457803)
+
+[node name="Chain" parent="Environement/Lantern7" unique_id=675661261 instance=ExtResource("16_6b824")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0512048, 0)
+
+[node name="Chain" parent="Environement/Lantern7/Chain" unique_id=7952874 instance=ExtResource("16_6b824")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 1.1981189, 0)
+
+[node name="Prison Bed" parent="Environement" unique_id=901445464 instance=ExtResource("17_1ll8u")]
+transform = Transform3D(-3.715469e-08, 0, 0.8500002, 0, 0.8500002, 0, -0.8500002, 0, -3.715469e-08, -9.671492, 0.25335848, 1.7159905)
+
+[node name="Prison Bed2" parent="Environement" unique_id=1944219348 instance=ExtResource("17_1ll8u")]
+transform = Transform3D(-3.715469e-08, 0, 0.8500002, 0, 0.8500002, 0, -0.8500002, 0, -3.715469e-08, 1.3527164, 0.25335848, -2.3443487)
+
+[node name="Prison Bed3" parent="Environement" unique_id=2132492263 instance=ExtResource("17_1ll8u")]
+transform = Transform3D(-3.715469e-08, 0, 0.8500002, 0, 0.8500002, 0, -0.8500002, 0, -3.715469e-08, 6.9245434, 0.25335848, -2.4509907)
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="." unique_id=101472512]
 transform = Transform3D(0.85, 0, 0, 0, 0.85, 0, 0, 0, 0.85, -9.494421, 0.64727277, 0.28755298)
@@ -326,7 +398,7 @@ collision_layer = 7
 collision_mask = 7
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/MurInvisible" unique_id=1051271053]
-transform = Transform3D(0.99999964, 0, 0, 0, 0.9999986, 0, 0, 0, 0.99999994, 3.4482064, -0.16867036, -0.3334316)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 2.55, 3.4482064, -0.16867036, -0.25854665)
 shape = SubResource("BoxShape3D_1ax22")
 
 [node name="Floor5" parent="NavigationRegion3D" unique_id=221792794 instance=ExtResource("4_w1s1i")]
@@ -376,78 +448,6 @@ transform = Transform3D(1.0000014, 0, 0, 0, 1.0000014, 0, 0, 0, 1.0000014, 0, 2.
 
 [node name="Wall14" parent="NavigationRegion3D/Wall18" unique_id=1786316228 instance=ExtResource("6_js1ay")]
 transform = Transform3D(1.0000014, 0, 0, 0, 1.0000014, 0, 0, 0, 1.0000014, 0, 2.2, 0)
-
-[node name="Lantern" parent="NavigationRegion3D" unique_id=1268220014 instance=ExtResource("15_466sc")]
-transform = Transform3D(1.0000002, 0, 0, 0, 1.0000002, 0, 0, 0, 1.0000002, 9.800579, 0.6629962, -0.6157267)
-
-[node name="Chain" parent="NavigationRegion3D/Lantern" unique_id=298819437 instance=ExtResource("16_6b824")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0512048, 0)
-
-[node name="Chain" parent="NavigationRegion3D/Lantern/Chain" unique_id=288081421 instance=ExtResource("16_6b824")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 1.1981189, 0)
-
-[node name="Lantern2" parent="NavigationRegion3D" unique_id=1496839541 instance=ExtResource("15_466sc")]
-transform = Transform3D(1.0000002, 0, 0, 0, 1.0000002, 0, 0, 0, 1.0000002, 6.5877666, 1.0660579, 0.44512662)
-
-[node name="Chain" parent="NavigationRegion3D/Lantern2" unique_id=430567418 instance=ExtResource("16_6b824")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0512048, 0)
-
-[node name="Chain" parent="NavigationRegion3D/Lantern2/Chain" unique_id=1783032502 instance=ExtResource("16_6b824")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 1.1981189, 0)
-
-[node name="Lantern3" parent="NavigationRegion3D" unique_id=1475431444 instance=ExtResource("15_466sc")]
-transform = Transform3D(1.0000002, 0, 0, 0, 1.0000002, 0, 0, 0, 1.0000002, 12.405228, 0.98768973, 1.0140785)
-
-[node name="Chain" parent="NavigationRegion3D/Lantern3" unique_id=11123199 instance=ExtResource("16_6b824")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0512048, 0)
-
-[node name="Chain" parent="NavigationRegion3D/Lantern3/Chain" unique_id=1540353992 instance=ExtResource("16_6b824")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 1.1981189, 0)
-
-[node name="Lantern4" parent="NavigationRegion3D" unique_id=1114068131 instance=ExtResource("15_466sc")]
-transform = Transform3D(1.0000002, 0, 0, 0, 1.0000002, 0, 0, 0, 1.0000002, 15.656414, 0.81733584, -0.84399426)
-
-[node name="Chain" parent="NavigationRegion3D/Lantern4" unique_id=583023842 instance=ExtResource("16_6b824")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0512048, 0)
-
-[node name="Chain" parent="NavigationRegion3D/Lantern4/Chain" unique_id=103779470 instance=ExtResource("16_6b824")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 1.1981189, 0)
-
-[node name="Lantern5" parent="NavigationRegion3D" unique_id=672477275 instance=ExtResource("15_466sc")]
-transform = Transform3D(1.0000002, 0, 0, 0, 1.0000002, 0, 0, 0, 1.0000002, 17.846813, 1.2410284, 1.1368665)
-
-[node name="Chain" parent="NavigationRegion3D/Lantern5" unique_id=949798046 instance=ExtResource("16_6b824")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0512048, 0)
-
-[node name="Chain" parent="NavigationRegion3D/Lantern5/Chain" unique_id=1488468753 instance=ExtResource("16_6b824")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 1.1981189, 0)
-
-[node name="Lantern6" parent="NavigationRegion3D" unique_id=1201305763 instance=ExtResource("15_466sc")]
-transform = Transform3D(1.0000002, 0, 0, 0, 1.0000002, 0, 0, 0, 1.0000002, 4.012766, 0.8973924, 1.4448936)
-
-[node name="Chain" parent="NavigationRegion3D/Lantern6" unique_id=1610988922 instance=ExtResource("16_6b824")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0512048, 0)
-
-[node name="Chain" parent="NavigationRegion3D/Lantern6/Chain" unique_id=1599199728 instance=ExtResource("16_6b824")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 1.1981189, 0)
-
-[node name="Lantern7" parent="NavigationRegion3D" unique_id=160688785 instance=ExtResource("15_466sc")]
-transform = Transform3D(1.0000002, 0, 0, 0, 1.0000002, 0, 0, 0, 1.0000002, 22.027546, 0.62922835, 1.8332086)
-
-[node name="Chain" parent="NavigationRegion3D/Lantern7" unique_id=675661261 instance=ExtResource("16_6b824")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0512048, 0)
-
-[node name="Chain" parent="NavigationRegion3D/Lantern7/Chain" unique_id=7952874 instance=ExtResource("16_6b824")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 1.1981189, 0)
-
-[node name="Prison Bed" parent="NavigationRegion3D" unique_id=901445464 instance=ExtResource("17_1ll8u")]
-transform = Transform3D(-4.3711402e-08, 0, 1.0000002, 0, 1.0000002, 0, -1.0000002, 0, -4.3711402e-08, -0.20831871, -0.46342856, 1.6805148)
-
-[node name="Prison Bed2" parent="NavigationRegion3D" unique_id=1944219348 instance=ExtResource("17_1ll8u")]
-transform = Transform3D(-4.3711402e-08, 0, 1.0000002, 0, 1.0000002, 0, -1.0000002, 0, -4.3711402e-08, 12.761337, -0.46342856, -3.096355)
-
-[node name="Prison Bed3" parent="NavigationRegion3D" unique_id=2132492263 instance=ExtResource("17_1ll8u")]
-transform = Transform3D(-4.3711402e-08, 0, 1.0000002, 0, 1.0000002, 0, -1.0000002, 0, -4.3711402e-08, 19.316427, -0.46342856, -3.221816)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D" unique_id=1159843116]
 transform = Transform3D(2.0000005, 0, 0, 0, 2.0000005, 0, 0, 0, 2.0000005, 25.290081, -0.67423934, 0.5237962)

@@ -4,7 +4,7 @@ using Godot;
 using System.Threading.Tasks;
 using AshesOfVelsingrad.data.npc;
 using AshesOfVelsingrad.Systems;
-using AshesOfVelsingrad.tutotial;
+using AshesOfVelsingrad.tutorial;
 
 namespace AshesOfVelsingrad.Managers;
 

@@ -1,7 +1,7 @@
 using AshesOfVelsingrad.Interfaces;
 using Godot;
 
-namespace AshesOfVelsingrad.tutotial;
+namespace AshesOfVelsingrad.tutorial;
 
 public partial class ItemDetectionArea : Area3D
 {

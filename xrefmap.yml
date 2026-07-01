@@ -21320,6 +21320,19 @@ references:
   commentId: T:AshesOfVelsingrad.Systems.ItemSystem
   fullName: AshesOfVelsingrad.Systems.ItemSystem
   nameWithType: ItemSystem
+- uid: AshesOfVelsingrad.Systems.ItemSystem.CanInteract
+  name: CanInteract()
+  href: api/AshesOfVelsingrad.Systems.ItemSystem.html#AshesOfVelsingrad_Systems_ItemSystem_CanInteract
+  commentId: M:AshesOfVelsingrad.Systems.ItemSystem.CanInteract
+  fullName: AshesOfVelsingrad.Systems.ItemSystem.CanInteract()
+  nameWithType: ItemSystem.CanInteract()
+- uid: AshesOfVelsingrad.Systems.ItemSystem.CanInteract*
+  name: CanInteract
+  href: api/AshesOfVelsingrad.Systems.ItemSystem.html#AshesOfVelsingrad_Systems_ItemSystem_CanInteract_
+  commentId: Overload:AshesOfVelsingrad.Systems.ItemSystem.CanInteract
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.Systems.ItemSystem.CanInteract
+  nameWithType: ItemSystem.CanInteract
 - uid: AshesOfVelsingrad.Systems.ItemSystem.Category
   name: Category
   href: api/AshesOfVelsingrad.Systems.ItemSystem.html#AshesOfVelsingrad_Systems_ItemSystem_Category
@@ -21359,6 +21372,19 @@ references:
   isSpec: "True"
   fullName: AshesOfVelsingrad.Systems.ItemSystem.Description
   nameWithType: ItemSystem.Description
+- uid: AshesOfVelsingrad.Systems.ItemSystem.HidePrompt
+  name: HidePrompt()
+  href: api/AshesOfVelsingrad.Systems.ItemSystem.html#AshesOfVelsingrad_Systems_ItemSystem_HidePrompt
+  commentId: M:AshesOfVelsingrad.Systems.ItemSystem.HidePrompt
+  fullName: AshesOfVelsingrad.Systems.ItemSystem.HidePrompt()
+  nameWithType: ItemSystem.HidePrompt()
+- uid: AshesOfVelsingrad.Systems.ItemSystem.HidePrompt*
+  name: HidePrompt
+  href: api/AshesOfVelsingrad.Systems.ItemSystem.html#AshesOfVelsingrad_Systems_ItemSystem_HidePrompt_
+  commentId: Overload:AshesOfVelsingrad.Systems.ItemSystem.HidePrompt
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.Systems.ItemSystem.HidePrompt
+  nameWithType: ItemSystem.HidePrompt
 - uid: AshesOfVelsingrad.Systems.ItemSystem.Icon
   name: Icon
   href: api/AshesOfVelsingrad.Systems.ItemSystem.html#AshesOfVelsingrad_Systems_ItemSystem_Icon
@@ -21385,6 +21411,19 @@ references:
   isSpec: "True"
   fullName: AshesOfVelsingrad.Systems.ItemSystem.Id
   nameWithType: ItemSystem.Id
+- uid: AshesOfVelsingrad.Systems.ItemSystem.Interact(AshesOfVelsingrad.Systems.IInteractor)
+  name: Interact(IInteractor)
+  href: api/AshesOfVelsingrad.Systems.ItemSystem.html#AshesOfVelsingrad_Systems_ItemSystem_Interact_AshesOfVelsingrad_Systems_IInteractor_
+  commentId: M:AshesOfVelsingrad.Systems.ItemSystem.Interact(AshesOfVelsingrad.Systems.IInteractor)
+  fullName: AshesOfVelsingrad.Systems.ItemSystem.Interact(AshesOfVelsingrad.Systems.IInteractor)
+  nameWithType: ItemSystem.Interact(IInteractor)
+- uid: AshesOfVelsingrad.Systems.ItemSystem.Interact*
+  name: Interact
+  href: api/AshesOfVelsingrad.Systems.ItemSystem.html#AshesOfVelsingrad_Systems_ItemSystem_Interact_
+  commentId: Overload:AshesOfVelsingrad.Systems.ItemSystem.Interact
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.Systems.ItemSystem.Interact
+  nameWithType: ItemSystem.Interact
 - uid: AshesOfVelsingrad.Systems.ItemSystem.IsStackable
   name: IsStackable
   href: api/AshesOfVelsingrad.Systems.ItemSystem.html#AshesOfVelsingrad_Systems_ItemSystem_IsStackable
@@ -21424,6 +21463,19 @@ references:
   isSpec: "True"
   fullName: AshesOfVelsingrad.Systems.ItemSystem.Name
   nameWithType: ItemSystem.Name
+- uid: AshesOfVelsingrad.Systems.ItemSystem.ShowPrompt
+  name: ShowPrompt()
+  href: api/AshesOfVelsingrad.Systems.ItemSystem.html#AshesOfVelsingrad_Systems_ItemSystem_ShowPrompt
+  commentId: M:AshesOfVelsingrad.Systems.ItemSystem.ShowPrompt
+  fullName: AshesOfVelsingrad.Systems.ItemSystem.ShowPrompt()
+  nameWithType: ItemSystem.ShowPrompt()
+- uid: AshesOfVelsingrad.Systems.ItemSystem.ShowPrompt*
+  name: ShowPrompt
+  href: api/AshesOfVelsingrad.Systems.ItemSystem.html#AshesOfVelsingrad_Systems_ItemSystem_ShowPrompt_
+  commentId: Overload:AshesOfVelsingrad.Systems.ItemSystem.ShowPrompt
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.Systems.ItemSystem.ShowPrompt
+  nameWithType: ItemSystem.ShowPrompt
 - uid: AshesOfVelsingrad.Systems.ItemSystem.TargetType
   name: TargetType
   href: api/AshesOfVelsingrad.Systems.ItemSystem.html#AshesOfVelsingrad_Systems_ItemSystem_TargetType
@@ -25530,25 +25582,32 @@ references:
   commentId: T:AshesOfVelsingrad.items.PotionItem
   fullName: AshesOfVelsingrad.items.PotionItem
   nameWithType: PotionItem
-- uid: AshesOfVelsingrad.items.PotionItem.#ctor
-  name: PotionItem()
-  href: api/AshesOfVelsingrad.items.PotionItem.html#AshesOfVelsingrad_items_PotionItem__ctor
-  commentId: M:AshesOfVelsingrad.items.PotionItem.#ctor
-  name.vb: New()
-  fullName: AshesOfVelsingrad.items.PotionItem.PotionItem()
-  fullName.vb: AshesOfVelsingrad.items.PotionItem.New()
-  nameWithType: PotionItem.PotionItem()
-  nameWithType.vb: PotionItem.New()
-- uid: AshesOfVelsingrad.items.PotionItem.#ctor*
-  name: PotionItem
-  href: api/AshesOfVelsingrad.items.PotionItem.html#AshesOfVelsingrad_items_PotionItem__ctor_
-  commentId: Overload:AshesOfVelsingrad.items.PotionItem.#ctor
+- uid: AshesOfVelsingrad.items.PotionItem.HidePrompt
+  name: HidePrompt()
+  href: api/AshesOfVelsingrad.items.PotionItem.html#AshesOfVelsingrad_items_PotionItem_HidePrompt
+  commentId: M:AshesOfVelsingrad.items.PotionItem.HidePrompt
+  fullName: AshesOfVelsingrad.items.PotionItem.HidePrompt()
+  nameWithType: PotionItem.HidePrompt()
+- uid: AshesOfVelsingrad.items.PotionItem.HidePrompt*
+  name: HidePrompt
+  href: api/AshesOfVelsingrad.items.PotionItem.html#AshesOfVelsingrad_items_PotionItem_HidePrompt_
+  commentId: Overload:AshesOfVelsingrad.items.PotionItem.HidePrompt
   isSpec: "True"
-  name.vb: New
-  fullName: AshesOfVelsingrad.items.PotionItem.PotionItem
-  fullName.vb: AshesOfVelsingrad.items.PotionItem.New
-  nameWithType: PotionItem.PotionItem
-  nameWithType.vb: PotionItem.New
+  fullName: AshesOfVelsingrad.items.PotionItem.HidePrompt
+  nameWithType: PotionItem.HidePrompt
+- uid: AshesOfVelsingrad.items.PotionItem.ShowPrompt
+  name: ShowPrompt()
+  href: api/AshesOfVelsingrad.items.PotionItem.html#AshesOfVelsingrad_items_PotionItem_ShowPrompt
+  commentId: M:AshesOfVelsingrad.items.PotionItem.ShowPrompt
+  fullName: AshesOfVelsingrad.items.PotionItem.ShowPrompt()
+  nameWithType: PotionItem.ShowPrompt()
+- uid: AshesOfVelsingrad.items.PotionItem.ShowPrompt*
+  name: ShowPrompt
+  href: api/AshesOfVelsingrad.items.PotionItem.html#AshesOfVelsingrad_items_PotionItem_ShowPrompt_
+  commentId: Overload:AshesOfVelsingrad.items.PotionItem.ShowPrompt
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.items.PotionItem.ShowPrompt
+  nameWithType: PotionItem.ShowPrompt
 - uid: AshesOfVelsingrad.items.PotionItem.Use(AshesOfVelsingrad.Systems.IUnitSystem,AshesOfVelsingrad.Systems.IUnitSystem,AshesOfVelsingrad.Systems.IMapSystem)
   name: Use(IUnitSystem, IUnitSystem?, IMapSystem?)
   href: api/AshesOfVelsingrad.items.PotionItem.html#AshesOfVelsingrad_items_PotionItem_Use_AshesOfVelsingrad_Systems_IUnitSystem_AshesOfVelsingrad_Systems_IUnitSystem_AshesOfVelsingrad_Systems_IMapSystem_
@@ -25565,6 +25624,19 @@ references:
   isSpec: "True"
   fullName: AshesOfVelsingrad.items.PotionItem.Use
   nameWithType: PotionItem.Use
+- uid: AshesOfVelsingrad.items.PotionItem._Ready
+  name: _Ready()
+  href: api/AshesOfVelsingrad.items.PotionItem.html#AshesOfVelsingrad_items_PotionItem__Ready
+  commentId: M:AshesOfVelsingrad.items.PotionItem._Ready
+  fullName: AshesOfVelsingrad.items.PotionItem._Ready()
+  nameWithType: PotionItem._Ready()
+- uid: AshesOfVelsingrad.items.PotionItem._Ready*
+  name: _Ready
+  href: api/AshesOfVelsingrad.items.PotionItem.html#AshesOfVelsingrad_items_PotionItem__Ready_
+  commentId: Overload:AshesOfVelsingrad.items.PotionItem._Ready
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.items.PotionItem._Ready
+  nameWithType: PotionItem._Ready
 - uid: AshesOfVelsingrad.player
   name: AshesOfVelsingrad.player
   href: api/AshesOfVelsingrad.player.html
@@ -29852,6 +29924,31 @@ references:
   isSpec: "True"
   fullName: AshesOfVelsingrad.ui.hud.HudBusHelper.WhenReadyAsync
   nameWithType: HudBusHelper.WhenReadyAsync
+- uid: AshesofVelsingrad.scripts.systems
+  name: AshesofVelsingrad.scripts.systems
+  href: api/AshesofVelsingrad.scripts.systems.html
+  commentId: N:AshesofVelsingrad.scripts.systems
+  fullName: AshesofVelsingrad.scripts.systems
+  nameWithType: AshesofVelsingrad.scripts.systems
+- uid: AshesofVelsingrad.scripts.systems.PickableSystem
+  name: PickableSystem
+  href: api/AshesofVelsingrad.scripts.systems.PickableSystem.html
+  commentId: T:AshesofVelsingrad.scripts.systems.PickableSystem
+  fullName: AshesofVelsingrad.scripts.systems.PickableSystem
+  nameWithType: PickableSystem
+- uid: AshesofVelsingrad.scripts.systems.PickableSystem.AddToInventory(AshesOfVelsingrad.Systems.ItemSystem)
+  name: AddToInventory(ItemSystem)
+  href: api/AshesofVelsingrad.scripts.systems.PickableSystem.html#AshesofVelsingrad_scripts_systems_PickableSystem_AddToInventory_AshesOfVelsingrad_Systems_ItemSystem_
+  commentId: M:AshesofVelsingrad.scripts.systems.PickableSystem.AddToInventory(AshesOfVelsingrad.Systems.ItemSystem)
+  fullName: AshesofVelsingrad.scripts.systems.PickableSystem.AddToInventory(AshesOfVelsingrad.Systems.ItemSystem)
+  nameWithType: PickableSystem.AddToInventory(ItemSystem)
+- uid: AshesofVelsingrad.scripts.systems.PickableSystem.AddToInventory*
+  name: AddToInventory
+  href: api/AshesofVelsingrad.scripts.systems.PickableSystem.html#AshesofVelsingrad_scripts_systems_PickableSystem_AddToInventory_
+  commentId: Overload:AshesofVelsingrad.scripts.systems.PickableSystem.AddToInventory
+  isSpec: "True"
+  fullName: AshesofVelsingrad.scripts.systems.PickableSystem.AddToInventory
+  nameWithType: PickableSystem.AddToInventory
 - uid: Global
   name: ''
   href: api/Global.html

@@ -5332,6 +5332,34 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesofVelsingrad.scripts.systems.PickableSystem.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesofVelsingrad.scripts.systems.PickableSystem.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesofVelsingrad.scripts.systems.PickableSystem",
+      "Summary": "<p sourcefile=\"documentation/api/AshesofVelsingrad.scripts.systems.PickableSystem.yml\" sourcestartlinenumber=\"1\">Handles interactions with pickable items.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesofVelsingrad.scripts.systems.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesofVelsingrad.scripts.systems.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesofVelsingrad.scripts.systems",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "documentation/api/Global.ButtonMenu.yml",
       "output": {
         ".html": {

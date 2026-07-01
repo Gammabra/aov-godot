@@ -104,16 +104,27 @@ public sealed partial class ContextInfoPanel : Control, IHudWidget
         };
         box.AddChild(rule);
 
+        // The detail text lives in a vertical ScrollContainer so long skill descriptions
+        // can be scrolled instead of clipped or spilling out of the panel.
+        ScrollContainer scroll = new()
+        {
+            MouseFilter = MouseFilterEnum.Stop,
+            SizeFlagsHorizontal = SizeFlags.ExpandFill,
+            SizeFlagsVertical = SizeFlags.ExpandFill,
+            HorizontalScrollMode = ScrollContainer.ScrollMode.Disabled,
+            VerticalScrollMode = ScrollContainer.ScrollMode.Auto,
+        };
+        box.AddChild(scroll);
+
         _detail = new Label
         {
             Text = "",
             AutowrapMode = TextServer.AutowrapMode.WordSmart,
             SizeFlagsHorizontal = SizeFlags.ExpandFill,
-            SizeFlagsVertical = SizeFlags.ExpandFill,
         };
         HudStyle.StyleLabel(_detail, HudStyle.FontSizeBody);
         _detail.AddThemeColorOverride("font_color", HudStyle.Parchment);
-        box.AddChild(_detail);
+        scroll.AddChild(_detail);
     }
 
     /// <summary>Display the movement summary for the active turn.</summary>

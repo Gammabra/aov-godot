@@ -142,12 +142,13 @@ public sealed partial class SkillSelector : Control, IHudWidget
 
         wrapper.AddChild(slotBox);
 
-        // Skill name beneath the slot. Clipped so long names never widen the bar.
+        // Skill name beneath the slot. Word-wraps to fit the slot width instead of clipping,
+        // so a long name grows to a second line rather than being cut off.
         Label name = new()
         {
             Text = "",
             HorizontalAlignment = HorizontalAlignment.Center,
-            ClipText = true,
+            AutowrapMode = TextServer.AutowrapMode.WordSmart,
             MouseFilter = MouseFilterEnum.Ignore,
             SizeFlagsHorizontal = SizeFlags.ExpandFill,
         };

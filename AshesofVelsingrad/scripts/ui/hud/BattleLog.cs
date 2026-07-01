@@ -95,6 +95,14 @@ public sealed partial class BattleLog : Control, IHudWidget
         };
         _text.AddThemeColorOverride("default_color", HudStyle.Parchment);
         HudStyle.ApplyScaledFontSize(_text, "normal_font_size", HudStyle.FontSizeSmall);
+        // Pin the bold / italic variants to the SAME size as normal text. Without this,
+        // [b]…[/b] (used for skill names) falls back to the theme's default font size,
+        // which renders several times larger than the log's body text.
+        int logFontSize = HudStyle.ScaledFontSize(HudStyle.FontSizeSmall);
+        _text.AddThemeFontSizeOverride("bold_font_size", logFontSize);
+        _text.AddThemeFontSizeOverride("italics_font_size", logFontSize);
+        _text.AddThemeFontSizeOverride("bold_italics_font_size", logFontSize);
+        _text.AddThemeFontSizeOverride("mono_font_size", logFontSize);
         inner.AddChild(_text);
     }
 
@@ -106,6 +114,8 @@ public sealed partial class BattleLog : Control, IHudWidget
     private void Append(string colorHex, string message)
     {
         if (_text is null) return;
+        // House style: no em/en dashes in the log — swap them for a plain hyphen.
+        message = message.Replace(" — ", " - ").Replace("—", "-").Replace("–", "-");
         _text.PushColor(new Color(colorHex));
         _text.AppendText(message + "\n");
         _text.Pop();

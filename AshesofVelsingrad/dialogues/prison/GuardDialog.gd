@@ -1,5 +1,6 @@
 extends Node
 
+signal open_door()
 signal dialog_ended()
 
 var dio=Dialog.new()
@@ -14,11 +15,6 @@ var kaelen = dialog.Character(
 		"Kaelen",
 		Color.BROWN,
 		"res://assets/Krita/icone_player.png"
-	)
-var mercenary = dialog.Character(
-		"Mercenary",
-		Color.YELLOW_GREEN,
-		"res://assets/Krita/icone_mercenaire.png"
 	)
 
 func talk() -> void:
@@ -69,13 +65,20 @@ func talk() -> void:
 
 	dialog.say("...", kaelen)
 	dialog.say("Open the cell.", kaelen)
+	
+	dialog.action("_emit_open_door")
+	
+	dialog.start_convo()
 
+func talk2():
 	dialog.say("I'll wait for you outside.", guard)
 
 	dialog.action("_emit_dialog_end")
 	
 	dialog.start_convo()
 
+func _emit_open_door():
+	open_door.emit()
 
 func _emit_dialog_end():
 	dialog_ended.emit()

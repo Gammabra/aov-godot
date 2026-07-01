@@ -30,6 +30,8 @@ public class StatusEffectSystemTests
     [System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage]
     private sealed class TestUnitSystem : EffectTarget<IUnitSystem>, IUnitSystem
     {
+        public event System.Action OnStatsChanged { add { } remove { } }
+
         public string UnitName { get; set; } = "TestUnit";
         public string Description { get; set; } = string.Empty;
         public Faction Faction { get; private set; } = Faction.Player;

@@ -7,17 +7,19 @@ namespace AshesOfVelsingrad.UI.Hud;
 ///     Scrolling log subscribed to <see cref="BattleNotifications" />.
 /// </summary>
 /// <remarks>
-///     Producers (<c>GameManager</c>, skills, status effects) call
-///     <c>BattleNotifications.Post(message, severity)</c> and the log appends a colour-coded
-///     line. Caps at <see cref="MaxLines" /> entries.
+///     Light-iron panel sitting above the action bar on the right side. Producers
+///     (<c>GameManager</c>, skills, status effects) call <c>BattleNotifications.Post(message,
+///     severity)</c> and the log appends a colour-coded line. Caps at <see cref="MaxLines" />
+///     entries.
 /// </remarks>
-public sealed partial class BattleLog : Control
+public sealed partial class BattleLog : Control, IHudWidget
 {
     /// <summary>Maximum number of log lines retained on screen.</summary>
     public const int MaxLines = 60;
 
     private RichTextLabel? _text;
     private bool _built;
+    private int _lineCount;
 
     /// <inheritdoc />
     public override void _Ready()
@@ -40,28 +42,45 @@ public sealed partial class BattleLog : Control
         BattleNotifications.Posted -= OnNotification;
     }
 
+    /// <inheritdoc />
+    public void Relayout() => ApplyAnchorOffsets();
+
+    private void ApplyAnchorOffsets()
+    {
+        SetAnchorsAndOffsetsPreset(LayoutPreset.BottomRight);
+        int width = HudStyle.ScaledPx(HudStyle.LogWidth);
+        int height = HudStyle.ScaledPx(HudStyle.LogHeight);
+        int actionH = HudStyle.ScaledPx(HudStyle.ActionBarHeight);
+        int skillH = HudStyle.ScaledPx(HudStyle.SkillBarHeight);
+        OffsetLeft = -width - HudStyle.PadLg;
+        OffsetTop = -actionH - skillH - height - HudStyle.PadLg - HudStyle.PadSm * 2;
+        OffsetRight = -HudStyle.PadLg;
+        OffsetBottom = -actionH - skillH - HudStyle.PadLg - HudStyle.PadSm * 2;
+        CustomMinimumSize = new Vector2(width, height);
+    }
+
     private void BuildLayout()
     {
-        // 1152×648 design viewport. Width 260 (was 480), wedged between the
-        // EnemyRoster (top-right, ends at y=332) and the SkillSelector strip
-        // (starts at y=514). Resulting rect at the design size is x[880,1140]
-        // y[360,500] — clear of every other widget in every direction.
-        SetAnchorsAndOffsetsPreset(LayoutPreset.BottomRight);
-        OffsetLeft = -260;
-        OffsetTop = -288;
-        OffsetRight = -12;
-        OffsetBottom = -148;
+        ApplyAnchorOffsets();
         MouseFilter = MouseFilterEnum.Ignore;
 
         VBoxContainer inner = new() { MouseFilter = MouseFilterEnum.Ignore };
-        inner.AddThemeConstantOverride("separation", 4);
+        inner.AddThemeConstantOverride("separation", HudStyle.PadXs);
         inner.SetAnchorsAndOffsetsPreset(LayoutPreset.FullRect);
-        AddChild(HudStyle.MakePanel(inner));
+        AddChild(HudStyle.MakePanel(inner, HudStyle.PanelTier.Light));
 
-        Label header = new() { Text = "Log" };
-        HudStyle.StyleLabel(header);
-        header.AddThemeColorOverride("font_color", HudStyle.DimText);
+        Label header = new() { Text = "BATTLE  LOG" };
+        HudStyle.StyleHeader(header, HudStyle.FontSizeSub);
+        header.AddThemeColorOverride("font_color", HudStyle.Gold);
         inner.AddChild(header);
+
+        ColorRect rule = new()
+        {
+            Color = HudStyle.BronzeDim,
+            CustomMinimumSize = new Vector2(0, 1),
+            MouseFilter = MouseFilterEnum.Ignore,
+        };
+        inner.AddChild(rule);
 
         _text = new RichTextLabel
         {
@@ -74,7 +93,16 @@ public sealed partial class BattleLog : Control
             MouseFilter = MouseFilterEnum.Stop,
             AutowrapMode = TextServer.AutowrapMode.WordSmart,
         };
+        _text.AddThemeColorOverride("default_color", HudStyle.Parchment);
         HudStyle.ApplyScaledFontSize(_text, "normal_font_size", HudStyle.FontSizeSmall);
+        // Pin the bold / italic variants to the SAME size as normal text. Without this,
+        // [b]…[/b] (used for skill names) falls back to the theme's default font size,
+        // which renders several times larger than the log's body text.
+        int logFontSize = HudStyle.ScaledFontSize(HudStyle.FontSizeSmall);
+        _text.AddThemeFontSizeOverride("bold_font_size", logFontSize);
+        _text.AddThemeFontSizeOverride("italics_font_size", logFontSize);
+        _text.AddThemeFontSizeOverride("bold_italics_font_size", logFontSize);
+        _text.AddThemeFontSizeOverride("mono_font_size", logFontSize);
         inner.AddChild(_text);
     }
 
@@ -86,25 +114,28 @@ public sealed partial class BattleLog : Control
     private void Append(string colorHex, string message)
     {
         if (_text is null) return;
+        // House style: no em/en dashes in the log — swap them for a plain hyphen.
+        message = message.Replace(" — ", " - ").Replace("—", "-").Replace("–", "-");
         _text.PushColor(new Color(colorHex));
         _text.AppendText(message + "\n");
         _text.Pop();
+        _lineCount++;
 
-        // Trim oldest lines if we exceed MaxLines.
-        string[] lines = _text.Text.Split('\n');
-        if (lines.Length > MaxLines)
+        // Drop the oldest paragraphs in place. Removing paragraphs preserves the BBCode
+        // colour of every retained line — reassigning _text.Text (which returns BBCode-
+        // stripped text) used to wipe all colour history once the cap was hit.
+        while (_lineCount > MaxLines)
         {
-            int drop = lines.Length - MaxLines;
-            string trimmed = string.Join('\n', lines, drop, lines.Length - drop);
-            _text.Text = trimmed;
+            _text.RemoveParagraph(0);
+            _lineCount--;
         }
     }
 
     private static string ColorFor(BattleNotifications.Severity severity) => severity switch
     {
-        BattleNotifications.Severity.Positive => "#33cc77",
-        BattleNotifications.Severity.Negative => "#cc7733",
-        BattleNotifications.Severity.Critical => "#cc3333",
-        _ => "#cccccc",
+        BattleNotifications.Severity.Positive => "#7fdba5",
+        BattleNotifications.Severity.Negative => "#e8a04c",
+        BattleNotifications.Severity.Critical => "#e85a5a",
+        _ => "#dcd2bb",
     };
 }

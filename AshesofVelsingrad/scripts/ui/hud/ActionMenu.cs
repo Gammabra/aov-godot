@@ -9,27 +9,28 @@ namespace AshesOfVelsingrad.UI.Hud;
 ///     Bottom-centre action bar for the active player unit.
 /// </summary>
 /// <remarks>
-///     Tight strip so empty viewport area lets map clicks through. Each button raises a C#
-///     event the rest of the HUD wires up. The "Pass" button additionally calls
-///     <c>IUnitSystem.PassTurn</c> directly so the turn loop unblocks even if the
-///     consumer didn't subscribe. The Cancel button is hidden until <see cref="ShowCancel" />
-///     is invoked by <c>GameManager</c> when entering skill-targeting mode.
+///     <para>
+///         Iron + bronze frame, four icon-and-label buttons (Move / Attack / Skill / Pass)
+///         plus a contextual Cancel that only appears while skill-targeting. Each button
+///         carries a procedural icon from <c>res://assets/ui/hud/icons/</c>; if the icon
+///         hasn't been imported yet the button still works as text-only.
+///     </para>
+///     <para>
+///         Layout uses <see cref="HudStyle.ScaledPx"/> for the bar's anchor offsets so the
+///         strip grows / shrinks with the user's UI scale slider in lock-step with the fonts.
+///     </para>
 /// </remarks>
-public sealed partial class ActionMenu : Control
+public sealed partial class ActionMenu : Control, IHudWidget
 {
     /// <summary>Player chose the basic-attack action.</summary>
     public event Action? OnAttackPressed;
-
     /// <summary>Player asked to open / focus the skill submenu.</summary>
     public event Action? OnSkillPressed;
-
-    /// <summary>Player chose the move action (returns to MoveUnit click context).</summary>
+    /// <summary>Player chose the move action.</summary>
     public event Action? OnMovePressed;
-
     /// <summary>Player chose to pass the turn.</summary>
     public event Action? OnPassPressed;
-
-    /// <summary>Player cancelled skill targeting (Cancel button / Esc / right-click).</summary>
+    /// <summary>Player cancelled skill targeting.</summary>
     public event Action? OnCancelPressed;
     private Button? _useItemButton;
     private BattleInventoryUI? _inventoryUI;
@@ -40,10 +41,7 @@ public sealed partial class ActionMenu : Control
     private Func<InventorySystem?>? _getActiveInventory;
 
     /// <inheritdoc />
-    public override void _Ready()
-    {
-        EnsureBuilt();
-    }
+    public override void _Ready() => EnsureBuilt();
 
     /// <summary>Idempotent build — safe to call before <c>_Ready</c> fires.</summary>
     public void EnsureBuilt()
@@ -53,31 +51,38 @@ public sealed partial class ActionMenu : Control
         BuildLayout();
     }
 
+    /// <inheritdoc />
+    public void Relayout() => ApplyAnchorOffsets();
+
+    private void ApplyAnchorOffsets()
+    {
+        SetAnchorsAndOffsetsPreset(LayoutPreset.CenterBottom);
+        int halfW = HudStyle.ScaledPx(HudStyle.ActionBarWidth) / 2;
+        int height = HudStyle.ScaledPx(HudStyle.ActionBarHeight);
+        OffsetLeft = -halfW;
+        OffsetRight = halfW;
+        OffsetTop = -height - HudStyle.PadLg;
+        OffsetBottom = -HudStyle.PadLg;
+        CustomMinimumSize = new Vector2(2 * halfW, height);
+    }
+
     private void BuildLayout()
     {
-        // Layout target: the project's canvas_items design viewport is 1152×648.
-        // Every anchor here is computed against that, so widgets stay clear of
-        // each other once the viewport is scaled to whatever the player's window
-        // happens to be. The bottom action bar sits at viewport-center, ±180 wide,
-        // safely between the 308-wide PlayerStatusPanel on the left and the
-        // 260-wide BattleLog on the right.
-        SetAnchorsAndOffsetsPreset(LayoutPreset.CenterBottom);
-        OffsetLeft = -180;
-        OffsetRight = 180;
-        OffsetTop = -64;
-        OffsetBottom = -8;
+        ApplyAnchorOffsets();
+        // The widget itself MUST pass clicks through outside of buttons — players need to
+        // click the battlefield through the gap between buttons.
         MouseFilter = MouseFilterEnum.Ignore;
 
-        Control panelContent = new() { MouseFilter = MouseFilterEnum.Ignore };
+        Control panelContent = new() { Name = "Content", MouseFilter = MouseFilterEnum.Ignore };
         panelContent.SetAnchorsAndOffsetsPreset(LayoutPreset.FullRect);
-        AddChild(HudStyle.MakePanel(panelContent));
+        AddChild(HudStyle.MakePanel(panelContent, HudStyle.PanelTier.Heavy));
 
         HBoxContainer row = new()
         {
             Name = "ButtonRow",
             MouseFilter = MouseFilterEnum.Ignore,
         };
-        row.AddThemeConstantOverride("separation", 6);
+        row.AddThemeConstantOverride("separation", HudStyle.PadXs);
         row.SetAnchorsAndOffsetsPreset(LayoutPreset.FullRect);
         panelContent.AddChild(row);
 
@@ -91,7 +96,9 @@ public sealed partial class ActionMenu : Control
         Button useItem = new()
         {
             Text = "Item",
-            CustomMinimumSize = new Vector2(86, 40),
+            CustomMinimumSize = new Vector2(
+                HudStyle.ScaledPx(70),
+                HudStyle.ScaledPx(HudStyle.ButtonHeight)),
             SizeFlagsHorizontal = SizeFlags.ExpandFill,
         };
         HudStyle.StyleButton(useItem);
@@ -100,16 +107,10 @@ public sealed partial class ActionMenu : Control
         _useItemButton = useItem;
         row.AddChild(_useItemButton);
 
-        _cancelButton = new Button
-        {
-            Text = "Cancel",
-            CustomMinimumSize = new Vector2(86, 40),
-            SizeFlagsHorizontal = SizeFlags.ExpandFill,
-            Visible = false,
-        };
-        HudStyle.StyleButton(_cancelButton);
-        _cancelButton.AddThemeColorOverride("font_color", new Color(1f, 0.7f, 0.5f));
-        _cancelButton.Pressed += () => OnCancelPressed?.Invoke();
+        _cancelButton = BuildButton("Cancel", "cancel", () => OnCancelPressed?.Invoke());
+        _cancelButton.Visible = false;
+        // Cancel uses an orange accent so it stands out from the four normal actions.
+        _cancelButton.AddThemeColorOverride("font_color", new Color(1f, 0.72f, 0.45f, 1f));
         row.AddChild(_cancelButton);
     }
 
@@ -140,15 +141,30 @@ public sealed partial class ActionMenu : Control
         _skillSelector.Visible = !opening;
     }
 
-    // In every other button's press handler, close the inventory if open.
-    // Replace AddButton calls for Move, Attack, Skill, Pass with this helper instead:
+    /// <summary>
+    ///     Add a standard action button to the row. Every button closes the inventory panel
+    ///     (if open) before running its action, so the battlefield is never obscured mid-action.
+    /// </summary>
     private void AddButton(Container parent, string label, Action onPressed)
     {
+        // Min width is ~70 design px so 5 buttons (4 + Cancel) fit in the 440-wide bar
+        // even with the bronze content margins. The HBox shares any extra width via
+        // SizeFlags.ExpandFill.
         Button b = new()
         {
             Text = label,
-            CustomMinimumSize = new Vector2(86, 40),
+            CustomMinimumSize = new Vector2(
+                HudStyle.ScaledPx(70),
+                HudStyle.ScaledPx(HudStyle.ButtonHeight)),
             SizeFlagsHorizontal = SizeFlags.ExpandFill,
+            SizeFlagsVertical = SizeFlags.Fill,
+            // Never clip the label — the bar is sized to fit every action word.
+            ClipText = false,
+            // Icon on the LEFT, text follows. ExpandIcon=false keeps the icon at its
+            // natural size instead of stretching it to fill the button.
+            IconAlignment = HorizontalAlignment.Left,
+            VerticalIconAlignment = VerticalAlignment.Center,
+            ExpandIcon = false,
         };
         HudStyle.StyleButton(b);
         b.Pressed += () =>
@@ -159,7 +175,32 @@ public sealed partial class ActionMenu : Control
         parent.AddChild(b);
     }
 
-    // Add the close helper:
+    /// <summary>
+    ///     Build a standalone styled action button with an icon. Unlike <see cref="AddButton" />
+    ///     it does not parent the button or wrap the handler — the caller owns placement and
+    ///     visibility (used for the contextual Cancel button).
+    /// </summary>
+    private Button BuildButton(string label, string iconName, Action onPressed)
+    {
+        Button b = new()
+        {
+            Text = label,
+            CustomMinimumSize = new Vector2(
+                HudStyle.ScaledPx(70),
+                HudStyle.ScaledPx(HudStyle.ButtonHeight)),
+            SizeFlagsHorizontal = SizeFlags.ExpandFill,
+            SizeFlagsVertical = SizeFlags.Fill,
+            ClipText = false,
+            IconAlignment = HorizontalAlignment.Left,
+            VerticalIconAlignment = VerticalAlignment.Center,
+            ExpandIcon = false,
+        };
+        HudStyle.StyleButton(b);
+        if (!string.IsNullOrEmpty(iconName)) HudStyle.SetButtonIcon(b, iconName);
+        b.Pressed += () => onPressed();
+        return b;
+    }
+
     private void CloseInventory()
     {
         if (_inventoryUI is { Visible: true })

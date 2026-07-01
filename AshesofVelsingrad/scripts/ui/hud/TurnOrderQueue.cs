@@ -6,23 +6,25 @@ namespace AshesOfVelsingrad.UI.Hud;
 
 /// <summary>
 ///     Top-centre strip showing the next units to act, rendered as portrait chips with a
-///     faction-coloured border.
+///     faction-coloured frame.
 /// </summary>
 /// <remarks>
 ///     <para>
 ///         Cyan border = <see cref="Faction.Player" />, green = <see cref="Faction.Ally" />,
-///         red = <see cref="Faction.Enemy" />. The first chip is highlighted as the currently
-///         acting unit. When a unit's <see cref="IUnitSystem.EntityProfile" /> has a portrait,
-///         it's shown inside the chip; otherwise a coloured square fallback fills the space.
+///         red = <see cref="Faction.Enemy" />. The first chip is highlighted with a thicker
+///         gold halo as the currently acting unit. When a unit's <see cref="IUnitSystem.EntityProfile" />
+///         has a portrait, it is shown inside the chip; otherwise the default silhouette icon
+///         fills the space.
 ///     </para>
 ///     <para>
 ///         <see cref="UpdateOrder" /> is called by <c>GameManager</c> after every turn
 ///         transition with the upcoming units (typically from <c>TurnManager.GetUpcomingUnits</c>).
 ///     </para>
 /// </remarks>
-public sealed partial class TurnOrderQueue : Control
+public sealed partial class TurnOrderQueue : Control, IHudWidget
 {
     private HBoxContainer? _row;
+    private Label? _header;
     private bool _built;
 
     /// <inheritdoc />
@@ -39,83 +41,114 @@ public sealed partial class TurnOrderQueue : Control
         BuildLayout();
     }
 
+    /// <inheritdoc />
+    public void Relayout() => ApplyAnchorOffsets();
+
+    private void ApplyAnchorOffsets()
+    {
+        SetAnchorsAndOffsetsPreset(LayoutPreset.CenterTop);
+        int halfW = HudStyle.ScaledPx(HudStyle.TurnQueueWidth) / 2;
+        int height = HudStyle.ScaledPx(HudStyle.TurnQueueHeight);
+        OffsetLeft = -halfW;
+        OffsetRight = halfW;
+        OffsetTop = HudStyle.PadLg;
+        OffsetBottom = HudStyle.PadLg + height;
+        CustomMinimumSize = new Vector2(2 * halfW, height);
+    }
+
     private void BuildLayout()
     {
-        // 1152×648 design viewport. Width 500 (was 720) — enough for ~10 portrait
-        // chips at 44 px each. Leaves a ≥44 px horizontal gap to ContextInfoPanel
-        // on the left and ≥66 px to EnemyRoster on the right.
-        SetAnchorsAndOffsetsPreset(LayoutPreset.CenterTop);
-        OffsetLeft = -250;
-        OffsetRight = 250;
-        OffsetTop = 12;
-        OffsetBottom = 90;
+        ApplyAnchorOffsets();
         MouseFilter = MouseFilterEnum.Ignore;
+        // Backstop so a chip can never bleed past the right edge of the strip.
+        ClipContents = true;
 
         Control panelContent = new() { MouseFilter = MouseFilterEnum.Ignore };
         panelContent.SetAnchorsAndOffsetsPreset(LayoutPreset.FullRect);
-        AddChild(HudStyle.MakePanel(panelContent));
+        AddChild(HudStyle.MakePanel(panelContent, HudStyle.PanelTier.Heavy));
 
-        _row = new HBoxContainer { MouseFilter = MouseFilterEnum.Ignore };
-        _row.AddThemeConstantOverride("separation", 4);
+        _row = new HBoxContainer
+        {
+            MouseFilter = MouseFilterEnum.Ignore,
+            SizeFlagsHorizontal = SizeFlags.ExpandFill,
+        };
+        _row.AddThemeConstantOverride("separation", HudStyle.PadSm);
         _row.SetAnchorsAndOffsetsPreset(LayoutPreset.FullRect);
         panelContent.AddChild(_row);
 
-        Label header = new() { Text = "Next:" };
-        HudStyle.StyleLabel(header);
-        _row.AddChild(header);
+        _header = new Label
+        {
+            Text = "TURN  ORDER",
+            VerticalAlignment = VerticalAlignment.Center,
+            MouseFilter = MouseFilterEnum.Ignore,
+        };
+        HudStyle.StyleHeader(_header, HudStyle.FontSizeSub);
+        _header.AddThemeColorOverride("font_color", HudStyle.Gold);
+        _row.AddChild(_header);
     }
 
-    /// <summary>
-    ///     Replace the current chip strip with the given upcoming units.
-    /// </summary>
-    /// <param name="upcomingUnits">Units to show, in activation order. Index 0 is currently acting.</param>
+    /// <summary>Replace the current chip strip with the given upcoming units.</summary>
     public void UpdateOrder(IReadOnlyList<IUnitSystem> upcomingUnits)
     {
         if (_row is null) return;
-        // Clear children except the header.
         for (int i = _row.GetChildCount() - 1; i > 0; i--)
             _row.GetChild(i).QueueFree();
 
-        for (int i = 0; i < upcomingUnits.Count; i++)
+        // Only show as many chips as fit beside the header, so the last chip can't spill
+        // off the right edge of the strip.
+        int shown = Mathf.Min(upcomingUnits.Count, MaxVisibleChips());
+        for (int i = 0; i < shown; i++)
             _row.AddChild(BuildPortraitChip(upcomingUnits[i], isActive: i == 0));
+    }
+
+    /// <summary>How many portrait chips fit beside the "TURN ORDER" header at the current scale.</summary>
+    private static int MaxVisibleChips()
+    {
+        int headerW = HudStyle.ScaledPx(120);
+        int chipCell = HudStyle.ScaledPx(HudStyle.TurnChipSize) + HudStyle.PadSm * 2;
+        int avail = HudStyle.ScaledPx(HudStyle.TurnQueueWidth) - headerW;
+        return Mathf.Max(1, avail / chipCell);
     }
 
     private static Control BuildPortraitChip(IUnitSystem unit, bool isActive)
     {
-        const int size = 40;
+        int chipSize = HudStyle.ScaledPx(HudStyle.TurnChipSize);
         Color borderColor = ColorFor(unit.Faction);
-        if (isActive) borderColor = borderColor.Lightened(0.25f);
+        if (isActive) borderColor = HudStyle.GoldHover;
 
         VBoxContainer wrapper = new()
         {
-            CustomMinimumSize = new Vector2(size + 4, size + 18),
+            CustomMinimumSize = new Vector2(
+                chipSize + HudStyle.PadSm,
+                chipSize + HudStyle.ScaledPx(HudStyle.FontSizeTiny) + HudStyle.PadSm),
             MouseFilter = MouseFilterEnum.Ignore,
+            SizeFlagsVertical = SizeFlags.ShrinkCenter,
         };
         wrapper.AddThemeConstantOverride("separation", 1);
 
         Panel border = new()
         {
-            CustomMinimumSize = new Vector2(size, size),
+            CustomMinimumSize = new Vector2(chipSize, chipSize),
             MouseFilter = MouseFilterEnum.Ignore,
         };
         StyleBoxFlat sb = new()
         {
-            BgColor = new Color(0, 0, 0, 0.4f),
+            BgColor = new Color(0, 0, 0, 0.55f),
             BorderColor = borderColor,
-            BorderWidthLeft = isActive ? 3 : 2,
-            BorderWidthRight = isActive ? 3 : 2,
-            BorderWidthTop = isActive ? 3 : 2,
-            BorderWidthBottom = isActive ? 3 : 2,
-            CornerRadiusBottomLeft = 6,
-            CornerRadiusBottomRight = 6,
-            CornerRadiusTopLeft = 6,
-            CornerRadiusTopRight = 6,
+            BorderWidthLeft = isActive ? 4 : 2,
+            BorderWidthRight = isActive ? 4 : 2,
+            BorderWidthTop = isActive ? 4 : 2,
+            BorderWidthBottom = isActive ? 4 : 2,
+            CornerRadiusBottomLeft = 6, CornerRadiusBottomRight = 6,
+            CornerRadiusTopLeft = 6, CornerRadiusTopRight = 6,
+            ShadowColor = isActive ? new Color(1f, 0.7f, 0.3f, 0.45f) : new Color(0, 0, 0, 0),
+            ShadowSize = isActive ? 6 : 0,
         };
         border.AddThemeStyleboxOverride("panel", sb);
         wrapper.AddChild(border);
 
-        // EntityProfile carries a res:// path (Core has no Godot deps); load lazily here.
-        Texture2D? portrait = LoadPortrait(unit.EntityProfile?.PortraitPath);
+        Texture2D? portrait = LoadPortrait(unit.EntityProfile?.PortraitPath)
+                              ?? HudStyle.LoadIcon("portrait_default");
         if (portrait is not null)
         {
             TextureRect tex = new()
@@ -126,45 +159,31 @@ public sealed partial class TurnOrderQueue : Control
                 MouseFilter = MouseFilterEnum.Ignore,
             };
             tex.SetAnchorsAndOffsetsPreset(LayoutPreset.FullRect);
-            tex.OffsetLeft = 3; tex.OffsetTop = 3; tex.OffsetRight = -3; tex.OffsetBottom = -3;
+            int inset = isActive ? 5 : 3;
+            tex.OffsetLeft = inset; tex.OffsetTop = inset;
+            tex.OffsetRight = -inset; tex.OffsetBottom = -inset;
             border.AddChild(tex);
-        }
-        else
-        {
-            ColorRect fallback = new()
-            {
-                Color = ColorFor(unit.Faction) with { A = 0.6f },
-                MouseFilter = MouseFilterEnum.Ignore,
-            };
-            fallback.SetAnchorsAndOffsetsPreset(LayoutPreset.FullRect);
-            fallback.OffsetLeft = 3; fallback.OffsetTop = 3; fallback.OffsetRight = -3; fallback.OffsetBottom = -3;
-            border.AddChild(fallback);
         }
 
         string display = unit.EntityProfile?.DisplayName is { Length: > 0 } n ? n : unit.UnitName;
+        // Prefix a faction initial so faction is conveyed by a text channel, not colour alone
+        // (WCAG 1.4.1). The letter leads the label, so it survives ClipText on long names.
         Label nameLabel = new()
         {
-            Text = display,
+            Text = $"{FactionInitial(unit.Faction)} {display}",
             HorizontalAlignment = HorizontalAlignment.Center,
             ClipText = true,
             MouseFilter = MouseFilterEnum.Ignore,
         };
-        nameLabel.AddThemeColorOverride("font_color", HudStyle.TextColor);
-        // Tiny label under each portrait chip — keep it just below body size so
-        // long unit names still fit. Tagged so the metadata walker can rescale
-        // it the moment the player drags the Interface Size slider.
-        HudStyle.ApplyScaledFontSize(nameLabel, "font_size", 10);
+        HudStyle.StyleLabel(nameLabel, HudStyle.FontSizeTiny);
+        nameLabel.AddThemeColorOverride("font_color",
+            isActive ? HudStyle.GoldHover : HudStyle.Parchment);
         wrapper.AddChild(nameLabel);
 
         wrapper.TooltipText = $"{display} ({unit.Faction}, Speed {unit.BaseSpeed:F0})";
         return wrapper;
     }
 
-    /// <summary>
-    ///     Materialise a portrait <see cref="Texture2D" /> from a <c>res://</c> path.
-    ///     Returns null when the path is empty, missing, or fails to load — every caller
-    ///     already null-checks the result and falls back to a coloured-square placeholder.
-    /// </summary>
     private static Texture2D? LoadPortrait(string? path)
     {
         if (string.IsNullOrEmpty(path)) return null;
@@ -175,8 +194,17 @@ public sealed partial class TurnOrderQueue : Control
     private static Color ColorFor(Faction f) => f switch
     {
         Faction.Player => HudStyle.PlayerColor,
-        Faction.Ally => new Color(0.30f, 0.90f, 0.30f, 1f),
+        Faction.Ally => HudStyle.AllyColor,
         Faction.Enemy => HudStyle.EnemyColor,
         _ => Colors.Gray,
+    };
+
+    /// <summary>Single-letter faction tag — a non-colour cue for faction identity.</summary>
+    private static string FactionInitial(Faction f) => f switch
+    {
+        Faction.Player => "P",
+        Faction.Ally => "A",
+        Faction.Enemy => "E",
+        _ => "?",
     };
 }

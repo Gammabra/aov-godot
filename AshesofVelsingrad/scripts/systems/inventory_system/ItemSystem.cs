@@ -23,7 +23,12 @@ public enum ItemCategory
 public abstract partial class ItemSystem : Node3D, IItemSystem, IInteractable
 {
     public int Id { get; protected set; }
-    public string? Name { get; protected set; }
+
+    /// <summary>
+    ///     The item's display name. Intentionally hides <see cref="Node.Name" /> — this is the
+    ///     domain item name from <c>IItemSystem</c>, not the scene-tree node name.
+    /// </summary>
+    public new string? Name { get; protected set; }
     public string? Description { get; protected set; }
 
     public ItemCategory Category { get; protected set; } = ItemCategory.Misc;

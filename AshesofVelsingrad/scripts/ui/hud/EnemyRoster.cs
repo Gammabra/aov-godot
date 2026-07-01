@@ -8,11 +8,18 @@ namespace AshesOfVelsingrad.UI.Hud;
 ///     Top-right column showing one <see cref="UnitHealthBar" /> per enemy.
 /// </summary>
 /// <remarks>
-///     The owning <see cref="BattleHud" /> calls <see cref="Bind" /> once at battle start with
-///     the enemy roster. The widget then refreshes itself when asked
-///     (<see cref="RefreshAll" />) — typically from a TurnManager event hook in <c>GameManager</c>.
+///     <para>
+///         Heavy iron panel with a "ENEMIES" header in gold and a stack of bars below it. Each
+///         bar carries a small portrait, the enemy name, and HP/MP. Panel grows downward to
+///         fit the roster, capped at <see cref="HudStyle.RosterHeight" /> (scaled).
+///     </para>
+///     <para>
+///         The owning <see cref="BattleHud" /> calls <see cref="Bind" /> once at battle start
+///         with the enemy roster. The widget then refreshes itself when asked
+///         (<see cref="RefreshAll" />).
+///     </para>
 /// </remarks>
-public sealed partial class EnemyRoster : Control
+public sealed partial class EnemyRoster : Control, IHudWidget
 {
     private VBoxContainer? _box;
     private readonly List<UnitHealthBar> _bars = [];
@@ -32,33 +39,55 @@ public sealed partial class EnemyRoster : Control
         BuildLayout();
     }
 
-    private void BuildLayout()
+    /// <inheritdoc />
+    public void Relayout() => ApplyAnchorOffsets();
+
+    private void ApplyAnchorOffsets()
     {
         SetAnchorsAndOffsetsPreset(LayoutPreset.TopRight);
-        OffsetLeft = -260;
-        OffsetTop = 12;
-        OffsetRight = -12;
-        OffsetBottom = 12 + 320;
+        OffsetLeft = -HudStyle.ScaledPx(HudStyle.RosterWidth) - HudStyle.PadLg;
+        OffsetTop = HudStyle.PadLg;
+        OffsetRight = -HudStyle.PadLg;
+        OffsetBottom = HudStyle.PadLg + HudStyle.ScaledPx(HudStyle.RosterHeight);
+        CustomMinimumSize = new Vector2(
+            HudStyle.ScaledPx(HudStyle.RosterWidth),
+            HudStyle.ScaledPx(HudStyle.RosterHeight));
+    }
+
+    private void BuildLayout()
+    {
+        ApplyAnchorOffsets();
         MouseFilter = MouseFilterEnum.Ignore;
 
         VBoxContainer outer = new() { MouseFilter = MouseFilterEnum.Ignore };
-        outer.AddThemeConstantOverride("separation", 4);
+        outer.AddThemeConstantOverride("separation", HudStyle.PadSm);
         outer.SetAnchorsAndOffsetsPreset(LayoutPreset.FullRect);
-        AddChild(HudStyle.MakePanel(outer));
+        AddChild(HudStyle.MakePanel(outer, HudStyle.PanelTier.Heavy));
 
-        Label header = new() { Text = "Enemies" };
-        HudStyle.StyleLabel(header);
+        Label header = new() { Text = "ENEMIES" };
+        HudStyle.StyleHeader(header, HudStyle.FontSizeSub);
         outer.AddChild(header);
 
-        _box = new VBoxContainer { Name = "Bars", MouseFilter = MouseFilterEnum.Ignore };
-        _box.AddThemeConstantOverride("separation", 2);
+        ColorRect rule = new()
+        {
+            Color = HudStyle.Bronze,
+            CustomMinimumSize = new Vector2(0, 1),
+            MouseFilter = MouseFilterEnum.Ignore,
+        };
+        outer.AddChild(rule);
+
+        _box = new VBoxContainer
+        {
+            Name = "Bars",
+            MouseFilter = MouseFilterEnum.Ignore,
+            SizeFlagsHorizontal = SizeFlags.ExpandFill,
+            SizeFlagsVertical = SizeFlags.ExpandFill,
+        };
+        _box.AddThemeConstantOverride("separation", HudStyle.PadXs);
         outer.AddChild(_box);
     }
 
-    /// <summary>
-    ///     Replace the roster of tracked enemies. Called once at battle start.
-    /// </summary>
-    /// <param name="enemies">Enemy unit list.</param>
+    /// <summary>Replace the roster of tracked enemies. Called once at battle start.</summary>
     public void Bind(IReadOnlyList<IUnitSystem> enemies)
     {
         if (_box is null) return;

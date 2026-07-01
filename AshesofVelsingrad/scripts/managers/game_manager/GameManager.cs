@@ -448,6 +448,29 @@ public partial class GameManager : BaseManager
             return;
         GD.Print("Selected move action.");
         _clickOnMapContext = AovDataStructures.ClickOnMapContext.MoveUnit;
+
+        // Pressing Move (especially after skill-targeting hid the move overlay) must
+        // (re)render the green reachable tiles. Make sure the overlay exists and the
+        // reachable set is populated, then show it.
+        EnsureIndicators();
+        if (_currentUnitPossibleMoves.Count == 0
+            && _mapSystemContainer is not null
+            && _turnManagerContainer is not null)
+        {
+            try
+            {
+                _currentUnitPossibleMoves =
+                    _turnManagerContainer.GetCurrentUnit().GetPossibleMoves(_mapSystemContainer);
+            }
+            catch
+            {
+                // Active unit not resolvable yet — leave the set empty; nothing to show.
+            }
+        }
+
+        ShowMoveIndicators(_currentUnitPossibleMoves);
+        _battleHud?.ContextInfo?.ShowMovement(
+            _currentUnitPossibleMoves.Count, GetActiveMoveBudget(), canMove: !_unitMoved);
     }
 
     /// <summary>

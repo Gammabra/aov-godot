@@ -60,15 +60,15 @@ public sealed partial class NpcBattleTrigger : Node3D
     public delegate void BattleTriggeredEventHandler();
 
     /// <summary>
-    ///     Build a <see cref="BattleSetup" /> from this NPC's exported lists, capture the
-    ///     player's current world location as the return point, and launch.
+	///     Build a <see cref="BattleSetup" /> from this NPC's exported lists, capture the
+	///     player's current world location as the return point, and launch.
     /// </summary>
     /// <param name="player">The player Node3D — used to capture the return position.</param>
     public void Trigger(Node3D player)
     {
         if (BattleScene is null)
         {
-            GD.PrintErr($"NpcBattleTrigger '{Name}': BattleScene is not set; ignoring Trigger.");
+			GD.PrintErr($"NpcBattleTrigger '{Name}': BattleScene is not set; ignoring Trigger.");
             return;
         }
         if (BattleLauncher.Instance is null)
@@ -77,29 +77,29 @@ public sealed partial class NpcBattleTrigger : Node3D
             return;
         }
 
-        // Capture the return point — the player's current scene + world position. The
-        // forfeit flow uses this to "respawn" the player exactly where the conversation
-        // started, as a temporary checkpoint (NOT a real save).
-        SceneTree tree = GetTree();
-        string returnScene = tree.CurrentScene?.SceneFilePath ?? string.Empty;
-        Vector3 returnPos = player.GlobalPosition;
+		// Capture the return point — the player's current scene + world position. The
+		// forfeit flow uses this to "respawn" the player exactly where the conversation
+		// started, as a temporary checkpoint (NOT a real save).
+		SceneTree tree = GetTree();
+		string returnScene = tree.CurrentScene?.SceneFilePath ?? string.Empty;
+		Vector3 returnPos = player.GlobalPosition;
 
-        BattleSetup setup = new()
-        {
-            BattleScene = BattleScene,
-            EnemyUnits = ToList(EnemyUnits),
-            AllyUnits = ToList(AllyUnits),
-            PlayerUnits = ToList(PartyOverride),
-            ReturnScenePath = returnScene,
-            ReturnPosition = returnPos,
-            EncounterName = EncounterName,
-        };
+		BattleSetup setup = new()
+		{
+			BattleScene = BattleScene,
+			EnemyUnits = ToList(EnemyUnits),
+			AllyUnits = ToList(AllyUnits),
+			PlayerUnits = ToList(PartyOverride),
+			ReturnScenePath = returnScene,
+			ReturnPosition = returnPos,
+			EncounterName = EncounterName,
+		};
 
-        EmitSignal(SignalName.BattleTriggered);
-        BattleLauncher.Instance.Launch(setup);
-    }
+		EmitSignal(SignalName.BattleTriggered);
+		BattleLauncher.Instance.Launch(setup);
+	}
 
-    /// <summary>Godot's <c>Array&lt;T&gt;</c> → plain <see cref="List{T}" /> for the C# data class.</summary>
+	/// <summary>Godot's <c>Array&lt;T&gt;</c> → plain <see cref="List{T}" /> for the C# data class.</summary>
     private static List<PackedScene> ToList(Godot.Collections.Array<PackedScene> arr)
     {
         var list = new List<PackedScene>(arr.Count);

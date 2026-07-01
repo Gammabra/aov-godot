@@ -5,38 +5,31 @@ using Godot;
 namespace AshesOfVelsingrad.UI.Hud;
 
 /// <summary>
-///     Five-slot skill bar matching <see cref="BattleInputSystem" />'s hot-keys
+///     Five-slot skill bar matching <see cref="BattleInputSystem"/>'s hot-keys
 ///     (<c>battle_select_skill1</c> .. <c>battle_select_skill5</c>).
 /// </summary>
 /// <remarks>
-///     <para>
-///         Reads from the active player unit's <see cref="IUnitSystem.ActiveSkills" /> list.
-///         Each slot's button is disabled when the skill is on cooldown or the caster has
-///         insufficient mana. Hover tooltips carry the full description / MP / CD / Range.
-///     </para>
-///     <para>
-///         The widget is purely presentational — it raises <see cref="OnSkillSelected" /> with
-///         the slot index and the resolved skill, and the consumer (<c>GameManager</c>) decides
-///         what to do (enter targeting, etc.).
-///     </para>
+///     Souls-like slot frames in a row directly above the action bar. Each slot shows the
+///     hotkey number, the skill icon (default rune until skill resources expose icon paths)
+///     and the remaining cooldown overlaid in the centre. Slots disable when the skill is
+///     on cooldown or the caster lacks mana.
 /// </remarks>
-public sealed partial class SkillSelector : Control
+public sealed partial class SkillSelector : Control, IHudWidget
 {
     /// <summary>Number of slots, fixed at 5.</summary>
     public const int SlotCount = 5;
 
-    /// <summary>Fired when a slot is clicked. Carries the slot index (0-4) and the skill.</summary>
+    /// <summary>Fired when a slot is clicked.</summary>
     public event Action<int, ISkillSystem>? OnSkillSelected;
 
     private readonly Button[] _buttons = new Button[SlotCount];
+    private readonly Label[] _cdLabels = new Label[SlotCount];
+    private readonly Label[] _nameLabels = new Label[SlotCount];
     private IUnitSystem? _bound;
     private bool _built;
 
     /// <inheritdoc />
-    public override void _Ready()
-    {
-        EnsureBuilt();
-    }
+    public override void _Ready() => EnsureBuilt();
 
     /// <summary>Idempotent build — safe to call before <c>_Ready</c> fires.</summary>
     public void EnsureBuilt()
@@ -46,80 +39,148 @@ public sealed partial class SkillSelector : Control
         BuildLayout();
     }
 
+    /// <inheritdoc />
+    public void Relayout() => ApplyAnchorOffsets();
+
+    private void ApplyAnchorOffsets()
+    {
+        SetAnchorsAndOffsetsPreset(LayoutPreset.CenterBottom);
+        int halfW = HudStyle.ScaledPx(HudStyle.SkillBarWidth) / 2;
+        int height = HudStyle.ScaledPx(HudStyle.SkillBarHeight);
+        int actionH = HudStyle.ScaledPx(HudStyle.ActionBarHeight);
+        OffsetLeft = -halfW;
+        OffsetRight = halfW;
+        OffsetTop = -actionH - height - HudStyle.PadLg - HudStyle.PadSm;
+        OffsetBottom = -actionH - HudStyle.PadLg - HudStyle.PadSm;
+        CustomMinimumSize = new Vector2(2 * halfW, height);
+    }
+
     private void BuildLayout()
     {
-        // 1152×648 design viewport (canvas_items stretch). 400 wide is enough for
-        // five slots plus separators while leaving a ≥56 px horizontal gap to
-        // the PlayerStatusPanel (left) and ≥104 px to the BattleLog (right).
-        SetAnchorsAndOffsetsPreset(LayoutPreset.CenterBottom);
-        OffsetLeft = -200;
-        OffsetRight = 200;
-        OffsetTop = -134;
-        OffsetBottom = -76;
+        ApplyAnchorOffsets();
         MouseFilter = MouseFilterEnum.Ignore;
 
-        Control panelContent = new() { MouseFilter = MouseFilterEnum.Ignore };
+        Control panelContent = new() { Name = "Content", MouseFilter = MouseFilterEnum.Ignore };
         panelContent.SetAnchorsAndOffsetsPreset(LayoutPreset.FullRect);
-        AddChild(HudStyle.MakePanel(panelContent));
+        AddChild(HudStyle.MakePanel(panelContent, HudStyle.PanelTier.Heavy));
 
         HBoxContainer row = new()
         {
             Name = "Slots",
             MouseFilter = MouseFilterEnum.Ignore,
         };
-        row.AddThemeConstantOverride("separation", 4);
+        row.AddThemeConstantOverride("separation", HudStyle.PadXs);
         row.SetAnchorsAndOffsetsPreset(LayoutPreset.FullRect);
         panelContent.AddChild(row);
 
         for (int i = 0; i < SlotCount; i++)
         {
             int slot = i;
-            Button b = new()
-            {
-                Text = $"{i + 1}. —",
-                CustomMinimumSize = new Vector2(60, 48),
-                Disabled = true,
-                SizeFlagsHorizontal = SizeFlags.ExpandFill,
-                ClipText = true,
-                AutowrapMode = TextServer.AutowrapMode.Off,
-            };
-            HudStyle.StyleButton(b);
-            b.Pressed += () => HandlePress(slot);
-            _buttons[i] = b;
-            row.AddChild(b);
+            row.AddChild(BuildSlot(slot));
         }
     }
 
     /// <summary>
-    ///     Bind the selector to the unit whose loadout to display. Refreshes immediately.
-    ///     Also hides the widget entirely on non-player turns — the player can only act on
-    ///     <see cref="Faction.Player" /> units, so showing AI-driven skills would be misleading.
+    ///     A slot is a square Button (hotkey number + skill icon, with a cooldown overlay)
+    ///     stacked above a skill-name label. The button owns all input; the name label and
+    ///     cooldown overlay are <see cref="MouseFilterEnum.Ignore" /> so clicks fall through.
     /// </summary>
-    /// <param name="unit">Unit to track, or null to clear.</param>
+    private Control BuildSlot(int slot)
+    {
+        VBoxContainer wrapper = new()
+        {
+            Name = $"Slot{slot}",
+            SizeFlagsHorizontal = SizeFlags.ExpandFill,
+            SizeFlagsVertical = SizeFlags.Fill,
+            MouseFilter = MouseFilterEnum.Ignore,
+        };
+        wrapper.AddThemeConstantOverride("separation", 2);
+
+        // Square box that hosts the button and the cooldown overlay on top of it.
+        Control slotBox = new()
+        {
+            CustomMinimumSize = new Vector2(
+                HudStyle.ScaledPx(HudStyle.SkillSlotSize),
+                HudStyle.ScaledPx(HudStyle.SkillSlotSize)),
+            SizeFlagsHorizontal = SizeFlags.ShrinkCenter,
+            MouseFilter = MouseFilterEnum.Ignore,
+        };
+
+        Button b = new()
+        {
+            Text = (slot + 1).ToString(),
+            CustomMinimumSize = new Vector2(
+                HudStyle.ScaledPx(HudStyle.SkillSlotSize),
+                HudStyle.ScaledPx(HudStyle.SkillSlotSize)),
+            Disabled = true,
+            ClipText = true,
+            IconAlignment = HorizontalAlignment.Center,
+            VerticalIconAlignment = VerticalAlignment.Center,
+            ExpandIcon = false,
+        };
+        HudStyle.StyleSlotButton(b, HudStyle.FontSizeSmall);
+        HudStyle.SetButtonIcon(b, "skill_default", HudStyle.SlotIconSize);
+        b.SetAnchorsAndOffsetsPreset(LayoutPreset.FullRect);
+        b.Pressed += () => HandlePress(slot);
+        slotBox.AddChild(b);
+        _buttons[slot] = b;
+
+        // Cooldown overlay — only visible while CD > 0. MouseFilter.Ignore so it never
+        // blocks the button beneath it.
+        Label cd = new()
+        {
+            Text = "",
+            HorizontalAlignment = HorizontalAlignment.Center,
+            VerticalAlignment = VerticalAlignment.Center,
+            MouseFilter = MouseFilterEnum.Ignore,
+        };
+        HudStyle.StyleLabel(cd, HudStyle.FontSizeHeader);
+        cd.AddThemeColorOverride("font_color", new Color(1f, 0.78f, 0.42f, 1f));
+        cd.SetAnchorsAndOffsetsPreset(LayoutPreset.FullRect);
+        slotBox.AddChild(cd);
+        _cdLabels[slot] = cd;
+
+        wrapper.AddChild(slotBox);
+
+        // Skill name beneath the slot. Word-wraps to fit the slot width instead of clipping,
+        // so a long name grows to a second line rather than being cut off.
+        Label name = new()
+        {
+            Text = "",
+            HorizontalAlignment = HorizontalAlignment.Center,
+            AutowrapMode = TextServer.AutowrapMode.WordSmart,
+            MouseFilter = MouseFilterEnum.Ignore,
+            SizeFlagsHorizontal = SizeFlags.ExpandFill,
+        };
+        HudStyle.StyleLabel(name, HudStyle.FontSizeTiny);
+        wrapper.AddChild(name);
+        _nameLabels[slot] = name;
+
+        return wrapper;
+    }
+
+    /// <summary>Bind the selector to the unit whose loadout to display.</summary>
     public void Bind(IUnitSystem? unit)
     {
         _bound = unit;
-        // Skill bar is only meaningful when a player-controlled unit is acting.
         Visible = unit is not null && unit.Faction == Faction.Player;
         Refresh();
     }
 
-    /// <summary>Re-read the bound unit's skills and refresh slot text + disabled state.</summary>
+    /// <summary>Re-read the bound unit's skills and refresh slot visuals.</summary>
     public void Refresh()
     {
-        // Guard: BuildLayout populates _buttons[]; if Bind() is called before _Ready fires
-        // (e.g. on the very first turn while still inside InitializeGameManager) the array
-        // entries are still null. Skip — the deferred RefreshHudOnReady re-runs Bind once
-        // the widget has built itself.
         if (_buttons[0] is null) return;
 
         if (_bound is null)
         {
             for (int i = 0; i < SlotCount; i++)
             {
-                _buttons[i].Text = $"{i + 1}. —";
+                _buttons[i].Text = (i + 1).ToString();
                 _buttons[i].Disabled = true;
                 _buttons[i].TooltipText = "";
+                if (_cdLabels[i] is not null) _cdLabels[i].Text = "";
+                if (_nameLabels[i] is not null) _nameLabels[i].Text = "";
             }
             return;
         }
@@ -129,14 +190,23 @@ public sealed partial class SkillSelector : Control
             ISkillSystem? skill = i < _bound.ActiveSkills.Count ? _bound.ActiveSkills[i] : null;
             if (skill is null)
             {
-                _buttons[i].Text = $"{i + 1}. —";
+                _buttons[i].Text = (i + 1).ToString();
                 _buttons[i].Disabled = true;
                 _buttons[i].TooltipText = "(empty slot)";
+                _cdLabels[i].Text = "";
+                if (_nameLabels[i] is not null) _nameLabels[i].Text = "—";
                 continue;
             }
 
-            _buttons[i].Text = $"{i + 1}. {skill.Name}";
+            // Show "1" "2" "3" "4" "5" as the button text — easy hotkey recognition.
+            // The slot icon is set once in BuildSlot; re-stamp here only when per-skill icons
+            // are introduced.
+            _buttons[i].Text = (i + 1).ToString();
             _buttons[i].Disabled = skill.Cooldown > 0 || skill.ManaCost > _bound.Mana;
+
+            _cdLabels[i].Text = skill.Cooldown > 0 ? skill.Cooldown.ToString() : "";
+            if (_nameLabels[i] is not null)
+                _nameLabels[i].Text = string.IsNullOrEmpty(skill.Name) ? $"Skill {i + 1}" : skill.Name;
 
             string desc = string.IsNullOrEmpty(skill.Description) ? skill.Name : skill.Description;
             string cdText = skill.Cooldown > 0

@@ -115,12 +115,12 @@ public sealed partial class VictoryScreen : CanvasLayer
             SizeFlagsHorizontal = Control.SizeFlags.ExpandFill,
             SizeFlagsVertical = Control.SizeFlags.ExpandFill,
         };
-        _root.AddThemeConstantOverride("separation", 16);
+        _root.AddThemeConstantOverride("separation", HudStyle.PadLg);
         _root.SetAnchorsAndOffsetsPreset(Control.LayoutPreset.Center);
-        _root.OffsetLeft = -480;
-        _root.OffsetRight = 480;
-        _root.OffsetTop = -260;
-        _root.OffsetBottom = 260;
+        _root.OffsetLeft = -HudStyle.ScaledPx(480);
+        _root.OffsetRight = HudStyle.ScaledPx(480);
+        _root.OffsetTop = -HudStyle.ScaledPx(260);
+        _root.OffsetBottom = HudStyle.ScaledPx(260);
         container.AddChild(HudStyle.MakePanel(_root));
 
         Label title = new() { Text = "Victory!" };
@@ -136,7 +136,7 @@ public sealed partial class VictoryScreen : CanvasLayer
         _root.AddChild(subtitle);
 
         _cardRow = new HBoxContainer { MouseFilter = Control.MouseFilterEnum.Pass };
-        _cardRow.AddThemeConstantOverride("separation", 12);
+        _cardRow.AddThemeConstantOverride("separation", HudStyle.PadMd);
         _cardRow.Alignment = BoxContainer.AlignmentMode.Center;
         _root.AddChild(_cardRow);
 
@@ -158,7 +158,8 @@ public sealed partial class VictoryScreen : CanvasLayer
 
         Button continueButton = new() { Text = "Continue" };
         HudStyle.StyleButton(continueButton);
-        continueButton.CustomMinimumSize = new Vector2(180, 44);
+        continueButton.CustomMinimumSize = new Vector2(
+            HudStyle.ScaledPx(180), HudStyle.ScaledPx(HudStyle.ButtonHeight));
         continueButton.SizeFlagsHorizontal = Control.SizeFlags.ShrinkCenter;
         continueButton.Pressed += () => OnContinuePressed?.Invoke();
         _root.AddChild(continueButton);
@@ -167,8 +168,9 @@ public sealed partial class VictoryScreen : CanvasLayer
     /// <summary>Build a single party-member card for the row.</summary>
     private static Control BuildCard(IUnitSystem unit)
     {
-        const int cardW = 200;
-        const int cardH = 220;
+        int cardW = HudStyle.ScaledPx(200);
+        int cardH = HudStyle.ScaledPx(220);
+        int portraitEdge = HudStyle.ScaledPx(96);
         bool dead = !unit.IsAlive;
         Color tint = dead ? new Color(0.5f, 0.5f, 0.5f, 1f) : new Color(1f, 1f, 1f, 1f);
 
@@ -195,7 +197,7 @@ public sealed partial class VictoryScreen : CanvasLayer
                 Texture = portrait,
                 ExpandMode = TextureRect.ExpandModeEnum.IgnoreSize,
                 StretchMode = TextureRect.StretchModeEnum.KeepAspectCentered,
-                CustomMinimumSize = new Vector2(96, 96),
+                CustomMinimumSize = new Vector2(portraitEdge, portraitEdge),
                 SizeFlagsHorizontal = Control.SizeFlags.ShrinkCenter,
                 MouseFilter = Control.MouseFilterEnum.Ignore,
             };
@@ -206,7 +208,7 @@ public sealed partial class VictoryScreen : CanvasLayer
             ColorRect placeholder = new()
             {
                 Color = ColorForFaction(unit.Faction) with { A = 0.4f },
-                CustomMinimumSize = new Vector2(96, 96),
+                CustomMinimumSize = new Vector2(portraitEdge, portraitEdge),
                 SizeFlagsHorizontal = Control.SizeFlags.ShrinkCenter,
                 MouseFilter = Control.MouseFilterEnum.Ignore,
             };
@@ -219,9 +221,13 @@ public sealed partial class VictoryScreen : CanvasLayer
         {
             BbcodeEnabled = true,
             Text = display + suffix,
-            FitContent = true,
+            // FitContent=false + no autowrap keeps the label one line at the card's width,
+            // so a long name clips instead of expanding the card and shoving the bars out.
+            FitContent = false,
             ScrollActive = false,
-            CustomMinimumSize = new Vector2(0, 22),
+            AutowrapMode = TextServer.AutowrapMode.Off,
+            SizeFlagsHorizontal = Control.SizeFlags.ExpandFill,
+            CustomMinimumSize = new Vector2(0, HudStyle.ScaledPx(22)),
             MouseFilter = Control.MouseFilterEnum.Ignore,
         };
         HudStyle.ApplyScaledFontSize(name, "normal_font_size", HudStyle.FontSizeBody);
@@ -237,7 +243,7 @@ public sealed partial class VictoryScreen : CanvasLayer
             MaxValue = unit.MaxHp <= 0 ? 1 : unit.MaxHp,
             Value = unit.Hp,
             ShowPercentage = false,
-            CustomMinimumSize = new Vector2(0, 10),
+            CustomMinimumSize = new Vector2(0, HudStyle.ScaledPx(HudStyle.MpBarHeight)),
         };
         HudStyle.ApplyBarStyle(hp, HudStyle.HpFill);
         inner.AddChild(hp);
@@ -252,7 +258,7 @@ public sealed partial class VictoryScreen : CanvasLayer
             MaxValue = unit.ManaMax <= 0 ? 1 : unit.ManaMax,
             Value = unit.Mana,
             ShowPercentage = false,
-            CustomMinimumSize = new Vector2(0, 8),
+            CustomMinimumSize = new Vector2(0, HudStyle.ScaledPx(8)),
         };
         HudStyle.ApplyBarStyle(mp, HudStyle.ManaFill);
         inner.AddChild(mp);

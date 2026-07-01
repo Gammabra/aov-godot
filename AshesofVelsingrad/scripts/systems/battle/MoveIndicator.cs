@@ -23,9 +23,9 @@ public partial class MoveIndicator : Node3D
     [Export]
     public Color TileColor { get; set; } = new(0.30f, 0.95f, 0.55f, 0.50f);
 
-    /// <summary>Vertical offset above the cell so the quad isn't z-fighting with the floor.</summary>
+    /// <summary>Vertical offset above the cell floor so the quad isn't z-fighting with it.</summary>
     [Export]
-    public float Height { get; set; } = 0.05f;
+    public float Height { get; set; } = 0.1f;
 
     private readonly List<MeshInstance3D> _pool = [];
     private MapSystem? _map;
@@ -61,7 +61,10 @@ public partial class MoveIndicator : Node3D
             {
                 (int x, int y, int z) = tiles[i];
                 Vector3 world = _map.MapToLocal(new Vector3I(x, y, z));
-                world.Y += _map.CellSize.Y * 0.5f + Height;
+                // Floor surface sits ~a quarter cell above the cell centre. A full half-cell
+                // lift floated the quad a whole unit too high; removing it entirely buried the
+                // quad under the floor. This lands it just on top of the tile.
+                world.Y += _map.CellSize.Y * 0.15f + Height;
                 mesh.Position = world;
                 mesh.Visible = true;
             }

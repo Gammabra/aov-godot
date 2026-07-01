@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- HUD icon: attack (broken longsword, dark fantasy) -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="#f1e7cf">
+  <g>
+    <!-- Blade -->
+    <polygon points="40,4 46,4 46,38 43,42 40,38"/>
+    <!-- Fuller (groove) - subtle dark line -->
+    <rect x="42.4" y="8" width="1.2" height="28" fill="#2a2620"/>
+    <!-- Crossguard -->
+    <rect x="30" y="38" width="26" height="4" rx="1.5"/>
+    <rect x="36" y="36" width="14" height="2" rx="0.6"/>
+    <!-- Grip -->
+    <rect x="41" y="42" width="4" height="14" fill="#a48758"/>
+    <!-- Pommel -->
+    <circle cx="43" cy="58" r="3.6"/>
+    <!-- Spark -->
+    <polygon points="14,18 22,26 18,30 10,22" opacity="0.85"/>
+    <polygon points="8,30 14,32 12,38 6,36" opacity="0.55"/>
+  </g>
+</svg>

@@ -116,8 +116,8 @@ public static class HudStyle
 
     /// <summary>Skill bar width.</summary>
     public const int SkillBarWidth = 440;
-    /// <summary>Skill bar height. Tall enough for the slot square plus the skill-name label.</summary>
-    public const int SkillBarHeight = 100;
+    /// <summary>Skill bar height. Room for the slot square plus a two-line wrapped name.</summary>
+    public const int SkillBarHeight = 120;
 
     /// <summary>Battle-log width.</summary>
     public const int LogWidth = 280;

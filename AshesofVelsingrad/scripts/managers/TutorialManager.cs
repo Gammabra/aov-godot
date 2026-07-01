@@ -56,6 +56,9 @@ public partial class TutorialManager : Node
 	[Export]
 	private NodePath _tutorialLayerPath = null!;
 
+	[Export]
+	private NodePath _movableDoorPath = null!;
+
 	private Node _introDialog = null!;
 	private Node _guardDialog = null!;
 	private Node _foundFirstItemDialog = null!;
@@ -68,6 +71,7 @@ public partial class TutorialManager : Node
 	private Area3D _triggerInteractionExplanationArea = null!;
 	private ItemSystem _firstItem = null!;
 	private CanvasLayer _tutorialLayer = null!;
+	private MovableDoor _movableDoor = null!;
 	// TODO: Fill the tuple to have the complete intro sequence
 	private readonly (string, int, float)[] _sequences = [
 		("Prologue", 50, 3)
@@ -168,6 +172,7 @@ public partial class TutorialManager : Node
 		_introDialog = GetNode<Node>(_introDialogPath);
 		_introDialog.Connect("dialog_ended", Callable.From(GoToNextStep));
 		_guardDialog = GetNode<Node>(_guardDialogPath);
+		_guardDialog.Connect("open_door", Callable.From(() => _movableDoor.ToggleDoor()));
 		_guardDialog.Connect("dialog_ended", Callable.From(() => CanMove = true));
 		_foundFirstItemDialog = GetNode<Node>(_foundFirstItemDialogPath);
 		_foundFirstItemDialog.Connect("dialog_ended", Callable.From(HandleFoundFirstItemDialogEnd));
@@ -182,6 +187,8 @@ public partial class TutorialManager : Node
 		_firstItemDetectionArea.OnStartedToMove += () => _miniMercenary.ToggleNoticed();
 		_triggerInteractionExplanationArea = GetNode<Area3D>(_triggerInteractionExplanationAreaPath);
 		_triggerInteractionExplanationArea.BodyEntered += OnTriggerInteractionExplanationAreaBodyEntered;
+		_movableDoor = GetNode<MovableDoor>(_movableDoorPath);
+		_movableDoor.TogglingDoorFinished += () => _guardDialog.Call("talk2");
 
 		await ToSignal(_introSequence, Node.SignalName.Ready);
 		GoToNextStep();

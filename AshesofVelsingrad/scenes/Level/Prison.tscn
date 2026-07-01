@@ -21,6 +21,7 @@
 [ext_resource type="PackedScene" uid="uid://dt68jgkvymscw" path="res://assets/prison_assets/lantern.tscn" id="15_466sc"]
 [ext_resource type="PackedScene" uid="uid://nd5kxchifen7" path="res://assets/prison_assets/chain.tscn" id="16_6b824"]
 [ext_resource type="PackedScene" uid="uid://c0y3f0hskbqwu" path="res://assets/prison_assets/prison_bed.tscn" id="17_1ll8u"]
+[ext_resource type="PackedScene" uid="uid://b8p636b1yqpl8" path="res://scenes/LevelDesignElements/wall_movable_door.tscn" id="18_xf4w4"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_1dv8c"]
 
@@ -65,6 +66,7 @@ _firstItemDetectionAreaPath = NodePath("FirstItemDetectionArea")
 _firstItemPath = NodePath("Potion")
 _triggerInteractionExplanationAreaPath = NodePath("TriggerInteractionExplanation")
 _tutorialLayerPath = NodePath("TutorialLayer")
+_movableDoorPath = NodePath("../NavigationRegion3D/MovableDoor")
 
 [node name="Dialogs" type="Node" parent="TutorialManager" unique_id=1108658910]
 
@@ -290,12 +292,6 @@ transform = Transform3D(1.1764708, 0, 0, 0, 1.1764708, 0, 0, 0, 1.1764708, 12.48
 [node name="Floor3" parent="NavigationRegion3D/Floor4" unique_id=1189642804 instance=ExtResource("4_w1s1i")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.8635113, 0, -0.018645525)
 
-[node name="WallOpenDoor" parent="NavigationRegion3D" unique_id=1480054766 instance=ExtResource("5_atg6q")]
-transform = Transform3D(-4.3711402e-08, 0, 1.0000002, 0, 1.0000002, 0, -1.0000002, 0, -4.3711402e-08, 2.9350004, -0.80790925, 0.19961175)
-
-[node name="Wall2" parent="NavigationRegion3D/WallOpenDoor" unique_id=1716431518 instance=ExtResource("6_js1ay")]
-transform = Transform3D(1.0000002, 0, 0, 0, 1.0000002, 0, 0, 0, 1.0000002, 0, 2.2, 0)
-
 [node name="Wall13" parent="NavigationRegion3D" unique_id=1161052728 instance=ExtResource("6_js1ay")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.9, -0.75, -1.515)
 
@@ -456,6 +452,13 @@ mesh = SubResource("PlaneMesh_1ll8u")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D/MeshInstance3D" unique_id=1699497837]
 transform = Transform3D(1, 0, 0, 0, -4.3711378e-08, -0.99999976, 0, 0.99999976, -4.3711378e-08, 0, 0.96583444, -0.9427514)
 mesh = SubResource("PlaneMesh_1ll8u")
+
+[node name="MovableDoor" parent="NavigationRegion3D" unique_id=337212126 instance=ExtResource("18_xf4w4")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 2.935, -0.808, 0.2)
+_speed = 2.0
+
+[node name="Wall2" parent="NavigationRegion3D/MovableDoor" unique_id=1716431518 instance=ExtResource("6_js1ay")]
+transform = Transform3D(1.0000005, 0, 3.5527137e-15, 0, 1.0000005, 0, -3.5527137e-15, 0, 1.0000005, 0.00038820505, 2.2000914, 0)
 
 [node name="Characters" type="Node" parent="." unique_id=1507978962]
 

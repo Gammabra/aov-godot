@@ -122,6 +122,7 @@ public partial class TutorialManager : Node
 
 	private void DoFoundFirstItemDialog()
 	{
+        _miniMercenary.ToIdle(true, "IdleBackwardState");
 		_foundFirstItemDialog.Call("talk");
 	}
 

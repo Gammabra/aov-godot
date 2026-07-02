@@ -1,4 +1,5 @@
 using AshesOfVelsingrad.Managers;
+using AshesOfVelsingrad.player.States;
 using AshesOfVelsingrad.Utilities;
 using Godot;
 
@@ -177,12 +178,29 @@ public abstract partial class NpcSystem : CharacterBody3D
 	/// <param name="changeSubState">
 	/// If true, also resets the internal AI sub-state to Idle.
 	/// </param>
-	public void ToIdle(bool changeSubState = false)
+	/// <param name="specificIdleState">
+	/// Transition to specific idle state if it is given.
+	/// </param>
+	public void ToIdle(bool changeSubState = false, string specificIdleState = "Idle")
 	{
 		Velocity = Vector3.Zero;
-		_stateMachine.TransitionTo("IdleState");
+        if (specificIdleState == "Idle")
+        {
+            if (_stateMachine.CurrentState is WalkBackwardState)
+                _stateMachine.TransitionTo("IdleBackwardState");
+            if (_stateMachine.CurrentState is WalkForwardState)
+                _stateMachine.TransitionTo("IdleForwardState");
+            if (_stateMachine.CurrentState is WalkLeftState)
+                _stateMachine.TransitionTo("IdleLeftState");
+            if (_stateMachine.CurrentState is WalkRightState)
+                _stateMachine.TransitionTo("IdleRightState");
+        }
+        else
+        {
+            _stateMachine.TransitionTo(specificIdleState);
+        }
 
-		if (changeSubState)
+        if (changeSubState)
 			_subState = AovDataStructures.NpcSubState.Idle;
 	}
 

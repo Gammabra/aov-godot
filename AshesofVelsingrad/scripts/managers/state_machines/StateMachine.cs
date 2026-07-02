@@ -20,7 +20,7 @@ public sealed partial class StateMachine : Node
     /// </summary>
     private readonly Dictionary<string, State> _states = [];
 
-    private State? _currentState;
+    public State? CurrentState { get; private set; }
 
     /// <summary>
     /// Called when the node is added to the scene tree.
@@ -39,8 +39,8 @@ public sealed partial class StateMachine : Node
             }
         }
 
-        _currentState = GetNode<State>(InitialState);
-        _currentState.Enter();
+        CurrentState = GetNode<State>(InitialState);
+        CurrentState.Enter();
     }
 
     /// <summary>
@@ -50,10 +50,10 @@ public sealed partial class StateMachine : Node
     /// <param name="delta">Elapsed time since the previous frame.</param>
     public override void _Process(double delta)
     {
-        if (_currentState == null)
+        if (CurrentState == null)
             return;
 
-        _currentState.Update(delta);
+        CurrentState.Update(delta);
     }
 
     /// <summary>
@@ -63,10 +63,10 @@ public sealed partial class StateMachine : Node
     /// <param name="delta">Elapsed time since the previous physics frame.</param>
     public override void _PhysicsProcess(double delta)
     {
-        if (_currentState == null)
+        if (CurrentState == null)
             return;
 
-        _currentState.PhysicsUpdate(delta);
+        CurrentState.PhysicsUpdate(delta);
     }
 
     /// <summary>
@@ -75,10 +75,10 @@ public sealed partial class StateMachine : Node
     /// <param name="event">The input event.</param>
     public override void _UnhandledInput(InputEvent @event)
     {
-        if (_currentState == null)
+        if (CurrentState == null)
             return;
 
-        _currentState.HandleInput(@event);
+        CurrentState.HandleInput(@event);
         @event.Dispose();
     }
 
@@ -88,11 +88,11 @@ public sealed partial class StateMachine : Node
     /// <param name="key">The name of the target state.</param>
     public void TransitionTo(string key)
     {
-        if (!_states.TryGetValue(key, out State? state) || _currentState == state || _currentState == null)
+        if (!_states.TryGetValue(key, out State? state) || CurrentState == state || CurrentState == null)
             return;
 
-        _currentState.Exit();
-        _currentState = state;
-        _currentState.Enter();
+        CurrentState.Exit();
+        CurrentState = state;
+        CurrentState.Enter();
     }
 }

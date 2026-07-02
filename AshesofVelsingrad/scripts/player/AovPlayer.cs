@@ -1,6 +1,7 @@
 using System;
 using AshesOfVelsingrad.Audio;
 using AshesOfVelsingrad.Managers;
+using AshesOfVelsingrad.player.States;
 using AshesOfVelsingrad.Systems;
 using AshesOfVelsingrad.UI.Inventory;
 using Godot;
@@ -161,6 +162,18 @@ public sealed partial class AovPlayer : CharacterBody3D, IInteractor
 		return null;
 	}
 
+	private void TransitionToIdle()
+	{
+		if (_stateMachine?.CurrentState is WalkBackwardState)
+			_stateMachine?.TransitionTo("IdleBackwardState");
+		if (_stateMachine?.CurrentState is WalkForwardState)
+			_stateMachine?.TransitionTo("IdleForwardState");
+		if (_stateMachine?.CurrentState is WalkLeftState)
+			_stateMachine?.TransitionTo("IdleLeftState");
+		if (_stateMachine?.CurrentState is WalkRightState)
+			_stateMachine?.TransitionTo("IdleRightState");
+	}
+
 	public override void _Ready()
 	{
 		if (IsInsideTree() && GetParent() == GetTree().Root)
@@ -180,7 +193,8 @@ public sealed partial class AovPlayer : CharacterBody3D, IInteractor
 
 	public override void _Input(InputEvent @event)
 	{
-		if (_isLock) return;
+		if (_isLock)
+			return;
 
 		if (_isTutorial && _tutorialManager.IsOnlyToggleInventory)
 		{
@@ -216,13 +230,13 @@ public sealed partial class AovPlayer : CharacterBody3D, IInteractor
 	{
 		if (_isLock)
 		{
-			_stateMachine?.TransitionTo("IdleState");
+			TransitionToIdle();
 			return;
 		}
 
 		if (_isTutorial && !_tutorialManager.CanMove)
 		{
-			_stateMachine?.TransitionTo("IdleState");
+			TransitionToIdle();
 			return;
 		}
 
@@ -265,7 +279,7 @@ public sealed partial class AovPlayer : CharacterBody3D, IInteractor
 
 		if (velocity.Length() < 0.1f)
 		{
-			_stateMachine?.TransitionTo("IdleState");
+			TransitionToIdle();
 			return;
 		}
 

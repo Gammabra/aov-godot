@@ -102,15 +102,16 @@ public static class HudStyle
     /// <summary>MP bar height.</summary>
     public const int MpBarHeight = 10;
 
-    /// <summary>Player-status panel width.</summary>
-    public const int PlayerStatusWidth = 340;
+    /// <summary>Player-status panel width. Trimmed to leave a margin before the centred action bar.</summary>
+    public const int PlayerStatusWidth = 320;
     /// <summary>Player-status panel height. Sized so name + class + HP/MP rows never clip.</summary>
     public const int PlayerStatusHeight = 210;
     /// <summary>Player-status portrait edge.</summary>
     public const int PlayerPortrait = 76;
 
-    /// <summary>Action-bar width. Sized so all action labels (incl. Cancel) fit without clipping.</summary>
-    public const int ActionBarWidth = 560;
+    /// <summary>Action-bar width. Fits between the bottom-left/right panels on the base canvas;
+    /// labels stay readable because the buttons no longer clip their text.</summary>
+    public const int ActionBarWidth = 440;
     /// <summary>Action-bar height.</summary>
     public const int ActionBarHeight = 72;
 
@@ -149,17 +150,27 @@ public static class HudStyle
     public const int CorruptionHeight = 60;
 
     // ── Scaling primitives ──────────────────────────────────────────────
-    /// <summary>Current UI scale multiplier.</summary>
+    /// <summary>Current UI scale multiplier (drives font size for accessibility).</summary>
     public static float UiScale =>
         SettingsManager.Instance?.GetUiScale() ?? SettingsManager.UiScaleDefault;
+
+    /// <summary>
+    ///     Scale applied to panel sizes and anchor offsets. The HUD is laid out on a compact
+    ///     base canvas (Godot's 1152×648 default), where the bottom-left / bottom-right panels
+    ///     sit close to the centred action and skill bars. Letting the panels grow past their
+    ///     design size makes them collide with the centre bars, so layout growth is capped at
+    ///     1.0 while <see cref="ScaledFontSize" /> keeps scaling text fully for readability
+    ///     (text wraps, clips or scrolls inside its panel rather than pushing the panel wider).
+    /// </summary>
+    public static float LayoutScale => Mathf.Min(UiScale, 1.0f);
 
     /// <summary>Returns <paramref name="baseSize"/> × UI scale, ≥ 1.</summary>
     public static int ScaledFontSize(int baseSize)
         => Mathf.Max(1, Mathf.RoundToInt(baseSize * UiScale));
 
-    /// <summary>Returns <paramref name="px"/> × UI scale.</summary>
+    /// <summary>Returns <paramref name="px"/> × layout scale (capped so panels don't collide).</summary>
     public static int ScaledPx(int px)
-        => Mathf.RoundToInt(px * UiScale);
+        => Mathf.RoundToInt(px * LayoutScale);
 
     // ── Live-rescale plumbing ───────────────────────────────────────────
     /// <summary>Meta key for design-time font size.</summary>

@@ -15377,15 +15377,44 @@ references:
   commentId: T:AshesOfVelsingrad.Interfaces.NpcSystem
   fullName: AshesOfVelsingrad.Interfaces.NpcSystem
   nameWithType: NpcSystem
-- uid: AshesOfVelsingrad.Interfaces.NpcSystem.Initialize(AshesOfVelsingrad.Managers.StateMachine,Godot.NavigationAgent3D,System.Single,System.Single)
-  name: Initialize(StateMachine, NavigationAgent3D, float, float)
-  href: api/AshesOfVelsingrad.Interfaces.NpcSystem.html#AshesOfVelsingrad_Interfaces_NpcSystem_Initialize_AshesOfVelsingrad_Managers_StateMachine_Godot_NavigationAgent3D_System_Single_System_Single_
-  commentId: M:AshesOfVelsingrad.Interfaces.NpcSystem.Initialize(AshesOfVelsingrad.Managers.StateMachine,Godot.NavigationAgent3D,System.Single,System.Single)
-  name.vb: Initialize(StateMachine, NavigationAgent3D, Single, Single)
-  fullName: AshesOfVelsingrad.Interfaces.NpcSystem.Initialize(AshesOfVelsingrad.Managers.StateMachine, Godot.NavigationAgent3D, float, float)
-  fullName.vb: AshesOfVelsingrad.Interfaces.NpcSystem.Initialize(AshesOfVelsingrad.Managers.StateMachine, Godot.NavigationAgent3D, Single, Single)
-  nameWithType: NpcSystem.Initialize(StateMachine, NavigationAgent3D, float, float)
-  nameWithType.vb: NpcSystem.Initialize(StateMachine, NavigationAgent3D, Single, Single)
+- uid: AshesOfVelsingrad.Interfaces.NpcSystem.EmitSignalOnSpecificPointReached
+  name: EmitSignalOnSpecificPointReached()
+  href: api/AshesOfVelsingrad.Interfaces.NpcSystem.html#AshesOfVelsingrad_Interfaces_NpcSystem_EmitSignalOnSpecificPointReached
+  commentId: M:AshesOfVelsingrad.Interfaces.NpcSystem.EmitSignalOnSpecificPointReached
+  fullName: AshesOfVelsingrad.Interfaces.NpcSystem.EmitSignalOnSpecificPointReached()
+  nameWithType: NpcSystem.EmitSignalOnSpecificPointReached()
+- uid: AshesOfVelsingrad.Interfaces.NpcSystem.EmitSignalOnSpecificPointReached*
+  name: EmitSignalOnSpecificPointReached
+  href: api/AshesOfVelsingrad.Interfaces.NpcSystem.html#AshesOfVelsingrad_Interfaces_NpcSystem_EmitSignalOnSpecificPointReached_
+  commentId: Overload:AshesOfVelsingrad.Interfaces.NpcSystem.EmitSignalOnSpecificPointReached
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.Interfaces.NpcSystem.EmitSignalOnSpecificPointReached
+  nameWithType: NpcSystem.EmitSignalOnSpecificPointReached
+- uid: AshesOfVelsingrad.Interfaces.NpcSystem.HandleCharacterMovement(System.Double)
+  name: HandleCharacterMovement(double)
+  href: api/AshesOfVelsingrad.Interfaces.NpcSystem.html#AshesOfVelsingrad_Interfaces_NpcSystem_HandleCharacterMovement_System_Double_
+  commentId: M:AshesOfVelsingrad.Interfaces.NpcSystem.HandleCharacterMovement(System.Double)
+  name.vb: HandleCharacterMovement(Double)
+  fullName: AshesOfVelsingrad.Interfaces.NpcSystem.HandleCharacterMovement(double)
+  fullName.vb: AshesOfVelsingrad.Interfaces.NpcSystem.HandleCharacterMovement(Double)
+  nameWithType: NpcSystem.HandleCharacterMovement(double)
+  nameWithType.vb: NpcSystem.HandleCharacterMovement(Double)
+- uid: AshesOfVelsingrad.Interfaces.NpcSystem.HandleCharacterMovement*
+  name: HandleCharacterMovement
+  href: api/AshesOfVelsingrad.Interfaces.NpcSystem.html#AshesOfVelsingrad_Interfaces_NpcSystem_HandleCharacterMovement_
+  commentId: Overload:AshesOfVelsingrad.Interfaces.NpcSystem.HandleCharacterMovement
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.Interfaces.NpcSystem.HandleCharacterMovement
+  nameWithType: NpcSystem.HandleCharacterMovement
+- uid: AshesOfVelsingrad.Interfaces.NpcSystem.Initialize(AshesOfVelsingrad.Managers.StateMachine,Godot.NavigationAgent3D,System.Single)
+  name: Initialize(StateMachine, NavigationAgent3D, float)
+  href: api/AshesOfVelsingrad.Interfaces.NpcSystem.html#AshesOfVelsingrad_Interfaces_NpcSystem_Initialize_AshesOfVelsingrad_Managers_StateMachine_Godot_NavigationAgent3D_System_Single_
+  commentId: M:AshesOfVelsingrad.Interfaces.NpcSystem.Initialize(AshesOfVelsingrad.Managers.StateMachine,Godot.NavigationAgent3D,System.Single)
+  name.vb: Initialize(StateMachine, NavigationAgent3D, Single)
+  fullName: AshesOfVelsingrad.Interfaces.NpcSystem.Initialize(AshesOfVelsingrad.Managers.StateMachine, Godot.NavigationAgent3D, float)
+  fullName.vb: AshesOfVelsingrad.Interfaces.NpcSystem.Initialize(AshesOfVelsingrad.Managers.StateMachine, Godot.NavigationAgent3D, Single)
+  nameWithType: NpcSystem.Initialize(StateMachine, NavigationAgent3D, float)
+  nameWithType.vb: NpcSystem.Initialize(StateMachine, NavigationAgent3D, Single)
 - uid: AshesOfVelsingrad.Interfaces.NpcSystem.Initialize*
   name: Initialize
   href: api/AshesOfVelsingrad.Interfaces.NpcSystem.html#AshesOfVelsingrad_Interfaces_NpcSystem_Initialize_
@@ -15393,6 +15422,12 @@ references:
   isSpec: "True"
   fullName: AshesOfVelsingrad.Interfaces.NpcSystem.Initialize
   nameWithType: NpcSystem.Initialize
+- uid: AshesOfVelsingrad.Interfaces.NpcSystem.OnSpecificPointReached
+  name: OnSpecificPointReached
+  href: api/AshesOfVelsingrad.Interfaces.NpcSystem.html#AshesOfVelsingrad_Interfaces_NpcSystem_OnSpecificPointReached
+  commentId: E:AshesOfVelsingrad.Interfaces.NpcSystem.OnSpecificPointReached
+  fullName: AshesOfVelsingrad.Interfaces.NpcSystem.OnSpecificPointReached
+  nameWithType: NpcSystem.OnSpecificPointReached
 - uid: AshesOfVelsingrad.Interfaces.NpcSystem.Speed
   name: Speed
   href: api/AshesOfVelsingrad.Interfaces.NpcSystem.html#AshesOfVelsingrad_Interfaces_NpcSystem_Speed
@@ -15405,15 +15440,12 @@ references:
   commentId: F:AshesOfVelsingrad.Interfaces.NpcSystem.StopDistance
   fullName: AshesOfVelsingrad.Interfaces.NpcSystem.StopDistance
   nameWithType: NpcSystem.StopDistance
-- uid: AshesOfVelsingrad.Interfaces.NpcSystem.ToFollowingMovingEntity(Godot.Node3D,System.Double)
-  name: ToFollowingMovingEntity(Node3D, double)
-  href: api/AshesOfVelsingrad.Interfaces.NpcSystem.html#AshesOfVelsingrad_Interfaces_NpcSystem_ToFollowingMovingEntity_Godot_Node3D_System_Double_
-  commentId: M:AshesOfVelsingrad.Interfaces.NpcSystem.ToFollowingMovingEntity(Godot.Node3D,System.Double)
-  name.vb: ToFollowingMovingEntity(Node3D, Double)
-  fullName: AshesOfVelsingrad.Interfaces.NpcSystem.ToFollowingMovingEntity(Godot.Node3D, double)
-  fullName.vb: AshesOfVelsingrad.Interfaces.NpcSystem.ToFollowingMovingEntity(Godot.Node3D, Double)
-  nameWithType: NpcSystem.ToFollowingMovingEntity(Node3D, double)
-  nameWithType.vb: NpcSystem.ToFollowingMovingEntity(Node3D, Double)
+- uid: AshesOfVelsingrad.Interfaces.NpcSystem.ToFollowingMovingEntity(Godot.Node3D)
+  name: ToFollowingMovingEntity(Node3D)
+  href: api/AshesOfVelsingrad.Interfaces.NpcSystem.html#AshesOfVelsingrad_Interfaces_NpcSystem_ToFollowingMovingEntity_Godot_Node3D_
+  commentId: M:AshesOfVelsingrad.Interfaces.NpcSystem.ToFollowingMovingEntity(Godot.Node3D)
+  fullName: AshesOfVelsingrad.Interfaces.NpcSystem.ToFollowingMovingEntity(Godot.Node3D)
+  nameWithType: NpcSystem.ToFollowingMovingEntity(Node3D)
 - uid: AshesOfVelsingrad.Interfaces.NpcSystem.ToFollowingMovingEntity*
   name: ToFollowingMovingEntity
   href: api/AshesOfVelsingrad.Interfaces.NpcSystem.html#AshesOfVelsingrad_Interfaces_NpcSystem_ToFollowingMovingEntity_
@@ -15421,12 +15453,28 @@ references:
   isSpec: "True"
   fullName: AshesOfVelsingrad.Interfaces.NpcSystem.ToFollowingMovingEntity
   nameWithType: NpcSystem.ToFollowingMovingEntity
-- uid: AshesOfVelsingrad.Interfaces.NpcSystem.ToIdle
-  name: ToIdle()
-  href: api/AshesOfVelsingrad.Interfaces.NpcSystem.html#AshesOfVelsingrad_Interfaces_NpcSystem_ToIdle
-  commentId: M:AshesOfVelsingrad.Interfaces.NpcSystem.ToIdle
-  fullName: AshesOfVelsingrad.Interfaces.NpcSystem.ToIdle()
-  nameWithType: NpcSystem.ToIdle()
+- uid: AshesOfVelsingrad.Interfaces.NpcSystem.ToFollowingSpecificPoint(Godot.Node3D)
+  name: ToFollowingSpecificPoint(Node3D)
+  href: api/AshesOfVelsingrad.Interfaces.NpcSystem.html#AshesOfVelsingrad_Interfaces_NpcSystem_ToFollowingSpecificPoint_Godot_Node3D_
+  commentId: M:AshesOfVelsingrad.Interfaces.NpcSystem.ToFollowingSpecificPoint(Godot.Node3D)
+  fullName: AshesOfVelsingrad.Interfaces.NpcSystem.ToFollowingSpecificPoint(Godot.Node3D)
+  nameWithType: NpcSystem.ToFollowingSpecificPoint(Node3D)
+- uid: AshesOfVelsingrad.Interfaces.NpcSystem.ToFollowingSpecificPoint*
+  name: ToFollowingSpecificPoint
+  href: api/AshesOfVelsingrad.Interfaces.NpcSystem.html#AshesOfVelsingrad_Interfaces_NpcSystem_ToFollowingSpecificPoint_
+  commentId: Overload:AshesOfVelsingrad.Interfaces.NpcSystem.ToFollowingSpecificPoint
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.Interfaces.NpcSystem.ToFollowingSpecificPoint
+  nameWithType: NpcSystem.ToFollowingSpecificPoint
+- uid: AshesOfVelsingrad.Interfaces.NpcSystem.ToIdle(System.Boolean,System.String)
+  name: ToIdle(bool, string)
+  href: api/AshesOfVelsingrad.Interfaces.NpcSystem.html#AshesOfVelsingrad_Interfaces_NpcSystem_ToIdle_System_Boolean_System_String_
+  commentId: M:AshesOfVelsingrad.Interfaces.NpcSystem.ToIdle(System.Boolean,System.String)
+  name.vb: ToIdle(Boolean, String)
+  fullName: AshesOfVelsingrad.Interfaces.NpcSystem.ToIdle(bool, string)
+  fullName.vb: AshesOfVelsingrad.Interfaces.NpcSystem.ToIdle(Boolean, String)
+  nameWithType: NpcSystem.ToIdle(bool, string)
+  nameWithType.vb: NpcSystem.ToIdle(Boolean, String)
 - uid: AshesOfVelsingrad.Interfaces.NpcSystem.ToIdle*
   name: ToIdle
   href: api/AshesOfVelsingrad.Interfaces.NpcSystem.html#AshesOfVelsingrad_Interfaces_NpcSystem_ToIdle_
@@ -17522,6 +17570,19 @@ references:
   commentId: T:AshesOfVelsingrad.Managers.StateMachine
   fullName: AshesOfVelsingrad.Managers.StateMachine
   nameWithType: StateMachine
+- uid: AshesOfVelsingrad.Managers.StateMachine.CurrentState
+  name: CurrentState
+  href: api/AshesOfVelsingrad.Managers.StateMachine.html#AshesOfVelsingrad_Managers_StateMachine_CurrentState
+  commentId: P:AshesOfVelsingrad.Managers.StateMachine.CurrentState
+  fullName: AshesOfVelsingrad.Managers.StateMachine.CurrentState
+  nameWithType: StateMachine.CurrentState
+- uid: AshesOfVelsingrad.Managers.StateMachine.CurrentState*
+  name: CurrentState
+  href: api/AshesOfVelsingrad.Managers.StateMachine.html#AshesOfVelsingrad_Managers_StateMachine_CurrentState_
+  commentId: Overload:AshesOfVelsingrad.Managers.StateMachine.CurrentState
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.Managers.StateMachine.CurrentState
+  nameWithType: StateMachine.CurrentState
 - uid: AshesOfVelsingrad.Managers.StateMachine.InitialState
   name: InitialState
   href: api/AshesOfVelsingrad.Managers.StateMachine.html#AshesOfVelsingrad_Managers_StateMachine_InitialState
@@ -17853,6 +17914,120 @@ references:
   isSpec: "True"
   fullName: AshesOfVelsingrad.Managers.TurnManager._ExitTree
   nameWithType: TurnManager._ExitTree
+- uid: AshesOfVelsingrad.Managers.TutorialManager
+  name: TutorialManager
+  href: api/AshesOfVelsingrad.Managers.TutorialManager.html
+  commentId: T:AshesOfVelsingrad.Managers.TutorialManager
+  fullName: AshesOfVelsingrad.Managers.TutorialManager
+  nameWithType: TutorialManager
+- uid: AshesOfVelsingrad.Managers.TutorialManager.CanMove
+  name: CanMove
+  href: api/AshesOfVelsingrad.Managers.TutorialManager.html#AshesOfVelsingrad_Managers_TutorialManager_CanMove
+  commentId: P:AshesOfVelsingrad.Managers.TutorialManager.CanMove
+  fullName: AshesOfVelsingrad.Managers.TutorialManager.CanMove
+  nameWithType: TutorialManager.CanMove
+- uid: AshesOfVelsingrad.Managers.TutorialManager.CanMove*
+  name: CanMove
+  href: api/AshesOfVelsingrad.Managers.TutorialManager.html#AshesOfVelsingrad_Managers_TutorialManager_CanMove_
+  commentId: Overload:AshesOfVelsingrad.Managers.TutorialManager.CanMove
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.Managers.TutorialManager.CanMove
+  nameWithType: TutorialManager.CanMove
+- uid: AshesOfVelsingrad.Managers.TutorialManager.CanToggleInventory
+  name: CanToggleInventory
+  href: api/AshesOfVelsingrad.Managers.TutorialManager.html#AshesOfVelsingrad_Managers_TutorialManager_CanToggleInventory
+  commentId: P:AshesOfVelsingrad.Managers.TutorialManager.CanToggleInventory
+  fullName: AshesOfVelsingrad.Managers.TutorialManager.CanToggleInventory
+  nameWithType: TutorialManager.CanToggleInventory
+- uid: AshesOfVelsingrad.Managers.TutorialManager.CanToggleInventory*
+  name: CanToggleInventory
+  href: api/AshesOfVelsingrad.Managers.TutorialManager.html#AshesOfVelsingrad_Managers_TutorialManager_CanToggleInventory_
+  commentId: Overload:AshesOfVelsingrad.Managers.TutorialManager.CanToggleInventory
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.Managers.TutorialManager.CanToggleInventory
+  nameWithType: TutorialManager.CanToggleInventory
+- uid: AshesOfVelsingrad.Managers.TutorialManager.DoSecondInventoryExplationDialog
+  name: DoSecondInventoryExplationDialog()
+  href: api/AshesOfVelsingrad.Managers.TutorialManager.html#AshesOfVelsingrad_Managers_TutorialManager_DoSecondInventoryExplationDialog
+  commentId: M:AshesOfVelsingrad.Managers.TutorialManager.DoSecondInventoryExplationDialog
+  fullName: AshesOfVelsingrad.Managers.TutorialManager.DoSecondInventoryExplationDialog()
+  nameWithType: TutorialManager.DoSecondInventoryExplationDialog()
+- uid: AshesOfVelsingrad.Managers.TutorialManager.DoSecondInventoryExplationDialog*
+  name: DoSecondInventoryExplationDialog
+  href: api/AshesOfVelsingrad.Managers.TutorialManager.html#AshesOfVelsingrad_Managers_TutorialManager_DoSecondInventoryExplationDialog_
+  commentId: Overload:AshesOfVelsingrad.Managers.TutorialManager.DoSecondInventoryExplationDialog
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.Managers.TutorialManager.DoSecondInventoryExplationDialog
+  nameWithType: TutorialManager.DoSecondInventoryExplationDialog
+- uid: AshesOfVelsingrad.Managers.TutorialManager.GoToNextStep
+  name: GoToNextStep()
+  href: api/AshesOfVelsingrad.Managers.TutorialManager.html#AshesOfVelsingrad_Managers_TutorialManager_GoToNextStep
+  commentId: M:AshesOfVelsingrad.Managers.TutorialManager.GoToNextStep
+  fullName: AshesOfVelsingrad.Managers.TutorialManager.GoToNextStep()
+  nameWithType: TutorialManager.GoToNextStep()
+- uid: AshesOfVelsingrad.Managers.TutorialManager.GoToNextStep*
+  name: GoToNextStep
+  href: api/AshesOfVelsingrad.Managers.TutorialManager.html#AshesOfVelsingrad_Managers_TutorialManager_GoToNextStep_
+  commentId: Overload:AshesOfVelsingrad.Managers.TutorialManager.GoToNextStep
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.Managers.TutorialManager.GoToNextStep
+  nameWithType: TutorialManager.GoToNextStep
+- uid: AshesOfVelsingrad.Managers.TutorialManager.IsOnlyToggleInventory
+  name: IsOnlyToggleInventory
+  href: api/AshesOfVelsingrad.Managers.TutorialManager.html#AshesOfVelsingrad_Managers_TutorialManager_IsOnlyToggleInventory
+  commentId: P:AshesOfVelsingrad.Managers.TutorialManager.IsOnlyToggleInventory
+  fullName: AshesOfVelsingrad.Managers.TutorialManager.IsOnlyToggleInventory
+  nameWithType: TutorialManager.IsOnlyToggleInventory
+- uid: AshesOfVelsingrad.Managers.TutorialManager.IsOnlyToggleInventory*
+  name: IsOnlyToggleInventory
+  href: api/AshesOfVelsingrad.Managers.TutorialManager.html#AshesOfVelsingrad_Managers_TutorialManager_IsOnlyToggleInventory_
+  commentId: Overload:AshesOfVelsingrad.Managers.TutorialManager.IsOnlyToggleInventory
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.Managers.TutorialManager.IsOnlyToggleInventory
+  nameWithType: TutorialManager.IsOnlyToggleInventory
+- uid: AshesOfVelsingrad.Managers.TutorialManager._Ready
+  name: _Ready()
+  href: api/AshesOfVelsingrad.Managers.TutorialManager.html#AshesOfVelsingrad_Managers_TutorialManager__Ready
+  commentId: M:AshesOfVelsingrad.Managers.TutorialManager._Ready
+  fullName: AshesOfVelsingrad.Managers.TutorialManager._Ready()
+  nameWithType: TutorialManager._Ready()
+- uid: AshesOfVelsingrad.Managers.TutorialManager._Ready*
+  name: _Ready
+  href: api/AshesOfVelsingrad.Managers.TutorialManager.html#AshesOfVelsingrad_Managers_TutorialManager__Ready_
+  commentId: Overload:AshesOfVelsingrad.Managers.TutorialManager._Ready
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.Managers.TutorialManager._Ready
+  nameWithType: TutorialManager._Ready
+- uid: AshesOfVelsingrad.Managers.TutorialStep
+  name: TutorialStep
+  href: api/AshesOfVelsingrad.Managers.TutorialStep.html
+  commentId: T:AshesOfVelsingrad.Managers.TutorialStep
+  fullName: AshesOfVelsingrad.Managers.TutorialStep
+  nameWithType: TutorialStep
+- uid: AshesOfVelsingrad.Managers.TutorialStep.GuardDialog
+  name: GuardDialog
+  href: api/AshesOfVelsingrad.Managers.TutorialStep.html#AshesOfVelsingrad_Managers_TutorialStep_GuardDialog
+  commentId: F:AshesOfVelsingrad.Managers.TutorialStep.GuardDialog
+  fullName: AshesOfVelsingrad.Managers.TutorialStep.GuardDialog
+  nameWithType: TutorialStep.GuardDialog
+- uid: AshesOfVelsingrad.Managers.TutorialStep.IntroDialog
+  name: IntroDialog
+  href: api/AshesOfVelsingrad.Managers.TutorialStep.html#AshesOfVelsingrad_Managers_TutorialStep_IntroDialog
+  commentId: F:AshesOfVelsingrad.Managers.TutorialStep.IntroDialog
+  fullName: AshesOfVelsingrad.Managers.TutorialStep.IntroDialog
+  nameWithType: TutorialStep.IntroDialog
+- uid: AshesOfVelsingrad.Managers.TutorialStep.IntroSequence
+  name: IntroSequence
+  href: api/AshesOfVelsingrad.Managers.TutorialStep.html#AshesOfVelsingrad_Managers_TutorialStep_IntroSequence
+  commentId: F:AshesOfVelsingrad.Managers.TutorialStep.IntroSequence
+  fullName: AshesOfVelsingrad.Managers.TutorialStep.IntroSequence
+  nameWithType: TutorialStep.IntroSequence
+- uid: AshesOfVelsingrad.Managers.TutorialStep.Start
+  name: Start
+  href: api/AshesOfVelsingrad.Managers.TutorialStep.html#AshesOfVelsingrad_Managers_TutorialStep_Start
+  commentId: F:AshesOfVelsingrad.Managers.TutorialStep.Start
+  fullName: AshesOfVelsingrad.Managers.TutorialStep.Start
+  nameWithType: TutorialStep.Start
 - uid: AshesOfVelsingrad.MercenaryAlly
   name: MercenaryAlly
   href: api/AshesOfVelsingrad.MercenaryAlly.html
@@ -21378,6 +21553,19 @@ references:
   isSpec: "True"
   fullName: AshesOfVelsingrad.Systems.ItemSystem.Description
   nameWithType: ItemSystem.Description
+- uid: AshesOfVelsingrad.Systems.ItemSystem.EmitSignalInteracted
+  name: EmitSignalInteracted()
+  href: api/AshesOfVelsingrad.Systems.ItemSystem.html#AshesOfVelsingrad_Systems_ItemSystem_EmitSignalInteracted
+  commentId: M:AshesOfVelsingrad.Systems.ItemSystem.EmitSignalInteracted
+  fullName: AshesOfVelsingrad.Systems.ItemSystem.EmitSignalInteracted()
+  nameWithType: ItemSystem.EmitSignalInteracted()
+- uid: AshesOfVelsingrad.Systems.ItemSystem.EmitSignalInteracted*
+  name: EmitSignalInteracted
+  href: api/AshesOfVelsingrad.Systems.ItemSystem.html#AshesOfVelsingrad_Systems_ItemSystem_EmitSignalInteracted_
+  commentId: Overload:AshesOfVelsingrad.Systems.ItemSystem.EmitSignalInteracted
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.Systems.ItemSystem.EmitSignalInteracted
+  nameWithType: ItemSystem.EmitSignalInteracted
 - uid: AshesOfVelsingrad.Systems.ItemSystem.HidePrompt
   name: HidePrompt()
   href: api/AshesOfVelsingrad.Systems.ItemSystem.html#AshesOfVelsingrad_Systems_ItemSystem_HidePrompt
@@ -21430,6 +21618,12 @@ references:
   isSpec: "True"
   fullName: AshesOfVelsingrad.Systems.ItemSystem.Interact
   nameWithType: ItemSystem.Interact
+- uid: AshesOfVelsingrad.Systems.ItemSystem.Interacted
+  name: Interacted
+  href: api/AshesOfVelsingrad.Systems.ItemSystem.html#AshesOfVelsingrad_Systems_ItemSystem_Interacted
+  commentId: E:AshesOfVelsingrad.Systems.ItemSystem.Interacted
+  fullName: AshesOfVelsingrad.Systems.ItemSystem.Interacted
+  nameWithType: ItemSystem.Interacted
 - uid: AshesOfVelsingrad.Systems.ItemSystem.IsStackable
   name: IsStackable
   href: api/AshesOfVelsingrad.Systems.ItemSystem.html#AshesOfVelsingrad_Systems_ItemSystem_IsStackable
@@ -25399,19 +25593,6 @@ references:
   isSpec: "True"
   fullName: AshesOfVelsingrad.UI.Inventory.ExplorationInventoryUI._ExitTree
   nameWithType: ExplorationInventoryUI._ExitTree
-- uid: AshesOfVelsingrad.UI.Inventory.ExplorationInventoryUI._Input(Godot.InputEvent)
-  name: _Input(InputEvent)
-  href: api/AshesOfVelsingrad.UI.Inventory.ExplorationInventoryUI.html#AshesOfVelsingrad_UI_Inventory_ExplorationInventoryUI__Input_Godot_InputEvent_
-  commentId: M:AshesOfVelsingrad.UI.Inventory.ExplorationInventoryUI._Input(Godot.InputEvent)
-  fullName: AshesOfVelsingrad.UI.Inventory.ExplorationInventoryUI._Input(Godot.InputEvent)
-  nameWithType: ExplorationInventoryUI._Input(InputEvent)
-- uid: AshesOfVelsingrad.UI.Inventory.ExplorationInventoryUI._Input*
-  name: _Input
-  href: api/AshesOfVelsingrad.UI.Inventory.ExplorationInventoryUI.html#AshesOfVelsingrad_UI_Inventory_ExplorationInventoryUI__Input_
-  commentId: Overload:AshesOfVelsingrad.UI.Inventory.ExplorationInventoryUI._Input
-  isSpec: "True"
-  fullName: AshesOfVelsingrad.UI.Inventory.ExplorationInventoryUI._Input
-  nameWithType: ExplorationInventoryUI._Input
 - uid: AshesOfVelsingrad.UI.Inventory.ExplorationInventoryUI._Ready
   name: _Ready()
   href: api/AshesOfVelsingrad.UI.Inventory.ExplorationInventoryUI.html#AshesOfVelsingrad_UI_Inventory_ExplorationInventoryUI__Ready
@@ -25914,6 +26095,30 @@ references:
   commentId: F:AshesOfVelsingrad.Utilities.AovDataStructures.ModifierType.Percent
   fullName: AshesOfVelsingrad.Utilities.AovDataStructures.ModifierType.Percent
   nameWithType: AovDataStructures.ModifierType.Percent
+- uid: AshesOfVelsingrad.Utilities.AovDataStructures.NpcSubState
+  name: AovDataStructures.NpcSubState
+  href: api/AshesOfVelsingrad.Utilities.AovDataStructures.NpcSubState.html
+  commentId: T:AshesOfVelsingrad.Utilities.AovDataStructures.NpcSubState
+  fullName: AshesOfVelsingrad.Utilities.AovDataStructures.NpcSubState
+  nameWithType: AovDataStructures.NpcSubState
+- uid: AshesOfVelsingrad.Utilities.AovDataStructures.NpcSubState.FollowMovingPoint
+  name: FollowMovingPoint
+  href: api/AshesOfVelsingrad.Utilities.AovDataStructures.NpcSubState.html#AshesOfVelsingrad_Utilities_AovDataStructures_NpcSubState_FollowMovingPoint
+  commentId: F:AshesOfVelsingrad.Utilities.AovDataStructures.NpcSubState.FollowMovingPoint
+  fullName: AshesOfVelsingrad.Utilities.AovDataStructures.NpcSubState.FollowMovingPoint
+  nameWithType: AovDataStructures.NpcSubState.FollowMovingPoint
+- uid: AshesOfVelsingrad.Utilities.AovDataStructures.NpcSubState.FollowSpecificPoint
+  name: FollowSpecificPoint
+  href: api/AshesOfVelsingrad.Utilities.AovDataStructures.NpcSubState.html#AshesOfVelsingrad_Utilities_AovDataStructures_NpcSubState_FollowSpecificPoint
+  commentId: F:AshesOfVelsingrad.Utilities.AovDataStructures.NpcSubState.FollowSpecificPoint
+  fullName: AshesOfVelsingrad.Utilities.AovDataStructures.NpcSubState.FollowSpecificPoint
+  nameWithType: AovDataStructures.NpcSubState.FollowSpecificPoint
+- uid: AshesOfVelsingrad.Utilities.AovDataStructures.NpcSubState.Idle
+  name: Idle
+  href: api/AshesOfVelsingrad.Utilities.AovDataStructures.NpcSubState.html#AshesOfVelsingrad_Utilities_AovDataStructures_NpcSubState_Idle
+  commentId: F:AshesOfVelsingrad.Utilities.AovDataStructures.NpcSubState.Idle
+  fullName: AshesOfVelsingrad.Utilities.AovDataStructures.NpcSubState.Idle
+  nameWithType: AovDataStructures.NpcSubState.Idle
 - uid: AshesOfVelsingrad.Utilities.AovDataStructures.StatTypeWithModifier
   name: AovDataStructures.StatTypeWithModifier
   href: api/AshesOfVelsingrad.Utilities.AovDataStructures.StatTypeWithModifier.html
@@ -26099,6 +26304,19 @@ references:
   commentId: T:AshesOfVelsingrad.data.npc.MiniMercenary
   fullName: AshesOfVelsingrad.data.npc.MiniMercenary
   nameWithType: MiniMercenary
+- uid: AshesOfVelsingrad.data.npc.MiniMercenary.ToggleNoticed
+  name: ToggleNoticed()
+  href: api/AshesOfVelsingrad.data.npc.MiniMercenary.html#AshesOfVelsingrad_data_npc_MiniMercenary_ToggleNoticed
+  commentId: M:AshesOfVelsingrad.data.npc.MiniMercenary.ToggleNoticed
+  fullName: AshesOfVelsingrad.data.npc.MiniMercenary.ToggleNoticed()
+  nameWithType: MiniMercenary.ToggleNoticed()
+- uid: AshesOfVelsingrad.data.npc.MiniMercenary.ToggleNoticed*
+  name: ToggleNoticed
+  href: api/AshesOfVelsingrad.data.npc.MiniMercenary.html#AshesOfVelsingrad_data_npc_MiniMercenary_ToggleNoticed_
+  commentId: Overload:AshesOfVelsingrad.data.npc.MiniMercenary.ToggleNoticed
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.data.npc.MiniMercenary.ToggleNoticed
+  nameWithType: MiniMercenary.ToggleNoticed
 - uid: AshesOfVelsingrad.data.npc.MiniMercenary._PhysicsProcess(System.Double)
   name: _PhysicsProcess(double)
   href: api/AshesOfVelsingrad.data.npc.MiniMercenary.html#AshesOfVelsingrad_data_npc_MiniMercenary__PhysicsProcess_System_Double_
@@ -26427,6 +26645,22 @@ references:
   isSpec: "True"
   fullName: AshesOfVelsingrad.player.AovPlayer.LockInteractor
   nameWithType: AovPlayer.LockInteractor
+- uid: AshesOfVelsingrad.player.AovPlayer.ToggleInteraction(System.Boolean)
+  name: ToggleInteraction(bool)
+  href: api/AshesOfVelsingrad.player.AovPlayer.html#AshesOfVelsingrad_player_AovPlayer_ToggleInteraction_System_Boolean_
+  commentId: M:AshesOfVelsingrad.player.AovPlayer.ToggleInteraction(System.Boolean)
+  name.vb: ToggleInteraction(Boolean)
+  fullName: AshesOfVelsingrad.player.AovPlayer.ToggleInteraction(bool)
+  fullName.vb: AshesOfVelsingrad.player.AovPlayer.ToggleInteraction(Boolean)
+  nameWithType: AovPlayer.ToggleInteraction(bool)
+  nameWithType.vb: AovPlayer.ToggleInteraction(Boolean)
+- uid: AshesOfVelsingrad.player.AovPlayer.ToggleInteraction*
+  name: ToggleInteraction
+  href: api/AshesOfVelsingrad.player.AovPlayer.html#AshesOfVelsingrad_player_AovPlayer_ToggleInteraction_
+  commentId: Overload:AshesOfVelsingrad.player.AovPlayer.ToggleInteraction
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.player.AovPlayer.ToggleInteraction
+  nameWithType: AovPlayer.ToggleInteraction
 - uid: AshesOfVelsingrad.player.AovPlayer.UnlockInteractor
   name: UnlockInteractor()
   href: api/AshesOfVelsingrad.player.AovPlayer.html#AshesOfVelsingrad_player_AovPlayer_UnlockInteractor
@@ -26533,6 +26767,12 @@ references:
   commentId: T:AshesOfVelsingrad.player.InteractionComponent
   fullName: AshesOfVelsingrad.player.InteractionComponent
   nameWithType: InteractionComponent
+- uid: AshesOfVelsingrad.player.InteractionComponent.CanInteract
+  name: CanInteract
+  href: api/AshesOfVelsingrad.player.InteractionComponent.html#AshesOfVelsingrad_player_InteractionComponent_CanInteract
+  commentId: F:AshesOfVelsingrad.player.InteractionComponent.CanInteract
+  fullName: AshesOfVelsingrad.player.InteractionComponent.CanInteract
+  nameWithType: InteractionComponent.CanInteract
 - uid: AshesOfVelsingrad.player.InteractionComponent.ClosestInteractable
   name: ClosestInteractable
   href: api/AshesOfVelsingrad.player.InteractionComponent.html#AshesOfVelsingrad_player_InteractionComponent_ClosestInteractable
@@ -26581,6 +26821,186 @@ references:
   commentId: N:AshesOfVelsingrad.player.States
   fullName: AshesOfVelsingrad.player.States
   nameWithType: AshesOfVelsingrad.player.States
+- uid: AshesOfVelsingrad.player.States.IdleBackwardState
+  name: IdleBackwardState
+  href: api/AshesOfVelsingrad.player.States.IdleBackwardState.html
+  commentId: T:AshesOfVelsingrad.player.States.IdleBackwardState
+  fullName: AshesOfVelsingrad.player.States.IdleBackwardState
+  nameWithType: IdleBackwardState
+- uid: AshesOfVelsingrad.player.States.IdleBackwardState.Enter
+  name: Enter()
+  href: api/AshesOfVelsingrad.player.States.IdleBackwardState.html#AshesOfVelsingrad_player_States_IdleBackwardState_Enter
+  commentId: M:AshesOfVelsingrad.player.States.IdleBackwardState.Enter
+  fullName: AshesOfVelsingrad.player.States.IdleBackwardState.Enter()
+  nameWithType: IdleBackwardState.Enter()
+- uid: AshesOfVelsingrad.player.States.IdleBackwardState.Enter*
+  name: Enter
+  href: api/AshesOfVelsingrad.player.States.IdleBackwardState.html#AshesOfVelsingrad_player_States_IdleBackwardState_Enter_
+  commentId: Overload:AshesOfVelsingrad.player.States.IdleBackwardState.Enter
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.player.States.IdleBackwardState.Enter
+  nameWithType: IdleBackwardState.Enter
+- uid: AshesOfVelsingrad.player.States.IdleBackwardState.Exit
+  name: Exit()
+  href: api/AshesOfVelsingrad.player.States.IdleBackwardState.html#AshesOfVelsingrad_player_States_IdleBackwardState_Exit
+  commentId: M:AshesOfVelsingrad.player.States.IdleBackwardState.Exit
+  fullName: AshesOfVelsingrad.player.States.IdleBackwardState.Exit()
+  nameWithType: IdleBackwardState.Exit()
+- uid: AshesOfVelsingrad.player.States.IdleBackwardState.Exit*
+  name: Exit
+  href: api/AshesOfVelsingrad.player.States.IdleBackwardState.html#AshesOfVelsingrad_player_States_IdleBackwardState_Exit_
+  commentId: Overload:AshesOfVelsingrad.player.States.IdleBackwardState.Exit
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.player.States.IdleBackwardState.Exit
+  nameWithType: IdleBackwardState.Exit
+- uid: AshesOfVelsingrad.player.States.IdleBackwardState.OnStateReady
+  name: OnStateReady()
+  href: api/AshesOfVelsingrad.player.States.IdleBackwardState.html#AshesOfVelsingrad_player_States_IdleBackwardState_OnStateReady
+  commentId: M:AshesOfVelsingrad.player.States.IdleBackwardState.OnStateReady
+  fullName: AshesOfVelsingrad.player.States.IdleBackwardState.OnStateReady()
+  nameWithType: IdleBackwardState.OnStateReady()
+- uid: AshesOfVelsingrad.player.States.IdleBackwardState.OnStateReady*
+  name: OnStateReady
+  href: api/AshesOfVelsingrad.player.States.IdleBackwardState.html#AshesOfVelsingrad_player_States_IdleBackwardState_OnStateReady_
+  commentId: Overload:AshesOfVelsingrad.player.States.IdleBackwardState.OnStateReady
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.player.States.IdleBackwardState.OnStateReady
+  nameWithType: IdleBackwardState.OnStateReady
+- uid: AshesOfVelsingrad.player.States.IdleForwardState
+  name: IdleForwardState
+  href: api/AshesOfVelsingrad.player.States.IdleForwardState.html
+  commentId: T:AshesOfVelsingrad.player.States.IdleForwardState
+  fullName: AshesOfVelsingrad.player.States.IdleForwardState
+  nameWithType: IdleForwardState
+- uid: AshesOfVelsingrad.player.States.IdleForwardState.Enter
+  name: Enter()
+  href: api/AshesOfVelsingrad.player.States.IdleForwardState.html#AshesOfVelsingrad_player_States_IdleForwardState_Enter
+  commentId: M:AshesOfVelsingrad.player.States.IdleForwardState.Enter
+  fullName: AshesOfVelsingrad.player.States.IdleForwardState.Enter()
+  nameWithType: IdleForwardState.Enter()
+- uid: AshesOfVelsingrad.player.States.IdleForwardState.Enter*
+  name: Enter
+  href: api/AshesOfVelsingrad.player.States.IdleForwardState.html#AshesOfVelsingrad_player_States_IdleForwardState_Enter_
+  commentId: Overload:AshesOfVelsingrad.player.States.IdleForwardState.Enter
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.player.States.IdleForwardState.Enter
+  nameWithType: IdleForwardState.Enter
+- uid: AshesOfVelsingrad.player.States.IdleForwardState.Exit
+  name: Exit()
+  href: api/AshesOfVelsingrad.player.States.IdleForwardState.html#AshesOfVelsingrad_player_States_IdleForwardState_Exit
+  commentId: M:AshesOfVelsingrad.player.States.IdleForwardState.Exit
+  fullName: AshesOfVelsingrad.player.States.IdleForwardState.Exit()
+  nameWithType: IdleForwardState.Exit()
+- uid: AshesOfVelsingrad.player.States.IdleForwardState.Exit*
+  name: Exit
+  href: api/AshesOfVelsingrad.player.States.IdleForwardState.html#AshesOfVelsingrad_player_States_IdleForwardState_Exit_
+  commentId: Overload:AshesOfVelsingrad.player.States.IdleForwardState.Exit
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.player.States.IdleForwardState.Exit
+  nameWithType: IdleForwardState.Exit
+- uid: AshesOfVelsingrad.player.States.IdleForwardState.OnStateReady
+  name: OnStateReady()
+  href: api/AshesOfVelsingrad.player.States.IdleForwardState.html#AshesOfVelsingrad_player_States_IdleForwardState_OnStateReady
+  commentId: M:AshesOfVelsingrad.player.States.IdleForwardState.OnStateReady
+  fullName: AshesOfVelsingrad.player.States.IdleForwardState.OnStateReady()
+  nameWithType: IdleForwardState.OnStateReady()
+- uid: AshesOfVelsingrad.player.States.IdleForwardState.OnStateReady*
+  name: OnStateReady
+  href: api/AshesOfVelsingrad.player.States.IdleForwardState.html#AshesOfVelsingrad_player_States_IdleForwardState_OnStateReady_
+  commentId: Overload:AshesOfVelsingrad.player.States.IdleForwardState.OnStateReady
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.player.States.IdleForwardState.OnStateReady
+  nameWithType: IdleForwardState.OnStateReady
+- uid: AshesOfVelsingrad.player.States.IdleLeftState
+  name: IdleLeftState
+  href: api/AshesOfVelsingrad.player.States.IdleLeftState.html
+  commentId: T:AshesOfVelsingrad.player.States.IdleLeftState
+  fullName: AshesOfVelsingrad.player.States.IdleLeftState
+  nameWithType: IdleLeftState
+- uid: AshesOfVelsingrad.player.States.IdleLeftState.Enter
+  name: Enter()
+  href: api/AshesOfVelsingrad.player.States.IdleLeftState.html#AshesOfVelsingrad_player_States_IdleLeftState_Enter
+  commentId: M:AshesOfVelsingrad.player.States.IdleLeftState.Enter
+  fullName: AshesOfVelsingrad.player.States.IdleLeftState.Enter()
+  nameWithType: IdleLeftState.Enter()
+- uid: AshesOfVelsingrad.player.States.IdleLeftState.Enter*
+  name: Enter
+  href: api/AshesOfVelsingrad.player.States.IdleLeftState.html#AshesOfVelsingrad_player_States_IdleLeftState_Enter_
+  commentId: Overload:AshesOfVelsingrad.player.States.IdleLeftState.Enter
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.player.States.IdleLeftState.Enter
+  nameWithType: IdleLeftState.Enter
+- uid: AshesOfVelsingrad.player.States.IdleLeftState.Exit
+  name: Exit()
+  href: api/AshesOfVelsingrad.player.States.IdleLeftState.html#AshesOfVelsingrad_player_States_IdleLeftState_Exit
+  commentId: M:AshesOfVelsingrad.player.States.IdleLeftState.Exit
+  fullName: AshesOfVelsingrad.player.States.IdleLeftState.Exit()
+  nameWithType: IdleLeftState.Exit()
+- uid: AshesOfVelsingrad.player.States.IdleLeftState.Exit*
+  name: Exit
+  href: api/AshesOfVelsingrad.player.States.IdleLeftState.html#AshesOfVelsingrad_player_States_IdleLeftState_Exit_
+  commentId: Overload:AshesOfVelsingrad.player.States.IdleLeftState.Exit
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.player.States.IdleLeftState.Exit
+  nameWithType: IdleLeftState.Exit
+- uid: AshesOfVelsingrad.player.States.IdleLeftState.OnStateReady
+  name: OnStateReady()
+  href: api/AshesOfVelsingrad.player.States.IdleLeftState.html#AshesOfVelsingrad_player_States_IdleLeftState_OnStateReady
+  commentId: M:AshesOfVelsingrad.player.States.IdleLeftState.OnStateReady
+  fullName: AshesOfVelsingrad.player.States.IdleLeftState.OnStateReady()
+  nameWithType: IdleLeftState.OnStateReady()
+- uid: AshesOfVelsingrad.player.States.IdleLeftState.OnStateReady*
+  name: OnStateReady
+  href: api/AshesOfVelsingrad.player.States.IdleLeftState.html#AshesOfVelsingrad_player_States_IdleLeftState_OnStateReady_
+  commentId: Overload:AshesOfVelsingrad.player.States.IdleLeftState.OnStateReady
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.player.States.IdleLeftState.OnStateReady
+  nameWithType: IdleLeftState.OnStateReady
+- uid: AshesOfVelsingrad.player.States.IdleRightState
+  name: IdleRightState
+  href: api/AshesOfVelsingrad.player.States.IdleRightState.html
+  commentId: T:AshesOfVelsingrad.player.States.IdleRightState
+  fullName: AshesOfVelsingrad.player.States.IdleRightState
+  nameWithType: IdleRightState
+- uid: AshesOfVelsingrad.player.States.IdleRightState.Enter
+  name: Enter()
+  href: api/AshesOfVelsingrad.player.States.IdleRightState.html#AshesOfVelsingrad_player_States_IdleRightState_Enter
+  commentId: M:AshesOfVelsingrad.player.States.IdleRightState.Enter
+  fullName: AshesOfVelsingrad.player.States.IdleRightState.Enter()
+  nameWithType: IdleRightState.Enter()
+- uid: AshesOfVelsingrad.player.States.IdleRightState.Enter*
+  name: Enter
+  href: api/AshesOfVelsingrad.player.States.IdleRightState.html#AshesOfVelsingrad_player_States_IdleRightState_Enter_
+  commentId: Overload:AshesOfVelsingrad.player.States.IdleRightState.Enter
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.player.States.IdleRightState.Enter
+  nameWithType: IdleRightState.Enter
+- uid: AshesOfVelsingrad.player.States.IdleRightState.Exit
+  name: Exit()
+  href: api/AshesOfVelsingrad.player.States.IdleRightState.html#AshesOfVelsingrad_player_States_IdleRightState_Exit
+  commentId: M:AshesOfVelsingrad.player.States.IdleRightState.Exit
+  fullName: AshesOfVelsingrad.player.States.IdleRightState.Exit()
+  nameWithType: IdleRightState.Exit()
+- uid: AshesOfVelsingrad.player.States.IdleRightState.Exit*
+  name: Exit
+  href: api/AshesOfVelsingrad.player.States.IdleRightState.html#AshesOfVelsingrad_player_States_IdleRightState_Exit_
+  commentId: Overload:AshesOfVelsingrad.player.States.IdleRightState.Exit
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.player.States.IdleRightState.Exit
+  nameWithType: IdleRightState.Exit
+- uid: AshesOfVelsingrad.player.States.IdleRightState.OnStateReady
+  name: OnStateReady()
+  href: api/AshesOfVelsingrad.player.States.IdleRightState.html#AshesOfVelsingrad_player_States_IdleRightState_OnStateReady
+  commentId: M:AshesOfVelsingrad.player.States.IdleRightState.OnStateReady
+  fullName: AshesOfVelsingrad.player.States.IdleRightState.OnStateReady()
+  nameWithType: IdleRightState.OnStateReady()
+- uid: AshesOfVelsingrad.player.States.IdleRightState.OnStateReady*
+  name: OnStateReady
+  href: api/AshesOfVelsingrad.player.States.IdleRightState.html#AshesOfVelsingrad_player_States_IdleRightState_OnStateReady_
+  commentId: Overload:AshesOfVelsingrad.player.States.IdleRightState.OnStateReady
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.player.States.IdleRightState.OnStateReady
+  nameWithType: IdleRightState.OnStateReady
 - uid: AshesOfVelsingrad.player.States.IdleState
   name: IdleState
   href: api/AshesOfVelsingrad.player.States.IdleState.html
@@ -30616,6 +31036,151 @@ references:
   isSpec: "True"
   fullName: AshesOfVelsingrad.systems.status_effects.effects.StunEffect.IsStackable
   nameWithType: StunEffect.IsStackable
+- uid: AshesOfVelsingrad.tutorial
+  name: AshesOfVelsingrad.tutorial
+  href: api/AshesOfVelsingrad.tutorial.html
+  commentId: N:AshesOfVelsingrad.tutorial
+  fullName: AshesOfVelsingrad.tutorial
+  nameWithType: AshesOfVelsingrad.tutorial
+- uid: AshesOfVelsingrad.tutorial.ItemDetectionArea
+  name: ItemDetectionArea
+  href: api/AshesOfVelsingrad.tutorial.ItemDetectionArea.html
+  commentId: T:AshesOfVelsingrad.tutorial.ItemDetectionArea
+  fullName: AshesOfVelsingrad.tutorial.ItemDetectionArea
+  nameWithType: ItemDetectionArea
+- uid: AshesOfVelsingrad.tutorial.ItemDetectionArea.EmitSignalOnStartedToMove
+  name: EmitSignalOnStartedToMove()
+  href: api/AshesOfVelsingrad.tutorial.ItemDetectionArea.html#AshesOfVelsingrad_tutorial_ItemDetectionArea_EmitSignalOnStartedToMove
+  commentId: M:AshesOfVelsingrad.tutorial.ItemDetectionArea.EmitSignalOnStartedToMove
+  fullName: AshesOfVelsingrad.tutorial.ItemDetectionArea.EmitSignalOnStartedToMove()
+  nameWithType: ItemDetectionArea.EmitSignalOnStartedToMove()
+- uid: AshesOfVelsingrad.tutorial.ItemDetectionArea.EmitSignalOnStartedToMove*
+  name: EmitSignalOnStartedToMove
+  href: api/AshesOfVelsingrad.tutorial.ItemDetectionArea.html#AshesOfVelsingrad_tutorial_ItemDetectionArea_EmitSignalOnStartedToMove_
+  commentId: Overload:AshesOfVelsingrad.tutorial.ItemDetectionArea.EmitSignalOnStartedToMove
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.tutorial.ItemDetectionArea.EmitSignalOnStartedToMove
+  nameWithType: ItemDetectionArea.EmitSignalOnStartedToMove
+- uid: AshesOfVelsingrad.tutorial.ItemDetectionArea.OnStartedToMove
+  name: OnStartedToMove
+  href: api/AshesOfVelsingrad.tutorial.ItemDetectionArea.html#AshesOfVelsingrad_tutorial_ItemDetectionArea_OnStartedToMove
+  commentId: E:AshesOfVelsingrad.tutorial.ItemDetectionArea.OnStartedToMove
+  fullName: AshesOfVelsingrad.tutorial.ItemDetectionArea.OnStartedToMove
+  nameWithType: ItemDetectionArea.OnStartedToMove
+- uid: AshesOfVelsingrad.tutorial.ItemDetectionArea._Ready
+  name: _Ready()
+  href: api/AshesOfVelsingrad.tutorial.ItemDetectionArea.html#AshesOfVelsingrad_tutorial_ItemDetectionArea__Ready
+  commentId: M:AshesOfVelsingrad.tutorial.ItemDetectionArea._Ready
+  fullName: AshesOfVelsingrad.tutorial.ItemDetectionArea._Ready()
+  nameWithType: ItemDetectionArea._Ready()
+- uid: AshesOfVelsingrad.tutorial.ItemDetectionArea._Ready*
+  name: _Ready
+  href: api/AshesOfVelsingrad.tutorial.ItemDetectionArea.html#AshesOfVelsingrad_tutorial_ItemDetectionArea__Ready_
+  commentId: Overload:AshesOfVelsingrad.tutorial.ItemDetectionArea._Ready
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.tutorial.ItemDetectionArea._Ready
+  nameWithType: ItemDetectionArea._Ready
+- uid: AshesOfVelsingrad.tutorial.MovableDoor
+  name: MovableDoor
+  href: api/AshesOfVelsingrad.tutorial.MovableDoor.html
+  commentId: T:AshesOfVelsingrad.tutorial.MovableDoor
+  fullName: AshesOfVelsingrad.tutorial.MovableDoor
+  nameWithType: MovableDoor
+- uid: AshesOfVelsingrad.tutorial.MovableDoor.ToggleDoor
+  name: ToggleDoor()
+  href: api/AshesOfVelsingrad.tutorial.MovableDoor.html#AshesOfVelsingrad_tutorial_MovableDoor_ToggleDoor
+  commentId: M:AshesOfVelsingrad.tutorial.MovableDoor.ToggleDoor
+  fullName: AshesOfVelsingrad.tutorial.MovableDoor.ToggleDoor()
+  nameWithType: MovableDoor.ToggleDoor()
+- uid: AshesOfVelsingrad.tutorial.MovableDoor.ToggleDoor*
+  name: ToggleDoor
+  href: api/AshesOfVelsingrad.tutorial.MovableDoor.html#AshesOfVelsingrad_tutorial_MovableDoor_ToggleDoor_
+  commentId: Overload:AshesOfVelsingrad.tutorial.MovableDoor.ToggleDoor
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.tutorial.MovableDoor.ToggleDoor
+  nameWithType: MovableDoor.ToggleDoor
+- uid: AshesOfVelsingrad.tutorial.MovableDoor.TogglingDoorFinished
+  name: TogglingDoorFinished
+  href: api/AshesOfVelsingrad.tutorial.MovableDoor.html#AshesOfVelsingrad_tutorial_MovableDoor_TogglingDoorFinished
+  commentId: E:AshesOfVelsingrad.tutorial.MovableDoor.TogglingDoorFinished
+  fullName: AshesOfVelsingrad.tutorial.MovableDoor.TogglingDoorFinished
+  nameWithType: MovableDoor.TogglingDoorFinished
+- uid: AshesOfVelsingrad.tutorial.MovableDoor._PhysicsProcess(System.Double)
+  name: _PhysicsProcess(double)
+  href: api/AshesOfVelsingrad.tutorial.MovableDoor.html#AshesOfVelsingrad_tutorial_MovableDoor__PhysicsProcess_System_Double_
+  commentId: M:AshesOfVelsingrad.tutorial.MovableDoor._PhysicsProcess(System.Double)
+  name.vb: _PhysicsProcess(Double)
+  fullName: AshesOfVelsingrad.tutorial.MovableDoor._PhysicsProcess(double)
+  fullName.vb: AshesOfVelsingrad.tutorial.MovableDoor._PhysicsProcess(Double)
+  nameWithType: MovableDoor._PhysicsProcess(double)
+  nameWithType.vb: MovableDoor._PhysicsProcess(Double)
+- uid: AshesOfVelsingrad.tutorial.MovableDoor._PhysicsProcess*
+  name: _PhysicsProcess
+  href: api/AshesOfVelsingrad.tutorial.MovableDoor.html#AshesOfVelsingrad_tutorial_MovableDoor__PhysicsProcess_
+  commentId: Overload:AshesOfVelsingrad.tutorial.MovableDoor._PhysicsProcess
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.tutorial.MovableDoor._PhysicsProcess
+  nameWithType: MovableDoor._PhysicsProcess
+- uid: AshesOfVelsingrad.tutorial.MovableDoor._Ready
+  name: _Ready()
+  href: api/AshesOfVelsingrad.tutorial.MovableDoor.html#AshesOfVelsingrad_tutorial_MovableDoor__Ready
+  commentId: M:AshesOfVelsingrad.tutorial.MovableDoor._Ready
+  fullName: AshesOfVelsingrad.tutorial.MovableDoor._Ready()
+  nameWithType: MovableDoor._Ready()
+- uid: AshesOfVelsingrad.tutorial.MovableDoor._Ready*
+  name: _Ready
+  href: api/AshesOfVelsingrad.tutorial.MovableDoor.html#AshesOfVelsingrad_tutorial_MovableDoor__Ready_
+  commentId: Overload:AshesOfVelsingrad.tutorial.MovableDoor._Ready
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.tutorial.MovableDoor._Ready
+  nameWithType: MovableDoor._Ready
+- uid: AshesOfVelsingrad.ui
+  name: AshesOfVelsingrad.ui
+  href: api/AshesOfVelsingrad.ui.html
+  commentId: N:AshesOfVelsingrad.ui
+  fullName: AshesOfVelsingrad.ui
+  nameWithType: AshesOfVelsingrad.ui
+- uid: AshesOfVelsingrad.ui.TextSequence
+  name: TextSequence
+  href: api/AshesOfVelsingrad.ui.TextSequence.html
+  commentId: T:AshesOfVelsingrad.ui.TextSequence
+  fullName: AshesOfVelsingrad.ui.TextSequence
+  nameWithType: TextSequence
+- uid: AshesOfVelsingrad.ui.TextSequence.OnSequenceEnded
+  name: OnSequenceEnded
+  href: api/AshesOfVelsingrad.ui.TextSequence.html#AshesOfVelsingrad_ui_TextSequence_OnSequenceEnded
+  commentId: E:AshesOfVelsingrad.ui.TextSequence.OnSequenceEnded
+  fullName: AshesOfVelsingrad.ui.TextSequence.OnSequenceEnded
+  nameWithType: TextSequence.OnSequenceEnded
+- uid: AshesOfVelsingrad.ui.TextSequence.PlaySequence(System.ValueTuple{System.String,System.Int32,System.Single}[])
+  name: PlaySequence((string text, int size, float duration)[])
+  href: api/AshesOfVelsingrad.ui.TextSequence.html#AshesOfVelsingrad_ui_TextSequence_PlaySequence_System_ValueTuple_System_String_System_Int32_System_Single____
+  commentId: M:AshesOfVelsingrad.ui.TextSequence.PlaySequence(System.ValueTuple{System.String,System.Int32,System.Single}[])
+  name.vb: PlaySequence((text As String, size As Integer, duration As Single)())
+  fullName: AshesOfVelsingrad.ui.TextSequence.PlaySequence((string text, int size, float duration)[])
+  fullName.vb: AshesOfVelsingrad.ui.TextSequence.PlaySequence((text As String, size As Integer, duration As Single)())
+  nameWithType: TextSequence.PlaySequence((string text, int size, float duration)[])
+  nameWithType.vb: TextSequence.PlaySequence((text As String, size As Integer, duration As Single)())
+- uid: AshesOfVelsingrad.ui.TextSequence.PlaySequence*
+  name: PlaySequence
+  href: api/AshesOfVelsingrad.ui.TextSequence.html#AshesOfVelsingrad_ui_TextSequence_PlaySequence_
+  commentId: Overload:AshesOfVelsingrad.ui.TextSequence.PlaySequence
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.ui.TextSequence.PlaySequence
+  nameWithType: TextSequence.PlaySequence
+- uid: AshesOfVelsingrad.ui.TextSequence._Ready
+  name: _Ready()
+  href: api/AshesOfVelsingrad.ui.TextSequence.html#AshesOfVelsingrad_ui_TextSequence__Ready
+  commentId: M:AshesOfVelsingrad.ui.TextSequence._Ready
+  fullName: AshesOfVelsingrad.ui.TextSequence._Ready()
+  nameWithType: TextSequence._Ready()
+- uid: AshesOfVelsingrad.ui.TextSequence._Ready*
+  name: _Ready
+  href: api/AshesOfVelsingrad.ui.TextSequence.html#AshesOfVelsingrad_ui_TextSequence__Ready_
+  commentId: Overload:AshesOfVelsingrad.ui.TextSequence._Ready
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.ui.TextSequence._Ready
+  nameWithType: TextSequence._Ready
 - uid: AshesofVelsingrad.scripts.systems
   name: AshesofVelsingrad.scripts.systems
   href: api/AshesofVelsingrad.scripts.systems.html

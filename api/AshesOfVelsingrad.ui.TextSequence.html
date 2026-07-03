@@ -2,11 +2,11 @@
 <html>
   <head>
     <meta charset="utf-8">
-      <title>Class WalkForwardState | Ashes of Velsingrad Documentation </title>
+      <title>Class TextSequence | Ashes of Velsingrad Documentation </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content="Class WalkForwardState | Ashes of Velsingrad Documentation ">
+      <meta name="title" content="Class TextSequence | Ashes of Velsingrad Documentation ">
       
-      
+      <meta name="description" content="Represents a UI sequence system that displays a series of text pages with fade-in and fade-out effects, typically used for cutscenes, introductions, or narrative transitions.">
       <link rel="icon" href="../favicon.ico">
       <link rel="stylesheet" href="../public/docfx.min.css">
       <link rel="stylesheet" href="../public/main.css">
@@ -84,25 +84,28 @@
           <nav id="breadcrumb"></nav>
         </div>
 
-        <article data-uid="AshesOfVelsingrad.player.States.WalkForwardState">
+        <article data-uid="AshesOfVelsingrad.ui.TextSequence">
 
 
 
-  <h1 id="AshesOfVelsingrad_player_States_WalkForwardState" data-uid="AshesOfVelsingrad.player.States.WalkForwardState" class="text-break">
-Class WalkForwardState  
+  <h1 id="AshesOfVelsingrad_ui_TextSequence" data-uid="AshesOfVelsingrad.ui.TextSequence" class="text-break">
+Class TextSequence  
   </h1>
 
   <div class="facts text-secondary">
-    <dl><dt>Namespace</dt><dd><a class="xref" href="AshesOfVelsingrad.html">AshesOfVelsingrad</a>.<a class="xref" href="AshesOfVelsingrad.player.html">player</a>.<a class="xref" href="AshesOfVelsingrad.player.States.html">States</a></dd></dl>
+    <dl><dt>Namespace</dt><dd><a class="xref" href="AshesOfVelsingrad.html">AshesOfVelsingrad</a>.<a class="xref" href="AshesOfVelsingrad.ui.html">ui</a></dd></dl>
   <dl><dt>Assembly</dt><dd>AshesofVelsingrad.dll</dd></dl>
   </div>
 
-  <div class="markdown summary"></div>
+  <div class="markdown summary"><p>Represents a UI sequence system that displays a series of text pages
+with fade-in and fade-out effects, typically used for cutscenes,
+introductions, or narrative transitions.</p>
+</div>
   <div class="markdown conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[ScriptPath(&quot;res://scripts/data/states/WalkForwardState.cs&quot;)]
-public class WalkForwardState : State, IDisposable</code></pre>
+    <pre><code class="lang-csharp hljs">[ScriptPath(&quot;res://scripts/ui/TextSequence.cs&quot;)]
+public class TextSequence : CanvasLayer, IDisposable</code></pre>
   </div>
 
 
@@ -114,8 +117,8 @@ public class WalkForwardState : State, IDisposable</code></pre>
       <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
       <div><span class="xref">GodotObject</span></div>
       <div><span class="xref">Node</span></div>
-      <div><a class="xref" href="AshesOfVelsingrad.Managers.State.html">State</a></div>
-      <div><span class="xref">WalkForwardState</span></div>
+      <div><span class="xref">CanvasLayer</span></div>
+      <div><span class="xref">TextSequence</span></div>
     </dd>
   </dl>
 
@@ -131,16 +134,58 @@ public class WalkForwardState : State, IDisposable</code></pre>
     <dt>Inherited Members</dt>
     <dd>
     <div>
-      <a class="xref" href="AshesOfVelsingrad.Managers.State.html#AshesOfVelsingrad_Managers_State_fsm">State.fsm</a>
+      <span class="xref">CanvasLayer.Show()</span>
     </div>
     <div>
-      <a class="xref" href="AshesOfVelsingrad.Managers.State.html#AshesOfVelsingrad_Managers_State_Update_System_Double_">State.Update(double)</a>
+      <span class="xref">CanvasLayer.Hide()</span>
     </div>
     <div>
-      <a class="xref" href="AshesOfVelsingrad.Managers.State.html#AshesOfVelsingrad_Managers_State_PhysicsUpdate_System_Double_">State.PhysicsUpdate(double)</a>
+      <span class="xref">CanvasLayer.GetFinalTransform()</span>
     </div>
     <div>
-      <a class="xref" href="AshesOfVelsingrad.Managers.State.html#AshesOfVelsingrad_Managers_State_HandleInput_Godot_InputEvent_">State.HandleInput(InputEvent)</a>
+      <span class="xref">CanvasLayer.GetCanvas()</span>
+    </div>
+    <div>
+      <span class="xref">CanvasLayer.EmitSignalVisibilityChanged()</span>
+    </div>
+    <div>
+      <span class="xref">CanvasLayer.InvokeGodotClassMethod(in godot_string_name, NativeVariantPtrArgs, out godot_variant)</span>
+    </div>
+    <div>
+      <span class="xref">CanvasLayer.HasGodotClassMethod(in godot_string_name)</span>
+    </div>
+    <div>
+      <span class="xref">CanvasLayer.HasGodotClassSignal(in godot_string_name)</span>
+    </div>
+    <div>
+      <span class="xref">CanvasLayer.Layer</span>
+    </div>
+    <div>
+      <span class="xref">CanvasLayer.Visible</span>
+    </div>
+    <div>
+      <span class="xref">CanvasLayer.Offset</span>
+    </div>
+    <div>
+      <span class="xref">CanvasLayer.Rotation</span>
+    </div>
+    <div>
+      <span class="xref">CanvasLayer.Scale</span>
+    </div>
+    <div>
+      <span class="xref">CanvasLayer.Transform</span>
+    </div>
+    <div>
+      <span class="xref">CanvasLayer.CustomViewport</span>
+    </div>
+    <div>
+      <span class="xref">CanvasLayer.FollowViewportEnabled</span>
+    </div>
+    <div>
+      <span class="xref">CanvasLayer.FollowViewportScale</span>
+    </div>
+    <div>
+      <span class="xref">CanvasLayer.VisibilityChanged</span>
     </div>
     <div>
       <span class="xref">Node.NotificationEnterTree</span>
@@ -327,9 +372,6 @@ public class WalkForwardState : State, IDisposable</code></pre>
     </div>
     <div>
       <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">Node._Process(double)</a>
-    </div>
-    <div>
-      <span class="xref">Node._Ready()</span>
     </div>
     <div>
       <span class="xref">Node._ShortcutInput(InputEvent)</span>
@@ -666,15 +708,6 @@ public class WalkForwardState : State, IDisposable</code></pre>
     </div>
     <div>
       <span class="xref">Node.EmitSignalEditorStateChanged()</span>
-    </div>
-    <div>
-      <span class="xref">Node.InvokeGodotClassMethod(in godot_string_name, NativeVariantPtrArgs, out godot_variant)</span>
-    </div>
-    <div>
-      <span class="xref">Node.HasGodotClassMethod(in godot_string_name)</span>
-    </div>
-    <div>
-      <span class="xref">Node.HasGodotClassSignal(in godot_string_name)</span>
     </div>
     <div>
       <span class="xref">Node.Name</span>
@@ -1014,20 +1047,64 @@ public class WalkForwardState : State, IDisposable</code></pre>
 </h2>
 
 
-  <a id="AshesOfVelsingrad_player_States_WalkForwardState_Enter_" data-uid="AshesOfVelsingrad.player.States.WalkForwardState.Enter*"></a>
+  <a id="AshesOfVelsingrad_ui_TextSequence_PlaySequence_" data-uid="AshesOfVelsingrad.ui.TextSequence.PlaySequence*"></a>
 
-  <h3 id="AshesOfVelsingrad_player_States_WalkForwardState_Enter" data-uid="AshesOfVelsingrad.player.States.WalkForwardState.Enter">
-  Enter()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/data/states/WalkForwardState.cs/#L18"><i class="bi bi-code-slash"></i></a>
+  <h3 id="AshesOfVelsingrad_ui_TextSequence_PlaySequence_System_ValueTuple_System_String_System_Int32_System_Single____" data-uid="AshesOfVelsingrad.ui.TextSequence.PlaySequence(System.ValueTuple{System.String,System.Int32,System.Single}[])">
+  PlaySequence((string text, int size, float duration)[])
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/ui/TextSequence.cs/#L122"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Called when the state is entered.
-Override to implement enter behavior.</p>
+  <div class="markdown level1 summary"><p>Plays a sequence of text pages with fade-in, display delay, and fade-out effects.
+Each page contains text, font size, and display duration.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public override void Enter()</code></pre>
+    <pre><code class="lang-csharp hljs">public Task PlaySequence((string text, int size, float duration)[] pages)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>pages</code> (<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-system.string,system.int32,system.single-.text">text</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-system.string,system.int32,system.single-.size">size</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-system.string,system.int32,system.single-.duration">duration</a>)[]</dt>
+    <dd><p>Array of tuples containing:</p>
+<ul>
+<li>text: The text to display.</li>
+<li>size: The font size for the label.</li>
+<li>duration: How long the text remains visible after fading in.</li>
+</ul>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></dt>
+    <dd><p>A task that completes when the sequence has finished playing.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AshesOfVelsingrad_ui_TextSequence__Ready_" data-uid="AshesOfVelsingrad.ui.TextSequence._Ready*"></a>
+
+  <h3 id="AshesOfVelsingrad_ui_TextSequence__Ready" data-uid="AshesOfVelsingrad.ui.TextSequence._Ready">
+  _Ready()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/ui/TextSequence.cs/#L104"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Initializes the node by retrieving required child nodes.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override void _Ready()</code></pre>
   </div>
 
 
@@ -1042,20 +1119,23 @@ Override to implement enter behavior.</p>
 
 
 
-  <a id="AshesOfVelsingrad_player_States_WalkForwardState_Exit_" data-uid="AshesOfVelsingrad.player.States.WalkForwardState.Exit*"></a>
+  <h2 class="section" id="events">Events
+</h2>
 
-  <h3 id="AshesOfVelsingrad_player_States_WalkForwardState_Exit" data-uid="AshesOfVelsingrad.player.States.WalkForwardState.Exit">
-  Exit()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/data/states/WalkForwardState.cs/#L23"><i class="bi bi-code-slash"></i></a>
+
+
+  <h3 id="AshesOfVelsingrad_ui_TextSequence_OnSequenceEnded" data-uid="AshesOfVelsingrad.ui.TextSequence.OnSequenceEnded">
+  OnSequenceEnded
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/ui/TextSequence.cs/#L33"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Called when the state is exited.
-Override to implement cleanup logic.</p>
+  <div class="markdown level1 summary"><p>Event triggered when the entire text sequence has finished playing
+and the node is about to be freed.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public override void Exit()</code></pre>
+    <pre><code class="lang-csharp hljs">public event Action? OnSequenceEnded</code></pre>
   </div>
 
 
@@ -1063,33 +1143,11 @@ Override to implement cleanup logic.</p>
 
 
 
-
-
-
-
-
-
-
-  <a id="AshesOfVelsingrad_player_States_WalkForwardState_OnStateReady_" data-uid="AshesOfVelsingrad.player.States.WalkForwardState.OnStateReady*"></a>
-
-  <h3 id="AshesOfVelsingrad_player_States_WalkForwardState_OnStateReady" data-uid="AshesOfVelsingrad.player.States.WalkForwardState.OnStateReady">
-  OnStateReady()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/data/states/WalkForwardState.cs/#L13"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Called during the initialization phase of the state machine.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public override void OnStateReady()</code></pre>
-  </div>
-
-
-
-
-
-
+  <h4 class="section">Event Type</h4>
+  <dl class="parameters">
+    <dt><span class="xref">Action</span></dt>
+    <dd></dd>
+  </dl>
 
 
 

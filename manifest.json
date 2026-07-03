@@ -2598,7 +2598,7 @@
       "Uid": null,
       "IsMRef": true,
       "Title": "AshesOfVelsingrad.Interfaces.NpcSystem",
-      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.Interfaces.NpcSystem.yml\" sourcestartlinenumber=\"1\">Base abstract class for all NPCs in the game.\nProvides common movement, navigation, and state-transition behaviors\nsuch as idling, roaming, and following a target entity.</p>\n"
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.Interfaces.NpcSystem.yml\" sourcestartlinenumber=\"1\">Base abstract class for all NPC characters in the game.\nProvides core behavior including navigation, movement handling,\nand high-level AI sub-states such as idle, roaming, and target following.</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -2865,6 +2865,34 @@
       "IsMRef": true,
       "Title": "AshesOfVelsingrad.Managers.TurnManager",
       "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.Managers.TurnManager.yml\" sourcestartlinenumber=\"1\"><xref href=\"AshesOfVelsingrad.Managers.TurnManager\" data-throw-if-not-resolved=\"false\"></xref> partial — adds three-faction support, an upcoming-queue\ngetter for the HUD turn-order widget, and an <xref href=\"AshesOfVelsingrad.Managers.TurnManager.OnAllyTurn\" data-throw-if-not-resolved=\"false\"></xref> event.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.Managers.TutorialManager.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.Managers.TutorialManager.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.Managers.TutorialManager",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.Managers.TutorialStep.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.Managers.TutorialStep.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.Managers.TutorialStep",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
@@ -4044,6 +4072,20 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.Utilities.AovDataStructures.NpcSubState.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.Utilities.AovDataStructures.NpcSubState.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.Utilities.AovDataStructures.NpcSubState",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.Utilities.AovDataStructures.NpcSubState.yml\" sourcestartlinenumber=\"1\">Represents the different sub-states of an NPC behavior system.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "documentation/api/AshesOfVelsingrad.Utilities.AovDataStructures.StatTypeWithModifier.yml",
       "output": {
         ".html": {
@@ -4306,6 +4348,62 @@
       "Uid": null,
       "IsMRef": true,
       "Title": "AshesOfVelsingrad.player.InteractionComponent",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.player.States.IdleBackwardState.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.player.States.IdleBackwardState.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.player.States.IdleBackwardState",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.player.States.IdleForwardState.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.player.States.IdleForwardState.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.player.States.IdleForwardState",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.player.States.IdleLeftState.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.player.States.IdleLeftState.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.player.States.IdleLeftState",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.player.States.IdleRightState.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.player.States.IdleRightState.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.player.States.IdleRightState",
       "Summary": null
     },
     {
@@ -5328,6 +5426,76 @@
       "Uid": null,
       "IsMRef": true,
       "Title": "AshesOfVelsingrad.systems.status_effects",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.tutorial.ItemDetectionArea.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.tutorial.ItemDetectionArea.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.tutorial.ItemDetectionArea",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.tutorial.MovableDoor.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.tutorial.MovableDoor.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.tutorial.MovableDoor",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.tutorial.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.tutorial.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.tutorial",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.ui.TextSequence.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.ui.TextSequence.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.ui.TextSequence",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.ui.TextSequence.yml\" sourcestartlinenumber=\"1\">Represents a UI sequence system that displays a series of text pages\nwith fade-in and fade-out effects, typically used for cutscenes,\nintroductions, or narrative transitions.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.ui.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.ui.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.ui",
       "Summary": null
     },
     {

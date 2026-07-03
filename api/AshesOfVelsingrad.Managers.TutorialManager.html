@@ -2,9 +2,9 @@
 <html>
   <head>
     <meta charset="utf-8">
-      <title>Class WalkForwardState | Ashes of Velsingrad Documentation </title>
+      <title>Class TutorialManager | Ashes of Velsingrad Documentation </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content="Class WalkForwardState | Ashes of Velsingrad Documentation ">
+      <meta name="title" content="Class TutorialManager | Ashes of Velsingrad Documentation ">
       
       
       <link rel="icon" href="../favicon.ico">
@@ -84,16 +84,16 @@
           <nav id="breadcrumb"></nav>
         </div>
 
-        <article data-uid="AshesOfVelsingrad.player.States.WalkForwardState">
+        <article data-uid="AshesOfVelsingrad.Managers.TutorialManager">
 
 
 
-  <h1 id="AshesOfVelsingrad_player_States_WalkForwardState" data-uid="AshesOfVelsingrad.player.States.WalkForwardState" class="text-break">
-Class WalkForwardState  
+  <h1 id="AshesOfVelsingrad_Managers_TutorialManager" data-uid="AshesOfVelsingrad.Managers.TutorialManager" class="text-break">
+Class TutorialManager  
   </h1>
 
   <div class="facts text-secondary">
-    <dl><dt>Namespace</dt><dd><a class="xref" href="AshesOfVelsingrad.html">AshesOfVelsingrad</a>.<a class="xref" href="AshesOfVelsingrad.player.html">player</a>.<a class="xref" href="AshesOfVelsingrad.player.States.html">States</a></dd></dl>
+    <dl><dt>Namespace</dt><dd><a class="xref" href="AshesOfVelsingrad.html">AshesOfVelsingrad</a>.<a class="xref" href="AshesOfVelsingrad.Managers.html">Managers</a></dd></dl>
   <dl><dt>Assembly</dt><dd>AshesofVelsingrad.dll</dd></dl>
   </div>
 
@@ -101,8 +101,8 @@ Class WalkForwardState
   <div class="markdown conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[ScriptPath(&quot;res://scripts/data/states/WalkForwardState.cs&quot;)]
-public class WalkForwardState : State, IDisposable</code></pre>
+    <pre><code class="lang-csharp hljs">[ScriptPath(&quot;res://scripts/managers/TutorialManager.cs&quot;)]
+public class TutorialManager : Node, IDisposable</code></pre>
   </div>
 
 
@@ -114,8 +114,7 @@ public class WalkForwardState : State, IDisposable</code></pre>
       <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
       <div><span class="xref">GodotObject</span></div>
       <div><span class="xref">Node</span></div>
-      <div><a class="xref" href="AshesOfVelsingrad.Managers.State.html">State</a></div>
-      <div><span class="xref">WalkForwardState</span></div>
+      <div><span class="xref">TutorialManager</span></div>
     </dd>
   </dl>
 
@@ -130,18 +129,6 @@ public class WalkForwardState : State, IDisposable</code></pre>
   <dl class="typelist inheritedMembers">
     <dt>Inherited Members</dt>
     <dd>
-    <div>
-      <a class="xref" href="AshesOfVelsingrad.Managers.State.html#AshesOfVelsingrad_Managers_State_fsm">State.fsm</a>
-    </div>
-    <div>
-      <a class="xref" href="AshesOfVelsingrad.Managers.State.html#AshesOfVelsingrad_Managers_State_Update_System_Double_">State.Update(double)</a>
-    </div>
-    <div>
-      <a class="xref" href="AshesOfVelsingrad.Managers.State.html#AshesOfVelsingrad_Managers_State_PhysicsUpdate_System_Double_">State.PhysicsUpdate(double)</a>
-    </div>
-    <div>
-      <a class="xref" href="AshesOfVelsingrad.Managers.State.html#AshesOfVelsingrad_Managers_State_HandleInput_Godot_InputEvent_">State.HandleInput(InputEvent)</a>
-    </div>
     <div>
       <span class="xref">Node.NotificationEnterTree</span>
     </div>
@@ -327,9 +314,6 @@ public class WalkForwardState : State, IDisposable</code></pre>
     </div>
     <div>
       <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">Node._Process(double)</a>
-    </div>
-    <div>
-      <span class="xref">Node._Ready()</span>
     </div>
     <div>
       <span class="xref">Node._ShortcutInput(InputEvent)</span>
@@ -1010,24 +994,119 @@ public class WalkForwardState : State, IDisposable</code></pre>
 
 
 
+  <h2 class="section" id="properties">Properties
+</h2>
+
+
+  <a id="AshesOfVelsingrad_Managers_TutorialManager_CanMove_" data-uid="AshesOfVelsingrad.Managers.TutorialManager.CanMove*"></a>
+
+  <h3 id="AshesOfVelsingrad_Managers_TutorialManager_CanMove" data-uid="AshesOfVelsingrad.Managers.TutorialManager.CanMove">
+  CanMove
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/managers/TutorialManager.cs/#L80"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool CanMove { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="AshesOfVelsingrad_Managers_TutorialManager_CanToggleInventory_" data-uid="AshesOfVelsingrad.Managers.TutorialManager.CanToggleInventory*"></a>
+
+  <h3 id="AshesOfVelsingrad_Managers_TutorialManager_CanToggleInventory" data-uid="AshesOfVelsingrad.Managers.TutorialManager.CanToggleInventory">
+  CanToggleInventory
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/managers/TutorialManager.cs/#L81"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool CanToggleInventory { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="AshesOfVelsingrad_Managers_TutorialManager_IsOnlyToggleInventory_" data-uid="AshesOfVelsingrad.Managers.TutorialManager.IsOnlyToggleInventory*"></a>
+
+  <h3 id="AshesOfVelsingrad_Managers_TutorialManager_IsOnlyToggleInventory" data-uid="AshesOfVelsingrad.Managers.TutorialManager.IsOnlyToggleInventory">
+  IsOnlyToggleInventory
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/managers/TutorialManager.cs/#L82"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool IsOnlyToggleInventory { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
   <h2 class="section" id="methods">Methods
 </h2>
 
 
-  <a id="AshesOfVelsingrad_player_States_WalkForwardState_Enter_" data-uid="AshesOfVelsingrad.player.States.WalkForwardState.Enter*"></a>
+  <a id="AshesOfVelsingrad_Managers_TutorialManager_DoSecondInventoryExplationDialog_" data-uid="AshesOfVelsingrad.Managers.TutorialManager.DoSecondInventoryExplationDialog*"></a>
 
-  <h3 id="AshesOfVelsingrad_player_States_WalkForwardState_Enter" data-uid="AshesOfVelsingrad.player.States.WalkForwardState.Enter">
-  Enter()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/data/states/WalkForwardState.cs/#L18"><i class="bi bi-code-slash"></i></a>
+  <h3 id="AshesOfVelsingrad_Managers_TutorialManager_DoSecondInventoryExplationDialog" data-uid="AshesOfVelsingrad.Managers.TutorialManager.DoSecondInventoryExplationDialog">
+  DoSecondInventoryExplationDialog()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/managers/TutorialManager.cs/#L216"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Called when the state is entered.
-Override to implement enter behavior.</p>
-</div>
+  <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public override void Enter()</code></pre>
+    <pre><code class="lang-csharp hljs">public void DoSecondInventoryExplationDialog()</code></pre>
   </div>
 
 
@@ -1042,20 +1121,18 @@ Override to implement enter behavior.</p>
 
 
 
-  <a id="AshesOfVelsingrad_player_States_WalkForwardState_Exit_" data-uid="AshesOfVelsingrad.player.States.WalkForwardState.Exit*"></a>
+  <a id="AshesOfVelsingrad_Managers_TutorialManager_GoToNextStep_" data-uid="AshesOfVelsingrad.Managers.TutorialManager.GoToNextStep*"></a>
 
-  <h3 id="AshesOfVelsingrad_player_States_WalkForwardState_Exit" data-uid="AshesOfVelsingrad.player.States.WalkForwardState.Exit">
-  Exit()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/data/states/WalkForwardState.cs/#L23"><i class="bi bi-code-slash"></i></a>
+  <h3 id="AshesOfVelsingrad_Managers_TutorialManager_GoToNextStep" data-uid="AshesOfVelsingrad.Managers.TutorialManager.GoToNextStep">
+  GoToNextStep()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/managers/TutorialManager.cs/#L198"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Called when the state is exited.
-Override to implement cleanup logic.</p>
-</div>
+  <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public override void Exit()</code></pre>
+    <pre><code class="lang-csharp hljs">public void GoToNextStep()</code></pre>
   </div>
 
 
@@ -1070,19 +1147,22 @@ Override to implement cleanup logic.</p>
 
 
 
-  <a id="AshesOfVelsingrad_player_States_WalkForwardState_OnStateReady_" data-uid="AshesOfVelsingrad.player.States.WalkForwardState.OnStateReady*"></a>
+  <a id="AshesOfVelsingrad_Managers_TutorialManager__Ready_" data-uid="AshesOfVelsingrad.Managers.TutorialManager._Ready*"></a>
 
-  <h3 id="AshesOfVelsingrad_player_States_WalkForwardState_OnStateReady" data-uid="AshesOfVelsingrad.player.States.WalkForwardState.OnStateReady">
-  OnStateReady()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/data/states/WalkForwardState.cs/#L13"><i class="bi bi-code-slash"></i></a>
+  <h3 id="AshesOfVelsingrad_Managers_TutorialManager__Ready" data-uid="AshesOfVelsingrad.Managers.TutorialManager._Ready">
+  _Ready()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/managers/TutorialManager.cs/#L165"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Called during the initialization phase of the state machine.</p>
+  <div class="markdown level1 summary"><p>Called when the node is "ready", i.e. when both the node and its children have entered the scene tree. If the node has children, their <span class="xref">Godot.Node._Ready()</span> callbacks get triggered first, and the parent node will receive the ready notification afterwards.</p>
+<p>Corresponds to the <span class="xref">Godot.Node.NotificationReady</span> notification in <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">_Notification(int)</a>. See also the <code>@onready</code> annotation for variables.</p>
+<p>Usually used for initialization. For even earlier initialization, <span class="xref">Godot.GodotObject.GodotObject()</span> may be used. See also <span class="xref">Godot.Node._EnterTree()</span>.</p>
+<p><b>Note:</b> This method may be called only once for each node. After removing a node from the scene tree and adding it again, <span class="xref">Godot.Node._Ready()</span> will <b>not</b> be called a second time. This can be bypassed by requesting another call with <span class="xref">Godot.Node.RequestReady()</span>, which may be called anywhere before adding the node again.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public override void OnStateReady()</code></pre>
+    <pre><code class="lang-csharp hljs">public override void _Ready()</code></pre>
   </div>
 
 

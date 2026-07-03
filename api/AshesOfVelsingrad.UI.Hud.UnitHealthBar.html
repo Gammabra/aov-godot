@@ -6,7 +6,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <meta name="title" content="Class UnitHealthBar | Ashes of Velsingrad Documentation ">
       
-      <meta name="description" content="Compact HP/MP indicator bound to a single .">
+      <meta name="description" content="Compact portrait + HP/MP indicator bound to a single .">
       <link rel="icon" href="../favicon.ico">
       <link rel="stylesheet" href="../public/docfx.min.css">
       <link rel="stylesheet" href="../public/main.css">
@@ -97,13 +97,13 @@ Class UnitHealthBar
   <dl><dt>Assembly</dt><dd>AshesofVelsingrad.dll</dd></dl>
   </div>
 
-  <div class="markdown summary"><p>Compact HP/MP indicator bound to a single <a class="xref" href="AshesOfVelsingrad.Systems.IUnitSystem.html">IUnitSystem</a>.</p>
+  <div class="markdown summary"><p>Compact portrait + HP/MP indicator bound to a single <a class="xref" href="AshesOfVelsingrad.Systems.IUnitSystem.html">IUnitSystem</a>.</p>
 </div>
   <div class="markdown conceptual"></div>
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[ScriptPath(&quot;res://scripts/ui/hud/UnitHealthBar.cs&quot;)]
-public sealed class UnitHealthBar : Control, IDisposable</code></pre>
+public sealed class UnitHealthBar : Control, IDisposable, IHudWidget</code></pre>
   </div>
 
 
@@ -125,6 +125,7 @@ public sealed class UnitHealthBar : Control, IDisposable</code></pre>
     <dt>Implements</dt>
     <dd>
       <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.idisposable">IDisposable</a></div>
+      <div><a class="xref" href="AshesOfVelsingrad.UI.Hud.IHudWidget.html">IHudWidget</a></div>
     </dd>
   </dl>
 
@@ -1057,9 +1058,6 @@ public sealed class UnitHealthBar : Control, IDisposable</code></pre>
       <span class="xref">Node._EnterTree()</span>
     </div>
     <div>
-      <span class="xref">Node._ExitTree()</span>
-    </div>
-    <div>
       <span class="xref">Node._GetAccessibilityConfigurationWarnings()</span>
     </div>
     <div>
@@ -1073,6 +1071,9 @@ public sealed class UnitHealthBar : Control, IDisposable</code></pre>
     </div>
     <div>
       <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">Node._PhysicsProcess(double)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">Node._Process(double)</a>
     </div>
     <div>
       <span class="xref">Node._ShortcutInput(InputEvent)</span>
@@ -1698,10 +1699,15 @@ public sealed class UnitHealthBar : Control, IDisposable</code></pre>
 
 
   <h2 id="AshesOfVelsingrad_UI_Hud_UnitHealthBar_remarks">Remarks</h2>
-  <div class="markdown level0 remarks"><p>Bind once with <a class="xref" href="AshesOfVelsingrad.UI.Hud.UnitHealthBar.html#AshesOfVelsingrad_UI_Hud_UnitHealthBar_Bind_AshesOfVelsingrad_Systems_IUnitSystem_">Bind(IUnitSystem?)</a> and call <a class="xref" href="AshesOfVelsingrad.UI.Hud.UnitHealthBar.html#AshesOfVelsingrad_UI_Hud_UnitHealthBar_Refresh">Refresh()</a> from the parent
-widget whenever an event source (a turn change, a damage tick, etc.) might have
-altered the unit's state. Designed to be re-used by <a class="xref" href="AshesOfVelsingrad.UI.Hud.EnemyRoster.html">EnemyRoster</a> and
-other widgets that aggregate per-unit summaries.</p>
+  <div class="markdown level0 remarks"><p>
+    A horizontal row: portrait inset on the left, name + HP/MP bars stacked on the right.
+    Designed to be reused by <a class="xref" href="AshesOfVelsingrad.UI.Hud.EnemyRoster.html">EnemyRoster</a> and any other widget that
+    aggregates per-unit summaries.
+</p>
+<p>
+    Bind once with <a class="xref" href="AshesOfVelsingrad.UI.Hud.UnitHealthBar.html#AshesOfVelsingrad_UI_Hud_UnitHealthBar_Bind_AshesOfVelsingrad_Systems_IUnitSystem_">Bind(IUnitSystem?)</a> and call <a class="xref" href="AshesOfVelsingrad.UI.Hud.UnitHealthBar.html#AshesOfVelsingrad_UI_Hud_UnitHealthBar_Refresh">Refresh()</a> when an event
+    source might have altered the unit's state.
+</p>
 </div>
 
 
@@ -1713,7 +1719,7 @@ other widgets that aggregate per-unit summaries.</p>
 
   <h3 id="AshesOfVelsingrad_UI_Hud_UnitHealthBar_Bind_AshesOfVelsingrad_Systems_IUnitSystem_" data-uid="AshesOfVelsingrad.UI.Hud.UnitHealthBar.Bind(AshesOfVelsingrad.Systems.IUnitSystem)">
   Bind(IUnitSystem?)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/ui/hud/UnitHealthBar.cs/#L76"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/ui/hud/UnitHealthBar.cs/#L145"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Bind the bar to a unit and immediately refresh.</p>
@@ -1727,8 +1733,7 @@ other widgets that aggregate per-unit summaries.</p>
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
     <dt><code>unit</code> <a class="xref" href="AshesOfVelsingrad.Systems.IUnitSystem.html">IUnitSystem</a></dt>
-    <dd><p>Unit to track. Pass null to clear.</p>
-</dd>
+    <dd></dd>
   </dl>
 
 
@@ -1746,7 +1751,7 @@ other widgets that aggregate per-unit summaries.</p>
 
   <h3 id="AshesOfVelsingrad_UI_Hud_UnitHealthBar_Refresh" data-uid="AshesOfVelsingrad.UI.Hud.UnitHealthBar.Refresh">
   Refresh()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/ui/hud/UnitHealthBar.cs/#L83"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/ui/hud/UnitHealthBar.cs/#L159"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Re-read the bound unit's HP/MP and update the visuals.</p>
@@ -1769,33 +1774,49 @@ other widgets that aggregate per-unit summaries.</p>
 
 
 
-  <a id="AshesOfVelsingrad_UI_Hud_UnitHealthBar__Process_" data-uid="AshesOfVelsingrad.UI.Hud.UnitHealthBar._Process*"></a>
+  <a id="AshesOfVelsingrad_UI_Hud_UnitHealthBar_Relayout_" data-uid="AshesOfVelsingrad.UI.Hud.UnitHealthBar.Relayout*"></a>
 
-  <h3 id="AshesOfVelsingrad_UI_Hud_UnitHealthBar__Process_System_Double_" data-uid="AshesOfVelsingrad.UI.Hud.UnitHealthBar._Process(System.Double)">
-  _Process(double)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/ui/hud/UnitHealthBar.cs/#L32"><i class="bi bi-code-slash"></i></a>
+  <h3 id="AshesOfVelsingrad_UI_Hud_UnitHealthBar_Relayout" data-uid="AshesOfVelsingrad.UI.Hud.UnitHealthBar.Relayout">
+  Relayout()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/ui/hud/UnitHealthBar.cs/#L44"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Called on each idle frame, prior to rendering, and after physics ticks have been processed. <code class="paramref">delta</code> is the time between frames in seconds.</p>
-<p>It is only called if processing is enabled for this Node, which is done automatically if this method is overridden, and can be toggled with <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">SetProcess(bool)</a>.</p>
-<p>Processing happens in order of <span class="xref">Godot.Node.ProcessPriority</span>, lower priority values are called first. Nodes with the same priority are processed in tree order, or top to bottom as seen in the editor (also known as pre-order traversal).</p>
-<p>Corresponds to the <span class="xref">Godot.Node.NotificationProcess</span> notification in <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">_Notification(int)</a>.</p>
-<p><b>Note:</b> This method is only called if the node is present in the scene tree (i.e. if it's not an orphan).</p>
-<p><b>Note:</b> When the engine is struggling and the frame rate is lowered, <code class="paramref">delta</code> will increase. When <code class="paramref">delta</code> is increased, it's capped at a maximum of <span class="xref">Godot.Engine.TimeScale</span> * <span class="xref">Godot.Engine.MaxPhysicsStepsPerFrame</span> / <span class="xref">Godot.Engine.PhysicsTicksPerSecond</span>. As a result, accumulated <code class="paramref">delta</code> may not represent real world time.</p>
-<p><b>Note:</b> When <code>--fixed-fps</code> is enabled or the engine is running in Movie Maker mode (see <span class="xref">Godot.MovieWriter</span>), process <code class="paramref">delta</code> will always be the same for every frame, regardless of how much time the frame took to render.</p>
-<p><b>Note:</b> Frame delta may be post-processed by <span class="xref">Godot.OS.DeltaSmoothing</span> if this is enabled for the project.</p>
+  <div class="markdown level1 summary"><p>Recompute anchored offsets / min-size against current <a class="xref" href="AshesOfVelsingrad.UI.Hud.HudStyle.html#AshesOfVelsingrad_UI_Hud_HudStyle_UiScale">UiScale</a>.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public override void _Process(double delta)</code></pre>
+    <pre><code class="lang-csharp hljs">public void Relayout()</code></pre>
   </div>
 
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>delta</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
-    <dd></dd>
-  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AshesOfVelsingrad_UI_Hud_UnitHealthBar__ExitTree_" data-uid="AshesOfVelsingrad.UI.Hud.UnitHealthBar._ExitTree*"></a>
+
+  <h3 id="AshesOfVelsingrad_UI_Hud_UnitHealthBar__ExitTree" data-uid="AshesOfVelsingrad.UI.Hud.UnitHealthBar._ExitTree">
+  _ExitTree()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/ui/hud/UnitHealthBar.cs/#L37"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Called when the node is about to leave the <span class="xref">Godot.SceneTree</span> (e.g. upon freeing, scene changing, or after calling <span class="xref">Godot.Node.RemoveChild(Godot.Node)</span> in a script). If the node has children, its <span class="xref">Godot.Node._ExitTree()</span> callback will be called last, after all its children have left the tree.</p>
+<p>Corresponds to the <span class="xref">Godot.Node.NotificationExitTree</span> notification in <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">_Notification(int)</a> and signal <span class="xref">Godot.Node.TreeExiting</span>. To get notified when the node has already left the active tree, connect to the <span class="xref">Godot.Node.TreeExited</span>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override void _ExitTree()</code></pre>
+  </div>
+
 
 
 
@@ -1812,7 +1833,7 @@ other widgets that aggregate per-unit summaries.</p>
 
   <h3 id="AshesOfVelsingrad_UI_Hud_UnitHealthBar__Ready" data-uid="AshesOfVelsingrad.UI.Hud.UnitHealthBar._Ready">
   _Ready()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/ui/hud/UnitHealthBar.cs/#L23"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/ui/hud/UnitHealthBar.cs/#L31"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Called when the node is "ready", i.e. when both the node and its children have entered the scene tree. If the node has children, their <span class="xref">Godot.Node._Ready()</span> callbacks get triggered first, and the parent node will receive the ready notification afterwards.</p>

@@ -103,7 +103,7 @@ Class BattleLog
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[ScriptPath(&quot;res://scripts/ui/hud/BattleLog.cs&quot;)]
-public sealed class BattleLog : Control, IDisposable</code></pre>
+public sealed class BattleLog : Control, IDisposable, IHudWidget</code></pre>
   </div>
 
 
@@ -125,6 +125,7 @@ public sealed class BattleLog : Control, IDisposable</code></pre>
     <dt>Implements</dt>
     <dd>
       <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.idisposable">IDisposable</a></div>
+      <div><a class="xref" href="AshesOfVelsingrad.UI.Hud.IHudWidget.html">IHudWidget</a></div>
     </dd>
   </dl>
 
@@ -1698,9 +1699,10 @@ public sealed class BattleLog : Control, IDisposable</code></pre>
 
 
   <h2 id="AshesOfVelsingrad_UI_Hud_BattleLog_remarks">Remarks</h2>
-  <div class="markdown level0 remarks"><p>Producers (<code>GameManager</code>, skills, status effects) call
-<code>BattleNotifications.Post(message, severity)</code> and the log appends a colour-coded
-line. Caps at <a class="xref" href="AshesOfVelsingrad.UI.Hud.BattleLog.html#AshesOfVelsingrad_UI_Hud_BattleLog_MaxLines">MaxLines</a> entries.</p>
+  <div class="markdown level0 remarks"><p>Light-iron panel sitting above the action bar on the right side. Producers
+(<code>GameManager</code>, skills, status effects) call <code>BattleNotifications.Post(message,
+severity)</code> and the log appends a colour-coded line. Caps at <a class="xref" href="AshesOfVelsingrad.UI.Hud.BattleLog.html#AshesOfVelsingrad_UI_Hud_BattleLog_MaxLines">MaxLines</a>
+entries.</p>
 </div>
 
 
@@ -1711,7 +1713,7 @@ line. Caps at <a class="xref" href="AshesOfVelsingrad.UI.Hud.BattleLog.html#Ashe
 
   <h3 id="AshesOfVelsingrad_UI_Hud_BattleLog_MaxLines" data-uid="AshesOfVelsingrad.UI.Hud.BattleLog.MaxLines">
   MaxLines
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/ui/hud/BattleLog.cs/#L17"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/ui/hud/BattleLog.cs/#L18"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Maximum number of log lines retained on screen.</p>
@@ -1747,7 +1749,7 @@ line. Caps at <a class="xref" href="AshesOfVelsingrad.UI.Hud.BattleLog.html#Ashe
 
   <h3 id="AshesOfVelsingrad_UI_Hud_BattleLog_EnsureBuilt" data-uid="AshesOfVelsingrad.UI.Hud.BattleLog.EnsureBuilt">
   EnsureBuilt()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/ui/hud/BattleLog.cs/#L29"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/ui/hud/BattleLog.cs/#L31"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Idempotent build — safe to call before <code>_Ready</code> fires.</p>
@@ -1770,11 +1772,38 @@ line. Caps at <a class="xref" href="AshesOfVelsingrad.UI.Hud.BattleLog.html#Ashe
 
 
 
+  <a id="AshesOfVelsingrad_UI_Hud_BattleLog_Relayout_" data-uid="AshesOfVelsingrad.UI.Hud.BattleLog.Relayout*"></a>
+
+  <h3 id="AshesOfVelsingrad_UI_Hud_BattleLog_Relayout" data-uid="AshesOfVelsingrad.UI.Hud.BattleLog.Relayout">
+  Relayout()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/ui/hud/BattleLog.cs/#L46"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Recompute anchored offsets / min-size against current <a class="xref" href="AshesOfVelsingrad.UI.Hud.HudStyle.html#AshesOfVelsingrad_UI_Hud_HudStyle_UiScale">UiScale</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Relayout()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
   <a id="AshesOfVelsingrad_UI_Hud_BattleLog__ExitTree_" data-uid="AshesOfVelsingrad.UI.Hud.BattleLog._ExitTree*"></a>
 
   <h3 id="AshesOfVelsingrad_UI_Hud_BattleLog__ExitTree" data-uid="AshesOfVelsingrad.UI.Hud.BattleLog._ExitTree">
   _ExitTree()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/ui/hud/BattleLog.cs/#L38"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/ui/hud/BattleLog.cs/#L40"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Called when the node is about to leave the <span class="xref">Godot.SceneTree</span> (e.g. upon freeing, scene changing, or after calling <span class="xref">Godot.Node.RemoveChild(Godot.Node)</span> in a script). If the node has children, its <span class="xref">Godot.Node._ExitTree()</span> callback will be called last, after all its children have left the tree.</p>
@@ -1802,7 +1831,7 @@ line. Caps at <a class="xref" href="AshesOfVelsingrad.UI.Hud.BattleLog.html#Ashe
 
   <h3 id="AshesOfVelsingrad_UI_Hud_BattleLog__Ready" data-uid="AshesOfVelsingrad.UI.Hud.BattleLog._Ready">
   _Ready()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/ui/hud/BattleLog.cs/#L23"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/ui/hud/BattleLog.cs/#L25"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Called when the node is "ready", i.e. when both the node and its children have entered the scene tree. If the node has children, their <span class="xref">Godot.Node._Ready()</span> callbacks get triggered first, and the parent node will receive the ready notification afterwards.</p>

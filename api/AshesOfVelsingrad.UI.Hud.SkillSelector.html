@@ -104,7 +104,7 @@ Class SkillSelector
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[ScriptPath(&quot;res://scripts/ui/hud/SkillSelector.cs&quot;)]
-public sealed class SkillSelector : Control, IDisposable</code></pre>
+public sealed class SkillSelector : Control, IDisposable, IHudWidget</code></pre>
   </div>
 
 
@@ -126,6 +126,7 @@ public sealed class SkillSelector : Control, IDisposable</code></pre>
     <dt>Implements</dt>
     <dd>
       <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.idisposable">IDisposable</a></div>
+      <div><a class="xref" href="AshesOfVelsingrad.UI.Hud.IHudWidget.html">IHudWidget</a></div>
     </dd>
   </dl>
 
@@ -1702,16 +1703,10 @@ public sealed class SkillSelector : Control, IDisposable</code></pre>
 
 
   <h2 id="AshesOfVelsingrad_UI_Hud_SkillSelector_remarks">Remarks</h2>
-  <div class="markdown level0 remarks"><p>
-    Reads from the active player unit's <a class="xref" href="AshesOfVelsingrad.Systems.IUnitSystem.html#AshesOfVelsingrad_Systems_IUnitSystem_ActiveSkills">ActiveSkills</a> list.
-    Each slot's button is disabled when the skill is on cooldown or the caster has
-    insufficient mana. Hover tooltips carry the full description / MP / CD / Range.
-</p>
-<p>
-    The widget is purely presentational — it raises <a class="xref" href="AshesOfVelsingrad.UI.Hud.SkillSelector.html#AshesOfVelsingrad_UI_Hud_SkillSelector_OnSkillSelected">OnSkillSelected</a> with
-    the slot index and the resolved skill, and the consumer (<code>GameManager</code>) decides
-    what to do (enter targeting, etc.).
-</p>
+  <div class="markdown level0 remarks"><p>Souls-like slot frames in a row directly above the action bar. Each slot shows the
+hotkey number, the skill icon (default rune until skill resources expose icon paths)
+and the remaining cooldown overlaid in the centre. Slots disable when the skill is
+on cooldown or the caster lacks mana.</p>
 </div>
 
 
@@ -1722,7 +1717,7 @@ public sealed class SkillSelector : Control, IDisposable</code></pre>
 
   <h3 id="AshesOfVelsingrad_UI_Hud_SkillSelector_SlotCount" data-uid="AshesOfVelsingrad.UI.Hud.SkillSelector.SlotCount">
   SlotCount
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/ui/hud/SkillSelector.cs/#L26"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/ui/hud/SkillSelector.cs/#L20"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Number of slots, fixed at 5.</p>
@@ -1758,12 +1753,10 @@ public sealed class SkillSelector : Control, IDisposable</code></pre>
 
   <h3 id="AshesOfVelsingrad_UI_Hud_SkillSelector_Bind_AshesOfVelsingrad_Systems_IUnitSystem_" data-uid="AshesOfVelsingrad.UI.Hud.SkillSelector.Bind(AshesOfVelsingrad.Systems.IUnitSystem)">
   Bind(IUnitSystem?)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/ui/hud/SkillSelector.cs/#L99"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/ui/hud/SkillSelector.cs/#L165"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Bind the selector to the unit whose loadout to display. Refreshes immediately.
-Also hides the widget entirely on non-player turns — the player can only act on
-<a class="xref" href="AshesOfVelsingrad.Systems.Faction.html#AshesOfVelsingrad_Systems_Faction_Player">Player</a> units, so showing AI-driven skills would be misleading.</p>
+  <div class="markdown level1 summary"><p>Bind the selector to the unit whose loadout to display.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -1774,8 +1767,7 @@ Also hides the widget entirely on non-player turns — the player can only act o
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
     <dt><code>unit</code> <a class="xref" href="AshesOfVelsingrad.Systems.IUnitSystem.html">IUnitSystem</a></dt>
-    <dd><p>Unit to track, or null to clear.</p>
-</dd>
+    <dd></dd>
   </dl>
 
 
@@ -1793,7 +1785,7 @@ Also hides the widget entirely on non-player turns — the player can only act o
 
   <h3 id="AshesOfVelsingrad_UI_Hud_SkillSelector_EnsureBuilt" data-uid="AshesOfVelsingrad.UI.Hud.SkillSelector.EnsureBuilt">
   EnsureBuilt()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/ui/hud/SkillSelector.cs/#L42"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/ui/hud/SkillSelector.cs/#L35"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Idempotent build — safe to call before <code>_Ready</code> fires.</p>
@@ -1820,10 +1812,10 @@ Also hides the widget entirely on non-player turns — the player can only act o
 
   <h3 id="AshesOfVelsingrad_UI_Hud_SkillSelector_Refresh" data-uid="AshesOfVelsingrad.UI.Hud.SkillSelector.Refresh">
   Refresh()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/ui/hud/SkillSelector.cs/#L108"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/ui/hud/SkillSelector.cs/#L173"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Re-read the bound unit's skills and refresh slot text + disabled state.</p>
+  <div class="markdown level1 summary"><p>Re-read the bound unit's skills and refresh slot visuals.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -1843,11 +1835,38 @@ Also hides the widget entirely on non-player turns — the player can only act o
 
 
 
+  <a id="AshesOfVelsingrad_UI_Hud_SkillSelector_Relayout_" data-uid="AshesOfVelsingrad.UI.Hud.SkillSelector.Relayout*"></a>
+
+  <h3 id="AshesOfVelsingrad_UI_Hud_SkillSelector_Relayout" data-uid="AshesOfVelsingrad.UI.Hud.SkillSelector.Relayout">
+  Relayout()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/ui/hud/SkillSelector.cs/#L43"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Recompute anchored offsets / min-size against current <a class="xref" href="AshesOfVelsingrad.UI.Hud.HudStyle.html#AshesOfVelsingrad_UI_Hud_HudStyle_UiScale">UiScale</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Relayout()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
   <a id="AshesOfVelsingrad_UI_Hud_SkillSelector__Ready_" data-uid="AshesOfVelsingrad.UI.Hud.SkillSelector._Ready*"></a>
 
   <h3 id="AshesOfVelsingrad_UI_Hud_SkillSelector__Ready" data-uid="AshesOfVelsingrad.UI.Hud.SkillSelector._Ready">
   _Ready()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/ui/hud/SkillSelector.cs/#L36"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/ui/hud/SkillSelector.cs/#L32"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Called when the node is "ready", i.e. when both the node and its children have entered the scene tree. If the node has children, their <span class="xref">Godot.Node._Ready()</span> callbacks get triggered first, and the parent node will receive the ready notification afterwards.</p>
@@ -1880,10 +1899,10 @@ Also hides the widget entirely on non-player turns — the player can only act o
 
   <h3 id="AshesOfVelsingrad_UI_Hud_SkillSelector_OnSkillSelected" data-uid="AshesOfVelsingrad.UI.Hud.SkillSelector.OnSkillSelected">
   OnSkillSelected
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/ui/hud/SkillSelector.cs/#L29"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/ui/hud/SkillSelector.cs/#L23"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Fired when a slot is clicked. Carries the slot index (0-4) and the skill.</p>
+  <div class="markdown level1 summary"><p>Fired when a slot is clicked.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 

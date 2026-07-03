@@ -6,7 +6,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <meta name="title" content="Class PlayerStatusPanel | Ashes of Velsingrad Documentation ">
       
-      <meta name="description" content="Bottom-left panel showing the active controlled unit&#39;s name, HP and MP.">
+      <meta name="description" content="Bottom-left panel showing the active controlled unit&#39;s portrait, name, HP and MP.">
       <link rel="icon" href="../favicon.ico">
       <link rel="stylesheet" href="../public/docfx.min.css">
       <link rel="stylesheet" href="../public/main.css">
@@ -97,13 +97,13 @@ Class PlayerStatusPanel
   <dl><dt>Assembly</dt><dd>AshesofVelsingrad.dll</dd></dl>
   </div>
 
-  <div class="markdown summary"><p>Bottom-left panel showing the active controlled unit's name, HP and MP.</p>
+  <div class="markdown summary"><p>Bottom-left panel showing the active controlled unit's portrait, name, HP and MP.</p>
 </div>
   <div class="markdown conceptual"></div>
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[ScriptPath(&quot;res://scripts/ui/hud/PlayerStatusPanel.cs&quot;)]
-public sealed class PlayerStatusPanel : Control, IDisposable</code></pre>
+public sealed class PlayerStatusPanel : Control, IDisposable, IHudWidget</code></pre>
   </div>
 
 
@@ -125,6 +125,7 @@ public sealed class PlayerStatusPanel : Control, IDisposable</code></pre>
     <dt>Implements</dt>
     <dd>
       <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.idisposable">IDisposable</a></div>
+      <div><a class="xref" href="AshesOfVelsingrad.UI.Hud.IHudWidget.html">IHudWidget</a></div>
     </dd>
   </dl>
 
@@ -1057,9 +1058,6 @@ public sealed class PlayerStatusPanel : Control, IDisposable</code></pre>
       <span class="xref">Node._EnterTree()</span>
     </div>
     <div>
-      <span class="xref">Node._ExitTree()</span>
-    </div>
-    <div>
       <span class="xref">Node._GetAccessibilityConfigurationWarnings()</span>
     </div>
     <div>
@@ -1073,6 +1071,9 @@ public sealed class PlayerStatusPanel : Control, IDisposable</code></pre>
     </div>
     <div>
       <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">Node._PhysicsProcess(double)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">Node._Process(double)</a>
     </div>
     <div>
       <span class="xref">Node._ShortcutInput(InputEvent)</span>
@@ -1698,10 +1699,16 @@ public sealed class PlayerStatusPanel : Control, IDisposable</code></pre>
 
 
   <h2 id="AshesOfVelsingrad_UI_Hud_PlayerStatusPanel_remarks">Remarks</h2>
-  <div class="markdown level0 remarks"><p>Bound by <code>GameManager</code> on every player turn start (and after any HP/MP-changing
-action). Light by design — the new branch doesn't yet have <code>EntityProfile</code>
-(portrait/level/class metadata), so the panel just shows the name and the bars.
-Add the portrait/level rendering back once a profile resource lands.</p>
+  <div class="markdown level0 remarks"><p>
+    Heavy iron frame with a portrait inset on the left, name + bars on the right. Uses
+    <a class="xref" href="AshesOfVelsingrad.UI.Hud.HudStyle.html#AshesOfVelsingrad_UI_Hud_HudStyle_ScaledPx_System_Int32_">ScaledPx(int)</a> for every offset so the panel grows / shrinks with
+    the user's UI scale slider in lock-step with the fonts.
+</p>
+<p>
+    Bound by <code>GameManager</code> on every player turn start and after any HP/MP-changing
+    action. When the unit's <a class="xref" href="AshesOfVelsingrad.Data.EntityProfile.html">EntityProfile</a> exposes a portrait path
+    the portrait is rendered; otherwise the default silhouette icon is shown.
+</p>
 </div>
 
 
@@ -1713,7 +1720,7 @@ Add the portrait/level rendering back once a profile resource lands.</p>
 
   <h3 id="AshesOfVelsingrad_UI_Hud_PlayerStatusPanel_Bind_AshesOfVelsingrad_Systems_IUnitSystem_" data-uid="AshesOfVelsingrad.UI.Hud.PlayerStatusPanel.Bind(AshesOfVelsingrad.Systems.IUnitSystem)">
   Bind(IUnitSystem?)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/ui/hud/PlayerStatusPanel.cs/#L102"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/ui/hud/PlayerStatusPanel.cs/#L190"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Bind the panel to a unit. Pass null to reset.</p>
@@ -1727,8 +1734,7 @@ Add the portrait/level rendering back once a profile resource lands.</p>
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
     <dt><code>unit</code> <a class="xref" href="AshesOfVelsingrad.Systems.IUnitSystem.html">IUnitSystem</a></dt>
-    <dd><p>Unit to display, or null.</p>
-</dd>
+    <dd></dd>
   </dl>
 
 
@@ -1746,7 +1752,7 @@ Add the portrait/level rendering back once a profile resource lands.</p>
 
   <h3 id="AshesOfVelsingrad_UI_Hud_PlayerStatusPanel_EnsureBuilt" data-uid="AshesOfVelsingrad.UI.Hud.PlayerStatusPanel.EnsureBuilt">
   EnsureBuilt()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/ui/hud/PlayerStatusPanel.cs/#L32"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/ui/hud/PlayerStatusPanel.cs/#L40"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Idempotent build — safe to call before <code>_Ready</code> fires.</p>
@@ -1773,7 +1779,7 @@ Add the portrait/level rendering back once a profile resource lands.</p>
 
   <h3 id="AshesOfVelsingrad_UI_Hud_PlayerStatusPanel_Refresh" data-uid="AshesOfVelsingrad.UI.Hud.PlayerStatusPanel.Refresh">
   Refresh()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/ui/hud/PlayerStatusPanel.cs/#L109"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/ui/hud/PlayerStatusPanel.cs/#L204"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Re-read the bound unit's stats and repaint.</p>
@@ -1796,33 +1802,49 @@ Add the portrait/level rendering back once a profile resource lands.</p>
 
 
 
-  <a id="AshesOfVelsingrad_UI_Hud_PlayerStatusPanel__Process_" data-uid="AshesOfVelsingrad.UI.Hud.PlayerStatusPanel._Process*"></a>
+  <a id="AshesOfVelsingrad_UI_Hud_PlayerStatusPanel_Relayout_" data-uid="AshesOfVelsingrad.UI.Hud.PlayerStatusPanel.Relayout*"></a>
 
-  <h3 id="AshesOfVelsingrad_UI_Hud_PlayerStatusPanel__Process_System_Double_" data-uid="AshesOfVelsingrad.UI.Hud.PlayerStatusPanel._Process(System.Double)">
-  _Process(double)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/ui/hud/PlayerStatusPanel.cs/#L43"><i class="bi bi-code-slash"></i></a>
+  <h3 id="AshesOfVelsingrad_UI_Hud_PlayerStatusPanel_Relayout" data-uid="AshesOfVelsingrad.UI.Hud.PlayerStatusPanel.Relayout">
+  Relayout()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/ui/hud/PlayerStatusPanel.cs/#L55"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Called on each idle frame, prior to rendering, and after physics ticks have been processed. <code class="paramref">delta</code> is the time between frames in seconds.</p>
-<p>It is only called if processing is enabled for this Node, which is done automatically if this method is overridden, and can be toggled with <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">SetProcess(bool)</a>.</p>
-<p>Processing happens in order of <span class="xref">Godot.Node.ProcessPriority</span>, lower priority values are called first. Nodes with the same priority are processed in tree order, or top to bottom as seen in the editor (also known as pre-order traversal).</p>
-<p>Corresponds to the <span class="xref">Godot.Node.NotificationProcess</span> notification in <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">_Notification(int)</a>.</p>
-<p><b>Note:</b> This method is only called if the node is present in the scene tree (i.e. if it's not an orphan).</p>
-<p><b>Note:</b> When the engine is struggling and the frame rate is lowered, <code class="paramref">delta</code> will increase. When <code class="paramref">delta</code> is increased, it's capped at a maximum of <span class="xref">Godot.Engine.TimeScale</span> * <span class="xref">Godot.Engine.MaxPhysicsStepsPerFrame</span> / <span class="xref">Godot.Engine.PhysicsTicksPerSecond</span>. As a result, accumulated <code class="paramref">delta</code> may not represent real world time.</p>
-<p><b>Note:</b> When <code>--fixed-fps</code> is enabled or the engine is running in Movie Maker mode (see <span class="xref">Godot.MovieWriter</span>), process <code class="paramref">delta</code> will always be the same for every frame, regardless of how much time the frame took to render.</p>
-<p><b>Note:</b> Frame delta may be post-processed by <span class="xref">Godot.OS.DeltaSmoothing</span> if this is enabled for the project.</p>
+  <div class="markdown level1 summary"><p>Recompute anchored offsets / min-size against current <a class="xref" href="AshesOfVelsingrad.UI.Hud.HudStyle.html#AshesOfVelsingrad_UI_Hud_HudStyle_UiScale">UiScale</a>.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public override void _Process(double delta)</code></pre>
+    <pre><code class="lang-csharp hljs">public void Relayout()</code></pre>
   </div>
 
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>delta</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
-    <dd></dd>
-  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AshesOfVelsingrad_UI_Hud_PlayerStatusPanel__ExitTree_" data-uid="AshesOfVelsingrad.UI.Hud.PlayerStatusPanel._ExitTree*"></a>
+
+  <h3 id="AshesOfVelsingrad_UI_Hud_PlayerStatusPanel__ExitTree" data-uid="AshesOfVelsingrad.UI.Hud.PlayerStatusPanel._ExitTree">
+  _ExitTree()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/ui/hud/PlayerStatusPanel.cs/#L48"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Called when the node is about to leave the <span class="xref">Godot.SceneTree</span> (e.g. upon freeing, scene changing, or after calling <span class="xref">Godot.Node.RemoveChild(Godot.Node)</span> in a script). If the node has children, its <span class="xref">Godot.Node._ExitTree()</span> callback will be called last, after all its children have left the tree.</p>
+<p>Corresponds to the <span class="xref">Godot.Node.NotificationExitTree</span> notification in <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">_Notification(int)</a> and signal <span class="xref">Godot.Node.TreeExiting</span>. To get notified when the node has already left the active tree, connect to the <span class="xref">Godot.Node.TreeExited</span>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override void _ExitTree()</code></pre>
+  </div>
+
 
 
 
@@ -1839,7 +1861,7 @@ Add the portrait/level rendering back once a profile resource lands.</p>
 
   <h3 id="AshesOfVelsingrad_UI_Hud_PlayerStatusPanel__Ready" data-uid="AshesOfVelsingrad.UI.Hud.PlayerStatusPanel._Ready">
   _Ready()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/ui/hud/PlayerStatusPanel.cs/#L26"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/ui/hud/PlayerStatusPanel.cs/#L34"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Called when the node is "ready", i.e. when both the node and its children have entered the scene tree. If the node has children, their <span class="xref">Godot.Node._Ready()</span> callbacks get triggered first, and the parent node will receive the ready notification afterwards.</p>

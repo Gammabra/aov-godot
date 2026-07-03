@@ -84,16 +84,16 @@
           <nav id="breadcrumb"></nav>
         </div>
 
-        <article data-uid="AshesOfVelsingrad.ui.hud.CorruptionGauge">
+        <article data-uid="AshesOfVelsingrad.UI.Hud.CorruptionGauge">
 
 
 
-  <h1 id="AshesOfVelsingrad_ui_hud_CorruptionGauge" data-uid="AshesOfVelsingrad.ui.hud.CorruptionGauge" class="text-break">
+  <h1 id="AshesOfVelsingrad_UI_Hud_CorruptionGauge" data-uid="AshesOfVelsingrad.UI.Hud.CorruptionGauge" class="text-break">
 Class CorruptionGauge  
   </h1>
 
   <div class="facts text-secondary">
-    <dl><dt>Namespace</dt><dd><a class="xref" href="AshesOfVelsingrad.html">AshesOfVelsingrad</a>.<a class="xref" href="AshesOfVelsingrad.ui.html">ui</a>.<a class="xref" href="AshesOfVelsingrad.ui.hud.html">hud</a></dd></dl>
+    <dl><dt>Namespace</dt><dd><a class="xref" href="AshesOfVelsingrad.html">AshesOfVelsingrad</a>.<a class="xref" href="AshesOfVelsingrad.UI.html">UI</a>.<a class="xref" href="AshesOfVelsingrad.UI.Hud.html">Hud</a></dd></dl>
   <dl><dt>Assembly</dt><dd>AshesofVelsingrad.dll</dd></dl>
   </div>
 
@@ -103,7 +103,7 @@ Class CorruptionGauge
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[ScriptPath(&quot;res://scripts/ui/hud/CorruptionGauge.cs&quot;)]
-public sealed class CorruptionGauge : Control, IDisposable</code></pre>
+public sealed class CorruptionGauge : Control, IDisposable, IHudWidget</code></pre>
   </div>
 
 
@@ -125,6 +125,7 @@ public sealed class CorruptionGauge : Control, IDisposable</code></pre>
     <dt>Implements</dt>
     <dd>
       <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.idisposable">IDisposable</a></div>
+      <div><a class="xref" href="AshesOfVelsingrad.UI.Hud.IHudWidget.html">IHudWidget</a></div>
     </dd>
   </dl>
 
@@ -1697,9 +1698,10 @@ public sealed class CorruptionGauge : Control, IDisposable</code></pre>
 
 
 
-  <h2 id="AshesOfVelsingrad_ui_hud_CorruptionGauge_remarks">Remarks</h2>
-  <div class="markdown level0 remarks"><p>Top-left, tight bounds. Each segment fills as <a class="xref" href="AshesOfVelsingrad.systems.progression.CharacterProfile.html#AshesOfVelsingrad_systems_progression_CharacterProfile_CorruptionPoints">CorruptionPoints</a>
-grows; the next lights up when the level advances.</p>
+  <h2 id="AshesOfVelsingrad_UI_Hud_CorruptionGauge_remarks">Remarks</h2>
+  <div class="markdown level0 remarks"><p>Top-left, sits directly under the <a class="xref" href="AshesOfVelsingrad.UI.Hud.ContextInfoPanel.html">ContextInfoPanel</a>. Each segment lights as
+<a class="xref" href="AshesOfVelsingrad.systems.progression.CharacterProfile.html#AshesOfVelsingrad_systems_progression_CharacterProfile_CorruptionPoints">CorruptionPoints</a> grows; the next ignites when the level
+advances. Iron-with-bronze frame matches the rest of the HUD.</p>
 </div>
 
 
@@ -1707,11 +1709,65 @@ grows; the next lights up when the level advances.</p>
 </h2>
 
 
-  <a id="AshesOfVelsingrad_ui_hud_CorruptionGauge__ExitTree_" data-uid="AshesOfVelsingrad.ui.hud.CorruptionGauge._ExitTree*"></a>
+  <a id="AshesOfVelsingrad_UI_Hud_CorruptionGauge_EnsureBuilt_" data-uid="AshesOfVelsingrad.UI.Hud.CorruptionGauge.EnsureBuilt*"></a>
 
-  <h3 id="AshesOfVelsingrad_ui_hud_CorruptionGauge__ExitTree" data-uid="AshesOfVelsingrad.ui.hud.CorruptionGauge._ExitTree">
+  <h3 id="AshesOfVelsingrad_UI_Hud_CorruptionGauge_EnsureBuilt" data-uid="AshesOfVelsingrad.UI.Hud.CorruptionGauge.EnsureBuilt">
+  EnsureBuilt()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/ui/hud/CorruptionGauge.cs/#L31"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Idempotent build — safe to call before <code>_Ready</code> fires.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void EnsureBuilt()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AshesOfVelsingrad_UI_Hud_CorruptionGauge_Relayout_" data-uid="AshesOfVelsingrad.UI.Hud.CorruptionGauge.Relayout*"></a>
+
+  <h3 id="AshesOfVelsingrad_UI_Hud_CorruptionGauge_Relayout" data-uid="AshesOfVelsingrad.UI.Hud.CorruptionGauge.Relayout">
+  Relayout()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/ui/hud/CorruptionGauge.cs/#L53"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Recompute anchored offsets / min-size against current <a class="xref" href="AshesOfVelsingrad.UI.Hud.HudStyle.html#AshesOfVelsingrad_UI_Hud_HudStyle_UiScale">UiScale</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Relayout()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AshesOfVelsingrad_UI_Hud_CorruptionGauge__ExitTree_" data-uid="AshesOfVelsingrad.UI.Hud.CorruptionGauge._ExitTree*"></a>
+
+  <h3 id="AshesOfVelsingrad_UI_Hud_CorruptionGauge__ExitTree" data-uid="AshesOfVelsingrad.UI.Hud.CorruptionGauge._ExitTree">
   _ExitTree()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/ui/hud/CorruptionGauge.cs/#L37"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/ui/hud/CorruptionGauge.cs/#L46"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Called when the node is about to leave the <span class="xref">Godot.SceneTree</span> (e.g. upon freeing, scene changing, or after calling <span class="xref">Godot.Node.RemoveChild(Godot.Node)</span> in a script). If the node has children, its <span class="xref">Godot.Node._ExitTree()</span> callback will be called last, after all its children have left the tree.</p>
@@ -1735,11 +1791,11 @@ grows; the next lights up when the level advances.</p>
 
 
 
-  <a id="AshesOfVelsingrad_ui_hud_CorruptionGauge__Ready_" data-uid="AshesOfVelsingrad.ui.hud.CorruptionGauge._Ready*"></a>
+  <a id="AshesOfVelsingrad_UI_Hud_CorruptionGauge__Ready_" data-uid="AshesOfVelsingrad.UI.Hud.CorruptionGauge._Ready*"></a>
 
-  <h3 id="AshesOfVelsingrad_ui_hud_CorruptionGauge__Ready" data-uid="AshesOfVelsingrad.ui.hud.CorruptionGauge._Ready">
+  <h3 id="AshesOfVelsingrad_UI_Hud_CorruptionGauge__Ready" data-uid="AshesOfVelsingrad.UI.Hud.CorruptionGauge._Ready">
   _Ready()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/ui/hud/CorruptionGauge.cs/#L24"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/ui/hud/CorruptionGauge.cs/#L25"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Called when the node is "ready", i.e. when both the node and its children have entered the scene tree. If the node has children, their <span class="xref">Godot.Node._Ready()</span> callbacks get triggered first, and the parent node will receive the ready notification afterwards.</p>

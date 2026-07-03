@@ -6,7 +6,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <meta name="title" content="Class TurnOrderQueue | Ashes of Velsingrad Documentation ">
       
-      <meta name="description" content="Top-centre strip showing the next units to act, rendered as portrait chips with a faction-coloured border.">
+      <meta name="description" content="Top-centre strip showing the next units to act, rendered as portrait chips with a faction-coloured frame.">
       <link rel="icon" href="../favicon.ico">
       <link rel="stylesheet" href="../public/docfx.min.css">
       <link rel="stylesheet" href="../public/main.css">
@@ -98,13 +98,13 @@ Class TurnOrderQueue
   </div>
 
   <div class="markdown summary"><p>Top-centre strip showing the next units to act, rendered as portrait chips with a
-faction-coloured border.</p>
+faction-coloured frame.</p>
 </div>
   <div class="markdown conceptual"></div>
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[ScriptPath(&quot;res://scripts/ui/hud/TurnOrderQueue.cs&quot;)]
-public sealed class TurnOrderQueue : Control, IDisposable</code></pre>
+public sealed class TurnOrderQueue : Control, IDisposable, IHudWidget</code></pre>
   </div>
 
 
@@ -126,6 +126,7 @@ public sealed class TurnOrderQueue : Control, IDisposable</code></pre>
     <dt>Implements</dt>
     <dd>
       <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.idisposable">IDisposable</a></div>
+      <div><a class="xref" href="AshesOfVelsingrad.UI.Hud.IHudWidget.html">IHudWidget</a></div>
     </dd>
   </dl>
 
@@ -1704,9 +1705,10 @@ public sealed class TurnOrderQueue : Control, IDisposable</code></pre>
   <h2 id="AshesOfVelsingrad_UI_Hud_TurnOrderQueue_remarks">Remarks</h2>
   <div class="markdown level0 remarks"><p>
     Cyan border = <a class="xref" href="AshesOfVelsingrad.Systems.Faction.html#AshesOfVelsingrad_Systems_Faction_Player">Player</a>, green = <a class="xref" href="AshesOfVelsingrad.Systems.Faction.html#AshesOfVelsingrad_Systems_Faction_Ally">Ally</a>,
-    red = <a class="xref" href="AshesOfVelsingrad.Systems.Faction.html#AshesOfVelsingrad_Systems_Faction_Enemy">Enemy</a>. The first chip is highlighted as the currently
-    acting unit. When a unit's <a class="xref" href="AshesOfVelsingrad.Systems.IUnitSystem.html#AshesOfVelsingrad_Systems_IUnitSystem_EntityProfile">EntityProfile</a> has a portrait,
-    it's shown inside the chip; otherwise a coloured square fallback fills the space.
+    red = <a class="xref" href="AshesOfVelsingrad.Systems.Faction.html#AshesOfVelsingrad_Systems_Faction_Enemy">Enemy</a>. The first chip is highlighted with a thicker
+    gold halo as the currently acting unit. When a unit's <a class="xref" href="AshesOfVelsingrad.Systems.IUnitSystem.html#AshesOfVelsingrad_Systems_IUnitSystem_EntityProfile">EntityProfile</a>
+    has a portrait, it is shown inside the chip; otherwise the default silhouette icon
+    fills the space.
 </p>
 <p>
     <a class="xref" href="AshesOfVelsingrad.UI.Hud.TurnOrderQueue.html#AshesOfVelsingrad_UI_Hud_TurnOrderQueue_UpdateOrder_System_Collections_Generic_IReadOnlyList_AshesOfVelsingrad_Systems_IUnitSystem__">UpdateOrder(IReadOnlyList&lt;IUnitSystem&gt;)</a> is called by <code>GameManager</code> after every turn
@@ -1723,7 +1725,7 @@ public sealed class TurnOrderQueue : Control, IDisposable</code></pre>
 
   <h3 id="AshesOfVelsingrad_UI_Hud_TurnOrderQueue_EnsureBuilt" data-uid="AshesOfVelsingrad.UI.Hud.TurnOrderQueue.EnsureBuilt">
   EnsureBuilt()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/ui/hud/TurnOrderQueue.cs/#L35"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/ui/hud/TurnOrderQueue.cs/#L37"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Idempotent build — safe to call before <code>_Ready</code> fires.</p>
@@ -1746,11 +1748,38 @@ public sealed class TurnOrderQueue : Control, IDisposable</code></pre>
 
 
 
+  <a id="AshesOfVelsingrad_UI_Hud_TurnOrderQueue_Relayout_" data-uid="AshesOfVelsingrad.UI.Hud.TurnOrderQueue.Relayout*"></a>
+
+  <h3 id="AshesOfVelsingrad_UI_Hud_TurnOrderQueue_Relayout" data-uid="AshesOfVelsingrad.UI.Hud.TurnOrderQueue.Relayout">
+  Relayout()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/ui/hud/TurnOrderQueue.cs/#L45"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Recompute anchored offsets / min-size against current <a class="xref" href="AshesOfVelsingrad.UI.Hud.HudStyle.html#AshesOfVelsingrad_UI_Hud_HudStyle_UiScale">UiScale</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Relayout()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
   <a id="AshesOfVelsingrad_UI_Hud_TurnOrderQueue_UpdateOrder_" data-uid="AshesOfVelsingrad.UI.Hud.TurnOrderQueue.UpdateOrder*"></a>
 
   <h3 id="AshesOfVelsingrad_UI_Hud_TurnOrderQueue_UpdateOrder_System_Collections_Generic_IReadOnlyList_AshesOfVelsingrad_Systems_IUnitSystem__" data-uid="AshesOfVelsingrad.UI.Hud.TurnOrderQueue.UpdateOrder(System.Collections.Generic.IReadOnlyList{AshesOfVelsingrad.Systems.IUnitSystem})">
   UpdateOrder(IReadOnlyList&lt;IUnitSystem&gt;)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/ui/hud/TurnOrderQueue.cs/#L72"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/ui/hud/TurnOrderQueue.cs/#L91"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Replace the current chip strip with the given upcoming units.</p>
@@ -1764,8 +1793,7 @@ public sealed class TurnOrderQueue : Control, IDisposable</code></pre>
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
     <dt><code>upcomingUnits</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1">IReadOnlyList</a>&lt;<a class="xref" href="AshesOfVelsingrad.Systems.IUnitSystem.html">IUnitSystem</a>&gt;</dt>
-    <dd><p>Units to show, in activation order. Index 0 is currently acting.</p>
-</dd>
+    <dd></dd>
   </dl>
 
 
@@ -1783,7 +1811,7 @@ public sealed class TurnOrderQueue : Control, IDisposable</code></pre>
 
   <h3 id="AshesOfVelsingrad_UI_Hud_TurnOrderQueue__Ready" data-uid="AshesOfVelsingrad.UI.Hud.TurnOrderQueue._Ready">
   _Ready()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/ui/hud/TurnOrderQueue.cs/#L29"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/ui/hud/TurnOrderQueue.cs/#L31"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Called when the node is "ready", i.e. when both the node and its children have entered the scene tree. If the node has children, their <span class="xref">Godot.Node._Ready()</span> callbacks get triggered first, and the parent node will receive the ready notification afterwards.</p>

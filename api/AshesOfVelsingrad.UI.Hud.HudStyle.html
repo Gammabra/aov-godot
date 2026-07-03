@@ -6,7 +6,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <meta name="title" content="Class HudStyle | Ashes of Velsingrad Documentation ">
       
-      <meta name="description" content="Shared visual constants and helpers for every HUD widget — colours, panel styles, bar styles, label / button theme overrides.">
+      <meta name="description" content="Shared visual constants and helpers for every HUD widget — Souls-like dark-fantasy palette, panel tiers, bar styling, scaled fonts, scaled metrics, layout helpers.">
       <link rel="icon" href="../favicon.ico">
       <link rel="stylesheet" href="../public/docfx.min.css">
       <link rel="stylesheet" href="../public/main.css">
@@ -89,7 +89,7 @@
 
 
   <h1 id="AshesOfVelsingrad_UI_Hud_HudStyle" data-uid="AshesOfVelsingrad.UI.Hud.HudStyle" class="text-break">
-Class HudStyle  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/ui/hud/HudStyle.cs/#L14"><i class="bi bi-code-slash"></i></a>
+Class HudStyle  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/ui/hud/HudStyle.cs/#L11"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
@@ -97,8 +97,8 @@ Class HudStyle  <a class="header-action link-secondary" title="View source" href
   <dl><dt>Assembly</dt><dd>AshesofVelsingrad.dll</dd></dl>
   </div>
 
-  <div class="markdown summary"><p>Shared visual constants and helpers for every HUD widget — colours, panel styles,
-bar styles, label / button theme overrides.</p>
+  <div class="markdown summary"><p>Shared visual constants and helpers for every HUD widget — Souls-like dark-fantasy
+palette, panel tiers, bar styling, scaled fonts, scaled metrics, layout helpers.</p>
 </div>
   <div class="markdown conceptual"></div>
 
@@ -148,10 +148,6 @@ bar styles, label / button theme overrides.</p>
 
 
 
-  <h2 id="AshesOfVelsingrad_UI_Hud_HudStyle_remarks">Remarks</h2>
-  <div class="markdown level0 remarks"><p>Keeps the HUD's look-and-feel in one file. A future iteration can replace this with a
-Godot <span class="xref">Godot.Theme</span> resource without changing widget code.</p>
-</div>
 
 
   <h2 class="section" id="fields">Fields
@@ -159,17 +155,266 @@ Godot <span class="xref">Godot.Theme</span> resource without changing widget cod
 
 
 
-  <h3 id="AshesOfVelsingrad_UI_Hud_HudStyle_FontSizeBody" data-uid="AshesOfVelsingrad.UI.Hud.HudStyle.FontSizeBody">
-  FontSizeBody
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/ui/hud/HudStyle.cs/#L55"><i class="bi bi-code-slash"></i></a>
+  <h3 id="AshesOfVelsingrad_UI_Hud_HudStyle_ActionBarHeight" data-uid="AshesOfVelsingrad.UI.Hud.HudStyle.ActionBarHeight">
+  ActionBarHeight
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/ui/hud/HudStyle.cs/#L116"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Body font size (most labels, buttons).</p>
+  <div class="markdown level1 summary"><p>Action-bar height.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public const int FontSizeBody = 14</code></pre>
+    <pre><code class="lang-csharp hljs">public const int ActionBarHeight = 72</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="AshesOfVelsingrad_UI_Hud_HudStyle_ActionBarWidth" data-uid="AshesOfVelsingrad.UI.Hud.HudStyle.ActionBarWidth">
+  ActionBarWidth
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/ui/hud/HudStyle.cs/#L114"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Action-bar width. Fits between the bottom-left/right panels on the base canvas;
+labels stay readable because the buttons no longer clip their text.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int ActionBarWidth = 440</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="AshesOfVelsingrad_UI_Hud_HudStyle_ActionIconSize" data-uid="AshesOfVelsingrad.UI.Hud.HudStyle.ActionIconSize">
+  ActionIconSize
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/ui/hud/HudStyle.cs/#L97"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Default action-button icon max width (kept small so the text label fits).</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int ActionIconSize = 22</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="AshesOfVelsingrad_UI_Hud_HudStyle_ButtonHeight" data-uid="AshesOfVelsingrad.UI.Hud.HudStyle.ButtonHeight">
+  ButtonHeight
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/ui/hud/HudStyle.cs/#L93"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Action-bar button height.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int ButtonHeight = 44</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="AshesOfVelsingrad_UI_Hud_HudStyle_ContextHeight" data-uid="AshesOfVelsingrad.UI.Hud.HudStyle.ContextHeight">
+  ContextHeight
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/ui/hud/HudStyle.cs/#L146"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Context info panel height. Tall enough for the multi-line skill-target text.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int ContextHeight = 156</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="AshesOfVelsingrad_UI_Hud_HudStyle_ContextWidth" data-uid="AshesOfVelsingrad.UI.Hud.HudStyle.ContextWidth">
+  ContextWidth
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/ui/hud/HudStyle.cs/#L144"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Context info panel width.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int ContextWidth = 260</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="AshesOfVelsingrad_UI_Hud_HudStyle_CorruptionHeight" data-uid="AshesOfVelsingrad.UI.Hud.HudStyle.CorruptionHeight">
+  CorruptionHeight
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/ui/hud/HudStyle.cs/#L151"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Corruption gauge height.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int CorruptionHeight = 60</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="AshesOfVelsingrad_UI_Hud_HudStyle_CorruptionWidth" data-uid="AshesOfVelsingrad.UI.Hud.HudStyle.CorruptionWidth">
+  CorruptionWidth
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/ui/hud/HudStyle.cs/#L149"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Corruption gauge width.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int CorruptionWidth = 232</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="AshesOfVelsingrad_UI_Hud_HudStyle_FontSizeBody" data-uid="AshesOfVelsingrad.UI.Hud.HudStyle.FontSizeBody">
+  FontSizeBody
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/ui/hud/HudStyle.cs/#L73"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Body. Kept at the 16px accessibility baseline for body text.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int FontSizeBody = 16</code></pre>
   </div>
 
 
@@ -192,15 +437,15 @@ Godot <span class="xref">Godot.Theme</span> resource without changing widget cod
 
   <h3 id="AshesOfVelsingrad_UI_Hud_HudStyle_FontSizeHeader" data-uid="AshesOfVelsingrad.UI.Hud.HudStyle.FontSizeHeader">
   FontSizeHeader
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/ui/hud/HudStyle.cs/#L52"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/ui/hud/HudStyle.cs/#L69"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Section-header font size (panel titles, unit name above HP).</p>
+  <div class="markdown level1 summary"><p>Section title.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public const int FontSizeHeader = 16</code></pre>
+    <pre><code class="lang-csharp hljs">public const int FontSizeHeader = 18</code></pre>
   </div>
 
 
@@ -223,10 +468,10 @@ Godot <span class="xref">Godot.Theme</span> resource without changing widget cod
 
   <h3 id="AshesOfVelsingrad_UI_Hud_HudStyle_FontSizeMetaKey" data-uid="AshesOfVelsingrad.UI.Hud.HudStyle.FontSizeMetaKey">
   FontSizeMetaKey
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/ui/hud/HudStyle.cs/#L88"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/ui/hud/HudStyle.cs/#L178"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Meta key identifying the design-time font size of a styled control.</p>
+  <div class="markdown level1 summary"><p>Meta key for design-time font size.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -254,10 +499,10 @@ Godot <span class="xref">Godot.Theme</span> resource without changing widget cod
 
   <h3 id="AshesOfVelsingrad_UI_Hud_HudStyle_FontSizePropertyMetaKey" data-uid="AshesOfVelsingrad.UI.Hud.HudStyle.FontSizePropertyMetaKey">
   FontSizePropertyMetaKey
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/ui/hud/HudStyle.cs/#L91"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/ui/hud/HudStyle.cs/#L180"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Meta key identifying the theme override property used (e.g. &quot;font_size&quot;, &quot;normal_font_size&quot;).</p>
+  <div class="markdown level1 summary"><p>Meta key for theme override property.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -285,10 +530,10 @@ Godot <span class="xref">Godot.Theme</span> resource without changing widget cod
 
   <h3 id="AshesOfVelsingrad_UI_Hud_HudStyle_FontSizeSmall" data-uid="AshesOfVelsingrad.UI.Hud.HudStyle.FontSizeSmall">
   FontSizeSmall
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/ui/hud/HudStyle.cs/#L58"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/ui/hud/HudStyle.cs/#L75"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Footnote font size (log lines, dim subtitles).</p>
+  <div class="markdown level1 summary"><p>Small footnote.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -314,12 +559,74 @@ Godot <span class="xref">Godot.Theme</span> resource without changing widget cod
 
 
 
-  <h3 id="AshesOfVelsingrad_UI_Hud_HudStyle_FontSizeTitle" data-uid="AshesOfVelsingrad.UI.Hud.HudStyle.FontSizeTitle">
-  FontSizeTitle
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/ui/hud/HudStyle.cs/#L49"><i class="bi bi-code-slash"></i></a>
+  <h3 id="AshesOfVelsingrad_UI_Hud_HudStyle_FontSizeSub" data-uid="AshesOfVelsingrad.UI.Hud.HudStyle.FontSizeSub">
+  FontSizeSub
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/ui/hud/HudStyle.cs/#L71"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Hero font size (Victory / GameOver title).</p>
+  <div class="markdown level1 summary"><p>Sub-header.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int FontSizeSub = 16</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="AshesOfVelsingrad_UI_Hud_HudStyle_FontSizeTiny" data-uid="AshesOfVelsingrad.UI.Hud.HudStyle.FontSizeTiny">
+  FontSizeTiny
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/ui/hud/HudStyle.cs/#L77"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Tiny. Held at the 12px lower floor for readable on-screen text.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int FontSizeTiny = 12</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="AshesOfVelsingrad_UI_Hud_HudStyle_FontSizeTitle" data-uid="AshesOfVelsingrad.UI.Hud.HudStyle.FontSizeTitle">
+  FontSizeTitle
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/ui/hud/HudStyle.cs/#L67"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Hero title.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -344,18 +651,925 @@ Godot <span class="xref">Godot.Theme</span> resource without changing widget cod
 
 
 
+
+  <h3 id="AshesOfVelsingrad_UI_Hud_HudStyle_HpBarHeight" data-uid="AshesOfVelsingrad.UI.Hud.HudStyle.HpBarHeight">
+  HpBarHeight
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/ui/hud/HudStyle.cs/#L101"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>HP bar height.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int HpBarHeight = 16</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="AshesOfVelsingrad_UI_Hud_HudStyle_LogHeight" data-uid="AshesOfVelsingrad.UI.Hud.HudStyle.LogHeight">
+  LogHeight
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/ui/hud/HudStyle.cs/#L127"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Battle-log height.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int LogHeight = 130</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="AshesOfVelsingrad_UI_Hud_HudStyle_LogWidth" data-uid="AshesOfVelsingrad.UI.Hud.HudStyle.LogWidth">
+  LogWidth
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/ui/hud/HudStyle.cs/#L125"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Battle-log width.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int LogWidth = 280</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="AshesOfVelsingrad_UI_Hud_HudStyle_MpBarHeight" data-uid="AshesOfVelsingrad.UI.Hud.HudStyle.MpBarHeight">
+  MpBarHeight
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/ui/hud/HudStyle.cs/#L103"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>MP bar height.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int MpBarHeight = 10</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="AshesOfVelsingrad_UI_Hud_HudStyle_PadLg" data-uid="AshesOfVelsingrad.UI.Hud.HudStyle.PadLg">
+  PadLg
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/ui/hud/HudStyle.cs/#L87"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>14 px.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int PadLg = 14</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="AshesOfVelsingrad_UI_Hud_HudStyle_PadMd" data-uid="AshesOfVelsingrad.UI.Hud.HudStyle.PadMd">
+  PadMd
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/ui/hud/HudStyle.cs/#L85"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>10 px.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int PadMd = 10</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="AshesOfVelsingrad_UI_Hud_HudStyle_PadSm" data-uid="AshesOfVelsingrad.UI.Hud.HudStyle.PadSm">
+  PadSm
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/ui/hud/HudStyle.cs/#L83"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>6 px.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int PadSm = 6</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="AshesOfVelsingrad_UI_Hud_HudStyle_PadXl" data-uid="AshesOfVelsingrad.UI.Hud.HudStyle.PadXl">
+  PadXl
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/ui/hud/HudStyle.cs/#L89"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>20 px.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int PadXl = 20</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="AshesOfVelsingrad_UI_Hud_HudStyle_PadXs" data-uid="AshesOfVelsingrad.UI.Hud.HudStyle.PadXs">
+  PadXs
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/ui/hud/HudStyle.cs/#L81"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>4 px.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int PadXs = 4</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="AshesOfVelsingrad_UI_Hud_HudStyle_PlayerPortrait" data-uid="AshesOfVelsingrad.UI.Hud.HudStyle.PlayerPortrait">
+  PlayerPortrait
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/ui/hud/HudStyle.cs/#L110"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Player-status portrait edge.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int PlayerPortrait = 76</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="AshesOfVelsingrad_UI_Hud_HudStyle_PlayerStatusHeight" data-uid="AshesOfVelsingrad.UI.Hud.HudStyle.PlayerStatusHeight">
+  PlayerStatusHeight
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/ui/hud/HudStyle.cs/#L108"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Player-status panel height. Sized so name + class + HP/MP rows never clip.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int PlayerStatusHeight = 210</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="AshesOfVelsingrad_UI_Hud_HudStyle_PlayerStatusWidth" data-uid="AshesOfVelsingrad.UI.Hud.HudStyle.PlayerStatusWidth">
+  PlayerStatusWidth
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/ui/hud/HudStyle.cs/#L106"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Player-status panel width. Trimmed to leave a margin before the centred action bar.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int PlayerStatusWidth = 320</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="AshesOfVelsingrad_UI_Hud_HudStyle_RosterHeight" data-uid="AshesOfVelsingrad.UI.Hud.HudStyle.RosterHeight">
+  RosterHeight
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/ui/hud/HudStyle.cs/#L132"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Enemy roster height.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int RosterHeight = 250</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="AshesOfVelsingrad_UI_Hud_HudStyle_RosterPortrait" data-uid="AshesOfVelsingrad.UI.Hud.HudStyle.RosterPortrait">
+  RosterPortrait
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/ui/hud/HudStyle.cs/#L134"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Roster portrait edge.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int RosterPortrait = 36</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="AshesOfVelsingrad_UI_Hud_HudStyle_RosterWidth" data-uid="AshesOfVelsingrad.UI.Hud.HudStyle.RosterWidth">
+  RosterWidth
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/ui/hud/HudStyle.cs/#L130"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Enemy roster width.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int RosterWidth = 280</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="AshesOfVelsingrad_UI_Hud_HudStyle_SkillBarHeight" data-uid="AshesOfVelsingrad.UI.Hud.HudStyle.SkillBarHeight">
+  SkillBarHeight
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/ui/hud/HudStyle.cs/#L122"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Skill bar height. Snug around the slot square plus a one-line name (long names
+wrap and clip against the bar rather than making it tall for every slot).</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int SkillBarHeight = 96</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="AshesOfVelsingrad_UI_Hud_HudStyle_SkillBarWidth" data-uid="AshesOfVelsingrad.UI.Hud.HudStyle.SkillBarWidth">
+  SkillBarWidth
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/ui/hud/HudStyle.cs/#L119"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Skill bar width.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int SkillBarWidth = 440</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="AshesOfVelsingrad_UI_Hud_HudStyle_SkillSlotSize" data-uid="AshesOfVelsingrad.UI.Hud.HudStyle.SkillSlotSize">
+  SkillSlotSize
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/ui/hud/HudStyle.cs/#L95"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Skill-slot edge.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int SkillSlotSize = 52</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="AshesOfVelsingrad_UI_Hud_HudStyle_SlotIconSize" data-uid="AshesOfVelsingrad.UI.Hud.HudStyle.SlotIconSize">
+  SlotIconSize
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/ui/hud/HudStyle.cs/#L99"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Slot icon max width.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int SlotIconSize = 36</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="AshesOfVelsingrad_UI_Hud_HudStyle_TurnChipSize" data-uid="AshesOfVelsingrad.UI.Hud.HudStyle.TurnChipSize">
+  TurnChipSize
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/ui/hud/HudStyle.cs/#L137"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Turn-queue chip portrait size.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int TurnChipSize = 38</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="AshesOfVelsingrad_UI_Hud_HudStyle_TurnQueueHeight" data-uid="AshesOfVelsingrad.UI.Hud.HudStyle.TurnQueueHeight">
+  TurnQueueHeight
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/ui/hud/HudStyle.cs/#L141"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Turn-queue height.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int TurnQueueHeight = 76</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="AshesOfVelsingrad_UI_Hud_HudStyle_TurnQueueWidth" data-uid="AshesOfVelsingrad.UI.Hud.HudStyle.TurnQueueWidth">
+  TurnQueueWidth
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/ui/hud/HudStyle.cs/#L139"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Turn-queue width.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int TurnQueueWidth = 480</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
   <h2 class="section" id="properties">Properties
 </h2>
+
+
+  <a id="AshesOfVelsingrad_UI_Hud_HudStyle_AllyColor_" data-uid="AshesOfVelsingrad.UI.Hud.HudStyle.AllyColor*"></a>
+
+  <h3 id="AshesOfVelsingrad_UI_Hud_HudStyle_AllyColor" data-uid="AshesOfVelsingrad.UI.Hud.HudStyle.AllyColor">
+  AllyColor
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/ui/hud/HudStyle.cs/#L39"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Ally faction chip.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static Color AllyColor { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">Color</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="AshesOfVelsingrad_UI_Hud_HudStyle_Azure_" data-uid="AshesOfVelsingrad.UI.Hud.HudStyle.Azure*"></a>
+
+  <h3 id="AshesOfVelsingrad_UI_Hud_HudStyle_Azure" data-uid="AshesOfVelsingrad.UI.Hud.HudStyle.Azure">
+  Azure
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/ui/hud/HudStyle.cs/#L33"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>MP fill.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static Color Azure { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">Color</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="AshesOfVelsingrad_UI_Hud_HudStyle_AzureDeep_" data-uid="AshesOfVelsingrad.UI.Hud.HudStyle.AzureDeep*"></a>
+
+  <h3 id="AshesOfVelsingrad_UI_Hud_HudStyle_AzureDeep" data-uid="AshesOfVelsingrad.UI.Hud.HudStyle.AzureDeep">
+  AzureDeep
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/ui/hud/HudStyle.cs/#L35"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>MP fill darker stripe.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static Color AzureDeep { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">Color</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="AshesOfVelsingrad_UI_Hud_HudStyle_Bronze_" data-uid="AshesOfVelsingrad.UI.Hud.HudStyle.Bronze*"></a>
+
+  <h3 id="AshesOfVelsingrad_UI_Hud_HudStyle_Bronze" data-uid="AshesOfVelsingrad.UI.Hud.HudStyle.Bronze">
+  Bronze
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/ui/hud/HudStyle.cs/#L21"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Bronze panel border.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static Color Bronze { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">Color</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="AshesOfVelsingrad_UI_Hud_HudStyle_BronzeDim_" data-uid="AshesOfVelsingrad.UI.Hud.HudStyle.BronzeDim*"></a>
+
+  <h3 id="AshesOfVelsingrad_UI_Hud_HudStyle_BronzeDim" data-uid="AshesOfVelsingrad.UI.Hud.HudStyle.BronzeDim">
+  BronzeDim
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/ui/hud/HudStyle.cs/#L23"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Faded bronze for inset lines.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static Color BronzeDim { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">Color</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="AshesOfVelsingrad_UI_Hud_HudStyle_Crimson_" data-uid="AshesOfVelsingrad.UI.Hud.HudStyle.Crimson*"></a>
+
+  <h3 id="AshesOfVelsingrad_UI_Hud_HudStyle_Crimson" data-uid="AshesOfVelsingrad.UI.Hud.HudStyle.Crimson">
+  Crimson
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/ui/hud/HudStyle.cs/#L29"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>HP fill.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static Color Crimson { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">Color</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="AshesOfVelsingrad_UI_Hud_HudStyle_CrimsonDeep_" data-uid="AshesOfVelsingrad.UI.Hud.HudStyle.CrimsonDeep*"></a>
+
+  <h3 id="AshesOfVelsingrad_UI_Hud_HudStyle_CrimsonDeep" data-uid="AshesOfVelsingrad.UI.Hud.HudStyle.CrimsonDeep">
+  CrimsonDeep
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/ui/hud/HudStyle.cs/#L31"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>HP fill darker stripe.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static Color CrimsonDeep { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">Color</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
 
 
   <a id="AshesOfVelsingrad_UI_Hud_HudStyle_DimText_" data-uid="AshesOfVelsingrad.UI.Hud.HudStyle.DimText*"></a>
 
   <h3 id="AshesOfVelsingrad_UI_Hud_HudStyle_DimText" data-uid="AshesOfVelsingrad.UI.Hud.HudStyle.DimText">
   DimText
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/ui/hud/HudStyle.cs/#L26"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/ui/hud/HudStyle.cs/#L59"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Dimmed text colour (used for placeholders / labels).</p>
+  <div class="markdown level1 summary"><p>Deprecated alias.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -380,14 +1594,78 @@ Godot <span class="xref">Godot.Theme</span> resource without changing widget cod
 
 
 
+  <a id="AshesOfVelsingrad_UI_Hud_HudStyle_DisabledFill_" data-uid="AshesOfVelsingrad.UI.Hud.HudStyle.DisabledFill*"></a>
+
+  <h3 id="AshesOfVelsingrad_UI_Hud_HudStyle_DisabledFill" data-uid="AshesOfVelsingrad.UI.Hud.HudStyle.DisabledFill">
+  DisabledFill
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/ui/hud/HudStyle.cs/#L47"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Disabled iron.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static Color DisabledFill { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">Color</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="AshesOfVelsingrad_UI_Hud_HudStyle_DisabledText_" data-uid="AshesOfVelsingrad.UI.Hud.HudStyle.DisabledText*"></a>
+
+  <h3 id="AshesOfVelsingrad_UI_Hud_HudStyle_DisabledText" data-uid="AshesOfVelsingrad.UI.Hud.HudStyle.DisabledText">
+  DisabledText
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/ui/hud/HudStyle.cs/#L49"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Disabled text.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static Color DisabledText { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">Color</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
   <a id="AshesOfVelsingrad_UI_Hud_HudStyle_EnemyColor_" data-uid="AshesOfVelsingrad.UI.Hud.HudStyle.EnemyColor*"></a>
 
   <h3 id="AshesOfVelsingrad_UI_Hud_HudStyle_EnemyColor" data-uid="AshesOfVelsingrad.UI.Hud.HudStyle.EnemyColor">
   EnemyColor
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/ui/hud/HudStyle.cs/#L38"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/ui/hud/HudStyle.cs/#L41"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Enemy chip colour for the turn queue.</p>
+  <div class="markdown level1 summary"><p>Enemy faction chip.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -412,14 +1690,78 @@ Godot <span class="xref">Godot.Theme</span> resource without changing widget cod
 
 
 
+  <a id="AshesOfVelsingrad_UI_Hud_HudStyle_Gold_" data-uid="AshesOfVelsingrad.UI.Hud.HudStyle.Gold*"></a>
+
+  <h3 id="AshesOfVelsingrad_UI_Hud_HudStyle_Gold" data-uid="AshesOfVelsingrad.UI.Hud.HudStyle.Gold">
+  Gold
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/ui/hud/HudStyle.cs/#L19"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Title / header gold.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static Color Gold { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">Color</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="AshesOfVelsingrad_UI_Hud_HudStyle_GoldHover_" data-uid="AshesOfVelsingrad.UI.Hud.HudStyle.GoldHover*"></a>
+
+  <h3 id="AshesOfVelsingrad_UI_Hud_HudStyle_GoldHover" data-uid="AshesOfVelsingrad.UI.Hud.HudStyle.GoldHover">
+  GoldHover
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/ui/hud/HudStyle.cs/#L43"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Hover gold.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static Color GoldHover { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">Color</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
   <a id="AshesOfVelsingrad_UI_Hud_HudStyle_HpFill_" data-uid="AshesOfVelsingrad.UI.Hud.HudStyle.HpFill*"></a>
 
   <h3 id="AshesOfVelsingrad_UI_Hud_HudStyle_HpFill" data-uid="AshesOfVelsingrad.UI.Hud.HudStyle.HpFill">
   HpFill
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/ui/hud/HudStyle.cs/#L29"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/ui/hud/HudStyle.cs/#L61"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Healthy HP bar fill.</p>
+  <div class="markdown level1 summary"><p>Deprecated alias.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -444,14 +1786,115 @@ Godot <span class="xref">Godot.Theme</span> resource without changing widget cod
 
 
 
+  <a id="AshesOfVelsingrad_UI_Hud_HudStyle_IronHeavy_" data-uid="AshesOfVelsingrad.UI.Hud.HudStyle.IronHeavy*"></a>
+
+  <h3 id="AshesOfVelsingrad_UI_Hud_HudStyle_IronHeavy" data-uid="AshesOfVelsingrad.UI.Hud.HudStyle.IronHeavy">
+  IronHeavy
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/ui/hud/HudStyle.cs/#L25"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Heavy panel background.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static Color IronHeavy { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">Color</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="AshesOfVelsingrad_UI_Hud_HudStyle_IronLight_" data-uid="AshesOfVelsingrad.UI.Hud.HudStyle.IronLight*"></a>
+
+  <h3 id="AshesOfVelsingrad_UI_Hud_HudStyle_IronLight" data-uid="AshesOfVelsingrad.UI.Hud.HudStyle.IronLight">
+  IronLight
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/ui/hud/HudStyle.cs/#L27"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Lighter panel background.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static Color IronLight { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">Color</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="AshesOfVelsingrad_UI_Hud_HudStyle_LayoutScale_" data-uid="AshesOfVelsingrad.UI.Hud.HudStyle.LayoutScale*"></a>
+
+  <h3 id="AshesOfVelsingrad_UI_Hud_HudStyle_LayoutScale" data-uid="AshesOfVelsingrad.UI.Hud.HudStyle.LayoutScale">
+  LayoutScale
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/ui/hud/HudStyle.cs/#L166"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Scale applied to panel sizes and anchor offsets. The HUD is laid out on a compact
+base canvas (Godot's 1152×648 default), where the bottom-left / bottom-right panels
+sit close to the centred action and skill bars. Letting the panels grow past their
+design size makes them collide with the centre bars, so layout growth is capped at
+1.0 while <a class="xref" href="AshesOfVelsingrad.UI.Hud.HudStyle.html#AshesOfVelsingrad_UI_Hud_HudStyle_ScaledFontSize_System_Int32_">ScaledFontSize(int)</a> keeps scaling text fully for readability
+(text wraps, clips or scrolls inside its panel rather than pushing the panel wider).</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static float LayoutScale { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
   <a id="AshesOfVelsingrad_UI_Hud_HudStyle_ManaFill_" data-uid="AshesOfVelsingrad.UI.Hud.HudStyle.ManaFill*"></a>
 
   <h3 id="AshesOfVelsingrad_UI_Hud_HudStyle_ManaFill" data-uid="AshesOfVelsingrad.UI.Hud.HudStyle.ManaFill">
   ManaFill
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/ui/hud/HudStyle.cs/#L32"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/ui/hud/HudStyle.cs/#L63"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Mana bar fill.</p>
+  <div class="markdown level1 summary"><p>Deprecated alias.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -480,10 +1923,10 @@ Godot <span class="xref">Godot.Theme</span> resource without changing widget cod
 
   <h3 id="AshesOfVelsingrad_UI_Hud_HudStyle_PanelBackground" data-uid="AshesOfVelsingrad.UI.Hud.HudStyle.PanelBackground">
   PanelBackground
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/ui/hud/HudStyle.cs/#L17"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/ui/hud/HudStyle.cs/#L53"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Translucent dark background used by every HUD panel.</p>
+  <div class="markdown level1 summary"><p>Deprecated alias.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -512,10 +1955,10 @@ Godot <span class="xref">Godot.Theme</span> resource without changing widget cod
 
   <h3 id="AshesOfVelsingrad_UI_Hud_HudStyle_PanelBorder" data-uid="AshesOfVelsingrad.UI.Hud.HudStyle.PanelBorder">
   PanelBorder
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/ui/hud/HudStyle.cs/#L20"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/ui/hud/HudStyle.cs/#L55"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Subtle border colour around panels.</p>
+  <div class="markdown level1 summary"><p>Deprecated alias.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -540,14 +1983,78 @@ Godot <span class="xref">Godot.Theme</span> resource without changing widget cod
 
 
 
+  <a id="AshesOfVelsingrad_UI_Hud_HudStyle_Parchment_" data-uid="AshesOfVelsingrad.UI.Hud.HudStyle.Parchment*"></a>
+
+  <h3 id="AshesOfVelsingrad_UI_Hud_HudStyle_Parchment" data-uid="AshesOfVelsingrad.UI.Hud.HudStyle.Parchment">
+  Parchment
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/ui/hud/HudStyle.cs/#L15"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Body / parchment text colour.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static Color Parchment { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">Color</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="AshesOfVelsingrad_UI_Hud_HudStyle_ParchmentDim_" data-uid="AshesOfVelsingrad.UI.Hud.HudStyle.ParchmentDim*"></a>
+
+  <h3 id="AshesOfVelsingrad_UI_Hud_HudStyle_ParchmentDim" data-uid="AshesOfVelsingrad.UI.Hud.HudStyle.ParchmentDim">
+  ParchmentDim
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/ui/hud/HudStyle.cs/#L17"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Dim parchment for sub-text.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static Color ParchmentDim { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">Color</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
   <a id="AshesOfVelsingrad_UI_Hud_HudStyle_PlayerColor_" data-uid="AshesOfVelsingrad.UI.Hud.HudStyle.PlayerColor*"></a>
 
   <h3 id="AshesOfVelsingrad_UI_Hud_HudStyle_PlayerColor" data-uid="AshesOfVelsingrad.UI.Hud.HudStyle.PlayerColor">
   PlayerColor
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/ui/hud/HudStyle.cs/#L35"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/ui/hud/HudStyle.cs/#L37"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Player chip colour for the turn queue.</p>
+  <div class="markdown level1 summary"><p>Player faction chip.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -572,14 +2079,46 @@ Godot <span class="xref">Godot.Theme</span> resource without changing widget cod
 
 
 
+  <a id="AshesOfVelsingrad_UI_Hud_HudStyle_PressedFill_" data-uid="AshesOfVelsingrad.UI.Hud.HudStyle.PressedFill*"></a>
+
+  <h3 id="AshesOfVelsingrad_UI_Hud_HudStyle_PressedFill" data-uid="AshesOfVelsingrad.UI.Hud.HudStyle.PressedFill">
+  PressedFill
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/ui/hud/HudStyle.cs/#L45"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Pressed deep crimson.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static Color PressedFill { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">Color</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
   <a id="AshesOfVelsingrad_UI_Hud_HudStyle_TextColor_" data-uid="AshesOfVelsingrad.UI.Hud.HudStyle.TextColor*"></a>
 
   <h3 id="AshesOfVelsingrad_UI_Hud_HudStyle_TextColor" data-uid="AshesOfVelsingrad.UI.Hud.HudStyle.TextColor">
   TextColor
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/ui/hud/HudStyle.cs/#L23"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/ui/hud/HudStyle.cs/#L57"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Foreground text colour.</p>
+  <div class="markdown level1 summary"><p>Deprecated alias.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -604,6 +2143,38 @@ Godot <span class="xref">Godot.Theme</span> resource without changing widget cod
 
 
 
+  <a id="AshesOfVelsingrad_UI_Hud_HudStyle_UiScale_" data-uid="AshesOfVelsingrad.UI.Hud.HudStyle.UiScale*"></a>
+
+  <h3 id="AshesOfVelsingrad_UI_Hud_HudStyle_UiScale" data-uid="AshesOfVelsingrad.UI.Hud.HudStyle.UiScale">
+  UiScale
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/ui/hud/HudStyle.cs/#L155"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Current UI scale multiplier (drives font size for accessibility).</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static float UiScale { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
   <h2 class="section" id="methods">Methods
 </h2>
 
@@ -612,10 +2183,10 @@ Godot <span class="xref">Godot.Theme</span> resource without changing widget cod
 
   <h3 id="AshesOfVelsingrad_UI_Hud_HudStyle_ApplyBarStyle_Godot_ProgressBar_Godot_Color_" data-uid="AshesOfVelsingrad.UI.Hud.HudStyle.ApplyBarStyle(Godot.ProgressBar,Godot.Color)">
   ApplyBarStyle(ProgressBar, Color)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/ui/hud/HudStyle.cs/#L199"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/ui/hud/HudStyle.cs/#L361"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Build a HP/MP-style stylebox pair for a <span class="xref">Godot.ProgressBar</span>.</p>
+  <div class="markdown level1 summary"><p>Apply styled fill + dark inset background to a progress bar.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -626,11 +2197,9 @@ Godot <span class="xref">Godot.Theme</span> resource without changing widget cod
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
     <dt><code>bar</code> <span class="xref">ProgressBar</span></dt>
-    <dd><p>The progress bar to style.</p>
-</dd>
+    <dd></dd>
     <dt><code>fillColor</code> <span class="xref">Color</span></dt>
-    <dd><p>Colour for the filled portion.</p>
-</dd>
+    <dd></dd>
   </dl>
 
 
@@ -648,12 +2217,10 @@ Godot <span class="xref">Godot.Theme</span> resource without changing widget cod
 
   <h3 id="AshesOfVelsingrad_UI_Hud_HudStyle_ApplyScaledFontSize_Godot_Control_System_String_System_Int32_" data-uid="AshesOfVelsingrad.UI.Hud.HudStyle.ApplyScaledFontSize(Godot.Control,System.String,System.Int32)">
   ApplyScaledFontSize(Control, string, int)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/ui/hud/HudStyle.cs/#L102"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/ui/hud/HudStyle.cs/#L183"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Apply a UI-scaled font size override to <code class="paramref">control</code> AND remember
-the design-time base so a later <a class="xref" href="AshesOfVelsingrad.UI.Hud.HudStyle.html#AshesOfVelsingrad_UI_Hud_HudStyle_RefreshScaledFonts_Godot_Node_">RefreshScaledFonts(Node)</a> walk can
-re-apply it cleanly.</p>
+  <div class="markdown level1 summary"><p>Apply a UI-scaled font size override and remember the design base.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -664,17 +2231,50 @@ re-apply it cleanly.</p>
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
     <dt><code>control</code> <span class="xref">Control</span></dt>
-    <dd><p>Control receiving the override.</p>
-</dd>
+    <dd></dd>
     <dt><code>property</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd><p>Theme override property name (<code>&quot;font_size&quot;</code> for Label/Button,
-<code>&quot;normal_font_size&quot;</code> for RichTextLabel).</p>
-</dd>
+    <dd></dd>
     <dt><code>baseSize</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
-    <dd><p>Design-time font size.</p>
-</dd>
+    <dd></dd>
   </dl>
 
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AshesOfVelsingrad_UI_Hud_HudStyle_LoadIcon_" data-uid="AshesOfVelsingrad.UI.Hud.HudStyle.LoadIcon*"></a>
+
+  <h3 id="AshesOfVelsingrad_UI_Hud_HudStyle_LoadIcon_System_String_" data-uid="AshesOfVelsingrad.UI.Hud.HudStyle.LoadIcon(System.String)">
+  LoadIcon(string)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/ui/hud/HudStyle.cs/#L393"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Load a HUD icon by short name. Null when not yet imported.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static Texture2D? LoadIcon(string name)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>name</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><span class="xref">Texture2D</span></dt>
+    <dd></dd>
+  </dl>
 
 
 
@@ -688,32 +2288,31 @@ re-apply it cleanly.</p>
 
   <a id="AshesOfVelsingrad_UI_Hud_HudStyle_MakePanel_" data-uid="AshesOfVelsingrad.UI.Hud.HudStyle.MakePanel*"></a>
 
-  <h3 id="AshesOfVelsingrad_UI_Hud_HudStyle_MakePanel_Godot_Control_" data-uid="AshesOfVelsingrad.UI.Hud.HudStyle.MakePanel(Godot.Control)">
-  MakePanel(Control)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/ui/hud/HudStyle.cs/#L160"><i class="bi bi-code-slash"></i></a>
+  <h3 id="AshesOfVelsingrad_UI_Hud_HudStyle_MakePanel_Godot_Control_AshesOfVelsingrad_UI_Hud_HudStyle_PanelTier_" data-uid="AshesOfVelsingrad.UI.Hud.HudStyle.MakePanel(Godot.Control,AshesOfVelsingrad.UI.Hud.HudStyle.PanelTier)">
+  MakePanel(Control, PanelTier)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/ui/hud/HudStyle.cs/#L256"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Wrap <code class="paramref">content</code> in a styled <span class="xref">Godot.PanelContainer</span> filling the parent.</p>
+  <div class="markdown level1 summary"><p>Wrap <code class="paramref">content</code> in a styled panel.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static PanelContainer MakePanel(Control content)</code></pre>
+    <pre><code class="lang-csharp hljs">public static PanelContainer MakePanel(Control content, HudStyle.PanelTier tier = PanelTier.Heavy)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
     <dt><code>content</code> <span class="xref">Control</span></dt>
-    <dd><p>Control to host inside the panel.</p>
-</dd>
+    <dd></dd>
+    <dt><code>tier</code> <a class="xref" href="AshesOfVelsingrad.UI.Hud.HudStyle.html">HudStyle</a>.<a class="xref" href="AshesOfVelsingrad.UI.Hud.HudStyle.PanelTier.html">PanelTier</a></dt>
+    <dd></dd>
   </dl>
 
   <h4 class="section">Returns</h4>
   <dl class="parameters">
     <dt><span class="xref">PanelContainer</span></dt>
-    <dd><p>A panel containing <code class="paramref">content</code>, with <code>MouseFilter.Ignore</code>
-so empty space lets clicks through to the map.</p>
-</dd>
+    <dd></dd>
   </dl>
 
 
@@ -728,25 +2327,29 @@ so empty space lets clicks through to the map.</p>
 
   <a id="AshesOfVelsingrad_UI_Hud_HudStyle_MakePanelStyle_" data-uid="AshesOfVelsingrad.UI.Hud.HudStyle.MakePanelStyle*"></a>
 
-  <h3 id="AshesOfVelsingrad_UI_Hud_HudStyle_MakePanelStyle" data-uid="AshesOfVelsingrad.UI.Hud.HudStyle.MakePanelStyle">
-  MakePanelStyle()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/ui/hud/HudStyle.cs/#L133"><i class="bi bi-code-slash"></i></a>
+  <h3 id="AshesOfVelsingrad_UI_Hud_HudStyle_MakePanelStyle_AshesOfVelsingrad_UI_Hud_HudStyle_PanelTier_" data-uid="AshesOfVelsingrad.UI.Hud.HudStyle.MakePanelStyle(AshesOfVelsingrad.UI.Hud.HudStyle.PanelTier)">
+  MakePanelStyle(PanelTier)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/ui/hud/HudStyle.cs/#L219"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Build a translucent rounded panel <span class="xref">Godot.StyleBoxFlat</span>.</p>
+  <div class="markdown level1 summary"><p>Build a stylebox for the given tier.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static StyleBoxFlat MakePanelStyle()</code></pre>
+    <pre><code class="lang-csharp hljs">public static StyleBoxFlat MakePanelStyle(HudStyle.PanelTier tier = PanelTier.Heavy)</code></pre>
   </div>
 
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>tier</code> <a class="xref" href="AshesOfVelsingrad.UI.Hud.HudStyle.html">HudStyle</a>.<a class="xref" href="AshesOfVelsingrad.UI.Hud.HudStyle.PanelTier.html">PanelTier</a></dt>
+    <dd></dd>
+  </dl>
 
   <h4 class="section">Returns</h4>
   <dl class="parameters">
     <dt><span class="xref">StyleBoxFlat</span></dt>
-    <dd><p>A reusable stylebox.</p>
-</dd>
+    <dd></dd>
   </dl>
 
 
@@ -763,13 +2366,11 @@ so empty space lets clicks through to the map.</p>
 
   <h3 id="AshesOfVelsingrad_UI_Hud_HudStyle_RefreshScaledFonts_Godot_Node_" data-uid="AshesOfVelsingrad.UI.Hud.HudStyle.RefreshScaledFonts(Godot.Node)">
   RefreshScaledFonts(Node)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/ui/hud/HudStyle.cs/#L116"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/ui/hud/HudStyle.cs/#L194"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Walk <code class="paramref">root</code>'s descendants and re-apply font-size overrides for
-every control that was tagged via <a class="xref" href="AshesOfVelsingrad.UI.Hud.HudStyle.html#AshesOfVelsingrad_UI_Hud_HudStyle_ApplyScaledFontSize_Godot_Control_System_String_System_Int32_">ApplyScaledFontSize(Control, string, int)</a> or one of
-the <code>StyleLabel</code>/<code>StyleButton</code> helpers. Cheap — only touches Controls
-that opted in.</p>
+  <div class="markdown level1 summary"><p>Walk the tree, re-applying tagged font overrides and calling
+<a class="xref" href="AshesOfVelsingrad.UI.Hud.IHudWidget.html#AshesOfVelsingrad_UI_Hud_IHudWidget_Relayout">Relayout()</a> on every <a class="xref" href="AshesOfVelsingrad.UI.Hud.IHudWidget.html">IHudWidget</a>.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -780,8 +2381,7 @@ that opted in.</p>
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
     <dt><code>root</code> <span class="xref">Node</span></dt>
-    <dd><p>Subtree root (typically the BattleHud CanvasLayer).</p>
-</dd>
+    <dd></dd>
   </dl>
 
 
@@ -799,12 +2399,10 @@ that opted in.</p>
 
   <h3 id="AshesOfVelsingrad_UI_Hud_HudStyle_ScaledFontSize_System_Int32_" data-uid="AshesOfVelsingrad.UI.Hud.HudStyle.ScaledFontSize(System.Int32)">
   ScaledFontSize(int)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/ui/hud/HudStyle.cs/#L70"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/ui/hud/HudStyle.cs/#L169"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Returns <code class="paramref">baseSize</code> multiplied by the user's UI scale
-setting (<a class="xref" href="AshesOfVelsingrad.Managers.SettingsManager.html#AshesOfVelsingrad_Managers_SettingsManager_GetUiScale">GetUiScale()</a>). Always returns at
-least <code>1</code> so Godot's font renderer never gets a zero/negative size.</p>
+  <div class="markdown level1 summary"><p>Returns <code class="paramref">baseSize</code> × UI scale, ≥ 1.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -815,19 +2413,91 @@ least <code>1</code> so Godot's font renderer never gets a zero/negative size.</
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
     <dt><code>baseSize</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
-    <dd><p>Design-time font size — one of the
-<a class="xref" href="AshesOfVelsingrad.UI.Hud.HudStyle.html#AshesOfVelsingrad_UI_Hud_HudStyle_FontSizeTitle">FontSizeTitle</a>/<a class="xref" href="AshesOfVelsingrad.UI.Hud.HudStyle.html#AshesOfVelsingrad_UI_Hud_HudStyle_FontSizeHeader">FontSizeHeader</a>/
-<a class="xref" href="AshesOfVelsingrad.UI.Hud.HudStyle.html#AshesOfVelsingrad_UI_Hud_HudStyle_FontSizeBody">FontSizeBody</a>/<a class="xref" href="AshesOfVelsingrad.UI.Hud.HudStyle.html#AshesOfVelsingrad_UI_Hud_HudStyle_FontSizeSmall">FontSizeSmall</a> constants.</p>
-</dd>
+    <dd></dd>
   </dl>
 
   <h4 class="section">Returns</h4>
   <dl class="parameters">
     <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
-    <dd><p>Scaled, integer-rounded font size suitable for
-<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">AddThemeFontSizeOverride(StringName, int)</a>.</p>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AshesOfVelsingrad_UI_Hud_HudStyle_ScaledPx_" data-uid="AshesOfVelsingrad.UI.Hud.HudStyle.ScaledPx*"></a>
+
+  <h3 id="AshesOfVelsingrad_UI_Hud_HudStyle_ScaledPx_System_Int32_" data-uid="AshesOfVelsingrad.UI.Hud.HudStyle.ScaledPx(System.Int32)">
+  ScaledPx(int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/ui/hud/HudStyle.cs/#L173"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Returns <code class="paramref">px</code> × layout scale (capped so panels don't collide).</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static int ScaledPx(int px)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>px</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AshesOfVelsingrad_UI_Hud_HudStyle_SetButtonIcon_" data-uid="AshesOfVelsingrad.UI.Hud.HudStyle.SetButtonIcon*"></a>
+
+  <h3 id="AshesOfVelsingrad_UI_Hud_HudStyle_SetButtonIcon_Godot_Button_System_String_System_Int32_" data-uid="AshesOfVelsingrad.UI.Hud.HudStyle.SetButtonIcon(Godot.Button,System.String,System.Int32)">
+  SetButtonIcon(Button, string, int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/ui/hud/HudStyle.cs/#L409"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Set <code class="paramref">button</code>'s icon by short name AND cap its rendered width.
+Without the cap a 64x64 SVG fills the entire button and crowds out the text.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void SetButtonIcon(Button button, string iconName, int maxWidthDesignPx = 22)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>button</code> <span class="xref">Button</span></dt>
+    <dd><p>Button to receive the icon.</p>
+</dd>
+    <dt><code>iconName</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>Short icon name (no &quot;icon_&quot; prefix, no extension).</p>
+</dd>
+    <dt><code>maxWidthDesignPx</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>Design-time max icon width — multiplied by UI scale.</p>
 </dd>
   </dl>
+
 
 
 
@@ -843,25 +2513,57 @@ least <code>1</code> so Godot's font renderer never gets a zero/negative size.</
 
   <h3 id="AshesOfVelsingrad_UI_Hud_HudStyle_StyleButton_Godot_Button_System_Int32_" data-uid="AshesOfVelsingrad.UI.Hud.HudStyle.StyleButton(Godot.Button,System.Int32)">
   StyleButton(Button, int)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/ui/hud/HudStyle.cs/#L189"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/ui/hud/HudStyle.cs/#L291"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Apply default text colour and a UI-scaled font size to a <span class="xref">Godot.Button</span>.</p>
+  <div class="markdown level1 summary"><p>Default button styling.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static void StyleButton(Button button, int baseSize = 14)</code></pre>
+    <pre><code class="lang-csharp hljs">public static void StyleButton(Button button, int baseSize = 16)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
     <dt><code>button</code> <span class="xref">Button</span></dt>
-    <dd><p>Button to style.</p>
-</dd>
+    <dd></dd>
     <dt><code>baseSize</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
-    <dd><p>Design-time font size; defaults to <a class="xref" href="AshesOfVelsingrad.UI.Hud.HudStyle.html#AshesOfVelsingrad_UI_Hud_HudStyle_FontSizeBody">FontSizeBody</a>.</p>
-</dd>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AshesOfVelsingrad_UI_Hud_HudStyle_StyleHeader_" data-uid="AshesOfVelsingrad.UI.Hud.HudStyle.StyleHeader*"></a>
+
+  <h3 id="AshesOfVelsingrad_UI_Hud_HudStyle_StyleHeader_Godot_Label_System_Int32_" data-uid="AshesOfVelsingrad.UI.Hud.HudStyle.StyleHeader(Godot.Label,System.Int32)">
+  StyleHeader(Label, int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/ui/hud/HudStyle.cs/#L281"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Apply gold text + scaled font to a header label.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void StyleHeader(Label label, int baseSize = 18)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>label</code> <span class="xref">Label</span></dt>
+    <dd></dd>
+    <dt><code>baseSize</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
   </dl>
 
 
@@ -879,25 +2581,57 @@ least <code>1</code> so Godot's font renderer never gets a zero/negative size.</
 
   <h3 id="AshesOfVelsingrad_UI_Hud_HudStyle_StyleLabel_Godot_Label_System_Int32_" data-uid="AshesOfVelsingrad.UI.Hud.HudStyle.StyleLabel(Godot.Label,System.Int32)">
   StyleLabel(Label, int)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/ui/hud/HudStyle.cs/#L178"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/ui/hud/HudStyle.cs/#L271"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Apply default text colour and a UI-scaled font size to a <span class="xref">Godot.Label</span>.</p>
+  <div class="markdown level1 summary"><p>Apply parchment text + scaled font to a label and force MouseFilter.Ignore.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static void StyleLabel(Label label, int baseSize = 14)</code></pre>
+    <pre><code class="lang-csharp hljs">public static void StyleLabel(Label label, int baseSize = 16)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
     <dt><code>label</code> <span class="xref">Label</span></dt>
-    <dd><p>Label to style.</p>
-</dd>
+    <dd></dd>
     <dt><code>baseSize</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
-    <dd><p>Design-time font size; defaults to <a class="xref" href="AshesOfVelsingrad.UI.Hud.HudStyle.html#AshesOfVelsingrad_UI_Hud_HudStyle_FontSizeBody">FontSizeBody</a>.</p>
-</dd>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AshesOfVelsingrad_UI_Hud_HudStyle_StyleSlotButton_" data-uid="AshesOfVelsingrad.UI.Hud.HudStyle.StyleSlotButton*"></a>
+
+  <h3 id="AshesOfVelsingrad_UI_Hud_HudStyle_StyleSlotButton_Godot_Button_System_Int32_" data-uid="AshesOfVelsingrad.UI.Hud.HudStyle.StyleSlotButton(Godot.Button,System.Int32)">
+  StyleSlotButton(Button, int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/ui/hud/HudStyle.cs/#L309"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Skill-slot styling.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void StyleSlotButton(Button button, int baseSize = 13)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>button</code> <span class="xref">Button</span></dt>
+    <dd></dd>
+    <dt><code>baseSize</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
   </dl>
 
 
@@ -915,7 +2649,7 @@ least <code>1</code> so Godot's font renderer never gets a zero/negative size.</
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/ui/hud/HudStyle.cs/#L14" class="edit-link">Edit this page</a>
+          <a href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/ui/hud/HudStyle.cs/#L11" class="edit-link">Edit this page</a>
         </div>
 
 

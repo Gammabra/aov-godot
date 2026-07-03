@@ -115,6 +115,11 @@ Classes
 </dd>
     </dl>
     <dl class="jumplist">
+      <dt><a class="xref" href="AshesOfVelsingrad.UI.Hud.CorruptionGauge.html">CorruptionGauge</a></dt>
+      <dd><p>Three-segment gauge showing the active player unit's corruption level.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
       <dt><a class="xref" href="AshesOfVelsingrad.UI.Hud.EnemyRoster.html">EnemyRoster</a></dt>
       <dd><p>Top-right column showing one <a class="xref" href="AshesOfVelsingrad.UI.Hud.UnitHealthBar.html">UnitHealthBar</a> per enemy.</p>
 </dd>
@@ -125,14 +130,19 @@ Classes
 </dd>
     </dl>
     <dl class="jumplist">
+      <dt><a class="xref" href="AshesOfVelsingrad.UI.Hud.HudBusHelper.html">HudBusHelper</a></dt>
+      <dd><p>Shared helpers for HUD widgets that need to subscribe to <a class="xref" href="AshesOfVelsingrad.systems.battle.BattleEventBus.html">BattleEventBus</a>.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
       <dt><a class="xref" href="AshesOfVelsingrad.UI.Hud.HudStyle.html">HudStyle</a></dt>
-      <dd><p>Shared visual constants and helpers for every HUD widget — colours, panel styles,
-bar styles, label / button theme overrides.</p>
+      <dd><p>Shared visual constants and helpers for every HUD widget — Souls-like dark-fantasy
+palette, panel tiers, bar styling, scaled fonts, scaled metrics, layout helpers.</p>
 </dd>
     </dl>
     <dl class="jumplist">
       <dt><a class="xref" href="AshesOfVelsingrad.UI.Hud.PlayerStatusPanel.html">PlayerStatusPanel</a></dt>
-      <dd><p>Bottom-left panel showing the active controlled unit's name, HP and MP.</p>
+      <dd><p>Bottom-left panel showing the active controlled unit's portrait, name, HP and MP.</p>
 </dd>
     </dl>
     <dl class="jumplist">
@@ -144,17 +154,33 @@ bar styles, label / button theme overrides.</p>
     <dl class="jumplist">
       <dt><a class="xref" href="AshesOfVelsingrad.UI.Hud.TurnOrderQueue.html">TurnOrderQueue</a></dt>
       <dd><p>Top-centre strip showing the next units to act, rendered as portrait chips with a
-faction-coloured border.</p>
+faction-coloured frame.</p>
 </dd>
     </dl>
     <dl class="jumplist">
       <dt><a class="xref" href="AshesOfVelsingrad.UI.Hud.UnitHealthBar.html">UnitHealthBar</a></dt>
-      <dd><p>Compact HP/MP indicator bound to a single <a class="xref" href="AshesOfVelsingrad.Systems.IUnitSystem.html">IUnitSystem</a>.</p>
+      <dd><p>Compact portrait + HP/MP indicator bound to a single <a class="xref" href="AshesOfVelsingrad.Systems.IUnitSystem.html">IUnitSystem</a>.</p>
 </dd>
     </dl>
     <dl class="jumplist">
       <dt><a class="xref" href="AshesOfVelsingrad.UI.Hud.VictoryScreen.html">VictoryScreen</a></dt>
       <dd><p>Full-screen victory overlay shown when the player wins a battle.</p>
+</dd>
+    </dl>
+    <h3 id="interfaces">
+Interfaces
+</h3>
+    <dl class="jumplist">
+      <dt><a class="xref" href="AshesOfVelsingrad.UI.Hud.IHudWidget.html">IHudWidget</a></dt>
+      <dd><p>HUD widgets implement this so anchor offsets can be recomputed on UI scale change.</p>
+</dd>
+    </dl>
+    <h3 id="enums">
+Enums
+</h3>
+    <dl class="jumplist">
+      <dt><a class="xref" href="AshesOfVelsingrad.UI.Hud.HudStyle.PanelTier.html">HudStyle.PanelTier</a></dt>
+      <dd><p>Panel weight tier.</p>
 </dd>
     </dl>
 

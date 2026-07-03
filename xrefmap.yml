@@ -14912,19 +14912,19 @@ references:
   isSpec: "True"
   fullName: AshesOfVelsingrad.IntegrationTests.UI.BattleHudTest.Build_BeforeReadyFires_SafeToCallSynchronously
   nameWithType: BattleHudTest.Build_BeforeReadyFires_SafeToCallSynchronously
-- uid: AshesOfVelsingrad.IntegrationTests.UI.BattleHudTest.Build_CreatesAllSevenChildWidgets
-  name: Build_CreatesAllSevenChildWidgets()
-  href: api/AshesOfVelsingrad.IntegrationTests.UI.BattleHudTest.html#AshesOfVelsingrad_IntegrationTests_UI_BattleHudTest_Build_CreatesAllSevenChildWidgets
-  commentId: M:AshesOfVelsingrad.IntegrationTests.UI.BattleHudTest.Build_CreatesAllSevenChildWidgets
-  fullName: AshesOfVelsingrad.IntegrationTests.UI.BattleHudTest.Build_CreatesAllSevenChildWidgets()
-  nameWithType: BattleHudTest.Build_CreatesAllSevenChildWidgets()
-- uid: AshesOfVelsingrad.IntegrationTests.UI.BattleHudTest.Build_CreatesAllSevenChildWidgets*
-  name: Build_CreatesAllSevenChildWidgets
-  href: api/AshesOfVelsingrad.IntegrationTests.UI.BattleHudTest.html#AshesOfVelsingrad_IntegrationTests_UI_BattleHudTest_Build_CreatesAllSevenChildWidgets_
-  commentId: Overload:AshesOfVelsingrad.IntegrationTests.UI.BattleHudTest.Build_CreatesAllSevenChildWidgets
+- uid: AshesOfVelsingrad.IntegrationTests.UI.BattleHudTest.Build_CreatesAllChildWidgets
+  name: Build_CreatesAllChildWidgets()
+  href: api/AshesOfVelsingrad.IntegrationTests.UI.BattleHudTest.html#AshesOfVelsingrad_IntegrationTests_UI_BattleHudTest_Build_CreatesAllChildWidgets
+  commentId: M:AshesOfVelsingrad.IntegrationTests.UI.BattleHudTest.Build_CreatesAllChildWidgets
+  fullName: AshesOfVelsingrad.IntegrationTests.UI.BattleHudTest.Build_CreatesAllChildWidgets()
+  nameWithType: BattleHudTest.Build_CreatesAllChildWidgets()
+- uid: AshesOfVelsingrad.IntegrationTests.UI.BattleHudTest.Build_CreatesAllChildWidgets*
+  name: Build_CreatesAllChildWidgets
+  href: api/AshesOfVelsingrad.IntegrationTests.UI.BattleHudTest.html#AshesOfVelsingrad_IntegrationTests_UI_BattleHudTest_Build_CreatesAllChildWidgets_
+  commentId: Overload:AshesOfVelsingrad.IntegrationTests.UI.BattleHudTest.Build_CreatesAllChildWidgets
   isSpec: "True"
-  fullName: AshesOfVelsingrad.IntegrationTests.UI.BattleHudTest.Build_CreatesAllSevenChildWidgets
-  nameWithType: BattleHudTest.Build_CreatesAllSevenChildWidgets
+  fullName: AshesOfVelsingrad.IntegrationTests.UI.BattleHudTest.Build_CreatesAllChildWidgets
+  nameWithType: BattleHudTest.Build_CreatesAllChildWidgets
 - uid: AshesOfVelsingrad.IntegrationTests.UI.BattleHudTest.Build_IsIdempotent_DoesNotDoubleSpawnChildren
   name: Build_IsIdempotent_DoesNotDoubleSpawnChildren()
   href: api/AshesOfVelsingrad.IntegrationTests.UI.BattleHudTest.html#AshesOfVelsingrad_IntegrationTests_UI_BattleHudTest_Build_IsIdempotent_DoesNotDoubleSpawnChildren
@@ -20729,6 +20729,12 @@ references:
   isSpec: "True"
   fullName: AshesOfVelsingrad.Systems.IUnitSystem.OnEffectRevive
   nameWithType: IUnitSystem.OnEffectRevive
+- uid: AshesOfVelsingrad.Systems.IUnitSystem.OnStatsChanged
+  name: OnStatsChanged
+  href: api/AshesOfVelsingrad.Systems.IUnitSystem.html#AshesOfVelsingrad_Systems_IUnitSystem_OnStatsChanged
+  commentId: E:AshesOfVelsingrad.Systems.IUnitSystem.OnStatsChanged
+  fullName: AshesOfVelsingrad.Systems.IUnitSystem.OnStatsChanged
+  nameWithType: IUnitSystem.OnStatsChanged
 - uid: AshesOfVelsingrad.Systems.IUnitSystem.PassTurn
   name: PassTurn()
   href: api/AshesOfVelsingrad.Systems.IUnitSystem.html#AshesOfVelsingrad_Systems_IUnitSystem_PassTurn
@@ -22991,6 +22997,12 @@ references:
   isSpec: "True"
   fullName: AshesOfVelsingrad.Systems.UnitSystem.OnEffectRevive
   nameWithType: UnitSystem.OnEffectRevive
+- uid: AshesOfVelsingrad.Systems.UnitSystem.OnStatsChanged
+  name: OnStatsChanged
+  href: api/AshesOfVelsingrad.Systems.UnitSystem.html#AshesOfVelsingrad_Systems_UnitSystem_OnStatsChanged
+  commentId: E:AshesOfVelsingrad.Systems.UnitSystem.OnStatsChanged
+  fullName: AshesOfVelsingrad.Systems.UnitSystem.OnStatsChanged
+  nameWithType: UnitSystem.OnStatsChanged
 - uid: AshesOfVelsingrad.Systems.UnitSystem.OverrideDisplayName(System.String)
   name: OverrideDisplayName(string)
   href: api/AshesOfVelsingrad.Systems.UnitSystem.html#AshesOfVelsingrad_Systems_UnitSystem_OverrideDisplayName_System_String_
@@ -23094,6 +23106,19 @@ references:
   isSpec: "True"
   fullName: AshesOfVelsingrad.Systems.UnitSystem.PossibleMovesRange
   nameWithType: UnitSystem.PossibleMovesRange
+- uid: AshesOfVelsingrad.Systems.UnitSystem.RaiseStatsChanged
+  name: RaiseStatsChanged()
+  href: api/AshesOfVelsingrad.Systems.UnitSystem.html#AshesOfVelsingrad_Systems_UnitSystem_RaiseStatsChanged
+  commentId: M:AshesOfVelsingrad.Systems.UnitSystem.RaiseStatsChanged
+  fullName: AshesOfVelsingrad.Systems.UnitSystem.RaiseStatsChanged()
+  nameWithType: UnitSystem.RaiseStatsChanged()
+- uid: AshesOfVelsingrad.Systems.UnitSystem.RaiseStatsChanged*
+  name: RaiseStatsChanged
+  href: api/AshesOfVelsingrad.Systems.UnitSystem.html#AshesOfVelsingrad_Systems_UnitSystem_RaiseStatsChanged_
+  commentId: Overload:AshesOfVelsingrad.Systems.UnitSystem.RaiseStatsChanged
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.Systems.UnitSystem.RaiseStatsChanged
+  nameWithType: UnitSystem.RaiseStatsChanged
 - uid: AshesOfVelsingrad.Systems.UnitSystem.RemoveEffect(AshesOfVelsingrad.Systems.StatusEffect{AshesOfVelsingrad.Systems.IUnitSystem})
   name: RemoveEffect(StatusEffect<IUnitSystem>)
   href: api/AshesOfVelsingrad.Systems.UnitSystem.html#AshesOfVelsingrad_Systems_UnitSystem_RemoveEffect_AshesOfVelsingrad_Systems_StatusEffect_AshesOfVelsingrad_Systems_IUnitSystem__
@@ -23448,6 +23473,19 @@ references:
   commentId: E:AshesOfVelsingrad.UI.Hud.ActionMenu.OnSkillPressed
   fullName: AshesOfVelsingrad.UI.Hud.ActionMenu.OnSkillPressed
   nameWithType: ActionMenu.OnSkillPressed
+- uid: AshesOfVelsingrad.UI.Hud.ActionMenu.Relayout
+  name: Relayout()
+  href: api/AshesOfVelsingrad.UI.Hud.ActionMenu.html#AshesOfVelsingrad_UI_Hud_ActionMenu_Relayout
+  commentId: M:AshesOfVelsingrad.UI.Hud.ActionMenu.Relayout
+  fullName: AshesOfVelsingrad.UI.Hud.ActionMenu.Relayout()
+  nameWithType: ActionMenu.Relayout()
+- uid: AshesOfVelsingrad.UI.Hud.ActionMenu.Relayout*
+  name: Relayout
+  href: api/AshesOfVelsingrad.UI.Hud.ActionMenu.html#AshesOfVelsingrad_UI_Hud_ActionMenu_Relayout_
+  commentId: Overload:AshesOfVelsingrad.UI.Hud.ActionMenu.Relayout
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.UI.Hud.ActionMenu.Relayout
+  nameWithType: ActionMenu.Relayout
 - uid: AshesOfVelsingrad.UI.Hud.ActionMenu.SetInventoryUI(AshesOfVelsingrad.UI.Inventory.BattleInventoryUI,AshesOfVelsingrad.UI.Hud.SkillSelector,System.Func{AshesOfVelsingrad.Systems.InventorySystem})
   name: SetInventoryUI(BattleInventoryUI, SkillSelector, Func<InventorySystem?>)
   href: api/AshesOfVelsingrad.UI.Hud.ActionMenu.html#AshesOfVelsingrad_UI_Hud_ActionMenu_SetInventoryUI_AshesOfVelsingrad_UI_Inventory_BattleInventoryUI_AshesOfVelsingrad_UI_Hud_SkillSelector_System_Func_AshesOfVelsingrad_Systems_InventorySystem__
@@ -23538,6 +23576,19 @@ references:
   isSpec: "True"
   fullName: AshesOfVelsingrad.UI.Hud.BattleHud.ContextInfo
   nameWithType: BattleHud.ContextInfo
+- uid: AshesOfVelsingrad.UI.Hud.BattleHud.Corruption
+  name: Corruption
+  href: api/AshesOfVelsingrad.UI.Hud.BattleHud.html#AshesOfVelsingrad_UI_Hud_BattleHud_Corruption
+  commentId: P:AshesOfVelsingrad.UI.Hud.BattleHud.Corruption
+  fullName: AshesOfVelsingrad.UI.Hud.BattleHud.Corruption
+  nameWithType: BattleHud.Corruption
+- uid: AshesOfVelsingrad.UI.Hud.BattleHud.Corruption*
+  name: Corruption
+  href: api/AshesOfVelsingrad.UI.Hud.BattleHud.html#AshesOfVelsingrad_UI_Hud_BattleHud_Corruption_
+  commentId: Overload:AshesOfVelsingrad.UI.Hud.BattleHud.Corruption
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.UI.Hud.BattleHud.Corruption
+  nameWithType: BattleHud.Corruption
 - uid: AshesOfVelsingrad.UI.Hud.BattleHud.EnemyRoster
   name: EnemyRoster
   href: api/AshesOfVelsingrad.UI.Hud.BattleHud.html#AshesOfVelsingrad_UI_Hud_BattleHud_EnemyRoster
@@ -23673,6 +23724,19 @@ references:
   commentId: F:AshesOfVelsingrad.UI.Hud.BattleLog.MaxLines
   fullName: AshesOfVelsingrad.UI.Hud.BattleLog.MaxLines
   nameWithType: BattleLog.MaxLines
+- uid: AshesOfVelsingrad.UI.Hud.BattleLog.Relayout
+  name: Relayout()
+  href: api/AshesOfVelsingrad.UI.Hud.BattleLog.html#AshesOfVelsingrad_UI_Hud_BattleLog_Relayout
+  commentId: M:AshesOfVelsingrad.UI.Hud.BattleLog.Relayout
+  fullName: AshesOfVelsingrad.UI.Hud.BattleLog.Relayout()
+  nameWithType: BattleLog.Relayout()
+- uid: AshesOfVelsingrad.UI.Hud.BattleLog.Relayout*
+  name: Relayout
+  href: api/AshesOfVelsingrad.UI.Hud.BattleLog.html#AshesOfVelsingrad_UI_Hud_BattleLog_Relayout_
+  commentId: Overload:AshesOfVelsingrad.UI.Hud.BattleLog.Relayout
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.UI.Hud.BattleLog.Relayout
+  nameWithType: BattleLog.Relayout
 - uid: AshesOfVelsingrad.UI.Hud.BattleLog._ExitTree
   name: _ExitTree()
   href: api/AshesOfVelsingrad.UI.Hud.BattleLog.html#AshesOfVelsingrad_UI_Hud_BattleLog__ExitTree
@@ -23731,6 +23795,19 @@ references:
   isSpec: "True"
   fullName: AshesOfVelsingrad.UI.Hud.ContextInfoPanel.EnsureBuilt
   nameWithType: ContextInfoPanel.EnsureBuilt
+- uid: AshesOfVelsingrad.UI.Hud.ContextInfoPanel.Relayout
+  name: Relayout()
+  href: api/AshesOfVelsingrad.UI.Hud.ContextInfoPanel.html#AshesOfVelsingrad_UI_Hud_ContextInfoPanel_Relayout
+  commentId: M:AshesOfVelsingrad.UI.Hud.ContextInfoPanel.Relayout
+  fullName: AshesOfVelsingrad.UI.Hud.ContextInfoPanel.Relayout()
+  nameWithType: ContextInfoPanel.Relayout()
+- uid: AshesOfVelsingrad.UI.Hud.ContextInfoPanel.Relayout*
+  name: Relayout
+  href: api/AshesOfVelsingrad.UI.Hud.ContextInfoPanel.html#AshesOfVelsingrad_UI_Hud_ContextInfoPanel_Relayout_
+  commentId: Overload:AshesOfVelsingrad.UI.Hud.ContextInfoPanel.Relayout
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.UI.Hud.ContextInfoPanel.Relayout
+  nameWithType: ContextInfoPanel.Relayout
 - uid: AshesOfVelsingrad.UI.Hud.ContextInfoPanel.ShowMovement(System.Int32,System.Int32,System.Boolean)
   name: ShowMovement(int, int, bool)
   href: api/AshesOfVelsingrad.UI.Hud.ContextInfoPanel.html#AshesOfVelsingrad_UI_Hud_ContextInfoPanel_ShowMovement_System_Int32_System_Int32_System_Boolean_
@@ -23773,6 +23850,64 @@ references:
   isSpec: "True"
   fullName: AshesOfVelsingrad.UI.Hud.ContextInfoPanel._Ready
   nameWithType: ContextInfoPanel._Ready
+- uid: AshesOfVelsingrad.UI.Hud.CorruptionGauge
+  name: CorruptionGauge
+  href: api/AshesOfVelsingrad.UI.Hud.CorruptionGauge.html
+  commentId: T:AshesOfVelsingrad.UI.Hud.CorruptionGauge
+  fullName: AshesOfVelsingrad.UI.Hud.CorruptionGauge
+  nameWithType: CorruptionGauge
+- uid: AshesOfVelsingrad.UI.Hud.CorruptionGauge.EnsureBuilt
+  name: EnsureBuilt()
+  href: api/AshesOfVelsingrad.UI.Hud.CorruptionGauge.html#AshesOfVelsingrad_UI_Hud_CorruptionGauge_EnsureBuilt
+  commentId: M:AshesOfVelsingrad.UI.Hud.CorruptionGauge.EnsureBuilt
+  fullName: AshesOfVelsingrad.UI.Hud.CorruptionGauge.EnsureBuilt()
+  nameWithType: CorruptionGauge.EnsureBuilt()
+- uid: AshesOfVelsingrad.UI.Hud.CorruptionGauge.EnsureBuilt*
+  name: EnsureBuilt
+  href: api/AshesOfVelsingrad.UI.Hud.CorruptionGauge.html#AshesOfVelsingrad_UI_Hud_CorruptionGauge_EnsureBuilt_
+  commentId: Overload:AshesOfVelsingrad.UI.Hud.CorruptionGauge.EnsureBuilt
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.UI.Hud.CorruptionGauge.EnsureBuilt
+  nameWithType: CorruptionGauge.EnsureBuilt
+- uid: AshesOfVelsingrad.UI.Hud.CorruptionGauge.Relayout
+  name: Relayout()
+  href: api/AshesOfVelsingrad.UI.Hud.CorruptionGauge.html#AshesOfVelsingrad_UI_Hud_CorruptionGauge_Relayout
+  commentId: M:AshesOfVelsingrad.UI.Hud.CorruptionGauge.Relayout
+  fullName: AshesOfVelsingrad.UI.Hud.CorruptionGauge.Relayout()
+  nameWithType: CorruptionGauge.Relayout()
+- uid: AshesOfVelsingrad.UI.Hud.CorruptionGauge.Relayout*
+  name: Relayout
+  href: api/AshesOfVelsingrad.UI.Hud.CorruptionGauge.html#AshesOfVelsingrad_UI_Hud_CorruptionGauge_Relayout_
+  commentId: Overload:AshesOfVelsingrad.UI.Hud.CorruptionGauge.Relayout
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.UI.Hud.CorruptionGauge.Relayout
+  nameWithType: CorruptionGauge.Relayout
+- uid: AshesOfVelsingrad.UI.Hud.CorruptionGauge._ExitTree
+  name: _ExitTree()
+  href: api/AshesOfVelsingrad.UI.Hud.CorruptionGauge.html#AshesOfVelsingrad_UI_Hud_CorruptionGauge__ExitTree
+  commentId: M:AshesOfVelsingrad.UI.Hud.CorruptionGauge._ExitTree
+  fullName: AshesOfVelsingrad.UI.Hud.CorruptionGauge._ExitTree()
+  nameWithType: CorruptionGauge._ExitTree()
+- uid: AshesOfVelsingrad.UI.Hud.CorruptionGauge._ExitTree*
+  name: _ExitTree
+  href: api/AshesOfVelsingrad.UI.Hud.CorruptionGauge.html#AshesOfVelsingrad_UI_Hud_CorruptionGauge__ExitTree_
+  commentId: Overload:AshesOfVelsingrad.UI.Hud.CorruptionGauge._ExitTree
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.UI.Hud.CorruptionGauge._ExitTree
+  nameWithType: CorruptionGauge._ExitTree
+- uid: AshesOfVelsingrad.UI.Hud.CorruptionGauge._Ready
+  name: _Ready()
+  href: api/AshesOfVelsingrad.UI.Hud.CorruptionGauge.html#AshesOfVelsingrad_UI_Hud_CorruptionGauge__Ready
+  commentId: M:AshesOfVelsingrad.UI.Hud.CorruptionGauge._Ready
+  fullName: AshesOfVelsingrad.UI.Hud.CorruptionGauge._Ready()
+  nameWithType: CorruptionGauge._Ready()
+- uid: AshesOfVelsingrad.UI.Hud.CorruptionGauge._Ready*
+  name: _Ready
+  href: api/AshesOfVelsingrad.UI.Hud.CorruptionGauge.html#AshesOfVelsingrad_UI_Hud_CorruptionGauge__Ready_
+  commentId: Overload:AshesOfVelsingrad.UI.Hud.CorruptionGauge._Ready
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.UI.Hud.CorruptionGauge._Ready
+  nameWithType: CorruptionGauge._Ready
 - uid: AshesOfVelsingrad.UI.Hud.EnemyRoster
   name: EnemyRoster
   href: api/AshesOfVelsingrad.UI.Hud.EnemyRoster.html
@@ -23821,6 +23956,19 @@ references:
   isSpec: "True"
   fullName: AshesOfVelsingrad.UI.Hud.EnemyRoster.RefreshAll
   nameWithType: EnemyRoster.RefreshAll
+- uid: AshesOfVelsingrad.UI.Hud.EnemyRoster.Relayout
+  name: Relayout()
+  href: api/AshesOfVelsingrad.UI.Hud.EnemyRoster.html#AshesOfVelsingrad_UI_Hud_EnemyRoster_Relayout
+  commentId: M:AshesOfVelsingrad.UI.Hud.EnemyRoster.Relayout
+  fullName: AshesOfVelsingrad.UI.Hud.EnemyRoster.Relayout()
+  nameWithType: EnemyRoster.Relayout()
+- uid: AshesOfVelsingrad.UI.Hud.EnemyRoster.Relayout*
+  name: Relayout
+  href: api/AshesOfVelsingrad.UI.Hud.EnemyRoster.html#AshesOfVelsingrad_UI_Hud_EnemyRoster_Relayout_
+  commentId: Overload:AshesOfVelsingrad.UI.Hud.EnemyRoster.Relayout
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.UI.Hud.EnemyRoster.Relayout
+  nameWithType: EnemyRoster.Relayout
 - uid: AshesOfVelsingrad.UI.Hud.EnemyRoster._Ready
   name: _Ready()
   href: api/AshesOfVelsingrad.UI.Hud.EnemyRoster.html#AshesOfVelsingrad_UI_Hud_EnemyRoster__Ready
@@ -23884,12 +24032,65 @@ references:
   isSpec: "True"
   fullName: AshesOfVelsingrad.UI.Hud.GameOverScreen._Ready
   nameWithType: GameOverScreen._Ready
+- uid: AshesOfVelsingrad.UI.Hud.HudBusHelper
+  name: HudBusHelper
+  href: api/AshesOfVelsingrad.UI.Hud.HudBusHelper.html
+  commentId: T:AshesOfVelsingrad.UI.Hud.HudBusHelper
+  fullName: AshesOfVelsingrad.UI.Hud.HudBusHelper
+  nameWithType: HudBusHelper
+- uid: AshesOfVelsingrad.UI.Hud.HudBusHelper.WhenReadyAsync(Godot.Node,System.Action{AshesOfVelsingrad.systems.battle.BattleEventBus})
+  name: WhenReadyAsync(Node, Action<BattleEventBus>)
+  href: api/AshesOfVelsingrad.UI.Hud.HudBusHelper.html#AshesOfVelsingrad_UI_Hud_HudBusHelper_WhenReadyAsync_Godot_Node_System_Action_AshesOfVelsingrad_systems_battle_BattleEventBus__
+  commentId: M:AshesOfVelsingrad.UI.Hud.HudBusHelper.WhenReadyAsync(Godot.Node,System.Action{AshesOfVelsingrad.systems.battle.BattleEventBus})
+  name.vb: WhenReadyAsync(Node, Action(Of BattleEventBus))
+  fullName: AshesOfVelsingrad.UI.Hud.HudBusHelper.WhenReadyAsync(Godot.Node, System.Action<AshesOfVelsingrad.systems.battle.BattleEventBus>)
+  fullName.vb: AshesOfVelsingrad.UI.Hud.HudBusHelper.WhenReadyAsync(Godot.Node, System.Action(Of AshesOfVelsingrad.systems.battle.BattleEventBus))
+  nameWithType: HudBusHelper.WhenReadyAsync(Node, Action<BattleEventBus>)
+  nameWithType.vb: HudBusHelper.WhenReadyAsync(Node, Action(Of BattleEventBus))
+- uid: AshesOfVelsingrad.UI.Hud.HudBusHelper.WhenReadyAsync*
+  name: WhenReadyAsync
+  href: api/AshesOfVelsingrad.UI.Hud.HudBusHelper.html#AshesOfVelsingrad_UI_Hud_HudBusHelper_WhenReadyAsync_
+  commentId: Overload:AshesOfVelsingrad.UI.Hud.HudBusHelper.WhenReadyAsync
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.UI.Hud.HudBusHelper.WhenReadyAsync
+  nameWithType: HudBusHelper.WhenReadyAsync
 - uid: AshesOfVelsingrad.UI.Hud.HudStyle
   name: HudStyle
   href: api/AshesOfVelsingrad.UI.Hud.HudStyle.html
   commentId: T:AshesOfVelsingrad.UI.Hud.HudStyle
   fullName: AshesOfVelsingrad.UI.Hud.HudStyle
   nameWithType: HudStyle
+- uid: AshesOfVelsingrad.UI.Hud.HudStyle.ActionBarHeight
+  name: ActionBarHeight
+  href: api/AshesOfVelsingrad.UI.Hud.HudStyle.html#AshesOfVelsingrad_UI_Hud_HudStyle_ActionBarHeight
+  commentId: F:AshesOfVelsingrad.UI.Hud.HudStyle.ActionBarHeight
+  fullName: AshesOfVelsingrad.UI.Hud.HudStyle.ActionBarHeight
+  nameWithType: HudStyle.ActionBarHeight
+- uid: AshesOfVelsingrad.UI.Hud.HudStyle.ActionBarWidth
+  name: ActionBarWidth
+  href: api/AshesOfVelsingrad.UI.Hud.HudStyle.html#AshesOfVelsingrad_UI_Hud_HudStyle_ActionBarWidth
+  commentId: F:AshesOfVelsingrad.UI.Hud.HudStyle.ActionBarWidth
+  fullName: AshesOfVelsingrad.UI.Hud.HudStyle.ActionBarWidth
+  nameWithType: HudStyle.ActionBarWidth
+- uid: AshesOfVelsingrad.UI.Hud.HudStyle.ActionIconSize
+  name: ActionIconSize
+  href: api/AshesOfVelsingrad.UI.Hud.HudStyle.html#AshesOfVelsingrad_UI_Hud_HudStyle_ActionIconSize
+  commentId: F:AshesOfVelsingrad.UI.Hud.HudStyle.ActionIconSize
+  fullName: AshesOfVelsingrad.UI.Hud.HudStyle.ActionIconSize
+  nameWithType: HudStyle.ActionIconSize
+- uid: AshesOfVelsingrad.UI.Hud.HudStyle.AllyColor
+  name: AllyColor
+  href: api/AshesOfVelsingrad.UI.Hud.HudStyle.html#AshesOfVelsingrad_UI_Hud_HudStyle_AllyColor
+  commentId: P:AshesOfVelsingrad.UI.Hud.HudStyle.AllyColor
+  fullName: AshesOfVelsingrad.UI.Hud.HudStyle.AllyColor
+  nameWithType: HudStyle.AllyColor
+- uid: AshesOfVelsingrad.UI.Hud.HudStyle.AllyColor*
+  name: AllyColor
+  href: api/AshesOfVelsingrad.UI.Hud.HudStyle.html#AshesOfVelsingrad_UI_Hud_HudStyle_AllyColor_
+  commentId: Overload:AshesOfVelsingrad.UI.Hud.HudStyle.AllyColor
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.UI.Hud.HudStyle.AllyColor
+  nameWithType: HudStyle.AllyColor
 - uid: AshesOfVelsingrad.UI.Hud.HudStyle.ApplyBarStyle(Godot.ProgressBar,Godot.Color)
   name: ApplyBarStyle(ProgressBar, Color)
   href: api/AshesOfVelsingrad.UI.Hud.HudStyle.html#AshesOfVelsingrad_UI_Hud_HudStyle_ApplyBarStyle_Godot_ProgressBar_Godot_Color_
@@ -23919,6 +24120,114 @@ references:
   isSpec: "True"
   fullName: AshesOfVelsingrad.UI.Hud.HudStyle.ApplyScaledFontSize
   nameWithType: HudStyle.ApplyScaledFontSize
+- uid: AshesOfVelsingrad.UI.Hud.HudStyle.Azure
+  name: Azure
+  href: api/AshesOfVelsingrad.UI.Hud.HudStyle.html#AshesOfVelsingrad_UI_Hud_HudStyle_Azure
+  commentId: P:AshesOfVelsingrad.UI.Hud.HudStyle.Azure
+  fullName: AshesOfVelsingrad.UI.Hud.HudStyle.Azure
+  nameWithType: HudStyle.Azure
+- uid: AshesOfVelsingrad.UI.Hud.HudStyle.Azure*
+  name: Azure
+  href: api/AshesOfVelsingrad.UI.Hud.HudStyle.html#AshesOfVelsingrad_UI_Hud_HudStyle_Azure_
+  commentId: Overload:AshesOfVelsingrad.UI.Hud.HudStyle.Azure
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.UI.Hud.HudStyle.Azure
+  nameWithType: HudStyle.Azure
+- uid: AshesOfVelsingrad.UI.Hud.HudStyle.AzureDeep
+  name: AzureDeep
+  href: api/AshesOfVelsingrad.UI.Hud.HudStyle.html#AshesOfVelsingrad_UI_Hud_HudStyle_AzureDeep
+  commentId: P:AshesOfVelsingrad.UI.Hud.HudStyle.AzureDeep
+  fullName: AshesOfVelsingrad.UI.Hud.HudStyle.AzureDeep
+  nameWithType: HudStyle.AzureDeep
+- uid: AshesOfVelsingrad.UI.Hud.HudStyle.AzureDeep*
+  name: AzureDeep
+  href: api/AshesOfVelsingrad.UI.Hud.HudStyle.html#AshesOfVelsingrad_UI_Hud_HudStyle_AzureDeep_
+  commentId: Overload:AshesOfVelsingrad.UI.Hud.HudStyle.AzureDeep
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.UI.Hud.HudStyle.AzureDeep
+  nameWithType: HudStyle.AzureDeep
+- uid: AshesOfVelsingrad.UI.Hud.HudStyle.Bronze
+  name: Bronze
+  href: api/AshesOfVelsingrad.UI.Hud.HudStyle.html#AshesOfVelsingrad_UI_Hud_HudStyle_Bronze
+  commentId: P:AshesOfVelsingrad.UI.Hud.HudStyle.Bronze
+  fullName: AshesOfVelsingrad.UI.Hud.HudStyle.Bronze
+  nameWithType: HudStyle.Bronze
+- uid: AshesOfVelsingrad.UI.Hud.HudStyle.Bronze*
+  name: Bronze
+  href: api/AshesOfVelsingrad.UI.Hud.HudStyle.html#AshesOfVelsingrad_UI_Hud_HudStyle_Bronze_
+  commentId: Overload:AshesOfVelsingrad.UI.Hud.HudStyle.Bronze
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.UI.Hud.HudStyle.Bronze
+  nameWithType: HudStyle.Bronze
+- uid: AshesOfVelsingrad.UI.Hud.HudStyle.BronzeDim
+  name: BronzeDim
+  href: api/AshesOfVelsingrad.UI.Hud.HudStyle.html#AshesOfVelsingrad_UI_Hud_HudStyle_BronzeDim
+  commentId: P:AshesOfVelsingrad.UI.Hud.HudStyle.BronzeDim
+  fullName: AshesOfVelsingrad.UI.Hud.HudStyle.BronzeDim
+  nameWithType: HudStyle.BronzeDim
+- uid: AshesOfVelsingrad.UI.Hud.HudStyle.BronzeDim*
+  name: BronzeDim
+  href: api/AshesOfVelsingrad.UI.Hud.HudStyle.html#AshesOfVelsingrad_UI_Hud_HudStyle_BronzeDim_
+  commentId: Overload:AshesOfVelsingrad.UI.Hud.HudStyle.BronzeDim
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.UI.Hud.HudStyle.BronzeDim
+  nameWithType: HudStyle.BronzeDim
+- uid: AshesOfVelsingrad.UI.Hud.HudStyle.ButtonHeight
+  name: ButtonHeight
+  href: api/AshesOfVelsingrad.UI.Hud.HudStyle.html#AshesOfVelsingrad_UI_Hud_HudStyle_ButtonHeight
+  commentId: F:AshesOfVelsingrad.UI.Hud.HudStyle.ButtonHeight
+  fullName: AshesOfVelsingrad.UI.Hud.HudStyle.ButtonHeight
+  nameWithType: HudStyle.ButtonHeight
+- uid: AshesOfVelsingrad.UI.Hud.HudStyle.ContextHeight
+  name: ContextHeight
+  href: api/AshesOfVelsingrad.UI.Hud.HudStyle.html#AshesOfVelsingrad_UI_Hud_HudStyle_ContextHeight
+  commentId: F:AshesOfVelsingrad.UI.Hud.HudStyle.ContextHeight
+  fullName: AshesOfVelsingrad.UI.Hud.HudStyle.ContextHeight
+  nameWithType: HudStyle.ContextHeight
+- uid: AshesOfVelsingrad.UI.Hud.HudStyle.ContextWidth
+  name: ContextWidth
+  href: api/AshesOfVelsingrad.UI.Hud.HudStyle.html#AshesOfVelsingrad_UI_Hud_HudStyle_ContextWidth
+  commentId: F:AshesOfVelsingrad.UI.Hud.HudStyle.ContextWidth
+  fullName: AshesOfVelsingrad.UI.Hud.HudStyle.ContextWidth
+  nameWithType: HudStyle.ContextWidth
+- uid: AshesOfVelsingrad.UI.Hud.HudStyle.CorruptionHeight
+  name: CorruptionHeight
+  href: api/AshesOfVelsingrad.UI.Hud.HudStyle.html#AshesOfVelsingrad_UI_Hud_HudStyle_CorruptionHeight
+  commentId: F:AshesOfVelsingrad.UI.Hud.HudStyle.CorruptionHeight
+  fullName: AshesOfVelsingrad.UI.Hud.HudStyle.CorruptionHeight
+  nameWithType: HudStyle.CorruptionHeight
+- uid: AshesOfVelsingrad.UI.Hud.HudStyle.CorruptionWidth
+  name: CorruptionWidth
+  href: api/AshesOfVelsingrad.UI.Hud.HudStyle.html#AshesOfVelsingrad_UI_Hud_HudStyle_CorruptionWidth
+  commentId: F:AshesOfVelsingrad.UI.Hud.HudStyle.CorruptionWidth
+  fullName: AshesOfVelsingrad.UI.Hud.HudStyle.CorruptionWidth
+  nameWithType: HudStyle.CorruptionWidth
+- uid: AshesOfVelsingrad.UI.Hud.HudStyle.Crimson
+  name: Crimson
+  href: api/AshesOfVelsingrad.UI.Hud.HudStyle.html#AshesOfVelsingrad_UI_Hud_HudStyle_Crimson
+  commentId: P:AshesOfVelsingrad.UI.Hud.HudStyle.Crimson
+  fullName: AshesOfVelsingrad.UI.Hud.HudStyle.Crimson
+  nameWithType: HudStyle.Crimson
+- uid: AshesOfVelsingrad.UI.Hud.HudStyle.Crimson*
+  name: Crimson
+  href: api/AshesOfVelsingrad.UI.Hud.HudStyle.html#AshesOfVelsingrad_UI_Hud_HudStyle_Crimson_
+  commentId: Overload:AshesOfVelsingrad.UI.Hud.HudStyle.Crimson
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.UI.Hud.HudStyle.Crimson
+  nameWithType: HudStyle.Crimson
+- uid: AshesOfVelsingrad.UI.Hud.HudStyle.CrimsonDeep
+  name: CrimsonDeep
+  href: api/AshesOfVelsingrad.UI.Hud.HudStyle.html#AshesOfVelsingrad_UI_Hud_HudStyle_CrimsonDeep
+  commentId: P:AshesOfVelsingrad.UI.Hud.HudStyle.CrimsonDeep
+  fullName: AshesOfVelsingrad.UI.Hud.HudStyle.CrimsonDeep
+  nameWithType: HudStyle.CrimsonDeep
+- uid: AshesOfVelsingrad.UI.Hud.HudStyle.CrimsonDeep*
+  name: CrimsonDeep
+  href: api/AshesOfVelsingrad.UI.Hud.HudStyle.html#AshesOfVelsingrad_UI_Hud_HudStyle_CrimsonDeep_
+  commentId: Overload:AshesOfVelsingrad.UI.Hud.HudStyle.CrimsonDeep
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.UI.Hud.HudStyle.CrimsonDeep
+  nameWithType: HudStyle.CrimsonDeep
 - uid: AshesOfVelsingrad.UI.Hud.HudStyle.DimText
   name: DimText
   href: api/AshesOfVelsingrad.UI.Hud.HudStyle.html#AshesOfVelsingrad_UI_Hud_HudStyle_DimText
@@ -23932,6 +24241,32 @@ references:
   isSpec: "True"
   fullName: AshesOfVelsingrad.UI.Hud.HudStyle.DimText
   nameWithType: HudStyle.DimText
+- uid: AshesOfVelsingrad.UI.Hud.HudStyle.DisabledFill
+  name: DisabledFill
+  href: api/AshesOfVelsingrad.UI.Hud.HudStyle.html#AshesOfVelsingrad_UI_Hud_HudStyle_DisabledFill
+  commentId: P:AshesOfVelsingrad.UI.Hud.HudStyle.DisabledFill
+  fullName: AshesOfVelsingrad.UI.Hud.HudStyle.DisabledFill
+  nameWithType: HudStyle.DisabledFill
+- uid: AshesOfVelsingrad.UI.Hud.HudStyle.DisabledFill*
+  name: DisabledFill
+  href: api/AshesOfVelsingrad.UI.Hud.HudStyle.html#AshesOfVelsingrad_UI_Hud_HudStyle_DisabledFill_
+  commentId: Overload:AshesOfVelsingrad.UI.Hud.HudStyle.DisabledFill
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.UI.Hud.HudStyle.DisabledFill
+  nameWithType: HudStyle.DisabledFill
+- uid: AshesOfVelsingrad.UI.Hud.HudStyle.DisabledText
+  name: DisabledText
+  href: api/AshesOfVelsingrad.UI.Hud.HudStyle.html#AshesOfVelsingrad_UI_Hud_HudStyle_DisabledText
+  commentId: P:AshesOfVelsingrad.UI.Hud.HudStyle.DisabledText
+  fullName: AshesOfVelsingrad.UI.Hud.HudStyle.DisabledText
+  nameWithType: HudStyle.DisabledText
+- uid: AshesOfVelsingrad.UI.Hud.HudStyle.DisabledText*
+  name: DisabledText
+  href: api/AshesOfVelsingrad.UI.Hud.HudStyle.html#AshesOfVelsingrad_UI_Hud_HudStyle_DisabledText_
+  commentId: Overload:AshesOfVelsingrad.UI.Hud.HudStyle.DisabledText
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.UI.Hud.HudStyle.DisabledText
+  nameWithType: HudStyle.DisabledText
 - uid: AshesOfVelsingrad.UI.Hud.HudStyle.EnemyColor
   name: EnemyColor
   href: api/AshesOfVelsingrad.UI.Hud.HudStyle.html#AshesOfVelsingrad_UI_Hud_HudStyle_EnemyColor
@@ -23975,12 +24310,56 @@ references:
   commentId: F:AshesOfVelsingrad.UI.Hud.HudStyle.FontSizeSmall
   fullName: AshesOfVelsingrad.UI.Hud.HudStyle.FontSizeSmall
   nameWithType: HudStyle.FontSizeSmall
+- uid: AshesOfVelsingrad.UI.Hud.HudStyle.FontSizeSub
+  name: FontSizeSub
+  href: api/AshesOfVelsingrad.UI.Hud.HudStyle.html#AshesOfVelsingrad_UI_Hud_HudStyle_FontSizeSub
+  commentId: F:AshesOfVelsingrad.UI.Hud.HudStyle.FontSizeSub
+  fullName: AshesOfVelsingrad.UI.Hud.HudStyle.FontSizeSub
+  nameWithType: HudStyle.FontSizeSub
+- uid: AshesOfVelsingrad.UI.Hud.HudStyle.FontSizeTiny
+  name: FontSizeTiny
+  href: api/AshesOfVelsingrad.UI.Hud.HudStyle.html#AshesOfVelsingrad_UI_Hud_HudStyle_FontSizeTiny
+  commentId: F:AshesOfVelsingrad.UI.Hud.HudStyle.FontSizeTiny
+  fullName: AshesOfVelsingrad.UI.Hud.HudStyle.FontSizeTiny
+  nameWithType: HudStyle.FontSizeTiny
 - uid: AshesOfVelsingrad.UI.Hud.HudStyle.FontSizeTitle
   name: FontSizeTitle
   href: api/AshesOfVelsingrad.UI.Hud.HudStyle.html#AshesOfVelsingrad_UI_Hud_HudStyle_FontSizeTitle
   commentId: F:AshesOfVelsingrad.UI.Hud.HudStyle.FontSizeTitle
   fullName: AshesOfVelsingrad.UI.Hud.HudStyle.FontSizeTitle
   nameWithType: HudStyle.FontSizeTitle
+- uid: AshesOfVelsingrad.UI.Hud.HudStyle.Gold
+  name: Gold
+  href: api/AshesOfVelsingrad.UI.Hud.HudStyle.html#AshesOfVelsingrad_UI_Hud_HudStyle_Gold
+  commentId: P:AshesOfVelsingrad.UI.Hud.HudStyle.Gold
+  fullName: AshesOfVelsingrad.UI.Hud.HudStyle.Gold
+  nameWithType: HudStyle.Gold
+- uid: AshesOfVelsingrad.UI.Hud.HudStyle.Gold*
+  name: Gold
+  href: api/AshesOfVelsingrad.UI.Hud.HudStyle.html#AshesOfVelsingrad_UI_Hud_HudStyle_Gold_
+  commentId: Overload:AshesOfVelsingrad.UI.Hud.HudStyle.Gold
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.UI.Hud.HudStyle.Gold
+  nameWithType: HudStyle.Gold
+- uid: AshesOfVelsingrad.UI.Hud.HudStyle.GoldHover
+  name: GoldHover
+  href: api/AshesOfVelsingrad.UI.Hud.HudStyle.html#AshesOfVelsingrad_UI_Hud_HudStyle_GoldHover
+  commentId: P:AshesOfVelsingrad.UI.Hud.HudStyle.GoldHover
+  fullName: AshesOfVelsingrad.UI.Hud.HudStyle.GoldHover
+  nameWithType: HudStyle.GoldHover
+- uid: AshesOfVelsingrad.UI.Hud.HudStyle.GoldHover*
+  name: GoldHover
+  href: api/AshesOfVelsingrad.UI.Hud.HudStyle.html#AshesOfVelsingrad_UI_Hud_HudStyle_GoldHover_
+  commentId: Overload:AshesOfVelsingrad.UI.Hud.HudStyle.GoldHover
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.UI.Hud.HudStyle.GoldHover
+  nameWithType: HudStyle.GoldHover
+- uid: AshesOfVelsingrad.UI.Hud.HudStyle.HpBarHeight
+  name: HpBarHeight
+  href: api/AshesOfVelsingrad.UI.Hud.HudStyle.html#AshesOfVelsingrad_UI_Hud_HudStyle_HpBarHeight
+  commentId: F:AshesOfVelsingrad.UI.Hud.HudStyle.HpBarHeight
+  fullName: AshesOfVelsingrad.UI.Hud.HudStyle.HpBarHeight
+  nameWithType: HudStyle.HpBarHeight
 - uid: AshesOfVelsingrad.UI.Hud.HudStyle.HpFill
   name: HpFill
   href: api/AshesOfVelsingrad.UI.Hud.HudStyle.html#AshesOfVelsingrad_UI_Hud_HudStyle_HpFill
@@ -23994,12 +24373,79 @@ references:
   isSpec: "True"
   fullName: AshesOfVelsingrad.UI.Hud.HudStyle.HpFill
   nameWithType: HudStyle.HpFill
-- uid: AshesOfVelsingrad.UI.Hud.HudStyle.MakePanel(Godot.Control)
-  name: MakePanel(Control)
-  href: api/AshesOfVelsingrad.UI.Hud.HudStyle.html#AshesOfVelsingrad_UI_Hud_HudStyle_MakePanel_Godot_Control_
-  commentId: M:AshesOfVelsingrad.UI.Hud.HudStyle.MakePanel(Godot.Control)
-  fullName: AshesOfVelsingrad.UI.Hud.HudStyle.MakePanel(Godot.Control)
-  nameWithType: HudStyle.MakePanel(Control)
+- uid: AshesOfVelsingrad.UI.Hud.HudStyle.IronHeavy
+  name: IronHeavy
+  href: api/AshesOfVelsingrad.UI.Hud.HudStyle.html#AshesOfVelsingrad_UI_Hud_HudStyle_IronHeavy
+  commentId: P:AshesOfVelsingrad.UI.Hud.HudStyle.IronHeavy
+  fullName: AshesOfVelsingrad.UI.Hud.HudStyle.IronHeavy
+  nameWithType: HudStyle.IronHeavy
+- uid: AshesOfVelsingrad.UI.Hud.HudStyle.IronHeavy*
+  name: IronHeavy
+  href: api/AshesOfVelsingrad.UI.Hud.HudStyle.html#AshesOfVelsingrad_UI_Hud_HudStyle_IronHeavy_
+  commentId: Overload:AshesOfVelsingrad.UI.Hud.HudStyle.IronHeavy
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.UI.Hud.HudStyle.IronHeavy
+  nameWithType: HudStyle.IronHeavy
+- uid: AshesOfVelsingrad.UI.Hud.HudStyle.IronLight
+  name: IronLight
+  href: api/AshesOfVelsingrad.UI.Hud.HudStyle.html#AshesOfVelsingrad_UI_Hud_HudStyle_IronLight
+  commentId: P:AshesOfVelsingrad.UI.Hud.HudStyle.IronLight
+  fullName: AshesOfVelsingrad.UI.Hud.HudStyle.IronLight
+  nameWithType: HudStyle.IronLight
+- uid: AshesOfVelsingrad.UI.Hud.HudStyle.IronLight*
+  name: IronLight
+  href: api/AshesOfVelsingrad.UI.Hud.HudStyle.html#AshesOfVelsingrad_UI_Hud_HudStyle_IronLight_
+  commentId: Overload:AshesOfVelsingrad.UI.Hud.HudStyle.IronLight
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.UI.Hud.HudStyle.IronLight
+  nameWithType: HudStyle.IronLight
+- uid: AshesOfVelsingrad.UI.Hud.HudStyle.LayoutScale
+  name: LayoutScale
+  href: api/AshesOfVelsingrad.UI.Hud.HudStyle.html#AshesOfVelsingrad_UI_Hud_HudStyle_LayoutScale
+  commentId: P:AshesOfVelsingrad.UI.Hud.HudStyle.LayoutScale
+  fullName: AshesOfVelsingrad.UI.Hud.HudStyle.LayoutScale
+  nameWithType: HudStyle.LayoutScale
+- uid: AshesOfVelsingrad.UI.Hud.HudStyle.LayoutScale*
+  name: LayoutScale
+  href: api/AshesOfVelsingrad.UI.Hud.HudStyle.html#AshesOfVelsingrad_UI_Hud_HudStyle_LayoutScale_
+  commentId: Overload:AshesOfVelsingrad.UI.Hud.HudStyle.LayoutScale
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.UI.Hud.HudStyle.LayoutScale
+  nameWithType: HudStyle.LayoutScale
+- uid: AshesOfVelsingrad.UI.Hud.HudStyle.LoadIcon(System.String)
+  name: LoadIcon(string)
+  href: api/AshesOfVelsingrad.UI.Hud.HudStyle.html#AshesOfVelsingrad_UI_Hud_HudStyle_LoadIcon_System_String_
+  commentId: M:AshesOfVelsingrad.UI.Hud.HudStyle.LoadIcon(System.String)
+  name.vb: LoadIcon(String)
+  fullName: AshesOfVelsingrad.UI.Hud.HudStyle.LoadIcon(string)
+  fullName.vb: AshesOfVelsingrad.UI.Hud.HudStyle.LoadIcon(String)
+  nameWithType: HudStyle.LoadIcon(string)
+  nameWithType.vb: HudStyle.LoadIcon(String)
+- uid: AshesOfVelsingrad.UI.Hud.HudStyle.LoadIcon*
+  name: LoadIcon
+  href: api/AshesOfVelsingrad.UI.Hud.HudStyle.html#AshesOfVelsingrad_UI_Hud_HudStyle_LoadIcon_
+  commentId: Overload:AshesOfVelsingrad.UI.Hud.HudStyle.LoadIcon
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.UI.Hud.HudStyle.LoadIcon
+  nameWithType: HudStyle.LoadIcon
+- uid: AshesOfVelsingrad.UI.Hud.HudStyle.LogHeight
+  name: LogHeight
+  href: api/AshesOfVelsingrad.UI.Hud.HudStyle.html#AshesOfVelsingrad_UI_Hud_HudStyle_LogHeight
+  commentId: F:AshesOfVelsingrad.UI.Hud.HudStyle.LogHeight
+  fullName: AshesOfVelsingrad.UI.Hud.HudStyle.LogHeight
+  nameWithType: HudStyle.LogHeight
+- uid: AshesOfVelsingrad.UI.Hud.HudStyle.LogWidth
+  name: LogWidth
+  href: api/AshesOfVelsingrad.UI.Hud.HudStyle.html#AshesOfVelsingrad_UI_Hud_HudStyle_LogWidth
+  commentId: F:AshesOfVelsingrad.UI.Hud.HudStyle.LogWidth
+  fullName: AshesOfVelsingrad.UI.Hud.HudStyle.LogWidth
+  nameWithType: HudStyle.LogWidth
+- uid: AshesOfVelsingrad.UI.Hud.HudStyle.MakePanel(Godot.Control,AshesOfVelsingrad.UI.Hud.HudStyle.PanelTier)
+  name: MakePanel(Control, PanelTier)
+  href: api/AshesOfVelsingrad.UI.Hud.HudStyle.html#AshesOfVelsingrad_UI_Hud_HudStyle_MakePanel_Godot_Control_AshesOfVelsingrad_UI_Hud_HudStyle_PanelTier_
+  commentId: M:AshesOfVelsingrad.UI.Hud.HudStyle.MakePanel(Godot.Control,AshesOfVelsingrad.UI.Hud.HudStyle.PanelTier)
+  fullName: AshesOfVelsingrad.UI.Hud.HudStyle.MakePanel(Godot.Control, AshesOfVelsingrad.UI.Hud.HudStyle.PanelTier)
+  nameWithType: HudStyle.MakePanel(Control, HudStyle.PanelTier)
 - uid: AshesOfVelsingrad.UI.Hud.HudStyle.MakePanel*
   name: MakePanel
   href: api/AshesOfVelsingrad.UI.Hud.HudStyle.html#AshesOfVelsingrad_UI_Hud_HudStyle_MakePanel_
@@ -24007,12 +24453,12 @@ references:
   isSpec: "True"
   fullName: AshesOfVelsingrad.UI.Hud.HudStyle.MakePanel
   nameWithType: HudStyle.MakePanel
-- uid: AshesOfVelsingrad.UI.Hud.HudStyle.MakePanelStyle
-  name: MakePanelStyle()
-  href: api/AshesOfVelsingrad.UI.Hud.HudStyle.html#AshesOfVelsingrad_UI_Hud_HudStyle_MakePanelStyle
-  commentId: M:AshesOfVelsingrad.UI.Hud.HudStyle.MakePanelStyle
-  fullName: AshesOfVelsingrad.UI.Hud.HudStyle.MakePanelStyle()
-  nameWithType: HudStyle.MakePanelStyle()
+- uid: AshesOfVelsingrad.UI.Hud.HudStyle.MakePanelStyle(AshesOfVelsingrad.UI.Hud.HudStyle.PanelTier)
+  name: MakePanelStyle(PanelTier)
+  href: api/AshesOfVelsingrad.UI.Hud.HudStyle.html#AshesOfVelsingrad_UI_Hud_HudStyle_MakePanelStyle_AshesOfVelsingrad_UI_Hud_HudStyle_PanelTier_
+  commentId: M:AshesOfVelsingrad.UI.Hud.HudStyle.MakePanelStyle(AshesOfVelsingrad.UI.Hud.HudStyle.PanelTier)
+  fullName: AshesOfVelsingrad.UI.Hud.HudStyle.MakePanelStyle(AshesOfVelsingrad.UI.Hud.HudStyle.PanelTier)
+  nameWithType: HudStyle.MakePanelStyle(HudStyle.PanelTier)
 - uid: AshesOfVelsingrad.UI.Hud.HudStyle.MakePanelStyle*
   name: MakePanelStyle
   href: api/AshesOfVelsingrad.UI.Hud.HudStyle.html#AshesOfVelsingrad_UI_Hud_HudStyle_MakePanelStyle_
@@ -24033,6 +24479,42 @@ references:
   isSpec: "True"
   fullName: AshesOfVelsingrad.UI.Hud.HudStyle.ManaFill
   nameWithType: HudStyle.ManaFill
+- uid: AshesOfVelsingrad.UI.Hud.HudStyle.MpBarHeight
+  name: MpBarHeight
+  href: api/AshesOfVelsingrad.UI.Hud.HudStyle.html#AshesOfVelsingrad_UI_Hud_HudStyle_MpBarHeight
+  commentId: F:AshesOfVelsingrad.UI.Hud.HudStyle.MpBarHeight
+  fullName: AshesOfVelsingrad.UI.Hud.HudStyle.MpBarHeight
+  nameWithType: HudStyle.MpBarHeight
+- uid: AshesOfVelsingrad.UI.Hud.HudStyle.PadLg
+  name: PadLg
+  href: api/AshesOfVelsingrad.UI.Hud.HudStyle.html#AshesOfVelsingrad_UI_Hud_HudStyle_PadLg
+  commentId: F:AshesOfVelsingrad.UI.Hud.HudStyle.PadLg
+  fullName: AshesOfVelsingrad.UI.Hud.HudStyle.PadLg
+  nameWithType: HudStyle.PadLg
+- uid: AshesOfVelsingrad.UI.Hud.HudStyle.PadMd
+  name: PadMd
+  href: api/AshesOfVelsingrad.UI.Hud.HudStyle.html#AshesOfVelsingrad_UI_Hud_HudStyle_PadMd
+  commentId: F:AshesOfVelsingrad.UI.Hud.HudStyle.PadMd
+  fullName: AshesOfVelsingrad.UI.Hud.HudStyle.PadMd
+  nameWithType: HudStyle.PadMd
+- uid: AshesOfVelsingrad.UI.Hud.HudStyle.PadSm
+  name: PadSm
+  href: api/AshesOfVelsingrad.UI.Hud.HudStyle.html#AshesOfVelsingrad_UI_Hud_HudStyle_PadSm
+  commentId: F:AshesOfVelsingrad.UI.Hud.HudStyle.PadSm
+  fullName: AshesOfVelsingrad.UI.Hud.HudStyle.PadSm
+  nameWithType: HudStyle.PadSm
+- uid: AshesOfVelsingrad.UI.Hud.HudStyle.PadXl
+  name: PadXl
+  href: api/AshesOfVelsingrad.UI.Hud.HudStyle.html#AshesOfVelsingrad_UI_Hud_HudStyle_PadXl
+  commentId: F:AshesOfVelsingrad.UI.Hud.HudStyle.PadXl
+  fullName: AshesOfVelsingrad.UI.Hud.HudStyle.PadXl
+  nameWithType: HudStyle.PadXl
+- uid: AshesOfVelsingrad.UI.Hud.HudStyle.PadXs
+  name: PadXs
+  href: api/AshesOfVelsingrad.UI.Hud.HudStyle.html#AshesOfVelsingrad_UI_Hud_HudStyle_PadXs
+  commentId: F:AshesOfVelsingrad.UI.Hud.HudStyle.PadXs
+  fullName: AshesOfVelsingrad.UI.Hud.HudStyle.PadXs
+  nameWithType: HudStyle.PadXs
 - uid: AshesOfVelsingrad.UI.Hud.HudStyle.PanelBackground
   name: PanelBackground
   href: api/AshesOfVelsingrad.UI.Hud.HudStyle.html#AshesOfVelsingrad_UI_Hud_HudStyle_PanelBackground
@@ -24059,6 +24541,56 @@ references:
   isSpec: "True"
   fullName: AshesOfVelsingrad.UI.Hud.HudStyle.PanelBorder
   nameWithType: HudStyle.PanelBorder
+- uid: AshesOfVelsingrad.UI.Hud.HudStyle.PanelTier
+  name: HudStyle.PanelTier
+  href: api/AshesOfVelsingrad.UI.Hud.HudStyle.PanelTier.html
+  commentId: T:AshesOfVelsingrad.UI.Hud.HudStyle.PanelTier
+  fullName: AshesOfVelsingrad.UI.Hud.HudStyle.PanelTier
+  nameWithType: HudStyle.PanelTier
+- uid: AshesOfVelsingrad.UI.Hud.HudStyle.PanelTier.Heavy
+  name: Heavy
+  href: api/AshesOfVelsingrad.UI.Hud.HudStyle.PanelTier.html#AshesOfVelsingrad_UI_Hud_HudStyle_PanelTier_Heavy
+  commentId: F:AshesOfVelsingrad.UI.Hud.HudStyle.PanelTier.Heavy
+  fullName: AshesOfVelsingrad.UI.Hud.HudStyle.PanelTier.Heavy
+  nameWithType: HudStyle.PanelTier.Heavy
+- uid: AshesOfVelsingrad.UI.Hud.HudStyle.PanelTier.Light
+  name: Light
+  href: api/AshesOfVelsingrad.UI.Hud.HudStyle.PanelTier.html#AshesOfVelsingrad_UI_Hud_HudStyle_PanelTier_Light
+  commentId: F:AshesOfVelsingrad.UI.Hud.HudStyle.PanelTier.Light
+  fullName: AshesOfVelsingrad.UI.Hud.HudStyle.PanelTier.Light
+  nameWithType: HudStyle.PanelTier.Light
+- uid: AshesOfVelsingrad.UI.Hud.HudStyle.PanelTier.Slot
+  name: Slot
+  href: api/AshesOfVelsingrad.UI.Hud.HudStyle.PanelTier.html#AshesOfVelsingrad_UI_Hud_HudStyle_PanelTier_Slot
+  commentId: F:AshesOfVelsingrad.UI.Hud.HudStyle.PanelTier.Slot
+  fullName: AshesOfVelsingrad.UI.Hud.HudStyle.PanelTier.Slot
+  nameWithType: HudStyle.PanelTier.Slot
+- uid: AshesOfVelsingrad.UI.Hud.HudStyle.Parchment
+  name: Parchment
+  href: api/AshesOfVelsingrad.UI.Hud.HudStyle.html#AshesOfVelsingrad_UI_Hud_HudStyle_Parchment
+  commentId: P:AshesOfVelsingrad.UI.Hud.HudStyle.Parchment
+  fullName: AshesOfVelsingrad.UI.Hud.HudStyle.Parchment
+  nameWithType: HudStyle.Parchment
+- uid: AshesOfVelsingrad.UI.Hud.HudStyle.Parchment*
+  name: Parchment
+  href: api/AshesOfVelsingrad.UI.Hud.HudStyle.html#AshesOfVelsingrad_UI_Hud_HudStyle_Parchment_
+  commentId: Overload:AshesOfVelsingrad.UI.Hud.HudStyle.Parchment
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.UI.Hud.HudStyle.Parchment
+  nameWithType: HudStyle.Parchment
+- uid: AshesOfVelsingrad.UI.Hud.HudStyle.ParchmentDim
+  name: ParchmentDim
+  href: api/AshesOfVelsingrad.UI.Hud.HudStyle.html#AshesOfVelsingrad_UI_Hud_HudStyle_ParchmentDim
+  commentId: P:AshesOfVelsingrad.UI.Hud.HudStyle.ParchmentDim
+  fullName: AshesOfVelsingrad.UI.Hud.HudStyle.ParchmentDim
+  nameWithType: HudStyle.ParchmentDim
+- uid: AshesOfVelsingrad.UI.Hud.HudStyle.ParchmentDim*
+  name: ParchmentDim
+  href: api/AshesOfVelsingrad.UI.Hud.HudStyle.html#AshesOfVelsingrad_UI_Hud_HudStyle_ParchmentDim_
+  commentId: Overload:AshesOfVelsingrad.UI.Hud.HudStyle.ParchmentDim
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.UI.Hud.HudStyle.ParchmentDim
+  nameWithType: HudStyle.ParchmentDim
 - uid: AshesOfVelsingrad.UI.Hud.HudStyle.PlayerColor
   name: PlayerColor
   href: api/AshesOfVelsingrad.UI.Hud.HudStyle.html#AshesOfVelsingrad_UI_Hud_HudStyle_PlayerColor
@@ -24072,6 +24604,37 @@ references:
   isSpec: "True"
   fullName: AshesOfVelsingrad.UI.Hud.HudStyle.PlayerColor
   nameWithType: HudStyle.PlayerColor
+- uid: AshesOfVelsingrad.UI.Hud.HudStyle.PlayerPortrait
+  name: PlayerPortrait
+  href: api/AshesOfVelsingrad.UI.Hud.HudStyle.html#AshesOfVelsingrad_UI_Hud_HudStyle_PlayerPortrait
+  commentId: F:AshesOfVelsingrad.UI.Hud.HudStyle.PlayerPortrait
+  fullName: AshesOfVelsingrad.UI.Hud.HudStyle.PlayerPortrait
+  nameWithType: HudStyle.PlayerPortrait
+- uid: AshesOfVelsingrad.UI.Hud.HudStyle.PlayerStatusHeight
+  name: PlayerStatusHeight
+  href: api/AshesOfVelsingrad.UI.Hud.HudStyle.html#AshesOfVelsingrad_UI_Hud_HudStyle_PlayerStatusHeight
+  commentId: F:AshesOfVelsingrad.UI.Hud.HudStyle.PlayerStatusHeight
+  fullName: AshesOfVelsingrad.UI.Hud.HudStyle.PlayerStatusHeight
+  nameWithType: HudStyle.PlayerStatusHeight
+- uid: AshesOfVelsingrad.UI.Hud.HudStyle.PlayerStatusWidth
+  name: PlayerStatusWidth
+  href: api/AshesOfVelsingrad.UI.Hud.HudStyle.html#AshesOfVelsingrad_UI_Hud_HudStyle_PlayerStatusWidth
+  commentId: F:AshesOfVelsingrad.UI.Hud.HudStyle.PlayerStatusWidth
+  fullName: AshesOfVelsingrad.UI.Hud.HudStyle.PlayerStatusWidth
+  nameWithType: HudStyle.PlayerStatusWidth
+- uid: AshesOfVelsingrad.UI.Hud.HudStyle.PressedFill
+  name: PressedFill
+  href: api/AshesOfVelsingrad.UI.Hud.HudStyle.html#AshesOfVelsingrad_UI_Hud_HudStyle_PressedFill
+  commentId: P:AshesOfVelsingrad.UI.Hud.HudStyle.PressedFill
+  fullName: AshesOfVelsingrad.UI.Hud.HudStyle.PressedFill
+  nameWithType: HudStyle.PressedFill
+- uid: AshesOfVelsingrad.UI.Hud.HudStyle.PressedFill*
+  name: PressedFill
+  href: api/AshesOfVelsingrad.UI.Hud.HudStyle.html#AshesOfVelsingrad_UI_Hud_HudStyle_PressedFill_
+  commentId: Overload:AshesOfVelsingrad.UI.Hud.HudStyle.PressedFill
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.UI.Hud.HudStyle.PressedFill
+  nameWithType: HudStyle.PressedFill
 - uid: AshesOfVelsingrad.UI.Hud.HudStyle.RefreshScaledFonts(Godot.Node)
   name: RefreshScaledFonts(Node)
   href: api/AshesOfVelsingrad.UI.Hud.HudStyle.html#AshesOfVelsingrad_UI_Hud_HudStyle_RefreshScaledFonts_Godot_Node_
@@ -24085,6 +24648,24 @@ references:
   isSpec: "True"
   fullName: AshesOfVelsingrad.UI.Hud.HudStyle.RefreshScaledFonts
   nameWithType: HudStyle.RefreshScaledFonts
+- uid: AshesOfVelsingrad.UI.Hud.HudStyle.RosterHeight
+  name: RosterHeight
+  href: api/AshesOfVelsingrad.UI.Hud.HudStyle.html#AshesOfVelsingrad_UI_Hud_HudStyle_RosterHeight
+  commentId: F:AshesOfVelsingrad.UI.Hud.HudStyle.RosterHeight
+  fullName: AshesOfVelsingrad.UI.Hud.HudStyle.RosterHeight
+  nameWithType: HudStyle.RosterHeight
+- uid: AshesOfVelsingrad.UI.Hud.HudStyle.RosterPortrait
+  name: RosterPortrait
+  href: api/AshesOfVelsingrad.UI.Hud.HudStyle.html#AshesOfVelsingrad_UI_Hud_HudStyle_RosterPortrait
+  commentId: F:AshesOfVelsingrad.UI.Hud.HudStyle.RosterPortrait
+  fullName: AshesOfVelsingrad.UI.Hud.HudStyle.RosterPortrait
+  nameWithType: HudStyle.RosterPortrait
+- uid: AshesOfVelsingrad.UI.Hud.HudStyle.RosterWidth
+  name: RosterWidth
+  href: api/AshesOfVelsingrad.UI.Hud.HudStyle.html#AshesOfVelsingrad_UI_Hud_HudStyle_RosterWidth
+  commentId: F:AshesOfVelsingrad.UI.Hud.HudStyle.RosterWidth
+  fullName: AshesOfVelsingrad.UI.Hud.HudStyle.RosterWidth
+  nameWithType: HudStyle.RosterWidth
 - uid: AshesOfVelsingrad.UI.Hud.HudStyle.ScaledFontSize(System.Int32)
   name: ScaledFontSize(int)
   href: api/AshesOfVelsingrad.UI.Hud.HudStyle.html#AshesOfVelsingrad_UI_Hud_HudStyle_ScaledFontSize_System_Int32_
@@ -24101,6 +24682,62 @@ references:
   isSpec: "True"
   fullName: AshesOfVelsingrad.UI.Hud.HudStyle.ScaledFontSize
   nameWithType: HudStyle.ScaledFontSize
+- uid: AshesOfVelsingrad.UI.Hud.HudStyle.ScaledPx(System.Int32)
+  name: ScaledPx(int)
+  href: api/AshesOfVelsingrad.UI.Hud.HudStyle.html#AshesOfVelsingrad_UI_Hud_HudStyle_ScaledPx_System_Int32_
+  commentId: M:AshesOfVelsingrad.UI.Hud.HudStyle.ScaledPx(System.Int32)
+  name.vb: ScaledPx(Integer)
+  fullName: AshesOfVelsingrad.UI.Hud.HudStyle.ScaledPx(int)
+  fullName.vb: AshesOfVelsingrad.UI.Hud.HudStyle.ScaledPx(Integer)
+  nameWithType: HudStyle.ScaledPx(int)
+  nameWithType.vb: HudStyle.ScaledPx(Integer)
+- uid: AshesOfVelsingrad.UI.Hud.HudStyle.ScaledPx*
+  name: ScaledPx
+  href: api/AshesOfVelsingrad.UI.Hud.HudStyle.html#AshesOfVelsingrad_UI_Hud_HudStyle_ScaledPx_
+  commentId: Overload:AshesOfVelsingrad.UI.Hud.HudStyle.ScaledPx
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.UI.Hud.HudStyle.ScaledPx
+  nameWithType: HudStyle.ScaledPx
+- uid: AshesOfVelsingrad.UI.Hud.HudStyle.SetButtonIcon(Godot.Button,System.String,System.Int32)
+  name: SetButtonIcon(Button, string, int)
+  href: api/AshesOfVelsingrad.UI.Hud.HudStyle.html#AshesOfVelsingrad_UI_Hud_HudStyle_SetButtonIcon_Godot_Button_System_String_System_Int32_
+  commentId: M:AshesOfVelsingrad.UI.Hud.HudStyle.SetButtonIcon(Godot.Button,System.String,System.Int32)
+  name.vb: SetButtonIcon(Button, String, Integer)
+  fullName: AshesOfVelsingrad.UI.Hud.HudStyle.SetButtonIcon(Godot.Button, string, int)
+  fullName.vb: AshesOfVelsingrad.UI.Hud.HudStyle.SetButtonIcon(Godot.Button, String, Integer)
+  nameWithType: HudStyle.SetButtonIcon(Button, string, int)
+  nameWithType.vb: HudStyle.SetButtonIcon(Button, String, Integer)
+- uid: AshesOfVelsingrad.UI.Hud.HudStyle.SetButtonIcon*
+  name: SetButtonIcon
+  href: api/AshesOfVelsingrad.UI.Hud.HudStyle.html#AshesOfVelsingrad_UI_Hud_HudStyle_SetButtonIcon_
+  commentId: Overload:AshesOfVelsingrad.UI.Hud.HudStyle.SetButtonIcon
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.UI.Hud.HudStyle.SetButtonIcon
+  nameWithType: HudStyle.SetButtonIcon
+- uid: AshesOfVelsingrad.UI.Hud.HudStyle.SkillBarHeight
+  name: SkillBarHeight
+  href: api/AshesOfVelsingrad.UI.Hud.HudStyle.html#AshesOfVelsingrad_UI_Hud_HudStyle_SkillBarHeight
+  commentId: F:AshesOfVelsingrad.UI.Hud.HudStyle.SkillBarHeight
+  fullName: AshesOfVelsingrad.UI.Hud.HudStyle.SkillBarHeight
+  nameWithType: HudStyle.SkillBarHeight
+- uid: AshesOfVelsingrad.UI.Hud.HudStyle.SkillBarWidth
+  name: SkillBarWidth
+  href: api/AshesOfVelsingrad.UI.Hud.HudStyle.html#AshesOfVelsingrad_UI_Hud_HudStyle_SkillBarWidth
+  commentId: F:AshesOfVelsingrad.UI.Hud.HudStyle.SkillBarWidth
+  fullName: AshesOfVelsingrad.UI.Hud.HudStyle.SkillBarWidth
+  nameWithType: HudStyle.SkillBarWidth
+- uid: AshesOfVelsingrad.UI.Hud.HudStyle.SkillSlotSize
+  name: SkillSlotSize
+  href: api/AshesOfVelsingrad.UI.Hud.HudStyle.html#AshesOfVelsingrad_UI_Hud_HudStyle_SkillSlotSize
+  commentId: F:AshesOfVelsingrad.UI.Hud.HudStyle.SkillSlotSize
+  fullName: AshesOfVelsingrad.UI.Hud.HudStyle.SkillSlotSize
+  nameWithType: HudStyle.SkillSlotSize
+- uid: AshesOfVelsingrad.UI.Hud.HudStyle.SlotIconSize
+  name: SlotIconSize
+  href: api/AshesOfVelsingrad.UI.Hud.HudStyle.html#AshesOfVelsingrad_UI_Hud_HudStyle_SlotIconSize
+  commentId: F:AshesOfVelsingrad.UI.Hud.HudStyle.SlotIconSize
+  fullName: AshesOfVelsingrad.UI.Hud.HudStyle.SlotIconSize
+  nameWithType: HudStyle.SlotIconSize
 - uid: AshesOfVelsingrad.UI.Hud.HudStyle.StyleButton(Godot.Button,System.Int32)
   name: StyleButton(Button, int)
   href: api/AshesOfVelsingrad.UI.Hud.HudStyle.html#AshesOfVelsingrad_UI_Hud_HudStyle_StyleButton_Godot_Button_System_Int32_
@@ -24117,6 +24754,22 @@ references:
   isSpec: "True"
   fullName: AshesOfVelsingrad.UI.Hud.HudStyle.StyleButton
   nameWithType: HudStyle.StyleButton
+- uid: AshesOfVelsingrad.UI.Hud.HudStyle.StyleHeader(Godot.Label,System.Int32)
+  name: StyleHeader(Label, int)
+  href: api/AshesOfVelsingrad.UI.Hud.HudStyle.html#AshesOfVelsingrad_UI_Hud_HudStyle_StyleHeader_Godot_Label_System_Int32_
+  commentId: M:AshesOfVelsingrad.UI.Hud.HudStyle.StyleHeader(Godot.Label,System.Int32)
+  name.vb: StyleHeader(Label, Integer)
+  fullName: AshesOfVelsingrad.UI.Hud.HudStyle.StyleHeader(Godot.Label, int)
+  fullName.vb: AshesOfVelsingrad.UI.Hud.HudStyle.StyleHeader(Godot.Label, Integer)
+  nameWithType: HudStyle.StyleHeader(Label, int)
+  nameWithType.vb: HudStyle.StyleHeader(Label, Integer)
+- uid: AshesOfVelsingrad.UI.Hud.HudStyle.StyleHeader*
+  name: StyleHeader
+  href: api/AshesOfVelsingrad.UI.Hud.HudStyle.html#AshesOfVelsingrad_UI_Hud_HudStyle_StyleHeader_
+  commentId: Overload:AshesOfVelsingrad.UI.Hud.HudStyle.StyleHeader
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.UI.Hud.HudStyle.StyleHeader
+  nameWithType: HudStyle.StyleHeader
 - uid: AshesOfVelsingrad.UI.Hud.HudStyle.StyleLabel(Godot.Label,System.Int32)
   name: StyleLabel(Label, int)
   href: api/AshesOfVelsingrad.UI.Hud.HudStyle.html#AshesOfVelsingrad_UI_Hud_HudStyle_StyleLabel_Godot_Label_System_Int32_
@@ -24133,6 +24786,22 @@ references:
   isSpec: "True"
   fullName: AshesOfVelsingrad.UI.Hud.HudStyle.StyleLabel
   nameWithType: HudStyle.StyleLabel
+- uid: AshesOfVelsingrad.UI.Hud.HudStyle.StyleSlotButton(Godot.Button,System.Int32)
+  name: StyleSlotButton(Button, int)
+  href: api/AshesOfVelsingrad.UI.Hud.HudStyle.html#AshesOfVelsingrad_UI_Hud_HudStyle_StyleSlotButton_Godot_Button_System_Int32_
+  commentId: M:AshesOfVelsingrad.UI.Hud.HudStyle.StyleSlotButton(Godot.Button,System.Int32)
+  name.vb: StyleSlotButton(Button, Integer)
+  fullName: AshesOfVelsingrad.UI.Hud.HudStyle.StyleSlotButton(Godot.Button, int)
+  fullName.vb: AshesOfVelsingrad.UI.Hud.HudStyle.StyleSlotButton(Godot.Button, Integer)
+  nameWithType: HudStyle.StyleSlotButton(Button, int)
+  nameWithType.vb: HudStyle.StyleSlotButton(Button, Integer)
+- uid: AshesOfVelsingrad.UI.Hud.HudStyle.StyleSlotButton*
+  name: StyleSlotButton
+  href: api/AshesOfVelsingrad.UI.Hud.HudStyle.html#AshesOfVelsingrad_UI_Hud_HudStyle_StyleSlotButton_
+  commentId: Overload:AshesOfVelsingrad.UI.Hud.HudStyle.StyleSlotButton
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.UI.Hud.HudStyle.StyleSlotButton
+  nameWithType: HudStyle.StyleSlotButton
 - uid: AshesOfVelsingrad.UI.Hud.HudStyle.TextColor
   name: TextColor
   href: api/AshesOfVelsingrad.UI.Hud.HudStyle.html#AshesOfVelsingrad_UI_Hud_HudStyle_TextColor
@@ -24146,6 +24815,56 @@ references:
   isSpec: "True"
   fullName: AshesOfVelsingrad.UI.Hud.HudStyle.TextColor
   nameWithType: HudStyle.TextColor
+- uid: AshesOfVelsingrad.UI.Hud.HudStyle.TurnChipSize
+  name: TurnChipSize
+  href: api/AshesOfVelsingrad.UI.Hud.HudStyle.html#AshesOfVelsingrad_UI_Hud_HudStyle_TurnChipSize
+  commentId: F:AshesOfVelsingrad.UI.Hud.HudStyle.TurnChipSize
+  fullName: AshesOfVelsingrad.UI.Hud.HudStyle.TurnChipSize
+  nameWithType: HudStyle.TurnChipSize
+- uid: AshesOfVelsingrad.UI.Hud.HudStyle.TurnQueueHeight
+  name: TurnQueueHeight
+  href: api/AshesOfVelsingrad.UI.Hud.HudStyle.html#AshesOfVelsingrad_UI_Hud_HudStyle_TurnQueueHeight
+  commentId: F:AshesOfVelsingrad.UI.Hud.HudStyle.TurnQueueHeight
+  fullName: AshesOfVelsingrad.UI.Hud.HudStyle.TurnQueueHeight
+  nameWithType: HudStyle.TurnQueueHeight
+- uid: AshesOfVelsingrad.UI.Hud.HudStyle.TurnQueueWidth
+  name: TurnQueueWidth
+  href: api/AshesOfVelsingrad.UI.Hud.HudStyle.html#AshesOfVelsingrad_UI_Hud_HudStyle_TurnQueueWidth
+  commentId: F:AshesOfVelsingrad.UI.Hud.HudStyle.TurnQueueWidth
+  fullName: AshesOfVelsingrad.UI.Hud.HudStyle.TurnQueueWidth
+  nameWithType: HudStyle.TurnQueueWidth
+- uid: AshesOfVelsingrad.UI.Hud.HudStyle.UiScale
+  name: UiScale
+  href: api/AshesOfVelsingrad.UI.Hud.HudStyle.html#AshesOfVelsingrad_UI_Hud_HudStyle_UiScale
+  commentId: P:AshesOfVelsingrad.UI.Hud.HudStyle.UiScale
+  fullName: AshesOfVelsingrad.UI.Hud.HudStyle.UiScale
+  nameWithType: HudStyle.UiScale
+- uid: AshesOfVelsingrad.UI.Hud.HudStyle.UiScale*
+  name: UiScale
+  href: api/AshesOfVelsingrad.UI.Hud.HudStyle.html#AshesOfVelsingrad_UI_Hud_HudStyle_UiScale_
+  commentId: Overload:AshesOfVelsingrad.UI.Hud.HudStyle.UiScale
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.UI.Hud.HudStyle.UiScale
+  nameWithType: HudStyle.UiScale
+- uid: AshesOfVelsingrad.UI.Hud.IHudWidget
+  name: IHudWidget
+  href: api/AshesOfVelsingrad.UI.Hud.IHudWidget.html
+  commentId: T:AshesOfVelsingrad.UI.Hud.IHudWidget
+  fullName: AshesOfVelsingrad.UI.Hud.IHudWidget
+  nameWithType: IHudWidget
+- uid: AshesOfVelsingrad.UI.Hud.IHudWidget.Relayout
+  name: Relayout()
+  href: api/AshesOfVelsingrad.UI.Hud.IHudWidget.html#AshesOfVelsingrad_UI_Hud_IHudWidget_Relayout
+  commentId: M:AshesOfVelsingrad.UI.Hud.IHudWidget.Relayout
+  fullName: AshesOfVelsingrad.UI.Hud.IHudWidget.Relayout()
+  nameWithType: IHudWidget.Relayout()
+- uid: AshesOfVelsingrad.UI.Hud.IHudWidget.Relayout*
+  name: Relayout
+  href: api/AshesOfVelsingrad.UI.Hud.IHudWidget.html#AshesOfVelsingrad_UI_Hud_IHudWidget_Relayout_
+  commentId: Overload:AshesOfVelsingrad.UI.Hud.IHudWidget.Relayout
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.UI.Hud.IHudWidget.Relayout
+  nameWithType: IHudWidget.Relayout
 - uid: AshesOfVelsingrad.UI.Hud.PlayerStatusPanel
   name: PlayerStatusPanel
   href: api/AshesOfVelsingrad.UI.Hud.PlayerStatusPanel.html
@@ -24194,22 +24913,32 @@ references:
   isSpec: "True"
   fullName: AshesOfVelsingrad.UI.Hud.PlayerStatusPanel.Refresh
   nameWithType: PlayerStatusPanel.Refresh
-- uid: AshesOfVelsingrad.UI.Hud.PlayerStatusPanel._Process(System.Double)
-  name: _Process(double)
-  href: api/AshesOfVelsingrad.UI.Hud.PlayerStatusPanel.html#AshesOfVelsingrad_UI_Hud_PlayerStatusPanel__Process_System_Double_
-  commentId: M:AshesOfVelsingrad.UI.Hud.PlayerStatusPanel._Process(System.Double)
-  name.vb: _Process(Double)
-  fullName: AshesOfVelsingrad.UI.Hud.PlayerStatusPanel._Process(double)
-  fullName.vb: AshesOfVelsingrad.UI.Hud.PlayerStatusPanel._Process(Double)
-  nameWithType: PlayerStatusPanel._Process(double)
-  nameWithType.vb: PlayerStatusPanel._Process(Double)
-- uid: AshesOfVelsingrad.UI.Hud.PlayerStatusPanel._Process*
-  name: _Process
-  href: api/AshesOfVelsingrad.UI.Hud.PlayerStatusPanel.html#AshesOfVelsingrad_UI_Hud_PlayerStatusPanel__Process_
-  commentId: Overload:AshesOfVelsingrad.UI.Hud.PlayerStatusPanel._Process
+- uid: AshesOfVelsingrad.UI.Hud.PlayerStatusPanel.Relayout
+  name: Relayout()
+  href: api/AshesOfVelsingrad.UI.Hud.PlayerStatusPanel.html#AshesOfVelsingrad_UI_Hud_PlayerStatusPanel_Relayout
+  commentId: M:AshesOfVelsingrad.UI.Hud.PlayerStatusPanel.Relayout
+  fullName: AshesOfVelsingrad.UI.Hud.PlayerStatusPanel.Relayout()
+  nameWithType: PlayerStatusPanel.Relayout()
+- uid: AshesOfVelsingrad.UI.Hud.PlayerStatusPanel.Relayout*
+  name: Relayout
+  href: api/AshesOfVelsingrad.UI.Hud.PlayerStatusPanel.html#AshesOfVelsingrad_UI_Hud_PlayerStatusPanel_Relayout_
+  commentId: Overload:AshesOfVelsingrad.UI.Hud.PlayerStatusPanel.Relayout
   isSpec: "True"
-  fullName: AshesOfVelsingrad.UI.Hud.PlayerStatusPanel._Process
-  nameWithType: PlayerStatusPanel._Process
+  fullName: AshesOfVelsingrad.UI.Hud.PlayerStatusPanel.Relayout
+  nameWithType: PlayerStatusPanel.Relayout
+- uid: AshesOfVelsingrad.UI.Hud.PlayerStatusPanel._ExitTree
+  name: _ExitTree()
+  href: api/AshesOfVelsingrad.UI.Hud.PlayerStatusPanel.html#AshesOfVelsingrad_UI_Hud_PlayerStatusPanel__ExitTree
+  commentId: M:AshesOfVelsingrad.UI.Hud.PlayerStatusPanel._ExitTree
+  fullName: AshesOfVelsingrad.UI.Hud.PlayerStatusPanel._ExitTree()
+  nameWithType: PlayerStatusPanel._ExitTree()
+- uid: AshesOfVelsingrad.UI.Hud.PlayerStatusPanel._ExitTree*
+  name: _ExitTree
+  href: api/AshesOfVelsingrad.UI.Hud.PlayerStatusPanel.html#AshesOfVelsingrad_UI_Hud_PlayerStatusPanel__ExitTree_
+  commentId: Overload:AshesOfVelsingrad.UI.Hud.PlayerStatusPanel._ExitTree
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.UI.Hud.PlayerStatusPanel._ExitTree
+  nameWithType: PlayerStatusPanel._ExitTree
 - uid: AshesOfVelsingrad.UI.Hud.PlayerStatusPanel._Ready
   name: _Ready()
   href: api/AshesOfVelsingrad.UI.Hud.PlayerStatusPanel.html#AshesOfVelsingrad_UI_Hud_PlayerStatusPanel__Ready
@@ -24277,6 +25006,19 @@ references:
   isSpec: "True"
   fullName: AshesOfVelsingrad.UI.Hud.SkillSelector.Refresh
   nameWithType: SkillSelector.Refresh
+- uid: AshesOfVelsingrad.UI.Hud.SkillSelector.Relayout
+  name: Relayout()
+  href: api/AshesOfVelsingrad.UI.Hud.SkillSelector.html#AshesOfVelsingrad_UI_Hud_SkillSelector_Relayout
+  commentId: M:AshesOfVelsingrad.UI.Hud.SkillSelector.Relayout
+  fullName: AshesOfVelsingrad.UI.Hud.SkillSelector.Relayout()
+  nameWithType: SkillSelector.Relayout()
+- uid: AshesOfVelsingrad.UI.Hud.SkillSelector.Relayout*
+  name: Relayout
+  href: api/AshesOfVelsingrad.UI.Hud.SkillSelector.html#AshesOfVelsingrad_UI_Hud_SkillSelector_Relayout_
+  commentId: Overload:AshesOfVelsingrad.UI.Hud.SkillSelector.Relayout
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.UI.Hud.SkillSelector.Relayout
+  nameWithType: SkillSelector.Relayout
 - uid: AshesOfVelsingrad.UI.Hud.SkillSelector.SlotCount
   name: SlotCount
   href: api/AshesOfVelsingrad.UI.Hud.SkillSelector.html#AshesOfVelsingrad_UI_Hud_SkillSelector_SlotCount
@@ -24315,6 +25057,19 @@ references:
   isSpec: "True"
   fullName: AshesOfVelsingrad.UI.Hud.TurnOrderQueue.EnsureBuilt
   nameWithType: TurnOrderQueue.EnsureBuilt
+- uid: AshesOfVelsingrad.UI.Hud.TurnOrderQueue.Relayout
+  name: Relayout()
+  href: api/AshesOfVelsingrad.UI.Hud.TurnOrderQueue.html#AshesOfVelsingrad_UI_Hud_TurnOrderQueue_Relayout
+  commentId: M:AshesOfVelsingrad.UI.Hud.TurnOrderQueue.Relayout
+  fullName: AshesOfVelsingrad.UI.Hud.TurnOrderQueue.Relayout()
+  nameWithType: TurnOrderQueue.Relayout()
+- uid: AshesOfVelsingrad.UI.Hud.TurnOrderQueue.Relayout*
+  name: Relayout
+  href: api/AshesOfVelsingrad.UI.Hud.TurnOrderQueue.html#AshesOfVelsingrad_UI_Hud_TurnOrderQueue_Relayout_
+  commentId: Overload:AshesOfVelsingrad.UI.Hud.TurnOrderQueue.Relayout
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.UI.Hud.TurnOrderQueue.Relayout
+  nameWithType: TurnOrderQueue.Relayout
 - uid: AshesOfVelsingrad.UI.Hud.TurnOrderQueue.UpdateOrder(System.Collections.Generic.IReadOnlyList{AshesOfVelsingrad.Systems.IUnitSystem})
   name: UpdateOrder(IReadOnlyList<IUnitSystem>)
   href: api/AshesOfVelsingrad.UI.Hud.TurnOrderQueue.html#AshesOfVelsingrad_UI_Hud_TurnOrderQueue_UpdateOrder_System_Collections_Generic_IReadOnlyList_AshesOfVelsingrad_Systems_IUnitSystem__
@@ -24379,22 +25134,32 @@ references:
   isSpec: "True"
   fullName: AshesOfVelsingrad.UI.Hud.UnitHealthBar.Refresh
   nameWithType: UnitHealthBar.Refresh
-- uid: AshesOfVelsingrad.UI.Hud.UnitHealthBar._Process(System.Double)
-  name: _Process(double)
-  href: api/AshesOfVelsingrad.UI.Hud.UnitHealthBar.html#AshesOfVelsingrad_UI_Hud_UnitHealthBar__Process_System_Double_
-  commentId: M:AshesOfVelsingrad.UI.Hud.UnitHealthBar._Process(System.Double)
-  name.vb: _Process(Double)
-  fullName: AshesOfVelsingrad.UI.Hud.UnitHealthBar._Process(double)
-  fullName.vb: AshesOfVelsingrad.UI.Hud.UnitHealthBar._Process(Double)
-  nameWithType: UnitHealthBar._Process(double)
-  nameWithType.vb: UnitHealthBar._Process(Double)
-- uid: AshesOfVelsingrad.UI.Hud.UnitHealthBar._Process*
-  name: _Process
-  href: api/AshesOfVelsingrad.UI.Hud.UnitHealthBar.html#AshesOfVelsingrad_UI_Hud_UnitHealthBar__Process_
-  commentId: Overload:AshesOfVelsingrad.UI.Hud.UnitHealthBar._Process
+- uid: AshesOfVelsingrad.UI.Hud.UnitHealthBar.Relayout
+  name: Relayout()
+  href: api/AshesOfVelsingrad.UI.Hud.UnitHealthBar.html#AshesOfVelsingrad_UI_Hud_UnitHealthBar_Relayout
+  commentId: M:AshesOfVelsingrad.UI.Hud.UnitHealthBar.Relayout
+  fullName: AshesOfVelsingrad.UI.Hud.UnitHealthBar.Relayout()
+  nameWithType: UnitHealthBar.Relayout()
+- uid: AshesOfVelsingrad.UI.Hud.UnitHealthBar.Relayout*
+  name: Relayout
+  href: api/AshesOfVelsingrad.UI.Hud.UnitHealthBar.html#AshesOfVelsingrad_UI_Hud_UnitHealthBar_Relayout_
+  commentId: Overload:AshesOfVelsingrad.UI.Hud.UnitHealthBar.Relayout
   isSpec: "True"
-  fullName: AshesOfVelsingrad.UI.Hud.UnitHealthBar._Process
-  nameWithType: UnitHealthBar._Process
+  fullName: AshesOfVelsingrad.UI.Hud.UnitHealthBar.Relayout
+  nameWithType: UnitHealthBar.Relayout
+- uid: AshesOfVelsingrad.UI.Hud.UnitHealthBar._ExitTree
+  name: _ExitTree()
+  href: api/AshesOfVelsingrad.UI.Hud.UnitHealthBar.html#AshesOfVelsingrad_UI_Hud_UnitHealthBar__ExitTree
+  commentId: M:AshesOfVelsingrad.UI.Hud.UnitHealthBar._ExitTree
+  fullName: AshesOfVelsingrad.UI.Hud.UnitHealthBar._ExitTree()
+  nameWithType: UnitHealthBar._ExitTree()
+- uid: AshesOfVelsingrad.UI.Hud.UnitHealthBar._ExitTree*
+  name: _ExitTree
+  href: api/AshesOfVelsingrad.UI.Hud.UnitHealthBar.html#AshesOfVelsingrad_UI_Hud_UnitHealthBar__ExitTree_
+  commentId: Overload:AshesOfVelsingrad.UI.Hud.UnitHealthBar._ExitTree
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.UI.Hud.UnitHealthBar._ExitTree
+  nameWithType: UnitHealthBar._ExitTree
 - uid: AshesOfVelsingrad.UI.Hud.UnitHealthBar._Ready
   name: _Ready()
   href: api/AshesOfVelsingrad.UI.Hud.UnitHealthBar.html#AshesOfVelsingrad_UI_Hud_UnitHealthBar__Ready
@@ -29864,66 +30629,6 @@ references:
   isSpec: "True"
   fullName: AshesOfVelsingrad.systems.status_effects.effects.StunEffect.IsStackable
   nameWithType: StunEffect.IsStackable
-- uid: AshesOfVelsingrad.ui.hud
-  name: AshesOfVelsingrad.ui.hud
-  href: api/AshesOfVelsingrad.ui.hud_1.html
-  commentId: N:AshesOfVelsingrad.ui.hud
-  fullName: AshesOfVelsingrad.ui.hud
-  nameWithType: AshesOfVelsingrad.ui.hud
-- uid: AshesOfVelsingrad.ui.hud.CorruptionGauge
-  name: CorruptionGauge
-  href: api/AshesOfVelsingrad.ui.hud.CorruptionGauge.html
-  commentId: T:AshesOfVelsingrad.ui.hud.CorruptionGauge
-  fullName: AshesOfVelsingrad.ui.hud.CorruptionGauge
-  nameWithType: CorruptionGauge
-- uid: AshesOfVelsingrad.ui.hud.CorruptionGauge._ExitTree
-  name: _ExitTree()
-  href: api/AshesOfVelsingrad.ui.hud.CorruptionGauge.html#AshesOfVelsingrad_ui_hud_CorruptionGauge__ExitTree
-  commentId: M:AshesOfVelsingrad.ui.hud.CorruptionGauge._ExitTree
-  fullName: AshesOfVelsingrad.ui.hud.CorruptionGauge._ExitTree()
-  nameWithType: CorruptionGauge._ExitTree()
-- uid: AshesOfVelsingrad.ui.hud.CorruptionGauge._ExitTree*
-  name: _ExitTree
-  href: api/AshesOfVelsingrad.ui.hud.CorruptionGauge.html#AshesOfVelsingrad_ui_hud_CorruptionGauge__ExitTree_
-  commentId: Overload:AshesOfVelsingrad.ui.hud.CorruptionGauge._ExitTree
-  isSpec: "True"
-  fullName: AshesOfVelsingrad.ui.hud.CorruptionGauge._ExitTree
-  nameWithType: CorruptionGauge._ExitTree
-- uid: AshesOfVelsingrad.ui.hud.CorruptionGauge._Ready
-  name: _Ready()
-  href: api/AshesOfVelsingrad.ui.hud.CorruptionGauge.html#AshesOfVelsingrad_ui_hud_CorruptionGauge__Ready
-  commentId: M:AshesOfVelsingrad.ui.hud.CorruptionGauge._Ready
-  fullName: AshesOfVelsingrad.ui.hud.CorruptionGauge._Ready()
-  nameWithType: CorruptionGauge._Ready()
-- uid: AshesOfVelsingrad.ui.hud.CorruptionGauge._Ready*
-  name: _Ready
-  href: api/AshesOfVelsingrad.ui.hud.CorruptionGauge.html#AshesOfVelsingrad_ui_hud_CorruptionGauge__Ready_
-  commentId: Overload:AshesOfVelsingrad.ui.hud.CorruptionGauge._Ready
-  isSpec: "True"
-  fullName: AshesOfVelsingrad.ui.hud.CorruptionGauge._Ready
-  nameWithType: CorruptionGauge._Ready
-- uid: AshesOfVelsingrad.ui.hud.HudBusHelper
-  name: HudBusHelper
-  href: api/AshesOfVelsingrad.ui.hud.HudBusHelper.html
-  commentId: T:AshesOfVelsingrad.ui.hud.HudBusHelper
-  fullName: AshesOfVelsingrad.ui.hud.HudBusHelper
-  nameWithType: HudBusHelper
-- uid: AshesOfVelsingrad.ui.hud.HudBusHelper.WhenReadyAsync(Godot.Node,System.Action{AshesOfVelsingrad.systems.battle.BattleEventBus})
-  name: WhenReadyAsync(Node, Action<BattleEventBus>)
-  href: api/AshesOfVelsingrad.ui.hud.HudBusHelper.html#AshesOfVelsingrad_ui_hud_HudBusHelper_WhenReadyAsync_Godot_Node_System_Action_AshesOfVelsingrad_systems_battle_BattleEventBus__
-  commentId: M:AshesOfVelsingrad.ui.hud.HudBusHelper.WhenReadyAsync(Godot.Node,System.Action{AshesOfVelsingrad.systems.battle.BattleEventBus})
-  name.vb: WhenReadyAsync(Node, Action(Of BattleEventBus))
-  fullName: AshesOfVelsingrad.ui.hud.HudBusHelper.WhenReadyAsync(Godot.Node, System.Action<AshesOfVelsingrad.systems.battle.BattleEventBus>)
-  fullName.vb: AshesOfVelsingrad.ui.hud.HudBusHelper.WhenReadyAsync(Godot.Node, System.Action(Of AshesOfVelsingrad.systems.battle.BattleEventBus))
-  nameWithType: HudBusHelper.WhenReadyAsync(Node, Action<BattleEventBus>)
-  nameWithType.vb: HudBusHelper.WhenReadyAsync(Node, Action(Of BattleEventBus))
-- uid: AshesOfVelsingrad.ui.hud.HudBusHelper.WhenReadyAsync*
-  name: WhenReadyAsync
-  href: api/AshesOfVelsingrad.ui.hud.HudBusHelper.html#AshesOfVelsingrad_ui_hud_HudBusHelper_WhenReadyAsync_
-  commentId: Overload:AshesOfVelsingrad.ui.hud.HudBusHelper.WhenReadyAsync
-  isSpec: "True"
-  fullName: AshesOfVelsingrad.ui.hud.HudBusHelper.WhenReadyAsync
-  nameWithType: HudBusHelper.WhenReadyAsync
 - uid: AshesofVelsingrad.scripts.systems
   name: AshesofVelsingrad.scripts.systems
   href: api/AshesofVelsingrad.scripts.systems.html

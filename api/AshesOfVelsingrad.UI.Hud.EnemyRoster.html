@@ -103,7 +103,7 @@ Class EnemyRoster
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[ScriptPath(&quot;res://scripts/ui/hud/EnemyRoster.cs&quot;)]
-public sealed class EnemyRoster : Control, IDisposable</code></pre>
+public sealed class EnemyRoster : Control, IDisposable, IHudWidget</code></pre>
   </div>
 
 
@@ -125,6 +125,7 @@ public sealed class EnemyRoster : Control, IDisposable</code></pre>
     <dt>Implements</dt>
     <dd>
       <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.idisposable">IDisposable</a></div>
+      <div><a class="xref" href="AshesOfVelsingrad.UI.Hud.IHudWidget.html">IHudWidget</a></div>
     </dd>
   </dl>
 
@@ -1701,9 +1702,16 @@ public sealed class EnemyRoster : Control, IDisposable</code></pre>
 
 
   <h2 id="AshesOfVelsingrad_UI_Hud_EnemyRoster_remarks">Remarks</h2>
-  <div class="markdown level0 remarks"><p>The owning <a class="xref" href="AshesOfVelsingrad.UI.Hud.BattleHud.html">BattleHud</a> calls <a class="xref" href="AshesOfVelsingrad.UI.Hud.EnemyRoster.html#AshesOfVelsingrad_UI_Hud_EnemyRoster_Bind_System_Collections_Generic_IReadOnlyList_AshesOfVelsingrad_Systems_IUnitSystem__">Bind(IReadOnlyList&lt;IUnitSystem&gt;)</a> once at battle start with
-the enemy roster. The widget then refreshes itself when asked
-(<a class="xref" href="AshesOfVelsingrad.UI.Hud.EnemyRoster.html#AshesOfVelsingrad_UI_Hud_EnemyRoster_RefreshAll">RefreshAll()</a>) — typically from a TurnManager event hook in <code>GameManager</code>.</p>
+  <div class="markdown level0 remarks"><p>
+    Heavy iron panel with a "ENEMIES" header in gold and a stack of bars below it. Each
+    bar carries a small portrait, the enemy name, and HP/MP. Panel grows downward to
+    fit the roster, capped at <a class="xref" href="AshesOfVelsingrad.UI.Hud.HudStyle.html#AshesOfVelsingrad_UI_Hud_HudStyle_RosterHeight">RosterHeight</a> (scaled).
+</p>
+<p>
+    The owning <a class="xref" href="AshesOfVelsingrad.UI.Hud.BattleHud.html">BattleHud</a> calls <a class="xref" href="AshesOfVelsingrad.UI.Hud.EnemyRoster.html#AshesOfVelsingrad_UI_Hud_EnemyRoster_Bind_System_Collections_Generic_IReadOnlyList_AshesOfVelsingrad_Systems_IUnitSystem__">Bind(IReadOnlyList&lt;IUnitSystem&gt;)</a> once at battle start
+    with the enemy roster. The widget then refreshes itself when asked
+    (<a class="xref" href="AshesOfVelsingrad.UI.Hud.EnemyRoster.html#AshesOfVelsingrad_UI_Hud_EnemyRoster_RefreshAll">RefreshAll()</a>).
+</p>
 </div>
 
 
@@ -1715,7 +1723,7 @@ the enemy roster. The widget then refreshes itself when asked
 
   <h3 id="AshesOfVelsingrad_UI_Hud_EnemyRoster_Bind_System_Collections_Generic_IReadOnlyList_AshesOfVelsingrad_Systems_IUnitSystem__" data-uid="AshesOfVelsingrad.UI.Hud.EnemyRoster.Bind(System.Collections.Generic.IReadOnlyList{AshesOfVelsingrad.Systems.IUnitSystem})">
   Bind(IReadOnlyList&lt;IUnitSystem&gt;)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/ui/hud/EnemyRoster.cs/#L62"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/ui/hud/EnemyRoster.cs/#L91"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Replace the roster of tracked enemies. Called once at battle start.</p>
@@ -1729,8 +1737,7 @@ the enemy roster. The widget then refreshes itself when asked
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
     <dt><code>enemies</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1">IReadOnlyList</a>&lt;<a class="xref" href="AshesOfVelsingrad.Systems.IUnitSystem.html">IUnitSystem</a>&gt;</dt>
-    <dd><p>Enemy unit list.</p>
-</dd>
+    <dd></dd>
   </dl>
 
 
@@ -1748,7 +1755,7 @@ the enemy roster. The widget then refreshes itself when asked
 
   <h3 id="AshesOfVelsingrad_UI_Hud_EnemyRoster_EnsureBuilt" data-uid="AshesOfVelsingrad.UI.Hud.EnemyRoster.EnsureBuilt">
   EnsureBuilt()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/ui/hud/EnemyRoster.cs/#L28"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/ui/hud/EnemyRoster.cs/#L35"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Idempotent build — safe to call before <code>_Ready</code> fires.</p>
@@ -1775,7 +1782,7 @@ the enemy roster. The widget then refreshes itself when asked
 
   <h3 id="AshesOfVelsingrad_UI_Hud_EnemyRoster_RefreshAll" data-uid="AshesOfVelsingrad.UI.Hud.EnemyRoster.RefreshAll">
   RefreshAll()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/ui/hud/EnemyRoster.cs/#L80"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/ui/hud/EnemyRoster.cs/#L109"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Force every bound bar to re-read its unit's state.</p>
@@ -1798,11 +1805,38 @@ the enemy roster. The widget then refreshes itself when asked
 
 
 
+  <a id="AshesOfVelsingrad_UI_Hud_EnemyRoster_Relayout_" data-uid="AshesOfVelsingrad.UI.Hud.EnemyRoster.Relayout*"></a>
+
+  <h3 id="AshesOfVelsingrad_UI_Hud_EnemyRoster_Relayout" data-uid="AshesOfVelsingrad.UI.Hud.EnemyRoster.Relayout">
+  Relayout()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/ui/hud/EnemyRoster.cs/#L43"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Recompute anchored offsets / min-size against current <a class="xref" href="AshesOfVelsingrad.UI.Hud.HudStyle.html#AshesOfVelsingrad_UI_Hud_HudStyle_UiScale">UiScale</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Relayout()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
   <a id="AshesOfVelsingrad_UI_Hud_EnemyRoster__Ready_" data-uid="AshesOfVelsingrad.UI.Hud.EnemyRoster._Ready*"></a>
 
   <h3 id="AshesOfVelsingrad_UI_Hud_EnemyRoster__Ready" data-uid="AshesOfVelsingrad.UI.Hud.EnemyRoster._Ready">
   _Ready()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/ui/hud/EnemyRoster.cs/#L22"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/ui/hud/EnemyRoster.cs/#L29"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Called when the node is "ready", i.e. when both the node and its children have entered the scene tree. If the node has children, their <span class="xref">Godot.Node._Ready()</span> callbacks get triggered first, and the parent node will receive the ready notification afterwards.</p>

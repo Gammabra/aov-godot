@@ -103,7 +103,7 @@ Class ContextInfoPanel
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[ScriptPath(&quot;res://scripts/ui/hud/ContextInfoPanel.cs&quot;)]
-public sealed class ContextInfoPanel : Control, IDisposable</code></pre>
+public sealed class ContextInfoPanel : Control, IDisposable, IHudWidget</code></pre>
   </div>
 
 
@@ -125,6 +125,7 @@ public sealed class ContextInfoPanel : Control, IDisposable</code></pre>
     <dt>Implements</dt>
     <dd>
       <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.idisposable">IDisposable</a></div>
+      <div><a class="xref" href="AshesOfVelsingrad.UI.Hud.IHudWidget.html">IHudWidget</a></div>
     </dd>
   </dl>
 
@@ -1701,11 +1702,14 @@ public sealed class ContextInfoPanel : Control, IDisposable</code></pre>
 
 
   <h2 id="AshesOfVelsingrad_UI_Hud_ContextInfoPanel_remarks">Remarks</h2>
-  <div class="markdown level0 remarks"><ul><li>Movement mode: shows reachable-tile budget and a one-line hint.</li><li>Action phase (after a move): shows "move spent, pick an action".</li><li>Skill targeting: shows the selected skill's full details + cancel hint.</li></ul>
+  <div class="markdown level0 remarks"><p>
+    Three modes:
+<pre><code>&lt;ul&gt;&lt;li&gt;Movement: reachable-tile budget and a one-line hint.&lt;/li&gt;&lt;li&gt;Action phase (after a move): &quot;move spent, pick an action&quot;.&lt;/li&gt;&lt;li&gt;Skill targeting: selected skill's full details + cancel hint.&lt;/li&gt;&lt;/ul&gt;
+</code></pre>
+
 <p>
-    Driven directly by <code>GameManager</code> through <a class="xref" href="AshesOfVelsingrad.UI.Hud.ContextInfoPanel.html#AshesOfVelsingrad_UI_Hud_ContextInfoPanel_ShowMovement_System_Int32_System_Int32_System_Boolean_">ShowMovement(int, int, bool)</a> and
-    <a class="xref" href="AshesOfVelsingrad.UI.Hud.ContextInfoPanel.html#AshesOfVelsingrad_UI_Hud_ContextInfoPanel_ShowSkill_AshesOfVelsingrad_Systems_ISkillSystem_">ShowSkill(ISkillSystem)</a> — no event subscription, since the panel is a pure view of
-    the input state machine.
+    Heavy iron frame, gold title, parchment body. Driven directly by <code>GameManager</code>
+    through <a class="xref" href="AshesOfVelsingrad.UI.Hud.ContextInfoPanel.html#AshesOfVelsingrad_UI_Hud_ContextInfoPanel_ShowMovement_System_Int32_System_Int32_System_Boolean_">ShowMovement(int, int, bool)</a> and <a class="xref" href="AshesOfVelsingrad.UI.Hud.ContextInfoPanel.html#AshesOfVelsingrad_UI_Hud_ContextInfoPanel_ShowSkill_AshesOfVelsingrad_Systems_ISkillSystem_">ShowSkill(ISkillSystem)</a>.
 </p>
 </div>
 
@@ -1718,7 +1722,7 @@ public sealed class ContextInfoPanel : Control, IDisposable</code></pre>
 
   <h3 id="AshesOfVelsingrad_UI_Hud_ContextInfoPanel_Clear" data-uid="AshesOfVelsingrad.UI.Hud.ContextInfoPanel.Clear">
   Clear()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/ui/hud/ContextInfoPanel.cs/#L116"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/ui/hud/ContextInfoPanel.cs/#L164"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Reset to a placeholder state when no battle is active.</p>
@@ -1745,7 +1749,7 @@ public sealed class ContextInfoPanel : Control, IDisposable</code></pre>
 
   <h3 id="AshesOfVelsingrad_UI_Hud_ContextInfoPanel_EnsureBuilt" data-uid="AshesOfVelsingrad.UI.Hud.ContextInfoPanel.EnsureBuilt">
   EnsureBuilt()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/ui/hud/ContextInfoPanel.cs/#L35"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/ui/hud/ContextInfoPanel.cs/#L38"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Idempotent build — safe to call before <code>_Ready</code> fires.</p>
@@ -1768,11 +1772,38 @@ public sealed class ContextInfoPanel : Control, IDisposable</code></pre>
 
 
 
+  <a id="AshesOfVelsingrad_UI_Hud_ContextInfoPanel_Relayout_" data-uid="AshesOfVelsingrad.UI.Hud.ContextInfoPanel.Relayout*"></a>
+
+  <h3 id="AshesOfVelsingrad_UI_Hud_ContextInfoPanel_Relayout" data-uid="AshesOfVelsingrad.UI.Hud.ContextInfoPanel.Relayout">
+  Relayout()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/ui/hud/ContextInfoPanel.cs/#L47"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Recompute anchored offsets / min-size against current <a class="xref" href="AshesOfVelsingrad.UI.Hud.HudStyle.html#AshesOfVelsingrad_UI_Hud_HudStyle_UiScale">UiScale</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Relayout()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
   <a id="AshesOfVelsingrad_UI_Hud_ContextInfoPanel_ShowMovement_" data-uid="AshesOfVelsingrad.UI.Hud.ContextInfoPanel.ShowMovement*"></a>
 
   <h3 id="AshesOfVelsingrad_UI_Hud_ContextInfoPanel_ShowMovement_System_Int32_System_Int32_System_Boolean_" data-uid="AshesOfVelsingrad.UI.Hud.ContextInfoPanel.ShowMovement(System.Int32,System.Int32,System.Boolean)">
   ShowMovement(int, int, bool)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/ui/hud/ContextInfoPanel.cs/#L82"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/ui/hud/ContextInfoPanel.cs/#L131"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Display the movement summary for the active turn.</p>
@@ -1786,14 +1817,11 @@ public sealed class ContextInfoPanel : Control, IDisposable</code></pre>
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
     <dt><code>reachableCount</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
-    <dd><p>Number of reachable tiles shown on the map.</p>
-</dd>
+    <dd></dd>
     <dt><code>rangeBudget</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
-    <dd><p>The unit's <a class="xref" href="AshesOfVelsingrad.Systems.IUnitSystem.html#AshesOfVelsingrad_Systems_IUnitSystem_PossibleMovesRange">PossibleMovesRange</a>.</p>
-</dd>
+    <dd></dd>
     <dt><code>canMove</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
-    <dd><p>Whether the unit can still move this turn.</p>
-</dd>
+    <dd></dd>
   </dl>
 
 
@@ -1811,7 +1839,7 @@ public sealed class ContextInfoPanel : Control, IDisposable</code></pre>
 
   <h3 id="AshesOfVelsingrad_UI_Hud_ContextInfoPanel_ShowSkill_AshesOfVelsingrad_Systems_ISkillSystem_" data-uid="AshesOfVelsingrad.UI.Hud.ContextInfoPanel.ShowSkill(AshesOfVelsingrad.Systems.ISkillSystem)">
   ShowSkill(ISkillSystem)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/ui/hud/ContextInfoPanel.cs/#L95"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/ui/hud/ContextInfoPanel.cs/#L142"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Display details for a queued skill while the player picks a target.</p>
@@ -1825,8 +1853,7 @@ public sealed class ContextInfoPanel : Control, IDisposable</code></pre>
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
     <dt><code>skill</code> <a class="xref" href="AshesOfVelsingrad.Systems.ISkillSystem.html">ISkillSystem</a></dt>
-    <dd><p>Skill currently being targeted.</p>
-</dd>
+    <dd></dd>
   </dl>
 
 
@@ -1844,7 +1871,7 @@ public sealed class ContextInfoPanel : Control, IDisposable</code></pre>
 
   <h3 id="AshesOfVelsingrad_UI_Hud_ContextInfoPanel__Ready" data-uid="AshesOfVelsingrad.UI.Hud.ContextInfoPanel._Ready">
   _Ready()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/ui/hud/ContextInfoPanel.cs/#L29"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/ui/hud/ContextInfoPanel.cs/#L32"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Called when the node is "ready", i.e. when both the node and its children have entered the scene tree. If the node has children, their <span class="xref">Godot.Node._Ready()</span> callbacks get triggered first, and the parent node will receive the ready notification afterwards.</p>

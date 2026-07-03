@@ -3666,6 +3666,20 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.UI.Hud.CorruptionGauge.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.UI.Hud.CorruptionGauge.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.UI.Hud.CorruptionGauge",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.UI.Hud.CorruptionGauge.yml\" sourcestartlinenumber=\"1\">Three-segment gauge showing the active player unit's corruption level.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "documentation/api/AshesOfVelsingrad.UI.Hud.EnemyRoster.yml",
       "output": {
         ".html": {
@@ -3694,6 +3708,34 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.UI.Hud.HudBusHelper.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.UI.Hud.HudBusHelper.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.UI.Hud.HudBusHelper",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.UI.Hud.HudBusHelper.yml\" sourcestartlinenumber=\"1\">Shared helpers for HUD widgets that need to subscribe to <xref href=\"AshesOfVelsingrad.systems.battle.BattleEventBus\" data-throw-if-not-resolved=\"false\"></xref>.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.UI.Hud.HudStyle.PanelTier.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.UI.Hud.HudStyle.PanelTier.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.UI.Hud.HudStyle.PanelTier",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.UI.Hud.HudStyle.PanelTier.yml\" sourcestartlinenumber=\"1\">Panel weight tier.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "documentation/api/AshesOfVelsingrad.UI.Hud.HudStyle.yml",
       "output": {
         ".html": {
@@ -3704,7 +3746,21 @@
       "Uid": null,
       "IsMRef": true,
       "Title": "AshesOfVelsingrad.UI.Hud.HudStyle",
-      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.UI.Hud.HudStyle.yml\" sourcestartlinenumber=\"1\">Shared visual constants and helpers for every HUD widget — colours, panel styles,\nbar styles, label / button theme overrides.</p>\n"
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.UI.Hud.HudStyle.yml\" sourcestartlinenumber=\"1\">Shared visual constants and helpers for every HUD widget — Souls-like dark-fantasy\npalette, panel tiers, bar styling, scaled fonts, scaled metrics, layout helpers.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.UI.Hud.IHudWidget.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.UI.Hud.IHudWidget.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.UI.Hud.IHudWidget",
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.UI.Hud.IHudWidget.yml\" sourcestartlinenumber=\"1\">HUD widgets implement this so anchor offsets can be recomputed on UI scale change.</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -3718,7 +3774,7 @@
       "Uid": null,
       "IsMRef": true,
       "Title": "AshesOfVelsingrad.UI.Hud.PlayerStatusPanel",
-      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.UI.Hud.PlayerStatusPanel.yml\" sourcestartlinenumber=\"1\">Bottom-left panel showing the active controlled unit's name, HP and MP.</p>\n"
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.UI.Hud.PlayerStatusPanel.yml\" sourcestartlinenumber=\"1\">Bottom-left panel showing the active controlled unit's portrait, name, HP and MP.</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -3746,7 +3802,7 @@
       "Uid": null,
       "IsMRef": true,
       "Title": "AshesOfVelsingrad.UI.Hud.TurnOrderQueue",
-      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.UI.Hud.TurnOrderQueue.yml\" sourcestartlinenumber=\"1\">Top-centre strip showing the next units to act, rendered as portrait chips with a\nfaction-coloured border.</p>\n"
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.UI.Hud.TurnOrderQueue.yml\" sourcestartlinenumber=\"1\">Top-centre strip showing the next units to act, rendered as portrait chips with a\nfaction-coloured frame.</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -3760,7 +3816,7 @@
       "Uid": null,
       "IsMRef": true,
       "Title": "AshesOfVelsingrad.UI.Hud.UnitHealthBar",
-      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.UI.Hud.UnitHealthBar.yml\" sourcestartlinenumber=\"1\">Compact HP/MP indicator bound to a single <xref href=\"AshesOfVelsingrad.Systems.IUnitSystem\" data-throw-if-not-resolved=\"false\"></xref>.</p>\n"
+      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.UI.Hud.UnitHealthBar.yml\" sourcestartlinenumber=\"1\">Compact portrait + HP/MP indicator bound to a single <xref href=\"AshesOfVelsingrad.Systems.IUnitSystem\" data-throw-if-not-resolved=\"false\"></xref>.</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -5272,48 +5328,6 @@
       "Uid": null,
       "IsMRef": true,
       "Title": "AshesOfVelsingrad.systems.status_effects",
-      "Summary": null
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "documentation/api/AshesOfVelsingrad.ui.hud.CorruptionGauge.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/AshesOfVelsingrad.ui.hud.CorruptionGauge.html"
-        }
-      },
-      "version": "",
-      "Uid": null,
-      "IsMRef": true,
-      "Title": "AshesOfVelsingrad.ui.hud.CorruptionGauge",
-      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.ui.hud.CorruptionGauge.yml\" sourcestartlinenumber=\"1\">Three-segment gauge showing the active player unit's corruption level.</p>\n"
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "documentation/api/AshesOfVelsingrad.ui.hud.HudBusHelper.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/AshesOfVelsingrad.ui.hud.HudBusHelper.html"
-        }
-      },
-      "version": "",
-      "Uid": null,
-      "IsMRef": true,
-      "Title": "AshesOfVelsingrad.ui.hud.HudBusHelper",
-      "Summary": "<p sourcefile=\"documentation/api/AshesOfVelsingrad.ui.hud.HudBusHelper.yml\" sourcestartlinenumber=\"1\">Shared helpers for HUD widgets that need to subscribe to <xref href=\"AshesOfVelsingrad.systems.battle.BattleEventBus\" data-throw-if-not-resolved=\"false\"></xref>.</p>\n"
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "documentation/api/AshesOfVelsingrad.ui.hud_1.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/AshesOfVelsingrad.ui.hud_1.html"
-        }
-      },
-      "version": "",
-      "Uid": null,
-      "IsMRef": true,
-      "Title": "AshesOfVelsingrad.ui.hud",
       "Summary": null
     },
     {

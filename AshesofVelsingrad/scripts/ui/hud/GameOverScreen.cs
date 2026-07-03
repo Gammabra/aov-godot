@@ -70,12 +70,12 @@ public sealed partial class GameOverScreen : CanvasLayer
         {
             MouseFilter = Control.MouseFilterEnum.Pass,
         };
-        panel.AddThemeConstantOverride("separation", 18);
+        panel.AddThemeConstantOverride("separation", HudStyle.PadLg);
         panel.SetAnchorsAndOffsetsPreset(Control.LayoutPreset.Center);
-        panel.OffsetLeft = -260;
-        panel.OffsetRight = 260;
-        panel.OffsetTop = -180;
-        panel.OffsetBottom = 180;
+        panel.OffsetLeft = -HudStyle.ScaledPx(260);
+        panel.OffsetRight = HudStyle.ScaledPx(260);
+        panel.OffsetTop = -HudStyle.ScaledPx(180);
+        panel.OffsetBottom = HudStyle.ScaledPx(180);
         container.AddChild(HudStyle.MakePanel(panel));
 
         Label title = new() { Text = "Defeat" };
@@ -98,14 +98,14 @@ public sealed partial class GameOverScreen : CanvasLayer
 
         _tryAgainButton = new Button { Text = "Try Again" };
         HudStyle.StyleButton(_tryAgainButton, 18);
-        _tryAgainButton.CustomMinimumSize = new Vector2(220, 50);
+        _tryAgainButton.CustomMinimumSize = new Vector2(HudStyle.ScaledPx(220), HudStyle.ScaledPx(50));
         _tryAgainButton.SizeFlagsHorizontal = Control.SizeFlags.ShrinkCenter;
         _tryAgainButton.Pressed += FireTryAgain;
         panel.AddChild(_tryAgainButton);
 
         _forfeitButton = new Button { Text = "Forfeit" };
         HudStyle.StyleButton(_forfeitButton, 18);
-        _forfeitButton.CustomMinimumSize = new Vector2(220, 50);
+        _forfeitButton.CustomMinimumSize = new Vector2(HudStyle.ScaledPx(220), HudStyle.ScaledPx(50));
         _forfeitButton.SizeFlagsHorizontal = Control.SizeFlags.ShrinkCenter;
         _forfeitButton.AddThemeColorOverride("font_color", new Color(0.85f, 0.65f, 0.55f));
         _forfeitButton.Pressed += FireForfeit;

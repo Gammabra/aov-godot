@@ -55,7 +55,7 @@ public class BattleHudTest
     }
 
     [TestCase]
-    public void Build_CreatesAllSevenChildWidgets()
+    public void Build_CreatesAllChildWidgets()
     {
         BattleHud hud = AddNode(new BattleHud { Name = "BattleHud" });
 
@@ -68,7 +68,8 @@ public class BattleHudTest
         AssertThat(hud.TurnQueue).IsNotNull();
         AssertThat(hud.ContextInfo).IsNotNull();
         AssertThat(hud.Log).IsNotNull();
-        AssertThat(hud.GetChildCount()).IsEqual(8); // 7 widgets + The inventory
+        AssertThat(hud.Corruption).IsNotNull();
+        AssertThat(hud.GetChildCount()).IsEqual(9); // 8 widgets + the inventory
     }
 
     [TestCase]
@@ -94,7 +95,7 @@ public class BattleHudTest
         int afterSecondBuild = hud.GetChildCount();
 
         AssertThat(afterSecondBuild).IsEqual(afterFirstBuild);
-        AssertThat(afterSecondBuild).IsEqual(8); // 7 widgets + The inventory
+        AssertThat(afterSecondBuild).IsEqual(9); // 8 widgets + the inventory
     }
 
     [TestCase]

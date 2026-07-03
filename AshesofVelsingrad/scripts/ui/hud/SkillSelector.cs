@@ -59,6 +59,8 @@ public sealed partial class SkillSelector : Control, IHudWidget
     {
         ApplyAnchorOffsets();
         MouseFilter = MouseFilterEnum.Ignore;
+        // Backstop: keep slots and names inside the bar frame even at extreme HUD sizes.
+        ClipContents = true;
 
         Control panelContent = new() { Name = "Content", MouseFilter = MouseFilterEnum.Ignore };
         panelContent.SetAnchorsAndOffsetsPreset(LayoutPreset.FullRect);
@@ -69,7 +71,7 @@ public sealed partial class SkillSelector : Control, IHudWidget
             Name = "Slots",
             MouseFilter = MouseFilterEnum.Ignore,
         };
-        row.AddThemeConstantOverride("separation", HudStyle.PadXs);
+        row.AddThemeConstantOverride("separation", HudStyle.ScaledPx(HudStyle.PadXs));
         row.SetAnchorsAndOffsetsPreset(LayoutPreset.FullRect);
         panelContent.AddChild(row);
 

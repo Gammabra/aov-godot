@@ -169,4 +169,25 @@ public static class AovDataStructures
         /// <summary>Magic-based ranged attacker.</summary>
         Mage
     }
+
+    /// <summary>
+    /// Represents the different sub-states of an NPC behavior system.
+    /// </summary>
+    public enum NpcSubState
+    {
+        /// <summary>
+        /// The NPC is idle and not performing any movement or target tracking.
+        /// </summary>
+        Idle,
+
+        /// <summary>
+        /// The NPC is following a fixed, specific point in the world (static target).
+        /// </summary>
+        FollowSpecificPoint,
+
+        /// <summary>
+        /// The NPC is following a moving target that changes position over time.
+        /// </summary>
+        FollowMovingPoint,
+    }
 }

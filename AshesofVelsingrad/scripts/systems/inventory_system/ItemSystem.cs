@@ -41,6 +41,9 @@ public abstract partial class ItemSystem : Node3D, IItemSystem, IInteractable
 
     public virtual bool ConsumesTurn => Category == ItemCategory.Consumable;
 
+    [Signal]
+    public delegate void InteractedEventHandler();
+
     public abstract void Use(IUnitSystem user, IUnitSystem? target, IMapSystem? map);
 
     public virtual bool CanInteract()
@@ -50,7 +53,11 @@ public abstract partial class ItemSystem : Node3D, IItemSystem, IInteractable
 
     public virtual void Interact(IInteractor interactor)
     {
-        PickableSystem.AddToInventory(this);
+        if (PickableSystem.AddToInventory(this) == 0)
+        {
+            EmitSignalInteracted();
+            QueueFree();
+        }
     }
 
     public virtual void HidePrompt()

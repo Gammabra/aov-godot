@@ -11,6 +11,8 @@ size = Vector3(1.918457, 0.79052734, 1.820816)
 transform = Transform3D(0.52, 0, 0, 0, 0.52, 0, 0, 0, 0.55, 0, 0, 0)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Pave Prison" unique_id=1184681334]
+collision_layer = 7
+collision_mask = 7
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Pave Prison/StaticBody3D" unique_id=1927653808]
 transform = Transform3D(2, 0, 0, 0, 0.275, 0, 0, 0, 2.0000155, 0, 0, 0)

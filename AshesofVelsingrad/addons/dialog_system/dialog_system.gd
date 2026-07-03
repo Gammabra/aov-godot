@@ -16,10 +16,8 @@ signal talking(value)
 var paused:=false
 var current_tween: Tween
 var start:=false
-var dialog_output:=[]:
-	set(value):
-		dialog_output=value
-		start_convo()
+var _queue: Array = []
+var dialog_output:=[]
 var Characters:={
 	"default":{
 		"color":Color.WHITE,
@@ -46,6 +44,7 @@ var image:="":
 
 func _ready() -> void:
 	start=true
+	_queue.clear()
 	npc.text=npc_name
 	hide()
 
@@ -55,18 +54,10 @@ func start_convo():
 		proceed()
 
 func add_dialog(type,line):
-	if start:
-		dialog_output=[{type:line}]
-	else:
-		dialog_output.append({type:line})
+	dialog_output.append({type: line})
 
 func changed_NPC_name(value):
-	if Characters.size()<2:
-		Character(value)
 	add_dialog("npc_name",{"name":value})
-	
-		
-		
 
 func change_image(value):
 	add_dialog("image",{"image":value})
@@ -94,24 +85,24 @@ func old_text(value):
 	"typewriter": typewriter,
 	"speed": typewriter_speed,
 	})
-func say(text:String,NPC_name:String=npc_name,typewriter:bool=typewriter,speed:float=typewriter_speed):
-	var current_npc=""
-	if NPC_name=="":
-		current_npc="default"
-	else :
-		current_npc=NPC_name
-	changed_NPC_name(NPC_name)
-	avatar(Characters[current_npc]["image"])
-	add_dialog("text",{
-	"text": text,
-	"typewriter": typewriter,
-	"speed": speed,
+
+func say(text: String, NPC_name: String = npc_name, typewriter: bool = typewriter, speed: float = typewriter_speed):
+	var current_npc = NPC_name if NPC_name != "" else "default"
+
+	if not Characters.has(current_npc):
+		Character(current_npc)
+
+	add_dialog("npc_name", {"name": current_npc})
+	add_dialog("image", {"image": Characters[current_npc]["image"]})
+	add_dialog("text", {
+		"text": text,
+		"typewriter": typewriter,
+		"speed": speed,
 	})
 
 func avatar(value):
-	if image.length()<1:
-		add_dialog("image",{"image":value})
-		
+	add_dialog("image",{"image":value})
+
 var user_input:=""
 #Input 
 func input(question:String,userInput:String=""):
@@ -133,11 +124,15 @@ func action(function_name):
 	add_dialog("action", function_name)
 		
 func process_npc_name(key):
-	npc.text=key["npc_name"]["name"]
-	set_Char(key["npc_name"]["name"])
+	var name = key["npc_name"]["name"]
+	npc.text = name
+
+	if Characters.has(name):
+		set_Char(name)
+	else:
+		set_Char("default")
 	move_on(key)
-	
-	
+
 func process_image(key):
 	photo.texture=load(key["image"]["image"])
 	move_on(key)
@@ -191,6 +186,7 @@ func proceed():
 		if dialog_output.size()>0:
 			talking.emit(self)
 			var key = dialog_output[0]
+			dialog_output.remove_at(0)
 			var type=key.keys()[0]
 			match type:
 				"text":
@@ -211,10 +207,6 @@ func proceed():
 					process_npc_name(key)
 				"action":
 					process_action(key)
-			dialog_output.erase(key)
-
-			if dialog_output.size()==1:
-				start=true
 		else:
 			hide()
 			start=true
@@ -227,8 +219,8 @@ func _on_next_convo_pressed() -> void:
 		proceed()
 	
 func move_on(key):
-	dialog_output.erase(key)
 	proceed()
+
 func set_Char(NPC_NAME):
 	var current_npc=""
 	if NPC_NAME=="":

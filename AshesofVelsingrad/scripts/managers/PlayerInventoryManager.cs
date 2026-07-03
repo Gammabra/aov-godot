@@ -40,14 +40,27 @@ public sealed partial class PlayerInventoryManager : Node
 
         GD.Print("PlayerInventoryManager ready.");
 
-#if DEBUG
-        // Seed test items so the inventory UI is non-empty during development
-        // Remove this block before shipping
-        GlobalInventory.AddItem(1, 3);  // 3x Potion
-        GlobalInventory.AddItem(4, 2);  // 2x Ether
-        GD.Print("[PlayerInventoryManager] DEBUG: seeded test items into GlobalInventory.");
-#endif
+        #if DEBUG
+        CallDeferred(MethodName.SeedDebugItems);
+        #endif
     }
+
+    #if DEBUG
+    private void SeedDebugItems()
+    {
+        // Runs one frame after _Ready, by which point all autoloads including
+        // ItemCatalogSeeder have completed their own _Ready calls
+        if (ItemCatalog.TryGet(1, out _))
+            GlobalInventory.AddItem(1, 3); // 3x Potion
+        else
+            GD.PrintErr("[PlayerInventoryManager] DEBUG: ItemCatalog not ready, skipping seed.");
+
+        if (ItemCatalog.TryGet(4, out _))
+            GlobalInventory.AddItem(4, 2); // 2x Ether
+            
+        GD.Print("[PlayerInventoryManager] DEBUG: seeded test items.");
+    }
+    #endif
 
     public override void _ExitTree()
     {

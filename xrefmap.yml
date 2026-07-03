@@ -25287,19 +25287,6 @@ references:
   isSpec: "True"
   fullName: AshesOfVelsingrad.UI.Inventory.BattleInventoryUI.SetBattleInputSystem
   nameWithType: BattleInventoryUI.SetBattleInputSystem
-- uid: AshesOfVelsingrad.UI.Inventory.BattleInventoryUI.Toggle
-  name: Toggle()
-  href: api/AshesOfVelsingrad.UI.Inventory.BattleInventoryUI.html#AshesOfVelsingrad_UI_Inventory_BattleInventoryUI_Toggle
-  commentId: M:AshesOfVelsingrad.UI.Inventory.BattleInventoryUI.Toggle
-  fullName: AshesOfVelsingrad.UI.Inventory.BattleInventoryUI.Toggle()
-  nameWithType: BattleInventoryUI.Toggle()
-- uid: AshesOfVelsingrad.UI.Inventory.BattleInventoryUI.Toggle*
-  name: Toggle
-  href: api/AshesOfVelsingrad.UI.Inventory.BattleInventoryUI.html#AshesOfVelsingrad_UI_Inventory_BattleInventoryUI_Toggle_
-  commentId: Overload:AshesOfVelsingrad.UI.Inventory.BattleInventoryUI.Toggle
-  isSpec: "True"
-  fullName: AshesOfVelsingrad.UI.Inventory.BattleInventoryUI.Toggle
-  nameWithType: BattleInventoryUI.Toggle
 - uid: AshesOfVelsingrad.UI.Inventory.BattleInventoryUI._Ready
   name: _Ready()
   href: api/AshesOfVelsingrad.UI.Inventory.BattleInventoryUI.html#AshesOfVelsingrad_UI_Inventory_BattleInventoryUI__Ready

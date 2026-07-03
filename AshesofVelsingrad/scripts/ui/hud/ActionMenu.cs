@@ -72,6 +72,8 @@ public sealed partial class ActionMenu : Control, IHudWidget
         // The widget itself MUST pass clicks through outside of buttons — players need to
         // click the battlefield through the gap between buttons.
         MouseFilter = MouseFilterEnum.Ignore;
+        // Backstop: keep buttons inside the bar frame even at extreme HUD sizes.
+        ClipContents = true;
 
         Control panelContent = new() { Name = "Content", MouseFilter = MouseFilterEnum.Ignore };
         panelContent.SetAnchorsAndOffsetsPreset(LayoutPreset.FullRect);
@@ -82,7 +84,7 @@ public sealed partial class ActionMenu : Control, IHudWidget
             Name = "ButtonRow",
             MouseFilter = MouseFilterEnum.Ignore,
         };
-        row.AddThemeConstantOverride("separation", HudStyle.PadXs);
+        row.AddThemeConstantOverride("separation", HudStyle.ScaledPx(HudStyle.PadXs));
         row.SetAnchorsAndOffsetsPreset(LayoutPreset.FullRect);
         panelContent.AddChild(row);
 

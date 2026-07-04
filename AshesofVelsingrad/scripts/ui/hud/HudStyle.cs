@@ -222,32 +222,60 @@ public static class HudStyle
         {
             PanelTier.Light => new StyleBoxFlat
             {
-                BgColor = IronLight, BorderColor = BronzeDim,
-                BorderWidthLeft = 1, BorderWidthRight = 1, BorderWidthTop = 1, BorderWidthBottom = 1,
-                CornerRadiusBottomLeft = 6, CornerRadiusBottomRight = 6,
-                CornerRadiusTopLeft = 6, CornerRadiusTopRight = 6,
-                ContentMarginLeft = ScaledPx(PadMd), ContentMarginRight = ScaledPx(PadMd),
-                ContentMarginTop = ScaledPx(PadSm), ContentMarginBottom = ScaledPx(PadSm),
-                ShadowColor = new Color(0, 0, 0, 0.55f), ShadowSize = 4, ShadowOffset = new Vector2(0, 2),
+                BgColor = IronLight,
+                BorderColor = BronzeDim,
+                BorderWidthLeft = 1,
+                BorderWidthRight = 1,
+                BorderWidthTop = 1,
+                BorderWidthBottom = 1,
+                CornerRadiusBottomLeft = 6,
+                CornerRadiusBottomRight = 6,
+                CornerRadiusTopLeft = 6,
+                CornerRadiusTopRight = 6,
+                ContentMarginLeft = ScaledPx(PadMd),
+                ContentMarginRight = ScaledPx(PadMd),
+                ContentMarginTop = ScaledPx(PadSm),
+                ContentMarginBottom = ScaledPx(PadSm),
+                ShadowColor = new Color(0, 0, 0, 0.55f),
+                ShadowSize = 4,
+                ShadowOffset = new Vector2(0, 2),
             },
             PanelTier.Slot => new StyleBoxFlat
             {
-                BgColor = new Color(0.06f, 0.05f, 0.04f, 0.95f), BorderColor = Bronze,
-                BorderWidthLeft = 2, BorderWidthRight = 2, BorderWidthTop = 2, BorderWidthBottom = 2,
-                CornerRadiusBottomLeft = 4, CornerRadiusBottomRight = 4,
-                CornerRadiusTopLeft = 4, CornerRadiusTopRight = 4,
-                ContentMarginLeft = ScaledPx(PadXs), ContentMarginRight = ScaledPx(PadXs),
-                ContentMarginTop = ScaledPx(PadXs), ContentMarginBottom = ScaledPx(PadXs),
+                BgColor = new Color(0.06f, 0.05f, 0.04f, 0.95f),
+                BorderColor = Bronze,
+                BorderWidthLeft = 2,
+                BorderWidthRight = 2,
+                BorderWidthTop = 2,
+                BorderWidthBottom = 2,
+                CornerRadiusBottomLeft = 4,
+                CornerRadiusBottomRight = 4,
+                CornerRadiusTopLeft = 4,
+                CornerRadiusTopRight = 4,
+                ContentMarginLeft = ScaledPx(PadXs),
+                ContentMarginRight = ScaledPx(PadXs),
+                ContentMarginTop = ScaledPx(PadXs),
+                ContentMarginBottom = ScaledPx(PadXs),
             },
             _ => new StyleBoxFlat
             {
-                BgColor = IronHeavy, BorderColor = Bronze,
-                BorderWidthLeft = 2, BorderWidthRight = 2, BorderWidthTop = 2, BorderWidthBottom = 2,
-                CornerRadiusBottomLeft = 6, CornerRadiusBottomRight = 6,
-                CornerRadiusTopLeft = 6, CornerRadiusTopRight = 6,
-                ContentMarginLeft = ScaledPx(PadMd), ContentMarginRight = ScaledPx(PadMd),
-                ContentMarginTop = ScaledPx(PadSm), ContentMarginBottom = ScaledPx(PadSm),
-                ShadowColor = new Color(0, 0, 0, 0.7f), ShadowSize = 6, ShadowOffset = new Vector2(0, 2),
+                BgColor = IronHeavy,
+                BorderColor = Bronze,
+                BorderWidthLeft = 2,
+                BorderWidthRight = 2,
+                BorderWidthTop = 2,
+                BorderWidthBottom = 2,
+                CornerRadiusBottomLeft = 6,
+                CornerRadiusBottomRight = 6,
+                CornerRadiusTopLeft = 6,
+                CornerRadiusTopRight = 6,
+                ContentMarginLeft = ScaledPx(PadMd),
+                ContentMarginRight = ScaledPx(PadMd),
+                ContentMarginTop = ScaledPx(PadSm),
+                ContentMarginBottom = ScaledPx(PadSm),
+                ShadowColor = new Color(0, 0, 0, 0.7f),
+                ShadowSize = 6,
+                ShadowOffset = new Vector2(0, 2),
             },
         };
     }
@@ -324,36 +352,58 @@ public static class HudStyle
     }
 
     private static StyleBoxFlat MakeButtonStylebox(Color bg, Color border, int borderW = 2)
-        => new() {
-            BgColor = bg, BorderColor = border,
-            BorderWidthLeft = borderW, BorderWidthRight = borderW,
-            BorderWidthTop = borderW, BorderWidthBottom = borderW,
-            CornerRadiusBottomLeft = 5, CornerRadiusBottomRight = 5,
-            CornerRadiusTopLeft = 5, CornerRadiusTopRight = 5,
+        => new()
+        {
+            BgColor = bg,
+            BorderColor = border,
+            BorderWidthLeft = borderW,
+            BorderWidthRight = borderW,
+            BorderWidthTop = borderW,
+            BorderWidthBottom = borderW,
+            CornerRadiusBottomLeft = 5,
+            CornerRadiusBottomRight = 5,
+            CornerRadiusTopLeft = 5,
+            CornerRadiusTopRight = 5,
             // Scaled so the inner text padding shrinks with the buttons at small HUD sizes,
             // instead of eating the whole (shrunk) button and pushing the label out.
-            ContentMarginLeft = ScaledPx(PadSm), ContentMarginRight = ScaledPx(PadSm),
-            ContentMarginTop = ScaledPx(PadXs), ContentMarginBottom = ScaledPx(PadXs),
+            ContentMarginLeft = ScaledPx(PadSm),
+            ContentMarginRight = ScaledPx(PadSm),
+            ContentMarginTop = ScaledPx(PadXs),
+            ContentMarginBottom = ScaledPx(PadXs),
         };
 
     private static StyleBoxFlat MakeSlotStylebox(Color bg, Color border, int borderW = 2)
-        => new() {
-            BgColor = bg, BorderColor = border,
-            BorderWidthLeft = borderW, BorderWidthRight = borderW,
-            BorderWidthTop = borderW, BorderWidthBottom = borderW,
-            CornerRadiusBottomLeft = 4, CornerRadiusBottomRight = 4,
-            CornerRadiusTopLeft = 4, CornerRadiusTopRight = 4,
-            ContentMarginLeft = ScaledPx(PadXs), ContentMarginRight = ScaledPx(PadXs),
-            ContentMarginTop = ScaledPx(PadXs), ContentMarginBottom = ScaledPx(PadXs),
+        => new()
+        {
+            BgColor = bg,
+            BorderColor = border,
+            BorderWidthLeft = borderW,
+            BorderWidthRight = borderW,
+            BorderWidthTop = borderW,
+            BorderWidthBottom = borderW,
+            CornerRadiusBottomLeft = 4,
+            CornerRadiusBottomRight = 4,
+            CornerRadiusTopLeft = 4,
+            CornerRadiusTopRight = 4,
+            ContentMarginLeft = ScaledPx(PadXs),
+            ContentMarginRight = ScaledPx(PadXs),
+            ContentMarginTop = ScaledPx(PadXs),
+            ContentMarginBottom = ScaledPx(PadXs),
         };
 
     private static StyleBoxFlat MakeFocusStylebox()
-        => new() {
-            BgColor = new Color(0, 0, 0, 0), BorderColor = GoldHover,
-            BorderWidthLeft = 2, BorderWidthRight = 2,
-            BorderWidthTop = 2, BorderWidthBottom = 2,
-            CornerRadiusBottomLeft = 5, CornerRadiusBottomRight = 5,
-            CornerRadiusTopLeft = 5, CornerRadiusTopRight = 5,
+        => new()
+        {
+            BgColor = new Color(0, 0, 0, 0),
+            BorderColor = GoldHover,
+            BorderWidthLeft = 2,
+            BorderWidthRight = 2,
+            BorderWidthTop = 2,
+            BorderWidthBottom = 2,
+            CornerRadiusBottomLeft = 5,
+            CornerRadiusBottomRight = 5,
+            CornerRadiusTopLeft = 5,
+            CornerRadiusTopRight = 5,
         };
 
     // ── Bars ────────────────────────────────────────────────────────────

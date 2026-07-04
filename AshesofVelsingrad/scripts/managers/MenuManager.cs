@@ -134,11 +134,13 @@ public partial class MenuManager : BaseManager
         {
             var current = _menus[_currentMenu];
             var pages = current.GetNodeOrNull<SettingsPages>("MainContent");
-            if (pages != null) {
+            if (pages != null)
+            {
                 pages.HideAll();
                 current.Hide();
                 current.MouseFilter = Control.MouseFilterEnum.Ignore;
-            } else
+            }
+            else
             {
                 current.Hide();
                 // Prevent hidden control from blocking mouse events
@@ -150,11 +152,13 @@ public partial class MenuManager : BaseManager
 
         var newMenu = _menus[menuName];
         var newPages = newMenu.GetNodeOrNull<SettingsPages>("MainContent");
-        if (newPages != null) {
+        if (newPages != null)
+        {
             newMenu.MouseFilter = Control.MouseFilterEnum.Pass;
-            newMenu.Show();  
+            newMenu.Show();
             newPages.ShowAll();
-        } else
+        }
+        else
         {
             newMenu.MouseFilter = Control.MouseFilterEnum.Pass;
             newMenu.Show();

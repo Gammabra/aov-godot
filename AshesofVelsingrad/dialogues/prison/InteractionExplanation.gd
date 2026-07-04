@@ -5,9 +5,14 @@ signal dialog_ended()
 var dio=Dialog.new()
 var dialog:=dio.start(self)
 
+var narrateur = dialog.Character(
+		"",
+		Color("ebede9"),
+		" "
+	)
 var mercenary = dialog.Character(
-		"Mercenary",
-		Color.YELLOW_GREEN,
+		"Arthur",
+		Color("be772b"),
 		"res://assets/Krita/icone_mercenaire.png"
 	)
 
@@ -15,10 +20,10 @@ func _ready() -> void:
 	dialog.typewriter_speed=30
 
 func talk():
-	dialog.say("This is a Health Potion.", mercenary)
-	dialog.say("This is going to be very useful for later.", mercenary)
-	dialog.say("You can pick it up with the (E) keybind.", mercenary)
-	dialog.say("Keep in mind that there will be a lot of things you can interact with in the future.", mercenary)
+	dialog.say("Regardez ici, sur le sol.", mercenary)
+	dialog.say("Ça pourrait nous servir, non ?", mercenary)
+	dialog.say("Lorsque tu te trouves près d'un objet ou d'une personne avec qui interagir, appuie sur E pour agir.", narrateur)
+	dialog.say("Certains éléments du décor, personnages ou objets pourront être examinés, ramassés ou activés de cette manière.", narrateur)
 
 	dialog.action("_emit_dialog_end")
 	dialog.start_convo()

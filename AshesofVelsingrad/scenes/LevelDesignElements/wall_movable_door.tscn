@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://b8p636b1yqpl8"]
+
+[ext_resource type="PackedScene" uid="uid://rw6bili0x0pv" path="res://assets/Blender/export/Wall Door.glb" id="1_57bkx"]
+[ext_resource type="Script" uid="uid://b5djjckdsg5rt" path="res://scripts/tutorial/MovableDoor.cs" id="1_fx6lg"]
+[ext_resource type="PackedScene" uid="uid://uajdvgppsp5y" path="res://assets/Blender/export/Prison Door.glb" id="2_1etm5"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_x0owp"]
+size = Vector3(0.689, 0.754, 0.074)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_24doy"]
+size = Vector3(0.16699219, 0.7590332, 0.071380615)
+
+[node name="Wall" type="Node3D" unique_id=1971867356]
+script = ExtResource("1_fx6lg")
+_doorPath = NodePath("Wall Door/Prison Door")
+
+[node name="Wall Door" parent="." unique_id=547371328 instance=ExtResource("1_57bkx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.15)
+
+[node name="Prison Door" parent="Wall Door" unique_id=517222361 instance=ExtResource("2_1etm5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.32684565, 0.09033278, -0.03763038)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Wall Door" unique_id=753054563]
+transform = Transform3D(2.885, 0, 0, 0, 3, 0, 0, 0, 3, -0.013591886, 1.1387635, 0)
+collision_layer = 7
+collision_mask = 7
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Wall Door/StaticBody3D" unique_id=73846416]
+transform = Transform3D(0.99999964, 0, 0, 0, 0.99999857, 0, 0, 0, 0.99999994, -0.23226348, -0.00061035156, -0.053020205)
+shape = SubResource("BoxShape3D_x0owp")
+
+[node name="StaticBody3D2" type="StaticBody3D" parent="Wall Door" unique_id=796534530]
+transform = Transform3D(2.455, 0, 0, 0, 3, 0, 0, 0, 3, 2.7249613, 1.1387635, 0)
+collision_layer = 7
+collision_mask = 7
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Wall Door/StaticBody3D2" unique_id=1303885815]
+transform = Transform3D(0.99999964, 0, 0, 0, 0.99999857, 0, 0, 0, 0.9999478, -0.50762165, -0.0073242486, -0.054667883)
+shape = SubResource("BoxShape3D_24doy")

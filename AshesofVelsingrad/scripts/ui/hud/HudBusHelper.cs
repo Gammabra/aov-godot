@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 using AshesOfVelsingrad.systems.battle;
 using Godot;
 
-namespace AshesOfVelsingrad.ui.hud;
+namespace AshesOfVelsingrad.UI.Hud;
 
 /// <summary>
 ///     Shared helpers for HUD widgets that need to subscribe to <see cref="BattleEventBus" />.

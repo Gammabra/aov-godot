@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://c0y3f0hskbqwu"]
+
+[ext_resource type="PackedScene" uid="uid://humstq7wpmtt" path="res://assets/Blender/export/Prison Bed.glb" id="1_e0wr5"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_73a02"]
+size = Vector3(2.1504378, 0.085826874, 0.9394293)
+
+[node name="Prison Bed" type="Node3D" unique_id=1971867356]
+
+[node name="Prison Bed" parent="." unique_id=1877493735 instance=ExtResource("1_e0wr5")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Prison Bed" unique_id=69251597]
+collision_layer = 7
+collision_mask = 7
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Prison Bed/StaticBody3D" unique_id=128535423]
+transform = Transform3D(0.9999997, 0, 0, 0, 0.99999857, 0, 0, 0, 0.99999994, 0.0013632476, 0.043361843, 0.058633327)
+shape = SubResource("BoxShape3D_73a02")

@@ -57,10 +57,7 @@ public sealed partial class BattleInventoryUI : Control
     public void NotifyUseItemPressed(int slotIndex)
     {
         _battleInputSystem?.EmitSignal(BattleInputSystem.SignalName.OnUseItemPressed, slotIndex);
-        Toggle();
     }
-
-    public void Toggle() => Visible = !Visible;
 
     private void RefreshAll()
     {

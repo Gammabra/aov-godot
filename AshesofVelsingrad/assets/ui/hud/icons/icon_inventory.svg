@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- HUD icon: pouch / inventory -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="#f1e7cf">
+  <g>
+    <path d="M14 24 C 14 18, 22 14, 32 14 C 42 14, 50 18, 50 24 L 54 56 C 54 58, 52 60, 50 60 L 14 60 C 12 60, 10 58, 10 56 Z"/>
+    <!-- Drawstring -->
+    <path d="M18 22 Q 32 16, 46 22" stroke="#3a2a1a" stroke-width="2" fill="none"/>
+    <!-- Knot -->
+    <circle cx="32" cy="22" r="2.5" fill="#3a2a1a"/>
+    <!-- Stitch -->
+    <line x1="20" y1="34" x2="44" y2="34" stroke="#3a2a1a" stroke-width="1.4" stroke-dasharray="2 2"/>
+  </g>
+</svg>

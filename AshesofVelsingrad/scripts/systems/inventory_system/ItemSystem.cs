@@ -23,7 +23,12 @@ public enum ItemCategory
 public abstract partial class ItemSystem : Node3D, IItemSystem, IInteractable
 {
     public int Id { get; protected set; }
-    public string? Name { get; protected set; }
+
+    /// <summary>
+    ///     The item's display name. Intentionally hides <see cref="Node.Name" /> — this is the
+    ///     domain item name from <c>IItemSystem</c>, not the scene-tree node name.
+    /// </summary>
+    public new string? Name { get; protected set; }
     public string? Description { get; protected set; }
 
     public ItemCategory Category { get; protected set; } = ItemCategory.Misc;
@@ -36,6 +41,9 @@ public abstract partial class ItemSystem : Node3D, IItemSystem, IInteractable
 
     public virtual bool ConsumesTurn => Category == ItemCategory.Consumable;
 
+    [Signal]
+    public delegate void InteractedEventHandler();
+
     public abstract void Use(IUnitSystem user, IUnitSystem? target, IMapSystem? map);
 
     public virtual bool CanInteract()
@@ -45,7 +53,11 @@ public abstract partial class ItemSystem : Node3D, IItemSystem, IInteractable
 
     public virtual void Interact(IInteractor interactor)
     {
-        PickableSystem.AddToInventory(this);
+        if (PickableSystem.AddToInventory(this) == 0)
+        {
+            EmitSignalInteracted();
+            QueueFree();
+        }
     }
 
     public virtual void HidePrompt()

@@ -20,10 +20,10 @@ func _ready() -> void:
 	dialog.typewriter_speed=30
 
 func talk():
-	dialog.say("Regardez ici, sur le sol.", mercenary)
-	dialog.say("Ça pourrait nous servir, non ?", mercenary)
-	dialog.say("Lorsque tu te trouves près d'un objet ou d'une personne avec qui interagir, appuie sur E pour agir.", narrateur)
-	dialog.say("Certains éléments du décor, personnages ou objets pourront être examinés, ramassés ou activés de cette manière.", narrateur)
+	dialog.say("Look here, on the ground.", mercenary)
+	dialog.say("This could be useful to us, right?", mercenary)
+	dialog.say("When you are near an object or person you can interact with, press E to act.", narrateur)
+	dialog.say("Certain parts of the scenery, characters, or objects can be examined, picked up, or activated this way.", narrateur)
 
 	dialog.action("_emit_dialog_end")
 	dialog.start_convo()

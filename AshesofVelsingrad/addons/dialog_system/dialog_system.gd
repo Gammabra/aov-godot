@@ -87,7 +87,7 @@ func old_text(value):
 	})
 
 func say(text: String, NPC_name: String = npc_name, typewriter: bool = typewriter, speed: float = typewriter_speed):
-	var current_npc = NPC_name if NPC_name != "" else "default"
+	var current_npc = NPC_name if NPC_name != "" else " "
 
 	if not Characters.has(current_npc):
 		Character(current_npc)

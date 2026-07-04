@@ -239,6 +239,9 @@ public partial class MainManager : Node
     {
         _isPaused = true;
         GetTree().Paused = true;
+
+        if (_menuContainer != null)
+            _menuContainer.Visible = true;
         MenuManager.Instance?.ShowMenu(MenuManager.PAUSE_MENU, addToHistory: false);
     }
 
@@ -246,6 +249,9 @@ public partial class MainManager : Node
     {
         _isPaused = false;
         GetTree().Paused = false;
+        
+        if (_menuContainer != null)
+            _menuContainer.Visible = false;
         MenuManager.Instance?.HideCurrentMenu();
     }
 

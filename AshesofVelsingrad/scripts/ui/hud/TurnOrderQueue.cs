@@ -139,8 +139,10 @@ public sealed partial class TurnOrderQueue : Control, IHudWidget
             BorderWidthRight = isActive ? 4 : 2,
             BorderWidthTop = isActive ? 4 : 2,
             BorderWidthBottom = isActive ? 4 : 2,
-            CornerRadiusBottomLeft = 6, CornerRadiusBottomRight = 6,
-            CornerRadiusTopLeft = 6, CornerRadiusTopRight = 6,
+            CornerRadiusBottomLeft = 6,
+            CornerRadiusBottomRight = 6,
+            CornerRadiusTopLeft = 6,
+            CornerRadiusTopRight = 6,
             ShadowColor = isActive ? new Color(1f, 0.7f, 0.3f, 0.45f) : new Color(0, 0, 0, 0),
             ShadowSize = isActive ? 6 : 0,
         };

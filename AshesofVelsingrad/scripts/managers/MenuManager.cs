@@ -135,7 +135,11 @@ public partial class MenuManager : BaseManager
             var current = _menus[_currentMenu];
             var pages = current.GetNodeOrNull<SettingsPages>("MainContent");
             if (pages != null)
+            {
                 pages.HideAll();
+                current.Hide();
+                current.MouseFilter = Control.MouseFilterEnum.Ignore;
+            }
             else
             {
                 current.Hide();
@@ -149,7 +153,11 @@ public partial class MenuManager : BaseManager
         var newMenu = _menus[menuName];
         var newPages = newMenu.GetNodeOrNull<SettingsPages>("MainContent");
         if (newPages != null)
+        {
+            newMenu.MouseFilter = Control.MouseFilterEnum.Pass;
+            newMenu.Show();
             newPages.ShowAll();
+        }
         else
         {
             newMenu.MouseFilter = Control.MouseFilterEnum.Pass;
@@ -208,6 +216,22 @@ public partial class MenuManager : BaseManager
     public string? GetCurrentMenu()
     {
         return _currentMenu;
+    }
+
+    /// <summary>
+    /// Hides the current active menu without navigating to another.
+    /// Used when closing a menu overlay (e.g. pause menu resuming to gameplay).
+    /// </summary>
+    public void HideCurrentMenu()
+    {
+        if (string.IsNullOrEmpty(_currentMenu) || !_menus.ContainsKey(_currentMenu))
+            return;
+
+        var current = _menus[_currentMenu];
+        current.Hide();
+        current.MouseFilter = Control.MouseFilterEnum.Ignore;
+        _currentMenu = null;
+        ClearHistory();
     }
 
     /// <summary>

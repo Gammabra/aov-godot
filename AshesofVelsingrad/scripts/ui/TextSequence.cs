@@ -1,6 +1,6 @@
-﻿using System;
-using Godot;
+using System;
 using System.Threading.Tasks;
+using Godot;
 
 namespace AshesOfVelsingrad.ui;
 

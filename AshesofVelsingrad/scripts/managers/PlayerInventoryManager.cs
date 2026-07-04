@@ -40,12 +40,12 @@ public sealed partial class PlayerInventoryManager : Node
 
         GD.Print("PlayerInventoryManager ready.");
 
-        #if DEBUG
+#if DEBUG
         CallDeferred(MethodName.SeedDebugItems);
-        #endif
+#endif
     }
 
-    #if DEBUG
+#if DEBUG
     private void SeedDebugItems()
     {
         // Runs one frame after _Ready, by which point all autoloads including
@@ -57,10 +57,10 @@ public sealed partial class PlayerInventoryManager : Node
 
         if (ItemCatalog.TryGet(4, out _))
             GlobalInventory.AddItem(4, 2); // 2x Ether
-            
+
         GD.Print("[PlayerInventoryManager] DEBUG: seeded test items.");
     }
-    #endif
+#endif
 
     public override void _ExitTree()
     {

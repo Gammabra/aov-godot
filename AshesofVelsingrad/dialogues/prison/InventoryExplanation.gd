@@ -20,20 +20,20 @@ func _ready() -> void:
 	dialog.typewriter_speed=30
 
 func first():
-	dialog.say("Bien. Garde ça près de toi, on ne sait pas ce qui nous attend.", mercenary)
-	dialog.say("Les objets ramassés sont rangés dans ton inventaire. Appuie sur I pour l'ouvrir.", narrateur)
+	dialog.say("Good. Keep that close, we don't know what awaits us.", mercenary)
+	dialog.say("Collected items are stored in your inventory. Press I to open it.", narrateur)
 
 	dialog.action("_emit_dialog_end")
 	dialog.start_convo()
 
 func second():
-	dialog.say("À gauche se trouve l'inventaire d'exploration. Les objets ramassés pendant ton voyage y apparaîtront.", narrateur)
-	dialog.say("À droite se trouve l'inventaire personnel de chaque membre du groupe.", narrateur)
-	dialog.say("En combat, les objets ne peuvent être utilisés que pendant le tour du personnage qui les porte.", narrateur)
-	dialog.say("Pour équiper un personnage, fais glisser un objet vers l'un de ses emplacements d'équipement.", narrateur)
-	dialog.say("L'inventaire d'exploration n'est pas accessible pendant les combats. Prépare ton groupe avant d'engager l'ennemi.", narrateur)
-	dialog.say("Tout est en ordre ?", mercenary)
-	dialog.say("Alors on avance.", mercenary)
+	dialog.say("On the left is the exploration inventory. Items collected during your journey will appear there.", narrateur)
+	dialog.say("On the right is each party member's personal inventory.", narrateur)
+	dialog.say("In combat, items can only be used during the turn of the character carrying them.", narrateur)
+	dialog.say("To equip a character, drag an item to one of their equipment slots.", narrateur)
+	dialog.say("The exploration inventory is not accessible during battles. Prepare your party before engaging the enemy.", narrateur)
+	dialog.say("Everything in order?", mercenary)
+	dialog.say("Then let's move on.", mercenary)
 
 	dialog.action("_emit_dialog_end")
 	dialog.start_convo()

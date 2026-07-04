@@ -7,7 +7,7 @@ var dio=Dialog.new()
 var dialog:=dio.start(self)
 
 var guard = dialog.Character(
-		"Gard of Velsingrad",
+		"Guard of Velsingrad",
 		Color("a53030"),
 		"res://assets/Krita/icone_solder.png"
 	)

@@ -21,7 +21,7 @@ var dialog_output:=[]
 var Characters:={
 	"default":{
 		"color":Color.WHITE,
-		"image":"res://addons/dialog_system/placeholder.png"}
+		"image":""}
 }
 var typewriter_speed:=30
 var typewriter:=true
@@ -134,7 +134,13 @@ func process_npc_name(key):
 	move_on(key)
 
 func process_image(key):
-	photo.texture=load(key["image"]["image"])
+	var image_path = key["image"]["image"]
+	if image_path != null and image_path != "":
+		photo.texture=load(image_path)
+		photo.visible=true
+	else:
+		photo.texture=null
+		photo.visible=false
 	move_on(key)
 
 func process_bg(key):

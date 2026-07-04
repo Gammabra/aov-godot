@@ -11,21 +11,24 @@
 [node name="MainManager" type="Node" unique_id=359710342 node_paths=PackedStringArray("_worldContainer", "_menuContainer", "_battleHud", "_battleInventoryUi", "_explorationInventoryUi", "_screenTransition", "_pauseMenu")]
 script = ExtResource("1_tbgi4")
 _worldContainer = NodePath("WorldContainer")
-_menuContainer = NodePath("UILayer/MenuContainer")
+_menuContainer = NodePath("UILayer/MenuLayer/MenuContainer")
 _battleHud = NodePath("UILayer/BattleHud")
 _battleInventoryUi = NodePath("UILayer/BattleInventoryUi")
 _explorationInventoryUi = NodePath("UILayer/ExplorationInventoryUi")
 _screenTransition = NodePath("UILayer/SceneTransition")
 _mainMenuScene = ExtResource("2_sugp2")
 _settingsScene = ExtResource("3_jyhfs")
-_pauseMenu = NodePath("")
+_pauseMenu = NodePath("UILayer/PauseMenuLayer/PauseMenu")
 
 [node name="WorldContainer" type="Node" parent="." unique_id=678347684]
 
 [node name="UILayer" type="CanvasLayer" parent="." unique_id=89138738]
 layer = 10
 
-[node name="MenuContainer" type="Control" parent="UILayer" unique_id=1685649391]
+[node name="MenuLayer" type="CanvasLayer" parent="UILayer" unique_id=1148268379]
+layer = 20
+
+[node name="MenuContainer" type="Control" parent="UILayer/MenuLayer" unique_id=1685649391]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -48,8 +51,12 @@ color = Color(0, 0, 0, 1)
 
 [node name="ExplorationInventoryUi" parent="UILayer" unique_id=1182585849 instance=ExtResource("6_o6xl0")]
 
-[node name="PauseMenu" parent="UILayer" unique_id=1598797719 instance=ExtResource("7_o6xl0")]
+[node name="PauseMenuLayer" type="CanvasLayer" parent="UILayer" unique_id=1699089814]
+layer = 20
+
+[node name="PauseMenu" parent="UILayer/PauseMenuLayer" unique_id=1598797719 instance=ExtResource("7_o6xl0")]
+z_index = 20
 layout_mode = 3
 
-[connection signal="ExitToMainMenuRequested" from="UILayer/PauseMenu" to="." method="OnExitToMainMenuRequested"]
-[connection signal="ResumeRequested" from="UILayer/PauseMenu" to="." method="ResumeGame"]
+[connection signal="ExitToMainMenuRequested" from="UILayer/PauseMenuLayer/PauseMenu" to="." method="OnExitToMainMenuRequested"]
+[connection signal="ResumeRequested" from="UILayer/PauseMenuLayer/PauseMenu" to="." method="ResumeGame"]

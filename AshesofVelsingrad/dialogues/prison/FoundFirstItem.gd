@@ -6,8 +6,8 @@ var dio=Dialog.new()
 var dialog:=dio.start(self)
 
 var mercenary = dialog.Character(
-		"Mercenary",
-		Color.YELLOW_GREEN,
+		"Arthur",
+		Color("be772b"),
 		"res://assets/Krita/icone_mercenaire.png"
 	)
 

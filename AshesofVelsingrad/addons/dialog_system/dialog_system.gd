@@ -21,7 +21,7 @@ var dialog_output:=[]
 var Characters:={
 	"default":{
 		"color":Color.WHITE,
-		"image":"res://addons/dialog_system/placeholder.png"}
+		"image":""}
 }
 var typewriter_speed:=30
 var typewriter:=true
@@ -87,7 +87,7 @@ func old_text(value):
 	})
 
 func say(text: String, NPC_name: String = npc_name, typewriter: bool = typewriter, speed: float = typewriter_speed):
-	var current_npc = NPC_name if NPC_name != "" else "default"
+	var current_npc = NPC_name if NPC_name != "" else " "
 
 	if not Characters.has(current_npc):
 		Character(current_npc)
@@ -134,7 +134,13 @@ func process_npc_name(key):
 	move_on(key)
 
 func process_image(key):
-	photo.texture=load(key["image"]["image"])
+	var image_path = key["image"]["image"]
+	if image_path != null and image_path != "":
+		photo.texture=load(image_path)
+		photo.visible=true
+	else:
+		photo.texture=null
+		photo.visible=false
 	move_on(key)
 
 func process_bg(key):

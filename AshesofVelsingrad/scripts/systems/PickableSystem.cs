@@ -1,4 +1,4 @@
-﻿using AshesOfVelsingrad.Managers;
+using AshesOfVelsingrad.Managers;
 using AshesOfVelsingrad.Systems;
 
 namespace AshesofVelsingrad.scripts.systems;

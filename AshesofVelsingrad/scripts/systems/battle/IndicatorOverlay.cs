@@ -53,7 +53,7 @@ public sealed partial class IndicatorOverlay : Node3D
         {
             Name = "HoverIndicator",
             TileColor = new Color(0.95f, 0.85f, 0.30f, 0.65f),
-            Height = 0.08f, // sit above the move/target so it's always visible
+            Height = 0.2f, // sit above the move/target so it's always visible
         };
         AddChild(_hover);
         _hover.Bind(map);

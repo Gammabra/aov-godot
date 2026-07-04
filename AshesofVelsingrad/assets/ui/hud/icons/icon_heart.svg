@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- HUD icon: heart (HP) - crimson with darker outline -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <path d="M32 56 C 10 42, 4 26, 14 16 C 22 8, 30 14, 32 20 C 34 14, 42 8, 50 16 C 60 26, 54 42, 32 56 Z"
+        fill="#b8232a" stroke="#3a0a0c" stroke-width="2.5"/>
+  <!-- Highlight -->
+  <path d="M22 22 C 20 26, 22 30, 26 32" fill="none" stroke="#f49a9d" stroke-width="2.5" stroke-linecap="round" opacity="0.85"/>
+</svg>

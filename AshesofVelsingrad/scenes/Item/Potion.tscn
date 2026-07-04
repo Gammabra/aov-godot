@@ -21,8 +21,8 @@ transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0, 0, 0)
 shape = SubResource("BoxShape3D_uuw1q")
 
 [node name="Label3D" type="Label3D" parent="." unique_id=877272577]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.015370861, 0.46264854, 0.63448846)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.015370861, 0.2765551, 0.344616)
 visible = false
 billboard = 1
 texture_filter = 0
-text = "Pick Up"
+text = "(E) Pick Up"

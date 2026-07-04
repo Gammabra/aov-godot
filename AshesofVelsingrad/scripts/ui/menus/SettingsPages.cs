@@ -545,7 +545,13 @@ public partial class SettingsPages : Node
     {
         var root = GetParent() as Control;
         GD.Print($"[SettingsPages] HideAll — parent is {GetParent()?.Name}, is Control: {root != null}");
-        root?.Hide();
+
+        if (root != null)
+        {
+            root.Hide();
+            root.MouseFilter = Control.MouseFilterEnum.Ignore;
+        }
+
         var pageManager = GetParent()?.GetNodeOrNull<SettingsPageManager>("PageManager");
         pageManager?.HideAllPages();
     }
@@ -555,20 +561,14 @@ public partial class SettingsPages : Node
     /// </summary>
     public void ShowAll()
     {
-        GD.Print("[SettingsPages] ShowAll called");
-        GD.Print($"[SettingsPages] GetParent type: {GetParent()?.GetType().Name}, name: {GetParent()?.Name}");
         var root = GetParent() as Control;
-        GD.Print($"[SettingsPages] root is null: {root == null}");
-
+        
         if (root != null)
         {
-            root.SetAnchorsAndOffsetsPreset(Control.LayoutPreset.FullRect);
-            root.Size = root.GetViewportRect().Size;
-            root.Position = Vector2.Zero;
-            // Allow mouse events to pass through to children
             root.MouseFilter = Control.MouseFilterEnum.Pass;
             root.Show();
         }
+
         var pageManager = GetParent()?.GetNodeOrNull<SettingsPageManager>("PageManager");
         pageManager?.ShowCurrentPage();
     }

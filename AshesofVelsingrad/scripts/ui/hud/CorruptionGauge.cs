@@ -120,12 +120,18 @@ public sealed partial class CorruptionGauge : Control, IHudWidget
             {
                 BgColor = new Color(0.04f, 0.04f, 0.04f, 0.95f),
                 BorderColor = HudStyle.BronzeDim,
-                BorderWidthLeft = 1, BorderWidthRight = 1,
-                BorderWidthTop = 1, BorderWidthBottom = 1,
-                CornerRadiusTopLeft = 3, CornerRadiusTopRight = 3,
-                CornerRadiusBottomLeft = 3, CornerRadiusBottomRight = 3,
-                ContentMarginLeft = 2, ContentMarginRight = 2,
-                ContentMarginTop = 2, ContentMarginBottom = 2,
+                BorderWidthLeft = 1,
+                BorderWidthRight = 1,
+                BorderWidthTop = 1,
+                BorderWidthBottom = 1,
+                CornerRadiusTopLeft = 3,
+                CornerRadiusTopRight = 3,
+                CornerRadiusBottomLeft = 3,
+                CornerRadiusBottomRight = 3,
+                ContentMarginLeft = 2,
+                ContentMarginRight = 2,
+                ContentMarginTop = 2,
+                ContentMarginBottom = 2,
             });
             row.AddChild(frame);
 

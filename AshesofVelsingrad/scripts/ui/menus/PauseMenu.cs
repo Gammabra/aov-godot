@@ -1,5 +1,5 @@
-using Godot;
 using AshesOfVelsingrad.Managers;
+using Godot;
 
 namespace AshesOfVelsingrad.UI.Menus;
 
@@ -9,11 +9,11 @@ public partial class PauseMenu : Control
     [Signal] public delegate void ResumeRequestedEventHandler();
     [Signal] public delegate void ExitToMainMenuRequestedEventHandler();
 
-    [Export] private Button ?_continueButton;
-    [Export] private Button ?_saveButton;
-    [Export] private Button ?_loadButton;
-    [Export] private Button ?_settingsButton;
-    [Export] private Button ?_exitButton;
+    [Export] private Button? _continueButton;
+    [Export] private Button? _saveButton;
+    [Export] private Button? _loadButton;
+    [Export] private Button? _settingsButton;
+    [Export] private Button? _exitButton;
 
     public override void _Ready()
     {

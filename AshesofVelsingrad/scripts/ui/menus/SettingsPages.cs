@@ -562,7 +562,7 @@ public partial class SettingsPages : Node
     public void ShowAll()
     {
         var root = GetParent() as Control;
-        
+
         if (root != null)
         {
             root.MouseFilter = Control.MouseFilterEnum.Pass;

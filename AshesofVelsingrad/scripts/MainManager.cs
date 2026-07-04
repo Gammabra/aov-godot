@@ -249,7 +249,7 @@ public partial class MainManager : Node
     {
         _isPaused = false;
         GetTree().Paused = false;
-        
+
         if (_menuContainer != null)
             _menuContainer.Visible = false;
         MenuManager.Instance?.HideCurrentMenu();

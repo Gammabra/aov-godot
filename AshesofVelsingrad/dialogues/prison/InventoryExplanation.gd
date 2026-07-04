@@ -5,9 +5,14 @@ signal dialog_ended()
 var dio=Dialog.new()
 var dialog:=dio.start(self)
 
+var narrateur = dialog.Character(
+		"",
+		Color("ebede9"),
+		" "
+	)
 var mercenary = dialog.Character(
-		"Mercenary",
-		Color.YELLOW_GREEN,
+		"Arthur",
+		Color("be772b"),
 		"res://assets/Krita/icone_mercenaire.png"
 	)
 
@@ -15,19 +20,20 @@ func _ready() -> void:
 	dialog.typewriter_speed=30
 
 func first():
-	dialog.say("Good! You'll find it in your inventory.", mercenary)
-	dialog.say("You can open it with the (I) keybind.", mercenary)
+	dialog.say("Good. Keep that close, we don't know what awaits us.", mercenary)
+	dialog.say("Collected items are stored in your inventory. Press I to open it.", narrateur)
 
 	dialog.action("_emit_dialog_end")
 	dialog.start_convo()
 
 func second():
-	dialog.say("On the left, you'll find your exploration inventory. Any items you pick up will appear here.", mercenary)
-	dialog.say("On the right, you'll see the personal inventory of each party member.", mercenary)
-	dialog.say("This will be very useful during battles, as items can only be used during a party member's turn.", mercenary)
-	dialog.say("You can equip a party member simply by dragging an item into one of their equipment slots.", mercenary)
-	dialog.say("Remember, you won't have access to the exploration inventory during battle, so make sure everyone is properly equipped before heading into combat.", mercenary)
-	dialog.say("That's all. I think you're ready now.", mercenary)
+	dialog.say("On the left is the exploration inventory. Items collected during your journey will appear there.", narrateur)
+	dialog.say("On the right is each party member's personal inventory.", narrateur)
+	dialog.say("In combat, items can only be used during the turn of the character carrying them.", narrateur)
+	dialog.say("To equip a character, drag an item to one of their equipment slots.", narrateur)
+	dialog.say("The exploration inventory is not accessible during battles. Prepare your party before engaging the enemy.", narrateur)
+	dialog.say("Everything in order?", mercenary)
+	dialog.say("Then let's move on.", mercenary)
 
 	dialog.action("_emit_dialog_end")
 	dialog.start_convo()

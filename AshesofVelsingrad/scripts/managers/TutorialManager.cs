@@ -72,9 +72,23 @@ public partial class TutorialManager : Node
     private ItemSystem _firstItem = null!;
     private CanvasLayer _tutorialLayer = null!;
     private MovableDoor _movableDoor = null!;
-    // TODO: Fill the tuple to have the complete intro sequence
+
+    // ("Text", 50, 3)
     private readonly (string, int, float)[] _sequences = [
-        ("Prologue", 50, 3)
+        ("Prologue", 50, 3),
+        ("Kingdom of Velsingrad, 16th Century", 40, 3),
+        ("The great kingdom of Velsingrad is one of the most powerful on the continent.", 25, 7),
+        ("From its capital, Sarkavel, King Edric reigns over a people \nwho have long lived in security against the horror that surrounds them.", 25, 7),
+        ("The kingdom owes much of this stability to the Bronze Ravens.", 25, 7),
+        ("This prestigious guild of mercenaries is sent \nwhere the army cannot suffice: \nmonsters, bandits, forgotten creatures...", 25, 7),
+        ("For generations, they have protected Velsingrad \nfrom the most dangerous threats.", 25, 7),
+        ("At their head stood a man whom the king \ntrusted absolutely: \nCaptain Armand Voss.", 25, 7),
+        ("Upon his death, his son Kaelen inherited command \nand became the new captain of the Bronze Ravens.", 25, 7),
+        ("As time went on, the king's great paranoia grew even further.", 25, 7),
+        ("Taking advantage of this, shadows whispered to him \nthat the Bronze Ravens were plotting his assassination.", 25, 7),
+        ("Convinced of these words, he ordered their execution. \nIn a single night, the guild was annihilated without any trial.", 25, 7),
+        ("Thanks to the intervention and love of Princess Elyra, \nKaelen escaped death, but was condemned to life imprisonment.", 25, 7),
+        ("It is after three years of rotting in a \nseedy cell with a young recruit that the fate of the \nlast captain of the Bronze Ravens is about to change...", 25, 7)
     ];
 
     public bool CanMove { get; private set; }

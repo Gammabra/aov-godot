@@ -5,10 +5,27 @@ signal battle_started(interactor)
 var interactor: Node
 var dio=Dialog.new()
 var dialog:=dio.start(self)
-#Character(NPC_name, font color, npc image)
-var s=dialog.Character("Solder", Color.REBECCA_PURPLE, "res://assets/Krita/icone_solder.png") 
-var kaelen=dialog.Character("Kaelen Voss", Color.BROWN, "res://assets/Krita/icone_player.png")
-var ym=dialog.Character("Arthur", Color.YELLOW_GREEN, "res://assets/Krita/icone_mercenaire.png")
+
+var guard = dialog.Character(
+		"Guard of Velsingrad",
+		Color("a53030"),
+		"res://assets/Krita/icone_solder.png"
+	)
+var narrateur = dialog.Character(
+		"",
+		Color("ebede9"),
+		" "
+	)
+var kaelen = dialog.Character(
+		"Kaelen",
+		Color("75a743"),
+		"res://assets/Krita/icone_player.png"
+	)
+var mercenary = dialog.Character(
+		"Arthur",
+		Color("be772b"),
+		"res://assets/Krita/icone_mercenaire.png"
+	)
 
 func _ready() -> void:
 	dialog.typewriter_speed=30
@@ -19,42 +36,29 @@ func set_interactor(i) -> void:
 
 func talk() -> void:
 	print("[npc_solder] talk() invoked — interactor=", interactor)
-	dialog.say("Mr. Voss... finally. Hm... you're looking more and more like your father.", s)
-	dialog.say("It's been three years since you were locked up here...", s)
-	dialog.say("But we don’t have time for that.", s)
-
-	dialog.say("What’s that noise outside? Sounds like... a battle.", ym)
-	dialog.say("Thanks for getting us out. But tell us—what’s going on?", kaelen)
-
-	dialog.say("Sarkavel is under attack.", s)
-	dialog.say("...What? That’s impossible. That city can’t fall.", ym)
-
-	dialog.say("I wish you were right... but you’re not.", s)
-	dialog.say("These aren’t just bandits. They charge without thinking, like they don’t fear death anymore.", s)
-	dialog.say("They’re burning everything. Houses, streets... all of it.", s)
-	dialog.say("And their magic... something’s wrong. I’ve never seen anything like it.", s)
-
-	dialog.say("We won’t hold much longer.", s)
-	dialog.say("We need you, Mr. Voss.", s)
-
-	dialog.say("What do we do?", ym)
-
+	dialog.say("There you are.", guard)
+	dialog.say("The guard stands near a wide breach in the wall. Beyond it, the cries and flames of Sarkavel await you.", narrateur)
+	dialog.say("By the gods... How could they make such a hole?", mercenary)
+	dialog.say("We don't know, but the prison wasn't their target. It just happened to be in their way.", guard)
+	dialog.say("So the city is really breached.", kaelen)
+	dialog.say("Yes. And if we still want to save someone, we must go through this breach before they return.", guard)
 
 	dialog.menu("Your decision?", {
-			"We help defend the capital": "yes_function",
-			"I need time to think": "no_function",
+			"Defend the capital": "yes_function",
+			"I need a moment": "no_function",
 		})
 	dialog.start_convo()
 
 func yes_function() -> void:
 	print("[npc_solder] yes_function() — adding 2 lines + start_fight action")
-	dialog.say("Alright. Then we move. Now.", s)
-	dialog.say("Good. Let them come.", ym)
+	dialog.say("Perfect! Take these weapons and let's go.", guard)
+	dialog.say("Stay behind me, Arthur.", kaelen)
+	dialog.say("I'll do my best.", mercenary)
 	dialog.action("start_fight")
 
 func no_function() -> void:
 	print("[npc_solder] no_function() — peace path")
-	dialog.say("Alright... but make it quick. We don’t have much time.", s)
+	dialog.say("Then hurry. We can't stay here.", guard)
 
 func _on_pressed() -> void:
 	print("[npc_solder] _on_pressed() — restarting talk()")

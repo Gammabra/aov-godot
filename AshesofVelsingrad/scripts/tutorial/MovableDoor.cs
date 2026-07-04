@@ -1,4 +1,4 @@
-﻿using Godot;
+using Godot;
 
 namespace AshesOfVelsingrad.tutorial;
 
@@ -11,7 +11,7 @@ public sealed partial class MovableDoor : Node3D
     private Vector3 _openTarget = new(0, -111, 0);
 
     [Export]
-    private Vector3 _closeTarget =  new(0, 0, 0);
+    private Vector3 _closeTarget = new(0, 0, 0);
 
     [Export]
     private float _speed = 1f;

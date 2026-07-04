@@ -42,6 +42,7 @@ border_blend = true
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_sjfrx"]
 
 [node name="Control" type="Control" unique_id=2073738294]
+process_mode = 3
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0

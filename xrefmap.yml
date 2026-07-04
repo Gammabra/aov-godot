@@ -15700,6 +15700,19 @@ references:
   isSpec: "True"
   fullName: AshesOfVelsingrad.MainManager._Ready
   nameWithType: MainManager._Ready
+- uid: AshesOfVelsingrad.MainManager._UnhandledInput(Godot.InputEvent)
+  name: _UnhandledInput(InputEvent)
+  href: api/AshesOfVelsingrad.MainManager.html#AshesOfVelsingrad_MainManager__UnhandledInput_Godot_InputEvent_
+  commentId: M:AshesOfVelsingrad.MainManager._UnhandledInput(Godot.InputEvent)
+  fullName: AshesOfVelsingrad.MainManager._UnhandledInput(Godot.InputEvent)
+  nameWithType: MainManager._UnhandledInput(InputEvent)
+- uid: AshesOfVelsingrad.MainManager._UnhandledInput*
+  name: _UnhandledInput
+  href: api/AshesOfVelsingrad.MainManager.html#AshesOfVelsingrad_MainManager__UnhandledInput_
+  commentId: Overload:AshesOfVelsingrad.MainManager._UnhandledInput
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.MainManager._UnhandledInput
+  nameWithType: MainManager._UnhandledInput
 - uid: AshesOfVelsingrad.MainManager._battleHud
   name: _battleHud
   href: api/AshesOfVelsingrad.MainManager.html#AshesOfVelsingrad_MainManager__battleHud
@@ -16827,6 +16840,19 @@ references:
   isSpec: "True"
   fullName: AshesOfVelsingrad.Managers.MenuManager.GoBack
   nameWithType: MenuManager.GoBack
+- uid: AshesOfVelsingrad.Managers.MenuManager.HideCurrentMenu
+  name: HideCurrentMenu()
+  href: api/AshesOfVelsingrad.Managers.MenuManager.html#AshesOfVelsingrad_Managers_MenuManager_HideCurrentMenu
+  commentId: M:AshesOfVelsingrad.Managers.MenuManager.HideCurrentMenu
+  fullName: AshesOfVelsingrad.Managers.MenuManager.HideCurrentMenu()
+  nameWithType: MenuManager.HideCurrentMenu()
+- uid: AshesOfVelsingrad.Managers.MenuManager.HideCurrentMenu*
+  name: HideCurrentMenu
+  href: api/AshesOfVelsingrad.Managers.MenuManager.html#AshesOfVelsingrad_Managers_MenuManager_HideCurrentMenu_
+  commentId: Overload:AshesOfVelsingrad.Managers.MenuManager.HideCurrentMenu
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.Managers.MenuManager.HideCurrentMenu
+  nameWithType: MenuManager.HideCurrentMenu
 - uid: AshesOfVelsingrad.Managers.MenuManager.Initialize
   name: Initialize()
   href: api/AshesOfVelsingrad.Managers.MenuManager.html#AshesOfVelsingrad_Managers_MenuManager_Initialize
@@ -25897,6 +25923,82 @@ references:
   isSpec: "True"
   fullName: AshesOfVelsingrad.UI.Inventory.UnitTransferPanel._ExitTree
   nameWithType: UnitTransferPanel._ExitTree
+- uid: AshesOfVelsingrad.UI.Menus
+  name: AshesOfVelsingrad.UI.Menus
+  href: api/AshesOfVelsingrad.UI.Menus.html
+  commentId: N:AshesOfVelsingrad.UI.Menus
+  fullName: AshesOfVelsingrad.UI.Menus
+  nameWithType: AshesOfVelsingrad.UI.Menus
+- uid: AshesOfVelsingrad.UI.Menus.PauseMenu
+  name: PauseMenu
+  href: api/AshesOfVelsingrad.UI.Menus.PauseMenu.html
+  commentId: T:AshesOfVelsingrad.UI.Menus.PauseMenu
+  fullName: AshesOfVelsingrad.UI.Menus.PauseMenu
+  nameWithType: PauseMenu
+- uid: AshesOfVelsingrad.UI.Menus.PauseMenu.EmitSignalExitToMainMenuRequested
+  name: EmitSignalExitToMainMenuRequested()
+  href: api/AshesOfVelsingrad.UI.Menus.PauseMenu.html#AshesOfVelsingrad_UI_Menus_PauseMenu_EmitSignalExitToMainMenuRequested
+  commentId: M:AshesOfVelsingrad.UI.Menus.PauseMenu.EmitSignalExitToMainMenuRequested
+  fullName: AshesOfVelsingrad.UI.Menus.PauseMenu.EmitSignalExitToMainMenuRequested()
+  nameWithType: PauseMenu.EmitSignalExitToMainMenuRequested()
+- uid: AshesOfVelsingrad.UI.Menus.PauseMenu.EmitSignalExitToMainMenuRequested*
+  name: EmitSignalExitToMainMenuRequested
+  href: api/AshesOfVelsingrad.UI.Menus.PauseMenu.html#AshesOfVelsingrad_UI_Menus_PauseMenu_EmitSignalExitToMainMenuRequested_
+  commentId: Overload:AshesOfVelsingrad.UI.Menus.PauseMenu.EmitSignalExitToMainMenuRequested
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.UI.Menus.PauseMenu.EmitSignalExitToMainMenuRequested
+  nameWithType: PauseMenu.EmitSignalExitToMainMenuRequested
+- uid: AshesOfVelsingrad.UI.Menus.PauseMenu.EmitSignalResumeRequested
+  name: EmitSignalResumeRequested()
+  href: api/AshesOfVelsingrad.UI.Menus.PauseMenu.html#AshesOfVelsingrad_UI_Menus_PauseMenu_EmitSignalResumeRequested
+  commentId: M:AshesOfVelsingrad.UI.Menus.PauseMenu.EmitSignalResumeRequested
+  fullName: AshesOfVelsingrad.UI.Menus.PauseMenu.EmitSignalResumeRequested()
+  nameWithType: PauseMenu.EmitSignalResumeRequested()
+- uid: AshesOfVelsingrad.UI.Menus.PauseMenu.EmitSignalResumeRequested*
+  name: EmitSignalResumeRequested
+  href: api/AshesOfVelsingrad.UI.Menus.PauseMenu.html#AshesOfVelsingrad_UI_Menus_PauseMenu_EmitSignalResumeRequested_
+  commentId: Overload:AshesOfVelsingrad.UI.Menus.PauseMenu.EmitSignalResumeRequested
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.UI.Menus.PauseMenu.EmitSignalResumeRequested
+  nameWithType: PauseMenu.EmitSignalResumeRequested
+- uid: AshesOfVelsingrad.UI.Menus.PauseMenu.ExitToMainMenuRequested
+  name: ExitToMainMenuRequested
+  href: api/AshesOfVelsingrad.UI.Menus.PauseMenu.html#AshesOfVelsingrad_UI_Menus_PauseMenu_ExitToMainMenuRequested
+  commentId: E:AshesOfVelsingrad.UI.Menus.PauseMenu.ExitToMainMenuRequested
+  fullName: AshesOfVelsingrad.UI.Menus.PauseMenu.ExitToMainMenuRequested
+  nameWithType: PauseMenu.ExitToMainMenuRequested
+- uid: AshesOfVelsingrad.UI.Menus.PauseMenu.ResumeRequested
+  name: ResumeRequested
+  href: api/AshesOfVelsingrad.UI.Menus.PauseMenu.html#AshesOfVelsingrad_UI_Menus_PauseMenu_ResumeRequested
+  commentId: E:AshesOfVelsingrad.UI.Menus.PauseMenu.ResumeRequested
+  fullName: AshesOfVelsingrad.UI.Menus.PauseMenu.ResumeRequested
+  nameWithType: PauseMenu.ResumeRequested
+- uid: AshesOfVelsingrad.UI.Menus.PauseMenu._Ready
+  name: _Ready()
+  href: api/AshesOfVelsingrad.UI.Menus.PauseMenu.html#AshesOfVelsingrad_UI_Menus_PauseMenu__Ready
+  commentId: M:AshesOfVelsingrad.UI.Menus.PauseMenu._Ready
+  fullName: AshesOfVelsingrad.UI.Menus.PauseMenu._Ready()
+  nameWithType: PauseMenu._Ready()
+- uid: AshesOfVelsingrad.UI.Menus.PauseMenu._Ready*
+  name: _Ready
+  href: api/AshesOfVelsingrad.UI.Menus.PauseMenu.html#AshesOfVelsingrad_UI_Menus_PauseMenu__Ready_
+  commentId: Overload:AshesOfVelsingrad.UI.Menus.PauseMenu._Ready
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.UI.Menus.PauseMenu._Ready
+  nameWithType: PauseMenu._Ready
+- uid: AshesOfVelsingrad.UI.Menus.PauseMenu._UnhandledInput(Godot.InputEvent)
+  name: _UnhandledInput(InputEvent)
+  href: api/AshesOfVelsingrad.UI.Menus.PauseMenu.html#AshesOfVelsingrad_UI_Menus_PauseMenu__UnhandledInput_Godot_InputEvent_
+  commentId: M:AshesOfVelsingrad.UI.Menus.PauseMenu._UnhandledInput(Godot.InputEvent)
+  fullName: AshesOfVelsingrad.UI.Menus.PauseMenu._UnhandledInput(Godot.InputEvent)
+  nameWithType: PauseMenu._UnhandledInput(InputEvent)
+- uid: AshesOfVelsingrad.UI.Menus.PauseMenu._UnhandledInput*
+  name: _UnhandledInput
+  href: api/AshesOfVelsingrad.UI.Menus.PauseMenu.html#AshesOfVelsingrad_UI_Menus_PauseMenu__UnhandledInput_
+  commentId: Overload:AshesOfVelsingrad.UI.Menus.PauseMenu._UnhandledInput
+  isSpec: "True"
+  fullName: AshesOfVelsingrad.UI.Menus.PauseMenu._UnhandledInput
+  nameWithType: PauseMenu._UnhandledInput
 - uid: AshesOfVelsingrad.Utilities
   name: AshesOfVelsingrad.Utilities
   href: api/AshesOfVelsingrad.Utilities.html

@@ -3988,6 +3988,34 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.UI.Menus.PauseMenu.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.UI.Menus.PauseMenu.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.UI.Menus.PauseMenu",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "documentation/api/AshesOfVelsingrad.UI.Menus.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AshesOfVelsingrad.UI.Menus.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AshesOfVelsingrad.UI.Menus",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "documentation/api/AshesOfVelsingrad.Utilities.AovDataStructures.CellType.yml",
       "output": {
         ".html": {

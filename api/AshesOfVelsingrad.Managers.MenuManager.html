@@ -1151,7 +1151,7 @@ It also emits signals when the current menu changes.</p>
 
   <h3 id="AshesOfVelsingrad_Managers_MenuManager_ClearHistory" data-uid="AshesOfVelsingrad.Managers.MenuManager.ClearHistory">
   ClearHistory()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/managers/MenuManager.cs/#L194"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/managers/MenuManager.cs/#L202"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Clears the menu history stack.
@@ -1214,7 +1214,7 @@ It clears the history stack, so there are no previous menus to go back to.</p>
 
   <h3 id="AshesOfVelsingrad_Managers_MenuManager_GetCurrentMenu" data-uid="AshesOfVelsingrad.Managers.MenuManager.GetCurrentMenu">
   GetCurrentMenu()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/managers/MenuManager.cs/#L208"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/managers/MenuManager.cs/#L216"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Gets the name of the current active menu.</p>
@@ -1252,7 +1252,7 @@ This can be useful for checking the current state of the menu system.</p>
 
   <h3 id="AshesOfVelsingrad_Managers_MenuManager_GoBack" data-uid="AshesOfVelsingrad.Managers.MenuManager.GoBack">
   GoBack()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/managers/MenuManager.cs/#L171"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/managers/MenuManager.cs/#L179"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Goes back to the previous menu in the history stack.
@@ -1277,6 +1277,34 @@ If there is no previous menu, it prints a message indicating that.</p>
 If the history stack is empty, it prints a message indicating that there is no previous menu to go back to.
 It does not add the previous menu back to the history stack when going back.</p>
 </div>
+
+
+
+
+  <a id="AshesOfVelsingrad_Managers_MenuManager_HideCurrentMenu_" data-uid="AshesOfVelsingrad.Managers.MenuManager.HideCurrentMenu*"></a>
+
+  <h3 id="AshesOfVelsingrad_Managers_MenuManager_HideCurrentMenu" data-uid="AshesOfVelsingrad.Managers.MenuManager.HideCurrentMenu">
+  HideCurrentMenu()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/managers/MenuManager.cs/#L225"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Hides the current active menu without navigating to another.
+Used when closing a menu overlay (e.g. pause menu resuming to gameplay).</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void HideCurrentMenu()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
 
 
 
@@ -1318,7 +1346,7 @@ If a duplicate instance is found, it removes the duplicate.</p>
 
   <h3 id="AshesOfVelsingrad_Managers_MenuManager_IsMenuActive_System_String_" data-uid="AshesOfVelsingrad.Managers.MenuManager.IsMenuActive(System.String)">
   IsMenuActive(string)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/managers/MenuManager.cs/#L223"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/managers/MenuManager.cs/#L247"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Checks if a specific menu is currently active.</p>

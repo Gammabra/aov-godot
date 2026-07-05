@@ -693,15 +693,15 @@ public partial class GameManager : BaseManager
             return;
         }
 
-        if (_playerUnits.Contains(sourceUnit))
+        if (_playerUnits.Contains(sourceUnit) || _allyUnits.Contains(sourceUnit))
         {
-            allyUnits = _playerUnits;
+            allyUnits = new List<IUnitSystem>(System.Linq.Enumerable.Concat(_playerUnits, _allyUnits));
             enemyUnits = _enemyUnits;
         }
         else
         {
             allyUnits = _enemyUnits;
-            enemyUnits = _playerUnits;
+            enemyUnits = new List<IUnitSystem>(System.Linq.Enumerable.Concat(_playerUnits, _allyUnits));
         }
 
         switch (skill.TargetType)

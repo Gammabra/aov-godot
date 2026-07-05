@@ -389,10 +389,13 @@ public class AIEvaluator
         (int, int, int)? targetPos = battleState.MapSystem.GetUnitPosition(primaryTarget);
         if (targetPos == null) return 0;
 
+        var allyUnits = _unit.Faction == Faction.Ally ? battleState.PlayerUnits : battleState.EnemyUnits;
+        var enemyUnits = _unit.Faction == Faction.Ally ? battleState.EnemyUnits : battleState.PlayerUnits;
+
         int count = 0;
         var targetList = skill.TargetType == AovDataStructures.TargetTypes.AllEnemies || skill.TargetType == AovDataStructures.TargetTypes.SingleEnemy
-            ? battleState.PlayerUnits
-            : battleState.EnemyUnits;
+            ? enemyUnits
+            : allyUnits;
 
         foreach (var aoeOffset in skill.AreaEffect)
         {

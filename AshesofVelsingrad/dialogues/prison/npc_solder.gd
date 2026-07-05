@@ -1,6 +1,7 @@
 extends Node
 
 signal battle_started(interactor)
+signal dialog_ended(interactor)
 
 var interactor: Node
 var dio=Dialog.new()
@@ -59,6 +60,7 @@ func yes_function() -> void:
 func no_function() -> void:
 	print("[npc_solder] no_function() — peace path")
 	dialog.say("Then hurry. We can't stay here.", guard)
+	dialog.action("_emit_dialog_ended")
 
 func _on_pressed() -> void:
 	print("[npc_solder] _on_pressed() — restarting talk()")
@@ -71,3 +73,6 @@ func start_fight():
 		return
 	print("[npc_solder] emitting battle_started signal")
 	battle_started.emit(interactor);
+
+func _emit_dialog_ended():
+	dialog_ended.emit(interactor)

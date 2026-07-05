@@ -1,5 +1,6 @@
 using AshesOfVelsingrad.Interfaces;
 using AshesOfVelsingrad.Managers;
+using AshesOfVelsingrad.player;
 using AshesOfVelsingrad.Systems;
 using AshesOfVelsingrad.Systems.Battle;
 using Godot;
@@ -65,6 +66,7 @@ public partial class Soldier : NpcSystem, IInteractable
         _interactText = GetNode<Label3D>(_interactTextPath);
         _dialog = GetNode<Node>(_dialogPath);
         _dialog.Connect("battle_started", Callable.From<Node>(OnBattleStarted));
+        _dialog.Connect("dialog_ended", Callable.From<Node>(OnDialogEnded));
     }
 
     private void OnBattleStarted(Node interactorNode)
@@ -77,6 +79,12 @@ public partial class Soldier : NpcSystem, IInteractable
         }
 
         LaunchBattle(interactor);
+    }
+
+    private void OnDialogEnded(Node interactorNode)
+    {
+        if (interactorNode is IInteractor interactor)
+            interactor.UnlockInteractor();
     }
 
     /// <summary>

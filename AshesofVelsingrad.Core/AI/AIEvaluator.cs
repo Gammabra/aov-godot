@@ -242,6 +242,14 @@ public class AIEvaluator
     {
         float score = 0f;
 
+        (int, int, int)? targetPos = battleState.MapSystem.GetUnitPosition(target);
+        if (targetPos.HasValue == false)
+            return 0;
+
+        var (targetX, targetY, targetZ) = targetPos.Value;
+        if (skill.IsTargetCellValid(_unit, targetX, targetY, targetZ, battleState.MapSystem) == false)
+            return 0;
+
         // Base score by effect type
         switch (skill.EffectType)
         {

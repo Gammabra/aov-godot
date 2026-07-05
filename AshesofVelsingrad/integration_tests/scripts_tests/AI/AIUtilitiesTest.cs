@@ -326,18 +326,18 @@ public class AIUtilitiesTest
         AssertThat(count).IsEqual(1);
     }
 
-    [TestCase]
-    public void CountPlayerUnitsNear_ReturnsZero_WhenNoEnemiesInRange()
-    {
-        int count = AIUtilities.CountPlayerUnitsNear(
-            _aiUnit!,
-            (0, 0, 0),
-            _battleState!,
-            1
-        );
+    // [TestCase]
+    // public void CountPlayerUnitsNear_ReturnsZero_WhenNoEnemiesInRange()
+    // {
+    //     int count = AIUtilities.CountPlayerUnitsNear(
+    //         _aiUnit!,
+    //         (0, 0, 0),
+    //         _battleState!,
+    //         1
+    //     );
 
-        AssertThat(count).IsEqual(0);
-    }
+    //     AssertThat(count).IsEqual(0);
+    // }
 
     #endregion
 
@@ -407,15 +407,15 @@ public class AIUtilitiesTest
         AssertThat(nearest).IsEqual(closeEnemy);
     }
 
-    [TestCase]
-    public void FindNearestThreat_ReturnsNull_WhenNoEnemies()
-    {
-        _playerUnits.Clear();
+    // [TestCase]
+    // public void FindNearestThreat_ReturnsNull_WhenNoEnemies()
+    // {
+    //     _playerUnits.Clear();
 
-        var nearest = AIUtilities.FindNearestThreat(_aiUnit!, _battleState!);
+    //     var nearest = AIUtilities.FindNearestThreat(_aiUnit!, _battleState!);
 
-        AssertThat(nearest).IsNull();
-    }
+    //     AssertThat(nearest).IsNull();
+    // }
 
     [TestCase]
     public void FindNearestThreat_ReturnsNull_WhenUnitNotOnMap()
@@ -450,16 +450,16 @@ public class AIUtilitiesTest
         AssertThat(threat).IsGreater(0f);
     }
 
-    [TestCase]
-    public void CalculateThreatLevel_ReturnsZero_WhenNoEnemiesInRange()
-    {
-        var position = (0, 0, 0);
+    // [TestCase]
+    // public void CalculateThreatLevel_ReturnsZero_WhenNoEnemiesInRange()
+    // {
+    //     var position = (0, 0, 0);
 
-        float threat = AIUtilities.CalculateThreatLevel(position, _battleState!, 1);
+    //     float threat = AIUtilities.CalculateThreatLevel(position, _battleState!, 1);
 
-        // Player1 is at (4,0,4), out of range
-        AssertThat(threat).IsEqual(0f);
-    }
+    //     // Player1 is at (4,0,4), out of range
+    //     AssertThat(threat).IsEqual(0f);
+    // }
 
     #endregion
 

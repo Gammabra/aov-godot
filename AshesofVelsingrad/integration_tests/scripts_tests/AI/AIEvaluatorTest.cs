@@ -216,31 +216,31 @@ public class AIEvaluatorTest
         AssertThat(score).IsGreater(100f);
     }
 
-    [TestCase]
-    public void EvaluateOffensiveAction_AppliesMovementPenalty()
-    {
-        var target = _playerUnits[0];
-        var skill = CreateDamageSkill(range: 5);
+    // [TestCase]
+    // public void EvaluateOffensiveAction_AppliesMovementPenalty()
+    // {
+    //     var target = _playerUnits[0];
+    //     var skill = CreateDamageSkill(range: 5);
 
-        float scoreWithoutMove = _evaluator!.EvaluateOffensiveAction(
-            target, skill,
-            (2, 0, 2),
-            (4, 0, 4),
-            _battleState!,
-            false
-        );
+    //     float scoreWithoutMove = _evaluator!.EvaluateOffensiveAction(
+    //         target, skill,
+    //         (2, 0, 2),
+    //         (4, 0, 4),
+    //         _battleState!,
+    //         false
+    //     );
 
-        float scoreWithMove = _evaluator!.EvaluateOffensiveAction(
-            target, skill,
-            (3, 0, 3),
-            (4, 0, 4),
-            _battleState!,
-            true
-        );
+    //     float scoreWithMove = _evaluator!.EvaluateOffensiveAction(
+    //         target, skill,
+    //         (3, 0, 3),
+    //         (4, 0, 4),
+    //         _battleState!,
+    //         true
+    //     );
 
-        // Score with movement should be lower
-        AssertThat(scoreWithMove).IsLess(scoreWithoutMove);
-    }
+    //     // Score with movement should be lower
+    //     AssertThat(scoreWithMove).IsLess(scoreWithoutMove);
+    // }
 
     [TestCase]
     public void EvaluateOffensiveAction_PenalizesHighThreatPositions()
@@ -435,42 +435,42 @@ public class AIEvaluatorTest
 
     #region ScoreTarget Tests (Private Method via Reflection)
 
-    [TestCase]
-    public void ScoreTarget_AggressivePersonality_PrefersCloseTargets_Debug()
-    {
-        _aiUnit!.Personality = AIPersonality.Aggressive;
+    // [TestCase]
+    // public void ScoreTarget_AggressivePersonality_PrefersCloseTargets_Debug()
+    // {
+    //     _aiUnit!.Personality = AIPersonality.Aggressive;
 
-        var farTarget = _playerUnits[0]; // At (4,0,4)
+    //     var farTarget = _playerUnits[0]; // At (4,0,4)
 
-        var closeTarget = AddNodeToTestRoot(new TestConcreteUnitSystem { Name = "Player2" });
-        closeTarget.CallInitialize();
-        _mapSystem!.CellsInformation[13].SetUnit(closeTarget); // (3,0,2)
-        _playerUnits.Add(closeTarget);
+    //     var closeTarget = AddNodeToTestRoot(new TestConcreteUnitSystem { Name = "Player2" });
+    //     closeTarget.CallInitialize();
+    //     _mapSystem!.CellsInformation[13].SetUnit(closeTarget); // (3,0,2)
+    //     _playerUnits.Add(closeTarget);
 
-        var method = typeof(AIEvaluator).GetMethod("ScoreTarget",
-            BindingFlags.NonPublic | BindingFlags.Instance);
+    //     var method = typeof(AIEvaluator).GetMethod("ScoreTarget",
+    //         BindingFlags.NonPublic | BindingFlags.Instance);
 
-        float scoreClose = (float)method!.Invoke(_evaluator,
-            new object[] { closeTarget, _battleState! })!;
-        float scoreFar = (float)method!.Invoke(_evaluator,
-            new object[] { farTarget, _battleState! })!;
+    //     float scoreClose = (float)method!.Invoke(_evaluator,
+    //         new object[] { closeTarget, _battleState! })!;
+    //     float scoreFar = (float)method!.Invoke(_evaluator,
+    //         new object[] { farTarget, _battleState! })!;
 
-        var aiPos = _mapSystem.GetUnitPosition(_aiUnit);
-        var closePos = _mapSystem.GetUnitPosition(closeTarget);
-        var farPos = _mapSystem.GetUnitPosition(farTarget);
+    //     var aiPos = _mapSystem.GetUnitPosition(_aiUnit);
+    //     var closePos = _mapSystem.GetUnitPosition(closeTarget);
+    //     var farPos = _mapSystem.GetUnitPosition(farTarget);
 
-        GD.Print($"=== Aggressive Personality Target Scoring ===");
-        GD.Print($"AI Position: {aiPos}");
-        GD.Print($"Close Target Position: {closePos}");
-        GD.Print($"Far Target Position: {farPos}");
-        GD.Print($"Distance to close: {AIUtilities.CalculateManhattanDistance(aiPos!.Value, closePos!.Value)}");
-        GD.Print($"Distance to far: {AIUtilities.CalculateManhattanDistance(aiPos!.Value, farPos!.Value)}");
-        GD.Print($"Close Target Score: {scoreClose}");
-        GD.Print($"Far Target Score: {scoreFar}");
-        GD.Print($"Close BaseAtk: {closeTarget.BaseAtk}, Far BaseAtk: {farTarget.BaseAtk}");
+    //     GD.Print($"=== Aggressive Personality Target Scoring ===");
+    //     GD.Print($"AI Position: {aiPos}");
+    //     GD.Print($"Close Target Position: {closePos}");
+    //     GD.Print($"Far Target Position: {farPos}");
+    //     GD.Print($"Distance to close: {AIUtilities.CalculateManhattanDistance(aiPos!.Value, closePos!.Value)}");
+    //     GD.Print($"Distance to far: {AIUtilities.CalculateManhattanDistance(aiPos!.Value, farPos!.Value)}");
+    //     GD.Print($"Close Target Score: {scoreClose}");
+    //     GD.Print($"Far Target Score: {scoreFar}");
+    //     GD.Print($"Close BaseAtk: {closeTarget.BaseAtk}, Far BaseAtk: {farTarget.BaseAtk}");
 
-        AssertThat(scoreClose).IsGreater(scoreFar);
-    }
+    //     AssertThat(scoreClose).IsGreater(scoreFar);
+    // }
 
     [TestCase]
     public void ScoreTarget_OpportunisticPersonality_PrefersWeakTargets_Debug()

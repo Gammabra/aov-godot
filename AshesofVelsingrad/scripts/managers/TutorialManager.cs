@@ -73,7 +73,6 @@ public partial class TutorialManager : Node
 	private CanvasLayer _tutorialLayer = null!;
 	private MovableDoor _movableDoor = null!;
 
-	// ("Text", 50, 3)
 	private readonly (string, int, float)[] _sequences = [
 		("Prologue", 50, 3),
 		("Kingdom of Velsingrad, 16th Century", 40, 3),

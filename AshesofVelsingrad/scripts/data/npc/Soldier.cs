@@ -94,10 +94,11 @@ public partial class Soldier : NpcSystem, IInteractable
     ///     stale id and silently materialises as zero entries. Path lookups don't
     ///     have that problem.
     /// </summary>
-    private static readonly (string PlayerPath, string AllyPath, string EnemyPath) _prisonFallbackPaths = (
+    private static readonly (string PlayerPath, string AllyPath, string EnemyPath, string EnemyPath2) _prisonFallbackPaths = (
         "res://scenes/unit/characters/kaelen_voss.tscn",
         "res://scenes/unit/characters/mercenary_ally.tscn",
-        "res://scenes/unit/enemies/enemy_soldier.tscn"
+        "res://scenes/unit/enemies/enemy_soldier.tscn",
+        "res://scenes/unit/enemies/enemy_archer.tscn"
     );
 
     private void LaunchBattle(IInteractor interactor)
@@ -141,9 +142,11 @@ public partial class Soldier : NpcSystem, IInteractable
             var fallbackPlayer = ResourceLoader.Load<PackedScene>(_prisonFallbackPaths.PlayerPath);
             var fallbackAlly = ResourceLoader.Load<PackedScene>(_prisonFallbackPaths.AllyPath);
             var fallbackEnemy = ResourceLoader.Load<PackedScene>(_prisonFallbackPaths.EnemyPath);
+            var fallbackEnemy2 = ResourceLoader.Load<PackedScene>(_prisonFallbackPaths.EnemyPath2);
             if (fallbackPlayer is not null) playerScenes.Add(fallbackPlayer);
             if (fallbackAlly is not null) allyScenes.Add(fallbackAlly);
             if (fallbackEnemy is not null) enemyScenes.Add(fallbackEnemy);
+            if (fallbackEnemy2 is not null) enemyScenes.Add(fallbackEnemy2);
         }
 
         BattleSetup setup = new()

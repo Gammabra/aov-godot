@@ -57,7 +57,7 @@ public sealed partial class ThiefSwordman : UnitSystem
 
     /// <summary>Tactical-AI personality: Aggressive / Defensive / Opportunistic / Balanced.</summary>
     [Export]
-    public AIPersonality ThiefPersonality { get; set; } = AIPersonality.Balanced;
+    public AIPersonality ThiefPersonality { get; set; } = AIPersonality.Aggressive;
 
     /// <inheritdoc />
     protected override void Initialize()

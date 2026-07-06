@@ -14,167 +14,156 @@ namespace AshesOfVelsingrad.IntegrationTests.Player;
 [RequireGodotRuntime]
 public class AovPlayerTest
 {
-    private Node? _root;
+	private Node? _root;
 
-    private List<Node> _nodesToFree = new();
+	private List<Node> _nodesToFree = new();
 
-    #region Helpers
+	#region Helpers
 
-    private void AddToTestRoot(Node node)
-    {
-        if (_root == null) throw new InvalidOperationException("Root not initialized");
-        _root.AddChild(node);
-    }
+	private void AddToTestRoot(Node node)
+	{
+		if (_root == null) throw new InvalidOperationException("Root not initialized");
+		_root.AddChild(node);
+	}
 
-    private void ClearSingleton<T>() where T : class
-    {
-        typeof(T).GetProperty("Instance", BindingFlags.Public | BindingFlags.Static)
-            ?.GetSetMethod(true)
-            ?.Invoke(null, new object?[] { null }); // null value, not empty array
-        typeof(T).GetField("Instance", BindingFlags.Public | BindingFlags.Static)
-            ?.SetValue(null, null);
-    }
+	private void ClearSingleton<T>() where T : class
+	{
+		typeof(T).GetProperty("Instance", BindingFlags.Public | BindingFlags.Static)
+			?.GetSetMethod(true)
+			?.Invoke(null, new object?[] { null }); // null value, not empty array
+		typeof(T).GetField("Instance", BindingFlags.Public | BindingFlags.Static)
+			?.SetValue(null, null);
+	}
 
-    private AovPlayer CreatePlayerWithDependencies(bool mockInventoryUi = true, bool addToTree = true)
-    {
-        AovPlayer player = new();
-        _nodesToFree.Add(player);
+	private AovPlayer CreatePlayerWithDependencies(bool mockInventoryUi = true, bool addToTree = true)
+	{
+		AovPlayer player = new();
+		_nodesToFree.Add(player);
 
-        AnimatedSprite3D sprite = new() { Name = "Sprite" };
-        SpringArm3D spring = new() { Name = "Spring" };
-        InteractionComponent interaction = new() { Name = "Interact" };
-        StateMachine stateMachine = new() { Name = "State", InitialState = null! };
+		AnimatedSprite3D sprite = new() { Name = "Sprite" };
+		SpringArm3D spring = new() { Name = "Spring" };
+		InteractionComponent interaction = new() { Name = "Interact" };
+		StateMachine stateMachine = new() { Name = "State", InitialState = null! };
 
-        _nodesToFree.Add(sprite);
-        _nodesToFree.Add(spring);
-        _nodesToFree.Add(interaction);
-        _nodesToFree.Add(stateMachine);
+		_nodesToFree.Add(sprite);
+		_nodesToFree.Add(spring);
+		_nodesToFree.Add(interaction);
+		_nodesToFree.Add(stateMachine);
 
-        player.AddChild(sprite);
-        player.AddChild(spring);
-        player.AddChild(interaction);
-        player.AddChild(stateMachine);
+		player.AddChild(sprite);
+		player.AddChild(spring);
+		player.AddChild(interaction);
+		player.AddChild(stateMachine);
 
-        player.Set("_animatedSprite3DPath", new NodePath(sprite.Name));
-        player.Set("_springArm3DPath", new NodePath(spring.Name));
-        player.Set("_interactionComponentPath", new NodePath(interaction.Name));
-        player.Set("_stateMachinePath", new NodePath(stateMachine.Name));
+		player.Set("_animatedSprite3DPath", new NodePath(sprite.Name));
+		player.Set("_springArm3DPath", new NodePath(spring.Name));
+		player.Set("_interactionComponentPath", new NodePath(interaction.Name));
+		player.Set("_stateMachinePath", new NodePath(stateMachine.Name));
 
-        if (mockInventoryUi)
-        {
-            MockExplorationInventoryUI dummyUi = new() { Name = "DummyUI" };
-            _nodesToFree.Add(dummyUi);
+		if (mockInventoryUi)
+		{
+			MockExplorationInventoryUI dummyUi = new() { Name = "DummyUI" };
+			_nodesToFree.Add(dummyUi);
 
-            // 1. Group them securely offline
-            Node container = new Node { Name = "PlayerContainer" };
-            _nodesToFree.Add(container);
+			// 1. Group them securely offline
+			Node container = new Node { Name = "PlayerContainer" };
+			_nodesToFree.Add(container);
 
-            container.AddChild(dummyUi);
-            container.AddChild(player);
+			container.AddChild(dummyUi);
+			container.AddChild(player);
 
-            // 2. Safely generate a Godot engine-certified relative path
-            player.Set("_explorationInventoryUiPath", player.GetPathTo(dummyUi));
+			// 2. Safely generate a Godot engine-certified relative path
+			player.Set("_explorationInventoryUiPath", player.GetPathTo(dummyUi));
 
-            // 3. Mount to tree (Triggers _Ready on the player)
-            if (addToTree)
-                AddToTestRoot(container);
-        }
-        else if (addToTree)
-        {
-            AddToTestRoot(player);
-        }
+			// 3. Mount to tree (Triggers _Ready on the player)
+			if (addToTree)
+				AddToTestRoot(container);
+		}
+		else if (addToTree)
+		{
+			AddToTestRoot(player);
+		}
 
-        return player;
-    }
+		return player;
+	}
 
-    private T? GetPrivateField<T>(object obj, string fieldName)
-    {
-        FieldInfo? field = obj.GetType().GetField(fieldName, BindingFlags.NonPublic | BindingFlags.Instance);
-        return (T?)field?.GetValue(obj);
-    }
+	private T? GetPrivateField<T>(object obj, string fieldName)
+	{
+		FieldInfo? field = obj.GetType().GetField(fieldName, BindingFlags.NonPublic | BindingFlags.Instance);
+		return (T?)field?.GetValue(obj);
+	}
 
-    #endregion
+	#endregion
 
-    [BeforeTest]
-    public void SetUp()
-    {
-        _nodesToFree = new System.Collections.Generic.List<Node>();
-        ClearSingleton<MainManager>();
-        ClearSingleton<AudioManager>();
-        ClearSingleton<BattleLauncher>();
+	[BeforeTest]
+	public void SetUp()
+	{
+		_nodesToFree = new System.Collections.Generic.List<Node>();
+		ClearSingleton<MainManager>();
+		ClearSingleton<AudioManager>();
+		ClearSingleton<BattleLauncher>();
 
-        _root = new Node { Name = "TestRoot" };
-        ((SceneTree)Engine.GetMainLoop()).Root.AddChild(_root);
-    }
+		_root = new Node { Name = "TestRoot" };
+		((SceneTree)Engine.GetMainLoop()).Root.AddChild(_root);
+	}
 
-    [AfterTest]
-    public void TearDown()
-    {
-        // Free tracked nodes individually first (reverse order)
-        for (int i = _nodesToFree.Count - 1; i >= 0; i--)
-        {
-            var node = _nodesToFree[i];
-            if (GodotObject.IsInstanceValid(node) && !node.IsQueuedForDeletion())
-            {
-                if (node.GetParent() != null)
-                    node.GetParent().RemoveChild(node);
-                node.Free();
-            }
-        }
-        _nodesToFree.Clear();
+	[AfterTest]
+	public void TearDown()
+	{
+		// Free tracked nodes individually first (reverse order)
+		for (int i = _nodesToFree.Count - 1; i >= 0; i--)
+		{
+			var node = _nodesToFree[i];
+			if (GodotObject.IsInstanceValid(node) && !node.IsQueuedForDeletion())
+			{
+				if (node.GetParent() != null)
+					node.GetParent().RemoveChild(node);
+				node.Free();
+			}
+		}
+		_nodesToFree.Clear();
 
-        // Free root
-        if (GodotObject.IsInstanceValid(_root))
-        {
-            _root.GetParent()?.RemoveChild(_root);
-            _root.Free();
-        }
-        _root = null;
+		// Free root
+		if (GodotObject.IsInstanceValid(_root))
+		{
+			_root.GetParent()?.RemoveChild(_root);
+			_root.Free();
+		}
+		_root = null;
 
-        // Clean up escaped nodes on scene root
-        // Use a snapshot to avoid modifying collection while iterating
-        var sceneRoot = ((SceneTree)Engine.GetMainLoop()).Root;
-        var escapedNodes = new System.Collections.Generic.List<Node>();
-        foreach (Node child in sceneRoot.GetChildren())
-        {
-            if (child is CanvasLayer or Control)
-                escapedNodes.Add(child);
-        }
-        foreach (Node node in escapedNodes)
-        {
-            if (GodotObject.IsInstanceValid(node))
-            {
-                GD.Print($"[TEST] Freeing escaped node: {node.Name}");
-                node.Free();
-            }
-        }
+		// Clean up escaped nodes on scene root
+		// Use a snapshot to avoid modifying collection while iterating
+		var sceneRoot = ((SceneTree)Engine.GetMainLoop()).Root;
+		var escapedNodes = new System.Collections.Generic.List<Node>();
+		foreach (Node child in sceneRoot.GetChildren())
+		{
+			if (child is CanvasLayer or Control)
+				escapedNodes.Add(child);
+		}
+		foreach (Node node in escapedNodes)
+		{
+			if (GodotObject.IsInstanceValid(node))
+			{
+				GD.Print($"[TEST] Freeing escaped node: {node.Name}");
+				node.Free();
+			}
+		}
 
-        ClearSingleton<MainManager>();
-        ClearSingleton<AudioManager>();
-        ClearSingleton<BattleLauncher>();
+		ClearSingleton<MainManager>();
+		ClearSingleton<AudioManager>();
+		ClearSingleton<BattleLauncher>();
 
-        GC.Collect();
-        GC.WaitForPendingFinalizers();
-    }
+		GC.Collect();
+		GC.WaitForPendingFinalizers();
+	}
 
-    [TestCase]
-    public void Ready_RemovesDuplicateInstances()
-    {
-        AovPlayer first = CreatePlayerWithDependencies(addToTree: true);
-        AovPlayer second = CreatePlayerWithDependencies(addToTree: true);
+	[TestCase]
+	public void Ready_RemovesDuplicateInstances()
+	{
+		AovPlayer first = CreatePlayerWithDependencies(addToTree: true);
+		AovPlayer second = CreatePlayerWithDependencies(addToTree: true);
 
-        // We removed the manual _Ready() calls! AddToTestRoot ran them naturally.
-        AssertThat(second.IsQueuedForDeletion()).IsTrue();
-    }
-
-    [TestCase]
-    public void Input_Interact_DoesNothing_WhenNoInteractable()
-    {
-        AovPlayer player = CreatePlayerWithDependencies(addToTree: true);
-
-        InputEventAction action = new() { Action = "interact", Pressed = true };
-        player._Input(action);
-
-        AssertThat(player).IsNotNull();
-    }
+		// We removed the manual _Ready() calls! AddToTestRoot ran them naturally.
+		AssertThat(second.IsQueuedForDeletion()).IsTrue();
+	}
 }

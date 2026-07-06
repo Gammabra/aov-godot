@@ -3,6 +3,7 @@ using AshesOfVelsingrad.Systems;
 using AshesOfVelsingrad.Utilities;
 
 namespace AshesOfVelsingrad.AI;
+// TODO: rename Ally / enemy to Friendly / Hostile for clarity, since the AI can be used for both sides
 
 /// <summary>
 /// Generates all possible AI actions for evaluation.
@@ -27,17 +28,19 @@ public class AIDecisionGenerator
     {
         List<AIDecision> actions = new();
         (int, int, int)? myPos = battleState.MapSystem.GetUnitPosition(_unit);
+        List<IUnitSystem> alliesToCheck = _unit.Faction == Faction.Ally ? battleState.PlayerUnits : battleState.EnemyUnits;
+        List<IUnitSystem> enemiesToCheck = _unit.Faction == Faction.Ally ? battleState.EnemyUnits : battleState.PlayerUnits;
 
         if (myPos == null)
             return actions;
-
+    
         // 1. Evaluate offensive actions against each enemy
-        foreach (var target in battleState.PlayerUnits)
+        foreach (var target in enemiesToCheck)
             actions.AddRange(GenerateOffensiveActions(target, myPos.Value, battleState));
 
         // 2. Evaluate support actions for allies (healing, buffs)
-        foreach (var ally in battleState.EnemyUnits)
-            actions.AddRange(GenerateSupportActions(ally, myPos.Value, battleState));
+        foreach (var friendly in alliesToCheck)
+            actions.AddRange(GenerateSupportActions(friendly, myPos.Value, battleState));
 
         // 3. Evaluate defensive/positioning actions
         actions.AddRange(GenerateDefensiveActions(myPos.Value, battleState));

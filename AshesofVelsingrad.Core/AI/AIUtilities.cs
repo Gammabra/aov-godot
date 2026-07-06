@@ -177,7 +177,9 @@ public static class AIUtilities
         int range)
     {
         int count = 0;
-        foreach (var enemy in battleState.PlayerUnits)
+        List<IUnitSystem> unitsToCheck = unit.Faction == Faction.Ally ? battleState.PlayerUnits : battleState.EnemyUnits;
+            
+        foreach (var enemy in unitsToCheck)
         {
             (int, int, int)? enemyPos = battleState.MapSystem.GetUnitPosition(enemy);
             if (enemyPos != null && CalculateManhattanDistance(position, enemyPos.Value) <= range)
@@ -215,8 +217,9 @@ public static class AIUtilities
 
         IUnitSystem? nearestThreat = null;
         int minDistance = int.MaxValue;
+        List<IUnitSystem> unitsToCheck = unit.Faction == Faction.Ally ? battleState.PlayerUnits : battleState.EnemyUnits;
 
-        foreach (var enemy in battleState.PlayerUnits)
+        foreach (var enemy in unitsToCheck)
         {
             (int, int, int)? enemyPos = battleState.MapSystem.GetUnitPosition(enemy);
             if (enemyPos == null) continue;
@@ -242,7 +245,9 @@ public static class AIUtilities
     {
         float threatLevel = 0f;
 
-        foreach (var enemy in battleState.PlayerUnits)
+        List<IUnitSystem> unitsToCheck = battleState.ActingUnit.Faction == Faction.Ally ? battleState.PlayerUnits : battleState.EnemyUnits;
+
+        foreach (var enemy in unitsToCheck)
         {
             (int, int, int)? enemyPos = battleState.MapSystem.GetUnitPosition(enemy);
             if (enemyPos == null) continue;

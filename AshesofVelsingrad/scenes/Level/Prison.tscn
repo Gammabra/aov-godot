@@ -8,7 +8,6 @@
 [ext_resource type="PackedScene" uid="uid://c40qs8x1egpy7" path="res://scenes/aov_player.tscn" id="5_7ekjt"]
 [ext_resource type="PackedScene" uid="uid://dt1eyxw0w0f2e" path="res://assets/prison_assets/wall_door_open.tscn" id="5_atg6q"]
 [ext_resource type="PackedScene" uid="uid://c8h22n6k3rvf2" path="res://scenes/Item/Potion.tscn" id="5_t6d7d"]
-[ext_resource type="PackedScene" uid="uid://dboivysgg411t" path="res://scenes/npc/Soldier.tscn" id="6_7ekjt"]
 [ext_resource type="PackedScene" uid="uid://cacndwkpp1xg5" path="res://assets/prison_assets/wall.tscn" id="6_js1ay"]
 [ext_resource type="Script" uid="uid://dfb1lfokop4w5" path="res://dialogues/prison/InventoryExplanation.gd" id="6_nk3mi"]
 [ext_resource type="PackedScene" uid="uid://deoxgrrrqxand" path="res://assets/prison_assets/wall_door_close.tscn" id="7_27kcu"]
@@ -17,6 +16,7 @@
 [ext_resource type="Script" uid="uid://da4tcpfho02r0" path="res://dialogues/prison/GuardDialog.gd" id="9_lqcxu"]
 [ext_resource type="PackedScene" uid="uid://cj4nkpkd42nph" path="res://scenes/ui/tutorial/TutorialLayer.tscn" id="9_trggx"]
 [ext_resource type="PackedScene" uid="uid://b2wkgesqgex1t" path="res://assets/prison_assets/wall_hole.tscn" id="10_1ax22"]
+[ext_resource type="Script" uid="uid://c2g67r44cdhef" path="res://scripts/tutorial/ExitPrisonArea.cs" id="10_gjufo"]
 [ext_resource type="PackedScene" uid="uid://drjehibwr5q1e" path="res://scenes/ui/sequences/text_sequence.tscn" id="10_lqcxu"]
 [ext_resource type="PackedScene" uid="uid://dt68jgkvymscw" path="res://assets/prison_assets/lantern.tscn" id="15_466sc"]
 [ext_resource type="PackedScene" uid="uid://nd5kxchifen7" path="res://assets/prison_assets/chain.tscn" id="16_6b824"]
@@ -26,6 +26,9 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_1dv8c"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_t6d7d"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xf4w4"]
+size = Vector3(1.3, 1.595, 1.3)
 
 [sub_resource type="Sky" id="Sky_3qxsn"]
 
@@ -116,6 +119,23 @@ transform = Transform3D(4, 0, 0, 0, 1, 0, 0, 0, 1, -1.929039, 0.38327086, -0.148
 shape = SubResource("BoxShape3D_t6d7d")
 
 [node name="TutorialLayer" parent="TutorialManager" unique_id=1646690382 instance=ExtResource("9_trggx")]
+
+[node name="ExitPrison" type="StaticBody3D" parent="TutorialManager" unique_id=1399260590]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.565367, 0, 0)
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("10_gjufo")
+_exitLabelPath = NodePath("Label3D")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TutorialManager/ExitPrison" unique_id=308575904]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4614439, 0.66726696, 0.44348824)
+shape = SubResource("BoxShape3D_xf4w4")
+
+[node name="Label3D" type="Label3D" parent="TutorialManager/ExitPrison" unique_id=1175596066]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.029043198, 0.634784, 0.49555397)
+visible = false
+billboard = 2
+text = "(E) Exit the prison"
 
 [node name="Environement" type="Node3D" parent="." unique_id=206120937]
 
@@ -465,9 +485,6 @@ transform = Transform3D(1.0000005, 0, 3.5527137e-15, 0, 1.0000005, 0, -3.5527137
 [node name="AovPlayer" parent="Characters" unique_id=1117119690 instance=ExtResource("5_7ekjt")]
 transform = Transform3D(1.0000001, 0, 0, 0, 1.0000001, 0, 0, 0, 1.0000001, -9.0248165, 0.63563037, 1.1751254)
 _tutorialManagerPath = NodePath("../../TutorialManager")
-
-[node name="Soldier" parent="Characters" unique_id=633068440 instance=ExtResource("6_7ekjt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.7481985, 0.7465227, 1.2262589)
 
 [node name="MiniMercenary" parent="Characters" unique_id=942239080 instance=ExtResource("7_js1ay")]
 transform = Transform3D(0.85, 0, 0, 0, 0.85, 0, 0, 0, 0.85, -7.9818163, 0.6238169, 1.1639637)

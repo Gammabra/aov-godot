@@ -2,11 +2,11 @@
 <html>
   <head>
     <meta charset="utf-8">
-      <title>Class Soldier | Ashes of Velsingrad Documentation </title>
+      <title>Class EndPrologueScreen | Ashes of Velsingrad Documentation </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content="Class Soldier | Ashes of Velsingrad Documentation ">
+      <meta name="title" content="Class EndPrologueScreen | Ashes of Velsingrad Documentation ">
       
-      <meta name="description" content="Hostile NPC that triggers a battle when the player interacts with them.">
+      <meta name="description" content="End-of-prologue chapter card, shown when the player wins the prologue fight and presses Continue. It fills the screen with the prologue_end.png art and offers a single &amp;quot;Back to main menu&amp;quot; button anchored bottom-right.">
       <link rel="icon" href="../favicon.ico">
       <link rel="stylesheet" href="../public/docfx.min.css">
       <link rel="stylesheet" href="../public/main.css">
@@ -84,26 +84,28 @@
           <nav id="breadcrumb"></nav>
         </div>
 
-        <article data-uid="AshesOfVelsingrad.data.npc.Soldier">
+        <article data-uid="AshesOfVelsingrad.UI.Hud.EndPrologueScreen">
 
 
 
-  <h1 id="AshesOfVelsingrad_data_npc_Soldier" data-uid="AshesOfVelsingrad.data.npc.Soldier" class="text-break">
-Class Soldier  
+  <h1 id="AshesOfVelsingrad_UI_Hud_EndPrologueScreen" data-uid="AshesOfVelsingrad.UI.Hud.EndPrologueScreen" class="text-break">
+Class EndPrologueScreen  
   </h1>
 
   <div class="facts text-secondary">
-    <dl><dt>Namespace</dt><dd><a class="xref" href="AshesOfVelsingrad.html">AshesOfVelsingrad</a>.<a class="xref" href="AshesOfVelsingrad.data.html">data</a>.<a class="xref" href="AshesOfVelsingrad.data.npc.html">npc</a></dd></dl>
+    <dl><dt>Namespace</dt><dd><a class="xref" href="AshesOfVelsingrad.html">AshesOfVelsingrad</a>.<a class="xref" href="AshesOfVelsingrad.UI.html">UI</a>.<a class="xref" href="AshesOfVelsingrad.UI.Hud.html">Hud</a></dd></dl>
   <dl><dt>Assembly</dt><dd>AshesofVelsingrad.dll</dd></dl>
   </div>
 
-  <div class="markdown summary"><p>Hostile NPC that triggers a battle when the player interacts with them.</p>
+  <div class="markdown summary"><p>End-of-prologue chapter card, shown when the player wins the prologue fight and presses
+Continue. It fills the screen with the <code>prologue_end.png</code> art and offers a single
+&quot;Back to main menu&quot; button anchored bottom-right.</p>
 </div>
   <div class="markdown conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[ScriptPath(&quot;res://scripts/data/npc/Soldier.cs&quot;)]
-public class Soldier : NpcSystem, IDisposable, IInteractable</code></pre>
+    <pre><code class="lang-csharp hljs">[ScriptPath(&quot;res://scripts/ui/hud/EndPrologueScreen.cs&quot;)]
+public sealed class EndPrologueScreen : CanvasLayer, IDisposable</code></pre>
   </div>
 
 
@@ -115,12 +117,8 @@ public class Soldier : NpcSystem, IDisposable, IInteractable</code></pre>
       <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
       <div><span class="xref">GodotObject</span></div>
       <div><span class="xref">Node</span></div>
-      <div><span class="xref">Node3D</span></div>
-      <div><span class="xref">CollisionObject3D</span></div>
-      <div><span class="xref">PhysicsBody3D</span></div>
-      <div><span class="xref">CharacterBody3D</span></div>
-      <div><a class="xref" href="AshesOfVelsingrad.Interfaces.NpcSystem.html">NpcSystem</a></div>
-      <div><span class="xref">Soldier</span></div>
+      <div><span class="xref">CanvasLayer</span></div>
+      <div><span class="xref">EndPrologueScreen</span></div>
     </dd>
   </dl>
 
@@ -128,7 +126,6 @@ public class Soldier : NpcSystem, IDisposable, IInteractable</code></pre>
     <dt>Implements</dt>
     <dd>
       <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.idisposable">IDisposable</a></div>
-      <div><a class="xref" href="AshesOfVelsingrad.Systems.IInteractable.html">IInteractable</a></div>
     </dd>
   </dl>
 
@@ -137,469 +134,46 @@ public class Soldier : NpcSystem, IDisposable, IInteractable</code></pre>
     <dt>Inherited Members</dt>
     <dd>
     <div>
-      <a class="xref" href="AshesOfVelsingrad.Interfaces.NpcSystem.html#AshesOfVelsingrad_Interfaces_NpcSystem_StopDistance">NpcSystem.StopDistance</a>
+      <span class="xref">CanvasLayer.Show()</span>
     </div>
     <div>
-      <a class="xref" href="AshesOfVelsingrad.Interfaces.NpcSystem.html#AshesOfVelsingrad_Interfaces_NpcSystem_Speed">NpcSystem.Speed</a>
+      <span class="xref">CanvasLayer.Hide()</span>
     </div>
     <div>
-      <a class="xref" href="AshesOfVelsingrad.Interfaces.NpcSystem.html#AshesOfVelsingrad_Interfaces_NpcSystem_HandleCharacterMovement_System_Double_">NpcSystem.HandleCharacterMovement(double)</a>
+      <span class="xref">CanvasLayer.GetFinalTransform()</span>
     </div>
     <div>
-      <a class="xref" href="AshesOfVelsingrad.Interfaces.NpcSystem.html#AshesOfVelsingrad_Interfaces_NpcSystem_Initialize_AshesOfVelsingrad_Managers_StateMachine_Godot_NavigationAgent3D_System_Single_">NpcSystem.Initialize(StateMachine, NavigationAgent3D, float)</a>
+      <span class="xref">CanvasLayer.GetCanvas()</span>
     </div>
     <div>
-      <a class="xref" href="AshesOfVelsingrad.Interfaces.NpcSystem.html#AshesOfVelsingrad_Interfaces_NpcSystem_ToIdle_System_Boolean_System_String_">NpcSystem.ToIdle(bool, string)</a>
+      <span class="xref">CanvasLayer.Layer</span>
     </div>
     <div>
-      <a class="xref" href="AshesOfVelsingrad.Interfaces.NpcSystem.html#AshesOfVelsingrad_Interfaces_NpcSystem_ToRoaming">NpcSystem.ToRoaming()</a>
+      <span class="xref">CanvasLayer.Visible</span>
     </div>
     <div>
-      <a class="xref" href="AshesOfVelsingrad.Interfaces.NpcSystem.html#AshesOfVelsingrad_Interfaces_NpcSystem_ToFollowingSpecificPoint_Godot_Node3D_">NpcSystem.ToFollowingSpecificPoint(Node3D)</a>
+      <span class="xref">CanvasLayer.Offset</span>
     </div>
     <div>
-      <a class="xref" href="AshesOfVelsingrad.Interfaces.NpcSystem.html#AshesOfVelsingrad_Interfaces_NpcSystem_ToFollowingMovingEntity_Godot_Node3D_">NpcSystem.ToFollowingMovingEntity(Node3D)</a>
+      <span class="xref">CanvasLayer.Rotation</span>
     </div>
     <div>
-      <a class="xref" href="AshesOfVelsingrad.Interfaces.NpcSystem.html#AshesOfVelsingrad_Interfaces_NpcSystem_OnSpecificPointReached">NpcSystem.OnSpecificPointReached</a>
+      <span class="xref">CanvasLayer.Scale</span>
     </div>
     <div>
-      <a class="xref" href="AshesOfVelsingrad.Interfaces.NpcSystem.html#AshesOfVelsingrad_Interfaces_NpcSystem_EmitSignalOnSpecificPointReached">NpcSystem.EmitSignalOnSpecificPointReached()</a>
+      <span class="xref">CanvasLayer.Transform</span>
     </div>
     <div>
-      <span class="xref">CharacterBody3D.MoveAndSlide()</span>
+      <span class="xref">CanvasLayer.CustomViewport</span>
     </div>
     <div>
-      <span class="xref">CharacterBody3D.ApplyFloorSnap()</span>
+      <span class="xref">CanvasLayer.FollowViewportEnabled</span>
     </div>
     <div>
-      <span class="xref">CharacterBody3D.IsOnFloor()</span>
+      <span class="xref">CanvasLayer.FollowViewportScale</span>
     </div>
     <div>
-      <span class="xref">CharacterBody3D.IsOnFloorOnly()</span>
-    </div>
-    <div>
-      <span class="xref">CharacterBody3D.IsOnCeiling()</span>
-    </div>
-    <div>
-      <span class="xref">CharacterBody3D.IsOnCeilingOnly()</span>
-    </div>
-    <div>
-      <span class="xref">CharacterBody3D.IsOnWall()</span>
-    </div>
-    <div>
-      <span class="xref">CharacterBody3D.IsOnWallOnly()</span>
-    </div>
-    <div>
-      <span class="xref">CharacterBody3D.GetFloorNormal()</span>
-    </div>
-    <div>
-      <span class="xref">CharacterBody3D.GetWallNormal()</span>
-    </div>
-    <div>
-      <span class="xref">CharacterBody3D.GetLastMotion()</span>
-    </div>
-    <div>
-      <span class="xref">CharacterBody3D.GetPositionDelta()</span>
-    </div>
-    <div>
-      <span class="xref">CharacterBody3D.GetRealVelocity()</span>
-    </div>
-    <div>
-      <span class="xref">CharacterBody3D.GetFloorAngle(Vector3?)</span>
-    </div>
-    <div>
-      <span class="xref">CharacterBody3D.GetPlatformVelocity()</span>
-    </div>
-    <div>
-      <span class="xref">CharacterBody3D.GetPlatformAngularVelocity()</span>
-    </div>
-    <div>
-      <span class="xref">CharacterBody3D.GetSlideCollisionCount()</span>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">CharacterBody3D.GetSlideCollision(int)</a>
-    </div>
-    <div>
-      <span class="xref">CharacterBody3D.GetLastSlideCollision()</span>
-    </div>
-    <div>
-      <span class="xref">CharacterBody3D.InvokeGodotClassMethod(in godot_string_name, NativeVariantPtrArgs, out godot_variant)</span>
-    </div>
-    <div>
-      <span class="xref">CharacterBody3D.HasGodotClassMethod(in godot_string_name)</span>
-    </div>
-    <div>
-      <span class="xref">CharacterBody3D.HasGodotClassSignal(in godot_string_name)</span>
-    </div>
-    <div>
-      <span class="xref">CharacterBody3D.MotionMode</span>
-    </div>
-    <div>
-      <span class="xref">CharacterBody3D.UpDirection</span>
-    </div>
-    <div>
-      <span class="xref">CharacterBody3D.SlideOnCeiling</span>
-    </div>
-    <div>
-      <span class="xref">CharacterBody3D.Velocity</span>
-    </div>
-    <div>
-      <span class="xref">CharacterBody3D.MaxSlides</span>
-    </div>
-    <div>
-      <span class="xref">CharacterBody3D.WallMinSlideAngle</span>
-    </div>
-    <div>
-      <span class="xref">CharacterBody3D.FloorStopOnSlope</span>
-    </div>
-    <div>
-      <span class="xref">CharacterBody3D.FloorConstantSpeed</span>
-    </div>
-    <div>
-      <span class="xref">CharacterBody3D.FloorBlockOnWall</span>
-    </div>
-    <div>
-      <span class="xref">CharacterBody3D.FloorMaxAngle</span>
-    </div>
-    <div>
-      <span class="xref">CharacterBody3D.FloorSnapLength</span>
-    </div>
-    <div>
-      <span class="xref">CharacterBody3D.PlatformOnLeave</span>
-    </div>
-    <div>
-      <span class="xref">CharacterBody3D.PlatformFloorLayers</span>
-    </div>
-    <div>
-      <span class="xref">CharacterBody3D.PlatformWallLayers</span>
-    </div>
-    <div>
-      <span class="xref">CharacterBody3D.SafeMargin</span>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">PhysicsBody3D.MoveAndCollide(Vector3, bool, float, bool, int)</a>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">PhysicsBody3D.TestMove(Transform3D, Vector3, KinematicCollision3D, float, bool, int)</a>
-    </div>
-    <div>
-      <span class="xref">PhysicsBody3D.GetGravity()</span>
-    </div>
-    <div>
-      <span class="xref">PhysicsBody3D.GetCollisionExceptions()</span>
-    </div>
-    <div>
-      <span class="xref">PhysicsBody3D.AddCollisionExceptionWith(Node)</span>
-    </div>
-    <div>
-      <span class="xref">PhysicsBody3D.RemoveCollisionExceptionWith(Node)</span>
-    </div>
-    <div>
-      <span class="xref">PhysicsBody3D.AxisLockLinearX</span>
-    </div>
-    <div>
-      <span class="xref">PhysicsBody3D.AxisLockLinearY</span>
-    </div>
-    <div>
-      <span class="xref">PhysicsBody3D.AxisLockLinearZ</span>
-    </div>
-    <div>
-      <span class="xref">PhysicsBody3D.AxisLockAngularX</span>
-    </div>
-    <div>
-      <span class="xref">PhysicsBody3D.AxisLockAngularY</span>
-    </div>
-    <div>
-      <span class="xref">PhysicsBody3D.AxisLockAngularZ</span>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">CollisionObject3D._InputEvent(Camera3D, InputEvent, Vector3, Vector3, int)</a>
-    </div>
-    <div>
-      <span class="xref">CollisionObject3D._MouseEnter()</span>
-    </div>
-    <div>
-      <span class="xref">CollisionObject3D._MouseExit()</span>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">CollisionObject3D.SetCollisionLayerValue(int, bool)</a>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">CollisionObject3D.GetCollisionLayerValue(int)</a>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">CollisionObject3D.SetCollisionMaskValue(int, bool)</a>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">CollisionObject3D.GetCollisionMaskValue(int)</a>
-    </div>
-    <div>
-      <span class="xref">CollisionObject3D.GetRid()</span>
-    </div>
-    <div>
-      <span class="xref">CollisionObject3D.CreateShapeOwner(GodotObject)</span>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint32">CollisionObject3D.RemoveShapeOwner(uint)</a>
-    </div>
-    <div>
-      <span class="xref">CollisionObject3D.GetShapeOwners()</span>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint32">CollisionObject3D.ShapeOwnerSetTransform(uint, Transform3D)</a>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint32">CollisionObject3D.ShapeOwnerGetTransform(uint)</a>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint32">CollisionObject3D.ShapeOwnerGetOwner(uint)</a>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint32">CollisionObject3D.ShapeOwnerSetDisabled(uint, bool)</a>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint32">CollisionObject3D.IsShapeOwnerDisabled(uint)</a>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint32">CollisionObject3D.ShapeOwnerAddShape(uint, Shape3D)</a>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint32">CollisionObject3D.ShapeOwnerGetShapeCount(uint)</a>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint32">CollisionObject3D.ShapeOwnerGetShape(uint, int)</a>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint32">CollisionObject3D.ShapeOwnerGetShapeIndex(uint, int)</a>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint32">CollisionObject3D.ShapeOwnerRemoveShape(uint, int)</a>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint32">CollisionObject3D.ShapeOwnerClearShapes(uint)</a>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">CollisionObject3D.ShapeFindOwner(int)</a>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int64">CollisionObject3D.EmitSignalInputEvent(Node, InputEvent, Vector3, Vector3, long)</a>
-    </div>
-    <div>
-      <span class="xref">CollisionObject3D.EmitSignalMouseEntered()</span>
-    </div>
-    <div>
-      <span class="xref">CollisionObject3D.EmitSignalMouseExited()</span>
-    </div>
-    <div>
-      <span class="xref">CollisionObject3D.DisableMode</span>
-    </div>
-    <div>
-      <span class="xref">CollisionObject3D.CollisionLayer</span>
-    </div>
-    <div>
-      <span class="xref">CollisionObject3D.CollisionMask</span>
-    </div>
-    <div>
-      <span class="xref">CollisionObject3D.CollisionPriority</span>
-    </div>
-    <div>
-      <span class="xref">CollisionObject3D.InputRayPickable</span>
-    </div>
-    <div>
-      <span class="xref">CollisionObject3D.InputCaptureOnDrag</span>
-    </div>
-    <div>
-      <span class="xref">CollisionObject3D.InputEvent</span>
-    </div>
-    <div>
-      <span class="xref">CollisionObject3D.MouseEntered</span>
-    </div>
-    <div>
-      <span class="xref">CollisionObject3D.MouseExited</span>
-    </div>
-    <div>
-      <span class="xref">Node3D.NotificationTransformChanged</span>
-    </div>
-    <div>
-      <span class="xref">Node3D.NotificationEnterWorld</span>
-    </div>
-    <div>
-      <span class="xref">Node3D.NotificationExitWorld</span>
-    </div>
-    <div>
-      <span class="xref">Node3D.NotificationVisibilityChanged</span>
-    </div>
-    <div>
-      <span class="xref">Node3D.NotificationLocalTransformChanged</span>
-    </div>
-    <div>
-      <span class="xref">Node3D.GetGlobalTransformInterpolated()</span>
-    </div>
-    <div>
-      <span class="xref">Node3D.GetParentNode3D()</span>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Node3D.SetIgnoreTransformNotification(bool)</a>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Node3D.SetDisableScale(bool)</a>
-    </div>
-    <div>
-      <span class="xref">Node3D.IsScaleDisabled()</span>
-    </div>
-    <div>
-      <span class="xref">Node3D.GetWorld3D()</span>
-    </div>
-    <div>
-      <span class="xref">Node3D.ForceUpdateTransform()</span>
-    </div>
-    <div>
-      <span class="xref">Node3D.UpdateGizmos()</span>
-    </div>
-    <div>
-      <span class="xref">Node3D.AddGizmo(Node3DGizmo)</span>
-    </div>
-    <div>
-      <span class="xref">Node3D.GetGizmos()</span>
-    </div>
-    <div>
-      <span class="xref">Node3D.ClearGizmos()</span>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Node3D.SetSubgizmoSelection(Node3DGizmo, int, Transform3D)</a>
-    </div>
-    <div>
-      <span class="xref">Node3D.ClearSubgizmoSelection()</span>
-    </div>
-    <div>
-      <span class="xref">Node3D.IsVisibleInTree()</span>
-    </div>
-    <div>
-      <span class="xref">Node3D.Show()</span>
-    </div>
-    <div>
-      <span class="xref">Node3D.Hide()</span>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Node3D.SetNotifyLocalTransform(bool)</a>
-    </div>
-    <div>
-      <span class="xref">Node3D.IsLocalTransformNotificationEnabled()</span>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Node3D.SetNotifyTransform(bool)</a>
-    </div>
-    <div>
-      <span class="xref">Node3D.IsTransformNotificationEnabled()</span>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">Node3D.Rotate(Vector3, float)</a>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">Node3D.GlobalRotate(Vector3, float)</a>
-    </div>
-    <div>
-      <span class="xref">Node3D.GlobalScale(Vector3)</span>
-    </div>
-    <div>
-      <span class="xref">Node3D.GlobalTranslate(Vector3)</span>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">Node3D.RotateObjectLocal(Vector3, float)</a>
-    </div>
-    <div>
-      <span class="xref">Node3D.ScaleObjectLocal(Vector3)</span>
-    </div>
-    <div>
-      <span class="xref">Node3D.TranslateObjectLocal(Vector3)</span>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">Node3D.RotateX(float)</a>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">Node3D.RotateY(float)</a>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">Node3D.RotateZ(float)</a>
-    </div>
-    <div>
-      <span class="xref">Node3D.Translate(Vector3)</span>
-    </div>
-    <div>
-      <span class="xref">Node3D.Orthonormalize()</span>
-    </div>
-    <div>
-      <span class="xref">Node3D.SetIdentity()</span>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Node3D.LookAt(Vector3, Vector3?, bool)</a>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Node3D.LookAtFromPosition(Vector3, Vector3, Vector3?, bool)</a>
-    </div>
-    <div>
-      <span class="xref">Node3D.ToLocal(Vector3)</span>
-    </div>
-    <div>
-      <span class="xref">Node3D.ToGlobal(Vector3)</span>
-    </div>
-    <div>
-      <span class="xref">Node3D.EmitSignalVisibilityChanged()</span>
-    </div>
-    <div>
-      <span class="xref">Node3D.Transform</span>
-    </div>
-    <div>
-      <span class="xref">Node3D.GlobalTransform</span>
-    </div>
-    <div>
-      <span class="xref">Node3D.Position</span>
-    </div>
-    <div>
-      <span class="xref">Node3D.Rotation</span>
-    </div>
-    <div>
-      <span class="xref">Node3D.RotationDegrees</span>
-    </div>
-    <div>
-      <span class="xref">Node3D.Quaternion</span>
-    </div>
-    <div>
-      <span class="xref">Node3D.Basis</span>
-    </div>
-    <div>
-      <span class="xref">Node3D.Scale</span>
-    </div>
-    <div>
-      <span class="xref">Node3D.RotationEditMode</span>
-    </div>
-    <div>
-      <span class="xref">Node3D.RotationOrder</span>
-    </div>
-    <div>
-      <span class="xref">Node3D.TopLevel</span>
-    </div>
-    <div>
-      <span class="xref">Node3D.GlobalPosition</span>
-    </div>
-    <div>
-      <span class="xref">Node3D.GlobalBasis</span>
-    </div>
-    <div>
-      <span class="xref">Node3D.GlobalRotation</span>
-    </div>
-    <div>
-      <span class="xref">Node3D.GlobalRotationDegrees</span>
-    </div>
-    <div>
-      <span class="xref">Node3D.Visible</span>
-    </div>
-    <div>
-      <span class="xref">Node3D.VisibilityParent</span>
-    </div>
-    <div>
-      <span class="xref">Node3D.VisibilityChanged</span>
+      <span class="xref">CanvasLayer.VisibilityChanged</span>
     </div>
     <div>
       <span class="xref">Node.NotificationEnterTree</span>
@@ -765,9 +339,6 @@ public class Soldier : NpcSystem, IDisposable, IInteractable</code></pre>
     </div>
     <div>
       <span class="xref">Node._EnterTree()</span>
-    </div>
-    <div>
-      <span class="xref">Node._ExitTree()</span>
     </div>
     <div>
       <span class="xref">Node._GetAccessibilityConfigurationWarnings()</span>
@@ -1091,39 +662,6 @@ public class Soldier : NpcSystem, IDisposable, IInteractable</code></pre>
       <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Node.NotifyThreadSafe(int)</a>
     </div>
     <div>
-      <span class="xref">Node.EmitSignalReady()</span>
-    </div>
-    <div>
-      <span class="xref">Node.EmitSignalRenamed()</span>
-    </div>
-    <div>
-      <span class="xref">Node.EmitSignalTreeEntered()</span>
-    </div>
-    <div>
-      <span class="xref">Node.EmitSignalTreeExiting()</span>
-    </div>
-    <div>
-      <span class="xref">Node.EmitSignalTreeExited()</span>
-    </div>
-    <div>
-      <span class="xref">Node.EmitSignalChildEnteredTree(Node)</span>
-    </div>
-    <div>
-      <span class="xref">Node.EmitSignalChildExitingTree(Node)</span>
-    </div>
-    <div>
-      <span class="xref">Node.EmitSignalChildOrderChanged()</span>
-    </div>
-    <div>
-      <span class="xref">Node.EmitSignalReplacingBy(Node)</span>
-    </div>
-    <div>
-      <span class="xref">Node.EmitSignalEditorDescriptionChanged(Node)</span>
-    </div>
-    <div>
-      <span class="xref">Node.EmitSignalEditorStateChanged()</span>
-    </div>
-    <div>
       <span class="xref">Node.Name</span>
     </div>
     <div>
@@ -1221,9 +759,6 @@ public class Soldier : NpcSystem, IDisposable, IInteractable</code></pre>
     </div>
     <div>
       <span class="xref">GodotObject.Dispose()</span>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">GodotObject.Dispose(bool)</a>
     </div>
     <div>
       <span class="xref">GodotObject.ToString()</span>
@@ -1418,12 +953,6 @@ public class Soldier : NpcSystem, IDisposable, IInteractable</code></pre>
       <span class="xref">GodotObject.CancelFree()</span>
     </div>
     <div>
-      <span class="xref">GodotObject.EmitSignalScriptChanged()</span>
-    </div>
-    <div>
-      <span class="xref">GodotObject.EmitSignalPropertyListChanged()</span>
-    </div>
-    <div>
       <span class="xref">GodotObject.NativeInstance</span>
     </div>
     <div>
@@ -1445,9 +974,6 @@ public class Soldier : NpcSystem, IDisposable, IInteractable</code></pre>
       <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
     </div>
     <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone">object.MemberwiseClone()</a>
-    </div>
-    <div>
       <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
     </div>
   </dd></dl>
@@ -1455,68 +981,73 @@ public class Soldier : NpcSystem, IDisposable, IInteractable</code></pre>
 
 
 
-  <h2 id="AshesOfVelsingrad_data_npc_Soldier_remarks">Remarks</h2>
+  <h2 id="AshesOfVelsingrad_UI_Hud_EndPrologueScreen_remarks">Remarks</h2>
   <div class="markdown level0 remarks"><p>
-    Hands off to <a class="xref" href="AshesOfVelsingrad.Managers.BattleLauncher.html">BattleLauncher</a> rather than calling
-    <code>ChangeSceneToFile</code> directly — that's what gives Forfeit something to
-    return to. The launcher captures the current scene path + the interacting
-    player's <code>GlobalPosition</code> at the moment of <a class="xref" href="AshesOfVelsingrad.data.npc.Soldier.html#AshesOfVelsingrad_data_npc_Soldier_Interact_AshesOfVelsingrad_Systems_IInteractor_">Interact(IInteractor)</a>, then
-    restores both when the player presses Forfeit on the GameOverScreen (or
-    Continue on the VictoryScreen).
+    The card image carries its own title text. The one interactive element, the button,
+    stays in step with the accessibility interface-scale setting: it scales with
+    <a class="xref" href="AshesOfVelsingrad.UI.Hud.HudStyle.html#AshesOfVelsingrad_UI_Hud_HudStyle_UiScale">UiScale</a>, shows the gold focus ring, and grabs keyboard focus
+    on open so the screen is usable without a mouse. The screen re-applies the scale live
+    when the player changes it via <a class="xref" href="AshesOfVelsingrad.Managers.SettingsManager.html#AshesOfVelsingrad_Managers_SettingsManager_UiScaleChanged">UiScaleChanged</a>.
+</p>
+<p>
+    Spawned by <code>GameManager</code> above the in-battle HUD and the victory screen. Raises
+    <a class="xref" href="AshesOfVelsingrad.UI.Hud.EndPrologueScreen.html#AshesOfVelsingrad_UI_Hud_EndPrologueScreen_OnBackToMenuPressed">OnBackToMenuPressed</a>; <code>GameManager</code> wires it to the main-menu load.
 </p>
 </div>
+
+
+  <h2 class="section" id="fields">Fields
+</h2>
+
+
+
+  <h3 id="AshesOfVelsingrad_UI_Hud_EndPrologueScreen_EndPrologueLayer" data-uid="AshesOfVelsingrad.UI.Hud.EndPrologueScreen.EndPrologueLayer">
+  EndPrologueLayer
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/ui/hud/EndPrologueScreen.cs/#L28"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>CanvasLayer index above the HUD (100), victory (110) and game-over (120).</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int EndPrologueLayer = 130</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
 
 
   <h2 class="section" id="methods">Methods
 </h2>
 
 
-  <a id="AshesOfVelsingrad_data_npc_Soldier_CanInteract_" data-uid="AshesOfVelsingrad.data.npc.Soldier.CanInteract*"></a>
+  <a id="AshesOfVelsingrad_UI_Hud_EndPrologueScreen_EnsureBuilt_" data-uid="AshesOfVelsingrad.UI.Hud.EndPrologueScreen.EnsureBuilt*"></a>
 
-  <h3 id="AshesOfVelsingrad_data_npc_Soldier_CanInteract" data-uid="AshesOfVelsingrad.data.npc.Soldier.CanInteract">
-  CanInteract()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/data/npc/Soldier.cs/#L206"><i class="bi bi-code-slash"></i></a>
+  <h3 id="AshesOfVelsingrad_UI_Hud_EndPrologueScreen_EnsureBuilt" data-uid="AshesOfVelsingrad.UI.Hud.EndPrologueScreen.EnsureBuilt">
+  EnsureBuilt()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/ui/hud/EndPrologueScreen.cs/#L43"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Determines whether the object can currently be interacted with.</p>
+  <div class="markdown level1 summary"><p>Idempotent build, safe to call before <code>_Ready</code> fires.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public bool CanInteract()</code></pre>
-  </div>
-
-
-  <h4 class="section">Returns</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
-    <dd><p><code>true</code> if interaction is allowed; otherwise, <code>false</code>.</p>
-</dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-
-  <a id="AshesOfVelsingrad_data_npc_Soldier_HidePrompt_" data-uid="AshesOfVelsingrad.data.npc.Soldier.HidePrompt*"></a>
-
-  <h3 id="AshesOfVelsingrad_data_npc_Soldier_HidePrompt" data-uid="AshesOfVelsingrad.data.npc.Soldier.HidePrompt">
-  HidePrompt()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/data/npc/Soldier.cs/#L234"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Hides the interaction prompt.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public void HidePrompt()</code></pre>
+    <pre><code class="lang-csharp hljs">public void EnsureBuilt()</code></pre>
   </div>
 
 
@@ -1531,53 +1062,20 @@ public class Soldier : NpcSystem, IDisposable, IInteractable</code></pre>
 
 
 
-  <a id="AshesOfVelsingrad_data_npc_Soldier_Interact_" data-uid="AshesOfVelsingrad.data.npc.Soldier.Interact*"></a>
+  <a id="AshesOfVelsingrad_UI_Hud_EndPrologueScreen__ExitTree_" data-uid="AshesOfVelsingrad.UI.Hud.EndPrologueScreen._ExitTree*"></a>
 
-  <h3 id="AshesOfVelsingrad_data_npc_Soldier_Interact_AshesOfVelsingrad_Systems_IInteractor_" data-uid="AshesOfVelsingrad.data.npc.Soldier.Interact(AshesOfVelsingrad.Systems.IInteractor)">
-  Interact(IInteractor)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/data/npc/Soldier.cs/#L194"><i class="bi bi-code-slash"></i></a>
+  <h3 id="AshesOfVelsingrad_UI_Hud_EndPrologueScreen__ExitTree" data-uid="AshesOfVelsingrad.UI.Hud.EndPrologueScreen._ExitTree">
+  _ExitTree()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/ui/hud/EndPrologueScreen.cs/#L57"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Executes the interaction logic.</p>
+  <div class="markdown level1 summary"><p>Called when the node is about to leave the <span class="xref">Godot.SceneTree</span> (e.g. upon freeing, scene changing, or after calling <span class="xref">Godot.Node.RemoveChild(Godot.Node)</span> in a script). If the node has children, its <span class="xref">Godot.Node._ExitTree()</span> callback will be called last, after all its children have left the tree.</p>
+<p>Corresponds to the <span class="xref">Godot.Node.NotificationExitTree</span> notification in <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">_Notification(int)</a> and signal <span class="xref">Godot.Node.TreeExiting</span>. To get notified when the node has already left the active tree, connect to the <span class="xref">Godot.Node.TreeExited</span>.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public void Interact(IInteractor interactor)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>interactor</code> <a class="xref" href="AshesOfVelsingrad.Systems.IInteractor.html">IInteractor</a></dt>
-    <dd><p>The entity that initiates the interaction.</p>
-</dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-
-
-  <a id="AshesOfVelsingrad_data_npc_Soldier_ShowPrompt_" data-uid="AshesOfVelsingrad.data.npc.Soldier.ShowPrompt*"></a>
-
-  <h3 id="AshesOfVelsingrad_data_npc_Soldier_ShowPrompt" data-uid="AshesOfVelsingrad.data.npc.Soldier.ShowPrompt">
-  ShowPrompt()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/data/npc/Soldier.cs/#L228"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Displays a visual or UI prompt indicating that the object
-can be interacted with.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public void ShowPrompt()</code></pre>
+    <pre><code class="lang-csharp hljs">public override void _ExitTree()</code></pre>
   </div>
 
 
@@ -1592,11 +1090,11 @@ can be interacted with.</p>
 
 
 
-  <a id="AshesOfVelsingrad_data_npc_Soldier__Ready_" data-uid="AshesOfVelsingrad.data.npc.Soldier._Ready*"></a>
+  <a id="AshesOfVelsingrad_UI_Hud_EndPrologueScreen__Ready_" data-uid="AshesOfVelsingrad.UI.Hud.EndPrologueScreen._Ready*"></a>
 
-  <h3 id="AshesOfVelsingrad_data_npc_Soldier__Ready" data-uid="AshesOfVelsingrad.data.npc.Soldier._Ready">
+  <h3 id="AshesOfVelsingrad_UI_Hud_EndPrologueScreen__Ready" data-uid="AshesOfVelsingrad.UI.Hud.EndPrologueScreen._Ready">
   _Ready()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/data/npc/Soldier.cs/#L68"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/ui/hud/EndPrologueScreen.cs/#L40"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Called when the node is "ready", i.e. when both the node and its children have entered the scene tree. If the node has children, their <span class="xref">Godot.Node._Ready()</span> callbacks get triggered first, and the parent node will receive the ready notification afterwards.</p>
@@ -1615,6 +1113,41 @@ can be interacted with.</p>
 
 
 
+
+
+
+
+
+
+
+  <h2 class="section" id="events">Events
+</h2>
+
+
+
+  <h3 id="AshesOfVelsingrad_UI_Hud_EndPrologueScreen_OnBackToMenuPressed" data-uid="AshesOfVelsingrad.UI.Hud.EndPrologueScreen.OnBackToMenuPressed">
+  OnBackToMenuPressed
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/ui/hud/EndPrologueScreen.cs/#L33"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Raised when the player presses &quot;Back to main menu&quot;.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public event Action? OnBackToMenuPressed</code></pre>
+  </div>
+
+
+
+
+
+
+  <h4 class="section">Event Type</h4>
+  <dl class="parameters">
+    <dt><span class="xref">Action</span></dt>
+    <dd></dd>
+  </dl>
 
 
 

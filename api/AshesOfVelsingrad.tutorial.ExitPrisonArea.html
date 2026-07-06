@@ -2,11 +2,11 @@
 <html>
   <head>
     <meta charset="utf-8">
-      <title>Class Soldier | Ashes of Velsingrad Documentation </title>
+      <title>Class ExitPrisonArea | Ashes of Velsingrad Documentation </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content="Class Soldier | Ashes of Velsingrad Documentation ">
+      <meta name="title" content="Class ExitPrisonArea | Ashes of Velsingrad Documentation ">
       
-      <meta name="description" content="Hostile NPC that triggers a battle when the player interacts with them.">
+      
       <link rel="icon" href="../favicon.ico">
       <link rel="stylesheet" href="../public/docfx.min.css">
       <link rel="stylesheet" href="../public/main.css">
@@ -84,26 +84,25 @@
           <nav id="breadcrumb"></nav>
         </div>
 
-        <article data-uid="AshesOfVelsingrad.data.npc.Soldier">
+        <article data-uid="AshesOfVelsingrad.tutorial.ExitPrisonArea">
 
 
 
-  <h1 id="AshesOfVelsingrad_data_npc_Soldier" data-uid="AshesOfVelsingrad.data.npc.Soldier" class="text-break">
-Class Soldier  
+  <h1 id="AshesOfVelsingrad_tutorial_ExitPrisonArea" data-uid="AshesOfVelsingrad.tutorial.ExitPrisonArea" class="text-break">
+Class ExitPrisonArea  
   </h1>
 
   <div class="facts text-secondary">
-    <dl><dt>Namespace</dt><dd><a class="xref" href="AshesOfVelsingrad.html">AshesOfVelsingrad</a>.<a class="xref" href="AshesOfVelsingrad.data.html">data</a>.<a class="xref" href="AshesOfVelsingrad.data.npc.html">npc</a></dd></dl>
+    <dl><dt>Namespace</dt><dd><a class="xref" href="AshesOfVelsingrad.html">AshesOfVelsingrad</a>.<a class="xref" href="AshesOfVelsingrad.tutorial.html">tutorial</a></dd></dl>
   <dl><dt>Assembly</dt><dd>AshesofVelsingrad.dll</dd></dl>
   </div>
 
-  <div class="markdown summary"><p>Hostile NPC that triggers a battle when the player interacts with them.</p>
-</div>
+  <div class="markdown summary"></div>
   <div class="markdown conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[ScriptPath(&quot;res://scripts/data/npc/Soldier.cs&quot;)]
-public class Soldier : NpcSystem, IDisposable, IInteractable</code></pre>
+    <pre><code class="lang-csharp hljs">[ScriptPath(&quot;res://scripts/tutorial/ExitPrisonArea.cs&quot;)]
+public class ExitPrisonArea : StaticBody3D, IDisposable, IInteractable</code></pre>
   </div>
 
 
@@ -118,9 +117,8 @@ public class Soldier : NpcSystem, IDisposable, IInteractable</code></pre>
       <div><span class="xref">Node3D</span></div>
       <div><span class="xref">CollisionObject3D</span></div>
       <div><span class="xref">PhysicsBody3D</span></div>
-      <div><span class="xref">CharacterBody3D</span></div>
-      <div><a class="xref" href="AshesOfVelsingrad.Interfaces.NpcSystem.html">NpcSystem</a></div>
-      <div><span class="xref">Soldier</span></div>
+      <div><span class="xref">StaticBody3D</span></div>
+      <div><span class="xref">ExitPrisonArea</span></div>
     </dd>
   </dl>
 
@@ -137,145 +135,22 @@ public class Soldier : NpcSystem, IDisposable, IInteractable</code></pre>
     <dt>Inherited Members</dt>
     <dd>
     <div>
-      <a class="xref" href="AshesOfVelsingrad.Interfaces.NpcSystem.html#AshesOfVelsingrad_Interfaces_NpcSystem_StopDistance">NpcSystem.StopDistance</a>
+      <span class="xref">StaticBody3D.InvokeGodotClassMethod(in godot_string_name, NativeVariantPtrArgs, out godot_variant)</span>
     </div>
     <div>
-      <a class="xref" href="AshesOfVelsingrad.Interfaces.NpcSystem.html#AshesOfVelsingrad_Interfaces_NpcSystem_Speed">NpcSystem.Speed</a>
+      <span class="xref">StaticBody3D.HasGodotClassMethod(in godot_string_name)</span>
     </div>
     <div>
-      <a class="xref" href="AshesOfVelsingrad.Interfaces.NpcSystem.html#AshesOfVelsingrad_Interfaces_NpcSystem_HandleCharacterMovement_System_Double_">NpcSystem.HandleCharacterMovement(double)</a>
+      <span class="xref">StaticBody3D.HasGodotClassSignal(in godot_string_name)</span>
     </div>
     <div>
-      <a class="xref" href="AshesOfVelsingrad.Interfaces.NpcSystem.html#AshesOfVelsingrad_Interfaces_NpcSystem_Initialize_AshesOfVelsingrad_Managers_StateMachine_Godot_NavigationAgent3D_System_Single_">NpcSystem.Initialize(StateMachine, NavigationAgent3D, float)</a>
+      <span class="xref">StaticBody3D.PhysicsMaterialOverride</span>
     </div>
     <div>
-      <a class="xref" href="AshesOfVelsingrad.Interfaces.NpcSystem.html#AshesOfVelsingrad_Interfaces_NpcSystem_ToIdle_System_Boolean_System_String_">NpcSystem.ToIdle(bool, string)</a>
+      <span class="xref">StaticBody3D.ConstantLinearVelocity</span>
     </div>
     <div>
-      <a class="xref" href="AshesOfVelsingrad.Interfaces.NpcSystem.html#AshesOfVelsingrad_Interfaces_NpcSystem_ToRoaming">NpcSystem.ToRoaming()</a>
-    </div>
-    <div>
-      <a class="xref" href="AshesOfVelsingrad.Interfaces.NpcSystem.html#AshesOfVelsingrad_Interfaces_NpcSystem_ToFollowingSpecificPoint_Godot_Node3D_">NpcSystem.ToFollowingSpecificPoint(Node3D)</a>
-    </div>
-    <div>
-      <a class="xref" href="AshesOfVelsingrad.Interfaces.NpcSystem.html#AshesOfVelsingrad_Interfaces_NpcSystem_ToFollowingMovingEntity_Godot_Node3D_">NpcSystem.ToFollowingMovingEntity(Node3D)</a>
-    </div>
-    <div>
-      <a class="xref" href="AshesOfVelsingrad.Interfaces.NpcSystem.html#AshesOfVelsingrad_Interfaces_NpcSystem_OnSpecificPointReached">NpcSystem.OnSpecificPointReached</a>
-    </div>
-    <div>
-      <a class="xref" href="AshesOfVelsingrad.Interfaces.NpcSystem.html#AshesOfVelsingrad_Interfaces_NpcSystem_EmitSignalOnSpecificPointReached">NpcSystem.EmitSignalOnSpecificPointReached()</a>
-    </div>
-    <div>
-      <span class="xref">CharacterBody3D.MoveAndSlide()</span>
-    </div>
-    <div>
-      <span class="xref">CharacterBody3D.ApplyFloorSnap()</span>
-    </div>
-    <div>
-      <span class="xref">CharacterBody3D.IsOnFloor()</span>
-    </div>
-    <div>
-      <span class="xref">CharacterBody3D.IsOnFloorOnly()</span>
-    </div>
-    <div>
-      <span class="xref">CharacterBody3D.IsOnCeiling()</span>
-    </div>
-    <div>
-      <span class="xref">CharacterBody3D.IsOnCeilingOnly()</span>
-    </div>
-    <div>
-      <span class="xref">CharacterBody3D.IsOnWall()</span>
-    </div>
-    <div>
-      <span class="xref">CharacterBody3D.IsOnWallOnly()</span>
-    </div>
-    <div>
-      <span class="xref">CharacterBody3D.GetFloorNormal()</span>
-    </div>
-    <div>
-      <span class="xref">CharacterBody3D.GetWallNormal()</span>
-    </div>
-    <div>
-      <span class="xref">CharacterBody3D.GetLastMotion()</span>
-    </div>
-    <div>
-      <span class="xref">CharacterBody3D.GetPositionDelta()</span>
-    </div>
-    <div>
-      <span class="xref">CharacterBody3D.GetRealVelocity()</span>
-    </div>
-    <div>
-      <span class="xref">CharacterBody3D.GetFloorAngle(Vector3?)</span>
-    </div>
-    <div>
-      <span class="xref">CharacterBody3D.GetPlatformVelocity()</span>
-    </div>
-    <div>
-      <span class="xref">CharacterBody3D.GetPlatformAngularVelocity()</span>
-    </div>
-    <div>
-      <span class="xref">CharacterBody3D.GetSlideCollisionCount()</span>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">CharacterBody3D.GetSlideCollision(int)</a>
-    </div>
-    <div>
-      <span class="xref">CharacterBody3D.GetLastSlideCollision()</span>
-    </div>
-    <div>
-      <span class="xref">CharacterBody3D.InvokeGodotClassMethod(in godot_string_name, NativeVariantPtrArgs, out godot_variant)</span>
-    </div>
-    <div>
-      <span class="xref">CharacterBody3D.HasGodotClassMethod(in godot_string_name)</span>
-    </div>
-    <div>
-      <span class="xref">CharacterBody3D.HasGodotClassSignal(in godot_string_name)</span>
-    </div>
-    <div>
-      <span class="xref">CharacterBody3D.MotionMode</span>
-    </div>
-    <div>
-      <span class="xref">CharacterBody3D.UpDirection</span>
-    </div>
-    <div>
-      <span class="xref">CharacterBody3D.SlideOnCeiling</span>
-    </div>
-    <div>
-      <span class="xref">CharacterBody3D.Velocity</span>
-    </div>
-    <div>
-      <span class="xref">CharacterBody3D.MaxSlides</span>
-    </div>
-    <div>
-      <span class="xref">CharacterBody3D.WallMinSlideAngle</span>
-    </div>
-    <div>
-      <span class="xref">CharacterBody3D.FloorStopOnSlope</span>
-    </div>
-    <div>
-      <span class="xref">CharacterBody3D.FloorConstantSpeed</span>
-    </div>
-    <div>
-      <span class="xref">CharacterBody3D.FloorBlockOnWall</span>
-    </div>
-    <div>
-      <span class="xref">CharacterBody3D.FloorMaxAngle</span>
-    </div>
-    <div>
-      <span class="xref">CharacterBody3D.FloorSnapLength</span>
-    </div>
-    <div>
-      <span class="xref">CharacterBody3D.PlatformOnLeave</span>
-    </div>
-    <div>
-      <span class="xref">CharacterBody3D.PlatformFloorLayers</span>
-    </div>
-    <div>
-      <span class="xref">CharacterBody3D.PlatformWallLayers</span>
-    </div>
-    <div>
-      <span class="xref">CharacterBody3D.SafeMargin</span>
+      <span class="xref">StaticBody3D.ConstantAngularVelocity</span>
     </div>
     <div>
       <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">PhysicsBody3D.MoveAndCollide(Vector3, bool, float, bool, int)</a>
@@ -1455,27 +1330,17 @@ public class Soldier : NpcSystem, IDisposable, IInteractable</code></pre>
 
 
 
-  <h2 id="AshesOfVelsingrad_data_npc_Soldier_remarks">Remarks</h2>
-  <div class="markdown level0 remarks"><p>
-    Hands off to <a class="xref" href="AshesOfVelsingrad.Managers.BattleLauncher.html">BattleLauncher</a> rather than calling
-    <code>ChangeSceneToFile</code> directly — that's what gives Forfeit something to
-    return to. The launcher captures the current scene path + the interacting
-    player's <code>GlobalPosition</code> at the moment of <a class="xref" href="AshesOfVelsingrad.data.npc.Soldier.html#AshesOfVelsingrad_data_npc_Soldier_Interact_AshesOfVelsingrad_Systems_IInteractor_">Interact(IInteractor)</a>, then
-    restores both when the player presses Forfeit on the GameOverScreen (or
-    Continue on the VictoryScreen).
-</p>
-</div>
 
 
   <h2 class="section" id="methods">Methods
 </h2>
 
 
-  <a id="AshesOfVelsingrad_data_npc_Soldier_CanInteract_" data-uid="AshesOfVelsingrad.data.npc.Soldier.CanInteract*"></a>
+  <a id="AshesOfVelsingrad_tutorial_ExitPrisonArea_CanInteract_" data-uid="AshesOfVelsingrad.tutorial.ExitPrisonArea.CanInteract*"></a>
 
-  <h3 id="AshesOfVelsingrad_data_npc_Soldier_CanInteract" data-uid="AshesOfVelsingrad.data.npc.Soldier.CanInteract">
+  <h3 id="AshesOfVelsingrad_tutorial_ExitPrisonArea_CanInteract" data-uid="AshesOfVelsingrad.tutorial.ExitPrisonArea.CanInteract">
   CanInteract()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/data/npc/Soldier.cs/#L206"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/tutorial/ExitPrisonArea.cs/#L19"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Determines whether the object can currently be interacted with.</p>
@@ -1504,11 +1369,11 @@ public class Soldier : NpcSystem, IDisposable, IInteractable</code></pre>
 
 
 
-  <a id="AshesOfVelsingrad_data_npc_Soldier_HidePrompt_" data-uid="AshesOfVelsingrad.data.npc.Soldier.HidePrompt*"></a>
+  <a id="AshesOfVelsingrad_tutorial_ExitPrisonArea_HidePrompt_" data-uid="AshesOfVelsingrad.tutorial.ExitPrisonArea.HidePrompt*"></a>
 
-  <h3 id="AshesOfVelsingrad_data_npc_Soldier_HidePrompt" data-uid="AshesOfVelsingrad.data.npc.Soldier.HidePrompt">
+  <h3 id="AshesOfVelsingrad_tutorial_ExitPrisonArea_HidePrompt" data-uid="AshesOfVelsingrad.tutorial.ExitPrisonArea.HidePrompt">
   HidePrompt()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/data/npc/Soldier.cs/#L234"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/tutorial/ExitPrisonArea.cs/#L31"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Hides the interaction prompt.</p>
@@ -1531,11 +1396,11 @@ public class Soldier : NpcSystem, IDisposable, IInteractable</code></pre>
 
 
 
-  <a id="AshesOfVelsingrad_data_npc_Soldier_Interact_" data-uid="AshesOfVelsingrad.data.npc.Soldier.Interact*"></a>
+  <a id="AshesOfVelsingrad_tutorial_ExitPrisonArea_Interact_" data-uid="AshesOfVelsingrad.tutorial.ExitPrisonArea.Interact*"></a>
 
-  <h3 id="AshesOfVelsingrad_data_npc_Soldier_Interact_AshesOfVelsingrad_Systems_IInteractor_" data-uid="AshesOfVelsingrad.data.npc.Soldier.Interact(AshesOfVelsingrad.Systems.IInteractor)">
+  <h3 id="AshesOfVelsingrad_tutorial_ExitPrisonArea_Interact_AshesOfVelsingrad_Systems_IInteractor_" data-uid="AshesOfVelsingrad.tutorial.ExitPrisonArea.Interact(AshesOfVelsingrad.Systems.IInteractor)">
   Interact(IInteractor)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/data/npc/Soldier.cs/#L194"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/tutorial/ExitPrisonArea.cs/#L21"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Executes the interaction logic.</p>
@@ -1564,11 +1429,11 @@ public class Soldier : NpcSystem, IDisposable, IInteractable</code></pre>
 
 
 
-  <a id="AshesOfVelsingrad_data_npc_Soldier_ShowPrompt_" data-uid="AshesOfVelsingrad.data.npc.Soldier.ShowPrompt*"></a>
+  <a id="AshesOfVelsingrad_tutorial_ExitPrisonArea_ShowPrompt_" data-uid="AshesOfVelsingrad.tutorial.ExitPrisonArea.ShowPrompt*"></a>
 
-  <h3 id="AshesOfVelsingrad_data_npc_Soldier_ShowPrompt" data-uid="AshesOfVelsingrad.data.npc.Soldier.ShowPrompt">
+  <h3 id="AshesOfVelsingrad_tutorial_ExitPrisonArea_ShowPrompt" data-uid="AshesOfVelsingrad.tutorial.ExitPrisonArea.ShowPrompt">
   ShowPrompt()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/data/npc/Soldier.cs/#L228"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/tutorial/ExitPrisonArea.cs/#L26"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Displays a visual or UI prompt indicating that the object
@@ -1592,11 +1457,11 @@ can be interacted with.</p>
 
 
 
-  <a id="AshesOfVelsingrad_data_npc_Soldier__Ready_" data-uid="AshesOfVelsingrad.data.npc.Soldier._Ready*"></a>
+  <a id="AshesOfVelsingrad_tutorial_ExitPrisonArea__Ready_" data-uid="AshesOfVelsingrad.tutorial.ExitPrisonArea._Ready*"></a>
 
-  <h3 id="AshesOfVelsingrad_data_npc_Soldier__Ready" data-uid="AshesOfVelsingrad.data.npc.Soldier._Ready">
+  <h3 id="AshesOfVelsingrad_tutorial_ExitPrisonArea__Ready" data-uid="AshesOfVelsingrad.tutorial.ExitPrisonArea._Ready">
   _Ready()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/data/npc/Soldier.cs/#L68"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/tutorial/ExitPrisonArea.cs/#L13"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Called when the node is "ready", i.e. when both the node and its children have entered the scene tree. If the node has children, their <span class="xref">Godot.Node._Ready()</span> callbacks get triggered first, and the parent node will receive the ready notification afterwards.</p>

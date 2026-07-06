@@ -2,11 +2,11 @@
 <html>
   <head>
     <meta charset="utf-8">
-      <title>Class EnemyArcher | Ashes of Velsingrad Documentation </title>
+      <title>Class ThiefSwordman | Ashes of Velsingrad Documentation </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content="Class EnemyArcher | Ashes of Velsingrad Documentation ">
+      <meta name="title" content="Class ThiefSwordman | Ashes of Velsingrad Documentation ">
       
-      <meta name="description" content="Archer enemy unit with ranged attack AI behavior. Uses the existing AI system to make tactical decisions.">
+      <meta name="description" content="Generic configurable enemy soldier — every stat, name, and portrait can be overridden from the Inspector so a designer can drop an instance into any battle scene and shape it without touching the script.">
       <link rel="icon" href="../favicon.ico">
       <link rel="stylesheet" href="../public/docfx.min.css">
       <link rel="stylesheet" href="../public/main.css">
@@ -84,12 +84,12 @@
           <nav id="breadcrumb"></nav>
         </div>
 
-        <article data-uid="AshesOfVelsingrad.EnemyArcher">
+        <article data-uid="AshesOfVelsingrad.ThiefSwordman">
 
 
 
-  <h1 id="AshesOfVelsingrad_EnemyArcher" data-uid="AshesOfVelsingrad.EnemyArcher" class="text-break">
-Class EnemyArcher  
+  <h1 id="AshesOfVelsingrad_ThiefSwordman" data-uid="AshesOfVelsingrad.ThiefSwordman" class="text-break">
+Class ThiefSwordman  
   </h1>
 
   <div class="facts text-secondary">
@@ -97,14 +97,15 @@ Class EnemyArcher
   <dl><dt>Assembly</dt><dd>AshesofVelsingrad.dll</dd></dl>
   </div>
 
-  <div class="markdown summary"><p>Archer enemy unit with ranged attack AI behavior.
-Uses the existing AI system to make tactical decisions.</p>
+  <div class="markdown summary"><p>Generic configurable enemy soldier — every stat, name, and portrait can be
+overridden from the Inspector so a designer can drop an instance into any
+battle scene and shape it without touching the script.</p>
 </div>
   <div class="markdown conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[ScriptPath(&quot;res://scripts/data/unit/enemies/EnemyArcher.cs&quot;)]
-public sealed class EnemyArcher : UnitSystem, IDisposable, IUnitSystem, IEffectTarget&lt;IUnitSystem&gt;, IStatusEffectBehavior, IEffectTarget</code></pre>
+    <pre><code class="lang-csharp hljs">[ScriptPath(&quot;res://scripts/data/unit/enemies/ThiefSwordman.cs&quot;)]
+public sealed class ThiefSwordman : UnitSystem, IDisposable, IUnitSystem, IEffectTarget&lt;IUnitSystem&gt;, IStatusEffectBehavior, IEffectTarget</code></pre>
   </div>
 
 
@@ -121,7 +122,7 @@ public sealed class EnemyArcher : UnitSystem, IDisposable, IUnitSystem, IEffectT
       <div><span class="xref">PhysicsBody3D</span></div>
       <div><span class="xref">CharacterBody3D</span></div>
       <div><a class="xref" href="AshesOfVelsingrad.Systems.UnitSystem.html">UnitSystem</a></div>
-      <div><span class="xref">EnemyArcher</span></div>
+      <div><span class="xref">ThiefSwordman</span></div>
     </dd>
   </dl>
 
@@ -1576,17 +1577,298 @@ public sealed class EnemyArcher : UnitSystem, IDisposable, IUnitSystem, IEffectT
 
 
 
+  <h2 id="AshesOfVelsingrad_ThiefSwordman_remarks">Remarks</h2>
+  <div class="markdown level0 remarks"><p>
+    Default loadout is the Fighter catalogue's basic actives so each soldier
+    already feels like a competent threat in the test scene; if a designer wants
+    a softer or weirder enemy they can subclass and override <a class="xref" href="AshesOfVelsingrad.ThiefSwordman.html#AshesOfVelsingrad_ThiefSwordman_Initialize">Initialize()</a>.
+</p>
+<p>
+    Stats use the same shape as <a class="xref" href="AshesOfVelsingrad.KaelenVoss.html">KaelenVoss</a> at level 1 but slightly
+    weaker so a single soldier is a fair fight for one player. Scale up for
+    later encounters by exporting SoldierLevel and a stat
+    multiplier later.
+</p>
+</div>
+
+
+  <h2 class="section" id="properties">Properties
+</h2>
+
+
+  <a id="AshesOfVelsingrad_ThiefSwordman_ThiefBaseAtk_" data-uid="AshesOfVelsingrad.ThiefSwordman.ThiefBaseAtk*"></a>
+
+  <h3 id="AshesOfVelsingrad_ThiefSwordman_ThiefBaseAtk" data-uid="AshesOfVelsingrad.ThiefSwordman.ThiefBaseAtk">
+  ThiefBaseAtk
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/data/unit/enemies/ThiefSwordman.cs/#L47"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Base attack. Default sized to be a fair fight for a level-1 fighter.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[Export(PropertyHint.None, &quot;&quot;)]
+public float ThiefBaseAtk { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="AshesOfVelsingrad_ThiefSwordman_ThiefBaseDef_" data-uid="AshesOfVelsingrad.ThiefSwordman.ThiefBaseDef*"></a>
+
+  <h3 id="AshesOfVelsingrad_ThiefSwordman_ThiefBaseDef" data-uid="AshesOfVelsingrad.ThiefSwordman.ThiefBaseDef">
+  ThiefBaseDef
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/data/unit/enemies/ThiefSwordman.cs/#L51"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Base defence.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[Export(PropertyHint.None, &quot;&quot;)]
+public float ThiefBaseDef { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="AshesOfVelsingrad_ThiefSwordman_ThiefBaseSpeed_" data-uid="AshesOfVelsingrad.ThiefSwordman.ThiefBaseSpeed*"></a>
+
+  <h3 id="AshesOfVelsingrad_ThiefSwordman_ThiefBaseSpeed" data-uid="AshesOfVelsingrad.ThiefSwordman.ThiefBaseSpeed">
+  ThiefBaseSpeed
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/data/unit/enemies/ThiefSwordman.cs/#L55"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Base speed — drives turn order. Lower than Kaelen's 180 so the player acts first.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[Export(PropertyHint.None, &quot;&quot;)]
+public float ThiefBaseSpeed { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="AshesOfVelsingrad_ThiefSwordman_ThiefLevel_" data-uid="AshesOfVelsingrad.ThiefSwordman.ThiefLevel*"></a>
+
+  <h3 id="AshesOfVelsingrad_ThiefSwordman_ThiefLevel" data-uid="AshesOfVelsingrad.ThiefSwordman.ThiefLevel">
+  ThiefLevel
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/data/unit/enemies/ThiefSwordman.cs/#L35"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Level shown next to the name in the turn-queue chip / status panel.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[Export(PropertyHint.None, &quot;&quot;)]
+public int ThiefLevel { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="AshesOfVelsingrad_ThiefSwordman_ThiefMaxHp_" data-uid="AshesOfVelsingrad.ThiefSwordman.ThiefMaxHp*"></a>
+
+  <h3 id="AshesOfVelsingrad_ThiefSwordman_ThiefMaxHp" data-uid="AshesOfVelsingrad.ThiefSwordman.ThiefMaxHp">
+  ThiefMaxHp
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/data/unit/enemies/ThiefSwordman.cs/#L43"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Max HP. Adjust per-instance for tougher / weaker variants.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[Export(PropertyHint.None, &quot;&quot;)]
+public float ThiefMaxHp { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="AshesOfVelsingrad_ThiefSwordman_ThiefName_" data-uid="AshesOfVelsingrad.ThiefSwordman.ThiefName*"></a>
+
+  <h3 id="AshesOfVelsingrad_ThiefSwordman_ThiefName" data-uid="AshesOfVelsingrad.ThiefSwordman.ThiefName">
+  ThiefName
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/data/unit/enemies/ThiefSwordman.cs/#L31"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Display name shown in the HUD. Overridable per-instance.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[Export(PropertyHint.None, &quot;&quot;)]
+public string ThiefName { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="AshesOfVelsingrad_ThiefSwordman_ThiefPersonality_" data-uid="AshesOfVelsingrad.ThiefSwordman.ThiefPersonality*"></a>
+
+  <h3 id="AshesOfVelsingrad_ThiefSwordman_ThiefPersonality" data-uid="AshesOfVelsingrad.ThiefSwordman.ThiefPersonality">
+  ThiefPersonality
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/data/unit/enemies/ThiefSwordman.cs/#L59"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Tactical-AI personality: Aggressive / Defensive / Opportunistic / Balanced.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[Export(PropertyHint.None, &quot;&quot;)]
+public AIPersonality ThiefPersonality { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="AshesOfVelsingrad.AI.AIPersonality.html">AIPersonality</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="AshesOfVelsingrad_ThiefSwordman_ThiefPortraitPath_" data-uid="AshesOfVelsingrad.ThiefSwordman.ThiefPortraitPath*"></a>
+
+  <h3 id="AshesOfVelsingrad_ThiefSwordman_ThiefPortraitPath" data-uid="AshesOfVelsingrad.ThiefSwordman.ThiefPortraitPath">
+  ThiefPortraitPath
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/data/unit/enemies/ThiefSwordman.cs/#L39"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Portrait <code>res://</code> path. Falls back to a coloured square if empty.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[Export(PropertyHint.File, &quot;*.png,*.jpg,*.svg&quot;)]
+public string ThiefPortraitPath { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
 
 
   <h2 class="section" id="methods">Methods
 </h2>
 
 
-  <a id="AshesOfVelsingrad_EnemyArcher_Initialize_" data-uid="AshesOfVelsingrad.EnemyArcher.Initialize*"></a>
+  <a id="AshesOfVelsingrad_ThiefSwordman_Initialize_" data-uid="AshesOfVelsingrad.ThiefSwordman.Initialize*"></a>
 
-  <h3 id="AshesOfVelsingrad_EnemyArcher_Initialize" data-uid="AshesOfVelsingrad.EnemyArcher.Initialize">
+  <h3 id="AshesOfVelsingrad_ThiefSwordman_Initialize" data-uid="AshesOfVelsingrad.ThiefSwordman.Initialize">
   Initialize()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/data/unit/enemies/EnemyArcher.cs/#L19"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/data/unit/enemies/ThiefSwordman.cs/#L63"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Initializes the unit instance
@@ -1606,7 +1888,7 @@ This method should be overridden in derived classes to set up specific functiona
 
 
 
-  <h4 class="section" id="AshesOfVelsingrad_EnemyArcher_Initialize_remarks">Remarks</h4>
+  <h4 class="section" id="AshesOfVelsingrad_ThiefSwordman_Initialize_remarks">Remarks</h4>
   <div class="markdown level1 remarks"><p>This method is called by the _Ready method to initialize the map.
 It should contain the logic necessary to set up the unit's state and functionality.
 Derived classes must implement this method to provide their specific initialization logic.</p>

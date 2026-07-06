@@ -1037,6 +1037,37 @@ public class GameManager : BaseManager, IDisposable</code></pre>
 
 
 
+  <h3 id="AshesOfVelsingrad_Managers_GameManager__endPrologueScreen" data-uid="AshesOfVelsingrad.Managers.GameManager._endPrologueScreen">
+  _endPrologueScreen
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/managers/game_manager/GameManagerHud.cs/#L29"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>End-of-prologue chapter card; spawned lazily on prologue victory.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected EndPrologueScreen? _endPrologueScreen</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="AshesOfVelsingrad.UI.Hud.EndPrologueScreen.html">EndPrologueScreen</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
   <h3 id="AshesOfVelsingrad_Managers_GameManager__gameOverScreen" data-uid="AshesOfVelsingrad.Managers.GameManager._gameOverScreen">
   _gameOverScreen
   <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/managers/game_manager/GameManagerHud.cs/#L26"><i class="bi bi-code-slash"></i></a>
@@ -1245,7 +1276,7 @@ public bool EnableThreatMapDebug { get; set; }</code></pre>
 
   <h3 id="AshesOfVelsingrad_Managers_GameManager_BindHudRosters" data-uid="AshesOfVelsingrad.Managers.GameManager.BindHudRosters">
   BindHudRosters()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/managers/game_manager/GameManagerHud.cs/#L131"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/managers/game_manager/GameManagerHud.cs/#L142"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Populate widgets that only need a one-shot bind at battle start.</p>
@@ -1299,7 +1330,7 @@ public bool EnableThreatMapDebug { get; set; }</code></pre>
 
   <h3 id="AshesOfVelsingrad_Managers_GameManager_EnsureHud" data-uid="AshesOfVelsingrad.Managers.GameManager.EnsureHud">
   EnsureHud()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/managers/game_manager/GameManagerHud.cs/#L41"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/managers/game_manager/GameManagerHud.cs/#L52"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Find an existing <a class="xref" href="AshesOfVelsingrad.UI.Hud.BattleHud.html">BattleHud</a> in the scene or spawn one.</p>
@@ -1326,7 +1357,7 @@ public bool EnableThreatMapDebug { get; set; }</code></pre>
 
   <h3 id="AshesOfVelsingrad_Managers_GameManager_EnsureIndicators" data-uid="AshesOfVelsingrad.Managers.GameManager.EnsureIndicators">
   EnsureIndicators()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/managers/game_manager/GameManagerHud.cs/#L86"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/managers/game_manager/GameManagerHud.cs/#L97"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Spawn the move/target/hover indicator overlay parented to the map.</p>
@@ -1456,7 +1487,7 @@ cell coordinates and the map’s cell size.</p>
 
   <h3 id="AshesOfVelsingrad_Managers_GameManager_RefreshHudForActiveUnit_AshesOfVelsingrad_Systems_IUnitSystem_" data-uid="AshesOfVelsingrad.Managers.GameManager.RefreshHudForActiveUnit(AshesOfVelsingrad.Systems.IUnitSystem)">
   RefreshHudForActiveUnit(IUnitSystem?)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/managers/game_manager/GameManagerHud.cs/#L158"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/managers/game_manager/GameManagerHud.cs/#L169"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Refresh the player-side HUD bindings for the active turn.</p>
@@ -1488,7 +1519,7 @@ cell coordinates and the map’s cell size.</p>
 
   <h3 id="AshesOfVelsingrad_Managers_GameManager_RefreshHudOnReady" data-uid="AshesOfVelsingrad.Managers.GameManager.RefreshHudOnReady">
   RefreshHudOnReady()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/managers/game_manager/GameManagerHud.cs/#L138"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/managers/game_manager/GameManagerHud.cs/#L149"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>One-shot first-turn HUD refresh — runs after _Ready chains finish processing.</p>
@@ -1515,7 +1546,7 @@ cell coordinates and the map’s cell size.</p>
 
   <h3 id="AshesOfVelsingrad_Managers_GameManager_ShowGameOverScreen" data-uid="AshesOfVelsingrad.Managers.GameManager.ShowGameOverScreen">
   ShowGameOverScreen()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/managers/game_manager/GameManagerHud.cs/#L224"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/managers/game_manager/GameManagerHud.cs/#L235"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Spawn the GameOverScreen overlay, bound to a clean local UI container layer.</p>
@@ -1571,6 +1602,33 @@ cell coordinates and the map’s cell size.</p>
 
 
 
+  <a id="AshesOfVelsingrad_Managers_GameManager_ShowPrologueEndScreen_" data-uid="AshesOfVelsingrad.Managers.GameManager.ShowPrologueEndScreen*"></a>
+
+  <h3 id="AshesOfVelsingrad_Managers_GameManager_ShowPrologueEndScreen" data-uid="AshesOfVelsingrad.Managers.GameManager.ShowPrologueEndScreen">
+  ShowPrologueEndScreen()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/managers/game_manager/GameManagerHud.cs/#L302"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Spawn the end-of-prologue chapter card above the victory screen.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected void ShowPrologueEndScreen()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
   <a id="AshesOfVelsingrad_Managers_GameManager_ShowTargetIndicators_" data-uid="AshesOfVelsingrad.Managers.GameManager.ShowTargetIndicators*"></a>
 
   <h3 id="AshesOfVelsingrad_Managers_GameManager_ShowTargetIndicators_System_Collections_Generic_IEnumerable_Godot_Vector3I__" data-uid="AshesOfVelsingrad.Managers.GameManager.ShowTargetIndicators(System.Collections.Generic.IEnumerable{Godot.Vector3I})">
@@ -1608,7 +1666,7 @@ cell coordinates and the map’s cell size.</p>
 
   <h3 id="AshesOfVelsingrad_Managers_GameManager_ShowVictoryScreen" data-uid="AshesOfVelsingrad.Managers.GameManager.ShowVictoryScreen">
   ShowVictoryScreen()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/managers/game_manager/GameManagerHud.cs/#L201"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/managers/game_manager/GameManagerHud.cs/#L212"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Spawn (or refresh) the Victory Screen overlay, bound to a clean local UI container layer.</p>
@@ -1717,7 +1775,7 @@ and exits early.</p>
 
   <h3 id="AshesOfVelsingrad_Managers_GameManager_WireHudEvents" data-uid="AshesOfVelsingrad.Managers.GameManager.WireHudEvents">
   WireHudEvents()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/managers/game_manager/GameManagerHud.cs/#L97"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gammabra/aov-godot/blob/develop/AshesofVelsingrad/scripts/managers/game_manager/GameManagerHud.cs/#L108"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Connect HUD buttons to the gameplay handlers.</p>

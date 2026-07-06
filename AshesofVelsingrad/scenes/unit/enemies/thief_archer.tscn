@@ -1,0 +1,63 @@
+[gd_scene format=3 uid="uid://cfyy3fr225ux1"]
+
+[ext_resource type="Script" uid="uid://4ylmo3el5gw4" path="res://scripts/data/unit/enemies/ThiefArcher.cs" id="1_w563r"]
+[ext_resource type="Script" uid="uid://dvsd81c4l1hgb" path="res://scripts/AI/EnemyAIBehavior.cs" id="2_ih5qv"]
+[ext_resource type="Texture2D" uid="uid://ddt0nje4dbx58" path="res://assets/Krita/sprite_bandit.png" id="3_0qto8"]
+[ext_resource type="Script" uid="uid://dotytx100nxai" path="res://scripts/managers/state_machines/StateMachine.cs" id="4_lelm0"]
+[ext_resource type="Script" uid="uid://cbra7nuuruj2p" path="res://scripts/data/states/IdleState.cs" id="5_r6sno"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_k3vm1"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xa1j6"]
+atlas = ExtResource("3_0qto8")
+region = Rect2(0, 655, 219, 131)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dk882"]
+atlas = ExtResource("3_0qto8")
+region = Rect2(219, 655, 219, 131)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_64rgr"]
+atlas = ExtResource("3_0qto8")
+region = Rect2(438, 655, 219, 131)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qakxj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xa1j6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dk882")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_64rgr")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}]
+
+[node name="ThiefArcher" type="CharacterBody3D" unique_id=181515361]
+script = ExtResource("1_w563r")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=735666014]
+shape = SubResource("SphereShape3D_k3vm1")
+
+[node name="AIBehavior" type="Node" parent="." unique_id=625692246]
+script = ExtResource("2_ih5qv")
+EnableDebugVisualization = true
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="." unique_id=1285113362]
+offset = Vector2(66, 0)
+billboard = 2
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_qakxj")
+animation = &"Idle"
+
+[node name="StateMachine" type="Node" parent="." unique_id=1625094143]
+script = ExtResource("4_lelm0")
+InitialState = NodePath("IdleState")
+
+[node name="IdleState" type="Node" parent="StateMachine" unique_id=1035621749]
+script = ExtResource("5_r6sno")
+_animatedSprite3DPath = NodePath("../../AnimatedSprite3D")

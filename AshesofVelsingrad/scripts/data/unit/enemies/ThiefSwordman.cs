@@ -25,57 +25,57 @@ namespace AshesOfVelsingrad;
 ///         multiplier later.
 ///     </para>
 /// </remarks>
-public sealed partial class EnemySoldier : UnitSystem
+public sealed partial class ThiefSwordman : UnitSystem
 {
     /// <summary>Display name shown in the HUD. Overridable per-instance.</summary>
     [Export]
-    public string SoldierName { get; set; } = "Soldier";
+    public string ThiefName { get; set; } = "Thief Swordman";
 
     /// <summary>Level shown next to the name in the turn-queue chip / status panel.</summary>
     [Export]
-    public int SoldierLevel { get; set; } = 1;
+    public int ThiefLevel { get; set; } = 1;
 
     /// <summary>Portrait <c>res://</c> path. Falls back to a coloured square if empty.</summary>
     [Export(PropertyHint.File, "*.png,*.jpg,*.svg")]
-    public string SoldierPortraitPath { get; set; } = "res://assets/Krita/icone_solder.png";
+    public string ThiefPortraitPath { get; set; } = "res://assets/Krita/icone_bandit.png";
 
     /// <summary>Max HP. Adjust per-instance for tougher / weaker variants.</summary>
     [Export]
-    public float SoldierMaxHp { get; set; } = 800f;
+    public float ThiefMaxHp { get; set; } = 800f;
 
     /// <summary>Base attack. Default sized to be a fair fight for a level-1 fighter.</summary>
     [Export]
-    public float SoldierBaseAtk { get; set; } = 140f;
+    public float ThiefBaseAtk { get; set; } = 140f;
 
     /// <summary>Base defence.</summary>
     [Export]
-    public float SoldierBaseDef { get; set; } = 25f;
+    public float ThiefBaseDef { get; set; } = 25f;
 
     /// <summary>Base speed — drives turn order. Lower than Kaelen's 180 so the player acts first.</summary>
     [Export]
-    public float SoldierBaseSpeed { get; set; } = 120f;
+    public float ThiefBaseSpeed { get; set; } = 120f;
 
     /// <summary>Tactical-AI personality: Aggressive / Defensive / Opportunistic / Balanced.</summary>
     [Export]
-    public AIPersonality SoldierPersonality { get; set; } = AIPersonality.Balanced;
+    public AIPersonality ThiefPersonality { get; set; } = AIPersonality.Balanced;
 
     /// <inheritdoc />
     protected override void Initialize()
     {
-        UnitName = SoldierName;
+        UnitName = ThiefName;
         Description = "Velsingrad regular. Doesn't ask questions.";
-        MaxHp = SoldierMaxHp;
+        MaxHp = ThiefMaxHp;
         Hp = MaxHp;
-        BaseAtk = SoldierBaseAtk;
-        BaseDef = SoldierBaseDef;
-        BaseSpeed = SoldierBaseSpeed;
+        BaseAtk = ThiefBaseAtk;
+        BaseDef = ThiefBaseDef;
+        BaseSpeed = ThiefBaseSpeed;
         Intelligence = 40;
         ManaMax = 80;
         Mana = ManaMax;
         IsAlive = true;
         PossibleMovesRange = 2;
         Curse = 0;
-        Personality = SoldierPersonality;
+        Personality = ThiefPersonality;
         Type = AovDataStructures.UnitType.Fighter;
 
         ActiveSkills.Add(new Catalog.CrushingStrike());
@@ -91,11 +91,11 @@ public sealed partial class EnemySoldier : UnitSystem
 
         SetEntityProfile(new EntityProfile
         {
-            DisplayName = SoldierName,
-            ClassName = "Soldier",
-            Level = SoldierLevel,
-            PortraitPath = SoldierPortraitPath,
-            Bio = "A faceless trooper of the Velsingrad guard.",
+            DisplayName = ThiefName,
+            ClassName = "ThiefSwordman",
+            Level = ThiefLevel,
+            PortraitPath = ThiefPortraitPath,
+            Bio = "One of the many thieves that infest the streets of Velsingrad.",
         });
     }
 }

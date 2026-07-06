@@ -56,6 +56,9 @@ public partial class Soldier : NpcSystem, IInteractable
     private Godot.Collections.Array<PackedScene> _enemyUnits = new();
 
     [Export]
+    private Godot.Collections.Array<PackedScene> _enemyUnits2 = new();
+
+    [Export]
     private NodePath? _dialogPath;
 
     private Label3D? _interactText;
@@ -97,8 +100,8 @@ public partial class Soldier : NpcSystem, IInteractable
     private static readonly (string PlayerPath, string AllyPath, string EnemyPath, string EnemyPath2) _prisonFallbackPaths = (
         "res://scenes/unit/characters/kaelen_voss.tscn",
         "res://scenes/unit/characters/mercenary_ally.tscn",
-        "res://scenes/unit/enemies/enemy_soldier.tscn",
-        "res://scenes/unit/enemies/enemy_archer.tscn"
+        "res://scenes/unit/enemies/thief_swordman.tscn",
+        "res://scenes/unit/enemies/thief_archer.tscn"
     );
 
     private void LaunchBattle(IInteractor interactor)
@@ -131,6 +134,7 @@ public partial class Soldier : NpcSystem, IInteractable
         var playerScenes = ToList(_playerUnits);
         var allyScenes = ToList(_allyUnits);
         var enemyScenes = ToList(_enemyUnits);
+        enemyScenes.AddRange(ToList(_enemyUnits2));
 
         // Defensive fallback: if the typed-array exports came back empty (e.g. the
         // editor regenerated a referenced scene's UID and the Soldier.tscn entry

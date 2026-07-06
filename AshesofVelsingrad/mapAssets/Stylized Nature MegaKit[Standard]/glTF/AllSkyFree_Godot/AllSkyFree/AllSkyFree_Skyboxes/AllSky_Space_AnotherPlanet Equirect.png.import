@@ -1,34 +1,3 @@
-[remap]
-
-importer="texture"
-type="StreamTexture"
-path="res://.import/AllSky_Space_AnotherPlanet Equirect.png-c884b097444fec20dd258efd16b2b74f.stex"
-metadata={
-"vram_texture": false
-}
-
-[deps]
-
-source_file="res://AllSkyFree_Skyboxes/AllSky_Space_AnotherPlanet Equirect.png"
-dest_files=[ "res://.import/AllSky_Space_AnotherPlanet Equirect.png-c884b097444fec20dd258efd16b2b74f.stex" ]
-
-[params]
-
-compress/mode=0
-compress/lossy_quality=0.7
-compress/hdr_mode=0
-compress/bptc_ldr=0
-compress/normal_map=0
-flags/repeat=0
-flags/filter=true
-flags/mipmaps=false
-flags/anisotropic=false
-flags/srgb=2
-process/fix_alpha_border=true
-process/premult_alpha=false
-process/HDR_as_SRGB=false
-process/invert_color=false
-stream=false
-size_limit=0
-detect_3d=true
-svg/scale=1.0
+version https://git-lfs.github.com/spec/v1
+oid sha256:f87da71609eca5c12dc90f45a2af6afea51c68ed9e498a86d9eaaa7d8e1e839c
+size 753

@@ -25,6 +25,9 @@ public partial class GameManager
     /// <summary>End-of-battle Defeat overlay; spawned lazily.</summary>
     protected GameOverScreen? _gameOverScreen;
 
+    /// <summary>End-of-prologue chapter card; spawned lazily on prologue victory.</summary>
+    protected EndPrologueScreen? _endPrologueScreen;
+
     /// <summary>Direct path to a pre-placed BattleHud node inside the designer-authored scene tree.</summary>
     [Export]
     private NodePath? _battleHudPath;
@@ -36,6 +39,14 @@ public partial class GameManager
     /// <summary>Fallback path to a designer-authored HUD scene asset if no local instance is found.</summary>
     [Export(PropertyHint.File, "*.tscn")]
     private string _battleHudScenePath = string.Empty;
+
+    /// <summary>
+    ///     Set this on the battle scene that closes the prologue. When true, winning the fight
+    ///     and pressing Continue shows the end-of-prologue chapter card (with a "Back to main
+    ///     menu" button) instead of returning to exploration.
+    /// </summary>
+    [Export]
+    private bool _isPrologueBattle;
 
     /// <summary>Find an existing <see cref="BattleHud" /> in the scene or spawn one.</summary>
     protected void EnsureHud()
@@ -270,12 +281,60 @@ public partial class GameManager
 
     private void OnVictoryContinue()
     {
-        GD.Print("GameManager: Victory Continue pressed — handing off to BattleLauncher.");
+        // The prologue ends on a chapter card rather than returning to exploration.
+        if (_isPrologueBattle)
+        {
+            GD.Print("GameManager: Prologue won - showing end-of-prologue screen.");
+            ShowPrologueEndScreen();
+            return;
+        }
+
+        GD.Print("GameManager: Victory Continue pressed - handing off to BattleLauncher.");
         if (BattleLauncher.Instance is null)
         {
-            GD.PrintErr("GameManager: no BattleLauncher autoload — cannot return to exploration.");
+            GD.PrintErr("GameManager: no BattleLauncher autoload - cannot return to exploration.");
             return;
         }
         BattleLauncher.Instance.VictoryReturn();
+    }
+
+    /// <summary>Spawn the end-of-prologue chapter card above the victory screen.</summary>
+    protected void ShowPrologueEndScreen()
+    {
+        if (_victoryScreen is not null && IsInstanceValid(_victoryScreen))
+            _victoryScreen.Visible = false;
+
+        if (_endPrologueScreen is null || !IsInstanceValid(_endPrologueScreen))
+        {
+            _endPrologueScreen = new EndPrologueScreen { Name = "EndPrologueScreen" };
+            Node host = ResolveUiHostNode();
+            host.CallDeferred(Node.MethodName.AddChild, _endPrologueScreen);
+            _endPrologueScreen.OnBackToMenuPressed += OnPrologueBackToMenu;
+        }
+
+        _endPrologueScreen.EnsureBuilt();
+    }
+
+    private void OnPrologueBackToMenu()
+    {
+        GD.Print("GameManager: Prologue end - returning to main menu.");
+
+        // Tear the end-of-battle overlays down so they don't linger over the menu.
+        if (_endPrologueScreen is not null && IsInstanceValid(_endPrologueScreen))
+            _endPrologueScreen.QueueFree();
+        if (_victoryScreen is not null && IsInstanceValid(_victoryScreen))
+            _victoryScreen.QueueFree();
+
+        const string menuPath = "res://scenes/ui/menus/menu_beta.tscn";
+        if (MainManager.Instance is not null)
+        {
+            MainManager.Instance.LoadScene(menuPath, showHud: false);
+        }
+        else
+        {
+            Error err = GetTree().ChangeSceneToFile(menuPath);
+            if (err != Error.Ok)
+                GD.PrintErr($"GameManager: main-menu load failed with {err}");
+        }
     }
 }

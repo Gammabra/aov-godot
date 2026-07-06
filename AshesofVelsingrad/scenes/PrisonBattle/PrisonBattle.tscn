@@ -26,6 +26,7 @@ _mapSystemPath = NodePath("GridMap")
 _turnManagerPath = NodePath("TurnManager")
 _battleInputSystemPath = NodePath("../Inputs")
 _battleHudScenePath = "res://scenes/ui/hud/BattleHud.tscn"
+_isPrologueBattle = true
 
 [node name="GridMap" type="GridMap" parent="GameManager" unique_id=1082255965]
 mesh_library = ExtResource("3_mesh")

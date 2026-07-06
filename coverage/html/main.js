@@ -291,9 +291,9 @@ var assemblies = [
     "name": "AshesofVelsingrad.Core",
     "classes": [
       { "name": "AshesOfVelsingrad.AI.AIDecision", "rp": "AshesofVelsingrad.Core_AIDecision.html", "cl": 6, "ucl": 0, "cal": 6, "tl": 27, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
-      { "name": "AshesOfVelsingrad.AI.AIDecisionGenerator", "rp": "AshesofVelsingrad.Core_AIDecisionGenerator.html", "cl": 143, "ucl": 0, "cal": 143, "tl": 240, "cb": 58, "tb": 58, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
-      { "name": "AshesOfVelsingrad.AI.AIEvaluator", "rp": "AshesofVelsingrad.Core_AIEvaluator.html", "cl": 203, "ucl": 0, "cal": 203, "tl": 467, "cb": 106, "tb": 106, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
-      { "name": "AshesOfVelsingrad.AI.AIUtilities", "rp": "AshesofVelsingrad.Core_AIUtilities.html", "cl": 203, "ucl": 0, "cal": 203, "tl": 398, "cb": 76, "tb": 76, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
+      { "name": "AshesOfVelsingrad.AI.AIDecisionGenerator", "rp": "AshesofVelsingrad.Core_AIDecisionGenerator.html", "cl": 129, "ucl": 16, "cal": 145, "tl": 243, "cb": 55, "tb": 62, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
+      { "name": "AshesOfVelsingrad.AI.AIEvaluator", "rp": "AshesofVelsingrad.Core_AIEvaluator.html", "cl": 128, "ucl": 83, "cal": 211, "tl": 478, "cb": 56, "tb": 114, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
+      { "name": "AshesOfVelsingrad.AI.AIUtilities", "rp": "AshesofVelsingrad.Core_AIUtilities.html", "cl": 179, "ucl": 27, "cal": 206, "tl": 403, "cb": 67, "tb": 82, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "AshesOfVelsingrad.AI.BattleState", "rp": "AshesofVelsingrad.Core_BattleState.html", "cl": 4, "ucl": 0, "cal": 4, "tl": 20, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "AshesOfVelsingrad.Audio.AudioCatalog", "rp": "AshesofVelsingrad.Core_AudioCatalog.html", "cl": 21, "ucl": 0, "cal": 21, "tl": 83, "cb": 2, "tb": 2, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "AshesOfVelsingrad.Audio.AudioRegistry", "rp": "AshesofVelsingrad.Core_AudioRegistry.html", "cl": 36, "ucl": 0, "cal": 36, "tl": 78, "cb": 16, "tb": 16, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
@@ -324,7 +324,49 @@ var riskHotspotMetrics = [
 
 var riskHotspots = [
   {
-    "assembly": "AshesofVelsingrad.Core", "class": "AshesOfVelsingrad.AI.AIDecisionGenerator", "reportPath": "AshesofVelsingrad.Core_AIDecisionGenerator.html", "methodName": "GenerateSupportActions(AshesOfVelsingrad.Systems.IUnitSystem,System.ValueTuple\u00603\u003CSystem.Int32,System.Int32,System.Int32\u003E,AshesOfVelsingrad.AI.BattleState)", "methodShortName": "GenerateSupportActions(...)", "fileIndex": 0, "line": 132,
+    "assembly": "AshesofVelsingrad.Core", "class": "AshesOfVelsingrad.AI.AIEvaluator", "reportPath": "AshesofVelsingrad.Core_AIEvaluator.html", "methodName": "CountTargetsInAOE(AshesOfVelsingrad.Systems.ISkillSystem,AshesOfVelsingrad.Systems.IUnitSystem,AshesOfVelsingrad.AI.BattleState)", "methodShortName": "CountTargetsInAOE(...)", "fileIndex": 0, "line": 396,
+    "metrics": [
+      { "value": 272, "exceeded": true },
+      { "value": 16, "exceeded": true },
+    ]},
+  {
+    "assembly": "AshesofVelsingrad.Core", "class": "AshesOfVelsingrad.AI.AIEvaluator", "reportPath": "AshesofVelsingrad.Core_AIEvaluator.html", "methodName": "GetPersonalitySkillMultiplier(AshesOfVelsingrad.Systems.ISkillSystem)", "methodShortName": "GetPersonalitySkillMultiplier(...)", "fileIndex": 0, "line": 376,
+    "metrics": [
+      { "value": 182, "exceeded": true },
+      { "value": 13, "exceeded": false },
+    ]},
+  {
+    "assembly": "AshesofVelsingrad.Core", "class": "AshesOfVelsingrad.AI.AIEvaluator", "reportPath": "AshesofVelsingrad.Core_AIEvaluator.html", "methodName": "ScoreSkill(AshesOfVelsingrad.Systems.ISkillSystem,AshesOfVelsingrad.Systems.IUnitSystem,AshesOfVelsingrad.AI.BattleState)", "methodShortName": "ScoreSkill(...)", "fileIndex": 0, "line": 242,
+    "metrics": [
+      { "value": 104, "exceeded": true },
+      { "value": 16, "exceeded": true },
+    ]},
+  {
+    "assembly": "AshesofVelsingrad.Core", "class": "AshesOfVelsingrad.AI.AIUtilities", "reportPath": "AshesofVelsingrad.Core_AIUtilities.html", "methodName": "CalculateThreatLevel(System.ValueTuple\u00603\u003CSystem.Int32,System.Int32,System.Int32\u003E,AshesOfVelsingrad.AI.BattleState,System.Int32)", "methodShortName": "CalculateThreatLevel(...)", "fileIndex": 0, "line": 245,
+    "metrics": [
+      { "value": 72, "exceeded": true },
+      { "value": 8, "exceeded": false },
+    ]},
+  {
+    "assembly": "AshesofVelsingrad.Core", "class": "AshesOfVelsingrad.AI.AIEvaluator", "reportPath": "AshesofVelsingrad.Core_AIEvaluator.html", "methodName": "ScoreHealSkill(AshesOfVelsingrad.Systems.ISkillSystem,AshesOfVelsingrad.AI.BattleState)", "methodShortName": "ScoreHealSkill(...)", "fileIndex": 0, "line": 320,
+    "metrics": [
+      { "value": 42, "exceeded": true },
+      { "value": 6, "exceeded": false },
+    ]},
+  {
+    "assembly": "AshesofVelsingrad.Core", "class": "AshesOfVelsingrad.AI.AIEvaluator", "reportPath": "AshesofVelsingrad.Core_AIEvaluator.html", "methodName": "ScoreDebuffSkill(AshesOfVelsingrad.Systems.ISkillSystem,AshesOfVelsingrad.Systems.IUnitSystem)", "methodShortName": "ScoreDebuffSkill(...)", "fileIndex": 0, "line": 358,
+    "metrics": [
+      { "value": 42, "exceeded": true },
+      { "value": 6, "exceeded": false },
+    ]},
+  {
+    "assembly": "AshesofVelsingrad.Core", "class": "AshesOfVelsingrad.AI.AIDecisionGenerator", "reportPath": "AshesofVelsingrad.Core_AIDecisionGenerator.html", "methodName": "GenerateDefensiveActions(System.ValueTuple\u00603\u003CSystem.Int32,System.Int32,System.Int32\u003E,AshesOfVelsingrad.AI.BattleState)", "methodShortName": "GenerateDefensiveActions(...)", "fileIndex": 0, "line": 206,
+    "metrics": [
+      { "value": 33, "exceeded": true },
+      { "value": 10, "exceeded": false },
+    ]},
+  {
+    "assembly": "AshesofVelsingrad.Core", "class": "AshesOfVelsingrad.AI.AIDecisionGenerator", "reportPath": "AshesofVelsingrad.Core_AIDecisionGenerator.html", "methodName": "GenerateSupportActions(AshesOfVelsingrad.Systems.IUnitSystem,System.ValueTuple\u00603\u003CSystem.Int32,System.Int32,System.Int32\u003E,AshesOfVelsingrad.AI.BattleState)", "methodShortName": "GenerateSupportActions(...)", "fileIndex": 0, "line": 135,
     "metrics": [
       { "value": 22, "exceeded": false },
       { "value": 22, "exceeded": true },
@@ -336,7 +378,7 @@ var riskHotspots = [
       { "value": 22, "exceeded": true },
     ]},
   {
-    "assembly": "AshesofVelsingrad.Core", "class": "AshesOfVelsingrad.AI.AIDecisionGenerator", "reportPath": "AshesofVelsingrad.Core_AIDecisionGenerator.html", "methodName": "GenerateOffensiveActions(AshesOfVelsingrad.Systems.IUnitSystem,System.ValueTuple\u00603\u003CSystem.Int32,System.Int32,System.Int32\u003E,AshesOfVelsingrad.AI.BattleState)", "methodShortName": "GenerateOffensiveActions(...)", "fileIndex": 0, "line": 64,
+    "assembly": "AshesofVelsingrad.Core", "class": "AshesOfVelsingrad.AI.AIDecisionGenerator", "reportPath": "AshesofVelsingrad.Core_AIDecisionGenerator.html", "methodName": "GenerateOffensiveActions(AshesOfVelsingrad.Systems.IUnitSystem,System.ValueTuple\u00603\u003CSystem.Int32,System.Int32,System.Int32\u003E,AshesOfVelsingrad.AI.BattleState)", "methodShortName": "GenerateOffensiveActions(...)", "fileIndex": 0, "line": 67,
     "metrics": [
       { "value": 20, "exceeded": false },
       { "value": 20, "exceeded": true },

@@ -41,6 +41,8 @@ public partial class InteractionComponent : Area3D
 
     public override void _Ready()
     {
+        _interactableObjects.Clear();
+        ClosestInteractable = null;
         _animatedSprite3D = GetNode<AnimatedSprite3D>(_animatedSprite3DPath);
         BodyEntered += OnBodyEntered;
         BodyExited += OnBodyExited;
